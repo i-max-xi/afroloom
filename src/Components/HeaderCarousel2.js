@@ -52,12 +52,6 @@ const HeaderCarousel2 = () => {
       selectedColor: "orange",
       image: s8,
     },
-
-    {
-      id: 9000,
-      selectedColor: "white",
-      image: s1,
-    },
   ];
 
   return (
@@ -68,7 +62,7 @@ const HeaderCarousel2 = () => {
         numScroll={1}
         className="custom-carousel"
         // circular
-        autoplayInterval={3000}
+        autoplayInterval={1000}
         itemTemplate={Template}
         // style={{width: '110%'}}
       />
