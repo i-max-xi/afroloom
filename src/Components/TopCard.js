@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Map from "../Assets/ban82.jpg";
 import Nav from "./Nav";
-import HeaderCarousel2 from "./HeaderCarousel2";
+import HeaderCarousel from "./HeaderCarousel";
 import LangCurrDropdown from "./LangCurrDropdown";
 
 const TopCard = () => {
@@ -46,7 +46,7 @@ const TopCard = () => {
       />
 
       <div className="d-flex Map">
-        <HeaderCarousel2 />
+        <HeaderCarousel />
         <div className="w-100" style={{ marginTop: "60vh" }}></div>
       </div>
     </div>
