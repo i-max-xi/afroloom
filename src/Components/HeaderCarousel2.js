@@ -58,7 +58,7 @@ const HeaderCarousel2 = () => {
     <div style={{ width: "110vw" }}>
       <Carousel
         value={products}
-        numVisible={4}
+        numVisible={1}
         numScroll={1}
         className="custom-carousel"
         circular
