@@ -1,12 +1,6 @@
 import React from "react";
 import Carousel from "react-bootstrap/Carousel";
 
-// import fugu from "../Assets/fugu.jpg";
-// import bangels from "../Assets/bangels.jpg";
-// import craft from "../Assets/craft.jpg";
-// import food from "../Assets/food.jpg";
-// import textiles from "../Assets/textiles.jpg";
-
 import s1 from "../Assets/carousel/s1.jpg";
 import s2 from "../Assets/carousel/s2.jpg";
 import s3 from "../Assets/carousel/s3.jpg";
@@ -15,7 +9,6 @@ import s5 from "../Assets/carousel/s5.jpg";
 import s6 from "../Assets/carousel/s6.jpg";
 import s7 from "../Assets/carousel/s7.jpg";
 import s8 from "../Assets/carousel/s8.jpg";
-import { Link } from "react-router-dom";
 
 const HeaderCarousel = () => {
   return (
@@ -27,10 +20,7 @@ const HeaderCarousel = () => {
           position: "absolute",
           top: "3rem",
           left: "2rem",
-          width: "60%",
-          // maxWidth: "900px",
-          // maxHeight: "600px !important",
-          // zIndex: '-1'
+          width: "50%",
         }}
         role="listbox"
       >
@@ -40,90 +30,34 @@ const HeaderCarousel = () => {
             src={s1}
             alt="First slide"
             height="450px"
-            width="450px"
+            width="100%"
           />
-          <Carousel.Caption className="c1">
-            <Link
-              to="category/Clothing"
-              className="btn"
-              style={{ backgroundColor: "red" }}
-            >
-              SHOP NOW
-            </Link>
-          </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
-          <img className="d-block" src={s2} alt="Second slide" height="450px" />
-
-          {/* <Carousel.Caption className="bg-secondary rounded">
-            <h3>Clothing</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-            <button className="btn btn-info">View More</button>
-          </Carousel.Caption> */}
+          <img className="d-block" src={s2} alt="Second slide" height="450px" width="100%"/>
         </Carousel.Item>
         <Carousel.Item>
-          <img className="d-block" src={s3} alt="Third slide" height="450px" />
-
-          {/* <Carousel.Caption className="rounded bg-secondary">
-            <h3>Crafts</h3>
-            <p>Praesent commodo cursus magna.</p>
-            <button className="btn btn-warning">View More</button>
-          </Carousel.Caption> */}
+          <img className="d-block" src={s3} alt="Third slide" height="450px" width="100%"/>
         </Carousel.Item>
 
         <Carousel.Item>
-          <img className="d-block" src={s4} alt="Fourth slide" height="450px" />
-          {/* <Carousel.Caption className="bg-success rounded">
-            <h3>Food Supplies</h3>
-            <p>
-              Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-            </p>
-            <button className="btn btn-danger">View More</button>
-          </Carousel.Caption> */}
+          <img className="d-block" src={s4} alt="Fourth slide" height="450px" width="100%" />
         </Carousel.Item>
 
         <Carousel.Item>
-          <img className="d-block" src={s5} alt="Fourth slide" height="450px" />
-          {/* <Carousel.Caption className="bg-secondary rounded">
-            <h3>Home Decor</h3>
-            <p>
-              Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-            </p>
-            <button className="btn btn-info">View More</button>
-          </Carousel.Caption> */}
+          <img className="d-block" src={s5} alt="Fourth slide" height="450px" width="100%"/>
         </Carousel.Item>
 
         <Carousel.Item>
-          <img className="d-block" src={s6} alt="Fourth slide" height="450px" />
-          {/* <Carousel.Caption className="bg-secondary rounded">
-            <h3>Home Decor</h3>
-            <p>
-              Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-            </p>
-            <button className="btn btn-info">View More</button>
-          </Carousel.Caption> */}
+          <img className="d-block" src={s6} alt="Fourth slide" height="450px" width="100%"/>
         </Carousel.Item>
 
         <Carousel.Item>
-          <img className="d-block" src={s7} alt="Fourth slide" height="450px" />
-          {/* <Carousel.Caption className="bg-secondary rounded">
-            <h3>Home Decor</h3>
-            <p>
-              Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-            </p>
-            <button className="btn btn-info">View More</button>
-          </Carousel.Caption> */}
+          <img className="d-block" src={s7} alt="Fourth slide" height="450px" width="100%"/>
         </Carousel.Item>
 
         <Carousel.Item>
-          <img className="d-block" src={s8} alt="Fourth slide" height="450px" />
-          {/* <Carousel.Caption className="bg-secondary rounded">
-            <h3>Home Decor</h3>
-            <p>
-              Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-            </p>
-            <button className="btn btn-info">View More</button>
-          </Carousel.Caption> */}
+          <img className="d-block" src={s8} alt="Fourth slide" height="450px" width="100%"/>
         </Carousel.Item>
       </Carousel>
     </>
