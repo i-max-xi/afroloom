@@ -37,27 +37,27 @@ const HeaderCarousel = () => {
           <img className="d-block" src={s2} alt="Second slide" height="450px" width="100%"/>
         </Carousel.Item>
         <Carousel.Item>
-          <img className="d-block" src={s3} alt="Third slide" height="450px" />
+          <img className="d-block" src={s3} alt="Third slide" height="450px" width="100%"/>
         </Carousel.Item>
 
         <Carousel.Item>
-          <img className="d-block" src={s4} alt="Fourth slide" height="450px" />
+          <img className="d-block" src={s4} alt="Fourth slide" height="450px" width="100%" />
         </Carousel.Item>
 
         <Carousel.Item>
-          <img className="d-block" src={s5} alt="Fourth slide" height="450px" />
+          <img className="d-block" src={s5} alt="Fourth slide" height="450px" width="100%"/>
         </Carousel.Item>
 
         <Carousel.Item>
-          <img className="d-block" src={s6} alt="Fourth slide" height="450px" />
+          <img className="d-block" src={s6} alt="Fourth slide" height="450px" width="100%"/>
         </Carousel.Item>
 
         <Carousel.Item>
-          <img className="d-block" src={s7} alt="Fourth slide" height="450px" />
+          <img className="d-block" src={s7} alt="Fourth slide" height="450px" width="100%"/>
         </Carousel.Item>
 
         <Carousel.Item>
-          <img className="d-block" src={s8} alt="Fourth slide" height="450px" />
+          <img className="d-block" src={s8} alt="Fourth slide" height="450px" width="100%"/>
         </Carousel.Item>
       </Carousel>
     </>

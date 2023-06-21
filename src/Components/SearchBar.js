@@ -64,13 +64,13 @@ export default function SearchBar({
       </li>
       <OverlayPanel ref={op} style={{backgroundColor: "none", translate: "2rem -2rem", scale: "1 0.7"}}>
           <input
-            className="w-100"
+            className="w-100 search-input"
             type="search"
             placeholder="Search for a product..."
             aria-label="Search"
             value={searchQuery}
             onChange={handleSearchInputChange}
-            style={{border: "none"}}
+            style={{border: "none", height: "100%", scale: "1 1.7"}}
           />
 
           {/* <button className="btn btn-success text-white d-inline" type="submit">
