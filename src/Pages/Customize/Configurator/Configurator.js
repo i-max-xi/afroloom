@@ -4,6 +4,7 @@ import { OrbitControls, useGLTF } from "@react-three/drei";
 import { Color } from "three";
 import shirtModel from "./models/shirt_baked_collapsed.glb";
 import Nav from "../../../Components/Nav";
+import './styles.css';
 
 const Model = () => {
   const gltf = useGLTF(shirtModel);
@@ -38,15 +39,28 @@ const Configurator = () => {
     <>
       <Nav />
       <div className="container">
-        <h1>Configurator</h1>
+
+      <h1>Customize</h1>
+
+      <div className="container d-flex flex-column-reverse">
         
-        <div className="container d-flex justify-content-center mt-5">
-          <button onClick={() => handleColorChange("#ff0000")}>Red</button>
-          <button onClick={() => handleColorChange("#00ff00")}>Green</button>
-          <button onClick={() => handleColorChange("#0000ff")}>Blue</button>
+        <div className="color-buttons-container">
+          <button
+            className="color-button red"
+            onClick={() => handleColorChange("#ff0000")}
+          ></button>
+          <button
+            className="color-button green"
+            onClick={() => handleColorChange("#00ff00")}
+          ></button>
+          <button
+            className="color-button blue"
+            onClick={() => handleColorChange("#0000ff")}
+          ></button>
         </div>
 
-        <Canvas>
+<div className="canvas-container">
+<Canvas>
           <ambientLight />
           <pointLight position={[10, 10, 10]} />
           <Model />
@@ -55,6 +69,9 @@ const Configurator = () => {
           </mesh>
           <OrbitControls />
         </Canvas>
+</div>
+</div>
+
       </div>
     </>
   );
