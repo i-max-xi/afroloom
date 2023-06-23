@@ -1,6 +1,6 @@
 import React from 'react';
-import Overlay from './Overlay';
-import Canvas from './Canvas';
+import { App as Canvas } from './Canvas'
+import { Overlay } from './Overlay'
 
 const Configurator = () => {
 
