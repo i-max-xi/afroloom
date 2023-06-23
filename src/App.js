@@ -51,6 +51,7 @@ import Dashboard from './Pages/Dashboards/Dashboard';
 import RegisterAs from './Pages/User/RegisterAs';
 import Buyer from './Pages/User/Buyer';
 import Supplier from './Pages/User/Supplier';
+import Configurator from './Pages/Customize/Configurator/Configurator'
 
 function App() {
   useEffect(() => {
@@ -94,6 +95,7 @@ function App() {
           <Route path="/customize-female-accessories/:Id" element={<CustomizeFemaleAccesories />} />
           <Route path="/customize-unisex/:Id" element={<CustomizeUnisex />} />
           <Route path="/customize-footwear/:Id" element={<CustomizeFootwear />} />
+          <Route path="/configurator" element={<Configurator />} />
 
 
 
