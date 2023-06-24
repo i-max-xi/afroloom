@@ -5,7 +5,8 @@ import { useSnapshot } from "valtio";
 import { state } from "./store";
 import { TextureLoader } from 'three/src/loaders/TextureLoader'
 import shirtModel from "./models/shirt_baked_collapsed.glb";
-import texture2 from './textures/PavingStones092_1K_Color.jpg';
+import texture2 from './textures/texture2.jpg';
+import texture3 from './textures/texture3.jpg';
 import kente from './textures/kente.png';
 import Nav from "../../../Components/Nav";
 import "./styles.css";
@@ -13,9 +14,8 @@ import "./styles.css";
 
 const Shirt = () => {
   const snap = useSnapshot(state);
-  // const { nodes, materials } = useGLTF(shirtModel);
-  const { nodes, } = useGLTF(shirtModel);
-  const colorMap = useLoader(TextureLoader, kente)
+  const { nodes } = useGLTF(shirtModel);
+  const textureMap = useLoader(TextureLoader, snap.texture);
 
   return (
     <mesh castShadow geometry={nodes.T_Shirt_male.geometry}>
@@ -23,11 +23,12 @@ const Shirt = () => {
         attach="material"
         color={snap.color}
         roughness={1}
-        map={colorMap}
+        map={textureMap}
       />
     </mesh>
   );
 };
+
 
 const Configurator = () => {
   const handleColorChange = (newColor) => {
@@ -37,6 +38,7 @@ const Configurator = () => {
   const handleTextureChange = (newTexture) => {
     state.texture = newTexture;
   };
+  
 
   return (
     <>
@@ -76,6 +78,12 @@ const Configurator = () => {
               onClick={() => handleTextureChange(texture2)}
             >
               Texture 2
+            </button>
+            <button
+              className="texture-button texture-2"
+              onClick={() => handleTextureChange(texture3)}
+            >
+              Texture 3
             </button>
           </div>
 
