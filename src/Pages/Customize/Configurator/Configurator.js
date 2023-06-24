@@ -3,15 +3,15 @@ import { Canvas, useLoader } from "@react-three/fiber";
 import { useGLTF, OrbitControls } from "@react-three/drei";
 import { useSnapshot } from "valtio";
 import { state } from "./store";
-import { TextureLoader } from 'three/src/loaders/TextureLoader'
+import { TextureLoader } from "three/src/loaders/TextureLoader";
 import shirtModel from "./models/shirt_baked_collapsed.glb";
-import texture2 from './textures/texture2.jpg';
-import texture3 from './textures/texture3.jpg';
-import whiteTexture from './textures/whitetxture.jpg';
-import kente from './textures/kente.png';
+import texture2 from "./textures/texture2.jpg";
+import texture3 from "./textures/texture3.jpg";
+import texture4 from "./textures/batik.jpg";
+import whiteTexture from "./textures/whitetxture.jpg";
+import kente from "./textures/kente.jpg";
 import Nav from "../../../Components/Nav";
 import "./styles.css";
-
 
 const Shirt = () => {
   const snap = useSnapshot(state);
@@ -30,20 +30,16 @@ const Shirt = () => {
   );
 };
 
-
 const Configurator = () => {
   const handleColorChange = (newColor) => {
-  state.color = newColor;
-  state.texture = whiteTexture; // Reset the texture value to deactivate it
-};
-
+    state.color = newColor;
+    state.texture = whiteTexture; // Reset the texture value to deactivate it
+  };
 
   const handleTextureChange = (newTexture) => {
     state.texture = newTexture;
     state.color = "#ffffff"; // Reset the color value to deactivate it
   };
-  
-  
 
   return (
     <>
@@ -72,24 +68,37 @@ const Configurator = () => {
           </div>
 
           <div className="texture-buttons-container">
-            <button
+            <img
+              src={kente}
+              alt="kente"
+              width="30rem"
               className="texture-button texture-1"
               onClick={() => handleTextureChange(kente)}
-            >
-              Texture 1
-            </button>
-            <button
+            />
+
+            <img
+              src={texture2}
+              alt="texture2"
+              width="30rem"
               className="texture-button texture-2"
               onClick={() => handleTextureChange(texture2)}
-            >
-              Texture 2
-            </button>
-            <button
+            />
+
+            <img
+              src={texture3}
+              alt="texture3"
+              width="30rem"
               className="texture-button texture-2"
               onClick={() => handleTextureChange(texture3)}
-            >
-              Texture 3
-            </button>
+            />
+
+            <img
+              src={texture4}
+              alt="texture4"
+              width="30rem"
+              className="texture-button texture-2"
+              onClick={() => handleTextureChange(texture4)}
+            />
           </div>
 
           <div className="canvas-container">
