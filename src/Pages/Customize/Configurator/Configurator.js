@@ -7,6 +7,7 @@ import { TextureLoader } from 'three/src/loaders/TextureLoader'
 import shirtModel from "./models/shirt_baked_collapsed.glb";
 import texture2 from './textures/texture2.jpg';
 import texture3 from './textures/texture3.jpg';
+import whiteTexture from './textures/whitetxture.jpg';
 import kente from './textures/kente.png';
 import Nav from "../../../Components/Nav";
 import "./styles.css";
@@ -32,12 +33,16 @@ const Shirt = () => {
 
 const Configurator = () => {
   const handleColorChange = (newColor) => {
-    state.color = newColor;
-  };
+  state.color = newColor;
+  state.texture = whiteTexture; // Reset the texture value to deactivate it
+};
+
 
   const handleTextureChange = (newTexture) => {
     state.texture = newTexture;
+    state.color = "#ffffff"; // Reset the color value to deactivate it
   };
+  
   
 
   return (
