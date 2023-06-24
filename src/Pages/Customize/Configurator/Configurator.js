@@ -1,16 +1,21 @@
 import React from "react";
-import { Canvas } from "@react-three/fiber";
+import { Canvas, useLoader } from "@react-three/fiber";
 import { useGLTF, OrbitControls } from "@react-three/drei";
 import { useSnapshot } from "valtio";
 import { state } from "./store";
+import { TextureLoader } from 'three/src/loaders/TextureLoader'
 import shirtModel from "./models/shirt_baked_collapsed.glb";
+import texture2 from './textures/PavingStones092_1K_Color.jpg';
+import kente from './textures/kente.png';
 import Nav from "../../../Components/Nav";
 import "./styles.css";
+
 
 const Shirt = () => {
   const snap = useSnapshot(state);
   // const { nodes, materials } = useGLTF(shirtModel);
   const { nodes, } = useGLTF(shirtModel);
+  const colorMap = useLoader(TextureLoader, kente)
 
   return (
     <mesh castShadow geometry={nodes.T_Shirt_male.geometry}>
@@ -18,6 +23,7 @@ const Shirt = () => {
         attach="material"
         color={snap.color}
         roughness={1}
+        map={colorMap}
       />
     </mesh>
   );
@@ -26,6 +32,10 @@ const Shirt = () => {
 const Configurator = () => {
   const handleColorChange = (newColor) => {
     state.color = newColor;
+  };
+
+  const handleTextureChange = (newTexture) => {
+    state.texture = newTexture;
   };
 
   return (
@@ -52,6 +62,21 @@ const Configurator = () => {
               className="color-button blue"
               onClick={() => handleColorChange("#0000ff")}
             ></button>
+          </div>
+
+          <div className="texture-buttons-container">
+            <button
+              className="texture-button texture-1"
+              onClick={() => handleTextureChange(kente)}
+            >
+              Texture 1
+            </button>
+            <button
+              className="texture-button texture-2"
+              onClick={() => handleTextureChange(texture2)}
+            >
+              Texture 2
+            </button>
           </div>
 
           <div className="canvas-container">
