@@ -1,16 +1,21 @@
 import React from "react";
-import { Canvas } from "@react-three/fiber";
+import { Canvas, useLoader } from "@react-three/fiber";
 import { useGLTF, OrbitControls } from "@react-three/drei";
 import { useSnapshot } from "valtio";
 import { state } from "./store";
+import { TextureLoader } from 'three/src/loaders/TextureLoader'
 import shirtModel from "./models/shirt_baked_collapsed.glb";
+import texture2 from './textures/PavingStones092_1K_Color.jpg';
+import kente from './textures/kente.png';
 import Nav from "../../../Components/Nav";
 import "./styles.css";
+
 
 const Shirt = () => {
   const snap = useSnapshot(state);
   // const { nodes, materials } = useGLTF(shirtModel);
   const { nodes, } = useGLTF(shirtModel);
+  const colorMap = useLoader(TextureLoader, kente)
 
   return (
     <mesh castShadow geometry={nodes.T_Shirt_male.geometry}>
@@ -18,6 +23,7 @@ const Shirt = () => {
         attach="material"
         color={snap.color}
         roughness={1}
+        map={colorMap}
       />
     </mesh>
   );
