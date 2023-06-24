@@ -9,7 +9,8 @@ import "./styles.css";
 
 const Shirt = () => {
   const snap = useSnapshot(state);
-  const { nodes, materials } = useGLTF(shirtModel);
+  // const { nodes, materials } = useGLTF(shirtModel);
+  const { nodes, } = useGLTF(shirtModel);
 
   return (
     <mesh castShadow geometry={nodes.T_Shirt_male.geometry}>
@@ -30,7 +31,7 @@ const Configurator = () => {
   return (
     <>
       <Nav />
-      <div className="container">
+      <div className="container mb-5">
         <h1>Customize</h1>
 
         <div className="container d-flex flex-column-reverse">
@@ -38,6 +39,10 @@ const Configurator = () => {
             <button
               className="color-button red"
               onClick={() => handleColorChange("#ff0000")}
+            ></button>
+            <button
+              className="color-button white"
+              onClick={() => handleColorChange("#ffffff")}
             ></button>
             <button
               className="color-button green"
