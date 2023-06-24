@@ -34,6 +34,10 @@ const Configurator = () => {
     state.color = newColor;
   };
 
+  const handleTextureChange = (newTexture) => {
+    state.texture = newTexture;
+  };
+
   return (
     <>
       <Nav />
@@ -58,6 +62,21 @@ const Configurator = () => {
               className="color-button blue"
               onClick={() => handleColorChange("#0000ff")}
             ></button>
+          </div>
+
+          <div className="texture-buttons-container">
+            <button
+              className="texture-button texture-1"
+              onClick={() => handleTextureChange(kente)}
+            >
+              Texture 1
+            </button>
+            <button
+              className="texture-button texture-2"
+              onClick={() => handleTextureChange(texture2)}
+            >
+              Texture 2
+            </button>
           </div>
 
           <div className="canvas-container">
