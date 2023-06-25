@@ -8,6 +8,7 @@ import { TextureLoader } from "three/src/loaders/TextureLoader";
 import texture2 from "./textures/texture2.jpg";
 import texture3 from "./textures/texture3.jpg";
 import texture4 from "./textures/batik.jpg";
+import texture5 from './textures/texture5.png';
 import whiteTexture from "./textures/whitetxture.jpg";
 import kente from "./textures/kente.jpg";
 import Nav from "../../../Components/Nav";
@@ -106,6 +107,13 @@ const Configurator = () => {
               width="30rem"
               className="texture-button texture-2"
               onClick={() => handleTextureChange(texture4)}
+            />
+            <img
+              src={texture5}
+              alt="texture5"
+              width="30rem"
+              className="texture-button texture-2"
+              onClick={() => handleTextureChange(texture5)}
             />
           </div>
 
