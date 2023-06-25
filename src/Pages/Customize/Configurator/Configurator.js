@@ -4,7 +4,7 @@ import { useGLTF, OrbitControls } from "@react-three/drei";
 import { useSnapshot } from "valtio";
 import { state } from "./store";
 import { TextureLoader } from "three/src/loaders/TextureLoader";
-import shirtModel from "./models/shirt_baked_collapsed.glb";
+// import shirtModel from "./models/shirt_baked_collapsed.glb";
 import texture2 from "./textures/texture2.jpg";
 import texture3 from "./textures/texture3.jpg";
 import texture4 from "./textures/batik.jpg";
@@ -12,10 +12,18 @@ import whiteTexture from "./textures/whitetxture.jpg";
 import kente from "./textures/kente.jpg";
 import Nav from "../../../Components/Nav";
 import "./styles.css";
+import { useParams } from "react-router";
+import { maleExtras } from "../../../Data/CustomizeDataMale";
 
 const Shirt = () => {
+  const { Id } = useParams();
+  const maleClothing = maleExtras.flatMap((category) => category.items);
+  const selectedClothing = maleClothing.find((item) => item.id === Id);
+
+
+
   const snap = useSnapshot(state);
-  const { nodes } = useGLTF(shirtModel);
+  const { nodes } = useGLTF(selectedClothing.model);
   const textureMap = useLoader(TextureLoader, snap.texture);
 
   return (
