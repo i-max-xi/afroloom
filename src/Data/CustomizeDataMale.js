@@ -1,3 +1,5 @@
+import { v4 as uuid } from 'uuid';
+
 import tshirt from "../Assets/Customize/Tshirt.jpg";
 import shirt from "../Assets/Customize/shirt.jpg";
 
@@ -9,7 +11,7 @@ import tshirt4 from '../Assets/Customize/maleClothingExtras/tshirt/4.jpg'
 import tshirt5 from '../Assets/Customize/maleClothingExtras/tshirt/5.jpg'
 import tshirt6 from '../Assets/Customize/maleClothingExtras/tshirt/6.jpg'
 
-//shirts
+// shirts
 import shirt1 from '../Assets/Customize/maleClothingExtras/shirt/1.jpg'
 import shirt2 from '../Assets/Customize/maleClothingExtras/shirt/2.jpg'
 import shirt3 from '../Assets/Customize/maleClothingExtras/shirt/3.jpg'
@@ -45,69 +47,82 @@ import sh2 from '../Assets/Customize/maleClothingExtras/shorts/2.jpg'
 import sh3 from '../Assets/Customize/maleClothingExtras/shorts/3.jpg'
 import sh4 from '../Assets/Customize/maleClothingExtras/shorts/4.jpg'
 
-
-
-
-
-
 import topndown from "../Assets/Customize/topanddown.jpg";
+
+
+// model imports
+import tshirtModel1 from '../Pages/Customize/Configurator/models/shirt_baked_collapsed.glb';
+
+
 
 export const mainMaleCustomize = [
   {
+    id: uuid(),
     name: "T-Shirt",
     image: tshirt,
   },
   {
+    id: uuid(),
     name: "Shirt",
     image: shirt,
   },
-
   {
+    id: uuid(),
     name: "Top & Down",
     image: topndown,
   },
   {
+    id: uuid(),
     name: "Uncategorized",
     image: un3,
   },
   {
+    id: uuid(),
     name: "Trousers",
     image:
       "https://th.bing.com/th/id/OIP.tnXk8QDidx4JKGKhl6IU0wHaJQ?pid=ImgDet&rs=1",
   },
   {
+    id: uuid(),
     name: "Shorts",
     image:
       "https://th.bing.com/th/id/R.6ec8827c0923427e41a6aae927497784?rik=yJj91xAEmRogeQ&pid=ImgRaw&r=0",
   },
 ];
 
-
 export const maleExtras = [
   {
     category: "T-Shirt",
     items: [
       {
+        id: uuid(),
         name: "One",
         image: tshirt1,
+        model: tshirtModel1,
+        price: 20
       },
       {
+        id: uuid(),
         name: "Two",
         image: tshirt2,
       },
       {
+        id: uuid(),
         name: "Three",
         image: tshirt3,
       },
       {
+        id: uuid(),
         name: "4",
         image: tshirt4,
       },
       {
+        id: uuid(),
         name: "5",
         image: tshirt5,
       },
       {
+        id: uuid(),
         name: "6",
         image: tshirt6,
       },
@@ -117,56 +132,67 @@ export const maleExtras = [
     category: "Shirt",
     items: [
       {
+        id: uuid(),
         name: "",
         image: shirt1,
       },
       {
+        id: uuid(),
         name: "",
         image: shirt2,
       },
       {
+        id: uuid(),
         name: "",
         image: shirt3,
       },
       {
+        id: uuid(),
         name: "",
         image: shirt4,
       },
       {
+        id: uuid(),
         name: "",
         image: shirt5,
       },
       {
+        id: uuid(),
         name: "",
         image: shirt6,
       },
-      
     ],
   },
   {
     category: "Top & Down",
     items: [
       {
+        id: uuid(),
         name: "",
         image: td1,
       },
       {
+        id: uuid(),
         name: "",
         image: td2,
       },
       {
+        id: uuid(),
         name: "",
         image: td3,
       },
       {
+        id: uuid(),
         name: "",
         image: td4,
       },
       {
+        id: uuid(),
         name: "",
         image: td5,
       },
       {
+        id: uuid(),
         name: "",
         image: td6,
       },
@@ -176,22 +202,27 @@ export const maleExtras = [
     category: "Uncategorized",
     items: [
       {
+        id: uuid(),
         name: "",
         image: un1,
       },
       {
+        id: uuid(),
         name: "",
         image: un2,
       },
       {
+        id: uuid(),
         name: "",
         image: un3,
       },
       {
+        id: uuid(),
         name: "",
         image: un4,
       },
       {
+        id: uuid(),
         name: "",
         image: un5,
       },
@@ -201,48 +232,55 @@ export const maleExtras = [
     category: "Trousers",
     items: [
       {
+        id: uuid(),
         name: "",
         image: tr1,
       },
       {
+        id: uuid(),
         name: "",
         image: tr2,
       },
       {
+        id: uuid(),
         name: "",
         image: tr3,
       },
       {
+        id: uuid(),
         name: "",
         image: tr4,
       },
       {
+        id: uuid(),
         name: "",
         image: tr5,
       },
-
     ],
   },
   {
     category: "Shorts",
     items: [
       {
+        id: uuid(),
         name: "",
         image: sh1,
       },
       {
+        id: uuid(),
         name: "",
         image: sh2,
       },
       {
+        id: uuid(),
         name: "",
         image: sh3,
       },
       {
+        id: uuid(),
         name: "",
         image: sh4,
       },
-      
     ],
   },
 ];

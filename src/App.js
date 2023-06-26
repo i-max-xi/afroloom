@@ -95,7 +95,7 @@ function App() {
           <Route path="/customize-female-accessories/:Id" element={<CustomizeFemaleAccesories />} />
           <Route path="/customize-unisex/:Id" element={<CustomizeUnisex />} />
           <Route path="/customize-footwear/:Id" element={<CustomizeFootwear />} />
-          <Route path="/configurator" element={<Configurator />} />
+          <Route path="/configurator/:Id" element={<Configurator />} />
 
 
 

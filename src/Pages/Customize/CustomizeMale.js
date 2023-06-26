@@ -19,10 +19,10 @@ const CustomizeMale = () => {
     <>
       <Nav />
       <div className="container ">
-        <Link to="/configurator" className="row justify-content-center p-2 pb-5">
+        <div className="row justify-content-center p-2 pb-5">
           {maleClothing.map(({ items }) =>
-            items.map(({ name, image }) => (
-              <div className="col-3 m-3 mx-3" key={name}>
+            items.map(({ name, image, id }) => (
+              <Link to={`/configurator/${id}`} className="col-3 m-3 mx-3" key={name}>
                 <div className="card" data-aos="fade-in" data-aos-duration="1500">
                   <img
                     className="card-img-top"
@@ -32,10 +32,10 @@ const CustomizeMale = () => {
                     height="300px"
                   />
                 </div>
-              </div>
+              </Link>
             ))
           )}
-        </Link>
+        </div>
       </div>
     </>
   );
