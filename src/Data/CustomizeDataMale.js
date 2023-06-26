@@ -98,7 +98,8 @@ export const maleExtras = [
         id: uuid(),
         name: "One",
         image: tshirt1,
-        model: tshirtModel1
+        model: tshirtModel1,
+        price: 20
       },
       {
         id: uuid(),
