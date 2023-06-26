@@ -1,7 +1,5 @@
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.main-space {
+  background-color: ash;
 }
 
 h1 {
@@ -18,9 +16,27 @@ h1 {
   flex: 1;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   padding: 1rem;
+  text-transform: uppercase;
+}
+
+.left-panel > h5 {
+  margin-top: 1rem;
+  font-size: 1rem;
+}
+
+.left-panel button {
+  font-size: 0.8rem;
+}
+
+.left-panel button:hover {
+  background-color: none !important;
+}
+
+.selected {
+  border: 2px solid yellow !important;
 }
 
 .right-panel {
