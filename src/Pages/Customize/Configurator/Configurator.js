@@ -16,13 +16,20 @@ import { useParams } from "react-router";
 import { maleExtras } from "../../../Data/CustomizeDataMale";
 import myModel from "./models/shirt_baked_collapsed.glb";
 
-const Shirt = () => {
+const Shirt = ({ isRotating }) => {
   const snap = useSnapshot(state);
   const { nodes } = useGLTF(myModel);
   const textureMap = useLoader(TextureLoader, snap.texture);
+  const shirtRef = useRef();
+
+  useFrame(({ clock }) => {
+    if (isRotating) {
+      shirtRef.current.rotation.y = clock.elapsedTime / 2; // Adjust rotation speed here
+    }
+  });
 
   return (
-    <mesh castShadow geometry={nodes.T_Shirt_male.geometry}>
+    <mesh castShadow geometry={nodes.T_Shirt_male.geometry} ref={shirtRef}>
       <meshStandardMaterial
         attach="material"
         color={snap.color}
@@ -53,6 +60,8 @@ const Configurator = () => {
   const [selectedSize, setSelectedSize] = useState(null);
   const [selectedPrintOn, setSelectedPrintOn] = useState(null);
 
+  const [isRotating, setIsRotating] = useState(false);
+
   const handleSizeChange = (factor) => {
     setPrice(selectedClothing.price * factor);
     setSelectedSize(factor);
@@ -68,6 +77,10 @@ const Configurator = () => {
     state.texture = newTexture;
     state.color = "#ffffff"; // Reset the color value to deactivate it
     setSelectedPrintOn(newTexture);
+  };
+
+  const handleRotation = () => {
+    setIsRotating((prev) => !prev);
   };
 
   return (
@@ -243,24 +256,20 @@ const Configurator = () => {
           </div>
 
           <div className="right-panel">
-            {/* <Canvas>
-              <ambientLight intensity={0.5} />
-              <pointLight position={[10, 10, 10]} />
-
-              <Shirt />
-
-              <OrbitControls />
-            </Canvas> */}
             <Canvas
               camera={{ position: [0, 0, 0.6] }} // Set the initial camera position
             >
               <ambientLight intensity={0.5} />
               <pointLight position={[10, 10, 10]} />
-              <Shirt />
+              <Shirt isRotating={isRotating} />
               <CameraControls /> {/* Add camera controls for interaction */}
             </Canvas>
+
+            <button className={`btn rotation-button ${isRotating === true ? "btn-danger" : "btn-success" }`} onClick={handleRotation}>
+            {isRotating ? "Stop" : "Spin"}
+            </button>
           </div>
-        </div>
+        </div>s
       </div>
       <div className="price w-100 d-flex bg-dark text-white justify-content-end">
         <p className="price-text m-3">
