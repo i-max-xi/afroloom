@@ -7,7 +7,12 @@ import { TextureLoader } from "three/src/loaders/TextureLoader";
 import texture2 from "./textures/texture2.jpg";
 import texture3 from "./textures/texture3.jpg";
 import texture4 from "./textures/batik.jpg";
+
+import design1 from "./designs/maleClothingExtras/tshirt/2.jpg";
 import texture5 from "./textures/texture5.png";
+
+// import design2 from "./designs/maleClothingExtras/tshirt/3.jpg";
+
 import whiteTexture from "./textures/whitetxture.jpg";
 import kente from "./textures/kente.jpg";
 import Nav from "../../../Components/Nav";
@@ -90,19 +95,19 @@ const Configurator = () => {
         <h3 className="text-center">Customizing {selectedClothing.name}</h3>
 
         <div className="configurator-container container">
-          <div className="left-panel bg-white">
+          <div className="left-panel mb-2 rounded shadow">
             <h5>Select Design</h5> {/* Add heading for textures */}
             <div className="texture-buttons-container">
               <img
-                src={texture5}
-                alt="texture5"
+                src={design1}
+                alt="design1"
                 width="30rem"
                 className="texture-button texture-2"
                 onClick={() => handleTextureChange(texture5)}
               />
             </div>
             <h5>Choose Size</h5>
-            <div className="size">
+            <div className="size w-75">
               <button
                 className={`size-button btn btn-outline-dark ${
                   selectedSize === 0.5 ? "selected" : ""
@@ -184,7 +189,7 @@ const Configurator = () => {
                 7XL
               </button>
             </div>
-            <h5>Color Choice</h5> {/* Add heading for colors */}
+            <h5>Choose Color</h5> {/* Add heading for colors */}
             <div className="color-buttons-container">
               <button
                 className={`color-button red ${
@@ -211,7 +216,7 @@ const Configurator = () => {
                 onClick={() => handleColorChange("#0000ff")}
               ></button>
             </div>
-            <h5>Textile Choice</h5> {/* Add heading for textures */}
+            <h5>Choose Textile</h5> {/* Add heading for textures */}
             <div className="texture-buttons-container">
               <img
                 src={kente}
@@ -255,7 +260,7 @@ const Configurator = () => {
             </div>
           </div>
 
-          <div className="right-panel">
+          <div className="right-panel border-left">
             <Canvas
               camera={{ position: [0, 0, 0.6] }} // Set the initial camera position
             >
@@ -265,13 +270,18 @@ const Configurator = () => {
               <CameraControls /> {/* Add camera controls for interaction */}
             </Canvas>
 
-            <button className={`btn rotation-button ${isRotating === true ? "btn-danger" : "btn-success" }`} onClick={handleRotation}>
+            <button className={`btn rotation-button text-white m-3 ${isRotating === true ? "btn-danger" : "btn-warning" }`} onClick={handleRotation}>
             {isRotating ? "Stop" : "Spin"}
             </button>
           </div>
-        </div>s
+        </div>
       </div>
-      <div className="price w-100 d-flex bg-dark text-white justify-content-end">
+      <div className="price w-100 d-flex bg-dark text-white justify-content-between">
+        
+        <span className="m-3">Expected to be ready by: </span>
+        
+        <span className="m-3">Estimated shipping time: </span>
+
         <p className="price-text m-3">
           <span className="fs-6 fw-normal">Price:</span> ${price}
         </p>
