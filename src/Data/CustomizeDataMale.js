@@ -60,34 +60,40 @@ export const mainMaleCustomize = [
     id: uuid(),
     name: "T-Shirt",
     image: tshirt,
+    model: ""
   },
   {
     id: uuid(),
     name: "Shirt",
     image: shirt,
+    model: ""
   },
   {
     id: uuid(),
     name: "Top & Down",
     image: topndown,
+    model: ""
   },
   {
     id: uuid(),
     name: "Uncategorized",
     image: un3,
+    model: ""
   },
   {
     id: uuid(),
     name: "Trousers",
     image:
       "https://th.bing.com/th/id/OIP.tnXk8QDidx4JKGKhl6IU0wHaJQ?pid=ImgDet&rs=1",
-  },
+    model: ""
+    },
   {
     id: uuid(),
     name: "Shorts",
     image:
       "https://th.bing.com/th/id/R.6ec8827c0923427e41a6aae927497784?rik=yJj91xAEmRogeQ&pid=ImgRaw&r=0",
-  },
+    model: ""
+    },
 ];
 
 export const maleExtras = [
