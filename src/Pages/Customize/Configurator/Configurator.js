@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Canvas, useLoader } from "@react-three/fiber";
+import React, { useState, useRef } from "react";
+import { Canvas, useFrame, useLoader } from "@react-three/fiber";
 import { useGLTF, OrbitControls } from "@react-three/drei";
 import { useSnapshot } from "valtio";
 import { state } from "./store";
@@ -33,6 +33,16 @@ const Shirt = () => {
   );
 };
 
+const CameraControls = () => {
+  const controlsRef = useRef();
+
+  useFrame(() => {
+    controlsRef.current.update();
+  });
+
+  return <OrbitControls ref={controlsRef} />;
+};
+
 const Configurator = () => {
   const { Id } = useParams();
   const maleClothing = maleExtras.flatMap((category) => category.items);
@@ -40,144 +50,35 @@ const Configurator = () => {
 
   const [price, setPrice] = useState(selectedClothing.price);
 
+  const [selectedSize, setSelectedSize] = useState(null);
+  const [selectedPrintOn, setSelectedPrintOn] = useState(null);
+
   const handleSizeChange = (factor) => {
     setPrice(selectedClothing.price * factor);
+    setSelectedSize(factor);
   };
 
   const handleColorChange = (newColor) => {
     state.color = newColor;
     state.texture = whiteTexture; // Reset the texture value to deactivate it
+    setSelectedPrintOn(newColor);
   };
 
   const handleTextureChange = (newTexture) => {
     state.texture = newTexture;
     state.color = "#ffffff"; // Reset the color value to deactivate it
+    setSelectedPrintOn(newTexture);
   };
 
   return (
     <>
       <Nav />
-      <div className="container mb-5">
+      <div className="main-space">
+        <h3 className="text-center">Customizing {selectedClothing.name}</h3>
 
-        <div className="configurator-container">
-          <div className="left-panel">
-            <h3>Size</h3>
-            <div className="size">
-            <button
-                className="size-button btn btn-outline-dark"
-                onClick={() => handleSizeChange(4)}
-              >
-                S
-              </button>
-              <button
-                className="size-button btn btn-outline-dark"
-                onClick={() => handleSizeChange(1)}
-              >
-                M
-              </button>
-              <button
-                className="size-button btn btn-outline-dark"
-                onClick={() => handleSizeChange(2)}
-              >
-                L
-              </button>
-              <button
-                className="size-button btn btn-outline-dark"
-                onClick={() => handleSizeChange(3)}
-              >
-                XL
-              </button>
-              <button
-                className="size-button btn btn-outline-dark"
-                onClick={() => handleSizeChange(4)}
-              >
-                2XL
-              </button>
-              <button
-                className="size-button btn btn-outline-dark"
-                onClick={() => handleSizeChange(4)}
-              >
-                3XL
-              </button>
-              <button
-                className="size-button btn btn-outline-dark"
-                onClick={() => handleSizeChange(5)}
-              >
-                4XL
-              </button>
-              <button
-                className="size-button btn btn-outline-dark"
-                onClick={() => handleSizeChange(6)}
-              >
-                5XL
-              </button>
-              <button
-                className="size-button btn btn-outline-dark"
-                onClick={() => handleSizeChange(6)}
-              >
-                6XL
-              </button>
-              <button
-                className="size-button btn btn-outline-dark"
-                onClick={() => handleSizeChange(7)}
-              >
-                7XL
-              </button>
-            </div>
-            <h5>Colors</h5> {/* Add heading for colors */}
-            <div className="color-buttons-container">
-              <button
-                className="color-button red"
-                onClick={() => handleColorChange("#ff0000")}
-              ></button>
-              <button
-                className="color-button white"
-                onClick={() => handleColorChange("#ffffff")}
-              ></button>
-              <button
-                className="color-button green"
-                onClick={() => handleColorChange("#00ff00")}
-              ></button>
-              <button
-                className="color-button blue"
-                onClick={() => handleColorChange("#0000ff")}
-              ></button>
-            </div>
-            <h5>Textures</h5> {/* Add heading for textures */}
-            <div className="texture-buttons-container">
-              <img
-                src={kente}
-                alt="kente"
-                width="30rem"
-                className="texture-button texture-1"
-                onClick={() => handleTextureChange(kente)}
-              />
-
-              <img
-                src={texture2}
-                alt="texture2"
-                width="30rem"
-                className="texture-button texture-2"
-                onClick={() => handleTextureChange(texture2)}
-              />
-
-              <img
-                src={texture3}
-                alt="texture3"
-                width="30rem"
-                className="texture-button texture-2"
-                onClick={() => handleTextureChange(texture3)}
-              />
-
-              <img
-                src={texture4}
-                alt="texture4"
-                width="30rem"
-                className="texture-button texture-2"
-                onClick={() => handleTextureChange(texture4)}
-              />
-            </div>
-            <h5>Designs</h5> {/* Add heading for textures */}
+        <div className="configurator-container container">
+          <div className="left-panel bg-white">
+            <h5>Select Design</h5> {/* Add heading for textures */}
             <div className="texture-buttons-container">
               <img
                 src={texture5}
@@ -187,16 +88,176 @@ const Configurator = () => {
                 onClick={() => handleTextureChange(texture5)}
               />
             </div>
+            <h5>Choose Size</h5>
+            <div className="size">
+              <button
+                className={`size-button btn btn-outline-dark ${
+                  selectedSize === 0.5 ? "selected" : ""
+                }`}
+                onClick={() => handleSizeChange(0.5)}
+              >
+                S
+              </button>
+              <button
+                className={`size-button btn btn-outline-dark ${
+                  selectedSize === 1 ? "selected" : ""
+                }`}
+                onClick={() => handleSizeChange(1)}
+              >
+                M
+              </button>
+              <button
+                className={`size-button btn btn-outline-dark ${
+                  selectedSize === 2 ? "selected" : ""
+                }`}
+                onClick={() => handleSizeChange(2)}
+              >
+                L
+              </button>
+              <button
+                className={`size-button btn btn-outline-dark ${
+                  selectedSize === 3 ? "selected" : ""
+                }`}
+                onClick={() => handleSizeChange(3)}
+              >
+                XL
+              </button>
+              <button
+                className={`size-button btn btn-outline-dark ${
+                  selectedSize === 4 ? "selected" : ""
+                }`}
+                onClick={() => handleSizeChange(4)}
+              >
+                2XL
+              </button>
+              <button
+                className={`size-button btn btn-outline-dark ${
+                  selectedSize === 5 ? "selected" : ""
+                }`}
+                onClick={() => handleSizeChange(5)}
+              >
+                3XL
+              </button>
+              <button
+                className={`size-button btn btn-outline-dark ${
+                  selectedSize === 6 ? "selected" : ""
+                }`}
+                onClick={() => handleSizeChange(6)}
+              >
+                4XL
+              </button>
+              <button
+                className={`size-button btn btn-outline-dark ${
+                  selectedSize === 7 ? "selected" : ""
+                }`}
+                onClick={() => handleSizeChange(7)}
+              >
+                5XL
+              </button>
+              <button
+                className={`size-button btn btn-outline-dark ${
+                  selectedSize === 8 ? "selected" : ""
+                }`}
+                onClick={() => handleSizeChange(8)}
+              >
+                6XL
+              </button>
+              <button
+                className={`size-button btn btn-outline-dark ${
+                  selectedSize === 9 ? "selected" : ""
+                }`}
+                onClick={() => handleSizeChange(9)}
+              >
+                7XL
+              </button>
+            </div>
+            <h5>Color Choice</h5> {/* Add heading for colors */}
+            <div className="color-buttons-container">
+              <button
+                className={`color-button red ${
+                  selectedPrintOn === "#ff0000" ? "selected" : ""
+                }`}
+                onClick={() => handleColorChange("#ff0000")}
+              ></button>
+              <button
+                className={`color-button white ${
+                  selectedPrintOn === "#ffffff" ? "selected" : ""
+                }`}
+                onClick={() => handleColorChange("#ffffff")}
+              ></button>
+              <button
+                className={`color-button green ${
+                  selectedPrintOn === "#00ff00" ? "selected" : ""
+                }`}
+                onClick={() => handleColorChange("#00ff00")}
+              ></button>
+              <button
+                className={`color-button blue ${
+                  selectedPrintOn === "#0000ff" ? "selected" : ""
+                }`}
+                onClick={() => handleColorChange("#0000ff")}
+              ></button>
+            </div>
+            <h5>Textile Choice</h5> {/* Add heading for textures */}
+            <div className="texture-buttons-container">
+              <img
+                src={kente}
+                alt="kente"
+                width="30rem"
+                className={`texture-button texture-1 ${
+                  selectedPrintOn === kente ? "selected" : ""
+                }`}
+                onClick={() => handleTextureChange(kente)}
+              />
+
+              <img
+                src={texture2}
+                alt="texture2"
+                width="30rem"
+                className={`texture-button texture-2 ${
+                  selectedPrintOn === texture2 ? "selected" : ""
+                }`}
+                onClick={() => handleTextureChange(texture2)}
+              />
+
+              <img
+                src={texture3}
+                alt="texture3"
+                width="30rem"
+                className={`texture-button texture-2 ${
+                  selectedPrintOn === texture3 ? "selected" : ""
+                }`}
+                onClick={() => handleTextureChange(texture3)}
+              />
+
+              <img
+                src={texture4}
+                alt="texture4"
+                width="30rem"
+                className={`texture-button texture-2 ${
+                  selectedPrintOn === texture4 ? "selected" : ""
+                }`}
+                onClick={() => handleTextureChange(texture4)}
+              />
+            </div>
           </div>
 
           <div className="right-panel">
-            <Canvas>
+            {/* <Canvas>
               <ambientLight intensity={0.5} />
               <pointLight position={[10, 10, 10]} />
 
               <Shirt />
 
               <OrbitControls />
+            </Canvas> */}
+            <Canvas
+              camera={{ position: [0, 0, 0.6] }} // Set the initial camera position
+            >
+              <ambientLight intensity={0.5} />
+              <pointLight position={[10, 10, 10]} />
+              <Shirt />
+              <CameraControls /> {/* Add camera controls for interaction */}
             </Canvas>
           </div>
         </div>
