@@ -284,8 +284,8 @@ const Configurator = () => {
 
           <div className="right-panel border-left">
             <Canvas
-              camera={{ position: [0, 0, 0.6] }} // Set the initial camera position
-            >
+            camera={{ position: [0, 0, selectedClothing.myZoom] }} // Set the initial camera position
+          >
               <ambientLight intensity={0.5} />
               <pointLight position={[10, 10, 10]} />
               <Shirt isRotating={isRotating} selectedClothing={selectedClothing}/>
