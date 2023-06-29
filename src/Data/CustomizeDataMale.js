@@ -70,7 +70,7 @@ export const mainMaleCustomize = [
     name: "Shirt",
     image: shirt,
     model: shirtModel1,
-    myNode: ["Object_12", "Object_11", "Object_10", "Object_9"],
+    myNode: ["Object_12"],
     price: 30
   },
   {
