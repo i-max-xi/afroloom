@@ -19,11 +19,12 @@ import Nav from "../../../Components/Nav";
 import "./styles.css";
 import { useParams } from "react-router";
 import { mainMaleCustomize } from "../../../Data/CustomizeDataMale";
-import myModel from "./models/shirt_baked_collapsed.glb";
+// import myModel from "./models/shortSleeves.glb";
 
-const Shirt = ({ isRotating }) => {
+const Shirt = ({ isRotating, selectedClothing }) => {
   const snap = useSnapshot(state);
-  const { nodes } = useGLTF(myModel);
+  // const { nodes } = useGLTF(myModel);
+  const { nodes } = useGLTF(selectedClothing.model);
   const textureMap = useLoader(TextureLoader, snap.texture);
   const shirtRef = useRef();
 
@@ -34,14 +35,35 @@ const Shirt = ({ isRotating }) => {
   });
 
   return (
-    <mesh castShadow geometry={nodes.T_Shirt_male.geometry} ref={shirtRef}>
-      <meshStandardMaterial
-        attach="material"
-        color={snap.color}
-        roughness={1}
-        map={textureMap}
-      />
-    </mesh>
+    // <mesh castShadow geometry={nodes[selectedClothing.myNode].geometry} ref={shirtRef}>
+    //   <meshStandardMaterial
+    //     attach="material"
+    //     color={snap.color}
+    //     roughness={1}
+    //     map={textureMap}
+    //   />
+    // </mesh>
+
+    <>
+    
+      {selectedClothing.myNode.map((nodeName, index) => (
+        <mesh
+          key={index}
+          castShadow
+          geometry={nodes[nodeName].geometry}
+          ref={shirtRef}
+        >
+          <meshStandardMaterial
+            attach="material"
+            color={snap.color}
+            roughness={1}
+            map={textureMap}
+          />
+        </mesh>
+      ))}
+
+    </>
+    
   );
 };
 
@@ -266,7 +288,7 @@ const Configurator = () => {
             >
               <ambientLight intensity={0.5} />
               <pointLight position={[10, 10, 10]} />
-              <Shirt isRotating={isRotating} />
+              <Shirt isRotating={isRotating} selectedClothing={selectedClothing}/>
               <CameraControls /> {/* Add camera controls for interaction */}
             </Canvas>
 
