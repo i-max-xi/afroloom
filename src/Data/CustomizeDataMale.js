@@ -52,7 +52,8 @@ import topndown from "../Assets/Customize/topanddown.jpg";
 
 // model imports
 import tshirtModel1 from '../Pages/Customize/Configurator/models/shirt_baked_collapsed.glb';
-
+import shirtModel1 from '../Pages/Customize/Configurator/models/shortSleeves.glb';
+import trousersModel1 from '../Pages/Customize/Configurator/models/trousers_two.glb';
 
 
 export const mainMaleCustomize = [
@@ -60,14 +61,16 @@ export const mainMaleCustomize = [
     id: uuid(),
     name: "T-Shirt",
     image: tshirt,
-    model: "",
+    model: tshirtModel1,
+    myNode: ["T_Shirt_male"],
     price: 20,
   },
   {
     id: uuid(),
     name: "Shirt",
     image: shirt,
-    model: "",
+    model: shirtModel1,
+    myNode: ["Object_12", "Object_11", "Object_10", "Object_9"],
     price: 30
   },
   {
@@ -75,6 +78,7 @@ export const mainMaleCustomize = [
     name: "Top & Down",
     image: topndown,
     model: "",
+    myNode: [],
     price: 55
   },
   {
@@ -82,6 +86,7 @@ export const mainMaleCustomize = [
     name: "Uncategorized",
     image: un3,
     model: "",
+    myNode: [],
     price: 35
   },
   {
@@ -89,7 +94,8 @@ export const mainMaleCustomize = [
     name: "Trousers",
     image:
       "https://th.bing.com/th/id/OIP.tnXk8QDidx4JKGKhl6IU0wHaJQ?pid=ImgDet&rs=1",
-    model: "",
+    model: trousersModel1,
+    myNode: ["07_Torusers_07_Trousers_0"],
     price: 22
     },
   {
@@ -97,7 +103,8 @@ export const mainMaleCustomize = [
     name: "Shorts",
     image:
       "https://th.bing.com/th/id/R.6ec8827c0923427e41a6aae927497784?rik=yJj91xAEmRogeQ&pid=ImgRaw&r=0",
-    model: "",
+    model: [],
+    myNode: "",
     price: 30
     },
 ];
