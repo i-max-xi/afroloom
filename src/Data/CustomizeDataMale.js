@@ -49,11 +49,10 @@ import sh4 from '../Assets/Customize/maleClothingExtras/shorts/4.jpg'
 
 import topndown from "../Assets/Customize/topanddown.jpg";
 
-
 // model imports
 import tshirtModel1 from '../Pages/Customize/Configurator/models/shirt_baked_collapsed.glb';
-import shirtModel1 from '../Pages/Customize/Configurator/models/shortSleeves.glb';
-import trousersModel1 from '../Pages/Customize/Configurator/models/trousers_two.glb';
+import shirtModel1 from '../Pages/Customize/Configurator/models/shortSleeves_four.glb';
+import trousersModel1 from '../Pages/Customize/Configurator/models/trousers_three.glb';
 
 
 export const mainMaleCustomize = [
@@ -63,6 +62,7 @@ export const mainMaleCustomize = [
     image: tshirt,
     model: tshirtModel1,
     myNode: ["T_Shirt_male"],
+    myZoom: 0.6,
     price: 20,
   },
   {
@@ -70,7 +70,8 @@ export const mainMaleCustomize = [
     name: "Shirt",
     image: shirt,
     model: shirtModel1,
-    myNode: ["Object_12"],
+    myNode: ["Object_10", "Object_11", "Object_12", "Object_13", "Object_2", "Object_3", "Object_4", "Object_5", "Object_6", "Object_7", "Object_8", "Object_9",],
+    myZoom: 0.6,
     price: 30
   },
   {
@@ -96,6 +97,7 @@ export const mainMaleCustomize = [
       "https://th.bing.com/th/id/OIP.tnXk8QDidx4JKGKhl6IU0wHaJQ?pid=ImgDet&rs=1",
     model: trousersModel1,
     myNode: ["07_Torusers_07_Trousers_0"],
+    myZoom: 100,
     price: 22
     },
   {
