@@ -15,7 +15,7 @@ const CustomizeFootwear = () => {
     <>
       <Nav />
       <div className="container">
-        <div className="row">
+        <div className="row"> 
           {Footwearextras.map(({ items }) =>
             items.map(({ name, image }) => (
               <div className="col-3 m-3 mx-3" key={name}>

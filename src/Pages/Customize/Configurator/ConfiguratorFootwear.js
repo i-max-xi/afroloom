@@ -18,12 +18,12 @@ import kente from "./textures/kente.jpg";
 import Nav from "../../../Components/Nav";
 import "./styles.css";
 import { useParams } from "react-router";
-import { mainMaleCustomize } from "../../../Data/CustomizeDataMale";
-import myModel from "./models/1875_trousers_lynyaev.glb";
+import {mainFootwear } from "../../../Data/CustomizeDataFootwear";
 
-const Shirt = ({ isRotating }) => {
+const Shirt = ({ isRotating, selectedClothing }) => {
   const snap = useSnapshot(state);
-  const { nodes } = useGLTF(myModel);
+  // const { nodes } = useGLTF(myModel);
+  const { nodes } = useGLTF(selectedClothing.model);
   const textureMap = useLoader(TextureLoader, snap.texture);
   const shirtRef = useRef();
 
@@ -34,14 +34,35 @@ const Shirt = ({ isRotating }) => {
   });
 
   return (
-    <mesh castShadow geometry={nodes.T_Shirt_male.geometry} ref={shirtRef}>
-      <meshStandardMaterial
-        attach="material"
-        color={snap.color}
-        roughness={1}
-        map={textureMap}
-      />
-    </mesh>
+    // <mesh castShadow geometry={nodes[selectedClothing.myNode].geometry} ref={shirtRef}>
+    //   <meshStandardMaterial
+    //     attach="material"
+    //     color={snap.color}
+    //     roughness={1}
+    //     map={textureMap}
+    //   />
+    // </mesh>
+
+    <>
+    
+      {selectedClothing.myNode.map((nodeName, index) => (
+        <mesh
+          key={index}
+          castShadow
+          geometry={nodes[nodeName].geometry}
+          ref={shirtRef}
+        >
+          <meshStandardMaterial
+            attach="material"
+            color={snap.color}
+            roughness={1}
+            map={textureMap}
+          />
+        </mesh>
+      ))}
+
+    </>
+    
   );
 };
 
@@ -55,10 +76,10 @@ const CameraControls = () => {
   return <OrbitControls ref={controlsRef} />;
 };
 
-const ConfiguratorMaleTrousers = () => {
+const ConfiguratorFootwear = () => {
   const { Id } = useParams();
   // const maleClothing = maleExtras.flatMap((category) => category.items);
-  const selectedClothing = mainMaleCustomize.find((item) => item.name === Id);
+  const selectedClothing = mainFootwear.find((item) => item.name === Id);
 
   const [price, setPrice] = useState(selectedClothing.price);
 
@@ -262,11 +283,11 @@ const ConfiguratorMaleTrousers = () => {
 
           <div className="right-panel border-left">
             <Canvas
-              camera={{ position: [0, 0, 0.6] }} // Set the initial camera position
-            >
+            camera={{ position: [0, 0, selectedClothing.myZoom] }} // Set the initial camera position
+          >
               <ambientLight intensity={0.5} />
               <pointLight position={[10, 10, 10]} />
-              <Shirt isRotating={isRotating} />
+              <Shirt isRotating={isRotating} selectedClothing={selectedClothing}/>
               <CameraControls /> {/* Add camera controls for interaction */}
             </Canvas>
 
@@ -291,4 +312,4 @@ const ConfiguratorMaleTrousers = () => {
   );
 };
 
-export default ConfiguratorMaleTrousers;
+export default ConfiguratorFootwear;

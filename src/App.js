@@ -52,6 +52,7 @@ import RegisterAs from './Pages/User/RegisterAs';
 import Buyer from './Pages/User/Buyer';
 import Supplier from './Pages/User/Supplier';
 import Configurator from './Pages/Customize/Configurator/Configurator'
+import ConfiguratorFootwear from './Pages/Customize/Configurator/ConfiguratorFootwear';
 
 function App() {
   useEffect(() => {
@@ -96,7 +97,7 @@ function App() {
           <Route path="/customize-unisex/:Id" element={<CustomizeUnisex />} />
           <Route path="/customize-footwear/:Id" element={<CustomizeFootwear />} />
           <Route path="/configurator/:Id" element={<Configurator />} />
-
+          <Route path="/configurator-footwear/:Id" element={<ConfiguratorFootwear />} />
 
 
 

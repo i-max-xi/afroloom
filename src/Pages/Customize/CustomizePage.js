@@ -21,7 +21,6 @@ const CustomizePage = () => {
           <h5 className="mt-4 footer-header">Male Clothing</h5>
           {mainMaleCustomize.map(({ name, image }) => (
             <Link
-              // to={`/customize-male/${name}`}
               to={`/configurator/${name}`}
               className="col-3 m-3 mx-3"
               key={name}
@@ -137,7 +136,8 @@ const CustomizePage = () => {
           <h5 className="mt-4 footer-header">Footwear</h5>
           {mainFootwear.map(({ name, image }) => (
             <Link
-              to={`/customize-footwear/${name}`}
+              // to={`/customize-footwear/${name}`}
+              to={`/configurator-footwear/${name}`}
               className="col-3 m-3 mx-3"
               key={name}
             >
