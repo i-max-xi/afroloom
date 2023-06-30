@@ -53,6 +53,7 @@ import Buyer from './Pages/User/Buyer';
 import Supplier from './Pages/User/Supplier';
 import Configurator from './Pages/Customize/Configurator/Configurator'
 import ConfiguratorFootwear from './Pages/Customize/Configurator/ConfiguratorFootwear';
+import ConfiguratorMaleAccessories from './Pages/Customize/Configurator/ConfiguratorMaleAccessories';
 
 function App() {
   useEffect(() => {
@@ -98,7 +99,7 @@ function App() {
           <Route path="/customize-footwear/:Id" element={<CustomizeFootwear />} />
           <Route path="/configurator/:Id" element={<Configurator />} />
           <Route path="/configurator-footwear/:Id" element={<ConfiguratorFootwear />} />
-
+          <Route path="/configurator-male-accessories/:Id" element={<ConfiguratorMaleAccessories />} />
 
 
           <Route path='tnc' element={<Tnc />} />
