@@ -1,4 +1,6 @@
-import cap from "../Assets/Customize/cap.jpg";
+import { v4 as uuid } from "uuid";
+
+// import cap from "../Assets/Customize/cap.jpg";
 import femalebag from "../Assets/Customize/femalebag.jpg";
 
 // hats
@@ -22,17 +24,56 @@ import fun1 from '../Assets/Customize/femaleAccessories/uncat/1.jpg'
 import fun2 from '../Assets/Customize/femaleAccessories/uncat/2.jpg'
 import fun3 from '../Assets/Customize/femaleAccessories/uncat/3.jpg'
 
+// 3d models
+import tie from "../Pages/Customize/Configurator/models/Accessories/tie.glb"
+import bow_tie from "../Pages/Customize/Configurator/models/Accessories/bow_tie.glb"
+import knitted_cap from "../Pages/Customize/Configurator/models/Accessories/knittedHat.glb"
+
+
 
 export const mainMaleAccessories = [
   {
-    name: "Hat",
-    image: cap,
+    id: uuid(),
+    name: "Round Cap",
+    image: h1,
+    model: "",
+    myNode: ["AFC001"],
+    myZoom: 10,
+    price: 20,
   },
 
   {
-    name: "Uncategorized",
-    image: un1,
+    id: uuid(),
+    name: "Knitted Cap",
+    image: h2,
+    model: knitted_cap,
+    myNode: ["Sapka"],
+    myZoom: 5,
+    price: 20,
   },
+
+  {
+    name: "Bow Tie",
+    image: un1,
+    model: bow_tie,
+    myNode: ["corbatin"],
+    myZoom: 10,
+    price: 20,
+  },
+
+  {
+    name: "Flying Tie",
+    image: un2,
+    model: tie,
+    myNode: ["Tie"],
+    myZoom: 80,
+    price: 20,
+  },
+
+  // {
+  //   name: "Uncategorized",
+  //   image: un1,
+  // },
 ];
 
 export const mainFemaleAccessories = [
