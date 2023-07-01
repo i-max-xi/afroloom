@@ -109,11 +109,11 @@ const Configurator = () => {
         <div className="configurator-container container">
           <div className="left-panel mb-2 rounded shadow">
             <h5>Select Part</h5>
-            <div className="texture-buttons-container">
+            <div className="">
               {selectedClothing.myNode.map((nodeName, index) => (
                 <button
                   key={index}
-                  className={`part-button ${
+                  className={`size-button btn btn-outline-dark ${
                     selectedPart === index ? "selected" : ""
                   }`}
                   onClick={() => setSelectedPart(index)}
