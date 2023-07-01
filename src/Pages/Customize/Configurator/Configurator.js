@@ -118,7 +118,7 @@ const Configurator = () => {
                   }`}
                   onClick={() => setSelectedPart(index)}
                 >
-                  {`Mesh Part ${index + 1}`}
+                  {nodeName}
                 </button>
               ))}
             </div>

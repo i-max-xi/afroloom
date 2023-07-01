@@ -50,7 +50,7 @@ import sh4 from '../Assets/Customize/maleClothingExtras/shorts/4.jpg'
 import topndown from "../Assets/Customize/topanddown.jpg";
 
 // model imports
-import tshirtModel1 from '../Pages/Customize/Configurator/models/shirt_baked_collapsed.glb';
+import tshirtModel1 from '../Pages/Customize/Configurator/models/MaleClothing/tshirt.glb';
 import shirtModel1 from '../Pages/Customize/Configurator/models/shortSleeves_four.glb';
 import trousersModel1 from '../Pages/Customize/Configurator/models/trousers_three.glb';
 
@@ -61,7 +61,7 @@ export const mainMaleCustomize = [
     name: "T-Shirt",
     image: tshirt,
     model: tshirtModel1,
-    myNode: ["T_Shirt_male"],
+    myNode: ["back", "collar", "front", "left_hand", "right_hand"],
     myZoom: 0.6,
     price: 20,
   },
