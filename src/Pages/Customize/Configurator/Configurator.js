@@ -8,8 +8,8 @@ import texture2 from "./textures/texture2.jpg";
 import texture3 from "./textures/texture3.jpg";
 import texture4 from "./textures/batik.jpg";
 
-import design1 from "./designs/maleClothingExtras/tshirt/2.jpg";
-import texture5 from "./textures/texture5.png";
+// import design1 from "./designs/maleClothingExtras/tshirt/2.jpg";
+// import texture5 from "./textures/texture5.png";
 
 // import design2 from "./designs/maleClothingExtras/tshirt/3.jpg";
 
@@ -21,7 +21,7 @@ import { useParams } from "react-router";
 import { mainMaleCustomize } from "../../../Data/CustomizeDataMale";
 // import myModel from "./models/shortSleeves.glb";
 
-const Shirt = ({ isRotating, selectedClothing }) => {
+const Shirt = ({ isRotating, selectedClothing, selectedPart }) => {
   const snap = useSnapshot(state);
   // const { nodes } = useGLTF(myModel);
   const { nodes } = useGLTF(selectedClothing.model);
@@ -35,35 +35,23 @@ const Shirt = ({ isRotating, selectedClothing }) => {
   });
 
   return (
-    // <mesh castShadow geometry={nodes[selectedClothing.myNode].geometry} ref={shirtRef}>
-    //   <meshStandardMaterial
-    //     attach="material"
-    //     color={snap.color}
-    //     roughness={1}
-    //     map={textureMap}
-    //   />
-    // </mesh>
-
     <>
-    
       {selectedClothing.myNode.map((nodeName, index) => (
         <mesh
           key={index}
           castShadow
           geometry={nodes[nodeName].geometry}
-          ref={shirtRef}
+          ref={index === selectedPart ? shirtRef : null}
         >
           <meshStandardMaterial
             attach="material"
-            color={snap.color}
+            color={index === selectedPart ? snap.color : "#ffffff"}
             roughness={1}
-            map={textureMap}
+            map={index === selectedPart ? textureMap : null}
           />
         </mesh>
       ))}
-
     </>
-    
   );
 };
 
@@ -79,7 +67,6 @@ const CameraControls = () => {
 
 const Configurator = () => {
   const { Id } = useParams();
-  // const maleClothing = maleExtras.flatMap((category) => category.items);
   const selectedClothing = mainMaleCustomize.find((item) => item.name === Id);
 
   const [price, setPrice] = useState(selectedClothing.price);
@@ -110,6 +97,9 @@ const Configurator = () => {
     setIsRotating((prev) => !prev);
   };
 
+  const [selectedPart, setSelectedPart] = useState(null);
+
+
   return (
     <>
       <Nav />
@@ -118,15 +108,19 @@ const Configurator = () => {
 
         <div className="configurator-container container">
           <div className="left-panel mb-2 rounded shadow">
-            <h5>Select Design</h5> {/* Add heading for textures */}
+            <h5>Select Part</h5>
             <div className="texture-buttons-container">
-              <img
-                src={design1}
-                alt="design1"
-                width="30rem"
-                className="texture-button texture-2"
-                onClick={() => handleTextureChange(texture5)}
-              />
+              {selectedClothing.myNode.map((nodeName, index) => (
+                <button
+                  key={index}
+                  className={`part-button ${
+                    selectedPart === index ? "selected" : ""
+                  }`}
+                  onClick={() => setSelectedPart(index)}
+                >
+                  {nodeName}
+                </button>
+              ))}
             </div>
             <h5>Choose Size</h5>
             <div className="size w-75">
@@ -284,24 +278,32 @@ const Configurator = () => {
 
           <div className="right-panel border-left">
             <Canvas
-            camera={{ position: [0, 0, selectedClothing.myZoom] }} // Set the initial camera position
-          >
+              camera={{ position: [0, 0, selectedClothing.myZoom] }} // Set the initial camera position
+            >
               <ambientLight intensity={0.5} />
               <pointLight position={[10, 10, 10]} />
-              <Shirt isRotating={isRotating} selectedClothing={selectedClothing}/>
+              <Shirt
+                isRotating={isRotating}
+                selectedClothing={selectedClothing}
+                selectedPart={selectedPart}
+              />
               <CameraControls /> {/* Add camera controls for interaction */}
             </Canvas>
 
-            <button className={`btn rotation-button text-white m-3 ${isRotating === true ? "btn-danger" : "btn-warning" }`} onClick={handleRotation}>
-            {isRotating ? "Stop" : "Spin"}
+            <button
+              className={`btn rotation-button text-white m-3 ${
+                isRotating === true ? "btn-danger" : "btn-warning"
+              }`}
+              onClick={handleRotation}
+            >
+              {isRotating ? "Stop" : "Spin"}
             </button>
           </div>
         </div>
       </div>
       <div className="price w-100 d-flex bg-dark text-white justify-content-between">
-        
         <span className="m-3">Expected to be ready by: </span>
-        
+
         <span className="m-3">Estimated shipping time: </span>
 
         <p className="price-text m-3">
