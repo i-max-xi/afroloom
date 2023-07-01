@@ -51,7 +51,7 @@ import topndown from "../Assets/Customize/topanddown.jpg";
 
 // model imports
 import tshirtModel1 from '../Pages/Customize/Configurator/models/MaleClothing/tshirt_main.glb';
-import shirtModel1 from '../Pages/Customize/Configurator/models/shortSleeves_four.glb';
+import shirtModel1 from '../Pages/Customize/Configurator/models/MaleClothing/short_sleeves_main.glb';
 import trousersModel1 from '../Pages/Customize/Configurator/models/MaleClothing/trousers_main_two.glb';
 
 
@@ -72,8 +72,8 @@ export const mainMaleCustomize = [
     name: "Shirt",
     image: shirt,
     model: shirtModel1,
-    myNode: ["Object_10", "Object_11", "Object_12", "Object_13", "Object_2", "Object_3", "Object_4", "Object_5", "Object_6", "Object_7", "Object_8", "Object_9",],
-    myZoom: 600,
+    myNode: ["back", "buttons", "collar", "front", "left_hand", "left_hand_edge", "midline", "pocket", "right_hand", "right_hand_edge"],
+    myZoom: 0.6,
     myX: 0,
     myY: 10,
     price: 30
