@@ -50,9 +50,9 @@ import sh4 from '../Assets/Customize/maleClothingExtras/shorts/4.jpg'
 import topndown from "../Assets/Customize/topanddown.jpg";
 
 // model imports
-import tshirtModel1 from '../Pages/Customize/Configurator/models/MaleClothing/tshirt.glb';
+import tshirtModel1 from '../Pages/Customize/Configurator/models/MaleClothing/tshirt_main.glb';
 import shirtModel1 from '../Pages/Customize/Configurator/models/shortSleeves_four.glb';
-import trousersModel1 from '../Pages/Customize/Configurator/models/trousers_three.glb';
+import trousersModel1 from '../Pages/Customize/Configurator/models/MaleClothing/trousers_main_two.glb';
 
 
 export const mainMaleCustomize = [
@@ -63,6 +63,8 @@ export const mainMaleCustomize = [
     model: tshirtModel1,
     myNode: ["back", "collar", "front", "left_hand", "right_hand"],
     myZoom: 0.6,
+    myX: 0,
+    myY: 10,
     price: 20,
   },
   {
@@ -71,7 +73,9 @@ export const mainMaleCustomize = [
     image: shirt,
     model: shirtModel1,
     myNode: ["Object_10", "Object_11", "Object_12", "Object_13", "Object_2", "Object_3", "Object_4", "Object_5", "Object_6", "Object_7", "Object_8", "Object_9",],
-    myZoom: 0.6,
+    myZoom: 600,
+    myX: 0,
+    myY: 10,
     price: 30
   },
   {
@@ -80,6 +84,9 @@ export const mainMaleCustomize = [
     image: topndown,
     model: "",
     myNode: [],
+    myZoom: 10,
+    myX: 0,
+    myY: 10,
     price: 55
   },
   {
@@ -88,6 +95,9 @@ export const mainMaleCustomize = [
     image: un3,
     model: "",
     myNode: [],
+    myZoom: 600,
+    myX: 0,
+    myY: 10,
     price: 35
   },
   {
@@ -97,7 +107,9 @@ export const mainMaleCustomize = [
       "https://th.bing.com/th/id/OIP.tnXk8QDidx4JKGKhl6IU0wHaJQ?pid=ImgDet&rs=1",
     model: trousersModel1,
     myNode: ["07_Torusers_07_Trousers_0"],
-    myZoom: 100,
+    myZoom: 10,
+    myX: 0,
+    myY: 10,
     price: 22
     },
   {
@@ -106,7 +118,9 @@ export const mainMaleCustomize = [
     image:
       "https://th.bing.com/th/id/R.6ec8827c0923427e41a6aae927497784?rik=yJj91xAEmRogeQ&pid=ImgRaw&r=0",
     model: [],
-    myNode: "",
+    myZoom: 10,
+    myX: 0,
+    myY: 10,
     price: 30
     },
 ];

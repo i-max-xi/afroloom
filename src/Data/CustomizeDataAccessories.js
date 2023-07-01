@@ -25,10 +25,10 @@ import fun2 from '../Assets/Customize/femaleAccessories/uncat/2.jpg'
 import fun3 from '../Assets/Customize/femaleAccessories/uncat/3.jpg'
 
 // 3d models
-import tie from "../Pages/Customize/Configurator/models/Accessories/tie.glb"
-import bow_tie from "../Pages/Customize/Configurator/models/Accessories/bow_tie.glb"
-import knitted_cap from "../Pages/Customize/Configurator/models/Accessories/knittedHat.glb"
-import round_cap from "../Pages/Customize/Configurator/models/Accessories/roundCap.glb"
+import tie from "../Pages/Customize/Configurator/models/Accessories/tie_main.glb"
+import bow_tie from "../Pages/Customize/Configurator/models/Accessories/bow_tie_main.glb"
+import knitted_cap from "../Pages/Customize/Configurator/models/Accessories/knittedHat_main.glb"
+import round_cap from "../Pages/Customize/Configurator/models/Accessories/roundCap_main.glb"
 
 
 
@@ -39,7 +39,7 @@ export const mainMaleAccessories = [
     image: h1,
     model: round_cap,
     myNode: ["roundcapp"],
-    myZoom: 70,
+    myZoom: 5,
     price: 20,
   },
 
@@ -49,7 +49,7 @@ export const mainMaleAccessories = [
     image: h2,
     model: knitted_cap,
     myNode: ["Sapka"],
-    myZoom: 5,
+    myZoom: 0.6,
     price: 20,
   },
 
@@ -58,7 +58,7 @@ export const mainMaleAccessories = [
     image: un1,
     model: bow_tie,
     myNode: ["corbatin"],
-    myZoom: 10,
+    myZoom: 5,
     price: 20,
   },
 
@@ -67,7 +67,7 @@ export const mainMaleAccessories = [
     image: un2,
     model: tie,
     myNode: ["Tie"],
-    myZoom: 80,
+    myZoom: 0.6,
     price: 20,
   },
 

@@ -19,7 +19,7 @@ import h5 from "../Assets/Customize/footwear/heels/5.jpg";
 
 
 // 3d models
-import shoeModel1 from '../Pages/Customize/Configurator/models/Shoes/flexible_shoe_two.glb';
+import shoeModel1 from '../Pages/Customize/Configurator/models/Shoes/flexible_shoe_main.glb';
 
 
 export const mainFootwear = [
@@ -29,7 +29,7 @@ export const mainFootwear = [
     image: s2,
     model: shoeModel1,
     myNode: ["flat_shoe"],
-    myZoom: 180,
+    myZoom: 1,
     price: 20,
     },
   {
