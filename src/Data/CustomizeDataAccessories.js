@@ -28,6 +28,7 @@ import fun3 from '../Assets/Customize/femaleAccessories/uncat/3.jpg'
 import tie from "../Pages/Customize/Configurator/models/Accessories/tie.glb"
 import bow_tie from "../Pages/Customize/Configurator/models/Accessories/bow_tie.glb"
 import knitted_cap from "../Pages/Customize/Configurator/models/Accessories/knittedHat.glb"
+import round_cap from "../Pages/Customize/Configurator/models/Accessories/roundCap.glb"
 
 
 
@@ -36,9 +37,9 @@ export const mainMaleAccessories = [
     id: uuid(),
     name: "Round Cap",
     image: h1,
-    model: "",
-    myNode: ["AFC001"],
-    myZoom: 10,
+    model: round_cap,
+    myNode: ["roundcapp"],
+    myZoom: 70,
     price: 20,
   },
 
