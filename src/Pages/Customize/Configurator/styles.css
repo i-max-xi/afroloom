@@ -113,3 +113,17 @@ h1 {
 .size-button {
   margin: 2px;
 }
+
+.mesh-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+}
+
+.mesh-button.selected {
+  background-color: #ccc;
+  color: #000;
+}
+
