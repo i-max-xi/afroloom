@@ -27,7 +27,7 @@ import fun3 from '../Assets/Customize/femaleAccessories/uncat/3.jpg'
 // 3d models
 import tie from "../Pages/Customize/Configurator/models/Accessories/tie_main.glb"
 import bow_tie from "../Pages/Customize/Configurator/models/Accessories/bow_tie_main.glb"
-import knitted_cap from "../Pages/Customize/Configurator/models/Accessories/knittedHat_main.glb"
+import knitted_cap from "../Pages/Customize/Configurator/models/Accessories/knittedHat_main_two.glb"
 import round_cap from "../Pages/Customize/Configurator/models/Accessories/roundCap_main.glb"
 
 
@@ -48,7 +48,7 @@ export const mainMaleAccessories = [
     name: "Knitted Cap",
     image: h2,
     model: knitted_cap,
-    myNode: ["Sapka"],
+    myNode: ["All"],
     myZoom: 0.6,
     price: 20,
   },
@@ -58,7 +58,7 @@ export const mainMaleAccessories = [
     image: un1,
     model: bow_tie,
     myNode: ["corbatin"],
-    myZoom: 5,
+    myZoom: 2,
     price: 20,
   },
 

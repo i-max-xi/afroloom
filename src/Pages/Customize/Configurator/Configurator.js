@@ -209,25 +209,25 @@ const Configurator = () => {
             <div className="color-buttons-container">
               <button
                 className={`color-button red ${
-                  selectedPrintOn === "#ff0000" ? "selected" : ""
+                  selectedPrintOn === "#ff0000" ? "selected-border" : ""
                 }`}
                 onClick={() => handleColorChange("#ff0000")}
               ></button>
               <button
                 className={`color-button white ${
-                  selectedPrintOn === "#ffffff" ? "selected" : ""
+                  selectedPrintOn === "#ffffff" ? "selected-border" : ""
                 }`}
                 onClick={() => handleColorChange("#ffffff")}
               ></button>
               <button
                 className={`color-button green ${
-                  selectedPrintOn === "#00ff00" ? "selected" : ""
+                  selectedPrintOn === "#00ff00" ? "selected-border" : ""
                 }`}
                 onClick={() => handleColorChange("#00ff00")}
               ></button>
               <button
                 className={`color-button blue ${
-                  selectedPrintOn === "#0000ff" ? "selected" : ""
+                  selectedPrintOn === "#0000ff" ? "selected-border" : ""
                 }`}
                 onClick={() => handleColorChange("#0000ff")}
               ></button>
@@ -239,7 +239,7 @@ const Configurator = () => {
                 alt="kente"
                 width="30rem"
                 className={`texture-button texture-1 ${
-                  selectedPrintOn === kente ? "selected" : ""
+                  selectedPrintOn === kente ? "selected-border" : ""
                 }`}
                 onClick={() => handleTextureChange(kente)}
               />
@@ -249,7 +249,7 @@ const Configurator = () => {
                 alt="texture2"
                 width="30rem"
                 className={`texture-button texture-2 ${
-                  selectedPrintOn === texture2 ? "selected" : ""
+                  selectedPrintOn === texture2 ? "selected-border" : ""
                 }`}
                 onClick={() => handleTextureChange(texture2)}
               />
@@ -259,7 +259,7 @@ const Configurator = () => {
                 alt="texture3"
                 width="30rem"
                 className={`texture-button texture-2 ${
-                  selectedPrintOn === texture3 ? "selected" : ""
+                  selectedPrintOn === texture3 ? "selected-border" : ""
                 }`}
                 onClick={() => handleTextureChange(texture3)}
               />
@@ -269,7 +269,7 @@ const Configurator = () => {
                 alt="texture4"
                 width="30rem"
                 className={`texture-button texture-2 ${
-                  selectedPrintOn === texture4 ? "selected" : ""
+                  selectedPrintOn === texture4 ? "selected-border" : ""
                 }`}
                 onClick={() => handleTextureChange(texture4)}
               />
