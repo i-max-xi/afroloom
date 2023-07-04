@@ -2,6 +2,8 @@ import { v4 as uuid } from 'uuid';
 
 import tshirt from "../Assets/Customize/Tshirt.jpg";
 import shirt from "../Assets/Customize/shirt.jpg";
+import long_sleeves from "../Assets/Customize/long_sleeves.jpg";
+
 
 // tshirts
 import tshirt1 from '../Assets/Customize/maleClothingExtras/tshirt/1.jpg'
@@ -52,7 +54,8 @@ import topndown from "../Assets/Customize/topanddown.jpg";
 // model imports
 import tshirtModel1 from '../Pages/Customize/Configurator/models/MaleClothing/tshirt_main.glb';
 import shirtModel1 from '../Pages/Customize/Configurator/models/MaleClothing/short_sleeves_main.glb';
-import trousersModel1 from '../Pages/Customize/Configurator/models/MaleClothing/trousers_main_two.glb';
+import shirtModel2 from '../Pages/Customize/Configurator/models/MaleClothing/long_sleeves_main_two.glb';
+import trousersModel1 from '../Pages/Customize/Configurator/models/MaleClothing/trousers_main_three.glb';
 
 
 export const mainMaleCustomize = [
@@ -69,11 +72,22 @@ export const mainMaleCustomize = [
   },
   {
     id: uuid(),
-    name: "Shirt",
+    name: "Short Sleeves Shirt",
     image: shirt,
     model: shirtModel1,
     myNode: ["back", "buttons", "collar", "front", "left_hand", "left_hand_edge", "midline", "pocket", "right_hand", "right_hand_edge"],
     myZoom: 0.6,
+    myX: 0,
+    myY: 10,
+    price: 30
+  },
+  {
+    id: uuid(),
+    name: "Long Sleeves Shirt",
+    image: long_sleeves,
+    model: shirtModel2,
+    myNode: ["back", "buttons", "collar", "front", "left_hand", "left_hand_edge", "midline", "pocket", "right_hand", "right_hand_edge"],
+    myZoom: 6.2,
     myX: 0,
     myY: 10,
     price: 30
@@ -106,8 +120,8 @@ export const mainMaleCustomize = [
     image:
       "https://th.bing.com/th/id/OIP.tnXk8QDidx4JKGKhl6IU0wHaJQ?pid=ImgDet&rs=1",
     model: trousersModel1,
-    myNode: ["07_Torusers_07_Trousers_0"],
-    myZoom: 10,
+    myNode: ["all"],
+    myZoom: 6,
     myX: 0,
     myY: 10,
     price: 22

@@ -44,6 +44,10 @@ h1 {
   color: white;
 }
 
+.selected-border {
+  border: 2px solid orange !important;
+}
+
 .right-panel {
   flex: 3;
   display: flex;
