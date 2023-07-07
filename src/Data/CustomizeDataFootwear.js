@@ -19,7 +19,9 @@ import h5 from "../Assets/Customize/footwear/heels/5.jpg";
 
 
 // 3d models
-import shoeModel1 from '../Pages/Customize/Configurator/models/Shoes/flexible_shoe_main.glb';
+import flex_shoe from '../Pages/Customize/Configurator/models/Shoes/flexible_shoe_main_two.glb';
+import slippers from '../Pages/Customize/Configurator/models/Shoes/slippers_main.glb';
+import heels from '../Pages/Customize/Configurator/models/Shoes/heels_main.glb';
 
 
 export const mainFootwear = [
@@ -27,7 +29,7 @@ export const mainFootwear = [
     id: uuid(),
     name: "Flat Shoe",
     image: s2,
-    model: shoeModel1,
+    model: flex_shoe,
     myNode: ["flat_shoe"],
     myZoom: 1,
     price: 20,
@@ -46,9 +48,9 @@ export const mainFootwear = [
     id: uuid(),
     name: "Slipper",
     image: sl1,
-    model: "",
-    myNode: ["T_Shirt_male"],
-    myZoom: 0.6,
+    model: slippers,
+    myNode: ["bottom", "top", "sole"],
+    myZoom: 0.1,
     price: 20,
   },
   {
@@ -56,9 +58,9 @@ export const mainFootwear = [
     name: "Heels",
     image:
       "https://th.bing.com/th/id/OIP.UMGJguReHwKJtDNEdf5-NQHaHa?pid=ImgDet&rs=1",
-    model: "",
-    myNode: ["T_Shirt_male"],
-    myZoom: 0.6,
+    model: heels,
+    myNode: ["all"],
+    myZoom: 1.8,
     price: 20,
   },
 ];
