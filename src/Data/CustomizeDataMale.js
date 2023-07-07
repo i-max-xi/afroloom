@@ -56,7 +56,9 @@ import tshirtModel1 from '../Pages/Customize/Configurator/models/MaleClothing/ts
 import shirtModel1 from '../Pages/Customize/Configurator/models/MaleClothing/short_sleeves_main.glb';
 import shirtModel2 from '../Pages/Customize/Configurator/models/MaleClothing/long_sleeves_main_two.glb';
 import trousersModel1 from '../Pages/Customize/Configurator/models/MaleClothing/trousers_main_three.glb';
-
+import material_shorts from '../Pages/Customize/Configurator/models/MaleClothing/material_shorts.glb';
+import summer_shorts from '../Pages/Customize/Configurator/models/MaleClothing/summer_shorts.glb';
+import cloak from '../Pages/Customize/Configurator/models/MaleClothing/cloak.glb';
 
 export const mainMaleCustomize = [
   {
@@ -107,9 +109,9 @@ export const mainMaleCustomize = [
     id: uuid(),
     name: "Uncategorized",
     image: un3,
-    model: "",
-    myNode: [],
-    myZoom: 600,
+    model: cloak,
+    myNode: ["all"],
+    myZoom: 0.7,
     myX: 0,
     myY: 10,
     price: 35
@@ -128,11 +130,22 @@ export const mainMaleCustomize = [
     },
   {
     id: uuid(),
-    name: "Shorts",
-    image:
-      "https://th.bing.com/th/id/R.6ec8827c0923427e41a6aae927497784?rik=yJj91xAEmRogeQ&pid=ImgRaw&r=0",
-    model: [],
-    myZoom: 10,
+    name: "Summer Shorts",
+    image: "https://th.bing.com/th/id/R.ea417739b8a3cef995b4681464e7a16b?rik=uhZGGA8vxC1GIg&riu=http%3a%2f%2fi.ebayimg.com%2f00%2fs%2fNjcwWDcxNw%3d%3d%2fz%2fL9UAAOSwEK9UAwm9%2f%24_32.JPG%3fset_id%3d880000500F&ehk=r%2fZD2lrasnGhbmSDvg7rBXMXZGa34as4zF%2bMus%2f3ZIY%3d&risl=&pid=ImgRaw&r=0",
+    model: summer_shorts,
+    myNode: ["edges", "fasteners", "main_body", "waistline"],
+    myZoom: 0.7,
+    myX: 0,
+    myY: 10,
+    price: 30
+    },
+    {
+    id: uuid(),
+    name: "Material Shorts",
+    image: "https://th.bing.com/th/id/OIP.A9xUqEvW0ADXy3nKfNyxKwHaJZ?pid=ImgDet&w=481&h=610&rs=1",
+    model: material_shorts,
+    myNode: ["all"],
+    myZoom: 0.7,
     myX: 0,
     myY: 10,
     price: 30
