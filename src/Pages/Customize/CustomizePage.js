@@ -44,7 +44,7 @@ const CustomizePage = () => {
           <h5 className="mt-4 footer-header">Female Clothing</h5>
           {mainFemaleCustomize.map(({ name, image }) => (
             <Link
-              to={`/customize-female/${name}`}
+              to={`/configurator-female/${name}`}
               className="col-3 m-3 mx-3"
               key={name}
             >

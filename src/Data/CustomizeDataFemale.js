@@ -1,3 +1,5 @@
+import { v4 as uuid } from "uuid";
+
 import dress from "../Assets/Customize/dress.jpg";
 import cloak from "../Assets/Customize/cloak.jpg";
 import skirt from "../Assets/Customize/skirt.jpg";
@@ -53,50 +55,92 @@ import t3 from '../Assets/Customize/femaleClothingExtras/trousers/3.jpg'
 import t4 from '../Assets/Customize/femaleClothingExtras/trousers/4.jpg'
 
 
-
+//models
+import t_shirt_short from '../Pages/Customize/Configurator/models/FemaleClothing/tshirt_short.glb';
+import t_shirt_long from '../Pages/Customize/Configurator/models/FemaleClothing/tshirt_long.glb';
+import skirt_model from '../Pages/Customize/Configurator/models/FemaleClothing/skirt_main.glb';
+import trousers from '../Pages/Customize/Configurator/models/FemaleClothing/trousers_main.glb';
+import dress_model from '../Pages/Customize/Configurator/models/FemaleClothing/shoulder_dress.glb';
+import top_model from '../Pages/Customize/Configurator/models/FemaleClothing/shoulders_top.glb';
 
 
 export const mainFemaleCustomize = [
   {
-    name: "T-Shirt",
+    id: uuid(),
+    name: "T-Shirt short",
     image: femaleTshirt,
-  },
+    model: t_shirt_short,
+    myNode: ["all"],
+    myZoom: 0.1,
+    price: 20,
+    },
 
   {
-    name: "Top",
+    id: uuid(),
+    name: "T-Shirt long",
+    image: femaleTshirt,
+    model: t_shirt_long,
+    myNode: ["all"],
+    myZoom: 0.1,
+    price: 20,
+    },
+
+  {
+    id: uuid(),
+    name: "Crop Top",
     image: femaleTop,
-  },
-
-  {
+    model: top_model,
+    myNode: ["all"],
+    myZoom: 1,
+    price: 20,
+    },
+ {
+    id: uuid(),
     name: "Top & Down",
+    model: "",
     image:
-      "https://i.pinimg.com/originals/27/87/c9/2787c9b9ec56850ec10b1bbb6e9fe864.png",
-  },
-  {
+    "https://i.pinimg.com/originals/27/87/c9/2787c9b9ec56850ec10b1bbb6e9fe864.png",
+    myNode: ["all"],
+    myZoom: 1,
+    price: 20,
+    },
+ {
+    id: uuid(),
     name: "Dress",
+    model: dress_model,
     image: dress,
-  },
-  {
+    myNode: ["all"],
+    myZoom: 0.7,
+    price: 20,
+    },
+ {
+    id: uuid(),
     name: "Uncategorized",
+    model: "",
     image: cloak,
-  },
-  // {
-  //   name: "Swimsuit",
-  //   image: "",
-  // },
-  // {
-  //   name: "Crochet",
-  //   image: "",
-  // },
-  {
+    myNode: ["all"],
+    myZoom: 1,
+    price: 20,
+    },
+ {
+    id: uuid(),
     name: "Skirt",
+    model: skirt_model,
     image: skirt,
-  },
-  {
+    myNode: ["all"],
+    myZoom: 0.6,
+    price: 20,
+    },  
+{
+    id: uuid(),
     name: "Trousers",
+    model: trousers,
     image:
-      "https://cdna.lystit.com/photos/yoox/0a0e7406/vero-moda-Black-Casual-Pants.jpeg",
-  },
+    "https://cdna.lystit.com/photos/yoox/0a0e7406/vero-moda-Black-Casual-Pants.jpeg",
+    myNode: ["all"],
+    myZoom: 0.7,
+    price: 20,
+    }, 
 ];
   
 
