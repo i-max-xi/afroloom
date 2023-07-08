@@ -8,20 +8,19 @@ import texture2 from "./textures/texture2.jpg";
 import texture3 from "./textures/texture3.jpg";
 import texture4 from "./textures/batik.jpg";
 
-// import design1 from "./designs/maleClothingExtras/tshirt/2.jpg";
-// import texture5 from "./textures/texture5.png";
-
-// import design2 from "./designs/maleClothingExtras/tshirt/3.jpg";
-
 import whiteTexture from "./textures/whitetxture.jpg";
 import kente from "./textures/kente.jpg";
 import Nav from "../../../Components/Nav";
 import "./styles.css";
 import { useParams } from "react-router";
 import { mainMaleCustomize } from "../../../Data/CustomizeDataMale";
-// import myModel from "./models/shortSleeves.glb";
 
-const Shirt = ({ isRotating, selectedClothing, selectedPart, setSelectedPart }) => {
+const Shirt = ({
+  isRotating,
+  selectedClothing,
+  selectedPart,
+  setSelectedPart,
+}) => {
   const snap = useSnapshot(state);
   const { nodes } = useGLTF(selectedClothing.model);
   const textureMap = useLoader(TextureLoader, snap.texture);
@@ -35,27 +34,27 @@ const Shirt = ({ isRotating, selectedClothing, selectedPart, setSelectedPart }) 
   });
 
   return (
-    <group ref={groupRef}> {/* Use the groupRef for the model group */}
+    <group ref={groupRef}>
+      {" "}
+      {/* Use the groupRef for the model group */}
       {selectedClothing.myNode.map((nodeName, index) => (
         <mesh
-        key={index}
-        castShadow
-        geometry={nodes[nodeName].geometry}
-        onClick={() => setSelectedPart(index)} // Add onClick handler to set selectedPart
-      >
-        <meshStandardMaterial
-          attach="material"
-          color={index === selectedPart ? snap.color : "#ffffff"}
-          roughness={1}
-          map={index === selectedPart ? textureMap : null}
-        />
-      </mesh>
+          key={index}
+          castShadow
+          geometry={nodes[nodeName].geometry}
+          onClick={() => setSelectedPart(index)} // Add onClick handler to set selectedPart
+        >
+          <meshStandardMaterial
+            attach="material"
+            color={index === selectedPart ? snap.color : "#ffffff"}
+            roughness={1}
+            map={index === selectedPart ? textureMap : null}
+          />
+        </mesh>
       ))}
     </group>
   );
 };
-
-
 
 const CameraControls = () => {
   const controlsRef = useRef();
@@ -80,6 +79,19 @@ const Configurator = () => {
 
   const [isRotating, setIsRotating] = useState(false);
 
+  const sizeOptions = [
+    { label: "S", value: 0.5 },
+    { label: "M", value: 1 },
+    { label: "L", value: 2 },
+    { label: "XL", value: 3 },
+    { label: "2XL", value: 4 },
+    { label: "3XL", value: 5 },
+    { label: "4XL", value: 6 },
+    { label: "5XL", value: 7 },
+    { label: "6XL", value: 8 },
+    { label: "7XL", value: 9 },
+  ];
+
   const handleSizeChange = (factor) => {
     setPrice(selectedClothing.price * factor);
     setSelectedSize(factor);
@@ -101,7 +113,6 @@ const Configurator = () => {
     setIsRotating((prev) => !prev);
     setSelectedPart(null); // Deselect the part when rotating the entire model
   };
-
 
   return (
     <>
@@ -127,86 +138,17 @@ const Configurator = () => {
             </div>
             <h5>Choose Size</h5>
             <div className="size w-75">
-              <button
-                className={`size-button btn btn-outline-dark ${
-                  selectedSize === 0.5 ? "selected" : ""
-                }`}
-                onClick={() => handleSizeChange(0.5)}
-              >
-                S
-              </button>
-              <button
-                className={`size-button btn btn-outline-dark ${
-                  selectedSize === 1 ? "selected" : ""
-                }`}
-                onClick={() => handleSizeChange(1)}
-              >
-                M
-              </button>
-              <button
-                className={`size-button btn btn-outline-dark ${
-                  selectedSize === 2 ? "selected" : ""
-                }`}
-                onClick={() => handleSizeChange(2)}
-              >
-                L
-              </button>
-              <button
-                className={`size-button btn btn-outline-dark ${
-                  selectedSize === 3 ? "selected" : ""
-                }`}
-                onClick={() => handleSizeChange(3)}
-              >
-                XL
-              </button>
-              <button
-                className={`size-button btn btn-outline-dark ${
-                  selectedSize === 4 ? "selected" : ""
-                }`}
-                onClick={() => handleSizeChange(4)}
-              >
-                2XL
-              </button>
-              <button
-                className={`size-button btn btn-outline-dark ${
-                  selectedSize === 5 ? "selected" : ""
-                }`}
-                onClick={() => handleSizeChange(5)}
-              >
-                3XL
-              </button>
-              <button
-                className={`size-button btn btn-outline-dark ${
-                  selectedSize === 6 ? "selected" : ""
-                }`}
-                onClick={() => handleSizeChange(6)}
-              >
-                4XL
-              </button>
-              <button
-                className={`size-button btn btn-outline-dark ${
-                  selectedSize === 7 ? "selected" : ""
-                }`}
-                onClick={() => handleSizeChange(7)}
-              >
-                5XL
-              </button>
-              <button
-                className={`size-button btn btn-outline-dark ${
-                  selectedSize === 8 ? "selected" : ""
-                }`}
-                onClick={() => handleSizeChange(8)}
-              >
-                6XL
-              </button>
-              <button
-                className={`size-button btn btn-outline-dark ${
-                  selectedSize === 9 ? "selected" : ""
-                }`}
-                onClick={() => handleSizeChange(9)}
-              >
-                7XL
-              </button>
+              {sizeOptions.map((option) => (
+                <button
+                  key={option.value}
+                  className={`size-button btn btn-outline-dark ${
+                    selectedSize === option.value ? "selected" : ""
+                  }`}
+                  onClick={() => handleSizeChange(option.value)}
+                >
+                  {option.label}
+                </button>
+              ))}
             </div>
             <h5>Choose Color</h5> {/* Add heading for colors */}
             <div className="color-buttons-container">
@@ -280,18 +222,18 @@ const Configurator = () => {
           </div>
 
           <div className="right-panel border-left">
-          <Canvas
-          camera={{ position: [0, 0, selectedClothing.myZoom] }} // Set the initial camera position
-        >
-          <ambientLight intensity={0.5} />
-          <pointLight position={[10, 10, 10]} />
-          <Shirt
-            isRotating={isRotating}
-            selectedClothing={selectedClothing}
-            selectedPart={selectedPart}
-          />
-          <CameraControls /> {/* Add camera controls for interaction */}
-        </Canvas>
+            <Canvas
+              camera={{ position: [0, 0, selectedClothing.myZoom] }} // Set the initial camera position
+            >
+              <ambientLight intensity={0.5} />
+              <pointLight position={[10, 10, 10]} />
+              <Shirt
+                isRotating={isRotating}
+                selectedClothing={selectedClothing}
+                selectedPart={selectedPart}
+              />
+              <CameraControls /> {/* Add camera controls for interaction */}
+            </Canvas>
 
             <button
               className={`btn rotation-button text-white m-3 ${
