@@ -21,39 +21,41 @@ import { useParams } from "react-router";
 import { mainMaleCustomize } from "../../../Data/CustomizeDataMale";
 // import myModel from "./models/shortSleeves.glb";
 
-const Shirt = ({ isRotating, selectedClothing, selectedPart }) => {
+const Shirt = ({ isRotating, selectedClothing, selectedPart, setSelectedPart }) => {
   const snap = useSnapshot(state);
-  // const { nodes } = useGLTF(myModel);
   const { nodes } = useGLTF(selectedClothing.model);
   const textureMap = useLoader(TextureLoader, snap.texture);
-  const shirtRef = useRef();
+  const groupRef = useRef(); // Create a new ref for the model group
 
   useFrame(({ clock }) => {
     if (isRotating) {
-      shirtRef.current.rotation.y = clock.elapsedTime / 2; // Adjust rotation speed here
+      const rotationSpeed = 0.01; // Adjust the rotation speed here
+      groupRef.current.rotation.y += rotationSpeed;
     }
   });
 
   return (
-    <>
+    <group ref={groupRef}> {/* Use the groupRef for the model group */}
       {selectedClothing.myNode.map((nodeName, index) => (
         <mesh
-          key={index}
-          castShadow
-          geometry={nodes[nodeName].geometry}
-          ref={index === selectedPart ? shirtRef : null}
-        >
-          <meshStandardMaterial
-            attach="material"
-            color={index === selectedPart ? snap.color : "#ffffff"}
-            roughness={1}
-            map={index === selectedPart ? textureMap : null}
-          />
-        </mesh>
+        key={index}
+        castShadow
+        geometry={nodes[nodeName].geometry}
+        onClick={() => setSelectedPart(index)} // Add onClick handler to set selectedPart
+      >
+        <meshStandardMaterial
+          attach="material"
+          color={index === selectedPart ? snap.color : "#ffffff"}
+          roughness={1}
+          map={index === selectedPart ? textureMap : null}
+        />
+      </mesh>
       ))}
-    </>
+    </group>
   );
 };
+
+
 
 const CameraControls = () => {
   const controlsRef = useRef();
@@ -73,6 +75,8 @@ const Configurator = () => {
 
   const [selectedSize, setSelectedSize] = useState(null);
   const [selectedPrintOn, setSelectedPrintOn] = useState(null);
+
+  const [selectedPart, setSelectedPart] = useState(null);
 
   const [isRotating, setIsRotating] = useState(false);
 
@@ -95,9 +99,8 @@ const Configurator = () => {
 
   const handleRotation = () => {
     setIsRotating((prev) => !prev);
+    setSelectedPart(null); // Deselect the part when rotating the entire model
   };
-
-  const [selectedPart, setSelectedPart] = useState(null);
 
 
   return (
@@ -277,18 +280,18 @@ const Configurator = () => {
           </div>
 
           <div className="right-panel border-left">
-            <Canvas
-              camera={{ position: [0, 0, selectedClothing.myZoom] }} // Set the initial camera position
-            >
-              <ambientLight intensity={0.5} />
-              <pointLight position={[10, 10, 10]} />
-              <Shirt
-                isRotating={isRotating}
-                selectedClothing={selectedClothing}
-                selectedPart={selectedPart}
-              />
-              <CameraControls /> {/* Add camera controls for interaction */}
-            </Canvas>
+          <Canvas
+          camera={{ position: [0, 0, selectedClothing.myZoom] }} // Set the initial camera position
+        >
+          <ambientLight intensity={0.5} />
+          <pointLight position={[10, 10, 10]} />
+          <Shirt
+            isRotating={isRotating}
+            selectedClothing={selectedClothing}
+            selectedPart={selectedPart}
+          />
+          <CameraControls /> {/* Add camera controls for interaction */}
+        </Canvas>
 
             <button
               className={`btn rotation-button text-white m-3 ${
