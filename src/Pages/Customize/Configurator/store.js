@@ -1,7 +1,17 @@
 import { proxy } from "valtio";
-import whiteTexture from "./textures/whitetxture.jpg";
+// import whiteTexture from "./textures/whitetxture.jpg";
 
 export const state = proxy({
-  color: "#ffffff",
-  texture: whiteTexture, // Set the initial texture here
+  color: [], // Array to store colors for each part
+  texture: [], // Array to store textures for each part
 });
+
+export const setPartColor = (partIndex, color) => {
+  state.color[partIndex] = color;
+  state.texture[partIndex] = null;
+};
+
+export const setPartTexture = (partIndex, texture) => {
+  state.texture[partIndex] = texture;
+  state.color[partIndex] = "#ffffff";
+};

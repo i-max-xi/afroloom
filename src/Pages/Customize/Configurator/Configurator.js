@@ -1,14 +1,14 @@
 import React, { useState, useRef } from "react";
-import { Canvas, useFrame, useLoader } from "@react-three/fiber";
+import { Canvas, useFrame } from "@react-three/fiber";
 import { useGLTF, OrbitControls } from "@react-three/drei";
 import { useSnapshot } from "valtio";
 import { state } from "./store";
-import { TextureLoader } from "three/src/loaders/TextureLoader";
+// import { TextureLoader } from "three/src/loaders/TextureLoader";
 import texture2 from "./textures/texture2.jpg";
 import texture3 from "./textures/texture3.jpg";
 import texture4 from "./textures/batik.jpg";
 
-import whiteTexture from "./textures/whitetxture.jpg";
+// import whiteTexture from "./textures/whitetxture.jpg";
 import kente from "./textures/kente.jpg";
 import Nav from "../../../Components/Nav";
 import "./styles.css";
@@ -23,38 +23,52 @@ const Shirt = ({
 }) => {
   const snap = useSnapshot(state);
   const { nodes } = useGLTF(selectedClothing.model);
-  const textureMap = useLoader(TextureLoader, snap.texture);
-  const groupRef = useRef(); // Create a new ref for the model group
+
+  const groupRef = useRef();
 
   useFrame(({ clock }) => {
     if (isRotating) {
-      const rotationSpeed = 0.01; // Adjust the rotation speed here
+      const rotationSpeed = 0.01;
       groupRef.current.rotation.y += rotationSpeed;
     }
   });
 
+  const handlePartClick = (index) => {
+    if (index === selectedPart) {
+      setSelectedPart(null); // Deselect the part if it is clicked again
+    } else {
+      setSelectedPart(index);
+    }
+  };
+
   return (
     <group ref={groupRef}>
-      {" "}
-      {/* Use the groupRef for the model group */}
-      {selectedClothing.myNode.map((nodeName, index) => (
-        <mesh
-          key={index}
-          castShadow
-          geometry={nodes[nodeName].geometry}
-          onClick={() => setSelectedPart(index)} // Add onClick handler to set selectedPart
-        >
-          <meshStandardMaterial
-            attach="material"
-            color={index === selectedPart ? snap.color : "#ffffff"}
-            roughness={1}
-            map={index === selectedPart ? textureMap : null}
-          />
-        </mesh>
-      ))}
+      {selectedClothing.myNode.map((nodeName, index) => {
+        const color = snap.color[index] || "#ffffff";
+        const texture = snap.texture[index] || null;
+
+        return (
+          <mesh
+            key={index}
+            castShadow
+            geometry={nodes[nodeName].geometry}
+            onClick={() => handlePartClick(index)}
+          >
+            <meshStandardMaterial
+              attach="material"
+              color={color}
+              roughness={1}
+              map={texture}
+            />
+          </mesh>
+        );
+      })}
     </group>
   );
 };
+
+
+
 
 const CameraControls = () => {
   const controlsRef = useRef();
@@ -98,16 +112,17 @@ const Configurator = () => {
   };
 
   const handleColorChange = (newColor) => {
-    state.color = newColor;
-    state.texture = whiteTexture; // Reset the texture value to deactivate it
+    state.color[selectedPart] = newColor;
+    state.texture[selectedPart] = null;
     setSelectedPrintOn(newColor);
   };
-
+  
   const handleTextureChange = (newTexture) => {
-    state.texture = newTexture;
-    state.color = "#ffffff"; // Reset the color value to deactivate it
+    state.texture[selectedPart] = newTexture;
+    state.color[selectedPart] = "#ffffff";
     setSelectedPrintOn(newTexture);
   };
+  
 
   const handleRotation = () => {
     setIsRotating((prev) => !prev);
