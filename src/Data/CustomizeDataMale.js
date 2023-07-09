@@ -1,6 +1,7 @@
 import { v4 as uuid } from 'uuid';
 
 import tshirt from "../Assets/Customize/Tshirt.jpg";
+import tshirt_long from "../Assets/Customize/tshirt_long.png";
 import shirt from "../Assets/Customize/shirt.jpg";
 import long_sleeves from "../Assets/Customize/long_sleeves.jpg";
 
@@ -68,6 +69,17 @@ export const mainMaleCustomize = [
     model: tshirtModel1,
     myNode: ["back", "collar", "front", "left_hand", "right_hand"],
     myZoom: 0.6,
+    myX: 0,
+    myY: 10,
+    price: 20,
+  },
+  {
+    id: uuid(),
+    name: "T-Shirt Long",
+    image: tshirt_long,
+    model: tshirtModel1,
+    myNode: ["all"],
+    myZoom: 1,
     myX: 0,
     myY: 10,
     price: 20,

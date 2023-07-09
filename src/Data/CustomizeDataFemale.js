@@ -56,8 +56,8 @@ import t4 from '../Assets/Customize/femaleClothingExtras/trousers/4.jpg'
 
 
 //models
-import t_shirt_short from '../Pages/Customize/Configurator/models/FemaleClothing/tshirt_short.glb';
-import t_shirt_long from '../Pages/Customize/Configurator/models/FemaleClothing/tshirt_long.glb';
+import t_shirt_short from '../Pages/Customize/Configurator/models/FemaleClothing/tshirt_short_two.glb';
+import t_shirt_long from '../Pages/Customize/Configurator/models/FemaleClothing/tshirt_long_two.glb';
 import skirt_model from '../Pages/Customize/Configurator/models/FemaleClothing/skirt_main.glb';
 import trousers from '../Pages/Customize/Configurator/models/FemaleClothing/trousers_main.glb';
 import dress_model from '../Pages/Customize/Configurator/models/FemaleClothing/shoulder_dress.glb';
