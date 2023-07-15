@@ -90,7 +90,8 @@ const CustomizePage = () => {
           <h5 className="mt-4 footer-header">Female Accessories</h5>
           {mainFemaleAccessories.map(({ name, image }) => (
             <Link
-              to={`/customize-female-accessories/${name}`}
+              // to={`/customize-female-accessories/${name}`}
+              to={`/configurator-female-accessories/${name}`}
               className="col-3 m-3 mx-3"
               key={name}
             >
@@ -113,7 +114,8 @@ const CustomizePage = () => {
           <h5 className="mt-4 footer-header">Unisex</h5>
           {mainUnisex.map(({ name, image }) => (
             <Link
-              to={`/customize-unisex/${name}`}
+              // to={`/customize-unisex/${name}`}
+              to={`/configurator-unisex/${name}`}
               className="col-3 m-3 mx-3"
               key={name}
             >

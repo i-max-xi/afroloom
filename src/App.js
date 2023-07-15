@@ -54,7 +54,9 @@ import Supplier from './Pages/User/Supplier';
 import Configurator from './Pages/Customize/Configurator/Configurator'
 import ConfiguratorFootwear from './Pages/Customize/Configurator/ConfiguratorFootwear';
 import ConfiguratorMaleAccessories from './Pages/Customize/Configurator/ConfiguratorMaleAccessories';
+import ConfiguratorFemaleAccessories from './Pages/Customize/Configurator/ConfiguratorFemaleAccessories';
 import ConfiguratorFemale from './Pages/Customize/Configurator/ConfiguratorFemale';
+import ConfiguratorUnisex from './Pages/Customize/Configurator/ConfiguratorUnisex';
 
 function App() {
   useEffect(() => {
@@ -102,7 +104,8 @@ function App() {
           <Route path="/configurator-female/:Id" element={<ConfiguratorFemale />} />
           <Route path="/configurator-footwear/:Id" element={<ConfiguratorFootwear />} />
           <Route path="/configurator-male-accessories/:Id" element={<ConfiguratorMaleAccessories />} />
-
+          <Route path="/configurator-female-accessories/:Id" element={<ConfiguratorFemaleAccessories />} />
+          <Route path="/configurator-unisex/:Id" element={<ConfiguratorUnisex />} />
 
           <Route path='tnc' element={<Tnc />} />
           <Route path='shippingPolicy' element={<ShippingPolicy />} />
