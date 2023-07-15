@@ -1,7 +1,8 @@
 import { v4 as uuid } from "uuid";
 
-// import cap from "../Assets/Customize/cap.jpg";
-import femalebag from "../Assets/Customize/femalebag.jpg";
+import handbag from "../Assets/Customize/hand_bag.png";
+import bikini_img from "../Assets/Customize/bikini.png";
+
 
 // hats
 import h1 from "../Assets/Customize/maleAccessories/hat/1.jpg";
@@ -30,6 +31,7 @@ import bow_tie from "../Pages/Customize/Configurator/models/Accessories/bow_tie_
 import knitted_cap from "../Pages/Customize/Configurator/models/Accessories/knittedHat_main_two.glb";
 import round_cap from "../Pages/Customize/Configurator/models/Accessories/roundCap_main.glb";
 import bikini from "../Pages/Customize/Configurator/models/Accessories/bikini.glb";
+import hand_bag_model from "../Pages/Customize/Configurator/models/Accessories/handbag.glb";
 
 export const mainMaleAccessories = [
   {
@@ -73,13 +75,18 @@ export const mainMaleAccessories = [
 
 export const mainFemaleAccessories = [
   {
-    name: "Bag",
-    image: femalebag,
+    id: uuid(),
+    name: "Hand Bag",
+    image: handbag,
+    model: hand_bag_model,
+    myNode: ["main_body", "zippers_and_locks"],
+    myZoom: 0.7,
+    price: 55,
   },
   {
     id: uuid(),
     name: "Bikini",
-    image: "",
+    image: bikini_img,
     model: bikini,
     myNode: ["top", "down"],
     myZoom: 0.7,
