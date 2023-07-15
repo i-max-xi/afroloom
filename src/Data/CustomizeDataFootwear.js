@@ -22,6 +22,7 @@ import h5 from "../Assets/Customize/footwear/heels/5.jpg";
 import flex_shoe from '../Pages/Customize/Configurator/models/Shoes/flexible_shoe_main_two.glb';
 import slippers from '../Pages/Customize/Configurator/models/Shoes/slippers_main.glb';
 import heels from '../Pages/Customize/Configurator/models/Shoes/heels_main.glb';
+import sneaker_model from '../Pages/Customize/Configurator/models/Shoes/sneaker.glb';
 
 
 export const mainFootwear = [
@@ -39,9 +40,9 @@ export const mainFootwear = [
     name: "Sneaker",
     image:
       "https://th.bing.com/th/id/R.ed02939b666f5978946b4b104022f5ee?rik=N3Ja0bD%2boLeYgw&pid=ImgRaw&r=0",
-    model: "",
-    // myNode: ["uploads files 261545 Red+shoe left"],
-    myZoom: 0.6,
+    model: sneaker_model,
+    myNode: ["sole", "main_body", "laces"],
+    myZoom: 0.7,
     price: 20,
     },
   {

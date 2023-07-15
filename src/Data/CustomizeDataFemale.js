@@ -4,7 +4,11 @@ import { v4 as uuid } from "uuid";
 import cloak from "../Assets/Customize/cloak.jpg";
 import skirt from "../Assets/Customize/skirt.jpg";
 import femaleTshirt from "../Assets/Customize/femaleTshirt.jpg";
-// import femaleTop from "../Assets/Customize/femaleTop.jpg";
+import topndown from "../Assets/Customize/female_topndown.png";
+import dress from "../Assets/Customize/dress.png";
+import normal_top from "../Assets/Customize/normal_top.png";
+
+
 
 // tshirts
 import tshirt1 from "../Assets/Customize/femaleClothingExtras/tshirt/1.jpg";
@@ -62,6 +66,7 @@ import top_model from "../Pages/Customize/Configurator/models/FemaleClothing/sho
 import normal_top_model from "../Pages/Customize/Configurator/models/FemaleClothing/ladies_normal_top.glb";
 import mini_skirt_model from "../Pages/Customize/Configurator/models/FemaleClothing/mini_skirt.glb";
 import cloak_model from "../Pages/Customize/Configurator/models/FemaleClothing/cloak.glb";
+import topndown_model from "../Pages/Customize/Configurator/models/FemaleClothing/female_topndown_top_down.glb";
 
 export const mainFemaleCustomize = [
   {
@@ -77,7 +82,7 @@ export const mainFemaleCustomize = [
   {
     id: uuid(),
     name: "T-Shirt long",
-    image: "",
+    image: "https://images.bloomingdalesassets.com/is/image/BLM/products/0/optimized/10183950_fpx.tif?$filterlrg$&wid=327",
     model: t_shirt_long,
     myNode: ["all"],
     myZoom: 0.1,
@@ -87,7 +92,7 @@ export const mainFemaleCustomize = [
   {
     id: uuid(),
     name: "Crop Top",
-    image: "",
+    image: "https://sportsfore.com/wp-content/uploads/2020/05/5-68.jpg",
     model: top_model,
     myNode: ["all"],
     myZoom: 1,
@@ -97,7 +102,7 @@ export const mainFemaleCustomize = [
   {
     id: uuid(),
     name: "Normal Top",
-    image: "",
+    image: normal_top,
     model: normal_top_model,
     myNode: ["all"],
     myZoom: 1,
@@ -106,17 +111,17 @@ export const mainFemaleCustomize = [
   {
     id: uuid(),
     name: "Top & Down",
-    model: "",
-    image: "",
-    myNode: ["all"],
-    myZoom: 1,
+    model: topndown_model,
+    image: topndown,
+    myNode: ["top", "down"],
+    myZoom: 0.6,
     price: 20,
   },
   {
     id: uuid(),
     name: "Dress",
     model: dress_model,
-    image: "",
+    image: dress,
     myNode: ["all"],
     myZoom: 0.7,
     price: 20,
@@ -143,7 +148,7 @@ export const mainFemaleCustomize = [
     id: uuid(),
     name: "Mini Skirt",
     model: mini_skirt_model,
-    image: "",
+    image: "https://i.pinimg.com/736x/18/7d/c1/187dc19dca6861408cfd6d824437852e.jpg",
     myNode: ["bottom_edge", "main_body", "waist"],
     myZoom: 1,
     price: 20,
@@ -152,7 +157,7 @@ export const mainFemaleCustomize = [
     id: uuid(),
     name: "Trousers",
     model: trousers,
-    image: "",
+    image: "https://th.bing.com/th/id/R.4bc7f18679c3f2be48f44daefe523175?rik=zl2oxw9NZ7WSYw&riu=http%3a%2f%2fnibh.com%2fwp-content%2fuploads%2f2017%2f05%2fLP3.jpeg&ehk=pofT6edwVxSrGznLoVPwRpmV4ZLjt7oYMlkOzLi%2bms0%3d&risl=&pid=ImgRaw&r=0",
     myNode: ["all"],
     myZoom: 0.7,
     price: 20,

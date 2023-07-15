@@ -12,13 +12,19 @@ import s3 from '../Assets/Customize/unisex/sash/3.jpg'
 //models 
 import backpack_model from "../Pages/Customize/Configurator/models/Accessories/Unisex/backpack.glb";
 import mini_bag_model from "../Pages/Customize/Configurator/models/Accessories/Unisex/mini_bag_handle_main_body.glb";
+import sash_model from "../Pages/Customize/Configurator/models/Accessories/Unisex/sash.glb";
 
 
 export const mainUnisex = [
   {
-    name: "Sashe",
+    id: uuid(),
+    name: "Sash",
     image:
       "https://images-na.ssl-images-amazon.com/images/I/61Kp8a2HpQL._SLDPMOBCAROUSELAUTOCROP288221_MCnd_AC_SR462,693_.jpg",
+    model: sash_model,
+    myNode: ["all"],
+    myZoom: 1,
+    price: 55,
   },
   {
     id: uuid(),
@@ -32,7 +38,7 @@ export const mainUnisex = [
   {
     id: uuid(),
     name: "Backpack",
-    image: "",
+    image: "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/5286/5286137cv12d.jpg",
     model: backpack_model,
     myNode: ["all"],
     myZoom: 0.8,

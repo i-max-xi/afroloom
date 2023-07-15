@@ -2,7 +2,6 @@ import { v4 as uuid } from 'uuid';
 
 import tshirt from "../Assets/Customize/Tshirt.jpg";
 import shirt from "../Assets/Customize/shirt.jpg";
-import long_sleeves from "../Assets/Customize/long_sleeves.jpg";
 
 
 // tshirts
@@ -59,6 +58,7 @@ import trousersModel1 from '../Pages/Customize/Configurator/models/MaleClothing/
 import material_shorts from '../Pages/Customize/Configurator/models/MaleClothing/material_shorts.glb';
 import summer_shorts from '../Pages/Customize/Configurator/models/MaleClothing/summer_shorts.glb';
 import cloak from '../Pages/Customize/Configurator/models/MaleClothing/cloak.glb';
+import topndown_model from '../Pages/Customize/Configurator/models/MaleClothing/male_topndown.glb';
 
 export const mainMaleCustomize = [
   {
@@ -97,7 +97,7 @@ export const mainMaleCustomize = [
   {
     id: uuid(),
     name: "Long Sleeves Shirt",
-    image: long_sleeves,
+    image: "https://th.bing.com/th/id/OIP.esHHIbeG0pD-IJjavFbqwQAAAA?pid=ImgDet&rs=1",
     model: shirtModel2,
     myNode: ["back", "buttons", "collar", "front", "left_hand", "left_hand_edge", "midline", "pocket", "right_hand", "right_hand_edge"],
     myZoom: 6.2,
@@ -109,9 +109,9 @@ export const mainMaleCustomize = [
     id: uuid(),
     name: "Top & Down",
     image: topndown,
-    model: "",
-    myNode: [],
-    myZoom: 10,
+    model: topndown_model,
+    myNode: ["all", "back", "collar", "front", "hands", "midline"],
+    myZoom: 1,
     myX: 0,
     myY: 10,
     price: 55
