@@ -4,33 +4,32 @@ import { v4 as uuid } from "uuid";
 import femalebag from "../Assets/Customize/femalebag.jpg";
 
 // hats
-import h1 from '../Assets/Customize/maleAccessories/hat/1.jpg'
-import h2 from '../Assets/Customize/maleAccessories/hat/2.jpg'
-import h3 from '../Assets/Customize/maleAccessories/hat/3.jpg'
-import h4 from '../Assets/Customize/maleAccessories/hat/4.jpg'
+import h1 from "../Assets/Customize/maleAccessories/hat/1.jpg";
+import h2 from "../Assets/Customize/maleAccessories/hat/2.jpg";
+import h3 from "../Assets/Customize/maleAccessories/hat/3.jpg";
+import h4 from "../Assets/Customize/maleAccessories/hat/4.jpg";
 
 // uncat
-import un1 from '../Assets/Customize/maleAccessories/Uncat/1.jpg'
-import un2 from '../Assets/Customize/maleAccessories/Uncat/2.jpg'
+import un1 from "../Assets/Customize/maleAccessories/Uncat/1.jpg";
+import un2 from "../Assets/Customize/maleAccessories/Uncat/2.jpg";
 
 // femal bags
-import fb1 from '../Assets/Customize/femaleAccessories/Bags/1.jpg'
-import fb2 from '../Assets/Customize/femaleAccessories/Bags/2.jpg'
-import fb3 from '../Assets/Customize/femaleAccessories/Bags/3.jpg'
-import fb4 from '../Assets/Customize/femaleAccessories/Bags/4.jpg'
+import fb1 from "../Assets/Customize/femaleAccessories/Bags/1.jpg";
+import fb2 from "../Assets/Customize/femaleAccessories/Bags/2.jpg";
+import fb3 from "../Assets/Customize/femaleAccessories/Bags/3.jpg";
+import fb4 from "../Assets/Customize/femaleAccessories/Bags/4.jpg";
 
 //female uncat
-import fun1 from '../Assets/Customize/femaleAccessories/uncat/1.jpg'
-import fun2 from '../Assets/Customize/femaleAccessories/uncat/2.jpg'
-import fun3 from '../Assets/Customize/femaleAccessories/uncat/3.jpg'
+import fun1 from "../Assets/Customize/femaleAccessories/uncat/1.jpg";
+import fun2 from "../Assets/Customize/femaleAccessories/uncat/2.jpg";
+import fun3 from "../Assets/Customize/femaleAccessories/uncat/3.jpg";
 
 // 3d models
-import tie from "../Pages/Customize/Configurator/models/Accessories/tie_main.glb"
-import bow_tie from "../Pages/Customize/Configurator/models/Accessories/bow_tie_main.glb"
-import knitted_cap from "../Pages/Customize/Configurator/models/Accessories/knittedHat_main_two.glb"
-import round_cap from "../Pages/Customize/Configurator/models/Accessories/roundCap_main.glb"
-
-
+import tie from "../Pages/Customize/Configurator/models/Accessories/tie_main.glb";
+import bow_tie from "../Pages/Customize/Configurator/models/Accessories/bow_tie_main.glb";
+import knitted_cap from "../Pages/Customize/Configurator/models/Accessories/knittedHat_main_two.glb";
+import round_cap from "../Pages/Customize/Configurator/models/Accessories/roundCap_main.glb";
+import bikini from "../Pages/Customize/Configurator/models/Accessories/bikini.glb";
 
 export const mainMaleAccessories = [
   {
@@ -70,23 +69,23 @@ export const mainMaleAccessories = [
     myZoom: 0.6,
     price: 20,
   },
-
-  // {
-  //   name: "Uncategorized",
-  //   image: un1,
-  // },
 ];
 
 export const mainFemaleAccessories = [
-    {
-        name: "Bag",
-        image: femalebag,
-      },
-      {
-        name: "Uncategorized",
-        image: fun3,
-      },
-]
+  {
+    name: "Bag",
+    image: femalebag,
+  },
+  {
+    id: uuid(),
+    name: "Bikini",
+    image: "",
+    model: bikini,
+    myNode: ["top", "down"],
+    myZoom: 0.7,
+    price: 55,
+  },
+];
 
 export const maleAccessoriesExtras = [
   {
@@ -123,7 +122,7 @@ export const maleAccessoriesExtras = [
       },
     ],
   },
-]
+];
 
 export const femaleAccessoriesExtras = [
   {
@@ -164,4 +163,4 @@ export const femaleAccessoriesExtras = [
       },
     ],
   },
-]
+];
