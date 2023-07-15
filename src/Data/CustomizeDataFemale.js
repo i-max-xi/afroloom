@@ -1,68 +1,67 @@
 import { v4 as uuid } from "uuid";
 
-import dress from "../Assets/Customize/dress.jpg";
+// import dress from "../Assets/Customize/dress.jpg";
 import cloak from "../Assets/Customize/cloak.jpg";
 import skirt from "../Assets/Customize/skirt.jpg";
 import femaleTshirt from "../Assets/Customize/femaleTshirt.jpg";
-import femaleTop from "../Assets/Customize/femaleTop.jpg";
+// import femaleTop from "../Assets/Customize/femaleTop.jpg";
 
 // tshirts
-import tshirt1 from '../Assets/Customize/femaleClothingExtras/tshirt/1.jpg'
-import tshirt2 from '../Assets/Customize/femaleClothingExtras/tshirt/2.jpg'
-import tshirt3 from '../Assets/Customize/femaleClothingExtras/tshirt/3.jpg'
-import tshirt4 from '../Assets/Customize/femaleClothingExtras/tshirt/4.jpg'
-import tshirt5 from '../Assets/Customize/femaleClothingExtras/tshirt/5.jpg'
-import tshirt6 from '../Assets/Customize/femaleClothingExtras/tshirt/6.jpg'
-
+import tshirt1 from "../Assets/Customize/femaleClothingExtras/tshirt/1.jpg";
+import tshirt2 from "../Assets/Customize/femaleClothingExtras/tshirt/2.jpg";
+import tshirt3 from "../Assets/Customize/femaleClothingExtras/tshirt/3.jpg";
+import tshirt4 from "../Assets/Customize/femaleClothingExtras/tshirt/4.jpg";
+import tshirt5 from "../Assets/Customize/femaleClothingExtras/tshirt/5.jpg";
+import tshirt6 from "../Assets/Customize/femaleClothingExtras/tshirt/6.jpg";
 
 //top
-import top1 from '../Assets/Customize/femaleClothingExtras/top/1.jpg'
-import top2 from '../Assets/Customize/femaleClothingExtras/top/2.jpg'
-import top3 from '../Assets/Customize/femaleClothingExtras/top/3.jpg'
+import top1 from "../Assets/Customize/femaleClothingExtras/top/1.jpg";
+import top2 from "../Assets/Customize/femaleClothingExtras/top/2.jpg";
+import top3 from "../Assets/Customize/femaleClothingExtras/top/3.jpg";
 
 //top and down
-import tnd1 from '../Assets/Customize/femaleClothingExtras/topndown/1.jpg'
-import tnd2 from '../Assets/Customize/femaleClothingExtras/topndown/2.jpg'
-import tnd3 from '../Assets/Customize/femaleClothingExtras/topndown/3.jpg'
-import tnd4 from '../Assets/Customize/femaleClothingExtras/topndown/4.jpg'
-import tnd5 from '../Assets/Customize/femaleClothingExtras/topndown/5.jpg'
+import tnd1 from "../Assets/Customize/femaleClothingExtras/topndown/1.jpg";
+import tnd2 from "../Assets/Customize/femaleClothingExtras/topndown/2.jpg";
+import tnd3 from "../Assets/Customize/femaleClothingExtras/topndown/3.jpg";
+import tnd4 from "../Assets/Customize/femaleClothingExtras/topndown/4.jpg";
+import tnd5 from "../Assets/Customize/femaleClothingExtras/topndown/5.jpg";
 
 // dress
-import d1 from '../Assets/Customize/femaleClothingExtras/dress/1.jpg'
-import d2 from '../Assets/Customize/femaleClothingExtras/dress/2.jpg'
-import d3 from '../Assets/Customize/femaleClothingExtras/dress/3.jpg'
-import d4 from '../Assets/Customize/femaleClothingExtras/dress/4.jpg'
-import d5 from '../Assets/Customize/femaleClothingExtras/dress/5.jpg'
-
+import d1 from "../Assets/Customize/femaleClothingExtras/dress/1.jpg";
+import d2 from "../Assets/Customize/femaleClothingExtras/dress/2.jpg";
+import d3 from "../Assets/Customize/femaleClothingExtras/dress/3.jpg";
+import d4 from "../Assets/Customize/femaleClothingExtras/dress/4.jpg";
+import d5 from "../Assets/Customize/femaleClothingExtras/dress/5.jpg";
 
 // uncategorized
-import un1 from '../Assets/Customize/femaleClothingExtras/uncategorized/1.jpg'
-import un2 from '../Assets/Customize/femaleClothingExtras/uncategorized/2.jpg'
-import un3 from '../Assets/Customize/femaleClothingExtras/uncategorized/3.jpg'
-
+import un1 from "../Assets/Customize/femaleClothingExtras/uncategorized/1.jpg";
+import un2 from "../Assets/Customize/femaleClothingExtras/uncategorized/2.jpg";
+import un3 from "../Assets/Customize/femaleClothingExtras/uncategorized/3.jpg";
 
 //skirt
-import sk1 from '../Assets/Customize/femaleClothingExtras/skirt/1.jpg'
-import sk2 from '../Assets/Customize/femaleClothingExtras/skirt/2.jpg'
-import sk3 from '../Assets/Customize/femaleClothingExtras/skirt/3.jpg'
-import sk4 from '../Assets/Customize/femaleClothingExtras/skirt/4.jpg'
-import sk5 from '../Assets/Customize/femaleClothingExtras/skirt/5.jpg'
+import sk1 from "../Assets/Customize/femaleClothingExtras/skirt/1.jpg";
+import sk2 from "../Assets/Customize/femaleClothingExtras/skirt/2.jpg";
+import sk3 from "../Assets/Customize/femaleClothingExtras/skirt/3.jpg";
+import sk4 from "../Assets/Customize/femaleClothingExtras/skirt/4.jpg";
+import sk5 from "../Assets/Customize/femaleClothingExtras/skirt/5.jpg";
 
 // trousers
-import t1 from '../Assets/Customize/femaleClothingExtras/trousers/1.jpg'
-import t2 from '../Assets/Customize/femaleClothingExtras/trousers/2.jpg'
-import t3 from '../Assets/Customize/femaleClothingExtras/trousers/3.jpg'
-import t4 from '../Assets/Customize/femaleClothingExtras/trousers/4.jpg'
-
+import t1 from "../Assets/Customize/femaleClothingExtras/trousers/1.jpg";
+import t2 from "../Assets/Customize/femaleClothingExtras/trousers/2.jpg";
+import t3 from "../Assets/Customize/femaleClothingExtras/trousers/3.jpg";
+import t4 from "../Assets/Customize/femaleClothingExtras/trousers/4.jpg";
 
 //models
-import t_shirt_short from '../Pages/Customize/Configurator/models/FemaleClothing/tshirt_short_two.glb';
-import t_shirt_long from '../Pages/Customize/Configurator/models/FemaleClothing/tshirt_long_two.glb';
-import skirt_model from '../Pages/Customize/Configurator/models/FemaleClothing/skirt_main.glb';
-import trousers from '../Pages/Customize/Configurator/models/FemaleClothing/trousers_main.glb';
-import dress_model from '../Pages/Customize/Configurator/models/FemaleClothing/shoulder_dress.glb';
-import top_model from '../Pages/Customize/Configurator/models/FemaleClothing/shoulders_top.glb';
-
+import t_shirt_short from "../Pages/Customize/Configurator/models/FemaleClothing/tshirt_short_two.glb";
+import t_shirt_long from "../Pages/Customize/Configurator/models/FemaleClothing/tshirt_long_two.glb";
+import skirt_model from "../Pages/Customize/Configurator/models/FemaleClothing/skirt_main.glb";
+import trousers from "../Pages/Customize/Configurator/models/FemaleClothing/female_actual_trousers.glb";
+import leggings from "../Pages/Customize/Configurator/models/FemaleClothing/trousers_main.glb";
+import dress_model from "../Pages/Customize/Configurator/models/FemaleClothing/shoulder_dress.glb";
+import top_model from "../Pages/Customize/Configurator/models/FemaleClothing/shoulders_top.glb";
+import normal_top_model from "../Pages/Customize/Configurator/models/FemaleClothing/ladies_normal_top.glb";
+import mini_skirt_model from "../Pages/Customize/Configurator/models/FemaleClothing/mini_skirt.glb";
+import cloak_model from "../Pages/Customize/Configurator/models/FemaleClothing/cloak.glb";
 
 export const mainFemaleCustomize = [
   {
@@ -73,56 +72,65 @@ export const mainFemaleCustomize = [
     myNode: ["all"],
     myZoom: 0.1,
     price: 20,
-    },
+  },
 
   {
     id: uuid(),
     name: "T-Shirt long",
-    image: femaleTshirt,
+    image: "",
     model: t_shirt_long,
     myNode: ["all"],
     myZoom: 0.1,
     price: 20,
-    },
+  },
 
   {
     id: uuid(),
     name: "Crop Top",
-    image: femaleTop,
+    image: "",
     model: top_model,
     myNode: ["all"],
     myZoom: 1,
     price: 20,
-    },
- {
+  },
+
+  {
+    id: uuid(),
+    name: "Normal Top",
+    image: "",
+    model: normal_top_model,
+    myNode: ["all"],
+    myZoom: 1,
+    price: 20,
+  },
+  {
     id: uuid(),
     name: "Top & Down",
     model: "",
-    image:
-    "https://i.pinimg.com/originals/27/87/c9/2787c9b9ec56850ec10b1bbb6e9fe864.png",
+    image: "",
     myNode: ["all"],
     myZoom: 1,
     price: 20,
-    },
- {
+  },
+  {
     id: uuid(),
     name: "Dress",
     model: dress_model,
-    image: dress,
+    image: "",
     myNode: ["all"],
     myZoom: 0.7,
     price: 20,
-    },
- {
+  },
+  {
     id: uuid(),
-    name: "Uncategorized",
-    model: "",
+    name: "Cloak",
+    model: cloak_model,
     image: cloak,
     myNode: ["all"],
-    myZoom: 1,
+    myZoom: 0.8,
     price: 20,
-    },
- {
+  },
+  {
     id: uuid(),
     name: "Skirt",
     model: skirt_model,
@@ -130,19 +138,36 @@ export const mainFemaleCustomize = [
     myNode: ["all"],
     myZoom: 0.6,
     price: 20,
-    },  
-{
+  },
+  {
+    id: uuid(),
+    name: "Mini Skirt",
+    model: mini_skirt_model,
+    image: "",
+    myNode: ["bottom_edge", "main_body", "waist"],
+    myZoom: 1,
+    price: 20,
+  },
+  {
     id: uuid(),
     name: "Trousers",
     model: trousers,
-    image:
-    "https://cdna.lystit.com/photos/yoox/0a0e7406/vero-moda-Black-Casual-Pants.jpeg",
+    image: "",
     myNode: ["all"],
     myZoom: 0.7,
     price: 20,
-    }, 
+  },
+  {
+    id: uuid(),
+    name: "Leggings",
+    model: leggings,
+    image:
+      "https://cdna.lystit.com/photos/yoox/0a0e7406/vero-moda-Black-Casual-Pants.jpeg",
+    myNode: ["all"],
+    myZoom: 0.8,
+    price: 20,
+  },
 ];
-  
 
 export const femaleExtras = [
   {
@@ -172,7 +197,6 @@ export const femaleExtras = [
         name: "",
         image: tshirt6,
       },
-  
     ],
   },
   {
@@ -306,5 +330,4 @@ export const femaleExtras = [
       },
     ],
   },
-
 ];

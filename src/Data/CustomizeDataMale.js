@@ -55,7 +55,7 @@ import topndown from "../Assets/Customize/topanddown.jpg";
 import tshirtModel1 from '../Pages/Customize/Configurator/models/MaleClothing/tshirt_main.glb';
 import shirtModel1 from '../Pages/Customize/Configurator/models/MaleClothing/short_sleeves_main.glb';
 import shirtModel2 from '../Pages/Customize/Configurator/models/MaleClothing/long_sleeves_main_two.glb';
-import trousersModel1 from '../Pages/Customize/Configurator/models/MaleClothing/trousers_main_three.glb';
+import trousersModel1 from '../Pages/Customize/Configurator/models/MaleClothing/male_trousers_better.glb';
 import material_shorts from '../Pages/Customize/Configurator/models/MaleClothing/material_shorts.glb';
 import summer_shorts from '../Pages/Customize/Configurator/models/MaleClothing/summer_shorts.glb';
 import cloak from '../Pages/Customize/Configurator/models/MaleClothing/cloak.glb';
