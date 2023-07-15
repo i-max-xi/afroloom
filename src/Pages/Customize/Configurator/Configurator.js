@@ -47,11 +47,11 @@ const Shirt = ({
     <group ref={groupRef}>
       {selectedClothing.myNode.map((nodeName, index) => {
         const color = snap.color[index] || "#ffffff";
-        const texture = selectedTexture || snap.texture[index];
+        const texture = snap.texture[index] || null  ;
 
         return (
           <mesh
-            key={index}
+            key={selectedTexture}
             castShadow
             geometry={nodes[nodeName].geometry}
             onClick={() => handlePartClick(index)}
