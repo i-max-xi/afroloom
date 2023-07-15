@@ -3,7 +3,8 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import { useGLTF, OrbitControls } from "@react-three/drei";
 import { useSnapshot } from "valtio";
 import { state } from "./store";
-// import { TextureLoader } from "three/src/loaders/TextureLoader";
+
+import { TextureLoader } from "three/src/loaders/TextureLoader";
 import texture2 from "./textures/texture2.jpg";
 import texture3 from "./textures/texture3.jpg";
 import texture4 from "./textures/batik.jpg";
@@ -20,6 +21,7 @@ const Shirt = ({
   selectedClothing,
   selectedPart,
   setSelectedPart,
+  selectedTexture,
 }) => {
   const snap = useSnapshot(state);
   const { nodes } = useGLTF(selectedClothing.model);
@@ -45,11 +47,11 @@ const Shirt = ({
     <group ref={groupRef}>
       {selectedClothing.myNode.map((nodeName, index) => {
         const color = snap.color[index] || "#ffffff";
-        const texture = snap.texture[index] || null;
+        const texture = snap.texture[index] || null  ;
 
         return (
           <mesh
-            key={index}
+            key={selectedTexture}
             castShadow
             geometry={nodes[nodeName].geometry}
             onClick={() => handlePartClick(index)}
@@ -57,8 +59,8 @@ const Shirt = ({
             <meshStandardMaterial
               attach="material"
               color={color}
+              map={texture && new TextureLoader().load(texture)}
               roughness={1}
-              map={texture}
             />
           </mesh>
         );
@@ -119,9 +121,10 @@ const Configurator = () => {
   
   const handleTextureChange = (newTexture) => {
     state.texture[selectedPart] = newTexture;
-    state.color[selectedPart] = "#ffffff";
+    state.color[selectedPart] = null;
     setSelectedPrintOn(newTexture);
   };
+  
   
 
   const handleRotation = () => {
@@ -246,6 +249,7 @@ const Configurator = () => {
                 isRotating={isRotating}
                 selectedClothing={selectedClothing}
                 selectedPart={selectedPart}
+                selectedTexture={state.texture[selectedPart]}
               />
               <CameraControls /> {/* Add camera controls for interaction */}
             </Canvas>
