@@ -64,7 +64,7 @@ import leggings from "../Pages/Customize/Configurator/models/FemaleClothing/trou
 import dress_model from "../Pages/Customize/Configurator/models/FemaleClothing/shoulder_dress.glb";
 import top_model from "../Pages/Customize/Configurator/models/FemaleClothing/shoulders_top.glb";
 import normal_top_model from "../Pages/Customize/Configurator/models/FemaleClothing/ladies_normal_top.glb";
-import mini_skirt_model from "../Pages/Customize/Configurator/models/FemaleClothing/mini_skirt.glb";
+import mini_skirt_model from "../Pages/Customize/Configurator/models/FemaleClothing/mini_skirt_main.glb";
 import cloak_model from "../Pages/Customize/Configurator/models/FemaleClothing/cloak.glb";
 import topndown_model from "../Pages/Customize/Configurator/models/FemaleClothing/female_topndown_top_down.glb";
 
@@ -149,7 +149,7 @@ export const mainFemaleCustomize = [
     name: "Mini Skirt",
     model: mini_skirt_model,
     image: "https://i.pinimg.com/736x/18/7d/c1/187dc19dca6861408cfd6d824437852e.jpg",
-    myNode: ["bottom_edge", "main_body", "waist"],
+    myNode: ["main_body", "waist"],
     myZoom: 1,
     price: 20,
   },
