@@ -60,8 +60,8 @@ export const mainFootwear = [
     image:
       "https://th.bing.com/th/id/OIP.UMGJguReHwKJtDNEdf5-NQHaHa?pid=ImgDet&rs=1",
     model: heels,
-    myNode: ["all"],
-    myZoom: 1.8,
+    myNode: ["sole","top"],
+    myZoom: 0.6,
     price: 20,
   },
 ];
