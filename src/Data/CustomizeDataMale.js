@@ -100,7 +100,7 @@ export const mainMaleCustomize = [
     image: "https://th.bing.com/th/id/OIP.esHHIbeG0pD-IJjavFbqwQAAAA?pid=ImgDet&rs=1",
     model: shirtModel2,
     myNode: ["back", "buttons", "collar", "front", "left_hand", "left_hand_edge", "midline", "pocket", "right_hand", "right_hand_edge"],
-    myZoom: 6.2,
+    myZoom: 0.8,
     myX: 0,
     myY: 10,
     price: 30
@@ -118,7 +118,7 @@ export const mainMaleCustomize = [
   },
   {
     id: uuid(),
-    name: "Uncategorized",
+    name: "Top",
     image: un3,
     model: cloak,
     myNode: ["all"],
