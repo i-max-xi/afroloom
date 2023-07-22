@@ -3,7 +3,7 @@ import { v4 as uuid } from "uuid";
 // import dress from "../Assets/Customize/dress.jpg";
 import cloak from "../Assets/Customize/cloak.jpg";
 import skirt from "../Assets/Customize/skirt.jpg";
-import femaleTshirt from "../Assets/Customize/femaleTshirt.jpg";
+// import femaleTshirt from "../Assets/Customize/femaleTshirt.jpg";
 import topndown from "../Assets/Customize/female_topndown.png";
 import dress from "../Assets/Customize/dress.png";
 import normal_top from "../Assets/Customize/normal_top.png";
@@ -67,12 +67,16 @@ import normal_top_model from "../Pages/Customize/Configurator/models/FemaleCloth
 import mini_skirt_model from "../Pages/Customize/Configurator/models/FemaleClothing/mini_skirt_main.glb";
 import cloak_model from "../Pages/Customize/Configurator/models/FemaleClothing/cloak.glb";
 import topndown_model from "../Pages/Customize/Configurator/models/FemaleClothing/female_topndown_top_down.glb";
+import blazer from "../Pages/Customize/Configurator/models/FemaleClothing/female_suit_main.glb";
+import extra_long from "../Pages/Customize/Configurator/models/FemaleClothing/female_shirt_extra_long_two.glb";
+import extra_short from "../Pages/Customize/Configurator/models/FemaleClothing/female_shirt_extra_short.glb";
+import booty_shorts from "../Pages/Customize/Configurator/models/FemaleClothing/booty_shorts.glb";
 
 export const mainFemaleCustomize = [
   {
     id: uuid(),
     name: "T-Shirt short",
-    image: femaleTshirt,
+    image: "https://th.bing.com/th/id/OIP.ikUETESsVO_PcDoaCrIQnAHaIw?pid=ImgDet&w=1588&h=1879&rs=1",
     model: t_shirt_short,
     myNode: ["body", "left_hand", "right_hand"],
     myZoom: 0.8,
@@ -87,6 +91,26 @@ export const mainFemaleCustomize = [
     myNode: ["body", "left_hand", "right_hand"],
     myZoom: 0.8,
     price: 20,
+  },
+
+  {
+    id: uuid(),
+    name: "Short Sleeves Shirt",
+    image: "",
+    model: extra_short,
+    myNode: ["back", "collar", "front", "left_hand", "midline", "right_hand"],
+    myZoom: 1,
+    price: 30
+  },
+
+  {
+    id: uuid(),
+    name: "Long Sleeves Shirt",
+    image: "",
+    model: extra_long,
+    myNode: ["back", "collar", "front", "left_hand", "midline", "right_hand"],
+    myZoom: 1,
+    price: 30
   },
 
   {
@@ -128,6 +152,15 @@ export const mainFemaleCustomize = [
   },
   {
     id: uuid(),
+    name: "Blazer",
+    model: blazer,
+    image: "",
+    myNode: ["back", "collar", "front_left", "front_right", "left_hand", "right_hand"],
+    myZoom: 1,
+    price: 20,
+  },
+  {
+    id: uuid(),
     name: "Cloak",
     model: cloak_model,
     image: cloak,
@@ -151,6 +184,15 @@ export const mainFemaleCustomize = [
     image: "https://i.pinimg.com/736x/18/7d/c1/187dc19dca6861408cfd6d824437852e.jpg",
     myNode: ["main_body", "waist"],
     myZoom: 1,
+    price: 20,
+  },
+  {
+    id: uuid(),
+    name: "Booty Shorts",
+    model: booty_shorts,
+    image: "",
+    myNode: ["all"],
+    myZoom: 0.9,
     price: 20,
   },
   {

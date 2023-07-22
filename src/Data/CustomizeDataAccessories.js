@@ -40,7 +40,7 @@ export const mainMaleAccessories = [
     image: h1,
     model: round_cap,
     myNode: ["roundcapp"],
-    myZoom: 5,
+    myZoom: 1,
     price: 20,
   },
 
@@ -58,7 +58,7 @@ export const mainMaleAccessories = [
     name: "Bow Tie",
     image: un1,
     model: bow_tie,
-    myNode: ["corbatin"],
+    myNode: ["all"],
     myZoom: 2,
     price: 20,
   },
