@@ -13,6 +13,7 @@ import s3 from '../Assets/Customize/unisex/sash/3.jpg'
 import backpack_model from "../Pages/Customize/Configurator/models/Accessories/Unisex/backpack.glb";
 import mini_bag_model from "../Pages/Customize/Configurator/models/Accessories/Unisex/mini_bag_handle_main_body.glb";
 import sash_model from "../Pages/Customize/Configurator/models/Accessories/Unisex/sash.glb";
+import jacket from "../Pages/Customize/Configurator/models/Accessories/Unisex/jacket_main.glb";
 
 
 export const mainUnisex = [
@@ -42,6 +43,15 @@ export const mainUnisex = [
     model: backpack_model,
     myNode: ["all"],
     myZoom: 0.8,
+    price: 55,
+  },
+  {
+    id: uuid(),
+    name: "Jacket",
+    image: "",
+    model: jacket,
+    myNode: ["body", "collar", "left_hand", "left_hand_cuff", "right_hand", "right_hand_cuff"],
+    myZoom: 1,
     price: 55,
   },
 ];

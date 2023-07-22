@@ -67,6 +67,9 @@ import normal_top_model from "../Pages/Customize/Configurator/models/FemaleCloth
 import mini_skirt_model from "../Pages/Customize/Configurator/models/FemaleClothing/mini_skirt_main.glb";
 import cloak_model from "../Pages/Customize/Configurator/models/FemaleClothing/cloak.glb";
 import topndown_model from "../Pages/Customize/Configurator/models/FemaleClothing/female_topndown_top_down.glb";
+import blazer from "../Pages/Customize/Configurator/models/FemaleClothing/female_suit.glb";
+import extra_long from "../Pages/Customize/Configurator/models/FemaleClothing/female_shirt_extra_long_two.glb";
+import extra_short from "../Pages/Customize/Configurator/models/FemaleClothing/female_shirt_extra_short.glb";
 
 export const mainFemaleCustomize = [
   {
@@ -87,6 +90,26 @@ export const mainFemaleCustomize = [
     myNode: ["body", "left_hand", "right_hand"],
     myZoom: 0.8,
     price: 20,
+  },
+
+  {
+    id: uuid(),
+    name: "Short Sleeves Shirt",
+    image: "",
+    model: extra_short,
+    myNode: ["back", "collar", "front", "left_hand", "midline", "right_hand"],
+    myZoom: 1,
+    price: 30
+  },
+
+  {
+    id: uuid(),
+    name: "Long Sleeves Shirt",
+    image: "",
+    model: extra_long,
+    myNode: ["back", "collar", "front", "left_hand", "midline", "right_hand"],
+    myZoom: 1,
+    price: 30
   },
 
   {
@@ -124,6 +147,15 @@ export const mainFemaleCustomize = [
     image: dress,
     myNode: ["all"],
     myZoom: 0.7,
+    price: 20,
+  },
+  {
+    id: uuid(),
+    name: "Blazer",
+    model: blazer,
+    image: "",
+    myNode: ["back", "collar", "front_left", "front_right", "left_hand", "right_hand"],
+    myZoom: 1,
     price: 20,
   },
   {
