@@ -1,6 +1,6 @@
 import { v4 as uuid } from 'uuid';
 
-import tshirt from "../Assets/Customize/Tshirt.jpg";
+// import tshirt from "../Assets/Customize/Tshirt.jpg";
 import shirt from "../Assets/Customize/shirt.jpg";
 
 
@@ -65,7 +65,7 @@ export const mainMaleCustomize = [
   {
     id: uuid(),
     name: "T-Shirt",
-    image: tshirt,
+    image: "https://a5e8126a499f8a963166-f72e9078d72b8c998606fd6e0319b679.ssl.cf5.rackcdn.com/images/variant/large/next-level_3600_black.jpg",
     model: tshirtModel1,
     myNode: ["back", "collar", "front", "left_hand", "right_hand"],
     myZoom: 0.6,
@@ -132,7 +132,7 @@ export const mainMaleCustomize = [
     id: uuid(),
     name: "Blazer",
     model: blazer,
-    image: "",
+    image: "https://www.flannels.com/images/products/32066803_h.jpg",
     myNode: ["back", "collar", "front_left", "front_right", "left_hand", "right_hand"],
     myZoom: 1,
     price: 20,

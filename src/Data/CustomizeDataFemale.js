@@ -3,7 +3,7 @@ import { v4 as uuid } from "uuid";
 // import dress from "../Assets/Customize/dress.jpg";
 import cloak from "../Assets/Customize/cloak.jpg";
 import skirt from "../Assets/Customize/skirt.jpg";
-import femaleTshirt from "../Assets/Customize/femaleTshirt.jpg";
+// import femaleTshirt from "../Assets/Customize/femaleTshirt.jpg";
 import topndown from "../Assets/Customize/female_topndown.png";
 import dress from "../Assets/Customize/dress.png";
 import normal_top from "../Assets/Customize/normal_top.png";
@@ -76,7 +76,7 @@ export const mainFemaleCustomize = [
   {
     id: uuid(),
     name: "T-Shirt short",
-    image: femaleTshirt,
+    image: "https://th.bing.com/th/id/OIP.ikUETESsVO_PcDoaCrIQnAHaIw?pid=ImgDet&w=1588&h=1879&rs=1",
     model: t_shirt_short,
     myNode: ["body", "left_hand", "right_hand"],
     myZoom: 0.8,
