@@ -59,6 +59,7 @@ import material_shorts from '../Pages/Customize/Configurator/models/MaleClothing
 import summer_shorts from '../Pages/Customize/Configurator/models/MaleClothing/summer_shorts.glb';
 import cloak from '../Pages/Customize/Configurator/models/MaleClothing/cloak.glb';
 import topndown_model from '../Pages/Customize/Configurator/models/MaleClothing/male_topndown.glb';
+import blazer from '../Pages/Customize/Configurator/models/MaleClothing/male_suit.glb';
 
 export const mainMaleCustomize = [
   {
@@ -126,6 +127,15 @@ export const mainMaleCustomize = [
     myX: 0,
     myY: 10,
     price: 35
+  },
+  {
+    id: uuid(),
+    name: "Blazer",
+    model: blazer,
+    image: "",
+    myNode: ["back", "collar", "front_left", "front_right", "left_hand", "right_hand"],
+    myZoom: 1,
+    price: 20,
   },
   {
     id: uuid(),

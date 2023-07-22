@@ -67,9 +67,10 @@ import normal_top_model from "../Pages/Customize/Configurator/models/FemaleCloth
 import mini_skirt_model from "../Pages/Customize/Configurator/models/FemaleClothing/mini_skirt_main.glb";
 import cloak_model from "../Pages/Customize/Configurator/models/FemaleClothing/cloak.glb";
 import topndown_model from "../Pages/Customize/Configurator/models/FemaleClothing/female_topndown_top_down.glb";
-import blazer from "../Pages/Customize/Configurator/models/FemaleClothing/female_suit.glb";
+import blazer from "../Pages/Customize/Configurator/models/FemaleClothing/female_suit_main.glb";
 import extra_long from "../Pages/Customize/Configurator/models/FemaleClothing/female_shirt_extra_long_two.glb";
 import extra_short from "../Pages/Customize/Configurator/models/FemaleClothing/female_shirt_extra_short.glb";
+import booty_shorts from "../Pages/Customize/Configurator/models/FemaleClothing/booty_shorts.glb";
 
 export const mainFemaleCustomize = [
   {
@@ -183,6 +184,15 @@ export const mainFemaleCustomize = [
     image: "https://i.pinimg.com/736x/18/7d/c1/187dc19dca6861408cfd6d824437852e.jpg",
     myNode: ["main_body", "waist"],
     myZoom: 1,
+    price: 20,
+  },
+  {
+    id: uuid(),
+    name: "Booty Shorts",
+    model: booty_shorts,
+    image: "",
+    myNode: ["all"],
+    myZoom: 0.9,
     price: 20,
   },
   {

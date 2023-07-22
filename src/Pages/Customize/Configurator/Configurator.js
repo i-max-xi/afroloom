@@ -8,6 +8,8 @@ import { TextureLoader } from "three/src/loaders/TextureLoader";
 import texture2 from "./textures/texture2.jpg";
 import texture3 from "./textures/texture3.jpg";
 import texture4 from "./textures/batik.jpg";
+// import texture5 from "./textures/gye_nyame.png";
+
 
 // import whiteTexture from "./textures/whitetxture.jpg";
 import kente from "./textures/kente.jpg";
@@ -236,6 +238,15 @@ const Configurator = () => {
                 }`}
                 onClick={() => handleTextureChange(texture4)}
               />
+              {/* <img
+                src={texture5}
+                alt="texture4"
+                width="30rem"
+                className={`texture-button texture-2 ${
+                  selectedPrintOn === texture5 ? "selected-border" : ""
+                }`}
+                onClick={() => handleTextureChange(texture5)}
+              /> */}
             </div>
           </div>
 
