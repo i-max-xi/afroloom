@@ -9,6 +9,8 @@ import s1 from '../Assets/Customize/unisex/sash/1.jpg'
 import s2 from '../Assets/Customize/unisex/sash/2.jpg'
 import s3 from '../Assets/Customize/unisex/sash/3.jpg'
 
+import jacket_img from '../Assets/Customize/jacket.jpg'
+
 //models 
 import backpack_model from "../Pages/Customize/Configurator/models/Accessories/Unisex/backpack.glb";
 import mini_bag_model from "../Pages/Customize/Configurator/models/Accessories/Unisex/mini_bag_handle_main_body.glb";
@@ -48,7 +50,7 @@ export const mainUnisex = [
   {
     id: uuid(),
     name: "Jacket",
-    image: "",
+    image: jacket_img,
     model: jacket,
     myNode: ["body", "collar", "left_hand", "left_hand_cuff", "right_hand", "right_hand_cuff"],
     myZoom: 1,

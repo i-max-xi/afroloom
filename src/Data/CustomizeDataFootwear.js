@@ -41,8 +41,8 @@ export const mainFootwear = [
     image:
       "https://th.bing.com/th/id/R.ed02939b666f5978946b4b104022f5ee?rik=N3Ja0bD%2boLeYgw&pid=ImgRaw&r=0",
     model: sneaker_model,
-    myNode: ["sole", "main_body", "laces"],
-    myZoom: 0.7,
+    myNode: ["lace", "main_body", "sole"],
+    myZoom: 0.6,
     price: 20,
     },
   {

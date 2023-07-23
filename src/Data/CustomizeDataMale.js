@@ -52,6 +52,7 @@ import topndown from "../Assets/Customize/topanddown.jpg";
 
 // model imports
 import tshirtModel1 from '../Pages/Customize/Configurator/models/MaleClothing/tshirt_main.glb';
+import tshirtModel2 from '../Pages/Customize/Configurator/models/MaleClothing/tshirt_long_best.glb';
 import shirtModel1 from '../Pages/Customize/Configurator/models/MaleClothing/short_sleeves_main.glb';
 import shirtModel2 from '../Pages/Customize/Configurator/models/MaleClothing/long_sleeves_main_two.glb';
 import trousersModel1 from '../Pages/Customize/Configurator/models/MaleClothing/male_trousers_better.glb';
@@ -77,7 +78,7 @@ export const mainMaleCustomize = [
     id: uuid(),
     name: "T-Shirt Long",
     image: "https://th.bing.com/th/id/R.090a143032d299d58a1f61c13fdb5224?rik=3IvQRj1AFgeS5A&riu=http%3a%2f%2fmemorythreads.com.au%2fwp-content%2fuploads%2f2015%2f03%2fgrey-marle-longsleeve1.jpg&ehk=mYL6G88axiyKbyZamMLyXt0FEL95o7%2bLvLOeBlxULno%3d&risl=&pid=ImgRaw&r=0",
-    model: tshirtModel1,
+    model: tshirtModel2,
     myNode: ["all"],
     myZoom: 1,
     myX: 0,
