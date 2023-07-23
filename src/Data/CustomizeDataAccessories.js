@@ -67,7 +67,7 @@ export const mainMaleAccessories = [
     name: "Flying Tie",
     image: un2,
     model: tie,
-    myNode: ["Tie"],
+    myNode: ["all"],
     myZoom: 0.6,
     price: 20,
   },

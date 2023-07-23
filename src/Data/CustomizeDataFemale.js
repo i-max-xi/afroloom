@@ -7,6 +7,10 @@ import skirt from "../Assets/Customize/skirt.jpg";
 import topndown from "../Assets/Customize/female_topndown.png";
 import dress from "../Assets/Customize/dress.png";
 import normal_top from "../Assets/Customize/normal_top.png";
+import extra_short_img from "../Assets/Customize/female_short_shirt.jpg";
+import extra_long_img from "../Assets/Customize/femlae_long_shirt.jpg";
+import booty_shorts_img from "../Assets/Customize/booty_shorts.jpg";
+import female_suit_img from "../Assets/Customize/femlae_suit.jpg";
 
 
 
@@ -96,20 +100,20 @@ export const mainFemaleCustomize = [
   {
     id: uuid(),
     name: "Short Sleeves Shirt",
-    image: "",
+    image: extra_short_img,
     model: extra_short,
     myNode: ["back", "collar", "front", "left_hand", "midline", "right_hand"],
-    myZoom: 1,
+    myZoom: 0.7,
     price: 30
   },
 
   {
     id: uuid(),
     name: "Long Sleeves Shirt",
-    image: "",
+    image: extra_long_img,
     model: extra_long,
     myNode: ["back", "collar", "front", "left_hand", "midline", "right_hand"],
-    myZoom: 1,
+    myZoom: 0.8,
     price: 30
   },
 
@@ -128,8 +132,8 @@ export const mainFemaleCustomize = [
     name: "Normal Top",
     image: normal_top,
     model: normal_top_model,
-    myNode: ["body", "left_hand", "right_hand"],
-    myZoom: 1,
+    myNode: ["all"],
+    myZoom: 0.7,
     price: 20,
   },
   {
@@ -154,7 +158,7 @@ export const mainFemaleCustomize = [
     id: uuid(),
     name: "Blazer",
     model: blazer,
-    image: "",
+    image: female_suit_img,
     myNode: ["back", "collar", "front_left", "front_right", "left_hand", "right_hand"],
     myZoom: 1,
     price: 20,
@@ -190,7 +194,7 @@ export const mainFemaleCustomize = [
     id: uuid(),
     name: "Booty Shorts",
     model: booty_shorts,
-    image: "",
+    image: booty_shorts_img,
     myNode: ["all"],
     myZoom: 0.9,
     price: 20,
