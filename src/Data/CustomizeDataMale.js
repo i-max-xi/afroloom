@@ -2,6 +2,8 @@ import { v4 as uuid } from 'uuid';
 
 // import tshirt from "../Assets/Customize/Tshirt.jpg";
 import shirt from "../Assets/Customize/shirt.jpg";
+import flare_shirt from "../Assets/Customize/flare_shirt.png";
+
 
 
 // tshirts
@@ -121,7 +123,7 @@ export const mainMaleCustomize = [
   {
     id: uuid(),
     name: "Top",
-    image: un3,
+    image: flare_shirt,
     model: cloak,
     myNode: ["all"],
     myZoom: 0.7,

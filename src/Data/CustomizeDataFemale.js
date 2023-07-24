@@ -196,7 +196,7 @@ export const mainFemaleCustomize = [
     model: booty_shorts,
     image: booty_shorts_img,
     myNode: ["all"],
-    myZoom: 0.9,
+    myZoom: 0.6,
     price: 20,
   },
   {
@@ -212,8 +212,9 @@ export const mainFemaleCustomize = [
     id: uuid(),
     name: "Leggings",
     model: leggings,
-    image:
-      "https://cdna.lystit.com/photos/yoox/0a0e7406/vero-moda-Black-Casual-Pants.jpeg",
+    image: "https://i5.walmartimages.com/asr/8f17c018-a54f-403f-bda5-6b726d940ff6.38077f69b4dc21dbee1253fd234148ff.jpeg?odnHeight=612&odnWidth=612&odnBg=FFFFFF",
+    // image:
+    //   "https://cdna.lystit.com/photos/yoox/0a0e7406/vero-moda-Black-Casual-Pants.jpeg",
     myNode: ["all"],
     myZoom: 0.8,
     price: 20,
