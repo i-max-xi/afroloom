@@ -9,6 +9,8 @@ import s3 from "../Assets/Customize/footwear/sneaker/3.jpg";
 import sl1 from "../Assets/Customize/footwear/slippers/1.jpg";
 import sl2 from "../Assets/Customize/footwear/slippers/2.jpg";
 import sl3 from "../Assets/Customize/footwear/slippers/3.jpg";
+// import slipper_img from "../Assets/Customize/slippers.png";
+
 
 //heels
 import h1 from "../Assets/Customize/footwear/heels/1.jpg";
@@ -48,7 +50,7 @@ export const mainFootwear = [
   {
     id: uuid(),
     name: "Slipper",
-    image: sl1,
+    image: "https://th.bing.com/th/id/OIP.5gl1niRXNH5qhTxWLH4ybQHaHa?pid=ImgDet&w=1000&h=1000&rs=1",
     model: slippers,
     myNode: ["bottom", "top", "sole"],
     myZoom: 0.1,

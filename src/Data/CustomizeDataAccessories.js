@@ -56,7 +56,7 @@ export const mainMaleAccessories = [
 
   {
     name: "Bow Tie",
-    image: un1,
+    image: "https://th.bing.com/th/id/OIP.9hwERmR98yWFEa-sH29WIAAAAA?pid=ImgDet&w=400&h=400&rs=1",
     model: bow_tie,
     myNode: ["all"],
     myZoom: 2,
