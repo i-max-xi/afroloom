@@ -52,8 +52,8 @@ export const mainFootwear = [
     name: "Slipper",
     image: "https://th.bing.com/th/id/OIP.5gl1niRXNH5qhTxWLH4ybQHaHa?pid=ImgDet&w=1000&h=1000&rs=1",
     model: slippers,
-    myNode: ["bottom", "top", "sole"],
-    myZoom: 0.1,
+    myNode: ["padding", "sole", "top"],
+    myZoom: 0.6,
     price: 20,
   },
   {
