@@ -43,7 +43,7 @@ export const mainUnisex = [
     name: "Backpack",
     image: "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/5286/5286137cv12d.jpg",
     model: backpack_model,
-    myNode: ["all"],
+    myNode: ["left_handle", "main_body", "right_handle"],
     myZoom: 0.8,
     price: 55,
   },
