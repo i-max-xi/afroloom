@@ -39,8 +39,8 @@ export const mainMaleAccessories = [
     name: "Round Cap",
     image: h1,
     model: round_cap,
-    myNode: ["roundcapp"],
-    myZoom: 1,
+    myNode: ["all"],
+    myZoom: 0.5,
     price: 20,
   },
 
