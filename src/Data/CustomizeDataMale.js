@@ -114,10 +114,8 @@ export const mainMaleCustomize = [
     name: "Top & Down",
     image: topndown,
     model: topndown_model,
-    myNode: ["all", "back", "collar", "front", "hands", "midline"],
-    myZoom: 1,
-    myX: 0,
-    myY: 10,
+    myNode: ["back", "collar", "front", "hands", "midline", "trouser", ],
+    myZoom: 0.6,
     price: 55
   },
   {
@@ -147,9 +145,7 @@ export const mainMaleCustomize = [
       "https://th.bing.com/th/id/OIP.tnXk8QDidx4JKGKhl6IU0wHaJQ?pid=ImgDet&rs=1",
     model: trousersModel1,
     myNode: ["all"],
-    myZoom: 6,
-    myX: 0,
-    myY: 10,
+    myZoom: 0.7,
     price: 22
     },
   {

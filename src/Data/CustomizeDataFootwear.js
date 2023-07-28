@@ -53,7 +53,7 @@ export const mainFootwear = [
     image: "https://th.bing.com/th/id/OIP.5gl1niRXNH5qhTxWLH4ybQHaHa?pid=ImgDet&w=1000&h=1000&rs=1",
     model: slippers,
     myNode: ["padding", "sole", "top"],
-    myZoom: 0.6,
+    myZoom: 1,
     price: 20,
   },
   {
