@@ -133,7 +133,7 @@ export const mainFemaleCustomize = [
     image: normal_top,
     model: normal_top_model,
     myNode: ["all"],
-    myZoom: 0.7,
+    myZoom: 0.8,
     price: 20,
   },
   {
