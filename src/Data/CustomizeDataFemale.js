@@ -133,7 +133,7 @@ export const mainFemaleCustomize = [
     image: normal_top,
     model: normal_top_model,
     myNode: ["all"],
-    myZoom: 0.7,
+    myZoom: 0.8,
     price: 20,
   },
   {
@@ -186,7 +186,7 @@ export const mainFemaleCustomize = [
     name: "Mini Skirt",
     model: mini_skirt_model,
     image: "https://i.pinimg.com/736x/18/7d/c1/187dc19dca6861408cfd6d824437852e.jpg",
-    myNode: ["main_body", "waist"],
+    myNode: ["all"],
     myZoom: 1,
     price: 20,
   },

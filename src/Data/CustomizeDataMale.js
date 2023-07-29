@@ -81,10 +81,8 @@ export const mainMaleCustomize = [
     name: "T-Shirt Long",
     image: "https://th.bing.com/th/id/R.090a143032d299d58a1f61c13fdb5224?rik=3IvQRj1AFgeS5A&riu=http%3a%2f%2fmemorythreads.com.au%2fwp-content%2fuploads%2f2015%2f03%2fgrey-marle-longsleeve1.jpg&ehk=mYL6G88axiyKbyZamMLyXt0FEL95o7%2bLvLOeBlxULno%3d&risl=&pid=ImgRaw&r=0",
     model: tshirtModel2,
-    myNode: ["all"],
-    myZoom: 1,
-    myX: 0,
-    myY: 10,
+    myNode: ["body", "left_hand", "right_hand"],
+    myZoom: 0.6,
     price: 20,
   },
   {
