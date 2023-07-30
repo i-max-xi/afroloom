@@ -205,9 +205,51 @@ const ConfiguratorMaleAccessories = () => {
     onClick={() => handleColorChange("#00ff00")}
   ></button>
   <button
-    className={`color-button blue ${selectedPrintOn === "#0000ff" ? "selected-border" : ""}`}
-    onClick={() => handleColorChange("#0000ff")}
-  ></button>
+                className={`color-button blue ${
+                  selectedPrintOn === "#0000ff" ? "selected-border" : ""
+                }`}
+                onClick={() => handleColorChange("#0000ff")}
+              ></button>
+              <button
+                className={`color-button seablue ${
+                  selectedPrintOn === "#87ceeb" ? "selected-border" : ""
+                }`}
+                onClick={() => handleColorChange("#87ceeb")}
+              ></button>
+              <button
+  className={`color-button coral ${
+    selectedPrintOn === "#ff7f50" ? "selected-border" : ""
+  }`}
+  onClick={() => handleColorChange("#ff7f50")}
+></button>
+
+<button
+  className={`color-button teal ${
+    selectedPrintOn === "#008080" ? "selected-border" : ""
+  }`}
+  onClick={() => handleColorChange("#008080")}
+></button>
+
+<button
+  className={`color-button olive ${
+    selectedPrintOn === "#808000" ? "selected-border" : ""
+  }`}
+  onClick={() => handleColorChange("#808000")}
+></button>
+
+<button
+  className={`color-button mauve ${
+    selectedPrintOn === "#e0b0ff" ? "selected-border" : ""
+  }`}
+  onClick={() => handleColorChange("#e0b0ff")}
+></button>
+
+<button
+  className={`color-button silver ${
+    selectedPrintOn === "#c0c0c0" ? "selected-border" : ""
+  }`}
+  onClick={() => handleColorChange("#c0c0c0")}
+></button>
   <button
     className={`color-button black ${selectedPrintOn === "#000000" ? "selected-border" : ""}`}
     onClick={() => handleColorChange("#000000")}
