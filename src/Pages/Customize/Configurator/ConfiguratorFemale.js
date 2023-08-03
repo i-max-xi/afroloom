@@ -29,7 +29,6 @@ import waxPrint3 from "./textures/waxPrint3.jpg";
 import waxPrint4 from "./textures/waxPrint4.jpg";
 import waxPrint5 from "./textures/waxPrint5.jpg";
 
-
 // import smock1 from "./textures/smock1.jpg";
 // import smock2 from "./textures/smock2.jpg";
 // import smock3 from "./textures/smock3.jpg";
@@ -221,39 +220,39 @@ const ConfiguratorFemale = () => {
                 onClick={() => handleColorChange("#87ceeb")}
               ></button>
               <button
-  className={`color-button coral ${
-    selectedPrintOn === "#ff7f50" ? "selected-border" : ""
-  }`}
-  onClick={() => handleColorChange("#ff7f50")}
-></button>
+                className={`color-button coral ${
+                  selectedPrintOn === "#ff7f50" ? "selected-border" : ""
+                }`}
+                onClick={() => handleColorChange("#ff7f50")}
+              ></button>
 
-<button
-  className={`color-button teal ${
-    selectedPrintOn === "#008080" ? "selected-border" : ""
-  }`}
-  onClick={() => handleColorChange("#008080")}
-></button>
+              <button
+                className={`color-button teal ${
+                  selectedPrintOn === "#008080" ? "selected-border" : ""
+                }`}
+                onClick={() => handleColorChange("#008080")}
+              ></button>
 
-<button
-  className={`color-button olive ${
-    selectedPrintOn === "#808000" ? "selected-border" : ""
-  }`}
-  onClick={() => handleColorChange("#808000")}
-></button>
+              <button
+                className={`color-button olive ${
+                  selectedPrintOn === "#808000" ? "selected-border" : ""
+                }`}
+                onClick={() => handleColorChange("#808000")}
+              ></button>
 
-<button
-  className={`color-button mauve ${
-    selectedPrintOn === "#e0b0ff" ? "selected-border" : ""
-  }`}
-  onClick={() => handleColorChange("#e0b0ff")}
-></button>
+              <button
+                className={`color-button mauve ${
+                  selectedPrintOn === "#e0b0ff" ? "selected-border" : ""
+                }`}
+                onClick={() => handleColorChange("#e0b0ff")}
+              ></button>
 
-<button
-  className={`color-button silver ${
-    selectedPrintOn === "#c0c0c0" ? "selected-border" : ""
-  }`}
-  onClick={() => handleColorChange("#c0c0c0")}
-></button>
+              <button
+                className={`color-button silver ${
+                  selectedPrintOn === "#c0c0c0" ? "selected-border" : ""
+                }`}
+                onClick={() => handleColorChange("#c0c0c0")}
+              ></button>
               <button
                 className={`color-button black ${
                   selectedPrintOn === "#000000" ? "selected-border" : ""
@@ -317,7 +316,9 @@ const ConfiguratorFemale = () => {
               {/* Add more colors here */}
             </div>
             <h5>Choose Textile</h5> {/* Add heading for textures */}
-          <div className="texture-buttons-container">
+            <div className="texture-buttons-container">
+  
+<div className="d-flex justify-content-between w-100">
   <div>
     <h3>Batik</h3>
     <img
@@ -396,6 +397,9 @@ const ConfiguratorFemale = () => {
     />
   </div>
 
+  </div>
+
+  <div className="d-flex justify-content-between w-100">
   <div>
     <h3>Kente</h3>
     <img
@@ -473,7 +477,10 @@ const ConfiguratorFemale = () => {
       onClick={() => handleTextureChange(waxPrint5)}
     />
   </div>
+  </div>
 
+
+  <div className="d-flex justify-content-between w-100">
   <div>
     <h3>Smock</h3>
      {/* <img
@@ -512,8 +519,8 @@ const ConfiguratorFemale = () => {
       onClick={() => handleTextureChange(smock5)}
     /> */}
   </div>
+  </div>
 </div>
-
           </div>
 
           <div className="right-panel border-left">

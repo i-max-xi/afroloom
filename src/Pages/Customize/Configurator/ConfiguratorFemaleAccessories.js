@@ -294,7 +294,9 @@ const ConfiguratorFemaleAccessories = () => {
 </div>
 
             <h5>Choose Textile</h5> {/* Add heading for textures */}
-       <div className="texture-buttons-container">
+      <div className="texture-buttons-container">
+  
+<div className="d-flex justify-content-between w-100">
   <div>
     <h3>Batik</h3>
     <img
@@ -373,6 +375,9 @@ const ConfiguratorFemaleAccessories = () => {
     />
   </div>
 
+  </div>
+
+  <div className="d-flex justify-content-between w-100">
   <div>
     <h3>Kente</h3>
     <img
@@ -450,7 +455,10 @@ const ConfiguratorFemaleAccessories = () => {
       onClick={() => handleTextureChange(waxPrint5)}
     />
   </div>
+  </div>
 
+
+  <div className="d-flex justify-content-between w-100">
   <div>
     <h3>Smock</h3>
      {/* <img
@@ -488,6 +496,7 @@ const ConfiguratorFemaleAccessories = () => {
       className={`texture-button texture-2 ${selectedPrintOn === smock5 ? "selected-border" : ""}`}
       onClick={() => handleTextureChange(smock5)}
     /> */}
+  </div>
   </div>
 </div>
 
