@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { useGLTF, OrbitControls } from "@react-three/drei";
 import { useSnapshot } from "valtio";
@@ -104,6 +104,11 @@ const CameraControls = () => {
 };
 
 const ConfiguratorFemale = () => {
+
+  useEffect(() => {
+    window.scrollTo(0,0);
+  }, [])
+
   const { Id } = useParams();
   const selectedClothing = mainFemaleCustomize.find((item) => item.name === Id);
 

@@ -132,7 +132,7 @@ export const mainFemaleCustomize = [
     name: "Normal Top",
     image: normal_top,
     model: normal_top_model,
-    myNode: ["left_hand", "mid_section", "right_hand", "right_hand", "shoulder_edge"],
+    myNode: ["body", "left_hand", "right_hand_edge", "right_hand", "right_hand_edge", "shoulder_edge"],
     myZoom: 0.8,
     price: 20,
   },
