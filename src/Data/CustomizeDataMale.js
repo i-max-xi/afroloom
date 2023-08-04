@@ -163,7 +163,7 @@ export const mainMaleCustomize = [
     image: "https://th.bing.com/th/id/OIP.A9xUqEvW0ADXy3nKfNyxKwHaJZ?pid=ImgDet&w=481&h=610&rs=1",
     model: material_shorts,
     myNode: ["left_leg", "left_leg_edge", "left_pocket", "right_leg", "right_leg_edge", "right_pocket", "waist"],
-    myZoom: 0.7,
+    myZoom: 0.8,
     myX: 0,
     myY: 10,
     price: 30
