@@ -88,8 +88,8 @@ export const mainFemaleAccessories = [
     name: "Bikini",
     image: bikini_img,
     model: bikini,
-    myNode: ["top", "down"],
-    myZoom: 0.7,
+    myNode: ["top", "bottom"],
+    myZoom: 1.1,
     price: 55,
   },
 ];

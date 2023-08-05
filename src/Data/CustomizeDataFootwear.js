@@ -33,7 +33,7 @@ export const mainFootwear = [
     name: "Flat Shoe",
     image: s2,
     model: flex_shoe,
-    myNode: ["flat_shoe"],
+    myNode: ["back", "front", "sole"],
     myZoom: 1,
     price: 20,
     },
