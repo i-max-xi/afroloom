@@ -92,8 +92,8 @@ export const mainFemaleCustomize = [
     name: "T-Shirt long",
     image: "https://images.bloomingdalesassets.com/is/image/BLM/products/0/optimized/10183950_fpx.tif?$filterlrg$&wid=327",
     model: t_shirt_long,
-    myNode: ["collar", "left_hand", "left_hand", "mid_bottom", "mid_stripe", "mid_top", "right_hand", "right_hand"],
-    myZoom: 0.8,
+    myNode: ["bottom", "collar", "left_hand", "left_hand_cuff", "right_hand", "right_hand_cuff", "stripe", "top"],
+    myZoom: 1,
     price: 20,
   },
 
