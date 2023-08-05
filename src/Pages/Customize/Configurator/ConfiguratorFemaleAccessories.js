@@ -30,11 +30,28 @@ import waxPrint4 from "./textures/waxPrint4.jpg";
 import waxPrint5 from "./textures/waxPrint5.jpg";
 
 
-// import smock1 from "./textures/smock1.jpg";
-// import smock2 from "./textures/smock2.jpg";
-// import smock3 from "./textures/smock3.jpg";
-// import smock4 from "./textures/smock4.jpg";
+import smock1 from "./textures/smock1.jpg";
+import smock2 from "./textures/smock2.jpg";
+import smock3 from "./textures/smock3.jpg";
+import smock4 from "./textures/smock4.jpeg";
 // import smock5 from "./textures/smock5.jpg";
+
+import lace1 from "./textures/lace1.jpg";
+import lace2 from "./textures/lace2.jpg";
+import lace3 from "./textures/lace3.jpg";
+import lace4 from "./textures/lace4.jpg";
+import lace5 from "./textures/lace5.jpg";
+
+import s_fabric1 from "./textures/suit_fabric1.jpeg";
+import s_fabric2 from "./textures/suit_fabric2.jpg";
+import s_fabric3 from "./textures/suit_fabric3.jpg";
+import s_fabric4 from "./textures/suit_fabric4.jpg";
+import s_fabric5 from "./textures/suit_fabric5.jpg";
+
+import p_kente1 from "./textures/p_kente1.jpg";
+import p_kente2 from "./textures/p_kente2.jpg";
+import p_kente3 from "./textures/p_kente3.jpg";
+import p_kente4 from "./textures/p_kente4.jpg";
 
 import Nav from "../../../Components/Nav";
 import "./styles.css";
@@ -298,211 +315,328 @@ const ConfiguratorFemaleAccessories = () => {
 </div>
 
             <h5>Choose Textile</h5> {/* Add heading for textures */}
-      <div className="texture-buttons-container">
+            <div className="texture-buttons-container">
   
-<div className="d-flex justify-content-between w-100">
-  <div>
-    <h3>Batik</h3>
-    <img
-      src={batik1}
-      alt="Batik 1"
-      width="25rem"
-      className={`texture-button texture-1 ${selectedPrintOn === batik1 ? "selected-border" : ""}`}
-      onClick={() => handleTextureChange(batik1)}
-    />
-    <img
-      src={batik2}
-      alt="Batik 2"
-      width="25rem"
-      className={`texture-button texture-1 ${selectedPrintOn === batik2 ? "selected-border" : ""}`}
-      onClick={() => handleTextureChange(batik2)}
-    />
-    <img
-      src={batik3}
-      alt="Batik 3"
-      width="25rem"
-      className={`texture-button texture-1 ${selectedPrintOn === batik3 ? "selected-border" : ""}`}
-      onClick={() => handleTextureChange(batik3)}
-    />
-    <img
-      src={batik4}
-      alt="Batik 4"
-      width="25rem"
-      className={`texture-button texture-1 ${selectedPrintOn === batik4 ? "selected-border" : ""}`}
-      onClick={() => handleTextureChange(batik4)}
-    />
-    <img
-      src={batik5}
-      alt="Batik 5"
-      width="25rem"
-      className={`texture-button texture-1 ${selectedPrintOn === batik5 ? "selected-border" : ""}`}
-      onClick={() => handleTextureChange(batik5)}
-    />
-  </div>
-
-  <div>
-    <h3>Dashiki</h3>
-    <img
-      src={dashiki1}
-      alt="Dashiki 1"
-      width="25rem"
-      className={`texture-button texture-2 ${selectedPrintOn === dashiki1 ? "selected-border" : ""}`}
-      onClick={() => handleTextureChange(dashiki1)}
-    />
-    <img
-      src={dashiki2}
-      alt="Dashiki 2"
-      width="25rem"
-      className={`texture-button texture-2 ${selectedPrintOn === dashiki2 ? "selected-border" : ""}`}
-      onClick={() => handleTextureChange(dashiki2)}
-    />
-    <img
-      src={dashiki3}
-      alt="Dashiki 3"
-      width="25rem"
-      className={`texture-button texture-2 ${selectedPrintOn === dashiki3 ? "selected-border" : ""}`}
-      onClick={() => handleTextureChange(dashiki3)}
-    />
-    <img
-      src={dashiki4}
-      alt="Dashiki 4"
-      width="25rem"
-      className={`texture-button texture-2 ${selectedPrintOn === dashiki4 ? "selected-border" : ""}`}
-      onClick={() => handleTextureChange(dashiki4)}
-    />
-    <img
-      src={dashiki5}
-      alt="Dashiki 5"
-      width="25rem"
-      className={`texture-button texture-2 ${selectedPrintOn === dashiki5 ? "selected-border" : ""}`}
-      onClick={() => handleTextureChange(dashiki5)}
-    />
-  </div>
-
-  </div>
-
   <div className="d-flex justify-content-between w-100">
-  <div>
-    <h3>Kente</h3>
-    <img
-      src={kente1}
-      alt="Kente 1"
-      width="25rem"
-      className={`texture-button texture-2 ${selectedPrintOn === kente1 ? "selected-border" : ""}`}
-      onClick={() => handleTextureChange(kente1)}
-    />
-    <img
-      src={kente2}
-      alt="Kente 2"
-      width="25rem"
-      className={`texture-button texture-2 ${selectedPrintOn === kente2 ? "selected-border" : ""}`}
-      onClick={() => handleTextureChange(kente2)}
-    />
-    <img
-      src={kente3}
-      alt="Kente 3"
-      width="25rem"
-      className={`texture-button texture-2 ${selectedPrintOn === kente3 ? "selected-border" : ""}`}
-      onClick={() => handleTextureChange(kente3)}
-    />
-    <img
-      src={kente4}
-      alt="Kente 4"
-      width="25rem"
-      className={`texture-button texture-2 ${selectedPrintOn === kente4 ? "selected-border" : ""}`}
-      onClick={() => handleTextureChange(kente4)}
-    />
-    <img
-      src={kente5}
-      alt="Kente 5"
-      width="25rem"
-      className={`texture-button texture-2 ${selectedPrintOn === kente5 ? "selected-border" : ""}`}
-      onClick={() => handleTextureChange(kente5)}
-    />
+    <div>
+      <h3>Batik</h3>
+      <img
+        src={batik1}
+        alt="Batik 1"
+        width="25rem"
+        className={`texture-button texture-1 ${selectedPrintOn === batik1 ? "selected-border" : ""}`}
+        onClick={() => handleTextureChange(batik1)}
+      />
+      <img
+        src={batik2}
+        alt="Batik 2"
+        width="25rem"
+        className={`texture-button texture-1 ${selectedPrintOn === batik2 ? "selected-border" : ""}`}
+        onClick={() => handleTextureChange(batik2)}
+      />
+      <img
+        src={batik3}
+        alt="Batik 3"
+        width="25rem"
+        className={`texture-button texture-1 ${selectedPrintOn === batik3 ? "selected-border" : ""}`}
+        onClick={() => handleTextureChange(batik3)}
+      />
+      <img
+        src={batik4}
+        alt="Batik 4"
+        width="25rem"
+        className={`texture-button texture-1 ${selectedPrintOn === batik4 ? "selected-border" : ""}`}
+        onClick={() => handleTextureChange(batik4)}
+      />
+      <img
+        src={batik5}
+        alt="Batik 5"
+        width="25rem"
+        className={`texture-button texture-1 ${selectedPrintOn === batik5 ? "selected-border" : ""}`}
+        onClick={() => handleTextureChange(batik5)}
+      />
+    </div>
+  
+    <div>
+      <h3>Dashiki</h3>
+      <img
+        src={dashiki1}
+        alt="Dashiki 1"
+        width="25rem"
+        className={`texture-button texture-2 ${selectedPrintOn === dashiki1 ? "selected-border" : ""}`}
+        onClick={() => handleTextureChange(dashiki1)}
+      />
+      <img
+        src={dashiki2}
+        alt="Dashiki 2"
+        width="25rem"
+        className={`texture-button texture-2 ${selectedPrintOn === dashiki2 ? "selected-border" : ""}`}
+        onClick={() => handleTextureChange(dashiki2)}
+      />
+      <img
+        src={dashiki3}
+        alt="Dashiki 3"
+        width="25rem"
+        className={`texture-button texture-2 ${selectedPrintOn === dashiki3 ? "selected-border" : ""}`}
+        onClick={() => handleTextureChange(dashiki3)}
+      />
+      <img
+        src={dashiki4}
+        alt="Dashiki 4"
+        width="25rem"
+        className={`texture-button texture-2 ${selectedPrintOn === dashiki4 ? "selected-border" : ""}`}
+        onClick={() => handleTextureChange(dashiki4)}
+      />
+      <img
+        src={dashiki5}
+        alt="Dashiki 5"
+        width="25rem"
+        className={`texture-button texture-2 ${selectedPrintOn === dashiki5 ? "selected-border" : ""}`}
+        onClick={() => handleTextureChange(dashiki5)}
+      />
+    </div>
+  
+    </div>
+  
+    <div className="d-flex justify-content-between w-100">
+    <div>
+      <h3>Kente</h3>
+      <img
+        src={kente1}
+        alt="Kente 1"
+        width="25rem"
+        className={`texture-button texture-2 ${selectedPrintOn === kente1 ? "selected-border" : ""}`}
+        onClick={() => handleTextureChange(kente1)}
+      />
+      <img
+        src={kente2}
+        alt="Kente 2"
+        width="25rem"
+        className={`texture-button texture-2 ${selectedPrintOn === kente2 ? "selected-border" : ""}`}
+        onClick={() => handleTextureChange(kente2)}
+      />
+      <img
+        src={kente3}
+        alt="Kente 3"
+        width="25rem"
+        className={`texture-button texture-2 ${selectedPrintOn === kente3 ? "selected-border" : ""}`}
+        onClick={() => handleTextureChange(kente3)}
+      />
+      <img
+        src={kente4}
+        alt="Kente 4"
+        width="25rem"
+        className={`texture-button texture-2 ${selectedPrintOn === kente4 ? "selected-border" : ""}`}
+        onClick={() => handleTextureChange(kente4)}
+      />
+      <img
+        src={kente5}
+        alt="Kente 5"
+        width="25rem"
+        className={`texture-button texture-2 ${selectedPrintOn === kente5 ? "selected-border" : ""}`}
+        onClick={() => handleTextureChange(kente5)}
+      />
+    </div>
+  
+    <div>
+      <h3>Wax Print</h3>
+      <img
+        src={waxPrint1}
+        alt="Wax Print 1"
+        width="25rem"
+        className={`texture-button texture-2 ${selectedPrintOn === waxPrint1 ? "selected-border" : ""}`}
+        onClick={() => handleTextureChange(waxPrint1)}
+      />
+      <img
+        src={waxPrint2}
+        alt="Wax Print 2"
+        width="25rem"
+        className={`texture-button texture-2 ${selectedPrintOn === waxPrint2 ? "selected-border" : ""}`}
+        onClick={() => handleTextureChange(waxPrint2)}
+      />
+      <img
+        src={waxPrint3}
+        alt="Wax Print 3"
+        width="25rem"
+        className={`texture-button texture-2 ${selectedPrintOn === waxPrint3 ? "selected-border" : ""}`}
+        onClick={() => handleTextureChange(waxPrint3)}
+      />
+      <img
+        src={waxPrint4}
+        alt="Wax Print 4"
+        width="25rem"
+        className={`texture-button texture-2 ${selectedPrintOn === waxPrint4 ? "selected-border" : ""}`}
+        onClick={() => handleTextureChange(waxPrint4)}
+      />
+      <img
+        src={waxPrint5}
+        alt="Wax Print 5"
+        width="25rem"
+        className={`texture-button texture-2 ${selectedPrintOn === waxPrint5 ? "selected-border" : ""}`}
+        onClick={() => handleTextureChange(waxPrint5)}
+      />
+    </div>
+    </div>
+  
+  
+    <div className="d-flex justify-content-between w-100">
+    <div>
+      <h3>Smock</h3>
+       <img
+        src={smock1}
+        alt="Smock 1"
+        width="25rem"
+        className={`texture-button texture-2 ${selectedPrintOn === smock1 ? "selected-border" : ""}`}
+        onClick={() => handleTextureChange(smock1)}
+      />
+      <img
+        src={smock2}
+        alt="Smock 2"
+        width="25rem"
+        className={`texture-button texture-2 ${selectedPrintOn === smock2 ? "selected-border" : ""}`}
+        onClick={() => handleTextureChange(smock2)}
+      />
+      <img
+        src={smock3}
+        alt="Smock 3"
+        width="25rem"
+        className={`texture-button texture-2 ${selectedPrintOn === smock3 ? "selected-border" : ""}`}
+        onClick={() => handleTextureChange(smock3)}
+      />
+      <img
+        src={smock4}
+        alt="Smock 4"
+        width="25rem"
+        className={`texture-button texture-2 ${selectedPrintOn === smock4 ? "selected-border" : ""}`}
+        onClick={() => handleTextureChange(smock4)}
+      />
+      {/* <img
+        src={smock5}
+        alt="Smock 5"
+        width="25rem"
+        className={`texture-button texture-2 ${selectedPrintOn === smock5 ? "selected-border" : ""}`}
+        onClick={() => handleTextureChange(smock5)}
+      /> */}
+    </div>
+    <div>
+      <h3>LACE</h3>
+      <img
+        src={lace1}
+        alt="lace 1"
+        width="25rem"
+        className={`texture-button texture-2 ${selectedPrintOn === lace1 ? "selected-border" : ""}`}
+        onClick={() => handleTextureChange(lace1)}
+      />
+      <img
+        src={lace2}
+        alt="lace 2"
+        width="25rem"
+        className={`texture-button texture-2 ${selectedPrintOn === lace2 ? "selected-border" : ""}`}
+        onClick={() => handleTextureChange(lace2)}
+      />
+      <img
+        src={lace3}
+        alt="lace 3"
+        width="25rem"
+        className={`texture-button texture-2 ${selectedPrintOn === lace3 ? "selected-border" : ""}`}
+        onClick={() => handleTextureChange(lace3)}
+      />
+      <img
+        src={lace4}
+        alt="lace 4"
+        width="25rem"
+        className={`texture-button texture-2 ${selectedPrintOn === lace4 ? "selected-border" : ""}`}
+        onClick={() => handleTextureChange(lace4)}
+      />
+      <img
+        src={lace5}
+        alt="lace 5"
+        width="25rem"
+        className={`texture-button texture-2 ${selectedPrintOn === lace5 ? "selected-border" : ""}`}
+        onClick={() => handleTextureChange(lace5)}
+      />
+    </div>
+    </div>
+  
+    <div className="d-flex justify-content-between w-100">
+    <div>
+      <h3>PRINTED KENTE</h3>
+       <img
+        src={p_kente1}
+        alt="p_kente 1"
+        width="25rem"
+        className={`texture-button texture-2 ${selectedPrintOn === p_kente1 ? "selected-border" : ""}`}
+        onClick={() => handleTextureChange(p_kente1)}
+      />
+      <img
+        src={p_kente2}
+        alt="p_kente 2"
+        width="25rem"
+        className={`texture-button texture-2 ${selectedPrintOn === p_kente2 ? "selected-border" : ""}`}
+        onClick={() => handleTextureChange(p_kente2)}
+      />
+      <img
+        src={p_kente3}
+        alt="p_kente 3"
+        width="25rem"
+        className={`texture-button texture-2 ${selectedPrintOn === p_kente3 ? "selected-border" : ""}`}
+        onClick={() => handleTextureChange(p_kente3)}
+      />
+      <img
+        src={p_kente4}
+        alt="p_kente 4"
+        width="25rem"
+        className={`texture-button texture-2 ${selectedPrintOn === p_kente4 ? "selected-border" : ""}`}
+        onClick={() => handleTextureChange(p_kente4)}
+      />
+      {/* <img
+        src={smock5}
+        alt="Smock 5"
+        width="25rem"
+        className={`texture-button texture-2 ${selectedPrintOn === smock5 ? "selected-border" : ""}`}
+        onClick={() => handleTextureChange(smock5)}
+      /> */}
+    </div>
+    <div>
+      <h3>SUIT FABRIC</h3>
+      <img
+        src={s_fabric1}
+        alt="s_fabric 1"
+        width="25rem"
+        className={`texture-button texture-2 ${selectedPrintOn === s_fabric1 ? "selected-border" : ""}`}
+        onClick={() => handleTextureChange(s_fabric1)}
+      />
+      <img
+        src={s_fabric2}
+        alt="Wax Print 2"
+        width="25rem"
+        className={`texture-button texture-2 ${selectedPrintOn === s_fabric2 ? "selected-border" : ""}`}
+        onClick={() => handleTextureChange(s_fabric2)}
+      />
+      <img
+        src={s_fabric3}
+        alt="s_fabric 3"
+        width="25rem"
+        className={`texture-button texture-2 ${selectedPrintOn === s_fabric3 ? "selected-border" : ""}`}
+        onClick={() => handleTextureChange(s_fabric3)}
+      />
+      <img
+        src={s_fabric4}
+        alt="s_fabric 4"
+        width="25rem"
+        className={`texture-button texture-2 ${selectedPrintOn === s_fabric4 ? "selected-border" : ""}`}
+        onClick={() => handleTextureChange(s_fabric4)}
+      />
+      <img
+        src={s_fabric5}
+        alt="s_fabric 5"
+        width="25rem"
+        className={`texture-button texture-2 ${selectedPrintOn === s_fabric5 ? "selected-border" : ""}`}
+        onClick={() => handleTextureChange(s_fabric5)}
+      />
+    </div>
+    </div>
   </div>
-
-  <div>
-    <h3>Wax Print</h3>
-    <img
-      src={waxPrint1}
-      alt="Wax Print 1"
-      width="25rem"
-      className={`texture-button texture-2 ${selectedPrintOn === waxPrint1 ? "selected-border" : ""}`}
-      onClick={() => handleTextureChange(waxPrint1)}
-    />
-    <img
-      src={waxPrint2}
-      alt="Wax Print 2"
-      width="25rem"
-      className={`texture-button texture-2 ${selectedPrintOn === waxPrint2 ? "selected-border" : ""}`}
-      onClick={() => handleTextureChange(waxPrint2)}
-    />
-    <img
-      src={waxPrint3}
-      alt="Wax Print 3"
-      width="25rem"
-      className={`texture-button texture-2 ${selectedPrintOn === waxPrint3 ? "selected-border" : ""}`}
-      onClick={() => handleTextureChange(waxPrint3)}
-    />
-    <img
-      src={waxPrint4}
-      alt="Wax Print 4"
-      width="25rem"
-      className={`texture-button texture-2 ${selectedPrintOn === waxPrint4 ? "selected-border" : ""}`}
-      onClick={() => handleTextureChange(waxPrint4)}
-    />
-    <img
-      src={waxPrint5}
-      alt="Wax Print 5"
-      width="25rem"
-      className={`texture-button texture-2 ${selectedPrintOn === waxPrint5 ? "selected-border" : ""}`}
-      onClick={() => handleTextureChange(waxPrint5)}
-    />
-  </div>
-  </div>
-
-
-  <div className="d-flex justify-content-between w-100">
-  <div>
-    <h3>Smock</h3>
-     {/* <img
-      src={smock1}
-      alt="Smock 1"
-      width="25rem"
-      className={`texture-button texture-2 ${selectedPrintOn === smock1 ? "selected-border" : ""}`}
-      onClick={() => handleTextureChange(smock1)}
-    />
-    <img
-      src={smock2}
-      alt="Smock 2"
-      width="25rem"
-      className={`texture-button texture-2 ${selectedPrintOn === smock2 ? "selected-border" : ""}`}
-      onClick={() => handleTextureChange(smock2)}
-    />
-    <img
-      src={smock3}
-      alt="Smock 3"
-      width="25rem"
-      className={`texture-button texture-2 ${selectedPrintOn === smock3 ? "selected-border" : ""}`}
-      onClick={() => handleTextureChange(smock3)}
-    />
-    <img
-      src={smock4}
-      alt="Smock 4"
-      width="25rem"
-      className={`texture-button texture-2 ${selectedPrintOn === smock4 ? "selected-border" : ""}`}
-      onClick={() => handleTextureChange(smock4)}
-    />
-    <img
-      src={smock5}
-      alt="Smock 5"
-      width="25rem"
-      className={`texture-button texture-2 ${selectedPrintOn === smock5 ? "selected-border" : ""}`}
-      onClick={() => handleTextureChange(smock5)}
-    /> */}
-  </div>
-  </div>
-</div>
 
 
           </div>

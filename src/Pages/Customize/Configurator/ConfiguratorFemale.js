@@ -29,11 +29,28 @@ import waxPrint3 from "./textures/waxPrint3.jpg";
 import waxPrint4 from "./textures/waxPrint4.jpg";
 import waxPrint5 from "./textures/waxPrint5.jpg";
 
-// import smock1 from "./textures/smock1.jpg";
-// import smock2 from "./textures/smock2.jpg";
-// import smock3 from "./textures/smock3.jpg";
-// import smock4 from "./textures/smock4.jpg";
+import smock1 from "./textures/smock1.jpg";
+import smock2 from "./textures/smock2.jpg";
+import smock3 from "./textures/smock3.jpg";
+import smock4 from "./textures/smock4.jpeg";
 // import smock5 from "./textures/smock5.jpg";
+
+import lace1 from "./textures/lace1.jpg";
+import lace2 from "./textures/lace2.jpg";
+import lace3 from "./textures/lace3.jpg";
+import lace4 from "./textures/lace4.jpg";
+import lace5 from "./textures/lace5.jpg";
+
+import s_fabric1 from "./textures/suit_fabric1.jpeg";
+import s_fabric2 from "./textures/suit_fabric2.jpg";
+import s_fabric3 from "./textures/suit_fabric3.jpg";
+import s_fabric4 from "./textures/suit_fabric4.jpg";
+import s_fabric5 from "./textures/suit_fabric5.jpg";
+
+import p_kente1 from "./textures/p_kente1.jpg";
+import p_kente2 from "./textures/p_kente2.jpg";
+import p_kente3 from "./textures/p_kente3.jpg";
+import p_kente4 from "./textures/p_kente4.jpg";
 
 import Nav from "../../../Components/Nav";
 import "./styles.css";
@@ -104,10 +121,9 @@ const CameraControls = () => {
 };
 
 const ConfiguratorFemale = () => {
-
   useEffect(() => {
-    window.scrollTo(0,0);
-  }, [])
+    window.scrollTo(0, 0);
+  }, []);
 
   const { Id } = useParams();
   const selectedClothing = mainFemaleCustomize.find((item) => item.name === Id);
@@ -488,7 +504,7 @@ const ConfiguratorFemale = () => {
   <div className="d-flex justify-content-between w-100">
   <div>
     <h3>Smock</h3>
-     {/* <img
+     <img
       src={smock1}
       alt="Smock 1"
       width="25rem"
@@ -516,13 +532,130 @@ const ConfiguratorFemale = () => {
       className={`texture-button texture-2 ${selectedPrintOn === smock4 ? "selected-border" : ""}`}
       onClick={() => handleTextureChange(smock4)}
     />
-    <img
+    {/* <img
       src={smock5}
       alt="Smock 5"
       width="25rem"
       className={`texture-button texture-2 ${selectedPrintOn === smock5 ? "selected-border" : ""}`}
       onClick={() => handleTextureChange(smock5)}
     /> */}
+  </div>
+  <div>
+    <h3>LACE</h3>
+    <img
+      src={lace1}
+      alt="lace 1"
+      width="25rem"
+      className={`texture-button texture-2 ${selectedPrintOn === lace1 ? "selected-border" : ""}`}
+      onClick={() => handleTextureChange(lace1)}
+    />
+    <img
+      src={lace2}
+      alt="lace 2"
+      width="25rem"
+      className={`texture-button texture-2 ${selectedPrintOn === lace2 ? "selected-border" : ""}`}
+      onClick={() => handleTextureChange(lace2)}
+    />
+    <img
+      src={lace3}
+      alt="lace 3"
+      width="25rem"
+      className={`texture-button texture-2 ${selectedPrintOn === lace3 ? "selected-border" : ""}`}
+      onClick={() => handleTextureChange(lace3)}
+    />
+    <img
+      src={lace4}
+      alt="lace 4"
+      width="25rem"
+      className={`texture-button texture-2 ${selectedPrintOn === lace4 ? "selected-border" : ""}`}
+      onClick={() => handleTextureChange(lace4)}
+    />
+    <img
+      src={lace5}
+      alt="lace 5"
+      width="25rem"
+      className={`texture-button texture-2 ${selectedPrintOn === lace5 ? "selected-border" : ""}`}
+      onClick={() => handleTextureChange(lace5)}
+    />
+  </div>
+  </div>
+
+  <div className="d-flex justify-content-between w-100">
+  <div>
+    <h3>PRINTED KENTE</h3>
+     <img
+      src={p_kente1}
+      alt="p_kente 1"
+      width="25rem"
+      className={`texture-button texture-2 ${selectedPrintOn === p_kente1 ? "selected-border" : ""}`}
+      onClick={() => handleTextureChange(p_kente1)}
+    />
+    <img
+      src={p_kente2}
+      alt="p_kente 2"
+      width="25rem"
+      className={`texture-button texture-2 ${selectedPrintOn === p_kente2 ? "selected-border" : ""}`}
+      onClick={() => handleTextureChange(p_kente2)}
+    />
+    <img
+      src={p_kente3}
+      alt="p_kente 3"
+      width="25rem"
+      className={`texture-button texture-2 ${selectedPrintOn === p_kente3 ? "selected-border" : ""}`}
+      onClick={() => handleTextureChange(p_kente3)}
+    />
+    <img
+      src={p_kente4}
+      alt="p_kente 4"
+      width="25rem"
+      className={`texture-button texture-2 ${selectedPrintOn === p_kente4 ? "selected-border" : ""}`}
+      onClick={() => handleTextureChange(p_kente4)}
+    />
+    {/* <img
+      src={smock5}
+      alt="Smock 5"
+      width="25rem"
+      className={`texture-button texture-2 ${selectedPrintOn === smock5 ? "selected-border" : ""}`}
+      onClick={() => handleTextureChange(smock5)}
+    /> */}
+  </div>
+  <div>
+    <h3>SUIT FABRIC</h3>
+    <img
+      src={s_fabric1}
+      alt="s_fabric 1"
+      width="25rem"
+      className={`texture-button texture-2 ${selectedPrintOn === s_fabric1 ? "selected-border" : ""}`}
+      onClick={() => handleTextureChange(s_fabric1)}
+    />
+    <img
+      src={s_fabric2}
+      alt="Wax Print 2"
+      width="25rem"
+      className={`texture-button texture-2 ${selectedPrintOn === s_fabric2 ? "selected-border" : ""}`}
+      onClick={() => handleTextureChange(s_fabric2)}
+    />
+    <img
+      src={s_fabric3}
+      alt="s_fabric 3"
+      width="25rem"
+      className={`texture-button texture-2 ${selectedPrintOn === s_fabric3 ? "selected-border" : ""}`}
+      onClick={() => handleTextureChange(s_fabric3)}
+    />
+    <img
+      src={s_fabric4}
+      alt="s_fabric 4"
+      width="25rem"
+      className={`texture-button texture-2 ${selectedPrintOn === s_fabric4 ? "selected-border" : ""}`}
+      onClick={() => handleTextureChange(s_fabric4)}
+    />
+    <img
+      src={s_fabric5}
+      alt="s_fabric 5"
+      width="25rem"
+      className={`texture-button texture-2 ${selectedPrintOn === s_fabric5 ? "selected-border" : ""}`}
+      onClick={() => handleTextureChange(s_fabric5)}
+    />
   </div>
   </div>
 </div>
