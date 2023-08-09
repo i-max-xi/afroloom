@@ -34,7 +34,7 @@ export const mainUnisex = [
     name: "Mini Bag",
     image: bp1,
     model: mini_bag_model,
-    myNode: ["handle", "main_body"],
+    myNode: ["handle", "big_section", "small_section"],
     myZoom: 0.8,
     price: 55,
   },
