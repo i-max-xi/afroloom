@@ -1,7 +1,7 @@
 import { v4 as uuid } from "uuid";
 
 import handbag from "../Assets/Customize/hand_bag.png";
-import bikini_img from "../Assets/Customize/bikini.png";
+// import bikini_img from "../Assets/Customize/bikini.png";
 
 
 // hats
@@ -86,7 +86,7 @@ export const mainFemaleAccessories = [
   {
     id: uuid(),
     name: "Bikini",
-    image: bikini_img,
+    image: "https://cf.ltkcdn.net/teens/images/std/231007-275x421-low-rise-bikini.jpg",
     model: bikini,
     myNode: ["top", "bottom"],
     myZoom: 1.1,

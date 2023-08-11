@@ -11,6 +11,7 @@ import extra_short_img from "../Assets/Customize/female_short_shirt.jpg";
 import extra_long_img from "../Assets/Customize/femlae_long_shirt.jpg";
 import booty_shorts_img from "../Assets/Customize/booty_shorts.jpg";
 import female_suit_img from "../Assets/Customize/femlae_suit.jpg";
+import kabanslit from "../Assets/Customize/kabanslit.JPG";
 
 
 
@@ -75,6 +76,8 @@ import blazer from "../Pages/Customize/Configurator/models/FemaleClothing/female
 import extra_long from "../Pages/Customize/Configurator/models/FemaleClothing/female_shirt_extra_long_two.glb";
 import extra_short from "../Pages/Customize/Configurator/models/FemaleClothing/female_shirt_extra_short.glb";
 import booty_shorts from "../Pages/Customize/Configurator/models/FemaleClothing/booty_shorts.glb";
+import kaba_slit from "../Pages/Customize/Configurator/models/FemaleClothing/gown.glb";
+
 
 export const mainFemaleCustomize = [
   {
@@ -151,6 +154,15 @@ export const mainFemaleCustomize = [
     model: dress_model,
     image: dress,
     myNode: ["down", "left_hand", "left_hand_cuff", "right_hand", "right_hand_cuff", "top", "top_edge"],
+    myZoom: 0.7,
+    price: 20,
+  },
+  {
+    id: uuid(),
+    name: "Kaba and Slit",
+    model: kaba_slit,
+    image: kabanslit,
+    myNode: ["left_hand", "right_hand", "top", "down"],
     myZoom: 0.7,
     price: 20,
   },
