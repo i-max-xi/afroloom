@@ -22,27 +22,26 @@ const Confirmation = ({
           <div className="mt-4">
             <h2>Selected Parts</h2>
             {selectedParts.map((part, index) => (
-              <div key={index} className="card mb-3">
-                <div className="card-body">
-                  <h5 className="card-title">Part: {part.name}</h5>
-                  <p className="card-text">Color:</p>
-                  {part.color ? (
-                    <div
-                      className="color-display"
-                      style={{ backgroundColor: part.color, width: "30px", height: "30px" }}
-                    ></div>
-                  ) : (
-                    <p className="card-text">N/A</p>
-                  )}
-                  <p className="card-text">Texture:</p>
-                  {part.texture ? (
-                    <p className="card-text">
-                      <img src={part.texture} alt="Selected Texture" style={{ maxWidth: "100px" }} />
-                    </p>
-                  ) : (
-                    <p className="card-text">N/A</p>
-                  )}
-                </div>
+              <div key={index} className="mb-4">
+                <h5>{part.name}</h5>
+                <p>Color:  {part.color ? (
+                  <span
+                    className="color-display"
+                    style={{ backgroundColor: part.color, width: "30px", height: "30px" }}
+                  ></span>
+                ) : (
+                  <span>N/A</span>
+                )}</p>
+               
+                <p>Texture:</p>
+                {part.texture ? (
+                  <p>
+                    <img src={part.texture} alt="Selected Texture" style={{ maxWidth: "100px" }} />
+                  </p>
+                ) : (
+                  <p>N/A</p>
+                )}
+                {index !== selectedParts.length - 1 && <hr />}
               </div>
             ))}
           </div>
