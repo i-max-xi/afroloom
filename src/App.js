@@ -57,6 +57,7 @@ import ConfiguratorMaleAccessories from './Pages/Customize/Configurator/Configur
 import ConfiguratorFemaleAccessories from './Pages/Customize/Configurator/ConfiguratorFemaleAccessories';
 import ConfiguratorFemale from './Pages/Customize/Configurator/ConfiguratorFemale';
 import ConfiguratorUnisex from './Pages/Customize/Configurator/ConfiguratorUnisex';
+import Confirmation from './Pages/Customize/Configurator/Confirmation';
 
 function App() {
   useEffect(() => {
@@ -106,6 +107,8 @@ function App() {
           <Route path="/configurator-male-accessories/:Id" element={<ConfiguratorMaleAccessories />} />
           <Route path="/configurator-female-accessories/:Id" element={<ConfiguratorFemaleAccessories />} />
           <Route path="/configurator-unisex/:Id" element={<ConfiguratorUnisex />} />
+          <Route path="/confirmation" element={<Confirmation />} />
+
 
           <Route path='tnc' element={<Tnc />} />
           <Route path='shippingPolicy' element={<ShippingPolicy />} />
