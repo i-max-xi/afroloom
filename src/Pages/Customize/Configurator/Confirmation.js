@@ -1,5 +1,7 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { useReactToPrint } from "react-to-print";
+// import { storage } from '../../../firebase.js'; // Import your 'storage' instance
+import html2canvas from "html2canvas";
 
 const Confirmation = ({
   price,
@@ -8,10 +10,9 @@ const Confirmation = ({
   selectedParts, // Array containing selected parts with their color and texture information
   selectedSize, // The selected size
 }) => {
-  // const handlePrintClick = () => {
-  //     // Use window.print() to trigger the browser's print dialog
-  //     window.print();
-  //   };
+  
+  const [capturedImageURL, setCapturedImageURL] = useState(""); // State to hold the captured image URL
+
 
   const componentRef = useRef();
   const handlePrint = useReactToPrint({
@@ -20,14 +21,42 @@ const Confirmation = ({
 
   const handleFormSubmit = async () => {
     try {
+      // ... (existing code)
+  
+      // Capture the component as an image using html2canvas
+      const image = await html2canvas(componentRef.current, {
+        useCORS: true, // Ensure cross-origin images are captured
+      });
+  
+      // Convert the captured image into a data URL
+      const imageDataURL = image.toDataURL("image/png");
+  
+      setCapturedImageURL(imageDataURL);
+
+      // Create a reference to the Firebase storage bucket
+      // const storageRef = storage.ref();
+  
+      // // Create a reference to a unique image file in Firebase storage
+      // const imageRef = storageRef.child(`orderConfirmation_${Date.now()}.png`);
+  
+      // // Upload the data URL to Firebase storage
+      // const snapshot = await imageRef.putString(imageDataURL, "data_url");
+  
+      // // Get the download URL of the uploaded image
+      // const downloadURL = await snapshot.ref.getDownloadURL();
+  
+      // Create formData including the downloadURL
       const formData = {
         price,
         estimatedShippingTime,
         readyBy,
         selectedParts,
         selectedSize,
+        // downloadURL,
+        capturedImageURL,
       };
-
+  
+      // Send the formData to Formspree
       const response = await fetch("https://formspree.io/f/xrgwpakw", {
         method: "POST",
         headers: {
@@ -35,7 +64,7 @@ const Confirmation = ({
         },
         body: JSON.stringify(formData),
       });
-
+  
       if (response.ok) {
         alert("Order confirmed. Thank you!");
       } else {
@@ -43,11 +72,10 @@ const Confirmation = ({
       }
     } catch (error) {
       console.error("Error submitting the form:", error);
-      alert(
-        "An error occurred while confirming the order. Please try again later."
-      );
+      alert("An error occurred while confirming the order. Please try again later.");
     }
   };
+  
 
   return (
     <div className="container confirmation-page">
@@ -72,6 +100,13 @@ const Confirmation = ({
         </div>
 
         <p className="h5 mt-4">Thank you for your order!</p>
+
+         {/* Display the captured image */}
+        {/* <img
+      src={capturedImageURL}
+          alt="Captured Order"
+          style={{ maxWidth: "100%" }}
+        /> */}
       </div>
     </div>
   );
