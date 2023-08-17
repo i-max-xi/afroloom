@@ -49,7 +49,8 @@ const Confirmation = ({
         estimatedShippingTime,
         readyBy,
         selectedSize,
-        capturedImageURL: downloadURL, // Make sure this value is correct
+        downloadURL, // Make sure this value is correct
+        message: "Please use the link to access the client's order", // Add the message
       };
 
 
