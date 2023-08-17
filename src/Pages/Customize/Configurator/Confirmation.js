@@ -1,7 +1,9 @@
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import { useReactToPrint } from "react-to-print";
-// import { storage } from '../../../firebase.js'; // Import your 'storage' instance
 import html2canvas from "html2canvas";
+
+import { app } from "../../../firebase"; // Import your firebase app object
+import { getStorage, ref, uploadString, getDownloadURL } from "firebase/storage";
 
 const Confirmation = ({
   price,
@@ -11,13 +13,14 @@ const Confirmation = ({
   selectedSize, // The selected size
 }) => {
   
-  const [capturedImageURL, setCapturedImageURL] = useState(""); // State to hold the captured image URL
-
 
   const componentRef = useRef();
   const handlePrint = useReactToPrint({
     content: () => componentRef.current,
   });
+
+  const storage = getStorage(app); // Initialize Firebase Storage with your app
+
 
   const handleFormSubmit = async () => {
     try {
@@ -31,30 +34,25 @@ const Confirmation = ({
       // Convert the captured image into a data URL
       const imageDataURL = image.toDataURL("image/png");
   
-      setCapturedImageURL(imageDataURL);
 
-      // Create a reference to the Firebase storage bucket
-      // const storageRef = storage.ref();
+    // Upload the captured image to Firebase Storage
+    const storageRef = ref(storage, `Order_images/${Date.now()}.png`);
+    await uploadString(storageRef, imageDataURL, "data_url");
+
+    // Get the download URL of the uploaded image
+    const downloadURL = await getDownloadURL(storageRef);
+
   
-      // // Create a reference to a unique image file in Firebase storage
-      // const imageRef = storageRef.child(`orderConfirmation_${Date.now()}.png`);
-  
-      // // Upload the data URL to Firebase storage
-      // const snapshot = await imageRef.putString(imageDataURL, "data_url");
-  
-      // // Get the download URL of the uploaded image
-      // const downloadURL = await snapshot.ref.getDownloadURL();
-  
-      // Create formData including the downloadURL
+      // Create formData 
       const formData = {
         price,
         estimatedShippingTime,
         readyBy,
-        selectedParts,
         selectedSize,
-        // downloadURL,
-        capturedImageURL,
+        capturedImageURL: downloadURL, // Make sure this value is correct
       };
+
+
   
       // Send the formData to Formspree
       const response = await fetch("https://formspree.io/f/xrgwpakw", {
