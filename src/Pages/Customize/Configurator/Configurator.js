@@ -204,8 +204,13 @@ const Configurator = () => {
     dashiki: 15,
     kente: 20,
     waxPrint: 25,
-    // ... Add values for other texture categories
+    smock: 30,
+    lace: 35,
+    printed_kente: 40,
+    suit_fabric: 45,
+    // Add values for other texture categories if needed
   };
+  
 
   const [partPrices, setPartPrices] = useState(
     Array(selectedClothing.myNode.length).fill(selectedClothing.price)
@@ -331,7 +336,7 @@ const Configurator = () => {
                 <div className="texture-buttons-container">
                   <div className="texture-row">
                     <div className="texture-category">
-                      <h3>Batik</h3>
+                      <h3>Batik (+ $10)</h3>
                       <div className="texture-images">
                         {textureArrays.batik.map((texture, index) => (
                           <img
@@ -349,7 +354,7 @@ const Configurator = () => {
                       </div>
                     </div>
                     <div className="texture-category">
-                      <h3>Dashiki</h3>
+                      <h3>Dashiki (+$15)</h3>
                       <div className="texture-images">
                         {textureArrays.dashiki.map((texture, index) => (
                           <img
@@ -369,7 +374,7 @@ const Configurator = () => {
                   </div>
                   <div className="texture-row">
                     <div className="texture-category">
-                      <h3>Kente</h3>
+                      <h3>Kente (+$20)</h3>
                       <div className="texture-images">
                         {textureArrays.kente.map((texture, index) => (
                           <img
@@ -387,7 +392,7 @@ const Configurator = () => {
                       </div>
                     </div>
                     <div className="texture-category">
-                      <h3>Wax Print</h3>
+                      <h3>Wax Print (+$25)</h3>
                       <div className="texture-images">
                         {textureArrays.waxPrint.map((texture, index) => (
                           <img
@@ -407,7 +412,7 @@ const Configurator = () => {
                   </div>
                   <div className="texture-row">
                     <div className="texture-category">
-                      <h3>Smock</h3>
+                      <h3>Smock (+$30)</h3>
                       <div className="texture-images">
                         {textureArrays.smock.map((texture, index) => (
                           <img
@@ -425,7 +430,7 @@ const Configurator = () => {
                       </div>
                     </div>
                     <div className="texture-category">
-                      <h3>Lace</h3>
+                      <h3>Lace (+$35)</h3>
                       <div className="texture-images">
                         {textureArrays.lace.map((texture, index) => (
                           <img
@@ -445,7 +450,7 @@ const Configurator = () => {
                   </div>
                   <div className="texture-row">
                     <div className="texture-category">
-                      <h3>Printed Kente</h3>
+                      <h3>Printed Kente (+$40)</h3>
                       <div className="texture-images">
                         {textureArrays.printed_kente.map((texture, index) => (
                           <img
@@ -463,7 +468,7 @@ const Configurator = () => {
                       </div>
                     </div>
                     <div className="texture-category">
-                      <h3>Suit Fabric</h3>
+                      <h3>Suit Fabric (+$45)</h3>
                       <div className="texture-images">
                         {textureArrays.suit_fabric.map((texture, index) => (
                           <img
