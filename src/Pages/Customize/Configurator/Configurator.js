@@ -5,6 +5,8 @@ import { useSnapshot } from "valtio";
 import { state } from "./store";
 // import { Link } from "react-router-dom";
 import Confirmation from "./Confirmation";
+import html2canvas from "html2canvas";
+
 
 import { TextureLoader } from "three/src/loaders/TextureLoader";
 import batik1 from "./textures/batik1.jpg";
@@ -138,6 +140,9 @@ const Configurator = () => {
 
   const [isRotating, setIsRotating] = useState(false);
 
+  const canvasRef = useRef();
+
+
   const sizeOptions = [
     { label: "S", value: 0.5 },
     { label: "M", value: 1 },
@@ -173,14 +178,32 @@ const Configurator = () => {
     setSelectedPart(null); // Deselect the part when rotating the entire model
   };
 
-  // Confrimation or not
-  const [showConfirmation, setShowConfirmation] = useState(false);
+ 
   // Create an array to store selected parts with their color and texture information
   const selectedParts = selectedClothing.myNode.map((nodeName, index) => ({
     name: nodeName,
     color: state.color[index] || null,
     texture: state.texture[index] || null
   }));
+
+   // Confrimation or not
+   const [showConfirmation, setShowConfirmation] = useState(false);
+   const [stateImage, setStateImage] = useState("");
+
+   const captureCanvasAsImage = async () => {
+    const canvas = canvasRef.current;
+  
+    // Use html2canvas to capture the content of the canvas
+    const canvasImage = await html2canvas(canvas);
+  
+    // Convert the canvas image to a data URL
+    const dataUrl = canvasImage.toDataURL();
+  
+    setStateImage(dataUrl); // Save the data URL to state
+   
+    setShowConfirmation(true); // Show confirmation
+  };
+  
 
   return (
     <>
@@ -189,10 +212,11 @@ const Configurator = () => {
       {showConfirmation ? (
            <Confirmation
            price={price}
-           estimatedShippingTime="2-3 business days" // Replace with your actual estimated shipping time
-           readyBy="August 15, 2023" // Replace with your actual expected ready date
-           selectedParts={selectedParts} // Pass the array of selected parts with their color and texture
-           selectedSize={selectedSize} // Pass the selected size
+           estimatedShippingTime="2-3 business days" 
+           readyBy="August 15, 2023" 
+           selectedParts={selectedParts}
+           selectedSize={selectedSize}
+           modelImage={stateImage}
          />
     ) : (
       <>
@@ -757,8 +781,9 @@ const Configurator = () => {
           </div>
 
           <div className="right-panel border-left">
-            <Canvas
+            <Canvas ref={canvasRef}
               camera={{ position: [0, 0, selectedClothing.myZoom] }} // Set the initial camera position
+              gl={{ preserveDrawingBuffer: true }}
             >
               <ambientLight intensity={0.5} />
               <pointLight position={[10, 10, 10]} />
@@ -790,7 +815,7 @@ const Configurator = () => {
         <p className="price-text m-3">
           <span className="fs-6 fw-normal">Price:</span> ${price}
         </p>
-        <button className="btn btn-success text-white" onClick={() => setShowConfirmation(true)}>
+        <button className="btn btn-success text-white" onClick={captureCanvasAsImage}>
           Done
         </button>
       </div>
