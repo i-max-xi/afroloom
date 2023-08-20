@@ -132,7 +132,7 @@ const Configurator = () => {
 
   const [price, setPrice] = useState(selectedClothing.price);
 
-  const [selectedSize, setSelectedSize] = useState(null);
+  const [selectedSize, setSelectedSize] = useState(1);
   const [selectedPrintOn, setSelectedPrintOn] = useState(null);
 
   const [selectedPart, setSelectedPart] = useState(null);
@@ -199,10 +199,44 @@ const Configurator = () => {
     setSelectedPrintOn(newColor);
   };
 
+  const textureValues = {
+    batik: 10,
+    dashiki: 15,
+    kente: 20,
+    waxPrint: 25,
+    smock: 30,
+    lace: 35,
+    printed_kente: 40,
+    suit_fabric: 45,
+    // Add values for other texture categories if needed
+  };
+  
+
+  const [partPrices, setPartPrices] = useState(
+    Array(selectedClothing.myNode.length).fill(selectedClothing.price)
+  );
+
   const handleTextureChange = (newTexture) => {
-    state.texture[selectedPart] = newTexture;
-    state.color[selectedPart] = null;
-    setSelectedPrintOn(newTexture);
+    if (selectedPart !== null) {
+      state.texture[selectedPart] = newTexture;
+      state.color[selectedPart] = null;
+      setSelectedPrintOn(newTexture);
+
+      // Get the texture category based on the newTexture
+      const textureCategory = Object.keys(textureArrays).find((category) =>
+        textureArrays[category].includes(newTexture)
+      );
+      // Calculate the new price for the selected part
+      const newPartPrice =
+        selectedClothing.price + textureValues[textureCategory];
+
+      // Update the partPrices array with the new price for the selected part
+      setPartPrices((prevPrices) =>
+        prevPrices.map((price, index) =>
+          index === selectedPart ? newPartPrice : price
+        )
+      );
+    }
   };
 
   const handleRotation = () => {
@@ -242,7 +276,9 @@ const Configurator = () => {
           estimatedShippingTime="2-3 business days"
           readyBy="August 15, 2023"
           selectedParts={selectedParts}
-          selectedSize={selectedSize}
+          selectedSize={
+            sizeOptions.find((option) => option.value === selectedSize)?.label
+          }
           modelImage={stateImage}
         />
       ) : (
@@ -300,7 +336,7 @@ const Configurator = () => {
                 <div className="texture-buttons-container">
                   <div className="texture-row">
                     <div className="texture-category">
-                      <h3>Batik</h3>
+                      <h3>Batik (+ $10)</h3>
                       <div className="texture-images">
                         {textureArrays.batik.map((texture, index) => (
                           <img
@@ -318,7 +354,7 @@ const Configurator = () => {
                       </div>
                     </div>
                     <div className="texture-category">
-                      <h3>Dashiki</h3>
+                      <h3>Dashiki (+$15)</h3>
                       <div className="texture-images">
                         {textureArrays.dashiki.map((texture, index) => (
                           <img
@@ -338,7 +374,7 @@ const Configurator = () => {
                   </div>
                   <div className="texture-row">
                     <div className="texture-category">
-                      <h3>Kente</h3>
+                      <h3>Kente (+$20)</h3>
                       <div className="texture-images">
                         {textureArrays.kente.map((texture, index) => (
                           <img
@@ -356,7 +392,7 @@ const Configurator = () => {
                       </div>
                     </div>
                     <div className="texture-category">
-                      <h3>Wax Print</h3>
+                      <h3>Wax Print (+$25)</h3>
                       <div className="texture-images">
                         {textureArrays.waxPrint.map((texture, index) => (
                           <img
@@ -374,9 +410,9 @@ const Configurator = () => {
                       </div>
                     </div>
                   </div>
-                   <div className="texture-row">
+                  <div className="texture-row">
                     <div className="texture-category">
-                      <h3>Smock</h3>
+                      <h3>Smock (+$30)</h3>
                       <div className="texture-images">
                         {textureArrays.smock.map((texture, index) => (
                           <img
@@ -394,7 +430,7 @@ const Configurator = () => {
                       </div>
                     </div>
                     <div className="texture-category">
-                      <h3>Lace</h3>
+                      <h3>Lace (+$35)</h3>
                       <div className="texture-images">
                         {textureArrays.lace.map((texture, index) => (
                           <img
@@ -414,7 +450,7 @@ const Configurator = () => {
                   </div>
                   <div className="texture-row">
                     <div className="texture-category">
-                      <h3>Printed Kente</h3>
+                      <h3>Printed Kente (+$40)</h3>
                       <div className="texture-images">
                         {textureArrays.printed_kente.map((texture, index) => (
                           <img
@@ -432,7 +468,7 @@ const Configurator = () => {
                       </div>
                     </div>
                     <div className="texture-category">
-                      <h3>Suit Fabric</h3>
+                      <h3>Suit Fabric (+$45)</h3>
                       <div className="texture-images">
                         {textureArrays.suit_fabric.map((texture, index) => (
                           <img
@@ -489,8 +525,11 @@ const Configurator = () => {
             <span className="m-3">Estimated shipping time: </span>
 
             <p className="price-text m-3">
-              <span className="fs-6 fw-normal">Price:</span> ${price}
+              <span className="fs-6 fw-normal">Price:</span> $
+              {partPrices.reduce((total, price) => total + price, 0) *
+                sizeOptions[selectedSize].value}
             </p>
+
             <button
               className="btn btn-success text-white"
               onClick={captureCanvasAsImage}
