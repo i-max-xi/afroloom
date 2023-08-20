@@ -132,7 +132,7 @@ const Configurator = () => {
 
   const [price, setPrice] = useState(selectedClothing.price);
 
-  const [selectedSize, setSelectedSize] = useState(null);
+  const [selectedSize, setSelectedSize] = useState(1);
   const [selectedPrintOn, setSelectedPrintOn] = useState(null);
 
   const [selectedPart, setSelectedPart] = useState(null);
@@ -199,11 +199,34 @@ const Configurator = () => {
     setSelectedPrintOn(newColor);
   };
 
+  const textureValues = {
+    batik: 10,
+    dashiki: 15,
+    kente: 20,
+    waxPrint: 25,
+    // ... Add values for other texture categories
+  };
+
   const handleTextureChange = (newTexture) => {
     state.texture[selectedPart] = newTexture;
     state.color[selectedPart] = null;
     setSelectedPrintOn(newTexture);
+
+    // Get the texture category based on the newTexture
+    const textureCategory = Object.keys(textureArrays).find(category =>
+      textureArrays[category].includes(newTexture)
+    );
+
+    // Update the price based on the texture category's value
+    setPrice((selectedClothing.price + textureValues[textureCategory]) * sizeOptions[selectedSize].value);
+    
   };
+
+  // const handleTextureChange = (newTexture) => {
+  //   state.texture[selectedPart] = newTexture;
+  //   state.color[selectedPart] = null;
+  //   setSelectedPrintOn(newTexture);
+  // };
 
   const handleRotation = () => {
     setIsRotating((prev) => !prev);
@@ -230,6 +253,7 @@ const Configurator = () => {
     setStateImage(dataUrl); // Save the data URL to state
 
     setShowConfirmation(true); // Show confirmation
+     
   };
 
   return (
@@ -242,7 +266,7 @@ const Configurator = () => {
           estimatedShippingTime="2-3 business days"
           readyBy="August 15, 2023"
           selectedParts={selectedParts}
-          selectedSize={selectedSize}
+          selectedSize={sizeOptions.find(option => option.value === selectedSize)?.label}
           modelImage={stateImage}
         />
       ) : (
