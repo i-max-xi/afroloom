@@ -208,18 +208,19 @@ const Configurator = () => {
   };
 
   const handleTextureChange = (newTexture) => {
-    state.texture[selectedPart] = newTexture;
-    state.color[selectedPart] = null;
-    setSelectedPrintOn(newTexture);
-
-    // Get the texture category based on the newTexture
-    const textureCategory = Object.keys(textureArrays).find(category =>
-      textureArrays[category].includes(newTexture)
-    );
-
-    // Update the price based on the texture category's value
-    setPrice((selectedClothing.price + textureValues[textureCategory]) * sizeOptions[selectedSize].value);
-    
+    if (selectedPart !== null) {
+      state.texture[selectedPart] = newTexture;
+      state.color[selectedPart] = null;
+      setSelectedPrintOn(newTexture);
+  
+      // Get the texture category based on the newTexture
+      const textureCategory = Object.keys(textureArrays).find(category =>
+        textureArrays[category].includes(newTexture)
+      );
+  
+      // Update the price based on the texture category's value
+      setPrice((selectedClothing.price + textureValues[textureCategory]) * sizeOptions[selectedSize].value);
+    }
   };
 
   // const handleTextureChange = (newTexture) => {
