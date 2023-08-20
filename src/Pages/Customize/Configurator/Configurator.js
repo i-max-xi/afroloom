@@ -207,27 +207,32 @@ const Configurator = () => {
     // ... Add values for other texture categories
   };
 
+  const [partPrices, setPartPrices] = useState(
+    Array(selectedClothing.myNode.length).fill(selectedClothing.price)
+  );
+
   const handleTextureChange = (newTexture) => {
     if (selectedPart !== null) {
       state.texture[selectedPart] = newTexture;
       state.color[selectedPart] = null;
       setSelectedPrintOn(newTexture);
-  
+
       // Get the texture category based on the newTexture
-      const textureCategory = Object.keys(textureArrays).find(category =>
+      const textureCategory = Object.keys(textureArrays).find((category) =>
         textureArrays[category].includes(newTexture)
       );
-  
-      // Update the price based on the texture category's value
-      setPrice((selectedClothing.price + textureValues[textureCategory]) * sizeOptions[selectedSize].value);
+      // Calculate the new price for the selected part
+      const newPartPrice =
+        selectedClothing.price + textureValues[textureCategory];
+
+      // Update the partPrices array with the new price for the selected part
+      setPartPrices((prevPrices) =>
+        prevPrices.map((price, index) =>
+          index === selectedPart ? newPartPrice : price
+        )
+      );
     }
   };
-
-  // const handleTextureChange = (newTexture) => {
-  //   state.texture[selectedPart] = newTexture;
-  //   state.color[selectedPart] = null;
-  //   setSelectedPrintOn(newTexture);
-  // };
 
   const handleRotation = () => {
     setIsRotating((prev) => !prev);
@@ -254,7 +259,6 @@ const Configurator = () => {
     setStateImage(dataUrl); // Save the data URL to state
 
     setShowConfirmation(true); // Show confirmation
-     
   };
 
   return (
@@ -267,7 +271,9 @@ const Configurator = () => {
           estimatedShippingTime="2-3 business days"
           readyBy="August 15, 2023"
           selectedParts={selectedParts}
-          selectedSize={sizeOptions.find(option => option.value === selectedSize)?.label}
+          selectedSize={
+            sizeOptions.find((option) => option.value === selectedSize)?.label
+          }
           modelImage={stateImage}
         />
       ) : (
@@ -399,7 +405,7 @@ const Configurator = () => {
                       </div>
                     </div>
                   </div>
-                   <div className="texture-row">
+                  <div className="texture-row">
                     <div className="texture-category">
                       <h3>Smock</h3>
                       <div className="texture-images">
@@ -514,8 +520,11 @@ const Configurator = () => {
             <span className="m-3">Estimated shipping time: </span>
 
             <p className="price-text m-3">
-              <span className="fs-6 fw-normal">Price:</span> ${price}
+              <span className="fs-6 fw-normal">Price:</span> $
+              {partPrices.reduce((total, price) => total + price, 0) *
+                sizeOptions[selectedSize].value}
             </p>
+
             <button
               className="btn btn-success text-white"
               onClick={captureCanvasAsImage}
