@@ -26,6 +26,8 @@ import ProductsDataService from "../Services/products.services";
 import AdGirl from "../Assets/Ads/portraitgirl.JPG";
 import AdGuy2 from "../Assets/Ads/portraitguy2.JPG";
 
+
+
 export const Card = ({
   title,
   item,
@@ -56,6 +58,9 @@ export const Card = ({
     dispatch(addItem({ id, title, item, price }));
     show();
   };
+
+  const currencySymbol = useSelector((state) => state.currencySymbol);
+
 
   // Stars
   const stars = [];
@@ -106,7 +111,7 @@ export const Card = ({
             <span></span>
           )}
 
-          <h5 className="price mt-3">${price}</h5>
+          <h5 className="price mt-3">{currencySymbol}{price}</h5>
 
           {/* stars */}
           <p className="mt-3">{stars}</p>

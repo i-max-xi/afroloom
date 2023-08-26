@@ -22,12 +22,22 @@ const allProductsSlice = createSlice({
     addProducts: (state, action) => {
       state.splice(0, state.length, ...action.payload);
     },
-    
     updateProductPrices: (state, action) => {
       const factor = action.payload;
       state.forEach((product) => {
         product.price = product.price * factor;
       });
+    },
+   
+  },
+});
+
+const currencySymbolSlice = createSlice({
+  name: "currencySymbol",
+  initialState: '$', // Default currency symbol
+  reducers: {
+    setCurrencySymbol: (state, action) => {
+      return action.payload;
     },
   },
 });
@@ -179,12 +189,14 @@ const store = configureStore({
     paymentMethod: paymentMethodSlice.reducer,
     user: userSlice.reducer,
     search: searchSlice.reducer,
+    currencySymbol: currencySymbolSlice.reducer
   },
   middleware: [thunk],
 });
 
 
 export const { addProducts, updateProductPrices } = allProductsSlice.actions;
+export const { setCurrencySymbol } = currencySymbolSlice.actions;
 
 export const { addItem, removeItem, clearCart } = cartSlice.actions;
 export const { setShippingAddress } = shippingAddressSlice.actions;
