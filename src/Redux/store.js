@@ -1,4 +1,8 @@
-import { createSlice, configureStore, createAsyncThunk } from "@reduxjs/toolkit";
+import {
+  createSlice,
+  configureStore,
+  createAsyncThunk,
+} from "@reduxjs/toolkit";
 import { collection, getDocs } from "firebase/firestore";
 
 import thunk from "redux-thunk"; // Import redux-thunk
@@ -22,6 +26,23 @@ const allProductsSlice = createSlice({
     addProducts: (state, action) => {
       state.splice(0, state.length, ...action.payload);
     },
+    // updateProductPrices: (state, action) => {
+    //   const factor = action.payload;
+    //   state.forEach((product) => {
+    //     product.price = product.price * factor;
+    //   });
+    // },
+  },
+});
+
+const currencySymbolSlice = createSlice({
+  name: "currencySymbol",
+  initialState: { symbol: "$", factor: 1 }, // Default currency symbol and factor
+  reducers: {
+    setCurrencySymbol: (state, action) => {
+      state.symbol = action.payload.symbol;
+      state.factor = action.payload.factor;
+    },
   },
 });
 
@@ -34,7 +55,6 @@ export const fetchProducts = createAsyncThunk(
     return products;
   }
 );
-
 
 const searchSlice = createSlice({
   name: "search",
@@ -172,12 +192,13 @@ const store = configureStore({
     paymentMethod: paymentMethodSlice.reducer,
     user: userSlice.reducer,
     search: searchSlice.reducer,
+    currencySymbol: currencySymbolSlice.reducer,
   },
   middleware: [thunk],
 });
 
-
 export const { addProducts } = allProductsSlice.actions;
+export const { setCurrencySymbol } = currencySymbolSlice.actions;
 
 export const { addItem, removeItem, clearCart } = cartSlice.actions;
 export const { setShippingAddress } = shippingAddressSlice.actions;
@@ -189,6 +210,5 @@ export const { setApartment } = apartmentSlice.actions;
 export const { setPaymentMethod } = paymentMethodSlice.actions;
 export const { setSignedIn, setcurrentUser } = userSlice.actions;
 export const { setQuery, setFilteredItems, setVisible } = searchSlice.actions;
-
 
 export default store;
