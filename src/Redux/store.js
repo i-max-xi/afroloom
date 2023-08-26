@@ -22,6 +22,13 @@ const allProductsSlice = createSlice({
     addProducts: (state, action) => {
       state.splice(0, state.length, ...action.payload);
     },
+    
+    updateProductPrices: (state, action) => {
+      const factor = action.payload;
+      state.forEach((product) => {
+        product.price = product.price * factor;
+      });
+    },
   },
 });
 
@@ -177,7 +184,7 @@ const store = configureStore({
 });
 
 
-export const { addProducts } = allProductsSlice.actions;
+export const { addProducts, updateProductPrices } = allProductsSlice.actions;
 
 export const { addItem, removeItem, clearCart } = cartSlice.actions;
 export const { setShippingAddress } = shippingAddressSlice.actions;

@@ -10,6 +10,7 @@ import { Avatar } from "primereact/avatar";
 // import { setVisible } from "../Redux/store";
 import GoogleTranslate from "../GoogleTranslate";
 import SearchBar from "./SearchBar";
+import CurrencyConverter from "./CurrencyConverter";
 
 const Nav = ({ handleToggleDropdown, Language, Currency }) => {
   const cartItems = useSelector((state) => state.cartItems);
@@ -22,7 +23,6 @@ const Nav = ({ handleToggleDropdown, Language, Currency }) => {
   // const showHideSearch = () => {
   //   dispatch(setVisible(true));
   // };
-
 
   const hamburger = (
     <svg
@@ -39,7 +39,6 @@ const Nav = ({ handleToggleDropdown, Language, Currency }) => {
       />
     </svg>
   );
-
 
   return (
     <nav className="navbar navbar-expand-lg text-black d-flex px-3">
@@ -143,6 +142,8 @@ const Nav = ({ handleToggleDropdown, Language, Currency }) => {
             </svg>
           </li> */}
           <SearchBar />
+
+          <CurrencyConverter />
         </ul>
       </div>
       {signedin === false ? (
@@ -162,9 +163,12 @@ const Nav = ({ handleToggleDropdown, Language, Currency }) => {
           </button>
         </div>
       ) : (
-        <Link to="/dashboard">
-          <Avatar shape="circle" image="user.png" size="large" />
-        </Link>
+        <>
+          <GoogleTranslate />
+          <Link to="/dashboard">
+            <Avatar shape="circle" image="user.png" size="large" />
+          </Link>
+        </>
       )}
     </nav>
   );
