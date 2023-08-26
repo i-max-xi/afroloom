@@ -1,12 +1,12 @@
-import React from 'react';
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { updateProductPrices, setCurrencySymbol } from '../Redux/store'; // Update the import path
-import { Dropdown } from 'primereact/dropdown';
+import { setCurrencySymbol } from "../Redux/store"; // Update the import path
+import { Dropdown } from "primereact/dropdown";
 
 const currencyOptions = [
   { name: "USD", factor: 1, symbol: "$" },
   { name: "EUR", factor: 0.9, symbol: "€" },
-  { name: "GHS", factor: 6.1, symbol: "₵" }, 
+  { name: "GHS", factor: 10, symbol: "₵" },
   // Add more currency options as needed
 ];
 
@@ -15,14 +15,20 @@ const CurrencyConverter = () => {
   const currencySymbol = useSelector((state) => state.currencySymbol);
 
   const handleCurrencyChange = (selectedOption) => {
-    dispatch(updateProductPrices(selectedOption.factor));
-    dispatch(setCurrencySymbol(selectedOption.symbol)); // Dispatch the currency symbol
+    dispatch(
+      setCurrencySymbol({
+        symbol: selectedOption.symbol,
+        factor: selectedOption.factor,
+      })
+    );
   };
 
   return (
     <div className="currency-converter">
       <Dropdown
-        value={currencyOptions.find(option => option.symbol === currencySymbol)}
+        value={currencyOptions.find(
+          (option) => option.symbol === currencySymbol.symbol
+        )}
         options={currencyOptions}
         optionLabel="name"
         onChange={(e) => handleCurrencyChange(e.value)}

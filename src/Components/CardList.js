@@ -59,7 +59,9 @@ export const Card = ({
     show();
   };
 
-  const currencySymbol = useSelector((state) => state.currencySymbol);
+  // currency conversion
+  const currencySymbol = useSelector((state) => state.currencySymbol.symbol);
+  const currencyFactor = useSelector((state) => state.currencySymbol.factor);
 
 
   // Stars
@@ -111,7 +113,7 @@ export const Card = ({
             <span></span>
           )}
 
-          <h5 className="price mt-3">{currencySymbol}{price}</h5>
+          <h5 className="price mt-3">{currencySymbol}{currencyFactor * price}</h5>
 
           {/* stars */}
           <p className="mt-3">{stars}</p>
