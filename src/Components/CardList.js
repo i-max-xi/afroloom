@@ -13,15 +13,11 @@ import { useDispatch } from "react-redux";
 import {
   addItem,
   addProducts,
-  setFilteredItems,
-  setQuery,
-  setVisible,
 } from "../Redux/store";
 import SearchFilters from "./SearchFilters";
 import { allCategory, categoryFilter } from "../Data/categoryList";
 import countryArr from "../Data/CountryArr";
 import { useSelector } from "react-redux";
-import SearchBar from "./SearchBar";
 import ProductsDataService from "../Services/products.services";
 import AdGirl from "../Assets/Ads/portraitgirl.JPG";
 import AdGuy2 from "../Assets/Ads/portraitguy2.JPG";
@@ -174,7 +170,7 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
   // const [Products, setProducts] = useState([]);
   const [itemsPerPage] = useState(19);
 
-  const Products = useSelector((state) => state.allProducts);
+  const Products = useSelector((state) => state.allProducts.products);
 
   const itemsToDisplayBank = Products.slice(
     currentPage * itemsPerPage,
@@ -358,25 +354,24 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
   
 
   // search feature
-  const searchQuery = useSelector((state) => state.search.query);
+  // const searchQuery = useSelector((state) => state.search.query);
 
-  const handleSearchInputChange = (e) => {
-    const query = e.target.value;
-    dispatch(setQuery(query));
+  // const handleSearchInputChange = (e) => {
+  //   const query = e.target.value;
+  //   dispatch(setQuery(query));
 
-    const filteredItems = Products.filter((item) =>
-      item.title.toLowerCase().includes(query.toLowerCase())
-    );
+  //   const filteredItems = Products.filter((item) =>
+  //     item.title.toLowerCase().includes(query.toLowerCase())
+  //   );
 
-    dispatch(setFilteredItems(filteredItems));
-    setItemsToDisplay(filteredItems);
-  };
+  //   dispatch(setFilteredItems(filteredItems));
+  //   setItemsToDisplay(filteredItems);
+  // };
 
-  const isVisible = useSelector((state) => state.search.visible);
-  const closeSearch = () => {
-    dispatch(setVisible(false));
-  };
-  // search ends here
+  //  const isVisible = useSelector((state) => state.allProducts.visible);
+  //  const closeSearch = () => {
+  //    dispatch(setVisible(false));
+  //  }; 
 
   return (
     <>
@@ -389,13 +384,10 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
         {showNestedComponent && <CategorySwipe />}
 
         {/* search input */}
-        {isVisible && (
-          <SearchBar
-            handleSearchInputChange={handleSearchInputChange}
-            searchQuery={searchQuery}
-            closePopup={closeSearch}
-          />
-        )}
+        
+          {/* <SearchBar
+            // closePopup={closeSearch}
+          /> */}
         {/* search ends here */}
         <SearchFilters
           search1="Category"
