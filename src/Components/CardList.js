@@ -198,7 +198,6 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
       ...doc.data(),
       id: doc.id,
     }));
-    // setProducts(fetchedProducts);
     dispatch(addProducts(fetchedProducts));
   };
 
