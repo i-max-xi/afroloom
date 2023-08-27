@@ -64,6 +64,9 @@ import cloak from '../Pages/Customize/Configurator/models/MaleClothing/cloak.glb
 import topndown_model from '../Pages/Customize/Configurator/models/MaleClothing/male_topndown.glb';
 import blazer from '../Pages/Customize/Configurator/models/MaleClothing/male_suit.glb';
 
+//size-guides
+import tshirt_guide from '../Pages/Customize/Configurator/size_guide/male/tshirt.JPG';
+
 export const mainMaleCustomize = [
   {
     id: uuid(),
@@ -75,6 +78,7 @@ export const mainMaleCustomize = [
     myX: 0,
     myY: 10,
     price: 20,
+    sizeGuide: tshirt_guide,
   },
   {
     id: uuid(),
