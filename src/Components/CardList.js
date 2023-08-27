@@ -202,7 +202,7 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
     dispatch(addProducts(fetchedProducts));
   };
 
-  console.log(Products);
+
 
   // Pagination starts here
 
