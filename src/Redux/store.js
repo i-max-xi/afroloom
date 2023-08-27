@@ -9,31 +9,44 @@ import thunk from "redux-thunk"; // Import redux-thunk
 import { db } from "../firebase";
 
 // Redux slice for allProducts
-// const allProductsSlice = createSlice({
-//   name: "allProducts",
-//   initialState: [],
-//   reducers: {
-//     addProducts: (state, action) => {
-//       state.push(...action.payload);
-//     },
-//   },
-// });
 
-const allProductsSlice = createSlice({
+
+/* const allProductsSlice = createSlice({
   name: "allProducts",
   initialState: [],
   reducers: {
     addProducts: (state, action) => {
       state.splice(0, state.length, ...action.payload);
     },
-    // updateProductPrices: (state, action) => {
-    //   const factor = action.payload;
-    //   state.forEach((product) => {
-    //     product.price = product.price * factor;
-    //   });
-    // },
+   
+  },
+}); */
+
+const allProductsSlice = createSlice({
+  name: "allProducts",
+  initialState: {
+    products: [],
+    searchTerm: "",
+    // visible: false,
+    filteredItems: [], // Initialize an empty array to store filtered products
+  },
+  reducers: {
+    addProducts: (state, action) => {
+      state.products = action.payload;
+    },
+    setSearchTerm: (state, action) => {
+      // state.searchTerm = action.payload;
+      // Filter products based on the search term
+      state.filteredItems = state.searchTerm
+        ? state.products.filter(product =>
+            product.name.toLowerCase().includes(action.payload.toLowerCase())
+          )
+        : [];
+    },
+    // ... other reducers
   },
 });
+
 
 const currencySymbolSlice = createSlice({
   name: "currencySymbol",
@@ -56,25 +69,44 @@ export const fetchProducts = createAsyncThunk(
   }
 );
 
-const searchSlice = createSlice({
+// const searchSlice = createSlice({
+//   name: "search",
+//   initialState: {
+//     filteredItems: [],
+//     visible: false,
+//   },
+//   reducers: {
+    
+//     setVisible: (state, action) => {
+//       state.visible = action.payload;
+//     },
+//     setFilteredItems: (state, action) => {
+//       state.filteredItems = action.payload;
+//     },
+//   },
+// });
+
+/*const searchSlice = createSlice({
   name: "search",
   initialState: {
-    query: "",
-    filteredItems: [],
+    searchTerm: "",
+    filteredItems: [], // Initialize an empty array to store filtered products
     visible: false,
   },
   reducers: {
-    setQuery: (state, action) => {
-      state.query = action.payload;
+    setSearchProduct: (state, action) => {
+      state.searchTerm = action.payload;
+      // Filter products based on the search term
+      state.filteredItems = state.searchTerm
+        ? state.allProducts.filter(product =>
+            product.name.toLowerCase().includes(state.searchTerm.toLowerCase())
+          )
+        : [];
     },
-    setVisible: (state, action) => {
-      state.visible = action.payload;
-    },
-    setFilteredItems: (state, action) => {
-      state.filteredItems = action.payload;
-    },
+    // other reducers
   },
-});
+});*/
+
 
 const cartSlice = createSlice({
   name: "cart",
@@ -191,13 +223,12 @@ const store = configureStore({
     apartment: apartmentSlice.reducer,
     paymentMethod: paymentMethodSlice.reducer,
     user: userSlice.reducer,
-    search: searchSlice.reducer,
     currencySymbol: currencySymbolSlice.reducer,
   },
   middleware: [thunk],
 });
 
-export const { addProducts } = allProductsSlice.actions;
+export const { addProducts, setSearchTerm  } = allProductsSlice.actions;
 export const { setCurrencySymbol } = currencySymbolSlice.actions;
 
 export const { addItem, removeItem, clearCart } = cartSlice.actions;
@@ -209,6 +240,8 @@ export const { setCity } = citySlice.actions;
 export const { setApartment } = apartmentSlice.actions;
 export const { setPaymentMethod } = paymentMethodSlice.actions;
 export const { setSignedIn, setcurrentUser } = userSlice.actions;
-export const { setQuery, setFilteredItems, setVisible } = searchSlice.actions;
+// export const { setQuery, setFilteredItems, setVisible } = searchSlice.actions;
+
+
 
 export default store;
