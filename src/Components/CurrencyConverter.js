@@ -15,6 +15,11 @@ const currencyOptions = [
   { name: "GHS", factor: 11.36, symbol: "₵" },
   { name: "EUR", factor: 0.85, symbol: "€" }, // Corrected EUR factor
   { name: "GBP", factor: 0.72, symbol: "£" }, // British Pound
+  // Add more currency options as needed
+  { name: "ZAR", factor: 14.50, symbol: "R" }, // South African Rand
+  { name: "NGN", factor: 772.34, symbol: "₦" }, // Nigerian Naira
+  { name: "EGP", factor: 16.15, symbol: "ج.م" }, // Egyptian Pound
+  { name: "KES", factor: 112.75, symbol: "KSh" }, // Kenyan Shilling
   { name: "JPY", factor: 110, symbol: "¥" }, // Japanese Yen
   { name: "AUD", factor: 1.35, symbol: "$" }, // Australian Dollar
   { name: "CAD", factor: 1.25, symbol: "$" }, // Canadian Dollar
@@ -25,7 +30,7 @@ const currencyOptions = [
   { name: "NZD", factor: 1.45, symbol: "$" }, // New Zealand Dollar
   { name: "AED", factor: 3.67, symbol: "د.إ" }, // United Arab Emirates Dirham
   { name: "BRL", factor: 5.25, symbol: "R$" }, // Brazilian Real
-  // Add more currency options as needed
+  
 ];
 
 

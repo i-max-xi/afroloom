@@ -55,6 +55,7 @@ import p_kente2 from "./textures/p_kente2.jpg";
 import p_kente3 from "./textures/p_kente3.jpg";
 import p_kente4 from "./textures/p_kente4.jpg";
 
+import { Dialog } from "primereact/dialog";
 import Nav from "../../../Components/Nav";
 import "./styles.css";
 import { useParams } from "react-router";
@@ -210,7 +211,6 @@ const Configurator = () => {
     suit_fabric: 45,
     // Add values for other texture categories if needed
   };
-  
 
   const [partPrices, setPartPrices] = useState(
     Array(selectedClothing.myNode.length).fill(selectedClothing.price)
@@ -266,6 +266,9 @@ const Configurator = () => {
     setShowConfirmation(true); // Show confirmation
   };
 
+  //size guide popup
+  const [visible, setVisible] = useState(false);
+
   return (
     <>
       <Nav />
@@ -315,6 +318,21 @@ const Configurator = () => {
                       {option.label}
                     </button>
                   ))}
+                  <p onClick={() => setVisible(true)}>Fit & Sizing guide</p>
+                  <Dialog
+                    header="Header"
+                    visible={visible}
+                    style={{ width: "50vw" }}
+                    onHide={() => setVisible(false)}
+                  >
+                    <p className="m-0">
+                      <img
+                        src={selectedClothing.sizeGuide}
+                        width="100%"
+                        alt="size-guide"
+                      />
+                    </p>
+                  </Dialog>
                 </div>
                 <h5>Choose Color</h5> {/* Add heading for colors */}
                 <div className="color-buttons-container">
