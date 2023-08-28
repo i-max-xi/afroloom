@@ -205,9 +205,9 @@ h1 {
   transition: 0.1s ease-in;
 }
 
-.texture-button:hover {
+/* .texture-button:hover {
   transform: translateY(-0.2rem) scale(2);
-}
+} */
 
 .canvas-container {
   width: 100%;
