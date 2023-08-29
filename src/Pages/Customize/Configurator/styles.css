@@ -62,6 +62,10 @@ h1 {
   justify-content: center;
 }
 
+.fit {
+  cursor: pointer;
+}
+
 .color-buttons-container {
   display: flex;
   justify-content: center;
@@ -180,6 +184,11 @@ h1 {
   margin-bottom: 1rem;
 }
 
+.texture-category h3 {
+  font-size: 1.2rem; /* Adjust the font size as needed */
+}
+
+
 .texture-images {
   display: flex;
   flex-wrap: wrap;
@@ -218,4 +227,9 @@ h1 {
   margin: 2px;
   padding: 0.3rem 0.8rem;
 }
+
+
+/* Adjust the font size for the texture headings */
+
+
 

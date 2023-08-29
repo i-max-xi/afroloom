@@ -16,9 +16,13 @@ const Confirmation = ({
   price,
   estimatedShippingTime,
   readyBy,
-  selectedParts, 
-  selectedSize, 
-  modelImage
+  selectedParts,
+  selectedSize,
+  modelImage,
+  height,
+  weight,
+  chest,
+  waist,
 }) => {
   const toast = useRef(null); // Create a ref for the Toast component
 
@@ -31,7 +35,6 @@ const Confirmation = ({
 
   const handleFormSubmit = async () => {
     try {
-
       // Capture the component as an image using html2canvas
       const image = await html2canvas(componentRef.current, {
         useCORS: true, // Ensure cross-origin images are captured
@@ -58,7 +61,7 @@ const Confirmation = ({
       };
 
       // Send the formData to Formspree
-      const response = await fetch('https://formspree.io/f/xrgwpakw', {
+      const response = await fetch("https://formspree.io/f/xrgwpakw", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -74,7 +77,10 @@ const Confirmation = ({
             <div>
               <p>Thank you for your order!</p>
               <p>
-                Proceed to <Link to="/checkout" className="btn btn-success">Checkout</Link>
+                Proceed to{" "}
+                <Link to="/checkout" className="btn btn-success">
+                  Checkout
+                </Link>
               </p>
             </div>
           ),
@@ -111,6 +117,10 @@ const Confirmation = ({
         selectedSize={selectedSize}
         ref={componentRef}
         modelImage={modelImage}
+        height={height}
+        weight={weight}
+        chest={chest}
+        waist={waist}
       />
       <div className="container justify-content-center">
         <div className="d-flex">
@@ -123,7 +133,6 @@ const Confirmation = ({
         </div>
 
         <p className="h5 mt-4">Thank you for your order!</p>
-
       </div>
     </div>
   );
@@ -131,7 +140,18 @@ const Confirmation = ({
 
 export const OrderDetail = React.forwardRef(
   (
-    { price, estimatedShippingTime, readyBy, selectedParts, selectedSize, modelImage },
+    {
+      price,
+      estimatedShippingTime,
+      readyBy,
+      selectedParts,
+      selectedSize,
+      modelImage,
+      height,
+      weight,
+      chest,
+      waist,
+    },
     ref
   ) => {
     return (
@@ -144,6 +164,13 @@ export const OrderDetail = React.forwardRef(
           <p className="h5 mt-3">Price: ${price}</p>
           <p>Estimated Shipping Time: {estimatedShippingTime}</p>
           <p>Expected to be Ready By: {readyBy}</p>
+          <div>
+            <h6>Special Measurements</h6>
+            {height !== "" && <h5>Height: {height} cm</h5>}
+            {weight !== "" && <h5>Weight: {weight} cm</h5>}
+            {chest !== "" && <h5>Chest: {chest} cm</h5>}
+            {waist !== "" && <h5>Waist: {waist} cm</h5>}{" "}
+          </div>
         </div>
         <div className="col-md-6">
           <div className="mt-4">
