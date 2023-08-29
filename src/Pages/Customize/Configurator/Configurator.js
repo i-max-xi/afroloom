@@ -326,6 +326,10 @@ const Configurator = () => {
 
   //size guide popup
   const [visible, setVisible] = useState(false);
+  const [height, setHeight] = useState("");
+  const [weight, setWeight] = useState("");
+  const [chest, setChest] = useState("");
+  const [waist, setWaist] = useState("");
 
   return (
     <>
@@ -341,6 +345,10 @@ const Configurator = () => {
             sizeOptions.find((option) => option.value === selectedSize)?.label
           }
           modelImage={stateImage}
+          height={height}
+          weight={weight}
+          chest={chest}
+          waist={waist}
         />
       ) : (
         <>
@@ -376,20 +384,67 @@ const Configurator = () => {
                       {option.label}
                     </button>
                   ))}
-                  <p onClick={() => setVisible(true)}>Fit & Sizing guide</p>
+                  <p onClick={() => setVisible(true)} className="fit">
+                    Fit & Sizing guide
+                  </p>
                   <Dialog
-                    header="Header"
+                    header="Sizing Guide"
                     visible={visible}
                     style={{ width: "50vw" }}
                     onHide={() => setVisible(false)}
                   >
-                    <p className="m-0">
-                      <img
-                        src={selectedClothing.sizeGuide}
-                        width="100%"
-                        alt="size-guide"
-                      />
-                    </p>
+                    <div className="d-flex flex-column align-items-center">
+                      <p className="m-0">
+                        <img
+                          src={selectedClothing.sizeGuide}
+                          width="100%"
+                          alt="size-guide"
+                        />
+                      </p>
+                      <form>
+                        <h4 className="mt-3">Customize Your Own Measurements</h4>
+                        <div className="d-flex">
+                          <div className="m-3">
+                            <label className="form-label">Height (cm)</label>
+                            <input
+                              type="number"
+                              className="form-control"
+                              value={height}
+                              onChange={(e) => setHeight(e.target.value)}
+                            />
+                          </div>
+                          <div className="m-3">
+                            <label className="form-label">Weight (kg)</label>
+                            <input
+                              type="number"
+                              className="form-control"
+                              value={weight}
+                              onChange={(e) => setWeight(e.target.value)}
+                            />
+                          </div>
+                        </div>
+                        <div className="d-flex">
+                          <div className="m-3">
+                            <label className="form-label">Chest (cm)</label>
+                            <input
+                              type="number"
+                              className="form-control"
+                              value={chest}
+                              onChange={(e) => setChest(e.target.value)}
+                            />
+                          </div>
+                          <div className="m-3">
+                            <label className="form-label">Waist (cm)</label>
+                            <input
+                              type="number"
+                              className="form-control"
+                              value={waist}
+                              onChange={(e) => setWaist(e.target.value)}
+                            />
+                          </div>
+                        </div>
+                      </form>
+                    </div>
                   </Dialog>
                 </div>
                 <h5>Choose Color</h5> {/* Add heading for colors */}
@@ -610,7 +665,9 @@ const Configurator = () => {
                                   data-pr-tooltip="PrimeReact-Logo"
                                   height="80px"
                                 />
-                                <p>{textureDescriptions.printed_kente[index]}</p>
+                                <p>
+                                  {textureDescriptions.printed_kente[index]}
+                                </p>
                               </div>
                             </Tooltip>
                             <img
@@ -660,172 +717,6 @@ const Configurator = () => {
                   </div>
                   {/* Add more rows of texture categories as needed */}
                 </div>
-                {/* <div className="texture-buttons-container">
-                  <div className="texture-row">
-                    <div className="texture-category">
-                      <h3>Batik (+ $10)</h3>
-                      <div className="texture-images">
-                        {textureArrays.batik.map((texture, index) => (
-                          <>
-                            <Tooltip target={`.${index}`}>
-                              <img
-                                alt="texture-description"
-                                src={texture}
-                                data-pr-tooltip="PrimeReact-Logo"
-                                height="80px"
-                              />
-                              lorem
-                            </Tooltip>
-                            <img
-                              key={index}
-                              src={texture}
-                              alt={`batik ${index + 1}`}
-                              className={`texture-button ${index} ${
-                                selectedPrintOn === texture
-                                  ? "selected-border"
-                                  : ""
-                              }`}
-                              onClick={() => handleTextureChange(texture)}
-                            />
-                          </>
-                        ))}
-                      </div>
-                    </div>
-                    <div className="texture-category">
-                      <h3>Dashiki (+$15)</h3>
-                      <div className="texture-images">
-                        {textureArrays.dashiki.map((texture, index) => (
-                          <img
-                            key={index}
-                            src={texture}
-                            alt={`dashiki ${index + 1}`}
-                            className={`texture-button ${
-                              selectedPrintOn === texture
-                                ? "selected-border"
-                                : ""
-                            }`}
-                            onClick={() => handleTextureChange(texture)}
-                          />
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                  <div className="texture-row">
-                    <div className="texture-category">
-                      <h3>Kente (+$20)</h3>
-                      <div className="texture-images">
-                        {textureArrays.kente.map((texture, index) => (
-                          <img
-                            key={index}
-                            src={texture}
-                            alt={`kente ${index + 1}`}
-                            className={`texture-button ${
-                              selectedPrintOn === texture
-                                ? "selected-border"
-                                : ""
-                            }`}
-                            onClick={() => handleTextureChange(texture)}
-                          />
-                        ))}
-                      </div>
-                    </div>
-                    <div className="texture-category">
-                      <h3>Wax Print (+$25)</h3>
-                      <div className="texture-images">
-                        {textureArrays.waxPrint.map((texture, index) => (
-                          <img
-                            key={index}
-                            src={texture}
-                            alt={`waxPrint ${index + 1}`}
-                            className={`texture-button ${
-                              selectedPrintOn === texture
-                                ? "selected-border"
-                                : ""
-                            }`}
-                            onClick={() => handleTextureChange(texture)}
-                          />
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                  <div className="texture-row">
-                    <div className="texture-category">
-                      <h3>Smock (+$30)</h3>
-                      <div className="texture-images">
-                        {textureArrays.smock.map((texture, index) => (
-                          <img
-                            key={index}
-                            src={texture}
-                            alt={`smock ${index + 1}`}
-                            className={`texture-button ${
-                              selectedPrintOn === texture
-                                ? "selected-border"
-                                : ""
-                            }`}
-                            onClick={() => handleTextureChange(texture)}
-                          />
-                        ))}
-                      </div>
-                    </div>
-                    <div className="texture-category">
-                      <h3>Lace (+$35)</h3>
-                      <div className="texture-images">
-                        {textureArrays.lace.map((texture, index) => (
-                          <img
-                            key={index}
-                            src={texture}
-                            alt={`lace ${index + 1}`}
-                            className={`texture-button ${
-                              selectedPrintOn === texture
-                                ? "selected-border"
-                                : ""
-                            }`}
-                            onClick={() => handleTextureChange(texture)}
-                          />
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                  <div className="texture-row">
-                    <div className="texture-category">
-                      <h3>Printed Kente (+$40)</h3>
-                      <div className="texture-images">
-                        {textureArrays.printed_kente.map((texture, index) => (
-                          <img
-                            key={index}
-                            src={texture}
-                            alt={`printed_kente ${index + 1}`}
-                            className={`texture-button ${
-                              selectedPrintOn === texture
-                                ? "selected-border"
-                                : ""
-                            }`}
-                            onClick={() => handleTextureChange(texture)}
-                          />
-                        ))}
-                      </div>
-                    </div>
-                    <div className="texture-category">
-                      <h3>Suit Fabric (+$45)</h3>
-                      <div className="texture-images">
-                        {textureArrays.suit_fabric.map((texture, index) => (
-                          <img
-                            key={index}
-                            src={texture}
-                            alt={`suit_fabric ${index + 1}`}
-                            className={`texture-button ${
-                              selectedPrintOn === texture
-                                ? "selected-border"
-                                : ""
-                            }`}
-                            onClick={() => handleTextureChange(texture)}
-                          />
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                </div> */}
-                {/* ... */}
               </div>
 
               <div className="right-panel border-left">
