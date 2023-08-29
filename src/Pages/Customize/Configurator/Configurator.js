@@ -474,25 +474,25 @@ const Configurator = () => {
                   </div>
                   <div className="texture-row">
                     <div className="texture-category ">
-                      <h3>Batik (+ $10)</h3>
+                      <h3>Kente (+$20)</h3>
                       <div className="texture-images">
-                        {textureArrays.batik.map((texture, index) => (
+                        {textureArrays.kente.map((texture, index) => (
                           <div key={index} className="texture-item">
-                            <Tooltip target={`.batik-${index}`}>
+                            <Tooltip target={`.kente-${index}`}>
                               <div className="d-flex flex-column">
                                 <img
-                                  alt={`batik ${index + 1}`}
+                                  alt={`kente ${index + 1}`}
                                   src={texture}
                                   data-pr-tooltip="PrimeReact-Logo"
                                   height="80px"
                                 />
-                                <p>{textureDescriptions.batik[index]}</p>
+                                <p>{textureDescriptions.kente[index]}</p>
                               </div>
                             </Tooltip>
                             <img
                               src={texture}
-                              alt={`batik ${index + 1}`}
-                              className={`texture-button batik-${index} ${
+                              alt={`kente ${index + 1}`}
+                              className={`texture-button kente-${index} ${
                                 selectedPrintOn === texture
                                   ? "selected-border"
                                   : ""
@@ -504,87 +504,25 @@ const Configurator = () => {
                       </div>
                     </div>
                     <div className="texture-category ">
-                      <h3>Dashiki (+$15)</h3>
+                      <h3>Wax Print (+$25)</h3>
                       <div className="texture-images">
-                        {textureArrays.dashiki.map((texture, index) => (
+                        {textureArrays.waxPrint.map((texture, index) => (
                           <div key={index} className="texture-item">
-                            <Tooltip target={`.dashiki-${index}`}>
+                            <Tooltip target={`.waxPrint-${index}`}>
                               <div className="d-flex flex-column">
                                 <img
-                                  alt={`dashiki ${index + 1}`}
+                                  alt={`waxPrint ${index + 1}`}
                                   src={texture}
                                   data-pr-tooltip="PrimeReact-Logo"
                                   height="80px"
                                 />
-                                <p>{textureDescriptions.dashiki[index]}</p>
+                                <p>{textureDescriptions.waxPrint[index]}</p>
                               </div>
                             </Tooltip>
                             <img
                               src={texture}
-                              alt={`dashiki ${index + 1}`}
-                              className={`texture-button dashiki-${index} ${
-                                selectedPrintOn === texture
-                                  ? "selected-border"
-                                  : ""
-                              }`}
-                              onClick={() => handleTextureChange(texture)}
-                            />
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-                  <div className="texture-row">
-                    <div className="texture-category ">
-                      <h3>Batik (+ $10)</h3>
-                      <div className="texture-images">
-                        {textureArrays.batik.map((texture, index) => (
-                          <div key={index} className="texture-item">
-                            <Tooltip target={`.batik-${index}`}>
-                              <div className="d-flex flex-column">
-                                <img
-                                  alt={`batik ${index + 1}`}
-                                  src={texture}
-                                  data-pr-tooltip="PrimeReact-Logo"
-                                  height="80px"
-                                />
-                                <p>{textureDescriptions.batik[index]}</p>
-                              </div>
-                            </Tooltip>
-                            <img
-                              src={texture}
-                              alt={`batik ${index + 1}`}
-                              className={`texture-button batik-${index} ${
-                                selectedPrintOn === texture
-                                  ? "selected-border"
-                                  : ""
-                              }`}
-                              onClick={() => handleTextureChange(texture)}
-                            />
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                    <div className="texture-category ">
-                      <h3>Dashiki (+$15)</h3>
-                      <div className="texture-images">
-                        {textureArrays.dashiki.map((texture, index) => (
-                          <div key={index} className="texture-item">
-                            <Tooltip target={`.dashiki-${index}`}>
-                              <div className="d-flex flex-column">
-                                <img
-                                  alt={`dashiki ${index + 1}`}
-                                  src={texture}
-                                  data-pr-tooltip="PrimeReact-Logo"
-                                  height="80px"
-                                />
-                                <p>{textureDescriptions.dashiki[index]}</p>
-                              </div>
-                            </Tooltip>
-                            <img
-                              src={texture}
-                              alt={`dashiki ${index + 1}`}
-                              className={`texture-button dashiki-${index} ${
+                              alt={`waxPrint ${index + 1}`}
+                              className={`texture-button waxPrint-${index} ${
                                 selectedPrintOn === texture
                                   ? "selected-border"
                                   : ""
@@ -598,25 +536,25 @@ const Configurator = () => {
                   </div>
                   <div className="texture-row">
                     <div className="texture-category ">
-                      <h3>Batik (+ $10)</h3>
+                      <h3>Smock (+$30)</h3>
                       <div className="texture-images">
-                        {textureArrays.batik.map((texture, index) => (
+                        {textureArrays.smock.map((texture, index) => (
                           <div key={index} className="texture-item">
-                            <Tooltip target={`.batik-${index}`}>
+                            <Tooltip target={`.smock-${index}`}>
                               <div className="d-flex flex-column">
                                 <img
-                                  alt={`batik ${index + 1}`}
+                                  alt={`smock ${index + 1}`}
                                   src={texture}
                                   data-pr-tooltip="PrimeReact-Logo"
                                   height="80px"
                                 />
-                                <p>{textureDescriptions.batik[index]}</p>
+                                <p>{textureDescriptions.smock[index]}</p>
                               </div>
                             </Tooltip>
                             <img
                               src={texture}
-                              alt={`batik ${index + 1}`}
-                              className={`texture-button batik-${index} ${
+                              alt={`smock ${index + 1}`}
+                              className={`texture-button smock-${index} ${
                                 selectedPrintOn === texture
                                   ? "selected-border"
                                   : ""
@@ -628,25 +566,87 @@ const Configurator = () => {
                       </div>
                     </div>
                     <div className="texture-category ">
-                      <h3>Dashiki (+$15)</h3>
+                      <h3>Lace (+$35)</h3>
                       <div className="texture-images">
-                        {textureArrays.dashiki.map((texture, index) => (
+                        {textureArrays.lace.map((texture, index) => (
                           <div key={index} className="texture-item">
-                            <Tooltip target={`.dashiki-${index}`}>
+                            <Tooltip target={`.lace-${index}`}>
                               <div className="d-flex flex-column">
                                 <img
-                                  alt={`dashiki ${index + 1}`}
+                                  alt={`lace ${index + 1}`}
                                   src={texture}
                                   data-pr-tooltip="PrimeReact-Logo"
                                   height="80px"
                                 />
-                                <p>{textureDescriptions.dashiki[index]}</p>
+                                <p>{textureDescriptions.lace[index]}</p>
                               </div>
                             </Tooltip>
                             <img
                               src={texture}
-                              alt={`dashiki ${index + 1}`}
-                              className={`texture-button dashiki-${index} ${
+                              alt={`lace ${index + 1}`}
+                              className={`texture-button lace-${index} ${
+                                selectedPrintOn === texture
+                                  ? "selected-border"
+                                  : ""
+                              }`}
+                              onClick={() => handleTextureChange(texture)}
+                            />
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                  <div className="texture-row">
+                    <div className="texture-category ">
+                      <h3>Printed Kente (+$40)</h3>
+                      <div className="texture-images">
+                        {textureArrays.printed_kente.map((texture, index) => (
+                          <div key={index} className="texture-item">
+                            <Tooltip target={`.printed_kente-${index}`}>
+                              <div className="d-flex flex-column">
+                                <img
+                                  alt={`printed_kente ${index + 1}`}
+                                  src={texture}
+                                  data-pr-tooltip="PrimeReact-Logo"
+                                  height="80px"
+                                />
+                                <p>{textureDescriptions.printed_kente[index]}</p>
+                              </div>
+                            </Tooltip>
+                            <img
+                              src={texture}
+                              alt={`printed_kente ${index + 1}`}
+                              className={`texture-button printed_kente-${index} ${
+                                selectedPrintOn === texture
+                                  ? "selected-border"
+                                  : ""
+                              }`}
+                              onClick={() => handleTextureChange(texture)}
+                            />
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                    <div className="texture-category ">
+                      <h3>Suit Fabric (+$45)</h3>
+                      <div className="texture-images">
+                        {textureArrays.suit_fabric.map((texture, index) => (
+                          <div key={index} className="texture-item">
+                            <Tooltip target={`.suit_fabric-${index}`}>
+                              <div className="d-flex flex-column">
+                                <img
+                                  alt={`suit_fabric ${index + 1}`}
+                                  src={texture}
+                                  data-pr-tooltip="PrimeReact-Logo"
+                                  height="80px"
+                                />
+                                <p>{textureDescriptions.suit_fabric[index]}</p>
+                              </div>
+                            </Tooltip>
+                            <img
+                              src={texture}
+                              alt={`suit_fabric ${index + 1}`}
+                              className={`texture-button suit_fabric-${index} ${
                                 selectedPrintOn === texture
                                   ? "selected-border"
                                   : ""
