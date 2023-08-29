@@ -55,7 +55,7 @@ import p_kente2 from "./textures/p_kente2.jpg";
 import p_kente3 from "./textures/p_kente3.jpg";
 import p_kente4 from "./textures/p_kente4.jpg";
 
-import { Tooltip } from 'primereact/tooltip';
+import { Tooltip } from "primereact/tooltip";
 import { Dialog } from "primereact/dialog";
 import Nav from "../../../Components/Nav";
 import "./styles.css";
@@ -215,61 +215,60 @@ const Configurator = () => {
 
   const textureDescriptions = {
     batik: [
-      'Description for batik1',
-      'Description for batik2',
-      'Description for batik3',
-      'Description for batik4',
-      'Description for batik5',
+      "Description for batik1",
+      "Description for batik2",
+      "Description for batik3",
+      "Description for batik4",
+      "Description for batik5",
     ],
     dashiki: [
-      'Description for dashiki1',
-      'Description for dashiki2',
-      'Description for dashiki3',
-      'Description for dashiki4',
-      'Description for dashiki5',
+      "Description for dashiki1",
+      "Description for dashiki2",
+      "Description for dashiki3",
+      "Description for dashiki4",
+      "Description for dashiki5",
     ],
     kente: [
-      'Description for kente1',
-      'Description for kente2',
-      'Description for kente3',
-      'Description for kente4',
-      'Description for kente5',
+      "Description for kente1",
+      "Description for kente2",
+      "Description for kente3",
+      "Description for kente4",
+      "Description for kente5",
     ],
     waxPrint: [
-      'Description for waxPrint1',
-      'Description for waxPrint2',
-      'Description for waxPrint3',
-      'Description for waxPrint4',
-      'Description for waxPrint5',
+      "Description for waxPrint1",
+      "Description for waxPrint2",
+      "Description for waxPrint3",
+      "Description for waxPrint4",
+      "Description for waxPrint5",
     ],
     smock: [
-      'Description for smock1',
-      'Description for smock2',
-      'Description for smock3',
-      'Description for smock4',
+      "Description for smock1",
+      "Description for smock2",
+      "Description for smock3",
+      "Description for smock4",
     ],
     lace: [
-      'Description for lace1',
-      'Description for lace2',
-      'Description for lace3',
-      'Description for lace4',
-      'Description for lace5',
+      "Description for lace1",
+      "Description for lace2",
+      "Description for lace3",
+      "Description for lace4",
+      "Description for lace5",
     ],
     printed_kente: [
-      'Description for p_kente1',
-      'Description for p_kente2',
-      'Description for p_kente3',
-      'Description for p_kente4',
+      "Description for p_kente1",
+      "Description for p_kente2",
+      "Description for p_kente3",
+      "Description for p_kente4",
     ],
     suit_fabric: [
-      'Description for s_fabric1',
-      'Description for s_fabric2',
-      'Description for s_fabric3',
-      'Description for s_fabric4',
-      'Description for s_fabric5',
+      "Description for s_fabric1",
+      "Description for s_fabric2",
+      "Description for s_fabric3",
+      "Description for s_fabric4",
+      "Description for s_fabric5",
     ],
   };
-  
 
   const [partPrices, setPartPrices] = useState(
     Array(selectedClothing.myNode.length).fill(selectedClothing.price)
@@ -410,34 +409,71 @@ const Configurator = () => {
                 </div>
                 <h5>Choose Textile</h5> {/* Add heading for textures */}
                 {/* ... */}
-                {Object.entries(textureArrays).map(([textureType, textures], index) => (
-        <div key={index}>
-          <h2>{textureType}</h2>
-          {textures.map((texture, innerIndex) => (
-            <div key={innerIndex}>
-              <Tooltip target={`.${textureType}-${innerIndex}`}>
-                <div className="d-flex flex-column">
-                  <img
-                    alt="texture-description"
-                    src={texture}
-                    data-pr-tooltip="PrimeReact-Logo"
-                    height="80px"
-                  />
-                  <p>{textureDescriptions[textureType][innerIndex]}</p>
+                <div className="texture-container">
+                  <div className="texture-row">
+                    <div className="texture-category mx-3">
+                      <h3>Batik (+ $10)</h3>
+                      <div className="texture-images">
+                        {textureArrays.batik.map((texture, index) => (
+                          <div key={index} className="texture-item">
+                            <Tooltip target={`.batik-${index}`}>
+                              <div className="d-flex flex-column">
+                                <img
+                                  alt={`batik ${index + 1}`}
+                                  src={texture}
+                                  data-pr-tooltip="PrimeReact-Logo"
+                                  height="80px"
+                                />
+                                <p>{textureDescriptions.batik[index]}</p>
+                              </div>
+                            </Tooltip>
+                            <img
+                              src={texture}
+                              alt={`batik ${index + 1}`}
+                              className={`texture-button batik-${index} ${
+                                selectedPrintOn === texture
+                                  ? "selected-border"
+                                  : ""
+                              }`}
+                              onClick={() => handleTextureChange(texture)}
+                            />
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                    <div className="texture-category mx-3">
+                      <h3>Dashiki (+$15)</h3>
+                      <div className="texture-images">
+                        {textureArrays.dashiki.map((texture, index) => (
+                          <div key={index} className="texture-item">
+                            <Tooltip target={`.dashiki-${index}`}>
+                              <div className="d-flex flex-column">
+                                <img
+                                  alt={`dashiki ${index + 1}`}
+                                  src={texture}
+                                  data-pr-tooltip="PrimeReact-Logo"
+                                  height="80px"
+                                />
+                                <p>{textureDescriptions.dashiki[index]}</p>
+                              </div>
+                            </Tooltip>
+                            <img
+                              src={texture}
+                              alt={`dashiki ${index + 1}`}
+                              className={`texture-button dashiki-${index} ${
+                                selectedPrintOn === texture
+                                  ? "selected-border"
+                                  : ""
+                              }`}
+                              onClick={() => handleTextureChange(texture)}
+                            />
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                  {/* Add more rows of texture categories as needed */}
                 </div>
-              </Tooltip>
-              <img
-                src={texture}
-                alt={`${textureType} ${innerIndex + 1}`}
-                className={`texture-button ${textureType}-${innerIndex} ${
-                  selectedPrintOn === texture ? "selected-border" : ""
-                }`}
-                onClick={() => handleTextureChange(texture)}
-              />
-            </div>
-          ))}
-        </div>
-      ))}
                 {/* <div className="texture-buttons-container">
                   <div className="texture-row">
                     <div className="texture-category">
