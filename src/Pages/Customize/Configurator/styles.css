@@ -229,7 +229,7 @@ h1 {
 }
 
 
-/* Adjust the font size for the texture headings */
-
-
-
+.fit {
+  color: blue;
+  text-transform: capitalize;
+}
