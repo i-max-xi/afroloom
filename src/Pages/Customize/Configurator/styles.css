@@ -64,6 +64,8 @@ h1 {
 
 .fit {
   cursor: pointer;
+  color: blue;
+  text-transform: capitalize;
 }
 
 .color-buttons-container {
@@ -226,10 +228,4 @@ h1 {
 .size-button {
   margin: 2px;
   padding: 0.3rem 0.8rem;
-}
-
-
-.fit {
-  color: blue;
-  text-transform: capitalize;
 }

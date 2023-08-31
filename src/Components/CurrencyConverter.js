@@ -47,6 +47,15 @@ const CurrencyConverter = () => {
     );
   };
 
+  const currencyOptionTemplate = (option) => {
+    return (
+      <div className="currency-option">
+        <span className="currency-name">{option.name}</span>
+        <span className="currency-symbol"> ({option.symbol})</span>
+      </div>
+    );
+  };
+
   return (
     <div className="currency-converter">
       <Dropdown
@@ -54,7 +63,7 @@ const CurrencyConverter = () => {
           (option) => option.symbol === currencySymbol.symbol
         )}
         options={currencyOptions}
-        optionLabel="name"
+        optionLabel={currencyOptionTemplate}
         onChange={(e) => handleCurrencyChange(e.value)}
       />
     </div>
