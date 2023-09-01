@@ -109,7 +109,7 @@ export const Card = ({
             <span></span>
           )}
 
-          <h5 className="price mt-3">{currencySymbol}{currencyFactor * price}</h5>
+          <h5 className="price mt-3">{currencySymbol}{(currencyFactor * price).toFixed(2)}</h5>
 
           {/* stars */}
           <p className="mt-3">{stars}</p>

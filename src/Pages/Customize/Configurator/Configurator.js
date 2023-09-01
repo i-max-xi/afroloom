@@ -62,6 +62,8 @@ import "./styles.css";
 import { useParams } from "react-router";
 import { mainMaleCustomize } from "../../../Data/CustomizeDataMale";
 
+import { useSelector } from "react-redux";
+
 const Shirt = ({
   isRotating,
   selectedClothing,
@@ -142,6 +144,10 @@ const Configurator = () => {
   const [isRotating, setIsRotating] = useState(false);
 
   const canvasRef = useRef();
+
+  // currency conversion
+  const currencySymbol = useSelector((state) => state.currencySymbol.symbol);
+  const currencyFactor = useSelector((state) => state.currencySymbol.factor);
 
   const sizeOptions = [
     { label: "S", value: 0.5 },
@@ -401,7 +407,7 @@ const Configurator = () => {
                           alt="size-guide"
                         />
                       </p>
-                      <p className="m-0">
+                      <p className="mb-2">
                         <img
                           src={selectedClothing.sizePattern}
                           width="100%"
@@ -409,7 +415,9 @@ const Configurator = () => {
                         />
                       </p>
                       <form>
-                        <h4 className="mt-3">Customize Your Own Measurements</h4>
+                        <h4 className="mt-3">
+                          Customize Your Own Measurements
+                        </h4>
                         <div className="d-flex">
                           <div className="m-3">
                             <label className="form-label">Height (cm)</label>
@@ -474,7 +482,10 @@ const Configurator = () => {
                 <div className="texture-buttons-container">
                   <div className="texture-row">
                     <div className="texture-category ">
-                      <h3>Batik (+ $10)</h3>
+                      <h3>
+                        Batik (+{currencySymbol}
+                        {(currencyFactor * 10).toFixed(2)})
+                      </h3>
                       <div className="texture-images">
                         {textureArrays.batik.map((texture, index) => (
                           <div key={index} className="texture-item">
@@ -504,7 +515,10 @@ const Configurator = () => {
                       </div>
                     </div>
                     <div className="texture-category ">
-                      <h3>Dashiki (+$15)</h3>
+                      <h3>
+                        Dashiki (+{currencySymbol}
+                        {(currencyFactor * 15).toFixed(2)})
+                      </h3>
                       <div className="texture-images">
                         {textureArrays.dashiki.map((texture, index) => (
                           <div key={index} className="texture-item">
@@ -536,7 +550,10 @@ const Configurator = () => {
                   </div>
                   <div className="texture-row">
                     <div className="texture-category ">
-                      <h3>Kente (+$20)</h3>
+                      <h3>
+                        Kente (+{currencySymbol}
+                        {(currencyFactor * 20).toFixed(2)})
+                      </h3>
                       <div className="texture-images">
                         {textureArrays.kente.map((texture, index) => (
                           <div key={index} className="texture-item">
@@ -566,7 +583,10 @@ const Configurator = () => {
                       </div>
                     </div>
                     <div className="texture-category ">
-                      <h3>Wax Print (+$25)</h3>
+                      <h3>
+                        Wax Print (+{currencySymbol}
+                        {(currencyFactor * 25).toFixed(2)})
+                      </h3>
                       <div className="texture-images">
                         {textureArrays.waxPrint.map((texture, index) => (
                           <div key={index} className="texture-item">
@@ -598,7 +618,10 @@ const Configurator = () => {
                   </div>
                   <div className="texture-row">
                     <div className="texture-category ">
-                      <h3>Smock (+$30)</h3>
+                      <h3>
+                        Smock (+{currencySymbol}
+                        {(currencyFactor * 30).toFixed(2)})
+                      </h3>
                       <div className="texture-images">
                         {textureArrays.smock.map((texture, index) => (
                           <div key={index} className="texture-item">
@@ -628,7 +651,10 @@ const Configurator = () => {
                       </div>
                     </div>
                     <div className="texture-category ">
-                      <h3>Lace (+$35)</h3>
+                      <h3>
+                        Lace (+{currencySymbol}
+                        {(currencyFactor * 35).toFixed(2)})
+                      </h3>
                       <div className="texture-images">
                         {textureArrays.lace.map((texture, index) => (
                           <div key={index} className="texture-item">
@@ -660,7 +686,10 @@ const Configurator = () => {
                   </div>
                   <div className="texture-row">
                     <div className="texture-category ">
-                      <h3>Printed Kente (+$40)</h3>
+                      <h3>
+                        Printed Kente (+{currencySymbol}
+                        {(currencyFactor * 40).toFixed(2)})
+                      </h3>
                       <div className="texture-images">
                         {textureArrays.printed_kente.map((texture, index) => (
                           <div key={index} className="texture-item">
@@ -692,7 +721,10 @@ const Configurator = () => {
                       </div>
                     </div>
                     <div className="texture-category ">
-                      <h3>Suit Fabric (+$45)</h3>
+                      <h3>
+                        Suit Fabric (+{currencySymbol}
+                        {(currencyFactor * 45).toFixed(2)})
+                      </h3>
                       <div className="texture-images">
                         {textureArrays.suit_fabric.map((texture, index) => (
                           <div key={index} className="texture-item">
@@ -760,9 +792,12 @@ const Configurator = () => {
             <span className="m-3">Estimated shipping time: </span>
 
             <p className="price-text m-3">
-              <span className="fs-6 fw-normal">Price:</span> $
-              {partPrices.reduce((total, price) => total + price, 0) *
-                sizeOptions[selectedSize].value}
+              <span className="fs-6 fw-normal">Price:</span> {currencySymbol}
+              {(
+                partPrices.reduce((total, price) => total + price, 0) *
+                sizeOptions[selectedSize].value *
+                currencyFactor
+              ).toFixed(2)}
             </p>
 
             <button
