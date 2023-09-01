@@ -56,7 +56,7 @@ const CurrencyConverter = () => {
         )}
         options={currencyOptions}
         optionLabel={(option) => `${option.name} (${option.symbol})`}
-                onChange={(e) => handleCurrencyChange(e.value)}
+        onChange={(e) => handleCurrencyChange(e.value)}
       />
     </div>
   );
