@@ -61,6 +61,8 @@ import Nav from "../../../Components/Nav";
 import "./styles.css";
 import { useParams } from "react-router";
 import { mainMaleCustomize } from "../../../Data/CustomizeDataMale";
+import { Carousel } from "react-bootstrap";
+// import Carousel from "react-bootstrap/Carousel";
 
 const Shirt = ({
   isRotating,
@@ -409,7 +411,9 @@ const Configurator = () => {
                         />
                       </p>
                       <form>
-                        <h4 className="mt-3">Customize Your Own Measurements</h4>
+                        <h4 className="mt-3">
+                          Customize Your Own Measurements
+                        </h4>
                         <div className="d-flex">
                           <div className="m-3">
                             <label className="form-label">Height (cm)</label>
@@ -473,36 +477,45 @@ const Configurator = () => {
                 {/* ... */}
                 <div className="texture-buttons-container">
                   <div className="texture-row">
-                    <div className="texture-category ">
+                    <div className="texture-category">
                       <h3>Batik (+ $10)</h3>
                       <div className="texture-images">
-                        {textureArrays.batik.map((texture, index) => (
-                          <div key={index} className="texture-item">
-                            <Tooltip target={`.batik-${index}`}>
-                              <div className="d-flex flex-column">
-                                <img
-                                  alt={`batik ${index + 1}`}
-                                  src={texture}
-                                  data-pr-tooltip="PrimeReact-Logo"
-                                  height="80px"
-                                />
-                                <p>{textureDescriptions.batik[index]}</p>
-                              </div>
-                            </Tooltip>
-                            <img
-                              src={texture}
-                              alt={`batik ${index + 1}`}
-                              className={`texture-button batik-${index} ${
-                                selectedPrintOn === texture
-                                  ? "selected-border"
-                                  : ""
-                              }`}
-                              onClick={() => handleTextureChange(texture)}
-                            />
-                          </div>
-                        ))}
+                        <Carousel
+                          interval={null} // Disable auto-play
+                          nextLabel="Next" // Customize the next button label
+                          prevLabel="Previous" // Customize the previous button label
+                          slide={4} // Display multiple items at a time
+                          indicators={false} // Hide indicators
+                        >
+                          {textureArrays.batik.map((texture, index) => (
+                            <Carousel.Item key={index}>
+                              <Tooltip target={`.batik-${index}`}>
+                                <div className="d-flex flex-column">
+                                  <img
+                                    alt={`batik ${index + 1}`}
+                                    src={texture}
+                                    data-pr-tooltip="PrimeReact-Logo"
+                                    height="80px"
+                                  />
+                                  <p>{textureDescriptions.batik[index]}</p>
+                                </div>
+                              </Tooltip>
+                              <img
+                                src={texture}
+                                alt={`batik ${index + 1}`}
+                                className={`texture-button batik-${index} ${
+                                  selectedPrintOn === texture
+                                    ? "selected-border"
+                                    : ""
+                                }`}
+                                onClick={() => handleTextureChange(texture)}
+                              />
+                            </Carousel.Item>
+                          ))}
+                        </Carousel>
                       </div>
                     </div>
+
                     <div className="texture-category ">
                       <h3>Dashiki (+$15)</h3>
                       <div className="texture-images">

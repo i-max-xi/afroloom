@@ -1,49 +1,44 @@
 import {
   createSlice,
   configureStore,
-  createAsyncThunk,
+  // createAsyncThunk,
 } from "@reduxjs/toolkit";
-import { collection, getDocs } from "firebase/firestore";
+// import { collection, getDocs } from "firebase/firestore";
 
 import thunk from "redux-thunk"; // Import redux-thunk
-import { db } from "../firebase";
+// import { db } from "../firebase";
 
 // Redux slice for allProducts
 
-
-/* const allProductsSlice = createSlice({
-  name: "allProducts",
-  initialState: [],
-  reducers: {
-    addProducts: (state, action) => {
-      state.splice(0, state.length, ...action.payload);
-    },
-   
-  },
-}); */
 
 const allProductsSlice = createSlice({
   name: "allProducts",
   initialState: {
     products: [],
-    searchTerm: "",
-    // visible: false,
-    filteredItems: [], // Initialize an empty array to store filtered products
+    buffer: [],
+    // searchTerm: "",
+  
   },
   reducers: {
     addProducts: (state, action) => {
-      state.products = action.payload;
+      state.buffer = action.payload;
+      state.products = state.buffer;
     },
-    setSearchTerm: (state, action) => {
-      // state.searchTerm = action.payload;
-      // Filter products based on the search term
-      state.filteredItems = state.searchTerm
-        ? state.products.filter(product =>
-            product.name.toLowerCase().includes(action.payload.toLowerCase())
-          )
-        : [];
-    },
-    // ... other reducers
+    
+    searchItem: (state, action) => {
+      const searchTerm = action.payload.toLowerCase(); // Convert search term to lowercase
+      
+      if (searchTerm !== "") {
+        const filtered = state.buffer.filter(product =>
+          product.title && product.title.toLowerCase().includes(searchTerm) // Convert product title to lowercase
+        );
+        
+        state.products = filtered;
+      } 
+      else {
+        state.products = state.buffer;
+      }
+    }
   },
 });
 
@@ -59,53 +54,8 @@ const currencySymbolSlice = createSlice({
   },
 });
 
-// Async thunk to fetch products
-export const fetchProducts = createAsyncThunk(
-  "allProducts/fetchProducts",
-  async () => {
-    const querySnapshot = await getDocs(collection(db, "AllProducts"));
-    const products = querySnapshot.docs.map((doc) => doc.data());
-    return products;
-  }
-);
 
-// const searchSlice = createSlice({
-//   name: "search",
-//   initialState: {
-//     filteredItems: [],
-//     visible: false,
-//   },
-//   reducers: {
-    
-//     setVisible: (state, action) => {
-//       state.visible = action.payload;
-//     },
-//     setFilteredItems: (state, action) => {
-//       state.filteredItems = action.payload;
-//     },
-//   },
-// });
 
-/*const searchSlice = createSlice({
-  name: "search",
-  initialState: {
-    searchTerm: "",
-    filteredItems: [], // Initialize an empty array to store filtered products
-    visible: false,
-  },
-  reducers: {
-    setSearchProduct: (state, action) => {
-      state.searchTerm = action.payload;
-      // Filter products based on the search term
-      state.filteredItems = state.searchTerm
-        ? state.allProducts.filter(product =>
-            product.name.toLowerCase().includes(state.searchTerm.toLowerCase())
-          )
-        : [];
-    },
-    // other reducers
-  },
-});*/
 
 
 const cartSlice = createSlice({
@@ -228,7 +178,7 @@ const store = configureStore({
   middleware: [thunk],
 });
 
-export const { addProducts, setSearchTerm  } = allProductsSlice.actions;
+export const { addProducts, searchItem  } = allProductsSlice.actions;
 export const { setCurrencySymbol } = currencySymbolSlice.actions;
 
 export const { addItem, removeItem, clearCart } = cartSlice.actions;

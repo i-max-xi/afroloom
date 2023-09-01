@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import { OverlayPanel } from "primereact/overlaypanel";
 import { useDispatch } from "react-redux";
-import { setSearchTerm } from "../Redux/store"; // Update the import path for your allProductsSlice
+import { searchItem } from "../Redux/store"; // Update the import path for your allProductsSlice
 
 export default function SearchBar() {
   const op = useRef(null);
@@ -9,7 +9,8 @@ export default function SearchBar() {
 
   const handleSearchInputChange = (event) => {
     const newSearchTerm = event.target.value;
-    dispatch(setSearchTerm(newSearchTerm)); // Dispatch the setSearchTerm action
+    dispatch(searchItem(newSearchTerm)); // Dispatch the searchItem action
+    console.log(newSearchTerm);
   };
 
   return (

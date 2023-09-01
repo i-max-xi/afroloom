@@ -66,6 +66,8 @@ import blazer from '../Pages/Customize/Configurator/models/MaleClothing/male_sui
 
 //size-guides
 import tshirt_guide from '../Pages/Customize/Configurator/size_guide/male/tshirt.JPG';
+import tshirt_pattern from '../Pages/Customize/Configurator/size_guide/male/tshirt_pattern.jpg';
+
 
 export const mainMaleCustomize = [
   {
@@ -79,6 +81,7 @@ export const mainMaleCustomize = [
     myY: 10,
     price: 20,
     sizeGuide: tshirt_guide,
+    sizePattern: tshirt_pattern,
   },
   {
     id: uuid(),

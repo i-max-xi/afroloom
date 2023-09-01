@@ -64,6 +64,8 @@ h1 {
 
 .fit {
   cursor: pointer;
+  color: blue;
+  text-transform: capitalize;
 }
 
 .color-buttons-container {
@@ -227,9 +229,3 @@ h1 {
   margin: 2px;
   padding: 0.3rem 0.8rem;
 }
-
-
-/* Adjust the font size for the texture headings */
-
-
-
