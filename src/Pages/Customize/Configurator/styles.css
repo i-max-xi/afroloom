@@ -72,6 +72,7 @@ h1 {
   display: flex;
   justify-content: center;
   margin-bottom: 1rem;
+  transform: translateX(-1.5rem);
 }
 
 .color-button {
@@ -79,7 +80,7 @@ h1 {
   width: 17px;
   height: 17px;
   border-radius: 50%;
-  margin: 0 0.2rem;
+  /* margin: 0 0.2rem; */
   border: 0.5px solid rgba(0, 0, 0, 0.418);
   cursor: pointer;
   outline: none;
@@ -90,93 +91,6 @@ h1 {
   transform: scale(1.2);
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
 }
-
-/* Colors */
-.red {
-  background-color: #ff0000;
-}
-
-.green {
-  background-color: #00ff00;
-}
-
-.blue {
-  background-color: #0000ff;
-}
-
-.seablue {
-  background-color: #87ceeb;
-}
-
-.white {
-  background-color: #ffffff;
-}
-
-.black {
-  background-color: #000000;
-}
-
-.yellow {
-  background-color: #ffff00;
-}
-
-.orange {
-  background-color: #ffa500;
-}
-
-.purple {
-  background-color: #800080;
-}
-
-.pink {
-  background-color: #ff69b4;
-}
-
-.brown {
-  background-color: #a52a2a;
-}
-
-.gray {
-  background-color: #808080;
-}
-
-.cyan {
-  background-color: #00ffff;
-}
-
-.magenta {
-  background-color: #ff00ff;
-}
-
-.gold {
-  background-color: #ffd700;
-}
-
-.maroon {
-  background-color: #800000;
-}
-
-.coral {
-  background-color: #ff7f50;
-}
-
-.teal {
-  background-color: #008080;
-}
-
-.olive {
-  background-color: #808000;
-}
-
-.mauve {
-  background-color: #e0b0ff;
-}
-
-.silver {
-  background-color: #c0c0c0;
-}
-
-/* Add more colors as needed using the same pattern */
 
 
 .texture-buttons-container {
@@ -196,6 +110,7 @@ h1 {
   flex-wrap: wrap;
   gap: 10px; /* Adjust the gap as needed */
   justify-content: center; /* Center the rows horizontally */
+  transform: translateX(-2rem);
 }
 
 
@@ -228,4 +143,9 @@ h1 {
 .size-button {
   margin: 2px;
   padding: 0.3rem 0.8rem;
+}
+
+.p-carousel-prev, .p-carousel-next {
+  /* Translate the arrow up by 1rem (adjust as needed) */
+  transform: translateY(-0.75rem);
 }
