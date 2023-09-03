@@ -350,27 +350,6 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
     setItemsToDisplay(newItemstoDisplay);
   };
   
-  
-
-  // search feature
-  // const searchQuery = useSelector((state) => state.search.query);
-
-  // const handleSearchInputChange = (e) => {
-  //   const query = e.target.value;
-  //   dispatch(setQuery(query));
-
-  //   const filteredItems = Products.filter((item) =>
-  //     item.title.toLowerCase().includes(query.toLowerCase())
-  //   );
-
-  //   dispatch(setFilteredItems(filteredItems));
-  //   setItemsToDisplay(filteredItems);
-  // };
-
-  //  const isVisible = useSelector((state) => state.allProducts.visible);
-  //  const closeSearch = () => {
-  //    dispatch(setVisible(false));
-  //  }; 
 
   return (
     <>
