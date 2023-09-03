@@ -535,9 +535,9 @@ const Configurator = () => {
                               numScroll: 1,
                             },
                           ]}
-                          itemTemplate={(texture, index) => (
-                            <div key={index} className="texture-item">
-                              {/* <Tooltip target={`.batik-${index}`}>
+                          itemTemplate={(texture) => (
+                            <div key={texture} className="texture-item">
+                              <Tooltip target={`.batik-${textureArrays.batik.indexOf(texture)}`}>
                                 <div className="d-flex flex-column">
                                   <img
                                     alt={`Batik`}
@@ -553,11 +553,11 @@ const Configurator = () => {
                                     }
                                   </p>
                                 </div>
-                              </Tooltip> */}
+                              </Tooltip>
                               <img
                                 src={texture}
                                 alt={`Batik`}
-                                className={`texture-button ${texture}-tooltip ${
+                                className={`texture-button batik-${textureArrays.batik.indexOf(texture)} ${
                                   selectedPrintOn === texture
                                     ? "selected-border"
                                     : ""
@@ -597,26 +597,32 @@ const Configurator = () => {
                               numScroll: 1,
                             },
                           ]}
-                          itemTemplate={(texture, index) => (
+                          itemTemplate={(texture) => (
                             <div
-                              key={index}
+                              key={texture}
                               className="texture-item"
                             >
-                              <Tooltip target={`.dashiki-${index}`}>
+                              <Tooltip target={`.dashiki-${textureArrays.dashiki.indexOf(texture)}`}>
                                 <div className="d-flex flex-column">
                                   <img
-                                    alt={`dashiki ${index + 1}`}
+                                    alt={`dashiki`}
                                     src={texture}
                                     data-pr-tooltip="PrimeReact-Logo"
                                     height="80px"
                                   />
-                                  <p>{textureDescriptions.dashiki[index]}</p>
+                                  <p>
+                                    {
+                                      textureDescriptions.dashiki[
+                                        textureArrays.dashiki.indexOf(texture)
+                                      ]
+                                    }
+                                  </p>
                                 </div>
                               </Tooltip>
                               <img
                                 src={texture}
-                                alt={`dashiki ${index + 1}`}
-                                className={`texture-button dashiki-${index} ${
+                                alt={`dashiki`}
+                                className={`texture-button dashiki-${textureArrays.dashiki.indexOf(texture)} ${
                                   selectedPrintOn === texture
                                     ? "selected-border"
                                     : ""
@@ -658,9 +664,9 @@ const Configurator = () => {
                               numScroll: 1,
                             },
                           ]}
-                          itemTemplate={(texture, index) => (
-                            <div key={index} className="texture-item">
-                              {/* <Tooltip target={`.kente-${index}`}>
+                          itemTemplate={(texture) => (
+                            <div key={texture} className="texture-item">
+                              <Tooltip target={`.kente-${textureArrays.kente.indexOf(texture)}`}>
                                 <div className="d-flex flex-column">
                                   <img
                                     alt={`Kente`}
@@ -676,11 +682,11 @@ const Configurator = () => {
                                     }
                                   </p>
                                 </div>
-                              </Tooltip> */}
+                              </Tooltip>
                               <img
                                 src={texture}
                                 alt={`Kente`}
-                                className={`texture-button ${texture}-tooltip ${
+                                className={`texture-button kente-${textureArrays.kente.indexOf(texture)} ${
                                   selectedPrintOn === texture
                                     ? "selected-border"
                                     : ""
@@ -720,9 +726,9 @@ const Configurator = () => {
                               numScroll: 1,
                             },
                           ]}
-                          itemTemplate={(texture, index) => (
-                            <div key={index} className="texture-item">
-                              {/* <Tooltip target={`.waxPrint-${index}`}>
+                          itemTemplate={(texture) => (
+                            <div key={texture} className="texture-item">
+                              <Tooltip target={`.waxPrint-${textureArrays.waxPrint.indexOf(texture)}`}>
                                 <div className="d-flex flex-column">
                                   <img
                                     alt={`waxPrint`}
@@ -738,11 +744,11 @@ const Configurator = () => {
                                     }
                                   </p>
                                 </div>
-                              </Tooltip> */}
+                              </Tooltip>
                               <img
                                 src={texture}
                                 alt={`waxPrint`}
-                                className={`texture-button ${texture}-tooltip ${
+                                className={`texture-button waxPrint-${textureArrays.waxPrint.indexOf(texture)} ${
                                   selectedPrintOn === texture
                                     ? "selected-border"
                                     : ""
@@ -784,9 +790,9 @@ const Configurator = () => {
                               numScroll: 1,
                             },
                           ]}
-                          itemTemplate={(texture, index) => (
-                            <div key={index} className="texture-item">
-                              {/* <Tooltip target={`.smock-${index}`}>
+                          itemTemplate={(texture) => (
+                            <div key={texture} className="texture-item">
+                              <Tooltip target={`.smock-${textureArrays.smock.indexOf(texture)}`}>
                                 <div className="d-flex flex-column">
                                   <img
                                     alt={`smock`}
@@ -802,11 +808,11 @@ const Configurator = () => {
                                     }
                                   </p>
                                 </div>
-                              </Tooltip> */}
+                              </Tooltip>
                               <img
                                 src={texture}
                                 alt={`smock`}
-                                className={`texture-button ${texture}-tooltip ${
+                                className={`texture-button smock-${textureArrays.smock.indexOf(texture)} ${
                                   selectedPrintOn === texture
                                     ? "selected-border"
                                     : ""
@@ -846,9 +852,9 @@ const Configurator = () => {
                               numScroll: 1,
                             },
                           ]}
-                          itemTemplate={(texture, index) => (
-                            <div key={index} className="texture-item">
-                              {/* <Tooltip target={`.lace-${index}`}>
+                          itemTemplate={(texture) => (
+                            <div key={texture} className="texture-item">
+                              <Tooltip target={`.lace-${textureArrays.lace.indexOf(texture)}`}>
                                 <div className="d-flex flex-column">
                                   <img
                                     alt={`lace`}
@@ -858,17 +864,17 @@ const Configurator = () => {
                                   />
                                   <p>
                                     {
-                                      textureDescriptions.batik[
+                                      textureDescriptions.lace[
                                         textureArrays.lace.indexOf(texture)
                                       ]
                                     }
                                   </p>
                                 </div>
-                              </Tooltip> */}
+                              </Tooltip>
                               <img
                                 src={texture}
                                 alt={`lace`}
-                                className={`texture-button ${texture}-tooltip ${
+                                className={`texture-button lace-${textureArrays.lace.indexOf(texture)} ${
                                   selectedPrintOn === texture
                                     ? "selected-border"
                                     : ""
@@ -910,9 +916,9 @@ const Configurator = () => {
                               numScroll: 1,
                             },
                           ]}
-                          itemTemplate={(texture, index) => (
-                            <div key={index} className="texture-item">
-                              {/* <Tooltip target={`.printed_kente-${index}`}>
+                          itemTemplate={(texture) => (
+                            <div key={texture} className="texture-item">
+                              <Tooltip target={`.printed_kente-${textureArrays.printed_kente.indexOf(texture)}`}>
                                 <div className="d-flex flex-column">
                                   <img
                                     alt={`printed_kente`}
@@ -922,17 +928,17 @@ const Configurator = () => {
                                   />
                                   <p>
                                     {
-                                      textureDescriptions.batik[
-                                        textureArrays.batik.indexOf(texture)
+                                      textureDescriptions.printed_kente[
+                                        textureArrays.printed_kente.indexOf(texture)
                                       ]
                                     }
                                   </p>
                                 </div>
-                              </Tooltip> */}
+                              </Tooltip>
                               <img
                                 src={texture}
                                 alt={`printed_kente`}
-                                className={`texture-button ${texture}-tooltip ${
+                                className={`texture-button printed_kente-${textureArrays.printed_kente.indexOf(texture)} ${
                                   selectedPrintOn === texture
                                     ? "selected-border"
                                     : ""
@@ -972,9 +978,9 @@ const Configurator = () => {
                               numScroll: 1,
                             },
                           ]}
-                          itemTemplate={(texture, index) => (
-                            <div key={index} className="texture-item">
-                              {/* <Tooltip target={`.suit_fabric-${index}`}>
+                          itemTemplate={(texture) => (
+                            <div key={texture} className="texture-item">
+                              <Tooltip target={`.suit_fabric-${textureArrays.suit_fabric.indexOf(texture)}`}>
                                 <div className="d-flex flex-column">
                                   <img
                                     alt={`suit_fabric`}
@@ -990,11 +996,11 @@ const Configurator = () => {
                                     }
                                   </p>
                                 </div>
-                              </Tooltip> */}
+                              </Tooltip>
                               <img
                                 src={texture}
                                 alt={`Suit Fabric`}
-                                className={`texture-button ${texture}-tooltip ${
+                                className={`texture-button suit_fabric-${textureArrays.suit_fabric.indexOf(texture)} ${
                                   selectedPrintOn === texture
                                     ? "selected-border"
                                     : ""
