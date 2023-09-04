@@ -13,7 +13,8 @@ import {
 import { Toast } from "primereact/toast";
 
 const Confirmation = ({
-  price,
+  total,
+  currencySymbol,
   estimatedShippingTime,
   readyBy,
   selectedParts,
@@ -52,7 +53,8 @@ const Confirmation = ({
 
       // Create formData
       const formData = {
-        price,
+        total,
+        currencySymbol,
         estimatedShippingTime,
         readyBy,
         selectedSize,
@@ -61,7 +63,7 @@ const Confirmation = ({
       };
 
       // Send the formData to Formspree
-      const response = await fetch("https://formspree.io/f/xrgwpakw", {
+      const response = await fetch(process.env.REACT_APP_formSpree, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -110,7 +112,8 @@ const Confirmation = ({
       <Toast ref={toast} /> {/* Add the Toast component here */}
       <h1 className="mt-4">Order Confirmation</h1>
       <OrderDetail
-        price={price}
+        total={total}
+        currencySymbol={currencySymbol}
         estimatedShippingTime={estimatedShippingTime}
         readyBy={readyBy}
         selectedParts={selectedParts}
@@ -141,7 +144,8 @@ const Confirmation = ({
 export const OrderDetail = React.forwardRef(
   (
     {
-      price,
+      total,
+      currencySymbol,
       estimatedShippingTime,
       readyBy,
       selectedParts,
@@ -161,7 +165,7 @@ export const OrderDetail = React.forwardRef(
             <img src={modelImage} alt="model img" />
           </p>
           <p className="h5 mt-4">Selected Size: {selectedSize || "N/A"}</p>
-          <p className="h5 mt-3">Price: ${price}</p>
+          <p className="h5 mt-3">Price: {currencySymbol}{total}</p>
           <p>Estimated Shipping Time: {estimatedShippingTime}</p>
           <p>Expected to be Ready By: {readyBy}</p>
           <div>

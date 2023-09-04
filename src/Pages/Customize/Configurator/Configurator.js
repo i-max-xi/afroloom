@@ -135,7 +135,7 @@ const Configurator = () => {
   const { Id } = useParams();
   const selectedClothing = mainMaleCustomize.find((item) => item.name === Id);
 
-  const [price, setPrice] = useState(selectedClothing.price);
+   const [Price, setPrice] = useState(selectedClothing.price);
 
   const [selectedSize, setSelectedSize] = useState(1);
   const [selectedPrintOn, setSelectedPrintOn] = useState(null);
@@ -338,13 +338,17 @@ const Configurator = () => {
   const [chest, setChest] = useState("");
   const [waist, setWaist] = useState("");
 
+  //total price
+  const total= (partPrices.reduce((total, price) => total + Price, 0) * sizeOptions[selectedSize].value * currencyFactor).toFixed(2)
+
   return (
     <>
       <Nav />
 
       {showConfirmation ? (
         <Confirmation
-          price={price}
+          currencySymbol={currencySymbol}
+          total={total}
           estimatedShippingTime="2-3 business days"
           readyBy="August 15, 2023"
           selectedParts={selectedParts}
@@ -1052,11 +1056,7 @@ const Configurator = () => {
 
             <p className="price-text m-3">
               <span className="fs-6 fw-normal">Price:</span> {currencySymbol}
-              {(
-                partPrices.reduce((total, price) => total + price, 0) *
-                sizeOptions[selectedSize].value *
-                currencyFactor
-              ).toFixed(2)}
+              {total}
             </p>
 
             <button
