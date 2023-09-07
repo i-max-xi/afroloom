@@ -68,6 +68,12 @@ import blazer from '../Pages/Customize/Configurator/models/MaleClothing/male_sui
 import tshirt_guide from '../Pages/Customize/Configurator/size_guide/male/tshirt.JPG';
 import tshirt_pattern from '../Pages/Customize/Configurator/size_guide/male/tshirt_pattern.jpg';
 
+// parts
+import tshirt_part1 from "../Assets/model_parts/male/tshirt/part1.png";
+import tshirt_part2 from "../Assets/model_parts/male/tshirt/part2.jpg";
+import tshirt_part3 from "../Assets/model_parts/male/tshirt/part3.jpg";
+
+
 
 export const mainMaleCustomize = [
   {
@@ -82,6 +88,7 @@ export const mainMaleCustomize = [
     price: 20,
     sizeGuide: tshirt_guide,
     sizePattern: tshirt_pattern,
+    parts: [tshirt_part1, tshirt_part2, tshirt_part3]
   },
   {
     id: uuid(),
