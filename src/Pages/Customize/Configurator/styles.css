@@ -140,8 +140,11 @@ h1 {
 }
 
 .p-carousel-prev, .p-carousel-next {
-  /* Translate the arrow up by 1rem (adjust as needed) */
   transform: translateY(-0.75rem);
+}
+
+.p-carousel-items-content {
+  transform: translateY(-0.35rem);
 }
 
 

@@ -944,7 +944,7 @@ const Configurator = () => {
                   </Canvas>
                 </div>
 
-                <div>
+                <div className="m-3">
                   <button
                     className={`btn rotation-button text-white m-3 ${
                       isRotating === true ? "btn-danger" : "btn-warning"
