@@ -923,8 +923,8 @@ const Configurator = () => {
                   {/* Add more rows of texture categories as needed */}
                 </div>
               </div>
-              <div className="right-panel border-left d-flex">
-                <div className="w-75">
+              <div className="right-panel d-flex justify-content-between">
+                <div className="w-75 h-75">
                   <Canvas
                     ref={canvasRef}
                     camera={{ position: [0, 0, selectedClothing.myZoom] }} // Set the initial camera position
@@ -956,15 +956,15 @@ const Configurator = () => {
                 </div>
 
                 {/* parts images start */}
-                <div className="part-panel">
+                <div className="part-panel" style={{width: "15%"}}>
                   <div className="d-flex flex-column">
                     {selectedClothing.parts.map((part, index) => (
                       <img
                         src={part}
                         key={index}
                         alt={`Part ${index}`}
-                        width="15%"
-                        className={selectedPart === index ? 'selected-border' : ''} // Apply "selected-border" class when selected
+                        width="100%"
+                        className={selectedPart === index ? 'selected-border' : ''}
                       />
                     ))}
                   </div>
