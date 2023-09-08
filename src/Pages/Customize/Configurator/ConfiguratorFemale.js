@@ -9,7 +9,7 @@ import Confirmation from "./Confirmation";
 import html2canvas from "html2canvas";
 
 import { TextureLoader } from "three/src/loaders/TextureLoader";
-
+import LoadingAnimation from "./LoadingAnimation";
 import { Tooltip } from "primereact/tooltip";
 import { Dialog } from "primereact/dialog";
 import Nav from "../../../Components/Nav";
@@ -56,28 +56,43 @@ const Shirt = ({
     }
   };
 
+  const [isLoading, setIsLoading] = useState(true); // Add loading state
+
+  useEffect(() => {
+    // Simulate loading for 2 seconds (you can replace this with your actual loading code)
+    const loadingTimeout = setTimeout(() => {
+      setIsLoading(false); // Set loading state to false once model is loaded (replace with your actual model loading logic)
+    }, 2000);
+
+    return () => clearTimeout(loadingTimeout); // Cleanup the timeout if component unmounts
+  }, []);
+
   return (
     <group ref={groupRef}>
-      {selectedClothing.myNode.map((nodeName, index) => {
-        const color = snap.color[index] || "#ffffff";
-        const texture = snap.texture[index] || null;
+      {isLoading ? (
+        <><LoadingAnimation /></>
+      ) : (
+        selectedClothing.myNode.map((nodeName, index) => {
+          const color = snap.color[index] || "#ffffff";
+          const texture = snap.texture[index] || null;
 
-        return (
-          <mesh
-            key={selectedTexture}
-            castShadow
-            geometry={nodes[nodeName].geometry}
-            onClick={() => handlePartClick(index)}
-          >
-            <meshStandardMaterial
-              attach="material"
-              color={color}
-              map={texture && new TextureLoader().load(texture)}
-              roughness={1}
-            />
-          </mesh>
-        );
-      })}
+          return (
+            <mesh
+              key={selectedTexture}
+              castShadow
+              geometry={nodes[nodeName].geometry}
+              onClick={() => handlePartClick(index)}
+            >
+              <meshStandardMaterial
+                attach="material"
+                color={color}
+                map={texture && new TextureLoader().load(texture)}
+                roughness={1}
+              />
+            </mesh>
+          );
+        })
+      )}
     </group>
   );
 };

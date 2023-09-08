@@ -9,6 +9,7 @@ import Confirmation from "./Confirmation";
 import html2canvas from "html2canvas";
 
 import { TextureLoader } from "three/src/loaders/TextureLoader";
+import LoadingAnimation from "./LoadingAnimation";
 
 import { Tooltip } from "primereact/tooltip";
 import { Dialog } from "primereact/dialog";
@@ -27,7 +28,6 @@ import {
   textureDescriptions,
   textureValues,
 } from "./arrays/neededArrays";
-import LoadingAnimation from "./LoadingAnimation";
 
 const Shirt = ({
   isRotating,
