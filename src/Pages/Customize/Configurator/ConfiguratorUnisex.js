@@ -9,61 +9,25 @@ import Confirmation from "./Confirmation";
 import html2canvas from "html2canvas";
 
 import { TextureLoader } from "three/src/loaders/TextureLoader";
-import batik1 from "./textures/batik1.jpg";
-import batik2 from "./textures/batik2.jpg";
-import batik3 from "./textures/batik3.jpg";
-import batik4 from "./textures/batik4.jpg";
-import batik5 from "./textures/batik5.jpg";
-
-import dashiki1 from "./textures/dashiki1.jpg";
-import dashiki2 from "./textures/dashiki2.jpg";
-import dashiki3 from "./textures/dashiki3.jpg";
-import dashiki4 from "./textures/dashiki4.jpg";
-import dashiki5 from "./textures/dashiki5.jpg";
-
-import kente1 from "./textures/kente1.jpg";
-import kente2 from "./textures/kente2.jpg";
-import kente3 from "./textures/kente3.jpg";
-import kente4 from "./textures/kente4.jpg";
-import kente5 from "./textures/kente5.jpg";
-
-import waxPrint1 from "./textures/waxPrint1.jpg";
-import waxPrint2 from "./textures/waxPrint2.jpg";
-import waxPrint3 from "./textures/waxPrint3.jpg";
-import waxPrint4 from "./textures/waxPrint4.jpg";
-import waxPrint5 from "./textures/waxPrint5.jpg";
-
-import smock1 from "./textures/smock1.jpg";
-import smock2 from "./textures/smock2.jpg";
-import smock3 from "./textures/smock3.jpg";
-import smock4 from "./textures/smock4.jpeg";
-// import smock5 from "./textures/smock5.jpg";
-
-import lace1 from "./textures/lace1.jpg";
-import lace2 from "./textures/lace2.jpg";
-import lace3 from "./textures/lace3.jpg";
-import lace4 from "./textures/lace4.jpg";
-import lace5 from "./textures/lace5.jpg";
-
-import s_fabric1 from "./textures/suit_fabric1.jpeg";
-import s_fabric2 from "./textures/suit_fabric2.jpg";
-import s_fabric3 from "./textures/suit_fabric3.jpg";
-import s_fabric4 from "./textures/suit_fabric4.jpg";
-import s_fabric5 from "./textures/suit_fabric5.jpg";
-
-import p_kente1 from "./textures/p_kente1.jpg";
-import p_kente2 from "./textures/p_kente2.jpg";
-import p_kente3 from "./textures/p_kente3.jpg";
-import p_kente4 from "./textures/p_kente4.jpg";
-
+import LoadingAnimation from "./LoadingAnimation";
 import { Tooltip } from "primereact/tooltip";
 import { Dialog } from "primereact/dialog";
 import Nav from "../../../Components/Nav";
 import "./styles.css";
 import { useParams } from "react-router";
+
 import { mainUnisex } from "../../../Data/CustomizeDataUnisex";
 
 import { useSelector } from "react-redux";
+
+//arrays
+import {
+  colorOptions,
+  textureArrays,
+  sizeOptions,
+  textureDescriptions,
+  textureValues,
+} from "./arrays/neededArrays";
 
 const Shirt = ({
   isRotating,
@@ -92,28 +56,43 @@ const Shirt = ({
     }
   };
 
+  const [isLoading, setIsLoading] = useState(true); // Add loading state
+
+  useEffect(() => {
+    // Simulate loading for 2 seconds (you can replace this with your actual loading code)
+    const loadingTimeout = setTimeout(() => {
+      setIsLoading(false); // Set loading state to false once model is loaded (replace with your actual model loading logic)
+    }, 2000);
+
+    return () => clearTimeout(loadingTimeout); // Cleanup the timeout if component unmounts
+  }, []);
+
   return (
     <group ref={groupRef}>
-      {selectedClothing.myNode.map((nodeName, index) => {
-        const color = snap.color[index] || "#ffffff";
-        const texture = snap.texture[index] || null;
+      {isLoading ? (
+        <><LoadingAnimation /></>
+      ) : (
+        selectedClothing.myNode.map((nodeName, index) => {
+          const color = snap.color[index] || "#ffffff";
+          const texture = snap.texture[index] || null;
 
-        return (
-          <mesh
-            key={selectedTexture}
-            castShadow
-            geometry={nodes[nodeName].geometry}
-            onClick={() => handlePartClick(index)}
-          >
-            <meshStandardMaterial
-              attach="material"
-              color={color}
-              map={texture && new TextureLoader().load(texture)}
-              roughness={1}
-            />
-          </mesh>
-        );
-      })}
+          return (
+            <mesh
+              key={selectedTexture}
+              castShadow
+              geometry={nodes[nodeName].geometry}
+              onClick={() => handlePartClick(index)}
+            >
+              <meshStandardMaterial
+                attach="material"
+                color={color}
+                map={texture && new TextureLoader().load(texture)}
+                roughness={1}
+              />
+            </mesh>
+          );
+        })
+      )}
     </group>
   );
 };
@@ -128,14 +107,14 @@ const CameraControls = () => {
   return <OrbitControls ref={controlsRef} />;
 };
 
-const Configurator = () => {
+const ConfiguratorUnisex = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
   const { Id } = useParams();
   const selectedClothing = mainUnisex.find((item) => item.name === Id);
 
-   const [Price, setPrice] = useState(selectedClothing.price);
+  const [Price, setPrice] = useState(selectedClothing.price);
 
   const [selectedSize, setSelectedSize] = useState(1);
   const [selectedPrintOn, setSelectedPrintOn] = useState(null);
@@ -150,53 +129,6 @@ const Configurator = () => {
   const currencySymbol = useSelector((state) => state.currencySymbol.symbol);
   const currencyFactor = useSelector((state) => state.currencySymbol.factor);
 
-  const sizeOptions = [
-    { label: "S", value: 0.5 },
-    { label: "M", value: 1 },
-    { label: "L", value: 2 },
-    { label: "XL", value: 3 },
-    { label: "2XL", value: 4 },
-    { label: "3XL", value: 5 },
-    { label: "4XL", value: 6 },
-    { label: "5XL", value: 7 },
-    { label: "6XL", value: 8 },
-    { label: "7XL", value: 9 },
-  ];
-
-  const colorOptions = [
-    { color: "#ff0000", label: "Red" },
-    { color: "#ffffff", label: "White" },
-    { color: "#00ff00", label: "Green" },
-    { color: "#0000ff", label: "Blue" },
-    { color: "#87ceeb", label: "Seablue" },
-    { color: "#ff7f50", label: "Coral" },
-    { color: "#008080", label: "Teal" },
-    { color: "#808000", label: "Olive" },
-    { color: "#e0b0ff", label: "Mauve" },
-    { color: "#c0c0c0", label: "Silver" },
-    { color: "#000000", label: "Black" },
-    { color: "#ffff00", label: "Yellow" },
-    { color: "#ffa500", label: "Orange" },
-    { color: "#800080", label: "Purple" },
-    { color: "#ff69b4", label: "Pink" },
-    { color: "#a52a2a", label: "Brown" },
-    { color: "#808080", label: "Gray" },
-    { color: "#00ffff", label: "Cyan" },
-    { color: "#ff00ff", label: "Magenta" },
-    { color: "#ffd700", label: "Gold" },
-  ];
-
-  const textureArrays = {
-    batik: [batik1, batik2, batik3, batik4, batik5],
-    dashiki: [dashiki1, dashiki2, dashiki3, dashiki4, dashiki5],
-    kente: [kente1, kente2, kente3, kente4, kente5],
-    waxPrint: [waxPrint1, waxPrint2, waxPrint3, waxPrint4, waxPrint5],
-    smock: [smock1, smock2, smock3, smock4], // Uncomment if needed
-    lace: [lace1, lace2, lace3, lace4, lace5],
-    printed_kente: [p_kente1, p_kente2, p_kente3, p_kente4],
-    suit_fabric: [s_fabric1, s_fabric2, s_fabric3, s_fabric4, s_fabric5],
-  };
-
   const handleSizeChange = (factor) => {
     setPrice(selectedClothing.price * factor);
     setSelectedSize(factor);
@@ -206,75 +138,6 @@ const Configurator = () => {
     state.color[selectedPart] = newColor;
     state.texture[selectedPart] = null;
     setSelectedPrintOn(newColor);
-  };
-
-  const textureValues = {
-    batik: 10,
-    dashiki: 15,
-    kente: 20,
-    waxPrint: 25,
-    smock: 30,
-    lace: 35,
-    printed_kente: 40,
-    suit_fabric: 45,
-    // Add values for other texture categories if needed
-  };
-
-  const textureDescriptions = {
-    batik: [
-      "Description for batik1",
-      "Description for batik2",
-      "Description for batik3",
-      "Description for batik4",
-      "Description for batik5",
-    ],
-    dashiki: [
-      "Description for dashiki1",
-      "Description for dashiki2",
-      "Description for dashiki3",
-      "Description for dashiki4",
-      "Description for dashiki5",
-    ],
-    kente: [
-      "Description for kente1",
-      "Description for kente2",
-      "Description for kente3",
-      "Description for kente4",
-      "Description for kente5",
-    ],
-    waxPrint: [
-      "Description for waxPrint1",
-      "Description for waxPrint2",
-      "Description for waxPrint3",
-      "Description for waxPrint4",
-      "Description for waxPrint5",
-    ],
-    smock: [
-      "Description for smock1",
-      "Description for smock2",
-      "Description for smock3",
-      "Description for smock4",
-    ],
-    lace: [
-      "Description for lace1",
-      "Description for lace2",
-      "Description for lace3",
-      "Description for lace4",
-      "Description for lace5",
-    ],
-    printed_kente: [
-      "Description for p_kente1",
-      "Description for p_kente2",
-      "Description for p_kente3",
-      "Description for p_kente4",
-    ],
-    suit_fabric: [
-      "Description for s_fabric1",
-      "Description for s_fabric2",
-      "Description for s_fabric3",
-      "Description for s_fabric4",
-      "Description for s_fabric5",
-    ],
   };
 
   const [partPrices, setPartPrices] = useState(
@@ -339,7 +202,14 @@ const Configurator = () => {
   const [waist, setWaist] = useState("");
 
   //total price
-  const total= (partPrices.reduce((total, price) => total + Price, 0) * sizeOptions[selectedSize].value * currencyFactor).toFixed(2)
+  const total = (
+    partPrices.reduce((total, price) => total + Price, 0) *
+    sizeOptions[selectedSize].value *
+    currencyFactor
+  ).toFixed(2);
+
+  // part images
+  
 
   return (
     <>
@@ -493,15 +363,15 @@ const Configurator = () => {
                     ]}
                     itemTemplate={(colorOption) => (
                       // <div key={colorOption.color} className="color-item">
-                        <button
-                          className={`color-button ${
-                            selectedPrintOn === colorOption.color
-                              ? "selected-border"
-                              : ""
-                          }`}
-                          onClick={() => handleColorChange(colorOption.color)}
-                          style={{ backgroundColor: colorOption.color }}
-                        ></button>
+                      <button
+                        className={`color-button ${
+                          selectedPrintOn === colorOption.color
+                            ? "selected-border"
+                            : ""
+                        }`}
+                        onClick={() => handleColorChange(colorOption.color)}
+                        style={{ backgroundColor: colorOption.color }}
+                      ></button>
                       // </div>
                     )}
                   />
@@ -541,7 +411,11 @@ const Configurator = () => {
                           ]}
                           itemTemplate={(texture) => (
                             <div key={texture} className="texture-item">
-                              <Tooltip target={`.batik-${textureArrays.batik.indexOf(texture)}`}>
+                              <Tooltip
+                                target={`.batik-${textureArrays.batik.indexOf(
+                                  texture
+                                )}`}
+                              >
                                 <div className="d-flex flex-column">
                                   <img
                                     alt={`Batik`}
@@ -561,7 +435,9 @@ const Configurator = () => {
                               <img
                                 src={texture}
                                 alt={`Batik`}
-                                className={`texture-button batik-${textureArrays.batik.indexOf(texture)} ${
+                                className={`texture-button batik-${textureArrays.batik.indexOf(
+                                  texture
+                                )} ${
                                   selectedPrintOn === texture
                                     ? "selected-border"
                                     : ""
@@ -602,11 +478,12 @@ const Configurator = () => {
                             },
                           ]}
                           itemTemplate={(texture) => (
-                            <div
-                              key={texture}
-                              className="texture-item"
-                            >
-                              <Tooltip target={`.dashiki-${textureArrays.dashiki.indexOf(texture)}`}>
+                            <div key={texture} className="texture-item">
+                              <Tooltip
+                                target={`.dashiki-${textureArrays.dashiki.indexOf(
+                                  texture
+                                )}`}
+                              >
                                 <div className="d-flex flex-column">
                                   <img
                                     alt={`dashiki`}
@@ -626,7 +503,9 @@ const Configurator = () => {
                               <img
                                 src={texture}
                                 alt={`dashiki`}
-                                className={`texture-button dashiki-${textureArrays.dashiki.indexOf(texture)} ${
+                                className={`texture-button dashiki-${textureArrays.dashiki.indexOf(
+                                  texture
+                                )} ${
                                   selectedPrintOn === texture
                                     ? "selected-border"
                                     : ""
@@ -670,7 +549,11 @@ const Configurator = () => {
                           ]}
                           itemTemplate={(texture) => (
                             <div key={texture} className="texture-item">
-                              <Tooltip target={`.kente-${textureArrays.kente.indexOf(texture)}`}>
+                              <Tooltip
+                                target={`.kente-${textureArrays.kente.indexOf(
+                                  texture
+                                )}`}
+                              >
                                 <div className="d-flex flex-column">
                                   <img
                                     alt={`Kente`}
@@ -690,7 +573,9 @@ const Configurator = () => {
                               <img
                                 src={texture}
                                 alt={`Kente`}
-                                className={`texture-button kente-${textureArrays.kente.indexOf(texture)} ${
+                                className={`texture-button kente-${textureArrays.kente.indexOf(
+                                  texture
+                                )} ${
                                   selectedPrintOn === texture
                                     ? "selected-border"
                                     : ""
@@ -732,7 +617,11 @@ const Configurator = () => {
                           ]}
                           itemTemplate={(texture) => (
                             <div key={texture} className="texture-item">
-                              <Tooltip target={`.waxPrint-${textureArrays.waxPrint.indexOf(texture)}`}>
+                              <Tooltip
+                                target={`.waxPrint-${textureArrays.waxPrint.indexOf(
+                                  texture
+                                )}`}
+                              >
                                 <div className="d-flex flex-column">
                                   <img
                                     alt={`waxPrint`}
@@ -752,7 +641,9 @@ const Configurator = () => {
                               <img
                                 src={texture}
                                 alt={`waxPrint`}
-                                className={`texture-button waxPrint-${textureArrays.waxPrint.indexOf(texture)} ${
+                                className={`texture-button waxPrint-${textureArrays.waxPrint.indexOf(
+                                  texture
+                                )} ${
                                   selectedPrintOn === texture
                                     ? "selected-border"
                                     : ""
@@ -796,7 +687,11 @@ const Configurator = () => {
                           ]}
                           itemTemplate={(texture) => (
                             <div key={texture} className="texture-item">
-                              <Tooltip target={`.smock-${textureArrays.smock.indexOf(texture)}`}>
+                              <Tooltip
+                                target={`.smock-${textureArrays.smock.indexOf(
+                                  texture
+                                )}`}
+                              >
                                 <div className="d-flex flex-column">
                                   <img
                                     alt={`smock`}
@@ -816,7 +711,9 @@ const Configurator = () => {
                               <img
                                 src={texture}
                                 alt={`smock`}
-                                className={`texture-button smock-${textureArrays.smock.indexOf(texture)} ${
+                                className={`texture-button smock-${textureArrays.smock.indexOf(
+                                  texture
+                                )} ${
                                   selectedPrintOn === texture
                                     ? "selected-border"
                                     : ""
@@ -830,12 +727,12 @@ const Configurator = () => {
                     </div>
                     <div className="texture-category ">
                       <h3>
-                        Lace (+{currencySymbol}
+                        Crochet (+{currencySymbol}
                         {(currencyFactor * 35).toFixed(2)})
                       </h3>
                       <div className="texture-images">
                         <Carousel
-                          value={textureArrays.lace}
+                          value={textureArrays.Crochet}
                           numVisible={4}
                           numScroll={1}
                           showIndicators={false} // Set this to false to deactivate the indicators
@@ -858,18 +755,22 @@ const Configurator = () => {
                           ]}
                           itemTemplate={(texture) => (
                             <div key={texture} className="texture-item">
-                              <Tooltip target={`.lace-${textureArrays.lace.indexOf(texture)}`}>
+                              <Tooltip
+                                target={`.Crochet-${textureArrays.Crochet.indexOf(
+                                  texture
+                                )}`}
+                              >
                                 <div className="d-flex flex-column">
                                   <img
-                                    alt={`lace`}
+                                    alt={`Crochet`}
                                     src={texture}
                                     data-pr-tooltip="PrimeReact-Logo"
                                     height="80px"
                                   />
                                   <p>
                                     {
-                                      textureDescriptions.lace[
-                                        textureArrays.lace.indexOf(texture)
+                                      textureDescriptions.Crochet[
+                                        textureArrays.Crochet.indexOf(texture)
                                       ]
                                     }
                                   </p>
@@ -877,8 +778,10 @@ const Configurator = () => {
                               </Tooltip>
                               <img
                                 src={texture}
-                                alt={`lace`}
-                                className={`texture-button lace-${textureArrays.lace.indexOf(texture)} ${
+                                alt={`Crochet`}
+                                className={`texture-button Crochet-${textureArrays.Crochet.indexOf(
+                                  texture
+                                )} ${
                                   selectedPrintOn === texture
                                     ? "selected-border"
                                     : ""
@@ -922,7 +825,11 @@ const Configurator = () => {
                           ]}
                           itemTemplate={(texture) => (
                             <div key={texture} className="texture-item">
-                              <Tooltip target={`.printed_kente-${textureArrays.printed_kente.indexOf(texture)}`}>
+                              <Tooltip
+                                target={`.printed_kente-${textureArrays.printed_kente.indexOf(
+                                  texture
+                                )}`}
+                              >
                                 <div className="d-flex flex-column">
                                   <img
                                     alt={`printed_kente`}
@@ -933,7 +840,9 @@ const Configurator = () => {
                                   <p>
                                     {
                                       textureDescriptions.printed_kente[
-                                        textureArrays.printed_kente.indexOf(texture)
+                                        textureArrays.printed_kente.indexOf(
+                                          texture
+                                        )
                                       ]
                                     }
                                   </p>
@@ -942,7 +851,9 @@ const Configurator = () => {
                               <img
                                 src={texture}
                                 alt={`printed_kente`}
-                                className={`texture-button printed_kente-${textureArrays.printed_kente.indexOf(texture)} ${
+                                className={`texture-button printed_kente-${textureArrays.printed_kente.indexOf(
+                                  texture
+                                )} ${
                                   selectedPrintOn === texture
                                     ? "selected-border"
                                     : ""
@@ -956,12 +867,12 @@ const Configurator = () => {
                     </div>
                     <div className="texture-category ">
                       <h3>
-                        Suit Fabric (+{currencySymbol}
+                        Funerals (+{currencySymbol}
                         {(currencyFactor * 45).toFixed(2)})
                       </h3>
                       <div className="texture-images">
                         <Carousel
-                          value={textureArrays.suit_fabric}
+                          value={textureArrays.Funerals}
                           numVisible={4}
                           numScroll={1}
                           showIndicators={false} // Set this to false to deactivate the indicators
@@ -984,18 +895,24 @@ const Configurator = () => {
                           ]}
                           itemTemplate={(texture) => (
                             <div key={texture} className="texture-item">
-                              <Tooltip target={`.suit_fabric-${textureArrays.suit_fabric.indexOf(texture)}`}>
+                              <Tooltip
+                                target={`.Funerals-${textureArrays.Funerals.indexOf(
+                                  texture
+                                )}`}
+                              >
                                 <div className="d-flex flex-column">
                                   <img
-                                    alt={`suit_fabric`}
+                                    alt={`Funerals`}
                                     src={texture}
                                     data-pr-tooltip="PrimeReact-Logo"
                                     height="80px"
                                   />
                                   <p>
                                     {
-                                      textureDescriptions.suit_fabric[
-                                        textureArrays.suit_fabric.indexOf(texture)
+                                      textureDescriptions.Funerals[
+                                        textureArrays.Funerals.indexOf(
+                                          texture
+                                        )
                                       ]
                                     }
                                   </p>
@@ -1003,8 +920,10 @@ const Configurator = () => {
                               </Tooltip>
                               <img
                                 src={texture}
-                                alt={`Suit Fabric`}
-                                className={`texture-button suit_fabric-${textureArrays.suit_fabric.indexOf(texture)} ${
+                                alt={`Funerals`}
+                                className={`texture-button Funerals-${textureArrays.Funerals.indexOf(
+                                  texture
+                                )} ${
                                   selectedPrintOn === texture
                                     ? "selected-border"
                                     : ""
@@ -1020,32 +939,53 @@ const Configurator = () => {
                   {/* Add more rows of texture categories as needed */}
                 </div>
               </div>
+              <div className="right-panel d-flex justify-content-between">
+                <div className="w-75 h-75">
+                  <Canvas
+                    ref={canvasRef}
+                    camera={{ position: [0, 0, selectedClothing.myZoom] }} // Set the initial camera position
+                    gl={{ preserveDrawingBuffer: true }}
+                    className="w-100"
+                  >
+                    <ambientLight intensity={0.5} />
+                    <pointLight position={[10, 10, 10]} />
+                    <Shirt
+                      isRotating={isRotating}
+                      selectedClothing={selectedClothing}
+                      selectedPart={selectedPart}
+                      selectedTexture={state.texture[selectedPart]}
+                    />
+                    <CameraControls />{" "}
+                    {/* Add camera controls for interaction */}
+                  </Canvas>
+                </div>
 
-              <div className="right-panel border-left">
-                <Canvas
-                  ref={canvasRef}
-                  camera={{ position: [0, 0, selectedClothing.myZoom] }} // Set the initial camera position
-                  gl={{ preserveDrawingBuffer: true }}
-                >
-                  <ambientLight intensity={0.5} />
-                  <pointLight position={[10, 10, 10]} />
-                  <Shirt
-                    isRotating={isRotating}
-                    selectedClothing={selectedClothing}
-                    selectedPart={selectedPart}
-                    selectedTexture={state.texture[selectedPart]}
-                  />
-                  <CameraControls /> {/* Add camera controls for interaction */}
-                </Canvas>
+                <div className="m-3">
+                  <button
+                    className={`btn rotation-button text-white m-3 ${
+                      isRotating === true ? "btn-danger" : "btn-warning"
+                    }`}
+                    onClick={handleRotation}
+                  >
+                    {isRotating ? "Stop" : "Spin"}
+                  </button>
+                </div>
 
-                <button
-                  className={`btn rotation-button text-white m-3 ${
-                    isRotating === true ? "btn-danger" : "btn-warning"
-                  }`}
-                  onClick={handleRotation}
-                >
-                  {isRotating ? "Stop" : "Spin"}
-                </button>
+                {/* parts images start */}
+                <div className="part-panel" style={{width: "15%"}}>
+                  <div className="d-flex flex-column">
+                    {selectedClothing.parts.map((part, index) => (
+                      <img
+                        src={part}
+                        key={index}
+                        alt={`Part ${index}`}
+                        width="100%"
+                        className={selectedPart === index ? 'selected-border' : ''}
+                      />
+                    ))}
+                  </div>
+                </div>
+                {/* parts images end */}
               </div>
             </div>
           </div>
@@ -1072,4 +1012,4 @@ const Configurator = () => {
   );
 };
 
-export default Configurator;
+export default ConfiguratorUnisex;

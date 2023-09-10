@@ -8,7 +8,7 @@ import Confirmation from "./Confirmation";
 import html2canvas from "html2canvas";
 
 import { TextureLoader } from "three/src/loaders/TextureLoader";
-import batik1 from "./textures/batik1.jpg";
+import LoadingAnimation from "./LoadingAnimation";import batik1 from "./textures/batik1.jpg";
 import batik2 from "./textures/batik2.jpg";
 import batik3 from "./textures/batik3.jpg";
 import batik4 from "./textures/batik4.jpg";
@@ -91,28 +91,43 @@ const Shirt = ({
     }
   };
 
+  const [isLoading, setIsLoading] = useState(true); // Add loading state
+
+  useEffect(() => {
+    // Simulate loading for 2 seconds (you can replace this with your actual loading code)
+    const loadingTimeout = setTimeout(() => {
+      setIsLoading(false); // Set loading state to false once model is loaded (replace with your actual model loading logic)
+    }, 2000);
+
+    return () => clearTimeout(loadingTimeout); // Cleanup the timeout if component unmounts
+  }, []);
+
   return (
     <group ref={groupRef}>
-      {selectedClothing.myNode.map((nodeName, index) => {
-        const color = snap.color[index] || "#ffffff";
-        const texture = snap.texture[index] || null;
+      {isLoading ? (
+        <><LoadingAnimation /></>
+      ) : (
+        selectedClothing.myNode.map((nodeName, index) => {
+          const color = snap.color[index] || "#ffffff";
+          const texture = snap.texture[index] || null;
 
-        return (
-          <mesh
-            key={selectedTexture}
-            castShadow
-            geometry={nodes[nodeName].geometry}
-            onClick={() => handlePartClick(index)}
-          >
-            <meshStandardMaterial
-              attach="material"
-              color={color}
-              map={texture && new TextureLoader().load(texture)}
-              roughness={1}
-            />
-          </mesh>
-        );
-      })}
+          return (
+            <mesh
+              key={selectedTexture}
+              castShadow
+              geometry={nodes[nodeName].geometry}
+              onClick={() => handlePartClick(index)}
+            >
+              <meshStandardMaterial
+                attach="material"
+                color={color}
+                map={texture && new TextureLoader().load(texture)}
+                roughness={1}
+              />
+            </mesh>
+          );
+        })
+      )}
     </group>
   );
 };
@@ -187,9 +202,9 @@ const Configurator = () => {
     kente: [kente1, kente2, kente3, kente4, kente5],
     waxPrint: [waxPrint1, waxPrint2, waxPrint3, waxPrint4, waxPrint5],
     smock: [smock1, smock2, smock3, smock4], // Uncomment if needed
-    lace: [lace1, lace2, lace3, lace4, lace5],
+    Crochet: [lace1, lace2, lace3, lace4, lace5],
     printed_kente: [p_kente1, p_kente2, p_kente3, p_kente4],
-    suit_fabric: [s_fabric1, s_fabric2, s_fabric3, s_fabric4, s_fabric5],
+    Funerals: [s_fabric1, s_fabric2, s_fabric3, s_fabric4, s_fabric5],
   };
 
   const handleSizeChange = (factor) => {
@@ -209,9 +224,9 @@ const Configurator = () => {
     kente: 20,
     waxPrint: 25,
     smock: 30,
-    lace: 35,
+    Crochet: 35,
     printed_kente: 40,
-    suit_fabric: 45,
+    Funerals: 45,
     // Add values for other texture categories if needed
   };
 
@@ -250,7 +265,7 @@ const Configurator = () => {
       "Description for smock3",
       "Description for smock4",
     ],
-    lace: [
+    Crochet: [
       "Description for lace1",
       "Description for lace2",
       "Description for lace3",
@@ -263,7 +278,7 @@ const Configurator = () => {
       "Description for p_kente3",
       "Description for p_kente4",
     ],
-    suit_fabric: [
+    Funerals: [
       "Description for s_fabric1",
       "Description for s_fabric2",
       "Description for s_fabric3",
@@ -641,25 +656,25 @@ const Configurator = () => {
                       </div>
                     </div>
                     <div className="texture-category ">
-                      <h3>Lace (+$35)</h3>
+                      <h3>Crochet (+$35)</h3>
                       <div className="texture-images">
-                        {textureArrays.lace.map((texture, index) => (
+                        {textureArrays.Crochet.map((texture, index) => (
                           <div key={index} className="texture-item">
-                            <Tooltip target={`.lace-${index}`}>
+                            <Tooltip target={`.Crochet-${index}`}>
                               <div className="d-flex flex-column">
                                 <img
-                                  alt={`lace ${index + 1}`}
+                                  alt={`Crochet ${index + 1}`}
                                   src={texture}
                                   data-pr-tooltip="PrimeReact-Logo"
                                   height="80px"
                                 />
-                                <p>{textureDescriptions.lace[index]}</p>
+                                <p>{textureDescriptions.Crochet[index]}</p>
                               </div>
                             </Tooltip>
                             <img
                               src={texture}
-                              alt={`lace ${index + 1}`}
-                              className={`texture-button lace-${index} ${
+                              alt={`Crochet ${index + 1}`}
+                              className={`texture-button Crochet-${index} ${
                                 selectedPrintOn === texture
                                   ? "selected-border"
                                   : ""
@@ -705,25 +720,25 @@ const Configurator = () => {
                       </div>
                     </div>
                     <div className="texture-category ">
-                      <h3>Suit Fabric (+$45)</h3>
+                      <h3>Funerals (+$45)</h3>
                       <div className="texture-images">
-                        {textureArrays.suit_fabric.map((texture, index) => (
+                        {textureArrays.Funerals.map((texture, index) => (
                           <div key={index} className="texture-item">
-                            <Tooltip target={`.suit_fabric-${index}`}>
+                            <Tooltip target={`.Funerals-${index}`}>
                               <div className="d-flex flex-column">
                                 <img
-                                  alt={`suit_fabric ${index + 1}`}
+                                  alt={`Funerals ${index + 1}`}
                                   src={texture}
                                   data-pr-tooltip="PrimeReact-Logo"
                                   height="80px"
                                 />
-                                <p>{textureDescriptions.suit_fabric[index]}</p>
+                                <p>{textureDescriptions.Funerals[index]}</p>
                               </div>
                             </Tooltip>
                             <img
                               src={texture}
-                              alt={`suit_fabric ${index + 1}`}
-                              className={`texture-button suit_fabric-${index} ${
+                              alt={`Funerals ${index + 1}`}
+                              className={`texture-button Funerals-${index} ${
                                 selectedPrintOn === texture
                                   ? "selected-border"
                                   : ""

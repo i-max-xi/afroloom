@@ -4,52 +4,6 @@ import { v4 as uuid } from 'uuid';
 import shirt from "../Assets/Customize/shirt.jpg";
 import flare_shirt from "../Assets/Customize/flare_shirt.png";
 
-
-
-// tshirts
-import tshirt1 from '../Assets/Customize/maleClothingExtras/tshirt/1.jpg'
-import tshirt2 from '../Assets/Customize/maleClothingExtras/tshirt/2.jpg'
-import tshirt3 from '../Assets/Customize/maleClothingExtras/tshirt/3.jpg'
-import tshirt4 from '../Assets/Customize/maleClothingExtras/tshirt/4.jpg'
-import tshirt5 from '../Assets/Customize/maleClothingExtras/tshirt/5.jpg'
-import tshirt6 from '../Assets/Customize/maleClothingExtras/tshirt/6.jpg'
-
-// shirts
-import shirt1 from '../Assets/Customize/maleClothingExtras/shirt/1.jpg'
-import shirt2 from '../Assets/Customize/maleClothingExtras/shirt/2.jpg'
-import shirt3 from '../Assets/Customize/maleClothingExtras/shirt/3.jpg'
-import shirt4 from '../Assets/Customize/maleClothingExtras/shirt/4.jpg'
-import shirt5 from '../Assets/Customize/maleClothingExtras/shirt/5.jpg'
-import shirt6 from '../Assets/Customize/maleClothingExtras/shirt/6.jpg'
-
-// top n down
-import td1 from '../Assets/Customize/maleClothingExtras/topndown/1.jpg'
-import td2 from '../Assets/Customize/maleClothingExtras/topndown/2.jpg'
-import td3 from '../Assets/Customize/maleClothingExtras/topndown/3.jpg'
-import td4 from '../Assets/Customize/maleClothingExtras/topndown/4.jpg'
-import td5 from '../Assets/Customize/maleClothingExtras/topndown/5.jpg'
-import td6 from '../Assets/Customize/maleClothingExtras/topndown/6.jpg'
-
-// uncategorized
-import un1 from '../Assets/Customize/maleClothingExtras/uncategorized/1.jpg'
-import un2 from '../Assets/Customize/maleClothingExtras/uncategorized/2.jpg'
-import un3 from '../Assets/Customize/maleClothingExtras/uncategorized/3.jpg'
-import un4 from '../Assets/Customize/maleClothingExtras/uncategorized/4.jpg'
-import un5 from '../Assets/Customize/maleClothingExtras/uncategorized/5.jpg'
-
-// Trousers
-import tr1 from '../Assets/Customize/maleClothingExtras/trousers/1.jpg'
-import tr2 from '../Assets/Customize/maleClothingExtras/trousers/2.jpg'
-import tr3 from '../Assets/Customize/maleClothingExtras/trousers/3.jpg'
-import tr4 from '../Assets/Customize/maleClothingExtras/trousers/4.jpg'
-import tr5 from '../Assets/Customize/maleClothingExtras/trousers/5.jpg'
-
-// Shorts
-import sh1 from '../Assets/Customize/maleClothingExtras/shorts/1.jpg'
-import sh2 from '../Assets/Customize/maleClothingExtras/shorts/2.jpg'
-import sh3 from '../Assets/Customize/maleClothingExtras/shorts/3.jpg'
-import sh4 from '../Assets/Customize/maleClothingExtras/shorts/4.jpg'
-
 import topndown from "../Assets/Customize/topanddown.jpg";
 
 // model imports
@@ -68,6 +22,22 @@ import blazer from '../Pages/Customize/Configurator/models/MaleClothing/male_sui
 import tshirt_guide from '../Pages/Customize/Configurator/size_guide/male/tshirt.JPG';
 import tshirt_pattern from '../Pages/Customize/Configurator/size_guide/male/tshirt_pattern.jpg';
 
+// parts
+const tshirtParts = require.context('../Assets/model_parts/MaleClothing/tshirt', false, /\.(png|jpg|jpeg|gif)$/);
+// const tshirtLongParts = require.context('../Assets/model_parts/MaleClothing/tshirt_long', false, /\.(png|jpg|jpeg|gif)$/);
+// const shirtParts = require.context('../Assets/model_parts/MaleClothing/shirt', false, /\.(png|jpg|jpeg|gif)$/);
+// const shirtLongParts = require.context('../Assets/model_parts/MaleClothing/shirt_long', false, /\.(png|jpg|jpeg|gif)$/);
+// const topndownParts = require.context('../Assets/model_parts/MaleClothing/topndown', false, /\.(png|jpg|jpeg|gif)$/);
+// const topParts = require.context('../Assets/model_parts/MaleClothing/top', false, /\.(png|jpg|jpeg|gif)$/);
+// const blazerParts = require.context('../Assets/model_parts/MaleClothing/blazer', false, /\.(png|jpg|jpeg|gif)$/);
+// const trouserParts = require.context('../Assets/model_parts/MaleClothing/trouser', false, /\.(png|jpg|jpeg|gif)$/);
+// const summerShortsParts = require.context('../Assets/model_parts/MaleClothing/summer_shorts', false, /\.(png|jpg|jpeg|gif)$/);
+// const materialShortsParts = require.context('../Assets/model_parts/MaleClothing/material_shorts', false, /\.(png|jpg|jpeg|gif)$/);
+
+
+
+
+
 
 export const mainMaleCustomize = [
   {
@@ -76,12 +46,13 @@ export const mainMaleCustomize = [
     image: "https://a5e8126a499f8a963166-f72e9078d72b8c998606fd6e0319b679.ssl.cf5.rackcdn.com/images/variant/large/next-level_3600_black.jpg",
     model: tshirtModel1,
     myNode: ["bottom", "collar", "left_hand", "left_hand_edge", "right_hand", "right_hand_edge", "stripe", "top"],
-    myZoom: 0.8,
+    myZoom: 0.6,
     myX: 0,
     myY: 10,
     price: 20,
     sizeGuide: tshirt_guide,
     sizePattern: tshirt_pattern,
+    parts: tshirtParts.keys().map(tshirtParts)
   },
   {
     id: uuid(),
@@ -91,6 +62,7 @@ export const mainMaleCustomize = [
     myNode: ["bottom", "collar", "left_hand", "left_hand_cuff", "right_hand", "right_hand_cuff", "stripe", "top"],
     myZoom: 0.8,
     price: 20,
+    // parts: tshirtLongParts.keys().map(tshirtLongParts),
   },
   {
     id: uuid(),
@@ -101,7 +73,8 @@ export const mainMaleCustomize = [
     myZoom: 0.7,
     myX: 0,
     myY: 10,
-    price: 30
+    price: 30,
+    // parts: shirtParts.keys().map(shirtParts),
   },
   {
     id: uuid(),
@@ -112,7 +85,8 @@ export const mainMaleCustomize = [
     myZoom: 0.8,
     myX: 0,
     myY: 10,
-    price: 30
+    price: 30,
+    // parts: shirtLongParts.keys().map(shirtLongParts),
   },
   {
     id: uuid(),
@@ -121,7 +95,8 @@ export const mainMaleCustomize = [
     model: topndown_model,
     myNode: ["back", "collar", "front_left", "front_right", "left_hand", "left_hand_cuff", "left_leg", "left_leg_edge", "midline", "right_hand", "right_hand_cuff", "right_leg", "right_leg_edge"],
     myZoom: 0.6,
-    price: 55
+    price: 55,
+    // parts: topndownParts.keys().map(topndownParts),
   },
   {
     id: uuid(),
@@ -132,7 +107,8 @@ export const mainMaleCustomize = [
     myZoom: 0.7,
     myX: 0,
     myY: 10,
-    price: 35
+    price: 35,
+    // parts: topParts.keys().map(topParts),
   },
   {
     id: uuid(),
@@ -142,6 +118,7 @@ export const mainMaleCustomize = [
     myNode: ["back", "collar", "front_left", "front_right", "left_hand", "left_hand_edge", "right_hand", "right_hand_edge"],
     myZoom: 1,
     price: 20,
+    // parts: blazerParts.keys().map(blazerParts),
   },
   {
     id: uuid(),
@@ -151,7 +128,8 @@ export const mainMaleCustomize = [
     model: trousersModel1,
     myNode: ["left_leg", "left_leg_edge", "left_pocket", "right_leg", "right_leg_edge", "right_pocket", "waist"],
     myZoom: 0.8,
-    price: 22
+    price: 22,
+    // parts: trouserParts.keys().map(trouserParts),
     },
   {
     id: uuid(),
@@ -162,7 +140,8 @@ export const mainMaleCustomize = [
     myZoom: 0.7,
     myX: 0,
     myY: 10,
-    price: 30
+    price: 30,
+    // parts: summerShortsParts.keys().map(summerShortsParts),
     },
     {
     id: uuid(),
@@ -173,201 +152,7 @@ export const mainMaleCustomize = [
     myZoom: 0.8,
     myX: 0,
     myY: 10,
-    price: 30
+    price: 30,
+    // parts: materialShortsParts.keys().map(materialShortsParts)
     },
-];
-
-export const maleExtras = [
-  {
-    category: "T-Shirt",
-    items: [
-      {
-        id: uuid(),
-        name: "One",
-        image: tshirt1,
-        model: tshirtModel1,
-        price: 20
-      },
-      {
-        id: uuid(),
-        name: "Two",
-        image: tshirt2,
-      },
-      {
-        id: uuid(),
-        name: "Three",
-        image: tshirt3,
-      },
-      {
-        id: uuid(),
-        name: "4",
-        image: tshirt4,
-      },
-      {
-        id: uuid(),
-        name: "5",
-        image: tshirt5,
-      },
-      {
-        id: uuid(),
-        name: "6",
-        image: tshirt6,
-      },
-    ],
-  },
-  {
-    category: "Shirt",
-    items: [
-      {
-        id: uuid(),
-        name: "",
-        image: shirt1,
-      },
-      {
-        id: uuid(),
-        name: "",
-        image: shirt2,
-      },
-      {
-        id: uuid(),
-        name: "",
-        image: shirt3,
-      },
-      {
-        id: uuid(),
-        name: "",
-        image: shirt4,
-      },
-      {
-        id: uuid(),
-        name: "",
-        image: shirt5,
-      },
-      {
-        id: uuid(),
-        name: "",
-        image: shirt6,
-      },
-    ],
-  },
-  {
-    category: "Top & Down",
-    items: [
-      {
-        id: uuid(),
-        name: "",
-        image: td1,
-      },
-      {
-        id: uuid(),
-        name: "",
-        image: td2,
-      },
-      {
-        id: uuid(),
-        name: "",
-        image: td3,
-      },
-      {
-        id: uuid(),
-        name: "",
-        image: td4,
-      },
-      {
-        id: uuid(),
-        name: "",
-        image: td5,
-      },
-      {
-        id: uuid(),
-        name: "",
-        image: td6,
-      },
-    ],
-  },
-  {
-    category: "Uncategorized",
-    items: [
-      {
-        id: uuid(),
-        name: "",
-        image: un1,
-      },
-      {
-        id: uuid(),
-        name: "",
-        image: un2,
-      },
-      {
-        id: uuid(),
-        name: "",
-        image: un3,
-      },
-      {
-        id: uuid(),
-        name: "",
-        image: un4,
-      },
-      {
-        id: uuid(),
-        name: "",
-        image: un5,
-      },
-    ],
-  },
-  {
-    category: "Trousers",
-    items: [
-      {
-        id: uuid(),
-        name: "",
-        image: tr1,
-      },
-      {
-        id: uuid(),
-        name: "",
-        image: tr2,
-      },
-      {
-        id: uuid(),
-        name: "",
-        image: tr3,
-      },
-      {
-        id: uuid(),
-        name: "",
-        image: tr4,
-      },
-      {
-        id: uuid(),
-        name: "",
-        image: tr5,
-      },
-    ],
-  },
-  {
-    category: "Shorts",
-    items: [
-      {
-        id: uuid(),
-        name: "",
-        image: sh1,
-      },
-      {
-        id: uuid(),
-        name: "",
-        image: sh2,
-      },
-      {
-        id: uuid(),
-        name: "",
-        image: sh3,
-      },
-      {
-        id: uuid(),
-        name: "",
-        image: sh4,
-      },
-    ],
-  },
 ];
