@@ -27,6 +27,8 @@ import {
   sizeOptions,
   textureDescriptions,
   textureValues,
+  responsiveNess,
+  responsiveColor,
 } from "./arrays/neededArrays";
 
 const Shirt = ({
@@ -344,23 +346,7 @@ const ConfiguratorFemaleAccessories = () => {
                     numVisible={12}
                     numScroll={1}
                     showIndicators={false}
-                    responsiveOptions={[
-                      {
-                        breakpoint: "1024px",
-                        numVisible: 3,
-                        numScroll: 1,
-                      },
-                      {
-                        breakpoint: "768px",
-                        numVisible: 2,
-                        numScroll: 1,
-                      },
-                      {
-                        breakpoint: "576px",
-                        numVisible: 1,
-                        numScroll: 1,
-                      },
-                    ]}
+                    responsiveOptions={responsiveColor}
                     itemTemplate={(colorOption) => (
                       // <div key={colorOption.color} className="color-item">
                       <button
@@ -392,23 +378,7 @@ const ConfiguratorFemaleAccessories = () => {
                           numVisible={4}
                           numScroll={1}
                           showIndicators={false} // Set this to false to deactivate the indicators
-                          responsiveOptions={[
-                            {
-                              breakpoint: "1024px",
-                              numVisible: 3,
-                              numScroll: 1,
-                            },
-                            {
-                              breakpoint: "768px",
-                              numVisible: 2,
-                              numScroll: 1,
-                            },
-                            {
-                              breakpoint: "576px",
-                              numVisible: 1,
-                              numScroll: 1,
-                            },
-                          ]}
+                          responsiveOptions={responsiveNess}
                           itemTemplate={(texture) => (
                             <div key={texture} className="texture-item">
                               <Tooltip
@@ -460,23 +430,7 @@ const ConfiguratorFemaleAccessories = () => {
                           numVisible={4}
                           numScroll={1}
                           showIndicators={false}
-                          responsiveOptions={[
-                            {
-                              breakpoint: "1024px",
-                              numVisible: 3,
-                              numScroll: 1,
-                            },
-                            {
-                              breakpoint: "768px",
-                              numVisible: 2,
-                              numScroll: 1,
-                            },
-                            {
-                              breakpoint: "576px",
-                              numVisible: 1,
-                              numScroll: 1,
-                            },
-                          ]}
+                          responsiveOptions={responsiveNess}
                           itemTemplate={(texture) => (
                             <div key={texture} className="texture-item">
                               <Tooltip
@@ -530,23 +484,7 @@ const ConfiguratorFemaleAccessories = () => {
                           numVisible={4}
                           numScroll={1}
                           showIndicators={false} // Set this to false to deactivate the indicators
-                          responsiveOptions={[
-                            {
-                              breakpoint: "1024px",
-                              numVisible: 3,
-                              numScroll: 1,
-                            },
-                            {
-                              breakpoint: "768px",
-                              numVisible: 2,
-                              numScroll: 1,
-                            },
-                            {
-                              breakpoint: "576px",
-                              numVisible: 1,
-                              numScroll: 1,
-                            },
-                          ]}
+                          responsiveOptions={responsiveNess}
                           itemTemplate={(texture) => (
                             <div key={texture} className="texture-item">
                               <Tooltip
@@ -598,23 +536,7 @@ const ConfiguratorFemaleAccessories = () => {
                           numVisible={4}
                           numScroll={1}
                           showIndicators={false} // Set this to false to deactivate the indicators
-                          responsiveOptions={[
-                            {
-                              breakpoint: "1024px",
-                              numVisible: 3,
-                              numScroll: 1,
-                            },
-                            {
-                              breakpoint: "768px",
-                              numVisible: 2,
-                              numScroll: 1,
-                            },
-                            {
-                              breakpoint: "576px",
-                              numVisible: 1,
-                              numScroll: 1,
-                            },
-                          ]}
+                          responsiveOptions={responsiveNess}
                           itemTemplate={(texture) => (
                             <div key={texture} className="texture-item">
                               <Tooltip
@@ -668,23 +590,7 @@ const ConfiguratorFemaleAccessories = () => {
                           numVisible={4}
                           numScroll={1}
                           showIndicators={false} // Set this to false to deactivate the indicators
-                          responsiveOptions={[
-                            {
-                              breakpoint: "1024px",
-                              numVisible: 3,
-                              numScroll: 1,
-                            },
-                            {
-                              breakpoint: "768px",
-                              numVisible: 2,
-                              numScroll: 1,
-                            },
-                            {
-                              breakpoint: "576px",
-                              numVisible: 1,
-                              numScroll: 1,
-                            },
-                          ]}
+                          responsiveOptions={responsiveNess}
                           itemTemplate={(texture) => (
                             <div key={texture} className="texture-item">
                               <Tooltip
@@ -736,23 +642,7 @@ const ConfiguratorFemaleAccessories = () => {
                           numVisible={4}
                           numScroll={1}
                           showIndicators={false} // Set this to false to deactivate the indicators
-                          responsiveOptions={[
-                            {
-                              breakpoint: "1024px",
-                              numVisible: 3,
-                              numScroll: 1,
-                            },
-                            {
-                              breakpoint: "768px",
-                              numVisible: 2,
-                              numScroll: 1,
-                            },
-                            {
-                              breakpoint: "576px",
-                              numVisible: 1,
-                              numScroll: 1,
-                            },
-                          ]}
+                          responsiveOptions={responsiveNess}
                           itemTemplate={(texture) => (
                             <div key={texture} className="texture-item">
                               <Tooltip
@@ -806,23 +696,7 @@ const ConfiguratorFemaleAccessories = () => {
                           numVisible={4}
                           numScroll={1}
                           showIndicators={false} // Set this to false to deactivate the indicators
-                          responsiveOptions={[
-                            {
-                              breakpoint: "1024px",
-                              numVisible: 3,
-                              numScroll: 1,
-                            },
-                            {
-                              breakpoint: "768px",
-                              numVisible: 2,
-                              numScroll: 1,
-                            },
-                            {
-                              breakpoint: "576px",
-                              numVisible: 1,
-                              numScroll: 1,
-                            },
-                          ]}
+                          responsiveOptions={responsiveNess}
                           itemTemplate={(texture) => (
                             <div key={texture} className="texture-item">
                               <Tooltip
@@ -876,23 +750,7 @@ const ConfiguratorFemaleAccessories = () => {
                           numVisible={4}
                           numScroll={1}
                           showIndicators={false} // Set this to false to deactivate the indicators
-                          responsiveOptions={[
-                            {
-                              breakpoint: "1024px",
-                              numVisible: 3,
-                              numScroll: 1,
-                            },
-                            {
-                              breakpoint: "768px",
-                              numVisible: 2,
-                              numScroll: 1,
-                            },
-                            {
-                              breakpoint: "576px",
-                              numVisible: 1,
-                              numScroll: 1,
-                            },
-                          ]}
+                          responsiveOptions={responsiveNess}
                           itemTemplate={(texture) => (
                             <div key={texture} className="texture-item">
                               <Tooltip

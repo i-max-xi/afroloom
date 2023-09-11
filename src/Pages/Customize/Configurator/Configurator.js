@@ -10,12 +10,12 @@ import html2canvas from "html2canvas";
 
 import { TextureLoader } from "three/src/loaders/TextureLoader";
 import LoadingAnimation from "./LoadingAnimation";
-
 import { Tooltip } from "primereact/tooltip";
 import { Dialog } from "primereact/dialog";
 import Nav from "../../../Components/Nav";
 import "./styles.css";
 import { useParams } from "react-router";
+
 import { mainMaleCustomize } from "../../../Data/CustomizeDataMale";
 
 import { useSelector } from "react-redux";
@@ -27,6 +27,8 @@ import {
   sizeOptions,
   textureDescriptions,
   textureValues,
+  responsiveNess,
+  responsiveColor,
 } from "./arrays/neededArrays";
 
 const Shirt = ({
@@ -96,7 +98,6 @@ const Shirt = ({
     </group>
   );
 };
-
 
 const CameraControls = () => {
   const controlsRef = useRef();
@@ -342,26 +343,10 @@ const Configurator = () => {
                 <div className="color-buttons-container">
                   <Carousel
                     value={colorOptions}
-                    numVisible={7}
-                    numScroll={5}
+                    numVisible={12}
+                    numScroll={1}
                     showIndicators={false}
-                    responsiveOptions={[
-                      {
-                        breakpoint: "1024px",
-                        numVisible: 3,
-                        numScroll: 1,
-                      },
-                      {
-                        breakpoint: "768px",
-                        numVisible: 2,
-                        numScroll: 1,
-                      },
-                      {
-                        breakpoint: "576px",
-                        numVisible: 1,
-                        numScroll: 1,
-                      },
-                    ]}
+                    responsiveOptions={responsiveColor}
                     itemTemplate={(colorOption) => (
                       // <div key={colorOption.color} className="color-item">
                       <button
@@ -391,25 +376,9 @@ const Configurator = () => {
                         <Carousel
                           value={textureArrays.batik}
                           numVisible={4}
-                          numScroll={4}
+                          numScroll={1}
                           showIndicators={false} // Set this to false to deactivate the indicators
-                          responsiveOptions={[
-                            {
-                              breakpoint: "1024px",
-                              numVisible: 3,
-                              numScroll: 1,
-                            },
-                            {
-                              breakpoint: "768px",
-                              numVisible: 2,
-                              numScroll: 1,
-                            },
-                            {
-                              breakpoint: "576px",
-                              numVisible: 1,
-                              numScroll: 1,
-                            },
-                          ]}
+                          responsiveOptions={responsiveNess}
                           itemTemplate={(texture) => (
                             <div key={texture} className="texture-item">
                               <Tooltip
@@ -461,23 +430,7 @@ const Configurator = () => {
                           numVisible={4}
                           numScroll={1}
                           showIndicators={false}
-                          responsiveOptions={[
-                            {
-                              breakpoint: "1024px",
-                              numVisible: 3,
-                              numScroll: 1,
-                            },
-                            {
-                              breakpoint: "768px",
-                              numVisible: 2,
-                              numScroll: 1,
-                            },
-                            {
-                              breakpoint: "576px",
-                              numVisible: 1,
-                              numScroll: 1,
-                            },
-                          ]}
+                          responsiveOptions={responsiveNess}
                           itemTemplate={(texture) => (
                             <div key={texture} className="texture-item">
                               <Tooltip
@@ -531,23 +484,7 @@ const Configurator = () => {
                           numVisible={4}
                           numScroll={1}
                           showIndicators={false} // Set this to false to deactivate the indicators
-                          responsiveOptions={[
-                            {
-                              breakpoint: "1024px",
-                              numVisible: 3,
-                              numScroll: 1,
-                            },
-                            {
-                              breakpoint: "768px",
-                              numVisible: 2,
-                              numScroll: 1,
-                            },
-                            {
-                              breakpoint: "576px",
-                              numVisible: 1,
-                              numScroll: 1,
-                            },
-                          ]}
+                          responsiveOptions={responsiveNess}
                           itemTemplate={(texture) => (
                             <div key={texture} className="texture-item">
                               <Tooltip
@@ -599,23 +536,7 @@ const Configurator = () => {
                           numVisible={4}
                           numScroll={1}
                           showIndicators={false} // Set this to false to deactivate the indicators
-                          responsiveOptions={[
-                            {
-                              breakpoint: "1024px",
-                              numVisible: 3,
-                              numScroll: 1,
-                            },
-                            {
-                              breakpoint: "768px",
-                              numVisible: 2,
-                              numScroll: 1,
-                            },
-                            {
-                              breakpoint: "576px",
-                              numVisible: 1,
-                              numScroll: 1,
-                            },
-                          ]}
+                          responsiveOptions={responsiveNess}
                           itemTemplate={(texture) => (
                             <div key={texture} className="texture-item">
                               <Tooltip
@@ -669,23 +590,7 @@ const Configurator = () => {
                           numVisible={4}
                           numScroll={1}
                           showIndicators={false} // Set this to false to deactivate the indicators
-                          responsiveOptions={[
-                            {
-                              breakpoint: "1024px",
-                              numVisible: 3,
-                              numScroll: 1,
-                            },
-                            {
-                              breakpoint: "768px",
-                              numVisible: 2,
-                              numScroll: 1,
-                            },
-                            {
-                              breakpoint: "576px",
-                              numVisible: 1,
-                              numScroll: 1,
-                            },
-                          ]}
+                          responsiveOptions={responsiveNess}
                           itemTemplate={(texture) => (
                             <div key={texture} className="texture-item">
                               <Tooltip
@@ -737,23 +642,7 @@ const Configurator = () => {
                           numVisible={4}
                           numScroll={1}
                           showIndicators={false} // Set this to false to deactivate the indicators
-                          responsiveOptions={[
-                            {
-                              breakpoint: "1024px",
-                              numVisible: 3,
-                              numScroll: 1,
-                            },
-                            {
-                              breakpoint: "768px",
-                              numVisible: 2,
-                              numScroll: 1,
-                            },
-                            {
-                              breakpoint: "576px",
-                              numVisible: 1,
-                              numScroll: 1,
-                            },
-                          ]}
+                          responsiveOptions={responsiveNess}
                           itemTemplate={(texture) => (
                             <div key={texture} className="texture-item">
                               <Tooltip
@@ -807,23 +696,7 @@ const Configurator = () => {
                           numVisible={4}
                           numScroll={1}
                           showIndicators={false} // Set this to false to deactivate the indicators
-                          responsiveOptions={[
-                            {
-                              breakpoint: "1024px",
-                              numVisible: 3,
-                              numScroll: 1,
-                            },
-                            {
-                              breakpoint: "768px",
-                              numVisible: 2,
-                              numScroll: 1,
-                            },
-                            {
-                              breakpoint: "576px",
-                              numVisible: 1,
-                              numScroll: 1,
-                            },
-                          ]}
+                          responsiveOptions={responsiveNess}
                           itemTemplate={(texture) => (
                             <div key={texture} className="texture-item">
                               <Tooltip
@@ -877,23 +750,7 @@ const Configurator = () => {
                           numVisible={4}
                           numScroll={1}
                           showIndicators={false} // Set this to false to deactivate the indicators
-                          responsiveOptions={[
-                            {
-                              breakpoint: "1024px",
-                              numVisible: 3,
-                              numScroll: 1,
-                            },
-                            {
-                              breakpoint: "768px",
-                              numVisible: 2,
-                              numScroll: 1,
-                            },
-                            {
-                              breakpoint: "576px",
-                              numVisible: 1,
-                              numScroll: 1,
-                            },
-                          ]}
+                          responsiveOptions={responsiveNess}
                           itemTemplate={(texture) => (
                             <div key={texture} className="texture-item">
                               <Tooltip
@@ -973,7 +830,7 @@ const Configurator = () => {
                 </div>
 
                 {/* parts images start */}
-                <div className="part-panel" style={{width: "10%"}}>
+                <div className="part-panel" style={{width: "15%"}}>
                   <div className="d-flex flex-column">
                     {selectedClothing.parts.map((part, index) => (
                       <img
@@ -981,12 +838,7 @@ const Configurator = () => {
                         key={index}
                         alt={`Part ${index}`}
                         width="100%"
-                        // className={selectedPart === index ? 'selected-border' : ''}
-                        className={`part-image ${
-                          selectedPart === index
-                            ? "selected-border"
-                            : ""
-                        }`}
+                        className={selectedPart === index ? 'selected-border' : ''}
                       />
                     ))}
                   </div>

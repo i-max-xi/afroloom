@@ -165,3 +165,39 @@ export const sizeOptions = [
   { label: "6XL", value: 8 },
   { label: "7XL", value: 9 },
 ];
+
+export const responsiveNess = [
+  {
+    breakpoint: "1024px",
+    numVisible: 3,
+    numScroll: 1,
+  },
+  {
+    breakpoint: "768px",
+    numVisible: 2,
+    numScroll: 1,
+  },
+  {
+    breakpoint: "576px",
+    numVisible: 1,
+    numScroll: 1,
+  },
+]
+
+export const responsiveColor = [
+    {
+      breakpoint: "1024px",
+      numVisible: 3,
+      numScroll: 1,
+    },
+    {
+      breakpoint: "768px",
+      numVisible: 2,
+      numScroll: 1,
+    },
+    {
+      breakpoint: "576px",
+      numVisible: 1,
+      numScroll: 1,
+    },
+]
