@@ -10,12 +10,12 @@ import html2canvas from "html2canvas";
 
 import { TextureLoader } from "three/src/loaders/TextureLoader";
 import LoadingAnimation from "./LoadingAnimation";
+
 import { Tooltip } from "primereact/tooltip";
 import { Dialog } from "primereact/dialog";
 import Nav from "../../../Components/Nav";
 import "./styles.css";
 import { useParams } from "react-router";
-
 import { mainMaleCustomize } from "../../../Data/CustomizeDataMale";
 
 import { useSelector } from "react-redux";
@@ -72,7 +72,9 @@ const Shirt = ({
   return (
     <group ref={groupRef}>
       {isLoading ? (
-        <><LoadingAnimation /></>
+        <>
+          <LoadingAnimation />
+        </>
       ) : (
         selectedClothing.myNode.map((nodeName, index) => {
           const color = snap.color[index] || "#ffffff";
@@ -210,8 +212,9 @@ const Configurator = () => {
     currencyFactor
   ).toFixed(2);
 
-  // part images
-  
+  // description dialogs
+  const [displayDialog, setDisplayDialog] = useState(false);
+  const [selectedTexture, setSelectedTexture] = useState({});
 
   return (
     <>
@@ -343,8 +346,8 @@ const Configurator = () => {
                 <div className="color-buttons-container">
                   <Carousel
                     value={colorOptions}
-                    numVisible={12}
-                    numScroll={1}
+                    numVisible={7}
+                    numScroll={5}
                     showIndicators={false}
                     responsiveOptions={responsiveColor}
                     itemTemplate={(colorOption) => (
@@ -376,15 +379,16 @@ const Configurator = () => {
                         <Carousel
                           value={textureArrays.batik}
                           numVisible={4}
-                          numScroll={1}
+                          numScroll={4}
                           showIndicators={false} // Set this to false to deactivate the indicators
                           responsiveOptions={responsiveNess}
                           itemTemplate={(texture) => (
                             <div key={texture} className="texture-item">
-                              <Tooltip
-                                target={`.batik-${textureArrays.batik.indexOf(
-                                  texture
-                                )}`}
+                              <Dialog
+                                header={`Texture Details: ${selectedTexture.name}`}
+                                visible={displayDialog}
+                                onHide={() => setDisplayDialog(false)}
+                                style={{ width: "30vw" }} // Adjust the width as needed
                               >
                                 <div className="d-flex flex-column">
                                   <img
@@ -401,19 +405,45 @@ const Configurator = () => {
                                     }
                                   </p>
                                 </div>
-                              </Tooltip>
-                              <img
-                                src={texture}
-                                alt={`Batik`}
-                                className={`texture-button batik-${textureArrays.batik.indexOf(
-                                  texture
-                                )} ${
-                                  selectedPrintOn === texture
-                                    ? "selected-border"
-                                    : ""
-                                }`}
-                                onClick={() => handleTextureChange(texture)}
-                              />
+                              </Dialog>{" "}
+                              <div>
+                                <img
+                                  src={texture}
+                                  alt={`Batik`}
+                                  className={`texture-button batik-${textureArrays.batik.indexOf(
+                                    texture
+                                  )} ${
+                                    selectedPrintOn === texture
+                                      ? "selected-border"
+                                      : ""
+                                  }`}
+                                  onClick={() => handleTextureChange(texture)}
+                                />
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  width="16"
+                                  height="16"
+                                  fill="currentColor"
+                                  className="bi bi-info-circle"
+                                  viewBox="0 0 16 16"
+                                  onClick={() => {
+                                    setSelectedTexture({
+                                      name: "Batik",
+                                      price:
+                                        currencySymbol +
+                                        (currencyFactor * 10).toFixed(2),
+                                      description:
+                                        textureDescriptions.batik[
+                                          textureArrays.batik.indexOf(texture)
+                                        ],
+                                    });
+                                    setDisplayDialog(true);
+                                  }}
+                                >
+                                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                  <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
+                                </svg>{" "}
+                              </div>
                             </div>
                           )}
                         />
@@ -433,10 +463,11 @@ const Configurator = () => {
                           responsiveOptions={responsiveNess}
                           itemTemplate={(texture) => (
                             <div key={texture} className="texture-item">
-                              <Tooltip
-                                target={`.dashiki-${textureArrays.dashiki.indexOf(
-                                  texture
-                                )}`}
+                              <Dialog
+                                header={`Texture Details: ${selectedTexture.name}`}
+                                visible={displayDialog}
+                                onHide={() => setDisplayDialog(false)}
+                                style={{ width: "30vw" }} // Adjust the width as needed
                               >
                                 <div className="d-flex flex-column">
                                   <img
@@ -453,19 +484,32 @@ const Configurator = () => {
                                     }
                                   </p>
                                 </div>
-                              </Tooltip>
-                              <img
-                                src={texture}
-                                alt={`dashiki`}
-                                className={`texture-button dashiki-${textureArrays.dashiki.indexOf(
-                                  texture
-                                )} ${
-                                  selectedPrintOn === texture
-                                    ? "selected-border"
-                                    : ""
-                                }`}
-                                onClick={() => handleTextureChange(texture)}
-                              />
+                              </Dialog>
+                              <div>
+                                <img
+                                  src={texture}
+                                  alt={`dashiki`}
+                                  className={`texture-button dashiki-${textureArrays.dashiki.indexOf(
+                                    texture
+                                  )} ${
+                                    selectedPrintOn === texture
+                                      ? "selected-border"
+                                      : ""
+                                  }`}
+                                  onClick={() => handleTextureChange(texture)}
+                                />
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  width="16"
+                                  height="16"
+                                  fill="currentColor"
+                                  className="bi bi-info-circle"
+                                  viewBox="0 0 16 16"
+                                >
+                                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                  <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
+                                </svg>
+                              </div>
                             </div>
                           )}
                         />
@@ -508,18 +552,31 @@ const Configurator = () => {
                                   </p>
                                 </div>
                               </Tooltip>
-                              <img
-                                src={texture}
-                                alt={`Kente`}
-                                className={`texture-button kente-${textureArrays.kente.indexOf(
-                                  texture
-                                )} ${
-                                  selectedPrintOn === texture
-                                    ? "selected-border"
-                                    : ""
-                                }`}
-                                onClick={() => handleTextureChange(texture)}
-                              />
+                              <div>
+                                <img
+                                  src={texture}
+                                  alt={`Kente`}
+                                  className={`texture-button kente-${textureArrays.kente.indexOf(
+                                    texture
+                                  )} ${
+                                    selectedPrintOn === texture
+                                      ? "selected-border"
+                                      : ""
+                                  }`}
+                                  onClick={() => handleTextureChange(texture)}
+                                />
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  width="16"
+                                  height="16"
+                                  fill="currentColor"
+                                  className="bi bi-info-circle"
+                                  viewBox="0 0 16 16"
+                                >
+                                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                  <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
+                                </svg>
+                              </div>
                             </div>
                           )}
                         />
@@ -560,18 +617,31 @@ const Configurator = () => {
                                   </p>
                                 </div>
                               </Tooltip>
-                              <img
-                                src={texture}
-                                alt={`waxPrint`}
-                                className={`texture-button waxPrint-${textureArrays.waxPrint.indexOf(
-                                  texture
-                                )} ${
-                                  selectedPrintOn === texture
-                                    ? "selected-border"
-                                    : ""
-                                }`}
-                                onClick={() => handleTextureChange(texture)}
-                              />
+                              <div>
+                                <img
+                                  src={texture}
+                                  alt={`waxPrint`}
+                                  className={`texture-button waxPrint-${textureArrays.waxPrint.indexOf(
+                                    texture
+                                  )} ${
+                                    selectedPrintOn === texture
+                                      ? "selected-border"
+                                      : ""
+                                  }`}
+                                  onClick={() => handleTextureChange(texture)}
+                                />
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  width="16"
+                                  height="16"
+                                  fill="currentColor"
+                                  className="bi bi-info-circle"
+                                  viewBox="0 0 16 16"
+                                >
+                                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                  <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
+                                </svg>
+                              </div>
                             </div>
                           )}
                         />
@@ -614,18 +684,31 @@ const Configurator = () => {
                                   </p>
                                 </div>
                               </Tooltip>
-                              <img
-                                src={texture}
-                                alt={`smock`}
-                                className={`texture-button smock-${textureArrays.smock.indexOf(
-                                  texture
-                                )} ${
-                                  selectedPrintOn === texture
-                                    ? "selected-border"
-                                    : ""
-                                }`}
-                                onClick={() => handleTextureChange(texture)}
-                              />
+                              <div>
+                                <img
+                                  src={texture}
+                                  alt={`smock`}
+                                  className={`texture-button smock-${textureArrays.smock.indexOf(
+                                    texture
+                                  )} ${
+                                    selectedPrintOn === texture
+                                      ? "selected-border"
+                                      : ""
+                                  }`}
+                                  onClick={() => handleTextureChange(texture)}
+                                />
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  width="16"
+                                  height="16"
+                                  fill="currentColor"
+                                  className="bi bi-info-circle"
+                                  viewBox="0 0 16 16"
+                                >
+                                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                  <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
+                                </svg>
+                              </div>
                             </div>
                           )}
                         />
@@ -666,18 +749,31 @@ const Configurator = () => {
                                   </p>
                                 </div>
                               </Tooltip>
-                              <img
-                                src={texture}
-                                alt={`Crochet`}
-                                className={`texture-button Crochet-${textureArrays.Crochet.indexOf(
-                                  texture
-                                )} ${
-                                  selectedPrintOn === texture
-                                    ? "selected-border"
-                                    : ""
-                                }`}
-                                onClick={() => handleTextureChange(texture)}
-                              />
+                              <div>
+                                <img
+                                  src={texture}
+                                  alt={`Crochet`}
+                                  className={`texture-button Crochet-${textureArrays.Crochet.indexOf(
+                                    texture
+                                  )} ${
+                                    selectedPrintOn === texture
+                                      ? "selected-border"
+                                      : ""
+                                  }`}
+                                  onClick={() => handleTextureChange(texture)}
+                                />
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  width="16"
+                                  height="16"
+                                  fill="currentColor"
+                                  className="bi bi-info-circle"
+                                  viewBox="0 0 16 16"
+                                >
+                                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                  <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
+                                </svg>
+                              </div>
                             </div>
                           )}
                         />
@@ -722,18 +818,31 @@ const Configurator = () => {
                                   </p>
                                 </div>
                               </Tooltip>
-                              <img
-                                src={texture}
-                                alt={`printed_kente`}
-                                className={`texture-button printed_kente-${textureArrays.printed_kente.indexOf(
-                                  texture
-                                )} ${
-                                  selectedPrintOn === texture
-                                    ? "selected-border"
-                                    : ""
-                                }`}
-                                onClick={() => handleTextureChange(texture)}
-                              />
+                              <div>
+                                <img
+                                  src={texture}
+                                  alt={`printed_kente`}
+                                  className={`texture-button printed_kente-${textureArrays.printed_kente.indexOf(
+                                    texture
+                                  )} ${
+                                    selectedPrintOn === texture
+                                      ? "selected-border"
+                                      : ""
+                                  }`}
+                                  onClick={() => handleTextureChange(texture)}
+                                />
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  width="16"
+                                  height="16"
+                                  fill="currentColor"
+                                  className="bi bi-info-circle"
+                                  viewBox="0 0 16 16"
+                                >
+                                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                  <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
+                                </svg>
+                              </div>
                             </div>
                           )}
                         />
@@ -768,26 +877,37 @@ const Configurator = () => {
                                   <p>
                                     {
                                       textureDescriptions.Funerals[
-                                        textureArrays.Funerals.indexOf(
-                                          texture
-                                        )
+                                        textureArrays.Funerals.indexOf(texture)
                                       ]
                                     }
                                   </p>
                                 </div>
                               </Tooltip>
-                              <img
-                                src={texture}
-                                alt={`Funerals`}
-                                className={`texture-button Funerals-${textureArrays.Funerals.indexOf(
-                                  texture
-                                )} ${
-                                  selectedPrintOn === texture
-                                    ? "selected-border"
-                                    : ""
-                                }`}
-                                onClick={() => handleTextureChange(texture)}
-                              />
+                              <div>
+                                <img
+                                  src={texture}
+                                  alt={`Funerals`}
+                                  className={`texture-button Funerals-${textureArrays.Funerals.indexOf(
+                                    texture
+                                  )} ${
+                                    selectedPrintOn === texture
+                                      ? "selected-border"
+                                      : ""
+                                  }`}
+                                  onClick={() => handleTextureChange(texture)}
+                                />
+                                <svg
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  width="16"
+                                  height="16"
+                                  fill="currentColor"
+                                  className="bi bi-info-circle"
+                                  viewBox="0 0 16 16"
+                                >
+                                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                                  <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
+                                </svg>
+                              </div>
                             </div>
                           )}
                         />
@@ -830,7 +950,7 @@ const Configurator = () => {
                 </div>
 
                 {/* parts images start */}
-                <div className="part-panel" style={{width: "15%"}}>
+                <div className="part-panel" style={{ width: "10%" }}>
                   <div className="d-flex flex-column">
                     {selectedClothing.parts.map((part, index) => (
                       <img
@@ -838,7 +958,10 @@ const Configurator = () => {
                         key={index}
                         alt={`Part ${index}`}
                         width="100%"
-                        className={selectedPart === index ? 'selected-border' : ''}
+                        // className={selectedPart === index ? 'selected-border' : ''}
+                        className={`part-image ${
+                          selectedPart === index ? "selected-border" : ""
+                        }`}
                       />
                     ))}
                   </div>
