@@ -35,10 +35,6 @@ const tshirtParts = require.context('../Assets/model_parts/MaleClothing/tshirt',
 // const materialShortsParts = require.context('../Assets/model_parts/MaleClothing/material_shorts', false, /\.(png|jpg|jpeg|gif)$/);
 
 
-
-
-
-
 export const mainMaleCustomize = [
   {
     id: uuid(),
