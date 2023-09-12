@@ -1,6 +1,6 @@
 import { Dialog } from "primereact/dialog";
 import React, { useState } from "react";
-import { textureValues } from "./arrays/neededArrays";
+import { textureDescriptions, textureValues } from "./arrays/neededArrays";
 
 function TextureItem({
   texture,
@@ -33,8 +33,8 @@ function TextureItem({
         className="bi bi-info-circle"
         viewBox="0 0 16 16"
 
-        onClick={() => {
-          const description = subTextureDescriptions[2];
+        onClick={(e) => {
+          const description = subTextureDescriptions[e.target.childElementCount]
           setSelectedTexture((prevSelectedTexture) => ({
             ...prevSelectedTexture,
             name: texture,

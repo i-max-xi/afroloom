@@ -34,11 +34,11 @@ import lace3 from "../textures/lace3.jpg";
 import lace4 from "../textures/lace4.jpg";
 import lace5 from "../textures/lace5.jpg";
 
-import s_fabric1 from "../textures/suit_fabric1.jpeg";
-import s_fabric2 from "../textures/suit_fabric2.jpg";
-import s_fabric3 from "../textures/suit_fabric3.jpg";
-import s_fabric4 from "../textures/suit_fabric4.jpg";
-import s_fabric5 from "../textures/suit_fabric5.jpg";
+import Funerals1 from "../textures/suit_fabric1.jpeg";
+import Funerals2 from "../textures/suit_fabric2.jpg";
+import Funerals3 from "../textures/suit_fabric3.jpg";
+import Funerals4 from "../textures/suit_fabric4.jpg";
+import Funerals5 from "../textures/suit_fabric5.jpg";
 
 import p_kente1 from "../textures/p_kente1.jpg";
 import p_kente2 from "../textures/p_kente2.jpg";
@@ -108,7 +108,7 @@ export const textureArrays = {
     smock: [smock1, smock2, smock3, smock4 , smock3], // Uncomment if needed
     Crochet: [lace1, lace2, lace3, lace4, lace5],
     printed_kente: [p_kente1, p_kente2, p_kente3, p_kente4, p_kente3],
-    Funerals: [s_fabric1, s_fabric2, s_fabric3, s_fabric4, s_fabric5],
+    Funerals: [Funerals1, Funerals2, Funerals3, Funerals4, Funerals5],
   };
 
 export const textureDescriptions = {
@@ -147,11 +147,11 @@ export const textureDescriptions = {
     "Description for smock4",
   ],
   Crochet: [
-    "Description for lace1",
-    "Description for lace2",
-    "Description for lace3",
-    "Description for lace4",
-    "Description for lace5",
+    "Description for Crochet1",
+    "Description for Crochet2",
+    "Description for Crochet3",
+    "Description for Crochet4",
+    "Description for Crochet5",
   ],
   printed_kente: [
     "Description for p_kente1",
@@ -160,11 +160,11 @@ export const textureDescriptions = {
     "Description for p_kente4",
   ],
   Funerals: [
-    "Description for s_fabric1",
-    "Description for s_fabric2",
-    "Description for s_fabric3",
-    "Description for s_fabric4",
-    "Description for s_fabric5",
+    "Description for Funerals1",
+    "Description for Funerals2",
+    "Description for Funerals3",
+    "Description for Funerals4",
+    "Description for Funerals5",
   ],
 };
 
