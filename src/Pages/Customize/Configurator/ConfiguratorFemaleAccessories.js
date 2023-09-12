@@ -10,12 +10,11 @@ import html2canvas from "html2canvas";
 
 import { TextureLoader } from "three/src/loaders/TextureLoader";
 import LoadingAnimation from "./LoadingAnimation";
-import { Tooltip } from "primereact/tooltip";
+
 import { Dialog } from "primereact/dialog";
 import Nav from "../../../Components/Nav";
 import "./styles.css";
 import { useParams } from "react-router";
-
 import {mainFemaleAccessories} from "../../../Data/CustomizeDataAccessories";
 
 import { useSelector } from "react-redux";
@@ -30,6 +29,7 @@ import {
   responsiveNess,
   responsiveColor,
 } from "./arrays/neededArrays";
+import TextureItem from "./TextureItem";
 
 const Shirt = ({
   isRotating,
@@ -72,7 +72,9 @@ const Shirt = ({
   return (
     <group ref={groupRef}>
       {isLoading ? (
-        <><LoadingAnimation /></>
+        <>
+          <LoadingAnimation />
+        </>
       ) : (
         selectedClothing.myNode.map((nodeName, index) => {
           const color = snap.color[index] || "#ffffff";
@@ -210,8 +212,8 @@ const ConfiguratorFemaleAccessories = () => {
     currencyFactor
   ).toFixed(2);
 
-  // part images
-  
+  // description dialogs
+  const [selectedTexture, setSelectedTexture] = useState({});
 
   return (
     <>
@@ -343,22 +345,22 @@ const ConfiguratorFemaleAccessories = () => {
                 <div className="color-buttons-container">
                   <Carousel
                     value={colorOptions}
-                    numVisible={12}
-                    numScroll={1}
+                    numVisible={7}
+                    numScroll={5}
                     showIndicators={false}
                     responsiveOptions={responsiveColor}
                     itemTemplate={(colorOption) => (
-                      // <div key={colorOption.color} className="color-item">
-                      <button
-                        className={`color-button ${
-                          selectedPrintOn === colorOption.color
-                            ? "selected-border"
-                            : ""
-                        }`}
-                        onClick={() => handleColorChange(colorOption.color)}
-                        style={{ backgroundColor: colorOption.color }}
-                      ></button>
-                      // </div>
+                      <div key={colorOption.color} className="color-item">
+                        <button
+                          className={`color-button ${
+                            selectedPrintOn === colorOption.color
+                              ? "selected-border"
+                              : ""
+                          }`}
+                          onClick={() => handleColorChange(colorOption.color)}
+                          style={{ backgroundColor: colorOption.color }}
+                        ></button>
+                      </div>
                     )}
                   />
                 </div>
@@ -366,432 +368,220 @@ const ConfiguratorFemaleAccessories = () => {
                 {/* ... */}
                 <div className="texture-buttons-container">
                   <div className="texture-row">
-                    <div className="texture-category ">
+                    <div className="texture-category">
                       <h3>
                         Batik (+{currencySymbol}
-                        {(currencyFactor * 10).toFixed(2)})
+                        {(currencyFactor * textureValues.batik).toFixed(2)})
                       </h3>
-
-                      <div className="texture-images">
-                        <Carousel
-                          value={textureArrays.batik}
-                          numVisible={4}
-                          numScroll={1}
-                          showIndicators={false} // Set this to false to deactivate the indicators
-                          responsiveOptions={responsiveNess}
-                          itemTemplate={(texture) => (
-                            <div key={texture} className="texture-item">
-                              <Tooltip
-                                target={`.batik-${textureArrays.batik.indexOf(
-                                  texture
-                                )}`}
-                              >
-                                <div className="d-flex flex-column">
-                                  <img
-                                    alt={`Batik`}
-                                    src={texture}
-                                    data-pr-tooltip="PrimeReact-Logo"
-                                    height="80px"
-                                  />
-                                  <p>
-                                    {
-                                      textureDescriptions.batik[
-                                        textureArrays.batik.indexOf(texture)
-                                      ]
-                                    }
-                                  </p>
-                                </div>
-                              </Tooltip>
-                              <img
-                                src={texture}
-                                alt={`Batik`}
-                                className={`texture-button batik-${textureArrays.batik.indexOf(
-                                  texture
-                                )} ${
-                                  selectedPrintOn === texture
-                                    ? "selected-border"
-                                    : ""
-                                }`}
-                                onClick={() => handleTextureChange(texture)}
-                              />
-                            </div>
-                          )}
-                        />
-                      </div>
+                      <Carousel
+                        value={textureArrays.batik}
+                        numVisible={4}
+                        numScroll={4}
+                        showIndicators={false}
+                        responsiveOptions={responsiveNess}
+                        itemTemplate={(texture, index) => (
+                          <TextureItem
+                            key={texture}
+                            texture={texture}
+                            Title="batik"
+                            selectedTexture={selectedTexture}
+                            setSelectedTexture={setSelectedTexture} // Pass setSelectedTexture as a prop
+                            handleTextureChange={handleTextureChange}
+                            currencySymbol={currencySymbol}
+                            currencyFactor={currencyFactor}
+                            subTextureDescriptions={textureDescriptions.batik}
+                            textureIndex={index}
+                          />
+                        )}
+                      />
                     </div>
-                    <div className="texture-category ">
+                    <div className="texture-category">
                       <h3>
                         Dashiki (+{currencySymbol}
-                        {(currencyFactor * 15).toFixed(2)})
+                        {(currencyFactor * textureValues.dashiki).toFixed(2)})
                       </h3>
-                      <div className="texture-images">
-                        <Carousel
-                          value={textureArrays.dashiki}
-                          numVisible={4}
-                          numScroll={1}
-                          showIndicators={false}
-                          responsiveOptions={responsiveNess}
-                          itemTemplate={(texture) => (
-                            <div key={texture} className="texture-item">
-                              <Tooltip
-                                target={`.dashiki-${textureArrays.dashiki.indexOf(
-                                  texture
-                                )}`}
-                              >
-                                <div className="d-flex flex-column">
-                                  <img
-                                    alt={`dashiki`}
-                                    src={texture}
-                                    data-pr-tooltip="PrimeReact-Logo"
-                                    height="80px"
-                                  />
-                                  <p>
-                                    {
-                                      textureDescriptions.dashiki[
-                                        textureArrays.dashiki.indexOf(texture)
-                                      ]
-                                    }
-                                  </p>
-                                </div>
-                              </Tooltip>
-                              <img
-                                src={texture}
-                                alt={`dashiki`}
-                                className={`texture-button dashiki-${textureArrays.dashiki.indexOf(
-                                  texture
-                                )} ${
-                                  selectedPrintOn === texture
-                                    ? "selected-border"
-                                    : ""
-                                }`}
-                                onClick={() => handleTextureChange(texture)}
-                              />
-                            </div>
-                          )}
-                        />
-                      </div>
+                      <Carousel
+                        value={textureArrays.dashiki}
+                        numVisible={4}
+                        numScroll={4}
+                        showIndicators={false}
+                        responsiveOptions={responsiveNess}
+                        itemTemplate={(texture) => (
+                          <TextureItem
+                            key={texture}
+                            texture={texture}
+                            Title="dashiki"
+                            selectedTexture={selectedTexture}
+                            setSelectedTexture={setSelectedTexture} // Pass setSelectedTexture as a prop
+                            handleTextureChange={handleTextureChange}
+                            currencySymbol={currencySymbol}
+                            currencyFactor={currencyFactor}
+                            subTextureDescriptions={textureDescriptions.dashiki}
+                          />
+                        )}
+                      />
                     </div>
                   </div>
                   <div className="texture-row">
-                    <div className="texture-category ">
+                  <div className="texture-category">
                       <h3>
                         Kente (+{currencySymbol}
-                        {(currencyFactor * 20).toFixed(2)})
+                        {(currencyFactor * textureValues.kente).toFixed(2)})
                       </h3>
-                      <div className="texture-images">
-                        <Carousel
-                          value={textureArrays.kente}
-                          numVisible={4}
-                          numScroll={1}
-                          showIndicators={false} // Set this to false to deactivate the indicators
-                          responsiveOptions={responsiveNess}
-                          itemTemplate={(texture) => (
-                            <div key={texture} className="texture-item">
-                              <Tooltip
-                                target={`.kente-${textureArrays.kente.indexOf(
-                                  texture
-                                )}`}
-                              >
-                                <div className="d-flex flex-column">
-                                  <img
-                                    alt={`Kente`}
-                                    src={texture}
-                                    data-pr-tooltip="PrimeReact-Logo"
-                                    height="80px"
-                                  />
-                                  <p>
-                                    {
-                                      textureDescriptions.kente[
-                                        textureArrays.kente.indexOf(texture)
-                                      ]
-                                    }
-                                  </p>
-                                </div>
-                              </Tooltip>
-                              <img
-                                src={texture}
-                                alt={`Kente`}
-                                className={`texture-button kente-${textureArrays.kente.indexOf(
-                                  texture
-                                )} ${
-                                  selectedPrintOn === texture
-                                    ? "selected-border"
-                                    : ""
-                                }`}
-                                onClick={() => handleTextureChange(texture)}
-                              />
-                            </div>
-                          )}
-                        />
-                      </div>
+                      <Carousel
+                        value={textureArrays.kente}
+                        numVisible={4}
+                        numScroll={4}
+                        showIndicators={false}
+                        responsiveOptions={responsiveNess}
+                        itemTemplate={(texture) => (
+                          <TextureItem
+                            key={texture}
+                            texture={texture}
+                            Title="kente"
+                            selectedTexture={selectedTexture}
+                            setSelectedTexture={setSelectedTexture} // Pass setSelectedTexture as a prop
+                            handleTextureChange={handleTextureChange}
+                            currencySymbol={currencySymbol}
+                            currencyFactor={currencyFactor}
+                            subTextureDescriptions={textureDescriptions.kente}
+                          />
+                        )}
+                      />
                     </div>
-                    <div className="texture-category ">
+                    <div className="texture-category">
                       <h3>
-                        Wax Print (+{currencySymbol}
-                        {(currencyFactor * 25).toFixed(2)})
+                        waxPrint (+{currencySymbol}
+                        {(currencyFactor * textureValues.waxPrint).toFixed(2)})
                       </h3>
-                      <div className="texture-images">
-                        <Carousel
-                          value={textureArrays.waxPrint}
-                          numVisible={4}
-                          numScroll={1}
-                          showIndicators={false} // Set this to false to deactivate the indicators
-                          responsiveOptions={responsiveNess}
-                          itemTemplate={(texture) => (
-                            <div key={texture} className="texture-item">
-                              <Tooltip
-                                target={`.waxPrint-${textureArrays.waxPrint.indexOf(
-                                  texture
-                                )}`}
-                              >
-                                <div className="d-flex flex-column">
-                                  <img
-                                    alt={`waxPrint`}
-                                    src={texture}
-                                    data-pr-tooltip="PrimeReact-Logo"
-                                    height="80px"
-                                  />
-                                  <p>
-                                    {
-                                      textureDescriptions.waxPrint[
-                                        textureArrays.waxPrint.indexOf(texture)
-                                      ]
-                                    }
-                                  </p>
-                                </div>
-                              </Tooltip>
-                              <img
-                                src={texture}
-                                alt={`waxPrint`}
-                                className={`texture-button waxPrint-${textureArrays.waxPrint.indexOf(
-                                  texture
-                                )} ${
-                                  selectedPrintOn === texture
-                                    ? "selected-border"
-                                    : ""
-                                }`}
-                                onClick={() => handleTextureChange(texture)}
-                              />
-                            </div>
-                          )}
-                        />
-                      </div>
+                      <Carousel
+                        value={textureArrays.waxPrint}
+                        numVisible={4}
+                        numScroll={4}
+                        showIndicators={false}
+                        responsiveOptions={responsiveNess}
+                        itemTemplate={(texture) => (
+                          <TextureItem
+                            key={texture}
+                            texture={texture}
+                            Title="waxPrint"
+                            selectedTexture={selectedTexture}
+                            setSelectedTexture={setSelectedTexture} // Pass setSelectedTexture as a prop
+                            handleTextureChange={handleTextureChange}
+                            currencySymbol={currencySymbol}
+                            currencyFactor={currencyFactor}
+                            subTextureDescriptions={textureDescriptions.waxPrint}
+                          />
+                        )}
+                      />
                     </div>
                   </div>
                   <div className="texture-row">
-                    <div className="texture-category ">
+                  <div className="texture-category">
                       <h3>
                         Smock (+{currencySymbol}
-                        {(currencyFactor * 30).toFixed(2)})
+                        {(currencyFactor * textureValues.smock).toFixed(2)})
                       </h3>
-                      <div className="texture-images">
-                        <Carousel
-                          value={textureArrays.smock}
-                          numVisible={4}
-                          numScroll={1}
-                          showIndicators={false} // Set this to false to deactivate the indicators
-                          responsiveOptions={responsiveNess}
-                          itemTemplate={(texture) => (
-                            <div key={texture} className="texture-item">
-                              <Tooltip
-                                target={`.smock-${textureArrays.smock.indexOf(
-                                  texture
-                                )}`}
-                              >
-                                <div className="d-flex flex-column">
-                                  <img
-                                    alt={`smock`}
-                                    src={texture}
-                                    data-pr-tooltip="PrimeReact-Logo"
-                                    height="80px"
-                                  />
-                                  <p>
-                                    {
-                                      textureDescriptions.smock[
-                                        textureArrays.smock.indexOf(texture)
-                                      ]
-                                    }
-                                  </p>
-                                </div>
-                              </Tooltip>
-                              <img
-                                src={texture}
-                                alt={`smock`}
-                                className={`texture-button smock-${textureArrays.smock.indexOf(
-                                  texture
-                                )} ${
-                                  selectedPrintOn === texture
-                                    ? "selected-border"
-                                    : ""
-                                }`}
-                                onClick={() => handleTextureChange(texture)}
-                              />
-                            </div>
-                          )}
-                        />
-                      </div>
+                      <Carousel
+                        value={textureArrays.smock}
+                        numVisible={4}
+                        numScroll={4}
+                        showIndicators={false}
+                        responsiveOptions={responsiveNess}
+                        itemTemplate={(texture) => (
+                          <TextureItem
+                            key={texture}
+                            texture={texture}
+                            Title="smock"
+                            selectedTexture={selectedTexture}
+                            setSelectedTexture={setSelectedTexture} // Pass setSelectedTexture as a prop
+                            handleTextureChange={handleTextureChange}
+                            currencySymbol={currencySymbol}
+                            currencyFactor={currencyFactor}
+                            subTextureDescriptions={textureDescriptions.smock}
+                          />
+                        )}
+                      />
                     </div>
-                    <div className="texture-category ">
+                    <div className="texture-category">
                       <h3>
                         Crochet (+{currencySymbol}
-                        {(currencyFactor * 35).toFixed(2)})
+                        {(currencyFactor * textureValues.Crochet).toFixed(2)})
                       </h3>
-                      <div className="texture-images">
-                        <Carousel
-                          value={textureArrays.Crochet}
-                          numVisible={4}
-                          numScroll={1}
-                          showIndicators={false} // Set this to false to deactivate the indicators
-                          responsiveOptions={responsiveNess}
-                          itemTemplate={(texture) => (
-                            <div key={texture} className="texture-item">
-                              <Tooltip
-                                target={`.Crochet-${textureArrays.Crochet.indexOf(
-                                  texture
-                                )}`}
-                              >
-                                <div className="d-flex flex-column">
-                                  <img
-                                    alt={`Crochet`}
-                                    src={texture}
-                                    data-pr-tooltip="PrimeReact-Logo"
-                                    height="80px"
-                                  />
-                                  <p>
-                                    {
-                                      textureDescriptions.Crochet[
-                                        textureArrays.Crochet.indexOf(texture)
-                                      ]
-                                    }
-                                  </p>
-                                </div>
-                              </Tooltip>
-                              <img
-                                src={texture}
-                                alt={`Crochet`}
-                                className={`texture-button Crochet-${textureArrays.Crochet.indexOf(
-                                  texture
-                                )} ${
-                                  selectedPrintOn === texture
-                                    ? "selected-border"
-                                    : ""
-                                }`}
-                                onClick={() => handleTextureChange(texture)}
-                              />
-                            </div>
-                          )}
-                        />
-                      </div>
+                      <Carousel
+                        value={textureArrays.Crochet}
+                        numVisible={4}
+                        numScroll={4}
+                        showIndicators={false}
+                        responsiveOptions={responsiveNess}
+                        itemTemplate={(texture) => (
+                          <TextureItem
+                            key={texture}
+                            texture={texture}
+                            Title="Crochet"
+                            selectedTexture={selectedTexture}
+                            setSelectedTexture={setSelectedTexture} // Pass setSelectedTexture as a prop
+                            handleTextureChange={handleTextureChange}
+                            currencySymbol={currencySymbol}
+                            currencyFactor={currencyFactor}
+                            subTextureDescriptions={textureDescriptions.Crochet}
+                          />
+                        )}
+                      />
                     </div>
                   </div>
                   <div className="texture-row">
-                    <div className="texture-category ">
+                  <div className="texture-category">
                       <h3>
                         Printed Kente (+{currencySymbol}
-                        {(currencyFactor * 40).toFixed(2)})
+                        {(currencyFactor * textureValues.printed_kente).toFixed(2)})
                       </h3>
-                      <div className="texture-images">
-                        <Carousel
-                          value={textureArrays.printed_kente}
-                          numVisible={4}
-                          numScroll={1}
-                          showIndicators={false} // Set this to false to deactivate the indicators
-                          responsiveOptions={responsiveNess}
-                          itemTemplate={(texture) => (
-                            <div key={texture} className="texture-item">
-                              <Tooltip
-                                target={`.printed_kente-${textureArrays.printed_kente.indexOf(
-                                  texture
-                                )}`}
-                              >
-                                <div className="d-flex flex-column">
-                                  <img
-                                    alt={`printed_kente`}
-                                    src={texture}
-                                    data-pr-tooltip="PrimeReact-Logo"
-                                    height="80px"
-                                  />
-                                  <p>
-                                    {
-                                      textureDescriptions.printed_kente[
-                                        textureArrays.printed_kente.indexOf(
-                                          texture
-                                        )
-                                      ]
-                                    }
-                                  </p>
-                                </div>
-                              </Tooltip>
-                              <img
-                                src={texture}
-                                alt={`printed_kente`}
-                                className={`texture-button printed_kente-${textureArrays.printed_kente.indexOf(
-                                  texture
-                                )} ${
-                                  selectedPrintOn === texture
-                                    ? "selected-border"
-                                    : ""
-                                }`}
-                                onClick={() => handleTextureChange(texture)}
-                              />
-                            </div>
-                          )}
-                        />
-                      </div>
+                      <Carousel
+                        value={textureArrays.printed_kente}
+                        numVisible={4}
+                        numScroll={4}
+                        showIndicators={false}
+                        responsiveOptions={responsiveNess}
+                        itemTemplate={(texture) => (
+                          <TextureItem
+                            key={texture}
+                            texture={texture}
+                            Title="printed_kente"
+                            selectedTexture={selectedTexture}
+                            setSelectedTexture={setSelectedTexture} // Pass setSelectedTexture as a prop
+                            handleTextureChange={handleTextureChange}
+                            currencySymbol={currencySymbol}
+                            currencyFactor={currencyFactor}
+                            subTextureDescriptions={textureDescriptions.printed_kente}
+                          />
+                        )}
+                      />
                     </div>
-                    <div className="texture-category ">
+                    <div className="texture-category">
                       <h3>
                         Funerals (+{currencySymbol}
-                        {(currencyFactor * 45).toFixed(2)})
+                        {(currencyFactor * textureValues.Funerals).toFixed(2)})
                       </h3>
-                      <div className="texture-images">
-                        <Carousel
-                          value={textureArrays.Funerals}
-                          numVisible={4}
-                          numScroll={1}
-                          showIndicators={false} // Set this to false to deactivate the indicators
-                          responsiveOptions={responsiveNess}
-                          itemTemplate={(texture) => (
-                            <div key={texture} className="texture-item">
-                              <Tooltip
-                                target={`.Funerals-${textureArrays.Funerals.indexOf(
-                                  texture
-                                )}`}
-                              >
-                                <div className="d-flex flex-column">
-                                  <img
-                                    alt={`Funerals`}
-                                    src={texture}
-                                    data-pr-tooltip="PrimeReact-Logo"
-                                    height="80px"
-                                  />
-                                  <p>
-                                    {
-                                      textureDescriptions.Funerals[
-                                        textureArrays.Funerals.indexOf(
-                                          texture
-                                        )
-                                      ]
-                                    }
-                                  </p>
-                                </div>
-                              </Tooltip>
-                              <img
-                                src={texture}
-                                alt={`Funerals`}
-                                className={`texture-button Funerals-${textureArrays.Funerals.indexOf(
-                                  texture
-                                )} ${
-                                  selectedPrintOn === texture
-                                    ? "selected-border"
-                                    : ""
-                                }`}
-                                onClick={() => handleTextureChange(texture)}
-                              />
-                            </div>
-                          )}
-                        />
-                      </div>
+                      <Carousel
+                        value={textureArrays.Funerals}
+                        numVisible={4}
+                        numScroll={4}
+                        showIndicators={false}
+                        responsiveOptions={responsiveNess}
+                        itemTemplate={(texture) => (
+                          <TextureItem
+                            key={texture}
+                            texture={texture}
+                            Title="Funerals"
+                            selectedTexture={selectedTexture}
+                            setSelectedTexture={setSelectedTexture} // Pass setSelectedTexture as a prop
+                            handleTextureChange={handleTextureChange}
+                            currencySymbol={currencySymbol}
+                            currencyFactor={currencyFactor}
+                            subTextureDescriptions={textureDescriptions.Funerals}
+                          />
+                        )}
+                      />
                     </div>
                   </div>
                   {/* Add more rows of texture categories as needed */}
@@ -830,7 +620,7 @@ const ConfiguratorFemaleAccessories = () => {
                 </div>
 
                 {/* parts images start */}
-                <div className="part-panel" style={{width: "15%"}}>
+                <div className="part-panel" style={{ width: "10%" }}>
                   <div className="d-flex flex-column">
                     {selectedClothing.parts.map((part, index) => (
                       <img
@@ -838,7 +628,10 @@ const ConfiguratorFemaleAccessories = () => {
                         key={index}
                         alt={`Part ${index}`}
                         width="100%"
-                        className={selectedPart === index ? 'selected-border' : ''}
+                        // className={selectedPart === index ? 'selected-border' : ''}
+                        className={`part-image ${
+                          selectedPart === index ? "selected-border" : ""
+                        }`}
                       />
                     ))}
                   </div>
