@@ -177,7 +177,6 @@ export const textureValues = {
   Crochet: 35,
   printed_kente: 40,
   Funerals: 45,
-  // Add values for other texture categories if needed
 };
 
 export const sizeOptions = [

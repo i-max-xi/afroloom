@@ -30,6 +30,7 @@ import {
   responsiveNess,
   responsiveColor,
 } from "./arrays/neededArrays";
+import TextureItem from "./TextureItem";
 
 const Shirt = ({
   isRotating,
@@ -213,7 +214,6 @@ const Configurator = () => {
   ).toFixed(2);
 
   // description dialogs
-  const [displayDialog, setDisplayDialog] = useState(false);
   const [selectedTexture, setSelectedTexture] = useState({});
 
   return (
@@ -352,15 +352,15 @@ const Configurator = () => {
                     responsiveOptions={responsiveColor}
                     itemTemplate={(colorOption) => (
                       <div key={colorOption.color} className="color-item">
-                      <button
-                        className={`color-button ${
-                          selectedPrintOn === colorOption.color
-                            ? "selected-border"
-                            : ""
-                        }`}
-                        onClick={() => handleColorChange(colorOption.color)}
-                        style={{ backgroundColor: colorOption.color }}
-                      ></button>
+                        <button
+                          className={`color-button ${
+                            selectedPrintOn === colorOption.color
+                              ? "selected-border"
+                              : ""
+                          }`}
+                          onClick={() => handleColorChange(colorOption.color)}
+                          style={{ backgroundColor: colorOption.color }}
+                        ></button>
                       </div>
                     )}
                   />
@@ -369,547 +369,213 @@ const Configurator = () => {
                 {/* ... */}
                 <div className="texture-buttons-container">
                   <div className="texture-row">
-                    <div className="texture-category ">
+                    <div className="texture-category">
                       <h3>
                         Batik (+{currencySymbol}
-                        {(currencyFactor * 10).toFixed(2)})
+                        {(currencyFactor * textureValues.batik).toFixed(2)})
                       </h3>
-
-                        <Carousel
-                          value={textureArrays.batik}
-                          numVisible={4}
-                          numScroll={4}
-                          showIndicators={false} // Set this to false to deactivate the indicators
-                          responsiveOptions={responsiveNess}
-                          itemTemplate={(texture) => (
-                            <div key={texture} className="texture-item">
-                              <Dialog
-                                header={`Texture Details: ${selectedTexture.name}`}
-                                visible={displayDialog}
-                                onHide={() => setDisplayDialog(false)}
-                                style={{ width: "30vw" }} // Adjust the width as needed
-                              >
-                                <div className="d-flex flex-column">
-                                  <img
-                                    alt={`Batik`}
-                                    src={texture}
-                                    data-pr-tooltip="PrimeReact-Logo"
-                                    height="80px"
-                                  />
-                                  <p>
-                                    {
-                                      textureDescriptions.batik[
-                                        textureArrays.batik.indexOf(texture)
-                                      ]
-                                    }
-                                  </p>
-                                </div>
-                              </Dialog>{" "}
-                              {/* <div> */}
-                                <img
-                                  src={texture}
-                                  alt={`Batik`}
-                                  className={`texture-button batik-${textureArrays.batik.indexOf(
-                                    texture
-                                  )} ${
-                                    selectedPrintOn === texture
-                                      ? "selected-border"
-                                      : ""
-                                  }`}
-                                  onClick={() => handleTextureChange(texture)}
-                                />
-                                <svg
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  width="16"
-                                  height="16"
-                                  fill="currentColor"
-                                  className="bi bi-info-circle"
-                                  viewBox="0 0 16 16"
-                                  onClick={() => {
-                                    setSelectedTexture({
-                                      name: "Batik",
-                                      price:
-                                        currencySymbol +
-                                        (currencyFactor * 10).toFixed(2),
-                                      description:
-                                        textureDescriptions.batik[
-                                          textureArrays.batik.indexOf(texture)
-                                        ],
-                                    });
-                                    setDisplayDialog(true);
-                                  }}
-                                >
-                                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-                                  <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
-                                </svg>{" "}
-                              {/* </div> */}
-                            </div>
-                          )}
-                        />
+                      <Carousel
+                        value={textureArrays.batik}
+                        numVisible={4}
+                        numScroll={4}
+                        showIndicators={false}
+                        responsiveOptions={responsiveNess}
+                        itemTemplate={(texture, index) => (
+                          <TextureItem
+                            key={texture}
+                            texture={texture}
+                            Title="batik"
+                            selectedTexture={selectedTexture}
+                            setSelectedTexture={setSelectedTexture} // Pass setSelectedTexture as a prop
+                            handleTextureChange={handleTextureChange}
+                            currencySymbol={currencySymbol}
+                            currencyFactor={currencyFactor}
+                            subTextureDescriptions={textureDescriptions.batik}
+                            textureIndex={index}
+                          />
+                        )}
+                      />
                     </div>
-                    <div className="texture-category ">
+                    <div className="texture-category">
                       <h3>
                         Dashiki (+{currencySymbol}
-                        {(currencyFactor * 15).toFixed(2)})
+                        {(currencyFactor * textureValues.dashiki).toFixed(2)})
                       </h3>
-                      <div className="texture-images">
-                        <Carousel
-                          value={textureArrays.dashiki}
-                          numVisible={4}
-                          numScroll={1}
-                          showIndicators={false}
-                          responsiveOptions={responsiveNess}
-                          itemTemplate={(texture) => (
-                            <div key={texture} className="texture-item">
-                              <Dialog
-                                header={`Texture Details: ${selectedTexture.name}`}
-                                visible={displayDialog}
-                                onHide={() => setDisplayDialog(false)}
-                                style={{ width: "30vw" }} // Adjust the width as needed
-                              >
-                                <div className="d-flex flex-column">
-                                  <img
-                                    alt={`dashiki`}
-                                    src={texture}
-                                    data-pr-tooltip="PrimeReact-Logo"
-                                    height="80px"
-                                  />
-                                  <p>
-                                    {
-                                      textureDescriptions.dashiki[
-                                        textureArrays.dashiki.indexOf(texture)
-                                      ]
-                                    }
-                                  </p>
-                                </div>
-                              </Dialog>
-                              <div>
-                                <img
-                                  src={texture}
-                                  alt={`dashiki`}
-                                  className={`texture-button dashiki-${textureArrays.dashiki.indexOf(
-                                    texture
-                                  )} ${
-                                    selectedPrintOn === texture
-                                      ? "selected-border"
-                                      : ""
-                                  }`}
-                                  onClick={() => handleTextureChange(texture)}
-                                />
-                                <svg
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  width="16"
-                                  height="16"
-                                  fill="currentColor"
-                                  className="bi bi-info-circle"
-                                  viewBox="0 0 16 16"
-                                >
-                                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-                                  <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
-                                </svg>
-                              </div>
-                            </div>
-                          )}
-                        />
-                      </div>
+                      <Carousel
+                        value={textureArrays.dashiki}
+                        numVisible={4}
+                        numScroll={4}
+                        showIndicators={false}
+                        responsiveOptions={responsiveNess}
+                        itemTemplate={(texture) => (
+                          <TextureItem
+                            key={texture}
+                            texture={texture}
+                            selectedTexture={selectedTexture}
+                            setSelectedTexture={setSelectedTexture} // Pass setSelectedTexture as a prop
+                            handleTextureChange={handleTextureChange}
+                            currencySymbol={currencySymbol}
+                            currencyFactor={currencyFactor}
+                            textureDescriptions={textureDescriptions.dashiki}
+                          />
+                        )}
+                      />
                     </div>
                   </div>
                   <div className="texture-row">
-                    <div className="texture-category ">
+                  <div className="texture-category">
                       <h3>
                         Kente (+{currencySymbol}
-                        {(currencyFactor * 20).toFixed(2)})
+                        {(currencyFactor * textureValues.kente).toFixed(2)})
                       </h3>
-                      <div className="texture-images">
-                        <Carousel
-                          value={textureArrays.kente}
-                          numVisible={4}
-                          numScroll={1}
-                          showIndicators={false} // Set this to false to deactivate the indicators
-                          responsiveOptions={responsiveNess}
-                          itemTemplate={(texture) => (
-                            <div key={texture} className="texture-item">
-                              <Tooltip
-                                target={`.kente-${textureArrays.kente.indexOf(
-                                  texture
-                                )}`}
-                              >
-                                <div className="d-flex flex-column">
-                                  <img
-                                    alt={`Kente`}
-                                    src={texture}
-                                    data-pr-tooltip="PrimeReact-Logo"
-                                    height="80px"
-                                  />
-                                  <p>
-                                    {
-                                      textureDescriptions.kente[
-                                        textureArrays.kente.indexOf(texture)
-                                      ]
-                                    }
-                                  </p>
-                                </div>
-                              </Tooltip>
-                              <div>
-                                <img
-                                  src={texture}
-                                  alt={`Kente`}
-                                  className={`texture-button kente-${textureArrays.kente.indexOf(
-                                    texture
-                                  )} ${
-                                    selectedPrintOn === texture
-                                      ? "selected-border"
-                                      : ""
-                                  }`}
-                                  onClick={() => handleTextureChange(texture)}
-                                />
-                                <svg
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  width="16"
-                                  height="16"
-                                  fill="currentColor"
-                                  className="bi bi-info-circle"
-                                  viewBox="0 0 16 16"
-                                >
-                                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-                                  <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
-                                </svg>
-                              </div>
-                            </div>
-                          )}
-                        />
-                      </div>
+                      <Carousel
+                        value={textureArrays.kente}
+                        numVisible={4}
+                        numScroll={4}
+                        showIndicators={false}
+                        responsiveOptions={responsiveNess}
+                        itemTemplate={(texture) => (
+                          <TextureItem
+                            key={texture}
+                            texture={texture}
+                            selectedTexture={selectedTexture}
+                            setSelectedTexture={setSelectedTexture} // Pass setSelectedTexture as a prop
+                            handleTextureChange={handleTextureChange}
+                            currencySymbol={currencySymbol}
+                            currencyFactor={currencyFactor}
+                            textureDescriptions={textureDescriptions.kente}
+                          />
+                        )}
+                      />
                     </div>
-                    <div className="texture-category ">
+                    <div className="texture-category">
                       <h3>
-                        Wax Print (+{currencySymbol}
-                        {(currencyFactor * 25).toFixed(2)})
+                        waxPrint (+{currencySymbol}
+                        {(currencyFactor * textureValues.waxPrint).toFixed(2)})
                       </h3>
-                      <div className="texture-images">
-                        <Carousel
-                          value={textureArrays.waxPrint}
-                          numVisible={4}
-                          numScroll={1}
-                          showIndicators={false} // Set this to false to deactivate the indicators
-                          responsiveOptions={responsiveNess}
-                          itemTemplate={(texture) => (
-                            <div key={texture} className="texture-item">
-                              <Tooltip
-                                target={`.waxPrint-${textureArrays.waxPrint.indexOf(
-                                  texture
-                                )}`}
-                              >
-                                <div className="d-flex flex-column">
-                                  <img
-                                    alt={`waxPrint`}
-                                    src={texture}
-                                    data-pr-tooltip="PrimeReact-Logo"
-                                    height="80px"
-                                  />
-                                  <p>
-                                    {
-                                      textureDescriptions.waxPrint[
-                                        textureArrays.waxPrint.indexOf(texture)
-                                      ]
-                                    }
-                                  </p>
-                                </div>
-                              </Tooltip>
-                              <div>
-                                <img
-                                  src={texture}
-                                  alt={`waxPrint`}
-                                  className={`texture-button waxPrint-${textureArrays.waxPrint.indexOf(
-                                    texture
-                                  )} ${
-                                    selectedPrintOn === texture
-                                      ? "selected-border"
-                                      : ""
-                                  }`}
-                                  onClick={() => handleTextureChange(texture)}
-                                />
-                                <svg
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  width="16"
-                                  height="16"
-                                  fill="currentColor"
-                                  className="bi bi-info-circle"
-                                  viewBox="0 0 16 16"
-                                >
-                                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-                                  <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
-                                </svg>
-                              </div>
-                            </div>
-                          )}
-                        />
-                      </div>
+                      <Carousel
+                        value={textureArrays.waxPrint}
+                        numVisible={4}
+                        numScroll={4}
+                        showIndicators={false}
+                        responsiveOptions={responsiveNess}
+                        itemTemplate={(texture) => (
+                          <TextureItem
+                            key={texture}
+                            texture={texture}
+                            selectedTexture={selectedTexture}
+                            setSelectedTexture={setSelectedTexture} // Pass setSelectedTexture as a prop
+                            handleTextureChange={handleTextureChange}
+                            currencySymbol={currencySymbol}
+                            currencyFactor={currencyFactor}
+                            textureDescriptions={textureDescriptions.waxPrint}
+                          />
+                        )}
+                      />
                     </div>
                   </div>
                   <div className="texture-row">
-                    <div className="texture-category ">
+                  <div className="texture-category">
                       <h3>
                         Smock (+{currencySymbol}
-                        {(currencyFactor * 30).toFixed(2)})
+                        {(currencyFactor * textureValues.smock).toFixed(2)})
                       </h3>
-                      <div className="texture-images">
-                        <Carousel
-                          value={textureArrays.smock}
-                          numVisible={4}
-                          numScroll={1}
-                          showIndicators={false} // Set this to false to deactivate the indicators
-                          responsiveOptions={responsiveNess}
-                          itemTemplate={(texture) => (
-                            <div key={texture} className="texture-item">
-                              <Tooltip
-                                target={`.smock-${textureArrays.smock.indexOf(
-                                  texture
-                                )}`}
-                              >
-                                <div className="d-flex flex-column">
-                                  <img
-                                    alt={`smock`}
-                                    src={texture}
-                                    data-pr-tooltip="PrimeReact-Logo"
-                                    height="80px"
-                                  />
-                                  <p>
-                                    {
-                                      textureDescriptions.smock[
-                                        textureArrays.smock.indexOf(texture)
-                                      ]
-                                    }
-                                  </p>
-                                </div>
-                              </Tooltip>
-                              <div>
-                                <img
-                                  src={texture}
-                                  alt={`smock`}
-                                  className={`texture-button smock-${textureArrays.smock.indexOf(
-                                    texture
-                                  )} ${
-                                    selectedPrintOn === texture
-                                      ? "selected-border"
-                                      : ""
-                                  }`}
-                                  onClick={() => handleTextureChange(texture)}
-                                />
-                                <svg
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  width="16"
-                                  height="16"
-                                  fill="currentColor"
-                                  className="bi bi-info-circle"
-                                  viewBox="0 0 16 16"
-                                >
-                                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-                                  <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
-                                </svg>
-                              </div>
-                            </div>
-                          )}
-                        />
-                      </div>
+                      <Carousel
+                        value={textureArrays.smock}
+                        numVisible={4}
+                        numScroll={4}
+                        showIndicators={false}
+                        responsiveOptions={responsiveNess}
+                        itemTemplate={(texture) => (
+                          <TextureItem
+                            key={texture}
+                            texture={texture}
+                            selectedTexture={selectedTexture}
+                            setSelectedTexture={setSelectedTexture} // Pass setSelectedTexture as a prop
+                            handleTextureChange={handleTextureChange}
+                            currencySymbol={currencySymbol}
+                            currencyFactor={currencyFactor}
+                            textureDescriptions={textureDescriptions.smock}
+                          />
+                        )}
+                      />
                     </div>
-                    <div className="texture-category ">
+                    <div className="texture-category">
                       <h3>
                         Crochet (+{currencySymbol}
-                        {(currencyFactor * 35).toFixed(2)})
+                        {(currencyFactor * textureValues.Crochet).toFixed(2)})
                       </h3>
-                      <div className="texture-images">
-                        <Carousel
-                          value={textureArrays.Crochet}
-                          numVisible={4}
-                          numScroll={1}
-                          showIndicators={false} // Set this to false to deactivate the indicators
-                          responsiveOptions={responsiveNess}
-                          itemTemplate={(texture) => (
-                            <div key={texture} className="texture-item">
-                              <Tooltip
-                                target={`.Crochet-${textureArrays.Crochet.indexOf(
-                                  texture
-                                )}`}
-                              >
-                                <div className="d-flex flex-column">
-                                  <img
-                                    alt={`Crochet`}
-                                    src={texture}
-                                    data-pr-tooltip="PrimeReact-Logo"
-                                    height="80px"
-                                  />
-                                  <p>
-                                    {
-                                      textureDescriptions.Crochet[
-                                        textureArrays.Crochet.indexOf(texture)
-                                      ]
-                                    }
-                                  </p>
-                                </div>
-                              </Tooltip>
-                              <div>
-                                <img
-                                  src={texture}
-                                  alt={`Crochet`}
-                                  className={`texture-button Crochet-${textureArrays.Crochet.indexOf(
-                                    texture
-                                  )} ${
-                                    selectedPrintOn === texture
-                                      ? "selected-border"
-                                      : ""
-                                  }`}
-                                  onClick={() => handleTextureChange(texture)}
-                                />
-                                <svg
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  width="16"
-                                  height="16"
-                                  fill="currentColor"
-                                  className="bi bi-info-circle"
-                                  viewBox="0 0 16 16"
-                                >
-                                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-                                  <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
-                                </svg>
-                              </div>
-                            </div>
-                          )}
-                        />
-                      </div>
+                      <Carousel
+                        value={textureArrays.Crochet}
+                        numVisible={4}
+                        numScroll={4}
+                        showIndicators={false}
+                        responsiveOptions={responsiveNess}
+                        itemTemplate={(texture) => (
+                          <TextureItem
+                            key={texture}
+                            texture={texture}
+                            selectedTexture={selectedTexture}
+                            setSelectedTexture={setSelectedTexture} // Pass setSelectedTexture as a prop
+                            handleTextureChange={handleTextureChange}
+                            currencySymbol={currencySymbol}
+                            currencyFactor={currencyFactor}
+                            textureDescriptions={textureDescriptions.Crochet}
+                          />
+                        )}
+                      />
                     </div>
                   </div>
                   <div className="texture-row">
-                    <div className="texture-category ">
+                  <div className="texture-category">
                       <h3>
                         Printed Kente (+{currencySymbol}
-                        {(currencyFactor * 40).toFixed(2)})
+                        {(currencyFactor * textureValues.printed_kente).toFixed(2)})
                       </h3>
-                      <div className="texture-images">
-                        <Carousel
-                          value={textureArrays.printed_kente}
-                          numVisible={4}
-                          numScroll={1}
-                          showIndicators={false} // Set this to false to deactivate the indicators
-                          responsiveOptions={responsiveNess}
-                          itemTemplate={(texture) => (
-                            <div key={texture} className="texture-item">
-                              <Tooltip
-                                target={`.printed_kente-${textureArrays.printed_kente.indexOf(
-                                  texture
-                                )}`}
-                              >
-                                <div className="d-flex flex-column">
-                                  <img
-                                    alt={`printed_kente`}
-                                    src={texture}
-                                    data-pr-tooltip="PrimeReact-Logo"
-                                    height="80px"
-                                  />
-                                  <p>
-                                    {
-                                      textureDescriptions.printed_kente[
-                                        textureArrays.printed_kente.indexOf(
-                                          texture
-                                        )
-                                      ]
-                                    }
-                                  </p>
-                                </div>
-                              </Tooltip>
-                              <div>
-                                <img
-                                  src={texture}
-                                  alt={`printed_kente`}
-                                  className={`texture-button printed_kente-${textureArrays.printed_kente.indexOf(
-                                    texture
-                                  )} ${
-                                    selectedPrintOn === texture
-                                      ? "selected-border"
-                                      : ""
-                                  }`}
-                                  onClick={() => handleTextureChange(texture)}
-                                />
-                                <svg
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  width="16"
-                                  height="16"
-                                  fill="currentColor"
-                                  className="bi bi-info-circle"
-                                  viewBox="0 0 16 16"
-                                >
-                                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-                                  <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
-                                </svg>
-                              </div>
-                            </div>
-                          )}
-                        />
-                      </div>
+                      <Carousel
+                        value={textureArrays.printed_kente}
+                        numVisible={4}
+                        numScroll={4}
+                        showIndicators={false}
+                        responsiveOptions={responsiveNess}
+                        itemTemplate={(texture) => (
+                          <TextureItem
+                            key={texture}
+                            texture={texture}
+                            selectedTexture={selectedTexture}
+                            setSelectedTexture={setSelectedTexture} // Pass setSelectedTexture as a prop
+                            handleTextureChange={handleTextureChange}
+                            currencySymbol={currencySymbol}
+                            currencyFactor={currencyFactor}
+                            textureDescriptions={textureDescriptions.printed_kente}
+                          />
+                        )}
+                      />
                     </div>
-                    <div className="texture-category ">
+                    <div className="texture-category">
                       <h3>
                         Funerals (+{currencySymbol}
-                        {(currencyFactor * 45).toFixed(2)})
+                        {(currencyFactor * textureValues.Funerals).toFixed(2)})
                       </h3>
-                      <div className="texture-images">
-                        <Carousel
-                          value={textureArrays.Funerals}
-                          numVisible={4}
-                          numScroll={1}
-                          showIndicators={false} // Set this to false to deactivate the indicators
-                          responsiveOptions={responsiveNess}
-                          itemTemplate={(texture) => (
-                            <div key={texture} className="texture-item">
-                              <Tooltip
-                                target={`.Funerals-${textureArrays.Funerals.indexOf(
-                                  texture
-                                )}`}
-                              >
-                                <div className="d-flex flex-column">
-                                  <img
-                                    alt={`Funerals`}
-                                    src={texture}
-                                    data-pr-tooltip="PrimeReact-Logo"
-                                    height="80px"
-                                  />
-                                  <p>
-                                    {
-                                      textureDescriptions.Funerals[
-                                        textureArrays.Funerals.indexOf(texture)
-                                      ]
-                                    }
-                                  </p>
-                                </div>
-                              </Tooltip>
-                              <div>
-                                <img
-                                  src={texture}
-                                  alt={`Funerals`}
-                                  className={`texture-button Funerals-${textureArrays.Funerals.indexOf(
-                                    texture
-                                  )} ${
-                                    selectedPrintOn === texture
-                                      ? "selected-border"
-                                      : ""
-                                  }`}
-                                  onClick={() => handleTextureChange(texture)}
-                                />
-                                <svg
-                                  xmlns="http://www.w3.org/2000/svg"
-                                  width="16"
-                                  height="16"
-                                  fill="currentColor"
-                                  className="bi bi-info-circle"
-                                  viewBox="0 0 16 16"
-                                >
-                                  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-                                  <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />
-                                </svg>
-                              </div>
-                            </div>
-                          )}
-                        />
-                      </div>
+                      <Carousel
+                        value={textureArrays.Funerals}
+                        numVisible={4}
+                        numScroll={4}
+                        showIndicators={false}
+                        responsiveOptions={responsiveNess}
+                        itemTemplate={(texture) => (
+                          <TextureItem
+                            key={texture}
+                            texture={texture}
+                            selectedTexture={selectedTexture}
+                            setSelectedTexture={setSelectedTexture} // Pass setSelectedTexture as a prop
+                            handleTextureChange={handleTextureChange}
+                            currencySymbol={currencySymbol}
+                            currencyFactor={currencyFactor}
+                            textureDescriptions={textureDescriptions.Funerals}
+                          />
+                        )}
+                      />
                     </div>
                   </div>
                   {/* Add more rows of texture categories as needed */}
