@@ -101,7 +101,7 @@ export const colorOptions = [
   ];
 
 export const textureArrays = {
-    batik: [batik1, batik2, batik3, batik4, batik5, batik1, batik2, batik3, batik4, batik5,  batik4, batik5, batik1, batik2, batik3, batik4, batik5],
+    batik: [batik1, batik2, batik3, batik4, batik5, batik1, batik2, batik3, batik4, batik5, batik1, batik2, batik3, batik4, batik5],
     dashiki: [dashiki1, dashiki2, dashiki3, dashiki4, dashiki5,dashiki1, dashiki2, dashiki3, dashiki4, dashiki5],
     kente: [kente1, kente2, kente3, kente4, kente5],
     waxPrint: [waxPrint1, waxPrint2, waxPrint3, waxPrint4, waxPrint5],
@@ -195,8 +195,8 @@ export const sizeOptions = [
 export const responsiveNess = [
   {
     breakpoint: "1024px",
-    numVisible: 3,
-    numScroll: 1,
+    numVisible: 4,
+    numScroll: 4,
   },
   {
     breakpoint: "768px",

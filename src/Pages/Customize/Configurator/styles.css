@@ -93,6 +93,7 @@ h1 {
 
 .texture-category {
   transform: translateX(-3rem);
+  width: 60%;
 }
 
 .texture-category h3 {
@@ -101,8 +102,8 @@ h1 {
 
 
 .texture-row {
-  /* display: flex;
-  justify-content: space-between; */
+  display: flex;
+  /* justify-content: space-between; */
   width: 70%;
   max-width: 400px;
   margin: 0 auto; 
@@ -114,6 +115,10 @@ h1 {
   width: 1.6rem;
   cursor: pointer;
   transition: 0.1s ease-in;
+}
+
+.p-carousel-items-container{
+  width: 100% !important;
 }
 
 .bi-info-circle {
@@ -145,9 +150,9 @@ h1 {
 }
 
 
-.p-carousel-container{ 
+/* .p-carousel-container{ 
   width: 100%;
-} 
+}  */
 
 .part-image {
   margin-bottom: 0.2rem;

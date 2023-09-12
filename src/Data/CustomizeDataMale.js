@@ -42,7 +42,7 @@ export const mainMaleCustomize = [
     image: "https://a5e8126a499f8a963166-f72e9078d72b8c998606fd6e0319b679.ssl.cf5.rackcdn.com/images/variant/large/next-level_3600_black.jpg",
     model: tshirtModel1,
     myNode: ["bottom", "collar", "left_hand", "left_hand_edge", "right_hand", "right_hand_edge", "stripe", "top"],
-    myZoom: 0.6,
+    myZoom: 0.55,
     myX: 0,
     myY: 10,
     price: 20,
