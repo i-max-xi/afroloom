@@ -57,8 +57,8 @@ function TextureItem({
         style={{ width: "30vw" }} // Adjust the width as needed
       >
         <div className="d-flex flex-column">
-          <img alt={`Texture`} src={texture} />
-          <p>{selectedTexture.description}</p>
+          <img alt={`Texture`} src={texture} height="150px"/>
+          <p style={{paddingBottom: '5rem'}}>{selectedTexture.description}</p>
         </div>
       </Dialog>
     </div>
