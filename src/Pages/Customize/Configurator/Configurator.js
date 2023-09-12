@@ -415,7 +415,7 @@ const Configurator = () => {
                             handleTextureChange={handleTextureChange}
                             currencySymbol={currencySymbol}
                             currencyFactor={currencyFactor}
-                            textureDescriptions={textureDescriptions.dashiki}
+                            subTextureDescriptions={textureDescriptions.dashiki}
                           />
                         )}
                       />
@@ -442,7 +442,7 @@ const Configurator = () => {
                             handleTextureChange={handleTextureChange}
                             currencySymbol={currencySymbol}
                             currencyFactor={currencyFactor}
-                            textureDescriptions={textureDescriptions.kente}
+                            subTextureDescriptions={textureDescriptions.kente}
                           />
                         )}
                       />
@@ -467,7 +467,7 @@ const Configurator = () => {
                             handleTextureChange={handleTextureChange}
                             currencySymbol={currencySymbol}
                             currencyFactor={currencyFactor}
-                            textureDescriptions={textureDescriptions.waxPrint}
+                            subTextureDescriptions={textureDescriptions.waxPrint}
                           />
                         )}
                       />
@@ -494,7 +494,7 @@ const Configurator = () => {
                             handleTextureChange={handleTextureChange}
                             currencySymbol={currencySymbol}
                             currencyFactor={currencyFactor}
-                            textureDescriptions={textureDescriptions.smock}
+                            subTextureDescriptions={textureDescriptions.smock}
                           />
                         )}
                       />
@@ -519,7 +519,7 @@ const Configurator = () => {
                             handleTextureChange={handleTextureChange}
                             currencySymbol={currencySymbol}
                             currencyFactor={currencyFactor}
-                            textureDescriptions={textureDescriptions.Crochet}
+                            subTextureDescriptions={textureDescriptions.Crochet}
                           />
                         )}
                       />
@@ -546,7 +546,7 @@ const Configurator = () => {
                             handleTextureChange={handleTextureChange}
                             currencySymbol={currencySymbol}
                             currencyFactor={currencyFactor}
-                            textureDescriptions={textureDescriptions.printed_kente}
+                            subTextureDescriptions={textureDescriptions.printed_kente}
                           />
                         )}
                       />
@@ -571,7 +571,7 @@ const Configurator = () => {
                             handleTextureChange={handleTextureChange}
                             currencySymbol={currencySymbol}
                             currencyFactor={currencyFactor}
-                            textureDescriptions={textureDescriptions.Funerals}
+                            subTextureDescriptions={textureDescriptions.Funerals}
                           />
                         )}
                       />

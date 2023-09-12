@@ -34,7 +34,7 @@ function TextureItem({
         viewBox="0 0 16 16"
 
         onClick={() => {
-          const description = subTextureDescriptions[textureIndex];
+          const description = subTextureDescriptions[2];
           setSelectedTexture((prevSelectedTexture) => ({
             ...prevSelectedTexture,
             name: texture,
