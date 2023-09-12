@@ -1,5 +1,5 @@
 import { Dialog } from "primereact/dialog";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { textureValues } from "./arrays/neededArrays";
 
 function TextureItem({
@@ -14,9 +14,6 @@ function TextureItem({
 }) {
   const [displayDialog, setDisplayDialog] = useState(false);
 
-  useEffect(() => {
-    console.log(textureIndex)
-  }, [textureIndex])
 
   return (
     <div className="texture-item">
