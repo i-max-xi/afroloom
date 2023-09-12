@@ -82,6 +82,7 @@ h1 {
 }
 .texture-buttons-container h3 {
   font-size: medium;
+  transform: translateX(0.5rem);
 }
 
 .texture-buttons-container {
@@ -94,6 +95,10 @@ h1 {
 .texture-category {
   transform: translateX(-3rem);
   width: 60%;
+}
+
+.texture-category:nth-child(even) {
+  margin-left: 3rem;
 }
 
 .texture-category h3 {
