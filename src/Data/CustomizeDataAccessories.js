@@ -7,23 +7,11 @@ import handbag from "../Assets/Customize/hand_bag.png";
 // hats
 import h1 from "../Assets/Customize/maleAccessories/hat/1.jpg";
 import h2 from "../Assets/Customize/maleAccessories/hat/2.jpg";
-import h3 from "../Assets/Customize/maleAccessories/hat/3.jpg";
-import h4 from "../Assets/Customize/maleAccessories/hat/4.jpg";
+
 
 // uncat
-import un1 from "../Assets/Customize/maleAccessories/Uncat/1.jpg";
 import un2 from "../Assets/Customize/maleAccessories/Uncat/2.jpg";
 
-// femal bags
-import fb1 from "../Assets/Customize/femaleAccessories/Bags/1.jpg";
-import fb2 from "../Assets/Customize/femaleAccessories/Bags/2.jpg";
-import fb3 from "../Assets/Customize/femaleAccessories/Bags/3.jpg";
-import fb4 from "../Assets/Customize/femaleAccessories/Bags/4.jpg";
-
-//female uncat
-import fun1 from "../Assets/Customize/femaleAccessories/uncat/1.jpg";
-import fun2 from "../Assets/Customize/femaleAccessories/uncat/2.jpg";
-import fun3 from "../Assets/Customize/femaleAccessories/uncat/3.jpg";
 
 // 3d models
 import tie from "../Pages/Customize/Configurator/models/Accessories/tie_main.glb";
@@ -32,6 +20,43 @@ import knitted_cap from "../Pages/Customize/Configurator/models/Accessories/knit
 import round_cap from "../Pages/Customize/Configurator/models/Accessories/roundCap_main.glb";
 import bikini from "../Pages/Customize/Configurator/models/Accessories/bikini.glb";
 import hand_bag_model from "../Pages/Customize/Configurator/models/Accessories/handbag.glb";
+
+// parts
+const roundCapParts = require.context(
+  "../Assets/model_parts/Accessories/roundCap_main",
+  false,
+  /\.(png|jpg|jpeg|gif)$/
+);
+
+const knittedCapParts = require.context(
+  "../Assets/model_parts/Accessories/knittedHat_main_two",
+  false,
+  /\.(png|jpg|jpeg|gif)$/
+);
+
+const bowTieParts = require.context(
+  "../Assets/model_parts/Accessories/bow_tie_main",
+  false,
+  /\.(png|jpg|jpeg|gif)$/
+);
+
+const flyingTieParts = require.context(
+  "../Assets/model_parts/Accessories/tie_fixed",
+  false,
+  /\.(png|jpg|jpeg|gif)$/
+);
+
+const handbagParts = require.context(
+  "../Assets/model_parts/Accessories/handbag",
+  false,
+  /\.(png|jpg|jpeg|gif)$/
+);
+
+const bikiniParts = require.context(
+  "../Assets/model_parts/Accessories/bikini",
+  false,
+  /\.(png|jpg|jpeg|gif)$/
+);
 
 export const mainMaleAccessories = [
   {
@@ -42,6 +67,7 @@ export const mainMaleAccessories = [
     myNode: ["bottom_section", "top_section"],
     myZoom: 0.5,
     price: 20,
+    parts: roundCapParts.keys().map(roundCapParts),
   },
 
   {
@@ -52,6 +78,7 @@ export const mainMaleAccessories = [
     myNode: ["bottom_section", "mid_section", "top_section"],
     myZoom: 0.6,
     price: 20,
+    parts: knittedCapParts.keys().map(knittedCapParts),
   },
 
   {
@@ -61,6 +88,7 @@ export const mainMaleAccessories = [
     myNode: ["binder", "bow"],
     myZoom: 2,
     price: 20,
+    parts: bowTieParts.keys().map(bowTieParts),
   },
 
   {
@@ -70,6 +98,7 @@ export const mainMaleAccessories = [
     myNode: ["lower_section" ,"top_section"],
     myZoom: 0.6,
     price: 20,
+    parts: flyingTieParts.keys().map(flyingTieParts),
   },
 ];
 
@@ -82,6 +111,7 @@ export const mainFemaleAccessories = [
     myNode: ["handle", "left_section", "mid_section", "right_section", "zippers_and_locks"],
     myZoom: 0.7,
     price: 55,
+    parts: handbagParts.keys().map(handbagParts),
   },
   {
     id: uuid(),
@@ -91,83 +121,6 @@ export const mainFemaleAccessories = [
     myNode: ["top", "bottom"],
     myZoom: 1.1,
     price: 55,
-  },
-];
-
-export const maleAccessoriesExtras = [
-  {
-    category: "Hat",
-    items: [
-      {
-        name: "",
-        image: h1,
-      },
-      {
-        name: "",
-        image: h2,
-      },
-      {
-        name: "",
-        image: h3,
-      },
-      {
-        name: "",
-        image: h4,
-      },
-    ],
-  },
-  {
-    category: "Uncategorized",
-    items: [
-      {
-        name: "",
-        image: un1,
-      },
-      {
-        name: "",
-        image: un2,
-      },
-    ],
-  },
-];
-
-export const femaleAccessoriesExtras = [
-  {
-    category: "Bag",
-    items: [
-      {
-        name: "",
-        image: fb1,
-      },
-      {
-        name: "",
-        image: fb2,
-      },
-      {
-        name: "",
-        image: fb3,
-      },
-      {
-        name: "",
-        image: fb4,
-      },
-    ],
-  },
-  {
-    category: "Uncategorized",
-    items: [
-      {
-        name: "",
-        image: fun1,
-      },
-      {
-        name: "",
-        image: fun2,
-      },
-      {
-        name: "",
-        image: fun3,
-      },
-    ],
+    parts: bikiniParts.keys().map(bikiniParts),
   },
 ];

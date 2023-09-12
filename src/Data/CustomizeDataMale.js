@@ -24,15 +24,15 @@ import tshirt_pattern from '../Pages/Customize/Configurator/size_guide/male/tshi
 
 // parts
 const tshirtParts = require.context('../Assets/model_parts/MaleClothing/tshirt', false, /\.(png|jpg|jpeg|gif)$/);
-// const tshirtLongParts = require.context('../Assets/model_parts/MaleClothing/tshirt_long', false, /\.(png|jpg|jpeg|gif)$/);
-// const shirtParts = require.context('../Assets/model_parts/MaleClothing/shirt', false, /\.(png|jpg|jpeg|gif)$/);
-// const shirtLongParts = require.context('../Assets/model_parts/MaleClothing/shirt_long', false, /\.(png|jpg|jpeg|gif)$/);
-// const topndownParts = require.context('../Assets/model_parts/MaleClothing/topndown', false, /\.(png|jpg|jpeg|gif)$/);
-// const topParts = require.context('../Assets/model_parts/MaleClothing/top', false, /\.(png|jpg|jpeg|gif)$/);
-// const blazerParts = require.context('../Assets/model_parts/MaleClothing/blazer', false, /\.(png|jpg|jpeg|gif)$/);
-// const trouserParts = require.context('../Assets/model_parts/MaleClothing/trouser', false, /\.(png|jpg|jpeg|gif)$/);
-// const summerShortsParts = require.context('../Assets/model_parts/MaleClothing/summer_shorts', false, /\.(png|jpg|jpeg|gif)$/);
-// const materialShortsParts = require.context('../Assets/model_parts/MaleClothing/material_shorts', false, /\.(png|jpg|jpeg|gif)$/);
+const tshirtLongParts = require.context('../Assets/model_parts/MaleClothing/tshirt_long_best', false, /\.(png|jpg|jpeg|gif)$/);
+const shirtParts = require.context('../Assets/model_parts/MaleClothing/shirt', false, /\.(png|jpg|jpeg|gif)$/);
+const shirtLongParts = require.context('../Assets/model_parts/MaleClothing/shirt_long', false, /\.(png|jpg|jpeg|gif)$/);
+const topndownParts = require.context('../Assets/model_parts/MaleClothing/topndown', false, /\.(png|jpg|jpeg|gif)$/);
+const topParts = require.context('../Assets/model_parts/MaleClothing/top', false, /\.(png|jpg|jpeg|gif)$/);
+const blazerParts = require.context('../Assets/model_parts/MaleClothing/blazer', false, /\.(png|jpg|jpeg|gif)$/);
+const trouserParts = require.context('../Assets/model_parts/MaleClothing/trouser', false, /\.(png|jpg|jpeg|gif)$/);
+const summerShortsParts = require.context('../Assets/model_parts/MaleClothing/summer_shorts', false, /\.(png|jpg|jpeg|gif)$/);
+const materialShortsParts = require.context('../Assets/model_parts/MaleClothing/material_shorts', false, /\.(png|jpg|jpeg|gif)$/);
 
 
 export const mainMaleCustomize = [
@@ -56,9 +56,9 @@ export const mainMaleCustomize = [
     image: "https://th.bing.com/th/id/R.090a143032d299d58a1f61c13fdb5224?rik=3IvQRj1AFgeS5A&riu=http%3a%2f%2fmemorythreads.com.au%2fwp-content%2fuploads%2f2015%2f03%2fgrey-marle-longsleeve1.jpg&ehk=mYL6G88axiyKbyZamMLyXt0FEL95o7%2bLvLOeBlxULno%3d&risl=&pid=ImgRaw&r=0",
     model: tshirtModel2,
     myNode: ["bottom", "collar", "left_hand", "left_hand_cuff", "right_hand", "right_hand_cuff", "stripe", "top"],
-    myZoom: 0.8,
+    myZoom: 0.7,
     price: 20,
-    // parts: tshirtLongParts.keys().map(tshirtLongParts),
+    parts: tshirtLongParts.keys().map(tshirtLongParts),
   },
   {
     id: uuid(),
@@ -70,7 +70,7 @@ export const mainMaleCustomize = [
     myX: 0,
     myY: 10,
     price: 30,
-    // parts: shirtParts.keys().map(shirtParts),
+    parts: shirtParts.keys().map(shirtParts),
   },
   {
     id: uuid(),
@@ -82,7 +82,7 @@ export const mainMaleCustomize = [
     myX: 0,
     myY: 10,
     price: 30,
-    // parts: shirtLongParts.keys().map(shirtLongParts),
+    parts: shirtLongParts.keys().map(shirtLongParts),
   },
   {
     id: uuid(),
@@ -92,7 +92,7 @@ export const mainMaleCustomize = [
     myNode: ["back", "collar", "front_left", "front_right", "left_hand", "left_hand_cuff", "left_leg", "left_leg_edge", "midline", "right_hand", "right_hand_cuff", "right_leg", "right_leg_edge"],
     myZoom: 0.6,
     price: 55,
-    // parts: topndownParts.keys().map(topndownParts),
+    parts: topndownParts.keys().map(topndownParts),
   },
   {
     id: uuid(),
@@ -104,7 +104,7 @@ export const mainMaleCustomize = [
     myX: 0,
     myY: 10,
     price: 35,
-    // parts: topParts.keys().map(topParts),
+    parts: topParts.keys().map(topParts),
   },
   {
     id: uuid(),
@@ -114,7 +114,7 @@ export const mainMaleCustomize = [
     myNode: ["back", "collar", "front_left", "front_right", "left_hand", "left_hand_edge", "right_hand", "right_hand_edge"],
     myZoom: 1,
     price: 20,
-    // parts: blazerParts.keys().map(blazerParts),
+    parts: blazerParts.keys().map(blazerParts),
   },
   {
     id: uuid(),
@@ -125,7 +125,7 @@ export const mainMaleCustomize = [
     myNode: ["left_leg", "left_leg_edge", "left_pocket", "right_leg", "right_leg_edge", "right_pocket", "waist"],
     myZoom: 0.8,
     price: 22,
-    // parts: trouserParts.keys().map(trouserParts),
+    parts: trouserParts.keys().map(trouserParts),
     },
   {
     id: uuid(),
@@ -137,7 +137,7 @@ export const mainMaleCustomize = [
     myX: 0,
     myY: 10,
     price: 30,
-    // parts: summerShortsParts.keys().map(summerShortsParts),
+    parts: summerShortsParts.keys().map(summerShortsParts),
     },
     {
     id: uuid(),
@@ -149,6 +149,6 @@ export const mainMaleCustomize = [
     myX: 0,
     myY: 10,
     price: 30,
-    // parts: materialShortsParts.keys().map(materialShortsParts)
+    parts: materialShortsParts.keys().map(materialShortsParts)
     },
 ];
