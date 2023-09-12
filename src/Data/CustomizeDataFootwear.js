@@ -11,6 +11,32 @@ import slippers from '../Pages/Customize/Configurator/models/Shoes/slippers_main
 import heels from '../Pages/Customize/Configurator/models/Shoes/heels_main.glb';
 import sneaker_model from '../Pages/Customize/Configurator/models/Shoes/sneaker.glb';
 
+// ... (your existing code)
+
+// parts
+const flexShoeParts = require.context(
+  "../Assets/model_parts/Shoes/flexible_shoe_main_two",
+  false,
+  /\.(png|jpg|jpeg|gif)$/
+);
+
+const sneakerParts = require.context(
+  "../Assets/model_parts/Shoes/sneaker_best",
+  false,
+  /\.(png|jpg|jpeg|gif)$/
+);
+
+const slippersParts = require.context(
+  "../Assets/model_parts/Shoes/slippers_main",
+  false,
+  /\.(png|jpg|jpeg|gif)$/
+);
+
+const heelsParts = require.context(
+  "../Assets/model_parts/Shoes/heels_main",
+  false,
+  /\.(png|jpg|jpeg|gif)$/
+);
 
 export const mainFootwear = [
   {
@@ -21,7 +47,8 @@ export const mainFootwear = [
     myNode: ["back", "front", "sole"],
     myZoom: 1,
     price: 20,
-    },
+    parts: flexShoeParts.keys().map(flexShoeParts),
+  },
   {
     id: uuid(),
     name: "Sneaker",
@@ -31,7 +58,8 @@ export const mainFootwear = [
     myNode: ["back", "front", "lace", "sole"],
     myZoom: 0.8,
     price: 20,
-    },
+    parts: sneakerParts.keys().map(sneakerParts),
+  },
   {
     id: uuid(),
     name: "Slipper",
@@ -40,6 +68,7 @@ export const mainFootwear = [
     myNode: ["padding", "sole", "top"],
     myZoom: 1,
     price: 20,
+    parts: slippersParts.keys().map(slippersParts),
   },
   {
     id: uuid(),
@@ -47,8 +76,10 @@ export const mainFootwear = [
     image:
       "https://th.bing.com/th/id/OIP.UMGJguReHwKJtDNEdf5-NQHaHa?pid=ImgDet&rs=1",
     model: heels,
-    myNode: ["sole","top"],
+    myNode: ["sole", "top"],
     myZoom: 0.6,
     price: 20,
+    parts: heelsParts.keys().map(heelsParts),
   },
 ];
+
