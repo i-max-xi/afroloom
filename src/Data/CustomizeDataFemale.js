@@ -75,13 +75,13 @@ const topAndDownParts = require.context(
 );
 
 const dressParts = require.context(
-  "../Assets/model_parts/FemaleClothing/dress",
+  "../Assets/model_parts/FemaleClothing/shoulder_dress",
   false,
   /\.(png|jpg|jpeg|gif)$/
 );
 
 const kabaSlitParts = require.context(
-  "../Assets/model_parts/FemaleClothing/kaba_slit",
+  "../Assets/model_parts/FemaleClothing/gown",
   false,
   /\.(png|jpg|jpeg|gif)$/
 );
