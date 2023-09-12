@@ -1,5 +1,6 @@
 import { Dialog } from "primereact/dialog";
 import React, { useState } from "react";
+import { textureValues } from "./arrays/neededArrays";
 
 function TextureItem({
   texture,
