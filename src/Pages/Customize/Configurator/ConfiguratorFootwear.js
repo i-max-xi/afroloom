@@ -29,6 +29,7 @@ import {
   textureValues,
   responsiveNess,
   responsiveColor,
+  europeanShoeSizes,
 } from "./arrays/neededArrays";
 import TextureItem from "./TextureItem";
 
@@ -259,7 +260,7 @@ const ConfiguratorFootwear = () => {
                 </div>
                 <h5>Choose Size</h5>
                 <div className="size w-75">
-                  {sizeOptions.map((option) => (
+                  {europeanShoeSizes.map((option) => (
                     <button
                       key={option.value}
                       className={`size-button btn btn-outline-dark ${
@@ -589,7 +590,7 @@ const ConfiguratorFootwear = () => {
                 </div>
               </div>
               <div className="right-panel d-flex justify-content-between">
-                <div className="w-75 h-75">
+                <div className="w-75 h-100">
                   <Canvas
                     ref={canvasRef}
                     camera={{ position: [0, 0, selectedClothing.myZoom] }} // Set the initial camera position

@@ -27,7 +27,7 @@ const tshirtParts = require.context('../Assets/model_parts/MaleClothing/tshirt',
 const tshirtLongParts = require.context('../Assets/model_parts/MaleClothing/tshirt_long_best', false, /\.(png|jpg|jpeg|gif)$/);
 const shirtParts = require.context('../Assets/model_parts/MaleClothing/shirt', false, /\.(png|jpg|jpeg|gif)$/);
 const shirtLongParts = require.context('../Assets/model_parts/MaleClothing/shirt_long', false, /\.(png|jpg|jpeg|gif)$/);
-const topndownParts = require.context('../Assets/model_parts/MaleClothing/topndown', false, /\.(png|jpg|jpeg|gif)$/);
+const topndownParts = require.context('../Assets/model_parts/MaleClothing/male_topndown', false, /\.(png|jpg|jpeg|gif)$/);
 const topParts = require.context('../Assets/model_parts/MaleClothing/cloak', false, /\.(png|jpg|jpeg|gif)$/);
 const blazerParts = require.context('../Assets/model_parts/MaleClothing/blazer', false, /\.(png|jpg|jpeg|gif)$/);
 const trouserParts = require.context('../Assets/model_parts/MaleClothing/trouser', false, /\.(png|jpg|jpeg|gif)$/);
@@ -42,7 +42,7 @@ export const mainMaleCustomize = [
     image: "https://a5e8126a499f8a963166-f72e9078d72b8c998606fd6e0319b679.ssl.cf5.rackcdn.com/images/variant/large/next-level_3600_black.jpg",
     model: tshirtModel1,
     myNode: ["bottom", "collar", "left_hand", "left_hand_edge", "right_hand", "right_hand_edge", "stripe", "top"],
-    myZoom: 0.55,
+    myZoom: 0.7,
     myX: 0,
     myY: 10,
     price: 20,
@@ -100,7 +100,7 @@ export const mainMaleCustomize = [
     image: flare_shirt,
     model: cloak,
     myNode: ["body", "collar", "left_hand", "left_hand_edge", "right_hand", "right_hand_edge"],
-    myZoom: 0.7,
+    myZoom: 0.75,
     myX: 0,
     myY: 10,
     price: 35,
@@ -112,7 +112,7 @@ export const mainMaleCustomize = [
     model: blazer,
     image: "https://www.flannels.com/images/products/32066803_h.jpg",
     myNode: ["back", "collar", "front_left", "front_right", "left_hand", "left_hand_edge", "right_hand", "right_hand_edge"],
-    myZoom: 1,
+    myZoom: 0.77,
     price: 20,
     parts: blazerParts.keys().map(blazerParts),
   },

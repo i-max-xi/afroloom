@@ -136,10 +136,10 @@ h1 {
   transform: translateY(-0.2rem) scale(2);
 } */
 
-.canvas-container {
-  width: 200%;
-  height: 200%;
-}
+/* .canvas-container {
+  width: 200% !important;
+  height: 200% !important;
+} */
 
 .size-button {
   margin: 2px;
@@ -154,13 +154,10 @@ h1 {
   transform: translateY(-0.25rem);
 }
 
-
-/* .p-carousel-container{ 
-  width: 100%;
-}  */
-
 .part-image {
   margin-bottom: 0.2rem;
+  flex-direction: row;
+
 }
 
 

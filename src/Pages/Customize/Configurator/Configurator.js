@@ -588,12 +588,11 @@ const Configurator = () => {
                 </div>
               </div>
               <div className="right-panel d-flex justify-content-between">
-                <div className="w-75 h-75">
+                <div className="w-75 h-100">
                   <Canvas
                     ref={canvasRef}
                     camera={{ position: [0, 0, selectedClothing.myZoom] }} // Set the initial camera position
                     gl={{ preserveDrawingBuffer: true }}
-                    className="w-100"
                   >
                     <ambientLight intensity={0.5} />
                     <pointLight position={[10, 10, 10]} />
