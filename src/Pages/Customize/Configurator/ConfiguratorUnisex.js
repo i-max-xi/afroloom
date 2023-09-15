@@ -30,7 +30,7 @@ import {
   responsiveColor,
 } from "./arrays/neededArrays";
 import TextureItem from "./TextureItem";
-
+import PartImages from "./PartImages";
 const Shirt = ({
   isRotating,
   selectedClothing,
@@ -624,22 +624,7 @@ const ConfiguratorUnisex = () => {
                 </div>
 
                 {/* parts images start */}
-                <div className="part-panel" style={{ width: "10%" }}>
-                  <div className="d-flex flex-column">
-                    {selectedClothing.parts.map((part, index) => (
-                      <img
-                        src={part}
-                        key={index}
-                        alt={`Part ${index}`}
-                        width="100%"
-                        // className={selectedPart === index ? 'selected-border' : ''}
-                        className={`part-image ${
-                          selectedPart === index ? "selected-border" : ""
-                        }`}
-                      />
-                    ))}
-                  </div>
-                </div>
+                <PartImages selectedClothing={selectedClothing} selectedPart={selectedPart} />
                 {/* parts images end */}
               </div>
             </div>
