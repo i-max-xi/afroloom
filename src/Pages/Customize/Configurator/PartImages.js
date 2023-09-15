@@ -2,6 +2,8 @@ import React from 'react';
 
 const PartImages = ({ selectedClothing, selectedPart }) => {
   const isDivided = selectedClothing.parts.length > 5;
+  const totalItems = selectedClothing.parts.length;
+  const itemsPerColumn = Math.ceil(totalItems / 2); // Calculate how many items should appear in each column
 
   return (
     <div className="part-panel" style={{ width: "20%" }}>
@@ -11,12 +13,13 @@ const PartImages = ({ selectedClothing, selectedPart }) => {
           <>
             {/* Left Column */}
             <div className="d-flex flex-column" style={{ flex: 1 }}>
-              {selectedClothing.parts.slice(0, 5).map((part, index) => (
+              {selectedClothing.parts.slice(0, itemsPerColumn).map((part, index) => (
                 <img
                   src={part}
                   key={index}
                   alt={`Part ${index}`}
                   width="130%"
+                  style={{ maxHeight: "120px" }}
                   className={`part-image ${
                     (selectedPart !== null && selectedPart === index)
                       ? "selected-border"
@@ -31,14 +34,15 @@ const PartImages = ({ selectedClothing, selectedPart }) => {
   
             {/* Right Column */}
             <div className="d-flex flex-column" style={{ flex: 1 }}>
-              {selectedClothing.parts.slice(5).map((part, index) => (
+              {selectedClothing.parts.slice(itemsPerColumn).map((part, index) => (
                 <img
                   src={part}
                   key={index}
-                  alt={`Part ${index}`}
+                  alt={`Part ${index + itemsPerColumn}`}
                   width="130%"
+                  style={{ maxHeight: "120px" }}
                   className={`part-image ${
-                    (selectedPart !== null && (index + 5) === selectedPart)
+                    (selectedPart !== null && (index + itemsPerColumn) === selectedPart)
                       ? "selected-border"
                       : ""
                   }`}
