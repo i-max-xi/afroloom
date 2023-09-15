@@ -21,6 +21,17 @@ import blazer from '../Pages/Customize/Configurator/models/MaleClothing/male_sui
 //size-guides
 import tshirt_guide from '../Pages/Customize/Configurator/size_guide/male/tshirt.JPG';
 import tshirt_pattern from '../Pages/Customize/Configurator/size_guide/male/tshirt_pattern.jpg';
+import tshirtlong_guide from '../Assets/size_guide/MaleClothing/tshirt_long.JPG';
+import shirt_guide from '../Assets/size_guide/MaleClothing/shirt.JPG';
+import shirtlong_guide from '../Assets/size_guide/MaleClothing/shirt_long.JPG';
+// import top_down_guide from '../Assets/size_guide/MaleClothing/';
+// import cloak_guide from '../Assets/size_guide/MaleClothing/';
+import blazer_guide from '../Assets/size_guide/MaleClothing/blazer.JPG';
+import trouser_guide from '../Assets/size_guide/MaleClothing/trouser.JPG';
+import summer_shorts_guide from '../Assets/size_guide/MaleClothing/summer_shorts.JPG';
+import material_shorts_guide from '../Assets/size_guide/MaleClothing/material_shorts.JPG';
+
+
 
 // parts
 const tshirtParts = require.context('../Assets/model_parts/MaleClothing/tshirt', false, /\.(png|jpg|jpeg|gif)$/);
@@ -58,6 +69,7 @@ export const mainMaleCustomize = [
     myNode: ["bottom", "collar", "left_hand", "left_hand_cuff", "right_hand", "right_hand_cuff", "stripe", "top"],
     myZoom: 0.7,
     price: 20,
+    sizeGuide: tshirtlong_guide,
     parts: tshirtLongParts.keys().map(tshirtLongParts),
   },
   {
@@ -70,6 +82,7 @@ export const mainMaleCustomize = [
     myX: 0,
     myY: 10,
     price: 30,
+    sizeGuide: shirt_guide,
     parts: shirtParts.keys().map(shirtParts),
   },
   {
@@ -82,6 +95,7 @@ export const mainMaleCustomize = [
     myX: 0,
     myY: 10,
     price: 30,
+    sizeGuide: shirtlong_guide,
     parts: shirtLongParts.keys().map(shirtLongParts),
   },
   {
@@ -92,6 +106,7 @@ export const mainMaleCustomize = [
     myNode: ["back", "collar", "front_left", "front_right", "left_hand", "left_hand_cuff", "left_leg", "left_leg_edge", "midline", "right_hand", "right_hand_cuff", "right_leg", "right_leg_edge"],
     myZoom: 0.6,
     price: 55,
+    // sizeGuide: top_down_guide,
     parts: topndownParts.keys().map(topndownParts),
   },
   {
@@ -104,6 +119,7 @@ export const mainMaleCustomize = [
     myX: 0,
     myY: 10,
     price: 35,
+    // sizeGuide: cloak_guide,
     parts: topParts.keys().map(topParts),
   },
   {
@@ -114,6 +130,7 @@ export const mainMaleCustomize = [
     myNode: ["back", "collar", "front_left", "front_right", "left_hand", "left_hand_edge", "right_hand", "right_hand_edge"],
     myZoom: 0.77,
     price: 20,
+    sizeGuide: blazer_guide,
     parts: blazerParts.keys().map(blazerParts),
   },
   {
@@ -125,8 +142,9 @@ export const mainMaleCustomize = [
     myNode: ["left_leg", "left_leg_edge", "left_pocket", "right_leg", "right_leg_edge", "right_pocket", "waist"],
     myZoom: 0.8,
     price: 22,
+    sizeGuide: trouser_guide,
     parts: trouserParts.keys().map(trouserParts),
-    },
+  },
   {
     id: uuid(),
     name: "Summer Shorts",
@@ -137,9 +155,10 @@ export const mainMaleCustomize = [
     myX: 0,
     myY: 10,
     price: 30,
+    sizeGuide: summer_shorts_guide,
     parts: summerShortsParts.keys().map(summerShortsParts),
-    },
-    {
+  },
+  {
     id: uuid(),
     name: "Material Shorts",
     image: "https://th.bing.com/th/id/OIP.A9xUqEvW0ADXy3nKfNyxKwHaJZ?pid=ImgDet&w=481&h=610&rs=1",
@@ -149,6 +168,7 @@ export const mainMaleCustomize = [
     myX: 0,
     myY: 10,
     price: 30,
+    sizeGuide: material_shorts_guide,
     parts: materialShortsParts.keys().map(materialShortsParts)
-    },
+  },
 ];

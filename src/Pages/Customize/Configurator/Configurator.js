@@ -286,13 +286,7 @@ const Configurator = () => {
                           alt="size-guide"
                         />
                       </p>
-                      <p className="mb-2">
-                        <img
-                          src={selectedClothing.sizePattern}
-                          width="100%"
-                          alt="size-guide"
-                        />
-                      </p>
+                      
                       <form>
                         <h4 className="mt-3">
                           Customize Your Own Measurements
@@ -423,7 +417,7 @@ const Configurator = () => {
                     </div>
                   </div>
                   <div className="texture-row">
-                  <div className="texture-category">
+                    <div className="texture-category">
                       <h3>
                         Kente (+{currencySymbol}
                         {(currencyFactor * textureValues.kente).toFixed(2)})
@@ -470,14 +464,16 @@ const Configurator = () => {
                             handleTextureChange={handleTextureChange}
                             currencySymbol={currencySymbol}
                             currencyFactor={currencyFactor}
-                            subTextureDescriptions={textureDescriptions.waxPrint}
+                            subTextureDescriptions={
+                              textureDescriptions.waxPrint
+                            }
                           />
                         )}
                       />
                     </div>
                   </div>
                   <div className="texture-row">
-                  <div className="texture-category">
+                    <div className="texture-category">
                       <h3>
                         Smock (+{currencySymbol}
                         {(currencyFactor * textureValues.smock).toFixed(2)})
@@ -531,10 +527,13 @@ const Configurator = () => {
                     </div>
                   </div>
                   <div className="texture-row">
-                  <div className="texture-category">
+                    <div className="texture-category">
                       <h3>
                         Printed Kente (+{currencySymbol}
-                        {(currencyFactor * textureValues.printed_kente).toFixed(2)})
+                        {(currencyFactor * textureValues.printed_kente).toFixed(
+                          2
+                        )}
+                        )
                       </h3>
                       <Carousel
                         value={textureArrays.printed_kente}
@@ -552,7 +551,9 @@ const Configurator = () => {
                             handleTextureChange={handleTextureChange}
                             currencySymbol={currencySymbol}
                             currencyFactor={currencyFactor}
-                            subTextureDescriptions={textureDescriptions.printed_kente}
+                            subTextureDescriptions={
+                              textureDescriptions.printed_kente
+                            }
                           />
                         )}
                       />
@@ -578,7 +579,9 @@ const Configurator = () => {
                             handleTextureChange={handleTextureChange}
                             currencySymbol={currencySymbol}
                             currencyFactor={currencyFactor}
-                            subTextureDescriptions={textureDescriptions.Funerals}
+                            subTextureDescriptions={
+                              textureDescriptions.Funerals
+                            }
                           />
                         )}
                       />

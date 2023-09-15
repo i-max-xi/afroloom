@@ -21,6 +21,15 @@ import round_cap from "../Pages/Customize/Configurator/models/Accessories/roundC
 import bikini from "../Pages/Customize/Configurator/models/Accessories/bikini.glb";
 import hand_bag_model from "../Pages/Customize/Configurator/models/Accessories/handbag.glb";
 
+// Importing size guides
+// import roundCap_guide from '../Assets/size_guide/Accessories/Male/';
+// import knittedCap_guide from '../Assets/size_guide/Accessories/Male/';
+import bowTie_guide from '../Assets/size_guide/Accessories/Male/bow_tie.JPG';
+import flyingTie_guide from '../Assets/size_guide/Accessories/Male/flying_tie.JPG';
+// import handbag_guide from '../Assets/size_guide/Accessories/Female/';
+import bikini_guide from '../Assets/size_guide/Accessories/Female/bikini.JPG';
+
+
 // parts
 const roundCapParts = require.context(
   "../Assets/model_parts/Accessories/roundCap_main",
@@ -58,6 +67,8 @@ const bikiniParts = require.context(
   /\.(png|jpg|jpeg|gif)$/
 );
 
+
+
 export const mainMaleAccessories = [
   {
     id: uuid(),
@@ -68,6 +79,7 @@ export const mainMaleAccessories = [
     myZoom: 0.5,
     price: 20,
     parts: roundCapParts.keys().map(roundCapParts),
+    // sizeGuide: roundCap_guide,
   },
 
   {
@@ -79,6 +91,7 @@ export const mainMaleAccessories = [
     myZoom: 0.5,
     price: 20,
     parts: knittedCapParts.keys().map(knittedCapParts),
+    // sizeGuide: knittedCap_guide,
   },
 
   {
@@ -89,6 +102,7 @@ export const mainMaleAccessories = [
     myZoom: 1.5,
     price: 20,
     parts: bowTieParts.keys().map(bowTieParts),
+    sizeGuide: bowTie_guide, // Adding size guide for Bow Tie
   },
 
   {
@@ -99,6 +113,7 @@ export const mainMaleAccessories = [
     myZoom: 0.6,
     price: 20,
     parts: flyingTieParts.keys().map(flyingTieParts),
+    sizeGuide: flyingTie_guide, // Adding size guide for Flying Tie
   },
 ];
 
@@ -112,6 +127,7 @@ export const mainFemaleAccessories = [
     myZoom: 0.8,
     price: 55,
     parts: handbagParts.keys().map(handbagParts),
+    // sizeGuide: handbag_guide,
   },
   {
     id: uuid(),
@@ -122,5 +138,6 @@ export const mainFemaleAccessories = [
     myZoom: 1.3,
     price: 55,
     parts: bikiniParts.keys().map(bikiniParts),
+    sizeGuide: bikini_guide, // Adding size guide for Bikini
   },
 ];

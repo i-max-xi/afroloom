@@ -287,13 +287,17 @@ const ConfiguratorMaleAccessories = () => {
                           alt="size-guide"
                         />
                       </p>
-                      <p className="mb-2">
-                        <img
-                          src={selectedClothing.sizePattern}
-                          width="100%"
-                          alt="size-guide"
-                        />
-                      </p>
+                      {selectedClothing.sizePattern ? (
+                        <p className="mb-2">
+                          <img
+                            src={selectedClothing.sizePattern}
+                            width="100%"
+                            alt="size-guide"
+                          />
+                        </p>
+                      ) : (
+                        ""
+                      )}
                       <form>
                         <h4 className="mt-3">
                           Customize Your Own Measurements

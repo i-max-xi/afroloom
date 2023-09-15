@@ -11,7 +11,12 @@ import slippers from '../Pages/Customize/Configurator/models/Shoes/slippers_main
 import heels from '../Pages/Customize/Configurator/models/Shoes/heels_main.glb';
 import sneaker_model from '../Pages/Customize/Configurator/models/Shoes/sneaker.glb';
 
-// ... (your existing code)
+// Importing size guides
+// import flatShoe_guide from '../Assets/size_guide/Footwear/';
+// import sneaker_guide from '../Assets/size_guide/Footwear/sneaker.JPG';
+// import slipper_guide from '../Assets/size_guide/Footwear/slipper.JPG';
+import heels_guide from '../Assets/size_guide/Footwear/heels.JPG';
+
 
 // parts
 const flexShoeParts = require.context(
@@ -38,6 +43,8 @@ const heelsParts = require.context(
   /\.(png|jpg|jpeg|gif)$/
 );
 
+
+
 export const mainFootwear = [
   {
     id: uuid(),
@@ -48,6 +55,7 @@ export const mainFootwear = [
     myZoom: 0.8,
     price: 20,
     parts: flexShoeParts.keys().map(flexShoeParts),
+    // sizeGuide: flatShoe_guide, 
   },
   {
     id: uuid(),
@@ -59,6 +67,7 @@ export const mainFootwear = [
     myZoom: 0.7,
     price: 20,
     parts: sneakerParts.keys().map(sneakerParts),
+    // sizeGuide: sneaker_guide, 
   },
   {
     id: uuid(),
@@ -69,6 +78,7 @@ export const mainFootwear = [
     myZoom: 0.8,
     price: 20,
     parts: slippersParts.keys().map(slippersParts),
+    // sizeGuide: slipper_guide, 
   },
   {
     id: uuid(),
@@ -80,6 +90,7 @@ export const mainFootwear = [
     myZoom: 0.6,
     price: 20,
     parts: heelsParts.keys().map(heelsParts),
+    sizeGuide: heels_guide, // Adding size guide for Heels
   },
 ];
 

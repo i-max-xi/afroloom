@@ -12,7 +12,11 @@ import mini_bag_model from "../Pages/Customize/Configurator/models/Accessories/U
 import sash_model from "../Pages/Customize/Configurator/models/Accessories/Unisex/sash.glb";
 import jacket from "../Pages/Customize/Configurator/models/Accessories/Unisex/jacket_main.glb";
 
-// ... (your existing code)
+// Importing size guides
+import sash_guide from '../Assets/size_guide/Unisex/sash.JPG';
+import miniBag_guide from '../Assets/size_guide/Unisex/mini_bag.JPG';
+import backpack_guide from '../Assets/size_guide/Unisex/back_pack.JPG';
+import jacket_guide from '../Assets/size_guide/Unisex/jacket.JPG';
 
 // parts
 const sashParts = require.context(
@@ -39,6 +43,8 @@ const jacketParts = require.context(
   /\.(png|jpg|jpeg|gif)$/
 );
 
+
+
 export const mainUnisex = [
   {
     id: uuid(),
@@ -50,6 +56,7 @@ export const mainUnisex = [
     myZoom: 0.8,
     price: 55,
     parts: sashParts.keys().map(sashParts),
+    sizeGuide: sash_guide, // Adding size guide for Sash
   },
   {
     id: uuid(),
@@ -60,6 +67,7 @@ export const mainUnisex = [
     myZoom: 0.6,
     price: 55,
     parts: miniBagParts.keys().map(miniBagParts),
+    sizeGuide: miniBag_guide, // Adding size guide for Mini Bag
   },
   {
     id: uuid(),
@@ -78,6 +86,7 @@ export const mainUnisex = [
     myZoom: 0.7,
     price: 55,
     parts: backpackParts.keys().map(backpackParts),
+    sizeGuide: backpack_guide, // Adding size guide for Backpack
   },
   {
     id: uuid(),
@@ -98,5 +107,7 @@ export const mainUnisex = [
     myZoom: 0.8,
     price: 55,
     parts: jacketParts.keys().map(jacketParts),
+    sizeGuide: jacket_guide, // Adding size guide for Jacket
   },
 ];
+

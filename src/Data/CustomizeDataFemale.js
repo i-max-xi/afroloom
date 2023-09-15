@@ -31,6 +31,26 @@ import extra_short from "../Pages/Customize/Configurator/models/FemaleClothing/f
 import booty_shorts from "../Pages/Customize/Configurator/models/FemaleClothing/booty_shorts.glb";
 import kaba_slit from "../Pages/Customize/Configurator/models/FemaleClothing/gown.glb";
 
+
+// size guides
+import tshirt_guide from '../Assets/size_guide/FemaleClothing/tshirt.JPG';
+import tshirtlong_guide from '../Assets/size_guide/FemaleClothing/tshirt_long.JPG';
+import extraShortShirt_guide from '../Assets/size_guide/FemaleClothing/shirt.JPG';
+// import extraLongShirt_guide from '../Assets/size_guide/FemaleClothing/s';
+import cropTop_guide from '../Assets/size_guide/FemaleClothing/crop_top.JPG';
+// import normalTop_guide from '../Assets/size_guide/FemaleClothing/';
+// import topAndDown_guide from '../Assets/size_guide/FemaleClothing/';
+// import dress_guide from '../Assets/size_guide/FemaleClothing/';
+// import kabaSlit_guide from '../Assets/size_guide/FemaleClothing/';
+import blazer_guide from '../Assets/size_guide/FemaleClothing/blazer.JPG';
+// import cloak_guide from '../Assets/size_guide/FemaleClothing/';
+import skirt_guide from '../Assets/size_guide/FemaleClothing/skirt_long.JPG';
+import miniSkirt_guide from '../Assets/size_guide/FemaleClothing/mini_skirt.JPG';
+import bootyShorts_guide from '../Assets/size_guide/FemaleClothing/booty_shorts.JPG';
+import leggings_guide from '../Assets/size_guide/FemaleClothing/leggings.JPG';
+// import trousers_guide from '../Assets/size_guide/FemaleClothing/'
+
+
 //part images
 const tShirtShortParts = require.context(
   "../Assets/model_parts/FemaleClothing/tshirt_short",
@@ -128,47 +148,32 @@ const leggingsParts = require.context(
   /\.(png|jpg|jpeg|gif)$/
 );
 
+
+
+
 export const mainFemaleCustomize = [
   {
     id: uuid(),
     name: "T-Shirt short",
-    image:
-      "https://th.bing.com/th/id/OIP.ikUETESsVO_PcDoaCrIQnAHaIw?pid=ImgDet&w=1588&h=1879&rs=1",
+    image: "https://th.bing.com/th/id/OIP.ikUETESsVO_PcDoaCrIQnAHaIw?pid=ImgDet&w=1588&h=1879&rs=1",
     model: t_shirt_short,
-    myNode: [
-      "bottom",
-      "left_hand",
-      "left_hand_edge",
-      "right_hand",
-      "right_hand_edge",
-      "top",
-      "stripe",
-    ],
+    myNode: ["bottom", "left_hand", "left_hand_edge", "right_hand", "right_hand_edge", "top", "stripe"],
     myZoom: 0.8,
     price: 20,
+    sizeGuide: tshirt_guide,
     parts: tShirtShortParts.keys().map(tShirtShortParts),
   },
-
   {
     id: uuid(),
     name: "T-Shirt long",
-    image:
-      "https://images.bloomingdalesassets.com/is/image/BLM/products/0/optimized/10183950_fpx.tif?$filterlrg$&wid=327",
+    image: "https://images.bloomingdalesassets.com/is/image/BLM/products/0/optimized/10183950_fpx.tif?$filterlrg$&wid=327",
     model: t_shirt_long,
-    myNode: [
-      "bottom",
-      "left_hand",
-      "left_hand_cuff",
-      "right_hand",
-      "right_hand_cuff",
-      "stripe",
-      "top",
-    ],
+    myNode: ["bottom", "left_hand", "left_hand_cuff", "right_hand", "right_hand_cuff", "stripe", "top"],
     myZoom: 0.9,
     price: 20,
+    sizeGuide: tshirtlong_guide,
     parts: tShirtLongParts.keys().map(tShirtLongParts),
   },
-
   {
     id: uuid(),
     name: "Short Sleeves Shirt",
@@ -177,9 +182,9 @@ export const mainFemaleCustomize = [
     myNode: ["back", "collar", "front", "left_hand", "midline", "right_hand"],
     myZoom: 0.7,
     price: 30,
+    sizeGuide: extraShortShirt_guide,
     parts: extraShortShirtParts.keys().map(extraShortShirtParts),
   },
-
   {
     id: uuid(),
     name: "Long Sleeves Shirt",
@@ -188,9 +193,9 @@ export const mainFemaleCustomize = [
     myNode: ["back", "collar", "front", "left_hand", "midline", "right_hand"],
     myZoom: 0.8,
     price: 30,
+    // sizeGuide: extraLongShirt_guide,
     parts: extraLongShirtParts.keys().map(extraLongShirtParts),
   },
-
   {
     id: uuid(),
     name: "Crop Top",
@@ -199,9 +204,9 @@ export const mainFemaleCustomize = [
     myNode: ["left_hand", "mid_body", "right_hand", "top_edge"],
     myZoom: 1,
     price: 20,
+    sizeGuide: cropTop_guide,
     parts: cropTopParts.keys().map(cropTopParts),
   },
-
   {
     id: uuid(),
     name: "Normal Top",
@@ -217,6 +222,7 @@ export const mainFemaleCustomize = [
     ],
     myZoom: 0.8,
     price: 20,
+    // sizeGuide: normalTop_guide,
     parts: normalTopParts.keys().map(normalTopParts),
   },
   {
@@ -236,6 +242,7 @@ export const mainFemaleCustomize = [
     ],
     myZoom: 0.75,
     price: 20,
+    // sizeGuide: topAndDown_guide,
     parts: topAndDownParts.keys().map(topAndDownParts),
   },
   {
@@ -254,6 +261,7 @@ export const mainFemaleCustomize = [
     ],
     myZoom: 0.8,
     price: 20,
+    // sizeGuide: dress_guide,
     parts: dressParts.keys().map(dressParts),
   },
   {
@@ -264,6 +272,7 @@ export const mainFemaleCustomize = [
     myNode: ["left_hand", "right_hand", "top", "top_pattern", "down"],
     myZoom: 0.9,
     price: 20,
+    // sizeGuide: kabaSlit_guide,
     parts: kabaSlitParts.keys().map(kabaSlitParts),
   },
   {
@@ -281,6 +290,7 @@ export const mainFemaleCustomize = [
     ],
     myZoom: 0.95,
     price: 20,
+    sizeGuide: blazer_guide,
     parts: blazerParts.keys().map(blazerParts),
   },
   {
@@ -291,6 +301,7 @@ export const mainFemaleCustomize = [
     myNode: ["all"],
     myZoom: 0.7,
     price: 20,
+    // sizeGuide: cloak_guide,
     parts: cloakParts.keys().map(cloakParts),
   },
   {
@@ -301,17 +312,18 @@ export const mainFemaleCustomize = [
     myNode: ["all"],
     myZoom: 0.7,
     price: 20,
+    sizeGuide: skirt_guide,
     parts: skirtParts.keys().map(skirtParts),
   },
   {
     id: uuid(),
     name: "Mini Skirt",
     model: mini_skirt_model,
-    image:
-      "https://i.pinimg.com/736x/18/7d/c1/187dc19dca6861408cfd6d824437852e.jpg",
+    image: "https://i.pinimg.com/736x/18/7d/c1/187dc19dca6861408cfd6d824437852e.jpg",
     myNode: ["all"],
     myZoom: 0.8,
     price: 20,
+    sizeGuide: miniSkirt_guide,
     parts: miniSkirtParts.keys().map(miniSkirtParts),
   },
   {
@@ -329,14 +341,14 @@ export const mainFemaleCustomize = [
     ],
     myZoom: 0.6,
     price: 20,
+    sizeGuide: bootyShorts_guide,
     parts: bootyShortsParts.keys().map(bootyShortsParts),
   },
   {
     id: uuid(),
     name: "Trousers",
     model: trousers,
-    image:
-      "https://th.bing.com/th/id/R.4bc7f18679c3f2be48f44daefe523175?rik=zl2oxw9NZ7WSYw&riu=http%3a%2f%2fnibh.com%2fwp-content%2fuploads%2f2017%2f05%2fLP3.jpeg&ehk=pofT6edwVxSrGznLoVPwRpmV4ZLjt7oYMlkOzLi%2bms0%3d&risl=&pid=ImgRaw&r=0",
+    image: "https://th.bing.com/th/id/R.4bc7f18679c3f2be48f44daefe523175?rik=zl2oxw9NZ7WSYw&riu=http%3a%2f%2fnibh.com%2fwp-content%2fuploads%2f2017%2f05%2fLP3.jpeg&ehk=pofT6edwVxSrGznLoVPwRpmV4ZLjt7oYMlkOzLi%2bms0%3d&risl=&pid=ImgRaw&r=0",
     myNode: [
       "left_leg",
       "left_leg_edge",
@@ -348,16 +360,14 @@ export const mainFemaleCustomize = [
     ],
     myZoom: 0.7,
     price: 20,
+    // sizeGuide: trousers_guide,
     parts: trousersParts.keys().map(trousersParts),
   },
   {
     id: uuid(),
     name: "Leggings",
     model: leggings,
-    image:
-      "https://i5.walmartimages.com/asr/8f17c018-a54f-403f-bda5-6b726d940ff6.38077f69b4dc21dbee1253fd234148ff.jpeg?odnHeight=612&odnWidth=612&odnBg=FFFFFF",
-    // image:
-    //   "https://cdna.lystit.com/photos/yoox/0a0e7406/vero-moda-Black-Casual-Pants.jpeg",
+    image: "https://i5.walmartimages.com/asr/8f17c018-a54f-403f-bda5-6b726d940ff6.38077f69b4dc21dbee1253fd234148ff.jpeg?odnHeight=612&odnWidth=612&odnBg=FFFFFF",
     myNode: [
       "left_leg",
       "left_leg_edge",
@@ -369,8 +379,10 @@ export const mainFemaleCustomize = [
     ],
     myZoom: 0.8,
     price: 20,
+    sizeGuide: leggings_guide,
     parts: leggingsParts.keys().map(leggingsParts),
   },
 ];
+
 
 
