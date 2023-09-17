@@ -59,7 +59,19 @@ export const mainMaleCustomize = [
     price: 20,
     sizeGuide: tshirt_guide,
     sizePattern: tshirt_pattern,
-    parts: tshirtParts.keys().map(tshirtParts)
+    parts: tshirtParts.keys().map(tshirtParts),
+    sizeForms: [
+      {
+        label: "Length (cm)",
+        value: "",
+       
+      },
+      {
+        label: "Width (cm)",
+        value: "",
+      },
+      // Add more form fields as needed
+    ],
   },
   {
     id: uuid(),
@@ -71,6 +83,21 @@ export const mainMaleCustomize = [
     price: 20,
     sizeGuide: tshirtlong_guide,
     parts: tshirtLongParts.keys().map(tshirtLongParts),
+    sizeForms: [
+      {
+        label: "Chest (cm)",
+        
+      },
+      {
+        label: "Body Length (cm)",
+        
+      },
+      {
+        label: "Sleeve Length (cm)",
+        
+      },
+      // Add more form fields as needed
+    ],
   },
   {
     id: uuid(),
@@ -84,6 +111,25 @@ export const mainMaleCustomize = [
     price: 30,
     sizeGuide: shirt_guide,
     parts: shirtParts.keys().map(shirtParts),
+    sizeForms: [
+      {
+        label: "Bust (cm)",
+       
+      },
+      {
+        label: "lenght (kg)",
+        
+      },
+      {
+        label: "Shoulder",
+        
+      },
+      {
+        label: "Sleeve length",
+        
+      },
+      // Add more form fields as needed
+    ],
   },
   {
     id: uuid(),
@@ -97,6 +143,29 @@ export const mainMaleCustomize = [
     price: 30,
     sizeGuide: shirtlong_guide,
     parts: shirtLongParts.keys().map(shirtLongParts),
+    sizeForms: [
+      {
+        label: "Chest (cm)",
+        
+      },
+      {
+        label: "Body Length (cm)",
+        
+      },
+      {
+        label: "Sleeve Length (cm)",
+        
+      },
+      {
+        label: "Waist (cm)",
+        
+      },
+      {
+        label: "Collar (cm)",
+        
+      },
+      // Add more form fields as needed
+    ],
   },
   {
     id: uuid(),
@@ -108,6 +177,21 @@ export const mainMaleCustomize = [
     price: 55,
     // sizeGuide: top_down_guide,
     parts: topndownParts.keys().map(topndownParts),
+    sizeForms: [
+      {
+        label: "Chest (cm)",
+        
+      },
+      {
+        label: "Body Length (cm)",
+        
+      },
+      {
+        label: "Sleeve Length (cm)",
+        
+      },
+      // Add more form fields as needed
+    ],
   },
   {
     id: uuid(),
@@ -121,6 +205,21 @@ export const mainMaleCustomize = [
     price: 35,
     // sizeGuide: cloak_guide,
     parts: topParts.keys().map(topParts),
+    sizeForms: [
+      {
+        label: "Chest (cm)",
+        
+      },
+      {
+        label: "Body Length (cm)",
+        
+      },
+      {
+        label: "Sleeve Length (cm)",
+        
+      },
+      // Add more form fields as needed
+    ],
   },
   {
     id: uuid(),
@@ -132,6 +231,21 @@ export const mainMaleCustomize = [
     price: 20,
     sizeGuide: blazer_guide,
     parts: blazerParts.keys().map(blazerParts),
+    sizeForms: [
+      {
+        label: "Chest (cm)",
+        
+      },
+      {
+        label: "Body Length (cm)",
+        
+      },
+      {
+        label: "Sleeve Length (cm)",
+        
+      },
+      // Add more form fields as needed
+    ],
   },
   {
     id: uuid(),
@@ -144,6 +258,21 @@ export const mainMaleCustomize = [
     price: 22,
     sizeGuide: trouser_guide,
     parts: trouserParts.keys().map(trouserParts),
+    sizeForms: [
+      {
+        label: "Chest (cm)",
+        
+      },
+      {
+        label: "Body Length (cm)",
+        
+      },
+      {
+        label: "Sleeve Length (cm)",
+        
+      },
+      // Add more form fields as needed
+    ],
   },
   {
     id: uuid(),
@@ -157,6 +286,21 @@ export const mainMaleCustomize = [
     price: 30,
     sizeGuide: summer_shorts_guide,
     parts: summerShortsParts.keys().map(summerShortsParts),
+    sizeForms: [
+      {
+        label: "Chest (cm)",
+        
+      },
+      {
+        label: "Body Length (cm)",
+        
+      },
+      {
+        label: "Sleeve Length (cm)",
+        
+      },
+      // Add more form fields as needed
+    ],
   },
   {
     id: uuid(),
@@ -169,6 +313,21 @@ export const mainMaleCustomize = [
     myY: 10,
     price: 30,
     sizeGuide: material_shorts_guide,
-    parts: materialShortsParts.keys().map(materialShortsParts)
+    parts: materialShortsParts.keys().map(materialShortsParts),
+    sizeForms: [
+      {
+        label: "Chest (cm)",
+        
+      },
+      {
+        label: "Body Length (cm)",
+        
+      },
+      {
+        label: "Sleeve Length (cm)",
+        
+      },
+      // Add more form fields as needed
+    ],
   },
 ];

@@ -201,10 +201,22 @@ const Configurator = () => {
 
   //size guide popup
   const [visible, setVisible] = useState(false);
-  const [height, setHeight] = useState("");
-  const [weight, setWeight] = useState("");
-  const [chest, setChest] = useState("");
-  const [waist, setWaist] = useState("");
+  
+  // Create a state object to store the form field values
+  const [sizeFormValues, setSizeFormValues] = useState(
+    selectedClothing.sizeForms.reduce((acc, formField) => {
+      acc[formField.label] = formField.value;
+      return acc;
+    }, {})
+  );
+
+  // Handle changes in the size form fields
+  const handleSizeFormChange = (label, value) => {
+    setSizeFormValues((prevValues) => ({
+      ...prevValues,
+      [label]: value,
+    }));
+  };
 
   //total price
   const total = (
@@ -231,10 +243,7 @@ const Configurator = () => {
             sizeOptions.find((option) => option.value === selectedSize)?.label
           }
           modelImage={stateImage}
-          height={height}
-          weight={weight}
-          chest={chest}
-          waist={waist}
+          customSizeValues={sizeFormValues} // Pass the sizeFormValues as a prop
         />
       ) : (
         <>
@@ -287,51 +296,40 @@ const Configurator = () => {
                           alt="size-guide"
                         />
                       </p>
+                      {selectedClothing.sizePattern ? (
+                        <p className="m-0">
+                          <img
+                            src={selectedClothing.sizePattern}
+                            width="100%"
+                            alt="size-pattern"
+                          />
+                        </p>
+                      ) : (
+                        ""
+                      )}
 
                       <form>
                         <h4 className="mt-3">
                           Customize Your Own Measurements
                         </h4>
-                        <div className="d-flex">
-                          <div className="m-3">
-                            <label className="form-label">Height (cm)</label>
+                        {selectedClothing.sizeForms.map((formField) => (
+                          <div className="m-3" key={formField.label}>
+                            <label className="form-label">
+                              {formField.label}
+                            </label>
                             <input
                               type="number"
                               className="form-control"
-                              value={height}
-                              onChange={(e) => setHeight(e.target.value)}
+                              value={sizeFormValues[formField.label]}
+                              onChange={(e) =>
+                                handleSizeFormChange(
+                                  formField.label,
+                                  e.target.value
+                                )
+                              }
                             />
                           </div>
-                          <div className="m-3">
-                            <label className="form-label">Weight (kg)</label>
-                            <input
-                              type="number"
-                              className="form-control"
-                              value={weight}
-                              onChange={(e) => setWeight(e.target.value)}
-                            />
-                          </div>
-                        </div>
-                        <div className="d-flex">
-                          <div className="m-3">
-                            <label className="form-label">Chest (cm)</label>
-                            <input
-                              type="number"
-                              className="form-control"
-                              value={chest}
-                              onChange={(e) => setChest(e.target.value)}
-                            />
-                          </div>
-                          <div className="m-3">
-                            <label className="form-label">Waist (cm)</label>
-                            <input
-                              type="number"
-                              className="form-control"
-                              value={waist}
-                              onChange={(e) => setWaist(e.target.value)}
-                            />
-                          </div>
-                        </div>
+                        ))}
                       </form>
                     </div>
                   </Dialog>
@@ -623,7 +621,10 @@ const Configurator = () => {
                 </div>
 
                 {/* parts images start */}
-                <PartImages selectedClothing={selectedClothing} selectedPart={selectedPart} />
+                <PartImages
+                  selectedClothing={selectedClothing}
+                  selectedPart={selectedPart}
+                />
                 {/* parts images end */}
               </div>
             </div>

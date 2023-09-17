@@ -20,12 +20,9 @@ const Confirmation = ({
   selectedParts,
   selectedSize,
   modelImage,
-  height,
-  weight,
-  chest,
-  waist,
+  customSizeValues,
 }) => {
-  const toast = useRef(null); // Create a ref for the Toast component
+  const toast = useRef(null);
 
   const componentRef = useRef();
   const handlePrint = useReactToPrint({
@@ -120,10 +117,7 @@ const Confirmation = ({
         selectedSize={selectedSize}
         ref={componentRef}
         modelImage={modelImage}
-        height={height}
-        weight={weight}
-        chest={chest}
-        waist={waist}
+        customSizeValues={customSizeValues}
       />
       <div className="container justify-content-center">
         <div className="d-flex">
@@ -151,10 +145,7 @@ export const OrderDetail = React.forwardRef(
       selectedParts,
       selectedSize,
       modelImage,
-      height,
-      weight,
-      chest,
-      waist,
+      customSizeValues
     },
     ref
   ) => {
@@ -162,19 +153,28 @@ export const OrderDetail = React.forwardRef(
       <div ref={ref} className="row">
         <div className="col-md-6">
           <p className="h5 mt-3 MB-5">
-            <img src={modelImage} alt="model img" />
+            <img src={modelImage} alt="model img"  width="80%"/>
           </p>
           <p className="h5 mt-4">Selected Size: {selectedSize || "N/A"}</p>
-          <p className="h5 mt-3">Price: {currencySymbol}{total}</p>
+          <p className="h5 mt-3">
+            Price: {currencySymbol}
+            {total}
+          </p>
+          <div>
+            <div className="custom-size-values">
+              <p className="h5 mt-4">Client's custom size values:</p>
+              <ul>
+                {Object.entries(customSizeValues).map(([label, value]) => (
+                  <li key={label}>
+                    <strong>{label}:</strong> {value}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
           <p>Estimated Shipping Time: {estimatedShippingTime}</p>
           <p>Expected to be Ready By: {readyBy}</p>
-          <div>
-            <h6>Special Measurements</h6>
-            {height !== "" && <h5>Height: {height} cm</h5>}
-            {weight !== "" && <h5>Weight: {weight} cm</h5>}
-            {chest !== "" && <h5>Chest: {chest} cm</h5>}
-            {waist !== "" && <h5>Waist: {waist} cm</h5>}{" "}
-          </div>
+          
         </div>
         <div className="col-md-6">
           <div className="mt-4">
