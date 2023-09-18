@@ -59,11 +59,6 @@ export const mainFootwear = [
     sizeForms: [
       {
         label: "Length (inch)",
-        value: "",
-      },
-      {
-        label: "Width (inch)",
-        value: "",
       },
       // Add more form fields as needed
     ],
@@ -82,11 +77,6 @@ export const mainFootwear = [
     sizeForms: [
       {
         label: "Length (inch)",
-        value: "",
-      },
-      {
-        label: "Width (inch)",
-        value: "",
       },
       // Add more form fields as needed
     ],
@@ -104,11 +94,6 @@ export const mainFootwear = [
     sizeForms: [
       {
         label: "Length (inch)",
-        value: "",
-      },
-      {
-        label: "Width (inch)",
-        value: "",
       },
       // Add more form fields as needed
     ],
@@ -126,12 +111,10 @@ export const mainFootwear = [
     sizeGuide: heels_guide,
     sizeForms: [
       {
-        label: "Length (inch)",
-        value: "",
+        label: "Heel-to-Toe Length (inch)",
       },
       {
-        label: "Width (inch)",
-        value: "",
+        label: "Heel Height (inch)",
       },
       // Add more form fields as needed
     ],

@@ -59,12 +59,10 @@ export const mainUnisex = [
     sizeGuide: sash_guide, // Adding size guide for Sash
     sizeForms: [
       {
-        label: 'Length (inch)',
-        value: '',
+        label: 'Width (inch)',
       },
       {
-        label: 'Width (inch)',
-        value: '',
+        label: 'Height (inch)',
       },
       // Add more form fields as needed
     ],
@@ -82,11 +80,15 @@ export const mainUnisex = [
     sizeForms: [
       {
         label: 'Length (inch)',
-        value: '',
+      },
+      {
+        label: 'Height (inch)',
+      },
+      {
+        label: 'Depth (inch)',
       },
       {
         label: 'Width (inch)',
-        value: '',
       },
       // Add more form fields as needed
     ],
@@ -112,11 +114,6 @@ export const mainUnisex = [
     sizeForms: [
       {
         label: 'Length (inch)',
-        value: '',
-      },
-      {
-        label: 'Width (inch)',
-        value: '',
       },
       // Add more form fields as needed
     ],
@@ -143,12 +140,22 @@ export const mainUnisex = [
     sizeGuide: jacket_guide, // Adding size guide for Jacket
     sizeForms: [
       {
-        label: 'Length (inch)',
-        value: '',
+        label: 'Chest (inch)',
       },
       {
-        label: 'Width (inch)',
-        value: '',
+        label: 'Waist (inch)',
+      },
+      {
+        label: 'Bottom (inch)',
+      },
+      {
+        label: 'Shoulder-to-Shoulder (inch)',
+      },
+      {
+        label: 'Arm Length (inch)',
+      },
+      {
+        label: 'Back (inch)',
       },
       // Add more form fields as needed
     ],

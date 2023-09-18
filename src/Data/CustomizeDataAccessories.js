@@ -140,18 +140,19 @@ export const mainMaleAccessories = [
     image: un2,
     model: tie,
     myNode: ["lower_section", "top_section"],
-    myZoom: 0.6,
+    myZoom: 0.75,
     price: 20,
     parts: flyingTieParts.keys().map(flyingTieParts),
     sizeGuide: flyingTie_guide, // Adding size guide for Flying Tie
     sizeForms: [
       {
-        label: "Length (inch)",
-        value: "",
+        label: "Tie's Head (inch)",
       },
       {
-        label: "Width (inch)",
-        value: "",
+        label: "Tie's End (inch)",
+      },
+      {
+        label: "Length (inch)",
       },
       // Add more form fields as needed
     ],
@@ -172,11 +173,6 @@ export const mainFemaleAccessories = [
     sizeForms: [
       {
         label: "Length (inch)",
-        value: "",
-      },
-      {
-        label: "Width (inch)",
-        value: "",
       },
       // Add more form fields as needed
     ],
@@ -193,12 +189,13 @@ export const mainFemaleAccessories = [
     sizeGuide: bikini_guide, // Adding size guide for Bikini
     sizeForms: [
       {
-        label: "Length (inch)",
-        value: "",
+        label: "Under Bust (inch)",
       },
       {
-        label: "Width (inch)",
-        value: "",
+        label: "Waist (inch)",
+      },
+      {
+        label: "Hip (inch)",
       },
       // Add more form fields as needed
     ],

@@ -346,7 +346,7 @@ export const mainFemaleCustomize = [
     model: kaba_slit,
     image: kabanslit,
     myNode: ["left_hand", "right_hand", "top", "top_pattern", "down"],
-    myZoom: 0.9,
+    myZoom: 1.15,
     price: 20,
     // sizeGuide: kabaSlit_guide,
     parts: kabaSlitParts.keys().map(kabaSlitParts),
