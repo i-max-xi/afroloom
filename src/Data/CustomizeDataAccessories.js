@@ -80,8 +80,18 @@ export const mainMaleAccessories = [
     price: 20,
     parts: roundCapParts.keys().map(roundCapParts),
     // sizeGuide: roundCap_guide,
+    sizeForms: [
+      {
+        label: "Length (inch)",
+        value: "",
+      },
+      {
+        label: "Width (inch)",
+        value: "",
+      },
+      // Add more form fields as needed
+    ],
   },
-
   {
     id: uuid(),
     name: "Knitted Cap",
@@ -92,8 +102,18 @@ export const mainMaleAccessories = [
     price: 20,
     parts: knittedCapParts.keys().map(knittedCapParts),
     // sizeGuide: knittedCap_guide,
+    sizeForms: [
+      {
+        label: "Length (inch)",
+        value: "",
+      },
+      {
+        label: "Width (inch)",
+        value: "",
+      },
+      // Add more form fields as needed
+    ],
   },
-
   {
     name: "Bow Tie",
     image: "https://th.bing.com/th/id/OIP.9hwERmR98yWFEa-sH29WIAAAAA?pid=ImgDet&w=400&h=400&rs=1",
@@ -103,17 +123,38 @@ export const mainMaleAccessories = [
     price: 20,
     parts: bowTieParts.keys().map(bowTieParts),
     sizeGuide: bowTie_guide, // Adding size guide for Bow Tie
+    sizeForms: [
+      {
+        label: "Length (inch)",
+        value: "",
+      },
+      {
+        label: "Width (inch)",
+        value: "",
+      },
+      // Add more form fields as needed
+    ],
   },
-
   {
     name: "Flying Tie",
     image: un2,
     model: tie,
-    myNode: ["lower_section" ,"top_section"],
+    myNode: ["lower_section", "top_section"],
     myZoom: 0.6,
     price: 20,
     parts: flyingTieParts.keys().map(flyingTieParts),
     sizeGuide: flyingTie_guide, // Adding size guide for Flying Tie
+    sizeForms: [
+      {
+        label: "Length (inch)",
+        value: "",
+      },
+      {
+        label: "Width (inch)",
+        value: "",
+      },
+      // Add more form fields as needed
+    ],
   },
 ];
 
@@ -128,6 +169,17 @@ export const mainFemaleAccessories = [
     price: 55,
     parts: handbagParts.keys().map(handbagParts),
     // sizeGuide: handbag_guide,
+    sizeForms: [
+      {
+        label: "Length (inch)",
+        value: "",
+      },
+      {
+        label: "Width (inch)",
+        value: "",
+      },
+      // Add more form fields as needed
+    ],
   },
   {
     id: uuid(),
@@ -139,5 +191,17 @@ export const mainFemaleAccessories = [
     price: 55,
     parts: bikiniParts.keys().map(bikiniParts),
     sizeGuide: bikini_guide, // Adding size guide for Bikini
+    sizeForms: [
+      {
+        label: "Length (inch)",
+        value: "",
+      },
+      {
+        label: "Width (inch)",
+        value: "",
+      },
+      // Add more form fields as needed
+    ],
   },
 ];
+

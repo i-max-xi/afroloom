@@ -57,6 +57,17 @@ export const mainUnisex = [
     price: 55,
     parts: sashParts.keys().map(sashParts),
     sizeGuide: sash_guide, // Adding size guide for Sash
+    sizeForms: [
+      {
+        label: 'Length (inch)',
+        value: '',
+      },
+      {
+        label: 'Width (inch)',
+        value: '',
+      },
+      // Add more form fields as needed
+    ],
   },
   {
     id: uuid(),
@@ -68,6 +79,17 @@ export const mainUnisex = [
     price: 55,
     parts: miniBagParts.keys().map(miniBagParts),
     sizeGuide: miniBag_guide, // Adding size guide for Mini Bag
+    sizeForms: [
+      {
+        label: 'Length (inch)',
+        value: '',
+      },
+      {
+        label: 'Width (inch)',
+        value: '',
+      },
+      // Add more form fields as needed
+    ],
   },
   {
     id: uuid(),
@@ -87,6 +109,17 @@ export const mainUnisex = [
     price: 55,
     parts: backpackParts.keys().map(backpackParts),
     sizeGuide: backpack_guide, // Adding size guide for Backpack
+    sizeForms: [
+      {
+        label: 'Length (inch)',
+        value: '',
+      },
+      {
+        label: 'Width (inch)',
+        value: '',
+      },
+      // Add more form fields as needed
+    ],
   },
   {
     id: uuid(),
@@ -108,6 +141,18 @@ export const mainUnisex = [
     price: 55,
     parts: jacketParts.keys().map(jacketParts),
     sizeGuide: jacket_guide, // Adding size guide for Jacket
+    sizeForms: [
+      {
+        label: 'Length (inch)',
+        value: '',
+      },
+      {
+        label: 'Width (inch)',
+        value: '',
+      },
+      // Add more form fields as needed
+    ],
   },
 ];
+
 

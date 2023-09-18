@@ -55,7 +55,18 @@ export const mainFootwear = [
     myZoom: 0.8,
     price: 20,
     parts: flexShoeParts.keys().map(flexShoeParts),
-    // sizeGuide: flatShoe_guide, 
+    // sizeGuide: flatShoe_guide,
+    sizeForms: [
+      {
+        label: "Length (inch)",
+        value: "",
+      },
+      {
+        label: "Width (inch)",
+        value: "",
+      },
+      // Add more form fields as needed
+    ],
   },
   {
     id: uuid(),
@@ -67,7 +78,18 @@ export const mainFootwear = [
     myZoom: 0.7,
     price: 20,
     parts: sneakerParts.keys().map(sneakerParts),
-    // sizeGuide: sneaker_guide, 
+    // sizeGuide: sneaker_guide,
+    sizeForms: [
+      {
+        label: "Length (inch)",
+        value: "",
+      },
+      {
+        label: "Width (inch)",
+        value: "",
+      },
+      // Add more form fields as needed
+    ],
   },
   {
     id: uuid(),
@@ -78,7 +100,18 @@ export const mainFootwear = [
     myZoom: 0.8,
     price: 20,
     parts: slippersParts.keys().map(slippersParts),
-    // sizeGuide: slipper_guide, 
+    // sizeGuide: slipper_guide,
+    sizeForms: [
+      {
+        label: "Length (inch)",
+        value: "",
+      },
+      {
+        label: "Width (inch)",
+        value: "",
+      },
+      // Add more form fields as needed
+    ],
   },
   {
     id: uuid(),
@@ -90,7 +123,19 @@ export const mainFootwear = [
     myZoom: 0.6,
     price: 20,
     parts: heelsParts.keys().map(heelsParts),
-    sizeGuide: heels_guide, // Adding size guide for Heels
+    sizeGuide: heels_guide,
+    sizeForms: [
+      {
+        label: "Length (inch)",
+        value: "",
+      },
+      {
+        label: "Width (inch)",
+        value: "",
+      },
+      // Add more form fields as needed
+    ],
   },
 ];
+
 

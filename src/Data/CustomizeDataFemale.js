@@ -162,6 +162,17 @@ export const mainFemaleCustomize = [
     price: 20,
     sizeGuide: tshirt_guide,
     parts: tShirtShortParts.keys().map(tShirtShortParts),
+    sizeForms: [
+      {
+        label: "Length (inch)",
+        value: "",
+      },
+      {
+        label: "Width (inch)",
+        value: "",
+      },
+      // Add more form fields as needed
+    ],
   },
   {
     id: uuid(),
@@ -173,6 +184,17 @@ export const mainFemaleCustomize = [
     price: 20,
     sizeGuide: tshirtlong_guide,
     parts: tShirtLongParts.keys().map(tShirtLongParts),
+    sizeForms: [
+      {
+        label: "Length (inch)",
+        value: "",
+      },
+      {
+        label: "Width (inch)",
+        value: "",
+      },
+      // Add more form fields as needed
+    ],
   },
   {
     id: uuid(),
@@ -184,6 +206,17 @@ export const mainFemaleCustomize = [
     price: 30,
     sizeGuide: extraShortShirt_guide,
     parts: extraShortShirtParts.keys().map(extraShortShirtParts),
+    sizeForms: [
+      {
+        label: "Length (inch)",
+        value: "",
+      },
+      {
+        label: "Width (inch)",
+        value: "",
+      },
+      // Add more form fields as needed
+    ],
   },
   {
     id: uuid(),
@@ -195,6 +228,17 @@ export const mainFemaleCustomize = [
     price: 30,
     // sizeGuide: extraLongShirt_guide,
     parts: extraLongShirtParts.keys().map(extraLongShirtParts),
+    sizeForms: [
+      {
+        label: "Length (inch)",
+        value: "",
+      },
+      {
+        label: "Width (inch)",
+        value: "",
+      },
+      // Add more form fields as needed
+    ],
   },
   {
     id: uuid(),
@@ -206,6 +250,17 @@ export const mainFemaleCustomize = [
     price: 20,
     sizeGuide: cropTop_guide,
     parts: cropTopParts.keys().map(cropTopParts),
+    sizeForms: [
+      {
+        label: "Length (inch)",
+        value: "",
+      },
+      {
+        label: "Width (inch)",
+        value: "",
+      },
+      // Add more form fields as needed
+    ],
   },
   {
     id: uuid(),
@@ -224,6 +279,17 @@ export const mainFemaleCustomize = [
     price: 20,
     // sizeGuide: normalTop_guide,
     parts: normalTopParts.keys().map(normalTopParts),
+    sizeForms: [
+      {
+        label: "Length (inch)",
+        value: "",
+      },
+      {
+        label: "Width (inch)",
+        value: "",
+      },
+      // Add more form fields as needed
+    ],
   },
   {
     id: uuid(),
@@ -244,6 +310,17 @@ export const mainFemaleCustomize = [
     price: 20,
     // sizeGuide: topAndDown_guide,
     parts: topAndDownParts.keys().map(topAndDownParts),
+    sizeForms: [
+      {
+        label: "Length (inch)",
+        value: "",
+      },
+      {
+        label: "Width (inch)",
+        value: "",
+      },
+      // Add more form fields as needed
+    ],
   },
   {
     id: uuid(),
@@ -263,6 +340,17 @@ export const mainFemaleCustomize = [
     price: 20,
     // sizeGuide: dress_guide,
     parts: dressParts.keys().map(dressParts),
+    sizeForms: [
+      {
+        label: "Length (inch)",
+        value: "",
+      },
+      {
+        label: "Width (inch)",
+        value: "",
+      },
+      // Add more form fields as needed
+    ],
   },
   {
     id: uuid(),
@@ -274,6 +362,17 @@ export const mainFemaleCustomize = [
     price: 20,
     // sizeGuide: kabaSlit_guide,
     parts: kabaSlitParts.keys().map(kabaSlitParts),
+    sizeForms: [
+      {
+        label: "Length (inch)",
+        value: "",
+      },
+      {
+        label: "Width (inch)",
+        value: "",
+      },
+      // Add more form fields as needed
+    ],
   },
   {
     id: uuid(),
@@ -292,6 +391,17 @@ export const mainFemaleCustomize = [
     price: 20,
     sizeGuide: blazer_guide,
     parts: blazerParts.keys().map(blazerParts),
+    sizeForms: [
+      {
+        label: "Length (inch)",
+        value: "",
+      },
+      {
+        label: "Width (inch)",
+        value: "",
+      },
+      // Add more form fields as needed
+    ],
   },
   {
     id: uuid(),
@@ -303,6 +413,17 @@ export const mainFemaleCustomize = [
     price: 20,
     // sizeGuide: cloak_guide,
     parts: cloakParts.keys().map(cloakParts),
+    sizeForms: [
+      {
+        label: "Length (inch)",
+        value: "",
+      },
+      {
+        label: "Width (inch)",
+        value: "",
+      },
+      // Add more form fields as needed
+    ],
   },
   {
     id: uuid(),
@@ -314,6 +435,17 @@ export const mainFemaleCustomize = [
     price: 20,
     sizeGuide: skirt_guide,
     parts: skirtParts.keys().map(skirtParts),
+    sizeForms: [
+      {
+        label: "Length (inch)",
+        value: "",
+      },
+      {
+        label: "Width (inch)",
+        value: "",
+      },
+      // Add more form fields as needed
+    ],
   },
   {
     id: uuid(),
@@ -325,6 +457,17 @@ export const mainFemaleCustomize = [
     price: 20,
     sizeGuide: miniSkirt_guide,
     parts: miniSkirtParts.keys().map(miniSkirtParts),
+    sizeForms: [
+      {
+        label: "Length (inch)",
+        value: "",
+      },
+      {
+        label: "Width (inch)",
+        value: "",
+      },
+      // Add more form fields as needed
+    ],
   },
   {
     id: uuid(),
@@ -343,6 +486,17 @@ export const mainFemaleCustomize = [
     price: 20,
     sizeGuide: bootyShorts_guide,
     parts: bootyShortsParts.keys().map(bootyShortsParts),
+    sizeForms: [
+      {
+        label: "Length (inch)",
+        value: "",
+      },
+      {
+        label: "Width (inch)",
+        value: "",
+      },
+      // Add more form fields as needed
+    ],
   },
   {
     id: uuid(),
@@ -362,6 +516,17 @@ export const mainFemaleCustomize = [
     price: 20,
     // sizeGuide: trousers_guide,
     parts: trousersParts.keys().map(trousersParts),
+    sizeForms: [
+      {
+        label: "Length (inch)",
+        value: "",
+      },
+      {
+        label: "Width (inch)",
+        value: "",
+      },
+      // Add more form fields as needed
+    ],
   },
   {
     id: uuid(),
@@ -381,8 +546,20 @@ export const mainFemaleCustomize = [
     price: 20,
     sizeGuide: leggings_guide,
     parts: leggingsParts.keys().map(leggingsParts),
+    sizeForms: [
+      {
+        label: "Length (inch)",
+        value: "",
+      },
+      {
+        label: "Width (inch)",
+        value: "",
+      },
+      // Add more form fields as needed
+    ],
   },
 ];
+
 
 
 
