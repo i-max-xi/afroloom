@@ -62,12 +62,12 @@ export const mainMaleCustomize = [
     parts: tshirtParts.keys().map(tshirtParts),
     sizeForms: [
       {
-        label: "Length (cm)",
+        label: "Length (inch)",
         value: "",
        
       },
       {
-        label: "Width (cm)",
+        label: "Width (inch)",
         value: "",
       },
       // Add more form fields as needed
@@ -85,15 +85,15 @@ export const mainMaleCustomize = [
     parts: tshirtLongParts.keys().map(tshirtLongParts),
     sizeForms: [
       {
-        label: "Chest (cm)",
+        label: "Chest Width (inch)",
         
       },
       {
-        label: "Body Length (cm)",
+        label: "Body Length (inch)",
         
       },
       {
-        label: "Sleeve Length (cm)",
+        label: "Sleeve Length (inch)",
         
       },
       // Add more form fields as needed
@@ -113,19 +113,19 @@ export const mainMaleCustomize = [
     parts: shirtParts.keys().map(shirtParts),
     sizeForms: [
       {
-        label: "Bust (cm)",
+        label: "Bust (inch)",
        
       },
       {
-        label: "lenght (kg)",
+        label: "Length (inch)",
         
       },
       {
-        label: "Shoulder",
+        label: "Shoulder (inch) ",
         
       },
       {
-        label: "Sleeve length",
+        label: "Sleeve length (inch)",
         
       },
       // Add more form fields as needed
@@ -145,24 +145,19 @@ export const mainMaleCustomize = [
     parts: shirtLongParts.keys().map(shirtLongParts),
     sizeForms: [
       {
-        label: "Chest (cm)",
-        
+        label: "Length (inch)",
       },
       {
-        label: "Body Length (cm)",
-        
+        label: "Chest (inch)",
       },
       {
-        label: "Sleeve Length (cm)",
-        
+        label: "Sleeve (inch)",
       },
       {
-        label: "Waist (cm)",
-        
+        label: "Waist (inch)",
       },
       {
-        label: "Collar (cm)",
-        
+        label: "Collar (inch)",
       },
       // Add more form fields as needed
     ],
@@ -179,15 +174,15 @@ export const mainMaleCustomize = [
     parts: topndownParts.keys().map(topndownParts),
     sizeForms: [
       {
-        label: "Chest (cm)",
+        label: "Chest (inch)",
         
       },
       {
-        label: "Body Length (cm)",
+        label: "Body Length (inch)",
         
       },
       {
-        label: "Sleeve Length (cm)",
+        label: "Sleeve Length (inch)",
         
       },
       // Add more form fields as needed
@@ -207,15 +202,15 @@ export const mainMaleCustomize = [
     parts: topParts.keys().map(topParts),
     sizeForms: [
       {
-        label: "Chest (cm)",
+        label: "Chest (inch)",
         
       },
       {
-        label: "Body Length (cm)",
+        label: "Body Length (inch)",
         
       },
       {
-        label: "Sleeve Length (cm)",
+        label: "Sleeve Length (inch)",
         
       },
       // Add more form fields as needed
@@ -233,17 +228,24 @@ export const mainMaleCustomize = [
     parts: blazerParts.keys().map(blazerParts),
     sizeForms: [
       {
-        label: "Chest (cm)",
-        
+        label: "Chest width (inch)",
       },
       {
-        label: "Body Length (cm)",
-        
+        label: "Waist width (inch)",
       },
       {
-        label: "Sleeve Length (cm)",
-        
+        label: "Sleeve Length (inch)",
       },
+      {
+        label: "Body Length (inch)",
+      },
+      {
+        label: "Shoulder width (inch)",
+      },
+      {
+        label: "Bottom width (inch)",
+      },
+      
       // Add more form fields as needed
     ],
   },
@@ -260,16 +262,19 @@ export const mainMaleCustomize = [
     parts: trouserParts.keys().map(trouserParts),
     sizeForms: [
       {
-        label: "Chest (cm)",
-        
+        label: "Hip (inch)",
       },
       {
-        label: "Body Length (cm)",
-        
+        label: "Thigh (inch)",
       },
       {
-        label: "Sleeve Length (cm)",
-        
+        label: "Knee (inch)",
+      },
+      {
+        label: "Hem (inch)",
+      },
+      {
+        label: "Height (inch)",
       },
       // Add more form fields as needed
     ],
@@ -287,18 +292,18 @@ export const mainMaleCustomize = [
     sizeGuide: summer_shorts_guide,
     parts: summerShortsParts.keys().map(summerShortsParts),
     sizeForms: [
+      // {
+      //   label: "Chest (inch)",
+        
+      // },
       {
-        label: "Chest (cm)",
+        label: "Length (inch)",
         
       },
-      {
-        label: "Body Length (cm)",
+      // {
+      //   label: "Sleeve Length (inch)",
         
-      },
-      {
-        label: "Sleeve Length (cm)",
-        
-      },
+      // },
       // Add more form fields as needed
     ],
   },
@@ -315,18 +320,18 @@ export const mainMaleCustomize = [
     sizeGuide: material_shorts_guide,
     parts: materialShortsParts.keys().map(materialShortsParts),
     sizeForms: [
+      // {
+      //   label: "Chest (inch)",
+        
+      // },
       {
-        label: "Chest (cm)",
+        label: "Length (inch)",
         
       },
-      {
-        label: "Body Length (cm)",
+      // {
+      //   label: "Sleeve Length (inch)",
         
-      },
-      {
-        label: "Sleeve Length (cm)",
-        
-      },
+      // },
       // Add more form fields as needed
     ],
   },

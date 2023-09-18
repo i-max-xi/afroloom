@@ -239,11 +239,12 @@ const Configurator = () => {
           estimatedShippingTime="2-3 business days"
           readyBy="August 15, 2023"
           selectedParts={selectedParts}
+          setShowConfirmation={setShowConfirmation}
           selectedSize={
             sizeOptions.find((option) => option.value === selectedSize)?.label
           }
           modelImage={stateImage}
-          customSizeValues={sizeFormValues} // Pass the sizeFormValues as a prop
+          customSizeValues={sizeFormValues}
         />
       ) : (
         <>

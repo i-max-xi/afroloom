@@ -304,7 +304,7 @@ const ConfiguratorMaleAccessories = () => {
                         </h4>
                         <div className="d-flex">
                           <div className="m-3">
-                            <label className="form-label">Height (cm)</label>
+                            <label className="form-label">Height (inch)</label>
                             <input
                               type="number"
                               className="form-control"
@@ -313,7 +313,7 @@ const ConfiguratorMaleAccessories = () => {
                             />
                           </div>
                           <div className="m-3">
-                            <label className="form-label">Weight (kg)</label>
+                            <label className="form-label">Weight (inch)</label>
                             <input
                               type="number"
                               className="form-control"
@@ -324,7 +324,7 @@ const ConfiguratorMaleAccessories = () => {
                         </div>
                         <div className="d-flex">
                           <div className="m-3">
-                            <label className="form-label">Chest (cm)</label>
+                            <label className="form-label">Chest (inch)</label>
                             <input
                               type="number"
                               className="form-control"
@@ -333,7 +333,7 @@ const ConfiguratorMaleAccessories = () => {
                             />
                           </div>
                           <div className="m-3">
-                            <label className="form-label">Waist (cm)</label>
+                            <label className="form-label">Waist (inch)</label>
                             <input
                               type="number"
                               className="form-control"
