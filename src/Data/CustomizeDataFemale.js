@@ -164,12 +164,13 @@ export const mainFemaleCustomize = [
     parts: tShirtShortParts.keys().map(tShirtShortParts),
     sizeForms: [
       {
-        label: "Length (inch)",
-        value: "",
+        label: "Bust (inch)",
       },
       {
-        label: "Width (inch)",
-        value: "",
+        label: "Length (inch)",
+      },
+      {
+        label: "Sleeve (inch)",
       },
       // Add more form fields as needed
     ],
@@ -186,12 +187,14 @@ export const mainFemaleCustomize = [
     parts: tShirtLongParts.keys().map(tShirtLongParts),
     sizeForms: [
       {
-        label: "Length (inch)",
-        value: "",
+        label: "Body Length (inch)",
+      },
+      
+      {
+        label: "Chest Width (inch)",
       },
       {
-        label: "Width (inch)",
-        value: "",
+        label: "Sleeve length (inch)",
       },
       // Add more form fields as needed
     ],
@@ -208,12 +211,16 @@ export const mainFemaleCustomize = [
     parts: extraShortShirtParts.keys().map(extraShortShirtParts),
     sizeForms: [
       {
-        label: "Length (inch)",
-        value: "",
+        label: "Chest Width(inch)",
       },
       {
-        label: "Width (inch)",
-        value: "",
+        label: "Cuff (inch)",
+      },
+      {
+        label: "Sleeve Length (inch)",
+      },
+      {
+        label: "Center Back (inch)",
       },
       // Add more form fields as needed
     ],
@@ -231,11 +238,6 @@ export const mainFemaleCustomize = [
     sizeForms: [
       {
         label: "Length (inch)",
-        value: "",
-      },
-      {
-        label: "Width (inch)",
-        value: "",
       },
       // Add more form fields as needed
     ],
@@ -252,12 +254,13 @@ export const mainFemaleCustomize = [
     parts: cropTopParts.keys().map(cropTopParts),
     sizeForms: [
       {
-        label: "Length (inch)",
-        value: "",
+        label: "Bust (inch)",
       },
       {
-        label: "Width (inch)",
-        value: "",
+        label: "Length (inch)",
+      },
+      {
+        label: "Waist (inch)",
       },
       // Add more form fields as needed
     ],
@@ -282,11 +285,6 @@ export const mainFemaleCustomize = [
     sizeForms: [
       {
         label: "Length (inch)",
-        value: "",
-      },
-      {
-        label: "Width (inch)",
-        value: "",
       },
       // Add more form fields as needed
     ],
@@ -313,11 +311,6 @@ export const mainFemaleCustomize = [
     sizeForms: [
       {
         label: "Length (inch)",
-        value: "",
-      },
-      {
-        label: "Width (inch)",
-        value: "",
       },
       // Add more form fields as needed
     ],
@@ -343,11 +336,6 @@ export const mainFemaleCustomize = [
     sizeForms: [
       {
         label: "Length (inch)",
-        value: "",
-      },
-      {
-        label: "Width (inch)",
-        value: "",
       },
       // Add more form fields as needed
     ],
@@ -365,11 +353,6 @@ export const mainFemaleCustomize = [
     sizeForms: [
       {
         label: "Length (inch)",
-        value: "",
-      },
-      {
-        label: "Width (inch)",
-        value: "",
       },
       // Add more form fields as needed
     ],
@@ -393,12 +376,16 @@ export const mainFemaleCustomize = [
     parts: blazerParts.keys().map(blazerParts),
     sizeForms: [
       {
-        label: "Length (inch)",
-        value: "",
+        label: "Bust (inch)",
       },
       {
-        label: "Width (inch)",
-        value: "",
+        label: "Waist (inch)",
+      },
+      {
+        label: "Hip (inch)",
+      },
+      {
+        label: "Sleeve Length(inch)",
       },
       // Add more form fields as needed
     ],
@@ -416,11 +403,6 @@ export const mainFemaleCustomize = [
     sizeForms: [
       {
         label: "Length (inch)",
-        value: "",
-      },
-      {
-        label: "Width (inch)",
-        value: "",
       },
       // Add more form fields as needed
     ],
@@ -437,12 +419,10 @@ export const mainFemaleCustomize = [
     parts: skirtParts.keys().map(skirtParts),
     sizeForms: [
       {
-        label: "Length (inch)",
-        value: "",
+        label: "Waist (inch)",
       },
       {
-        label: "Width (inch)",
-        value: "",
+        label: "Hip (inch)",
       },
       // Add more form fields as needed
     ],
@@ -459,12 +439,10 @@ export const mainFemaleCustomize = [
     parts: miniSkirtParts.keys().map(miniSkirtParts),
     sizeForms: [
       {
-        label: "Length (inch)",
-        value: "",
+        label: "Waist (inch)",
       },
       {
-        label: "Width (inch)",
-        value: "",
+        label: "Hip (inch)",
       },
       // Add more form fields as needed
     ],
@@ -488,12 +466,13 @@ export const mainFemaleCustomize = [
     parts: bootyShortsParts.keys().map(bootyShortsParts),
     sizeForms: [
       {
-        label: "Length (inch)",
-        value: "",
+        label: "Waist (inch)",
       },
       {
-        label: "Width (inch)",
-        value: "",
+        label: "Hip (inch)",
+      },
+      {
+        label: "Length (inch)",
       },
       // Add more form fields as needed
     ],
@@ -519,11 +498,6 @@ export const mainFemaleCustomize = [
     sizeForms: [
       {
         label: "Length (inch)",
-        value: "",
-      },
-      {
-        label: "Width (inch)",
-        value: "",
       },
       // Add more form fields as needed
     ],
@@ -548,12 +522,19 @@ export const mainFemaleCustomize = [
     parts: leggingsParts.keys().map(leggingsParts),
     sizeForms: [
       {
-        label: "Length (inch)",
-        value: "",
+        label: "Waist (inch)",
       },
       {
-        label: "Width (inch)",
-        value: "",
+        label: "Hip (inch)",
+      },
+      {
+        label: "Rise (inch)",
+      },
+      {
+        label: "Length (inch)",
+      },
+      {
+        label: "Enseam (inch)",
       },
       // Add more form fields as needed
     ],
