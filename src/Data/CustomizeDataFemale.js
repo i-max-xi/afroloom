@@ -313,12 +313,11 @@ export const mainFemaleCustomize = [
     sizeModels: tshirt_model,
     parts: cropTopParts.keys().map(cropTopParts),
     sizeOptions: [
-      { label: "XS", value: 0.5 },
       { label: "S", value: 0.5 },
       { label: "M", value: 1 },
       { label: "L", value: 2 },
       { label: "XL", value: 3 },
-      { label: "XXL", value: 4 },
+      { label: "2XL", value: 4 },
       // { label: "3XL", value: 5 },
       // { label: "4XL", value: 6 },
       // { label: "5XL", value: 7 },
@@ -357,7 +356,6 @@ export const mainFemaleCustomize = [
     sizeModels: tshirt_model,
     parts: normalTopParts.keys().map(normalTopParts),
     sizeOptions: [
-      { label: "XS", value: 0.5 },
       { label: "S", value: 0.5 },
       { label: "M", value: 1 },
       { label: "L", value: 2 },
@@ -397,8 +395,6 @@ export const mainFemaleCustomize = [
     sizeModels: tshirt_model,
     parts: topAndDownParts.keys().map(topAndDownParts),
     sizeOptions: [
-      { label: "XS", value: 0.5 },
-      { label: "S", value: 0.5 },
       { label: "M", value: 1 },
       { label: "L", value: 2 },
       { label: "XL", value: 3 },
@@ -436,7 +432,6 @@ export const mainFemaleCustomize = [
     sizeModels: tshirt_model,
     parts: dressParts.keys().map(dressParts),
     sizeOptions: [
-      { label: "XS", value: 0.5 },
       { label: "S", value: 0.5 },
       { label: "M", value: 1 },
       { label: "L", value: 2 },
@@ -467,7 +462,6 @@ export const mainFemaleCustomize = [
     sizeModels: tshirt_model,
     parts: kabaSlitParts.keys().map(kabaSlitParts),
     sizeOptions: [
-      { label: "XS", value: 0.5 },
       { label: "S", value: 0.5 },
       { label: "M", value: 1 },
       { label: "L", value: 2 },
@@ -505,7 +499,6 @@ export const mainFemaleCustomize = [
     sizeModels: tshirt_model,
     parts: blazerParts.keys().map(blazerParts),
     sizeOptions: [
-      { label: "XS", value: 0.5 },
       { label: "S", value: 0.5 },
       { label: "M", value: 1 },
       { label: "L", value: 2 },
@@ -545,7 +538,6 @@ export const mainFemaleCustomize = [
     sizeModels: tshirt_model,
     parts: cloakParts.keys().map(cloakParts),
     sizeOptions: [
-      { label: "XS", value: 0.5 },
       { label: "S", value: 0.5 },
       { label: "M", value: 1 },
       { label: "L", value: 2 },
@@ -576,7 +568,6 @@ export const mainFemaleCustomize = [
     sizeModels: tshirt_model,
     parts: skirtParts.keys().map(skirtParts),
     sizeOptions: [
-      { label: "XS", value: 0.5 },
       { label: "S", value: 0.5 },
       { label: "M", value: 1 },
       { label: "L", value: 2 },
@@ -615,8 +606,8 @@ export const mainFemaleCustomize = [
       { label: "M", value: 1 },
       { label: "L", value: 2 },
       { label: "XL", value: 3 },
-      { label: "XXL", value: 4 },
-      // { label: "3XL", value: 5 },
+      { label: "2XL", value: 4 },
+      { label: "3XL", value: 5 },
       // { label: "4XL", value: 6 },
       // { label: "5XL", value: 7 },
       // { label: "6XL", value: 8 },
@@ -651,7 +642,6 @@ export const mainFemaleCustomize = [
     sizeModels: tshirt_model,
     parts: bootyShortsParts.keys().map(bootyShortsParts),
     sizeOptions: [
-      { label: "XS", value: 0.5 },
       { label: "S", value: 0.5 },
       { label: "M", value: 1 },
       { label: "L", value: 2 },
@@ -696,7 +686,6 @@ export const mainFemaleCustomize = [
     sizeModels: tshirt_model,
     parts: trousersParts.keys().map(trousersParts),
     sizeOptions: [
-      { label: "XS", value: 0.5 },
       { label: "S", value: 0.5 },
       { label: "M", value: 1 },
       { label: "L", value: 2 },
@@ -735,12 +724,11 @@ export const mainFemaleCustomize = [
     sizeModels: tshirt_model,
     parts: leggingsParts.keys().map(leggingsParts),
     sizeOptions: [
-      { label: "XS", value: 0.5 },
       { label: "S", value: 0.5 },
       { label: "M", value: 1 },
       { label: "L", value: 2 },
-      { label: "XL", value: 3 },
-      { label: "XXL", value: 4 },
+      // { label: "XL", value: 3 },
+      // { label: "XXL", value: 4 },
       // { label: "3XL", value: 5 },
       // { label: "4XL", value: 6 },
       // { label: "5XL", value: 7 },
