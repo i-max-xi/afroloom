@@ -57,8 +57,8 @@ export const mainMaleCustomize = [
     myX: 0,
     myY: 10,
     price: 20,
-    sizeGuide: tshirt_guide,
-    sizePattern: tshirt_pattern,
+    sizeModels: tshirt_guide,
+    sizeGuide: tshirt_pattern,
     parts: tshirtParts.keys().map(tshirtParts),
     sizeForms: [
       {
@@ -81,6 +81,7 @@ export const mainMaleCustomize = [
     myNode: ["bottom", "collar", "left_hand", "left_hand_cuff", "right_hand", "right_hand_cuff", "stripe", "top"],
     myZoom: 0.7,
     price: 20,
+    sizeModels: tshirt_guide,
     sizeGuide: tshirtlong_guide,
     parts: tshirtLongParts.keys().map(tshirtLongParts),
     sizeForms: [
@@ -109,6 +110,7 @@ export const mainMaleCustomize = [
     myX: 0,
     myY: 10,
     price: 30,
+    sizeModels: tshirt_guide,
     sizeGuide: shirt_guide,
     parts: shirtParts.keys().map(shirtParts),
     sizeForms: [
@@ -142,6 +144,7 @@ export const mainMaleCustomize = [
     myY: 10,
     price: 30,
     sizeGuide: shirtlong_guide,
+    sizeModels: tshirt_guide,
     parts: shirtLongParts.keys().map(shirtLongParts),
     sizeForms: [
       {
@@ -171,6 +174,7 @@ export const mainMaleCustomize = [
     myZoom: 0.6,
     price: 55,
     // sizeGuide: top_down_guide,
+    sizeModels: tshirt_guide,
     parts: topndownParts.keys().map(topndownParts),
     sizeForms: [
       {
@@ -199,6 +203,7 @@ export const mainMaleCustomize = [
     myY: 10,
     price: 35,
     // sizeGuide: cloak_guide,
+    sizeModels: tshirt_guide,
     parts: topParts.keys().map(topParts),
     sizeForms: [
       {
@@ -225,6 +230,7 @@ export const mainMaleCustomize = [
     myZoom: 0.77,
     price: 20,
     sizeGuide: blazer_guide,
+    sizeModels: tshirt_guide,
     parts: blazerParts.keys().map(blazerParts),
     sizeForms: [
       {
@@ -259,6 +265,7 @@ export const mainMaleCustomize = [
     myZoom: 0.8,
     price: 22,
     sizeGuide: trouser_guide,
+    sizeModels: tshirt_guide,
     parts: trouserParts.keys().map(trouserParts),
     sizeForms: [
       {
@@ -290,6 +297,7 @@ export const mainMaleCustomize = [
     myY: 10,
     price: 30,
     sizeGuide: summer_shorts_guide,
+    sizeModels: tshirt_guide,
     parts: summerShortsParts.keys().map(summerShortsParts),
     sizeForms: [
       // {
@@ -318,6 +326,7 @@ export const mainMaleCustomize = [
     myY: 10,
     price: 30,
     sizeGuide: material_shorts_guide,
+    sizeModels: tshirt_guide,
     parts: materialShortsParts.keys().map(materialShortsParts),
     sizeForms: [
       // {

@@ -18,6 +18,9 @@ import sneaker_model from '../Pages/Customize/Configurator/models/Shoes/sneaker.
 import heels_guide from '../Assets/size_guide/Footwear/heels.JPG';
 
 
+// models
+import models from '../Pages/Customize/Configurator/size_guide/male/tshirt_pattern.jpg';
+
 // parts
 const flexShoeParts = require.context(
   "../Assets/model_parts/Shoes/flexible_shoe_main_two",
@@ -56,6 +59,7 @@ export const mainFootwear = [
     price: 20,
     parts: flexShoeParts.keys().map(flexShoeParts),
     // sizeGuide: flatShoe_guide,
+    sizeModels: models,
     sizeForms: [
       {
         label: "Length (inch)",
@@ -74,6 +78,7 @@ export const mainFootwear = [
     price: 20,
     parts: sneakerParts.keys().map(sneakerParts),
     // sizeGuide: sneaker_guide,
+    sizeModels: models,
     sizeForms: [
       {
         label: "Length (inch)",
@@ -89,6 +94,7 @@ export const mainFootwear = [
     myNode: ["padding", "sole", "top"],
     myZoom: 0.8,
     price: 20,
+    sizeModels: models,
     parts: slippersParts.keys().map(slippersParts),
     // sizeGuide: slipper_guide,
     sizeForms: [
@@ -109,6 +115,7 @@ export const mainFootwear = [
     price: 20,
     parts: heelsParts.keys().map(heelsParts),
     sizeGuide: heels_guide,
+    sizeModels: models,
     sizeForms: [
       {
         label: "Heel-to-Toe Length (inch)",

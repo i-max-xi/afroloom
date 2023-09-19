@@ -50,6 +50,9 @@ import bootyShorts_guide from '../Assets/size_guide/FemaleClothing/booty_shorts.
 import leggings_guide from '../Assets/size_guide/FemaleClothing/leggings.JPG';
 // import trousers_guide from '../Assets/size_guide/FemaleClothing/'
 
+// models
+import models from '../Pages/Customize/Configurator/size_guide/male/tshirt_pattern.jpg';
+
 
 //part images
 const tShirtShortParts = require.context(
@@ -161,6 +164,7 @@ export const mainFemaleCustomize = [
     myZoom: 0.8,
     price: 20,
     sizeGuide: tshirt_guide,
+    sizeModels: models,
     parts: tShirtShortParts.keys().map(tShirtShortParts),
     sizeForms: [
       {
@@ -184,6 +188,7 @@ export const mainFemaleCustomize = [
     myZoom: 0.9,
     price: 20,
     sizeGuide: tshirtlong_guide,
+    sizeModels: models,
     parts: tShirtLongParts.keys().map(tShirtLongParts),
     sizeForms: [
       {
@@ -208,6 +213,7 @@ export const mainFemaleCustomize = [
     myZoom: 0.7,
     price: 30,
     sizeGuide: extraShortShirt_guide,
+    sizeModels: models,
     parts: extraShortShirtParts.keys().map(extraShortShirtParts),
     sizeForms: [
       {
@@ -234,6 +240,7 @@ export const mainFemaleCustomize = [
     myZoom: 0.8,
     price: 30,
     // sizeGuide: extraLongShirt_guide,
+    sizeModels: models,
     parts: extraLongShirtParts.keys().map(extraLongShirtParts),
     sizeForms: [
       {
@@ -251,6 +258,7 @@ export const mainFemaleCustomize = [
     myZoom: 1,
     price: 20,
     sizeGuide: cropTop_guide,
+    sizeModels: models,
     parts: cropTopParts.keys().map(cropTopParts),
     sizeForms: [
       {
@@ -281,6 +289,7 @@ export const mainFemaleCustomize = [
     myZoom: 0.8,
     price: 20,
     // sizeGuide: normalTop_guide,
+    sizeModels: models,
     parts: normalTopParts.keys().map(normalTopParts),
     sizeForms: [
       {
@@ -307,6 +316,7 @@ export const mainFemaleCustomize = [
     myZoom: 0.75,
     price: 20,
     // sizeGuide: topAndDown_guide,
+    sizeModels: models,
     parts: topAndDownParts.keys().map(topAndDownParts),
     sizeForms: [
       {
@@ -332,6 +342,7 @@ export const mainFemaleCustomize = [
     myZoom: 0.8,
     price: 20,
     // sizeGuide: dress_guide,
+    sizeModels: models,
     parts: dressParts.keys().map(dressParts),
     sizeForms: [
       {
@@ -349,6 +360,7 @@ export const mainFemaleCustomize = [
     myZoom: 1.15,
     price: 20,
     // sizeGuide: kabaSlit_guide,
+    sizeModels: models,
     parts: kabaSlitParts.keys().map(kabaSlitParts),
     sizeForms: [
       {
@@ -373,6 +385,7 @@ export const mainFemaleCustomize = [
     myZoom: 0.95,
     price: 20,
     sizeGuide: blazer_guide,
+    sizeModels: models,
     parts: blazerParts.keys().map(blazerParts),
     sizeForms: [
       {
@@ -399,6 +412,7 @@ export const mainFemaleCustomize = [
     myZoom: 0.7,
     price: 20,
     // sizeGuide: cloak_guide,
+    sizeModels: models,
     parts: cloakParts.keys().map(cloakParts),
     sizeForms: [
       {
@@ -416,6 +430,7 @@ export const mainFemaleCustomize = [
     myZoom: 0.7,
     price: 20,
     sizeGuide: skirt_guide,
+    sizeModels: models,
     parts: skirtParts.keys().map(skirtParts),
     sizeForms: [
       {
@@ -436,6 +451,7 @@ export const mainFemaleCustomize = [
     myZoom: 0.8,
     price: 20,
     sizeGuide: miniSkirt_guide,
+    sizeModels: models,
     parts: miniSkirtParts.keys().map(miniSkirtParts),
     sizeForms: [
       {
@@ -463,6 +479,7 @@ export const mainFemaleCustomize = [
     myZoom: 0.6,
     price: 20,
     sizeGuide: bootyShorts_guide,
+    sizeModels: models,
     parts: bootyShortsParts.keys().map(bootyShortsParts),
     sizeForms: [
       {
@@ -494,6 +511,7 @@ export const mainFemaleCustomize = [
     myZoom: 0.7,
     price: 20,
     // sizeGuide: trousers_guide,
+    sizeModels: models,
     parts: trousersParts.keys().map(trousersParts),
     sizeForms: [
       {
@@ -519,6 +537,7 @@ export const mainFemaleCustomize = [
     myZoom: 0.8,
     price: 20,
     sizeGuide: leggings_guide,
+    sizeModels: models,
     parts: leggingsParts.keys().map(leggingsParts),
     sizeForms: [
       {

@@ -30,6 +30,9 @@ import flyingTie_guide from '../Assets/size_guide/Accessories/Male/flying_tie.JP
 import bikini_guide from '../Assets/size_guide/Accessories/Female/bikini.JPG';
 
 
+// models
+import models from '../Pages/Customize/Configurator/size_guide/male/tshirt_pattern.jpg';
+
 // parts
 const roundCapParts = require.context(
   "../Assets/model_parts/Accessories/roundCap_main",
@@ -80,6 +83,7 @@ export const mainMaleAccessories = [
     price: 20,
     parts: roundCapParts.keys().map(roundCapParts),
     // sizeGuide: roundCap_guide,
+    sizeModels: models,
     sizeForms: [
       {
         label: "Length (inch)",
@@ -102,6 +106,7 @@ export const mainMaleAccessories = [
     price: 20,
     parts: knittedCapParts.keys().map(knittedCapParts),
     // sizeGuide: knittedCap_guide,
+    sizeModels: models,
     sizeForms: [
       {
         label: "Length (inch)",
@@ -122,6 +127,7 @@ export const mainMaleAccessories = [
     myZoom: 1.5,
     price: 20,
     parts: bowTieParts.keys().map(bowTieParts),
+    sizeModels: models,
     sizeGuide: bowTie_guide, // Adding size guide for Bow Tie
     sizeForms: [
       {
@@ -143,6 +149,7 @@ export const mainMaleAccessories = [
     myZoom: 0.75,
     price: 20,
     parts: flyingTieParts.keys().map(flyingTieParts),
+    sizeModels: models,
     sizeGuide: flyingTie_guide, // Adding size guide for Flying Tie
     sizeForms: [
       {
@@ -170,6 +177,7 @@ export const mainFemaleAccessories = [
     price: 55,
     parts: handbagParts.keys().map(handbagParts),
     // sizeGuide: handbag_guide,
+    sizeModels: models,
     sizeForms: [
       {
         label: "Length (inch)",
@@ -186,6 +194,7 @@ export const mainFemaleAccessories = [
     myZoom: 1.3,
     price: 55,
     parts: bikiniParts.keys().map(bikiniParts),
+    sizeModels: models,
     sizeGuide: bikini_guide, // Adding size guide for Bikini
     sizeForms: [
       {

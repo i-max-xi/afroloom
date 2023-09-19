@@ -18,6 +18,10 @@ import miniBag_guide from '../Assets/size_guide/Unisex/mini_bag.JPG';
 import backpack_guide from '../Assets/size_guide/Unisex/back_pack.JPG';
 import jacket_guide from '../Assets/size_guide/Unisex/jacket.JPG';
 
+
+// models
+import models from '../Pages/Customize/Configurator/size_guide/male/tshirt_pattern.jpg';
+
 // parts
 const sashParts = require.context(
   '../Assets/model_parts/Accessories/Unisex/sash',
@@ -56,6 +60,7 @@ export const mainUnisex = [
     myZoom: 0.8,
     price: 55,
     parts: sashParts.keys().map(sashParts),
+    sizeModels: models,
     sizeGuide: sash_guide, // Adding size guide for Sash
     sizeForms: [
       {
@@ -76,6 +81,7 @@ export const mainUnisex = [
     myZoom: 0.6,
     price: 55,
     parts: miniBagParts.keys().map(miniBagParts),
+    sizeModels: models,
     sizeGuide: miniBag_guide, // Adding size guide for Mini Bag
     sizeForms: [
       {
@@ -110,6 +116,7 @@ export const mainUnisex = [
     myZoom: 0.7,
     price: 55,
     parts: backpackParts.keys().map(backpackParts),
+    sizeModels: models,
     sizeGuide: backpack_guide, // Adding size guide for Backpack
     sizeForms: [
       {
@@ -137,6 +144,7 @@ export const mainUnisex = [
     myZoom: 0.8,
     price: 55,
     parts: jacketParts.keys().map(jacketParts),
+    sizeModels: models,
     sizeGuide: jacket_guide, // Adding size guide for Jacket
     sizeForms: [
       {

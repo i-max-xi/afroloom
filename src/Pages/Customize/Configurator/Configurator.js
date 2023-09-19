@@ -201,7 +201,7 @@ const Configurator = () => {
 
   //size guide popup
   const [visible, setVisible] = useState(false);
-  
+
   // Create a state object to store the form field values
   const [sizeFormValues, setSizeFormValues] = useState(
     selectedClothing.sizeForms.reduce((acc, formField) => {
@@ -290,25 +290,24 @@ const Configurator = () => {
                     onHide={() => setVisible(false)}
                   >
                     <div className="d-flex flex-column align-items-center">
-                      <p className="m-0">
+                      {selectedClothing.sizeModels ? (
+                        <p className="mb-1">
+                          <img
+                            src={selectedClothing.sizeModels}
+                            width="100%"
+                            alt="size-models"
+                          />
+                        </p>
+                      ) : (
+                        ""
+                      )}
+                      <p className="mb-1">
                         <img
                           src={selectedClothing.sizeGuide}
                           width="100%"
                           alt="size-guide"
                         />
                       </p>
-                      {selectedClothing.sizePattern ? (
-                        <p className="m-0">
-                          <img
-                            src={selectedClothing.sizePattern}
-                            width="100%"
-                            alt="size-pattern"
-                          />
-                        </p>
-                      ) : (
-                        ""
-                      )}
-
                       <form>
                         <h4 className="mt-3">
                           Customize Your Own Measurements
