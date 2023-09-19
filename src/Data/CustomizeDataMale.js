@@ -122,12 +122,13 @@ export const mainMaleCustomize = [
     ],
     sizeForms: [
       {
-        label: "Length (inch)",
-        value: "",
+        label: "Chest (inch)",
       },
       {
-        label: "Width (inch)",
-        value: "",
+        label: "Length (inch)",
+      },
+      {
+        label: "Sleeve (inch)",
       },
       // Add more form fields as needed
     ],
@@ -460,16 +461,18 @@ export const mainMaleCustomize = [
     sizeGuide: trouser_guide,
     sizeModels: tshirt_model,
     sizeOptions: [
-      { label: "S", value: 0.5 },
-      { label: "M", value: 1 },
-      { label: "L", value: 2 },
-      { label: "XL", value: 3 },
-      // { label: "2XL", value: 4 },
-      // { label: "3XL", value: 5 },
-      // { label: "4XL", value: 6 },
-      // { label: "5XL", value: 7 },
-      // { label: "6XL", value: 8 },
-      // { label: "7XL", value: 9 },
+      { label: "28", value: 0.5 },
+      { label: "29", value: 1 },
+      { label: "30", value: 2 },
+      { label: "31", value: 3 },
+      { label: "32", value: 4 },
+      { label: "33", value: 5 },
+      { label: "34", value: 6 },
+      { label: "35", value: 7 },
+      { label: "36", value: 8 },
+      { label: "38", value: 9 },
+      { label: "40", value: 10 },
+
     ],
     parts: trouserParts.keys().map(trouserParts),
     sizeForms: [
@@ -527,17 +530,17 @@ export const mainMaleCustomize = [
     ],
     parts: summerShortsParts.keys().map(summerShortsParts),
     sizeForms: [
-      // {
-      //   label: "Chest (inch)",
+      {
+        label: "Waist (inch)",
 
-      // },
+      },
+      {
+        label: "Hip (inch)",
+      },
       {
         label: "Length (inch)",
-      },
-      // {
-      //   label: "Sleeve Length (inch)",
 
-      // },
+      },
       // Add more form fields as needed
     ],
   },
@@ -576,17 +579,17 @@ export const mainMaleCustomize = [
       // { label: "7XL", value: 9 },
     ],
     sizeForms: [
-      // {
-      //   label: "Chest (inch)",
+      {
+        label: "Waist (inch)",
 
-      // },
+      },
+      {
+        label: "Hip (inch)",
+      },
       {
         label: "Length (inch)",
-      },
-      // {
-      //   label: "Sleeve Length (inch)",
 
-      // },
+      },
       // Add more form fields as needed
     ],
   },

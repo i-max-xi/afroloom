@@ -42,8 +42,9 @@ import cropTop_guide from '../Assets/size_guide/FemaleClothing/crop_top.JPG';
 // import topAndDown_guide from '../Assets/size_guide/FemaleClothing/';
 // import dress_guide from '../Assets/size_guide/FemaleClothing/';
 // import kabaSlit_guide from '../Assets/size_guide/FemaleClothing/';
-import blazer_guide from '../Assets/size_guide/FemaleClothing/blazer.JPG';
+import extraLongShirt_guide from '../Assets/size_guide/FemaleClothing/shirt_long.JPG';
 // import cloak_guide from '../Assets/size_guide/FemaleClothing/';
+import blazer_guide from '../Assets/size_guide/FemaleClothing/blazer.jpg'
 import skirt_guide from '../Assets/size_guide/FemaleClothing/skirt_long.JPG';
 import miniSkirt_guide from '../Assets/size_guide/FemaleClothing/mini_skirt.JPG';
 import bootyShorts_guide from '../Assets/size_guide/FemaleClothing/booty_shorts.JPG';
@@ -278,25 +279,33 @@ export const mainFemaleCustomize = [
     myNode: ["back", "collar", "front", "left_hand", "midline", "right_hand"],
     myZoom: 0.8,
     price: 30,
-    // sizeGuide: extraLongShirt_guide,
+    sizeGuide: extraLongShirt_guide,
     sizeModels: tshirt_model,
     parts: extraLongShirtParts.keys().map(extraLongShirtParts),
     sizeOptions: [
-      { label: "XS", value: 0.5 },
-      { label: "S", value: 0.5 },
-      { label: "M", value: 1 },
-      { label: "L", value: 2 },
-      { label: "XL", value: 3 },
-      { label: "XXL", value: 4 },
-      // { label: "3XL", value: 5 },
-      // { label: "4XL", value: 6 },
-      // { label: "5XL", value: 7 },
+      { label: "6", value: 0.5 },
+      { label: "8", value: 1 },
+      { label: "10", value: 2 },
+      { label: "12", value: 3 },
+      { label: "14", value: 4 },
+      { label: "16", value: 5 },
+      { label: "18", value: 6 },
+      { label: "20", value: 7 },
       // { label: "6XL", value: 8 },
       // { label: "7XL", value: 9 },
     ],
     sizeForms: [
       {
-        label: "Length (inch)",
+        label: "Bust (inch)",
+      },
+      {
+        label: "Waist (inch)",
+      },
+      {
+        label: "Hip (inch)",
+      },
+      {
+        label: "Sleeve Length(inch)",
       },
       // Add more form fields as needed
     ],
@@ -333,6 +342,12 @@ export const mainFemaleCustomize = [
       },
       {
         label: "Waist (inch)",
+      },
+      {
+        label: "Sleeve (inch)",
+      },
+      {
+        label: "Shoulder (inch)",
       },
       // Add more form fields as needed
     ],
@@ -499,6 +514,7 @@ export const mainFemaleCustomize = [
     sizeModels: tshirt_model,
     parts: blazerParts.keys().map(blazerParts),
     sizeOptions: [
+      { label: "XS", value: 0.5 },
       { label: "S", value: 0.5 },
       { label: "M", value: 1 },
       { label: "L", value: 2 },
@@ -512,16 +528,22 @@ export const mainFemaleCustomize = [
     ],
     sizeForms: [
       {
-        label: "Bust (inch)",
+        label: "Chest Width (inch)",
       },
       {
-        label: "Waist (inch)",
+        label: "Waist Width (inch)",
       },
       {
-        label: "Hip (inch)",
+        label: "Shoulder Width (inch)",
       },
       {
-        label: "Sleeve Length(inch)",
+        label: "Body Length (inch)",
+      },
+      {
+        label: "Bottom Width (inch)",
+      },
+      {
+        label: "Sleeve Length (inch)",
       },
       // Add more form fields as needed
     ],
