@@ -23,7 +23,6 @@ import { useSelector } from "react-redux";
 import {
   colorOptions,
   textureArrays,
-  sizeOptions,
   textureDescriptions,
   textureValues,
   responsiveNess,
@@ -221,7 +220,7 @@ const Configurator = () => {
   //total price
   const total = (
     partPrices.reduce((total, price) => total + Price, 0) *
-    sizeOptions[selectedSize].value *
+    selectedClothing.sizeOptions[selectedSize].value *
     currencyFactor
   ).toFixed(2);
 
@@ -241,7 +240,7 @@ const Configurator = () => {
           selectedParts={selectedParts}
           setShowConfirmation={setShowConfirmation}
           selectedSize={
-            sizeOptions.find((option) => option.value === selectedSize)?.label
+            selectedClothing.sizeOptions.find((option) => option.value === selectedSize)?.label
           }
           modelImage={stateImage}
           customSizeValues={sizeFormValues}
@@ -269,7 +268,7 @@ const Configurator = () => {
                 </div>
                 <h5>Choose Size</h5>
                 <div className="size w-75">
-                  {sizeOptions.map((option) => (
+                  {selectedClothing.sizeOptions.map((option) => (
                     <button
                       key={option.value}
                       className={`size-button btn btn-outline-dark ${

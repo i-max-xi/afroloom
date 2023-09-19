@@ -166,6 +166,19 @@ export const mainFemaleCustomize = [
     sizeGuide: tshirt_guide,
     sizeModels: models,
     parts: tShirtShortParts.keys().map(tShirtShortParts),
+    sizeOptions: [
+      { label: "XS", value: 0.5 },
+      { label: "S", value: 0.5 },
+      { label: "M", value: 1 },
+      { label: "L", value: 2 },
+      { label: "XL", value: 3 },
+      // { label: "2XL", value: 4 },
+      // { label: "3XL", value: 5 },
+      // { label: "4XL", value: 6 },
+      // { label: "5XL", value: 7 },
+      // { label: "6XL", value: 8 },
+      // { label: "7XL", value: 9 },
+    ],
     sizeForms: [
       {
         label: "Bust (inch)",
