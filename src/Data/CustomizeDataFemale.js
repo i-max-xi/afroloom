@@ -44,7 +44,7 @@ import cropTop_guide from '../Assets/size_guide/FemaleClothing/crop_top.JPG';
 // import kabaSlit_guide from '../Assets/size_guide/FemaleClothing/';
 import extraLongShirt_guide from '../Assets/size_guide/FemaleClothing/shirt_long.JPG';
 // import cloak_guide from '../Assets/size_guide/FemaleClothing/';
-import blazer_guide from '../Assets/size_guide/FemaleClothing/blazer.jpg';
+import blazer_guide from '../Assets/size_guide/FemaleClothing/blazer.jpeg';
 import skirt_guide from '../Assets/size_guide/FemaleClothing/skirt_long.JPG';
 import miniSkirt_guide from '../Assets/size_guide/FemaleClothing/mini_skirt.JPG';
 import bootyShorts_guide from '../Assets/size_guide/FemaleClothing/booty_shorts.JPG';
