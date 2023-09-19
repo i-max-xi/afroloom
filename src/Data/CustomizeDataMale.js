@@ -19,8 +19,9 @@ import topndown_model from "../Pages/Customize/Configurator/models/MaleClothing/
 import blazer from "../Pages/Customize/Configurator/models/MaleClothing/male_suit.glb";
 
 //size-guides
-import tshirt_guide from "../Pages/Customize/Configurator/size_guide/male/tshirt.JPG";
-import tshirt_pattern from "../Pages/Customize/Configurator/size_guide/male/tshirt_pattern.jpg";
+import tshirt_model from "../Pages/Customize/Configurator/size_guide/male/tshirt.JPG";
+
+import tshirt_guide from "../Assets/size_guide/MaleClothing/tshirt.JPG";
 import tshirtlong_guide from "../Assets/size_guide/MaleClothing/tshirt_long.JPG";
 import shirt_guide from "../Assets/size_guide/MaleClothing/shirt.JPG";
 import shirtlong_guide from "../Assets/size_guide/MaleClothing/shirt_long.JPG";
@@ -104,8 +105,8 @@ export const mainMaleCustomize = [
     myX: 0,
     myY: 10,
     price: 20,
-    sizeModels: tshirt_guide,
-    sizeGuide: tshirt_pattern,
+    sizeModels: tshirt_model,
+    sizeGuide: tshirt_guide,
     parts: tshirtParts.keys().map(tshirtParts),
     sizeOptions: [
       { label: "S", value: 0.5 },
@@ -115,7 +116,7 @@ export const mainMaleCustomize = [
       { label: "2XL", value: 4 },
       { label: "3XL", value: 5 },
       { label: "4XL", value: 6 },
-      // { label: "5XL", value: 7 },
+      { label: "5XL", value: 7 },
       // { label: "6XL", value: 8 },
       // { label: "7XL", value: 9 },
     ],
@@ -149,7 +150,7 @@ export const mainMaleCustomize = [
     ],
     myZoom: 0.7,
     price: 20,
-    sizeModels: tshirt_guide,
+    sizeModels: tshirt_model,
     sizeGuide: tshirtlong_guide,
     parts: tshirtLongParts.keys().map(tshirtLongParts),
     sizeOptions: [
@@ -198,7 +199,7 @@ export const mainMaleCustomize = [
     myX: 0,
     myY: 10,
     price: 30,
-    sizeModels: tshirt_guide,
+    sizeModels: tshirt_model,
     sizeGuide: shirt_guide,
     parts: shirtParts.keys().map(shirtParts),
     sizeOptions: [
@@ -253,7 +254,7 @@ export const mainMaleCustomize = [
     myY: 10,
     price: 30,
     sizeGuide: shirtlong_guide,
-    sizeModels: tshirt_guide,
+    sizeModels: tshirt_model,
     parts: shirtLongParts.keys().map(shirtLongParts),
     sizeOptions: [
       { label: "S", value: 0.5 },
@@ -309,7 +310,7 @@ export const mainMaleCustomize = [
     myZoom: 0.6,
     price: 55,
     // sizeGuide: top_down_guide,
-    sizeModels: tshirt_guide,
+    sizeModels: tshirt_model,
     parts: topndownParts.keys().map(topndownParts),
     sizeOptions: [
       { label: "S", value: 0.5 },
@@ -325,14 +326,17 @@ export const mainMaleCustomize = [
     ],
     sizeForms: [
       {
-        label: "Chest (inch)",
+       label: "Length (inch)",
       },
-      {
-        label: "Body Length (inch)",
-      },
-      {
-        label: "Sleeve Length (inch)",
-      },
+      // {
+      //   label: "Chest (inch)",
+      // },
+      // {
+      //   label: "Body Length (inch)",
+      // },
+      // {
+      //   label: "Sleeve Length (inch)",
+      // },
       // Add more form fields as needed
     ],
   },
@@ -354,7 +358,7 @@ export const mainMaleCustomize = [
     myY: 10,
     price: 35,
     // sizeGuide: cloak_guide,
-    sizeModels: tshirt_guide,
+    sizeModels: tshirt_model,
     parts: topParts.keys().map(topParts),
     sizeOptions: [
       { label: "S", value: 0.5 },
@@ -399,7 +403,7 @@ export const mainMaleCustomize = [
     myZoom: 0.77,
     price: 20,
     sizeGuide: blazer_guide,
-    sizeModels: tshirt_guide,
+    sizeModels: tshirt_model,
     parts: blazerParts.keys().map(blazerParts),
     sizeOptions: [
       { label: "S", value: 0.5 },
@@ -454,7 +458,7 @@ export const mainMaleCustomize = [
     myZoom: 0.8,
     price: 22,
     sizeGuide: trouser_guide,
-    sizeModels: tshirt_guide,
+    sizeModels: tshirt_model,
     sizeOptions: [
       { label: "S", value: 0.5 },
       { label: "M", value: 1 },
@@ -508,7 +512,7 @@ export const mainMaleCustomize = [
     myY: 10,
     price: 30,
     sizeGuide: summer_shorts_guide,
-    sizeModels: tshirt_guide,
+    sizeModels: tshirt_model,
     sizeOptions: [
       { label: "S", value: 0.5 },
       { label: "M", value: 1 },
@@ -557,7 +561,7 @@ export const mainMaleCustomize = [
     myY: 10,
     price: 30,
     sizeGuide: material_shorts_guide,
-    sizeModels: tshirt_guide,
+    sizeModels: tshirt_model,
     parts: materialShortsParts.keys().map(materialShortsParts),
     sizeOptions: [
       { label: "S", value: 0.5 },

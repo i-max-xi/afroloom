@@ -31,7 +31,7 @@ import bikini_guide from '../Assets/size_guide/Accessories/Female/bikini.JPG';
 
 
 // models
-import models from '../Pages/Customize/Configurator/size_guide/male/tshirt_pattern.jpg';
+import tshirt_model from "../Pages/Customize/Configurator/size_guide/male/tshirt.JPG";
 
 // parts
 const roundCapParts = require.context(
@@ -83,7 +83,20 @@ export const mainMaleAccessories = [
     price: 20,
     parts: roundCapParts.keys().map(roundCapParts),
     // sizeGuide: roundCap_guide,
-    sizeModels: models,
+    sizeModels: tshirt_model,
+    sizeOptions: [
+      { label: "XS", value: 0.5 },
+      { label: "S", value: 0.5 },
+      { label: "M", value: 1 },
+      { label: "L", value: 2 },
+      { label: "XL", value: 3 },
+      { label: "XXL", value: 4 },
+      // { label: "3XL", value: 5 },
+      // { label: "4XL", value: 6 },
+      // { label: "5XL", value: 7 },
+      // { label: "6XL", value: 8 },
+      // { label: "7XL", value: 9 },
+    ],
     sizeForms: [
       {
         label: "Length (inch)",
@@ -106,7 +119,20 @@ export const mainMaleAccessories = [
     price: 20,
     parts: knittedCapParts.keys().map(knittedCapParts),
     // sizeGuide: knittedCap_guide,
-    sizeModels: models,
+    sizeModels: tshirt_model,
+    sizeOptions: [
+      { label: "XS", value: 0.5 },
+      { label: "S", value: 0.5 },
+      { label: "M", value: 1 },
+      { label: "L", value: 2 },
+      { label: "XL", value: 3 },
+      { label: "XXL", value: 4 },
+      // { label: "3XL", value: 5 },
+      // { label: "4XL", value: 6 },
+      // { label: "5XL", value: 7 },
+      // { label: "6XL", value: 8 },
+      // { label: "7XL", value: 9 },
+    ],
     sizeForms: [
       {
         label: "Length (inch)",
@@ -127,8 +153,21 @@ export const mainMaleAccessories = [
     myZoom: 1.5,
     price: 20,
     parts: bowTieParts.keys().map(bowTieParts),
-    sizeModels: models,
-    sizeGuide: bowTie_guide, // Adding size guide for Bow Tie
+    sizeModels: tshirt_model,
+    sizeGuide: bowTie_guide,
+    sizeOptions: [
+      { label: "XS", value: 0.5 },
+      { label: "S", value: 0.5 },
+      { label: "M", value: 1 },
+      { label: "L", value: 2 },
+      { label: "XL", value: 3 },
+      { label: "XXL", value: 4 },
+      // { label: "3XL", value: 5 },
+      // { label: "4XL", value: 6 },
+      // { label: "5XL", value: 7 },
+      // { label: "6XL", value: 8 },
+      // { label: "7XL", value: 9 },
+    ],
     sizeForms: [
       {
         label: "Length (inch)",
@@ -149,8 +188,21 @@ export const mainMaleAccessories = [
     myZoom: 0.75,
     price: 20,
     parts: flyingTieParts.keys().map(flyingTieParts),
-    sizeModels: models,
-    sizeGuide: flyingTie_guide, // Adding size guide for Flying Tie
+    sizeModels: tshirt_model,
+    sizeGuide: flyingTie_guide,
+    sizeOptions: [
+      { label: "XS", value: 0.5 },
+      { label: "S", value: 0.5 },
+      { label: "M", value: 1 },
+      { label: "L", value: 2 },
+      { label: "XL", value: 3 },
+      { label: "XXL", value: 4 },
+      // { label: "3XL", value: 5 },
+      // { label: "4XL", value: 6 },
+      // { label: "5XL", value: 7 },
+      // { label: "6XL", value: 8 },
+      // { label: "7XL", value: 9 },
+    ],
     sizeForms: [
       {
         label: "Tie's Head (inch)",
@@ -177,7 +229,20 @@ export const mainFemaleAccessories = [
     price: 55,
     parts: handbagParts.keys().map(handbagParts),
     // sizeGuide: handbag_guide,
-    sizeModels: models,
+    sizeModels: tshirt_model,
+    sizeOptions: [
+      { label: "XS", value: 0.5 },
+      { label: "S", value: 0.5 },
+      { label: "M", value: 1 },
+      { label: "L", value: 2 },
+      { label: "XL", value: 3 },
+      { label: "XXL", value: 4 },
+      // { label: "3XL", value: 5 },
+      // { label: "4XL", value: 6 },
+      // { label: "5XL", value: 7 },
+      // { label: "6XL", value: 8 },
+      // { label: "7XL", value: 9 },
+    ],
     sizeForms: [
       {
         label: "Length (inch)",
@@ -194,8 +259,21 @@ export const mainFemaleAccessories = [
     myZoom: 1.3,
     price: 55,
     parts: bikiniParts.keys().map(bikiniParts),
-    sizeModels: models,
-    sizeGuide: bikini_guide, // Adding size guide for Bikini
+    sizeModels: tshirt_model,
+    sizeGuide: bikini_guide,
+    sizeOptions: [
+      { label: "XS", value: 0.5 },
+      { label: "S", value: 0.5 },
+      { label: "M", value: 1 },
+      { label: "L", value: 2 },
+      { label: "XL", value: 3 },
+      { label: "XXL", value: 4 },
+      // { label: "3XL", value: 5 },
+      // { label: "4XL", value: 6 },
+      // { label: "5XL", value: 7 },
+      // { label: "6XL", value: 8 },
+      // { label: "7XL", value: 9 },
+    ],
     sizeForms: [
       {
         label: "Under Bust (inch)",

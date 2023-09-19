@@ -19,7 +19,7 @@ import heels_guide from '../Assets/size_guide/Footwear/heels.JPG';
 
 
 // models
-import models from '../Pages/Customize/Configurator/size_guide/male/tshirt_pattern.jpg';
+import tshirt_model from "../Pages/Customize/Configurator/size_guide/male/tshirt.JPG";
 
 // parts
 const flexShoeParts = require.context(
@@ -59,7 +59,20 @@ export const mainFootwear = [
     price: 20,
     parts: flexShoeParts.keys().map(flexShoeParts),
     // sizeGuide: flatShoe_guide,
-    sizeModels: models,
+    sizeModels: tshirt_model,
+    sizeOptions: [
+      { label: "XS", value: 0.5 },
+      { label: "S", value: 0.5 },
+      { label: "M", value: 1 },
+      { label: "L", value: 2 },
+      { label: "XL", value: 3 },
+      { label: "XXL", value: 4 },
+      // { label: "3XL", value: 5 },
+      // { label: "4XL", value: 6 },
+      // { label: "5XL", value: 7 },
+      // { label: "6XL", value: 8 },
+      // { label: "7XL", value: 9 },
+    ],
     sizeForms: [
       {
         label: "Length (inch)",
@@ -78,7 +91,20 @@ export const mainFootwear = [
     price: 20,
     parts: sneakerParts.keys().map(sneakerParts),
     // sizeGuide: sneaker_guide,
-    sizeModels: models,
+    sizeModels: tshirt_model,
+    sizeOptions: [
+      { label: "XS", value: 0.5 },
+      { label: "S", value: 0.5 },
+      { label: "M", value: 1 },
+      { label: "L", value: 2 },
+      { label: "XL", value: 3 },
+      { label: "XXL", value: 4 },
+      // { label: "3XL", value: 5 },
+      // { label: "4XL", value: 6 },
+      // { label: "5XL", value: 7 },
+      // { label: "6XL", value: 8 },
+      // { label: "7XL", value: 9 },
+    ],
     sizeForms: [
       {
         label: "Length (inch)",
@@ -94,9 +120,22 @@ export const mainFootwear = [
     myNode: ["padding", "sole", "top"],
     myZoom: 0.8,
     price: 20,
-    sizeModels: models,
+    sizeModels: tshirt_model,
     parts: slippersParts.keys().map(slippersParts),
     // sizeGuide: slipper_guide,
+    sizeOptions: [
+      { label: "XS", value: 0.5 },
+      { label: "S", value: 0.5 },
+      { label: "M", value: 1 },
+      { label: "L", value: 2 },
+      { label: "XL", value: 3 },
+      { label: "XXL", value: 4 },
+      // { label: "3XL", value: 5 },
+      // { label: "4XL", value: 6 },
+      // { label: "5XL", value: 7 },
+      // { label: "6XL", value: 8 },
+      // { label: "7XL", value: 9 },
+    ],
     sizeForms: [
       {
         label: "Length (inch)",
@@ -115,7 +154,20 @@ export const mainFootwear = [
     price: 20,
     parts: heelsParts.keys().map(heelsParts),
     sizeGuide: heels_guide,
-    sizeModels: models,
+    sizeModels: tshirt_model,
+    sizeOptions: [
+      { label: "XS", value: 0.5 },
+      { label: "S", value: 0.5 },
+      { label: "M", value: 1 },
+      { label: "L", value: 2 },
+      { label: "XL", value: 3 },
+      { label: "XXL", value: 4 },
+      // { label: "3XL", value: 5 },
+      // { label: "4XL", value: 6 },
+      // { label: "5XL", value: 7 },
+      // { label: "6XL", value: 8 },
+      // { label: "7XL", value: 9 },
+    ],
     sizeForms: [
       {
         label: "Heel-to-Toe Length (inch)",

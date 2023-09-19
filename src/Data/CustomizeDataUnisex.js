@@ -20,7 +20,7 @@ import jacket_guide from '../Assets/size_guide/Unisex/jacket.JPG';
 
 
 // models
-import models from '../Pages/Customize/Configurator/size_guide/male/tshirt_pattern.jpg';
+import tshirt_model from "../Pages/Customize/Configurator/size_guide/male/tshirt.JPG";
 
 // parts
 const sashParts = require.context(
@@ -60,8 +60,21 @@ export const mainUnisex = [
     myZoom: 0.8,
     price: 55,
     parts: sashParts.keys().map(sashParts),
-    sizeModels: models,
-    sizeGuide: sash_guide, // Adding size guide for Sash
+    sizeModels: tshirt_model,
+    sizeGuide: sash_guide,
+    sizeOptions: [
+      { label: "XS", value: 0.5 },
+      { label: "S", value: 0.5 },
+      { label: "M", value: 1 },
+      { label: "L", value: 2 },
+      { label: "XL", value: 3 },
+      { label: "XXL", value: 4 },
+      // { label: "3XL", value: 5 },
+      // { label: "4XL", value: 6 },
+      // { label: "5XL", value: 7 },
+      // { label: "6XL", value: 8 },
+      // { label: "7XL", value: 9 },
+    ],
     sizeForms: [
       {
         label: 'Width (inch)',
@@ -81,8 +94,21 @@ export const mainUnisex = [
     myZoom: 0.6,
     price: 55,
     parts: miniBagParts.keys().map(miniBagParts),
-    sizeModels: models,
-    sizeGuide: miniBag_guide, // Adding size guide for Mini Bag
+    sizeModels: tshirt_model,
+    sizeGuide: miniBag_guide,
+    sizeOptions: [
+      { label: "XS", value: 0.5 },
+      { label: "S", value: 0.5 },
+      { label: "M", value: 1 },
+      { label: "L", value: 2 },
+      { label: "XL", value: 3 },
+      { label: "XXL", value: 4 },
+      // { label: "3XL", value: 5 },
+      // { label: "4XL", value: 6 },
+      // { label: "5XL", value: 7 },
+      // { label: "6XL", value: 8 },
+      // { label: "7XL", value: 9 },
+    ],
     sizeForms: [
       {
         label: 'Length (inch)',
@@ -116,8 +142,21 @@ export const mainUnisex = [
     myZoom: 0.7,
     price: 55,
     parts: backpackParts.keys().map(backpackParts),
-    sizeModels: models,
-    sizeGuide: backpack_guide, // Adding size guide for Backpack
+    sizeModels: tshirt_model,
+    sizeGuide: backpack_guide,
+    sizeOptions: [
+      { label: "XS", value: 0.5 },
+      { label: "S", value: 0.5 },
+      { label: "M", value: 1 },
+      { label: "L", value: 2 },
+      { label: "XL", value: 3 },
+      { label: "XXL", value: 4 },
+      // { label: "3XL", value: 5 },
+      // { label: "4XL", value: 6 },
+      // { label: "5XL", value: 7 },
+      // { label: "6XL", value: 8 },
+      // { label: "7XL", value: 9 },
+    ],
     sizeForms: [
       {
         label: 'Length (inch)',
@@ -144,8 +183,21 @@ export const mainUnisex = [
     myZoom: 0.8,
     price: 55,
     parts: jacketParts.keys().map(jacketParts),
-    sizeModels: models,
-    sizeGuide: jacket_guide, // Adding size guide for Jacket
+    sizeModels: tshirt_model,
+    sizeGuide: jacket_guide,
+    sizeOptions: [
+      { label: "XS", value: 0.5 },
+      { label: "S", value: 0.5 },
+      { label: "M", value: 1 },
+      { label: "L", value: 2 },
+      { label: "XL", value: 3 },
+      { label: "XXL", value: 4 },
+      // { label: "3XL", value: 5 },
+      // { label: "4XL", value: 6 },
+      // { label: "5XL", value: 7 },
+      // { label: "6XL", value: 8 },
+      // { label: "7XL", value: 9 },
+    ],
     sizeForms: [
       {
         label: 'Chest (inch)',
