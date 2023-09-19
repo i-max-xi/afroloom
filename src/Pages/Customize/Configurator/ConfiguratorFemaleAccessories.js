@@ -23,7 +23,6 @@ import { useSelector } from "react-redux";
 import {
   colorOptions,
   textureArrays,
-  sizeOptions,
   textureDescriptions,
   textureValues,
   responsiveNess,
@@ -31,6 +30,7 @@ import {
 } from "./arrays/neededArrays";
 import TextureItem from "./TextureItem";
 import PartImages from "./PartImages";
+
 const Shirt = ({
   isRotating,
   selectedClothing,
@@ -200,15 +200,27 @@ const ConfiguratorFemaleAccessories = () => {
 
   //size guide popup
   const [visible, setVisible] = useState(false);
-  const [height, setHeight] = useState("");
-  const [weight, setWeight] = useState("");
-  const [chest, setChest] = useState("");
-  const [waist, setWaist] = useState("");
+
+  // Create a state object to store the form field values
+  const [sizeFormValues, setSizeFormValues] = useState(
+    selectedClothing.sizeForms.reduce((acc, formField) => {
+      acc[formField.label] = formField.value;
+      return acc;
+    }, {})
+  );
+
+  // Handle changes in the size form fields
+  const handleSizeFormChange = (label, value) => {
+    setSizeFormValues((prevValues) => ({
+      ...prevValues,
+      [label]: value,
+    }));
+  };
 
   //total price
   const total = (
     partPrices.reduce((total, price) => total + Price, 0) *
-    sizeOptions[selectedSize].value *
+    selectedClothing.sizeOptions[selectedSize].value *
     currencyFactor
   ).toFixed(2);
 
@@ -226,14 +238,12 @@ const ConfiguratorFemaleAccessories = () => {
           estimatedShippingTime="2-3 business days"
           readyBy="August 15, 2023"
           selectedParts={selectedParts}
+          setShowConfirmation={setShowConfirmation}
           selectedSize={
-            sizeOptions.find((option) => option.value === selectedSize)?.label
+            selectedClothing.sizeOptions.find((option) => option.value === selectedSize)?.label
           }
           modelImage={stateImage}
-          height={height}
-          weight={weight}
-          chest={chest}
-          waist={waist}
+          customSizeValues={sizeFormValues}
         />
       ) : (
         <>
@@ -258,7 +268,7 @@ const ConfiguratorFemaleAccessories = () => {
                 </div>
                 <h5>Choose Size</h5>
                 <div className="size w-75">
-                  {sizeOptions.map((option) => (
+                  {selectedClothing.sizeOptions.map((option) => (
                     <button
                       key={option.value}
                       className={`size-button btn btn-outline-dark ${
@@ -279,68 +289,46 @@ const ConfiguratorFemaleAccessories = () => {
                     onHide={() => setVisible(false)}
                   >
                     <div className="d-flex flex-column align-items-center">
-                      <p className="m-0">
+                      {selectedClothing.sizeModels ? (
+                        <p className="mb-1">
+                          <img
+                            src={selectedClothing.sizeModels}
+                            width="100%"
+                            alt="size-models"
+                          />
+                        </p>
+                      ) : (
+                        ""
+                      )}
+                      <p className="mb-1">
                         <img
                           src={selectedClothing.sizeGuide}
                           width="100%"
                           alt="size-guide"
                         />
                       </p>
-                      {selectedClothing.sizePattern ? (
-                        <p className="mb-2">
-                          <img
-                            src={selectedClothing.sizePattern}
-                            width="100%"
-                            alt="size-guide"
-                          />
-                        </p>
-                      ) : (
-                        ""
-                      )}
                       <form>
                         <h4 className="mt-3">
                           Customize Your Own Measurements
                         </h4>
-                        <div className="d-flex">
-                          <div className="m-3">
-                            <label className="form-label">Height (inch)</label>
+                        {selectedClothing.sizeForms.map((formField) => (
+                          <div className="m-3" key={formField.label}>
+                            <label className="form-label">
+                              {formField.label}
+                            </label>
                             <input
                               type="number"
                               className="form-control"
-                              value={height}
-                              onChange={(e) => setHeight(e.target.value)}
+                              value={sizeFormValues[formField.label]}
+                              onChange={(e) =>
+                                handleSizeFormChange(
+                                  formField.label,
+                                  e.target.value
+                                )
+                              }
                             />
                           </div>
-                          <div className="m-3">
-                            <label className="form-label">Weight (inch)</label>
-                            <input
-                              type="number"
-                              className="form-control"
-                              value={weight}
-                              onChange={(e) => setWeight(e.target.value)}
-                            />
-                          </div>
-                        </div>
-                        <div className="d-flex">
-                          <div className="m-3">
-                            <label className="form-label">Chest (inch)</label>
-                            <input
-                              type="number"
-                              className="form-control"
-                              value={chest}
-                              onChange={(e) => setChest(e.target.value)}
-                            />
-                          </div>
-                          <div className="m-3">
-                            <label className="form-label">Waist (inch)</label>
-                            <input
-                              type="number"
-                              className="form-control"
-                              value={waist}
-                              onChange={(e) => setWaist(e.target.value)}
-                            />
-                          </div>
-                        </div>
+                        ))}
                       </form>
                     </div>
                   </Dialog>
@@ -427,7 +415,7 @@ const ConfiguratorFemaleAccessories = () => {
                     </div>
                   </div>
                   <div className="texture-row">
-                  <div className="texture-category">
+                    <div className="texture-category">
                       <h3>
                         Kente (+{currencySymbol}
                         {(currencyFactor * textureValues.kente).toFixed(2)})
@@ -474,14 +462,16 @@ const ConfiguratorFemaleAccessories = () => {
                             handleTextureChange={handleTextureChange}
                             currencySymbol={currencySymbol}
                             currencyFactor={currencyFactor}
-                            subTextureDescriptions={textureDescriptions.waxPrint}
+                            subTextureDescriptions={
+                              textureDescriptions.waxPrint
+                            }
                           />
                         )}
                       />
                     </div>
                   </div>
                   <div className="texture-row">
-                  <div className="texture-category">
+                    <div className="texture-category">
                       <h3>
                         Smock (+{currencySymbol}
                         {(currencyFactor * textureValues.smock).toFixed(2)})
@@ -535,10 +525,13 @@ const ConfiguratorFemaleAccessories = () => {
                     </div>
                   </div>
                   <div className="texture-row">
-                  <div className="texture-category">
+                    <div className="texture-category">
                       <h3>
                         Printed Kente (+{currencySymbol}
-                        {(currencyFactor * textureValues.printed_kente).toFixed(2)})
+                        {(currencyFactor * textureValues.printed_kente).toFixed(
+                          2
+                        )}
+                        )
                       </h3>
                       <Carousel
                         value={textureArrays.printed_kente}
@@ -556,7 +549,9 @@ const ConfiguratorFemaleAccessories = () => {
                             handleTextureChange={handleTextureChange}
                             currencySymbol={currencySymbol}
                             currencyFactor={currencyFactor}
-                            subTextureDescriptions={textureDescriptions.printed_kente}
+                            subTextureDescriptions={
+                              textureDescriptions.printed_kente
+                            }
                           />
                         )}
                       />
@@ -582,7 +577,9 @@ const ConfiguratorFemaleAccessories = () => {
                             handleTextureChange={handleTextureChange}
                             currencySymbol={currencySymbol}
                             currencyFactor={currencyFactor}
-                            subTextureDescriptions={textureDescriptions.Funerals}
+                            subTextureDescriptions={
+                              textureDescriptions.Funerals
+                            }
                           />
                         )}
                       />
@@ -597,7 +594,6 @@ const ConfiguratorFemaleAccessories = () => {
                     ref={canvasRef}
                     camera={{ position: [0, 0, selectedClothing.myZoom] }} // Set the initial camera position
                     gl={{ preserveDrawingBuffer: true }}
-                    className="w-100"
                   >
                     <ambientLight intensity={0.5} />
                     <pointLight position={[10, 10, 10]} />
@@ -624,7 +620,10 @@ const ConfiguratorFemaleAccessories = () => {
                 </div>
 
                 {/* parts images start */}
-                <PartImages selectedClothing={selectedClothing} selectedPart={selectedPart} />
+                <PartImages
+                  selectedClothing={selectedClothing}
+                  selectedPart={selectedPart}
+                />
                 {/* parts images end */}
               </div>
             </div>

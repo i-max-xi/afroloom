@@ -133,7 +133,7 @@ const Confirmation = ({
         <p className="h5 mt-4">Thank you for your order!</p>
       </div>
       <div className="d-flex justify-content-center align-items-center m-5">
-        Not Done ? <button className="btn btn-info text-white mx-3" onClick={ () => setShowConfirmation(false)}>Go Back</button>
+        Not Done ? <button className="btn btn-info text-white mx-3" onClick={ () => setShowConfirmation(false)}>Go Back</button> 
       </div>
     </div>
   );
