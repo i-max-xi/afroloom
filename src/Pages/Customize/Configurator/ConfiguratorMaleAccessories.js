@@ -27,6 +27,7 @@ import {
   textureValues,
   responsiveNess,
   responsiveColor,
+  specialNodeNames,
 } from "./arrays/neededArrays";
 import TextureItem from "./TextureItem";
 import PartImages from "./PartImages";
@@ -83,7 +84,6 @@ const Shirt = ({
         </>
       ) : (
         selectedClothing.myNode.map((nodeName, index) => {
- const specialNodeNames = ["button"]; // Add your special node names here
 
           const color = specialNodeNames.includes(nodeName)
             ? "#000000"

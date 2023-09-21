@@ -100,6 +100,9 @@ export const colorOptions = [
     { color: "#ff4500", label: "Orange Red" },
   ];
 
+export const specialNodeNames = ["button", "sole"]; // Add your special node names here
+
+
 export const textureArrays = {
     batik: [batik1, batik2, batik3, batik4, batik5, batik1, batik2, batik3, batik4, batik5, batik1, batik2, batik3, batik4, batik5],
     dashiki: [dashiki1, dashiki2, dashiki3, dashiki4, dashiki5,dashiki1, dashiki2, dashiki3, dashiki4, dashiki5],
