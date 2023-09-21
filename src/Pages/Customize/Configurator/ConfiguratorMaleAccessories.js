@@ -86,7 +86,7 @@ const Shirt = ({
         selectedClothing.myNode.map((nodeName, index) => {
 
           const color = specialNodeNames.includes(nodeName)
-            ? "#000000"
+            ? "#333333"
             : snap.color[index] || "#ffffff";          const texture = snap.texture[index] || null;
 
           return (
