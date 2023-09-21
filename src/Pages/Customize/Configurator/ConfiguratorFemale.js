@@ -61,10 +61,17 @@ const Shirt = ({
   const [isLoading, setIsLoading] = useState(true); // Add loading state
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+
     // Simulate loading for 2 seconds (you can replace this with your actual loading code)
     const loadingTimeout = setTimeout(() => {
       setIsLoading(false); // Set loading state to false once model is loaded (replace with your actual model loading logic)
     }, 2000);
+
+    for (let i = 0; i < state.color.length; i++) {
+      // to fix color keeping on to next page
+      state.color[i] = "#ffffff";
+    }
 
     return () => clearTimeout(loadingTimeout); // Cleanup the timeout if component unmounts
   }, []);
@@ -77,7 +84,12 @@ const Shirt = ({
         </>
       ) : (
         selectedClothing.myNode.map((nodeName, index) => {
-          const color = snap.color[index] || "#ffffff";
+          const specialNodeNames = ["button"]; // Add your special node names here
+
+          const color = specialNodeNames.includes(nodeName)
+            ? "#000000"
+            : snap.color[index] || "#ffffff";
+
           const texture = snap.texture[index] || null;
 
           return (
@@ -112,9 +124,6 @@ const CameraControls = () => {
 };
 
 const ConfiguratorFemale = () => {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
   const { Id } = useParams();
   const selectedClothing = mainFemaleCustomize.find((item) => item.name === Id);
 
@@ -240,7 +249,9 @@ const ConfiguratorFemale = () => {
           selectedParts={selectedParts}
           setShowConfirmation={setShowConfirmation}
           selectedSize={
-            selectedClothing.sizeOptions.find((option) => option.value === selectedSize)?.label
+            selectedClothing.sizeOptions.find(
+              (option) => option.value === selectedSize
+            )?.label
           }
           modelImage={stateImage}
           customSizeValues={sizeFormValues}

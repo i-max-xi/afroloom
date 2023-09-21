@@ -651,10 +651,12 @@ export const mainFemaleCustomize = [
     model: booty_shorts,
     image: booty_shorts_img,
     myNode: [
+      "button",
       "left_leg",
       "left_leg_edge",
       "left_pocket",
       "right_leg",
+      "right_leg_edge",
       "right_pocket",
       "waist",
     ],
