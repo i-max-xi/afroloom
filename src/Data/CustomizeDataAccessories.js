@@ -222,7 +222,7 @@ export const mainFemaleAccessories = [
     image: handbag,
     model: hand_bag_model,
     myNode: ["handle", "left_section", "mid_section", "right_section", "zippers_and_locks"],
-    myZoom: 0.8,
+    myZoom: 0.9,
     price: 55,
     parts: handbagParts.keys().map(handbagParts),
     // sizeGuide: handbag_guide,
