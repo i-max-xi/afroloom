@@ -559,7 +559,7 @@ export const mainMaleCustomize = [
       "right_pocket",
       "waist",
     ],
-    myZoom: 0.8,
+    myZoom: 0.5,
     myX: 0,
     myY: 10,
     price: 30,
