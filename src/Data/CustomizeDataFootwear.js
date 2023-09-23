@@ -54,7 +54,7 @@ export const mainFootwear = [
     name: "Flat Shoe",
     image: s2,
     model: flex_shoe,
-    myNode: ["back", "front", "sole"],
+    myNode: ["sole", "front", "back"],
     myZoom: 0.9,
     price: 20,
     parts: flexShoeParts.keys().map(flexShoeParts),
@@ -86,7 +86,7 @@ export const mainFootwear = [
     image:
       "https://th.bing.com/th/id/R.ed02939b666f5978946b4b104022f5ee?rik=N3Ja0bD%2boLeYgw&pid=ImgRaw&r=0",
     model: sneaker_model,
-    myNode: ["back", "front", "lace", "sole"],
+    myNode: ["front", "lace", "sole", "back",],
     myZoom: 0.9,
     price: 20,
     parts: sneakerParts.keys().map(sneakerParts),
