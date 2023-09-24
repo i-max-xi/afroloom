@@ -161,7 +161,7 @@ export const mainFemaleCustomize = [
     name: "T-Shirt short",
     image: "https://th.bing.com/th/id/OIP.ikUETESsVO_PcDoaCrIQnAHaIw?pid=ImgDet&w=1588&h=1879&rs=1",
     model: t_shirt_short,
-    myNode: ["bottom", "left_hand", "left_hand_edge", "right_hand", "right_hand_edge", "top", "stripe"],
+    myNode: ["bottom", "left_hand", "left_hand_edge", "right_hand", "right_hand_edge", "top", "top_stripe", "bottom_stripe"],
     myZoom: 0.9,
     price: 20,
     sizeGuide: tshirt_guide,
