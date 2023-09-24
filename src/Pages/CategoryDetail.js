@@ -41,7 +41,7 @@ const CategoryDetail = ({ option }) => {
     url = ""; // fallback URL
   }
 
-  const Products = useSelector((state)=> state.allProducts);
+  const Products = useSelector((state)=> state.allProducts.products);
   console.log(Products);
 
   // const category = allCategory.find((p) => p.id === parseInt(categoryId));

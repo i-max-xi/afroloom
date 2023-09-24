@@ -11,7 +11,7 @@ const ItemDetail = ({ match }) => {
     window.scrollTo(0, 0);
   }, []);
 
-  const Products = useSelector((state)=> state.allProducts);
+  const Products = useSelector((state)=> state.allProducts.products);
 
   const { productId } = useParams();
   const product = Products.find((p) => p.id === productId);
