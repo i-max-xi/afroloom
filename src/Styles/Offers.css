@@ -1,0 +1,46 @@
+.offer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  
+  .offer-card {
+    width: calc(25% - 20px); /* Adjust the width as needed */
+    padding: 20px;
+    border: 1px solid #ddd;
+    margin: 10px;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: 0.2s ease-in-out;
+  }
+
+  .offer-card:hover {
+    scale: 1.05;
+  }
+  
+  .offer-card h3 {
+    font-size: 18px;
+    margin: 0;
+  }
+  
+  .offer-link {
+    display: block;
+    color: #ffc107;
+    text-decoration: none;
+  }
+
+  .four-in-a-card {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two columns */
+    grid-gap: 1rem;
+    /* width: 300px; */
+  }
+  
+  .item {
+    border: 1px solid #ddd;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+  }
+  
+  

@@ -21,6 +21,7 @@ import { useSelector } from "react-redux";
 import ProductsDataService from "../Services/products.services";
 import AdGirl from "../Assets/Ads/portraitgirl.JPG";
 import AdGuy2 from "../Assets/Ads/portraitguy2.JPG";
+import FourInARow from "./offers/FourInARow";
 
 
 
@@ -367,6 +368,9 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
             // closePopup={closeSearch}
           /> */}
         {/* search ends here */}
+
+        <FourInARow />
+
         <SearchFilters
           search1="Category"
           search2="Country"
