@@ -2,6 +2,7 @@
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+    margin: 1rem 0;
   }
   
   .offer-card {
@@ -14,7 +15,7 @@
     transition: 0.2s ease-in-out;
   }
 
-  .offer-card:hover {
+  .four-in-a-card .item:hover, .offer-card:hover {
     scale: 1.05;
   }
   
@@ -32,15 +33,22 @@
   .four-in-a-card {
     display: grid;
     grid-template-columns: repeat(2, 1fr); /* Two columns */
-    grid-gap: 1rem;
-    /* width: 300px; */
+    /* grid-gap: 0.5rem; */
+    padding: 1rem;
+    border : 1px solid #ddd;
+    width: calc(25% - 20px); /* Adjust the width as needed */
   }
   
-  .item {
-    border: 1px solid #ddd;
-    padding: 20px;
+  .four-in-a-card .item {
+    /* border: 1px solid #ddd; */
+    /* padding: 20px; */
     text-align: center;
     cursor: pointer;
+    transition: 0.2s ease-in-out;
   }
   
+  .four-in-a-card h4 {
+    font-size: 12px;
+    margin: 0;
+  }
   

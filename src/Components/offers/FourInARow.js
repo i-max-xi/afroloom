@@ -1,42 +1,61 @@
-import React from 'react';
-import '../../Styles/Offers.css';
-import { Link } from 'react-router-dom'; // Import React Router's Link
-import FourInACard from './FourInACard';
+import React from "react";
+import "../../Styles/Offers.css";
+import FourInACard from "./FourInACard";
+import OfferCard from "./OfferCard";
 
 const FourInARow = () => {
+  const fourInCardiItems = [
+    {
+      title: "Watches",
+      imageUrl: "https://themesberg.com/docs/pixel-bootstrap/assets/img/shop/item-1.png",
+    //   link: "/item-1-link",
+    },
+    {
+      title: "Bags",
+      imageUrl: "https://www.pngmart.com/files/22/Hobo-Bag-PNG-HD.png",
+    },
+    {
+      title: "Scarf",
+      imageUrl: "https://day-et.com/cdn/shop/products/WEB-3235490300-05029-1_1608914a-360c-4a71-9eb6-955c36d36253_1200x1200.png?v=1690599948",
+    //   link: "/item-3-link",
+    },
+    {
+    //   title: "Item 4",
+      imageUrl: "https://static.vecteezy.com/system/resources/previews/009/847/891/non_2x/3d-best-seller-text-bubble-for-marketing-ecommerce-icon-free-png.png",
+    },
+  ];
+
+  const offerCards = [
+    {
+      title: "Get Your Dream Shoes",
+      imageUrl:
+        "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/9ce48468365529.60d4c7e73538d.jpg",
+      linkTo: "/clothing-under-20",
+    },
+    {
+      title: "Stylish gift for less",
+      imageUrl: "https://assets.mgimgs.com/mgimgs/rk/images/dp/wcm/202302/0008/mark-graham-x-steele-waterproof-medium-and-large-tote-set-t.jpg",
+      linkTo: "/another-offer",
+    },
+    {
+      title: "Discover fashion trends",
+      imageUrl: "https://ionicsupplies.com/cdn/shop/collections/COLLECTION_46334398-c2b6-49c6-b4cd-332ca169d08b_1200x1200.jpg?v=1575444827",
+      linkTo: "/yet-another-offer",
+    },
+  ];
+
   return (
     <div className="offer-container">
-      <div className="offer-card">
-        <h3>Top Clothing</h3>
-        <FourInACard />
-        <Link to="/top-clothing" className="offer-link">
-          See More
-        </Link>
-      </div>
+      <FourInACard items={fourInCardiItems} />
 
-      <div className="offer-card">
-        <h3>Clothing under $20</h3>
-        <img src="url_to_image2" alt="Offer 2" />
-        <Link to="/clothing-under-20" className="offer-link">
-          See More
-        </Link>
-      </div>
-
-      <div className="offer-card">
-        <h3>Another Offer</h3>
-        <img src="url_to_image3" alt="Offer 3" />
-        <Link to="/another-offer" className="offer-link">
-          See More
-        </Link>
-      </div>
-
-      <div className="offer-card">
-        <h3>Yet Another Offer</h3>
-        <img src="url_to_image4" alt="Offer 4" />
-        <Link to="/yet-another-offer" className="offer-link">
-          See More
-        </Link>
-      </div>
+      {offerCards.map((card, index) => (
+        <OfferCard
+          key={index}
+          title={card.title}
+          imageUrl={card.imageUrl}
+          linkTo={card.linkTo}
+        />
+      ))}
     </div>
   );
 };
