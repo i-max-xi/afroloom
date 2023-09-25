@@ -22,6 +22,7 @@ import ProductsDataService from "../Services/products.services";
 import AdGirl from "../Assets/Ads/portraitgirl.JPG";
 import AdGuy2 from "../Assets/Ads/portraitguy2.JPG";
 import FourInARow from "./offers/FourInARow";
+import ClickableBanner from "./offers/ClickableBanner";
 
 
 
@@ -418,7 +419,13 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
               />
             </div>
 
-            {index === 6 && showNestedComponent && (
+            {index === 8 && showNestedComponent && (
+              <div className="container mt-5 mb-5" key={uuid()}>
+                <ClickableBanner />
+              </div>
+              )}
+
+            {index === 100 && showNestedComponent && (
               <div className="container mt-5 mb-5" key={uuid()}>
                 <img
                   src={sofa}
@@ -429,7 +436,7 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
               </div>
             )}
 
-            {index === 9 && showNestedComponent && (
+            {index === 12 && showNestedComponent && (
               <div className="w-25" style={{ float: "right" }}>
                 <Card
                   title={ads[0].title}
@@ -447,7 +454,7 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
               </div>
             )}
 
-            {index === 12 && showNestedComponent && (
+            {index === 15 && showNestedComponent && (
               <div className="container mt-5 mb-5" key={uuid()}>
                 <img
                   src={blackFriday}
@@ -458,7 +465,7 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
               </div>
             )}
 
-            {index === 16 && showNestedComponent && (
+            {index === 18 && showNestedComponent && (
               <div className="w-25" style={{ float: "right" }}>
                 <Card
                   title={ads[1].title}
