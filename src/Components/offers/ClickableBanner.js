@@ -1,6 +1,7 @@
 import React from 'react';
 import '../../Styles/Offers.css'; // Import your CSS file for styling
 import { Link } from 'react-router-dom';
+import spinvid from '../../Assets/vid/vid.mp4';
 
 const ClickableBanner = () => {
   const items = [
@@ -10,8 +11,8 @@ const ClickableBanner = () => {
     },
     {
       title: 'Design your own custom products',
-      videoUrl: 'url_to_video', // Replace with the URL to your video
-      link: '/item-2-link',
+      videoUrl: spinvid,
+      link: '/customize',
     },
     {
       title: 'Your #1 source of African fabrics',
