@@ -1,5 +1,6 @@
 import React from "react";
 import "../../Styles/Offers.css";
+import { Link } from "react-router-dom";
 
 const FourInACard = ({ items }) => {
   return (
@@ -9,9 +10,9 @@ const FourInACard = ({ items }) => {
           <img src={item.imageUrl} alt={item.title} width="100%" />
           {item.title && <h4>{item.title}</h4>}
           {item.link && (
-            <a href={item.link} className="item-link">
+            <Link to={item.link} className="item-link">
               See More
-            </a>
+            </Link>
           )}
         </div>
       ))}
