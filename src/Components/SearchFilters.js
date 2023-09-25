@@ -65,7 +65,7 @@ const SearchFilters = ({
       style={{
         height: "max-content",
         // scale: "0.8",
-        width: "24%",
+        width: "20%",
         backgroundImage: `url(${searchBG})`,
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",

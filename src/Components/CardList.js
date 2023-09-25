@@ -357,7 +357,7 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
       {showNestedComponent && <Header />}
       {showNestedComponent === false ? <Nav /> : <></>}
       <div
-        className="row p-5 d-flex justify-content-between"
+        className="row p-5 d-flex"
         style={{ padding: "10rem" }}
       >
         {showNestedComponent && <CategorySwipe />}
@@ -400,8 +400,8 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
         {itemsToDisplay.map((product, index) => (
           <React.Fragment key={uuid()}>
             <div
-              className="mt-2 text-decoration-none text-black"
-              style={{ width: product.Width || "24%" }}
+              className="mt-1 text-decoration-none text-black"
+              style={{ width: product.Width || "20%" }}
             >
               <Card
                 title={product.title}
