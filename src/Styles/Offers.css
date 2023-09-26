@@ -30,13 +30,17 @@
     text-decoration: none;
   }
 
+  .four-in-a-card-container {
+    padding: 1rem;
+    border : 1px solid #ddd;
+    width: calc(25% - 20px); /* Adjust the width as needed */
+  }
+
   .four-in-a-card {
     display: grid;
     grid-template-columns: repeat(2, 1fr); /* Two columns */
     /* grid-gap: 0.5rem; */
-    padding: 1rem;
-    border : 1px solid #ddd;
-    width: calc(25% - 20px); /* Adjust the width as needed */
+    
   }
   
   .four-in-a-card .item {

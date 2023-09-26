@@ -12,7 +12,7 @@ const Row = ({ mainItems }) => {
     if (item.array) {
       // If the item has an array property, render it as a FourInACard
       renderedItems.push(
-        <FourInACard key={item.title} items={item.array} />
+        <FourInACard key={item.headTitle} headTitle={item.headTitle} items={item.array} />
       );
     } else {
       // If the item doesn't have an array property, render it as an OfferCard

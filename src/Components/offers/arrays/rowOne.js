@@ -2,7 +2,7 @@ import spinvid from "../../../Assets/vid/vid.mp4";
 
 export const rowOne = [
     {
-      title: "",
+      headTitle: "Men's wear under 3$",
       array: [
         {
           title: "Watches",
@@ -33,7 +33,7 @@ export const rowOne = [
       linkTo: "/category/Accessories",
     },
     {
-      title: "",
+      headTitle: "Women wear under 3$",
       array: [
         {
           title: "Books",
