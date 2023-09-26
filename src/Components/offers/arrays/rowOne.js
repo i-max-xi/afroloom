@@ -74,19 +74,19 @@ export const rowOne = [
       // linkTo: "/category/Footwear",
     },
     {
-      headTitle: "Accessories to go with your wears",
+      headTitle: "Hanicrafts",
       array: [
         {
-          title: "Watches",
-          imageUrl: "https://themesberg.com/docs/pixel-bootstrap/assets/img/shop/item-1.png",
+          title: "Pot",
+          imageUrl: "https://t4.ftcdn.net/jpg/02/55/26/07/360_F_255260766_F5NWLPmmuKqBHYd9rkOwVSplLPBlJxQP.jpg",
         },
         {
-          title: "Bags",
-          imageUrl: "https://www.pngmart.com/files/22/Hobo-Bag-PNG-HD.png",
+          title: "Art Work",
+          imageUrl: "https://static.displate.com/280x392/displate/2019-04-04/d41aa25b6ecbf699df7a29209a263d90_8737498b15d0d4ae9a8d51ce07b623b2.jpg",
         },
         {
-          title: "Scarf",
-          imageUrl: "https://day-et.com/cdn/shop/products/WEB-3235490300-05029-1_1608914a-360c-4a71-9eb6-955c36d36253_1200x1200.png?v=1690599948",
+          title: "Basket",
+          imageUrl: "https://i.pinimg.com/originals/84/a9/33/84a933b75922fb6c7676cf4aa244f2c4.png",
         },
       ]
     },
