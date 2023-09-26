@@ -21,8 +21,8 @@ import { useSelector } from "react-redux";
 import ProductsDataService from "../Services/products.services";
 import AdGirl from "../Assets/Ads/portraitgirl.JPG";
 import AdGuy2 from "../Assets/Ads/portraitguy2.JPG";
-import FourInARow from "./offers/FourInARow";
-import ClickableBanner from "./offers/ClickableBanner";
+import Row from "./offers/Row";
+import Banner from "./offers/Banner";
 
 
 
@@ -370,7 +370,7 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
           /> */}
         {/* search ends here */}
 
-        <FourInARow />
+        <Row />
 
         <SearchFilters
           search1="Category"
@@ -421,7 +421,7 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
 
             {index === 8 && showNestedComponent && (
               <div className="container mt-5 mb-5" key={uuid()}>
-                <ClickableBanner />
+                <Banner />
               </div>
               )}
 

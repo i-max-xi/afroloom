@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import '../../Styles/Offers.css';
 
-const OfferCard = ({ title, imageUrl, linkTo }) => {
+const Singles = ({ title, imageUrl, linkTo }) => {
   return (
     <div className="offer-card">
       <h3>{title}</h3>
@@ -14,4 +14,4 @@ const OfferCard = ({ title, imageUrl, linkTo }) => {
   );
 };
 
-export default OfferCard;
+export default Singles;

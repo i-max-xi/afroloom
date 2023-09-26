@@ -2,7 +2,7 @@ import React from "react";
 import "../../Styles/Offers.css";
 import { Link } from "react-router-dom";
 
-const FourInACard = ({ items }) => {
+const Fours = ({ items }) => {
   return (
     <div className="four-in-a-card">
       {items.map((item, index) => (
@@ -20,4 +20,4 @@ const FourInACard = ({ items }) => {
   );
 };
 
-export default FourInACard;
+export default Fours;

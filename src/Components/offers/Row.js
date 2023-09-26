@@ -1,10 +1,10 @@
 import React from "react";
 import "../../Styles/Offers.css";
-import FourInACard from "./FourInACard";
-import OfferCard from "./OfferCard";
+import FourInACard from "./Fours";
+import OfferCard from "./Singles";
 
-const FourInARow = () => {
-  const fourInCardiItems = [
+const Row = () => {
+  const foursItems = [
     {
       title: "Watches",
       imageUrl: "https://themesberg.com/docs/pixel-bootstrap/assets/img/shop/item-1.png",
@@ -25,7 +25,7 @@ const FourInARow = () => {
     },
   ];
 
-  const offerCards = [
+  const singlesItems = [
     {
       title: "Get Your Dream Shoes",
       imageUrl:
@@ -46,9 +46,9 @@ const FourInARow = () => {
 
   return (
     <div className="offer-container">
-      <FourInACard items={fourInCardiItems} />
+      <FourInACard items={foursItems} />
 
-      {offerCards.map((card, index) => (
+      {singlesItems.map((card, index) => (
         <OfferCard
           key={index}
           title={card.title}
@@ -60,4 +60,4 @@ const FourInARow = () => {
   );
 };
 
-export default FourInARow;
+export default Row;

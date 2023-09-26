@@ -3,7 +3,7 @@ import '../../Styles/Offers.css'; // Import your CSS file for styling
 import { Link } from 'react-router-dom';
 import spinvid from '../../Assets/vid/vid.mp4';
 
-const ClickableBanner = () => {
+const Banner = () => {
   const items = [
     {
       title: 'Dont miss out on these discounts',
@@ -42,4 +42,4 @@ const ClickableBanner = () => {
   );
 };
 
-export default ClickableBanner;
+export default Banner;
