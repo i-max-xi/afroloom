@@ -10,10 +10,7 @@ import sofa from "../Assets/Ads/sofa.JPG";
 import blackFriday from "../Assets/Ads/blackFriday.JPG";
 import uuid from "react-uuid";
 import { useDispatch } from "react-redux";
-import {
-  addItem,
-  addProducts,
-} from "../Redux/store";
+import { addItem, addProducts } from "../Redux/store";
 import SearchFilters from "./SearchFilters";
 import { allCategory, categoryFilter } from "../Data/categoryList";
 import countryArr from "../Data/CountryArr";
@@ -24,8 +21,6 @@ import AdGuy2 from "../Assets/Ads/portraitguy2.JPG";
 import Row from "./offers/Row";
 import Banner from "./offers/Banner";
 import { rowOne } from "./offers/arrays/rowOne";
-
-
 
 export const Card = ({
   title,
@@ -61,7 +56,6 @@ export const Card = ({
   // currency conversion
   const currencySymbol = useSelector((state) => state.currencySymbol.symbol);
   const currencyFactor = useSelector((state) => state.currencySymbol.factor);
-
 
   // Stars
   const stars = [];
@@ -112,7 +106,10 @@ export const Card = ({
             <span></span>
           )}
 
-          <h5 className="price mt-3">{currencySymbol}{(currencyFactor * price).toFixed(2)}</h5>
+          <h5 className="price mt-3">
+            {currencySymbol}
+            {(currencyFactor * price).toFixed(2)}
+          </h5>
 
           {/* stars */}
           <p className="mt-3">{stars}</p>
@@ -204,8 +201,6 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
     dispatch(addProducts(fetchedProducts));
   };
 
-
-
   // Pagination starts here
 
   const onPageChange = (event) => {
@@ -246,7 +241,7 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
   useEffect(() => {
     if (selectedCategory === "Accessories") {
       setSearch5Bank("Size");
-      if(selectedProduct === "Hat"){
+      if (selectedProduct === "Hat") {
         setSearch5Options([
           "Extra small",
           "Small",
@@ -255,16 +250,14 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
           "X-Large",
           "2X-Large",
         ]);
-      }
-      else if (selectedProduct === "Bra"){
+      } else if (selectedProduct === "Bra") {
         setSearch5Bank("Size(UK)");
-        setSearch5Options([
-          28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48
-        ]);
+        setSearch5Options([28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48]);
       }
-    }
-
-    else if (selectedCategory === "Clothing" || selectedCategory === "Footwear"){
+    } else if (
+      selectedCategory === "Clothing" ||
+      selectedCategory === "Footwear"
+    ) {
       setSearch5Bank("Size");
       setSearch5Options([
         "Extra small",
@@ -274,9 +267,8 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
         "X-Large",
         "2X-Large",
         "3X-Large",
-        "4X-Large"
+        "4X-Large",
       ]);
-
     }
   }, [selectedCategory, selectedProduct]);
 
@@ -331,7 +323,7 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
   //     (product) =>
   //     // product.country === selectedCountry &&
   //     product.category === selectedCategory &&
-  //     (selectedProduct === "" || product.detailedCategory === selectedProduct)      
+  //     (selectedProduct === "" || product.detailedCategory === selectedProduct)
   //   );
   //   setItemsToDisplay(newItemstoDisplay);
   // };
@@ -341,7 +333,8 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
       if (
         (selectedCountry === "" || product.country === selectedCountry) &&
         (selectedCategory === "" || product.category === selectedCategory) &&
-        (selectedProduct === "" || product.detailedCategory === selectedProduct) &&
+        (selectedProduct === "" ||
+          product.detailedCategory === selectedProduct) &&
         (selectedGender === "" || product.gender === selectedGender) &&
         (selectedSize === "" || product.size === selectedSize)
       ) {
@@ -349,29 +342,25 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
       }
       return false;
     });
-  
+
     setItemsToDisplay(newItemstoDisplay);
   };
-  
 
   return (
     <>
       {showNestedComponent && <Header />}
       {showNestedComponent === false ? <Nav /> : <></>}
-      <div
-        className="row p-5 d-flex"
-        style={{ padding: "10rem" }}
-      >
+      <div className="row p-5 d-flex" style={{ padding: "10rem" }}>
         {showNestedComponent && <CategorySwipe />}
 
         {/* search input */}
-        
-          {/* <SearchBar
+
+        {/* <SearchBar
             // closePopup={closeSearch}
           /> */}
         {/* search ends here */}
 
-        <Row mainItems={rowOne}/>
+        <Row mainItems={rowOne} />
 
         <SearchFilters
           search1="Category"
@@ -397,7 +386,6 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
           handleSave={saveFilters}
         />
 
-
         {/* Iteration */}
         {itemsToDisplay.map((product, index) => (
           <React.Fragment key={uuid()}>
@@ -420,13 +408,7 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
               />
             </div>
 
-            {index === 8 && showNestedComponent && (
-              <div className="container mt-5 mb-5" key={uuid()}>
-                <Banner />
-              </div>
-              )}
-
-            {index === 100 && showNestedComponent && (
+            {/* {index === 100 && showNestedComponent && (
               <div className="container mt-5 mb-5" key={uuid()}>
                 <img
                   src={sofa}
@@ -435,10 +417,10 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
                   style={{ height: "20rem" }}
                 />
               </div>
-            )}
-
-            {index === 12 && showNestedComponent && (
-              <div className="w-25" style={{ float: "right" }}>
+            )} */}
+            {/* girl ad  */}
+            {index === 6 && showNestedComponent && (
+              <div className="mt-1" style={{ float: "right", width: "30%" }}>
                 <Card
                   title={ads[0].title}
                   description={ads[0].description}
@@ -452,6 +434,13 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
                   Button={ads[0].Button}
                   linkless={ads[0].linkless}
                 />
+              </div>
+            )}
+
+            {/* banner 1 */}
+            {index === 11 && showNestedComponent && (
+              <div className="container mt-5 mb-5" key={uuid()}>
+                <Banner />
               </div>
             )}
 
