@@ -6,7 +6,7 @@ import Nav from "./Nav";
 import Header from "./Header";
 import CategorySwipe from "./CategorySwipe";
 import { Link } from "react-router-dom";
-import sofa from "../Assets/Ads/sofa.JPG";
+// import sofa from "../Assets/Ads/sofa.JPG";
 import blackFriday from "../Assets/Ads/blackFriday.JPG";
 import uuid from "react-uuid";
 import { useDispatch } from "react-redux";
@@ -21,6 +21,7 @@ import AdGuy2 from "../Assets/Ads/portraitguy2.JPG";
 import Row from "./offers/Row";
 import Banner from "./offers/Banner";
 import { rowOne } from "./offers/arrays/rowOne";
+import { bannerone } from "./offers/arrays/banner";
 
 export const Card = ({
   title,
@@ -418,9 +419,10 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
                 />
               </div>
             )} */}
+
             {/* girl ad  */}
             {index === 6 && showNestedComponent && (
-              <div className="mt-1" style={{ float: "right", width: "30%" }}>
+              <div className="mt-1" style={{ float: "right", width: "30%", marginLeft: "4rem" }}>
                 <Card
                   title={ads[0].title}
                   description={ads[0].description}
@@ -440,7 +442,7 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
             {/* banner 1 */}
             {index === 11 && showNestedComponent && (
               <div className="container mt-5 mb-5" key={uuid()}>
-                <Banner />
+                <Banner items={bannerone} />
               </div>
             )}
 

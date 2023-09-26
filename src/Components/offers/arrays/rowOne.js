@@ -29,16 +29,15 @@ export const rowOne = [
           imageUrl: "https://www.pngall.com/wp-content/uploads/2016/09/Trouser-PNG-Picture.png",
         },
         {
-          // title: "Trousers",
+          // title: "Long Sleeves",
           imageUrl: "https://clothbase.s3.amazonaws.com/uploads/148c7931-31f5-4c8b-82a4-e0427fea76f2/27-06-2017_cpcompany_longsleevepockettee_darkfoggrey_03cmts045a-000444g-968_mb_1.jpg",
         },
       ]
     },
     {
-      title: "Get Your Dream Shoes",
+      title: "Customize Your own products",
       videoUrl: spinvid,
-
-      linkTo: "/category/Footwear",
+      // linkTo: "/category/Footwear",
     },
     {
       title: "Stylish gift for less",
@@ -54,19 +53,19 @@ export const rowOne = [
       headTitle: "Women wear under 3$",
       array: [
         {
-          title: "Books",
-          imageUrl: "https://themesberg.com/docs/pixel-bootstrap/assets/img/shop/item-1.png",
+          // title: "Tshirt",
+          imageUrl: "https://images.squarespace-cdn.com/content/v1/56c69e66f8baf3bd6c33c52c/1690820831885-FKGBSS1DFCB2MVU70X0N/RED+VNECK_BLACK+LOGO.png",
         },
         {
-          title: "Necklace",
-          imageUrl: "https://www.pngmart.com/files/22/Hobo-Bag-PNG-HD.png",
+          // title: "Skirt",
+          imageUrl: "https://cdn.shopify.com/s/files/1/1639/2735/products/CircleSkirtinBlackPolkaDotStockFront_580x.jpg?v=1644861166",
         },
         {
-          title: "Bikini",
-          imageUrl: "https://day-et.com/cdn/shop/products/WEB-3235490300-05029-1_1608914a-360c-4a71-9eb6-955c36d36253_1200x1200.png?v=1690599948",
+          // title: "Trouser",
+          imageUrl: "https://hips.hearstapps.com/vader-prod.s3.amazonaws.com/1658768504-17020145_37177866_1000.jpg?crop=0.889xw:1xh;center,top&resize=980:*",
         },
         {
-          imageUrl: "https://static.vecteezy.com/system/resources/previews/009/847/891/non_2x/3d-best-seller-text-bubble-for-marketing-ecommerce-icon-free-png.png",
+          imageUrl: "https://www.uvskinz.com/cdn/shop/products/040352-White-1_308x308_crop_center.jpg?v=1683915837",
         },
       ]
     },
