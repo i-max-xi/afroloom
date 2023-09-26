@@ -1,3 +1,5 @@
+import spinvid from "../../../Assets/vid/vid.mp4";
+
 export const rowOne = [
     {
       title: "",
@@ -21,8 +23,8 @@ export const rowOne = [
     },
     {
       title: "Get Your Dream Shoes",
-      imageUrl:
-        "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/9ce48468365529.60d4c7e73538d.jpg",
+      videoUrl: spinvid,
+
       linkTo: "/category/Footwear",
     },
     {

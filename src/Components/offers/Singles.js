@@ -1,12 +1,22 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import '../../Styles/Offers.css';
+import React from "react";
+import { Link } from "react-router-dom";
 
-const Singles = ({ title, imageUrl, linkTo }) => {
+const OfferItem = ({ title, imageUrl, linkTo, videoUrl }) => {
   return (
     <div className="offer-card">
       <h3>{title}</h3>
-      <img src={imageUrl} alt={title} width='100%'/>
+      {videoUrl ? (
+        <video
+          src={videoUrl}
+          alt={title}
+          className="item-video"
+          autoPlay
+          loop
+          muted
+        />
+      ) : (
+        <img src={imageUrl} alt={title} />
+      )}
       <Link to={linkTo} className="offer-link">
         See More
       </Link>
@@ -14,4 +24,5 @@ const Singles = ({ title, imageUrl, linkTo }) => {
   );
 };
 
-export default Singles;
+export default OfferItem;
+

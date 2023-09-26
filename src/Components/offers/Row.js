@@ -22,6 +22,7 @@ const Row = ({ mainItems }) => {
           title={item.title}
           imageUrl={item.imageUrl}
           linkTo={item.linkTo}
+          videoUrl={item.videoUrl}
         />
       );
     }
