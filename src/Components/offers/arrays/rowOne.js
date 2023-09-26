@@ -4,18 +4,6 @@ export const rowOne = [
     {
       headTitle: "Men's wear under 3$",
       array: [
-        // {
-        //   title: "Watches",
-        //   imageUrl: "https://themesberg.com/docs/pixel-bootstrap/assets/img/shop/item-1.png",
-        // },
-        // {
-        //   title: "Bags",
-        //   imageUrl: "https://www.pngmart.com/files/22/Hobo-Bag-PNG-HD.png",
-        // },
-        // {
-        //   title: "Scarf",
-        //   imageUrl: "https://day-et.com/cdn/shop/products/WEB-3235490300-05029-1_1608914a-360c-4a71-9eb6-955c36d36253_1200x1200.png?v=1690599948",
-        // },
         {
           // title: "Shirt",
           imageUrl: "https://i.pinimg.com/originals/f7/1c/5c/f71c5c1e89dbb27a7e840b6fb60932eb.png",
@@ -44,11 +32,7 @@ export const rowOne = [
       imageUrl: "https://assets.mgimgs.com/mgimgs/rk/images/dp/wcm/202302/0008/mark-graham-x-steele-waterproof-medium-and-large-tote-set-t.jpg",
       linkTo: "/category/Accessories",
     },
-    // {
-    //   title: 'Your #1 source of African fabrics',
-    //   imageUrl: 'https://images.squarespace-cdn.com/content/v1/5ebf5fe07d332a028bf1e9f6/1667427305938-0HO9NVNXRF3ROH1JRJPL/array-orange-fabrics.jpg',
-    //   linkTo: '/item-3-link',
-    // },
+    
     {
       headTitle: "Women wear under 3$",
       array: [
@@ -69,4 +53,78 @@ export const rowOne = [
         },
       ]
     },
+  ];
+
+  export const rowSix = [
+    
+    {
+      title: "Classy",
+      imageUrl: "https://emaratshop.com/cdn/shop/products/ORANGEDSK_fec7dbb9-058d-4b0a-876a-b376604d6f91.png?v=1602629732",
+      linkTo: "/category/Accessories",
+    },
+    
+    {
+      // title: 'Discount',
+      imageUrl: 'https://toppng.com/uploads/thumbnail/special-discount-sign-11552764408sqj0xsny4c.png',
+      linkTo: '/item-3-link',
+    },
+    {
+      title: "Customize booty shorts",
+      videoUrl: spinvid,
+      // linkTo: "/category/Footwear",
+    },
+    {
+      headTitle: "Accessories to go with your wears",
+      array: [
+        {
+          title: "Watches",
+          imageUrl: "https://themesberg.com/docs/pixel-bootstrap/assets/img/shop/item-1.png",
+        },
+        {
+          title: "Bags",
+          imageUrl: "https://www.pngmart.com/files/22/Hobo-Bag-PNG-HD.png",
+        },
+        {
+          title: "Scarf",
+          imageUrl: "https://day-et.com/cdn/shop/products/WEB-3235490300-05029-1_1608914a-360c-4a71-9eb6-955c36d36253_1200x1200.png?v=1690599948",
+        },
+      ]
+    },
+   
+  ];
+
+  export const rowNine = [
+    {
+      headTitle: "Accessories to go with your wears",
+      array: [
+        {
+          title: "Watches",
+          imageUrl: "https://themesberg.com/docs/pixel-bootstrap/assets/img/shop/item-1.png",
+        },
+        {
+          title: "Bags",
+          imageUrl: "https://www.pngmart.com/files/22/Hobo-Bag-PNG-HD.png",
+        },
+        {
+          title: "Scarf",
+          imageUrl: "https://day-et.com/cdn/shop/products/WEB-3235490300-05029-1_1608914a-360c-4a71-9eb6-955c36d36253_1200x1200.png?v=1690599948",
+        },
+      ]
+    },
+    {
+      title: "Wallet",
+      imageUrl: "https://prod-images.fashionphile.com/thumb/d05b9222f2a254da3b751d3b127b5942/c7158f5539e1358d638e0bcf96804850.jpg",
+      linkTo: "/category/Accessories",
+    },
+    {
+      title: "Customize miniskirts",
+      videoUrl: spinvid,
+      // linkTo: "/category/Footwear",
+    },
+    {
+      title: 'Sandals',
+      imageUrl: 'https://mawuafrica.com/cdn/shop/products/29_056f9282-89a8-43bc-8705-f51c7e1384ef.png?v=1678465703',
+      linkTo: '/item-3-link',
+    },
+   
   ];

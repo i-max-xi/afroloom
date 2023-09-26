@@ -20,8 +20,8 @@ import AdGirl from "../Assets/Ads/portraitgirl.JPG";
 import AdGuy2 from "../Assets/Ads/portraitguy2.JPG";
 import Row from "./offers/Row";
 import Banner from "./offers/Banner";
-import { rowOne } from "./offers/arrays/rowOne";
-import { bannerone } from "./offers/arrays/banner";
+import { rowNine, rowOne, rowSix } from "./offers/arrays/rowOne";
+import { bannereight, bannerfive, bannerone, bannerten } from "./offers/arrays/banner";
 
 export const Card = ({
   title,
@@ -422,31 +422,56 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
 
             {/* girl ad  */}
             {index === 6 && showNestedComponent && (
-              <div className="mt-1" style={{ float: "right", width: "30%", marginLeft: "4rem" }}>
-                <Card
-                  title={ads[0].title}
-                  description={ads[0].description}
-                  rating={ads[0].rating}
-                  price={ads[0].price}
-                  item={ads[0].item}
-                  flag={ads[0].flag}
-                  id={ads[0].id}
-                  Height={ads[0].height}
-                  TextAlign={ads[0].TextAlign}
-                  Button={ads[0].Button}
-                  linkless={ads[0].linkless}
-                />
-              </div>
+              <>
+                <div className="mt-1 w-25" style={{ float: "right" }}>
+                  <Card
+                    title={ads[0].title}
+                    description={ads[0].description}
+                    rating={ads[0].rating}
+                    price={ads[0].price}
+                    item={ads[0].item}
+                    flag={ads[0].flag}
+                    id={ads[0].id}
+                    Height={ads[0].height}
+                    TextAlign={ads[0].TextAlign}
+                    Button={ads[0].Button}
+                    linkless={ads[0].linkless}
+                  />
+                </div>
+                <div className="container mt-5 mb-5" key={uuid()}>
+                  <Banner items={bannerone} />
+                </div>
+              </>
             )}
 
             {/* banner 1 */}
-            {index === 11 && showNestedComponent && (
-              <div className="container mt-5 mb-5" key={uuid()}>
-                <Banner items={bannerone} />
-              </div>
+            {index === 9 && showNestedComponent && (
+              <>
+                {/* guy ad */}
+                <div className="w-25 mt-1" style={{ float: "right" }}>
+                  <Card
+                    title={ads[1].title}
+                    description={ads[1].description}
+                    rating={ads[1].rating}
+                    price={ads[1].price}
+                    item={ads[1].item}
+                    flag={ads[1].flag}
+                    id={ads[1].id}
+                    Height={ads[1].height}
+                    TextAlign={ads[1].TextAlign}
+                    Button={ads[1].Button}
+                    linkless={ads[1].linkless}
+                  />
+                </div>
+
+                {/* banner 2 */}
+                <div className="container mt-5 mb-5" key={uuid()}>
+                  <Banner items={bannerfive} headTitle="Products under 2$" />
+                </div>
+              </>
             )}
 
-            {index === 15 && showNestedComponent && (
+            {/* {index === 15 && showNestedComponent && (
               <div className="container mt-5 mb-5" key={uuid()}>
                 <img
                   src={blackFriday}
@@ -455,24 +480,21 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
                   style={{ height: "20rem" }}
                 />
               </div>
-            )}
+            )} */}
 
-            {index === 18 && showNestedComponent && (
-              <div className="w-25" style={{ float: "right" }}>
-                <Card
-                  title={ads[1].title}
-                  description={ads[1].description}
-                  rating={ads[1].rating}
-                  price={ads[1].price}
-                  item={ads[1].item}
-                  flag={ads[1].flag}
-                  id={ads[1].id}
-                  Height={ads[1].height}
-                  TextAlign={ads[1].TextAlign}
-                  Button={ads[1].Button}
-                  linkless={ads[1].linkless}
-                />
-              </div>
+            {index === 9 && showNestedComponent && <Row mainItems={rowSix} />}
+
+            {index === 14 && showNestedComponent && (
+              <>
+                <div className="container mt-5 mb-5" key={uuid()}>
+                  <Banner items={bannereight} headTitle="New Arrivals" />
+                </div>
+
+                <Row mainItems={rowNine} />
+                <div className="container mt-5 mb-5" key={uuid()}>
+                  <Banner items={bannerten} headTitle="Frequently purchased products" />
+                </div>
+              </>
             )}
           </React.Fragment>
         ))}

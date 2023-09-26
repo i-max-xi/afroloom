@@ -15,7 +15,7 @@ const OfferItem = ({ title, imageUrl, linkTo, videoUrl }) => {
           muted
         />
       ) : (
-        <img src={imageUrl} alt={title} />
+        <img src={imageUrl} alt={title} width="100%"/>
       )}
       <Link to={linkTo} className="offer-link">
         See More

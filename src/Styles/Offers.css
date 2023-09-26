@@ -56,11 +56,16 @@
     margin: 0;
   }
 
+  .clickable-banner-container {
+    border: 1px solid #ccc;
+    padding: 1rem;
+
+  }
+
   .clickable-banner {
     display: flex;
     justify-content: space-between;
-    border: 1px solid #ccc;
-    height: 20rem;
+    height: 18rem;
   }
   
   .clickable-item {
