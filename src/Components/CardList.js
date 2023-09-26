@@ -7,7 +7,7 @@ import Header from "./Header";
 import CategorySwipe from "./CategorySwipe";
 import { Link } from "react-router-dom";
 // import sofa from "../Assets/Ads/sofa.JPG";
-import blackFriday from "../Assets/Ads/blackFriday.JPG";
+// import blackFriday from "../Assets/Ads/blackFriday.JPG";
 import uuid from "react-uuid";
 import { useDispatch } from "react-redux";
 import { addItem, addProducts } from "../Redux/store";
