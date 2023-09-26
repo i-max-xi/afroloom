@@ -23,6 +23,7 @@ import AdGirl from "../Assets/Ads/portraitgirl.JPG";
 import AdGuy2 from "../Assets/Ads/portraitguy2.JPG";
 import Row from "./offers/Row";
 import Banner from "./offers/Banner";
+import { rowOne } from "./offers/arrays/rowOne";
 
 
 
@@ -370,7 +371,7 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
           /> */}
         {/* search ends here */}
 
-        <Row />
+        <Row mainItems={rowOne}/>
 
         <SearchFilters
           search1="Category"
