@@ -34,6 +34,7 @@
     padding: 1rem;
     border : 1px solid #ddd;
     width: calc(25% - 20px); /* Adjust the width as needed */
+    height: max-content;
   }
 
   .four-in-a-card {
@@ -54,6 +55,21 @@
   .four-in-a-card h4 {
     font-size: 12px;
     margin: 0;
+  }
+
+  .fours-link {
+    margin-top: 1rem;
+    padding: 0.3rem;
+    text-align: center;
+    background-color: #ffc107;
+    text-decoration: none;
+    color: white;
+    border-radius: 0.5rem;
+  }
+
+  h5, h3 {
+    font-weight: bolder;
+
   }
 
   .clickable-banner-container {
@@ -100,6 +116,20 @@
   .item-title {
     margin-top: 1rem;
     font-size: 16px;
+    text-decoration: none;
+  }
+
+  .discount {
+    padding: 0.3rem;
+    border-radius: 0.5rem;
+    background-color: red;
+    color: white;
+    font-weight: bolder;
+  }
+
+  .more-deals {
+    font-size: 14px;
+    color: #ffc107;
     text-decoration: none;
   }
   

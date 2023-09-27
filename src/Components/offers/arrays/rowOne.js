@@ -2,7 +2,7 @@ import spinvid from "../../../Assets/vid/vid.mp4";
 
 export const rowOne = [
     {
-      headTitle: "Men's wear under 3$",
+      headTitle: "Men's Clothing under 3$",
       array: [
         {
           // title: "Shirt",
@@ -20,21 +20,22 @@ export const rowOne = [
           // title: "Long Sleeves",
           imageUrl: "https://clothbase.s3.amazonaws.com/uploads/148c7931-31f5-4c8b-82a4-e0427fea76f2/27-06-2017_cpcompany_longsleevepockettee_darkfoggrey_03cmts045a-000444g-968_mb_1.jpg",
         },
-      ]
+      ],
+      linkTo: "/",
     },
     {
-      title: "Customize Your own products",
+      title: "Design Your Own Products With Quality African Fabric",
       videoUrl: spinvid,
-      // linkTo: "/category/Footwear",
+      linkTo: "/customize",
     },
     {
-      title: "Stylish gift for less",
+      title: "Find the perfect gift",
       imageUrl: "https://assets.mgimgs.com/mgimgs/rk/images/dp/wcm/202302/0008/mark-graham-x-steele-waterproof-medium-and-large-tote-set-t.jpg",
       linkTo: "/category/Accessories",
     },
     
     {
-      headTitle: "Women wear under 3$",
+      headTitle: "Women clothing under 3$",
       array: [
         {
           // title: "Tshirt",
@@ -58,23 +59,23 @@ export const rowOne = [
   export const rowSix = [
     
     {
-      title: "Classy",
+      title: "Lowest Prices in 60 days",
       imageUrl: "https://emaratshop.com/cdn/shop/products/ORANGEDSK_fec7dbb9-058d-4b0a-876a-b376604d6f91.png?v=1602629732",
       linkTo: "/category/Accessories",
     },
     
     {
-      // title: 'Discount',
+      title: 'Most Popular',
       imageUrl: 'https://toppng.com/uploads/thumbnail/special-discount-sign-11552764408sqj0xsny4c.png',
       linkTo: '/item-3-link',
     },
     {
-      title: "Customize booty shorts",
+      title: "We make your thoughts",
       videoUrl: spinvid,
       // linkTo: "/category/Footwear",
     },
     {
-      headTitle: "Hanicrafts",
+      headTitle: "New Products This Week",
       array: [
         {
           title: "Pot",
@@ -95,7 +96,7 @@ export const rowOne = [
 
   export const rowNine = [
     {
-      headTitle: "Accessories to go with your wears",
+      headTitle: "Fashion Accessories Made Perfect",
       array: [
         {
           title: "Watches",
@@ -112,17 +113,17 @@ export const rowOne = [
       ]
     },
     {
-      title: "Wallet",
+      title: "Discover fashion trends",
       imageUrl: "https://prod-images.fashionphile.com/thumb/d05b9222f2a254da3b751d3b127b5942/c7158f5539e1358d638e0bcf96804850.jpg",
       linkTo: "/category/Accessories",
     },
     {
-      title: "Customize miniskirts",
+      title: "We get it done like you design it",
       videoUrl: spinvid,
       // linkTo: "/category/Footwear",
     },
     {
-      title: 'Sandals',
+      title: 'Get Value For your Feet',
       imageUrl: 'https://mawuafrica.com/cdn/shop/products/29_056f9282-89a8-43bc-8705-f51c7e1384ef.png?v=1678465703',
       linkTo: '/item-3-link',
     },

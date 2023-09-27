@@ -18,7 +18,7 @@ const OfferItem = ({ title, imageUrl, linkTo, videoUrl }) => {
         <img src={imageUrl} alt={title} width="100%"/>
       )}
       <Link to={linkTo} className="offer-link">
-        See More
+        {videoUrl ? "Customize" : "See More"}
       </Link>
     </div>
   );

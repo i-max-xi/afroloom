@@ -2,10 +2,13 @@ import React from "react";
 import "../../Styles/Offers.css"; // Import your CSS file for styling
 import { Link } from "react-router-dom";
 
-const Banner = ({ items, headTitle }) => {
+const Banner = ({ items, headTitle, seeMore }) => {
   return (
     <div className="clickable-banner-container">
-      <h5>{headTitle}</h5>
+      <h5>
+        {headTitle}{" "}
+        {/* {seeMore ? <Link className="more-deals"> - See More</Link> : ""} */}
+      </h5>
       <div className="clickable-banner">
         {items.map((item, index) => (
           <Link to={item.link} className="clickable-item" key={index}>
@@ -24,6 +27,11 @@ const Banner = ({ items, headTitle }) => {
                 alt={item.title}
                 className="item-image"
               />
+            )}
+            {item.discount ? (
+              <span className="discount">{item.discount}% off </span>
+            ) : (
+              ""
             )}
             <h4 className="item-title">{item.title}</h4>
           </Link>

@@ -16,8 +16,8 @@ import { allCategory, categoryFilter } from "../Data/categoryList";
 import countryArr from "../Data/CountryArr";
 import { useSelector } from "react-redux";
 import ProductsDataService from "../Services/products.services";
-import AdGirl from "../Assets/Ads/portraitgirl.JPG";
-import AdGuy2 from "../Assets/Ads/portraitguy2.JPG";
+// import AdGirl from "../Assets/Ads/portraitgirl.JPG";
+// import AdGuy2 from "../Assets/Ads/portraitguy2.JPG";
 import Row from "./offers/Row";
 import Banner from "./offers/Banner";
 import { rowNine, rowOne, rowSix } from "./offers/arrays/rowOne";
@@ -128,43 +128,43 @@ export const Card = ({
 
 const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
   // ads
-  const ads = [
-    {
-      id: 1,
-      title: "Female Collection",
-      item: AdGirl,
-      description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
-      price: "20.99 - 80.99",
-      height: "400rem",
-      Width: "28%",
-      TextAlign: "center",
-      Button: (
-        <Link to="/category/Clothing" className="btn btn-outline-warning">
-          View More
-        </Link>
-      ),
-      linkless: true,
-      rating: 5,
-    },
+  // const ads = [
+  //   {
+  //     id: 1,
+  //     title: "Female Collection",
+  //     item: AdGirl,
+  //     description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+  //     price: "20.99 - 80.99",
+  //     height: "400rem",
+  //     Width: "28%",
+  //     TextAlign: "center",
+  //     Button: (
+  //       <Link to="/category/Clothing" className="btn btn-outline-warning">
+  //         View More
+  //       </Link>
+  //     ),
+  //     linkless: true,
+  //     rating: 5,
+  //   },
 
-    {
-      id: 2,
-      title: "Men's Collection",
-      item: AdGuy2,
-      description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
-      price: "20.99 - 80.99",
-      height: "400rem",
-      Width: "28%",
-      TextAlign: "center",
-      Button: (
-        <Link to="/category/Clothing" className="btn btn-outline-warning">
-          View More
-        </Link>
-      ),
-      linkless: true,
-      rating: 5,
-    },
-  ];
+  //   {
+  //     id: 2,
+  //     title: "Men's Collection",
+  //     item: AdGuy2,
+  //     description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
+  //     price: "20.99 - 80.99",
+  //     height: "400rem",
+  //     Width: "28%",
+  //     TextAlign: "center",
+  //     Button: (
+  //       <Link to="/category/Clothing" className="btn btn-outline-warning">
+  //         View More
+  //       </Link>
+  //     ),
+  //     linkless: true,
+  //     rating: 5,
+  //   },
+  // ];
 
   const dispatch = useDispatch(); // Move dispatch here
 
@@ -421,9 +421,9 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
             )} */}
 
             {/* girl ad  */}
-            {index === 6 && showNestedComponent && (
+            {index === 8 && showNestedComponent && (
               <>
-                <div className="mt-1 w-25" style={{ float: "right" }}>
+                {/* <div className="mt-1 w-25" style={{ float: "right" }}>
                   <Card
                     title={ads[0].title}
                     description={ads[0].description}
@@ -437,18 +437,18 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
                     Button={ads[0].Button}
                     linkless={ads[0].linkless}
                   />
-                </div>
+                </div> */}
                 <div className="container mt-5 mb-5" key={uuid()}>
-                  <Banner items={bannerone} />
+                  <Banner items={bannerone} headTitle="Discover the timeless beauty of African Handicraft"/>
                 </div>
               </>
             )}
 
             {/* banner 1 */}
-            {index === 9 && showNestedComponent && (
+            {index === 13 && showNestedComponent && (
               <>
                 {/* guy ad */}
-                <div className="w-25 mt-1" style={{ float: "right" }}>
+                {/* <div className="w-25 mt-1" style={{ float: "right" }}>
                   <Card
                     title={ads[1].title}
                     description={ads[1].description}
@@ -462,12 +462,13 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
                     Button={ads[1].Button}
                     linkless={ads[1].linkless}
                   />
-                </div>
+                </div> */}
 
                 {/* banner 2 */}
                 <div className="container mt-5 mb-5" key={uuid()}>
-                  <Banner items={bannerfive} headTitle="Products under 2$" />
+                  <Banner items={bannerfive} headTitle="Time is running out on these great discounts" />
                 </div>
+                <Row mainItems={rowSix} />
               </>
             )}
 
@@ -482,12 +483,12 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
               </div>
             )} */}
 
-            {index === 9 && showNestedComponent && <Row mainItems={rowSix} />}
+            {/* {index === 18 && showNestedComponent && <Row mainItems={rowSix} />} */}
 
-            {index === 14 && showNestedComponent && (
+            {index === 18 && showNestedComponent && (
               <>
                 <div className="container mt-5 mb-5" key={uuid()}>
-                  <Banner items={bannereight} headTitle="New Arrivals" />
+                  <Banner items={bannereight} headTitle="Discover Elegant African Farics" seeMore="See More"/>
                 </div>
 
                 <Row mainItems={rowNine} />
