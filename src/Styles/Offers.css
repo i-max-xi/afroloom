@@ -14,6 +14,7 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: 0.2s ease-in-out;
     background-color: white;
+    height: max-content;
   }
 
   .four-in-a-card .item:hover, .offer-card:hover {
@@ -22,7 +23,7 @@
   
   .offer-card h3 {
     font-size: 18px;
-    margin: 0;
+    margin-bottom: 1rem;
   }
   
   .offer-link {
