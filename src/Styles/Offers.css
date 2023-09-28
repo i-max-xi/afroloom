@@ -13,6 +13,7 @@
     border-radius: 4px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: 0.2s ease-in-out;
+    background-color: white;
   }
 
   .four-in-a-card .item:hover, .offer-card:hover {
@@ -35,11 +36,15 @@
     border : 1px solid #ddd;
     width: calc(25% - 20px); /* Adjust the width as needed */
     height: max-content;
+    background-color: white;
+
   }
 
   .four-in-a-card {
     display: grid;
     grid-template-columns: repeat(2, 1fr); /* Two columns */
+    background-color: white;
+
     /* grid-gap: 0.5rem; */
     
   }
@@ -50,6 +55,8 @@
     text-align: center;
     cursor: pointer;
     transition: 0.2s ease-in-out;
+    background-color: white;
+
   }
   
   .four-in-a-card h4 {
@@ -75,6 +82,7 @@
   .clickable-banner-container {
     border: 1px solid #ccc;
     padding: 1rem;
+    background-color: white;
 
   }
 
@@ -82,6 +90,8 @@
     display: flex;
     justify-content: space-between;
     height: 18rem;
+    background-color: white;
+
   }
   
   .clickable-item {
@@ -96,6 +106,8 @@
     align-items: center;
     text-align: center;
     color: black;
+    background-color: white;
+
   }
   
   .clickable-item:hover {
@@ -106,6 +118,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: white;
+
   }
   
   .item-video, .item-image {

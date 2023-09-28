@@ -125,10 +125,10 @@ const Nav = ({ handleToggleDropdown, Language, Currency }) => {
 
           <div className="vr"></div>
 
-        
+          <CurrencyConverter />
+
           <SearchBar />
 
-          <CurrencyConverter />
         </ul>
       </div>
       {signedin === false ? (

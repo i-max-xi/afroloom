@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Map from "../Assets/ban82.jpg";
+// import Map from "../Assets/ban82.jpg";
 import Nav from "./Nav";
 import HeaderCarousel from "./HeaderCarousel";
 import LangCurrDropdown from "./LangCurrDropdown";
@@ -20,7 +20,7 @@ const TopCard = () => {
     <div
       className=""
       style={{
-        backgroundImage: `url(${Map})`,
+        // backgroundImage: `url(${Map})`,
         backgroundRepeat: "no-repeat",
         backgroundSize: "58% 95%",
         backgroundPosition: "top right",
