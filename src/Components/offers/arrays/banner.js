@@ -42,12 +42,12 @@ export const bannerfive = [
     link: "/category/Clothing",
     discount: 20,
   },
-  // {
-  //   title: "Hat",
-  //   imageUrl: require("../../../Assets/Offers/discount/R 11.59.09 PM.jpg"),
-  //   link: "/item-4-link",
-  //   discount: 30,
-  // },
+  {
+    title: "Carved Sculpture",
+    imageUrl: require("../../../Assets/Offers/discount/thing.jpg"),
+    link: "/category/Clothing",
+    discount: 30,
+  },
   {
     title: "Key Holder",
     imageUrl: require("../../../Assets/Offers/discount/a3009b7d0b2e800ac7764e16a9577c98.jpg"),

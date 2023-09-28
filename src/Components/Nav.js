@@ -9,8 +9,9 @@ import { useSelector } from "react-redux";
 import { Avatar } from "primereact/avatar";
 // import { setVisible } from "../Redux/store";
 import GoogleTranslate from "../GoogleTranslate";
-import SearchBar from "./SearchBar";
+// import SearchBar from "./SearchBar";
 import CurrencyConverter from "./CurrencyConverter";
+import SearchBar2 from "./SearchBar2";
 // import SearchBar2 from "./SearchBar2";
 
 const Nav = ({ handleToggleDropdown, Language, Currency }) => {
@@ -128,7 +129,7 @@ const Nav = ({ handleToggleDropdown, Language, Currency }) => {
 
           <CurrencyConverter />
 
-          <SearchBar />
+          <SearchBar2 />
 
         </ul>
       </div>

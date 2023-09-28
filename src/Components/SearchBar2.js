@@ -1,12 +1,12 @@
 import React from "react";
-import { useDispatch } from "react-redux";
-import { searchItem } from "../Redux/store"; // Update the import path for your allProductsSlice
+// import { useDispatch } from "react-redux";
+// import { searchItem } from "../Redux/store"; 
 // import { InputNumber } from "primereact/inputnumber";
 import { InputText } from "primereact/inputtext";
 // import { Button } from "primereact/button";
 
 const SearchBar2 = () => {
-  const dispatch = useDispatch();
+//   const dispatch = useDispatch();
 
 //   const [keyword, setkeyword] = useState("");
 
@@ -20,10 +20,11 @@ const SearchBar2 = () => {
 //     dispatch(searchItem(keyword)); // Dispatch the searchItem action
 //   };
 
-  const handleSearchInputChange = (event) => {
-    const newSearchTerm = event.target.value;
-    dispatch(searchItem(newSearchTerm)); // Dispatch the searchItem action
-  };
+// thisss
+//   const handleSearchInputChange = (event) => {
+//     const newSearchTerm = event.target.value;
+//     dispatch(searchItem(newSearchTerm)); // Dispatch the searchItem action
+//   };
 
 //   const searcicon = (
 //     <svg
@@ -49,7 +50,9 @@ const SearchBar2 = () => {
         style={{ border: "none", height: "100%", transform: "scale(1, 1.7)" }}
       /> */}
       <div className="p-inputgroup flex-1 rounded mx-1">
-        <InputText placeholder="Search for a product..." onChange={handleSearchInputChange} />
+        {/* <InputText placeholder="Search for a product..." onChange={handleSearchInputChange} /> */}
+        <InputText placeholder="What are you looking for ?..." />
+
         {/* <Button icon="pi pi-search" className="p-button-warning" onClick={handleSearchInputChange}/> */}
         {/* <button className="btn btn-warning" onClick={handleSearchInputChange}>
           {searcicon}

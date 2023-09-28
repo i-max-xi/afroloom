@@ -505,7 +505,7 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
                 <div className="container mt-5 mb-5" key={uuid()}>
                   <Banner
                     items={bannereight}
-                    headTitle="Discover Elegant African Farics"
+                    headTitle="Discover Elegant African Fabrics"
                     seeMore="See More"
                     linkTo="/category/Textiles"
                   />
