@@ -15,13 +15,13 @@ const HeaderCarousel = () => {
     <>
 
       <Carousel
-        className="mx-2 mt-5"
-        style={{
-          position: "absolute",
-          top: "3rem",
-          left: "2rem",
-          width: "50%",
-        }}
+        className="mx-2 w-100"
+        // style={{
+        //   position: "absolute",
+        //   top: "3rem",
+        //   left: "2rem",
+        //   width: "50%",
+        // }}
         role="listbox"
       >
         <Carousel.Item>
