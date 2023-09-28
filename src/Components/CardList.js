@@ -439,7 +439,7 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
                   />
                 </div> */}
                 <div className="container mt-5 mb-5" key={uuid()}>
-                  <Banner items={bannerone} headTitle="Discover the timeless beauty of African Handicraft"/>
+                  <Banner items={bannerone} headTitle="Discover The Timeless Beauty Of African Handicraft" seeMore="See More"/>
                 </div>
               </>
             )}
@@ -466,7 +466,7 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
 
                 {/* banner 2 */}
                 <div className="container mt-5 mb-5" key={uuid()}>
-                  <Banner items={bannerfive} headTitle="Time is running out on these great discounts" />
+                  <Banner items={bannerfive} headTitle="Time is running out on these Great Discounts" seeMore="See More"/>
                 </div>
                 <Row mainItems={rowSix} />
               </>
@@ -488,7 +488,7 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
             {index === 18 && showNestedComponent && (
               <>
                 <div className="container mt-5 mb-5" key={uuid()}>
-                  <Banner items={bannereight} headTitle="Discover Elegant African Farics" />
+                  <Banner items={bannereight} headTitle="Discover Elegant African Farics" seeMore="See More"/>
                 </div>
 
                 <Row mainItems={rowNine} />

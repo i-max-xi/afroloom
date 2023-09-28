@@ -5,10 +5,10 @@ import { Link } from "react-router-dom";
 const Banner = ({ items, headTitle, seeMore }) => {
   return (
     <div className="clickable-banner-container">
-      <h5>
+      <h3 className="headTitle">
         {headTitle}{" "}
         {seeMore ? <span className="more-deals"> - {seeMore}</span> : ""}
-      </h5>
+      </h3>
       <div className="clickable-banner">
         {items.map((item, index) => (
           <Link to={item.link} className="clickable-item" key={index}>

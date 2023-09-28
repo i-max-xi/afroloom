@@ -3,12 +3,12 @@
 export const bannerone = [
 
   {
-    title: "Dolls",
+    // title: "Dolls",
     imageUrl: require("../../../Assets/Offers/handicrafts/carved Figures.jpg"),
     link: "/category/Accessories",
   },
   {
-    title: "Drum",
+    // title: "Drum",
     imageUrl: require("../../../Assets/Offers/handicrafts/hand Drum.jpg"),
     link: "/category/Accessories",
   },
@@ -18,12 +18,12 @@ export const bannerone = [
     link: "/category/Accessories",
   },
   {
-    title: "Mask",
+    // title: "Mask",
     imageUrl: require("../../../Assets/Offers/handicrafts/wood wall mask.webp"),
     link: "/category/Accessories",
   },
   {
-    title: "Basket",
+    // title: "Basket",
     imageUrl: require("../../../Assets/Offers/handicrafts/storage basket with lid.jpg"),
     link: "/category/Accessories",
   },

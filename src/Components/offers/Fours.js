@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const Fours = ({ items, headTitle, linkTo }) => {
   return (
     <div className="four-in-a-card-container">
-      <h5>{headTitle}</h5>
+      <h3 className="headTitle">{headTitle}</h3>
       <div className="four-in-a-card">
         {items.map((item, index) => (
           <div className="item" key={index}>
@@ -18,13 +18,9 @@ const Fours = ({ items, headTitle, linkTo }) => {
             )} */}
           </div>
         ))}
-        {items ? (
           <Link to={linkTo} className="fours-link">
             Shop Now
           </Link>
-        ) : (
-          ""
-        )}
       </div>
     </div>
   );

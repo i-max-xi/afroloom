@@ -10,9 +10,8 @@ const Row = ({ mainItems }) => {
   // Iterate through the mainItems prop array
   mainItems.forEach((item) => {
     if (item.array) {
-      // If the item has an array property, render it as a FourInACard
       renderedItems.push(
-        <FourInACard key={item.headTitle} headTitle={item.headTitle} items={item.array} />
+        <FourInACard key={item.headTitle} headTitle={item.headTitle} items={item.array} linkTo={item.linkTo}/>
       );
     } else {
       // If the item doesn't have an array property, render it as an OfferCard

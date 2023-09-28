@@ -2,10 +2,10 @@ import spinvid from "../../../Assets/vid/vid.mp4";
 import crop from "../../../Assets/vid/crop.MP4";
 import booty from "../../../Assets/vid/booty.MP4";
 
-
 export const rowOne = [
   {
-    headTitle: "Men's Clothing under 3$",
+    headTitle: "Men Clothes Under 3$",
+    linkTo: "/category/Clothing",
     array: [
       {
         // title: "Shirt",
@@ -21,10 +21,10 @@ export const rowOne = [
       },
       {
         // title: "Long Sleeves",
-        imageUrl: "https://www.ruvaafricwear.com/cdn/shop/products/Shorts_1200x.png?v=1527273699",
+        imageUrl:
+          "https://www.ruvaafricwear.com/cdn/shop/products/Shorts_1200x.png?v=1527273699",
       },
     ],
-    linkTo: "/",
   },
   {
     title: "Design Your Own Products With Quality African Fabric",
@@ -32,13 +32,14 @@ export const rowOne = [
     linkTo: "/customize",
   },
   {
-    title: "Find the perfect gift",
+    title: "Find The Perfect Gift",
     imageUrl: require("../../../Assets/Offers/gift/1.jpg"),
     linkTo: "/category/Accessories",
   },
 
   {
-    headTitle: "Women clothing under 3$",
+    headTitle: "Women Clothes Under 3$",
+    linkTo: "/category/Clothing",
     array: [
       {
         // title: "Tshirt",
@@ -61,7 +62,7 @@ export const rowOne = [
 
 export const rowSix = [
   {
-    title: "Lowest Prices in 60 days",
+    title: "Lowest Prices in 60 Days",
     imageUrl: require("../../../Assets/Offers/lowest/fad8186bb3f502194ae34274a7727066--charleston-gardens-charleston-sc.jpg"),
     linkTo: "/category/Accessories",
   },
@@ -72,27 +73,28 @@ export const rowSix = [
     linkTo: "/category/Accessories",
   },
   {
-    title: "We make your thoughts",
+    title: "We make your thoughts into reality",
     videoUrl: crop,
     linkTo: "/customize",
   },
   {
-    headTitle: "New Products This Week",
+    headTitle: "New Products this Week",
+    linkTo: "/category/Accessories",
     array: [
       {
-        // title: "Pot",
+        title: "Pouf",
         imageUrl: require("../../../Assets/Offers/this_week/215c79eaf1c3f53f0fa798617be97ba8.jpg"),
       },
       {
-        // title: "Art Work",
+        title: "Purse",
         imageUrl: require("../../../Assets/Offers/this_week/OIP.jpg"),
       },
       {
-        // title: "Basket",
+        title: "Bikini",
         imageUrl: require("../../../Assets/Offers/this_week/R (1).jpg"),
       },
       {
-        // title: "Basket",
+        title: "Straw Hat",
         imageUrl: require("../../../Assets/Offers/this_week/il_1588xN.3179152889_30w3.webp"),
       },
     ],
@@ -102,27 +104,28 @@ export const rowSix = [
 export const rowNine = [
   {
     headTitle: "Fashion Accessories Made Perfect",
+    linkTo: "/category/Accessories",
     array: [
       {
-        // title: "Watches",
+        title: "Bangles",
         imageUrl: require("../../../Assets/Offers/accessories/61uZKuQzPEL._SL1500_.jpg"),
       },
       {
-        // title: "Bags",
+        title: "Earings",
         imageUrl: require("../../../Assets/Offers/accessories/kente earrings 11.07.02 PM.webp"),
       },
       {
-        // title: "Scarf",
+        title: "Cowie Shell Necklace",
         imageUrl: require("../../../Assets/Offers/accessories/cowie shell necklace1.jpg"),
       },
       {
-        // title: "Scarf",
+        title: "Belt",
         imageUrl: require("../../../Assets/Offers/accessories/8db62ff84ace3029cdd223c553bacee6.jpg"),
       },
     ],
   },
   {
-    title: "Discover fashion trends",
+    title: "Discover Fashion Trends",
     imageUrl: require("../../../Assets/Offers/fashion_trend/cd664fd6d9e14b009b2657e27345a94b.jpg"),
     linkTo: "/category/Clothing",
   },
@@ -132,8 +135,34 @@ export const rowNine = [
     linkTo: "/customize",
   },
   {
-    title: "Get Value For your Feet",
-    imageUrl: require("../../../Assets/Offers/footwear/R 11.20.36 PM.jpg"),
+    headTitle: "Get Value For your Feet",
     linkTo: "/category/Footwear",
+    array: [
+      {
+        // title: "Bangles",
+        imageUrl: require("../../../Assets/Offers/footwear/ccb78d9160c59b8990e5d8b3b9064598--african-shoes-african-fashion-ankara.jpg"),
+        // linkTo: "/category/Footwear",
+      },
+      {
+        // title: "Earings",
+        imageUrl: require("../../../Assets/Offers/footwear/021111-BOHO-Twelfth-St-400_0-15afb40a28924b9fafeba0a986eedeb4.jpg"),
+        // linkTo: "/category/Footwear",
+      },
+      {
+        // title: "Cowie Shell Necklace",
+        imageUrl: require("../../../Assets/Offers/footwear/KANT2847.jpg"),
+        // linkTo: "/category/Footwear",
+      },
+      {
+        // title: "Belt",
+        imageUrl: require("../../../Assets/Offers/footwear/R 11.20.36 PM.jpg"),
+        // linkTo: "/category/Footwear",
+      },
+    ],
   },
+  // {
+  //   title: "Get Value For your Feet",
+  //   imageUrl: require("../../../Assets/Offers/footwear/R 11.20.36 PM.jpg"),
+  //   linkTo: "/category/Footwear",
+  // },
 ];

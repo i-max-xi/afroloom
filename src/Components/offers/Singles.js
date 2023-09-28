@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const OfferItem = ({ title, imageUrl, linkTo, videoUrl }) => {
   return (
     <div className="offer-card">
-      <h3>{title}</h3>
+      <h3 className="headTitle">{title}</h3>
       {videoUrl ? (
         <video
           src={videoUrl}
