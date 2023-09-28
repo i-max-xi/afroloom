@@ -33,13 +33,13 @@ export const bannerfive = [
   {
     title: "Ring",
     imageUrl: require("../../../Assets/Offers/discount/OIP(1).jpg"),
-    link: "/category/Footwear",
+    link: "/category/Accessories",
     discount: 50,
   },
   {
     title: "Shirt",
     imageUrl: require("../../../Assets/Offers/discount/R (1)(1).jpg"),
-    link: "/item-3-link",
+    link: "/category/Clothing",
     discount: 20,
   },
   // {
@@ -51,13 +51,13 @@ export const bannerfive = [
   {
     title: "Key Holder",
     imageUrl: require("../../../Assets/Offers/discount/a3009b7d0b2e800ac7764e16a9577c98.jpg"),
-    link: "/item-4-link",
+    link: "/category/Accessories",
     discount: 10,
   },
   {
     title: "Bow Tie",
     imageUrl: require("../../../Assets/Offers/discount/e6db628543ec3d9d3266ddddb9bd23b2.jpg"),
-    link: "/item-4-link",
+    link: "/category/Accessories",
     discount: 25,
   },
 ];
@@ -66,27 +66,27 @@ export const bannereight = [
   {
     // title: "Afro Heel",
     imageUrl: require("../../../Assets/Offers/fabric/R (1).jpg"),
-    link: "/category/Footwear",
+    link: "/category/Textiles",
   },
   {
     // title: "Cain Chair",
     imageUrl: require("../../../Assets/Offers/fabric/OIP.jpg"),
-    link: "/item-3-link",
+    link: "/category/Textiles",
   },
   {
     // title: "Waist Jewelry",
     imageUrl: require("../../../Assets/Offers/fabric/OIP (2).jpg"),
-    link: "/item-4-link",
+    link: "/category/Textiles",
   },
   {
     // title: "Necklace",
     imageUrl: require("../../../Assets/Offers/fabric/8ed01397ebbe38df4373f0288cbe8184.jpg"),
-    link: "/item-4-link",
+    link: "/category/Textiles",
   },
   {
     // title: "Necklace",
     imageUrl: require("../../../Assets/Offers/fabric/R 11.15.44 PM.jpg"),
-    link: "/item-4-link",
+    link: "/category/Textiles",
   },
   
 ];
@@ -100,27 +100,27 @@ export const bannerten = [
   {
     // title: "Wall mask",
     imageUrl: require("../../../Assets/Offers/furniture/leopard2_l.jpg"),
-    link: "/item-4-link",
+    link: "/category/Furniture",
   },
   
   {
     // title: "Cain Chair",
     imageUrl: require("../../../Assets/Offers/furniture/OIP (1) 11.28.45 PM.jpg"),
-    link: "/item-3-link",
+    link: "/category/Furniture",
   },
   {
     // title: "Pouf",
     imageUrl: require("../../../Assets/Offers/furniture/Mvelo_Desk_3_Photo_by_Michelle_Reynolds_1024x1024_african+furniture.jpg"),
-    link: "/category/Footwear",
+    link: "/category/Furniture",
   },
   {
     // title: "Head Wrap",
     imageUrl: require("../../../Assets/Offers/furniture/OIP 11.28.45 PM.jpg"),
-    link: "/item-4-link",
+    link: "/category/Furniture",
   },
   {
     // title: "Wall mask",
     imageUrl: require("../../../Assets/Offers/furniture/c23eedd22f19ae4ee1aeabab18142090.png"),
-    link: "/item-4-link",
+    link: "/category/Furniture",
   },
 ];

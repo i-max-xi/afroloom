@@ -69,12 +69,12 @@ export const rowSix = [
   {
     title: "Most Popular",
     imageUrl: require("../../../Assets/Offers/popular/royal-blue-maasai-earrings.jpg"),
-    linkTo: "/item-3-link",
+    linkTo: "/category/Accessories",
   },
   {
     title: "We make your thoughts",
     videoUrl: crop,
-    // linkTo: "/category/Footwear",
+    linkTo: "/customize",
   },
   {
     headTitle: "New Products This Week",
@@ -124,16 +124,16 @@ export const rowNine = [
   {
     title: "Discover fashion trends",
     imageUrl: require("../../../Assets/Offers/fashion_trend/cd664fd6d9e14b009b2657e27345a94b.jpg"),
-    linkTo: "/category/Accessories",
+    linkTo: "/category/Clothing",
   },
   {
     title: "We get it done like you design it",
     videoUrl: booty,
-    // linkTo: "/category/Footwear",
+    linkTo: "/customize",
   },
   {
     title: "Get Value For your Feet",
     imageUrl: require("../../../Assets/Offers/footwear/R 11.20.36 PM.jpg"),
-    linkTo: "/item-3-link",
+    linkTo: "/category/Footwear",
   },
 ];
