@@ -11,6 +11,7 @@ import { Avatar } from "primereact/avatar";
 import GoogleTranslate from "../GoogleTranslate";
 import SearchBar from "./SearchBar";
 import CurrencyConverter from "./CurrencyConverter";
+// import SearchBar2 from "./SearchBar2";
 
 const Nav = ({ handleToggleDropdown, Language, Currency }) => {
   const cartItems = useSelector((state) => state.cartItems);

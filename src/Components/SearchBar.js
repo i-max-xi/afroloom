@@ -10,7 +10,7 @@ export default function SearchBar() {
   const handleSearchInputChange = (event) => {
     const newSearchTerm = event.target.value;
     dispatch(searchItem(newSearchTerm)); // Dispatch the searchItem action
-    console.log(newSearchTerm);
+    // console.log(newSearchTerm);
   };
 
   return (
