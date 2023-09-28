@@ -7,7 +7,7 @@ const Banner = ({ items, headTitle, seeMore }) => {
     <div className="clickable-banner-container">
       <h5>
         {headTitle}{" "}
-        {/* {seeMore ? <Link className="more-deals"> - See More</Link> : ""} */}
+        {seeMore ? <span className="more-deals"> - {seeMore}</span> : ""}
       </h5>
       <div className="clickable-banner">
         {items.map((item, index) => (

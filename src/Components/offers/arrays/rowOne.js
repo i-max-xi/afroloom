@@ -18,7 +18,7 @@ export const rowOne = [
       },
       {
         // title: "Long Sleeves",
-        imageUrl: require("../../../Assets/Offers/maleClothing/IMG-6858.JPG"),
+        imageUrl: "https://www.ruvaafricwear.com/cdn/shop/products/Shorts_1200x.png?v=1527273699",
       },
     ],
     linkTo: "/",
@@ -30,8 +30,7 @@ export const rowOne = [
   },
   {
     title: "Find the perfect gift",
-    imageUrl:
-      "https://assets.mgimgs.com/mgimgs/rk/images/dp/wcm/202302/0008/mark-graham-x-steele-waterproof-medium-and-large-tote-set-t.jpg",
+    imageUrl: require("../../../Assets/Offers/gift/1.jpg"),
     linkTo: "/category/Accessories",
   },
 
@@ -60,15 +59,13 @@ export const rowOne = [
 export const rowSix = [
   {
     title: "Lowest Prices in 60 days",
-    imageUrl:
-      "https://emaratshop.com/cdn/shop/products/ORANGEDSK_fec7dbb9-058d-4b0a-876a-b376604d6f91.png?v=1602629732",
+    imageUrl: require("../../../Assets/Offers/lowest/fad8186bb3f502194ae34274a7727066--charleston-gardens-charleston-sc.jpg"),
     linkTo: "/category/Accessories",
   },
 
   {
     title: "Most Popular",
-    imageUrl:
-      "https://toppng.com/uploads/thumbnail/special-discount-sign-11552764408sqj0xsny4c.png",
+    imageUrl: require("../../../Assets/Offers/popular/royal-blue-maasai-earrings.jpg"),
     linkTo: "/item-3-link",
   },
   {
@@ -80,19 +77,20 @@ export const rowSix = [
     headTitle: "New Products This Week",
     array: [
       {
-        title: "Pot",
-        imageUrl:
-          "https://t4.ftcdn.net/jpg/02/55/26/07/360_F_255260766_F5NWLPmmuKqBHYd9rkOwVSplLPBlJxQP.jpg",
+        // title: "Pot",
+        imageUrl: require("../../../Assets/Offers/this_week/215c79eaf1c3f53f0fa798617be97ba8.jpg"),
       },
       {
-        title: "Art Work",
-        imageUrl:
-          "https://static.displate.com/280x392/displate/2019-04-04/d41aa25b6ecbf699df7a29209a263d90_8737498b15d0d4ae9a8d51ce07b623b2.jpg",
+        // title: "Art Work",
+        imageUrl: require("../../../Assets/Offers/this_week/OIP.jpg"),
       },
       {
-        title: "Basket",
-        imageUrl:
-          "https://i.pinimg.com/originals/84/a9/33/84a933b75922fb6c7676cf4aa244f2c4.png",
+        // title: "Basket",
+        imageUrl: require("../../../Assets/Offers/this_week/R (1).jpg"),
+      },
+      {
+        // title: "Basket",
+        imageUrl: require("../../../Assets/Offers/this_week/il_1588xN.3179152889_30w3.webp"),
       },
     ],
   },
@@ -103,25 +101,26 @@ export const rowNine = [
     headTitle: "Fashion Accessories Made Perfect",
     array: [
       {
-        title: "Watches",
-        imageUrl:
-          "https://themesberg.com/docs/pixel-bootstrap/assets/img/shop/item-1.png",
+        // title: "Watches",
+        imageUrl: require("../../../Assets/Offers/accessories/61uZKuQzPEL._SL1500_.jpg"),
       },
       {
-        title: "Bags",
-        imageUrl: "https://www.pngmart.com/files/22/Hobo-Bag-PNG-HD.png",
+        // title: "Bags",
+        imageUrl: require("../../../Assets/Offers/accessories/kente earrings 11.07.02 PM.webp"),
       },
       {
-        title: "Scarf",
-        imageUrl:
-          "https://day-et.com/cdn/shop/products/WEB-3235490300-05029-1_1608914a-360c-4a71-9eb6-955c36d36253_1200x1200.png?v=1690599948",
+        // title: "Scarf",
+        imageUrl: require("../../../Assets/Offers/accessories/cowie shell necklace1.jpg"),
+      },
+      {
+        // title: "Scarf",
+        imageUrl: require("../../../Assets/Offers/accessories/8db62ff84ace3029cdd223c553bacee6.jpg"),
       },
     ],
   },
   {
     title: "Discover fashion trends",
-    imageUrl:
-      "https://prod-images.fashionphile.com/thumb/d05b9222f2a254da3b751d3b127b5942/c7158f5539e1358d638e0bcf96804850.jpg",
+    imageUrl: require("../../../Assets/Offers/fashion_trend/cd664fd6d9e14b009b2657e27345a94b.jpg"),
     linkTo: "/category/Accessories",
   },
   {
@@ -131,8 +130,7 @@ export const rowNine = [
   },
   {
     title: "Get Value For your Feet",
-    imageUrl:
-      "https://mawuafrica.com/cdn/shop/products/29_056f9282-89a8-43bc-8705-f51c7e1384ef.png?v=1678465703",
+    imageUrl: require("../../../Assets/Offers/footwear/R 11.20.36 PM.jpg"),
     linkTo: "/item-3-link",
   },
 ];

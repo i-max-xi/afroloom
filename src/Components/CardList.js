@@ -488,12 +488,12 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
             {index === 18 && showNestedComponent && (
               <>
                 <div className="container mt-5 mb-5" key={uuid()}>
-                  <Banner items={bannereight} headTitle="Discover Elegant African Farics" seeMore="See More"/>
+                  <Banner items={bannereight} headTitle="Discover Elegant African Farics" />
                 </div>
 
                 <Row mainItems={rowNine} />
                 <div className="container mt-5 mb-5" key={uuid()}>
-                  <Banner items={bannerten} headTitle="Frequently purchased products" />
+                  <Banner items={bannerten} headTitle="Furniture" seeMore="Low Cost High Quality"/>
                 </div>
               </>
             )}

@@ -1,91 +1,94 @@
-import spinvid from "../../../Assets/vid/vid.mp4";
+// import spinvid from "../../../Assets/vid/vid.mp4";
 
 export const bannerone = [
-  // {
-  //   title: "Dont miss out on these discounts",
-  //   imageUrl:
-  //     "https://toppng.com/uploads/thumbnail/special-discount-sign-11552764408sqj0xsny4c.png",
-  // },
+
   {
-    // title: "Get Your Dream Shoes",
-    imageUrl:
-      "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/9ce48468365529.60d4c7e73538d.jpg",
-    link: "/category/Footwear",
+    title: "Dolls",
+    imageUrl: require("../../../Assets/Offers/handicrafts/carved Figures.jpg"),
+    link: "/category/Accessories",
   },
   {
-    // title: "Your #1 source of African fabrics",
-    imageUrl:
-      "https://images.squarespace-cdn.com/content/v1/5ebf5fe07d332a028bf1e9f6/1667427305938-0HO9NVNXRF3ROH1JRJPL/array-orange-fabrics.jpg",
-    link: "/item-3-link",
+    title: "Drum",
+    imageUrl: require("../../../Assets/Offers/handicrafts/hand Drum.jpg"),
+    link: "/category/Accessories",
   },
   {
-    // title: "Customize your bikini",
-    videoUrl: spinvid,
-    link: "/customize",
+    // title: "Drum",
+    imageUrl: require("../../../Assets/Offers/handicrafts/maracas.webp"),
+    link: "/category/Accessories",
   },
   {
-    // title: "Choose to look classy",
-    imageUrl:
-      "https://emaratshop.com/cdn/shop/products/ORANGEDSK_fec7dbb9-058d-4b0a-876a-b376604d6f91.png?v=1602629732",
-    link: "/item-4-link",
+    title: "Mask",
+    imageUrl: require("../../../Assets/Offers/handicrafts/wood wall mask.webp"),
+    link: "/category/Accessories",
+  },
+  {
+    title: "Basket",
+    imageUrl: require("../../../Assets/Offers/handicrafts/storage basket with lid.jpg"),
+    link: "/category/Accessories",
   },
 ];
 
 export const bannerfive = [
   {
-    title: "Bag",
-    imageUrl: "https://www.pngall.com/wp-content/uploads/5/Purse.png",
+    title: "Ring",
+    imageUrl: require("../../../Assets/Offers/discount/OIP(1).jpg"),
     link: "/category/Footwear",
     discount: 50,
   },
   {
-    title: "Bracelet",
-    imageUrl:
-      "https://static.vecteezy.com/system/resources/previews/012/003/811/non_2x/stylish-bracelet-to-wear-on-hand-free-png.png",
+    title: "Shirt",
+    imageUrl: require("../../../Assets/Offers/discount/R (1)(1).jpg"),
     link: "/item-3-link",
     discount: 20,
   },
+  // {
+  //   title: "Hat",
+  //   imageUrl: require("../../../Assets/Offers/discount/R 11.59.09 PM.jpg"),
+  //   link: "/item-4-link",
+  //   discount: 30,
+  // },
   {
-    title: "Hat",
-    imageUrl:
-      "https://theblackdollarstore.com/cdn/shop/products/v-1777523277__-270295149_800x.jpg?v=1571722978",
-    link: "/item-4-link",
-    discount: 30,
-  },
-  {
-    title: "Slippers",
-    imageUrl:
-      "https://5.imimg.com/data5/SELLER/Default/2022/7/TE/MA/ZD/12048161/pvc-flip-flop-slipper-500x500.jpg",
+    title: "Key Holder",
+    imageUrl: require("../../../Assets/Offers/discount/a3009b7d0b2e800ac7764e16a9577c98.jpg"),
     link: "/item-4-link",
     discount: 10,
+  },
+  {
+    title: "Bow Tie",
+    imageUrl: require("../../../Assets/Offers/discount/e6db628543ec3d9d3266ddddb9bd23b2.jpg"),
+    link: "/item-4-link",
+    discount: 25,
   },
 ];
 
 export const bannereight = [
   {
-    title: "Afro Heel",
-    imageUrl:
-      "https://fs-website-media.s3.amazonaws.com/wp-content/uploads/2023/07/01000158/CarmenJacksonArt-BC58EAA2-D32F-4631-BF27-93C2A39967BF-scaled.jpeg",
+    // title: "Afro Heel",
+    imageUrl: require("../../../Assets/Offers/fabric/R (1).jpg"),
     link: "/category/Footwear",
   },
   {
-    title: "Cain Chair",
-    imageUrl:
-      "https://i.pinimg.com/originals/7f/63/b1/7f63b14989124da96b2b2703135b83f4.png",
+    // title: "Cain Chair",
+    imageUrl: require("../../../Assets/Offers/fabric/OIP.jpg"),
     link: "/item-3-link",
   },
   {
-    title: "Waist Jewelry",
-    imageUrl:
-      "https://i.etsystatic.com/13001405/r/il/71cb5a/2692204014/il_fullxfull.2692204014_dlm7.jpg",
+    // title: "Waist Jewelry",
+    imageUrl: require("../../../Assets/Offers/fabric/OIP (2).jpg"),
     link: "/item-4-link",
   },
   {
-    title: "Necklace",
-    imageUrl:
-      "https://www.martinandmacarthur.com/cdn/shop/products/LALE_53716C_Web_250x250@2x.jpg?v=1572659987",
+    // title: "Necklace",
+    imageUrl: require("../../../Assets/Offers/fabric/8ed01397ebbe38df4373f0288cbe8184.jpg"),
     link: "/item-4-link",
   },
+  {
+    // title: "Necklace",
+    imageUrl: require("../../../Assets/Offers/fabric/R 11.15.44 PM.jpg"),
+    link: "/item-4-link",
+  },
+  
 ];
 
 export const bannerten = [
@@ -95,26 +98,29 @@ export const bannerten = [
   //     "https://toppng.com/uploads/thumbnail/special-discount-sign-11552764408sqj0xsny4c.png",
   // },
   {
-    title: "Pouf",
-    imageUrl:
-      "https://passerini.com/wp-content/uploads/2019/10/1-Cobra-Luxury-Pouf-Passerini.png",
-    link: "/category/Footwear",
+    // title: "Wall mask",
+    imageUrl: require("../../../Assets/Offers/furniture/leopard2_l.jpg"),
+    link: "/item-4-link",
   },
+  
   {
-    title: "Cain Chair",
-    imageUrl:
-      "https://i.pinimg.com/originals/7f/63/b1/7f63b14989124da96b2b2703135b83f4.png",
+    // title: "Cain Chair",
+    imageUrl: require("../../../Assets/Offers/furniture/OIP (1) 11.28.45 PM.jpg"),
     link: "/item-3-link",
   },
   {
-    title: "Head Wrap",
-    imageUrl:
-      "https://theheadwearboutique.com/cdn/shop/products/il_fullxfull.1750655280_e4gb_1024x1024.jpg?v=1550813107",
+    // title: "Pouf",
+    imageUrl: require("../../../Assets/Offers/furniture/Mvelo_Desk_3_Photo_by_Michelle_Reynolds_1024x1024_african+furniture.jpg"),
+    link: "/category/Footwear",
+  },
+  {
+    // title: "Head Wrap",
+    imageUrl: require("../../../Assets/Offers/furniture/OIP 11.28.45 PM.jpg"),
     link: "/item-4-link",
   },
   {
-    title: "Wall mask",
-    imageUrl: "https://images2.novica.net/pictures/5/p302289_2a_400.jpg",
+    // title: "Wall mask",
+    imageUrl: require("../../../Assets/Offers/furniture/c23eedd22f19ae4ee1aeabab18142090.png"),
     link: "/item-4-link",
   },
 ];
