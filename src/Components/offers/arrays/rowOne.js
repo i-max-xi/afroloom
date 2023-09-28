@@ -1,4 +1,7 @@
 import spinvid from "../../../Assets/vid/vid.mp4";
+import crop from "../../../Assets/vid/crop.MP4";
+import booty from "../../../Assets/vid/booty.MP4";
+
 
 export const rowOne = [
   {
@@ -70,7 +73,7 @@ export const rowSix = [
   },
   {
     title: "We make your thoughts",
-    videoUrl: spinvid,
+    videoUrl: crop,
     // linkTo: "/category/Footwear",
   },
   {
@@ -125,7 +128,7 @@ export const rowNine = [
   },
   {
     title: "We get it done like you design it",
-    videoUrl: spinvid,
+    videoUrl: booty,
     // linkTo: "/category/Footwear",
   },
   {
