@@ -1,10 +1,17 @@
 .allBg {
-  background-color: rgba(174, 173, 173, 0.165);
+  background-color: rgba(197, 195, 195, 0.165);
 }
 
 .logo {
   width: 8rem;
   margin: 5px;
+}
+
+.navbar {
+  position: fixed !important;
+  top: 0 !important;
+  width: 100%;
+  z-index: 9;
 }
 
 .nav-item a, .about, .nav-item {

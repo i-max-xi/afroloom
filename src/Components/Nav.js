@@ -41,7 +41,7 @@ const Nav = ({ handleToggleDropdown, Language, Currency }) => {
   );
 
   return (
-    <nav className="navbar navbar-expand-lg text-black d-flex px-3">
+    <nav className="navbar navbar-expand-lg text-black d-flex px-3 bg-white border-bottom">
       <div>
         <Link to="/" className="navbar-brand">
           <h3>
