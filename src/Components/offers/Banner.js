@@ -2,16 +2,27 @@ import React from "react";
 import "../../Styles/Offers.css"; // Import your CSS file for styling
 import { Link } from "react-router-dom";
 
-const Banner = ({ items, headTitle, seeMore }) => {
+const Banner = ({ items, headTitle, seeMore, linkTo }) => {
   return (
     <div className="clickable-banner-container">
       <h3 className="headTitle">
         {headTitle}{" "}
-        {seeMore ? <span className="more-deals"> - {seeMore}</span> : ""}
+        {/* {seeMore ? <span className="more-deals"> - {seeMore}</span> : ""} */}
+        {seeMore ? (
+          seeMore === "See More" ? (
+            <Link to={linkTo} className="more-deals">
+              - See More
+            </Link>
+          ) : (
+            <span className="more-deals"> - {seeMore}</span>
+          )
+        ) : (
+          ""
+        )}
       </h3>
       <div className="clickable-banner">
         {items.map((item, index) => (
-          <Link to={item.link} className="clickable-item" key={index}>
+          <div className="clickable-item" key={index}>
             {item.videoUrl ? (
               <video
                 src={item.videoUrl}
@@ -34,7 +45,7 @@ const Banner = ({ items, headTitle, seeMore }) => {
               ""
             )}
             <h4 className="item-title">{item.title}</h4>
-          </Link>
+          </div>
         ))}
       </div>
     </div>

@@ -21,7 +21,12 @@ import ProductsDataService from "../Services/products.services";
 import Row from "./offers/Row";
 import Banner from "./offers/Banner";
 import { rowNine, rowOne, rowSix } from "./offers/arrays/rowOne";
-import { bannereight, bannerfive, bannerone, bannerten } from "./offers/arrays/banner";
+import {
+  bannereight,
+  bannerfive,
+  bannerone,
+  bannerten,
+} from "./offers/arrays/banner";
 
 export const Card = ({
   title,
@@ -439,7 +444,12 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
                   />
                 </div> */}
                 <div className="container mt-5 mb-5" key={uuid()}>
-                  <Banner items={bannerone} headTitle="Discover The Timeless Beauty Of African Handicraft" seeMore="See More"/>
+                  <Banner
+                    items={bannerone}
+                    headTitle="Discover The Timeless Beauty Of African Handicraft"
+                    seeMore="See More"
+                    linkTo="/category/Accessories"
+                  />
                 </div>
               </>
             )}
@@ -466,7 +476,12 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
 
                 {/* banner 2 */}
                 <div className="container mt-5 mb-5" key={uuid()}>
-                  <Banner items={bannerfive} headTitle="Time is running out on these Great Discounts" seeMore="See More"/>
+                  <Banner
+                    items={bannerfive}
+                    headTitle="Time is running out on these Great Discounts"
+                    seeMore="See More"
+                    linkTo="/category/Accessories"
+                  />
                 </div>
                 <Row mainItems={rowSix} />
               </>
@@ -488,12 +503,22 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
             {index === 18 && showNestedComponent && (
               <>
                 <div className="container mt-5 mb-5" key={uuid()}>
-                  <Banner items={bannereight} headTitle="Discover Elegant African Farics" seeMore="See More"/>
+                  <Banner
+                    items={bannereight}
+                    headTitle="Discover Elegant African Farics"
+                    seeMore="See More"
+                    linkTo="/category/Textiles"
+                  />
                 </div>
 
                 <Row mainItems={rowNine} />
                 <div className="container mt-5 mb-5" key={uuid()}>
-                  <Banner items={bannerten} headTitle="Furniture" seeMore="Low Cost High Quality"/>
+                  <Banner
+                    items={bannerten}
+                    headTitle="Low Cost, High Quality Furniture"
+                    seeMore="See More"
+                    linkTo="/category/Furniture"
+                  />
                 </div>
               </>
             )}

@@ -1,3 +1,9 @@
+:root {
+  --light-red: rgb(255, 72, 0);
+  --orange: #ffc107;
+  --red: red;
+}
+
 .offer-container {
   display: flex;
   justify-content: space-between;
@@ -30,7 +36,7 @@
 
 .offer-link {
   display: block;
-  color: rgb(255, 72, 0);
+  color: var(--light-red);
   text-decoration: none;
   font-weight: bolder;
 }
@@ -70,7 +76,7 @@
   margin-top: 1rem;
   padding: 0.3rem;
   text-align: center;
-  background-color: #ffc107;
+  background-color: var(--orange);
   text-decoration: none;
   color: white;
   border-radius: 0.5rem;
@@ -130,13 +136,13 @@
 .discount {
   padding: 0.3rem;
   border-radius: 0.5rem;
-  background-color: red;
+  background-color: var(--red);
   color: white;
   font-weight: bolder;
 }
 
 .more-deals {
   font-size: 1.2rem;
-  color: #ffc107;
+  color: var(--orange);
   text-decoration: none;
 }
