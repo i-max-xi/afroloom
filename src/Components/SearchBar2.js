@@ -24,7 +24,7 @@ const SearchBar2 = () => {
     <div className="flex justify-content-center align-items-center">
       <div className="p-inputgroup flex-1 rounded mx-1">
         <InputText
-          placeholder="What are you looking for ?..."
+          placeholder="What are you looking for?..."
           onChange={handleInput}
         />
 
