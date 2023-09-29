@@ -190,6 +190,8 @@ const CategoryDetail = ({ option }) => {
               selectedOption3={selectedOption3}
               setSelectedOption3={setSelectedOption3}
 
+              search4=""
+              search5=""
               handleSave={saveFilters}
             />
           )}
