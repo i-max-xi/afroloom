@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { searchItem } from "../Redux/store"; 
+import { searchItem } from "../Redux/store";
 import { InputText } from "primereact/inputtext";
 import { Link } from "react-router-dom";
 
@@ -28,16 +28,19 @@ const SearchBar2 = () => {
           onChange={handleInput}
         />
 
-        <Link
-          to={keyword.trim() !== "" ? "searched" : ""}
-          // className={`btn btn-warning text-white ${
+        <button // className={`btn btn-warning text-white ${
           //   keyword.trim() === "" ? "disabled" : ""
           // }`}
-          className="btn btn-warning text-white"
+          className="btn btn-warning"
           onClick={handleSearchInputChange}
         >
-          Search
-        </Link>
+          <Link
+            to={keyword.trim() !== "" ? "searched" : ""}
+            className="text-decoration-none text-white"
+          >
+            Search
+          </Link>
+        </button>
       </div>
     </div>
   );

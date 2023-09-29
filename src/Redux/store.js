@@ -16,7 +16,7 @@ const allProductsSlice = createSlice({
   initialState: {
     products: [],
     searchedArray: [],
-  
+    searchKeyDisplay: "",
   },
   reducers: {
     addProducts: (state, action) => {
@@ -27,6 +27,7 @@ const allProductsSlice = createSlice({
     
     searchItem: (state, action) => {
       const searchTerm = action.payload.toLowerCase(); // Convert search term to lowercase
+      state.searchKeyDisplay = action.payload;
       
       if (searchTerm !== "") {
         const filtered = state.products.filter(product =>
