@@ -309,18 +309,29 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
       const actualFilter = pullFilters.filters;
       setSearch3Bank("Product");
       setSearch3Options(actualFilter[0].options);
+      setSearch4Bank("");
+
     } else if (selectedCategory === "Pottery") {
       const pullFilters = allCategory.find((f) => f.name === "Pottery");
 
       const actualFilter = pullFilters.filters;
       setSearch3Bank("Product");
       setSearch3Options(actualFilter[0].options);
+      setSearch4Bank("");
+
     } else if (selectedCategory === "Furniture") {
       const pullFilters = allCategory.find((f) => f.name === "Furniture");
-
       const actualFilter = pullFilters.filters;
       setSearch3Bank("Product");
       setSearch3Options(actualFilter[0].options);
+      setSearch4Bank("");
+    }
+    else if (selectedCategory === "Art Works") {
+      const pullFilters = allCategory.find((f) => f.name === "Art Works");
+      const actualFilter = pullFilters.filters;
+      setSearch3Bank("Product");
+      setSearch3Options(actualFilter[0].options);
+      setSearch4Bank("");
     }
   }, [selectedCategory]);
 

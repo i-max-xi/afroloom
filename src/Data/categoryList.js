@@ -42,6 +42,7 @@ export const categoryFilter = [
   "Basketry",
   "Pottery",
   "Furniture",
+  "Art Works"
 ];
 
 export const allCategory = [
