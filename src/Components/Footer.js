@@ -64,7 +64,7 @@ const Footer = () => {
                 <div className="d-flex justify-content-between">
                   <div>
                     <p>
-                      <Link to="/register" className="text-reset">
+                      <Link to="/artisancomingsoon" className="text-reset">
                         Become an Artisan
                       </Link>
                     </p>
