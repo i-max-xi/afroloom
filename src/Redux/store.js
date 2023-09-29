@@ -15,29 +15,29 @@ const allProductsSlice = createSlice({
   name: "allProducts",
   initialState: {
     products: [],
-    buffer: [],
-    // searchTerm: "",
+    searchedArray: [],
   
   },
   reducers: {
     addProducts: (state, action) => {
-      state.buffer = action.payload;
-      state.products = state.buffer;
+      // state.buffer = action.payload;
+      // state.products = state.buffer;
+      state.products = action.payload;
     },
     
     searchItem: (state, action) => {
       const searchTerm = action.payload.toLowerCase(); // Convert search term to lowercase
       
       if (searchTerm !== "") {
-        const filtered = state.buffer.filter(product =>
+        const filtered = state.products.filter(product =>
           product.title && product.title.toLowerCase().includes(searchTerm) // Convert product title to lowercase
         );
         
-        state.products = filtered;
+        state.searchedArray = filtered;
       } 
-      else {
-        state.products = state.buffer;
-      }
+      // else {
+      //   state.searchedArray = state.buffer;
+      // }
     }
   },
 });

@@ -55,6 +55,7 @@ import ConfiguratorFemaleAccessories from "./Pages/Customize/Configurator/Config
 import ConfiguratorFemale from "./Pages/Customize/Configurator/ConfiguratorFemale";
 import ConfiguratorUnisex from "./Pages/Customize/Configurator/ConfiguratorUnisex";
 import Confirmation from "./Pages/Customize/Configurator/Confirmation";
+import SearchedItem from "./Pages/SearchedItem";
 
 function App() {
   useEffect(() => {
@@ -76,6 +77,8 @@ function App() {
             <Route path="supplier-signup" element={<Supplier />} />
 
             <Route path="artisan" element={<Artisan />} />
+
+            <Route path="searched" element={<SearchedItem />} />
 
             <Route path="checkout" element={<Checkout />} />
             <Route path="category-page" element={<CategoryPage />} />

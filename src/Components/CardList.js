@@ -400,6 +400,7 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
               style={{ width: product.Width || "20%" }}
             >
               <Card
+                key={index}
                 title={product.title}
                 description={product.description}
                 rating={product.rating}
