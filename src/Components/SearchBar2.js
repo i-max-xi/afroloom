@@ -21,17 +21,18 @@ const SearchBar2 = () => {
   };
 
   return (
-    <div className="flex justify-content-center align-items-center">
-      <div className="p-inputgroup flex-1 rounded mx-1">
+    <div className="flex justify-content-center align-items-center search-input">
+      <div className="p-inputgroup flex-1 mx-1 search-main">
         <InputText
           placeholder="What are you looking for?..."
           onChange={handleInput}
+          className="search-input"
         />
 
         <button // className={`btn btn-warning text-white ${
           //   keyword.trim() === "" ? "disabled" : ""
           // }`}
-          className="btn btn-warning"
+          className="btn btn-warning search-button"
           onClick={handleSearchInputChange}
         >
           <Link

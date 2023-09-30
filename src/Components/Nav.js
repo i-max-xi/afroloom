@@ -81,7 +81,7 @@ const Nav = ({ handleToggleDropdown, Language, Currency }) => {
             />
           </li>
           <li className="nav-item">
-            <Link className="nav-link" to="customize">
+            <Link className="nav-link" to="/customize">
               Create Your Own
             </Link>
           </li>

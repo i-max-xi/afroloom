@@ -88,7 +88,7 @@ const Supplier = () => {
   };
 
   return (
-    <>
+    <div className="bg-white">
       <Nav />
       <Toast ref={toastRef} />
 
@@ -200,7 +200,7 @@ const Supplier = () => {
           </form>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

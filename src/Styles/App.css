@@ -13,6 +13,16 @@
   width: 100%;
   z-index: 9;
 } */
+.search-input {
+  width: 25rem;
+  border-radius: 15rem !important;
+
+}
+
+.search-button {
+  transform: translateX(-4rem);
+  border-radius: 15rem !important;
+}
 
 .nav-item a, .about, .nav-item {
   color: black;

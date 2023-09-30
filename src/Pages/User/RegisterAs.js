@@ -4,7 +4,7 @@ import Nav from "../../Components/Nav";
 
 const RegisterAs = () => {
   return (
-    <>
+    <div className="bg-white">
       <Nav />
       <h4 className="mb-4 text-center">
         <span className="text-warning">Register</span> As
@@ -31,7 +31,7 @@ const RegisterAs = () => {
           </div>
         </Link>
       </div>
-    </>
+    </div>
   );
 };
 

@@ -11,7 +11,7 @@ const ItemDetail = ({ match }) => {
     window.scrollTo(0, 0);
   }, []);
 
-  const Products = useSelector((state)=> state.allProducts.products);
+  const Products = useSelector((state) => state.allProducts.products);
 
   const { productId } = useParams();
   const product = Products.find((p) => p.id === productId);
@@ -30,7 +30,6 @@ const ItemDetail = ({ match }) => {
 
   // Redux
   const dispatch = useDispatch();
-
 
   //related products
   // const relatedProducts = Products.filter(p => p.category !== parseInt(productId)).slice(0, 5);
@@ -63,69 +62,108 @@ const ItemDetail = ({ match }) => {
     stars.push(<i key={i} className="bi bi-star text-warning fs-3"></i>);
   }
 
-  let productImage = null;
-  if (Array.isArray(product.item)) {
-    productImage = (
-      <div
-        id="productCarousel"
-        className="carousel slide"
-        data-bs-ride="carousel"
-      >
-        <div className="carousel-inner">
-          {product.item.map((image, index) => (
-            <div
-              className={`carousel-item ${index === 0 ? "active" : ""}`}
-              key={index}
-            >
-              <img
-                src={image}
-                alt={`Img ${index + 1}`}
-                className="d-block w-100"
-              />
-            </div>
-          ))}
-        </div>
-        <button
-          className="carousel-control-prev"
-          type="button"
-          data-bs-target="#productCarousel"
-          data-bs-slide="prev"
-        >
-          <span
-            className="carousel-control-prev-icon"
-            aria-hidden="true"
-          ></span>
-          <span className="visually-hidden">Previous</span>
-        </button>
-        <button
-          className="carousel-control-next"
-          type="button"
-          data-bs-target="#productCarousel"
-          data-bs-slide="next"
-        >
-          <span
-            className="carousel-control-next-icon"
-            aria-hidden="true"
-          ></span>
-          <span className="visually-hidden">Next</span>
-        </button>
-      </div>
-    );
-  } else {
-    productImage = (
-      <img src={product.item} alt={product.title} className="img-fluid w-50" />
-    );
-  }
+  // Create a state variable to store extras, including the initial product.item
 
-  const augmentedPrice = product.price * count;
+  const [extras] = useState([
+    product.item,
+    ...(product.extras ? product.extras : []),
+  ]);
+
+  const [selectedImage, setSelectedImage] = useState(product.item); // Initially set to product.item
+  const handleExtraClick = (extraImage) => {
+    setSelectedImage(extraImage);
+  };
+
+  // let productImage = null;
+  // if (Array.isArray(product.item)) {
+  //   productImage = (
+  //     <div
+  //       id="productCarousel"
+  //       className="carousel slide"
+  //       data-bs-ride="carousel"
+  //     >
+  //       <div className="carousel-inner">
+  //         {product.item.map((image, index) => (
+  //           <div
+  //             className={`carousel-item ${index === 0 ? "active" : ""}`}
+  //             key={index}
+  //           >
+  //             <img
+  //               src={image}
+  //               alt={`Img ${index + 1}`}
+  //               className="d-block w-100"
+  //             />
+  //           </div>
+  //         ))}
+  //       </div>
+  //       <button
+  //         className="carousel-control-prev"
+  //         type="button"
+  //         data-bs-target="#productCarousel"
+  //         data-bs-slide="prev"
+  //       >
+  //         <span
+  //           className="carousel-control-prev-icon"
+  //           aria-hidden="true"
+  //         ></span>
+  //         <span className="visually-hidden">Previous</span>
+  //       </button>
+  //       <button
+  //         className="carousel-control-next"
+  //         type="button"
+  //         data-bs-target="#productCarousel"
+  //         data-bs-slide="next"
+  //       >
+  //         <span
+  //           className="carousel-control-next-icon"
+  //           aria-hidden="true"
+  //         ></span>
+  //         <span className="visually-hidden">Next</span>
+  //       </button>
+  //     </div>
+  //   );
+  // } else {
+  //   productImage = (
+  //     <img
+  //       src={product.item}
+  //       alt={product.title}
+  //       className="img-fluid w-75"
+  //     />
+  //   );
+  // }
+
+  const currencySymbol = useSelector((state) => state.currencySymbol.symbol);
+  const currencyFactor = useSelector((state) => state.currencySymbol.factor);
+
+  const augmentedPrice = (currencyFactor * product.price * count).toFixed(2);
 
   return (
-    <>
+    <div className="bg-white">
       <Nav />
 
       <div className="container mt-5">
         <div className="row">
-          <div className="col-md-6">{productImage}</div>
+          <div className="col-md-6 d-flex mb-5">
+            {extras ? (
+              <div className="d-flex flex-column mx-1" style={{ width: "10%" }}>
+                {extras.map((extra, index) => (
+                  <img
+                    className="mb-1"
+                    src={extra}
+                    key={index}
+                    alt={extra + " " + index}
+                    onClick={() => handleExtraClick(extra)}
+                  />
+                ))}
+              </div>
+            ) : (
+              ""
+            )}
+
+            <div>
+              <img src={selectedImage} alt={product.title} width="80%" />
+            </div>
+          </div>
           <div className="col-md-6">
             <h3 className="mb-3">{product.title}</h3>
             <p className="mb-3">{product.description}</p>
@@ -150,7 +188,10 @@ const ItemDetail = ({ match }) => {
                 +
               </button>
             </div>
-            <p className="h3">${augmentedPrice}</p>
+            <p className="h3">
+              {currencySymbol}
+              {augmentedPrice}
+            </p>
             <button
               className="btn btn-lg mt-3 bg-warning text-white"
               onClick={(
@@ -186,7 +227,7 @@ const ItemDetail = ({ match }) => {
           <TabPanel header="Reviews">
             {product.rating} reviews for this product
           </TabPanel>
-          <TabPanel header="Sold By"></TabPanel>
+          <TabPanel header="Sold By">{product.seller} </TabPanel>
         </TabView>
       </div>
       <div className="container mt-5">
@@ -201,7 +242,7 @@ const ItemDetail = ({ match }) => {
           itemTemplate={productTemplate}
         />
       </div>
-    </>
+    </div>
   );
 };
 
