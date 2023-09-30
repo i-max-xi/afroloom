@@ -36,7 +36,7 @@ const SearchBar2 = () => {
           onClick={handleSearchInputChange}
         >
           <Link
-            to={keyword.trim() !== "" ? "searched" : ""}
+            to={keyword.trim() !== "" ? "/searched" : ""}
             className="text-decoration-none text-white"
           >
             Search
