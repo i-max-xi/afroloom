@@ -3,21 +3,22 @@ import { Link, useNavigate } from "react-router-dom";
 import Nav from "../../Components/Nav";
 import { Toast } from "primereact/toast";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import { useDispatch } from "react-redux";
-import { setSignedIn } from "../../Redux/store";
+// import { setSignedIn } from "../../Redux/store";
 import { getFirestore, doc, setDoc } from "firebase/firestore";
+import { Dropdown } from "primereact/dropdown";
+import { categoryFilter } from "../../Data/categoryList";
 
 const Supplier = () => {
-  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  const [country, setCountry] = useState("");
+  // const [country, setCountry] = useState("");
+  const [companyName, setCompanyName] = useState("");
+  const [supplyCategory, setSupplyCategory] = useState("Clothing");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [number, setNumber] = useState("");
-  // const [idNumber, setIdNumber] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
   const toastRef = useRef(null);
@@ -51,7 +52,10 @@ const Supplier = () => {
         const userInfo = {
           firstName: firstName,
           lastName: lastName,
-          country: country,
+          email: email,
+          // country: country,
+          companyName: companyName,
+          supplyCategory: supplyCategory,
           number: number,
         };
 
@@ -63,20 +67,18 @@ const Supplier = () => {
 
         toastRef.current.show({
           severity: "success",
-          summary: "Sign up successful!",
+          summary: "Request sent successfully!",
+          detail: "Pending Approval",
         });
-        setEmail("");
-        setPassword("");
-        setConfirmPassword("");
 
         // Dispatch action to set signed-in status in Redux store
-        dispatch(setSignedIn(true));
+        // dispatch(setSignedIn(true));
 
         // Redirect to "/" after successful signup
         // Delayed redirect to "/"
         setTimeout(() => {
           navigate("/");
-        }, 3000);
+        }, 2000);
       }
     } catch (error) {
       toastRef.current.show({
@@ -94,7 +96,7 @@ const Supplier = () => {
 
       <div className="container">
         <h4 className="mb-4 text-center">
-          <span className="text-warning">Create</span> Account
+          <span className="text-warning">Request</span> To Be A Supply
         </h4>
         <div className="container mb-5 mt-5 d-flex justify-content-center rounded">
           <form onSubmit={handleSignUp} className="w-50">
@@ -120,14 +122,28 @@ const Supplier = () => {
             </div>
 
             <div className="form-group">
-              <label htmlFor="email">Country:</label>
+              <label htmlFor="email">Company Name:</label>
               <input
                 type="text"
                 className="form-control"
                 placeholder="Country"
-                value={country}
-                onChange={(e) => setCountry(e.target.value)}
+                value={companyName}
+                onChange={(e) => setCompanyName(e.target.value)}
               />
+            </div>
+
+            <div className="form-group mt-2 mb-2">
+              <label htmlFor="email">What Do You Supply:</label>
+              <div>
+                <Dropdown
+                  value={supplyCategory}
+                  options={categoryFilter}
+                  onChange={(e) => setSupplyCategory(e.value)}
+                  // placeholder={categoryFilter[0]}
+                  className="w-50 d-flex justify-content-center align-items-center"
+                  style={{ height: "3rem" }}
+                />
+              </div>
             </div>
 
             <div className="form-group">
@@ -187,12 +203,15 @@ const Supplier = () => {
                 onChange={(e) => setIdNumber(e.target.value)}
               />
             </div> */}
-
+            <p className="mt-3">
+              <input type="checkbox" />
+              <span className="mx-2" >I have read the <Link to="/tnc">Terms and Policies</Link></span>
+            </p>
             <button
               type="submit"
               className="btn btn-warning text-white w-100 mt-4 shadow-sm"
             >
-              Sign Up
+              Send Request
             </button>
             <p className="mt-3 text-center">
               Already have an account? <Link to="/signin">Sign In</Link>

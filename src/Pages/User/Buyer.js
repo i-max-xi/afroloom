@@ -70,7 +70,7 @@ const Buyer = () => {
   };
 
   return (
-    <>
+    <div className="bg-white">
       <Nav />
       <Toast ref={toastRef} />
 
@@ -126,7 +126,7 @@ const Buyer = () => {
           </form>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

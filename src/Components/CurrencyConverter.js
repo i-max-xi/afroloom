@@ -3,19 +3,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { setCurrencySymbol } from "../Redux/store"; // Update the import path
 import { Dropdown } from "primereact/dropdown";
 
-// const currencyOptions = [
-//   { name: "USD", factor: 1, symbol: "$" },
-//   { name: "EUR", factor: 0.9, symbol: "€" },
-//   { name: "GHS", factor: 10, symbol: "₵" },
-//   // Add more currency options as needed
-// ];
 
 const currencyOptions = [
   { name: "USD", factor: 1, symbol: "$" },
   { name: "GHS", factor: 11.36, symbol: "₵" },
   { name: "EUR", factor: 0.85, symbol: "€" }, // Corrected EUR factor
   { name: "GBP", factor: 0.72, symbol: "£" }, // British Pound
-  // Add more currency options as needed
   { name: "ZAR", factor: 14.50, symbol: "R" }, // South African Rand
   { name: "NGN", factor: 772.34, symbol: "₦" }, // Nigerian Naira
   { name: "EGP", factor: 16.15, symbol: "ج.م" }, // Egyptian Pound
