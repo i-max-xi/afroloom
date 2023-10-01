@@ -11,6 +11,8 @@ import { categoryFilter } from "../../Data/categoryList";
 const Supplier = () => {
   const navigate = useNavigate();
 
+  const [isCheckboxChecked, setIsCheckboxChecked] = useState(false);
+
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   // const [country, setCountry] = useState("");
@@ -58,6 +60,15 @@ const Supplier = () => {
           supplyCategory: supplyCategory,
           number: number,
         };
+
+        // submit to formspree
+        await fetch(process.env.REACT_APP_formSpree, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(userInfo),
+        });
 
         // Get the Firestore instance
         const db = getFirestore();
@@ -204,15 +215,23 @@ const Supplier = () => {
               />
             </div> */}
             <p className="mt-3">
-              <input type="checkbox" />
-              <span className="mx-2" >I have read the <Link to="/tnc">Terms and Policies</Link></span>
+              <input
+                type="checkbox"
+                checked={isCheckboxChecked}
+                onChange={(e) => setIsCheckboxChecked(e.target.checked)}
+              />
+              <span className="mx-2">
+                I have read the <Link to="/tnc">Terms and Policies</Link>
+              </span>
             </p>
             <button
               type="submit"
               className="btn btn-warning text-white w-100 mt-4 shadow-sm"
+              disabled={!isCheckboxChecked} // Disable the button if the checkbox is not checked
             >
               Send Request
             </button>
+
             <p className="mt-3 text-center">
               Already have an account? <Link to="/signin">Sign In</Link>
             </p>
