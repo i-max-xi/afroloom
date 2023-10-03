@@ -5,7 +5,7 @@ import booty from "../../../Assets/vid/booty.MP4";
 export const rowOne = [
   {
     headTitle: "Men Clothes Under 3$",
-    linkTo: "/category/Clothing",
+    linkTo: "/offers/men clothes under $3",
     array: [
       {
         // title: "Shirt",
@@ -39,7 +39,7 @@ export const rowOne = [
 
   {
     headTitle: "Women Clothes Under 3$",
-    linkTo: "/category/Clothing",
+    linkTo: "/offers/women clothes under $3",
     array: [
       {
         // title: "Tshirt",
@@ -64,13 +64,13 @@ export const rowSix = [
   {
     title: "Lowest Prices in 60 Days",
     imageUrl: require("../../../Assets/Offers/lowest/fad8186bb3f502194ae34274a7727066--charleston-gardens-charleston-sc.jpg"),
-    linkTo: "/category/Accessories",
+    linkTo: "/offers/Lowest Prices in 60 Days",
   },
 
   {
     title: "Most Popular",
     imageUrl: require("../../../Assets/Offers/popular/royal-blue-maasai-earrings.jpg"),
-    linkTo: "/category/Accessories",
+    linkTo: "/offers/popular",
   },
   {
     title: "We make your thoughts into reality",
@@ -79,7 +79,7 @@ export const rowSix = [
   },
   {
     headTitle: "New Products this Week",
-    linkTo: "/category/Accessories",
+    linkTo: "/offers/New Products this Week",
     array: [
       {
         title: "Pouf",

@@ -492,7 +492,7 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
                     items={bannerfive}
                     headTitle="Time is running out on these Great Discounts"
                     seeMore="See More"
-                    linkTo="/category/Accessories"
+                    linkTo="/offers/discounts"
                   />
                 </div>
                 <Row mainItems={rowSix} />

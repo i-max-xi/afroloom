@@ -57,6 +57,7 @@ import ConfiguratorUnisex from "./Pages/Customize/Configurator/ConfiguratorUnise
 import Confirmation from "./Pages/Customize/Configurator/Confirmation";
 import SearchedItem from "./Pages/SearchedItem";
 import ArtisanWait from "./Pages/ArtisanWait";
+import OffersDetail from "./Pages/OffersDetail";
 
 function App() {
   useEffect(() => {
@@ -81,6 +82,8 @@ function App() {
 
             <Route path="searched" element={<SearchedItem />} />
             <Route path="artisancomingsoon" element={<ArtisanWait />} />
+            <Route path="offers/:offerType" element={<OffersDetail />} />
+
 
             <Route path="checkout" element={<Checkout />} />
             <Route path="category-page" element={<CategoryPage />} />
