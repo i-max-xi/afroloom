@@ -3,7 +3,6 @@ import { Link, useNavigate } from "react-router-dom";
 import Nav from "../../Components/Nav";
 import { Toast } from "primereact/toast";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-// import { setSignedIn } from "../../Redux/store";
 import { getFirestore, doc, setDoc } from "firebase/firestore";
 import { Dropdown } from "primereact/dropdown";
 import { categoryFilter } from "../../Data/categoryList";
@@ -12,18 +11,28 @@ const Supplier = () => {
   const navigate = useNavigate();
 
   const [isCheckboxChecked, setIsCheckboxChecked] = useState(false);
-
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
-  // const [country, setCountry] = useState("");
   const [companyName, setCompanyName] = useState("");
-  const [supplyCategory, setSupplyCategory] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [number, setNumber] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-
   const toastRef = useRef(null);
+
+  // Supply categories
+  const [supplyCategories, setSupplyCategories] = useState([""]);
+
+  const addSupplyCategory = () => {
+    setSupplyCategories([...supplyCategories, ""]);
+  };
+
+  const removeSupplyCategory = (indexToRemove) => {
+    const updatedCategories = supplyCategories.filter(
+      (_, index) => index !== indexToRemove
+    );
+    setSupplyCategories(updatedCategories);
+  };
 
   const handleSignUp = async (e) => {
     e.preventDefault();
@@ -55,13 +64,12 @@ const Supplier = () => {
           firstName: firstName,
           lastName: lastName,
           email: email,
-          // country: country,
           companyName: companyName,
-          supplyCategory: supplyCategory,
+          supplyCategories: supplyCategories,
           number: number,
         };
 
-        // submit to formspree
+        // Submit to formspree
         await fetch(process.env.REACT_APP_formSpree, {
           method: "POST",
           headers: {
@@ -82,11 +90,7 @@ const Supplier = () => {
           detail: "Pending Approval",
         });
 
-        // Dispatch action to set signed-in status in Redux store
-        // dispatch(setSignedIn(true));
-
-        // Redirect to "/" after successful signup
-        // Delayed redirect to "/"
+        // Redirect to "/" after successful signup and delay
         setTimeout(() => {
           navigate("/");
         }, 2000);
@@ -145,16 +149,39 @@ const Supplier = () => {
 
             <div className="form-group mt-2 mb-2">
               <label htmlFor="email">What Do You Supply:</label>
-              <div>
-                <Dropdown
-                  value={supplyCategory}
-                  options={categoryFilter}
-                  onChange={(e) => setSupplyCategory(e.value)}
-                  placeholder="Select supply Category"
-                  className="w-50 d-flex justify-content-center align-items-center"
-                  style={{ height: "3rem" }}
-                />
-              </div>
+              {supplyCategories.map((category, index) => (
+                <div key={index} className="d-flex align-items-center">
+                  <Dropdown
+                    value={category}
+                    options={categoryFilter}
+                    onChange={(e) => {
+                      const updatedCategories = [...supplyCategories];
+                      updatedCategories[index] = e.value;
+                      setSupplyCategories(updatedCategories);
+                    }}
+                    placeholder="Select supply Category"
+                    className="w-50 d-flex justify-content-center align-items-center"
+                    style={{ height: "3rem" }}
+                  />
+                  {index === supplyCategories.length - 1 ? (
+                    <button
+                      type="button"
+                      onClick={addSupplyCategory}
+                      className="btn btn-primary ml-2"
+                    >
+                      Add More
+                    </button>
+                  ) : (
+                    <button
+                      type="button"
+                      onClick={() => removeSupplyCategory(index)}
+                      className="btn btn-danger ml-2"
+                    >
+                      Remove Category
+                    </button>
+                  )}
+                </div>
+              ))}
             </div>
 
             <div className="form-group">
@@ -204,16 +231,6 @@ const Supplier = () => {
               />
             </div>
 
-            {/* <div className="form-group">
-              <label htmlFor="idNumber">Upload ID:</label>
-              <input
-                type="file"
-                className="form-control"
-                id="idNumber"
-                value={idNumber}
-                onChange={(e) => setIdNumber(e.target.value)}
-              />
-            </div> */}
             <p className="mt-3">
               <input
                 type="checkbox"
