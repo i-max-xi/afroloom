@@ -4,8 +4,8 @@ import booty from "../../../Assets/vid/booty.MP4";
 
 export const rowOne = [
   {
-    headTitle: "Men Clothes Under 3$",
-    linkTo: "/offers/men clothes under $3",
+    headTitle: "Men Clothing Under 3$",
+    linkTo: "/offers/men clothing under $3",
     array: [
       {
         // title: "Shirt",
@@ -32,14 +32,14 @@ export const rowOne = [
     linkTo: "/customize",
   },
   {
-    title: "Find The Perfect Gift",
+    title: "Find the Perfect Gift",
     imageUrl: require("../../../Assets/Offers/gift/1.jpg"),
     linkTo: "/category/Accessories",
   },
 
   {
-    headTitle: "Women Clothes Under 3$",
-    linkTo: "/offers/women clothes under $3",
+    headTitle: "Women Clothing Under 3$",
+    linkTo: "/offers/women clothing under $3",
     array: [
       {
         // title: "Tshirt",
@@ -135,7 +135,7 @@ export const rowNine = [
     linkTo: "/customize",
   },
   {
-    headTitle: "Get Value For your Feet",
+    headTitle: "Get Value for your Feet",
     linkTo: "/category/Footwear",
     array: [
       {
@@ -160,9 +160,5 @@ export const rowNine = [
       },
     ],
   },
-  // {
-  //   title: "Get Value For your Feet",
-  //   imageUrl: require("../../../Assets/Offers/footwear/R 11.20.36 PM.jpg"),
-  //   linkTo: "/category/Footwear",
-  // },
+
 ];

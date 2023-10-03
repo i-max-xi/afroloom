@@ -125,8 +125,6 @@ const Nav = ({ handleToggleDropdown, Language, Currency }) => {
             </Link>
           </li>
 
-          <div className="vr"></div>
-
           <CurrencyConverter />
 
           <SearchBar2 />

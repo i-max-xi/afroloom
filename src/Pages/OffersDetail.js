@@ -28,12 +28,12 @@ const OffersDetail = () => {
     case "Lowest Prices in 60 Days":
       selectedProducts = Products.filter((item) => item.price < 20);
       break;
-    case "men clothes under $3":
+    case "men clothing under $3":
       selectedProducts = Products.filter(
         (item) => item.gender === "Male" && item.price <= 3
       );
       break;
-    case "women clothes under $3":
+    case "women clothing under $3":
       selectedProducts = Products.filter(
         (item) => item.gender === "Female" && item.price <= 3
       );

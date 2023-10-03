@@ -22,7 +22,7 @@ const SearchBar2 = () => {
 
   return (
     <div className="flex justify-content-center align-items-center search-input">
-      <div className="p-inputgroup flex-1 mx-1 search-main">
+      <div className="p-inputgroup flex-1 mx-2 search-main">
         <InputText
           placeholder="What are you looking for?..."
           onChange={handleInput}
