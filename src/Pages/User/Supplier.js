@@ -17,7 +17,7 @@ const Supplier = () => {
   const [lastName, setLastName] = useState("");
   // const [country, setCountry] = useState("");
   const [companyName, setCompanyName] = useState("");
-  const [supplyCategory, setSupplyCategory] = useState("Clothing");
+  const [supplyCategory, setSupplyCategory] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [number, setNumber] = useState("");
@@ -106,8 +106,8 @@ const Supplier = () => {
       <Toast ref={toastRef} />
 
       <div className="container">
-        <h4 className="mb-4 text-center">
-          <span className="text-warning">Request</span> To Be A Supply
+        <h4 className="mb-4 mt-3 text-center">
+          <span className="text-warning">Request</span> To Be A Supplier
         </h4>
         <div className="container mb-5 mt-5 d-flex justify-content-center rounded">
           <form onSubmit={handleSignUp} className="w-50">
@@ -150,7 +150,7 @@ const Supplier = () => {
                   value={supplyCategory}
                   options={categoryFilter}
                   onChange={(e) => setSupplyCategory(e.value)}
-                  // placeholder={categoryFilter[0]}
+                  placeholder="Select supply Category"
                   className="w-50 d-flex justify-content-center align-items-center"
                   style={{ height: "3rem" }}
                 />
