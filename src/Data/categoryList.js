@@ -42,7 +42,7 @@ export const categoryFilter = [
   "Basketry",
   "Pottery",
   "Furniture",
-  "Art Works"
+  "Handicrafts"
 ];
 
 export const allCategory = [
@@ -334,7 +334,7 @@ export const allCategory = [
   },
   {
     id: "7000",
-    name: "Art Works",
+    name: "Handicrafts",
     filters: [
       {
         name: "Type",

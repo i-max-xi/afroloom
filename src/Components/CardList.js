@@ -323,8 +323,8 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
       setSearch3Bank("Product");
       setSearch3Options(actualFilter[0].options);
       setSearch4Bank("");
-    } else if (selectedCategory === "Art Works") {
-      const pullFilters = allCategory.find((f) => f.name === "Art Works");
+    } else if (selectedCategory === "Handicrafts") {
+      const pullFilters = allCategory.find((f) => f.name === "Handicrafts");
       const actualFilter = pullFilters.filters;
       setSearch3Bank("Product");
       setSearch3Options(actualFilter[0].options);

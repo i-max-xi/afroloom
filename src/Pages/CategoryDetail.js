@@ -8,7 +8,7 @@ import footwear from "../Assets/Headers/categories/Footwear.jpg";
 import accessories from "../Assets/Headers/categories/Acessories.jpg";
 import clothing from "../Assets/Headers/categories/clothing.jpg";
 import textiles from "../Assets/Headers/categories/Textiles.jpg";
-import art from "../Assets/Headers/categories/art.jpg";
+import handicraft from "../Assets/Headers/categories/handicraft.JPG";
 import pottery from "../Assets/Headers/categories/pottery.jpg";
 import furniture from "../Assets/Headers/categories/Furniture.jpg";
 import basketry from "../Assets/Headers/categories/basketry.jpg";
@@ -35,8 +35,8 @@ const CategoryDetail = ({ option }) => {
     url = pottery;
   } else if (categoryName === "Basketry") {
     url = basketry;
-  } else if (categoryName === "Art Works") {
-    url = art;
+  } else if (categoryName === "Handicrafts") {
+    url = handicraft;
   } else {
     url = ""; // fallback URL
   }
