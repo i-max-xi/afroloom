@@ -185,6 +185,15 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
 
   const [itemsToDisplay, setItemsToDisplay] = useState(itemsToDisplayBank);
 
+  const getProducts = async () => {
+    const data = await ProductsDataService.getAllProducts();
+    const fetchedProducts = await data.docs.map((doc) => ({
+      ...doc.data(),
+      id: doc.id,
+    }));
+    dispatch(addProducts(fetchedProducts));
+  };
+
   useEffect(() => {
     getProducts();
   }, []);
@@ -197,15 +206,6 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
       )
     );
   }, [currentPage, Products, itemsPerPage]);
-
-  const getProducts = async () => {
-    const data = await ProductsDataService.getAllProducts();
-    const fetchedProducts = await data.docs.map((doc) => ({
-      ...doc.data(),
-      id: doc.id,
-    }));
-    dispatch(addProducts(fetchedProducts));
-  };
 
   // Pagination starts here
 
@@ -310,7 +310,6 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
       setSearch3Bank("Product");
       setSearch3Options(actualFilter[0].options);
       setSearch4Bank("");
-
     } else if (selectedCategory === "Pottery") {
       const pullFilters = allCategory.find((f) => f.name === "Pottery");
 
@@ -318,15 +317,13 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
       setSearch3Bank("Product");
       setSearch3Options(actualFilter[0].options);
       setSearch4Bank("");
-
     } else if (selectedCategory === "Furniture") {
       const pullFilters = allCategory.find((f) => f.name === "Furniture");
       const actualFilter = pullFilters.filters;
       setSearch3Bank("Product");
       setSearch3Options(actualFilter[0].options);
       setSearch4Bank("");
-    }
-    else if (selectedCategory === "Art Works") {
+    } else if (selectedCategory === "Art Works") {
       const pullFilters = allCategory.find((f) => f.name === "Art Works");
       const actualFilter = pullFilters.filters;
       setSearch3Bank("Product");
