@@ -7,6 +7,12 @@ import { allCategory, categoryFilter } from "../Data/categoryList";
 import SearchFilters from "../Components/SearchFilters";
 import countryArr from "../Data/CountryArr";
 import { Paginator } from "primereact/paginator";
+import popular from "../Assets/Headers/offers/popular.JPG"
+import newProducts from "../Assets/Headers/offers/new_product.JPG"
+import discount from "../Assets/Headers/offers/discount.JPG";
+import lowestPrices from "../Assets/Headers/offers/lowest_prices.JPG";
+
+
 
 const OffersDetail = () => {
   useEffect(() => {
@@ -17,16 +23,21 @@ const OffersDetail = () => {
   const Products = useSelector((state) => state.allProducts.products);
 
   let selectedProducts = [];
+  let url = "";
+
 
   switch (offerType) {
     case "popular":
       selectedProducts = Products.filter((item) => item.rating >= 5);
+      url = popular;
       break;
     case "New Products this Week":
       // Add logic to filter by new products
+      url = newProducts;
       break;
     case "Lowest Prices in 60 Days":
       selectedProducts = Products.filter((item) => item.price < 20);
+      url = lowestPrices;
       break;
     case "men clothing under $3":
       selectedProducts = Products.filter(
@@ -40,6 +51,7 @@ const OffersDetail = () => {
       break;
     case "discounts":
       // Add logic to filter by lowest prices in 60 days
+      url = discount;
       break;
     default:
       selectedProducts = Products;
@@ -199,6 +211,7 @@ const OffersDetail = () => {
       <div
         style={{
           backgroundSize: "cover",
+          backgroundImage: `url(${url})`,
           backgroundRepeat: "no-repeat",
           height: "10rem",
           width: "100%",

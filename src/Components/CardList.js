@@ -457,7 +457,7 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
                     items={bannerone}
                     headTitle="Discover the Timeless Beauty of African Handicraft"
                     seeMore="See More"
-                    linkTo="/category/Accessories"
+                    linkTo="/category/Handicrafts"
                   />
                 </div>
               </>

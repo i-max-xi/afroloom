@@ -2,9 +2,7 @@ import React from "react";
 import { Card } from "../Components/CardList";
 import { useSelector } from "react-redux";
 import Nav from "../Components/Nav";
-import accessories from "../Assets/Headers/categories/Acessories.jpg";
-
-
+import searchbanner from "../Assets/Headers/search.JPG";
 
 const SearchedItem = () => {
   const Products = useSelector((state) => state.allProducts.searchedArray);
@@ -15,14 +13,16 @@ const SearchedItem = () => {
       <Nav />
       <div
         style={{
-          backgroundImage: `url(${accessories})`,
+          backgroundImage: `url(${searchbanner})`,
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
           height: "10rem",
           width: "100%",
         }}
       ></div>
-      <h3 className="text-center mt-3">Products matching <span className="text-warning">{keyword}</span></h3>
+      <h3 className="text-center mt-5">
+        Products matching <span className="text-warning">{keyword}</span>
+      </h3>
       <div className="row p-5">
         {Products.length !== 0 ? (
           Products.map((product, index) => (

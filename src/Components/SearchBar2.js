@@ -4,6 +4,7 @@ import { searchItem } from "../Redux/store";
 import { InputText } from "primereact/inputtext";
 import { Link } from "react-router-dom";
 
+
 const SearchBar2 = () => {
   const dispatch = useDispatch();
   const [keyword, setKeyword] = useState("");
