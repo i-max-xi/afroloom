@@ -34,7 +34,9 @@ const OffersDetail = () => {
       );
       break;
     case "women clothes under $3":
-      // Add logic to filter by lowest prices in 60 days
+      selectedProducts = Products.filter(
+        (item) => item.gender === "Female" && item.price <= 3
+      );
       break;
     case "discounts":
       // Add logic to filter by lowest prices in 60 days
