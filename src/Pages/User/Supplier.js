@@ -7,6 +7,9 @@ import { getFirestore, doc, setDoc } from "firebase/firestore";
 import { Dropdown } from "primereact/dropdown";
 import { categoryFilter } from "../../Data/categoryList";
 
+import 'primeicons/primeicons.css';
+        
+
 const Supplier = () => {
   const navigate = useNavigate();
 
@@ -49,7 +52,18 @@ const Supplier = () => {
           summary: "Sign up failed",
           detail: "Passwords are not the same",
         });
-      } else {
+        
+      } 
+      else if (supplyCategories.length === 0) {
+        // Display a toast error when no categories have been selected
+        toastRef.current.show({
+          severity: "error",
+          summary: "Sign up failed",
+          detail: "Please select at least one supply category",
+        });
+      } 
+
+      else {
         const auth = getAuth();
         const userCredential = await createUserWithEmailAndPassword(
           auth,
@@ -160,24 +174,24 @@ const Supplier = () => {
                       setSupplyCategories(updatedCategories);
                     }}
                     placeholder="Select supply Category"
-                    className="w-50 d-flex justify-content-center align-items-center"
+                    className="w-50 d-flex justify-content-center align-items-center mt-1"
                     style={{ height: "3rem" }}
                   />
                   {index === supplyCategories.length - 1 ? (
                     <button
                       type="button"
                       onClick={addSupplyCategory}
-                      className="btn btn-primary ml-2"
+                      className="btn btn-primary mx-2"
                     >
-                      Add More
+                      <span className="pi pi-plus"></span>
                     </button>
                   ) : (
                     <button
                       type="button"
                       onClick={() => removeSupplyCategory(index)}
-                      className="btn btn-danger ml-2"
+                      className="btn btn-danger mx-2"
                     >
-                      Remove Category
+                      <span className="pi pi-minus"></span>
                     </button>
                   )}
                 </div>
