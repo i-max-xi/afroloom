@@ -8,9 +8,11 @@ import SearchFilters from "../Components/SearchFilters";
 import countryArr from "../Data/CountryArr";
 import { Paginator } from "primereact/paginator";
 import popular from "../Assets/Headers/offers/popular.JPG"
-import newProducts from "../Assets/Headers/offers/new_product.JPG"
-import discount from "../Assets/Headers/offers/discount.JPG";
-import lowestPrices from "../Assets/Headers/offers/lowest_prices.JPG";
+import newProducts from "../Assets/Headers/offers/new_product.jpg"
+import discount from "../Assets/Headers/offers/discount.jpg";
+import lowestPrices from "../Assets/Headers/offers//lowest_prices.jpg";
+import under3 from "../Assets/Headers/offers/under3.JPG";
+import searchbanner from "../Assets/Headers/search.JPG";
 
 
 
@@ -43,11 +45,13 @@ const OffersDetail = () => {
       selectedProducts = Products.filter(
         (item) => item.gender === "Male" && item.price <= 3
       );
+      url = under3;
       break;
     case "women clothing under $3":
       selectedProducts = Products.filter(
         (item) => item.gender === "Female" && item.price <= 3
       );
+      url = under3;
       break;
     case "discounts":
       // Add logic to filter by lowest prices in 60 days
@@ -55,6 +59,7 @@ const OffersDetail = () => {
       break;
     default:
       selectedProducts = Products;
+      url = searchbanner;
       break;
   }
 

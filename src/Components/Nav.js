@@ -12,7 +12,7 @@ import GoogleTranslate from "../GoogleTranslate";
 // import SearchBar from "./SearchBar";
 import CurrencyConverter from "./CurrencyConverter";
 import SearchBar2 from "./SearchBar2";
-// import SearchBar2 from "./SearchBar2";
+import "primeicons/primeicons.css";
 
 const Nav = ({ handleToggleDropdown, Language, Currency }) => {
   const cartItems = useSelector((state) => state.cartItems);
@@ -128,7 +128,6 @@ const Nav = ({ handleToggleDropdown, Language, Currency }) => {
           <CurrencyConverter />
 
           <SearchBar2 />
-
         </ul>
       </div>
       {signedin === false ? (
@@ -151,7 +150,7 @@ const Nav = ({ handleToggleDropdown, Language, Currency }) => {
         <>
           <GoogleTranslate />
           <Link to="/dashboard">
-            <Avatar shape="circle" image="user.png" size="large" />
+            <Avatar icon="pi pi-user" className="mx-1 bg-secondary text-white" size="large" shape="circle" />
           </Link>
         </>
       )}
