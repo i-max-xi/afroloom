@@ -13,6 +13,7 @@ import discount from "../Assets/Headers/offers/discount.jpg";
 import lowestPrices from "../Assets/Headers/offers//lowest_prices.jpg";
 import under3 from "../Assets/Headers/offers/under3.JPG";
 import searchbanner from "../Assets/Headers/search.JPG";
+import { differenceInDays, fromUnixTime } from "date-fns"; // Import the functions
 
 
 
@@ -27,6 +28,25 @@ const OffersDetail = () => {
   let selectedProducts = [];
   let url = "";
 
+  const newProductsThisWeek = Products.filter((item) => {
+    if (item.createdAt?.seconds) {
+      // Use optional chaining to safely access 'seconds'
+      const createdAtTimestamp = item.createdAt.seconds;
+      const currentTimestamp = Date.now() / 1000; // Convert to seconds
+  
+      // Calculate the difference in days
+      const daysDifference = differenceInDays(
+        fromUnixTime(currentTimestamp),
+        fromUnixTime(createdAtTimestamp)
+      );
+  
+      // Check if the product was created within the last 7 days
+      return daysDifference <= 1;
+    }
+    // Handle the case where 'createdAt' or 'seconds' is undefined
+    return false;
+  });
+  
 
   switch (offerType) {
     case "popular":
@@ -35,6 +55,7 @@ const OffersDetail = () => {
       break;
     case "New Products this Week":
       // Add logic to filter by new products
+      selectedProducts = newProductsThisWeek;
       url = newProducts;
       break;
     case "Lowest Prices in 60 Days":
