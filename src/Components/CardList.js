@@ -30,6 +30,7 @@ import {
 
 export const Card = ({
   title,
+  discount,
   item,
   price,
   rating,
@@ -70,6 +71,14 @@ export const Card = ({
   }
   for (let i = rating; i < 5; i++) {
     stars.push(<i key={i} className="bi bi-star text-warning"></i>);
+  }
+
+  // discount
+  let discountedPrice = price; // Default to the original price
+
+  if (discount && discount > 0) {
+    const discountPercentage = discount / 100;
+    discountedPrice = (1 - discountPercentage) * price;
   }
 
   return (
@@ -113,8 +122,24 @@ export const Card = ({
           )}
 
           <h5 className="price mt-3">
-            {currencySymbol}
-            {(currencyFactor * price).toFixed(2)}
+            {discount && discount > 0 ? (
+              <>
+                <div>
+                  <span className="original-price">
+                    {currencySymbol}
+                    {price.toFixed(2)}
+                  </span>
+                  <span className="discount-off"> {discount}% off</span>
+                </div>
+                <span className="discounted-price">
+                  {currencySymbol}
+                  {discountedPrice.toFixed(2)}
+                </span>
+              </>
+            ) : (
+              // If no discount, display the regular price
+              `${currencySymbol}${(currencyFactor * price).toFixed(2)}`
+            )}
           </h5>
 
           {/* stars */}
@@ -410,6 +435,7 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
               <Card
                 key={index}
                 title={product.title}
+                discount={product.discount}
                 description={product.description}
                 rating={product.rating}
                 price={product.price}

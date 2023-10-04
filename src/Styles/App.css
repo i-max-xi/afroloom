@@ -173,6 +173,20 @@
   font-weight: 700;
 }
 
+.original-price {
+  text-decoration: line-through;
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.discount-off {
+  margin-left: 1rem;
+  color: red;
+  font-weight: 500;
+  font-size: 1rem;
+  float: right;
+}
+
 .card-img-top, .card button{ 
   transition: all 0.3s ease;
 

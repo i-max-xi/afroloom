@@ -54,7 +54,7 @@ const OffersDetail = () => {
       url = under3;
       break;
     case "discounts":
-      // Add logic to filter by lowest prices in 60 days
+      selectedProducts = Products.filter((item) => item.discount > 0);
       url = discount;
       break;
     default:
@@ -255,6 +255,7 @@ const OffersDetail = () => {
               <Card
                 key={index}
                 title={product.title}
+                discount={product.discount}
                 description={product.description}
                 rating={product.rating}
                 price={product.price}
