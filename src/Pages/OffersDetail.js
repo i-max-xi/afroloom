@@ -7,8 +7,8 @@ import { allCategory, categoryFilter } from "../Data/categoryList";
 import SearchFilters from "../Components/SearchFilters";
 import countryArr from "../Data/CountryArr";
 import { Paginator } from "primereact/paginator";
-import popular from "../Assets/Headers/offers/popular.JPG"
-import newProducts from "../Assets/Headers/offers/new_product.jpg"
+import popular from "../Assets/Headers/offers/popular.JPG";
+import newProducts from "../Assets/Headers/offers/new_product.jpg";
 import discount from "../Assets/Headers/offers/discount.jpg";
 import lowestPrices from "../Assets/Headers/offers//lowest_prices.jpg";
 import under3 from "../Assets/Headers/offers/under3.JPG";
