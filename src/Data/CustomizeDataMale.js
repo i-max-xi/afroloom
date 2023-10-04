@@ -19,7 +19,7 @@ import topndown_model from "../Pages/Customize/Configurator/models/MaleClothing/
 import blazer from "../Pages/Customize/Configurator/models/MaleClothing/male_suit.glb";
 
 //size-guides
-import tshirt_model from "../Pages/Customize/Configurator/size_guide/male/tshirt.JPG";
+import tshirt_model from "../Pages/Customize/Configurator/size_guide/male/men.JPG";
 
 import tshirt_guide from "../Assets/size_guide/MaleClothing/tshirt.JPG";
 import tshirtlong_guide from "../Assets/size_guide/MaleClothing/tshirt_long.JPG";
