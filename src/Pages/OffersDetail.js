@@ -9,9 +9,9 @@ import countryArr from "../Data/CountryArr";
 import { Paginator } from "primereact/paginator";
 import popular from "../Assets/Headers/offers/popular.JPG";
 import newProducts from "../Assets/Headers/offers/newProduct.jpg";
-import discount from "../Assets/Headers/offers/discount.jpg";
-import lowestPrices from "../Assets/Headers/offers//lowest_prices.jpg";
-import under3 from "../Assets/Headers/offers/under3.JPG";
+import discount from "../Assets/Headers/offers/disCount.jpg";
+import lowestPrices from "../Assets/Headers/offers/lowestPrices.jpg";
+import under3 from "../Assets/Headers/offers/unDer3.JPG";
 import searchbanner from "../Assets/Headers/search.JPG";
 import { differenceInDays, fromUnixTime } from "date-fns"; // Import the functions
 
