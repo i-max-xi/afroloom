@@ -8,7 +8,7 @@ import footwear from "../Assets/Headers/categories/Footwear.jpg";
 import accessories from "../Assets/Headers/categories/Acessories.jpg";
 import clothing from "../Assets/Headers/categories/clothing.jpg";
 import textiles from "../Assets/Headers/categories/Textiles.jpg";
-import handicraft from "../Assets/Headers/categories/handicraft2.JPG";
+import handicraft from "../Assets/Headers/categories/handicraft.JPG";
 import pottery from "../Assets/Headers/categories/pottery.jpg";
 import furniture from "../Assets/Headers/categories/Furniture.jpg";
 import basketry from "../Assets/Headers/categories/basketry.jpg";

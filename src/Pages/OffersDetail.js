@@ -8,14 +8,12 @@ import SearchFilters from "../Components/SearchFilters";
 import countryArr from "../Data/CountryArr";
 import { Paginator } from "primereact/paginator";
 import popular from "../Assets/Headers/offers/popular.JPG";
-import newProducts from "../Assets/Headers/offers/newProduct.jpg";
-// import discount from "../Assets/Headers/offers/disCount.jpg";
-import lowestPrices from "../Assets/Headers/offers/lowestPrices.jpg";
-// import under3 from "../Assets/Headers/offers/unDer3.JPG";
-// import searchbanner from "../Assets/Headers/search.JPG";
+import newProducts from "../Assets/Headers/offers/newProducts.JPG";
+import discount from "../Assets/Headers/offers/discount.JPG";
+import lowestPrices from "../Assets/Headers/offers/lowest.JPG";
+import under3 from "../Assets/Headers/offers/unDer3.JPG";
+import searchbanner from "../Assets/Headers/search.JPG";
 import { differenceInDays, fromUnixTime } from "date-fns"; // Import the functions
-
-
 
 const OffersDetail = () => {
   useEffect(() => {
@@ -33,20 +31,19 @@ const OffersDetail = () => {
       // Use optional chaining to safely access 'seconds'
       const createdAtTimestamp = item.createdAt.seconds;
       const currentTimestamp = Date.now() / 1000; // Convert to seconds
-  
+
       // Calculate the difference in days
       const daysDifference = differenceInDays(
         fromUnixTime(currentTimestamp),
         fromUnixTime(createdAtTimestamp)
       );
-  
+
       // Check if the product was created within the last 7 days
-      return daysDifference <= 1;
+      return daysDifference <= 7;
     }
     // Handle the case where 'createdAt' or 'seconds' is undefined
     return false;
   });
-  
 
   switch (offerType) {
     case "popular":
@@ -66,21 +63,21 @@ const OffersDetail = () => {
       selectedProducts = Products.filter(
         (item) => item.gender === "Male" && item.price <= 3
       );
-      // url = under3;
+      url = under3;
       break;
     case "women clothing under $3":
       selectedProducts = Products.filter(
         (item) => item.gender === "Female" && item.price <= 3
       );
-      // url = under3;
+      url = under3;
       break;
     case "discounts":
       selectedProducts = Products.filter((item) => item.discount > 0);
-      // url = discount;
+      url = discount;
       break;
     default:
       selectedProducts = Products;
-      // url = searchbanner;
+      url = searchbanner;
       break;
   }
 
