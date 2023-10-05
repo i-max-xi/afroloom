@@ -196,7 +196,7 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
   //   },
   // ];
 
-  const dispatch = useDispatch(); // Move dispatch here
+  // const dispatch = useDispatch();
 
   // const [Products, setProducts] = useState([]);
   const [itemsPerPage] = useState(19);
