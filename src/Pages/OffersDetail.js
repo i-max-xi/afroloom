@@ -11,8 +11,8 @@ import popular from "../Assets/Headers/offers/popular.JPG";
 import newProducts from "../Assets/Headers/offers/newProduct.jpg";
 // import discount from "../Assets/Headers/offers/disCount.jpg";
 import lowestPrices from "../Assets/Headers/offers/lowestPrices.jpg";
-import under3 from "../Assets/Headers/offers/unDer3.JPG";
-import searchbanner from "../Assets/Headers/search.JPG";
+// import under3 from "../Assets/Headers/offers/unDer3.JPG";
+// import searchbanner from "../Assets/Headers/search.JPG";
 import { differenceInDays, fromUnixTime } from "date-fns"; // Import the functions
 
 
@@ -66,13 +66,13 @@ const OffersDetail = () => {
       selectedProducts = Products.filter(
         (item) => item.gender === "Male" && item.price <= 3
       );
-      url = under3;
+      // url = under3;
       break;
     case "women clothing under $3":
       selectedProducts = Products.filter(
         (item) => item.gender === "Female" && item.price <= 3
       );
-      url = under3;
+      // url = under3;
       break;
     case "discounts":
       selectedProducts = Products.filter((item) => item.discount > 0);
@@ -80,7 +80,7 @@ const OffersDetail = () => {
       break;
     default:
       selectedProducts = Products;
-      url = searchbanner;
+      // url = searchbanner;
       break;
   }
 
