@@ -34,6 +34,7 @@
     "react-scripts": "5.0.1",
     "react-to-print": "^2.14.13",
     "react-uuid": "^2.0.0",
+    "redux-persist": "^6.0.0",
     "save": "^2.9.0",
     "three": "^0.153.0",
     "valtio": "^1.10.3",

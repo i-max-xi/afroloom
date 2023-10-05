@@ -1,12 +1,31 @@
 import {
   createSlice,
   configureStore,
+  createAsyncThunk,
   // createAsyncThunk,
 } from "@reduxjs/toolkit";
-// import { collection, getDocs } from "firebase/firestore";
+ 
+import ProductsDataService from '../Services/products.services';
 
-import thunk from "redux-thunk"; // Import redux-thunk
-// import { db } from "../firebase";
+export const fetchAllProducts = createAsyncThunk(
+  'allProducts/fetchAllProducts',
+  async (_, { dispatch }) => {
+    try {
+      const querySnapshot = await ProductsDataService.getAllProducts();
+      const products = [];
+
+      querySnapshot.forEach((doc) => {
+        products.push({ id: doc.id, ...doc.data() });
+      });
+
+      // Dispatch the products to set the initial state of allProducts
+      dispatch(addProducts(products));
+    } catch (error) {
+      // Handle any potential errors (e.g., network issues, etc.)
+      throw error; // Rethrow the error for error handling in components
+    }
+  }
+);
 
 // Redux slice for allProducts
 
@@ -20,8 +39,7 @@ const allProductsSlice = createSlice({
   },
   reducers: {
     addProducts: (state, action) => {
-      // state.buffer = action.payload;
-      // state.products = state.buffer;
+      
       state.products = action.payload;
     },
     
@@ -176,7 +194,6 @@ const store = configureStore({
     user: userSlice.reducer,
     currencySymbol: currencySymbolSlice.reducer,
   },
-  middleware: [thunk],
 });
 
 export const { addProducts, searchItem  } = allProductsSlice.actions;
@@ -194,5 +211,6 @@ export const { setSignedIn, setcurrentUser } = userSlice.actions;
 // export const { setQuery, setFilteredItems, setVisible } = searchSlice.actions;
 
 
+store.dispatch(fetchAllProducts()); // Dispatch the thunk action
 
 export default store;

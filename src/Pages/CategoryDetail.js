@@ -42,7 +42,6 @@ const CategoryDetail = ({ option }) => {
   }
 
   const Products = useSelector((state)=> state.allProducts.products);
-  console.log(Products);
 
   // const category = allCategory.find((p) => p.id === parseInt(categoryId));
   let product = Products.filter((p) => p.category === categoryName);
