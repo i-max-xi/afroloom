@@ -33,7 +33,7 @@ const GoogleTranslate = () => {
   return (
     <div>
       {loading ? (
-        <p style={{fontSize: '0.6rem'}}>Loading translation...</p>
+        <p style={{fontSize: '0.6rem'}}>...</p>
       ) : (
         <div id="google_translate_element"></div>
       )}

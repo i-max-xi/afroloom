@@ -38,12 +38,12 @@ import { useEffect } from "react";
 import CustomizePage from "./Pages/Customize/CustomizePage";
 import SellerDashboard from "./Pages/Dashboards/SellerDashboard";
 import UserDashboard from "./Pages/Dashboards/UserDashboard";
-import CustomizeFemale from "./Pages/Customize/CustomizeFemale";
-import CustomizeMale from "./Pages/Customize/CustomizeMale";
-import CustomizeMaleAccesories from "./Pages/Customize/CustomizeMaleAccesories";
-import CustomizeFemaleAccesories from "./Pages/Customize/CustomizeFemaleAccessories";
-import CustomizeUnisex from "./Pages/Customize/CustomizeUnisex";
-import CustomizeFootwear from "./Pages/Customize/CustomizeFootwear";
+// import CustomizeFemale from "./Pages/Customize/CustomizeFemale";
+// import CustomizeMale from "./Pages/Customize/CustomizeMale";
+// import CustomizeMaleAccesories from "./Pages/Customize/CustomizeMaleAccesories";
+// import CustomizeFemaleAccesories from "./Pages/Customize/CustomizeFemaleAccessories";
+// import CustomizeUnisex from "./Pages/Customize/CustomizeUnisex";
+// import CustomizeFootwear from "./Pages/Customize/CustomizeFootwear";
 import Dashboard from "./Pages/Dashboards/Dashboard";
 import RegisterAs from "./Pages/User/RegisterAs";
 import Buyer from "./Pages/User/Buyer";
@@ -97,7 +97,7 @@ function App() {
             <Route path="category/:categoryName" element={<CategoryDetail />} />
             <Route path="/product/:productId" element={<ItemDetail />} />
             <Route path="/artisan/:artisanId" element={<ArtisanDetail />} />
-            <Route
+            {/* <Route
               path="/customize-male/:customizeId"
               element={<CustomizeMale />}
             />
@@ -114,7 +114,7 @@ function App() {
             <Route
               path="/customize-footwear/:Id"
               element={<CustomizeFootwear />}
-            />
+            /> */}
             <Route path="/configurator/:Id" element={<Configurator />} />
             <Route
               path="/configurator-female/:Id"
