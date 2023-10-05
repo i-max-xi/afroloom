@@ -11,7 +11,7 @@ import popular from "../Assets/Headers/offers/popular.JPG";
 import newProducts from "../Assets/Headers/offers/newProducts.JPG";
 import discount from "../Assets/Headers/offers/discount.JPG";
 import lowestPrices from "../Assets/Headers/offers/lowest.JPG";
-import under3 from "../Assets/Headers/offers/unDer3.JPG";
+import under3 from "../Assets/Headers/offers/mwUnder.JPG";
 import searchbanner from "../Assets/Headers/search.JPG";
 import { differenceInDays, fromUnixTime } from "date-fns"; // Import the functions
 
