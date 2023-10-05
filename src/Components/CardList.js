@@ -210,18 +210,6 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
 
   const [itemsToDisplay, setItemsToDisplay] = useState(itemsToDisplayBank);
 
-  // const getProducts = async () => {
-  //   const data = await ProductsDataService.getAllProducts();
-  //   const fetchedProducts = data.docs.map((doc) => ({
-  //     ...doc.data(),
-  //     id: doc.id,
-  //   }));
-  //   dispatch(addProducts(fetchedProducts));
-  // };
-
-  // useEffect(() => {
-  //   getProducts();
-  // }, []);
 
   useEffect(() => {
     setItemsToDisplay(
