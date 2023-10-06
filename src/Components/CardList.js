@@ -26,6 +26,7 @@ import {
   bannerone,
   bannerten,
 } from "./offers/arrays/banner";
+import { priceRangeOptions } from "../Data/PriceRangeData";
 
 export const Card = ({
   title,
@@ -237,6 +238,7 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
   // Filters implementation start here...
   const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedCountry, setSelectedCountry] = useState("");
+  const [selectedPriceRange, setSelectedPriceRange] = useState("");
   const [selectedProduct, setSelectedProduct] = useState("");
   const [selectedGender, setSelectedGender] = useState("");
   const [selectedSize, setSelectedSize] = useState("");
@@ -344,15 +346,6 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
     }
   }, [selectedCategory]);
 
-  // const saveFilters = () => {
-  //   const newItemstoDisplay = Products.filter(
-  //     (product) =>
-  //     // product.country === selectedCountry &&
-  //     product.category === selectedCategory &&
-  //     (selectedProduct === "" || product.detailedCategory === selectedProduct)
-  //   );
-  //   setItemsToDisplay(newItemstoDisplay);
-  // };
 
   const saveFilters = () => {
     const newItemstoDisplay = Products.filter((product) => {
@@ -362,8 +355,11 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
         (selectedProduct === "" ||
           product.detailedCategory === selectedProduct) &&
         (selectedGender === "" || product.gender === selectedGender) &&
-        (selectedSize === "" || product.size === selectedSize)
-      ) {
+        (selectedSize === "" || product.size === selectedSize) &&
+        ((selectedPriceRange === "") ||
+        (selectedPriceRange === 10 && product.price < 10) ||
+        (selectedPriceRange === 100 && product.price >= 50 && product.price <= 100) ||
+        (selectedPriceRange === 200 && product.price >= 100 && product.price <= 200))      ) {
         return true;
       }
       return false;
@@ -371,6 +367,16 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
 
     setItemsToDisplay(newItemstoDisplay);
   };
+
+    // const saveFilters = () => {
+  //   const newItemstoDisplay = Products.filter(
+  //     (product) =>
+  //     // product.country === selectedCountry &&
+  //     product.category === selectedCategory &&
+  //     (selectedProduct === "" || product.detailedCategory === selectedProduct)
+  //   );
+  //   setItemsToDisplay(newItemstoDisplay);
+  // };
 
   return (
     <>
@@ -391,11 +397,13 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
         <SearchFilters
           search1="Category"
           search2="Country"
+          searchPrice="Price Range"    // price filter
           search4={search4bank}
           search3={search3bank}
           search5={search5bank}
           options1={categoryFilter}
           options2={countryArr}
+          optionPrice={priceRangeOptions}   // price filter
           options3={search3Options}
           options4={search4Options}
           options5={search5Options}
@@ -403,6 +411,8 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
           setSelectedCategory={setSelectedCategory}
           selectedCountry={selectedCountry}
           setSelectedCountry={setSelectedCountry}
+          selectedPriceRange={selectedPriceRange}   // price
+          setSelectedPriceRange={setSelectedPriceRange}  // price
           selectedOption3={selectedProduct}
           setSelectedOption3={setSelectedProduct}
           selectedOption4={selectedGender}

@@ -6,8 +6,11 @@ const SearchFilters = ({
   title,
   search1,
   search2,
+  searchPrice,
   options1,
   options2,
+  optionPrice,
+
   search3,
   options3,
   search4,
@@ -19,6 +22,8 @@ const SearchFilters = ({
   setSelectedCategory,
   selectedCountry,
   setSelectedCountry,
+  selectedPriceRange,
+  setSelectedPriceRange,
   selectedOption3,
   setSelectedOption3,
   selectedOption4,
@@ -31,20 +36,12 @@ const SearchFilters = ({
     setSelectedCategory(event.value);
   };
 
-  // variables and functions
-  //   const mainFilters = [
-  //     {
-  //       name: "Category",
-  //       options: categoryArr,
-  //     },
-  //     {
-  //       name: "Country",
-  //       options: countryArr,
-  //     },
-  //   ];
-
   const handleCountryChange = (event) => {
     setSelectedCountry(event.value);
+  };
+
+  const handlePriceRangeChange = (event) => {
+    setSelectedPriceRange(event.value);
   };
 
   const handleOption3Change = (event) => {
@@ -81,6 +78,7 @@ const SearchFilters = ({
         placeholder={search1}
         className="mb-2  search-dropdown"
       />
+      
       {search2 !== "" ? (
         <Dropdown
           value={selectedCountry}
@@ -90,6 +88,18 @@ const SearchFilters = ({
           className="mb-2 search-dropdown"
         />
       ) : (
+        <></>
+      )}
+
+      {searchPrice !== "" ? (
+        <Dropdown
+        value={selectedPriceRange}
+        options={optionPrice}
+        onChange={handlePriceRangeChange}
+        placeholder={searchPrice}
+        className="mb-2  search-dropdown"
+      />
+      ): (
         <></>
       )}
 
