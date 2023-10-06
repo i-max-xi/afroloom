@@ -26,7 +26,7 @@ import {
   bannerone,
   bannerten,
 } from "./offers/arrays/banner";
-import { priceRangeOptions } from "../Data/PriceRangeData";
+import { getPriceRangeOptions } from "../Data/PriceRangeData";
 
 export const Card = ({
   title,
@@ -230,6 +230,14 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
       "RowsPerPageDropdown PrevPageLink PageLinks NextPageLink CurrentPageReport",
   };
 
+  const currencySymbol = useSelector((state) => state.currencySymbol.symbol);
+  const currencyFactor = useSelector((state) => state.currencySymbol.factor);
+
+  const priceRangeOptions = getPriceRangeOptions(
+    currencySymbol,
+    currencyFactor
+  );
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [currentPage]);
@@ -345,6 +353,8 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
     }
   }, [selectedCategory]);
 
+  console.log(selectedPriceRange);
+
   const saveFilters = () => {
     const newItemstoDisplay = Products.filter((product) => {
       if (
@@ -355,15 +365,18 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
         (selectedGender === "" || product.gender === selectedGender) &&
         (selectedSize === "" || product.size === selectedSize) &&
         (selectedPriceRange === "" ||
-          (selectedPriceRange === 20 && product.price < 20) ||
-          (selectedPriceRange === 50 && product.price < 50) ||
-          (selectedPriceRange === 200 && product.price > 200) ||
-          (selectedPriceRange === 100 &&
-            product.price >= 50 &&
-            product.price <= 100) ||
-          (selectedPriceRange === 200 &&
-            product.price >= 100 &&
-            product.price <= 200))
+          (selectedPriceRange === 20 * currencyFactor &&
+            product.price * currencyFactor < 20 * currencyFactor) ||
+          (selectedPriceRange === 50 * currencyFactor &&
+            product.price * currencyFactor < 50 * currencyFactor) ||
+          (selectedPriceRange === 200 * currencyFactor &&
+            product.price * currencyFactor > 200 * currencyFactor) ||
+          (selectedPriceRange === 100 * currencyFactor &&
+            product.price * currencyFactor >= 50 * currencyFactor &&
+            product.price * currencyFactor <= 100 * currencyFactor) ||
+          (selectedPriceRange === 201 * currencyFactor &&
+            product.price * currencyFactor >= 100 * currencyFactor &&
+            product.price * currencyFactor <= 200 * currencyFactor))
       ) {
         return true;
       }

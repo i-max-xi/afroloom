@@ -1,9 +1,11 @@
-export const priceRangeOptions = [
-    { label: "All", value: "" },
-    { label: "Under $20", value: 20 },
-    { label: "Under $50", value: 50 },
-    { label: "$50 - $100", value: 100 },
-    { label: "$100 - $200", value: 200 },
-    { label: "Above $200", value: 200 },
-    // Add more price range options as needed
-  ];
+export const getPriceRangeOptions = (currencySymbol, currencyFactor) => {
+    return [
+      { label: "All", value: "" },
+      { label: `Under ${currencySymbol} ${currencyFactor * 20}`, value: 20 * currencyFactor },
+      { label: `Under ${currencySymbol} ${currencyFactor * 50}`, value: 50 * currencyFactor },
+      { label: `${currencySymbol} ${currencyFactor * 50} - ${currencySymbol} ${currencyFactor * 100}`, value: 100 * currencyFactor },
+      { label: `${currencySymbol} ${currencyFactor * 100} - ${currencySymbol} ${currencyFactor * 200}`, value: 200 * currencyFactor },
+      { label: `Above ${currencySymbol} ${currencyFactor * 200}`, value: 201 * currencyFactor }, // Adjusted value
+    ];
+  };
+  
