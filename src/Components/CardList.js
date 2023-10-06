@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 // import blackFriday from "../Assets/Ads/blackFriday.JPG";
 import uuid from "react-uuid";
 import { useDispatch } from "react-redux";
-import { addItem, } from "../Redux/store";
+import { addItem } from "../Redux/store";
 import SearchFilters from "./SearchFilters";
 import { allCategory, categoryFilter } from "../Data/categoryList";
 import countryArr from "../Data/CountryArr";
@@ -210,7 +210,6 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
 
   const [itemsToDisplay, setItemsToDisplay] = useState(itemsToDisplayBank);
 
-
   useEffect(() => {
     setItemsToDisplay(
       Products.slice(
@@ -346,7 +345,6 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
     }
   }, [selectedCategory]);
 
-
   const saveFilters = () => {
     const newItemstoDisplay = Products.filter((product) => {
       if (
@@ -356,10 +354,17 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
           product.detailedCategory === selectedProduct) &&
         (selectedGender === "" || product.gender === selectedGender) &&
         (selectedSize === "" || product.size === selectedSize) &&
-        ((selectedPriceRange === "") ||
-        (selectedPriceRange === 10 && product.price < 10) ||
-        (selectedPriceRange === 100 && product.price >= 50 && product.price <= 100) ||
-        (selectedPriceRange === 200 && product.price >= 100 && product.price <= 200))      ) {
+        (selectedPriceRange === "" ||
+          (selectedPriceRange === 20 && product.price < 20) ||
+          (selectedPriceRange === 50 && product.price < 50) ||
+          (selectedPriceRange === 200 && product.price > 200) ||
+          (selectedPriceRange === 100 &&
+            product.price >= 50 &&
+            product.price <= 100) ||
+          (selectedPriceRange === 200 &&
+            product.price >= 100 &&
+            product.price <= 200))
+      ) {
         return true;
       }
       return false;
@@ -368,7 +373,7 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
     setItemsToDisplay(newItemstoDisplay);
   };
 
-    // const saveFilters = () => {
+  // const saveFilters = () => {
   //   const newItemstoDisplay = Products.filter(
   //     (product) =>
   //     // product.country === selectedCountry &&
@@ -397,13 +402,13 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
         <SearchFilters
           search1="Category"
           search2="Country"
-          searchPrice="Price Range"    // price filter
+          searchPrice="Price Range" // price filter
           search4={search4bank}
           search3={search3bank}
           search5={search5bank}
           options1={categoryFilter}
           options2={countryArr}
-          optionPrice={priceRangeOptions}   // price filter
+          optionPrice={priceRangeOptions} // price filter
           options3={search3Options}
           options4={search4Options}
           options5={search5Options}
@@ -411,8 +416,8 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
           setSelectedCategory={setSelectedCategory}
           selectedCountry={selectedCountry}
           setSelectedCountry={setSelectedCountry}
-          selectedPriceRange={selectedPriceRange}   // price
-          setSelectedPriceRange={setSelectedPriceRange}  // price
+          selectedPriceRange={selectedPriceRange} // price
+          setSelectedPriceRange={setSelectedPriceRange} // price
           selectedOption3={selectedProduct}
           setSelectedOption3={setSelectedProduct}
           selectedOption4={selectedGender}
