@@ -22,7 +22,7 @@ const CustomizePage = () => {
           {mainMaleCustomize.map(({ name, image }) => (
             <Link
               to={`/configurator/${name}`}
-              className="col-3 m-3 mx-3"
+              className="col-3 m-3 mx-3 text-decoration-none"
               key={name}
             >
               <div className="card" data-aos="fade-in" data-aos-duration="1500">
