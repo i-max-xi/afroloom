@@ -5,12 +5,15 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import store from './Redux/store';
 import { Provider } from 'react-redux';
+import MobileDevicePrompt from './Pages/MobileDevicePrompt';
+
+const isMobileDevice = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+    {isMobileDevice ? <MobileDevicePrompt /> : <App />}
     </Provider>  </React.StrictMode>
 );
 

@@ -97,24 +97,7 @@ function App() {
             <Route path="category/:categoryName" element={<CategoryDetail />} />
             <Route path="/product/:productId" element={<ItemDetail />} />
             <Route path="/artisan/:artisanId" element={<ArtisanDetail />} />
-            {/* <Route
-              path="/customize-male/:customizeId"
-              element={<CustomizeMale />}
-            />
-            <Route path="/customize-female/:Id" element={<CustomizeFemale />} />
-            <Route
-              path="/customize-male-accessories/:Id"
-              element={<CustomizeMaleAccesories />}
-            />
-            <Route
-              path="/customize-female-accessories/:Id"
-              element={<CustomizeFemaleAccesories />}
-            />
-            <Route path="/customize-unisex/:Id" element={<CustomizeUnisex />} />
-            <Route
-              path="/customize-footwear/:Id"
-              element={<CustomizeFootwear />}
-            /> */}
+
             <Route path="/configurator/:Id" element={<Configurator />} />
             <Route
               path="/configurator-female/:Id"
