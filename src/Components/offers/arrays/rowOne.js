@@ -4,8 +4,8 @@ import booty from "../../../Assets/vid/booty.MP4";
 
 export const rowOne = [
   {
-    headTitle: "Men Clothing Under 3$",
-    linkTo: "/offers/men clothing under $3",
+    headTitle: "Men Clothing Under $10",
+    linkTo: "/offers/men clothing under $10",
     array: [
       {
         // title: "Shirt",
@@ -38,8 +38,8 @@ export const rowOne = [
   },
 
   {
-    headTitle: "Women Clothing Under 3$",
-    linkTo: "/offers/women clothing under $3",
+    headTitle: "Women Clothing Under $10",
+    linkTo: "/offers/women clothing under $10",
     array: [
       {
         // title: "Tshirt",
