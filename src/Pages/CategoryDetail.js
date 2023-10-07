@@ -16,6 +16,7 @@ import basketry from "../Assets/Headers/categories/basketry.jpg";
 import { Paginator } from "primereact/paginator";
 import SearchFilters from "../Components/SearchFilters";
 import { useSelector } from "react-redux";
+import { getPriceRangeOptions } from "../Data/PriceRangeData";
 
 const CategoryDetail = ({ option }) => {
   const { categoryName } = useParams();
@@ -50,6 +51,13 @@ const CategoryDetail = ({ option }) => {
   //   setproduct(Products.filter((p) => p.category === categoryName))
   // }, []);
 
+   // currency conversion
+   const currencySymbol = useSelector((state) => state.currencySymbol.symbol);
+   const currencyFactor = useSelector((state) => state.currencySymbol.factor);
+   const priceRangeOptions = getPriceRangeOptions(
+     currencySymbol,
+     currencyFactor
+   );
 
   const pullFilters = allCategory.find((f) => f.name === categoryName);
 
@@ -90,16 +98,47 @@ const CategoryDetail = ({ option }) => {
   const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedCountry, setSelectedCountry] = useState("");
   const [selectedOption3, setSelectedOption3] = useState("");
+  const [selectedPriceRange, setSelectedPriceRange] = useState("");
+
+
+  // const saveFilters = () => {
+  //   if(selectedCountry !== "" || selectedCategory !== ""){
+  //     const newitemsToDisplay = Products.filter(
+  //       (product) => product.detailedCategory === selectedCountry || product.detailedCategory === selectedCategory
+  //     );
+  //     setitemsToDisplay(newitemsToDisplay);
+  //   }
+    
+  // };
 
   const saveFilters = () => {
-    if(selectedCountry !== "" || selectedCategory !== ""){
-      const newitemsToDisplay = Products.filter(
-        (product) => product.detailedCategory === selectedCountry || product.detailedCategory === selectedCategory
-      );
-      setitemsToDisplay(newitemsToDisplay);
-    }
-    
+    const newItemstoDisplay = product.filter((product) => {
+      if (
+        (selectedCountry === "" || product.country === selectedCountry) &&
+        (selectedCategory === "" || product.category === selectedCategory) &&
+        (selectedOption3 === "" || product.size === selectedOption3) &&
+        (selectedPriceRange === "" ||
+          (selectedPriceRange === 20 * currencyFactor &&
+            product.price * currencyFactor < 20 * currencyFactor) ||
+          (selectedPriceRange === 50 * currencyFactor &&
+            product.price * currencyFactor < 50 * currencyFactor) ||
+          (selectedPriceRange === 200 * currencyFactor &&
+            product.price * currencyFactor > 200 * currencyFactor) ||
+          (selectedPriceRange === 100 * currencyFactor &&
+            product.price * currencyFactor >= 50 * currencyFactor &&
+            product.price * currencyFactor <= 100 * currencyFactor) ||
+          (selectedPriceRange === 201 * currencyFactor &&
+            product.price * currencyFactor >= 100 * currencyFactor &&
+            product.price * currencyFactor <= 200 * currencyFactor))
+      ) {
+        return true;
+      }
+      return false;
+    });
+
+    setitemsToDisplay(newItemstoDisplay);
   };
+
 
   
   // const saveFilters = () => {
@@ -177,8 +216,10 @@ const CategoryDetail = ({ option }) => {
               search1={actualFilter[0].name}
               options1={actualFilter[0].options}
               selectedCategory={selectedCategory}
+              optionPrice={priceRangeOptions} // price filter
+              selectedPriceRange={selectedPriceRange} // price
+              setSelectedPriceRange={setSelectedPriceRange} // price
               setSelectedCategory={setSelectedCategory}
-
               search2={actualFilter[1] ? actualFilter[1].name : ""}
               options2={actualFilter[1] ? typeBank : []}
               selectedCountry={selectedCountry}
