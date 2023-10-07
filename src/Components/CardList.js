@@ -353,7 +353,6 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
     }
   }, [selectedCategory]);
 
-
   const saveFilters = () => {
     const newItemstoDisplay = Products.filter((product) => {
       if (
@@ -366,10 +365,14 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
         (selectedPriceRange === "" ||
           (selectedPriceRange === 10 * currencyFactor &&
             product.price * currencyFactor < 10 * currencyFactor) ||
-          (selectedPriceRange === 50 * currencyFactor &&
-            product.price * currencyFactor < 50 * currencyFactor) ||
           (selectedPriceRange === 201 * currencyFactor &&
             product.price * currencyFactor > 200 * currencyFactor) ||
+          (selectedPriceRange === 25 * currencyFactor &&
+            product.price * currencyFactor >= 10 * currencyFactor &&
+            product.price * currencyFactor <= 25 * currencyFactor) ||
+          (selectedPriceRange === 50 * currencyFactor &&
+            product.price * currencyFactor >= 25 * currencyFactor &&
+            product.price * currencyFactor <= 50 * currencyFactor) ||
           (selectedPriceRange === 100 * currencyFactor &&
             product.price * currencyFactor >= 50 * currencyFactor &&
             product.price * currencyFactor <= 100 * currencyFactor) ||

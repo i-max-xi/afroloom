@@ -231,18 +231,22 @@ const OffersDetail = () => {
         (selectedGender === "" || product.gender === selectedGender) &&
         (selectedSize === "" || product.size === selectedSize) && 
         (selectedPriceRange === "" ||
-          (selectedPriceRange === 20 * currencyFactor &&
-            product.price * currencyFactor < 20 * currencyFactor) ||
-          (selectedPriceRange === 50 * currencyFactor &&
-            product.price * currencyFactor < 50 * currencyFactor) ||
-          (selectedPriceRange === 200 * currencyFactor &&
-            product.price * currencyFactor > 200 * currencyFactor) ||
-          (selectedPriceRange === 100 * currencyFactor &&
-            product.price * currencyFactor >= 50 * currencyFactor &&
-            product.price * currencyFactor <= 100 * currencyFactor) ||
-          (selectedPriceRange === 201 * currencyFactor &&
-            product.price * currencyFactor >= 100 * currencyFactor &&
-            product.price * currencyFactor <= 200 * currencyFactor))
+        (selectedPriceRange === 10 * currencyFactor &&
+          product.price * currencyFactor < 10 * currencyFactor) ||
+        (selectedPriceRange === 201 * currencyFactor &&
+          product.price * currencyFactor > 200 * currencyFactor) ||
+        (selectedPriceRange === 25 * currencyFactor &&
+          product.price * currencyFactor >= 10 * currencyFactor &&
+          product.price * currencyFactor <= 25 * currencyFactor) ||
+        (selectedPriceRange === 50 * currencyFactor &&
+          product.price * currencyFactor >= 25 * currencyFactor &&
+          product.price * currencyFactor <= 50 * currencyFactor) ||
+        (selectedPriceRange === 100 * currencyFactor &&
+          product.price * currencyFactor >= 50 * currencyFactor &&
+          product.price * currencyFactor <= 100 * currencyFactor) ||
+        (selectedPriceRange === 200 * currencyFactor &&
+          product.price * currencyFactor >= 100 * currencyFactor &&
+          product.price * currencyFactor <= 200 * currencyFactor))
       ) {
         return true;
       }
