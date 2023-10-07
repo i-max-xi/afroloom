@@ -14,6 +14,7 @@ import lowestPrices from "../Assets/Headers/offers/lowest.JPG";
 import under3 from "../Assets/Headers/offers/mwUnder.JPG";
 import searchbanner from "../Assets/Headers/search.JPG";
 import { differenceInDays, fromUnixTime } from "date-fns"; // Import the functions
+import { getPriceRangeOptions } from "../Data/PriceRangeData";
 
 const OffersDetail = () => {
   useEffect(() => {
@@ -99,6 +100,14 @@ const OffersDetail = () => {
       "RowsPerPageDropdown PrevPageLink PageLinks NextPageLink CurrentPageReport",
   };
 
+    // currency conversion
+    const currencySymbol = useSelector((state) => state.currencySymbol.symbol);
+    const currencyFactor = useSelector((state) => state.currencySymbol.factor);
+    const priceRangeOptions = getPriceRangeOptions(
+      currencySymbol,
+      currencyFactor
+    );
+
   const [itemsToDisplay, setItemsToDisplay] = useState(itemsToDisplayBank);
   // Filters implementation start here...
   const [selectedCategory, setSelectedCategory] = useState("");
@@ -106,6 +115,8 @@ const OffersDetail = () => {
   const [selectedProduct, setSelectedProduct] = useState("");
   const [selectedGender, setSelectedGender] = useState("");
   const [selectedSize, setSelectedSize] = useState("");
+  const [selectedPriceRange, setSelectedPriceRange] = useState("");
+
 
   const [search3bank, setSearch3Bank] = useState("");
   const [search4bank, setSearch4Bank] = useState("");
@@ -218,7 +229,20 @@ const OffersDetail = () => {
         (selectedProduct === "" ||
           product.detailedCategory === selectedProduct) &&
         (selectedGender === "" || product.gender === selectedGender) &&
-        (selectedSize === "" || product.size === selectedSize)
+        (selectedSize === "" || product.size === selectedSize) && 
+        (selectedPriceRange === "" ||
+          (selectedPriceRange === 20 * currencyFactor &&
+            product.price * currencyFactor < 20 * currencyFactor) ||
+          (selectedPriceRange === 50 * currencyFactor &&
+            product.price * currencyFactor < 50 * currencyFactor) ||
+          (selectedPriceRange === 200 * currencyFactor &&
+            product.price * currencyFactor > 200 * currencyFactor) ||
+          (selectedPriceRange === 100 * currencyFactor &&
+            product.price * currencyFactor >= 50 * currencyFactor &&
+            product.price * currencyFactor <= 100 * currencyFactor) ||
+          (selectedPriceRange === 201 * currencyFactor &&
+            product.price * currencyFactor >= 100 * currencyFactor &&
+            product.price * currencyFactor <= 200 * currencyFactor))
       ) {
         return true;
       }
@@ -244,11 +268,15 @@ const OffersDetail = () => {
         <SearchFilters
           search1="Category"
           search2="Country"
+          searchPrice="Price Range" // price filter
           search4={search4bank}
           search3={search3bank}
           search5={search5bank}
           options1={categoryFilter}
           options2={countryArr}
+          optionPrice={priceRangeOptions} // price filter
+          selectedPriceRange={selectedPriceRange} // price
+          setSelectedPriceRange={setSelectedPriceRange} // price
           options3={search3Options}
           options4={search4Options}
           options5={search5Options}

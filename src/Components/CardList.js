@@ -353,7 +353,6 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
     }
   }, [selectedCategory]);
 
-  console.log(selectedPriceRange);
 
   const saveFilters = () => {
     const newItemstoDisplay = Products.filter((product) => {

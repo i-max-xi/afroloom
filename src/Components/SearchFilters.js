@@ -96,7 +96,7 @@ const SearchFilters = ({
         value={selectedPriceRange}
         options={optionPrice}
         onChange={handlePriceRangeChange}
-        placeholder={searchPrice}
+        placeholder="Search Price"
         className="mb-2  search-dropdown"
       />
       ): (
