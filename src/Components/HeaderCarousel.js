@@ -12,6 +12,7 @@ import s8 from "../Assets/carousel/new/s8.jpg";
 import s9 from "../Assets/carousel/new/s9this.JPG";
 import s10 from "../Assets/carousel/new/s10.jpg";
 import s11 from "../Assets/carousel/new/s11.jpg";
+import { Link } from "react-router-dom";
 
 const HeaderCarousel = () => {
   return (
@@ -36,13 +37,15 @@ const HeaderCarousel = () => {
           />
         </Carousel.Item>
         <Carousel.Item>
-          <img
-            className="d-block"
-            src={s2}
-            alt="Second slide"
-            height="450px"
-            width="100%"
-          />
+          <Link to="/category/Accessories">
+            <img
+              className="d-block"
+              src={s2}
+              alt="Second slide"
+              height="450px"
+              width="100%"
+            />
+          </Link>
         </Carousel.Item>
         <Carousel.Item>
           <img
@@ -55,71 +58,85 @@ const HeaderCarousel = () => {
         </Carousel.Item>
 
         <Carousel.Item>
-          <img
-            className="d-block"
-            src={s4}
-            alt="Fourth slide"
-            height="450px"
-            width="100%"
-          />
+          <Link to="/category/Textiles">
+            <img
+              className="d-block"
+              src={s4}
+              alt="Fourth slide"
+              height="450px"
+              width="100%"
+            />
+          </Link>
         </Carousel.Item>
 
         <Carousel.Item>
-          <img
-            className="d-block"
-            src={s5}
-            alt="Fourth slide"
-            height="450px"
-            width="100%"
-          />
+          <Link to="/category/Footwear">
+            <img
+              className="d-block"
+              src={s5}
+              alt="Fourth slide"
+              height="450px"
+              width="100%"
+            />
+          </Link>
         </Carousel.Item>
 
         <Carousel.Item>
-          <img
-            className="d-block"
-            src={s6}
-            alt="Fourth slide"
-            height="450px"
-            width="100%"
-          />
+          <Link to="/category/Basketry">
+            <img
+              className="d-block"
+              src={s6}
+              alt="Fourth slide"
+              height="450px"
+              width="100%"
+            />
+          </Link>
         </Carousel.Item>
 
         <Carousel.Item>
-          <img
-            className="d-block"
-            src={s7}
-            alt="Fourth slide"
-            height="450px"
-            width="100%"
-          />
+          <Link to="/category/Pottery">
+            <img
+              className="d-block"
+              src={s7}
+              alt="Fourth slide"
+              height="450px"
+              width="100%"
+            />
+          </Link>
         </Carousel.Item>
 
         <Carousel.Item>
-          <img
-            className="d-block"
-            src={s8}
-            alt="Fourth slide"
-            height="450px"
-            width="100%"
-          />
+          <Link to="/category/Furniture">
+            <img
+              className="d-block"
+              src={s8}
+              alt="Fourth slide"
+              height="450px"
+              width="100%"
+            />
+          </Link>
         </Carousel.Item>
         <Carousel.Item>
-          <img
-            className="d-block"
-            src={s9}
-            alt="Fourth slide"
-            height="450px"
-            width="100%"
-          />
+          <Link to="/category/Handicrafts">
+            <img
+              className="d-block"
+              src={s9}
+              alt="Fourth slide"
+              height="450px"
+              width="100%"
+            />
+          </Link>
         </Carousel.Item>
         <Carousel.Item>
-          <img
-            className="d-block"
-            src={s10}
-            alt="Fourth slide"
-            height="450px"
-            width="100%"
-          />
+          <Link to="/customize">
+            <img
+              className="d-block"
+              src={s10}
+              alt="Fourth slide"
+              height="450px"
+              width="100%"
+            />
+          </Link>
         </Carousel.Item>
         <Carousel.Item>
           <img
