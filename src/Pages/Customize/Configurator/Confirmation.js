@@ -195,8 +195,10 @@ export const OrderDetail = React.forwardRef(
                         backgroundColor: part.color,
                         width: "20px",
                         height: "20px",
+                        border: "1px solid black",
+                        borderRadius: "4rem",
                         display: "inline-block",
-                        marginLeft: "2rem",
+                        marginLeft: "1rem",
                       }}
                     ></div>
                   ) : (
