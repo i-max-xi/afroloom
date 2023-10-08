@@ -185,7 +185,7 @@ export const OrderDetail = React.forwardRef(
             <h2>Information On Parts</h2>
             {selectedParts.map((part, index) => (
               <div key={index} className="mb-4">
-                <h5>{part.name}</h5>
+                <h4>{part.name}</h4>
                 <p>
                   Color:{" "}
                   {part.color ? (
