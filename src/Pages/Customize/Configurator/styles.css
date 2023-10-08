@@ -7,8 +7,8 @@
   /* height: 80vh; */
 }
 
-button {
-  font-weight: 900;
+.btn-success {
+  font-weight: 700;
 }
 
 h1 {
