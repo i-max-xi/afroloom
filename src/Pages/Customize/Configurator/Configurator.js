@@ -127,8 +127,6 @@ const Configurator = () => {
   const { Id } = useParams();
   const selectedClothing = mainMaleCustomize.find((item) => item.name === Id);
 
-  const [Price, setPrice] = useState(selectedClothing.price);
-
   const [selectedSize, setSelectedSize] = useState(1);
   const [selectedPrintOn, setSelectedPrintOn] = useState(null);
 
@@ -143,7 +141,6 @@ const Configurator = () => {
   const currencyFactor = useSelector((state) => state.currencySymbol.factor);
 
   const handleSizeChange = (factor) => {
-    setPrice(selectedClothing.price * factor);
     setSelectedSize(factor);
   };
 
@@ -179,7 +176,7 @@ const Configurator = () => {
       );
     }
   };
-
+  
   const handleRotation = () => {
     setIsRotating((prev) => !prev);
     setSelectedPart(null); // Deselect the part when rotating the entire model
@@ -228,7 +225,7 @@ const Configurator = () => {
 
   //total price
   const total = (
-    partPrices.reduce((total, price) => total + Price, 0) *
+    partPrices.reduce((total, price) => total + price, 0) *
     selectedClothing.sizeOptions[selectedSize].value *
     currencyFactor
   ).toFixed(2);

@@ -127,7 +127,7 @@ const ConfiguratorFemale = () => {
   const { Id } = useParams();
   const selectedClothing = mainFemaleCustomize.find((item) => item.name === Id);
 
-  const [Price, setPrice] = useState(selectedClothing.price);
+  // const [Price, setPrice] = useState(selectedClothing.price);
 
   const [selectedSize, setSelectedSize] = useState(1);
   const [selectedPrintOn, setSelectedPrintOn] = useState(null);
@@ -143,7 +143,7 @@ const ConfiguratorFemale = () => {
   const currencyFactor = useSelector((state) => state.currencySymbol.factor);
 
   const handleSizeChange = (factor) => {
-    setPrice(selectedClothing.price * factor);
+    // setPrice(selectedClothing.price * factor);
     setSelectedSize(factor);
   };
 
@@ -228,7 +228,7 @@ const ConfiguratorFemale = () => {
 
   //total price
   const total = (
-    partPrices.reduce((total, price) => total + Price, 0) *
+    partPrices.reduce((total, price) => total + price, 0) *
     selectedClothing.sizeOptions[selectedSize].value *
     currencyFactor
   ).toFixed(2);
