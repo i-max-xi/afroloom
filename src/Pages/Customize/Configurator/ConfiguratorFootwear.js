@@ -154,8 +154,17 @@ const ConfiguratorFootwear = () => {
   };
 
   const [partPrices, setPartPrices] = useState(
-    Array(selectedClothing.myNode.length).fill(selectedClothing.price)
+    Array(selectedClothing.myNode.length).fill(0)
   );
+
+  const semitotal = (
+    partPrices.reduce((total, price) => total + price, 0)
+  )
+
+  //total price
+  const total = (
+    (((semitotal + selectedClothing.price) * selectedClothing.sizeOptions[selectedSize].value) * currencyFactor).toFixed(2)
+  )
 
   const handleTextureChange = (newTexture) => {
     if (selectedPart !== null) {
@@ -226,12 +235,7 @@ const ConfiguratorFootwear = () => {
     }));
   };
 
-  //total price
-  const total = (
-    partPrices.reduce((total, price) => total + price, 0) *
-    selectedClothing.sizeOptions[selectedSize].value *
-    currencyFactor
-  ).toFixed(2);
+
 
   // description dialogs
   const [selectedTexture, setSelectedTexture] = useState({});

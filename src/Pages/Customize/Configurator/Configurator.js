@@ -154,6 +154,15 @@ const Configurator = () => {
     Array(selectedClothing.myNode.length).fill(0)
   );
 
+  const semitotal = (
+    partPrices.reduce((total, price) => total + price, 0)
+  )
+
+  //total price
+  const total = (
+    (((semitotal + selectedClothing.price) * selectedClothing.sizeOptions[selectedSize].value) * currencyFactor).toFixed(2)
+  )
+
   const handleTextureChange = (newTexture) => {
     if (selectedPart !== null) {
       state.texture[selectedPart] = newTexture;
@@ -222,22 +231,6 @@ const Configurator = () => {
     }));
   };
 
- const semitotal = (
-    partPrices.reduce((total, price) => total + price, 0)
-  )
-
-  //total price
-  const total = (
-    (semitotal + selectedClothing.price) * selectedClothing.sizeOptions[selectedSize].value
-  )
-
-  useEffect(()=>{
-    console.log("semitotal: " + semitotal);
-    console.log("actual price: " + selectedClothing.price);
-    // console.log("size value: " + selectedClothing.sizeOptions[selectedSize].value);
-    console.log("total: " + total);
-
-  }, [selectedClothing.price, selectedClothing.sizeOptions, selectedSize, semitotal, total])
   // description dialogs
   const [selectedTexture, setSelectedTexture] = useState({});
 
@@ -649,7 +642,7 @@ const Configurator = () => {
 
             <p className="price-text m-3">
               <span className="fs-6 fw-normal">Price:</span> {currencySymbol}
-              {(total * currencyFactor).toFixed(2)}
+              {total}
             </p>
 
             <button
