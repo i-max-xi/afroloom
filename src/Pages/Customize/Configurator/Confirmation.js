@@ -156,7 +156,7 @@ export const OrderDetail = React.forwardRef(
     return (
       <div ref={ref} className="row">
         <div className="col-md-6">
-          <p className="h5 mt-3 MB-5">
+          <p className="h5 mt-3 mb-5">
             <img src={modelImage} alt="model img"  width="80%"/>
           </p>
           <p className="h5 mt-4">Selected Size: {selectedSize || "N/A"}</p>

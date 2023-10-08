@@ -30,7 +30,7 @@ const PartImages = ({ selectedClothing, selectedPart }) => {
             </div>
   
             {/* Add some space between the columns */}
-            <div style={{ width: "1.1rem" }}></div>
+            <div style={{ width: "1.4rem" }}></div>
   
             {/* Right Column */}
             <div className="d-flex flex-column" style={{ flex: 1 }}>

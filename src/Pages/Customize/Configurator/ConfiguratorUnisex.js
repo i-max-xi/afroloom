@@ -260,7 +260,7 @@ const ConfiguratorUnisex = () => {
             <h3 className="text-center">Customizing {selectedClothing.name}</h3>
 
             <div className="configurator-container container">
-              <div className="left-panel mb-2 rounded shadow">
+              <div className="left-panel rounded shadow">
                 <h5>Select Part</h5>
                 <div className="">
                   {selectedClothing.myNode.map((nodeName, index) => (
@@ -651,7 +651,7 @@ const ConfiguratorUnisex = () => {
               className="btn btn-success text-white"
               onClick={captureCanvasAsImage}
             >
-              Done
+              Complete
             </button>
           </div>
         </>
