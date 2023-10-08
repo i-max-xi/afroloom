@@ -107,7 +107,7 @@ export const Card = ({
 
       <div className="card-body m-0 d-flex justify-content-center flex-column">
         <div className="card-title" style={{ textAlign: TextAlign }}>
-          <span style={{ fontSize: "0.8rem" }}>{title}</span>
+          <span style={{ fontSize: "1rem" }}>{title}</span>
           {flag ? (
             <span className="mx-1" style={{ fontSize: "0.8rem" }}>
               <img
