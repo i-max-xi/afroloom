@@ -40,7 +40,7 @@ function LayoutHeaders({selectedBg}) {
       backgroundImage: `url(${selectedBg})`,
       backgroundSize: "cover",
       backgroundRepeat: "no-repeat",
-      height: "10rem",
+      height: "13rem",
       width: '100%'
     }}
   ></div>

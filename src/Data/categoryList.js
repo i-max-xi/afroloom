@@ -1,37 +1,35 @@
-import { Link } from "react-router-dom";
-import React from "react";
 
 export const categoryArr = [
-  // <Link className="text-decoration-none text-black" to="/category/Home Decor">
-  //   Home Decor
-  // </Link>,
-  <Link className="text-decoration-none text-black" to="/category/Accessories">
-    Accessories
-  </Link>,
-  // <Link className="text-decoration-none text-black" to="/category/Electronics">
-  //   Electronics
-  // </Link>,
-  <Link className="text-decoration-none text-black" to="/category/Furniture">
-    Furniture
-  </Link>,
-
-  <Link className="text-decoration-none text-black" to="/category/Clothing">
-    Clothing
-  </Link>,
-
-  <Link className="text-decoration-none text-black" to="/category/Textiles">
-    Textile
-  </Link>,
-  // <Link className="text-decoration-none text-black" to="/category/Bags">
-  //   Bags
-  // </Link>,
-  <Link className="text-decoration-none text-black" to="/category/Footwear">
-    Footwear
-  </Link>,
-
-  <Link className="text-decoration-none text-warning" to="/category-page">
-    See All
-  </Link>,
+  {
+    name: "Accessories",
+    link: "/category/Accessories",
+    variant: "black"
+  },
+  {
+    name: "Furniture",
+    link: "/category/Furniture",
+    variant: "black"
+  },
+  {
+    name: "Clothing",
+    link: "/category/Clothing",
+    variant: "black"
+  },
+  {
+    name: "Textile",
+    link: "/category/Textiles",
+    variant: "black"
+  },
+  {
+    name: "Footwear",
+    link: "/category/Footwear",
+    variant: "black"
+  },
+  {
+    name: "See All",
+    link: "/category-page",
+    variant: "warning"
+  },
 ];
 
 export const categoryFilter = [

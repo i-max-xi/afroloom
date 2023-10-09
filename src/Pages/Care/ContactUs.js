@@ -8,7 +8,7 @@ import LayoutHeaders from "../../Components/LayoutHeaders";
 
 const ContactUs = () => {
   return (
-    <>
+    <div className="bg-white">
     <LayoutHeaders selectedBg={Top}/>
 
 
@@ -26,7 +26,7 @@ const ContactUs = () => {
           ))}
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
