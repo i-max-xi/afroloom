@@ -207,7 +207,7 @@ const CategoryDetail = ({ option }) => {
           backgroundImage: `url(${url})`,
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
-          height: "10rem",
+          height: "12rem",
           width: "100%",
         }}
       ></div>

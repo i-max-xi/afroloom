@@ -45,12 +45,6 @@ const Nav = ({ handleToggleDropdown, Language, Currency }) => {
   return (
     <nav className="navbar navbar-expand-lg text-black d-flex px-3 bg-white border-bottom">
       <div>
-        <Link to="/" className="navbar-brand">
-          <h3>
-            {" "}
-            <img src={Logo} alt="africa-logo" className="logo" />
-          </h3>
-        </Link>
         <button
           className="navbar-toggler"
           type="button"
@@ -62,13 +56,16 @@ const Nav = ({ handleToggleDropdown, Language, Currency }) => {
         >
           <span className="navbar-toggler-icon"></span>
         </button>
+        <Link to="/" className="navbar-brand">
+          <h3>
+            {" "}
+            <img src={Logo} alt="africa-logo" className="logo" />
+          </h3>
+        </Link>
       </div>
 
       {/* actual navs */}
-      <div
-        className="collapse navbar-collapse actual-nav mx-2"
-        id="navbarNavDropdown"
-      >
+      <div className="collapse navbar-collapse" id="navbarNavDropdown">
         <ul className="navbar-nav">
           <li className="bg-warning pb-1 fw-bold nav-category">
             <DropDowner
@@ -150,7 +147,12 @@ const Nav = ({ handleToggleDropdown, Language, Currency }) => {
         <>
           <GoogleTranslate />
           <Link to="/dashboard">
-            <Avatar icon="pi pi-user" className="mx-1 bg-secondary text-white" size="large" shape="circle" />
+            <Avatar
+              icon="pi pi-user"
+              className="mx-1 bg-secondary text-white"
+              size="large"
+              shape="circle"
+            />
           </Link>
         </>
       )}
