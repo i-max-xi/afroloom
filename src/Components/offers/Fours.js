@@ -9,7 +9,9 @@ const Fours = ({ items, headTitle, linkTo }) => {
       <div className="four-in-a-card">
         {items.map((item, index) => (
           <div className="item" key={index}>
-            <img src={item.imageUrl} alt={item.title} width="100%" />
+            <Link to={`/product/${item.id}`}>
+              <img src={item.imageUrl} alt={item.title} width="100%" />
+            </Link>
             {item.title && <h4>{item.title}</h4>}
             {/* {item.link && (
               <Link to={item.link} className="item-link">
@@ -18,9 +20,9 @@ const Fours = ({ items, headTitle, linkTo }) => {
             )} */}
           </div>
         ))}
-          <Link to={linkTo} className="fours-link">
-            Shop Now
-          </Link>
+        <Link to={linkTo} className="fours-link">
+          Shop Now
+        </Link>
       </div>
     </div>
   );

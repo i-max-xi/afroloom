@@ -1,30 +1,35 @@
 import spinvid from "../../../Assets/vid/vid.mp4";
 import crop from "../../../Assets/vid/crop.MP4";
 import booty from "../../../Assets/vid/booty.MP4";
+import store from "../../../Redux/store";
+
+
+const Products = store.getState().allProducts.products;
+
+const maleUnder10 = Products.filter(
+  (item) => item.gender === "Male" && item.price <= 10
+);
+
+const selectedmaleUnder10 = maleUnder10.slice(0,4).map((item) => ({
+  imageUrl: item.item,
+  id: item.id,
+}));
+
+const femaleUnder10 = Products.filter(
+  (item) => item.gender === "Female" && item.price <= 10
+);
+
+const selectedfemaleUnder10 = femaleUnder10.slice(0,4).map((item) => ({
+  imageUrl: item.item,
+  id: item.id,
+}));
+
 
 export const rowOne = [
   {
     headTitle: "Men Clothing Under $10",
     linkTo: "/offers/men clothing under $10",
-    array: [
-      {
-        // title: "Shirt",
-        imageUrl: require("../../../Assets/Offers/maleClothing/IMG-6847.JPG"),
-      },
-      {
-        // title: "Shorts",
-        imageUrl: require("../../../Assets/Offers/maleClothing/IMG-6853.JPG"),
-      },
-      {
-        // title: "Trousers",
-        imageUrl: require("../../../Assets/Offers/maleClothing/IMG-6846.WEBP"),
-      },
-      {
-        // title: "Long Sleeves",
-        imageUrl:
-          "https://www.ruvaafricwear.com/cdn/shop/products/Shorts_1200x.png?v=1527273699",
-      },
-    ],
+    array: selectedmaleUnder10,
   },
   {
     title: "Design Your Own Products With Quality African Fabric",
@@ -40,25 +45,10 @@ export const rowOne = [
   {
     headTitle: "Women Clothing Under $10",
     linkTo: "/offers/women clothing under $10",
-    array: [
-      {
-        // title: "Tshirt",
-        imageUrl: require("../../../Assets/Offers/femaleClothing/IMG-6840.WEBP"),
-      },
-      {
-        // title: "Skirt",
-        imageUrl: require("../../../Assets/Offers/femaleClothing/IMG-6842.JPG"),
-      },
-      {
-        // title: "Trouser",
-        imageUrl: require("../../../Assets/Offers/femaleClothing/IMG-6838.JPG"),
-      },
-      {
-        imageUrl: require("../../../Assets/Offers/femaleClothing/IMG-6841.JPG"),
-      },
-    ],
+    array: selectedfemaleUnder10,
   },
 ];
+
 
 export const rowSix = [
   {
