@@ -53,9 +53,10 @@ const Footer = () => {
               <div className="col-6 mx-auto mb-4">
                 <h5 className="mb-4 footer-header">About Us</h5>
                 <p>
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Debitis iste est, accusantium numquam iusto consequuntur porro
-                  velit quas et ipsum asperiores repellat
+                  We specialize in providing a wide range of African products
+                  through our e-commerce platform, offering customers the option
+                  to customize their shopping experience and explore the rich
+                  cultural heritage of Africa.
                 </p>
               </div>
 
