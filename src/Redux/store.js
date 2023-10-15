@@ -210,7 +210,4 @@ export const { setPaymentMethod } = paymentMethodSlice.actions;
 export const { setSignedIn, setcurrentUser } = userSlice.actions;
 // export const { setQuery, setFilteredItems, setVisible } = searchSlice.actions;
 
-
-store.dispatch(fetchAllProducts()); // Dispatch the thunk action
-
 export default store;

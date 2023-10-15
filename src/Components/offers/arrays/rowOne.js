@@ -3,6 +3,7 @@ import crop from "../../../Assets/vid/crop.MP4";
 import booty from "../../../Assets/vid/booty.MP4";
 import store from "../../../Redux/store";
 
+// Window.onload()
 
 const Products = store.getState().allProducts.products;
 
@@ -10,7 +11,7 @@ const maleUnder10 = Products.filter(
   (item) => item.gender === "Male" && item.price <= 10
 );
 
-const selectedmaleUnder10 = maleUnder10.slice(0,4).map((item) => ({
+const selectedmaleUnder10 = maleUnder10.slice(0,2).map((item) => ({
   imageUrl: item.item,
   id: item.id,
 }));
@@ -20,6 +21,24 @@ const femaleUnder10 = Products.filter(
 );
 
 const selectedfemaleUnder10 = femaleUnder10.slice(0,4).map((item) => ({
+  imageUrl: item.item,
+  id: item.id,
+}));
+
+const fashionAccessories = Products.filter(
+  (item) => item.category === "Accessories"
+);
+
+const selectedfashionAccessories = fashionAccessories.slice(0,4).map((item) => ({
+  imageUrl: item.item,
+  id: item.id,
+}));
+
+const feet = Products.filter(
+  (item) => item.category === "Footwear"
+);
+
+const selectedFeet = feet.slice(0,4).map((item) => ({
   imageUrl: item.item,
   id: item.id,
 }));
@@ -95,24 +114,26 @@ export const rowNine = [
   {
     headTitle: "Fashion Accessories Made Perfect",
     linkTo: "/category/Accessories",
-    array: [
-      {
-        title: "Bangles",
-        imageUrl: require("../../../Assets/Offers/accessories/61uZKuQzPEL._SL1500_.jpg"),
-      },
-      {
-        title: "Earings",
-        imageUrl: require("../../../Assets/Offers/accessories/kente earrings 11.07.02 PM.webp"),
-      },
-      {
-        title: "Cowie Shell Necklace",
-        imageUrl: require("../../../Assets/Offers/accessories/cowie shell necklace1.jpg"),
-      },
-      {
-        title: "Belt",
-        imageUrl: require("../../../Assets/Offers/accessories/8db62ff84ace3029cdd223c553bacee6.jpg"),
-      },
-    ],
+    array: selectedfashionAccessories,
+
+    // array: [
+    //   {
+    //     title: "Bangles",
+    //     imageUrl: require("../../../Assets/Offers/accessories/61uZKuQzPEL._SL1500_.jpg"),
+    //   },
+    //   {
+    //     title: "Earings",
+    //     imageUrl: require("../../../Assets/Offers/accessories/kente earrings 11.07.02 PM.webp"),
+    //   },
+    //   {
+    //     title: "Cowie Shell Necklace",
+    //     imageUrl: require("../../../Assets/Offers/accessories/cowie shell necklace1.jpg"),
+    //   },
+    //   {
+    //     title: "Belt",
+    //     imageUrl: require("../../../Assets/Offers/accessories/8db62ff84ace3029cdd223c553bacee6.jpg"),
+    //   },
+    // ],
   },
   {
     title: "Discover Fashion Trends",
@@ -127,28 +148,30 @@ export const rowNine = [
   {
     headTitle: "Get Value for your Feet",
     linkTo: "/category/Footwear",
-    array: [
-      {
-        // title: "Bangles",
-        imageUrl: require("../../../Assets/Offers/footwear/ccb78d9160c59b8990e5d8b3b9064598--african-shoes-african-fashion-ankara.jpg"),
-        // linkTo: "/category/Footwear",
-      },
-      {
-        // title: "Earings",
-        imageUrl: require("../../../Assets/Offers/footwear/021111-BOHO-Twelfth-St-400_0-15afb40a28924b9fafeba0a986eedeb4.jpg"),
-        // linkTo: "/category/Footwear",
-      },
-      {
-        // title: "Cowie Shell Necklace",
-        imageUrl: require("../../../Assets/Offers/footwear/KANT2847.jpg"),
-        // linkTo: "/category/Footwear",
-      },
-      {
-        // title: "Belt",
-        imageUrl: require("../../../Assets/Offers/footwear/R 11.20.36 PM.jpg"),
-        // linkTo: "/category/Footwear",
-      },
-    ],
+    array: selectedFeet,
+    // array: [
+    //   {
+    //     // title: "Bangles",
+    //     imageUrl: require("../../../Assets/Offers/footwear/ccb78d9160c59b8990e5d8b3b9064598--african-shoes-african-fashion-ankara.jpg"),
+    //     // linkTo: "/category/Footwear",
+    //   },
+    //   {
+    //     // title: "Earings",
+    //     imageUrl: require("../../../Assets/Offers/footwear/021111-BOHO-Twelfth-St-400_0-15afb40a28924b9fafeba0a986eedeb4.jpg"),
+    //     // linkTo: "/category/Footwear",
+    //   },
+    //   {
+    //     // title: "Cowie Shell Necklace",
+    //     imageUrl: require("../../../Assets/Offers/footwear/KANT2847.jpg"),
+    //     // linkTo: "/category/Footwear",
+    //   },
+    //   {
+    //     // title: "Belt",
+    //     imageUrl: require("../../../Assets/Offers/footwear/R 11.20.36 PM.jpg"),
+    //     // linkTo: "/category/Footwear",
+    //   },
+    // ],
   },
 
 ];
+

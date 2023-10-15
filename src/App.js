@@ -58,11 +58,17 @@ import Confirmation from "./Pages/Customize/Configurator/Confirmation";
 import SearchedItem from "./Pages/SearchedItem";
 import ArtisanWait from "./Pages/ArtisanWait";
 import OffersDetail from "./Pages/OffersDetail";
+import { useDispatch } from "react-redux";
+import { fetchAllProducts } from "./Redux/store";
 
 function App() {
+  const dispatch = useDispatch(); // Get the dispatch function
+
   useEffect(() => {
     AOS.init();
-  }, []);
+    dispatch(fetchAllProducts());
+
+  }, [dispatch]);
 
   return (
     <div className="allBg">

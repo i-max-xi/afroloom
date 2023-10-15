@@ -13,11 +13,6 @@ const Fours = ({ items, headTitle, linkTo }) => {
               <img src={item.imageUrl} alt={item.title} width="100%" />
             </Link>
             {item.title && <h4>{item.title}</h4>}
-            {/* {item.link && (
-              <Link to={item.link} className="item-link">
-                See More
-              </Link>
-            )} */}
           </div>
         ))}
         <Link to={linkTo} className="fours-link">
