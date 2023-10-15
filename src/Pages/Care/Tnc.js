@@ -7,14 +7,13 @@ const Tnc = () => {
     <>
       <LayoutHeaders selectedBg={Top} />
       <div className="p-5 m-5">
-        <h3>
-          Welcome to <span className="text-warning">Shopinafrica.com</span>
-        </h3>
+        <div>
+          Welcome to <span className="text-warning">Shopinafrica.com,</span> an e-commerce platform specializing in African products. 
+        </div>
         <p>
-          An e-commerce platform specializing in African products. By accessing
-          and using our website, you agree to be bound by the following terms
-          and conditions. Please read them carefully before making a purchase or
-          using our services.
+          By accessing and using our website, you agree to be bound by the
+          following terms and conditions. Please read them carefully before
+          making a purchase or using our services.
         </p>
         <h5>Definitions</h5>
         <ul>
