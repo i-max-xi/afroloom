@@ -125,7 +125,7 @@ const Checkout = () => {
                       {selectedItem.title} <br />
                       <span className="fw-bold">Quantity: </span> <br />
                       <span className="fw-bold">Subtotal: </span> $
-                      {selectedItem.price}
+                      {selectedItem.discount ? selectedItem.discount :selectedItem.price }
                     </div>
                   </div>
                   <div>

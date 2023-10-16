@@ -8,7 +8,7 @@ import {
  
 import ProductsDataService from '../Services/products.services';
 import { persistStore, persistReducer } from 'redux-persist';
-import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web
+import storage from 'redux-persist/lib/storage/session'; // defaults to localStorage for web
 
 const persistConfig = {
   key: 'root',
