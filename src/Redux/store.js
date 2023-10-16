@@ -2,10 +2,19 @@ import {
   createSlice,
   configureStore,
   createAsyncThunk,
+  combineReducers,
   // createAsyncThunk,
 } from "@reduxjs/toolkit";
  
 import ProductsDataService from '../Services/products.services';
+import { persistStore, persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage'; // defaults to localStorage for web
+
+const persistConfig = {
+  key: 'root',
+  storage,
+};
+
 
 export const fetchAllProducts = createAsyncThunk(
   'allProducts/fetchAllProducts',
@@ -179,21 +188,25 @@ const paymentMethodSlice = createSlice({
   },
 });
 
+const rootReducer = combineReducers({
+  allProducts: allProductsSlice.reducer,
+  cartItems: cartSlice.reducer,
+  shippingAddress: shippingAddressSlice.reducer,
+  emailAddress: emailAddressSlice.reducer,
+  firstName: firstNameSlice.reducer,
+  lastName: lastNameSlice.reducer,
+  city: citySlice.reducer,
+  apartment: apartmentSlice.reducer,
+  paymentMethod: paymentMethodSlice.reducer,
+  user: userSlice.reducer,
+  currencySymbol: currencySymbolSlice.reducer,
+});
+
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+
 // Redux store configuration
 const store = configureStore({
-  reducer: {
-    allProducts: allProductsSlice.reducer,
-    cartItems: cartSlice.reducer,
-    shippingAddress: shippingAddressSlice.reducer,
-    emailAddress: emailAddressSlice.reducer,
-    firstName: firstNameSlice.reducer,
-    lastName: lastNameSlice.reducer,
-    city: citySlice.reducer,
-    apartment: apartmentSlice.reducer,
-    paymentMethod: paymentMethodSlice.reducer,
-    user: userSlice.reducer,
-    currencySymbol: currencySymbolSlice.reducer,
-  },
+  reducer: persistedReducer,
 });
 
 export const { addProducts, searchItem  } = allProductsSlice.actions;
@@ -210,4 +223,5 @@ export const { setPaymentMethod } = paymentMethodSlice.actions;
 export const { setSignedIn, setcurrentUser } = userSlice.actions;
 // export const { setQuery, setFilteredItems, setVisible } = searchSlice.actions;
 
+export const persistor = persistStore(store);
 export default store;
