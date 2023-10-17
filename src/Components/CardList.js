@@ -19,7 +19,7 @@ import { useSelector } from "react-redux";
 // import AdGuy2 from "../Assets/Ads/portraitguy2.JPG";
 import Row from "./offers/Row";
 import Banner from "./offers/Banner";
-import { rowNine, rowOne, rowSix } from "./offers/arrays/rowOne";
+import { rowNine, rowSix } from "./offers/arrays/rowOne";
 import {
   bannereight,
   bannerfive,
@@ -412,7 +412,7 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
           /> */}
         {/* search ends here */}
 
-        <Row mainItems={rowOne} />
+        <Row offerFix="One"/>
 
         <SearchFilters
           search1="Category"

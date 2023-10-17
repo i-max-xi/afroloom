@@ -1,9 +1,6 @@
-import spinvid from "../../../Assets/vid/vid.mp4";
 import crop from "../../../Assets/vid/crop.MP4";
 import booty from "../../../Assets/vid/booty.MP4";
 import store from "../../../Redux/store";
-
-// Window.onload()
 
 const Products = store.getState().allProducts.products;
 
@@ -44,29 +41,7 @@ const selectedFeet = feet.slice(0,4).map((item) => ({
 }));
 
 
-export const rowOne = [
-  {
-    headTitle: "Men Clothing Under $10",
-    linkTo: "/offers/men clothing under $10",
-    array: selectedmaleUnder10,
-  },
-  {
-    title: "Design Your Own Products With Quality African Fabric",
-    videoUrl: spinvid,
-    linkTo: "/customize",
-  },
-  {
-    title: "Find the Perfect Gift",
-    imageUrl: require("../../../Assets/Offers/gift/1.jpg"),
-    linkTo: "/category/Accessories",
-  },
 
-  {
-    headTitle: "Women Clothing Under $10",
-    linkTo: "/offers/women clothing under $10",
-    array: selectedfemaleUnder10,
-  },
-];
 
 
 export const rowSix = [
