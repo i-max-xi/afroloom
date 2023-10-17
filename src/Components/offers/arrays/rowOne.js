@@ -4,23 +4,23 @@ import store from "../../../Redux/store";
 
 const Products = store.getState().allProducts.products;
 
-const maleUnder10 = Products.filter(
-  (item) => item.gender === "Male" && item.price <= 10
-);
+// const maleUnder10 = Products.filter(
+//   (item) => item.gender === "Male" && item.price <= 10
+// );
 
-const selectedmaleUnder10 = maleUnder10.slice(0,2).map((item) => ({
-  imageUrl: item.item,
-  id: item.id,
-}));
+// const selectedmaleUnder10 = maleUnder10.slice(0,2).map((item) => ({
+//   imageUrl: item.item,
+//   id: item.id,
+// }));
 
-const femaleUnder10 = Products.filter(
-  (item) => item.gender === "Female" && item.price <= 10
-);
+// const femaleUnder10 = Products.filter(
+//   (item) => item.gender === "Female" && item.price <= 10
+// );
 
-const selectedfemaleUnder10 = femaleUnder10.slice(0,4).map((item) => ({
-  imageUrl: item.item,
-  id: item.id,
-}));
+// const selectedfemaleUnder10 = femaleUnder10.slice(0,4).map((item) => ({
+//   imageUrl: item.item,
+//   id: item.id,
+// }));
 
 const fashionAccessories = Products.filter(
   (item) => item.category === "Accessories"
