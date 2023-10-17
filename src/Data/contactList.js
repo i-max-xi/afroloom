@@ -20,7 +20,7 @@ const contactInfo = [
     {
       id : 2,
       title: "Call Us",
-      detail: "+2345667890",
+      detail: "(+233) 55 666 5072",
       img: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
