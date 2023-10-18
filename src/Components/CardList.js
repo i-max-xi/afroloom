@@ -19,7 +19,6 @@ import { useSelector } from "react-redux";
 // import AdGuy2 from "../Assets/Ads/portraitguy2.JPG";
 import Row from "./offers/Row";
 import Banner from "./offers/Banner";
-import { rowNine, rowSix } from "./offers/arrays/rowOne";
 import {
   bannereight,
   bannerfive,
@@ -535,7 +534,7 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
                     linkTo="/offers/discounts"
                   />
                 </div>
-                <Row mainItems={rowSix} />
+                <Row offerFix="Six"/>
               </>
             )}
 
@@ -563,7 +562,7 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
                   />
                 </div>
 
-                <Row mainItems={rowNine} />
+                <Row offerFix="Nine" />
                 <div className="container mt-5 mb-5" key={uuid()}>
                   <Banner
                     items={bannerten}
