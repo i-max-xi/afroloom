@@ -3,6 +3,7 @@ import "../../Styles/Offers.css";
 import FourInACard from "./Fours";
 import OfferCard from "./Singles";
 import { useSelector } from "react-redux";
+import { differenceInDays, fromUnixTime } from "date-fns"; // Import the functions
 
 const spinvid = require("../../Assets/vid/vid.mp4");
 const crop = require("../../Assets/vid/crop.MP4");
@@ -10,26 +11,30 @@ const booty = require("../../Assets/vid/booty.MP4");
 
 const Row = ({ mainItems, offerFix }) => {
   const Products = useSelector((state) => state.allProducts.products);
-  const [maleUnder10, setMaleUnder10] = useState([]);
+
+
+
   const [selectedmaleUnder10, setselectedmaleUnder10] = useState([]);
 
-  const [femaleUnder10, setFemaleUnder10] = useState([]);
   const [selectedFemaleUnder10, setselectedFemaleUnder10] = useState([]);
 
-  const [fashionAccessories, setFashionAccessories] = useState([]);
   const [selectedFashionAccessories, setselectedFashionAccessories] = useState(
     []
   );
 
-  const [feet, setFeet] = useState([]);
   const [selectedFeet, setselectedFeet] = useState([]);
+
+  const [selectednewThisWeek, setselectednewThisWeek] = useState([]);
+
+  const [selectedPopular, setselectedPopular] = useState("");
+  const [selectedPopularImage, setselectedPopularImage] = useState("hhh");
+
+  const [selectedLowest, setselectedLowest] = useState("");
+  const [selectedLowestImage, setselectedLowestImage] = useState("hhh");
 
   useEffect(() => {
     // male underten
-    setMaleUnder10(
-      Products.filter((item) => item.gender === "Male" && item.price <= 10)
-    );
-
+    const maleUnder10 = Products.filter((item) => item.gender === "Male" && item.price <= 10);
     setselectedmaleUnder10(
       maleUnder10.slice(0, 2).map((item) => ({
         imageUrl: item.item,
@@ -38,10 +43,7 @@ const Row = ({ mainItems, offerFix }) => {
     );
 
     // female underten
-    setFemaleUnder10(
-      Products.filter((item) => item.gender === "Female" && item.price <= 10)
-    );
-
+    const femaleUnder10 = Products.filter((item) => item.gender === "Female" && item.price <= 10);
     setselectedFemaleUnder10(
       femaleUnder10.slice(0, 2).map((item) => ({
         imageUrl: item.item,
@@ -50,10 +52,7 @@ const Row = ({ mainItems, offerFix }) => {
     );
 
     // fashion accessories
-    setFashionAccessories(
-      Products.filter((item) => item.category === "Accessories")
-    );
-
+    const fashionAccessories = Products.filter((item) => item.category === "Accessories");
     setselectedFashionAccessories(
       fashionAccessories.slice(0, 4).map((item) => ({
         imageUrl: item.item,
@@ -62,15 +61,52 @@ const Row = ({ mainItems, offerFix }) => {
     );
 
     // Footwear
-    setFeet(Products.filter((item) => item.category === "Footwear"));
-
+    const feet = Products.filter((item) => item.category === "Footwear");
     setselectedFeet(
       feet.slice(0, 4).map((item) => ({
         imageUrl: item.item,
         id: item.id,
       }))
     );
-  }, [Products, fashionAccessories, feet, femaleUnder10, maleUnder10]);
+
+    // New This week
+      // new products this week
+  const newProductsThisWeek = Products.filter((item) => {
+    if (item.createdAt?.seconds) {
+      // Use optional chaining to safely access 'seconds'
+      const createdAtTimestamp = item.createdAt.seconds;
+      const currentTimestamp = Date.now() / 1000; // Convert to seconds
+
+      // Calculate the difference in days
+      const daysDifference = differenceInDays(
+        fromUnixTime(currentTimestamp),
+        fromUnixTime(createdAtTimestamp)
+      );
+
+      // Check if the product was created within the last 7 days
+      return daysDifference <= 7;
+    }
+    // Handle the case where 'createdAt' or 'seconds' is undefined
+    return false;
+  });
+
+    setselectednewThisWeek(
+      newProductsThisWeek.slice(0, 4).map((item) => ({
+        imageUrl: item.item,
+        id: item.id,
+      }))
+    );
+
+    // Pouplar
+    const popularProduct = Products.find((item) => item.rating >= 4);
+    setselectedPopular(popularProduct);
+    setselectedPopularImage(popularProduct.item);
+
+    // Lowest
+    const lowestProduct = Products.find((item) => item.price < 10);
+    setselectedLowest(lowestProduct);
+    setselectedLowestImage(lowestProduct.item)
+  }, [Products]);
 
   const rowOne = [
     {
@@ -122,13 +158,15 @@ const Row = ({ mainItems, offerFix }) => {
   const rowSix = [
     {
       title: "Lowest Prices in 60 Days",
-      imageUrl: require("../../Assets/Offers/lowest/fad8186bb3f502194ae34274a7727066--charleston-gardens-charleston-sc.jpg"),
+      imageUrl: selectedLowestImage,
+      itemID: selectedLowest !== "" ? selectedLowest.id : '',
       linkTo: "/offers/Lowest Prices in 60 Days",
     },
-  
+
     {
       title: "Most Popular",
-      imageUrl: require("../../Assets/Offers/popular/royal-blue-maasai-earrings.jpg"),
+      imageUrl: selectedPopularImage,
+      itemID: selectedPopular !== "" ? selectedPopular.id : '',
       linkTo: "/offers/popular",
     },
     {
@@ -139,24 +177,7 @@ const Row = ({ mainItems, offerFix }) => {
     {
       headTitle: "New Products this Week",
       linkTo: "/offers/New Products this Week",
-      array: [
-        {
-          title: "Pouf",
-          imageUrl: require("../../Assets/Offers/this_week/215c79eaf1c3f53f0fa798617be97ba8.jpg"),
-        },
-        {
-          title: "Purse",
-          imageUrl: require("../../Assets/Offers/this_week/OIP.jpg"),
-        },
-        {
-          title: "Bikini",
-          imageUrl: require("../../Assets/Offers/this_week/R (1).jpg"),
-        },
-        {
-          title: "Straw Hat",
-          imageUrl: require("../../Assets/Offers/this_week/il_1588xN.3179152889_30w3.webp"),
-        },
-      ],
+      array: selectednewThisWeek,
     },
   ];
 
@@ -164,7 +185,7 @@ const Row = ({ mainItems, offerFix }) => {
     mainItems = rowOne;
   } else if (offerFix === "Nine") {
     mainItems = rowNine;
-  }else if (offerFix === "Six") {
+  } else if (offerFix === "Six") {
     mainItems = rowSix;
   }
 
@@ -191,6 +212,7 @@ const Row = ({ mainItems, offerFix }) => {
           imageUrl={item.imageUrl}
           linkTo={item.linkTo}
           videoUrl={item.videoUrl}
+          itemID={item.itemID}
         />
       );
     }

@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const OfferItem = ({ title, imageUrl, linkTo, videoUrl }) => {
+const OfferItem = ({ title, imageUrl, linkTo, videoUrl, itemID }) => {
   return (
     <div className="offer-card">
       <h3 className="headTitle">{title}</h3>
@@ -15,7 +15,9 @@ const OfferItem = ({ title, imageUrl, linkTo, videoUrl }) => {
           muted
         />
       ) : (
-        <img src={imageUrl} alt={title} width="100%"/>
+        <Link to={`/product/${itemID}`}>
+          <img src={imageUrl} alt={title} width="100%" />
+        </Link>
       )}
       <Link to={linkTo} className="offer-link">
         {videoUrl ? "Customize" : "See More"}
@@ -25,4 +27,3 @@ const OfferItem = ({ title, imageUrl, linkTo, videoUrl }) => {
 };
 
 export default OfferItem;
-
