@@ -27,10 +27,8 @@ const Row = ({ mainItems, offerFix }) => {
   const [selectednewThisWeek, setselectednewThisWeek] = useState([]);
 
   const [selectedPopular, setselectedPopular] = useState("");
-  const [selectedPopularImage, setselectedPopularImage] = useState("hhh");
 
   const [selectedLowest, setselectedLowest] = useState("");
-  const [selectedLowestImage, setselectedLowestImage] = useState("hhh");
 
   useEffect(() => {
     // male underten
@@ -100,12 +98,12 @@ const Row = ({ mainItems, offerFix }) => {
     // Pouplar
     const popularProduct = Products.find((item) => item.rating >= 4);
     setselectedPopular(popularProduct);
-    setselectedPopularImage(popularProduct.item);
+    // setselectedPopularImage(popularProduct.item ? popularProduct.item : "");
 
     // Lowest
     const lowestProduct = Products.find((item) => item.price < 10);
     setselectedLowest(lowestProduct);
-    setselectedLowestImage(lowestProduct.item)
+    // setselectedLowestImage(lowestProduct.item)
   }, [Products]);
 
   const rowOne = [
@@ -158,15 +156,15 @@ const Row = ({ mainItems, offerFix }) => {
   const rowSix = [
     {
       title: "Lowest Prices in 60 Days",
-      imageUrl: selectedLowestImage,
-      itemID: selectedLowest !== "" ? selectedLowest.id : '',
+      imageUrl: selectedLowest ? selectedLowest.item : "",
+      itemID: selectedLowest ? selectedLowest.id : '',
       linkTo: "/offers/Lowest Prices in 60 Days",
     },
 
     {
       title: "Most Popular",
-      imageUrl: selectedPopularImage,
-      itemID: selectedPopular !== "" ? selectedPopular.id : '',
+      imageUrl: selectedPopular ? selectedPopular.item : "",
+      itemID: selectedPopular ? selectedPopular.id : '',
       linkTo: "/offers/popular",
     },
     {
