@@ -1,19 +1,16 @@
 import React, { useEffect, useState } from "react";
 import Nav from "../Components/Nav";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { TabPanel, TabView } from "primereact/tabview";
 import { Carousel } from "primereact/carousel";
 import { useDispatch, useSelector } from "react-redux";
 import { addItem } from "../Redux/store";
 
 const ItemDetail = ({ match }) => {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  const { productId } = useParams();
 
   const Products = useSelector((state) => state.allProducts.products);
 
-  const { productId } = useParams();
   const product = Products.find((p) => p.id === productId);
 
   const [count, setCount] = useState(1);
@@ -31,29 +28,6 @@ const ItemDetail = ({ match }) => {
   // Redux
   const dispatch = useDispatch();
 
-  //related products
-  // const relatedProducts = Products.filter(p => p.category !== parseInt(productId)).slice(0, 5);
-  const relatedProducts = Products.filter(
-    (p) => p.category === product.category && p.id !== product.id
-  );
-
-  const productTemplate = (relatedProduct) => {
-    return (
-      <div className="border-5 border-white  border-right text-center px-3">
-        <div>
-          <img
-            src={relatedProduct.item}
-            alt={relatedProduct.title}
-            className="shadow-2 mt-3 w-50"
-          />
-        </div>
-        <div>
-          <h4 className="text-white fs-5">{relatedProduct.title}</h4>
-        </div>
-      </div>
-    );
-  };
-
   const stars = [];
   for (let i = 0; i < product.rating; i++) {
     stars.push(<i key={i} className="bi bi-star-fill text-warning fs-3"></i>);
@@ -64,7 +38,7 @@ const ItemDetail = ({ match }) => {
 
   // Create a state variable to store extras, including the initial product.item
 
-  const [extras] = useState([
+  const [extras, setExtras] = useState([
     product.item,
     ...(product.extras ? product.extras : []),
   ]);
@@ -77,19 +51,65 @@ const ItemDetail = ({ match }) => {
   const currencySymbol = useSelector((state) => state.currencySymbol.symbol);
   const currencyFactor = useSelector((state) => state.currencySymbol.factor);
 
-  const augmentedPrice = (currencyFactor * product.price * count);
+  const augmentedPrice = currencyFactor * product.price * count;
 
   let discountedPrice = product.price; // Default to the original price
 
   if (product.discount && product.discount > 0) {
     const discountPercentage = product.discount / 100;
-    discountedPrice = (
-      (1 - discountPercentage) *
-      currencyFactor *
-      product.price *
-      count
-    );
+    discountedPrice =
+      (1 - discountPercentage) * currencyFactor * product.price * count;
   }
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    setSelectedImage(product.item);
+    setExtras([product.item, ...(product.extras ? product.extras : [])]);
+  }, [product.extras, product.item, productId]);
+
+  //related products
+  // const relatedProducts = Products.filter(p => p.category !== parseInt(productId)).slice(0, 5);
+  const relatedProducts = Products.filter(
+    (p) => p.category === product.category && p.id !== product.id
+  ).slice(0, 5);
+
+  const productTemplate = (relatedProduct) => {
+    const relatedPrice = currencyFactor * relatedProduct.price;
+
+    let relatedDiscountedPrice = relatedProduct.price; // Default to the original price
+
+    if (relatedProduct.discount && relatedProduct.discount > 0) {
+      const discountPercentage = relatedProduct.discount / 100;
+      relatedDiscountedPrice =
+        (1 - discountPercentage) * currencyFactor * product.price * count;
+    }
+    return (
+      <div className="text-center p-3">
+        <Link to={`/product/${relatedProduct.id}`}>
+          <img
+            src={relatedProduct.item}
+            alt={relatedProduct.title}
+            className="shadow-2 mt-3 w-50 h-50"
+          />
+        </Link>
+        <div>
+          <p>{relatedProduct.title}</p>
+          <p className="h3">
+            {relatedProduct.discount ? (
+              <div>
+                <h6>
+                  <del>{currencySymbol + relatedPrice.toFixed(2)}</del>
+                </h6>
+                <h5>{currencySymbol + relatedDiscountedPrice.toFixed(2)}</h5>
+              </div>
+            ) : (
+              <h5>{currencySymbol + relatedPrice.toFixed(2)} </h5>
+            )}
+          </p>
+        </div>
+      </div>
+    );
+  };
 
   return (
     <div className="bg-white">
@@ -146,14 +166,14 @@ const ItemDetail = ({ match }) => {
               {product.discount ? (
                 <div>
                   <span className="original-price">
-                    {currencySymbol + (augmentedPrice).toFixed(2)}
+                    {currencySymbol + augmentedPrice.toFixed(2)}
                   </span>
                   <span className="discounted-price mx-3">
-                    {currencySymbol + (discountedPrice).toFixed(2)}
+                    {currencySymbol + discountedPrice.toFixed(2)}
                   </span>
                 </div>
               ) : (
-                <span>{currencySymbol + (augmentedPrice).toFixed(2)} </span>
+                <span>{currencySymbol + augmentedPrice.toFixed(2)} </span>
               )}
             </p>
             <button
@@ -162,7 +182,7 @@ const ItemDetail = ({ match }) => {
                 id = product.id,
                 title = product.title,
                 item = product.item,
-                price = product.discount ? discountedPrice : augmentedPrice,
+                price = product.discount ? discountedPrice : augmentedPrice
               ) => {
                 dispatch(addItem({ id, title, item, price, count }));
                 // show();
