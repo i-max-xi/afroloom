@@ -79,6 +79,18 @@ const ItemDetail = ({ match }) => {
 
   const augmentedPrice = (currencyFactor * product.price * count).toFixed(2);
 
+  let discountedPrice; // Default to the original price
+
+  if (product.discount && product.discount > 0) {
+    const discountPercentage = product.discount / 100;
+    discountedPrice = (
+      (1 - discountPercentage) *
+      currencyFactor *
+      product.price *
+      count
+    ).toFixed(2);
+  }
+
   return (
     <div className="bg-white">
       <Nav />
@@ -131,8 +143,18 @@ const ItemDetail = ({ match }) => {
               </button>
             </div>
             <p className="h3">
-              {currencySymbol}
-              {augmentedPrice}
+              {product.discount ? (
+                <div>
+                  <span className="original-price">
+                    {currencySymbol + augmentedPrice}{" "}
+                  </span>
+                  <span className="discounted-price mx-3">
+                    {currencySymbol + discountedPrice}{" "}
+                  </span>
+                </div>
+              ) : (
+                <span>{currencySymbol + augmentedPrice} </span>
+              )}
             </p>
             <button
               className="btn btn-lg mt-3 bg-warning text-white"
