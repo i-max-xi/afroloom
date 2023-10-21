@@ -42,13 +42,13 @@ const ItemDetail = ({ match }) => {
       <div className="border-5 border-white  border-right text-center px-3">
         <div>
           <img
-            src={relatedProduct.image}
-            alt={relatedProduct.name}
-            className="shadow-2 rounded-circle w-50"
+            src={relatedProduct.item}
+            alt={relatedProduct.title}
+            className="shadow-2 mt-3 w-50"
           />
         </div>
         <div>
-          <h4 className="text-white fs-5">{relatedProduct.name}</h4>
+          <h4 className="text-white fs-5">{relatedProduct.title}</h4>
         </div>
       </div>
     );
@@ -77,9 +77,9 @@ const ItemDetail = ({ match }) => {
   const currencySymbol = useSelector((state) => state.currencySymbol.symbol);
   const currencyFactor = useSelector((state) => state.currencySymbol.factor);
 
-  const augmentedPrice = (currencyFactor * product.price * count).toFixed(2);
+  const augmentedPrice = (currencyFactor * product.price * count);
 
-  let discountedPrice; // Default to the original price
+  let discountedPrice = product.price; // Default to the original price
 
   if (product.discount && product.discount > 0) {
     const discountPercentage = product.discount / 100;
@@ -88,7 +88,7 @@ const ItemDetail = ({ match }) => {
       currencyFactor *
       product.price *
       count
-    ).toFixed(2);
+    );
   }
 
   return (
@@ -146,14 +146,14 @@ const ItemDetail = ({ match }) => {
               {product.discount ? (
                 <div>
                   <span className="original-price">
-                    {currencySymbol + augmentedPrice}{" "}
+                    {currencySymbol + (augmentedPrice).toFixed(2)}
                   </span>
                   <span className="discounted-price mx-3">
-                    {currencySymbol + discountedPrice}{" "}
+                    {currencySymbol + (discountedPrice).toFixed(2)}
                   </span>
                 </div>
               ) : (
-                <span>{currencySymbol + augmentedPrice} </span>
+                <span>{currencySymbol + (augmentedPrice).toFixed(2)} </span>
               )}
             </p>
             <button
@@ -162,9 +162,9 @@ const ItemDetail = ({ match }) => {
                 id = product.id,
                 title = product.title,
                 item = product.item,
-                price = augmentedPrice
+                price = product.discount ? discountedPrice : augmentedPrice,
               ) => {
-                dispatch(addItem({ id, title, item, price }));
+                dispatch(addItem({ id, title, item, price, count }));
                 // show();
               }}
             >

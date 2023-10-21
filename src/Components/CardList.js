@@ -49,7 +49,14 @@ export const Card = ({
   const dispatch = useDispatch();
 
   const handleAddToCart = () => {
-    dispatch(addItem({ id, title, item, price }));
+    dispatch(
+      addItem({
+        id,
+        title,
+        item,
+        price: discountedPrice ? discountedPrice : price,
+      })
+    );
     show();
   };
 
@@ -405,7 +412,7 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
           /> */}
         {/* search ends here */}
 
-        <Row offerFix="One"/>
+        <Row offerFix="One" />
 
         <SearchFilters
           search1="Category"
@@ -530,7 +537,7 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
                     linkTo="/offers/discounts"
                   />
                 </div>
-                <Row offerFix="Six"/>
+                <Row offerFix="Six" />
               </>
             )}
 

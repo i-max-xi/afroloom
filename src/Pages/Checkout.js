@@ -97,6 +97,8 @@ const Checkout = () => {
     text: "Place Order",
   }
 
+  const currencySymbol = useSelector((state) => state.currencySymbol.symbol);
+  const currencyFactor = useSelector((state) => state.currencySymbol.factor);
 
   return (
     <>
@@ -123,9 +125,8 @@ const Checkout = () => {
                     <div className="mt-2 mx-5">
                       <span className="fs-5 fw-bold">Item: </span>{" "}
                       {selectedItem.title} <br />
-                      <span className="fw-bold">Quantity: </span> <br />
-                      <span className="fw-bold">Subtotal: </span> $
-                      {selectedItem.discount ? selectedItem.discount :selectedItem.price }
+                      <span className="fw-bold">Quantity: {selectedItem.count} </span> <br />
+                      <span className="fw-bold">Subtotal: </span> {currencySymbol + (currencyFactor * selectedItem.price).toFixed(2)}
                     </div>
                   </div>
                   <div>
@@ -152,9 +153,9 @@ const Checkout = () => {
               <h2>
                 Total To Pay:
                 <span className="fs-5 mx-4">
-                  $
+                  {currencySymbol}
                   {cartItems
-                    .reduce((total, item) => total + item.price, 0)
+                    .reduce((total, item) => total + (item.price * currencyFactor), 0)
                     .toFixed(2)}
                 </span>
               </h2>
