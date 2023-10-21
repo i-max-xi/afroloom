@@ -17,7 +17,7 @@ const PrivacyPolicy = () => {
           collect, use, and safeguard your personal data when you access or use
           our website.
         </p>
-        <h5>Information We Collect</h5>
+        <h4>Information We Collect</h4>
         <p>
           We may collect personal information, including but not limited to your
           name, email address, phone number, shipping address, and payment
@@ -25,21 +25,21 @@ const PrivacyPolicy = () => {
           interact with our site. We also collect non-personal information, such
           as your IP address, browser details, and browsing habits.
         </p>
-        <h5>Use of Collected Information</h5>
+        <h4>Use of Collected Information</h4>
         <p>
           We use the information you provide to process your orders, personalize
           your shopping experience, communicate with you about your account and
           orders, and improve our services. We may also use your information to
           send you promotional offers, subject to your preferences.
         </p>
-        <h5>Information Confidentiality and Security</h5>
+        <h4>Information Confidentiality and Security</h4>
         <p>
           We implement industry-standard security measures to ensure the
           confidentiality and integrity of your personal information. However,
           please note that no data transmission over the internet or storage
           system can be guaranteed to be 100% secure.
         </p>
-        <h5>Sharing Information with Third Parties</h5>
+        <h4>Sharing Information with Third Parties</h4>
         <p>
           We may share your personal information with trusted third parties,
           such as payment processors and shipping providers, to fulfill your
@@ -47,20 +47,21 @@ const PrivacyPolicy = () => {
           with any other third parties without your consent, except as required
           by law or to protect our rights.
         </p>
-        <h5>Cookies and Similar Technologies</h5>
+        <h4>Cookies and Similar Technologies</h4>
         <p>
           We use cookies and similar technologies to enhance your browsing
           experience and collect information about how you use our site. You can
-          manage your cookie preferences through your browser settings.
+          manage your cookie preferences through your browser settings
         </p>
-        <h5>External Links</h5>
+        <h4>External Links</h4>
         <p>
           Our website may contain links to third-party websites. We have no
-          control over the content and practices of these websites and therefore
-          cannot be responsible for their privacy policies. We recommend
-          reviewing the privacy policies of any third-party websites you visit.
+          control over the content and practices of these websites, and
+          therefore, cannot be responsible for their privacy policies. We
+          recommend reviewing the privacy policies of any third-party websites
+          you visit.
         </p>
-        <h5>Children's Privacy</h5>
+        <h4>Children's Privacy</h4>
         <p>
           Our website is not intended for use by children under the age of 13.
           We do not knowingly collect personal information from children. If you
@@ -68,7 +69,7 @@ const PrivacyPolicy = () => {
           personal information, please contact us, and we will delete the
           information from our records.
         </p>
-        <h5>Changes to the Privacy Policy</h5>
+        <h4>Changes to the Privacy Policy</h4>
         <p>
           We reserve the right to modify this Privacy Policy at any time. Any
           changes will be effective immediately upon posting on our website.
@@ -76,10 +77,10 @@ const PrivacyPolicy = () => {
           updated Privacy Policy.
         </p>
         <p>
-          If you have any questions or concerns about our Privacy Policy, please
-          contact us at{" "}
-          <a href="mailto:email@example.com">[email@example.com]</a>.
+          If you have any questions or concerns, please don't hesitate to
+          contact our customer service team.
         </p>
+        <p>Thank you for shopping with us!</p>
       </div>
     </>
   );

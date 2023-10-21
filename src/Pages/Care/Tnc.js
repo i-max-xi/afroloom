@@ -7,9 +7,10 @@ const Tnc = () => {
     <>
       <LayoutHeaders selectedBg={Top} />
       <div className="p-5 m-5">
-        <div>
-          Welcome to <span className="text-warning">Shopinafrica.com,</span> an e-commerce platform specializing in African products. 
-        </div>
+        <h4>
+          Welcome to <span className="text-warning">Shopinafrica.com,</span> an
+          e-commerce platform specializing in African products.
+        </h4>
         <p>
           By accessing and using our website, you agree to be bound by the
           following terms and conditions. Please read them carefully before
@@ -86,29 +87,29 @@ const Tnc = () => {
         <h5>Intellectual Property</h5>
         <p>
           All content, including but not limited to images, logos, text, and
-          graphics, on our website are the intellectual property of [Website
-          Name] or its sellers. You are prohibited from using, reproducing, or
-          distributing any content without obtaining explicit permission from
-          the respective owner(s).
+          graphics, on our website are the intellectual property of
+          shopinafrica.com or its sellers. You are prohibited from using,
+          reproducing, or distributing any content without obtaining explicit
+          permission from the respective owner(s).
         </p>
         <h5>Limitation of Liability</h5>
         <p>
-          Under no circumstances shall [Website Name] be liable for any direct,
-          indirect, incidental, consequential, or punitive damages arising from
-          the use of our website or the purchase of any product. This limitation
-          of liability applies to the fullest extent permitted by applicable
-          law.
+          Under no circumstances shall shopinafrica.com be liable for any
+          direct, indirect, incidental, consequential, or punitive damages
+          arising from the use of our website or the purchase of any product.
+          This limitation of liability applies to the fullest extent permitted
+          by applicable law law.
         </p>
         <h5>Governing Law and Jurisdiction</h5>
         <p>
           These terms and conditions shall be governed by and construed in
-          accordance with the laws of [Country/State]. Any disputes arising from
-          these terms shall be subject to the exclusive jurisdiction of the
-          courts located within [Country/State].
+          accordance with the laws of Ghana. Any disputes arising from these
+          terms shall be subject to the exclusive jurisdiction of the courts
+          located within Ghana.
         </p>
         <h5>Modifications</h5>
         <p>
-          [Website Name] reserves the right to modify, update, or remove
+          Shopinafrica.com reserves the right to modify, update, or remove
           portions of these terms and conditions at any time without prior
           notice. It is your responsibility to regularly review these terms for
           any changes. Continued use of our website after any modifications
@@ -117,10 +118,10 @@ const Tnc = () => {
         <p>
           By using our website and making a purchase, you indicate that you have
           read, understood, and agreed to these terms and conditions. If you
-          have any questions or concerns, please contact us at [contact
-          information].
+          have any questions or concerns, please don't hesitate to contact our
+          customer service team.
         </p>
-        <p>Updated: [Date]</p>
+        <p>Thank you for shopping with us!</p>
       </div>
     </>
   );

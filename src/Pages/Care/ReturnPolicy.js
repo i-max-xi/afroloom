@@ -12,7 +12,7 @@ const ReturnPolicy = () => {
           <span className="text-warning">Shopinafrica.com</span>
         </h3>
         <p>
-          Thank you for choosing Shopinafrica.com. We appreciate your patronage
+          Thank you for choosing shopInAfrica.com. We appreciate your patronage
           and are committed to providing you with the highest quality products
           and exceptional customer service.
         </p>
@@ -20,7 +20,9 @@ const ReturnPolicy = () => {
         <p>
           <h5>Eligibility for Returns:</h5>
           <ul>
-            <li>Items must be returned within 30 days of the purchase date.</li>
+            <li>
+              Items must be returned within 30 days of the purchase date.
+            </li>
             <li>
               The product must be in its original condition, unused, and with
               all the original packaging and tags intact.
@@ -35,7 +37,7 @@ const ReturnPolicy = () => {
           <ul>
             <li>
               To initiate a return, please contact our customer service team via
-              email or phone within 7 days of receiving the product.
+              email or phone within 7 days of receiving the product
             </li>
             <li>
               Our representative will guide you through the return process and
@@ -43,7 +45,7 @@ const ReturnPolicy = () => {
             </li>
             <li>
               Ensure that the RMA number is clearly marked on the package to
-              facilitate smooth processing.
+              facilitate smooth processing
             </li>
             <li>
               Return shipping costs are the responsibility of the customer
@@ -51,23 +53,23 @@ const ReturnPolicy = () => {
             </li>
             <li>
               We recommend using a trackable shipping method to ensure the safe
-              return of the product.
+              return of the product
             </li>
           </ul>
           <h5>Refunds and Exchanges:</h5>
           <ul>
             <li>
               Once we receive the returned item and verify its condition, we
-              will process the refund within 7 business days.
+              will process the refund within 2 business days
             </li>
             <li>
               The refund will be issued to the original payment method used
-              during the purchase.
+              during the purchase
             </li>
             <li>
               Exchanges can be arranged for eligible items based on
               availability. If the desired item is out of stock, a refund will
-              be issued instead.
+              be issued instead
             </li>
           </ul>
           <h5>Damaged or Defective Products:</h5>
@@ -78,7 +80,7 @@ const ReturnPolicy = () => {
             </li>
             <li>
               Provide clear photographs or videos of the damaged or defective
-              item for our investigation.
+              item for our investigation
             </li>
             <li>
               We will arrange for a replacement or issue a refund based on the

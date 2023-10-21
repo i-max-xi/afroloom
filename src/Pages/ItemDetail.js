@@ -74,64 +74,6 @@ const ItemDetail = ({ match }) => {
     setSelectedImage(extraImage);
   };
 
-  // let productImage = null;
-  // if (Array.isArray(product.item)) {
-  //   productImage = (
-  //     <div
-  //       id="productCarousel"
-  //       className="carousel slide"
-  //       data-bs-ride="carousel"
-  //     >
-  //       <div className="carousel-inner">
-  //         {product.item.map((image, index) => (
-  //           <div
-  //             className={`carousel-item ${index === 0 ? "active" : ""}`}
-  //             key={index}
-  //           >
-  //             <img
-  //               src={image}
-  //               alt={`Img ${index + 1}`}
-  //               className="d-block w-100"
-  //             />
-  //           </div>
-  //         ))}
-  //       </div>
-  //       <button
-  //         className="carousel-control-prev"
-  //         type="button"
-  //         data-bs-target="#productCarousel"
-  //         data-bs-slide="prev"
-  //       >
-  //         <span
-  //           className="carousel-control-prev-icon"
-  //           aria-hidden="true"
-  //         ></span>
-  //         <span className="visually-hidden">Previous</span>
-  //       </button>
-  //       <button
-  //         className="carousel-control-next"
-  //         type="button"
-  //         data-bs-target="#productCarousel"
-  //         data-bs-slide="next"
-  //       >
-  //         <span
-  //           className="carousel-control-next-icon"
-  //           aria-hidden="true"
-  //         ></span>
-  //         <span className="visually-hidden">Next</span>
-  //       </button>
-  //     </div>
-  //   );
-  // } else {
-  //   productImage = (
-  //     <img
-  //       src={product.item}
-  //       alt={product.title}
-  //       className="img-fluid w-75"
-  //     />
-  //   );
-  // }
-
   const currencySymbol = useSelector((state) => state.currencySymbol.symbol);
   const currencyFactor = useSelector((state) => state.currencySymbol.factor);
 

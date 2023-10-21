@@ -24,14 +24,14 @@ h1 {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 1rem 0 0 1rem;
+  padding: 0.3rem 1rem;
   text-transform: uppercase;
   transform: translateX(-5rem);
   width: 45%;
 }
 
 .left-panel > h5 {
-  margin-top: 0.6rem;
+  /* margin-top: 0.3rem; */
   font-size: 1rem;
 }
 
@@ -60,6 +60,7 @@ h1 {
   justify-content: center;
 }
 
+
 .fit {
   cursor: pointer;
   color: blue;
@@ -78,6 +79,7 @@ h1 {
   border-radius: 50%;
   border: 0.5px solid rgba(0, 0, 0, 0.418);
   cursor: pointer;
+  transform: translateY(0.3rem);
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
