@@ -264,7 +264,7 @@ const OffersDetail = () => {
           backgroundSize: "cover",
           backgroundImage: `url(${url})`,
           backgroundRepeat: "no-repeat",
-          height: "10rem",
+          height: "15rem",
           width: "100%",
         }}
       ></div>

@@ -14,10 +14,12 @@ const OfferItem = ({ title, imageUrl, linkTo, videoUrl, itemID }) => {
           loop
           muted
         />
-      ) : (
+      ) : itemID !== undefined ? (
         <Link to={`/product/${itemID}`}>
           <img src={imageUrl} alt={title} width="100%" />
         </Link>
+      ) : (
+        <img src={imageUrl} alt={title} width="100%" />
       )}
       <Link to={linkTo} className="offer-link">
         {videoUrl ? "Customize" : "See More"}
