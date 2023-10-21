@@ -16,7 +16,7 @@ const SearchedItem = () => {
           backgroundImage: `url(${searchbanner})`,
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
-          height: "10rem",
+          height: "15rem",
           width: "100%",
         }}
       ></div>
