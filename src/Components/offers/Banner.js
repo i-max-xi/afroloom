@@ -1,8 +1,82 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "../../Styles/Offers.css"; // Import your CSS file for styling
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
-const Banner = ({ items, headTitle, seeMore, linkTo }) => {
+const Banner = ({ items, headTitle, seeMore, linkTo, bannerFix }) => {
+  // currency conversion
+  const currencySymbol = useSelector((state) => state.currencySymbol.symbol);
+  const currencyFactor = useSelector((state) => state.currencySymbol.factor);
+
+  const Products = useSelector((state) => state.allProducts.products);
+
+  const [selectedFabric, setselectedFabric] = useState([]);
+  const [selectedDiscount, setselectedDiscount] = useState([]);
+  const [selectedHandicraft, setselectedHandicraft] = useState([]);
+  const [selectedFurniture, setselectedFurniture] = useState([]);
+
+  useEffect(() => {
+    const handicraft = Products.filter(
+      (item) => item.category === "Handicrafts"
+    );
+
+    setselectedHandicraft(
+      handicraft.slice(0, 5).map((item) => ({
+        imageUrl: item.item,
+        id: item.id,
+        price: item.price,
+      }))
+    );
+
+    const discount = Products.filter((item) => item.discount > 0);
+
+    setselectedDiscount(
+      discount.slice(0, 5).map((item) => {
+        const discountPercentage = item.discount / 100;
+
+        const discountedPrice = (1 - discountPercentage) * item.price; // Calculate the discounted price
+
+        return {
+          imageUrl: item.item,
+          id: item.id,
+          discount: item.discount,
+          price: item.price,
+          discountedPrice: discountedPrice,
+        };
+      })
+    );
+
+    const fabric = Products.filter((item) => item.category === "Textiles");
+
+    setselectedFabric(
+      fabric.slice(0, 5).map((item) => ({
+        imageUrl: item.item,
+        id: item.id,
+        price: item.price,
+      }))
+    );
+
+    const furniture = Products.filter((item) => item.category === "Furniture");
+
+    setselectedFurniture(
+      furniture.slice(0, 5).map((item) => ({
+        imageUrl: item.item,
+        id: item.id,
+        price: item.price,
+      }))
+    );
+  }, [Products]);
+
+  if (bannerFix === "One") {
+    items = selectedHandicraft;
+  } else if (bannerFix === "Five") {
+    items = selectedDiscount;
+  } else if (bannerFix === "Eight") {
+    items = selectedFabric;
+  } else if (bannerFix === "Ten") {
+    items = selectedFurniture;
+  }
+
   return (
     <div className="clickable-banner-container">
       <h3 className="headTitle">
@@ -23,28 +97,46 @@ const Banner = ({ items, headTitle, seeMore, linkTo }) => {
       <div className="clickable-banner">
         {items.map((item, index) => (
           <div className="clickable-item" key={index}>
-            {item.videoUrl ? (
-              <video
-                src={item.videoUrl}
-                alt={item.title}
-                className="item-video"
-                autoPlay
-                loop
-                muted
-              />
-            ) : (
-              <img
-                src={item.imageUrl}
-                alt={item.title}
-                className="item-image"
-              />
-            )}
-            {item.discount ? (
-              <span className="discount">{item.discount}% off </span>
-            ) : (
-              ""
-            )}
-            <h4 className="item-title">{item.title}</h4>
+            <div className="image-space">
+              {item.videoUrl ? (
+                <video
+                  src={item.videoUrl}
+                  alt={item.title}
+                  className="item-video"
+                  autoPlay
+                  loop
+                  muted
+                />
+              ) : (
+                <Link to={`/product/${item.id}`}>
+                  <img
+                    src={item.imageUrl}
+                    alt={item.title}
+                    className="item-image"
+                  />
+                </Link>
+              )}
+            </div>
+            <div className="price-space">
+              {item.discount ? (
+                <>
+                  <div className="original-price">
+                      {currencySymbol}
+                      {(currencyFactor * item.price).toFixed(2)}
+                  </div>
+                  <div className="price">
+                    {currencySymbol}
+                    { (currencyFactor * item.discountedPrice).toFixed(2)}
+                  </div>
+                </>
+              ) : (
+                // If no discount, display the regular price
+                <div className="price">
+                      {currencySymbol}
+                      {(currencyFactor * item.price).toFixed(2)}
+                  </div>                
+              )}
+            </div>
           </div>
         ))}
       </div>

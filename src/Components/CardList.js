@@ -19,12 +19,6 @@ import { useSelector } from "react-redux";
 // import AdGuy2 from "../Assets/Ads/portraitguy2.JPG";
 import Row from "./offers/Row";
 import Banner from "./offers/Banner";
-import {
-  bannereight,
-  bannerfive,
-  bannerone,
-  bannerten,
-} from "./offers/arrays/banner";
 import { getPriceRangeOptions } from "../Data/PriceRangeData";
 
 export const Card = ({
@@ -496,7 +490,8 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
                 </div> */}
                 <div className="container mt-5 mb-5" key={uuid()}>
                   <Banner
-                    items={bannerone}
+                    // items={bannerone}
+                    bannerFix="One"
                     headTitle="Discover the Timeless Beauty of African Handicraft"
                     seeMore="See More"
                     linkTo="/category/Handicrafts"
@@ -528,7 +523,8 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
                 {/* banner 2 */}
                 <div className="container mt-5 mb-5" key={uuid()}>
                   <Banner
-                    items={bannerfive}
+                    // items={bannerfive}
+                    bannerFix="Five"
                     headTitle="Time is running out on these Great Discounts"
                     seeMore="See More"
                     linkTo="/offers/discounts"
@@ -555,7 +551,8 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
               <>
                 <div className="container mt-5 mb-5" key={uuid()}>
                   <Banner
-                    items={bannereight}
+                    // items={bannereight}
+                    bannerFix="Eight"
                     headTitle="Discover Elegant African Fabrics"
                     seeMore="See More"
                     linkTo="/category/Textiles"
@@ -565,7 +562,8 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
                 <Row offerFix="Nine" />
                 <div className="container mt-5 mb-5" key={uuid()}>
                   <Banner
-                    items={bannerten}
+                    // items={bannerten}
+                    bannerFix="Ten"
                     headTitle="Low Cost, High Quality Furniture"
                     seeMore="See More"
                     linkTo="/category/Furniture"
