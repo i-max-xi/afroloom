@@ -36,15 +36,8 @@ import CategoryDetail from "./Pages/CategoryDetail";
 import ArtisanDetail from "./Pages/ArtisanDetail";
 import { useEffect } from "react";
 import CustomizePage from "./Pages/Customize/CustomizePage";
-import SellerDashboard from "./Pages/Dashboards/SellerDashboard";
-import UserDashboard from "./Pages/Dashboards/UserDashboard";
-// import CustomizeFemale from "./Pages/Customize/CustomizeFemale";
-// import CustomizeMale from "./Pages/Customize/CustomizeMale";
-// import CustomizeMaleAccesories from "./Pages/Customize/CustomizeMaleAccesories";
-// import CustomizeFemaleAccesories from "./Pages/Customize/CustomizeFemaleAccessories";
-// import CustomizeUnisex from "./Pages/Customize/CustomizeUnisex";
-// import CustomizeFootwear from "./Pages/Customize/CustomizeFootwear";
-import Dashboard from "./Pages/Dashboards/Dashboard";
+import SellerDashboard from "./Pages/Dashboards/seller/SellerDashboard";
+import UserDashboard from "./Pages/Dashboards/buyer/UserDashboard";
 import RegisterAs from "./Pages/User/RegisterAs";
 import Buyer from "./Pages/User/Buyer";
 import Supplier from "./Pages/User/Supplier";
@@ -98,7 +91,6 @@ function App() {
             <Route path="forgotPassword" element={<ForgotPassword />} />
             <Route path="/seller-dashboard" element={<SellerDashboard />} />
             <Route path="/user-dashboard" element={<UserDashboard />} />
-            <Route path="/dashboard" element={<Dashboard />} />
 
             <Route path="category/:categoryName" element={<CategoryDetail />} />
             <Route path="/product/:productId" element={<ItemDetail />} />

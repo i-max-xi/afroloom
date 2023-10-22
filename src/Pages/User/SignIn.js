@@ -108,7 +108,7 @@ const SignIn = () => {
           </p>
           <p className="mt-3 text-center">
             Don't have an account?{" "}
-            <Link to="/register" className="">
+            <Link to="/registeras" className="">
               Sign Up
             </Link>
           </p>

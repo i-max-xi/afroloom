@@ -1,13 +1,13 @@
 import React from "react";
 import Sidebar from "./Sidebar";
-import "../../Styles/Dashboard.css";
-import Nav from "../../Components/Nav";
+import "../styles/Dashboard.css";
+import Nav from "../../../Components/Nav";
 import { TabPanel, TabView } from "primereact/tabview";
 import { useState } from "react";
-import SellerDashboard from "./SellerDashboard";
-import Products from "../../Components/dashboard/Products";
+import Home from "./Home";
+import AddProduct from "./AddProduct";
 
-const Dashboard = () => {
+const SellerDashboard = () => {
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
@@ -22,15 +22,10 @@ const Dashboard = () => {
             onTabChange={(e) => setActiveIndex(e.index)}
           >
             <TabPanel>
-              <SellerDashboard />
+              <Home />
             </TabPanel>
-            <TabPanel header="Header II">
-              <Products />
-            </TabPanel>
-            <TabPanel header="Header III">
-              <p className="m-0">
-                <h1>List of Customers</h1>
-              </p>
+            <TabPanel header="Add A New Product">
+              <AddProduct/>
             </TabPanel>
           </TabView>
         </div>
@@ -39,4 +34,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default SellerDashboard;

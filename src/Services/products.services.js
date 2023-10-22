@@ -14,7 +14,7 @@ import {
 const productCollectionRef = collection(db, "AllProducts");
 
 class ProductsDataService {
-  addProducts = (newProduct) => {
+  addProduct = (newProduct) => {
     return addDoc(productCollectionRef, newProduct);
   };
 
