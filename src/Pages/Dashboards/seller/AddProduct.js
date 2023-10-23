@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { Dropdown } from "primereact/dropdown";
 import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
 import ProductsDataService from "../../../Services/products.services";
 import { categoryFilter } from "../../../Data/categoryList";
+import { Toast } from "primereact/toast";
 
 const AddProduct = () => {
   const [newProduct, setNewProduct] = useState({
@@ -18,14 +19,32 @@ const AddProduct = () => {
     discount: "", // Optional field
   });
 
+  const toastRef = useRef(null);
+
   const handleCategoryChange = (e) => {
     setNewProduct({ ...newProduct, category: e.value });
   };
 
   const handleAddProduct = async () => {
+    if (
+      newProduct.title === "" ||
+      newProduct.category === "" ||
+      newProduct.price === "" ||
+      newProduct.item === "" ||
+      newProduct.seller === "" ||
+      newProduct.detailedCategory === "" ||
+      newProduct.gender === "" ||
+      newProduct.size === ""
+    ) {
+      toastRef.current.show({
+        severity: "error",
+        summary: "Please fill in all the required fields.",
+      });
+      return; // Don't proceed with adding the product if any required field is empty.
+    }
+  
     try {
       const response = await ProductsDataService.addProduct(newProduct);
-      console.log("Product added successfully. Document ID: ", response.id);
       // Reset the form
       setNewProduct({
         title: "",
@@ -38,13 +57,24 @@ const AddProduct = () => {
         size: "",
         discount: "",
       });
+  
+      toastRef.current.show({
+        severity: "success",
+        summary: `Product added successfully. Document ID: ${response.id}`,
+      });
     } catch (error) {
-      console.error("Error adding product:", error);
+      toastRef.current.show({
+        severity: "error",
+        summary: `Error adding product. Please try again: ${error}`,
+      });
     }
   };
+  
 
   return (
     <div>
+      <Toast ref={toastRef} position="top-right" />
+
       <h2>Add a New Product</h2>
       <div className="p-grid p-fluid">
         <div className="p-col-12 p-md-6">
@@ -52,7 +82,9 @@ const AddProduct = () => {
           <InputText
             id="title"
             value={newProduct.title}
-            onChange={(e) => setNewProduct({ ...newProduct, title: e.target.value })}
+            onChange={(e) =>
+              setNewProduct({ ...newProduct, title: e.target.value })
+            }
           />
         </div>
         <div className="p-col-12 p-md-6">
@@ -70,7 +102,9 @@ const AddProduct = () => {
           <InputText
             id="price"
             value={newProduct.price}
-            onChange={(e) => setNewProduct({ ...newProduct, price: e.target.value })}
+            onChange={(e) =>
+              setNewProduct({ ...newProduct, price: e.target.value })
+            }
           />
         </div>
         <div className="p-col-12 p-md-6">
@@ -78,7 +112,9 @@ const AddProduct = () => {
           <InputText
             id="item"
             value={newProduct.item}
-            onChange={(e) => setNewProduct({ ...newProduct, item: e.target.value })}
+            onChange={(e) =>
+              setNewProduct({ ...newProduct, item: e.target.value })
+            }
           />
         </div>
         <div className="p-col-12 p-md-6">
@@ -86,7 +122,9 @@ const AddProduct = () => {
           <InputText
             id="seller"
             value={newProduct.seller}
-            onChange={(e) => setNewProduct({ ...newProduct, seller: e.target.value })}
+            onChange={(e) =>
+              setNewProduct({ ...newProduct, seller: e.target.value })
+            }
           />
         </div>
         <div className="p-col-12 p-md-6">
@@ -104,7 +142,9 @@ const AddProduct = () => {
           <InputText
             id="gender"
             value={newProduct.gender}
-            onChange={(e) => setNewProduct({ ...newProduct, gender: e.target.value })}
+            onChange={(e) =>
+              setNewProduct({ ...newProduct, gender: e.target.value })
+            }
           />
         </div>
         <div className="p-col-12 p-md-6">
@@ -112,7 +152,9 @@ const AddProduct = () => {
           <InputText
             id="size"
             value={newProduct.size}
-            onChange={(e) => setNewProduct({ ...newProduct, size: e.target.value })}
+            onChange={(e) =>
+              setNewProduct({ ...newProduct, size: e.target.value })
+            }
           />
         </div>
         <div className="p-col-12 p-md-6">

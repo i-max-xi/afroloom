@@ -1,12 +1,15 @@
 // Home.js
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import ProductsDataService from "../../../Services/products.services";
 import { Button } from "primereact/button";
 import { Dialog } from "primereact/dialog";
+import { Toast } from "primereact/toast";
 
 const Home = () => {
+  const toastRef = useRef(null);
+
   const [products, setProducts] = useState([]);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [editDialogVisible, setEditDialogVisible] = useState(false);
@@ -41,7 +44,7 @@ const Home = () => {
 
   const handleEditSubmit = async (e) => {
     e.preventDefault(); // Prevent page refresh
-  
+
     try {
       if (selectedProduct) {
         console.log("Updating product...");
@@ -50,29 +53,41 @@ const Home = () => {
           price: selectedProduct.price,
           // Update other fields as needed
         });
-        console.log("Product updated successfully.");
+        toastRef.current.show({
+            severity: "success",
+            summary: `Product updated successfully.`,
+          });
         loadProducts();
         setEditDialogVisible(false);
       }
     } catch (error) {
-      console.error("Error editing product:", error);
+      toastRef.current.show({
+        severity: "error",
+        summary: `Error editing product: ${error}`,
+      });
     }
   };
-  
-  
 
   const deleteProduct = async (id) => {
     try {
       await ProductsDataService.deleteProduct(id);
-      // Reload products after deletion
+      toastRef.current.show({
+        severity: "success",
+        summary: `Successfully deleted product`,
+      });
       loadProducts();
     } catch (error) {
-      console.error("Error deleting product:", error);
+      toastRef.current.show({
+        severity: "error",
+        summary: `Error deleting product: ${error}`,
+      });
     }
   };
 
   return (
     <div>
+      <Toast ref={toastRef} position="top-right" />
+
       <h2>All Products</h2>
       <DataTable value={products} paginator rows={10}>
         <Column
@@ -117,7 +132,7 @@ const Home = () => {
         style={{ width: "50vw" }}
       >
         {selectedProduct && (
-            <form onSubmit={handleEditSubmit}>
+          <form onSubmit={handleEditSubmit}>
             <div className="p-fluid">
               <div className="p-field">
                 <label htmlFor="title">Title</label>
