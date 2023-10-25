@@ -5,6 +5,9 @@ import { Button } from "primereact/button";
 import ProductsDataService from "../../../Services/products.services";
 import { categoryFilter } from "../../../Data/categoryList";
 import { Toast } from "primereact/toast";
+import { storage } from "../../../firebase";
+import { ref, uploadBytes, getDownloadURL } from "@firebase/storage";
+
 
 const AddProduct = () => {
   const [newProduct, setNewProduct] = useState({
@@ -24,6 +27,22 @@ const AddProduct = () => {
   const handleCategoryChange = (e) => {
     setNewProduct({ ...newProduct, category: e.value });
   };
+
+  const handleImageUpload = async (e) => {
+    const file = e.target.files[0];
+    const storageRef = ref(storage, `images/${file.name}`);
+    try {
+      await uploadBytes(storageRef, file);
+      const downloadURL = await getDownloadURL(storageRef);
+      setNewProduct({ ...newProduct, item: downloadURL });
+    } catch (error) {
+      toastRef.current.show({
+        severity: "error",
+        summary: "Error uploading image:", error,
+      });
+    }
+  };
+  
 
   const handleAddProduct = async () => {
     if (
@@ -108,13 +127,16 @@ const AddProduct = () => {
           />
         </div>
         <div className="p-col-12 p-md-6">
-          <label htmlFor="item">Item Image URL</label>
+          <label htmlFor="item">Upload item image</label>
           <InputText
             id="item"
-            value={newProduct.item}
-            onChange={(e) =>
-              setNewProduct({ ...newProduct, item: e.target.value })
-            }
+            type="file"
+            accept="image/*"
+            onChange={handleImageUpload}
+            // value={newProduct.item}
+            // onChange={(e) =>
+            //   setNewProduct({ ...newProduct, item: e.target.value })
+            // }
           />
         </div>
         <div className="p-col-12 p-md-6">

@@ -14,6 +14,9 @@ const Home = () => {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [editDialogVisible, setEditDialogVisible] = useState(false);
 
+  const [filteredProducts, setFilteredProducts] = useState([]); // For filtered products
+  const [searchTerm, setSearchTerm] = useState(""); // For search input
+
   useEffect(() => {
     loadProducts();
   }, []);
@@ -31,6 +34,19 @@ const Home = () => {
     } catch (error) {
       console.error("Error loading products:", error);
     }
+  };
+
+  // Function to filter products based on the search term
+  const filterProducts = () => {
+    const filtered = products.filter((product) =>
+      product.title.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setFilteredProducts(filtered);
+  };
+
+  // Handle search input change
+  const handleSearchChange = (e) => {
+    setSearchTerm(e.target.value);
   };
 
   const handleEditClick = (product) => {
@@ -54,9 +70,9 @@ const Home = () => {
           // Update other fields as needed
         });
         toastRef.current.show({
-            severity: "success",
-            summary: `Product updated successfully.`,
-          });
+          severity: "success",
+          summary: `Product updated successfully.`,
+        });
         loadProducts();
         setEditDialogVisible(false);
       }
@@ -89,7 +105,18 @@ const Home = () => {
       <Toast ref={toastRef} position="top-right" />
 
       <h2>All Products</h2>
-      <DataTable value={products} paginator rows={10}>
+      {/* Search input field */}
+      <div className="p-inputgroup justify-content-center mt-3 mb-3">
+        <input
+          type="text"
+          className="w-50 rounded"
+          placeholder="Search by title"
+          value={searchTerm}
+          onChange={handleSearchChange}
+        />
+        <Button icon="pi pi-search" onClick={filterProducts} />
+      </div>
+      <DataTable value={filteredProducts.length !== 0 ? filteredProducts : products} paginator rows={10}>
         <Column
           field="item"
           header="Image"

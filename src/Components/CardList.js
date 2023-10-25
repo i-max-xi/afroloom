@@ -126,14 +126,12 @@ export const Card = ({
               <>
                 <div>
                   <span className="original-price">
-                    {currencySymbol}
-                    {price.toFixed(2)}
+                    {currencySymbol}{(currencyFactor * price).toFixed(2)}
                   </span>
                   <span className="discount-off"> {discount}% off</span>
                 </div>
                 <span className="discounted-price">
-                  {currencySymbol}
-                  {discountedPrice.toFixed(2)}
+                {currencySymbol}{(currencyFactor * discountedPrice).toFixed(2)}
                 </span>
               </>
             ) : (
