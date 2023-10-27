@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import Nav from "../../../Components/Nav";
 import { TabPanel, TabView } from "primereact/tabview";
-// import Home from "./Home";
-// import AddProduct from "./AddProduct";
 import SideBar from "../Sidebar";
+import Home from "./Home";
+import AddProduct from "./AddProduct";
+import AllUsers from "./AllUsers";
 
 const adminSidebarItems = [
   { label: "Home" },
   { label: "Add A New Product" },
+  { label: "All Sellers" },
 ];
 
 const AdminDashboard = () => {
@@ -18,16 +20,19 @@ const AdminDashboard = () => {
       <Nav />
       <div className="d-flex">
         <SideBar items={adminSidebarItems} setActiveIndex={setActiveIndex} />
-        <div className="dashboard w-75 mx-5">
+        <div className="dashboard w-75 px-5">
           <TabView
             activeIndex={activeIndex}
             onTabChange={(e) => setActiveIndex(e.index)}
           >
             <TabPanel>
-              {/* <Home /> */}
+              <Home />
             </TabPanel>
             <TabPanel header="Add A New Product">
-              {/* <AddProduct /> */}
+              <AddProduct />
+            </TabPanel>
+            <TabPanel header="All Users">
+              <AllUsers />
             </TabPanel>
           </TabView>
         </div>
