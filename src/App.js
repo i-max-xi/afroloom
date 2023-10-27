@@ -52,6 +52,7 @@ import { useDispatch } from "react-redux";
 import { fetchAllProducts } from "./Redux/store";
 import UserDashboard from "./Pages/Dashboards/buyer/UserDashboard";
 import Buyer from "./Pages/Auths/Buyer";
+import AdminDashboard from "./Pages/Dashboards/admin/AdminDashboard";
 
 function App() {
   const dispatch = useDispatch(); // Get the dispatch function
@@ -74,26 +75,28 @@ function App() {
             <Route path="registeras" element={<RegisterAs />} />
             <Route path="buyer-signup" element={<Buyer />} />
             <Route path="supplier-signup" element={<Supplier />} />
+            <Route path="forgotPassword" element={<ForgotPassword />} />
 
             <Route path="artisan" element={<Artisan />} />
+            <Route path="artisancomingsoon" element={<ArtisanWait />} />
+
 
             <Route path="searched" element={<SearchedItem />} />
-            <Route path="artisancomingsoon" element={<ArtisanWait />} />
             <Route path="offers/:offerType" element={<OffersDetail />} />
 
 
             <Route path="checkout" element={<Checkout />} />
             <Route path="category-page" element={<CategoryPage />} />
-            <Route path="customize" element={<CustomizePage />} />
 
-            <Route path="forgotPassword" element={<ForgotPassword />} />
             <Route path="/seller-dashboard" element={<SellerDashboard />} />
             <Route path="/user-dashboard" element={<UserDashboard />} />
+            <Route path="/admin-dashboard" element={<AdminDashboard />} />
 
             <Route path="category/:categoryName" element={<CategoryDetail />} />
             <Route path="/product/:productId" element={<ItemDetail />} />
             <Route path="/artisan/:artisanId" element={<ArtisanDetail />} />
 
+            <Route path="customize" element={<CustomizePage />} />
             <Route path="/configurator/:Id" element={<Configurator />} />
             <Route
               path="/configurator-female/:Id"
