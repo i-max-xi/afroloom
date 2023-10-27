@@ -18,11 +18,10 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Layout from "./Pages/Layout";
 import NoPage from "./Pages/NoPage";
 import Home from "./Pages/Home";
-// import SignUp from './Pages/User/SignUp';
-import SignIn from "./Pages/User/SignIn";
+// import SignUp from './Pages/Auths/SignUp';
+import SignIn from "./Pages/Auths/SignIn";
 import About from "./Pages/About";
-import Register from "./Pages/User/Register";
-import ForgotPassword from "./Pages/User/ForgotPassword";
+import ForgotPassword from "./Pages/Auths/ForgotPassword";
 import Artisan from "./Pages/Artisan";
 import Checkout from "./Pages/Checkout";
 import Tnc from "./Pages/Care/Tnc";
@@ -37,10 +36,8 @@ import ArtisanDetail from "./Pages/ArtisanDetail";
 import { useEffect } from "react";
 import CustomizePage from "./Pages/Customize/CustomizePage";
 import SellerDashboard from "./Pages/Dashboards/seller/SellerDashboard";
-import UserDashboard from "./Pages/Dashboards/buyer/UserDashboard";
-import RegisterAs from "./Pages/User/RegisterAs";
-import Buyer from "./Pages/User/Buyer";
-import Supplier from "./Pages/User/Supplier";
+import RegisterAs from "./Pages/Auths/RegisterAs";
+import Supplier from "./Pages/Auths/Supplier";
 import Configurator from "./Pages/Customize/Configurator/Configurator";
 import ConfiguratorFootwear from "./Pages/Customize/Configurator/ConfiguratorFootwear";
 import ConfiguratorMaleAccessories from "./Pages/Customize/Configurator/ConfiguratorMaleAccessories";
@@ -53,6 +50,8 @@ import ArtisanWait from "./Pages/ArtisanWait";
 import OffersDetail from "./Pages/OffersDetail";
 import { useDispatch } from "react-redux";
 import { fetchAllProducts } from "./Redux/store";
+import UserDashboard from "./Pages/Dashboards/buyer/UserDashboard";
+import Buyer from "./Pages/Auths/Buyer";
 
 function App() {
   const dispatch = useDispatch(); // Get the dispatch function
@@ -72,7 +71,6 @@ function App() {
             <Route path="about" element={<About />} />
             {/* <Route path="signup" element={<SignUp />} /> */}
             <Route path="signin" element={<SignIn />} />
-            <Route path="register" element={<Register />} />
             <Route path="registeras" element={<RegisterAs />} />
             <Route path="buyer-signup" element={<Buyer />} />
             <Route path="supplier-signup" element={<Supplier />} />

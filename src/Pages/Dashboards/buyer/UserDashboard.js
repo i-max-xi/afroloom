@@ -1,46 +1,34 @@
-import React from "react";
-import { Card } from "primereact/card";
-import { DataTable } from "primereact/datatable";
-import { Column } from "primereact/column";
-import { Button } from "primereact/button";
+import React, { useState } from "react";
+import Nav from "../../../Components/Nav";
+import { TabPanel, TabView } from "primereact/tabview";
+// import Home from "./Home";
+// import AddProduct from "./AddProduct";
+import SideBar from "../Sidebar";
+
+const userSidebarItems = [
+  { label: "Home" },
+];
 
 const UserDashboard = () => {
-  const orders = [
-    { id: 1, product: "Product 1", price: 10, status: "Shipped" },
-    { id: 2, product: "Product 2", price: 15, status: "Delivered" },
-    { id: 3, product: "Product 3", price: 20, status: "Processing" },
-  ];
-
-  const handleCancel = (orderId) => {
-    // Implement cancel functionality here
-    console.log(`Canceling order with ID ${orderId}`);
-  };
-
-  const cancelButtonTemplate = (rowData) => {
-    return (
-      <Button
-        label="Cancel"
-        className="p-button-danger"
-        onClick={() => handleCancel(rowData.id)}
-      />
-    );
-  };
+  const [activeIndex, setActiveIndex] = useState(0);
 
   return (
     <>
-      <div className="container">
-        <div className="p-grid p-fluid mb-5">
-          <div className="p-col-12">
-            <Card title="My Orders">
-              <DataTable value={orders}>
-                <Column field="id" header="ID"></Column>
-                <Column field="product" header="Product"></Column>
-                <Column field="price" header="Price"></Column>
-                <Column field="status" header="Status"></Column>
-                <Column body={cancelButtonTemplate}></Column>
-              </DataTable>
-            </Card>
-          </div>
+      <Nav />
+      <div className="d-flex">
+        <SideBar items={userSidebarItems} setActiveIndex={setActiveIndex} />
+        <div className="dashboard w-75 mx-5">
+          <TabView
+            activeIndex={activeIndex}
+            onTabChange={(e) => setActiveIndex(e.index)}
+          >
+            <TabPanel>
+              {/* <Home /> */}
+            </TabPanel>
+            <TabPanel header="Add A New Product">
+              {/* <AddProduct /> */}
+            </TabPanel>
+          </TabView>
         </div>
       </div>
     </>

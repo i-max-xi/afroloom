@@ -1,11 +1,11 @@
 import React from "react";
 import { Button } from "primereact/button";
 import { useDispatch } from "react-redux";
-import { setcurrentUser, setSignedIn } from "../../../Redux/store";
 import { useNavigate } from "react-router-dom";
-import { auth, signOut } from "../../../firebase";
+import { auth, signOut } from "../../firebase";
+import { setSignedIn, setcurrentUser } from "../../Redux/store";
 
-const SideBar = ({ setActiveIndex }) => {
+const SideBar = ({ items, setActiveIndex }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -29,17 +29,19 @@ const SideBar = ({ setActiveIndex }) => {
   return (
     <div className="Sidebar">
       <div className="d-flex flex-column">
+        {items.map((item, index) => (
+          <Button
+            key={index}
+            onClick={() => setActiveIndex(index)}
+            className="p-button-text"
+            label={item.label}
+          />
+        ))}
         <Button
-          onClick={() => setActiveIndex(0)}
+          onClick={handleSignOut}
           className="p-button-text"
-          label="Home"
+          label="Sign Out"
         />
-        <Button
-          onClick={() => setActiveIndex(1)}
-          className="p-button-text"
-          label="Add A New Product"
-        />
-        <Button onClick={handleSignOut} className="p-button-text" label="Sign Out" />
       </div>
     </div>
   );
