@@ -1,8 +1,8 @@
 import React from "react";
-import Nav from "../Components/Nav";
+import Nav from "../../Components/Nav";
 import { useParams } from "react-router-dom";
 import { TabPanel, TabView } from "primereact/tabview";
-import ArtisanData from "../Data/ArtisanData";
+import ArtisanData from "../../Data/ArtisanData";
 
 const ArtisanDetail = ({ match }) => {
   const { artisanId } = useParams();

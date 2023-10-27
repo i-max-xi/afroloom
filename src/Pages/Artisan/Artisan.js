@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import ArtisanData from "../Data/ArtisanData";
-import LayoutHeaders from "../Components/LayoutHeaders";
+import ArtisanData from "../../Data/ArtisanData";
+import LayoutHeaders from "../../Components/LayoutHeaders";
 import Top from "../Assets/Headers/Hire_Artisan.jpg";
 import { Paginator } from "primereact/paginator";
-import SearchFilters from "../Components/SearchFilters";
+import SearchFilters from "../../Components/SearchFilters";
 
 const Artisan = () => {
   const artisanArr = [

@@ -1,5 +1,5 @@
 import React from "react";
-import Nav from "../Components/Nav";
+import Nav from "../../Components/Nav";
 import comingsoon from '../Assets/artisan_wait.jpg'
 
 const ArtisanWait = () => {
