@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { auth, signOut } from "../../firebase";
 import { setSignedIn, setcurrentUser } from "../../Redux/store";
 
+import { Divider } from "primereact/divider";
+
 const SideBar = ({ items, setActiveIndex }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -27,22 +29,25 @@ const SideBar = ({ items, setActiveIndex }) => {
   };
 
   return (
-    <div className="Sidebar">
-      <div className="d-flex flex-column">
+    <div className="Sidebar bg-white">
+      <div className="d-flex flex-column align-items-start mt-3">
         {items.map((item, index) => (
-          <Button
-            key={index}
-            onClick={() => setActiveIndex(index)}
-            className="p-button-text"
-            label={item.label}
-          />
+          <>
+            <Button
+              key={index}
+              onClick={() => setActiveIndex(index)}
+              className="p-button-text text-black"
+              label={item.label}
+            />
+            <Divider />
+          </>
         ))}
-        <Button
-          onClick={handleSignOut}
-          className="p-button-text"
-          label="Sign Out"
-        />
       </div>
+      <Button
+        onClick={handleSignOut}
+        className="rounded btn bg-danger"
+        label="Sign Out"
+      />
     </div>
   );
 };

@@ -3,9 +3,9 @@ import { Link, useNavigate } from "react-router-dom";
 import Nav from "../../Components/Nav";
 import { Toast } from "primereact/toast";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import { getFirestore, doc, setDoc } from "firebase/firestore";
 import { Dropdown } from "primereact/dropdown";
 import { categoryFilter } from "../../Data/categoryList";
+import ProductsDataService from "../../Services/products.services";
 
 import 'primeicons/primeicons.css';
         
@@ -65,14 +65,19 @@ const Supplier = () => {
 
       else {
         const auth = getAuth();
-        const userCredential = await createUserWithEmailAndPassword(
+        // const userCredential = await createUserWithEmailAndPassword(
+        //   auth,
+        //   email,
+        //   password
+        // );
+        await createUserWithEmailAndPassword(
           auth,
           email,
           password
         );
 
         // Access the user from the userCredential
-        const user = userCredential.user;
+        // const user = userCredential.user;
 
         const userInfo = {
           firstName: firstName,
@@ -83,6 +88,19 @@ const Supplier = () => {
           number: number,
         };
 
+        // Get the Firestore instance
+        // const db = getFirestore();
+
+        // Store the additional user information in Firestore
+        // await setDoc(doc(db, "sellers", user.uid), userInfo);
+        await ProductsDataService.addSeller(userInfo);
+
+        toastRef.current.show({
+          severity: "success",
+          summary: "Request sent successfully!",
+          detail: "Pending Approval",
+        });
+
         // Submit to formspree
         await fetch(process.env.REACT_APP_formSpree, {
           method: "POST",
@@ -90,18 +108,6 @@ const Supplier = () => {
             "Content-Type": "application/json",
           },
           body: JSON.stringify(userInfo),
-        });
-
-        // Get the Firestore instance
-        const db = getFirestore();
-
-        // Store the additional user information in Firestore
-        await setDoc(doc(db, "users", user.uid), userInfo);
-
-        toastRef.current.show({
-          severity: "success",
-          summary: "Request sent successfully!",
-          detail: "Pending Approval",
         });
 
         // Redirect to "/" after successful signup and delay
@@ -155,7 +161,7 @@ const Supplier = () => {
               <input
                 type="text"
                 className="form-control"
-                placeholder="Country"
+                placeholder="Name of your organization..."
                 value={companyName}
                 onChange={(e) => setCompanyName(e.target.value)}
               />

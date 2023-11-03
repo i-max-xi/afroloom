@@ -4,7 +4,7 @@ import { TabPanel, TabView } from "primereact/tabview";
 import SideBar from "../Sidebar";
 import Home from "./Home";
 import AddProduct from "./AddProduct";
-import AllUsers from "./AllUsers";
+import AllSellers from "./AllSellers";
 
 const adminSidebarItems = [
   { label: "Home" },
@@ -18,9 +18,9 @@ const AdminDashboard = () => {
   return (
     <>
       <Nav />
-      <div className="d-flex">
+      <div className="d-flex bg-white" style={{height: '85vh'}}>
         <SideBar items={adminSidebarItems} setActiveIndex={setActiveIndex} />
-        <div className="dashboard w-75 px-5">
+        <div className="dashboard w-75">
           <TabView
             activeIndex={activeIndex}
             onTabChange={(e) => setActiveIndex(e.index)}
@@ -31,8 +31,8 @@ const AdminDashboard = () => {
             <TabPanel header="Add A New Product">
               <AddProduct />
             </TabPanel>
-            <TabPanel header="All Users">
-              <AllUsers />
+            <TabPanel header="All Sellers">
+              <AllSellers />
             </TabPanel>
           </TabView>
         </div>

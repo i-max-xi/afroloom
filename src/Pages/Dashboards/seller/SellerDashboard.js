@@ -19,10 +19,10 @@ const SellerDashboard = () => {
   return (
     <>
       <Nav />
-      <div className="d-flex">
+      <div className="d-flex bg-white" style={{height: '85vh'}}>
       <SideBar items={sellerSidebarItems} setActiveIndex={setActiveIndex} />
 
-        <div className="dashboard w-75 px-5">
+        <div className="dashboard w-75">
           <TabView
             activeIndex={activeIndex}
             onTabChange={(e) => setActiveIndex(e.index)}

@@ -12,6 +12,7 @@ import {
 } from "firebase/firestore";
 
 const productCollectionRef = collection(db, "AllProducts");
+const sellerCollectionRef = collection(db, "sellers");
 
 class ProductsDataService {
   addProduct = (newProduct) => {
@@ -35,6 +36,18 @@ class ProductsDataService {
   getProduct = (id) => {
     const productDoc = doc(db, "AllProducts", id);
     return getDoc(productDoc);
+  };
+
+  // sellers
+  getAllSellers = () => {
+    return getDocs(sellerCollectionRef);
+  };
+  addSeller = (newSeller) => {
+    return addDoc(sellerCollectionRef, newSeller);
+  };
+  deleteSeller = (id) => {
+    const sellerDoc = doc(db, "sellers", id);
+    return deleteDoc(sellerDoc);
   };
 }
 
