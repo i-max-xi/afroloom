@@ -44,19 +44,6 @@ export const categoryFilter = [
 ];
 
 export const allCategory = [
-  // {
-  //   id: "1000",
-  //   name: "Home Decor",
-  //   filters: [
-  //     {
-  //       name: "Type",
-  //       options: ["Curtains", "Cushions", "Rugs", "Wall Art", "Lamps"],
-  //     },
-  //   ],
-  //   rating: "4",
-  //   image:
-  //     "https://www.thetrentonline.com/wp-content/uploads/2021/04/mbg_living_room_30_d3f00eab-99b1-4f5a-a236-5dd9404a0942.jpg",
-  // },
 
   {
     id: "2000",
@@ -151,36 +138,6 @@ export const allCategory = [
     image:
       "https://pictures-ghana.jijistatic.com/16234874_MTUwMC0xNDY0LWI5ZjczZmY0MDM.jpg",
   },
-  // {
-  //   id: "200",
-  //   name: "Electronics",
-  //   filters: [
-  //     {
-  //       name: "Type",
-  //       options: ["Phones", "Laptops", "Tablets", "Headphones", "Speakers"],
-  //     },
-  //   ],
-  //   rating: "3",
-  //   image:
-  //     "https://media.istockphoto.com/id/178716575/photo/mobile-devices.jpg?s=612x612&w=0&k=20&c=9YyINgAbcmjfY_HZe-i8FrLUS43-qZh6Sx6raIc_9vQ=",
-  // },
-  // {
-  //   id: "300",
-  //   name: "Bags",
-  //   filters: [
-  //     {
-  //       name: "Type",
-  //       options: ["Backpack", "Handbag", "Purse", "Satchel", "Tote", "Wallet"],
-  //     },
-  //     {
-  //       name: "Gender",
-  //       options: ["Male", "Female"],
-  //     },
-  //   ],
-  //   rating: "3",
-  //   image:
-  //     "https://cdn.shopify.com/s/files/1/1257/5497/products/UbuntuB01167WEB.jpg?v=1670336335&width=512",
-  // },
   {
     id: "3000",
     name: "Furniture",
@@ -343,27 +300,6 @@ export const allCategory = [
     image:
       "https://www.artmajeur.com/medias/standard/o/w/owolabisegun75/artwork/15766249_img-20220521-wa0012-3.jpg?v=1653986670",
   },
-  // {
-  //   id: "8000",
-  //   name: "Scarves and Sashe",
-  //   filters: [
-  //     {
-  //       name: "Type",
-  //       options: ["Scarves", "Sashes"],
-  //     },
-  //     {
-  //       name: "Gender",
-  //       options: ["Male", "Female"],
-  //     },
-  //     {
-  //       name: "Size",
-  //       options: ["Small", "Medium", "Large", "X-Large"],
-  //     },
-  //   ],
-  //   rating: "4",
-  //   image:
-  //     "https://africanvibes.storage.googleapis.com/wp-content/uploads/2022/02/24011137/il_794xN.1707905208_tjd8.jpg",
-  // },
   {
     id: "9000",
     name: "Basketry",

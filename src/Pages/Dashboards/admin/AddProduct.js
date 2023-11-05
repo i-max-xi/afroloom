@@ -3,7 +3,7 @@ import { Dropdown } from "primereact/dropdown";
 import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
 import ProductsDataService from "../../../Services/products.services";
-import { categoryFilter } from "../../../Data/categoryList";
+import { allCategory, categoryFilter } from "../../../Data/categoryList";
 import { Toast } from "primereact/toast";
 import { storage } from "../../../firebase";
 import { ref, uploadBytes, getDownloadURL } from "@firebase/storage";
@@ -22,10 +22,26 @@ const AddProduct = () => {
     discount: "", // Optional field
   });
 
+  // const toastRef = useRef(null);
+
+  // const handleCategoryChange = (e) => {
+  //   setNewProduct({ ...newProduct, category: e.value });
+  // };
+
+  const [detailedCategoryOptions, setDetailedCategoryOptions] = useState([]);
+
   const toastRef = useRef(null);
 
   const handleCategoryChange = (e) => {
-    setNewProduct({ ...newProduct, category: e.value });
+    const selectedCategory = e.value;
+    setNewProduct({ ...newProduct, category: selectedCategory });
+
+    // Update the "Detailed Category" options based on the selected category
+    const productFilter = allCategory
+      .find((category) => category.name === selectedCategory)
+      .filters.find((filter) => filter.name === "Product");
+    const detailedCategoryOptions = productFilter.options;
+    setDetailedCategoryOptions(detailedCategoryOptions);
   };
 
   const handleImageUpload = async (e) => {
@@ -50,9 +66,7 @@ const AddProduct = () => {
       newProduct.category === "" ||
       newProduct.price === "" ||
       newProduct.item === "" ||
-      newProduct.seller === "" ||
       newProduct.detailedCategory === "" ||
-      newProduct.gender === "" ||
       newProduct.size === ""
     ) {
       toastRef.current.show({
@@ -88,6 +102,12 @@ const AddProduct = () => {
       });
     }
   };
+
+  // dropdown infos
+  const genderOptions = [
+    { label: "Male", value: "Male" },
+    { label: "Female", value: "Female" },
+  ];
   
 
   return (
@@ -99,6 +119,7 @@ const AddProduct = () => {
         <label htmlFor="title">Name of Product</label>
         <InputText
           id="title"
+          placeholder="Name"
           value={newProduct.title}
           onChange={(e) =>
             setNewProduct({ ...newProduct, title: e.target.value })
@@ -116,10 +137,23 @@ const AddProduct = () => {
         />
       </div>
       <div className="p-field">
-        <label htmlFor="price">Price</label>
+        <label htmlFor="detailedCategory">Detailed Category</label>
+        <Dropdown
+            id="detailedCategory"
+            value={newProduct.detailedCategory}
+            options={detailedCategoryOptions}
+            placeholder="Select a more specific category"
+            onChange={(e) =>
+              setNewProduct({ ...newProduct, detailedCategory: e.value })
+            }
+          />
+      </div>
+      <div className="p-field">
+        <label htmlFor="price">Price $</label>
         <InputText
           id="price"
           value={newProduct.price}
+          placeholder="Dollar equivalent value"
           onChange={(e) =>
             setNewProduct({ ...newProduct, price: e.target.value })
           }
@@ -145,40 +179,34 @@ const AddProduct = () => {
         />
       </div>
       <div className="p-field">
-        <label htmlFor="detailedCategory">Detailed Category</label>
-        <InputText
-          id="detailedCategory"
-          value={newProduct.detailedCategory}
-          onChange={(e) =>
-            setNewProduct({ ...newProduct, detailedCategory: e.target.value })
-          }
-        />
-      </div>
-      <div className="p-field">
-        <label htmlFor="gender">Gender</label>
-        <InputText
-          id="gender"
-          value={newProduct.gender}
-          onChange={(e) =>
-            setNewProduct({ ...newProduct, gender: e.target.value })
-          }
-        />
+        <label htmlFor="gender">Gender</label> <span>(Optional)</span>
+        <Dropdown
+            id="gender"
+            value={newProduct.gender}
+            options={genderOptions}
+            placeholder="Is this product gender specific ?"
+            onChange={(e) =>
+              setNewProduct({ ...newProduct, gender: e.value })
+            }
+          />
       </div>
       <div className="p-field">
         <label htmlFor="size">Size</label>
         <InputText
           id="size"
           value={newProduct.size}
+          placeholder="Size"
           onChange={(e) =>
             setNewProduct({ ...newProduct, size: e.target.value })
           }
         />
       </div>
       <div className="p-field">
-        <label htmlFor="discount">Discount % (Optional)</label>
+        <label htmlFor="discount">Discount % </label> <span>(Optional)</span>
         <InputText
           id="discount"
           value={newProduct.discount}
+          placeholder="Percentage discount eg. '10'"
           onChange={(e) =>
             setNewProduct({ ...newProduct, discount: e.target.value })
           }
