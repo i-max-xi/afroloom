@@ -130,7 +130,7 @@ export const allCategory = [
           "2X-Large",
         ],
         braOptions: [
-          28, 30, 32, 34, 36, 38, 40, 42, 44, 46, 48
+          "28", "30", "32", "34", "36", "38", "40", "42", "44", "46", "48"
         ]
       },
     ],
@@ -272,14 +272,14 @@ export const allCategory = [
       {
         name: "Size",
         options: [
-          "Extra small",
-          "Small",
-          "Medium",
-          "Large",
-          "X-Large",
-          "2X-Large",
-          "3X-Large",
-          "4X-Large",
+          "35",
+          "36",
+          "37",
+          "38",
+          "39",
+          "40",
+          "41",
+          "42",
         ],
       },
     ],
