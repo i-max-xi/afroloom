@@ -15,7 +15,7 @@ const AddProduct = () => {
     category: "", // Use a Dropdown to select from categoryFilter
     price: "",
     item: "", // URL of the item image
-    seller: "",
+    // seller: "",
     detailedCategory: "",
     gender: "",
     size: "",
@@ -29,6 +29,8 @@ const AddProduct = () => {
   // };
 
   const [detailedCategoryOptions, setDetailedCategoryOptions] = useState([]);
+  const [sizeOptions, setSizeOptions] = useState([]);
+
 
   const toastRef = useRef(null);
 
@@ -42,6 +44,13 @@ const AddProduct = () => {
       .filters.find((filter) => filter.name === "Product");
     const detailedCategoryOptions = productFilter.options;
     setDetailedCategoryOptions(detailedCategoryOptions);
+
+    // Update the "Size" options based on the selected category
+    const sizeFilter = allCategory
+      .find((category) => category.name === selectedCategory)
+      .filters.find((filter) => filter.name === "Size");
+    const sizeOptions = sizeFilter.options;
+    setSizeOptions(sizeOptions);
   };
 
   const handleImageUpload = async (e) => {
@@ -119,7 +128,6 @@ const AddProduct = () => {
         <label htmlFor="title">Name of Product</label>
         <InputText
           id="title"
-          placeholder="Name"
           value={newProduct.title}
           onChange={(e) =>
             setNewProduct({ ...newProduct, title: e.target.value })
@@ -133,7 +141,7 @@ const AddProduct = () => {
           value={newProduct.category}
           options={categoryFilter}
           onChange={handleCategoryChange}
-          placeholder="Select a Category"
+          placeholder="select a Category..."
         />
       </div>
       <div className="p-field">
@@ -142,7 +150,7 @@ const AddProduct = () => {
             id="detailedCategory"
             value={newProduct.detailedCategory}
             options={detailedCategoryOptions}
-            placeholder="Select a more specific category"
+            placeholder="select a more specific category..."
             onChange={(e) =>
               setNewProduct({ ...newProduct, detailedCategory: e.value })
             }
@@ -153,7 +161,7 @@ const AddProduct = () => {
         <InputText
           id="price"
           value={newProduct.price}
-          placeholder="Dollar equivalent value"
+          placeholder="dollar equivalent value..."
           onChange={(e) =>
             setNewProduct({ ...newProduct, price: e.target.value })
           }
@@ -184,7 +192,7 @@ const AddProduct = () => {
             id="gender"
             value={newProduct.gender}
             options={genderOptions}
-            placeholder="Is this product gender specific ?"
+            placeholder="is this product gender specific ?"
             onChange={(e) =>
               setNewProduct({ ...newProduct, gender: e.value })
             }
@@ -192,21 +200,22 @@ const AddProduct = () => {
       </div>
       <div className="p-field">
         <label htmlFor="size">Size</label>
-        <InputText
-          id="size"
-          value={newProduct.size}
-          placeholder="Size"
-          onChange={(e) =>
-            setNewProduct({ ...newProduct, size: e.target.value })
-          }
-        />
+        <Dropdown
+            id="size"
+            value={newProduct.size}
+            options={sizeOptions}
+            placeholder="select a size"
+            onChange={(e) =>
+              setNewProduct({ ...newProduct, size: e.value })
+            }
+          />
       </div>
       <div className="p-field">
         <label htmlFor="discount">Discount % </label> <span>(Optional)</span>
         <InputText
           id="discount"
           value={newProduct.discount}
-          placeholder="Percentage discount eg. '10'"
+          placeholder="percentage discount eg. '10'"
           onChange={(e) =>
             setNewProduct({ ...newProduct, discount: e.target.value })
           }
