@@ -18,7 +18,7 @@ const AdminDashboard = () => {
   return (
     <>
       <Nav />
-      <div className="d-flex bg-white" style={{height: '85vh'}}>
+      <div className="d-flex bg-white" style={{minHeight: '85vh'}}>
         <SideBar items={adminSidebarItems} setActiveIndex={setActiveIndex} />
         <div className="dashboard w-75">
           <TabView

@@ -45,7 +45,7 @@ const SideBar = ({ items, setActiveIndex }) => {
       </div>
       <Button
         onClick={handleSignOut}
-        className="rounded btn bg-danger"
+        className="rounded btn bg-danger m-3"
         label="Sign Out"
       />
     </div>

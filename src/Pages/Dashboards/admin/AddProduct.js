@@ -92,112 +92,107 @@ const AddProduct = () => {
 
   return (
     <div>
-      <Toast ref={toastRef} position="top-right" />
-
-      <h2>Add a New Product</h2>
-      <div className="p-grid p-fluid">
-        <div className="p-col-12 p-md-6">
-          <label htmlFor="title">Title</label>
-          <InputText
-            id="title"
-            value={newProduct.title}
-            onChange={(e) =>
-              setNewProduct({ ...newProduct, title: e.target.value })
-            }
-          />
-        </div>
-        <div className="p-col-12 p-md-6">
-          <label htmlFor="category">Category</label>
-          <Dropdown
-            id="category"
-            value={newProduct.category}
-            options={categoryFilter}
-            onChange={handleCategoryChange}
-            placeholder="Select a Category"
-          />
-        </div>
-        <div className="p-col-12 p-md-6">
-          <label htmlFor="price">Price</label>
-          <InputText
-            id="price"
-            value={newProduct.price}
-            onChange={(e) =>
-              setNewProduct({ ...newProduct, price: e.target.value })
-            }
-          />
-        </div>
-        <div className="p-col-12 p-md-6">
-          <label htmlFor="item">Upload item image</label>
-          <InputText
-            id="item"
-            type="file"
-            accept="image/*"
-            onChange={handleImageUpload}
-            // value={newProduct.item}
-            // onChange={(e) =>
-            //   setNewProduct({ ...newProduct, item: e.target.value })
-            // }
-          />
-        </div>
-        <div className="p-col-12 p-md-6">
-          <label htmlFor="seller">Seller</label>
-          <InputText
-            id="seller"
-            value={newProduct.seller}
-            onChange={(e) =>
-              setNewProduct({ ...newProduct, seller: e.target.value })
-            }
-          />
-        </div>
-        <div className="p-col-12 p-md-6">
-          <label htmlFor="detailedCategory">Detailed Category</label>
-          <InputText
-            id="detailedCategory"
-            value={newProduct.detailedCategory}
-            onChange={(e) =>
-              setNewProduct({ ...newProduct, detailedCategory: e.target.value })
-            }
-          />
-        </div>
-        <div className="p-col-12 p-md-6">
-          <label htmlFor="gender">Gender</label>
-          <InputText
-            id="gender"
-            value={newProduct.gender}
-            onChange={(e) =>
-              setNewProduct({ ...newProduct, gender: e.target.value })
-            }
-          />
-        </div>
-        <div className="p-col-12 p-md-6">
-          <label htmlFor="size">Size</label>
-          <InputText
-            id="size"
-            value={newProduct.size}
-            onChange={(e) =>
-              setNewProduct({ ...newProduct, size: e.target.value })
-            }
-          />
-        </div>
-        <div className="p-col-12 p-md-6">
-          <label htmlFor="discount">Discount (Optional)</label>
-          <InputText
-            id="discount"
-            value={newProduct.discount}
-            onChange={(e) =>
-              setNewProduct({ ...newProduct, discount: e.target.value })
-            }
-          />
-        </div>
-        <div className="p-col-12 p-md-6">
-          <Button
-            label="Add Product"
-            onClick={handleAddProduct}
-            className="p-button p-component"
-          />
-        </div>
+    <Toast ref={toastRef} position="top-right" />
+    <h2>Add a New Product</h2>
+    <div className="p-fluid pr-5">
+      <div className="p-field">
+        <label htmlFor="title">Name of Product</label>
+        <InputText
+          id="title"
+          value={newProduct.title}
+          onChange={(e) =>
+            setNewProduct({ ...newProduct, title: e.target.value })
+          }
+        />
+      </div>
+      <div className="p-field">
+        <label htmlFor="category">Category</label>
+        <Dropdown
+          id="category"
+          value={newProduct.category}
+          options={categoryFilter}
+          onChange={handleCategoryChange}
+          placeholder="Select a Category"
+        />
+      </div>
+      <div className="p-field">
+        <label htmlFor="price">Price</label>
+        <InputText
+          id="price"
+          value={newProduct.price}
+          onChange={(e) =>
+            setNewProduct({ ...newProduct, price: e.target.value })
+          }
+        />
+      </div>
+      <div className="p-field">
+        <label htmlFor="item">Product Image</label> <span>*Strictly with white background and preferably png</span>
+        <InputText
+          id="item"
+          type="file"
+          accept="image/*"
+          onChange={handleImageUpload}
+        />
+      </div>
+      <div className="p-field">
+        <label htmlFor="seller">Seller</label>
+        <InputText
+          id="seller"
+          value={newProduct.seller}
+          onChange={(e) =>
+            setNewProduct({ ...newProduct, seller: e.target.value })
+          }
+        />
+      </div>
+      <div className="p-field">
+        <label htmlFor="detailedCategory">Detailed Category</label>
+        <InputText
+          id="detailedCategory"
+          value={newProduct.detailedCategory}
+          onChange={(e) =>
+            setNewProduct({ ...newProduct, detailedCategory: e.target.value })
+          }
+        />
+      </div>
+      <div className="p-field">
+        <label htmlFor="gender">Gender</label>
+        <InputText
+          id="gender"
+          value={newProduct.gender}
+          onChange={(e) =>
+            setNewProduct({ ...newProduct, gender: e.target.value })
+          }
+        />
+      </div>
+      <div className="p-field">
+        <label htmlFor="size">Size</label>
+        <InputText
+          id="size"
+          value={newProduct.size}
+          onChange={(e) =>
+            setNewProduct({ ...newProduct, size: e.target.value })
+          }
+        />
+      </div>
+      <div className="p-field">
+        <label htmlFor="discount">Discount % (Optional)</label>
+        <InputText
+          id="discount"
+          value={newProduct.discount}
+          onChange={(e) =>
+            setNewProduct({ ...newProduct, discount: e.target.value })
+          }
+        />
+      </div>
+      <div className="p-field">
+        <Button
+          label="Add Product"
+          onClick={handleAddProduct}
+          className="p-button p-component"
+        />
       </div>
     </div>
+  </div>
   );
 };
 

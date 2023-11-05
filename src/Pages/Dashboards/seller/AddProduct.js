@@ -95,7 +95,7 @@ const AddProduct = () => {
       <Toast ref={toastRef} position="top-right" />
 
       <h2>Add a New Product</h2>
-      <div className="p-grid p-fluid">
+      <div className="">
         <div className="p-col-12 p-md-6">
           <label htmlFor="title">Title</label>
           <InputText
@@ -180,7 +180,7 @@ const AddProduct = () => {
           />
         </div>
         <div className="p-col-12 p-md-6">
-          <label htmlFor="discount">Discount (Optional)</label>
+          <label htmlFor="discount">Discount % (Optional)</label>
           <InputText
             id="discount"
             value={newProduct.discount}

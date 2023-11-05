@@ -43,4 +43,12 @@
     padding: 20px;
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
   }
+
+  .p-field {
+    margin-top: 1rem;
+  }
+
+  .p-field label {
+    font-weight: bold;
+  }
   
