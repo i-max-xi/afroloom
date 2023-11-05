@@ -1,11 +1,11 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import { Dropdown } from "primereact/dropdown";
 import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
-import ProductsDataService from "../../../Services/products.services";
-import { allCategory, categoryFilter } from "../../../Data/categoryList";
+import ProductsDataService from "../../Services/products.services";
+import { allCategory, categoryFilter } from "../../Data/categoryList";
 import { Toast } from "primereact/toast";
-import { storage } from "../../../firebase";
+import { storage } from "../../firebase";
 import { ref, uploadBytes, getDownloadURL } from "@firebase/storage";
 
 const AddProduct = () => {
@@ -66,16 +66,13 @@ const AddProduct = () => {
 
     const allsizeOptions = sizeFilter.options;
     const braSizes = sizeFilter.braOptions;
-    const hatSizes = sizeFilter.hatOptions
-
-
+    const hatSizes = sizeFilter.hatOptions;
 
     // Handle special sizes for Hat and Bra
     if (selectedDetailedCategory === "Hat") {
       setSizeOptions(hatSizes);
     } else if (selectedDetailedCategory === "Bra") {
       setSizeOptions(braSizes);
-      console.log(selectedDetailedCategory + "yeah")
     } else {
       setSizeOptions(allsizeOptions);
     }
@@ -154,6 +151,7 @@ const AddProduct = () => {
         <div className="p-field">
           <label htmlFor="title">Name of Product</label>
           <InputText
+            required
             id="title"
             value={newProduct.title}
             onChange={(e) =>
@@ -164,6 +162,7 @@ const AddProduct = () => {
         <div className="p-field">
           <label htmlFor="category">Category</label>
           <Dropdown
+            required
             id="category"
             value={newProduct.category}
             options={categoryFilter}
@@ -174,6 +173,7 @@ const AddProduct = () => {
         <div className="p-field">
           <label htmlFor="detailedCategory">Detailed Category</label>
           <Dropdown
+            required
             id="detailedCategory"
             value={newProduct.detailedCategory}
             options={detailedCategoryOptions}
@@ -187,6 +187,7 @@ const AddProduct = () => {
         <div className="p-field">
           <label htmlFor="price">Price $</label>
           <InputText
+            required
             id="price"
             value={newProduct.price}
             placeholder="dollar equivalent value..."
@@ -199,6 +200,7 @@ const AddProduct = () => {
           <label htmlFor="item">Product Image</label>{" "}
           <span>*Strictly with white background and preferably png</span>
           <InputText
+            required
             id="item"
             type="file"
             accept="image/*"
@@ -219,6 +221,7 @@ const AddProduct = () => {
           <label htmlFor="gender">Gender</label> <span>(Optional)</span>
           <Dropdown
             id="gender"
+            required
             value={newProduct.gender}
             options={genderOptions}
             placeholder="is this product gender specific ?"
@@ -229,6 +232,7 @@ const AddProduct = () => {
           <label htmlFor="size">Size</label>
           <Dropdown
             id="size"
+            required
             value={newProduct.size}
             options={sizeOptions}
             placeholder="select a size"

@@ -3,8 +3,8 @@ import Nav from "../../../Components/Nav";
 import { TabPanel, TabView } from "primereact/tabview";
 import SideBar from "../Sidebar";
 import Home from "./Home";
-import AddProduct from "./AddProduct";
 import AllSellers from "./AllSellers";
+import AddProduct from "../AddProduct";
 
 const adminSidebarItems = [
   { label: "Home" },
