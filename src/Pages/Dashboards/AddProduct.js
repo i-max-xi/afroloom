@@ -21,11 +21,8 @@ const AddProduct = () => {
     discount: "", // Optional field
   });
 
-  // const toastRef = useRef(null);
+  const [extraImages, setExtraImages] = useState([]); // State variable to store extra images
 
-  // const handleCategoryChange = (e) => {
-  //   setNewProduct({ ...newProduct, category: e.value });
-  // };
 
   const [detailedCategoryOptions, setDetailedCategoryOptions] = useState([]);
   const [sizeOptions, setSizeOptions] = useState([]);
@@ -94,6 +91,22 @@ const AddProduct = () => {
     }
   };
 
+  const handleExtraImageUpload = async (e) => {
+    const file = e.target.files[0];
+    const storageRef = ref(storage, `images/${file.name}`);
+    try {
+      await uploadBytes(storageRef, file);
+      const downloadURL = await getDownloadURL(storageRef);
+      setExtraImages([...extraImages, downloadURL]); // Append the extra image to the array
+    } catch (error) {
+      toastRef.current.show({
+        severity: "error",
+        summary: "Error uploading extra image:",
+        detail: error.message,
+      });
+    }
+  };
+
   const handleAddProduct = async () => {
     if (
       newProduct.title === "" ||
@@ -107,11 +120,16 @@ const AddProduct = () => {
         severity: "error",
         summary: "Please fill in all the required fields.",
       });
-      return; // Don't proceed with adding the product if any required field is empty.
+      return;
     }
 
+    const productData = {
+      ...newProduct,
+      extraImages: extraImages, // Add the array of extra images to the product data
+    };
+
     try {
-      const response = await ProductsDataService.addProduct(newProduct);
+      const response = await ProductsDataService.addProduct(productData);
       // Reset the form
       setNewProduct({
         title: "",
@@ -125,6 +143,8 @@ const AddProduct = () => {
         discount: "",
       });
 
+      setExtraImages([]); // Clear the extra images array
+
       toastRef.current.show({
         severity: "success",
         summary: `Product added successfully. Document ID: ${response.id}`,
@@ -135,7 +155,7 @@ const AddProduct = () => {
         summary: `Error adding product. Please try again: ${error}`,
       });
     }
-  };
+  }
 
   // dropdown infos
   const genderOptions = [
@@ -197,7 +217,7 @@ const AddProduct = () => {
           />
         </div>
         <div className="p-field">
-          <label htmlFor="item">Product Image</label>{" "}
+          <label htmlFor="item">Main Product Image</label>
           <span>*Strictly with white background and preferably png</span>
           <InputText
             required
@@ -205,6 +225,16 @@ const AddProduct = () => {
             type="file"
             accept="image/*"
             onChange={handleImageUpload}
+          />
+        </div>
+        <div className="p-field">
+          <label htmlFor="item">Extra Images</label>
+          <InputText
+            required
+            id="extras"
+            type="file"
+            accept="image/*"
+            onChange={handleExtraImageUpload}
           />
         </div>
         <div className="p-field">
