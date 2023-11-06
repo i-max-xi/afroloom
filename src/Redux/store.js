@@ -5,19 +5,18 @@ import {
   combineReducers,
   // createAsyncThunk,
 } from "@reduxjs/toolkit";
- 
-import ProductsDataService from '../Services/products.services';
-import { persistStore, persistReducer } from 'redux-persist';
-import storage from 'redux-persist/lib/storage/session'; // defaults to localStorage for web
+
+import ProductsDataService from "../Services/products.services";
+import { persistStore, persistReducer } from "redux-persist";
+import storage from "redux-persist/lib/storage/session"; // defaults to localStorage for web
 
 const persistConfig = {
-  key: 'root',
+  key: "root",
   storage,
 };
 
-
 export const fetchAllProducts = createAsyncThunk(
-  'allProducts/fetchAllProducts',
+  "allProducts/fetchAllProducts",
   async (_, { dispatch }) => {
     try {
       const querySnapshot = await ProductsDataService.getAllProducts();
@@ -38,7 +37,6 @@ export const fetchAllProducts = createAsyncThunk(
 
 // Redux slice for allProducts
 
-
 const allProductsSlice = createSlice({
   name: "allProducts",
   initialState: {
@@ -48,28 +46,27 @@ const allProductsSlice = createSlice({
   },
   reducers: {
     addProducts: (state, action) => {
-      
       state.products = action.payload;
     },
-    
+
     searchItem: (state, action) => {
       const searchTerm = action.payload.toLowerCase(); // Convert search term to lowercase
       state.searchKeyDisplay = action.payload;
-      
+
       if (searchTerm !== "") {
-        const filtered = state.products.filter(product =>
-          product.title && product.title.toLowerCase().includes(searchTerm) // Convert product title to lowercase
+        const filtered = state.products.filter(
+          (product) =>
+            product.title && product.title.toLowerCase().includes(searchTerm) // Convert product title to lowercase
         );
-        
+
         state.searchedArray = filtered;
-      } 
+      }
       // else {
       //   state.searchedArray = state.buffer;
       // }
-    }
+    },
   },
 });
-
 
 const currencySymbolSlice = createSlice({
   name: "currencySymbol",
@@ -81,10 +78,6 @@ const currencySymbolSlice = createSlice({
     },
   },
 });
-
-
-
-
 
 const cartSlice = createSlice({
   name: "cart",
@@ -209,7 +202,7 @@ const store = configureStore({
   reducer: persistedReducer,
 });
 
-export const { addProducts, searchItem  } = allProductsSlice.actions;
+export const { addProducts, searchItem } = allProductsSlice.actions;
 export const { setCurrencySymbol } = currencySymbolSlice.actions;
 
 export const { addItem, removeItem, clearCart } = cartSlice.actions;

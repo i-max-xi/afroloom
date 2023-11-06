@@ -65,19 +65,11 @@ const Supplier = () => {
 
       else {
         const auth = getAuth();
-        // const userCredential = await createUserWithEmailAndPassword(
-        //   auth,
-        //   email,
-        //   password
-        // );
         await createUserWithEmailAndPassword(
           auth,
           email,
           password
         );
-
-        // Access the user from the userCredential
-        // const user = userCredential.user;
 
         const userInfo = {
           firstName: firstName,
@@ -88,11 +80,6 @@ const Supplier = () => {
           number: number,
         };
 
-        // Get the Firestore instance
-        // const db = getFirestore();
-
-        // Store the additional user information in Firestore
-        // await setDoc(doc(db, "sellers", user.uid), userInfo);
         await ProductsDataService.addSeller(userInfo);
 
         toastRef.current.show({

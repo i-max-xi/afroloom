@@ -7,6 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from '../../firebase';
 import { Toast } from "primereact/toast";
+import  ProductsDataService from "../../Services/products.services";
 
 const SignIn = () => {
   const dispatch = useDispatch();
@@ -20,39 +21,51 @@ const SignIn = () => {
     e.preventDefault();
     try {
       // Firebase sign-in logic
-      const userCredential = await signInWithEmailAndPassword(
-        auth,
-        email,
-        password
-      );
+      const userCredential = await signInWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
-      dispatch(setcurrentUser(user));
+  
+      let userInfo = null;
+  
+      // Try to fetch user information from seller collection
+      const sellerInfo = await ProductsDataService.getSeller(user.uid);
+      const buyerInfo = await ProductsDataService.getBuyer(user.uid);
 
-
-      toastRef.current.show({
-        severity: "success",
-        summary: "Sign in successful!",
-        // life: 2000, // Adjust life duration as needed
-      });
-
-      setEmail("");
-      setPassword("");
-
-      dispatch(setSignedIn(true));
-
-      // Delayed redirect to "/"
-      setTimeout(() => {
-        navigate("/");
-      }, 2000);
-
+      if (sellerInfo.exists()) {
+        userInfo = sellerInfo.data();
+      } else  if (buyerInfo.exists()) {
+          userInfo = buyerInfo.data();
+      }
+  
+      if (user) {
+        dispatch(setcurrentUser(userInfo));
+        toastRef.current.show({
+          severity: "success",
+          summary: "Sign in successful!",
+        });
+  
+        setEmail("");
+        setPassword("");
+  
+        dispatch(setSignedIn(true));
+  
+        // Delayed redirect to "/"
+        setTimeout(() => {
+          navigate("/");
+        }, 2000);
+      } else {
+        toastRef.current.show({
+          severity: "error",
+          summary: "User information not found.",
+        });
+      }
     } catch (error) {
       toastRef.current.show({
         severity: "error",
         summary: `Sign in failed. Please try again ${error}`,
-        // life: 2000, // Adjust life duration as needed
       });
     }
   };
+  
 
   return (
     <>

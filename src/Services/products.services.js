@@ -13,6 +13,7 @@ import {
 
 const productCollectionRef = collection(db, "AllProducts");
 const sellerCollectionRef = collection(db, "sellers");
+const buyerCollectionRef = collection(db, "users");
 
 class ProductsDataService {
   addProduct = (newProduct) => {
@@ -42,12 +43,25 @@ class ProductsDataService {
   getAllSellers = () => {
     return getDocs(sellerCollectionRef);
   };
+  getSeller = (id) => {
+    const sellerDoc = doc(db, "sellers", id);
+    return getDoc(sellerDoc);
+  };
   addSeller = (newSeller) => {
     return addDoc(sellerCollectionRef, newSeller);
   };
   deleteSeller = (id) => {
     const sellerDoc = doc(db, "sellers", id);
     return deleteDoc(sellerDoc);
+  };
+
+  // user
+  getBuyer = (id) => {
+    const buyerDoc = doc(db, "users", id);
+    return getDoc(buyerDoc);
+  };
+  addBuyer = (newBuyer) => {
+    return addDoc(buyerCollectionRef, newBuyer);
   };
 }
 

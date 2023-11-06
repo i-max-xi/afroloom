@@ -5,11 +5,15 @@ import { Toast } from "primereact/toast";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { useDispatch } from "react-redux";
 import { setSignedIn, setcurrentUser } from "../../Redux/store";
+import ProductsDataService from "../../Services/products.services";
+
 
 const Buyer = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -32,33 +36,39 @@ const Buyer = () => {
           detail: "Passwords are not same",
         });
       } else {
-
         const auth = getAuth();
         await createUserWithEmailAndPassword(auth, email, password).then(
           (userCredential) => {
-            // Signed in
             const user = userCredential.user;
-            dispatch(setcurrentUser(user));
+
+            // Add user data to the "users" collection in Firestore
+            const newBuyer = {
+              firstName,
+              lastName,
+              email,
+              orders: []
+            };
+            ProductsDataService.addBuyer(newBuyer).then(() => {
+              // Fetch user data from Firestore and set it to Redux
+              ProductsDataService.getBuyer(user.uid).then((buyerData) => {
+                dispatch(setcurrentUser(buyerData.data()));
+                toastRef.current.show({
+                  severity: "success",
+                  summary: "Sign up successful!",
+                });
+    
+                // set user data to Redux
+                dispatch(setSignedIn(true));  // set signin to true
+    
+                setTimeout(() => {
+                  navigate("/");
+                }, 3000);
+              });
+
+            });
 
           }
         );
-
-        toastRef.current.show({
-          severity: "success",
-          summary: "Sign up successful!",
-        });
-        setEmail("");
-        setPassword("");
-        setConfirmPassword("");
-
-        // Dispatch action to set signed-in status in Redux store
-        dispatch(setSignedIn(true));
-
-        // Redirect to "/" after successful signup
-        // Delayed redirect to "/"
-        setTimeout(() => {
-          navigate("/");
-        }, 3000);
       }
     } catch (error) {
       toastRef.current.show({
@@ -81,10 +91,33 @@ const Buyer = () => {
         <div className="container mb-5 mt-5 d-flex justify-content-center rounded">
           <form onSubmit={handleSignUp} className="w-50">
             <div className="form-group">
+              <label htmlFor="firstName">First Name:</label>
+              <input
+                type="text"
+                className="form-control"
+                id="firstName"
+                required
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="lastName">Last Name:</label>
+              <input
+                type="text"
+                className="form-control"
+                id="lastName"
+                required
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
+              />
+            </div>
+            <div className="form-group">
               <label htmlFor="email">Email:</label>
               <input
                 type="email"
                 className="form-control"
+                required
                 id="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -96,6 +129,7 @@ const Buyer = () => {
               <input
                 type="password"
                 className="form-control"
+                required
                 id="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
