@@ -3,7 +3,7 @@ import { Button } from "primereact/button";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { auth, signOut } from "../../firebase";
-import { setSignedIn, setcurrentUser } from "../../Redux/store";
+import { setDashBoardPath, setSignedIn, setcurrentUser } from "../../Redux/store";
 
 import { Divider } from "primereact/divider";
 
@@ -19,6 +19,7 @@ const SideBar = ({ items, setActiveIndex }) => {
       // Dispatch sign-out action
       dispatch(setcurrentUser(null));
       dispatch(setSignedIn(false));
+      dispatch(setDashBoardPath(""));
 
       // Redirect to the login page or any other desired page
       navigate("/signin");

@@ -5,6 +5,7 @@ import { TabPanel, TabView } from "primereact/tabview";
 // import AddProduct from "./AddProduct";
 import SideBar from "../Sidebar";
 import MyOrders from "./MyOrders";
+import { useSelector } from "react-redux";
 
 const userSidebarItems = [
   { label: "My Orders" },
@@ -13,11 +14,15 @@ const userSidebarItems = [
 
 const UserDashboard = () => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const welcomename = useSelector((state) => state.user.currentUser.firstName);
 
   return (
     <>
       <Nav />
-      <div className="d-flex bg-white" style={{height: '85vh'}}>
+      <div className="bg-white fs-3 p-3 text-bold">
+        Welcome <span style={{color: "orange"}}>{welcomename}!</span>{" "}
+      </div>
+      <div className="d-flex bg-white" style={{ height: "85vh" }}>
         <SideBar items={userSidebarItems} setActiveIndex={setActiveIndex} />
         <div className="dashboard w-75">
           <TabView
