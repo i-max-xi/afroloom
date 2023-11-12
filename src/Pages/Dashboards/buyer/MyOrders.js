@@ -1,8 +1,8 @@
 // Home.js
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
-import ProductsDataService from "../../../Services/products.services";
+// import ProductsDataService from "../../../Services/products.services";
 import { Button } from "primereact/button";
 import { useSelector } from "react-redux";
 
