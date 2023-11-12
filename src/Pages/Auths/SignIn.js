@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import { useDispatch } from "react-redux";
-import { setSignedIn, setcurrentUser } from "../../Redux/store";
+import { setDashBoardPath, setSignedIn, setcurrentUser } from "../../Redux/store";
 import Nav from "../../Components/Nav";
 import signInBg from "../../Assets/backgrounds/login2.jpg";
 import { Link, useNavigate } from "react-router-dom";
@@ -35,9 +35,11 @@ const SignIn = () => {
       if (isChecked) {
         const sellerInfo = await ProductsDataService.getSellerByField("id", user.uid);
         userInfo = sellerInfo.data();
+        dispatch(setDashBoardPath("/seller-dashboard"))
       } else {
         const buyerInfo = await ProductsDataService.getBuyerByField("id", user.uid);
         userInfo = buyerInfo.data();
+        dispatch(setDashBoardPath("/user-dashboard"))
       }
 
       if (userInfo !== null) {

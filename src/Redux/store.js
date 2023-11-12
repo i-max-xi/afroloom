@@ -99,6 +99,7 @@ const userSlice = createSlice({
   name: "user",
   initialState: {
     signedIn: false,
+    dashboardPath: "",
     currentUser: null, // Change this to null if it's a single object, or keep it as an array if it's meant to be an array of users.
   },
   reducers: {
@@ -107,6 +108,9 @@ const userSlice = createSlice({
     },
     setSignedIn: (state, action) => {
       state.signedIn = action.payload;
+    },
+    setDashBoardPath: (state, action) => {
+      state.dashboardPath = action.payload;
     },
   },
 });
@@ -214,7 +218,7 @@ export const { setLastName } = lastNameSlice.actions;
 export const { setCity } = citySlice.actions;
 export const { setApartment } = apartmentSlice.actions;
 export const { setPaymentMethod } = paymentMethodSlice.actions;
-export const { setSignedIn, setcurrentUser } = userSlice.actions;
+export const { setSignedIn, setcurrentUser, setDashBoardPath } = userSlice.actions;
 // export const { setQuery, setFilteredItems, setVisible } = searchSlice.actions;
 
 export const persistor = persistStore(store);

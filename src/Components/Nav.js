@@ -19,6 +19,7 @@ const Nav = ({ handleToggleDropdown, Language, Currency }) => {
   // const dispatch = useDispatch();
 
   const signedin = useSelector((state) => state.user.signedIn);
+  const dashboardPath = useSelector((state) => state.user.dashboardPath);
 
   // const isVisible = useSelector((state) => state.search.visible);
 
@@ -146,7 +147,7 @@ const Nav = ({ handleToggleDropdown, Language, Currency }) => {
       ) : (
         <>
           <GoogleTranslate />
-          <Link to="/dashboard">
+          <Link to={dashboardPath}>
             <Avatar
               icon="pi pi-user"
               className="mx-1 bg-secondary text-white"
