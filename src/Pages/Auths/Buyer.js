@@ -43,6 +43,7 @@ const Buyer = () => {
 
             // Add user data to the "users" collection in Firestore
             const newBuyer = {
+              id: user.uid,
               firstName,
               lastName,
               email,

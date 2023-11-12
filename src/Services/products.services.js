@@ -9,6 +9,8 @@ import {
   updateDoc,
   deleteDoc,
   doc,
+  where,
+  query,
 } from "firebase/firestore";
 
 const productCollectionRef = collection(db, "AllProducts");
@@ -55,6 +57,16 @@ class ProductsDataService {
     return deleteDoc(sellerDoc);
   };
 
+  getSellerByField = async (fieldName, value) => {
+    const q = query(sellerCollectionRef, where(fieldName, "==", value));
+    const querySnapshot = await getDocs(q);
+    return querySnapshot.docs[0]; // Assuming there's at most one document with the given "id"
+  };
+
+  // ... (other methods)
+
+
+
   // user
   getBuyer = (id) => {
     const buyerDoc = doc(db, "users", id);
@@ -62,6 +74,11 @@ class ProductsDataService {
   };
   addBuyer = (newBuyer) => {
     return addDoc(buyerCollectionRef, newBuyer);
+  };
+  getBuyerByField = async (fieldName, value) => {
+    const q = query(buyerCollectionRef, where(fieldName, "==", value));
+    const querySnapshot = await getDocs(q);
+    return querySnapshot.docs[0]; // Assuming there's at most one document with the given "id"
   };
 }
 

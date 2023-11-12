@@ -5,9 +5,9 @@ import Nav from "../../Components/Nav";
 import signInBg from "../../Assets/backgrounds/login2.jpg";
 import { Link, useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from '../../firebase';
+import { auth } from "../../firebase";
 import { Toast } from "primereact/toast";
-import  ProductsDataService from "../../Services/products.services";
+import ProductsDataService from "../../Services/products.services";
 
 const SignIn = () => {
   const dispatch = useDispatch();
@@ -15,39 +15,40 @@ const SignIn = () => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isChecked, setIsChecked] = useState(false);
   const toastRef = useRef(null);
 
   const handleSignIn = async (e) => {
     e.preventDefault();
     try {
       // Firebase sign-in logic
-      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      const userCredential = await signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
       const user = userCredential.user;
-  
-      let userInfo = null;
-  
-      // Try to fetch user information from seller collection
-      const sellerInfo = await ProductsDataService.getSeller(user.uid);
-      const buyerInfo = await ProductsDataService.getBuyer(user.uid);
 
-      if (sellerInfo.exists()) {
+      let userInfo = null;
+
+      // Try to fetch user information from seller collection
+      if (isChecked) {
+        const sellerInfo = await ProductsDataService.getSellerByField("id", user.uid);
         userInfo = sellerInfo.data();
-      } else  if (buyerInfo.exists()) {
-          userInfo = buyerInfo.data();
+      } else {
+        const buyerInfo = await ProductsDataService.getBuyerByField("id", user.uid);
+        userInfo = buyerInfo.data();
       }
-  
-      if (user) {
-        dispatch(setcurrentUser(userInfo));
+
+      if (userInfo !== null) {
         toastRef.current.show({
           severity: "success",
           summary: "Sign in successful!",
         });
-  
-        setEmail("");
-        setPassword("");
-  
+
         dispatch(setSignedIn(true));
-  
+        dispatch(setcurrentUser(userInfo));
+
         // Delayed redirect to "/"
         setTimeout(() => {
           navigate("/");
@@ -65,7 +66,6 @@ const SignIn = () => {
       });
     }
   };
-  
 
   return (
     <>
@@ -107,6 +107,17 @@ const SignIn = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
+          </div>
+          <div className="form-group mt-3">
+            <input
+              type="checkbox"
+              id="check"
+              checked={isChecked}
+              onChange={(e) => setIsChecked(e.target.checked)}
+            />
+            <label className="mx-3" htmlFor="check">
+              Only check if signing in as a Supplier:
+            </label>
           </div>
           <button
             type="submit"
