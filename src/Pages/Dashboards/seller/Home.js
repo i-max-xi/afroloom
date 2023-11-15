@@ -7,7 +7,7 @@ import { Button } from "primereact/button";
 import { Dialog } from "primereact/dialog";
 import { Toast } from "primereact/toast";
 
-const Home = () => {
+const Home = ({currentSeller}) => {
   const toastRef = useRef(null);
 
   const [products, setProducts] = useState([]);
@@ -23,7 +23,7 @@ const Home = () => {
 
   const loadProducts = async () => {
     try {
-      const response = await ProductsDataService.getAllProducts();
+      const response = await ProductsDataService.getProductByField("companyName", currentSeller);
       const productData = [];
       response.forEach((doc) => {
         const data = doc.data();

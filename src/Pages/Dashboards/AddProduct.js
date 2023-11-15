@@ -8,21 +8,21 @@ import { Toast } from "primereact/toast";
 import { storage } from "../../firebase";
 import { ref, uploadBytes, getDownloadURL } from "@firebase/storage";
 
-const AddProduct = () => {
+const AddProduct = ({ currentSeller }) => {
   const [newProduct, setNewProduct] = useState({
     title: "",
     category: "", // Use a Dropdown to select from categoryFilter
     price: "",
     item: "", // URL of the item image
-    // seller: "",
+    seller: currentSeller,
     detailedCategory: "",
     gender: "",
     size: "",
+    createdAt: Date.now(),
     discount: "", // Optional field
   });
 
   const [extraImages, setExtraImages] = useState([]); // State variable to store extra images
-
 
   const [detailedCategoryOptions, setDetailedCategoryOptions] = useState([]);
   const [sizeOptions, setSizeOptions] = useState([]);
@@ -44,8 +44,10 @@ const AddProduct = () => {
     const sizeFilter = allCategory
       .find((category) => category.name === selectedCategory)
       .filters.find((filter) => filter.name === "Size");
-    const sizeOptions = sizeFilter.options;
-    setSizeOptions(sizeOptions);
+
+    sizeFilter !== undefined
+      ? setSizeOptions(sizeFilter.options)
+      : setSizeOptions([]);
   };
 
   const handleDetailedCategoryChange = (e) => {
@@ -61,18 +63,25 @@ const AddProduct = () => {
       .find((category) => category.name === newProduct.category)
       .filters.find((filter) => filter.name === "Size");
 
-    const allsizeOptions = sizeFilter.options;
-    const braSizes = sizeFilter.braOptions;
-    const hatSizes = sizeFilter.hatOptions;
+    let allsizeOptions;
+    let braSizes;
+    let hatSizes;
 
-    // Handle special sizes for Hat and Bra
-    if (selectedDetailedCategory === "Hat") {
-      setSizeOptions(hatSizes);
-    } else if (selectedDetailedCategory === "Bra") {
-      setSizeOptions(braSizes);
+    if (sizeFilter !== undefined) {
+      allsizeOptions = sizeFilter.options;
+      braSizes = sizeFilter.braOptions;
+      hatSizes = sizeFilter.hatOptions;
+      if (selectedDetailedCategory === "Hat") {
+        setSizeOptions(hatSizes);
+      } else if (selectedDetailedCategory === "Bra") {
+        setSizeOptions(braSizes);
+      } else {
+        setSizeOptions(allsizeOptions);
+      }
     } else {
-      setSizeOptions(allsizeOptions);
+      setSizeOptions([]);
     }
+
   };
 
   const handleImageUpload = async (e) => {
@@ -113,8 +122,8 @@ const AddProduct = () => {
       newProduct.category === "" ||
       newProduct.price === "" ||
       newProduct.item === "" ||
-      newProduct.detailedCategory === "" ||
-      newProduct.size === ""
+      newProduct.detailedCategory === ""
+      // newProduct.size === ""
     ) {
       toastRef.current.show({
         severity: "error",
@@ -136,7 +145,7 @@ const AddProduct = () => {
         category: "",
         price: "",
         item: "",
-        seller: "",
+        seller: currentSeller,
         detailedCategory: "",
         gender: "",
         size: "",
@@ -155,7 +164,7 @@ const AddProduct = () => {
         summary: `Error adding product. Please try again: ${error}`,
       });
     }
-  }
+  };
 
   // dropdown infos
   const genderOptions = [
@@ -241,6 +250,7 @@ const AddProduct = () => {
           <label htmlFor="seller">Seller</label>
           <InputText
             id="seller"
+            readOnly
             value={newProduct.seller}
             onChange={(e) =>
               setNewProduct({ ...newProduct, seller: e.target.value })

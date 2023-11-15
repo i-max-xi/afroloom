@@ -7,8 +7,7 @@ import { Dropdown } from "primereact/dropdown";
 import { categoryFilter } from "../../Data/categoryList";
 import ProductsDataService from "../../Services/products.services";
 
-import 'primeicons/primeicons.css';
-        
+import "primeicons/primeicons.css";
 
 const Supplier = () => {
   const navigate = useNavigate();
@@ -17,6 +16,7 @@ const Supplier = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [companyName, setCompanyName] = useState("");
+  const [country, setCountry] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [number, setNumber] = useState("");
@@ -52,55 +52,52 @@ const Supplier = () => {
           summary: "Sign up failed",
           detail: "Passwords are not the same",
         });
-        
-      } 
-      else if (supplyCategories.length === 0) {
+      } else if (supplyCategories.length === 0) {
         // Display a toast error when no categories have been selected
         toastRef.current.show({
           severity: "error",
           summary: "Sign up failed",
           detail: "Please select at least one supply category",
         });
-      } 
-
-      else {
+      } else {
         const auth = getAuth();
-        await createUserWithEmailAndPassword(
-          auth,
-          email,
-          password
+        await createUserWithEmailAndPassword(auth, email, password).then(
+          (userCredential) => {
+            const user = userCredential.user;
+            const userInfo = {
+              id: user.uid,
+              firstName: firstName,
+              lastName: lastName,
+              email: email,
+              country: country,
+              companyName: companyName,
+              supplyCategories: supplyCategories,
+              number: number,
+            };
+
+            ProductsDataService.addSeller(userInfo);
+
+            // Submit to formspree
+            fetch(process.env.REACT_APP_formSpree, {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(userInfo),
+            });
+
+            toastRef.current.show({
+              severity: "success",
+              summary: "Request sent successfully!",
+              detail: "Pending Approval",
+            });
+
+            // Redirect to "/" after successful signup and delay
+            setTimeout(() => {
+              navigate("/");
+            }, 2000);
+          }
         );
-
-        const userInfo = {
-          firstName: firstName,
-          lastName: lastName,
-          email: email,
-          companyName: companyName,
-          supplyCategories: supplyCategories,
-          number: number,
-        };
-
-        await ProductsDataService.addSeller(userInfo);
-
-        toastRef.current.show({
-          severity: "success",
-          summary: "Request sent successfully!",
-          detail: "Pending Approval",
-        });
-
-        // Submit to formspree
-        await fetch(process.env.REACT_APP_formSpree, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(userInfo),
-        });
-
-        // Redirect to "/" after successful signup and delay
-        setTimeout(() => {
-          navigate("/");
-        }, 2000);
       }
     } catch (error) {
       toastRef.current.show({
@@ -144,13 +141,23 @@ const Supplier = () => {
             </div>
 
             <div className="form-group">
-              <label htmlFor="email">Company Name:</label>
+              <label htmlFor="company name">Company Name:</label>
               <input
                 type="text"
                 className="form-control"
                 placeholder="Name of your organization..."
                 value={companyName}
                 onChange={(e) => setCompanyName(e.target.value)}
+              />
+            </div>
+            <div className="form-group">
+              <label htmlFor="country">Country of origin:</label>
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Origin of supplier......"
+                value={country}
+                onChange={(e) => setCountry(e.target.value)}
               />
             </div>
 

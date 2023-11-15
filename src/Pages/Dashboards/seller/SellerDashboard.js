@@ -16,7 +16,9 @@ const sellerSidebarItems = [
 
 const SellerDashboard = () => {
   const [activeIndex, setActiveIndex] = useState(0);
-  const welcomename = useSelector((state) => state.user.currentUser.firstName);
+  const currentUser = useSelector((state) => state.user.currentUser);
+  const welcomename = currentUser.firstName;
+  const sellerCompany = currentUser.companyName;
 
   return (
     <>
@@ -32,10 +34,10 @@ const SellerDashboard = () => {
           onTabChange={(e) => setActiveIndex(e.index)}
         >
           <TabPanel>
-            <Home />
+            <Home currentSeller={sellerCompany}/>
           </TabPanel>
           <TabPanel header="Add A New Product">
-            <AddProduct />
+            <AddProduct currentSeller={sellerCompany}/>
           </TabPanel>
         </TabView>
       </div>

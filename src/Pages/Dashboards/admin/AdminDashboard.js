@@ -15,6 +15,7 @@ const adminSidebarItems = [
 const AdminDashboard = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const welcomename = "Kobby";
+  const adminSeller = "Admin";
 
 
   return (
@@ -34,7 +35,7 @@ const AdminDashboard = () => {
               <Home />
             </TabPanel>
             <TabPanel header="Add A New Product">
-              <AddProduct />
+              <AddProduct currentSeller={adminSeller}/>
             </TabPanel>
             <TabPanel header="All Sellers">
               <AllSellers />

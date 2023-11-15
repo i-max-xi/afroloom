@@ -41,6 +41,12 @@ class ProductsDataService {
     return getDoc(productDoc);
   };
 
+  getProductByField = async (fieldName, value) => {
+    const q = query(productCollectionRef, where(fieldName, "==", value));
+    const querySnapshot = await getDocs(q);
+    return querySnapshot.docs;
+  };
+
   // sellers
   getAllSellers = () => {
     return getDocs(sellerCollectionRef);
@@ -62,8 +68,6 @@ class ProductsDataService {
     const querySnapshot = await getDocs(q);
     return querySnapshot.docs[0]; // Assuming there's at most one document with the given "id"
   };
-
-  // ... (other methods)
 
 
 
