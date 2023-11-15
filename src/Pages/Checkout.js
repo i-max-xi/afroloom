@@ -71,11 +71,27 @@ const Checkout = () => {
   //   dispatch(setPaymentMethod(method));
   // }
 
+  const currencySymbol = useSelector((state) => state.currencySymbol.symbol);
+  const currencyFactor = useSelector((state) => state.currencySymbol.factor);
+  const currentOrders = useSelector((state) => state.user.currentUser.orders);
+
   const publicKey = process.env.REACT_APP_paystack_publicKey;
   const amount = 1000;
   const email = emailAddress;
 
-  const currentOrders = useSelector((state) => state.user.currentUser.orders);
+  const config = {
+    reference: new Date().getTime().toString(),
+    email,
+    amount,
+    currency: "GHS",
+    metadata: {
+      firstName,
+      lastName,
+    },
+    publicKey,
+    text: "Place Order",
+  }
+
 
   const onSuccess = (reference) => {
   
@@ -93,21 +109,6 @@ const Checkout = () => {
   //   console.log("Payment closed");
   // };
 
-  const config = {
-    reference: new Date().getTime().toString(),
-    email,
-    amount,
-    currency: "GHS",
-    metadata: {
-      firstName,
-      lastName,
-    },
-    publicKey,
-    text: "Place Order",
-  }
-
-  const currencySymbol = useSelector((state) => state.currencySymbol.symbol);
-  const currencyFactor = useSelector((state) => state.currencySymbol.factor);
 
   return (
     <>

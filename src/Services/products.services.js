@@ -84,6 +84,19 @@ class ProductsDataService {
     const querySnapshot = await getDocs(q);
     return querySnapshot.docs[0]; // Assuming there's at most one document with the given "id"
   };
+  updateBuyerOrders = async (buyerId, updatedOrders) => {
+    const buyerDoc = await this.getBuyerByField("id", buyerId); 
+    const buyerRef = doc(buyerCollectionRef, buyerDoc.id);
+    const currentBuyerData = buyerDoc.data();
+
+    // Assuming orders are stored within the buyer document under a field named "orders"
+    const updatedBuyerData = {
+      ...currentBuyerData,
+      orders: [...currentBuyerData.orders, ...updatedOrders], // Merge updated orders with existing orders
+    };
+
+    await updateDoc(buyerRef, updatedBuyerData); // Update buyer document with updated orders
+  };
 }
 
 export default new ProductsDataService();
