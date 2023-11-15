@@ -106,6 +106,12 @@ const userSlice = createSlice({
     setcurrentUser: (state, action) => {
       state.currentUser = action.payload;
     },
+    updateOrders: (state, action) => {
+      state.currentUser = {
+        ...state.currentUser,
+        orders: action.payload,
+      };
+    },
     setSignedIn: (state, action) => {
       state.signedIn = action.payload;
     },
@@ -218,7 +224,7 @@ export const { setLastName } = lastNameSlice.actions;
 export const { setCity } = citySlice.actions;
 export const { setApartment } = apartmentSlice.actions;
 export const { setPaymentMethod } = paymentMethodSlice.actions;
-export const { setSignedIn, setcurrentUser, setDashBoardPath } = userSlice.actions;
+export const { setSignedIn, setcurrentUser, setDashBoardPath, updateOrders } = userSlice.actions;
 // export const { setQuery, setFilteredItems, setVisible } = searchSlice.actions;
 
 export const persistor = persistStore(store);

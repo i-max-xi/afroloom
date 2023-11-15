@@ -1,8 +1,6 @@
-// Home.js
 import React, { useState } from "react";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
-// import ProductsDataService from "../../../Services/products.services";
 import { Button } from "primereact/button";
 import { useSelector } from "react-redux";
 
@@ -51,7 +49,7 @@ const MyOrders = () => {
     <div>
       {/* <Toast ref={toastRef} position="top-right" /> */}
 
-      <h2>All Products</h2>
+      <h2>My Orders</h2>
       {/* Search input field */}
       <div className="p-inputgroup justify-content-center mt-3 mb-3">
         <input
@@ -77,7 +75,7 @@ const MyOrders = () => {
         />
         <Column field="title" header="Title" />
         <Column field="price" header="Price ($)" />
-        <Column field="" header="Status" />
+        {/* <Column field="" header="Status" /> */}
       </DataTable>
 
 

@@ -10,6 +10,7 @@ import {
   setLastName,
   setCity,
   setApartment,
+  updateOrders,
   // setPaymentMethod,
 } from "../Redux/store";
 
@@ -74,10 +75,18 @@ const Checkout = () => {
   const amount = 1000;
   const email = emailAddress;
 
-  // const onSuccess = (reference) => {
-  //   // Handle successful payment
-  //   console.log("Payment successful. Reference: " + reference);
-  // };
+  const currentOrders = useSelector((state) => state.user.currentUser.orders);
+
+  const onSuccess = (reference) => {
+  
+    const updatedOrders = [...currentOrders, ...cartItems];
+  
+    // Dispatch action to update orders in the Redux state
+    dispatch(updateOrders(updatedOrders));
+  
+    // Clear the cart after successful payment
+    dispatch(clearCart());
+  };
 
   // const onClose = () => {
   //   // Handle when the Paystack dialog is closed
@@ -281,7 +290,7 @@ const Checkout = () => {
           {/* <button className="btn btn-success w-100 text-center mt-4 ">
             Place Order
           </button> */}
-          <PaystackButton className="btn btn-success w-100 text-center mt-4 " {...config} />
+          <PaystackButton onSuccess={onSuccess} className="btn btn-success w-100 text-center mt-4 " {...config} />
 
           <p className="mt-3" style={{ fontSize: "0.8rem" }}>
             By placing your order you agree to our

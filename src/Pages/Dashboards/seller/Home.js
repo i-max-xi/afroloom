@@ -17,24 +17,26 @@ const Home = ({currentSeller}) => {
   const [filteredProducts, setFilteredProducts] = useState([]); // For filtered products
   const [searchTerm, setSearchTerm] = useState(""); // For search input
 
-  useEffect(() => {
-    loadProducts();
-  }, []);
+
 
   const loadProducts = async () => {
     try {
-      const response = await ProductsDataService.getProductByField("companyName", currentSeller);
-      const productData = [];
-      response.forEach((doc) => {
+      const response = await ProductsDataService.getProductByField("seller", currentSeller);
+      const productData = response.map((doc) => {
         const data = doc.data();
         data.id = doc.id;
-        productData.push(data);
+        return data;
       });
       setProducts(productData);
     } catch (error) {
       console.error("Error loading products:", error);
     }
   };
+
+  useEffect(() => {
+    loadProducts();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   // Function to filter products based on the search term
   const filterProducts = () => {
