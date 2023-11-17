@@ -25,8 +25,8 @@ import tshirt_guide from "../Assets/size_guide/MaleClothing/4.jpg";
 import tshirtlong_guide from "../Assets/size_guide/MaleClothing/1.jpg";
 import shirt_guide from "../Assets/size_guide/MaleClothing/3.jpg";
 import shirtlong_guide from "../Assets/size_guide/MaleClothing/2.jpg";
-import top_down_guide from '../Assets/size_guide/MaleClothing/5.jpg';
-import cloak_guide from '../Assets/size_guide/MaleClothing/10.jpg';
+import top_down_guide from '../Assets/size_guide/MaleClothing/10.jpg';
+import cloak_guide from '../Assets/size_guide/MaleClothing/5.jpg';
 import blazer_guide from "../Assets/size_guide/MaleClothing/9.jpg";
 import trouser_guide from "../Assets/size_guide/MaleClothing/6.jpg";
 import summer_shorts_guide from "../Assets/size_guide/MaleClothing/8.jpg";
@@ -87,7 +87,7 @@ const materialShortsParts = require.context(
 export const mainMaleCustomize = [
   {
     id: uuid(),
-    name: "T-Shirt",
+    name: "Short Sleeve T-Shirt",
     image:
       "https://a5e8126a499f8a963166-f72e9078d72b8c998606fd6e0319b679.ssl.cf5.rackcdn.com/images/variant/large/next-level_3600_black.jpg",
     model: tshirtModel1,
@@ -136,7 +136,7 @@ export const mainMaleCustomize = [
   },
   {
     id: uuid(),
-    name: "T-Shirt Long",
+    name: "Long Sleeve T-Shirt",
     image:
       "https://th.bing.com/th/id/R.090a143032d299d58a1f61c13fdb5224?rik=3IvQRj1AFgeS5A&riu=http%3a%2f%2fmemorythreads.com.au%2fwp-content%2fuploads%2f2015%2f03%2fgrey-marle-longsleeve1.jpg&ehk=mYL6G88axiyKbyZamMLyXt0FEL95o7%2bLvLOeBlxULno%3d&risl=&pid=ImgRaw&r=0",
     model: tshirtModel2,
@@ -183,7 +183,7 @@ export const mainMaleCustomize = [
   },
   {
     id: uuid(),
-    name: "Short Sleeves Shirt",
+    name: "Short Sleeve Shirt",
     image: shirt,
     model: shirtModel1,
     myNode: [
@@ -236,7 +236,7 @@ export const mainMaleCustomize = [
   },
   {
     id: uuid(),
-    name: "Long Sleeves Shirt",
+    name: "Long Sleeve Shirt",
     image:
       "https://th.bing.com/th/id/OIP.esHHIbeG0pD-IJjavFbqwQAAAA?pid=ImgDet&rs=1",
     model: shirtModel2,
@@ -292,7 +292,7 @@ export const mainMaleCustomize = [
   },
   {
     id: uuid(),
-    name: "Top & Down",
+    name: "Top And Down",
     image: topndown,
     model: topndown_model,
     myNode: [
@@ -548,7 +548,7 @@ export const mainMaleCustomize = [
   },
   {
     id: uuid(),
-    name: "Material Shorts",
+    name: "Shorts",
     image:
       "https://th.bing.com/th/id/OIP.A9xUqEvW0ADXy3nKfNyxKwHaJZ?pid=ImgDet&w=481&h=610&rs=1",
     model: material_shorts,

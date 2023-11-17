@@ -157,7 +157,7 @@ const leggingsParts = require.context(
 export const mainFemaleCustomize = [
   {
     id: uuid(),
-    name: "T-Shirt short",
+    name: "Short Sleeve T-Shirt",
     image: "https://th.bing.com/th/id/OIP.ikUETESsVO_PcDoaCrIQnAHaIw?pid=ImgDet&w=1588&h=1879&rs=1",
     model: t_shirt_short,
     myNode: ["bottom", "left_hand", "left_hand_edge", "right_hand", "right_hand_edge", "top", "top_stripe", "bottom_stripe"],
@@ -194,7 +194,7 @@ export const mainFemaleCustomize = [
   },
   {
     id: uuid(),
-    name: "T-Shirt long",
+    name: "Long Sleeve T-Shirt",
     image: "https://images.bloomingdalesassets.com/is/image/BLM/products/0/optimized/10183950_fpx.tif?$filterlrg$&wid=327",
     model: t_shirt_long,
     myNode: ["bottom", "left_hand", "left_hand_cuff", "right_hand", "right_hand_cuff", "top", "top_stripe", "bottom_stripe"],
@@ -232,7 +232,7 @@ export const mainFemaleCustomize = [
   },
   {
     id: uuid(),
-    name: "Short Sleeves Shirt",
+    name: "Short Sleeve Shirt",
     image: extra_short_img,
     model: extra_short,
     myNode: ["back", "collar", "front", "left_hand", "midline", "right_hand", "buttons"],
@@ -272,7 +272,7 @@ export const mainFemaleCustomize = [
   },
   {
     id: uuid(),
-    name: "Long Sleeves Shirt",
+    name: "Long Sleeve Shirt",
     image: extra_long_img,
     model: extra_long,
     myNode: ["back", "collar", "front", "left_hand", "midline", "right_hand", "buttons"],
@@ -352,7 +352,7 @@ export const mainFemaleCustomize = [
   },
   {
     id: uuid(),
-    name: "Normal Top",
+    name: "Top",
     image: normal_top,
     model: normal_top_model,
     myNode: [
@@ -389,7 +389,7 @@ export const mainFemaleCustomize = [
   },
   {
     id: uuid(),
-    name: "Top & Down",
+    name: "Top And Down",
     model: topndown_model,
     image: topndown,
     myNode: [
@@ -578,7 +578,7 @@ export const mainFemaleCustomize = [
   },
   {
     id: uuid(),
-    name: "Skirt",
+    name: "Long Skirt",
     model: skirt_model,
     image: skirt,
     myNode: ["all"],

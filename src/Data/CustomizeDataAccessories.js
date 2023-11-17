@@ -218,7 +218,7 @@ export const mainMaleAccessories = [
 export const mainFemaleAccessories = [
   {
     id: uuid(),
-    name: "Hand Bag",
+    name: "Tote Bag",
     image: handbag,
     model: hand_bag_model,
     myNode: ["mid_section", "zippers_and_locks", "handle", "right_section", "left_section"],

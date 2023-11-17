@@ -86,7 +86,7 @@ export const mainUnisex = [
   },
   {
     id: uuid(),
-    name: 'Mini Bag',
+    name: 'Waist Bag',
     image: bp1,
     model: mini_bag_model,
     myNode: ['handle', 'big_section', 'small_section', 'zippers'],

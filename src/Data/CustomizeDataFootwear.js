@@ -145,7 +145,7 @@ export const mainFootwear = [
   },
   {
     id: uuid(),
-    name: "Heels",
+    name: "High Heel",
     image:
       "https://th.bing.com/th/id/OIP.UMGJguReHwKJtDNEdf5-NQHaHa?pid=ImgDet&rs=1",
     model: heels,
