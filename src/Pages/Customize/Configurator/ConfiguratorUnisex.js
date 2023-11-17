@@ -240,6 +240,12 @@ const ConfiguratorUnisex = () => {
   // description dialogs
   const [selectedTexture, setSelectedTexture] = useState({});
 
+  // parse part title
+  const parseTitle = (title) => {
+    const split = title.split('_');
+    return split.join(' ');
+  };
+
   return (
     <>
       <Nav />
@@ -275,7 +281,7 @@ const ConfiguratorUnisex = () => {
                       }`}
                       onClick={() => setSelectedPart(index)}
                     >
-                      {nodeName}
+                      {parseTitle(nodeName)}
                     </button>
                   ))}
                 </div>

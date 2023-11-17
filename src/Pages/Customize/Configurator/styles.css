@@ -159,6 +159,7 @@ h1 {
 .size-button {
   margin: 2px;
   padding: 0.3rem 0.8rem;
+  text-transform: capitalize;
 }
 
 .p-carousel-prev, .p-carousel-next {

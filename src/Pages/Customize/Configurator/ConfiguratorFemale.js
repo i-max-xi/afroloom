@@ -239,6 +239,12 @@ const ConfiguratorFemale = () => {
   // description dialogs
   const [selectedTexture, setSelectedTexture] = useState({});
 
+  // parse part title
+  const parseTitle = (title) => {
+    const split = title.split('_');
+    return split.join(' ');
+  };
+
   return (
     <>
       <Nav />
@@ -276,7 +282,7 @@ const ConfiguratorFemale = () => {
                       }`}
                       onClick={() => setSelectedPart(index)}
                     >
-                      {nodeName}
+                      {parseTitle(nodeName)}
                     </button>
                   ))}
                 </div>
