@@ -89,7 +89,7 @@ export const mainUnisex = [
     name: 'Waist Bag',
     image: bp1,
     model: mini_bag_model,
-    myNode: ['handle', 'big_section', 'small_section', 'zippers'],
+    myNode: ['handle', 'main_body'],
     myZoom: 0.6,
     price: 55,
     parts: miniBagParts.keys().map(miniBagParts),
