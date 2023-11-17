@@ -13,7 +13,7 @@ import sash_model from "../Pages/Customize/Configurator/models/Accessories/Unise
 import jacket from "../Pages/Customize/Configurator/models/Accessories/Unisex/jacket_main.glb";
 
 // Importing size guides
-// import sash_guide from '../Assets/size_guide/Unisex/sash.jpg';
+import sash_guide from '../Assets/size_guide/Unisex/sash.jpg';
 import miniBag_guide from '../Assets/size_guide/Unisex/30.jpg';
 import backpack_guide from '../Assets/size_guide/Unisex/29.jpg';
 import jacket_guide from '../Assets/size_guide/Unisex/35.jpg';
@@ -61,7 +61,7 @@ export const mainUnisex = [
     price: 55,
     parts: sashParts.keys().map(sashParts),
     sizeModels: tshirt_model,
-    // sizeGuide: sash_guide,
+    sizeGuide: sash_guide,
     sizeOptions: [
       { label: "S", value: 0.5 },
       { label: "M", value: 1 },
