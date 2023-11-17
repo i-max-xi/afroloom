@@ -172,7 +172,7 @@ export const mainFemaleCustomize = [
       { label: "M", value: 1 },
       { label: "L", value: 2 },
       { label: "XL", value: 3 },
-      { label: "XXL", value: 4 },
+      // { label: "XXL", value: 4 },
       // { label: "3XL", value: 5 },
       // { label: "4XL", value: 6 },
       // { label: "5XL", value: 7 },
@@ -181,15 +181,20 @@ export const mainFemaleCustomize = [
     ],
     sizeForms: [
       {
-        label: "Bust (inch)",
+        label: "Bust (cm)",
       },
       {
-        label: "Length (inch)",
+        label: "Waist (cm)",
       },
       {
-        label: "Sleeve (inch)",
+        label: "Hip (cm)",
       },
-      // Add more form fields as needed
+      {
+        label: "Top Length (cm)",
+      },
+      {
+        label: "Sleeve Length (cm)",
+      },
     ],
   },
   {
@@ -209,25 +214,29 @@ export const mainFemaleCustomize = [
       { label: "M", value: 1 },
       { label: "L", value: 2 },
       { label: "XL", value: 3 },
-      { label: "XXL", value: 4 },
-      { label: "3XL", value: 5 },
-      { label: "4XL", value: 6 },
-      { label: "5XL", value: 7 },
+      // { label: "XXL", value: 4 },
+      // { label: "3XL", value: 5 },
+      // { label: "4XL", value: 6 },
+      // { label: "5XL", value: 7 },
       // { label: "6XL", value: 8 },
       // { label: "7XL", value: 9 },
     ],
     sizeForms: [
       {
-        label: "Body Length (inch)",
-      },
-      
-      {
-        label: "Chest Width (inch)",
+        label: "Bust (cm)",
       },
       {
-        label: "Sleeve length (inch)",
+        label: "Waist (cm)",
       },
-      // Add more form fields as needed
+      {
+        label: "Hip (cm)",
+      },
+      {
+        label: "Top Length (cm)",
+      },
+      {
+        label: "Sleeve Length (cm)",
+      },
     ],
   },
   {
@@ -247,8 +256,8 @@ export const mainFemaleCustomize = [
       { label: "M", value: 1 },
       { label: "L", value: 2 },
       { label: "XL", value: 3 },
-      { label: "XXL", value: 4 },
-      { label: "3XL", value: 5 },
+      // { label: "XXL", value: 4 },
+      // { label: "3XL", value: 5 },
       // { label: "4XL", value: 6 },
       // { label: "5XL", value: 7 },
       // { label: "6XL", value: 8 },
@@ -256,18 +265,20 @@ export const mainFemaleCustomize = [
     ],
     sizeForms: [
       {
-        label: "Chest Width(inch)",
+        label: "Bust (cm)",
       },
       {
-        label: "Cuff (inch)",
+        label: "Waist (cm)",
       },
       {
-        label: "Sleeve Length (inch)",
+        label: "Hip (cm)",
       },
       {
-        label: "Center Back (inch)",
+        label: "Top Length (cm)",
       },
-      // Add more form fields as needed
+      {
+        label: "Sleeve Length (cm)",
+      },
     ],
   },
   {
@@ -282,31 +293,34 @@ export const mainFemaleCustomize = [
     sizeModels: tshirt_model,
     parts: extraLongShirtParts.keys().map(extraLongShirtParts),
     sizeOptions: [
-      { label: "6", value: 0.5 },
-      { label: "8", value: 1 },
-      { label: "10", value: 2 },
-      { label: "12", value: 3 },
-      { label: "14", value: 4 },
-      { label: "16", value: 5 },
-      { label: "18", value: 6 },
-      { label: "20", value: 7 },
+      { label: "XS", value: 0.5 },
+      { label: "S", value: 0.5 },
+      { label: "M", value: 1 },
+      { label: "L", value: 2 },
+      { label: "XL", value: 3 },
+      // { label: "14", value: 4 },
+      // { label: "16", value: 5 },
+      // { label: "18", value: 6 },
+      // { label: "20", value: 7 },
       // { label: "6XL", value: 8 },
       // { label: "7XL", value: 9 },
     ],
     sizeForms: [
       {
-        label: "Bust (inch)",
+        label: "Bust (cm)",
       },
       {
-        label: "Waist (inch)",
+        label: "Waist (cm)",
       },
       {
-        label: "Hip (inch)",
+        label: "Hip (cm)",
       },
       {
-        label: "Sleeve Length(inch)",
+        label: "Top Length (cm)",
       },
-      // Add more form fields as needed
+      {
+        label: "Sleeve Length (cm)",
+      },
     ],
   },
   {
@@ -334,19 +348,19 @@ export const mainFemaleCustomize = [
     ],
     sizeForms: [
       {
-        label: "Bust (inch)",
+        label: "Bust (cm)",
       },
       {
-        label: "Length (inch)",
+        label: "Waist (cm)",
       },
       {
-        label: "Waist (inch)",
+        label: "Hip (cm)",
       },
       {
-        label: "Sleeve (inch)",
+        label: "Top Length (cm)",
       },
       {
-        label: "Shoulder (inch)",
+        label: "Sleeve Length (cm)",
       },
     ],
   },
@@ -373,7 +387,7 @@ export const mainFemaleCustomize = [
       { label: "M", value: 1 },
       { label: "L", value: 2 },
       { label: "XL", value: 3 },
-      { label: "XXL", value: 4 },
+      // { label: "XXL", value: 4 },
       // { label: "3XL", value: 5 },
       // { label: "4XL", value: 6 },
       // { label: "5XL", value: 7 },
@@ -382,9 +396,20 @@ export const mainFemaleCustomize = [
     ],
     sizeForms: [
       {
-        label: "Length (inch)",
+        label: "Bust (cm)",
       },
-      // Add more form fields as needed
+      {
+        label: "Waist (cm)",
+      },
+      {
+        label: "Hip (cm)",
+      },
+      {
+        label: "Top Length (cm)",
+      },
+      {
+        label: "Sleeve Length (cm)",
+      },
     ],
   },
   {
@@ -408,10 +433,12 @@ export const mainFemaleCustomize = [
     sizeModels: tshirt_model,
     parts: topAndDownParts.keys().map(topAndDownParts),
     sizeOptions: [
+      { label: "XS", value: 0.5 },
+      { label: "S", value: 0.5 },
       { label: "M", value: 1 },
       { label: "L", value: 2 },
       { label: "XL", value: 3 },
-      { label: "XXL", value: 4 },
+      // { label: "XXL", value: 4 },
       // { label: "3XL", value: 5 },
       // { label: "4XL", value: 6 },
       // { label: "5XL", value: 7 },
@@ -420,9 +447,26 @@ export const mainFemaleCustomize = [
     ],
     sizeForms: [
       {
-        label: "Length (inch)",
+        label: "Bust (cm)",
       },
-      // Add more form fields as needed
+      {
+        label: "Waist (cm)",
+      },
+      {
+        label: "Hip (cm)",
+      },
+      {
+        label: "Sleeve Length (cm)",
+      },
+      {
+        label: "Around arm (cm)",
+      },
+      {
+        label: "Cuff (cm)",
+      },
+      {
+        label: "Short Length (cm)",
+      },
     ],
   },
   {
@@ -449,7 +493,7 @@ export const mainFemaleCustomize = [
       { label: "M", value: 1 },
       { label: "L", value: 2 },
       { label: "XL", value: 3 },
-      { label: "XXL", value: 4 },
+      // { label: "XXL", value: 4 },
       // { label: "3XL", value: 5 },
       // { label: "4XL", value: 6 },
       // { label: "5XL", value: 7 },
@@ -458,9 +502,26 @@ export const mainFemaleCustomize = [
     ],
     sizeForms: [
       {
-        label: "Length (inch)",
+        label: "Bust (cm)",
       },
-      // Add more form fields as needed
+      {
+        label: "Waist (cm)",
+      },
+      {
+        label: "Hip (cm)",
+      },
+      {
+        label: "Shoulder-to-waist (cm)",
+      },
+      {
+        label: "Sleeve Length (cm)",
+      },
+      {
+        label: "Around arm (cm)",
+      },
+      {
+        label: "Cuff (cm)",
+      },
     ],
   },
   {
@@ -479,7 +540,7 @@ export const mainFemaleCustomize = [
       { label: "M", value: 1 },
       { label: "L", value: 2 },
       { label: "XL", value: 3 },
-      { label: "XXL", value: 4 },
+      // { label: "XXL", value: 4 },
       // { label: "3XL", value: 5 },
       // { label: "4XL", value: 6 },
       // { label: "5XL", value: 7 },
@@ -517,7 +578,7 @@ export const mainFemaleCustomize = [
       { label: "M", value: 1 },
       { label: "L", value: 2 },
       { label: "XL", value: 3 },
-      { label: "XXL", value: 4 },
+      // { label: "XXL", value: 4 },
       // { label: "3XL", value: 5 },
       // { label: "4XL", value: 6 },
       // { label: "5XL", value: 7 },
@@ -526,24 +587,29 @@ export const mainFemaleCustomize = [
     ],
     sizeForms: [
       {
-        label: "Chest Width (inch)",
+        label: "Chest (cm)",
       },
       {
-        label: "Waist Width (inch)",
+        label: "Coat Waist (cm)",
       },
       {
-        label: "Shoulder Width (inch)",
+        label: "Seat (cm)",
       },
       {
-        label: "Body Length (inch)",
+        label: "Natural Waist Length (cm)",
       },
       {
-        label: "Bottom Width (inch)",
+        label: "Half Across Back (cm)",
       },
       {
-        label: "Sleeve Length (inch)",
+        label: "Elbow (cm)",
       },
-      // Add more form fields as needed
+      {
+        label: "Sleeve Length (cm)",
+      },
+      {
+        label: "Scye Depth (cm)",
+      },
     ],
   },
   {
@@ -562,7 +628,7 @@ export const mainFemaleCustomize = [
       { label: "M", value: 1 },
       { label: "L", value: 2 },
       { label: "XL", value: 3 },
-      { label: "XXL", value: 4 },
+      // { label: "XXL", value: 4 },
       // { label: "3XL", value: 5 },
       // { label: "4XL", value: 6 },
       // { label: "5XL", value: 7 },
@@ -571,9 +637,11 @@ export const mainFemaleCustomize = [
     ],
     sizeForms: [
       {
-        label: "Length (inch)",
+        label: "Top Length (cm)",
       },
-      // Add more form fields as needed
+      {
+        label: "Sleeve Length (cm)",
+      },
     ],
   },
   {
@@ -592,7 +660,7 @@ export const mainFemaleCustomize = [
       { label: "M", value: 1 },
       { label: "L", value: 2 },
       { label: "XL", value: 3 },
-      { label: "XXL", value: 4 },
+      // { label: "XXL", value: 4 },
       // { label: "3XL", value: 5 },
       // { label: "4XL", value: 6 },
       // { label: "5XL", value: 7 },
@@ -601,12 +669,14 @@ export const mainFemaleCustomize = [
     ],
     sizeForms: [
       {
-        label: "Waist (inch)",
+        label: "Skirt Length (cm)",
       },
       {
-        label: "Hip (inch)",
+        label: "Waist (cm)",
       },
-      // Add more form fields as needed
+      {
+        label: "Hip (cm)",
+      },
     ],
   },
   {
@@ -635,12 +705,14 @@ export const mainFemaleCustomize = [
     ],
     sizeForms: [
       {
-        label: "Waist (inch)",
+        label: "Skirt Length (cm)",
       },
       {
-        label: "Hip (inch)",
+        label: "Waist (cm)",
       },
-      // Add more form fields as needed
+      {
+        label: "Hip (cm)",
+      },
     ],
   },
   {
@@ -668,7 +740,7 @@ export const mainFemaleCustomize = [
       { label: "M", value: 1 },
       { label: "L", value: 2 },
       { label: "XL", value: 3 },
-      { label: "XXL", value: 4 },
+      // { label: "XXL", value: 4 },
       // { label: "3XL", value: 5 },
       // { label: "4XL", value: 6 },
       // { label: "5XL", value: 7 },
@@ -712,7 +784,7 @@ export const mainFemaleCustomize = [
       { label: "M", value: 1 },
       { label: "L", value: 2 },
       { label: "XL", value: 3 },
-      { label: "XXL", value: 4 },
+      // { label: "XXL", value: 4 },
       // { label: "3XL", value: 5 },
       // { label: "4XL", value: 6 },
       // { label: "5XL", value: 7 },
@@ -721,9 +793,14 @@ export const mainFemaleCustomize = [
     ],
     sizeForms: [
       {
-        label: "Length (inch)",
+        label: "Trouser Length (cm)",
       },
-      // Add more form fields as needed
+      {
+        label: "Waist (cm)",
+      },
+      {
+        label: "Hip (cm)",
+      },
     ],
   },
   {
@@ -749,7 +826,7 @@ export const mainFemaleCustomize = [
       { label: "S", value: 0.5 },
       { label: "M", value: 1 },
       { label: "L", value: 2 },
-      // { label: "XL", value: 3 },
+      { label: "XL", value: 3 },
       // { label: "XXL", value: 4 },
       // { label: "3XL", value: 5 },
       // { label: "4XL", value: 6 },
@@ -759,21 +836,14 @@ export const mainFemaleCustomize = [
     ],
     sizeForms: [
       {
-        label: "Waist (inch)",
+        label: "Trouser Length (cm)",
       },
       {
-        label: "Hip (inch)",
+        label: "Waist (cm)",
       },
       {
-        label: "Rise (inch)",
+        label: "Hip (cm)",
       },
-      {
-        label: "Length (inch)",
-      },
-      {
-        label: "Enseam (inch)",
-      },
-      // Add more form fields as needed
     ],
   },
 ];
