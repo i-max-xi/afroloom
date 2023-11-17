@@ -15,7 +15,7 @@ import sneaker_model from '../Pages/Customize/Configurator/models/Shoes/sneaker.
 // import flatShoe_guide from '../Assets/size_guide/Footwear/';
 // import sneaker_guide from '../Assets/size_guide/Footwear/sneaker.JPG';
 import slipper_guide from '../Assets/size_guide/Footwear/slipper.jpg';
-import heels_guide from '../Assets/size_guide/Footwear/heels.jpg';
+// import heels_guide from '../Assets/size_guide/Footwear/heels.jpg';
 
 
 // models
@@ -157,7 +157,7 @@ export const mainFootwear = [
     myZoom: 0.6,
     price: 20,
     parts: heelsParts.keys().map(heelsParts),
-    sizeGuide: heels_guide,
+    // sizeGuide: heels_guide,
     sizeModels: tshirt_model,
     sizeOptions: [
       { label: "35", value: 0.5 },
