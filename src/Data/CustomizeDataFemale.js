@@ -33,23 +33,22 @@ import kaba_slit from "../Pages/Customize/Configurator/models/FemaleClothing/gow
 
 
 // size guides
-import tshirt_guide from '../Assets/size_guide/FemaleClothing/tshirt.JPG';
-import tshirtlong_guide from '../Assets/size_guide/FemaleClothing/tshirt_long.JPG';
-import extraShortShirt_guide from '../Assets/size_guide/FemaleClothing/shirt.JPG';
-// import extraLongShirt_guide from '../Assets/size_guide/FemaleClothing/s';
-import cropTop_guide from '../Assets/size_guide/FemaleClothing/crop_top.JPG';
-// import normalTop_guide from '../Assets/size_guide/FemaleClothing/';
-// import topAndDown_guide from '../Assets/size_guide/FemaleClothing/';
-// import dress_guide from '../Assets/size_guide/FemaleClothing/';
+import tshirt_guide from '../Assets/size_guide/FemaleClothing/13.jpg';
+import tshirtlong_guide from '../Assets/size_guide/FemaleClothing/11.jpg';
+import extraShortShirt_guide from '../Assets/size_guide/FemaleClothing/15.jpg';
+import extraLongShirt_guide from '../Assets/size_guide/FemaleClothing/12.jpg';
+import cropTop_guide from '../Assets/size_guide/FemaleClothing/21.jpg';
+import normalTop_guide from '../Assets/size_guide/FemaleClothing/14.jpg';
+import topAndDown_guide from '../Assets/size_guide/FemaleClothing/25.jpg';
+import dress_guide from '../Assets/size_guide/FemaleClothing/23.jpg';
 // import kabaSlit_guide from '../Assets/size_guide/FemaleClothing/';
-import extraLongShirt_guide from '../Assets/size_guide/FemaleClothing/shirt_long.JPG';
-// import cloak_guide from '../Assets/size_guide/FemaleClothing/';
-import blazer_guide from '../Assets/size_guide/FemaleClothing/blazer.JPG';
-import skirt_guide from '../Assets/size_guide/FemaleClothing/skirt_long.JPG';
-import miniSkirt_guide from '../Assets/size_guide/FemaleClothing/mini_skirt.JPG';
-import bootyShorts_guide from '../Assets/size_guide/FemaleClothing/booty_shorts.JPG';
+import cloak_guide from '../Assets/size_guide/FemaleClothing/24.jpg';
+import blazer_guide from '../Assets/size_guide/FemaleClothing/22.jpg';
+import skirt_guide from '../Assets/size_guide/FemaleClothing/20 copy.jpg';
+import miniSkirt_guide from '../Assets/size_guide/FemaleClothing/19 copy.jpg';
+import bootyShorts_guide from '../Assets/size_guide/FemaleClothing/17.jpg';
 import leggings_guide from '../Assets/size_guide/FemaleClothing/leggings.JPG';
-// import trousers_guide from '../Assets/size_guide/FemaleClothing/'
+import trousers_guide from '../Assets/size_guide/FemaleClothing/16.jpg'
 
 // models
 import tshirt_model from "../Pages/Customize/Configurator/size_guide/female/women.JPG";
@@ -349,7 +348,6 @@ export const mainFemaleCustomize = [
       {
         label: "Shoulder (inch)",
       },
-      // Add more form fields as needed
     ],
   },
   {
@@ -367,7 +365,7 @@ export const mainFemaleCustomize = [
     ],
     myZoom: 0.8,
     price: 20,
-    // sizeGuide: normalTop_guide,
+    sizeGuide: normalTop_guide,
     sizeModels: tshirt_model,
     parts: normalTopParts.keys().map(normalTopParts),
     sizeOptions: [
@@ -406,7 +404,7 @@ export const mainFemaleCustomize = [
     ],
     myZoom: 0.95,
     price: 20,
-    // sizeGuide: topAndDown_guide,
+    sizeGuide: topAndDown_guide,
     sizeModels: tshirt_model,
     parts: topAndDownParts.keys().map(topAndDownParts),
     sizeOptions: [
@@ -443,7 +441,7 @@ export const mainFemaleCustomize = [
     ],
     myZoom: 1,
     price: 20,
-    // sizeGuide: dress_guide,
+    sizeGuide: dress_guide,
     sizeModels: tshirt_model,
     parts: dressParts.keys().map(dressParts),
     sizeOptions: [
@@ -556,7 +554,7 @@ export const mainFemaleCustomize = [
     myNode: ["all"],
     myZoom: 0.8,
     price: 20,
-    // sizeGuide: cloak_guide,
+    sizeGuide: cloak_guide,
     sizeModels: tshirt_model,
     parts: cloakParts.keys().map(cloakParts),
     sizeOptions: [
@@ -706,7 +704,7 @@ export const mainFemaleCustomize = [
     ],
     myZoom: 0.7,
     price: 20,
-    // sizeGuide: trousers_guide,
+    sizeGuide: trousers_guide,
     sizeModels: tshirt_model,
     parts: trousersParts.keys().map(trousersParts),
     sizeOptions: [

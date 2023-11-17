@@ -13,13 +13,13 @@ import sash_model from "../Pages/Customize/Configurator/models/Accessories/Unise
 import jacket from "../Pages/Customize/Configurator/models/Accessories/Unisex/jacket_main.glb";
 
 // Importing size guides
-import sash_guide from '../Assets/size_guide/Unisex/sash.JPG';
-import miniBag_guide from '../Assets/size_guide/Unisex/mini_bag.JPG';
-import backpack_guide from '../Assets/size_guide/Unisex/back_pack.JPG';
-import jacket_guide from '../Assets/size_guide/Unisex/jacket.JPG';
+import sash_guide from '../Assets/size_guide/Unisex/SASH.jpg';
+import miniBag_guide from '../Assets/size_guide/Unisex/30.jpg';
+import backpack_guide from '../Assets/size_guide/Unisex/29.jpg';
+import jacket_guide from '../Assets/size_guide/Unisex/35.jpg';
 
 
-// models
+// Marketing Models
 import tshirt_model from "../Pages/Customize/Configurator/size_guide/male/tshirt.JPG";
 
 // parts

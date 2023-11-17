@@ -22,15 +22,15 @@ import bikini from "../Pages/Customize/Configurator/models/Accessories/bikini.gl
 import hand_bag_model from "../Pages/Customize/Configurator/models/Accessories/handbag.glb";
 
 // Importing size guides
-// import roundCap_guide from '../Assets/size_guide/Accessories/Male/';
+import roundCap_guide from '../Assets/size_guide/Accessories/Male/28.jpg';
 // import knittedCap_guide from '../Assets/size_guide/Accessories/Male/';
-import bowTie_guide from '../Assets/size_guide/Accessories/Male/bow_tie.JPG';
-import flyingTie_guide from '../Assets/size_guide/Accessories/Male/flying_tie.JPG';
-// import handbag_guide from '../Assets/size_guide/Accessories/Female/';
-import bikini_guide from '../Assets/size_guide/Accessories/Female/bikini.JPG';
+import bowTie_guide from '../Assets/size_guide/Accessories/Male/27.jpg';
+import flyingTie_guide from '../Assets/size_guide/Accessories/Male/26.jpg';
+import handbag_guide from '../Assets/size_guide/Accessories/Female/33.jpg';
+import bikini_guide from '../Assets/size_guide/Accessories/Female/31.jpg';
 
 
-// models
+// Markeying Models
 import tshirt_model from "../Pages/Customize/Configurator/size_guide/male/tshirt.JPG";
 
 // parts
@@ -82,7 +82,7 @@ export const mainMaleAccessories = [
     myZoom: 0.5,
     price: 20,
     parts: roundCapParts.keys().map(roundCapParts),
-    // sizeGuide: roundCap_guide,
+    sizeGuide: roundCap_guide,
     sizeModels: tshirt_model,
     sizeOptions: [
       { label: "S", value: 0.5 },
@@ -225,7 +225,7 @@ export const mainFemaleAccessories = [
     myZoom: 0.9,
     price: 55,
     parts: handbagParts.keys().map(handbagParts),
-    // sizeGuide: handbag_guide,
+    sizeGuide: handbag_guide,
     sizeModels: tshirt_model,
     sizeOptions: [
       { label: "XS", value: 0.5 },

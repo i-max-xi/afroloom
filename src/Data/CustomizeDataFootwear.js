@@ -14,8 +14,8 @@ import sneaker_model from '../Pages/Customize/Configurator/models/Shoes/sneaker.
 // Importing size guides
 // import flatShoe_guide from '../Assets/size_guide/Footwear/';
 // import sneaker_guide from '../Assets/size_guide/Footwear/sneaker.JPG';
-// import slipper_guide from '../Assets/size_guide/Footwear/slipper.JPG';
-import heels_guide from '../Assets/size_guide/Footwear/heels.JPG';
+import slipper_guide from '../Assets/size_guide/Footwear/slipper.jpg';
+import heels_guide from '../Assets/size_guide/Footwear/heels.jpg';
 
 
 // models
@@ -122,7 +122,7 @@ export const mainFootwear = [
     price: 20,
     sizeModels: tshirt_model,
     parts: slippersParts.keys().map(slippersParts),
-    // sizeGuide: slipper_guide,
+    sizeGuide: slipper_guide,
     sizeOptions: [
       { label: "XS", value: 0.5 },
       { label: "S", value: 0.5 },

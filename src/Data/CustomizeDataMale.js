@@ -21,16 +21,16 @@ import blazer from "../Pages/Customize/Configurator/models/MaleClothing/male_sui
 //size-guides
 import tshirt_model from "../Pages/Customize/Configurator/size_guide/male/men.JPG";
 
-import tshirt_guide from "../Assets/size_guide/MaleClothing/tshirt.JPG";
-import tshirtlong_guide from "../Assets/size_guide/MaleClothing/tshirt_long.JPG";
-import shirt_guide from "../Assets/size_guide/MaleClothing/shirt.JPG";
-import shirtlong_guide from "../Assets/size_guide/MaleClothing/shirt_long.JPG";
-// import top_down_guide from '../Assets/size_guide/MaleClothing/';
-// import cloak_guide from '../Assets/size_guide/MaleClothing/';
-import blazer_guide from "../Assets/size_guide/MaleClothing/blazer.JPG";
-import trouser_guide from "../Assets/size_guide/MaleClothing/trouser.JPG";
-import summer_shorts_guide from "../Assets/size_guide/MaleClothing/summer_shorts.JPG";
-import material_shorts_guide from "../Assets/size_guide/MaleClothing/material_shorts.JPG";
+import tshirt_guide from "../Assets/size_guide/MaleClothing/4.jpg";
+import tshirtlong_guide from "../Assets/size_guide/MaleClothing/1.jpg";
+import shirt_guide from "../Assets/size_guide/MaleClothing/3.jpg";
+import shirtlong_guide from "../Assets/size_guide/MaleClothing/2.jpg";
+import top_down_guide from '../Assets/size_guide/MaleClothing/5.jpg';
+import cloak_guide from '../Assets/size_guide/MaleClothing/10.jpg';
+import blazer_guide from "../Assets/size_guide/MaleClothing/9.jpg";
+import trouser_guide from "../Assets/size_guide/MaleClothing/6.jpg";
+import summer_shorts_guide from "../Assets/size_guide/MaleClothing/8.jpg";
+import material_shorts_guide from "../Assets/size_guide/MaleClothing/7.jpg";
 
 // parts
 const tshirtParts = require.context(
@@ -312,7 +312,7 @@ export const mainMaleCustomize = [
     ],
     myZoom: 0.6,
     price: 55,
-    // sizeGuide: top_down_guide,
+    sizeGuide: top_down_guide,
     sizeModels: tshirt_model,
     parts: topndownParts.keys().map(topndownParts),
     sizeOptions: [
@@ -360,7 +360,7 @@ export const mainMaleCustomize = [
     myX: 0,
     myY: 10,
     price: 35,
-    // sizeGuide: cloak_guide,
+    sizeGuide: cloak_guide,
     sizeModels: tshirt_model,
     parts: topParts.keys().map(topParts),
     sizeOptions: [
