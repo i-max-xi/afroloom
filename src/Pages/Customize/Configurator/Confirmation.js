@@ -1,7 +1,8 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { useReactToPrint } from "react-to-print";
 import html2canvas from "html2canvas";
 import { Link } from "react-router-dom";
+import { InputTextarea } from "primereact/inputtextarea";
 
 import { app } from "../../../firebase"; // Import your firebase app object
 import {
@@ -133,7 +134,13 @@ const Confirmation = ({
         <p className="h5 mt-4">Thank you for your order!</p>
       </div>
       <div className="d-flex justify-content-center align-items-center m-5">
-        Not Done ? <button className="btn btn-info text-white mx-3" onClick={ () => setShowConfirmation(false)}>Go Back</button> 
+        Not Done ?{" "}
+        <button
+          className="btn btn-info text-white mx-3"
+          onClick={() => setShowConfirmation(false)}
+        >
+          Go Back
+        </button>
       </div>
     </div>
   );
@@ -149,17 +156,21 @@ export const OrderDetail = React.forwardRef(
       selectedParts,
       selectedSize,
       modelImage,
-      customSizeValues
+      customSizeValues,
     },
     ref
   ) => {
+    const [special, setSpecial] = useState("");
+
     return (
       <div ref={ref} className="row">
         <div className="col-md-6">
           <p className="h5 mt-3 mb-5">
-            <img src={modelImage} alt="model img"  width="80%"/>
+            <img src={modelImage} alt="model img" width="80%" />
           </p>
-          <p className="h5 mt-4">Selected Size: {selectedSize || "N/A"}</p>
+          <p className="h5 mt-4">
+            Selected Size: {selectedSize || "None Selected"}
+          </p>
           <p className="h5 mt-3">
             Price: {currencySymbol}
             {total}
@@ -178,7 +189,20 @@ export const OrderDetail = React.forwardRef(
           </div>
           <p>Estimated Shipping Time: {estimatedShippingTime}</p>
           <p>Expected to be Ready By: {readyBy}</p>
-          
+
+          <p className="mt-5">
+            <span className="p-float-label">
+              <InputTextarea
+                autoResize
+                id="special-request"
+                value={special}
+                onChange={(e) => setSpecial(e.target.value)}
+                rows={5}
+                cols={50}
+              />
+              <label htmlFor="special-request">Any special request to your designer?</label>
+            </span>
+          </p>
         </div>
         <div className="col-md-6">
           <div className="mt-4">
@@ -202,7 +226,7 @@ export const OrderDetail = React.forwardRef(
                       }}
                     ></div>
                   ) : (
-                    <span>N/A</span>
+                    <span>None Selected</span>
                   )}
                 </p>
 
@@ -221,7 +245,7 @@ export const OrderDetail = React.forwardRef(
                       />
                     </p>
                   ) : (
-                    <span>N/A</span>
+                    <span>None Selected</span>
                   )}
                 </p>
 
