@@ -13,7 +13,7 @@ import sash_model from "../Pages/Customize/Configurator/models/Accessories/Unise
 import jacket from "../Pages/Customize/Configurator/models/Accessories/Unisex/jacket_main.glb";
 
 // Importing size guides
-import sash_guide from '../Assets/size_guide/Unisex/SASH.jpg';
+import sash_guide from '../Assets/size_guide/Unisex/sash.jpg';
 import miniBag_guide from '../Assets/size_guide/Unisex/30.jpg';
 import backpack_guide from '../Assets/size_guide/Unisex/29.jpg';
 import jacket_guide from '../Assets/size_guide/Unisex/35.jpg';
