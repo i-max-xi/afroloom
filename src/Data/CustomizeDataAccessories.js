@@ -89,7 +89,7 @@ export const mainMaleAccessories = [
       { label: "M", value: 1 },
       { label: "L", value: 2 },
       { label: "XL", value: 3 },
-      { label: "XXL", value: 4 },
+      // { label: "XXL", value: 4 },
       // { label: "3XL", value: 5 },
       // { label: "4XL", value: 6 },
       // { label: "5XL", value: 7 },
@@ -167,14 +167,13 @@ export const mainMaleAccessories = [
     ],
     sizeForms: [
       {
-        label: "Length (inch)",
+        label: "Length (cm)",
         value: "",
       },
       {
-        label: "Width (inch)",
+        label: "Height (cm)",
         value: "",
       },
-      // Add more form fields as needed
     ],
   },
   {
@@ -228,12 +227,11 @@ export const mainFemaleAccessories = [
     sizeGuide: handbag_guide,
     sizeModels: tshirt_model,
     sizeOptions: [
-      { label: "XS", value: 0.5 },
       { label: "S", value: 0.5 },
       { label: "M", value: 1 },
       { label: "L", value: 2 },
-      { label: "XL", value: 3 },
-      { label: "XXL", value: 4 },
+      // { label: "XL", value: 3 },
+      // { label: "XXL", value: 4 },
       // { label: "3XL", value: 5 },
       // { label: "4XL", value: 6 },
       // { label: "5XL", value: 7 },
@@ -244,7 +242,12 @@ export const mainFemaleAccessories = [
       {
         label: "Length (inch)",
       },
-      // Add more form fields as needed
+      {
+        label: "Width (inch)",
+      },
+      {
+        label: "Height (inch)",
+      },
     ],
   },
   {
@@ -259,12 +262,13 @@ export const mainFemaleAccessories = [
     sizeModels: tshirt_model,
     sizeGuide: bikini_guide,
     sizeOptions: [
+      { label: "XS", value: 0.5 },
       { label: "S", value: 0.5 },
       { label: "M", value: 1 },
       { label: "L", value: 2 },
       { label: "XL", value: 3 },
-      { label: "XXL", value: 4 },
-      // { label: "3XL", value: 5 },
+      { label: "2XL", value: 4 },
+      { label: "3XL", value: 5 },
       // { label: "4XL", value: 6 },
       // { label: "5XL", value: 7 },
       // { label: "6XL", value: 8 },
@@ -272,13 +276,16 @@ export const mainFemaleAccessories = [
     ],
     sizeForms: [
       {
+        label: "Upper Bust (inch)",
+      },
+      {
         label: "Under Bust (inch)",
       },
       {
         label: "Waist (inch)",
       },
       {
-        label: "Hip (inch)",
+        label: "Bottom Length (inch)",
       },
       // Add more form fields as needed
     ],

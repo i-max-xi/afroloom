@@ -124,23 +124,27 @@ export const mainFootwear = [
     parts: slippersParts.keys().map(slippersParts),
     sizeGuide: slipper_guide,
     sizeOptions: [
-      { label: "XS", value: 0.5 },
-      { label: "S", value: 0.5 },
-      { label: "M", value: 1 },
-      { label: "L", value: 2 },
-      { label: "XL", value: 3 },
-      { label: "XXL", value: 4 },
-      // { label: "3XL", value: 5 },
-      // { label: "4XL", value: 6 },
-      // { label: "5XL", value: 7 },
-      // { label: "6XL", value: 8 },
+      { label: "35", value: 0.5 },
+      { label: "36", value: 1 },
+      { label: "37", value: 2 },
+      { label: "38", value: 3 },
+      { label: "39", value: 4 },
+      { label: "40", value: 5 },
+      { label: "41", value: 6 },
+      { label: "42", value: 7 },
+      { label: "43", value: 5 },
+      { label: "44", value: 6 },
+      { label: "45", value: 7 },
+      { label: "46", value: 8 },
       // { label: "7XL", value: 9 },
     ],
     sizeForms: [
       {
         label: "Length (inch)",
       },
-      // Add more form fields as needed
+      {
+        label: "Width (inch)",
+      },
     ],
   },
   {
@@ -163,9 +167,7 @@ export const mainFootwear = [
       { label: "39", value: 4 },
       { label: "40", value: 5 },
       { label: "41", value: 6 },
-      // { label: "42", value: 7 },
-      // { label: "6XL", value: 8 },
-      // { label: "7XL", value: 9 },
+      { label: "42", value: 7 },
     ],
     sizeForms: [
       {

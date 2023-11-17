@@ -76,10 +76,10 @@ export const mainUnisex = [
     ],
     sizeForms: [
       {
-        label: 'Width (inch)',
+        label: 'Length (inch)',
       },
       {
-        label: 'Height (inch)',
+        label: 'Width (inch)',
       },
       // Add more form fields as needed
     ],
@@ -99,7 +99,7 @@ export const mainUnisex = [
       { label: "S", value: 0.5 },
       { label: "M", value: 1 },
       { label: "L", value: 2 },
-      // { label: "XL", value: 3 },
+      { label: "XL", value: 3 },
       // { label: "XXL", value: 4 },
       // { label: "3XL", value: 5 },
       // { label: "4XL", value: 6 },
@@ -109,13 +109,7 @@ export const mainUnisex = [
     ],
     sizeForms: [
       {
-        label: 'Length (inch)',
-      },
-      {
-        label: 'Height (inch)',
-      },
-      {
-        label: 'Depth (inch)',
+        label: 'Min-Max circumference (inch)',
       },
       {
         label: 'Width (inch)',
@@ -144,10 +138,10 @@ export const mainUnisex = [
     sizeModels: tshirt_model,
     sizeGuide: backpack_guide,
     sizeOptions: [
-      { label: "13L", value: 0.5 },
-      { label: "20L", value: 1 },
-      { label: "25L", value: 2 },
-      { label: "35L", value: 3 },
+      { label: "S", value: 0.5 },
+      { label: "M", value: 1 },
+      { label: "L", value: 2 },
+      // { label: "35L", value: 3 },
       // { label: "XXL", value: 4 },
       // { label: "3XL", value: 5 },
       // { label: "4XL", value: 6 },
@@ -157,9 +151,14 @@ export const mainUnisex = [
     ],
     sizeForms: [
       {
-        label: 'Length (inch)',
+        label: 'Height (inch)',
       },
-      // Add more form fields as needed
+      {
+        label: 'Depth (inch)',
+      },
+      {
+        label: 'Width (inch)',
+      },
     ],
   },
   {
@@ -184,12 +183,13 @@ export const mainUnisex = [
     sizeModels: tshirt_model,
     sizeGuide: jacket_guide,
     sizeOptions: [
+      { label: "XS", value: 0.5 },
       { label: "S", value: 0.5 },
       { label: "M", value: 1 },
       { label: "L", value: 2 },
       { label: "XL", value: 3 },
-      { label: "XXL", value: 4 },
-      // { label: "3XL", value: 5 },
+      { label: "2XL", value: 4 },
+      { label: "3XL", value: 5 },
       // { label: "4XL", value: 6 },
       // { label: "5XL", value: 7 },
       // { label: "6XL", value: 8 },
@@ -197,22 +197,16 @@ export const mainUnisex = [
     ],
     sizeForms: [
       {
+        label: 'Shoulder (inch)',
+      },
+      {
         label: 'Chest (inch)',
       },
       {
-        label: 'Waist (inch)',
+        label: 'Body Length (inch)',
       },
       {
-        label: 'Bottom (inch)',
-      },
-      {
-        label: 'Shoulder-to-Shoulder (inch)',
-      },
-      {
-        label: 'Arm Length (inch)',
-      },
-      {
-        label: 'Back (inch)',
+        label: 'Sleeve Length(inch)',
       },
       // Add more form fields as needed
     ],
