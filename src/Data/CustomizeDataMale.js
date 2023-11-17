@@ -25,8 +25,8 @@ import tshirt_guide from "../Assets/size_guide/MaleClothing/4.jpg";
 import tshirtlong_guide from "../Assets/size_guide/MaleClothing/1.jpg";
 import shirt_guide from "../Assets/size_guide/MaleClothing/3.jpg";
 import shirtlong_guide from "../Assets/size_guide/MaleClothing/2.jpg";
-import top_down_guide from '../Assets/size_guide/MaleClothing/10.jpg';
-import cloak_guide from '../Assets/size_guide/MaleClothing/5.jpg';
+import top_down_guide from "../Assets/size_guide/MaleClothing/10.jpg";
+import cloak_guide from "../Assets/size_guide/MaleClothing/5.jpg";
 import blazer_guide from "../Assets/size_guide/MaleClothing/9.jpg";
 import trouser_guide from "../Assets/size_guide/MaleClothing/6.jpg";
 import summer_shorts_guide from "../Assets/size_guide/MaleClothing/8.jpg";
@@ -114,24 +114,26 @@ export const mainMaleCustomize = [
       { label: "M", value: 1 },
       { label: "L", value: 2 },
       { label: "XL", value: 3 },
-      { label: "2XL", value: 4 },
-      { label: "3XL", value: 5 },
-      { label: "4XL", value: 6 },
-      { label: "5XL", value: 7 },
+      // { label: "2XL", value: 4 },
+      // { label: "3XL", value: 5 },
+      // { label: "4XL", value: 6 },
+      // { label: "5XL", value: 7 },
       // { label: "6XL", value: 8 },
       // { label: "7XL", value: 9 },
     ],
     sizeForms: [
       {
-        label: "Chest (inch)",
+        label: "Neck Size (cm)",
       },
       {
-        label: "Length (inch)",
+        label: "Half Across Back (cm)",
       },
       {
-        label: "Sleeve (inch)",
+        label: "Chest (cm)",
       },
-      // Add more form fields as needed
+      {
+        label: "Sleeve Length (cm)",
+      },
     ],
   },
   {
@@ -161,24 +163,26 @@ export const mainMaleCustomize = [
       { label: "M", value: 1 },
       { label: "L", value: 2 },
       { label: "XL", value: 3 },
-      { label: "2XL", value: 4 },
-      { label: "3XL", value: 5 },
-      { label: "4XL", value: 6 },
+      // { label: "2XL", value: 4 },
+      // { label: "3XL", value: 5 },
+      // { label: "4XL", value: 6 },
       // { label: "5XL", value: 7 },
       // { label: "6XL", value: 8 },
       // { label: "7XL", value: 9 },
     ],
     sizeForms: [
       {
-        label: "Chest Width (inch)",
+        label: "Neck Size (cm)",
       },
       {
-        label: "Body Length (inch)",
+        label: "Half Across Back (cm)",
       },
       {
-        label: "Sleeve Length (inch)",
+        label: "Chest (cm)",
       },
-      // Add more form fields as needed
+      {
+        label: "Sleeve Length (cm)",
+      },
     ],
   },
   {
@@ -210,28 +214,27 @@ export const mainMaleCustomize = [
       { label: "M", value: 1 },
       { label: "L", value: 2 },
       { label: "XL", value: 3 },
-      { label: "2XL", value: 4 },
-      { label: "3XL", value: 5 },
-      { label: "4XL", value: 6 },
-      { label: "5XL", value: 7 },
-      { label: "6XL", value: 8 },
-      { label: "7XL", value: 9 },
-      { label: "8XL", value: 10 },
+      // { label: "2XL", value: 4 },
+      // { label: "3XL", value: 5 },
+      // { label: "4XL", value: 6 },
+      // { label: "5XL", value: 7 },
+      // { label: "6XL", value: 8 },
+      // { label: "7XL", value: 9 },
+      // { label: "8XL", value: 10 },
     ],
     sizeForms: [
       {
-        label: "Bust (inch)",
+        label: "Neck Size (cm)",
       },
       {
-        label: "Length (inch)",
+        label: "Half Across Back (cm)",
       },
       {
-        label: "Shoulder (inch) ",
+        label: "Chest (cm)",
       },
       {
-        label: "Sleeve length (inch)",
+        label: "Sleeve Length (cm)",
       },
-      // Add more form fields as needed
     ],
   },
   {
@@ -273,21 +276,20 @@ export const mainMaleCustomize = [
     ],
     sizeForms: [
       {
-        label: "Length (inch)",
+        label: "Neck Size (cm)",
       },
       {
-        label: "Chest (inch)",
+        label: "Half Across Back (cm)",
       },
       {
-        label: "Sleeve (inch)",
+        label: "Chest (cm)",
       },
       {
-        label: "Waist (inch)",
+        label: "Sleeve Length (cm)",
       },
       {
-        label: "Collar (inch)",
+        label: "Cuff (cm)",
       },
-      // Add more form fields as needed
     ],
   },
   {
@@ -329,18 +331,45 @@ export const mainMaleCustomize = [
     ],
     sizeForms: [
       {
-       label: "Length (inch)",
+        label: "Neck Size (cm)",
       },
-      // {
-      //   label: "Chest (inch)",
-      // },
-      // {
-      //   label: "Body Length (inch)",
-      // },
-      // {
-      //   label: "Sleeve Length (inch)",
-      // },
-      // Add more form fields as needed
+      {
+        label: "Half Across Back (cm)",
+      },
+      {
+        label: "Chest (cm)",
+      },
+      {
+        label: "Sleeve Length (cm)",
+      },
+      {
+        label: "Cuff (cm)",
+      },
+      {
+        label: "Natural waist (cm)",
+      },
+      {
+        label: "Trouser Waist (cm)",
+      },
+      {
+        label: "Inside Leg (cm)",
+      },
+      {
+        label: "Trouser Bottom (cm)",
+      },
+      {
+        label: "Trouser Length (cm)",
+      },
+      {
+        label: "Seat (cm)",
+      },
+   
+      {
+        label: "Thigh (cm)",
+      },
+      {
+        label: "Knee (cm)",
+      },
     ],
   },
   {
@@ -377,15 +406,17 @@ export const mainMaleCustomize = [
     ],
     sizeForms: [
       {
-        label: "Chest (inch)",
+        label: "Neck Size (cm)",
       },
       {
-        label: "Body Length (inch)",
+        label: "Half Across Back (cm)",
       },
       {
-        label: "Sleeve Length (inch)",
+        label: "Chest (cm)",
       },
-      // Add more form fields as needed
+      {
+        label: "Sleeve Length (cm)",
+      },
     ],
   },
   {
@@ -413,8 +444,8 @@ export const mainMaleCustomize = [
       { label: "M", value: 1 },
       { label: "L", value: 2 },
       { label: "XL", value: 3 },
-      { label: "2XL", value: 4 },
-      { label: "3XL", value: 5 },
+      // { label: "2XL", value: 4 },
+      // { label: "3XL", value: 5 },
       // { label: "4XL", value: 6 },
       // { label: "5XL", value: 7 },
       // { label: "6XL", value: 8 },
@@ -422,25 +453,29 @@ export const mainMaleCustomize = [
     ],
     sizeForms: [
       {
-        label: "Chest width (inch)",
+        label: "Chest (cm)",
       },
       {
-        label: "Waist width (inch)",
+        label: "Coat Waist (cm)",
       },
       {
-        label: "Sleeve Length (inch)",
+        label: "Seat (cm)",
       },
       {
-        label: "Body Length (inch)",
+        label: "Natural Waist Length (cm)",
       },
       {
-        label: "Shoulder width (inch)",
+        label: "Half Across Back (cm)",
       },
       {
-        label: "Bottom width (inch)",
+        label: "Elbow (cm)",
       },
-
-      // Add more form fields as needed
+      {
+        label: "Sleeve Length (cm)",
+      },
+      {
+        label: "Scye Depth (cm)",
+      },
     ],
   },
   {
@@ -463,37 +498,46 @@ export const mainMaleCustomize = [
     sizeGuide: trouser_guide,
     sizeModels: tshirt_model,
     sizeOptions: [
-      { label: "28", value: 0.5 },
-      { label: "29", value: 1 },
-      { label: "30", value: 2 },
-      { label: "31", value: 3 },
-      { label: "32", value: 4 },
-      { label: "33", value: 5 },
-      { label: "34", value: 6 },
-      { label: "35", value: 7 },
-      { label: "36", value: 8 },
-      { label: "38", value: 9 },
-      { label: "40", value: 10 },
-
+      { label: "S", value: 0.5 },
+      { label: "M", value: 1 },
+      { label: "L", value: 2 },
+      { label: "XL", value: 3 },
+      // { label: "32", value: 4 },
+      // { label: "33", value: 5 },
+      // { label: "34", value: 6 },
+      // { label: "35", value: 7 },
+      // { label: "36", value: 8 },
+      // { label: "38", value: 9 },
+      // { label: "40", value: 10 },
     ],
     parts: trouserParts.keys().map(trouserParts),
     sizeForms: [
       {
-        label: "Hip (inch)",
+        label: "Natural waist (cm)",
       },
       {
-        label: "Thigh (inch)",
+        label: "Trouser Waist (cm)",
       },
       {
-        label: "Knee (inch)",
+        label: "Inside Leg (cm)",
       },
       {
-        label: "Hem (inch)",
+        label: "Trouser Bottom (cm)",
       },
       {
-        label: "Height (inch)",
+        label: "Trouser Length (cm)",
       },
-      // Add more form fields as needed
+      {
+        label: "Seat (cm)",
+      },
+   
+      {
+        label: "Thigh (cm)",
+      },
+      {
+        label: "Knee (cm)",
+      },
+
     ],
   },
   {
@@ -523,27 +567,27 @@ export const mainMaleCustomize = [
       { label: "M", value: 1 },
       { label: "L", value: 2 },
       { label: "XL", value: 3 },
-      { label: "2XL", value: 4 },
-      { label: "3XL", value: 5 },
-      { label: "4XL", value: 6 },
-      { label: "5XL", value: 7 },
+      // { label: "2XL", value: 4 },
+      // { label: "3XL", value: 5 },
+      // { label: "4XL", value: 6 },
+      // { label: "5XL", value: 7 },
       // { label: "6XL", value: 8 },
       // { label: "7XL", value: 9 },
     ],
     parts: summerShortsParts.keys().map(summerShortsParts),
     sizeForms: [
       {
-        label: "Waist (inch)",
-
+        label: "Shorts Length (cm)",
       },
       {
-        label: "Hip (inch)",
+        label: "Seat (cm)",
       },
       {
-        label: "Length (inch)",
-
+        label: "Thigh (cm)",
       },
-      // Add more form fields as needed
+      {
+        label: "Knee (cm)",
+      },
     ],
   },
   {
@@ -573,8 +617,8 @@ export const mainMaleCustomize = [
       { label: "M", value: 1 },
       { label: "L", value: 2 },
       { label: "XL", value: 3 },
-      { label: "2XL", value: 4 },
-      { label: "3XL", value: 5 },
+      // { label: "2XL", value: 4 },
+      // { label: "3XL", value: 5 },
       // { label: "4XL", value: 6 },
       // { label: "5XL", value: 7 },
       // { label: "6XL", value: 8 },
@@ -582,17 +626,23 @@ export const mainMaleCustomize = [
     ],
     sizeForms: [
       {
-        label: "Waist (inch)",
-
+        label: "Natural Waist (cm)",
       },
       {
-        label: "Hip (inch)",
+        label: "Shorts Waist (cm)",
       },
       {
-        label: "Length (inch)",
-
+        label: "Shorts Length (cm)",
       },
-      // Add more form fields as needed
+      {
+        label: "Seat (cm)",
+      },
+      {
+        label: "Thigh (cm)",
+      },
+      {
+        label: "Knee (cm)",
+      },
     ],
   },
 ];
