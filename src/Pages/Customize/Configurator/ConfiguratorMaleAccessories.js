@@ -260,11 +260,19 @@ const ConfiguratorMaleAccessories = () => {
     setShowTourPopup(false);
   };
 
-  const handleTourClose = () => {
-    setShowTour(false); // Close the tour
-    // You might want to save in local storage that the tour has been completed
-    // to avoid showing it again for returning users
+    const handleTourClose = () => {
+    setShowTour(false);
+    localStorage.setItem('tourCompleted', 'true'); // Save tour completion status
   };
+
+  useEffect(() => {
+    const tourCompleted = localStorage.getItem('tourCompleted');
+    if (tourCompleted === 'true') {
+      setShowTourPopup(false); // If tour completed, don't show it
+    } else {
+      setShowTourPopup(true); // Show the tour for new users
+    }
+  }, []);
 
   const handleRetakeTour = () => {
     setShowTour(true);

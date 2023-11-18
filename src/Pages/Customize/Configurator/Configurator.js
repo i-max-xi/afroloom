@@ -245,19 +245,27 @@ const Configurator = () => {
   const [showTour, setShowTour] = useState(false);
 
   const handleTourStart = () => {
-    setShowTour(true);
     setShowTourPopup(false);
+    setShowTour(true);
   };
 
   const handleTourLater = () => {
     setShowTourPopup(false);
   };
 
-  const handleTourClose = () => {
-    setShowTour(false); // Close the tour
-    // You might want to save in local storage that the tour has been completed
-    // to avoid showing it again for returning users
+    const handleTourClose = () => {
+    setShowTour(false);
+    localStorage.setItem('tourCompleted', 'true'); // Save tour completion status
   };
+
+  useEffect(() => {
+    const tourCompleted = localStorage.getItem('tourCompleted');
+    if (tourCompleted === 'true') {
+      setShowTourPopup(false); // If tour completed, don't show it
+    } else {
+      setShowTourPopup(true); // Show the tour for new users
+    }
+  }, []);
 
   const handleRetakeTour = () => {
     setShowTour(true);
@@ -266,33 +274,6 @@ const Configurator = () => {
   return (
     <>
       <Nav />
-      <>
-        <Dialog
-          // header="Welcome to the 3D Customization!"
-          visible={showTourPopup}
-          style={{ width: "50vw" }}
-          onHide={handleTourLater}
-        >
-          <div className="tour-popup">
-            <h2>Welcome to the 3D customization!</h2>
-            <p>Would you like to take a quick tour?</p>
-            <button className="btn btn-success m-3" onClick={handleTourStart}>
-              Take Tour
-            </button>
-            <button className="btn btn-secondary m-3" onClick={handleTourLater}>
-              Maybe Later
-            </button>
-          </div>
-        </Dialog>
-
-        {showTour && (
-          <WelcomeTour
-            isOpen={showTour}
-            onRequestClose={handleTourClose}
-            steps={tourSteps}
-          />
-        )}
-      </>
       <>
         <Dialog
           // header="Welcome to the 3D Customization!"
