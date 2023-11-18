@@ -12,14 +12,14 @@ import heels from '../Pages/Customize/Configurator/models/Shoes/heels_main.glb';
 import sneaker_model from '../Pages/Customize/Configurator/models/Shoes/sneaker.glb';
 
 // Importing size guides
-// import flatShoe_guide from '../Assets/size_guide/Footwear/';
-// import sneaker_guide from '../Assets/size_guide/Footwear/sneaker.JPG';
+import flatShoe_guide from '../Assets/size_guide/Footwear/slipper.jpg';
+import sneaker_guide from '../Assets/size_guide/Footwear/slipper.jpg';
 import slipper_guide from '../Assets/size_guide/Footwear/slipper.jpg';
-// import heels_guide from '../Assets/size_guide/Footwear/heels.jpg';
+import heels_guide from '../Assets/size_guide/Footwear/34.jpg';
 
 
 // models
-import tshirt_model from "../Pages/Customize/Configurator/size_guide/male/tshirt.JPG";
+const tshirt_model = "";
 
 // parts
 const flexShoeParts = require.context(
@@ -58,20 +58,21 @@ export const mainFootwear = [
     myZoom: 0.9,
     price: 20,
     parts: flexShoeParts.keys().map(flexShoeParts),
-    // sizeGuide: flatShoe_guide,
+    sizeGuide: flatShoe_guide,
     sizeModels: tshirt_model,
     sizeOptions: [
-      { label: "XS", value: 0.5 },
-      { label: "S", value: 0.5 },
-      { label: "M", value: 1 },
-      { label: "L", value: 2 },
-      { label: "XL", value: 3 },
-      { label: "XXL", value: 4 },
-      // { label: "3XL", value: 5 },
-      // { label: "4XL", value: 6 },
-      // { label: "5XL", value: 7 },
-      // { label: "6XL", value: 8 },
-      // { label: "7XL", value: 9 },
+      { label: "35", value: 0.5 },
+      { label: "36", value: 1 },
+      { label: "37", value: 2 },
+      { label: "38", value: 3 },
+      { label: "39", value: 4 },
+      { label: "40", value: 5 },
+      { label: "41", value: 6 },
+      { label: "42", value: 7 },
+      { label: "43", value: 5 },
+      { label: "44", value: 6 },
+      { label: "45", value: 7 },
+      { label: "46", value: 8 },
     ],
     sizeForms: [
       {
@@ -90,20 +91,21 @@ export const mainFootwear = [
     myZoom: 0.9,
     price: 20,
     parts: sneakerParts.keys().map(sneakerParts),
-    // sizeGuide: sneaker_guide,
+    sizeGuide: sneaker_guide,
     sizeModels: tshirt_model,
     sizeOptions: [
-      { label: "XS", value: 0.5 },
-      { label: "S", value: 0.5 },
-      { label: "M", value: 1 },
-      { label: "L", value: 2 },
-      { label: "XL", value: 3 },
-      { label: "XXL", value: 4 },
-      // { label: "3XL", value: 5 },
-      // { label: "4XL", value: 6 },
-      // { label: "5XL", value: 7 },
-      // { label: "6XL", value: 8 },
-      // { label: "7XL", value: 9 },
+      { label: "35", value: 0.5 },
+      { label: "36", value: 1 },
+      { label: "37", value: 2 },
+      { label: "38", value: 3 },
+      { label: "39", value: 4 },
+      { label: "40", value: 5 },
+      { label: "41", value: 6 },
+      { label: "42", value: 7 },
+      { label: "43", value: 5 },
+      { label: "44", value: 6 },
+      { label: "45", value: 7 },
+      { label: "46", value: 8 },
     ],
     sizeForms: [
       {
@@ -157,7 +159,7 @@ export const mainFootwear = [
     myZoom: 0.6,
     price: 20,
     parts: heelsParts.keys().map(heelsParts),
-    // sizeGuide: heels_guide,
+    sizeGuide: heels_guide,
     sizeModels: tshirt_model,
     sizeOptions: [
       { label: "35", value: 0.5 },

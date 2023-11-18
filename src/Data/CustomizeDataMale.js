@@ -25,7 +25,7 @@ import tshirt_guide from "../Assets/size_guide/MaleClothing/4.jpg";
 import tshirtlong_guide from "../Assets/size_guide/MaleClothing/1.jpg";
 import shirt_guide from "../Assets/size_guide/MaleClothing/3.jpg";
 import shirtlong_guide from "../Assets/size_guide/MaleClothing/2.jpg";
-import top_down_guide from "../Assets/size_guide/MaleClothing/10.jpg";
+import top_down_guide from "../Assets/size_guide/MaleClothing/topndown.jpg";
 import cloak_guide from "../Assets/size_guide/MaleClothing/5.jpg";
 import blazer_guide from "../Assets/size_guide/MaleClothing/9.jpg";
 import trouser_guide from "../Assets/size_guide/MaleClothing/6.jpg";

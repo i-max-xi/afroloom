@@ -23,7 +23,7 @@ import hand_bag_model from "../Pages/Customize/Configurator/models/Accessories/h
 
 // Importing size guides
 import roundCap_guide from '../Assets/size_guide/Accessories/Male/28.jpg';
-// import knittedCap_guide from '../Assets/size_guide/Accessories/Male/';
+import knittedCap_guide from '../Assets/size_guide/Accessories/Male/knited.jpg';
 import bowTie_guide from '../Assets/size_guide/Accessories/Male/27.jpg';
 import flyingTie_guide from '../Assets/size_guide/Accessories/Male/26.jpg';
 import handbag_guide from '../Assets/size_guide/Accessories/Female/33.jpg';
@@ -31,7 +31,7 @@ import bikini_guide from '../Assets/size_guide/Accessories/Female/31.jpg';
 
 
 // Markeying Models
-import tshirt_model from "../Pages/Customize/Configurator/size_guide/male/tshirt.JPG";
+const tshirt_model = "";
 
 // parts
 const roundCapParts = require.context(
@@ -117,14 +117,14 @@ export const mainMaleAccessories = [
     myZoom: 0.5,
     price: 20,
     parts: knittedCapParts.keys().map(knittedCapParts),
-    // sizeGuide: knittedCap_guide,
+    sizeGuide: knittedCap_guide,
     sizeModels: tshirt_model,
     sizeOptions: [
       { label: "S", value: 0.5 },
       { label: "M", value: 1 },
       { label: "L", value: 2 },
       { label: "XL", value: 3 },
-      { label: "XXL", value: 4 },
+      // { label: "XXL", value: 4 },
       // { label: "3XL", value: 5 },
       // { label: "4XL", value: 6 },
       // { label: "5XL", value: 7 },
