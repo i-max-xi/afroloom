@@ -8,7 +8,7 @@ const ShippingPolicy = () => {
       <LayoutHeaders selectedBg={Top} />
       <div className="p-5 m-5">
         <h3>
-          Welcome to <span className="text-warning">Shopinafrica.com,</span> an
+          Welcome to <span className="text-warning">AfroLoom.com,</span> an
           e-commerce platform specializing in African products.
         </h3>
 

@@ -116,7 +116,7 @@ const Footer = () => {
       </div>
 
       <div className="text-center p-3 bg-dark">
-        © 2023 Copyright: Shop in Africa
+        © 2023 Copyright: AfroLoom
       </div>
     </div>
   );

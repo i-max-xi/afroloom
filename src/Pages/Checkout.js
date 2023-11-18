@@ -297,7 +297,7 @@ const Checkout = () => {
             By placing your order you agree to our
             <Link to="/tnc"> Terms and Conditions</Link> and <br />
             <Link to="/returnPolicy"> Return Policies</Link>. You also consent
-            to some of your data being stored by SHOP in AFRICA, which may be
+            to some of your data being stored by AfroLoom, which may be
             used to make future shopping experiences better for you
           </p>
         </div>

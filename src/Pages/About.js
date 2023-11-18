@@ -8,7 +8,7 @@ const About = () => {
       <LayoutHeaders selectedBg={Top} />
       <div className="p-5 mx-5">
         <h3>
-        Welcome to <span className="text-warning">ShopinAfrica.com</span>
+        Welcome to <span className="text-warning">AfroLoom.com</span>
         </h3>
         <p>
           We are dedicated to bringing you a wide
@@ -22,7 +22,7 @@ const About = () => {
         </p>
         <h5>Our Vision:</h5>
         <p>
-          At ShopinAfrica.com, we envision a world where African craftsmanship is
+          At AfroLoom.com, we envision a world where African craftsmanship is
           celebrated and accessible to people from all corners of the globe. By
           leveraging the power of e-commerce, we strive to be the go-to destination
           for African-inspired products, fostering greater appreciation for the
@@ -42,7 +42,7 @@ const About = () => {
         <p>
           As part of our commitment to sustainability, we prioritize partnering
           with artisans and suppliers who employ eco-friendly practices and
-          prioritize the use of sustainable materials. By choosing ShopinAfrica.com,
+          prioritize the use of sustainable materials. By choosing AfroLoom.com,
           you are not only supporting local businesses but also contributing to
           the preservation of traditional craftsmanship and promoting ethical trade
           practices.
@@ -57,7 +57,7 @@ const About = () => {
         </p>
         <h5>Join Our Community - Get Involved:</h5>
         <p>
-          ShopinAfrica.com strives to create a community of like-minded individuals
+          AfroLoom.com strives to create a community of like-minded individuals
           who are passionate about African culture and craftsmanship. We encourage
           you to join us on our social media platforms, where we regularly share
           fascinating stories about our artisans, highlight new arrivals, and
@@ -67,7 +67,7 @@ const About = () => {
         </p>
         <h5>Conclusion:</h5>
         <p>
-          Thank you for choosing ShopinAfrica.com as your gateway to authentic
+          Thank you for choosing AfroLoom.com as your gateway to authentic
           African products. We are committed to providing an exceptional online
           shopping experience while empowering African artisans and communities.
           Indulge in the beauty and authenticity of Africa and let our products

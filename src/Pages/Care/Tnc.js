@@ -8,7 +8,7 @@ const Tnc = () => {
       <LayoutHeaders selectedBg={Top} />
       <div className="p-5 m-5">
         <h4>
-          Welcome to <span className="text-warning">Shopinafrica.com,</span> an
+          Welcome to <span className="text-warning">AfroLoom.com,</span> an
           e-commerce platform specializing in African products.
         </h4>
         <p>
@@ -19,7 +19,7 @@ const Tnc = () => {
         <h5>Definitions</h5>
         <ul>
           <li>
-            "Website" refers to shopinafrica.com and all its associated pages
+            "Website" refers to AfroLoom.com and all its associated pages
             and content.
           </li>
           <li>
@@ -88,13 +88,13 @@ const Tnc = () => {
         <p>
           All content, including but not limited to images, logos, text, and
           graphics, on our website are the intellectual property of
-          shopinafrica.com or its sellers. You are prohibited from using,
+          AfroLoom.com or its sellers. You are prohibited from using,
           reproducing, or distributing any content without obtaining explicit
           permission from the respective owner(s).
         </p>
         <h5>Limitation of Liability</h5>
         <p>
-          Under no circumstances shall shopinafrica.com be liable for any
+          Under no circumstances shall AfroLoom.com be liable for any
           direct, indirect, incidental, consequential, or punitive damages
           arising from the use of our website or the purchase of any product.
           This limitation of liability applies to the fullest extent permitted
@@ -109,7 +109,7 @@ const Tnc = () => {
         </p>
         <h5>Modifications</h5>
         <p>
-          Shopinafrica.com reserves the right to modify, update, or remove
+          AfroLoom.com reserves the right to modify, update, or remove
           portions of these terms and conditions at any time without prior
           notice. It is your responsibility to regularly review these terms for
           any changes. Continued use of our website after any modifications

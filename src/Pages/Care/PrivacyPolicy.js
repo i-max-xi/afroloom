@@ -9,10 +9,10 @@ const PrivacyPolicy = () => {
       <div className="p-5 m-5">
         <h3>
           Privacy Policy for
-          <span className="text-warning"> Shopinafrica.com</span>
+          <span className="text-warning"> AfroLoom.com</span>
         </h3>
         <p>
-          At Shopinafrica.com, we are committed to protecting the privacy and
+          At AfroLoom.com, we are committed to protecting the privacy and
           security of our customers. This Privacy Policy explains how we
           collect, use, and safeguard your personal data when you access or use
           our website.

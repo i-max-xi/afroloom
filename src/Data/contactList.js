@@ -40,7 +40,7 @@ const contactInfo = [
     {
       id: 3,
       title: "Email Us",
-      detail: "info@shopinafrica.com",
+      detail: "info@AfroLoom.com",
       img: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
