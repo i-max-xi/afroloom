@@ -339,7 +339,7 @@ export const mainFemaleCustomize = [
       { label: "M", value: 1 },
       { label: "L", value: 2 },
       { label: "XL", value: 3 },
-      { label: "2XL", value: 4 },
+      // { label: "2XL", value: 4 },
       // { label: "3XL", value: 5 },
       // { label: "4XL", value: 6 },
       // { label: "5XL", value: 7 },

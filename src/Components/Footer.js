@@ -1,7 +1,8 @@
 import React from "react";
 // import footerBG from "../Assets/Afrk.jpg";
 import { Link } from "react-router-dom";
-import Logo from "../Assets/logo_removed_bg.png";
+// import Logo from "../Assets/logo_removed_bg.png";
+import Logo from "../Assets/AFRO LOGO 4_footer.jpg";
 import SocialMedia from "./SocialMedia";
 import Header2 from "./Header2";
 import { FooterContact } from "./FooterContact";

@@ -1,7 +1,7 @@
 import React from "react";
 import DropDowner from "./DropDowner";
 import { Link } from "react-router-dom";
-import Logo from "../Assets/Shop 1.jpg";
+import Logo from "../Assets/AFRO LOGO 4.jpg";
 import { Badge } from "primereact/badge";
 import { categoryArr } from "../Data/categoryList";
 import uuid from "react-uuid";
@@ -59,7 +59,6 @@ const Nav = ({ handleToggleDropdown, Language, Currency }) => {
         </button>
         <Link to="/" className="navbar-brand">
           <h3>
-            {" "}
             <img src={Logo} alt="africa-logo" className="logo" />
           </h3>
         </Link>
