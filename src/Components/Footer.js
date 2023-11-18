@@ -51,7 +51,7 @@ const Footer = () => {
                 <SocialMedia />
               </div>
 
-              <div className="col-6 mx-auto mb-4">
+              <div className="col-4 mx-auto mb-4">
                 <h5 className="mb-4 footer-header">About Us</h5>
                 <p>
                   We specialize in providing a wide range of African products

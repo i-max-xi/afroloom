@@ -72,7 +72,7 @@ const CategorySwipe = () => {
 
   return (
     <div className="bg-dark d-flex flex-column p-1 mb-5">
-      <h4 className="text-white align-self-center fs-2 mb-3 mt-2">Category</h4>
+      <h4 className="text-white align-self-center fs-3 mb-3 mt-2">Search By Category</h4>
 
       <Carousel
         value={products}
@@ -108,7 +108,7 @@ export const CategoryTemplate = ({
           <img
             src={image}
             alt={name}
-            className="shadow-2 rounded-circle w-50"
+            className="shadow-2 rounded-circle w-50 mt-2"
           />
         </div>
         <div>
