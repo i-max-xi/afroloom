@@ -273,7 +273,7 @@ const ConfiguratorFemale = () => {
             <div className="configurator-container container">
               <div className="left-panel rounded shadow">
                 <h5>Select Part</h5>
-                <div className="">
+                <div className="select-part-container">
                   {selectedClothing.myNode.map((nodeName, index) => (
                     <button
                       key={index}
@@ -300,7 +300,7 @@ const ConfiguratorFemale = () => {
                     </button>
                   ))}
                   <p onClick={() => setVisible(true)} className="fit">
-                    Fit & Sizing guide
+                    Customize Your Size &#8594;
                   </p>
                   <Dialog
                     header="Sizing Guide"

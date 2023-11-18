@@ -31,6 +31,7 @@ import {
 } from "./arrays/neededArrays";
 import TextureItem from "./TextureItem";
 import PartImages from "./PartImages";
+import WelcomeTour, { tourSteps } from "./WelcomeTour";
 
 const Shirt = ({
   isRotating,
@@ -240,9 +241,28 @@ const Configurator = () => {
     return split.join(' ');
   };
 
+  // Welcome
+  const [showTour, setShowTour] = useState(true);
+
+  useEffect(() => {
+    // Trigger the tour on component mount
+    setShowTour(true);
+  }, []);
+
+  const handleTourClose = () => {
+    setShowTour(false); // Close the tour
+    // You might want to save in local storage that the tour has been completed
+    // to avoid showing it again for returning users
+  };
+
   return (
     <>
       <Nav />
+      <WelcomeTour
+        isOpen={showTour}
+        onRequestClose={handleTourClose}
+        steps={tourSteps}
+      />
 
       {showConfirmation ? (
         <Confirmation
@@ -266,7 +286,7 @@ const Configurator = () => {
             <div className="configurator-container container">
               <div className="left-panel rounded shadow">
                 <h5>Select Part</h5>
-                <div className="">
+                <div className="select-part-container">
                   {selectedClothing.myNode.map((nodeName, index) => (
                     <button
                       key={index}
@@ -293,7 +313,7 @@ const Configurator = () => {
                     </button>
                   ))}
                   <p onClick={() => setVisible(true)} className="fit">
-                    Fit & Sizing guide
+                    Customize Your Size &#8594;
                   </p>
                   <Dialog
                     header="Sizing Guide"
