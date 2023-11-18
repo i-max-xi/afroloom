@@ -45,7 +45,7 @@ const CustomizePage = () => {
           {mainFemaleCustomize.map(({ name, image }) => (
             <Link
               to={`/configurator-female/${name}`}
-              className="col-3 m-3 mx-3"
+              className="col-3 m-3 mx-3 text-decoration-none"
               key={name}
             >
               <div className="card" data-aos="fade-in" data-aos-duration="1500">
@@ -68,7 +68,7 @@ const CustomizePage = () => {
           {mainMaleAccessories.map(({ name, image }) => (
             <Link
               to={`/configurator-male-accessories/${name}`}
-              className="col-3 m-3 mx-3"
+              className="col-3 m-3 mx-3 text-decoration-none"
               key={name}
             >
               <div className="card" data-aos="fade-in" data-aos-duration="1500">
@@ -92,7 +92,7 @@ const CustomizePage = () => {
             <Link
               // to={`/customize-female-accessories/${name}`}
               to={`/configurator-female-accessories/${name}`}
-              className="col-3 m-3 mx-3"
+              className="col-3 m-3 mx-3 text-decoration-none"
               key={name}
             >
               <div className="card" data-aos="fade-in" data-aos-duration="1500">
@@ -116,7 +116,7 @@ const CustomizePage = () => {
             <Link
               // to={`/customize-unisex/${name}`}
               to={`/configurator-unisex/${name}`}
-              className="col-3 m-3 mx-3"
+              className="col-3 m-3 mx-3 text-decoration-none"
               key={name}
             >
               <div className="card" data-aos="fade-in" data-aos-duration="1500">
@@ -140,7 +140,7 @@ const CustomizePage = () => {
             <Link
               // to={`/customize-footwear/${name}`}
               to={`/configurator-footwear/${name}`}
-              className="col-3 m-3 mx-3"
+              className="col-3 m-3 mx-3 text-decoration-none"
               key={name}
             >
               <div className="card" data-aos="fade-in" data-aos-duration="1500">
