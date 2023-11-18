@@ -70,7 +70,8 @@ const Shirt = ({
       setIsLoading(false); // Set loading state to false once model is loaded (replace with your actual model loading logic)
     }, 2000);
 
-    for (let i = 0; i < state.color.length; i++) {   // to fix color keeping on to next page
+    for (let i = 0; i < state.color.length; i++) {
+      // to fix color keeping on to next page
       state.color[i] = "#ffffff";
     }
 
@@ -85,11 +86,10 @@ const Shirt = ({
         </>
       ) : (
         selectedClothing.myNode.map((nodeName, index) => {
-
           const color = specialNodeNames.includes(nodeName)
-          ? snap.color[index] || "#333333"
-          : snap.color[index] || "#ffffff";
-          
+            ? snap.color[index] || "#333333"
+            : snap.color[index] || "#ffffff";
+
           const texture = snap.texture[index] || null;
 
           return (
@@ -124,7 +124,6 @@ const CameraControls = () => {
 };
 
 const Configurator = () => {
-  
   const { Id } = useParams();
   const selectedClothing = mainMaleCustomize.find((item) => item.name === Id);
 
@@ -155,14 +154,14 @@ const Configurator = () => {
     Array(selectedClothing.myNode.length).fill(0)
   );
 
-  const semitotal = (
-    partPrices.reduce((total, price) => total + price, 0)
-  )
+  const semitotal = partPrices.reduce((total, price) => total + price, 0);
 
   //total price
   const total = (
-    (((semitotal + selectedClothing.price) * selectedClothing.sizeOptions[selectedSize].value) * currencyFactor).toFixed(2)
-  )
+    (semitotal + selectedClothing.price) *
+    selectedClothing.sizeOptions[selectedSize].value *
+    currencyFactor
+  ).toFixed(2);
 
   const handleTextureChange = (newTexture) => {
     if (selectedPart !== null) {
@@ -185,7 +184,7 @@ const Configurator = () => {
       );
     }
   };
-  
+
   const handleRotation = () => {
     setIsRotating((prev) => !prev);
     setSelectedPart(null); // Deselect the part when rotating the entire model
@@ -237,17 +236,22 @@ const Configurator = () => {
 
   // parse part title
   const parseTitle = (title) => {
-    const split = title.split('_');
-    return split.join(' ');
+    const split = title.split("_");
+    return split.join(" ");
   };
 
   // Welcome
-  const [showTour, setShowTour] = useState(true);
+  const [showTourPopup, setShowTourPopup] = useState(true);
+  const [showTour, setShowTour] = useState(false);
 
-  useEffect(() => {
-    // Trigger the tour on component mount
+  const handleTourStart = () => {
     setShowTour(true);
-  }, []);
+    setShowTourPopup(false);
+  };
+
+  const handleTourLater = () => {
+    setShowTourPopup(false);
+  };
 
   const handleTourClose = () => {
     setShowTour(false); // Close the tour
@@ -255,15 +259,67 @@ const Configurator = () => {
     // to avoid showing it again for returning users
   };
 
+  const handleRetakeTour = () => {
+    setShowTour(true);
+  };
+
   return (
     <>
       <Nav />
-      <WelcomeTour
-        isOpen={showTour}
-        onRequestClose={handleTourClose}
-        steps={tourSteps}
-      />
+      <>
+        <Dialog
+          // header="Welcome to the 3D Customization!"
+          visible={showTourPopup}
+          style={{ width: "50vw" }}
+          onHide={handleTourLater}
+        >
+          <div className="tour-popup">
+            <h2>Welcome to the 3D customization!</h2>
+            <p>Would you like to take a quick tour?</p>
+            <button className="btn btn-success m-3" onClick={handleTourStart}>
+              Take Tour
+            </button>
+            <button className="btn btn-secondary m-3" onClick={handleTourLater}>
+              Maybe Later
+            </button>
+          </div>
+        </Dialog>
 
+        {showTour && (
+          <WelcomeTour
+            isOpen={showTour}
+            onRequestClose={handleTourClose}
+            steps={tourSteps}
+          />
+        )}
+      </>
+      <>
+        <Dialog
+          // header="Welcome to the 3D Customization!"
+          visible={showTourPopup}
+          style={{ width: "50vw" }}
+          onHide={handleTourLater}
+        >
+          <div className="tour-popup">
+            <h2>Welcome to the 3D customization!</h2>
+            <p>Would you like to take a quick tour?</p>
+            <button className="btn btn-success m-3" onClick={handleTourStart}>
+              Take Tour
+            </button>
+            <button className="btn btn-secondary m-3" onClick={handleTourLater}>
+              Maybe Later
+            </button>
+          </div>
+        </Dialog>
+
+        {showTour && (
+          <WelcomeTour
+            isOpen={showTour}
+            onRequestClose={handleTourClose}
+            steps={tourSteps}
+          />
+        )}
+      </>
       {showConfirmation ? (
         <Confirmation
           currencySymbol={currencySymbol}
@@ -273,7 +329,9 @@ const Configurator = () => {
           selectedParts={selectedParts}
           setShowConfirmation={setShowConfirmation}
           selectedSize={
-            selectedClothing.sizeOptions.find((option) => option.value === selectedSize)?.label
+            selectedClothing.sizeOptions.find(
+              (option) => option.value === selectedSize
+            )?.label
           }
           modelImage={stateImage}
           customSizeValues={sizeFormValues}
@@ -282,6 +340,13 @@ const Configurator = () => {
         <>
           <div className="main-space">
             <h3 className="text-center">Customizing {selectedClothing.name}</h3>
+            <button
+              className="btn btn-info text-white mx-3"
+              style={{ float: "right" }}
+              onClick={handleRetakeTour}
+            >
+              Take Tour
+            </button>
 
             <div className="configurator-container container">
               <div className="left-panel rounded shadow">

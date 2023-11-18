@@ -31,6 +31,7 @@ import {
 } from "./arrays/neededArrays";
 import TextureItem from "./TextureItem";
 import PartImages from "./PartImages";
+import WelcomeTour, { tourSteps } from "./WelcomeTour";
 
 const Shirt = ({
   isRotating,
@@ -241,14 +242,63 @@ const ConfiguratorFemale = () => {
 
   // parse part title
   const parseTitle = (title) => {
-    const split = title.split('_');
-    return split.join(' ');
+    const split = title.split("_");
+    return split.join(" ");
+  };
+
+  // Welcome
+  const [showTourPopup, setShowTourPopup] = useState(true);
+  const [showTour, setShowTour] = useState(false);
+
+  const handleTourStart = () => {
+    setShowTour(true);
+    setShowTourPopup(false);
+  };
+
+  const handleTourLater = () => {
+    setShowTourPopup(false);
+  };
+
+  const handleTourClose = () => {
+    setShowTour(false); // Close the tour
+    // You might want to save in local storage that the tour has been completed
+    // to avoid showing it again for returning users
+  };
+
+  const handleRetakeTour = () => {
+    setShowTour(true);
   };
 
   return (
     <>
-      <Nav />
+<Nav />
+      <>
+        <Dialog
+          // header="Welcome to the 3D Customization!"
+          visible={showTourPopup}
+          style={{ width: "50vw" }}
+          onHide={handleTourLater}
+        >
+          <div className="tour-popup">
+            <h2>Welcome to the 3D customization!</h2>
+            <p>Would you like to take a quick tour?</p>
+            <button className="btn btn-success m-3" onClick={handleTourStart}>
+              Take Tour
+            </button>
+            <button className="btn btn-secondary m-3" onClick={handleTourLater}>
+              Maybe Later
+            </button>
+          </div>
+        </Dialog>
 
+        {showTour && (
+          <WelcomeTour
+            isOpen={showTour}
+            onRequestClose={handleTourClose}
+            steps={tourSteps}
+          />
+        )}
+      </>
       {showConfirmation ? (
         <Confirmation
           currencySymbol={currencySymbol}
@@ -268,8 +318,14 @@ const ConfiguratorFemale = () => {
       ) : (
         <>
           <div className="main-space">
-            <h3 className="text-center">Customizing {selectedClothing.name}</h3>
-
+<h3 className="text-center">Customizing {selectedClothing.name}</h3>
+            <button
+              className="btn btn-info text-white mx-3"
+              style={{ float: "right" }}
+              onClick={handleRetakeTour}
+            >
+              Take Tour
+            </button>
             <div className="configurator-container container">
               <div className="left-panel rounded shadow">
                 <h5>Select Part</h5>
