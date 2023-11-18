@@ -145,7 +145,7 @@ export const mainMaleAccessories = [
   },
   {
     name: "Bow Tie",
-    image: "https://th.bing.com/th/id/OIP.9hwERmR98yWFEa-sH29WIAAAAA?pid=ImgDet&w=400&h=400&rs=1",
+    image: "https://www.bewooden.com/picture/5992f3f6a584b/w960/african-bow-tie.jpg",
     model: bow_tie,
     myNode: ["bow", "binder" ],
     myZoom: 1.5,
