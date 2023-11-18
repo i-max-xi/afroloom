@@ -8,13 +8,12 @@ export const tourSteps = [
       "Clothes are seperated into parts which to you can apply individual colors/textures",
   },
   {
-    selector: ".size",
-    content:
-      "Choose your desired size from here. (Bigger sizes attract minor extra charges)",
+    selector: ".size-button-container",
+    content: "Choose your desired size from here.",
   },
   {
     selector: ".fit",
-    content: "Understand what each size means and customize your own size ",
+    content: "Understand what each size means and customize your own size",
   },
   {
     selector: ".color-buttons-container",
@@ -22,8 +21,19 @@ export const tourSteps = [
   },
   {
     selector: ".texture-buttons-container",
-    content:
-      "Pick a texture to personalize your clothing. (Attracts minor extra charges)",
+    content: "Pick a texture to personalize your clothing.",
+  },
+  {
+    selector: ".expect-to-be-ready",
+    content: "Time expected for you design to be ready",
+  },
+  {
+    selector: ".estimated-shipping",
+    content: "Estimated Shipping Time",
+  },
+  {
+    selector: ".price-text",
+    content: "Price may change slightly based on chosen Size and Textile",
   },
   {
     selector: ".rotation-button",

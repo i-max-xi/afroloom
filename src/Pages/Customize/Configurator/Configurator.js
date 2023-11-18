@@ -253,14 +253,14 @@ const Configurator = () => {
     setShowTourPopup(false);
   };
 
-    const handleTourClose = () => {
+  const handleTourClose = () => {
     setShowTour(false);
-    localStorage.setItem('tourCompleted', 'true'); // Save tour completion status
+    localStorage.setItem("tourCompleted", "true"); // Save tour completion status
   };
 
   useEffect(() => {
-    const tourCompleted = localStorage.getItem('tourCompleted');
-    if (tourCompleted === 'true') {
+    const tourCompleted = localStorage.getItem("tourCompleted");
+    if (tourCompleted === "true") {
       setShowTourPopup(false); // If tour completed, don't show it
     } else {
       setShowTourPopup(true); // Show the tour for new users
@@ -347,17 +347,20 @@ const Configurator = () => {
                 </div>
                 <h5>Choose Size</h5>
                 <div className="size w-75">
-                  {selectedClothing.sizeOptions.map((option) => (
-                    <button
-                      key={option.value}
-                      className={`size-button btn btn-outline-dark ${
-                        selectedSize === option.value ? "selected" : ""
-                      }`}
-                      onClick={() => handleSizeChange(option.value)}
-                    >
-                      {option.label}
-                    </button>
-                  ))}
+                  <p className="size-button-container">
+                    {selectedClothing.sizeOptions.map((option) => (
+                      <button
+                        key={option.value}
+                        className={`size-button btn btn-outline-dark ${
+                          selectedSize === option.value ? "selected" : ""
+                        }`}
+                        onClick={() => handleSizeChange(option.value)}
+                      >
+                        {option.label}
+                      </button>
+                    ))}
+                  </p>
+
                   <p onClick={() => setVisible(true)} className="fit">
                     Customize Your Size &#8594;
                   </p>
@@ -412,7 +415,8 @@ const Configurator = () => {
                     </div>
                   </Dialog>
                 </div>
-                <h5>Choose Color</h5> {/* Add heading for colors */}
+                <h5>Choose Color</h5>
+
                 <div className="color-buttons-container">
                   <Carousel
                     value={colorOptions}
@@ -435,8 +439,8 @@ const Configurator = () => {
                     )}
                   />
                 </div>
-                <h5>Choose Textile</h5> {/* Add heading for textures */}
-                {/* ... */}
+
+                <h5>Choose Textile</h5>
                 <div className="texture-buttons-container">
                   <div className="texture-row">
                     <div className="texture-category">
@@ -708,9 +712,13 @@ const Configurator = () => {
             </div>
           </div>
           <div className="price w-100 d-flex bg-dark text-white justify-content-between">
-            <span className="m-3">Expected to be ready by: </span>
+            <span className="m-3 expect-to-be-ready">
+              Expected to be ready by:{" "}
+            </span>
 
-            <span className="m-3">Estimated shipping time: </span>
+            <span className="m-3 estimated-shipping">
+              Estimated shipping time:{" "}
+            </span>
 
             <p className="price-text m-3">
               <span className="fs-6 fw-normal">Price:</span> {currencySymbol}

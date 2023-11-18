@@ -379,17 +379,19 @@ const ConfiguratorUnisex = () => {
                 </div>
                 <h5>Choose Size</h5>
                 <div className="size w-75">
-                  {selectedClothing.sizeOptions.map((option) => (
-                    <button
-                      key={option.value}
-                      className={`size-button btn btn-outline-dark ${
-                        selectedSize === option.value ? "selected" : ""
-                      }`}
-                      onClick={() => handleSizeChange(option.value)}
-                    >
-                      {option.label}
-                    </button>
-                  ))}
+                  <p className="size-button-container">
+                    {selectedClothing.sizeOptions.map((option) => (
+                      <button
+                        key={option.value}
+                        className={`size-button btn btn-outline-dark ${
+                          selectedSize === option.value ? "selected" : ""
+                        }`}
+                        onClick={() => handleSizeChange(option.value)}
+                      >
+                        {option.label}
+                      </button>
+                    ))}
+                  </p>
                   <p onClick={() => setVisible(true)} className="fit">
                     Customize Your Size &#8594;
                   </p>
@@ -740,9 +742,9 @@ const ConfiguratorUnisex = () => {
             </div>
           </div>
           <div className="price w-100 d-flex bg-dark text-white justify-content-between">
-            <span className="m-3">Expected to be ready by: </span>
+            <span className="m-3 expect-to-be-ready">Expected to be ready by: </span>
 
-            <span className="m-3">Estimated shipping time: </span>
+            <span className="m-3 estimated-shipping">Estimated shipping time: </span>
 
             <p className="price-text m-3">
               <span className="fs-6 fw-normal">Price:</span> {currencySymbol}
