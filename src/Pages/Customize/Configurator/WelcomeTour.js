@@ -6,15 +6,15 @@ import Tour from 'reactour';
 export const tourSteps = [
     {
       selector: '.select-part-container',
-      content: 'Click here to select different clothing parts.',
+      content: 'Clothes are seperated into parts which to you can apply individual colors/textures',
     },
     {
       selector: '.size',
-      content: 'Choose your desired size from here.',
+      content: 'Choose your desired size from here. (Bigger sizes attract minor extra charges)',
     },
     {
         selector: '.fit',
-        content: 'Understand what each size means and customize your own size',
+        content: 'Understand what each size means and customize your own size ',
       },
     {
       selector: '.color-buttons-container',
@@ -22,7 +22,7 @@ export const tourSteps = [
     },
     {
       selector: '.texture-buttons-container',
-      content: 'Pick a texture to personalize your clothing.',
+      content: 'Pick a texture to personalize your clothing. (Attracts minor extra charges)',
     },
     {
       selector: '.rotation-button',
