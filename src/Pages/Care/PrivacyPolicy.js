@@ -7,10 +7,10 @@ const PrivacyPolicy = () => {
     <>
       <LayoutHeaders selectedBg={Top} />
       <div className="p-5 m-5">
-        <h3>
+        {/* <h3>
           Privacy Policy for
           <span className="text-warning"> AfroLoom.com</span>
-        </h3>
+        </h3> */}
         <p>
           At AfroLoom.com, we are committed to protecting the privacy and
           security of our customers. This Privacy Policy explains how we

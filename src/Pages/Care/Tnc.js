@@ -7,10 +7,10 @@ const Tnc = () => {
     <>
       <LayoutHeaders selectedBg={Top} />
       <div className="p-5 m-5">
-        <h4>
+        {/* <h4>
           Welcome to <span className="text-warning">AfroLoom.com,</span> an
           e-commerce platform specializing in African products.
-        </h4>
+        </h4> */}
         <p>
           By accessing and using our website, you agree to be bound by the
           following terms and conditions. Please read them carefully before

@@ -7,10 +7,11 @@ const ShippingPolicy = () => {
     <>
       <LayoutHeaders selectedBg={Top} />
       <div className="p-5 m-5">
-        <h3>
+        {/* <h3>
           Welcome to <span className="text-warning">AfroLoom.com,</span> an
           e-commerce platform specializing in African products.
-        </h3>
+        </h3> */}
+        <p>Thank you for your interest in AfroLoom.com</p>
 
         <h5>Shipping Methods</h5>
         <p>

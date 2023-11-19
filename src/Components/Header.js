@@ -1,14 +1,15 @@
 import React from "react";
 // import AfricanFlags from "./AfricanFlags";
 
-const Header = ({bgColor, Color, Padding, Icon1, Icon2, Icon3, Icon4}) => {
+const Header = ({ bgColor, Color, Padding, Icon1, Icon2, Icon3, Icon4 }) => {
   return (
     <>
       {/* <AfricanFlags /> */}
 
       <ul
         className="btn-group rounded-top d-flex list-unstyled p-2 px-5 justify-content-around"
-        role="group" style={{backgroundColor: bgColor, color: Color, padding: Padding}}
+        role="group"
+        style={{ backgroundColor: bgColor, color: Color, padding: Padding }}
       >
         <li className="p-2 text-center rounded d-flex more-info">
           <svg
@@ -31,14 +32,18 @@ const Header = ({bgColor, Color, Padding, Icon1, Icon2, Icon3, Icon4}) => {
             width="16"
             height="16"
             fill="currentColor"
-            className="bi bi-box-seam more-info-icon text-info"
+            className="bi bi-bag-check more-info-icon text-info"
             viewBox="0 0 16 16"
           >
-            <path d="M8.186 1.113a.5.5 0 0 0-.372 0L1.846 3.5l2.404.961L10.404 2l-2.218-.887zm3.564 1.426L5.596 5 8 5.961 14.154 3.5l-2.404-.961zm3.25 1.7-6.5 2.6v7.922l6.5-2.6V4.24zM7.5 14.762V6.838L1 4.239v7.923l6.5 2.6zM7.443.184a1.5 1.5 0 0 1 1.114 0l7.129 2.852A.5.5 0 0 1 16 3.5v8.662a1 1 0 0 1-.629.928l-7.185 2.874a.5.5 0 0 1-.372 0L.63 13.09a1 1 0 0 1-.63-.928V3.5a.5.5 0 0 1 .314-.464L7.443.184z" />
+            <path
+              fillRule="evenodd"
+              d="M10.854 8.146a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 0 1 .708-.708L7.5 10.793l2.646-2.647a.5.5 0 0 1 .708 0z"
+            />
+            <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z" />
           </svg>
 
           <p className="d-flex flex-column justify-content-start">
-            2 Days Return policy
+            Secured Payment System
             <span style={{ fontSize: "0.8rem" }}>No question asked</span>
           </p>
         </li>
@@ -66,7 +71,7 @@ const Header = ({bgColor, Color, Padding, Icon1, Icon2, Icon3, Icon4}) => {
             width="16"
             height="16"
             fill="currentColor"
-            className="bi bi-check2-circle more-info-icon"
+            className="bi bi-check2-circle more-info-icon text-success"
             viewBox="0 0 16 16"
           >
             <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z" />

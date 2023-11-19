@@ -3,7 +3,7 @@ const contactInfo = [
     {
       id: 1,
       title: "Find Us",
-      detail: "Accra Ghana",
+      detail: "Accra, Ghana",
       img: (
         <svg
           xmlns="http://www.w3.org/2000/svg"

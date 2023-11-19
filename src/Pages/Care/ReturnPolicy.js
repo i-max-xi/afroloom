@@ -7,10 +7,10 @@ const ReturnPolicy = () => {
     <>
       <LayoutHeaders selectedBg={Top} />
       <div className="p-5 m-5">
-        <h3>
+        {/* <h3>
           Return Policy for{" "}
           <span className="text-warning">AfroLoom.com</span>
-        </h3>
+        </h3> */}
         <p>
           Thank you for choosing AfroLoom.com. We appreciate your patronage
           and are committed to providing you with the highest quality products
