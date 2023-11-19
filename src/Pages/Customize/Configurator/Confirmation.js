@@ -23,6 +23,7 @@ const Confirmation = ({
   selectedSize,
   modelImage,
   customSizeValues,
+  height
 }) => {
   const toast = useRef(null);
 
@@ -120,6 +121,7 @@ const Confirmation = ({
         ref={componentRef}
         modelImage={modelImage}
         customSizeValues={customSizeValues}
+        height={height}
       />
       <div className="container justify-content-center">
         <div className="d-flex">
@@ -157,6 +159,7 @@ export const OrderDetail = React.forwardRef(
       selectedSize,
       modelImage,
       customSizeValues,
+      height
     },
     ref
   ) => {
@@ -178,6 +181,7 @@ export const OrderDetail = React.forwardRef(
           <div>
             <div className="custom-size-values">
               <p className="h5 mt-4">Client's custom size values:</p>
+              <strong className="text-warning">Your Height:</strong> {height + ""} cm
               <ul>
                 {Object.entries(customSizeValues).map(([label, value]) => (
                   <li key={label}>

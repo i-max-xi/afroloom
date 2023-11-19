@@ -253,3 +253,11 @@ export const responsiveColor = [
       numScroll: 1,
     },
 ]
+
+export const displayInplaceFor = [
+  "Trousers",
+  "Shorts",
+  "Summer Shorts",
+  "Booty Shorts",
+  "Leggings",
+];

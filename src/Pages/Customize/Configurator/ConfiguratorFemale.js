@@ -19,6 +19,8 @@ import { mainFemaleCustomize } from "../../../Data/CustomizeDataFemale";
 
 import { useSelector } from "react-redux";
 
+import { Inplace, InplaceDisplay, InplaceContent } from "primereact/inplace";
+
 //arrays
 import {
   colorOptions,
@@ -28,11 +30,12 @@ import {
   responsiveNess,
   responsiveColor,
   specialNodeNames,
+  displayInplaceFor,
 } from "./arrays/neededArrays";
 import TextureItem from "./TextureItem";
 import PartImages from "./PartImages";
 import WelcomeTour, { tourSteps } from "./WelcomeTour";
-
+import { InputText } from "primereact/inputtext";
 const Shirt = ({
   isRotating,
   selectedClothing,
@@ -206,7 +209,17 @@ const ConfiguratorFemale = () => {
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [stateImage, setStateImage] = useState("");
 
-  const captureCanvasAsImage = async () => {
+ const captureCanvasAsImage = async () => {
+
+    const requiresHeight = displayInplaceFor.includes(selectedClothing.name);
+    const heightProvided = height !== "";
+
+    if (requiresHeight && !heightProvided) {
+      // Prevent completing if height is required but not provided
+      alert("Please input your height for accurate design.");
+      return;
+    }
+
     const canvas = canvasRef.current;
 
     const canvasImage = await html2canvas(canvas);
@@ -277,6 +290,9 @@ const ConfiguratorFemale = () => {
     setShowTour(true);
   };
 
+  // customer height
+  const [height, setHeight] = useState("");
+
   return (
     <>
 <Nav />
@@ -322,7 +338,7 @@ const ConfiguratorFemale = () => {
           }
           modelImage={stateImage}
           customSizeValues={sizeFormValues}
-        />
+          height={height}        />
       ) : (
         <>
           <div className="main-space">
@@ -365,8 +381,32 @@ const ConfiguratorFemale = () => {
                       </button>
                     ))}
                   </p>
-                  <p onClick={() => setVisible(true)} className="fit">
-                    Customize Your Size &#8594;
+                  <p className="fit">
+                    <span onClick={() => setVisible(true)}>
+                      Customize Your Size &#8594;
+                    </span>
+                    {displayInplaceFor.includes(selectedClothing.name) && (
+                    <Inplace
+                      className="text-black"
+                      closable
+                      title="we need this for accurate design"
+                    >
+                      <InplaceDisplay>
+                        { height ||
+                          "Click to input your height "}
+                        <span style={{ color: "red", fontWeight: "bolder", textTransform: "lowercase" }}>
+                          (cm*)
+                        </span>
+                      </InplaceDisplay>
+                      <InplaceContent>
+                        <InputText
+                          value={height}
+                          onChange={(e) => setHeight(e.target.value)}
+                          autoFocus
+                        />
+                      </InplaceContent>
+                    </Inplace>
+                    )}
                   </p>
                   <Dialog
                     header="Sizing Guide"

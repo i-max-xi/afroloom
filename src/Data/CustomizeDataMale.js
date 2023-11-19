@@ -513,6 +513,9 @@ export const mainMaleCustomize = [
     parts: trouserParts.keys().map(trouserParts),
     sizeForms: [
       {
+        label: "Full Height (cm)",
+      },
+      {
         label: "Natural waist (cm)",
       },
       {

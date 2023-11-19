@@ -65,6 +65,8 @@ h1 {
   cursor: pointer;
   color: blue;
   text-transform: capitalize;
+  display: flex;
+  justify-content: space-between;
 }
 
 .color-buttons-container {
