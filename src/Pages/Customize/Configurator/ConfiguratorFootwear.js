@@ -304,50 +304,28 @@ toastRef.current.show({
       <Nav />
       <Toast ref={toastRef} />
       <>
-        <Dialog
-          // header="Welcome to the 3D Customization!"
-          visible={showTourPopup}
-          style={{ width: "50vw" }}
-          onHide={handleTourLater}
-        >
-          <div className="tour-popup">
-            <h2>Welcome to the 3D customization!</h2>
-            <p>Would you like to take a quick tour?</p>
-            <button className="btn btn-success m-3" onClick={handleTourStart}>
-              Take Tour
-            </button>
-            <button className="btn btn-secondary m-3" onClick={handleTourLater}>
-              Maybe Later
-            </button>
-          </div>
-        </Dialog>
-
-        {showTour && (
-          <WelcomeTour
-            isOpen={showTour}
-            onRequestClose={handleTourClose}
-            steps={tourSteps}
-          />
+        {showTourPopup && (
+          <Dialog
+            // header="Welcome to the 3D Customization!"
+            visible={showTourPopup}
+            style={{ width: "50vw" }}
+            onHide={handleTourLater}
+          >
+            <div className="tour-popup">
+              <h2>Welcome to the 3D customization!</h2>
+              <p>Would you like to take a quick tour?</p>
+              <button className="btn btn-success m-3" onClick={handleTourStart}>
+                Take Tour
+              </button>
+              <button
+                className="btn btn-secondary m-3"
+                onClick={handleTourLater}
+              >
+                Maybe Later
+              </button>
+            </div>
+          </Dialog>
         )}
-      </>
-      <>
-        <Dialog
-          // header="Welcome to the 3D Customization!"
-          visible={showTourPopup}
-          style={{ width: "50vw" }}
-          onHide={handleTourLater}
-        >
-          <div className="tour-popup">
-            <h2>Welcome to the 3D customization!</h2>
-            <p>Would you like to take a quick tour?</p>
-            <button className="btn btn-success m-3" onClick={handleTourStart}>
-              Take Tour
-            </button>
-            <button className="btn btn-secondary m-3" onClick={handleTourLater}>
-              Maybe Later
-            </button>
-          </div>
-        </Dialog>
 
         {showTour && (
           <WelcomeTour

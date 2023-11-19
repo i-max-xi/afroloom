@@ -16,7 +16,7 @@ export const tourSteps = [
     content: "Understand what each size means and customize your own size",
   },
   {
-    selector: ".color-buttons-container",
+    selector: ".color-button",
     content: "Select the color that suits you best.",
   },
   {
