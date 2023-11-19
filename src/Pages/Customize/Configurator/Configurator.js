@@ -20,7 +20,7 @@ import { mainMaleCustomize } from "../../../Data/CustomizeDataMale";
 import { useSelector } from "react-redux";
 
 import { Inplace, InplaceDisplay, InplaceContent } from "primereact/inplace";
-        
+
 //arrays
 import {
   colorOptions,
@@ -140,7 +140,7 @@ const Configurator = () => {
   const [isRotating, setIsRotating] = useState(false);
 
   const canvasRef = useRef();
-    // toast
+  // toast
   const toastRef = useRef(null);
 
   // currency conversion
@@ -299,23 +299,28 @@ const Configurator = () => {
       <Nav />
       <Toast ref={toastRef} />
       <>
-        <Dialog
-          // header="Welcome to the 3D Customization!"
-          visible={showTourPopup}
-          style={{ width: "50vw" }}
-          onHide={handleTourLater}
-        >
-          <div className="tour-popup">
-            <h2>Welcome to the 3D customization!</h2>
-            <p>Would you like to take a quick tour?</p>
-            <button className="btn btn-success m-3" onClick={handleTourStart}>
-              Take Tour
-            </button>
-            <button className="btn btn-secondary m-3" onClick={handleTourLater}>
-              Maybe Later
-            </button>
-          </div>
-        </Dialog>
+        {showTourPopup && (
+          <Dialog
+            // header="Welcome to the 3D Customization!"
+            visible={showTourPopup}
+            style={{ width: "50vw" }}
+            onHide={handleTourLater}
+          >
+            <div className="tour-popup">
+              <h2>Welcome to the 3D customization!</h2>
+              <p>Would you like to take a quick tour?</p>
+              <button className="btn btn-success m-3" onClick={handleTourStart}>
+                Take Tour
+              </button>
+              <button
+                className="btn btn-secondary m-3"
+                onClick={handleTourLater}
+              >
+                Maybe Later
+              </button>
+            </div>
+          </Dialog>
+        )}
 
         {showTour && (
           <WelcomeTour
@@ -391,10 +396,7 @@ const Configurator = () => {
                       Customize Your Size &#8594;
                     </span>
                     {displayInplaceFor.includes(selectedClothing.name) && (
-                      <Inplace
-                        className="text-black"
-                        closable
-                      >
+                      <Inplace className="text-black" closable>
                         <InplaceDisplay>
                           {height || "Click to input your height "}
                           <span
