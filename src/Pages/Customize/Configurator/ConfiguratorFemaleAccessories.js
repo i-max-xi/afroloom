@@ -420,25 +420,30 @@ toastRef.current.show({
                     </span>
                     {displayInplaceFor.includes(selectedClothing.name) && (
                     <Inplace
-                      className="text-black"
-                      closable
-                      title="we need this for accurate design"
-                    >
-                      <InplaceDisplay>
-                        { height ||
-                          "Click to input your height "}
-                        <span style={{ color: "red", fontWeight: "bolder", textTransform: "lowercase" }}>
-                          (cm*)
-                        </span>
-                      </InplaceDisplay>
-                      <InplaceContent>
-                        <InputText
-                          value={height}
-                          onChange={(e) => setHeight(e.target.value)}
-                          autoFocus
-                        />
-                      </InplaceContent>
-                    </Inplace>
+                        className="text-black"
+                        closable
+                      >
+                        <InplaceDisplay>
+                          {height || "Click to input your height "}
+                          <span
+                            style={{
+                              color: "red",
+                              fontWeight: "bolder",
+                              textTransform: "lowercase",
+                            }}
+                          >
+                            (cm*)
+                          </span>
+                        </InplaceDisplay>
+                        <InplaceContent>
+                          <InputText
+                            value={height}
+                            onChange={(e) => setHeight(e.target.value)}
+                            autoFocus
+                            tooltip="we need this for accurate design"
+                          />
+                        </InplaceContent>
+                      </Inplace>
                     )}
                   </p>
                   <Dialog

@@ -20,7 +20,7 @@ import { mainMaleCustomize } from "../../../Data/CustomizeDataMale";
 import { useSelector } from "react-redux";
 
 import { Inplace, InplaceDisplay, InplaceContent } from "primereact/inplace";
-
+        
 //arrays
 import {
   colorOptions,
@@ -394,7 +394,6 @@ const Configurator = () => {
                       <Inplace
                         className="text-black"
                         closable
-                        title="we need this for accurate design"
                       >
                         <InplaceDisplay>
                           {height || "Click to input your height "}
@@ -413,6 +412,7 @@ const Configurator = () => {
                             value={height}
                             onChange={(e) => setHeight(e.target.value)}
                             autoFocus
+                            tooltip="we need this for accurate design"
                           />
                         </InplaceContent>
                       </Inplace>
