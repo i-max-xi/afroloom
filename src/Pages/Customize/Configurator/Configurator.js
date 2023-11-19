@@ -36,6 +36,7 @@ import TextureItem from "./TextureItem";
 import PartImages from "./PartImages";
 import WelcomeTour, { tourSteps } from "./WelcomeTour";
 import { InputText } from "primereact/inputtext";
+import { Toast } from "primereact/toast";
 
 const Shirt = ({
   isRotating,
@@ -139,6 +140,8 @@ const Configurator = () => {
   const [isRotating, setIsRotating] = useState(false);
 
   const canvasRef = useRef();
+    // toast
+  const toastRef = useRef(null);
 
   // currency conversion
   const currencySymbol = useSelector((state) => state.currencySymbol.symbol);
@@ -206,13 +209,16 @@ const Configurator = () => {
   const [stateImage, setStateImage] = useState("");
 
   const captureCanvasAsImage = async () => {
-
     const requiresHeight = displayInplaceFor.includes(selectedClothing.name);
     const heightProvided = height !== "";
 
     if (requiresHeight && !heightProvided) {
       // Prevent completing if height is required but not provided
-      alert("Please input your height for accurate design.");
+      toastRef.current.show({
+        severity: "error",
+        summary: "Cannot continue",
+        detail: "Please input your height for accurate design",
+      });
       return;
     }
 
@@ -291,6 +297,7 @@ const Configurator = () => {
   return (
     <>
       <Nav />
+      <Toast ref={toastRef} />
       <>
         <Dialog
           // header="Welcome to the 3D Customization!"
@@ -384,26 +391,31 @@ const Configurator = () => {
                       Customize Your Size &#8594;
                     </span>
                     {displayInplaceFor.includes(selectedClothing.name) && (
-                    <Inplace
-                      className="text-black"
-                      closable
-                      title="we need this for accurate design"
-                    >
-                      <InplaceDisplay>
-                        { height ||
-                          "Click to input your height "}
-                        <span style={{ color: "red", fontWeight: "bolder", textTransform: "lowercase" }}>
-                          (cm*)
-                        </span>
-                      </InplaceDisplay>
-                      <InplaceContent>
-                        <InputText
-                          value={height}
-                          onChange={(e) => setHeight(e.target.value)}
-                          autoFocus
-                        />
-                      </InplaceContent>
-                    </Inplace>
+                      <Inplace
+                        className="text-black"
+                        closable
+                        title="we need this for accurate design"
+                      >
+                        <InplaceDisplay>
+                          {height || "Click to input your height "}
+                          <span
+                            style={{
+                              color: "red",
+                              fontWeight: "bolder",
+                              textTransform: "lowercase",
+                            }}
+                          >
+                            (cm*)
+                          </span>
+                        </InplaceDisplay>
+                        <InplaceContent>
+                          <InputText
+                            value={height}
+                            onChange={(e) => setHeight(e.target.value)}
+                            autoFocus
+                          />
+                        </InplaceContent>
+                      </Inplace>
                     )}
                   </p>
                   <Dialog

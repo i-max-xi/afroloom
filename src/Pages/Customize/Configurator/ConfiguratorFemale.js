@@ -36,6 +36,7 @@ import TextureItem from "./TextureItem";
 import PartImages from "./PartImages";
 import WelcomeTour, { tourSteps } from "./WelcomeTour";
 import { InputText } from "primereact/inputtext";
+import { Toast } from "primereact/toast";
 const Shirt = ({
   isRotating,
   selectedClothing,
@@ -140,8 +141,9 @@ const ConfiguratorFemale = () => {
 
   const [isRotating, setIsRotating] = useState(false);
 
-  const canvasRef = useRef();
-
+const canvasRef = useRef();
+    // toast
+  const toastRef = useRef(null);
   // currency conversion
   const currencySymbol = useSelector((state) => state.currencySymbol.symbol);
   const currencyFactor = useSelector((state) => state.currencySymbol.factor);
@@ -216,8 +218,11 @@ const ConfiguratorFemale = () => {
 
     if (requiresHeight && !heightProvided) {
       // Prevent completing if height is required but not provided
-      alert("Please input your height for accurate design.");
-      return;
+toastRef.current.show({
+        severity: "error",
+        summary: "Cannot continue",
+        detail: "Please input your height for accurate design",
+      });      return;
     }
 
     const canvas = canvasRef.current;
@@ -296,6 +301,7 @@ const ConfiguratorFemale = () => {
   return (
     <>
 <Nav />
+      <Toast ref={toastRef} />
       <>
         <Dialog
           // header="Welcome to the 3D Customization!"
