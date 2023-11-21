@@ -5,11 +5,13 @@ import SideBar from "../Sidebar";
 import Home from "./Home";
 import AllSellers from "./AllSellers";
 import AddProduct from "../AddProduct";
+import AddDeliveryService from "../AddDeliveryService";
 
 const adminSidebarItems = [
   { label: "Home" },
-  { label: "Add A New Product" },
   { label: "All Sellers" },
+  { label: "Add A New Product" },
+  { label: "Add A New Delivery Service" },
 ];
 
 const AdminDashboard = () => {
@@ -34,11 +36,14 @@ const AdminDashboard = () => {
             <TabPanel>
               <Home />
             </TabPanel>
+            <TabPanel header="All Sellers">
+              <AllSellers />
+            </TabPanel>
             <TabPanel header="Add A New Product">
               <AddProduct currentSeller={adminSeller}/>
             </TabPanel>
-            <TabPanel header="All Sellers">
-              <AllSellers />
+            <TabPanel header="Add A New Delivery Service">
+              <AddDeliveryService/>
             </TabPanel>
           </TabView>
         </div>

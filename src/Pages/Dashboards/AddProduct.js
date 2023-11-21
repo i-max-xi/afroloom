@@ -12,8 +12,10 @@ const AddProduct = ({ currentSeller }) => {
   const [newProduct, setNewProduct] = useState({
     title: "",
     category: "", // Use a Dropdown to select from categoryFilter
-    price: "",
+    price: null,
     item: "", // URL of the item image
+    weight: null,
+    location: "",
     seller: currentSeller,
     detailedCategory: "",
     gender: "",
@@ -120,10 +122,11 @@ const AddProduct = ({ currentSeller }) => {
     if (
       newProduct.title === "" ||
       newProduct.category === "" ||
-      newProduct.price === "" ||
+      newProduct.price === null ||
       newProduct.item === "" ||
-      newProduct.detailedCategory === ""
-      // newProduct.size === ""
+      newProduct.detailedCategory === "" ||
+      newProduct.weight === null ||
+      newProduct.location === ""
     ) {
       toastRef.current.show({
         severity: "error",
@@ -144,6 +147,8 @@ const AddProduct = ({ currentSeller }) => {
         title: "",
         category: "",
         price: "",
+        weight: 0,
+        location: "",
         item: "",
         seller: currentSeller,
         detailedCategory: "",
@@ -217,6 +222,7 @@ const AddProduct = ({ currentSeller }) => {
           <label htmlFor="price">Price $</label>
           <InputText
             required
+            type="number"
             id="price"
             value={newProduct.price}
             placeholder="dollar equivalent value..."
@@ -254,6 +260,28 @@ const AddProduct = ({ currentSeller }) => {
             value={newProduct.seller}
             onChange={(e) =>
               setNewProduct({ ...newProduct, seller: e.target.value })
+            }
+          />
+        </div>
+        <div className="p-field">
+          <label htmlFor="weight">Weight (kg)</label>
+          <InputText
+            id="weight"
+            type="number"
+            value={newProduct.weight}
+            onChange={(e) =>
+              setNewProduct({ ...newProduct, weight: e.target.value })
+            }
+          />
+        </div>
+        <div className="p-field">
+          <label htmlFor="seller">Item Location</label>
+          <InputText
+            id="location"
+            value={newProduct.location}
+            placeholder="specific city you have this item, eg. Accra"
+            onChange={(e) =>
+              setNewProduct({ ...newProduct, location: e.target.value })
             }
           />
         </div>
