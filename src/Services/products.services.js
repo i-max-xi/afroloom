@@ -16,6 +16,7 @@ import {
 const productCollectionRef = collection(db, "AllProducts");
 const sellerCollectionRef = collection(db, "sellers");
 const buyerCollectionRef = collection(db, "users");
+const deliveryServicesRef = collection(db, "deliveryServices");
 
 class ProductsDataService {
   addProduct = (newProduct) => {
@@ -96,6 +97,25 @@ class ProductsDataService {
     };
 
     await updateDoc(buyerRef, updatedBuyerData); // Update buyer document with updated orders
+  };
+
+
+  // Delivery Service
+  addDelivery = (newProduct) => {
+    return addDoc(deliveryServicesRef, newProduct);
+  };
+  updateDelivery = (id, updatedProduct) => {
+    const productDoc = doc(db, "deliveryServices", id);
+    return updateDoc(productDoc, updatedProduct);
+  };
+
+  deleteDelivery = (id) => {
+    const productDoc = doc(db, "deliveryServices", id);
+    return deleteDoc(productDoc);
+  };
+
+  getAllDelivery= () => {
+    return getDocs(deliveryServicesRef);
   };
 }
 

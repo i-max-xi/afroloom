@@ -1,49 +1,58 @@
 import React, { useRef, useState } from "react";
-// import { Dropdown } from "primereact/dropdown";
+import { Dropdown } from "primereact/dropdown";
 import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
 import ProductsDataService from "../../Services/products.services";
 import { Toast } from "primereact/toast";
-import { storage } from "../../firebase";
-import { ref, uploadBytes, getDownloadURL } from "@firebase/storage";
+import { deliveryDurations } from "../../Data/DeliveryServiceData";
+// import { storage } from "../../firebase";
+// import { ref, uploadBytes, getDownloadURL } from "@firebase/storage";
 
-const AddDeliveryService = ({ currentSeller }) => {
+const AddDeliveryService = () => {
   const [newProduct, setNewProduct] = useState({
-    title: "",
+    name: "",
     pricePerKg: null,
-    image: "", // URL of the item image
+    // image: "",
     expressExtra: null,
-    parcelOffices: [],
+    parcelOffices: [""],
     duration: "",
   });
 
-
   const toastRef = useRef(null);
 
-
-  const handleImageUpload = async (e) => {
-    const file = e.target.files[0];
-    const storageRef = ref(storage, `images/${file.name}`);
-    try {
-      await uploadBytes(storageRef, file);
-      const downloadURL = await getDownloadURL(storageRef);
-      setNewProduct({ ...newProduct, image: downloadURL });
-    } catch (error) {
-      toastRef.current.show({
-        severity: "error",
-        summary: "Error uploading image:",
-        error,
-      });
-    }
+  const addParcelOffice = () => {
+    const updatedParcelOffices = [...newProduct.parcelOffices, ""];
+    setNewProduct({ ...newProduct, parcelOffices: updatedParcelOffices });
   };
 
+  const removeParcelOffice = (index) => {
+    const updatedParcelOffices = [...newProduct.parcelOffices];
+    updatedParcelOffices.splice(index, 1);
+    setNewProduct({ ...newProduct, parcelOffices: updatedParcelOffices });
+  };
+
+  // const handleImageUpload = async (e) => {
+  //   const file = e.target.files[0];
+  //   const storageRef = ref(storage, `images/${file.name}`);
+  //   try {
+  //     await uploadBytes(storageRef, file);
+  //     const downloadURL = await getDownloadURL(storageRef);
+  //     setNewProduct({ ...newProduct, image: downloadURL });
+  //   } catch (error) {
+  //     toastRef.current.show({
+  //       severity: "error",
+  //       summary: "Error uploading image:",
+  //       error,
+  //     });
+  //   }
+  // };
 
   const handleAddProduct = async () => {
     if (
-      newProduct.title === "" ||
+      newProduct.name === "" ||
       newProduct.pricePerKg === null ||
       newProduct.expressExtra === "" ||
-      newProduct.image === "" ||
+      // newProduct.image === "" ||
       newProduct.parcelOffices.length === 0 ||
       newProduct.duration === ""
     ) {
@@ -59,12 +68,12 @@ const AddDeliveryService = ({ currentSeller }) => {
     };
 
     try {
-      const response = await ProductsDataService.addProduct(productData);
+      const response = await ProductsDataService.addDelivery(productData);
       // Reset the form
       setNewProduct({
-        title: "",
+        name: "",
         pricePerKg: null,
-        image: "",
+        // image: "",
         expressExtra: null,
         parcelOffices: [],
         duration: "",
@@ -82,26 +91,24 @@ const AddDeliveryService = ({ currentSeller }) => {
     }
   };
 
-
   return (
     <div>
       <Toast ref={toastRef} position="top-right" />
       <h2>Add a Delivery Service</h2>
       <div className="p-fluid pr-5">
         <div className="p-field">
-          <label htmlFor="title">Name of Delivery Service</label>
+          <label htmlFor="name">Name of Delivery Service</label>
           <InputText
             required
-            id="title"
-            value={newProduct.title}
+            id="name"
+            value={newProduct.name}
             onChange={(e) =>
-              setNewProduct({ ...newProduct, title: e.target.value })
+              setNewProduct({ ...newProduct, name: e.target.value })
             }
           />
         </div>
-        <div className="p-field">
+        {/* <div className="p-field">
           <label htmlFor="item">Logo of delivery service</label>
-          {/* <span>*Strictly with white background and preferably png</span> */}
           <InputText
             required
             id="image"
@@ -109,7 +116,7 @@ const AddDeliveryService = ({ currentSeller }) => {
             accept="image/*"
             onChange={handleImageUpload}
           />
-        </div>
+        </div> */}
         {/* <div className="p-field">
           <label htmlFor="category">Category</label>
           <Dropdown
@@ -146,26 +153,55 @@ const AddDeliveryService = ({ currentSeller }) => {
         </div>
         <div className="p-field">
           <label htmlFor="seller">Parcel Offices</label>
-          <InputText
-            id="seller"
-            readOnly
-            value={newProduct.seller}
-            onChange={(e) =>
-              setNewProduct({ ...newProduct, seller: e.target.value })
-            }
-          />
+          {newProduct.parcelOffices.map((office, index) => (
+            <div key={index} className="d-flex align-items-center">
+              <InputText
+                value={office}
+                onChange={(e) => {
+                  const updatedParcelOffices = [...newProduct.parcelOffices];
+                  updatedParcelOffices[index] = e.target.value;
+                  setNewProduct({
+                    ...newProduct,
+                    parcelOffices: updatedParcelOffices,
+                  });
+                }}
+                placeholder="Enter Parcel Office"
+                className="w-50 d-flex justify-content-center align-items-center mt-1"
+                style={{ height: "3rem" }}
+              />
+              {index === newProduct.parcelOffices.length - 1 ? (
+                <button
+                  type="button"
+                  onClick={addParcelOffice}
+                  className="btn btn-primary mx-2"
+                >
+                  <span className="pi pi-plus"></span>
+                </button>
+              ) : (
+                <button
+                  type="button"
+                  onClick={() => removeParcelOffice(index)}
+                  className="btn btn-danger mx-2"
+                >
+                  <span className="pi pi-minus"></span>
+                </button>
+              )}
+            </div>
+          ))}
         </div>
         <div className="p-field">
-          <label htmlFor="weight">Standard Delivery Duration</label>
-          <InputText
-            id="weight"
-            value={newProduct.weight}
-            onChange={(e) =>
-              setNewProduct({ ...newProduct, weight: e.target.value })
-            }
-          />
+          <label htmlFor="duration">Standard Delivery Duration</label>
+          <Dropdown
+          id="duration"
+          value={newProduct.duration}
+          options={deliveryDurations}
+          onChange={(e) =>
+            setNewProduct({ ...newProduct, duration: e.value })
+          }
+          placeholder="Select Duration"
+        />
         </div>
- 
+
         <div className="p-field">
           <Button
             label="Add Delivery Service"
