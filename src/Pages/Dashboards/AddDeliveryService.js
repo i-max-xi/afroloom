@@ -16,6 +16,7 @@ const AddDeliveryService = () => {
     expressExtra: null,
     parcelOffices: [""],
     duration: "",
+    country: "",
   });
 
   const toastRef = useRef(null);
@@ -51,7 +52,7 @@ const AddDeliveryService = () => {
     if (
       newProduct.name === "" ||
       newProduct.pricePerKg === null ||
-      newProduct.expressExtra === "" ||
+      newProduct.expressExtra === null ||
       // newProduct.image === "" ||
       newProduct.parcelOffices.length === 0 ||
       newProduct.duration === ""
@@ -65,6 +66,7 @@ const AddDeliveryService = () => {
 
     const productData = {
       ...newProduct,
+
     };
 
     try {
@@ -75,8 +77,9 @@ const AddDeliveryService = () => {
         pricePerKg: null,
         // image: "",
         expressExtra: null,
-        parcelOffices: [],
+        parcelOffices: [""],
         duration: "",
+        country: "",
       });
 
       toastRef.current.show({
@@ -133,10 +136,11 @@ const AddDeliveryService = () => {
           <InputText
             required
             id="price"
+            type="number"
             value={newProduct.pricePerKg}
             placeholder="dollar equivalent value of price per..."
             onChange={(e) =>
-              setNewProduct({ ...newProduct, pricePerKg: e.target.value })
+              setNewProduct({ ...newProduct, pricePerKg: parseFloat(e.target.value)})
             }
           />
         </div>
@@ -144,10 +148,22 @@ const AddDeliveryService = () => {
           <label htmlFor="price">Extra Charge For Express ($)</label>
           <InputText
             id="express"
+            type="number"
             value={newProduct.expressExtra}
             placeholder="does this delivery service have express service?..."
             onChange={(e) =>
-              setNewProduct({ ...newProduct, expressExtra: e.target.value })
+              setNewProduct({ ...newProduct, expressExtra: parseFloat(e.target.value) })
+            }
+          />
+        </div>
+        <div className="p-field">
+          <label htmlFor="name">Main Country</label>
+          <InputText
+            required
+            id="name"
+            value={newProduct.country}
+            onChange={(e) =>
+              setNewProduct({ ...newProduct, country: e.target.value })
             }
           />
         </div>

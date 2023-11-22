@@ -100,12 +100,30 @@ const Checkout = () => {
       shippingCountry &&
       delivery.country.toLowerCase() === shippingCountry.toLowerCase()
   );
-  
 
   const handleDropdownChange = (value) => {
     setSelectedDelivery(value); // Set the selected delivery
     // You can perform actions based on the selected delivery here
     console.log("Selected Delivery:", value);
+  };
+
+  const [dummyWeight, setDummyWeight] = useState(4); // Example dummy weight
+  const [selectedPrice, setSelectedPrice] = useState(0); // State to track the selected price
+
+  // Function to calculate the selected prices based on the selected delivery and dummy weight
+  const calculatePrices = (delivery) => {
+    const pricePerKg = delivery.pricePerKg || 0;
+    const expressExtra = delivery.expressExtra || 0;
+
+    const priceWithWeight = pricePerKg * dummyWeight;
+    const priceWithWeightAndExtra = priceWithWeight + expressExtra;
+
+    return [priceWithWeight, priceWithWeightAndExtra];
+  };
+
+  // Function to handle radio selection
+  const handlePriceSelection = (price) => {
+    setSelectedPrice(price);
   };
 
   const publicKey = process.env.REACT_APP_paystack_publicKey;
@@ -324,6 +342,56 @@ const Checkout = () => {
                 onChange={(e) => handleDropdownChange(e.value)} // Handle dropdown change
                 disabled={!shippingCountry} // Disable dropdown until a country is entered
               />
+            </div>
+
+            <div className="mt-3">
+              <h6>Prices</h6>
+              <div>
+                {selectedDelivery && (
+                  <div>
+                    <label>
+                      <input
+                        type="radio"
+                        name="priceOption"
+                        value={calculatePrices(selectedDelivery)[0]}
+                        checked={
+                          selectedPrice === calculatePrices(selectedDelivery)[0]
+                        }
+                        onChange={() =>
+                          handlePriceSelection(
+                            calculatePrices(selectedDelivery)[0]
+                          )
+                        }
+                      />
+                      {`Regular: ${
+                        calculatePrices(selectedDelivery)[0]
+                      } GHC`}
+                    </label>
+                  </div>
+                )}
+                {selectedDelivery && (
+                  <div>
+                    <label>
+                      <input
+                        type="radio"
+                        name="priceOption"
+                        value={calculatePrices(selectedDelivery)[1]}
+                        checked={
+                          selectedPrice === calculatePrices(selectedDelivery)[1]
+                        }
+                        onChange={() =>
+                          handlePriceSelection(
+                            calculatePrices(selectedDelivery)[1]
+                          )
+                        }
+                      />
+                      {`Express: ${
+                        calculatePrices(selectedDelivery)[1]
+                      } GHC`}
+                    </label>
+                  </div>
+                )}
+              </div>
             </div>
 
             {/* <div className="mt-2">
