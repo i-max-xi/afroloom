@@ -108,7 +108,7 @@ const Checkout = () => {
   };
 
   const [dummyWeight, setDummyWeight] = useState(4); // Example dummy weight
-  const [selectedPrice, setSelectedPrice] = useState(0); // State to track the selected price
+  const [selectedDeliveryPrice, setSelectedDeliveryPrice] = useState(0); // State to track the selected price
 
   // Function to calculate the selected prices based on the selected delivery and dummy weight
   const calculatePrices = (delivery) => {
@@ -123,7 +123,7 @@ const Checkout = () => {
 
   // Function to handle radio selection
   const handlePriceSelection = (price) => {
-    setSelectedPrice(price);
+    setSelectedDeliveryPrice(price);
   };
 
   const publicKey = process.env.REACT_APP_paystack_publicKey;
@@ -355,7 +355,7 @@ const Checkout = () => {
                         name="priceOption"
                         value={calculatePrices(selectedDelivery)[0]}
                         checked={
-                          selectedPrice === calculatePrices(selectedDelivery)[0]
+                          selectedDeliveryPrice === calculatePrices(selectedDelivery)[0]
                         }
                         onChange={() =>
                           handlePriceSelection(
@@ -365,7 +365,7 @@ const Checkout = () => {
                       />
                       {`Regular: ${
                         calculatePrices(selectedDelivery)[0]
-                      } GHC`}
+                      } GHC - Within 5 days`}
                     </label>
                   </div>
                 )}
@@ -377,7 +377,7 @@ const Checkout = () => {
                         name="priceOption"
                         value={calculatePrices(selectedDelivery)[1]}
                         checked={
-                          selectedPrice === calculatePrices(selectedDelivery)[1]
+                          selectedDeliveryPrice === calculatePrices(selectedDelivery)[1]
                         }
                         onChange={() =>
                           handlePriceSelection(
@@ -387,7 +387,7 @@ const Checkout = () => {
                       />
                       {`Express: ${
                         calculatePrices(selectedDelivery)[1]
-                      } GHC`}
+                      } GHC - Within 3 days`}
                     </label>
                   </div>
                 )}
