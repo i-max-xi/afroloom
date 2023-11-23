@@ -49,25 +49,6 @@ const Checkout = () => {
     dispatch(clearCart());
   }
 
-
-  // function handleSetEmailAddress(address) {
-  //   dispatch(setEmailAddress(address));
-  // }
-
-  // function handleSetFirstName(name) {
-  //   dispatch(setFirstName(name));
-  // }
-
-  // function handleSetLastName(name) {
-  //   dispatch(setLastName(name));
-  // }
-
-  // function handleSetCity(city) {
-  //   dispatch(setCity(city));
-  // }
-
-
-
   // Fetch delivery services and set the options in state
   useEffect(() => {
     const fetchDeliveryServices = async () => {
@@ -109,8 +90,8 @@ const Checkout = () => {
     const pricePerKg = delivery.pricePerKg || 0;
     const expressExtra = delivery.expressExtra || 0;
 
-    const priceWithWeight = (pricePerKg * dummyWeight )* currencyFactor;
-    const priceWithWeightAndExtra = (pricePerKg * dummyWeight + expressExtra ) * currencyFactor ;
+    const priceWithWeight = ((pricePerKg * dummyWeight )* currencyFactor).toFixed(2);
+    const priceWithWeightAndExtra = ((pricePerKg * dummyWeight + expressExtra ) * currencyFactor).toFixed(2);
 
     return [priceWithWeight, priceWithWeightAndExtra];
   };
