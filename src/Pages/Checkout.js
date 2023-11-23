@@ -45,11 +45,7 @@ const Checkout = () => {
 
   const navigate = useNavigate();
 
-  // const paymentMethod = useSelector((state) => state.paymentMethod);
 
-  // function handleAddItem(item) {
-  //   dispatch(addItem(item));
-  // }
 
   function handleRemoveItem(item) {
     dispatch(removeItem(item));
@@ -59,9 +55,6 @@ const Checkout = () => {
     dispatch(clearCart());
   }
 
-  // function handleSetShippingAddress(address) {
-  //   dispatch(setShippingAddress(address));
-  // }
 
   function handleSetEmailAddress(address) {
     dispatch(setEmailAddress(address));
@@ -79,9 +72,7 @@ const Checkout = () => {
     dispatch(setCity(city));
   }
 
-  // function handleSetApartment(apartment) {
-  //   dispatch(setApartment(apartment));
-  // }
+
 
   // Fetch delivery services and set the options in state
   useEffect(() => {
@@ -124,8 +115,8 @@ const Checkout = () => {
     const pricePerKg = delivery.pricePerKg || 0;
     const expressExtra = delivery.expressExtra || 0;
 
-    const priceWithWeight = pricePerKg * dummyWeight;
-    const priceWithWeightAndExtra = priceWithWeight + expressExtra;
+    const priceWithWeight = (pricePerKg * dummyWeight )* currencyFactor;
+    const priceWithWeightAndExtra = (pricePerKg * dummyWeight + expressExtra ) * currencyFactor ;
 
     return [priceWithWeight, priceWithWeightAndExtra];
   };
@@ -282,7 +273,6 @@ const Checkout = () => {
 
             <div className="mt-4 mb-4">
               {/* <h5>Shipping Address</h5> */}
-              <form onSubmit={(e) => e.preventDefault()}>
                 <div class="row">
                   <div class="form-group col-md-5">
                     <input
@@ -305,7 +295,6 @@ const Checkout = () => {
                     />
                   </div>
                 </div>
-              </form>
             </div>
 
             <div className="mt-2">
@@ -372,9 +361,9 @@ const Checkout = () => {
                           )
                         }
                       />
-                      {`Regular: ${
+                      {`Regular:  ${currencySymbol} ${
                         calculatePrices(selectedDelivery)[0]
-                      } GHC - Within 5 working days`}
+                      } - Within 5 working days`}
                     </label>
                   </div>
                 )}
@@ -394,52 +383,15 @@ const Checkout = () => {
                           )
                         }
                       />
-                      {`Express: ${
+                      {`Express: ${currencySymbol} ${
                         calculatePrices(selectedDelivery)[1]
-                      } GHC - Within 3 working days`}
+                      } - Within 3 working days`}
                     </label>
                   </div>
                 )}
               </div>
             </div>
 
-            {/* <div className="mt-2">
-              <h6>Apartment (Optional)</h6>
-              <form onSubmit={(e) => e.preventDefault()}>
-                <div className="form-group">
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="apartment"
-                    value={apartment || ""}
-                    onChange={(e) => handleSetApartment(e.target.value)}
-                  />
-                </div>
-              </form>
-            </div> */}
-
-            {/* <div className="mt-4">
-              <h5>Payment Method</h5>
-              <form onSubmit={(e) => e.preventDefault()}>
-                <div className="form-group">
-                  <select
-                    className="form-control"
-                    id="payment-method"
-                    value={paymentMethod || ""}
-                    onChange={(e) => handleSetPaymentMethod(e.target.value)}
-                    required
-                  >
-                    <option value="">Select Payment Method</option>
-                    <option value="paypal">PayPal</option>
-                    <option value="credit_card">Credit Card</option>
-                    <option value="bank_transfer">Bank Transfer</option>
-                  </select>
-                </div>
-              </form>
-            </div> */}
-            {/* <button className="btn btn-success w-100 text-center mt-4 ">
-              Place Order
-            </button> */}
             <PaystackButton
               onSuccess={onSuccess}
               className="btn btn-success w-100 text-center mt-4 "
