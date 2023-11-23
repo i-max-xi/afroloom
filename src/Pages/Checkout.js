@@ -374,7 +374,7 @@ const Checkout = () => {
                       />
                       {`Regular: ${
                         calculatePrices(selectedDelivery)[0]
-                      } GHC - Within 5 days`}
+                      } GHC - Within 5 working days`}
                     </label>
                   </div>
                 )}
@@ -396,7 +396,7 @@ const Checkout = () => {
                       />
                       {`Express: ${
                         calculatePrices(selectedDelivery)[1]
-                      } GHC - Within 3 days`}
+                      } GHC - Within 3 working days`}
                     </label>
                   </div>
                 )}
