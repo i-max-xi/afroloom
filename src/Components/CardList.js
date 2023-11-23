@@ -33,7 +33,8 @@ export const Card = ({
   TextAlign,
   Button,
   linkless,
-  weight
+  weight,
+  seller
 }) => {
   // Toastify
   const toast = useRef(null);
@@ -56,7 +57,8 @@ export const Card = ({
         title,
         item,
         price: discountedPrice ? discountedPrice : price,
-        weight
+        weight,
+        seller
       })
     );
     show();
@@ -464,6 +466,7 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
                 Button={product.Button}
                 linkless={product.linkless}
                 weight={product.weight}
+                seller={product.seller}
               />
             </div>
 

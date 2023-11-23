@@ -133,6 +133,7 @@ const Checkout = () => {
       shippingCountry: shippingCountry,
       city: city,
       tel: tel,
+      cart: cartItems,
     };
     // Submit to formspree
     fetch(process.env.REACT_APP_formSpree, {
@@ -144,7 +145,7 @@ const Checkout = () => {
     });
 
     // Clear the cart after successful payment
-    dispatch(clearCart());
+    // dispatch(clearCart());
   };
 
   // const onClose = () => {

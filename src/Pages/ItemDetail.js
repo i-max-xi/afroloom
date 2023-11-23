@@ -183,9 +183,10 @@ const ItemDetail = ({ match }) => {
                 title = product.title,
                 item = product.item,
                 weight = product.weight,
-                price = product.discount ? discountedPrice : augmentedPrice
+                price = product.discount ? discountedPrice : augmentedPrice,
+                seller = product.seller
               ) => {
-                dispatch(addItem({ id, title, item, price, count, weight }));
+                dispatch(addItem({ id, title, item, price, count, weight, seller }));
                 // show();
               }}
             >
