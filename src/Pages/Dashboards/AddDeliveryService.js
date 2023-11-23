@@ -52,8 +52,8 @@ const AddDeliveryService = () => {
     if (
       newProduct.name === "" ||
       newProduct.pricePerKg === null ||
-      newProduct.expressExtra === null
-      // newProduct.image === "" ||
+      newProduct.expressExtra === null ||
+      newProduct.country === ""
       // newProduct.parcelOffices.length === 0 ||
     ) {
       toastRef.current.show({

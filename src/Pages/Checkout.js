@@ -94,14 +94,21 @@ const Checkout = () => {
   }, []);
 
   // Function to filter delivery options based on shipping country
-  const filteredOptions = deliveryOptions.filter(
+  let filteredOptions = deliveryOptions.filter(
     (delivery) =>
       delivery.country &&
       shippingCountry &&
       delivery.country.toLowerCase() === shippingCountry.toLowerCase()
-  ) || deliveryOptions.find(
-    (delivery) => delivery.name.toLowerCase() === "dhl"
   );
+  
+  if (filteredOptions.length === 0) {
+    filteredOptions = deliveryOptions.filter(
+      (delivery) =>
+        delivery.country &&
+        delivery.country.toLowerCase() === "all"
+    );
+  }
+  
 
   const handleDropdownChange = (value) => {
     setSelectedDelivery(value); // Set the selected delivery
