@@ -9,8 +9,22 @@ function ContactForm() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    // TODO: handle form submission logic here
-    // console.log(`Name: ${name}, Email: ${email}, ${subject} Message: ${message}`);
+    
+    const userInfo = {
+      name: name,
+      email: email,
+      subject: subject,
+      message: message,
+    };
+    // Submit to formspree
+    fetch(process.env.REACT_APP_formSpree, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(userInfo),
+    });
+
     setName("");
     setEmail("");
     setSubject("");

@@ -167,7 +167,7 @@ const AddDeliveryService = () => {
           />
         </div>
         <div className="p-field">
-          <label htmlFor="seller">Parcel Collection Office Locations</label>
+          <label htmlFor="seller">Cities</label>
           {newProduct.parcelOffices.map((office, index) => (
             <div key={index} className="d-flex align-items-center">
               <InputText

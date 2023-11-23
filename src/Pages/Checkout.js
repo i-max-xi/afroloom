@@ -1,11 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-import {
-  removeItem,
-  clearCart,
-  updateOrders,
-} from "../Redux/store";
+import { removeItem, clearCart, updateOrders } from "../Redux/store";
 
 import Top from "../Assets/Headers/Check_Out.jpg";
 import LayoutHeaders from "../Components/LayoutHeaders";
@@ -22,8 +18,9 @@ const Checkout = () => {
   const cartItems = useSelector((state) => state.cartItems);
   const [emailAddress, setEmailAddress] = useState("");
   const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName ]= useState("");
+  const [lastName, setLastName] = useState("");
   const [city, setCity] = useState("");
+  const [tel, setTel] = useState("");
   const [shippingCountry, setShippingCountry] = useState("Ghana"); // State for shipping country input
 
   // const apartment = useSelector((state) => state.apartment);
@@ -36,9 +33,10 @@ const Checkout = () => {
 
   const [deliveryOptions, setDeliveryOptions] = useState([]);
   const [selectedDelivery, setSelectedDelivery] = useState(null); // State for selected delivery
+  const [selectedDeliveryPrice, setSelectedDeliveryPrice] = useState(0); // State to track the selected price
+
 
   const navigate = useNavigate();
-
 
   function handleRemoveItem(item) {
     dispatch(removeItem(item));
@@ -65,15 +63,12 @@ const Checkout = () => {
       shippingCountry &&
       delivery.country.toLowerCase() === shippingCountry.toLowerCase()
   );
-  
+
   if (filteredOptions.length === 0) {
     filteredOptions = deliveryOptions.filter(
-      (delivery) =>
-        delivery.country &&
-        delivery.country.toLowerCase() === "all"
+      (delivery) => delivery.country && delivery.country.toLowerCase() === "all"
     );
   }
-  
 
   const handleDropdownChange = (value) => {
     setSelectedDelivery(value); // Set the selected delivery
@@ -81,28 +76,27 @@ const Checkout = () => {
     // console.log("Selected Delivery:", value);
   };
 
-      // Calculate total weight of items in the cart
-      const totalWeight = cartItems.reduce(
-        (total, item) => total + item.weight, // Replace 'weight' with your actual key
-        0
-      );
-  
-      console.log(totalWeight)
-
-  const [selectedDeliveryPrice, setSelectedDeliveryPrice] = useState(0); // State to track the selected price
+  // Calculate total weight of items in the cart
+  const totalWeight = cartItems.reduce(
+    (total, item) => total + item.weight, // Replace 'weight' with your actual key
+    0
+  );
 
   // Function to calculate the selected prices based on the selected delivery and dummy weight
   const calculatePrices = (delivery) => {
     const pricePerKg = delivery.pricePerKg || 0;
     const expressExtra = delivery.expressExtra || 0;
 
-  
-    const priceWithWeight = ((pricePerKg * totalWeight) * currencyFactor).toFixed(2);
-    const priceWithWeightAndExtra = ((pricePerKg * totalWeight + expressExtra) * currencyFactor).toFixed(2);
-  
+    const priceWithWeight = (pricePerKg * totalWeight * currencyFactor).toFixed(
+      2
+    );
+    const priceWithWeightAndExtra = (
+      (pricePerKg * totalWeight + expressExtra) *
+      currencyFactor
+    ).toFixed(2);
+
     return [priceWithWeight, priceWithWeightAndExtra];
   };
-  
 
   // Function to handle radio selection
   const handlePriceSelection = (price) => {
@@ -131,6 +125,25 @@ const Checkout = () => {
 
     // Dispatch action to update orders in the Redux state
     dispatch(updateOrders(updatedOrders));
+
+    const userInfo = {
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
+      selectedDelivery: selectedDelivery.name,
+      shippingCountry: shippingCountry,
+      city: city,
+      tel: tel,
+      
+    };
+    // Submit to formspree
+    fetch(process.env.REACT_APP_formSpree, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(userInfo),
+    });
 
     // Clear the cart after successful payment
     dispatch(clearCart());
@@ -239,43 +252,55 @@ const Checkout = () => {
               <span className="text-warning">Delivery</span> Information
             </h4>
 
-            <div className="mt-4">
-                <div className="form-group">
+            <div className="mt-4 mb-4">
+              <div class="row">
+                <div class="form-group col-md-5">
                   <input
                     type="text"
-                    className="form-control"
-                    id="email"
-                    value={emailAddress}
-                    onChange={(e) => setEmailAddress(e.target.value)}
-                    placeholder="Email"
+                    class="form-control"
+                    id="First Name"
+                    placeholder="First Name"
+                    value={firstName}
+                    onChange={(e) => setFirstName(e.target.value)}
                   />
                 </div>
+                <div class="form-group col-md-5">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="last-name"
+                    placeholder="Last Name"
+                    value={lastName}
+                    onChange={(e) => setLastName(e.target.value)}
+                  />
+                </div>
+              </div>
             </div>
 
-            <div className="mt-4 mb-4">
-              {/* <h5>Shipping Address</h5> */}
-                <div class="row">
-                  <div class="form-group col-md-5">
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="First Name"
-                      placeholder="First Name"
-                      value={firstName}
-                      onChange={(e) => setFirstName(e.target.value)}
-                    />
-                  </div>
-                  <div class="form-group col-md-5">
-                    <input
-                      type="text"
-                      class="form-control"
-                      id="last-name"
-                      placeholder="Last Name"
-                      value={lastName}
-                      onChange={(e) => setLastName(e.target.value)}
-                    />
-                  </div>
-                </div>
+            <div className="mt-4">
+              <div className="form-group">
+                <input
+                  type="text"
+                  className="form-control"
+                  id="email"
+                  value={emailAddress}
+                  onChange={(e) => setEmailAddress(e.target.value)}
+                  placeholder="Email"
+                />
+              </div>
+            </div>
+
+            <div className="mt-4">
+              <div className="form-group">
+                <input
+                  type="tel"
+                  className="form-control"
+                  id="tel"
+                  value={tel}
+                  onChange={(e) => setTel(e.target.value)}
+                  placeholder="Phone Number"
+                />
+              </div>
             </div>
 
             <div className="mt-2">
@@ -334,7 +359,8 @@ const Checkout = () => {
                         name="priceOption"
                         value={calculatePrices(selectedDelivery)[0]}
                         checked={
-                          selectedDeliveryPrice === calculatePrices(selectedDelivery)[0]
+                          selectedDeliveryPrice ===
+                          calculatePrices(selectedDelivery)[0]
                         }
                         onChange={() =>
                           handlePriceSelection(
@@ -356,7 +382,8 @@ const Checkout = () => {
                         name="priceOption"
                         value={calculatePrices(selectedDelivery)[1]}
                         checked={
-                          selectedDeliveryPrice === calculatePrices(selectedDelivery)[1]
+                          selectedDeliveryPrice ===
+                          calculatePrices(selectedDelivery)[1]
                         }
                         onChange={() =>
                           handlePriceSelection(
