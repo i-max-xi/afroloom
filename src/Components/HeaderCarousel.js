@@ -1,13 +1,13 @@
 import React from "react";
 import Carousel from "react-bootstrap/Carousel";
 
-import s1 from "../Assets/carousel/new/afro/FLYERS 2 copy.jpg";
+import s1 from "../Assets/carousel/new/afro/NEW 3 copy.jpg";
 import s2 from "../Assets/carousel/new/afro/FLYERS 3 copy.jpg";
 import s3 from "../Assets/carousel/new/afro/FLYERS 4 copy.jpg";
 import s4 from "../Assets/carousel/new/afro/FLYERS 5.jpg";
 import s5 from "../Assets/carousel/new/afro/FLYERS 7.jpg";
 import s6 from "../Assets/carousel/new/afro/FLYERS 8.jpg";
-// import s7 from "../Assets/carousel/new/afro/s7.jpg";
+import s7 from "../Assets/carousel/new/afro/FLYERS 6 copy.jpg";
 import s8 from "../Assets/carousel/new/afro/FLYERS 9.jpg";
 import s9 from "../Assets/carousel/new/afro/new .jpg";
 import s10 from "../Assets/carousel/new/afro/new 2.jpg";
@@ -95,8 +95,8 @@ const HeaderCarousel = () => {
           </Link>
         </Carousel.Item>
 
-        {/* <Carousel.Item>
-          <Link to="/category/Pottery">
+        <Carousel.Item>
+          <Link to="/category/Basketry">
             <img
               className="d-block"
               src={s7}
@@ -105,7 +105,7 @@ const HeaderCarousel = () => {
               width="100%"
             />
           </Link>
-        </Carousel.Item> */}
+        </Carousel.Item>
 
         <Carousel.Item>
           <Link to="/category/Handicrafts">

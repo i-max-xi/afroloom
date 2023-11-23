@@ -1,10 +1,10 @@
 import React, { useRef, useState } from "react";
-import { Dropdown } from "primereact/dropdown";
+// import { Dropdown } from "primereact/dropdown";
 import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
 import ProductsDataService from "../../Services/products.services";
 import { Toast } from "primereact/toast";
-import { deliveryDurations } from "../../Data/DeliveryServiceData";
+// import { deliveryDurations } from "../../Data/DeliveryServiceData";
 // import { storage } from "../../firebase";
 // import { ref, uploadBytes, getDownloadURL } from "@firebase/storage";
 
@@ -15,7 +15,7 @@ const AddDeliveryService = () => {
     // image: "",
     expressExtra: null,
     parcelOffices: [""],
-    duration: "",
+    // duration: "",
     country: "",
   });
 
@@ -52,10 +52,9 @@ const AddDeliveryService = () => {
     if (
       newProduct.name === "" ||
       newProduct.pricePerKg === null ||
-      newProduct.expressExtra === null ||
+      newProduct.expressExtra === null
       // newProduct.image === "" ||
-      newProduct.parcelOffices.length === 0 ||
-      newProduct.duration === ""
+      // newProduct.parcelOffices.length === 0 ||
     ) {
       toastRef.current.show({
         severity: "error",
@@ -168,7 +167,7 @@ const AddDeliveryService = () => {
           />
         </div>
         <div className="p-field">
-          <label htmlFor="seller">Parcel Offices</label>
+          <label htmlFor="seller">Parcel Collection Office Locations</label>
           {newProduct.parcelOffices.map((office, index) => (
             <div key={index} className="d-flex align-items-center">
               <InputText
@@ -205,7 +204,7 @@ const AddDeliveryService = () => {
             </div>
           ))}
         </div>
-        <div className="p-field">
+        {/* <div className="p-field">
           <label htmlFor="duration">Standard Delivery Duration</label>
           <Dropdown
           id="duration"
@@ -216,7 +215,7 @@ const AddDeliveryService = () => {
           }
           placeholder="Select Duration"
         />
-        </div>
+        </div> */}
 
         <div className="p-field">
           <Button

@@ -99,6 +99,8 @@ const Checkout = () => {
       delivery.country &&
       shippingCountry &&
       delivery.country.toLowerCase() === shippingCountry.toLowerCase()
+  ) || deliveryOptions.find(
+    (delivery) => delivery.name.toLowerCase() === "dhl"
   );
 
   const handleDropdownChange = (value) => {
@@ -107,7 +109,7 @@ const Checkout = () => {
     console.log("Selected Delivery:", value);
   };
 
-  const [dummyWeight, setDummyWeight] = useState(4); // Example dummy weight
+  const [dummyWeight, ] = useState(4); // Example dummy weight
   const [selectedDeliveryPrice, setSelectedDeliveryPrice] = useState(0); // State to track the selected price
 
   // Function to calculate the selected prices based on the selected delivery and dummy weight
