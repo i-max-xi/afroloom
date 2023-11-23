@@ -4,14 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import {
   removeItem,
   clearCart,
-  // setShippingAddress,
-  setEmailAddress,
-  setFirstName,
-  setLastName,
-  setCity,
-  // setApartment,
   updateOrders,
-  // setPaymentMethod,
 } from "../Redux/store";
 
 import Top from "../Assets/Headers/Check_Out.jpg";
@@ -27,10 +20,12 @@ import { AllDeliveries } from "../Data/DeliveryServiceData";
 const Checkout = () => {
   const dispatch = useDispatch();
   const cartItems = useSelector((state) => state.cartItems);
-  const emailAddress = useSelector((state) => state.emailAddress);
-  const firstName = useSelector((state) => state.firstName);
-  const lastName = useSelector((state) => state.lastName);
-  const city = useSelector((state) => state.city);
+  const [emailAddress, setEmailAddress] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName ]= useState("");
+  const [city, setCity] = useState("");
+  const [shippingCountry, setShippingCountry] = useState("Ghana"); // State for shipping country input
+
   // const apartment = useSelector((state) => state.apartment);
 
   const currencySymbol = useSelector((state) => state.currencySymbol.symbol);
@@ -40,7 +35,6 @@ const Checkout = () => {
   const [showDecison, setshowDecision] = useState(!isSignedIn);
 
   const [deliveryOptions, setDeliveryOptions] = useState([]);
-  const [shippingCountry, setShippingCountry] = useState("Ghana"); // State for shipping country input
   const [selectedDelivery, setSelectedDelivery] = useState(null); // State for selected delivery
 
   const navigate = useNavigate();
@@ -56,21 +50,21 @@ const Checkout = () => {
   }
 
 
-  function handleSetEmailAddress(address) {
-    dispatch(setEmailAddress(address));
-  }
+  // function handleSetEmailAddress(address) {
+  //   dispatch(setEmailAddress(address));
+  // }
 
-  function handleSetFirstName(name) {
-    dispatch(setFirstName(name));
-  }
+  // function handleSetFirstName(name) {
+  //   dispatch(setFirstName(name));
+  // }
 
-  function handleSetLastName(name) {
-    dispatch(setLastName(name));
-  }
+  // function handleSetLastName(name) {
+  //   dispatch(setLastName(name));
+  // }
 
-  function handleSetCity(city) {
-    dispatch(setCity(city));
-  }
+  // function handleSetCity(city) {
+  //   dispatch(setCity(city));
+  // }
 
 
 
@@ -257,18 +251,16 @@ const Checkout = () => {
             </h4>
 
             <div className="mt-4">
-              <form onSubmit={(e) => e.preventDefault()}>
                 <div className="form-group">
                   <input
                     type="text"
                     className="form-control"
                     id="email"
-                    value={emailAddress || ""}
-                    onChange={(e) => handleSetEmailAddress(e.target.value)}
+                    value={emailAddress}
+                    onChange={(e) => setEmailAddress(e.target.value)}
                     placeholder="Email"
                   />
                 </div>
-              </form>
             </div>
 
             <div className="mt-4 mb-4">
@@ -280,18 +272,18 @@ const Checkout = () => {
                       class="form-control"
                       id="First Name"
                       placeholder="First Name"
-                      value={firstName || ""}
-                      onChange={(e) => handleSetFirstName(e.target.value)}
+                      value={firstName}
+                      onChange={(e) => setFirstName(e.target.value)}
                     />
                   </div>
                   <div class="form-group col-md-5">
                     <input
                       type="text"
                       class="form-control"
-                      id="Last Name"
+                      id="last-name"
                       placeholder="Last Name"
-                      value={lastName || ""}
-                      onChange={(e) => handleSetLastName(e.target.value)}
+                      value={lastName}
+                      onChange={(e) => setLastName(e.target.value)}
                     />
                   </div>
                 </div>
@@ -318,8 +310,8 @@ const Checkout = () => {
                   type="text"
                   className="form-control"
                   id="city"
-                  value={city || ""}
-                  onChange={(e) => handleSetCity(e.target.value)}
+                  value={city}
+                  onChange={(e) => setCity(e.target.value)}
                 />
               </div>
             </div>

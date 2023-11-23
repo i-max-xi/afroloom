@@ -122,86 +122,10 @@ const userSlice = createSlice({
 });
 
 
-const shippingAddressSlice = createSlice({
-  name: "shippingAddress",
-  initialState: null,
-  reducers: {
-    setShippingAddress: (state, action) => {
-      return action.payload;
-    },
-  },
-});
-
-const emailAddressSlice = createSlice({
-  name: "emailAddress",
-  initialState: null,
-  reducers: {
-    setEmailAddress: (state, action) => {
-      return action.payload;
-    },
-  },
-});
-
-const firstNameSlice = createSlice({
-  name: "firstName",
-  initialState: null,
-  reducers: {
-    setFirstName: (state, action) => {
-      return action.payload;
-    },
-  },
-});
-
-const lastNameSlice = createSlice({
-  name: "lastName",
-  initialState: null,
-  reducers: {
-    setLastName: (state, action) => {
-      return action.payload;
-    },
-  },
-});
-
-const citySlice = createSlice({
-  name: "city",
-  initialState: null,
-  reducers: {
-    setCity: (state, action) => {
-      return action.payload;
-    },
-  },
-});
-
-const apartmentSlice = createSlice({
-  name: "apartment",
-  initialState: null,
-  reducers: {
-    setApartment: (state, action) => {
-      return action.payload;
-    },
-  },
-});
-
-const paymentMethodSlice = createSlice({
-  name: "paymentMethod",
-  initialState: null,
-  reducers: {
-    setPaymentMethod: (state, action) => {
-      return action.payload;
-    },
-  },
-});
 
 const rootReducer = combineReducers({
   allProducts: allProductsSlice.reducer,
   cartItems: cartSlice.reducer,
-  shippingAddress: shippingAddressSlice.reducer,
-  emailAddress: emailAddressSlice.reducer,
-  firstName: firstNameSlice.reducer,
-  lastName: lastNameSlice.reducer,
-  city: citySlice.reducer,
-  apartment: apartmentSlice.reducer,
-  paymentMethod: paymentMethodSlice.reducer,
   user: userSlice.reducer,
   currencySymbol: currencySymbolSlice.reducer,
 });
@@ -217,13 +141,6 @@ export const { addProducts, searchItem } = allProductsSlice.actions;
 export const { setCurrencySymbol } = currencySymbolSlice.actions;
 
 export const { addItem, removeItem, clearCart } = cartSlice.actions;
-export const { setShippingAddress } = shippingAddressSlice.actions;
-export const { setEmailAddress } = emailAddressSlice.actions;
-export const { setFirstName } = firstNameSlice.actions;
-export const { setLastName } = lastNameSlice.actions;
-export const { setCity } = citySlice.actions;
-export const { setApartment } = apartmentSlice.actions;
-export const { setPaymentMethod } = paymentMethodSlice.actions;
 export const { setSignedIn, setcurrentUser, setDashBoardPath, updateOrders } = userSlice.actions;
 // export const { setQuery, setFilteredItems, setVisible } = searchSlice.actions;
 
