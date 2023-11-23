@@ -40,7 +40,6 @@ const Checkout = () => {
   const navigate = useNavigate();
 
 
-
   function handleRemoveItem(item) {
     dispatch(removeItem(item));
   }
@@ -79,10 +78,17 @@ const Checkout = () => {
   const handleDropdownChange = (value) => {
     setSelectedDelivery(value); // Set the selected delivery
     // You can perform actions based on the selected delivery here
-    console.log("Selected Delivery:", value);
+    // console.log("Selected Delivery:", value);
   };
 
-  const [dummyWeight, ] = useState(4); // Example dummy weight
+      // Calculate total weight of items in the cart
+      const totalWeight = cartItems.reduce(
+        (total, item) => total + item.weight, // Replace 'weight' with your actual key
+        0
+      );
+  
+      console.log(totalWeight)
+
   const [selectedDeliveryPrice, setSelectedDeliveryPrice] = useState(0); // State to track the selected price
 
   // Function to calculate the selected prices based on the selected delivery and dummy weight
@@ -90,11 +96,13 @@ const Checkout = () => {
     const pricePerKg = delivery.pricePerKg || 0;
     const expressExtra = delivery.expressExtra || 0;
 
-    const priceWithWeight = ((pricePerKg * dummyWeight )* currencyFactor).toFixed(2);
-    const priceWithWeightAndExtra = ((pricePerKg * dummyWeight + expressExtra ) * currencyFactor).toFixed(2);
-
+  
+    const priceWithWeight = ((pricePerKg * totalWeight) * currencyFactor).toFixed(2);
+    const priceWithWeightAndExtra = ((pricePerKg * totalWeight + expressExtra) * currencyFactor).toFixed(2);
+  
     return [priceWithWeight, priceWithWeightAndExtra];
   };
+  
 
   // Function to handle radio selection
   const handlePriceSelection = (price) => {
