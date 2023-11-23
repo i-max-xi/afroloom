@@ -35,7 +35,6 @@ const Checkout = () => {
   const [selectedDelivery, setSelectedDelivery] = useState(null); // State for selected delivery
   const [selectedDeliveryPrice, setSelectedDeliveryPrice] = useState(0); // State to track the selected price
 
-
   const navigate = useNavigate();
 
   function handleRemoveItem(item) {
@@ -134,7 +133,6 @@ const Checkout = () => {
       shippingCountry: shippingCountry,
       city: city,
       tel: tel,
-      
     };
     // Submit to formspree
     fetch(process.env.REACT_APP_formSpree, {
@@ -153,6 +151,35 @@ const Checkout = () => {
   //   // Handle when the Paystack dialog is closed
   //   console.log("Payment closed");
   // };
+
+  const [isInfoComplete, setIsInfoComplete] = useState(false);
+
+  useEffect(() => {
+    // Check if all necessary information is provided
+    if (
+      firstName &&
+      lastName &&
+      emailAddress &&
+      tel &&
+      shippingCountry &&
+      city &&
+      selectedDelivery &&
+      selectedDeliveryPrice
+    ) {
+      setIsInfoComplete(true);
+    } else {
+      setIsInfoComplete(false);
+    }
+  }, [
+    firstName,
+    lastName,
+    emailAddress,
+    tel,
+    shippingCountry,
+    city,
+    selectedDelivery,
+    selectedDeliveryPrice,
+  ]);
 
   if (isSignedIn === false) {
     return (
@@ -280,7 +307,7 @@ const Checkout = () => {
             <div className="mt-4">
               <div className="form-group">
                 <input
-                  type="text"
+                  type="email"
                   className="form-control"
                   id="email"
                   value={emailAddress}
@@ -400,11 +427,20 @@ const Checkout = () => {
               </div>
             </div>
 
-            <PaystackButton
-              onSuccess={onSuccess}
-              className="btn btn-success w-100 text-center mt-4 "
-              {...config}
-            />
+            {isInfoComplete ? (
+              <PaystackButton
+                onSuccess={onSuccess}
+                className="btn btn-success w-100 text-center mt-4 "
+                {...config}
+              />
+            ) : (
+              <button
+                disabled
+                className="btn btn-success w-100 text-center mt-4 "
+              >
+                Fill in all information to place order
+              </button>
+            )}
 
             <p className="mt-3" style={{ fontSize: "0.8rem" }}>
               By placing your order you agree to our
