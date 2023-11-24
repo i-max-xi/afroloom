@@ -781,12 +781,14 @@ const Configurator = () => {
               {total}
             </p>
 
-            <button
-              className="btn btn-success text-white"
-              onClick={captureCanvasAsImage}
-            >
-              Complete
-            </button>
+            <p className="complete m-2">
+              <button
+                className="btn btn-success text-white"
+                onClick={captureCanvasAsImage}
+              >
+                Complete
+              </button>
+            </p>
           </div>
         </>
       )}

@@ -20,17 +20,17 @@ export const tourSteps = [
     content: "Select the color that suits you best.",
   },
   {
-    selector: ".texture-buttons-container",
+    selector: ".texture-category",
     content: "Pick a texture to personalize your clothing.",
   },
-  {
-    selector: ".expect-to-be-ready",
-    content: "Time expected for you design to be ready",
-  },
-  {
-    selector: ".estimated-shipping",
-    content: "Estimated Shipping Time",
-  },
+  // {
+  //   selector: ".expect-to-be-ready",
+  //   content: "Time expected for you design to be ready",
+  // },
+  // {
+  //   selector: ".estimated-shipping",
+  //   content: "Estimated Shipping Time",
+  // },
   {
     selector: ".price-text",
     content: "Price may change slightly based on chosen Size and Textile",
@@ -40,7 +40,7 @@ export const tourSteps = [
     content: "Spin model to have a 3D view of your customized design.",
   },
   {
-    selector: ".btn-success",
+    selector: ".complete",
     content:
       "Hit this button when you are ready to complete your customization.",
   },
