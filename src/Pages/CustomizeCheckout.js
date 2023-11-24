@@ -13,9 +13,9 @@ import Nav from "../Components/Nav";
 import { Dropdown } from "primereact/dropdown";
 import { AllDeliveries } from "../Data/DeliveryServiceData";
 
-const Checkout = () => {
+const CustomizeCheckout = ({customizedItemDetails, customizedItem}) => {
   const dispatch = useDispatch();
-  const cartItems = useSelector((state) => state.cartItems);
+//   const cartItems = useSelector((state) => state.cartItems);
   const [emailAddress, setEmailAddress] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -76,10 +76,12 @@ const Checkout = () => {
   };
 
   // Calculate total weight of items in the cart
-  const totalWeight = cartItems.reduce(
-    (total, item) => total + item.weight, // Replace 'weight' with your actual key
-    0
-  );
+//   const totalWeight = cartItems.reduce(
+//     (total, item) => total + item.weight, // Replace 'weight' with your actual key
+//     0
+//   );
+
+  const totalWeight = customizedItem.weight;
 
   // Function to calculate the selected prices based on the selected delivery and dummy weight
   const calculatePrices = (delivery) => {
@@ -120,7 +122,7 @@ const Checkout = () => {
   };
 
   const onSuccess = (reference) => {
-    const updatedOrders = [...currentOrders, ...cartItems];
+    const updatedOrders = [...currentOrders, ...customizedItem];
 
     // Dispatch action to update orders in the Redux state
     dispatch(updateOrders(updatedOrders));
@@ -133,7 +135,7 @@ const Checkout = () => {
       shippingCountry: shippingCountry,
       city: city,
       tel: tel,
-      cart: cartItems,
+      customizedItemDetails: customizedItemDetails,
     };
     // Submit to formspree
     fetch(process.env.REACT_APP_formSpree, {
@@ -205,11 +207,11 @@ const Checkout = () => {
         <LayoutHeaders selectedBg={Top} />
 
         <div className="container mb-5">
-          {cartItems.length !== 0 ? (
+          {customizedItem.length !== 0 ? (
             <div className="mt-5 mb-5">
               <h2>Items in Cart</h2>
               <ul className="list-group">
-                {cartItems.map((selectedItem) => (
+                {customizedItemDetails.map((selectedItem) => (
                   <li
                     className="list-group-item d-flex justify-content-between align-items-center mt-3"
                     key={selectedItem.id}
@@ -259,7 +261,7 @@ const Checkout = () => {
                   Total To Pay:
                   <span className="fs-5 mx-4">
                     {currencySymbol}
-                    {cartItems
+                    {customizedItem
                       .reduce(
                         (total, item) => total + ((item.price * currencyFactor) * item.count),
                         0
@@ -457,4 +459,4 @@ const Checkout = () => {
   }
 };
 
-export default Checkout;
+export default CustomizeCheckout;
