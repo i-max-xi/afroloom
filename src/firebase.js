@@ -2,7 +2,7 @@ import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
-import { signOut } from "firebase/auth";
+import { signOut, sendPasswordResetEmail } from "firebase/auth";
 import { getStorage } from "@firebase/storage";
 
 // Your web app's Firebase configuration
@@ -26,4 +26,4 @@ const db = getFirestore(app);
 const storage = getStorage(app);
 
 
-export { app, analytics, auth, db, signOut, storage };
+export { app, analytics, auth, db, signOut, storage, sendPasswordResetEmail };

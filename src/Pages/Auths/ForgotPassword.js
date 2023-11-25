@@ -1,24 +1,49 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import Nav from "../../Components/Nav";
 import signInBg from "../../Assets/backgrounds/3.jpg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ProgressSpinner } from "primereact/progressspinner";
+import { auth, sendPasswordResetEmail } from "../../firebase";
+import { Toast } from "primereact/toast";
 
 const ForgotPassword = () => {
+  const toastRef = useRef(null);
+  const navigate = useNavigate();
+
   const [email, setEmail] = useState("");
   const [isLoading, setIsLoading] = useState(false); // Initialize loading state
 
-  const handleForgotPassword = () => {
+  const handleForgotPassword = async (e) => {
+    e.preventDefault();
+    setIsLoading(true);
+
     try {
-      setIsLoading(true);
+      // await auth.sendPasswordResetEmail(email); // Send password reset email
+      await sendPasswordResetEmail(auth, email)
+
+      toastRef.current.show({
+        severity: "success",
+        summary: `We have sent an email to reset your password`,
+      });
+
+      setTimeout(() => {
+        navigate("/signin");
+      }, 2000);
     } catch (error) {
-      setIsLoading(false);
+      toastRef.current.show({
+        severity: "error",
+        summary: `Error sending reset email ${error}`,
+      });
     }
+
+    setIsLoading(false);
   };
 
   return (
     <div>
       <Nav />
+      <Toast ref={toastRef} />
+
       <div
         className="p-5"
         style={{
