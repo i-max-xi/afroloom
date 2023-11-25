@@ -53,6 +53,7 @@ import { fetchAllProducts } from "./Redux/store";
 import UserDashboard from "./Pages/Dashboards/buyer/UserDashboard";
 import Buyer from "./Pages/Auths/Buyer";
 import AdminDashboard from "./Pages/Dashboards/admin/AdminDashboard";
+import CustomizeCheckout from "./Pages/CustomizeCheckout";
 
 function App() {
   const dispatch = useDispatch(); // Get the dispatch function
@@ -86,6 +87,8 @@ function App() {
 
 
             <Route path="checkout" element={<Checkout />} />
+            <Route path="customize-checkout" element={<CustomizeCheckout />} />
+
             <Route path="category-page" element={<CategoryPage />} />
 
             <Route path="/seller-dashboard" element={<SellerDashboard />} />

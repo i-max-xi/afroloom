@@ -338,8 +338,7 @@ toastRef.current.show({
         <Confirmation
           currencySymbol={currencySymbol}
           total={total}
-          estimatedShippingTime="2-3 business days"
-          readyBy="August 15, 2023"
+          readyBy=""
           selectedParts={selectedParts}
           setShowConfirmation={setShowConfirmation}
           selectedSize={
@@ -770,9 +769,8 @@ toastRef.current.show({
             </div>
           </div>
           <div className="price w-100 d-flex bg-dark text-white justify-content-between">
-            <span className="m-3 expect-to-be-ready">Expected to be ready by: </span>
+            <span className="m-3 expect-to-be-ready">Estimated time to make this order: </span>
 
-            <span className="m-3 estimated-shipping">Estimated shipping time: </span>
 
             <p className="price-text m-3">
               <span className="fs-6 fw-normal">Price:</span> {currencySymbol}

@@ -12,20 +12,21 @@ import {
   getDownloadURL,
 } from "firebase/storage";
 import { Toast } from "primereact/toast";
+import { ProgressSpinner } from "primereact/progressspinner";
 
 const Confirmation = ({
   total,
   currencySymbol,
-  estimatedShippingTime,
   setShowConfirmation,
   readyBy,
   selectedParts,
   selectedSize,
   modelImage,
   customSizeValues,
-  height
+  height,
 }) => {
   const toast = useRef(null);
+  const [isLoading, setIsLoading] = useState(false); // Initialize loading state
 
   const componentRef = useRef();
   const handlePrint = useReactToPrint({
@@ -36,7 +37,7 @@ const Confirmation = ({
 
   const handleFormSubmit = async () => {
     try {
-      // Capture the component as an image using html2canvas
+      setIsLoading(true); // Set loading state to true
       const image = await html2canvas(componentRef.current, {
         useCORS: true, // Ensure cross-origin images are captured
       });
@@ -55,15 +56,14 @@ const Confirmation = ({
       const formData = {
         total,
         currencySymbol,
-        estimatedShippingTime,
         readyBy,
         selectedSize,
-        downloadURL, // Make sure this value is correct
-        message: "Please use the link to access the client's order", // Add the message
+        downloadURL,
+        message: "Please use the link to access the client's order",
       };
 
       // Send the formData to Formspree
-      const response = await fetch(process.env.REACT_APP_formSpree, {
+      const response = await fetch(process.env.REACT_APP_f, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -72,6 +72,7 @@ const Confirmation = ({
       });
 
       if (response.ok) {
+        setIsLoading(false);
         toast.current.show({
           severity: "info",
           summary: "Order Confirmed",
@@ -80,7 +81,13 @@ const Confirmation = ({
               <p>Thank you for your order!</p>
               <p>
                 Proceed to{" "}
-                <Link to="/checkout" className="btn btn-success">
+                <Link
+                  to={{
+                    pathname: "/customize-checkout",
+                    state: { cartItem: formData }, // Pass formData in the state
+                  }}
+                  className="btn btn-success"
+                >
                   Checkout
                 </Link>
               </p>
@@ -89,6 +96,7 @@ const Confirmation = ({
           life: 7000, // Duration in milliseconds
         });
       } else {
+        setIsLoading(false);
         toast.current.show({
           severity: "error",
           summary: "Order Confirmation Failed",
@@ -97,6 +105,7 @@ const Confirmation = ({
         });
       }
     } catch (error) {
+      setIsLoading(false);
       toast.current.show({
         severity: "error",
         summary: "Error",
@@ -114,7 +123,6 @@ const Confirmation = ({
       <OrderDetail
         total={total}
         currencySymbol={currencySymbol}
-        estimatedShippingTime={estimatedShippingTime}
         readyBy={readyBy}
         selectedParts={selectedParts}
         selectedSize={selectedSize}
@@ -128,8 +136,22 @@ const Confirmation = ({
           <button className="btn btn-outline-success" onClick={handlePrint}>
             Download Copy
           </button>
-          <button className="btn btn-success mx-3" onClick={handleFormSubmit}>
-            Confirm Order
+          <button
+            disabled={isLoading}
+            className="btn btn-success mx-3 position-relative"
+            onClick={handleFormSubmit}
+          >
+            <span className="spinner-container">
+              {isLoading && (
+                <ProgressSpinner
+                  style={{ width: "1.5rem", height: "1.5rem" }}
+                  strokeWidth="8"
+                  fill="var(--surface-ground)"
+                  className="position-absolute top-50 start-50 translate-middle"
+                />
+              )}
+            </span>
+            Confirm Order{" "}
           </button>
         </div>
 
@@ -153,13 +175,12 @@ export const OrderDetail = React.forwardRef(
     {
       total,
       currencySymbol,
-      estimatedShippingTime,
       readyBy,
       selectedParts,
       selectedSize,
       modelImage,
       customSizeValues,
-      height
+      height,
     },
     ref
   ) => {
@@ -181,7 +202,8 @@ export const OrderDetail = React.forwardRef(
           <div>
             <div className="custom-size-values">
               <p className="h5 mt-4">Client's custom size values:</p>
-              <strong className="text-warning">Your Height:</strong> {height + ""} cm
+              <strong className="text-warning">Your Height:</strong>{" "}
+              {height + ""} cm
               <ul>
                 {Object.entries(customSizeValues).map(([label, value]) => (
                   <li key={label}>
@@ -191,8 +213,7 @@ export const OrderDetail = React.forwardRef(
               </ul>
             </div>
           </div>
-          <p>Estimated Shipping Time: {estimatedShippingTime}</p>
-          <p>Expected to be Ready By: {readyBy}</p>
+          <p>Estimated time to make this order: {readyBy}</p>
 
           <p className="mt-5">
             <span className="p-float-label">
@@ -204,7 +225,9 @@ export const OrderDetail = React.forwardRef(
                 rows={5}
                 cols={50}
               />
-              <label htmlFor="special-request">Any special request to your designer?</label>
+              <label htmlFor="special-request">
+                Any special request to your designer?
+              </label>
             </span>
           </p>
         </div>
