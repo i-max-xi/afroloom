@@ -195,7 +195,7 @@ const CustomizeCheckout = () => {
         <Dialog
           header="Checkout"
           visible={showDecison}
-          style={{ width: "50vw", height: "50vh" }}
+          style={{ width: "30vw", height: "30vh" }}
           onHide={() => {
             navigate("/");
             setshowDecision(false);
