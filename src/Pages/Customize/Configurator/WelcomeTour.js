@@ -23,10 +23,14 @@ export const tourSteps = [
     selector: ".texture-category",
     content: "Pick a texture to personalize your clothing.",
   },
-  // {
-  //   selector: ".expect-to-be-ready",
-  //   content: "Time expected for you design to be ready",
-  // },
+  {
+    selector: ".bi-info-circle",
+    content: "Use 'info' to know more about the textiles",
+  },
+  {
+    selector: ".expect-to-be-ready",
+    content: "Time expected for you design to be ready",
+  },
   // {
   //   selector: ".estimated-shipping",
   //   content: "Estimated Shipping Time",
