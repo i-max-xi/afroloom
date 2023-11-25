@@ -5,7 +5,7 @@ import { removeItem, clearCart, updateOrders } from "../Redux/store";
 
 import Top from "../Assets/Headers/Check_Out.jpg";
 import LayoutHeaders from "../Components/LayoutHeaders";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 // import PaymentForm from "../Components/PaymentForm";
 import { PaystackButton } from "react-paystack";
 import { Dialog } from "primereact/dialog";
@@ -13,7 +13,11 @@ import Nav from "../Components/Nav";
 import { Dropdown } from "primereact/dropdown";
 import { AllDeliveries } from "../Data/DeliveryServiceData";
 
-const CustomizeCheckout = ({customizedItemDetails, customizedItem}) => {
+const CustomizeCheckout = () => {
+  const location = useLocation();
+  const customizedItem = location.state?.cartItem || [];
+  const customizedItemDetails = location.state?.customizedItemDetails || "";
+
   const dispatch = useDispatch();
 //   const cartItems = useSelector((state) => state.cartItems);
   const [emailAddress, setEmailAddress] = useState("");

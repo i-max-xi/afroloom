@@ -54,7 +54,7 @@ const Confirmation = ({
 
       // Create formData
       const formData = {
-        total,
+        price: total,
         currencySymbol,
         readyBy,
         selectedSize,
@@ -63,15 +63,14 @@ const Confirmation = ({
       };
 
       // Send the formData to Formspree
-      const response = await fetch(process.env.REACT_APP_f, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
+      // const response = await fetch(process.env.REACT_APP_formSpree, {
+      //   method: "POST",
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      //   body: JSON.stringify(formData),
+      // });
 
-      if (response.ok) {
         setIsLoading(false);
         toast.current.show({
           severity: "info",
@@ -84,7 +83,7 @@ const Confirmation = ({
                 <Link
                   to={{
                     pathname: "/customize-checkout",
-                    state: { cartItem: formData }, // Pass formData in the state
+                    state: { cartItem: formData, customizedItemDetails: downloadURL }, // Pass formData in the state
                   }}
                   className="btn btn-success"
                 >
@@ -95,15 +94,16 @@ const Confirmation = ({
           ),
           life: 7000, // Duration in milliseconds
         });
-      } else {
-        setIsLoading(false);
-        toast.current.show({
-          severity: "error",
-          summary: "Order Confirmation Failed",
-          detail: "Failed to confirm order. Please try again.",
-          life: 3000,
-        });
-      }
+      
+      // else {
+      //   setIsLoading(false);
+      //   toast.current.show({
+      //     severity: "error",
+      //     summary: "Order Confirmation Failed",
+      //     detail: "Failed to confirm order. Please try again.",
+      //     life: 3000,
+      //   });
+      // }
     } catch (error) {
       setIsLoading(false);
       toast.current.show({
