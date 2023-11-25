@@ -1,6 +1,10 @@
 import React, { useState, useRef } from "react";
 import { useDispatch } from "react-redux";
-import { setDashBoardPath, setSignedIn, setcurrentUser } from "../../Redux/store";
+import {
+  setDashBoardPath,
+  setSignedIn,
+  setcurrentUser,
+} from "../../Redux/store";
 import Nav from "../../Components/Nav";
 import signInBg from "../../Assets/backgrounds/login2.jpg";
 import { Link, useNavigate } from "react-router-dom";
@@ -8,10 +12,13 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase";
 import { Toast } from "primereact/toast";
 import ProductsDataService from "../../Services/products.services";
+import { ProgressSpinner } from "primereact/progressspinner";
 
 const SignIn = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false); // Initialize loading state
+
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -22,6 +29,7 @@ const SignIn = () => {
     e.preventDefault();
     try {
       // Firebase sign-in logic
+      setIsLoading(true)
       const userCredential = await signInWithEmailAndPassword(
         auth,
         email,
@@ -33,16 +41,23 @@ const SignIn = () => {
 
       // Try to fetch user information from seller collection
       if (isChecked) {
-        const sellerInfo = await ProductsDataService.getSellerByField("id", user.uid);
+        const sellerInfo = await ProductsDataService.getSellerByField(
+          "id",
+          user.uid
+        );
         userInfo = sellerInfo.data();
-        dispatch(setDashBoardPath("/seller-dashboard"))
+        dispatch(setDashBoardPath("/seller-dashboard"));
       } else {
-        const buyerInfo = await ProductsDataService.getBuyerByField("id", user.uid);
+        const buyerInfo = await ProductsDataService.getBuyerByField(
+          "id",
+          user.uid
+        );
         userInfo = buyerInfo.data();
-        dispatch(setDashBoardPath("/user-dashboard"))
+        dispatch(setDashBoardPath("/user-dashboard"));
       }
 
       if (userInfo !== null) {
+        setIsLoading(false);
         toastRef.current.show({
           severity: "success",
           summary: "Sign in successful!",
@@ -56,12 +71,14 @@ const SignIn = () => {
           navigate("/");
         }, 2000);
       } else {
+        setIsLoading(false);
         toastRef.current.show({
           severity: "error",
           summary: "User information not found.",
         });
       }
     } catch (error) {
+      setIsLoading(false);
       toastRef.current.show({
         severity: "error",
         summary: `Sign in failed. Please try again ${error}`,
@@ -123,8 +140,18 @@ const SignIn = () => {
           </div>
           <button
             type="submit"
-            className="btn btn-warning w-100 text-white mt-3"
+            className="btn btn-warning w-100 text-white mt-3 position-relative"
           >
+            <span className="spinner-container">
+              {isLoading && (
+                <ProgressSpinner
+                  style={{ width: "1.5rem", height: "1.5rem" }}
+                  strokeWidth="8"
+                  fill="var(--surface-ground)"
+                  className="position-absolute top-50 start-50 translate-middle"
+                />
+              )}
+            </span>
             Log In
           </button>
           <p className="mt-3">

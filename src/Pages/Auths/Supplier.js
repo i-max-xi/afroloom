@@ -8,9 +8,12 @@ import { categoryFilter } from "../../Data/categoryList";
 import ProductsDataService from "../../Services/products.services";
 
 import "primeicons/primeicons.css";
+import { ProgressSpinner } from "primereact/progressspinner";
 
 const Supplier = () => {
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false); // Initialize loading state
+
 
   const [isCheckboxChecked, setIsCheckboxChecked] = useState(false);
   const [firstName, setFirstName] = useState("");
@@ -40,6 +43,7 @@ const Supplier = () => {
   const handleSignUp = async (e) => {
     e.preventDefault();
     try {
+      setIsLoading(true)
       if (password.length < 6) {
         toastRef.current.show({
           severity: "error",
@@ -92,6 +96,7 @@ const Supplier = () => {
               detail: "Pending Approval",
             });
 
+            setIsLoading(false)
             // Redirect to "/" after successful signup and delay
             setTimeout(() => {
               navigate("/");
@@ -100,6 +105,7 @@ const Supplier = () => {
         );
       }
     } catch (error) {
+      setIsLoading(false)
       toastRef.current.show({
         severity: "error",
         summary: "Sign up failed",
@@ -257,9 +263,19 @@ const Supplier = () => {
             </p>
             <button
               type="submit"
-              className="btn btn-warning text-white w-100 mt-4 shadow-sm"
+              className="btn btn-warning text-white w-100 mt-4 shadow-sm position-relative"
               disabled={!isCheckboxChecked} // Disable the button if the checkbox is not checked
             >
+              <span className="spinner-container">
+              {isLoading && (
+                <ProgressSpinner
+                  style={{ width: "1.5rem", height: "1.5rem" }}
+                  strokeWidth="8"
+                  fill="var(--surface-ground)"
+                  className="position-absolute top-50 start-50 translate-middle"
+                />
+              )}
+            </span>
               Send Request
             </button>
 

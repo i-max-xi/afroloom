@@ -6,11 +6,12 @@ import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { useDispatch } from "react-redux";
 import { setSignedIn, setcurrentUser } from "../../Redux/store";
 import ProductsDataService from "../../Services/products.services";
-
+import { ProgressSpinner } from "primereact/progressspinner";
 
 const Buyer = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false); // Initialize loading state
 
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -23,6 +24,8 @@ const Buyer = () => {
   const handleSignUp = async (e) => {
     e.preventDefault();
     try {
+      setIsLoading(true)
+
       if (password.length < 6) {
         toastRef.current.show({
           severity: "error",
@@ -47,31 +50,32 @@ const Buyer = () => {
               firstName,
               lastName,
               email,
-              orders: []
+              orders: [],
             };
             ProductsDataService.addBuyer(newBuyer).then(() => {
               // Fetch user data from Firestore and set it to Redux
               ProductsDataService.getBuyer(user.uid).then((buyerData) => {
                 dispatch(setcurrentUser(buyerData.data()));
+
+                setIsLoading(false);
                 toastRef.current.show({
                   severity: "success",
                   summary: "Sign up successful!",
                 });
-    
+
                 // set user data to Redux
-                dispatch(setSignedIn(true));  // set signin to true
-    
+                dispatch(setSignedIn(true)); // set signin to true
+
                 setTimeout(() => {
                   navigate("/");
                 }, 3000);
               });
-
             });
-
           }
         );
       }
     } catch (error) {
+      setIsLoading(false);
       toastRef.current.show({
         severity: "error",
         summary: "Sign up failed",
@@ -151,8 +155,18 @@ const Buyer = () => {
 
             <button
               type="submit"
-              className="btn btn-warning text-white w-100 mt-4 shadow-sm"
+              className="btn btn-warning text-white w-100 mt-4 shadow-sm position-relative"
             >
+              <span className="spinner-container">
+                {isLoading && (
+                  <ProgressSpinner
+                    style={{ width: "1.5rem", height: "1.5rem" }}
+                    strokeWidth="8"
+                    fill="var(--surface-ground)"
+                    className="position-absolute top-50 start-50 translate-middle"
+                  />
+                )}
+              </span>
               Sign Up
             </button>
             <p className="mt-3 text-center">

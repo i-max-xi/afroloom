@@ -18,7 +18,6 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Layout from "./Pages/Layout";
 import NoPage from "./Pages/NoPage";
 import Home from "./Pages/Home";
-// import SignUp from './Pages/Auths/SignUp';
 import SignIn from "./Pages/Auths/SignIn";
 import About from "./Pages/About";
 import ForgotPassword from "./Pages/Auths/ForgotPassword";
@@ -71,7 +70,6 @@ function App() {
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
             <Route path="about" element={<About />} />
-            {/* <Route path="signup" element={<SignUp />} /> */}
             <Route path="signin" element={<SignIn />} />
             <Route path="registeras" element={<RegisterAs />} />
             <Route path="buyer-signup" element={<Buyer />} />
