@@ -71,30 +71,33 @@ const Confirmation = ({
       //   body: JSON.stringify(formData),
       // });
 
-        setIsLoading(false);
-        toast.current.show({
-          severity: "info",
-          summary: "Order Confirmed",
-          detail: (
-            <div>
-              <p>Thank you for your order!</p>
-              <p>
-                Proceed to{" "}
-                <Link
-                  to={{
-                    pathname: "/customize-checkout",
-                    state: { cartItem: formData, customizedItemDetails: downloadURL }, // Pass formData in the state
-                  }}
-                  className="btn btn-success"
-                >
-                  Checkout
-                </Link>
-              </p>
-            </div>
-          ),
-          life: 7000, // Duration in milliseconds
-        });
-      
+      setIsLoading(false);
+      toast.current.show({
+        severity: "info",
+        summary: "Order Confirmed",
+        detail: (
+          <div>
+            <p>Thank you for your order!</p>
+            <p>
+              Proceed to{" "}
+              <Link
+                to={{
+                  pathname: "/customize-checkout",
+                  state: {
+                    cartItem: formData,
+                    customizedItemDetails: downloadURL,
+                  }, // Pass formData in the state
+                }}
+                className="btn btn-success"
+              >
+                Checkout
+              </Link>
+            </p>
+          </div>
+        ),
+        life: 7000, // Duration in milliseconds
+      });
+
       // else {
       //   setIsLoading(false);
       //   toast.current.show({
@@ -202,8 +205,13 @@ export const OrderDetail = React.forwardRef(
           <div>
             <div className="custom-size-values">
               <p className="h5 mt-4">Client's custom size values:</p>
-              <strong className="text-warning">Your Height:</strong>{" "}
-              {height + ""} cm
+              {height && (
+                <div>
+                  <strong className="text-warning">Your Height:</strong>
+                  {height + ""} cm
+                </div>
+              )}
+
               <ul>
                 {Object.entries(customSizeValues).map(([label, value]) => (
                   <li key={label}>

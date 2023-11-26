@@ -50,7 +50,7 @@ h1 {
 }
 
 .selected-border {
-  border: 2px solid orange !important;
+  border: 3px solid orange !important;
 }
 
 .right-panel {
@@ -175,6 +175,7 @@ h1 {
 .part-image {
   margin-bottom: 0.2rem;
   flex-direction: row;
+  border-radius: 0.3rem;
 
 }
 
