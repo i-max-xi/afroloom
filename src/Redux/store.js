@@ -121,6 +121,26 @@ const userSlice = createSlice({
   },
 });
 
+const customized3DSlice = createSlice({
+  name: "customizedProduct",
+  initialState: {
+    itemDetails: [],
+    itemDataSheet: "",
+  },
+  reducers: {
+    set3DItemDetails: (state, action) => {
+      state.itemDetails = action.payload;
+    },
+    setItemDataSheet: (state, action) => {
+      state.itemDataSheet = action.payload;
+    },
+    clear3DInfo: (state) => {
+      state.itemDetails = [];
+      state.itemDataSheet = ""
+    }
+  },
+});
+
 
 
 const rootReducer = combineReducers({
@@ -128,6 +148,7 @@ const rootReducer = combineReducers({
   cartItems: cartSlice.reducer,
   user: userSlice.reducer,
   currencySymbol: currencySymbolSlice.reducer,
+  customizedProduct: customized3DSlice.reducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
@@ -139,10 +160,9 @@ const store = configureStore({
 
 export const { addProducts, searchItem } = allProductsSlice.actions;
 export const { setCurrencySymbol } = currencySymbolSlice.actions;
-
 export const { addItem, removeItem, clearCart } = cartSlice.actions;
 export const { setSignedIn, setcurrentUser, setDashBoardPath, updateOrders } = userSlice.actions;
-// export const { setQuery, setFilteredItems, setVisible } = searchSlice.actions;
+export const {set3DItemDetails, setItemDataSheet} = customized3DSlice.actions;
 
 export const persistor = persistStore(store);
 export default store;

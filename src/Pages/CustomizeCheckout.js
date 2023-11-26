@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-import { removeItem, clearCart, updateOrders } from "../Redux/store";
+import {updateOrders } from "../Redux/store";
 
 import Top from "../Assets/Headers/Check_Out.jpg";
 import LayoutHeaders from "../Components/LayoutHeaders";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 // import PaymentForm from "../Components/PaymentForm";
 import { PaystackButton } from "react-paystack";
 import { Dialog } from "primereact/dialog";
@@ -14,12 +14,11 @@ import { Dropdown } from "primereact/dropdown";
 import { AllDeliveries } from "../Data/DeliveryServiceData";
 
 const CustomizeCheckout = () => {
-  const location = useLocation();
-  const customizedItem = location.state?.cartItem || [];
-  const customizedItemDetails = location.state?.customizedItemDetails || "";
+  const cartItems = useSelector((state) => state.customizedProduct.itemDetails);
+  const customizedItemDataSheet = useSelector((state) => state.customizedProduct.itemDataSheet);
 
   const dispatch = useDispatch();
-//   const cartItems = useSelector((state) => state.cartItems);
+  //   const cartItems = useSelector((state) => state.cartItems);
   const [emailAddress, setEmailAddress] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -41,12 +40,20 @@ const CustomizeCheckout = () => {
 
   const navigate = useNavigate();
 
-  function handleRemoveItem(item) {
-    dispatch(removeItem(item));
-  }
+  const [count, setCount] = useState(1);
+
+  const handleIncrement = () => {
+    setCount(count + 1);
+  };
+
+  const handleDecrement = () => {
+    if (count > 1) {
+      setCount(count - 1);
+    }
+  };
 
   function handleClearCart() {
-    dispatch(clearCart());
+
   }
 
   // Fetch delivery services and set the options in state
@@ -79,13 +86,8 @@ const CustomizeCheckout = () => {
     // console.log("Selected Delivery:", value);
   };
 
-  // Calculate total weight of items in the cart
-//   const totalWeight = cartItems.reduce(
-//     (total, item) => total + item.weight, // Replace 'weight' with your actual key
-//     0
-//   );
 
-  const totalWeight = customizedItem.weight;
+  const totalWeight = cartItems.weight;
 
   // Function to calculate the selected prices based on the selected delivery and dummy weight
   const calculatePrices = (delivery) => {
@@ -126,7 +128,7 @@ const CustomizeCheckout = () => {
   };
 
   const onSuccess = (reference) => {
-    const updatedOrders = [...currentOrders, ...customizedItem];
+    const updatedOrders = [...currentOrders, ...cartItems];
 
     // Dispatch action to update orders in the Redux state
     dispatch(updateOrders(updatedOrders));
@@ -139,7 +141,7 @@ const CustomizeCheckout = () => {
       shippingCountry: shippingCountry,
       city: city,
       tel: tel,
-      customizedItemDetails: customizedItemDetails,
+      customizedItemDataSheet: customizedItemDataSheet,
     };
     // Submit to formspree
     fetch(process.env.REACT_APP_formSpree, {
@@ -151,7 +153,6 @@ const CustomizeCheckout = () => {
     });
 
     // Clear the cart after successful payment
-    // dispatch(clearCart());
   };
 
   // const onClose = () => {
@@ -211,11 +212,11 @@ const CustomizeCheckout = () => {
         <LayoutHeaders selectedBg={Top} />
 
         <div className="container mb-5">
-          {customizedItem.length !== 0 ? (
+          {cartItems.length !== 0 ? (
             <div className="mt-5 mb-5">
-              <h2>Items in Cart</h2>
+              <h2>Customized Item</h2>
               <ul className="list-group">
-                {customizedItemDetails.map((selectedItem) => (
+                {cartItems.map((selectedItem) => (
                   <li
                     className="list-group-item d-flex justify-content-between align-items-center mt-3"
                     key={selectedItem.id}
@@ -223,31 +224,38 @@ const CustomizeCheckout = () => {
                   >
                     <div className="d-flex">
                       <img
-                        src={selectedItem.item}
+                        src={selectedItem.modelImage}
                         alt=""
                         width="100rem"
                         height="100rem"
                       />
                       <div className="mt-2 mx-5">
                         <span className="fs-5 fw-bold">Item: </span>{" "}
-                        {selectedItem.title} <br />
-                        <span className="fw-bold">
-                          Quantity: {selectedItem.count}{" "}
-                        </span>{" "}
+                        {selectedItem.name} <br />
+                        <span className="fw-bold">Quantity: {count}</span>
                         <br />
-                        <span className="fw-bold">Subtotal: </span>{" "}
+                        <span className="fw-bold">Subtotal: </span>
                         {currencySymbol +
                           (currencyFactor * selectedItem.price).toFixed(2)}
                       </div>
                     </div>
                     <div>
                       {/* <button className="btn btn-primary mr-2" onClick={() => handleAddItem(selectedItem)}>Add</button> */}
-                      <button
-                        className="btn btn-danger"
-                        onClick={() => handleRemoveItem(selectedItem)}
-                      >
-                        Remove
-                      </button>
+                      <div className="d-flex mb-3">
+                        <button
+                          className="btn btn-secondary btn-sm"
+                          onClick={handleDecrement}
+                        >
+                          -
+                        </button>
+                        <span className="mx-2">{count}</span>
+                        <button
+                          className="btn btn-secondary btn-sm"
+                          onClick={handleIncrement}
+                        >
+                          +
+                        </button>
+                      </div>
                     </div>
                   </li>
                 ))}
@@ -265,9 +273,10 @@ const CustomizeCheckout = () => {
                   Total To Pay:
                   <span className="fs-5 mx-4">
                     {currencySymbol}
-                    {customizedItem
+                    {cartItems
                       .reduce(
-                        (total, item) => total + ((item.price * currencyFactor) * item.count),
+                        (total, item) =>
+                          total + ((item.total * currencyFactor) * count),
                         0
                       )
                       .toFixed(2)}

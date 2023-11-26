@@ -338,8 +338,9 @@ toastRef.current.show({
         <Confirmation
           currencySymbol={currencySymbol}
           total={total}
-          readyBy={selectedClothing.readyIn}
-          selectedParts={selectedParts}
+readyBy={selectedClothing.readyIn}
+          weight={selectedClothing.weight}
+          name={selectedClothing.name}          selectedParts={selectedParts}
           setShowConfirmation={setShowConfirmation}
           selectedSize={
             selectedClothing.sizeOptions.find(

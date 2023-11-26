@@ -335,6 +335,8 @@ const Configurator = () => {
           currencySymbol={currencySymbol}
           total={total}
           readyBy={selectedClothing.readyIn}
+          weight={selectedClothing.weight}
+          name={selectedClothing.name}
           selectedParts={selectedParts}
           setShowConfirmation={setShowConfirmation}
           selectedSize={
@@ -770,7 +772,6 @@ const Configurator = () => {
             <span className="m-3 expect-to-be-ready">
               Estimated time to make this order: {selectedClothing.readyIn} days
             </span>
-
 
             <p className="price-text m-3">
               <span className="fs-6 fw-normal">Price:</span> {currencySymbol}

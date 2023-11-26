@@ -13,12 +13,16 @@ import {
 } from "firebase/storage";
 import { Toast } from "primereact/toast";
 import { ProgressSpinner } from "primereact/progressspinner";
+import { set3DItemDetails, setItemDataSheet } from "../../../Redux/store";
+import { useDispatch } from "react-redux";
 
 const Confirmation = ({
   total,
   currencySymbol,
   setShowConfirmation,
   readyBy,
+  name,
+  weight,
   selectedParts,
   selectedSize,
   modelImage,
@@ -27,17 +31,18 @@ const Confirmation = ({
 }) => {
   const toast = useRef(null);
   const [isLoading, setIsLoading] = useState(false); // Initialize loading state
+  const dispatch = useDispatch();
 
   const componentRef = useRef();
   const handlePrint = useReactToPrint({
     content: () => componentRef.current,
   });
 
-  const storage = getStorage(app); // Initialize Firebase Storage with your app
+  const storage = getStorage(app);
 
   const handleFormSubmit = async () => {
     try {
-      setIsLoading(true); // Set loading state to true
+      setIsLoading(true);
       const image = await html2canvas(componentRef.current, {
         useCORS: true, // Ensure cross-origin images are captured
       });
@@ -53,14 +58,19 @@ const Confirmation = ({
       const downloadURL = await getDownloadURL(storageRef);
 
       // Create formData
-      const formData = {
-        price: total,
-        currencySymbol,
-        readyBy,
-        selectedSize,
-        downloadURL,
-        message: "Please use the link to access the client's order",
-      };
+      const formData = [
+        {
+          price: total,
+          modelImage,
+          currencySymbol,
+          readyBy,
+          weight,
+          name,
+          selectedSize,
+          message: "Please use the link to access the client's order",
+          // Other properties specific to your object
+        },
+      ];
 
       // Send the formData to Formspree
       // const response = await fetch(process.env.REACT_APP_formSpree, {
@@ -71,6 +81,9 @@ const Confirmation = ({
       //   body: JSON.stringify(formData),
       // });
 
+      dispatch(set3DItemDetails(formData));
+      dispatch(setItemDataSheet(downloadURL));
+
       setIsLoading(false);
       toast.current.show({
         severity: "info",
@@ -80,22 +93,13 @@ const Confirmation = ({
             <p>Thank you for your order!</p>
             <p>
               Proceed to{" "}
-              <Link
-                to={{
-                  pathname: "/customize-checkout",
-                  state: {
-                    cartItem: formData,
-                    customizedItemDetails: downloadURL,
-                  }, // Pass formData in the state
-                }}
-                className="btn btn-success"
-              >
+              <Link to="/customize-checkout" className="btn btn-success">
                 Checkout
               </Link>
             </p>
           </div>
         ),
-        life: 7000, // Duration in milliseconds
+        life: 10000, // Duration in milliseconds
       });
 
       // else {
@@ -121,7 +125,8 @@ const Confirmation = ({
 
   return (
     <div className="container confirmation-page">
-      <Toast ref={toast} /> {/* Add the Toast component here */}
+      <Toast ref={toast} position="center" />{" "}
+      {/* Add the Toast component here */}
       <h1 className="mt-4">Order Confirmation</h1>
       <OrderDetail
         total={total}
