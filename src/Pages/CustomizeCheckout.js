@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-import {updateOrders } from "../Redux/store";
+import {clear3DInfo, updateOrders } from "../Redux/store";
 
 import Top from "../Assets/Headers/Check_Out.jpg";
 import LayoutHeaders from "../Components/LayoutHeaders";
@@ -53,7 +53,7 @@ const CustomizeCheckout = () => {
   };
 
   function handleClearCart() {
-
+    dispatch(clear3DInfo)
   }
 
   // Fetch delivery services and set the options in state
@@ -87,7 +87,15 @@ const CustomizeCheckout = () => {
   };
 
 
-  const totalWeight = cartItems.weight;
+  const totalWeight = cartItems.reduce(
+    (total, item) => total + item.weight, // Replace 'weight' with your actual key
+    0
+  );
+
+  const totalReadyBy = cartItems.reduce(
+    (total, item) => total + item.readyBy, // Replace 'weight' with your actual key
+    0
+  );
 
   // Function to calculate the selected prices based on the selected delivery and dummy weight
   const calculatePrices = (delivery) => {
@@ -142,6 +150,8 @@ const CustomizeCheckout = () => {
       city: city,
       tel: tel,
       customizedItemDataSheet: customizedItemDataSheet,
+      quantity: count,
+      readyBy: totalReadyBy + "- regular/express delivery",
     };
     // Submit to formspree
     fetch(process.env.REACT_APP_formSpree, {
@@ -276,7 +286,7 @@ const CustomizeCheckout = () => {
                     {cartItems
                       .reduce(
                         (total, item) =>
-                          total + ((item.total * currencyFactor) * count),
+                          total + ((item.price * currencyFactor) * count),
                         0
                       )
                       .toFixed(2)}
@@ -413,7 +423,7 @@ const CustomizeCheckout = () => {
                       />
                       {`Regular:  ${currencySymbol} ${
                         calculatePrices(selectedDelivery)[0]
-                      } - Within 5 working days`}
+                      } - Within ${5 + totalReadyBy} working days`}
                     </label>
                   </div>
                 )}
@@ -436,7 +446,7 @@ const CustomizeCheckout = () => {
                       />
                       {`Express: ${currencySymbol} ${
                         calculatePrices(selectedDelivery)[1]
-                      } - Within 3 working days`}
+                      } - Within ${3 + totalReadyBy} working days`}
                     </label>
                   </div>
                 )}

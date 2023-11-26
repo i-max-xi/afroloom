@@ -162,7 +162,7 @@ export const { addProducts, searchItem } = allProductsSlice.actions;
 export const { setCurrencySymbol } = currencySymbolSlice.actions;
 export const { addItem, removeItem, clearCart } = cartSlice.actions;
 export const { setSignedIn, setcurrentUser, setDashBoardPath, updateOrders } = userSlice.actions;
-export const {set3DItemDetails, setItemDataSheet} = customized3DSlice.actions;
+export const {set3DItemDetails, setItemDataSheet, clear3DInfo} = customized3DSlice.actions;
 
 export const persistor = persistStore(store);
 export default store;
