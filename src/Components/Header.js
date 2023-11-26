@@ -44,7 +44,7 @@ const Header = ({ bgColor, Color, Padding, Icon1, Icon2, Icon3, Icon4 }) => {
 
           <p className="d-flex flex-column justify-content-start">
             Secured Payment System
-            <span style={{ fontSize: "0.8rem" }}>No question asked</span>
+            {/* <span style={{ fontSize: "0.8rem" }}>No question asked</span> */}
           </p>
         </li>
         <li className="p-2 text-center rounded d-flex more-info">
@@ -62,7 +62,7 @@ const Header = ({ bgColor, Color, Padding, Icon1, Icon2, Icon3, Icon4 }) => {
 
           <p className="d-flex flex-column justify-content-start">
             Money Back Guarantee
-            <span style={{ fontSize: "0.8rem" }}>Within 5 Business Days</span>
+            {/* <span style={{ fontSize: "0.8rem" }}>Within 5 Business Days</span> */}
           </p>
         </li>
         <li className="p-2 text-center rounded d-flex more-info">
