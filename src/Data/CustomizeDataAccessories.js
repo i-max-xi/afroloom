@@ -83,8 +83,8 @@ export const mainMaleAccessories = [
     price: 20,
     parts: roundCapParts.keys().map(roundCapParts),
     sizeGuide: roundCap_guide,
-    sizeModels: tshirt_model,
-    sizeOptions: [
+sizeModels: tshirt_model,
+    readyIn: 3,    sizeOptions: [
       { label: "S", value: 0.5 },
       { label: "M", value: 1 },
       { label: "L", value: 2 },
@@ -118,8 +118,8 @@ export const mainMaleAccessories = [
     price: 20,
     parts: knittedCapParts.keys().map(knittedCapParts),
     sizeGuide: knittedCap_guide,
-    sizeModels: tshirt_model,
-    sizeOptions: [
+sizeModels: tshirt_model,
+    readyIn: 3,    sizeOptions: [
       { label: "S", value: 0.5 },
       { label: "M", value: 1 },
       { label: "L", value: 2 },
@@ -151,8 +151,8 @@ export const mainMaleAccessories = [
     myZoom: 1.5,
     price: 20,
     parts: bowTieParts.keys().map(bowTieParts),
-    sizeModels: tshirt_model,
-    sizeGuide: bowTie_guide,
+sizeModels: tshirt_model,
+    readyIn: 3,    sizeGuide: bowTie_guide,
     sizeOptions: [
       { label: "S", value: 0.5 },
       { label: "M", value: 1 },
@@ -184,8 +184,8 @@ export const mainMaleAccessories = [
     myZoom: 0.75,
     price: 20,
     parts: flyingTieParts.keys().map(flyingTieParts),
-    sizeModels: tshirt_model,
-    sizeGuide: flyingTie_guide,
+sizeModels: tshirt_model,
+    readyIn: 3,    sizeGuide: flyingTie_guide,
     sizeOptions: [
       // { label: "XS", value: 0.5 },
       { label: "Skinny", value: 0.5 },
@@ -225,8 +225,8 @@ export const mainFemaleAccessories = [
     price: 55,
     parts: handbagParts.keys().map(handbagParts),
     sizeGuide: handbag_guide,
-    sizeModels: tshirt_model,
-    sizeOptions: [
+sizeModels: tshirt_model,
+    readyIn: 3,    sizeOptions: [
       { label: "S", value: 0.5 },
       { label: "M", value: 1 },
       { label: "L", value: 2 },
@@ -259,8 +259,8 @@ export const mainFemaleAccessories = [
     myZoom: 1.3,
     price: 55,
     parts: bikiniParts.keys().map(bikiniParts),
-    sizeModels: tshirt_model,
-    sizeGuide: bikini_guide,
+sizeModels: tshirt_model,
+    readyIn: 3,    sizeGuide: bikini_guide,
     sizeOptions: [
       { label: "XS", value: 0.5 },
       { label: "S", value: 0.5 },

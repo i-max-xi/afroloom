@@ -59,8 +59,8 @@ export const mainFootwear = [
     price: 20,
     parts: flexShoeParts.keys().map(flexShoeParts),
     sizeGuide: flatShoe_guide,
-    sizeModels: tshirt_model,
-    sizeOptions: [
+sizeModels: tshirt_model,
+    readyIn: 3,    sizeOptions: [
       { label: "35", value: 0.5 },
       { label: "36", value: 1 },
       { label: "37", value: 2 },
@@ -92,8 +92,8 @@ export const mainFootwear = [
     price: 20,
     parts: sneakerParts.keys().map(sneakerParts),
     sizeGuide: sneaker_guide,
-    sizeModels: tshirt_model,
-    sizeOptions: [
+sizeModels: tshirt_model,
+    readyIn: 3,    sizeOptions: [
       { label: "35", value: 0.5 },
       { label: "36", value: 1 },
       { label: "37", value: 2 },
@@ -122,8 +122,8 @@ export const mainFootwear = [
     myNode: ["padding", "sole", "top"],
     myZoom: 1.2,
     price: 20,
-    sizeModels: tshirt_model,
-    parts: slippersParts.keys().map(slippersParts),
+sizeModels: tshirt_model,
+    readyIn: 3,    parts: slippersParts.keys().map(slippersParts),
     sizeGuide: slipper_guide,
     sizeOptions: [
       { label: "35", value: 0.5 },
@@ -160,8 +160,8 @@ export const mainFootwear = [
     price: 20,
     parts: heelsParts.keys().map(heelsParts),
     sizeGuide: heels_guide,
-    sizeModels: tshirt_model,
-    sizeOptions: [
+sizeModels: tshirt_model,
+    readyIn: 3,    sizeOptions: [
       { label: "35", value: 0.5 },
       { label: "36", value: 1 },
       { label: "37", value: 2 },

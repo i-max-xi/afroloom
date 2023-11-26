@@ -338,7 +338,7 @@ toastRef.current.show({
         <Confirmation
           currencySymbol={currencySymbol}
           total={total}
-          readyBy=""
+          readyBy={selectedClothing.readyIn}
           selectedParts={selectedParts}
           setShowConfirmation={setShowConfirmation}
           selectedSize={
@@ -769,7 +769,7 @@ toastRef.current.show({
             </div>
           </div>
           <div className="price w-100 d-flex bg-dark text-white justify-content-between">
-            <span className="m-3 expect-to-be-ready">Estimated time to make this order: </span>
+            <span className="m-3 expect-to-be-ready">Estimated time to make this order: {selectedClothing.readyIn} days </span>
 
 
             <p className="price-text m-3">

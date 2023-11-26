@@ -60,8 +60,8 @@ export const mainUnisex = [
     myZoom: 0.9,
     price: 55,
     parts: sashParts.keys().map(sashParts),
-    sizeModels: tshirt_model,
-    sizeGuide: sash_guide,
+sizeModels: tshirt_model,
+    readyIn: 3,    sizeGuide: sash_guide,
     sizeOptions: [
       { label: "S", value: 0.5 },
       { label: "M", value: 1 },
@@ -93,8 +93,8 @@ export const mainUnisex = [
     myZoom: 0.6,
     price: 55,
     parts: miniBagParts.keys().map(miniBagParts),
-    sizeModels: tshirt_model,
-    sizeGuide: miniBag_guide,
+sizeModels: tshirt_model,
+    readyIn: 3,    sizeGuide: miniBag_guide,
     sizeOptions: [
       { label: "S", value: 0.5 },
       { label: "M", value: 1 },
@@ -135,8 +135,8 @@ export const mainUnisex = [
     myZoom: 0.75,
     price: 55,
     parts: backpackParts.keys().map(backpackParts),
-    sizeModels: tshirt_model,
-    sizeGuide: backpack_guide,
+sizeModels: tshirt_model,
+    readyIn: 3,    sizeGuide: backpack_guide,
     sizeOptions: [
       { label: "S", value: 0.5 },
       { label: "M", value: 1 },
@@ -180,8 +180,8 @@ export const mainUnisex = [
     myZoom: 0.9,
     price: 55,
     parts: jacketParts.keys().map(jacketParts),
-    sizeModels: tshirt_model,
-    sizeGuide: jacket_guide,
+sizeModels: tshirt_model,
+    readyIn: 3,    sizeGuide: jacket_guide,
     sizeOptions: [
       { label: "XS", value: 0.5 },
       { label: "S", value: 0.5 },

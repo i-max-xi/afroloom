@@ -213,7 +213,7 @@ export const OrderDetail = React.forwardRef(
               </ul>
             </div>
           </div>
-          <p>Estimated time to make this order: {readyBy}</p>
+          <p>Estimated time to make this order: {readyBy} days</p>
 
           <p className="mt-5">
             <span className="p-float-label">
