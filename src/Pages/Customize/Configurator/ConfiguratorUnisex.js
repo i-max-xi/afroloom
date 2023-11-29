@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
+import { Canvas, useFrame, } from "@react-three/fiber";
 import { useGLTF, OrbitControls } from "@react-three/drei";
 import { useSnapshot } from "valtio";
 import { state } from "./store";
@@ -74,7 +74,8 @@ const Shirt = ({
       setIsLoading(false); // Set loading state to false once model is loaded (replace with your actual model loading logic)
     }, 2000);
 
-    for (let i = 0; i < state.color.length; i++) {   // to fix color keeping on to next page
+    for (let i = 0; i < state.color.length; i++) {
+      // to fix color keeping on to next page
       state.color[i] = "#ffffff";
     }
 
@@ -89,11 +90,10 @@ const Shirt = ({
         </>
       ) : (
         selectedClothing.myNode.map((nodeName, index) => {
-
           const color = specialNodeNames.includes(nodeName)
-          ? snap.color[index] || "#333333"
-          : snap.color[index] || "#ffffff";
-          
+            ? snap.color[index] || "#333333"
+            : snap.color[index] || "#ffffff";
+
           const texture = snap.texture[index] || null;
 
           return (
@@ -128,7 +128,6 @@ const CameraControls = () => {
 };
 
 const ConfiguratorUnisex = () => {
-  
   const { Id } = useParams();
   const selectedClothing = mainUnisex.find((item) => item.name === Id);
 
@@ -141,16 +140,40 @@ const ConfiguratorUnisex = () => {
 
   const [isRotating, setIsRotating] = useState(false);
 
-const canvasRef = useRef();
-    // toast
+  const canvasRef = useRef();
+  // toast
   const toastRef = useRef(null);
-  // currency conversion
   const currencySymbol = useSelector((state) => state.currencySymbol.symbol);
   const currencyFactor = useSelector((state) => state.currencySymbol.factor);
 
   const handleSizeChange = (factor) => {
-    // setPrice(selectedClothing.price * factor);
     setSelectedSize(factor);
+  };
+
+  // Declare state for entered text and generated texture
+  const [enteredText, setEnteredText] = useState("");
+
+  // Function to generate texture from entered text
+// Function to generate texture from entered text
+const generateTextTexture = () => {
+  const canvas = document.createElement("canvas");
+  const ctx = canvas.getContext("2d");
+
+  ctx.fillStyle = "white";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  ctx.font = "Bold 48px Arial";
+  ctx.fillStyle = "blue";
+  ctx.fillText(enteredText, 50, 100);
+
+  // Use this canvas as a texture
+  handleTextureChange(canvas.toDataURL());
+};
+
+
+  // Handle text input change
+  const handleTextChange = (text) => {
+    setEnteredText(text);
+    generateTextTexture();
   };
 
   const handleColorChange = (newColor) => {
@@ -163,14 +186,14 @@ const canvasRef = useRef();
     Array(selectedClothing.myNode.length).fill(0)
   );
 
-  const semitotal = (
-    partPrices.reduce((total, price) => total + price, 0)
-  )
+  const semitotal = partPrices.reduce((total, price) => total + price, 0);
 
   //total price
   const total = (
-    (((semitotal + selectedClothing.price) * selectedClothing.sizeOptions[selectedSize].value) * currencyFactor).toFixed(2)
-  )
+    (semitotal + selectedClothing.price) *
+    selectedClothing.sizeOptions[selectedSize].value *
+    currencyFactor
+  ).toFixed(2);
 
   const handleTextureChange = (newTexture) => {
     if (selectedPart !== null) {
@@ -211,18 +234,18 @@ const canvasRef = useRef();
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [stateImage, setStateImage] = useState("");
 
- const captureCanvasAsImage = async () => {
-
+  const captureCanvasAsImage = async () => {
     const requiresHeight = displayInplaceFor.includes(selectedClothing.name);
     const heightProvided = height !== "";
 
     if (requiresHeight && !heightProvided) {
       // Prevent completing if height is required but not provided
-toastRef.current.show({
+      toastRef.current.show({
         severity: "error",
         summary: "Cannot continue",
         detail: "Please input your height for accurate design",
-      });      return;
+      });
+      return;
     }
 
     const canvas = canvasRef.current;
@@ -254,8 +277,6 @@ toastRef.current.show({
     }));
   };
 
-
-
   // description dialogs
   const [selectedTexture, setSelectedTexture] = useState({});
 
@@ -278,14 +299,14 @@ toastRef.current.show({
     setShowTourPopup(false);
   };
 
-    const handleTourClose = () => {
+  const handleTourClose = () => {
     setShowTour(false);
-    localStorage.setItem('tourCompleted', 'true'); // Save tour completion status
+    localStorage.setItem("tourCompleted", "true"); // Save tour completion status
   };
 
   useEffect(() => {
-    const tourCompleted = localStorage.getItem('tourCompleted');
-    if (tourCompleted === 'true') {
+    const tourCompleted = localStorage.getItem("tourCompleted");
+    if (tourCompleted === "true") {
       setShowTourPopup(false); // If tour completed, don't show it
     } else {
       setShowTourPopup(true); // Show the tour for new users
@@ -340,20 +361,24 @@ toastRef.current.show({
         <Confirmation
           currencySymbol={currencySymbol}
           total={total}
-readyBy={selectedClothing.readyIn}
+          readyBy={selectedClothing.readyIn}
           weight={selectedClothing.weight}
-          name={selectedClothing.name}          selectedParts={selectedParts}
+          name={selectedClothing.name}
+          selectedParts={selectedParts}
           setShowConfirmation={setShowConfirmation}
           selectedSize={
-            selectedClothing.sizeOptions.find((option) => option.value === selectedSize)?.label
+            selectedClothing.sizeOptions.find(
+              (option) => option.value === selectedSize
+            )?.label
           }
           modelImage={stateImage}
           customSizeValues={sizeFormValues}
-          height={height}        />
+          height={height}
+        />
       ) : (
         <>
           <div className="main-space">
-<h3 className="text-center">Customizing {selectedClothing.name}</h3>
+            <h3 className="text-center">Customizing {selectedClothing.name}</h3>
             <button
               className="btn btn-info text-white mx-3"
               style={{ float: "right" }}
@@ -363,6 +388,13 @@ readyBy={selectedClothing.readyIn}
             </button>
             <div className="configurator-container container">
               <div className="left-panel rounded shadow">
+                {/* test text inprinting */}
+                <input
+                  type="text"
+                  placeholder="Enter text to imprint"
+                  value={enteredText}
+                  onChange={(e) => handleTextChange(e.target.value)}
+                />
                 <h5>Select Part</h5>
                 <div className="select-part-container">
                   {selectedClothing.myNode.map((nodeName, index) => (
@@ -397,10 +429,7 @@ readyBy={selectedClothing.readyIn}
                       Customize Your Size &#8594;
                     </span>
                     {displayInplaceFor.includes(selectedClothing.name) && (
-                    <Inplace
-                        className="text-black"
-                        closable
-                      >
+                      <Inplace className="text-black" closable>
                         <InplaceDisplay>
                           {height || "Click to input your height "}
                           <span
@@ -771,8 +800,9 @@ readyBy={selectedClothing.readyIn}
             </div>
           </div>
           <div className="price w-100 d-flex bg-dark text-white justify-content-between">
-            <span className="m-3 expect-to-be-ready">Estimated time to make this order: {selectedClothing.readyIn} days </span>
-
+            <span className="m-3 expect-to-be-ready">
+              Estimated time to make this order: {selectedClothing.readyIn} days{" "}
+            </span>
 
             <p className="price-text m-3">
               <span className="fs-6 fw-normal">Price:</span> {currencySymbol}
