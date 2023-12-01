@@ -153,7 +153,7 @@ const ConfiguratorUnisex = () => {
 
   // Declare state for entered text and generated texture
   const [enteredText, setEnteredText] = useState("");
-  const [textPosition, setTextPosition] = useState([-0.2, 0, 0.05]); // Initialize text position
+  const [textPosition, setTextPosition] = useState([-0.35, -0.15, 0.01]); // Initialize text position
 
   const handleColorChange = (newColor) => {
     state.color[selectedPart] = newColor;
@@ -747,33 +747,36 @@ const ConfiguratorUnisex = () => {
                   >
                     <ambientLight intensity={0.5} />
                     <pointLight position={[10, 10, 10]} />
-                    <TextComponent
-                      textContent={enteredText}
-                      textPosition={textPosition}
-                      maxWidth={0.5}
-                      maxLines={3}
-                    />
+                    {selectedClothing.name === "Sash" && (
+                      <TextComponent
+                        textContent={enteredText}
+                        textPosition={textPosition}
+                        maxWidth={0.5}
+                        maxLines={3}
+                      />
+                    )}
                     <Shirt
                       isRotating={isRotating}
                       selectedClothing={selectedClothing}
                       selectedPart={selectedPart}
                       selectedTexture={state.texture[selectedPart]}
                     />
-                    <CameraControls />{" "}
-                    {/* Add camera controls for interaction */}
+                    {selectedClothing.name !== "Sash" && <CameraControls />}
                   </Canvas>
                 </div>
 
-                <div className="m-3">
-                  <button
-                    className={`btn rotation-button text-white m-3 ${
-                      isRotating === true ? "btn-danger" : "btn-warning"
-                    }`}
-                    onClick={handleRotation}
-                  >
-                    {isRotating ? "Stop" : "Spin"}
-                  </button>
-                </div>
+                {selectedClothing.name !== "Sash" && (
+                  <div className="m-3">
+                    <button
+                      className={`btn rotation-button text-white m-3 ${
+                        isRotating === true ? "btn-danger" : "btn-warning"
+                      }`}
+                      onClick={handleRotation}
+                    >
+                      {isRotating ? "Stop" : "Spin"}
+                    </button>
+                  </div>
+                )}
 
                 {/* parts images start */}
                 <PartImages
