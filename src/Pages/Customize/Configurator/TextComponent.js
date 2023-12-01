@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from "react";
 import { Text } from "@react-three/drei";
-import * as THREE from "three";
 
 const TextComponent = ({ textContent, maxWidth, maxLines, textPosition }) => {
   const textRef = useRef();

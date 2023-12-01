@@ -367,13 +367,6 @@ const ConfiguratorUnisex = () => {
             </button>
             <div className="configurator-container container">
               <div className="left-panel rounded shadow">
-                {/* test text inprinting */}
-                <textarea
-                  type="text"
-                  placeholder="Enter text to imprint"
-                  value={enteredText}
-                  onChange={(e) => setEnteredText(e.target.value)}
-                />
                 <h5>Select Part</h5>
                 <div className="select-part-container">
                   {selectedClothing.myNode.map((nodeName, index) => (
@@ -740,29 +733,67 @@ const ConfiguratorUnisex = () => {
               </div>
               <div className="right-panel d-flex justify-content-between">
                 <div className="w-75 h-100">
-                  <Canvas
-                    ref={canvasRef}
-                    camera={{ position: [0, 0, selectedClothing.myZoom] }} // Set the initial camera position
-                    gl={{ preserveDrawingBuffer: true }}
+                  <div
+                    style={{
+                      height: selectedClothing.name !== "Sash" ? "100%" : "81%",
+                    }}
                   >
-                    <ambientLight intensity={0.5} />
-                    <pointLight position={[10, 10, 10]} />
-                    {selectedClothing.name === "Sash" && (
-                      <TextComponent
-                        textContent={enteredText}
-                        textPosition={textPosition}
-                        maxWidth={0.5}
-                        maxLines={3}
+                    <Canvas
+                      ref={canvasRef}
+                      camera={{ position: [0, 0, selectedClothing.myZoom] }} // Set the initial camera position
+                      gl={{ preserveDrawingBuffer: true }}
+                    >
+                      <ambientLight intensity={0.5} />
+                      <pointLight position={[10, 10, 10]} />
+                      {selectedClothing.name === "Sash" && (
+                        <TextComponent
+                          textContent={enteredText}
+                          textPosition={textPosition}
+                          maxWidth={0.5}
+                          maxLines={3}
+                        />
+                      )}
+                      <Shirt
+                        isRotating={isRotating}
+                        selectedClothing={selectedClothing}
+                        selectedPart={selectedPart}
+                        selectedTexture={state.texture[selectedPart]}
                       />
-                    )}
-                    <Shirt
-                      isRotating={isRotating}
-                      selectedClothing={selectedClothing}
-                      selectedPart={selectedPart}
-                      selectedTexture={state.texture[selectedPart]}
-                    />
-                    {selectedClothing.name !== "Sash" && <CameraControls />}
-                  </Canvas>
+                      {selectedClothing.name !== "Sash" && <CameraControls />}
+                    </Canvas>
+                  </div>
+
+                  {selectedClothing.name === "Sash" && (
+                    <div className="p-3">
+                      {/* test text inprinting */}
+                      <h5>Imprint Text on model</h5>
+                      <div className="d-flex">
+                        <textarea
+                          type="text"
+                          placeholder="Enter text to imprint"
+                          value={enteredText}
+                          onChange={(e) => setEnteredText(e.target.value)}
+                        />
+                        <div className="d-flex">
+                          {colorOptions.slice(0,5).map((colorOption) => (
+                            <div key={colorOption.color} className="color-item mx-2">
+                              <button
+                                className={`color-button ${
+                                  selectedPrintOn === colorOption.color
+                                    ? "selected-border"
+                                    : ""
+                                }`}
+                                onClick={() =>
+                                  handleColorChange(colorOption.color)
+                                }
+                                style={{ backgroundColor: colorOption.color }}
+                              ></button>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  )}
                 </div>
 
                 {selectedClothing.name !== "Sash" && (

@@ -57,7 +57,7 @@ export const mainUnisex = [
       'https://images-na.ssl-images-amazon.com/images/I/61Kp8a2HpQL._SLDPMOBCAROUSELAUTOCROP288221_MCnd_AC_SR462,693_.jpg',
     model: sash_model,
     myNode: ['top_section', 'left_section', 'right_section'],
-    myZoom: 1.4,
+    myZoom: 1.2,
     price: 55,
     parts: sashParts.keys().map(sashParts),
 sizeModels: tshirt_model,
