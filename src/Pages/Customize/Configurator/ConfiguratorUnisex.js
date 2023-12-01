@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
-import { Canvas, useFrame, } from "@react-three/fiber";
-import { useGLTF, OrbitControls } from "@react-three/drei";
+import { Canvas, useFrame } from "@react-three/fiber";
+import { useGLTF, OrbitControls, Text } from "@react-three/drei";
 import { useSnapshot } from "valtio";
 import { state } from "./store";
 // import { Link } from "react-router-dom";
@@ -152,29 +152,7 @@ const ConfiguratorUnisex = () => {
 
   // Declare state for entered text and generated texture
   const [enteredText, setEnteredText] = useState("");
-
-  // Function to generate texture from entered text
-// Function to generate texture from entered text
-const generateTextTexture = () => {
-  const canvas = document.createElement("canvas");
-  const ctx = canvas.getContext("2d");
-
-  ctx.fillStyle = "white";
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
-  ctx.font = "Bold 48px Arial";
-  ctx.fillStyle = "blue";
-  ctx.fillText(enteredText, 50, 100);
-
-  // Use this canvas as a texture
-  handleImprintText(canvas.toDataURL());
-};
-
-
-  // Handle text input change
-  const handleTextChange = (text) => {
-    setEnteredText(text);
-    generateTextTexture();
-  };
+  const [textPosition, setTextPosition] = useState([0, 0, 0]); // Initialize text position
 
   const handleColorChange = (newColor) => {
     state.color[selectedPart] = newColor;
@@ -217,14 +195,6 @@ const generateTextTexture = () => {
       );
     }
   };
-
-  const handleImprintText = (newText) => {
-    if (selectedPart !== null) {
-      state.texture[selectedPart] = newText;
-      state.color[selectedPart] = null;
-      setSelectedPrintOn(newText);
-  }
-}
 
   const handleRotation = () => {
     setIsRotating((prev) => !prev);
@@ -401,7 +371,7 @@ const generateTextTexture = () => {
                   type="text"
                   placeholder="Enter text to imprint"
                   value={enteredText}
-                  onChange={(e) => handleTextChange(e.target.value)}
+                  onChange={(e) => setEnteredText(e.target.value)}
                 />
                 <h5>Select Part</h5>
                 <div className="select-part-container">
@@ -776,12 +746,23 @@ const generateTextTexture = () => {
                   >
                     <ambientLight intensity={0.5} />
                     <pointLight position={[10, 10, 10]} />
+                    <Text
+                      position={textPosition} // Set the text position
+                      fontSize={0.05} // Adjust font size as needed
+                      color="black" // Set text color
+                      anchorX="center" // Adjust text alignment as needed
+                      anchorY="middle" // Adjust text alignment as needed
+                      maxWidth={1.5} // Set the maximum width for wrapping
+                    >
+                      utudyuteyuteyuetyuetyuet
+                    </Text>
                     <Shirt
                       isRotating={isRotating}
                       selectedClothing={selectedClothing}
                       selectedPart={selectedPart}
                       selectedTexture={state.texture[selectedPart]}
                     />
+                    
                     <CameraControls />{" "}
                     {/* Add camera controls for interaction */}
                   </Canvas>
