@@ -1,8 +1,10 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { useGLTF, OrbitControls, Text } from "@react-three/drei";
+import { useGLTF, OrbitControls, } from "@react-three/drei";
 import { useSnapshot } from "valtio";
 import { state } from "./store";
+import { FileUpload } from 'primereact/fileupload';
+
 // import { Link } from "react-router-dom";
 import { Carousel } from "primereact/carousel";
 import Confirmation from "./Confirmation";
@@ -767,7 +769,7 @@ const ConfiguratorUnisex = () => {
                     <div className="p-3">
                       {/* test text inprinting */}
                       <h5>Imprint Text on model</h5>
-                      <div className="d-flex">
+                      <div className="d-flex justify-content-between">
                         <textarea
                           type="text"
                           placeholder="Enter text to imprint"
@@ -790,6 +792,9 @@ const ConfiguratorUnisex = () => {
                               ></button>
                             </div>
                           ))}
+                        </div>
+                        <div>
+                        <FileUpload mode="basic" name="demo[]" url="/api/upload" accept="image/*" maxFileSize={1000000} />
                         </div>
                       </div>
                     </div>
