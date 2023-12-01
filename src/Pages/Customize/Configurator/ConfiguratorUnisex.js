@@ -166,7 +166,7 @@ const generateTextTexture = () => {
   ctx.fillText(enteredText, 50, 100);
 
   // Use this canvas as a texture
-  handleTextureChange(canvas.toDataURL());
+  handleImprintText(canvas.toDataURL());
 };
 
 
@@ -217,6 +217,14 @@ const generateTextTexture = () => {
       );
     }
   };
+
+  const handleImprintText = (newText) => {
+    if (selectedPart !== null) {
+      state.texture[selectedPart] = newText;
+      state.color[selectedPart] = null;
+      setSelectedPrintOn(newText);
+  }
+}
 
   const handleRotation = () => {
     setIsRotating((prev) => !prev);
