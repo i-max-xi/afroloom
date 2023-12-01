@@ -37,6 +37,7 @@ import PartImages from "./PartImages";
 import WelcomeTour, { tourSteps } from "./WelcomeTour";
 import { InputText } from "primereact/inputtext";
 import { Toast } from "primereact/toast";
+import TextComponent from "./TextComponent";
 const Shirt = ({
   isRotating,
   selectedClothing,
@@ -152,7 +153,7 @@ const ConfiguratorUnisex = () => {
 
   // Declare state for entered text and generated texture
   const [enteredText, setEnteredText] = useState("");
-  const [textPosition, setTextPosition] = useState([0, 0, 0]); // Initialize text position
+  const [textPosition, setTextPosition] = useState([-0.2, 0, 0.05]); // Initialize text position
 
   const handleColorChange = (newColor) => {
     state.color[selectedPart] = newColor;
@@ -367,7 +368,7 @@ const ConfiguratorUnisex = () => {
             <div className="configurator-container container">
               <div className="left-panel rounded shadow">
                 {/* test text inprinting */}
-                <input
+                <textarea
                   type="text"
                   placeholder="Enter text to imprint"
                   value={enteredText}
@@ -746,23 +747,18 @@ const ConfiguratorUnisex = () => {
                   >
                     <ambientLight intensity={0.5} />
                     <pointLight position={[10, 10, 10]} />
-                    <Text
-                      position={textPosition} // Set the text position
-                      fontSize={0.05} // Adjust font size as needed
-                      color="black" // Set text color
-                      anchorX="center" // Adjust text alignment as needed
-                      anchorY="middle" // Adjust text alignment as needed
-                      maxWidth={1.5} // Set the maximum width for wrapping
-                    >
-                      utudyuteyuteyuetyuetyuet
-                    </Text>
+                    <TextComponent
+                      textContent={enteredText}
+                      textPosition={textPosition}
+                      maxWidth={0.5}
+                      maxLines={3}
+                    />
                     <Shirt
                       isRotating={isRotating}
                       selectedClothing={selectedClothing}
                       selectedPart={selectedPart}
                       selectedTexture={state.texture[selectedPart]}
                     />
-                    
                     <CameraControls />{" "}
                     {/* Add camera controls for interaction */}
                   </Canvas>
