@@ -155,7 +155,7 @@ const ConfiguratorUnisex = () => {
 
   // Declare state for entered text and generated texture
   const [enteredText, setEnteredText] = useState("");
-  const [textPosition, setTextPosition] = useState([-0.35, -0.15, 0.01]); // Initialize text position
+  const [textPosition] = useState([-0.35, -0.15, 0.01]); // Initialize text position
   const [textColor, setTextColor] = useState("black");
   const [fontSize, setFontSize] = useState(0.05);
 
