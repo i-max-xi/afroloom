@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import { Text, } from "@react-three/drei";
+const Font = require("./models/Accessories/Unisex/MigaeSemibold-3zd2M.otf")
 
 const TextComponent = ({ textContent, maxWidth, maxLines, textPosition, textColor }) => {
   const textRef = useRef();
@@ -16,6 +17,7 @@ const TextComponent = ({ textContent, maxWidth, maxLines, textPosition, textColo
       position={textPosition} // Set the text position
       fontSize={fontSize} // Adjust font size as needed
       color={textColor}
+      font={Font}
       anchorX="center" // Adjust text alignment as needed
       anchorY="middle" // Adjust text alignment as needed
       maxWidth={maxWidth}
