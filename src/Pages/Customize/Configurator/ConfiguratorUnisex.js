@@ -1,9 +1,9 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { useGLTF, OrbitControls, } from "@react-three/drei";
+import { useGLTF, OrbitControls } from "@react-three/drei";
 import { useSnapshot } from "valtio";
 import { state } from "./store";
-import { FileUpload } from 'primereact/fileupload';
+import { FileUpload } from "primereact/fileupload";
 
 // import { Link } from "react-router-dom";
 import { Carousel } from "primereact/carousel";
@@ -157,6 +157,15 @@ const ConfiguratorUnisex = () => {
   const [enteredText, setEnteredText] = useState("");
   const [textPosition, setTextPosition] = useState([-0.35, -0.15, 0.01]); // Initialize text position
   const [textColor, setTextColor] = useState("black");
+  const [fontSize, setFontSize] = useState(0.05);
+
+  const increaseFontSize = () => {
+    setFontSize((prevSize) => prevSize + 0.01); // Increase font size by 0.01
+  };
+
+  const decreaseFontSize = () => {
+    setFontSize((prevSize) => prevSize - 0.01); // Decrease font size by 0.01
+  };
 
   const handleColorChange = (newColor) => {
     state.color[selectedPart] = newColor;
@@ -755,6 +764,7 @@ const ConfiguratorUnisex = () => {
                           maxWidth={0.5}
                           maxLines={3}
                           textColor={textColor}
+                          fontSize={fontSize}
                         />
                       )}
                       <Shirt
@@ -778,25 +788,42 @@ const ConfiguratorUnisex = () => {
                           value={enteredText}
                           onChange={(e) => setEnteredText(e.target.value)}
                         />
-                        <div className="d-flex">
-                          {colorOptions.slice(0,5).map((colorOption) => (
-                            <div key={colorOption.color} className="color-item mx-2">
-                              <button
-                                className={`imprint-text-color-button ${
-                                  selectedPrintOn === colorOption.color
-                                    ? "selected-border"
-                                    : ""
-                                }`}
-                                onClick={() =>
-                                  setTextColor(colorOption.label)
-                                }
-                                style={{ backgroundColor: colorOption.color }}
-                              ></button>
-                            </div>
-                          ))}
+                        <div className="d-flex flex-column">
+                          <div className="d-flex">
+                            {colorOptions.slice(0, 5).map((colorOption) => (
+                              <div
+                                key={colorOption.color}
+                                className="color-item mx-2"
+                              >
+                                <button
+                                  className={`imprint-text-color-button ${
+                                    selectedPrintOn === colorOption.color
+                                      ? "selected-border"
+                                      : ""
+                                  }`}
+                                  onClick={() =>
+                                    setTextColor(colorOption.label)
+                                  }
+                                  style={{ backgroundColor: colorOption.color }}
+                                ></button>
+                              </div>
+                            ))}
+                          </div>
+                          <div className="d-flex justify-content-center">
+                          <button className="btn btn-secondary btn-sm mx-2" onClick={decreaseFontSize}>-</button>
+                          <span className="font-size">font size: {(fontSize * 100)} </span>
+                          <button className="btn btn-secondary btn-sm mx-2" onClick={increaseFontSize}>+</button>
+
+                          </div>
                         </div>
                         <div>
-                        <FileUpload mode="basic" name="demo[]" url="/api/upload" accept="image/*" maxFileSize={1000000} />
+                          <FileUpload
+                            mode="basic"
+                            name="demo[]"
+                            url="/api/upload"
+                            accept="image/*"
+                            maxFileSize={1000000}
+                          />
                         </div>
                       </div>
                     </div>

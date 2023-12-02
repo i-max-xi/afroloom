@@ -2,9 +2,8 @@ import React, { useRef } from "react";
 import { Text, } from "@react-three/drei";
 const Font = require("./models/Accessories/Unisex/MigaeSemibold-3zd2M.otf")
 
-const TextComponent = ({ textContent, maxWidth, maxLines, textPosition, textColor }) => {
+const TextComponent = ({ textContent, maxWidth, maxLines, textPosition, textColor, fontSize }) => {
   const textRef = useRef();
-  let fontSize = 0.05; // Initial font size
   
 
 
