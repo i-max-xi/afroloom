@@ -156,6 +156,7 @@ const ConfiguratorUnisex = () => {
   // Declare state for entered text and generated texture
   const [enteredText, setEnteredText] = useState("");
   const [textPosition, setTextPosition] = useState([-0.35, -0.15, 0.01]); // Initialize text position
+  const [textColor, setTextColor] = useState("black");
 
   const handleColorChange = (newColor) => {
     state.color[selectedPart] = newColor;
@@ -753,6 +754,7 @@ const ConfiguratorUnisex = () => {
                           textPosition={textPosition}
                           maxWidth={0.5}
                           maxLines={3}
+                          textColor={textColor}
                         />
                       )}
                       <Shirt
@@ -780,13 +782,13 @@ const ConfiguratorUnisex = () => {
                           {colorOptions.slice(0,5).map((colorOption) => (
                             <div key={colorOption.color} className="color-item mx-2">
                               <button
-                                className={`color-button ${
+                                className={`imprint-text-color-button ${
                                   selectedPrintOn === colorOption.color
                                     ? "selected-border"
                                     : ""
                                 }`}
                                 onClick={() =>
-                                  handleColorChange(colorOption.color)
+                                  setTextColor(colorOption.label)
                                 }
                                 style={{ backgroundColor: colorOption.color }}
                               ></button>

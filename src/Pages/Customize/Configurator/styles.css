@@ -90,6 +90,16 @@ h1 {
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
 }
 
+.imprint-text-color-button {
+  position: relative;
+  width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  border: 0.5px solid rgba(0, 0, 0, 0.418);
+  cursor: pointer;
+  transform: translateY(1rem);
+}
+
 .texture-buttons-container h3 {
   font-size: medium;
   transform: translateX(0.5rem);

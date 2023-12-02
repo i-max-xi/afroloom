@@ -1,7 +1,7 @@
-import React, { useEffect, useRef } from "react";
+import React, { useRef } from "react";
 import { Text, } from "@react-three/drei";
 
-const TextComponent = ({ textContent, maxWidth, maxLines, textPosition }) => {
+const TextComponent = ({ textContent, maxWidth, maxLines, textPosition, textColor }) => {
   const textRef = useRef();
   let fontSize = 0.05; // Initial font size
   
@@ -15,7 +15,7 @@ const TextComponent = ({ textContent, maxWidth, maxLines, textPosition }) => {
       ref={textRef}
       position={textPosition} // Set the text position
       fontSize={fontSize} // Adjust font size as needed
-      color="black" // Set text color
+      color={textColor}
       anchorX="center" // Adjust text alignment as needed
       anchorY="middle" // Adjust text alignment as needed
       maxWidth={maxWidth}
