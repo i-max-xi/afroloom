@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import { Text } from "@react-three/drei";
+import { Text, } from "@react-three/drei";
 
 const TextComponent = ({ textContent, maxWidth, maxLines, textPosition }) => {
   const textRef = useRef();
