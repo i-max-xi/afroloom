@@ -214,3 +214,9 @@ h1 {
   background-color: #0d8bf2;
 }
 
+.overlay {
+  transform: translateX(5rem);
+  font-weight: 700;
+  line-height: 2rem;
+}
+

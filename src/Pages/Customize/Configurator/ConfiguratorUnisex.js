@@ -40,6 +40,7 @@ import { InputText } from "primereact/inputtext";
 import { Toast } from "primereact/toast";
 import TextComponent from "./TextComponent";
 import ImageUpload from "./ImageUpload";
+import HtmlComponent from "./HtmlComponent";
 const Shirt = ({
   isRotating,
   selectedClothing,
@@ -766,14 +767,15 @@ const ConfiguratorUnisex = () => {
                       <ambientLight intensity={0.5} />
                       <pointLight position={[10, 10, 10]} />
                       {selectedClothing.name === "Sash" && (
-                        <TextComponent
-                          textContent={enteredText}
-                          textPosition={textPosition}
-                          maxWidth={0.5}
-                          maxLines={3}
-                          textColor={textColor}
-                          fontSize={fontSize}
-                        />
+                        // <TextComponent
+                        //   textContent={enteredText}
+                        //   textPosition={textPosition}
+                        //   maxWidth={0.5}
+                        //   maxLines={3}
+                        //   textColor={textColor}
+                        //   fontSize={fontSize}
+                        // />
+                        <HtmlComponent content={enteredText}/>
                       )}
                       <Shirt
                         isRotating={isRotating}
