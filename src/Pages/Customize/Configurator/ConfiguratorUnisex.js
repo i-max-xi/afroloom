@@ -155,7 +155,9 @@ const ConfiguratorUnisex = () => {
   };
 
   // Declare state for entered text and generated texture
-  const [enteredText, setEnteredText] = useState("");
+  const [enteredTextLeft, setEnteredTextLeft] = useState("");
+  const [enteredTextRight, setEnteredTextRight] = useState("");
+
   const [textPosition] = useState([-0.65, -0.15, 0.05]); // Initialize text position
   const [textColor, setTextColor] = useState("black");
   const [fontSize, setFontSize] = useState(16);
@@ -768,7 +770,8 @@ const ConfiguratorUnisex = () => {
                       <pointLight position={[10, 10, 10]} />
                       {selectedClothing.name === "Sash" && (
                         <HtmlComponent
-                          content={enteredText}
+                          textLeft={enteredTextLeft}
+                          textRight={enteredTextRight}
                           textColor={textColor}
                           textSize={fontSize}
                         />
@@ -786,7 +789,7 @@ const ConfiguratorUnisex = () => {
                         ref={imageRef}
                         src={uploadedImage}
                         alt="Uploaded Texture"
-                        width={"2.5%"}
+                        width={"3%"}
                         style={{
                           position: "absolute",
                           top: "20%", // You can set the position as per your requirement
@@ -800,7 +803,7 @@ const ConfiguratorUnisex = () => {
                         ref={imageRef}
                         src={uploadedImage}
                         alt="Uploaded Texture"
-                        width={"2.5%"}
+                        width={"3%"}
                         style={{
                           position: "absolute",
                           top: "20%", // You can set the position as per your requirement
@@ -812,57 +815,73 @@ const ConfiguratorUnisex = () => {
                   </div>
 
                   {selectedClothing.name === "Sash" && (
-                    <div className="p-3 w-100">
+                    <div className="p-2 pt-3 w-100">
                       {/* test text inprinting */}
                       <h5>Imprint Text on model</h5>
                       <div className="d-flex justify-content-between">
-                        <textarea
-                          type="text"
-                          placeholder="Enter text to imprint"
-                          value={enteredText}
-                          onChange={(e) => setEnteredText(e.target.value)}
-                        />
-                        <div className="d-flex flex-column">
-                          <div className="d-flex">
-                            {colorOptions.slice(0, 6).map((colorOption) => (
-                              <div
-                                key={colorOption.color}
-                                className="color-item mx-2"
-                              >
-                                <button
-                                  className={`imprint-text-color-button ${
-                                    selectedPrintOn === colorOption.color
-                                      ? "selected-border"
-                                      : ""
-                                  }`}
-                                  onClick={() =>
-                                    setTextColor(colorOption.label)
-                                  }
-                                  style={{ backgroundColor: colorOption.color }}
-                                ></button>
-                              </div>
-                            ))}
-                          </div>
-                          <div className="d-flex justify-content-center">
-                            <button
-                              className="btn btn-secondary btn-sm mx-2"
-                              onClick={decreaseFontSize}
-                            >
-                              -
-                            </button>
-                            <span className="font-size">
-                              font size: {fontSize}
-                            </span>
-                            <button
-                              className="btn btn-secondary btn-sm mx-2"
-                              onClick={increaseFontSize}
-                            >
-                              +
-                            </button>
-                          </div>
+                        <div className="flex-column" style={{width: '10%'}}>
+                          <input
+                            type="text"
+                            placeholder="imprint on left side..."
+                            value={enteredTextLeft}
+                            onChange={(e) => setEnteredTextLeft(e.target.value)}
+                          />
+                          <input
+                            type="text"
+                            className="mt-1"
+                            placeholder="imprint on right side..."
+                            value={enteredTextRight}
+                            onChange={(e) =>
+                              setEnteredTextRight(e.target.value)
+                            }
+                          />
                         </div>
-                        <div>
-                          <ImageUpload onImageUpload={handleImageUpload} />
+
+                        <div className="d-flex imprint-options">
+                          <div className="flex-column">
+                            <div className="d-flex">
+                              {colorOptions.slice(0, 6).map((colorOption) => (
+                                <div
+                                  key={colorOption.color}
+                                  className="color-item mx-2"
+                                >
+                                  <button
+                                    className={`imprint-text-color-button ${
+                                      selectedPrintOn === colorOption.color
+                                        ? "selected-border"
+                                        : ""
+                                    }`}
+                                    onClick={() =>
+                                      setTextColor(colorOption.label)
+                                    }
+                                    style={{
+                                      backgroundColor: colorOption.color,
+                                    }}
+                                  ></button>
+                                </div>
+                              ))}
+                            </div>
+                            <div className="d-flex justify-content-center">
+                              <button
+                                className="btn btn-secondary btn-sm mx-2"
+                                onClick={decreaseFontSize}
+                              >
+                                -
+                              </button>
+                              <span className="font-size">
+                                font size: {fontSize}
+                              </span>
+                              <button
+                                className="btn btn-secondary btn-sm mx-2"
+                                onClick={increaseFontSize}
+                              >
+                                +
+                              </button>
+                            </div>
+                          </div>
+                          <div>
+                            <ImageUpload onImageUpload={handleImageUpload} />
+                          </div>
                         </div>
                       </div>
                     </div>
