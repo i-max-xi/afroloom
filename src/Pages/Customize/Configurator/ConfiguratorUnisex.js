@@ -38,7 +38,6 @@ import PartImages from "./PartImages";
 import WelcomeTour, { tourSteps } from "./WelcomeTour";
 import { InputText } from "primereact/inputtext";
 import { Toast } from "primereact/toast";
-import TextComponent from "./TextComponent";
 import ImageUpload from "./ImageUpload";
 import HtmlComponent from "./HtmlComponent";
 const Shirt = ({
@@ -887,8 +886,7 @@ const ConfiguratorUnisex = () => {
                             </div>
                           </div>
                           <div className=" d-flex flex-column">
-                            <ImageUpload labelLeft={"Left Logo"} labelRight={"Right Logo"} onImageUploadLeft={handleImageUploadLeft} onImageUploadRight={handleImageUploadRight} />
-                            {/* <ImageUpload label={"Right Logo"} onImageUpload={handleImageUploadRight} /> */}
+                            <ImageUpload labelLeft={"Upload Left Logo"} labelRight={"Upload Right Logo"} onImageUploadLeft={handleImageUploadLeft} onImageUploadRight={handleImageUploadRight} />
                           </div>
                         </div>
                       </div>

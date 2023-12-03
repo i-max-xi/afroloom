@@ -1,31 +1,31 @@
-import React, { useRef } from "react";
-import { Text, } from "@react-three/drei";
-const Font = require("./models/Accessories/Unisex/MigaeSemibold-3zd2M.otf")
+// import React, { useRef } from "react";
+// import { Text, } from "@react-three/drei";
+// const Font = require("./models/Accessories/Unisex/MigaeSemibold-3zd2M.otf")
 
-const TextComponent = ({ textContent, maxWidth, maxLines, textPosition, textColor, fontSize }) => {
-  const textRef = useRef();
+// const TextComponent = ({ textContent, maxWidth, maxLines, textPosition, textColor, fontSize }) => {
+//   const textRef = useRef();
   
 
 
-  // Function to adjust font size and line breaks to fit within boundaries
+//   // Function to adjust font size and line breaks to fit within boundaries
+// console.log()
 
+//   return (
+//     <Text
+//       ref={textRef}
+//       position={textPosition} // Set the text position
+//       fontSize={fontSize} // Adjust font size as needed
+//       color={textColor}
+//       font={Font}
+//       anchorX="center" // Adjust text alignment as needed
+//       anchorY="middle" // Adjust text alignment as needed
+//       maxWidth={maxWidth}
+//       lineHeight={1} // You can adjust line height if needed
+//       letterSpacing={0.02} // You can adjust letter spacing if needed
+//     >
+//       {textContent}
+//     </Text>
+//   );
+// };
 
-  return (
-    <Text
-      ref={textRef}
-      position={textPosition} // Set the text position
-      fontSize={fontSize} // Adjust font size as needed
-      color={textColor}
-      font={Font}
-      anchorX="center" // Adjust text alignment as needed
-      anchorY="middle" // Adjust text alignment as needed
-      maxWidth={maxWidth}
-      lineHeight={1} // You can adjust line height if needed
-      letterSpacing={0.02} // You can adjust letter spacing if needed
-    >
-      {textContent}
-    </Text>
-  );
-};
-
-export default TextComponent;
+// export default TextComponent;
