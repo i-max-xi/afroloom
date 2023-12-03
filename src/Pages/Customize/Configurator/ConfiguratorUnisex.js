@@ -3,7 +3,6 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import { useGLTF, OrbitControls } from "@react-three/drei";
 import { useSnapshot } from "valtio";
 import { state } from "./store";
-import { FileUpload } from "primereact/fileupload";
 
 // import { Link } from "react-router-dom";
 import { Carousel } from "primereact/carousel";
