@@ -190,10 +190,27 @@ h1 {
   border-radius: 0.3rem;
 }
 
-.uploaded-image {
-  position: "absolute";
-  top: "50px";
-  left: "50px";
-  z-index: 10;
-  width: '3rem';
+ /* image upload */
+
+.upload-container {
+  display: inline-block;
 }
+
+.upload-input {
+  display: none;
+}
+
+.upload-label {
+  cursor: pointer;
+  padding: 8px 16px;
+  background-color: #2196f3;
+  color: white;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+/* Styling for when the label is hovered over */
+.upload-label:hover {
+  background-color: #0d8bf2;
+}
+
