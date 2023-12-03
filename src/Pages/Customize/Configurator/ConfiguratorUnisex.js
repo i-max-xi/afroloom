@@ -156,7 +156,7 @@ const ConfiguratorUnisex = () => {
 
   // Declare state for entered text and generated texture
   const [enteredText, setEnteredText] = useState("");
-  const [textPosition] = useState([-0.35, -0.15, 0.01]); // Initialize text position
+  const [textPosition] = useState([-0.65, -0.15, 0.05]); // Initialize text position
   const [textColor, setTextColor] = useState("black");
   const [fontSize, setFontSize] = useState(0.05);
 
@@ -789,11 +789,11 @@ const ConfiguratorUnisex = () => {
                         ref={imageRef}
                         src={uploadedImage}
                         alt="Uploaded Texture"
-                        width={'1.5%'}
+                        width={'3%'}
                         style={{
                           position: "absolute",
-                          top: "20%", // You can set the position as per your requirement
-                          left: "53.7%",
+                          top: "40%", // You can set the position as per your requirement
+                          left: "50.7%",
                           zIndex: 10, // Ensure it's above the canvas
                         }}
                       />
@@ -803,11 +803,11 @@ const ConfiguratorUnisex = () => {
                         ref={imageRef}
                         src={uploadedImage}
                         alt="Uploaded Texture"
-                        width={'1.5%'}
+                        width={'3%'}
                         style={{
                           position: "absolute",
-                          top: "20%", // You can set the position as per your requirement
-                          left: "64.5%",
+                          top: "40%", // You can set the position as per your requirement
+                          left: "65.8%",
                           zIndex: 10, // Ensure it's above the canvas
                         }}
                       />
@@ -815,7 +815,7 @@ const ConfiguratorUnisex = () => {
                   </div>
 
                   {selectedClothing.name === "Sash" && (
-                    <div className="p-3">
+                    <div className="p-3 w-100">
                       {/* test text inprinting */}
                       <h5>Imprint Text on model</h5>
                       <div className="d-flex justify-content-between">
@@ -827,7 +827,7 @@ const ConfiguratorUnisex = () => {
                         />
                         <div className="d-flex flex-column">
                           <div className="d-flex">
-                            {colorOptions.slice(0, 5).map((colorOption) => (
+                            {colorOptions.slice(0, 6).map((colorOption) => (
                               <div
                                 key={colorOption.color}
                                 className="color-item mx-2"
@@ -854,7 +854,7 @@ const ConfiguratorUnisex = () => {
                               -
                             </button>
                             <span className="font-size">
-                              font size: {fontSize * 100}{" "}
+                              font size: {(fontSize * 100).toFixed(0)}{" "}
                             </span>
                             <button
                               className="btn btn-secondary btn-sm mx-2"

@@ -81,13 +81,13 @@ h1 {
   border: 0.5px solid rgba(0, 0, 0, 0.418);
   cursor: pointer;
   transform: translateY(0.3rem);
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  /* transition: all 0.3s ease; */
 }
 
-.color-button:hover {
-  transform: scale(1.2);
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-}
+/* .color-button:hover {
+  transform: scale(1.1);
+   box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+} */
 
 .imprint-text-color-button {
   position: relative;
