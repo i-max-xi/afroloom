@@ -158,7 +158,7 @@ const ConfiguratorUnisex = () => {
   const [enteredTextLeft, setEnteredTextLeft] = useState("");
   const [enteredTextRight, setEnteredTextRight] = useState("");
 
-  const [textPosition] = useState([-0.65, -0.15, 0.05]); // Initialize text position
+  // const [textPosition] = useState([-0.65, -0.15, 0.05]); // Initialize text position
   const [textColor, setTextColor] = useState("black");
   const [fontSize, setFontSize] = useState(16);
 
@@ -171,11 +171,18 @@ const ConfiguratorUnisex = () => {
   };
 
   // Image imprint
-  const [uploadedImage, setUploadedImage] = useState(null); // State to store the uploaded image
-  const imageRef = useRef();
+  const [uploadedImageLeft, setUploadedImageLeft] = useState(null); // State to store the uploaded image
+  const [uploadedImageRight, setUploadedImageRight] = useState(null); // State to store the uploaded image
+  const imageLeftRef = useRef();
+  const imageRightRef = useRef();
 
-  const handleImageUpload = (file) => {
-    setUploadedImage(URL.createObjectURL(file)); // Set the uploaded image
+
+  const handleImageUploadLeft = (file) => {
+    setUploadedImageLeft(URL.createObjectURL(file)); // Set the uploaded image
+  };
+
+  const handleImageUploadRight = (file) => {
+    setUploadedImageRight(URL.createObjectURL(file)); // Set the uploaded image
   };
 
   const handleColorChange = (newColor) => {
@@ -784,10 +791,10 @@ const ConfiguratorUnisex = () => {
                       />
                       {selectedClothing.name !== "Sash" && <CameraControls />}
                     </Canvas>
-                    {uploadedImage && (
+                    {uploadedImageLeft && (
                       <img
-                        ref={imageRef}
-                        src={uploadedImage}
+                        ref={imageLeftRef}
+                        src={uploadedImageLeft}
                         alt="Uploaded Texture"
                         width={"3%"}
                         style={{
@@ -798,10 +805,10 @@ const ConfiguratorUnisex = () => {
                         }}
                       />
                     )}
-                    {uploadedImage && (
+                    {uploadedImageRight && (
                       <img
-                        ref={imageRef}
-                        src={uploadedImage}
+                        ref={imageRightRef}
+                        src={uploadedImageRight}
                         alt="Uploaded Texture"
                         width={"3%"}
                         style={{
@@ -815,7 +822,7 @@ const ConfiguratorUnisex = () => {
                   </div>
 
                   {selectedClothing.name === "Sash" && (
-                    <div className="p-2 pt-3 w-100">
+                    <div className="p-2 w-100">
                       {/* test text inprinting */}
                       <h5>Imprint Text on model</h5>
                       <div className="d-flex justify-content-between">
@@ -879,8 +886,9 @@ const ConfiguratorUnisex = () => {
                               </button>
                             </div>
                           </div>
-                          <div>
-                            <ImageUpload onImageUpload={handleImageUpload} />
+                          <div className=" d-flex flex-column">
+                            <ImageUpload labelLeft={"Left Logo"} labelRight={"Right Logo"} onImageUploadLeft={handleImageUploadLeft} onImageUploadRight={handleImageUploadRight} />
+                            {/* <ImageUpload label={"Right Logo"} onImageUpload={handleImageUploadRight} /> */}
                           </div>
                         </div>
                       </div>
