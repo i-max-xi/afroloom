@@ -40,6 +40,7 @@ import WelcomeTour, { tourSteps } from "./WelcomeTour";
 import { InputText } from "primereact/inputtext";
 import { Toast } from "primereact/toast";
 import TextComponent from "./TextComponent";
+import ImageUpload from "./ImageUpload";
 const Shirt = ({
   isRotating,
   selectedClothing,
@@ -165,6 +166,14 @@ const ConfiguratorUnisex = () => {
 
   const decreaseFontSize = () => {
     setFontSize((prevSize) => prevSize - 0.01); // Decrease font size by 0.01
+  };
+
+  // Image imprint
+  const [uploadedImage, setUploadedImage] = useState(null); // State to store the uploaded image
+  const imageRef = useRef();
+
+  const handleImageUpload = (file) => {
+    setUploadedImage(URL.createObjectURL(file)); // Set the uploaded image
   };
 
   const handleColorChange = (newColor) => {
@@ -775,6 +784,34 @@ const ConfiguratorUnisex = () => {
                       />
                       {selectedClothing.name !== "Sash" && <CameraControls />}
                     </Canvas>
+                    {uploadedImage && (
+                      <img
+                        ref={imageRef}
+                        src={uploadedImage}
+                        alt="Uploaded Texture"
+                        width={'1.5%'}
+                        style={{
+                          position: "absolute",
+                          top: "20%", // You can set the position as per your requirement
+                          left: "53.7%",
+                          zIndex: 10, // Ensure it's above the canvas
+                        }}
+                      />
+                    )}
+                    {uploadedImage && (
+                      <img
+                        ref={imageRef}
+                        src={uploadedImage}
+                        alt="Uploaded Texture"
+                        width={'1.5%'}
+                        style={{
+                          position: "absolute",
+                          top: "20%", // You can set the position as per your requirement
+                          left: "64.5%",
+                          zIndex: 10, // Ensure it's above the canvas
+                        }}
+                      />
+                    )}
                   </div>
 
                   {selectedClothing.name === "Sash" && (
@@ -810,20 +847,26 @@ const ConfiguratorUnisex = () => {
                             ))}
                           </div>
                           <div className="d-flex justify-content-center">
-                          <button className="btn btn-secondary btn-sm mx-2" onClick={decreaseFontSize}>-</button>
-                          <span className="font-size">font size: {(fontSize * 100)} </span>
-                          <button className="btn btn-secondary btn-sm mx-2" onClick={increaseFontSize}>+</button>
-
+                            <button
+                              className="btn btn-secondary btn-sm mx-2"
+                              onClick={decreaseFontSize}
+                            >
+                              -
+                            </button>
+                            <span className="font-size">
+                              font size: {fontSize * 100}{" "}
+                            </span>
+                            <button
+                              className="btn btn-secondary btn-sm mx-2"
+                              onClick={increaseFontSize}
+                            >
+                              +
+                            </button>
                           </div>
                         </div>
                         <div>
-                          <FileUpload
-                            mode="basic"
-                            name="demo[]"
-                            url="/api/upload"
-                            accept="image/*"
-                            maxFileSize={1000000}
-                          />
+                        <ImageUpload onImageUpload={handleImageUpload} />
+
                         </div>
                       </div>
                     </div>

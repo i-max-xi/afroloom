@@ -1,5 +1,5 @@
 :root {
-   font-size: 14px;
+  font-size: 14px;
 }
 
 .main-space {
@@ -45,7 +45,7 @@ h1 {
 
 .selected {
   border: 2px solid white !important;
-  background-color:  orange !important;
+  background-color: orange !important;
   color: white;
 }
 
@@ -59,7 +59,6 @@ h1 {
   align-items: center;
   justify-content: center;
 }
-
 
 .fit {
   cursor: pointer;
@@ -101,7 +100,6 @@ h1 {
 
 .font-size {
   transform: translateY(0.2rem);
-
 }
 
 .texture-buttons-container h3 {
@@ -112,7 +110,7 @@ h1 {
 .texture-buttons-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center; 
+  justify-content: center;
   /* margin-bottom: 1rem; */
 }
 
@@ -129,13 +127,12 @@ h1 {
   font-size: 1rem;
 }
 
-
 .texture-row {
   display: flex;
   /* justify-content: space-between; */
   width: 70%;
   max-width: 400px;
-  margin: 0 auto; 
+  margin: 0 auto;
   transform: translateX(-1.5rem);
 }
 
@@ -154,7 +151,7 @@ h1 {
   align-self: center;
 }
 
-.p-carousel-items-container{
+.p-carousel-items-container {
   width: 100% !important;
 }
 
@@ -178,7 +175,8 @@ h1 {
   text-transform: capitalize;
 }
 
-.p-carousel-prev, .p-carousel-next {
+.p-carousel-prev,
+.p-carousel-next {
   transform: translateY(-0.75rem);
 }
 
@@ -190,9 +188,12 @@ h1 {
   margin-bottom: 0.2rem;
   flex-direction: row;
   border-radius: 0.3rem;
-
 }
 
-
-
-
+.uploaded-image {
+  position: "absolute";
+  top: "50px";
+  left: "50px";
+  z-index: 10;
+  width: '3rem';
+}
