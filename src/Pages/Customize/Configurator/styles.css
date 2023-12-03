@@ -215,8 +215,16 @@ h1 {
 }
 
 .overlay {
-  transform: translateX(5rem);
   font-weight: 700;
   line-height: 2rem;
+  transform: translateX(5rem);
+}
+
+#overlay-right {
+  transform: translateX(5rem);
+}
+
+#overlay-left {
+  transform: translateX(-10rem);
 }
 

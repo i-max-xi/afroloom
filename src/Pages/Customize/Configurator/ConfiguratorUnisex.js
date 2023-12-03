@@ -158,14 +158,14 @@ const ConfiguratorUnisex = () => {
   const [enteredText, setEnteredText] = useState("");
   const [textPosition] = useState([-0.65, -0.15, 0.05]); // Initialize text position
   const [textColor, setTextColor] = useState("black");
-  const [fontSize, setFontSize] = useState(0.05);
+  const [fontSize, setFontSize] = useState(16);
 
   const increaseFontSize = () => {
-    setFontSize((prevSize) => prevSize + 0.01); // Increase font size by 0.01
+    setFontSize((prevSize) => prevSize + 1); // Increase font size by 0.01
   };
 
   const decreaseFontSize = () => {
-    setFontSize((prevSize) => prevSize - 0.01); // Decrease font size by 0.01
+    setFontSize((prevSize) => prevSize - 1); // Decrease font size by 0.01
   };
 
   // Image imprint
@@ -767,15 +767,11 @@ const ConfiguratorUnisex = () => {
                       <ambientLight intensity={0.5} />
                       <pointLight position={[10, 10, 10]} />
                       {selectedClothing.name === "Sash" && (
-                        // <TextComponent
-                        //   textContent={enteredText}
-                        //   textPosition={textPosition}
-                        //   maxWidth={0.5}
-                        //   maxLines={3}
-                        //   textColor={textColor}
-                        //   fontSize={fontSize}
-                        // />
-                        <HtmlComponent content={enteredText}/>
+                        <HtmlComponent
+                          content={enteredText}
+                          textColor={textColor}
+                          textSize={fontSize}
+                        />
                       )}
                       <Shirt
                         isRotating={isRotating}
@@ -790,7 +786,7 @@ const ConfiguratorUnisex = () => {
                         ref={imageRef}
                         src={uploadedImage}
                         alt="Uploaded Texture"
-                        width={'2.5%'}
+                        width={"2.5%"}
                         style={{
                           position: "absolute",
                           top: "20%", // You can set the position as per your requirement
@@ -804,7 +800,7 @@ const ConfiguratorUnisex = () => {
                         ref={imageRef}
                         src={uploadedImage}
                         alt="Uploaded Texture"
-                        width={'2.5%'}
+                        width={"2.5%"}
                         style={{
                           position: "absolute",
                           top: "20%", // You can set the position as per your requirement
@@ -855,7 +851,7 @@ const ConfiguratorUnisex = () => {
                               -
                             </button>
                             <span className="font-size">
-                              font size: {(fontSize * 100).toFixed(0)}{" "}
+                              font size: {fontSize}
                             </span>
                             <button
                               className="btn btn-secondary btn-sm mx-2"
@@ -866,8 +862,7 @@ const ConfiguratorUnisex = () => {
                           </div>
                         </div>
                         <div>
-                        <ImageUpload onImageUpload={handleImageUpload} />
-
+                          <ImageUpload onImageUpload={handleImageUpload} />
                         </div>
                       </div>
                     </div>
