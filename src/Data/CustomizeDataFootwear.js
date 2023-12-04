@@ -1,7 +1,7 @@
 import { v4 as uuid } from "uuid";
 
 // sneakers
-import s2 from "../Assets/Customize/footwear/sneaker/2.jpg";
+// import s2 from "../Assets/Customize/footwear/sneaker/2.jpg";
 
 
 
@@ -46,13 +46,15 @@ const heelsParts = require.context(
   /\.(png|jpg|jpeg|gif)$/
 );
 
-
+const image_flat_shoe = require("../Assets/welcome_3ds/others/flat shoe.jpg");
+const image_slippers = require("../Assets/welcome_3ds/others/silipers.jpg");
 
 export const mainFootwear = [
   {
     id: uuid(),
     name: "Flat Shoe",
-    image: s2,
+    // image: s2,
+    image: image_flat_shoe,
     model: flex_shoe,
     myNode: ["sole", "front", "back"],
     myZoom: 0.9,
@@ -119,7 +121,8 @@ sizeModels: tshirt_model,
   {
     id: uuid(),
     name: "Slipper",
-    image: "https://th.bing.com/th/id/OIP.5gl1niRXNH5qhTxWLH4ybQHaHa?pid=ImgDet&w=1000&h=1000&rs=1",
+    // image: "https://th.bing.com/th/id/OIP.5gl1niRXNH5qhTxWLH4ybQHaHa?pid=ImgDet&w=1000&h=1000&rs=1",
+    image: image_slippers,
     model: slippers,
     myNode: ["padding", "sole", "top"],
     myZoom: 1.2,

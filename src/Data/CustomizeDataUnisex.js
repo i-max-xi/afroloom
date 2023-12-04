@@ -1,10 +1,10 @@
 import { v4 as uuid } from "uuid";
 
 // backpacks
-import bp1 from '../Assets/Customize/unisex/backpack/1.jpg'
+// import bp1 from '../Assets/Customize/unisex/backpack/1.jpg'
 
 
-import jacket_img from '../Assets/Customize/jacket.jpg'
+// import jacket_img from '../Assets/Customize/jacket.jpg'
 
 //models 
 import backpack_model from "../Pages/Customize/Configurator/models/Accessories/Unisex/backpack.glb";
@@ -47,14 +47,19 @@ const jacketParts = require.context(
   /\.(png|jpg|jpeg|gif)$/
 );
 
+const image_waist_bag = require("../Assets/welcome_3ds/others/waist bag.jpg");
+const image_jacket = require("../Assets/welcome_3ds/others/jacket.jpg");
+const image_backpack = require("../Assets/welcome_3ds/others/backpack.jpg");
+const image_sash = require("../Assets/welcome_3ds/others/sash.jpg");
 
 
 export const mainUnisex = [
   {
     id: uuid(),
     name: 'Sash',
-    image:
-      'https://images-na.ssl-images-amazon.com/images/I/61Kp8a2HpQL._SLDPMOBCAROUSELAUTOCROP288221_MCnd_AC_SR462,693_.jpg',
+    // image:
+    //   'https://images-na.ssl-images-amazon.com/images/I/61Kp8a2HpQL._SLDPMOBCAROUSELAUTOCROP288221_MCnd_AC_SR462,693_.jpg',
+    image: image_sash,
     model: sash_model,
     myNode: ['plain_sections', 'Stripe_1', 'Stripe_2', 'mid_stripes', ],
     myZoom: 1.5,
@@ -88,7 +93,8 @@ sizeModels: tshirt_model,
   {
     id: uuid(),
     name: 'Waist Bag',
-    image: bp1,
+    // image: bp1,
+    image: image_waist_bag,
     model: mini_bag_model,
     myNode: ['handle', 'main_body'],
     myZoom: 0.6,
@@ -122,8 +128,9 @@ sizeModels: tshirt_model,
   {
     id: uuid(),
     name: 'Backpack',
-    image:
-      'https://pisces.bbystatic.com/image2/BestBuy_US/images/products/5286/5286137cv12d.jpg',
+    // image:
+    //   'https://pisces.bbystatic.com/image2/BestBuy_US/images/products/5286/5286137cv12d.jpg',
+    image: image_backpack,
     model: backpack_model,
     myNode: [
       'front_1',
@@ -167,7 +174,8 @@ sizeModels: tshirt_model,
   {
     id: uuid(),
     name: 'Jacket',
-    image: jacket_img,
+    // image: jacket_img,
+    image: image_jacket,
     model: jacket,
     myNode: [
       'midline',

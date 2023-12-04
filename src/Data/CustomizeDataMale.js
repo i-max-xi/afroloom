@@ -1,10 +1,10 @@
 import { v4 as uuid } from "uuid";
 
 // import tshirt from "../Assets/Customize/Tshirt.jpg";
-import shirt from "../Assets/Customize/shirt.jpg";
-import flare_shirt from "../Assets/Customize/flare_shirt.png";
+// import shirt from "../Assets/Customize/shirt.jpg";
+// import flare_shirt from "../Assets/Customize/flare_shirt.png";
 
-import topndown from "../Assets/Customize/topanddown.jpg";
+// import topndown from "../Assets/Customize/topanddown.jpg";
 
 // model imports
 import tshirtModel1 from "../Pages/Customize/Configurator/models/MaleClothing/tshirt_main.glb";
@@ -84,12 +84,24 @@ const materialShortsParts = require.context(
   /\.(png|jpg|jpeg|gif)$/
 );
 
+// const tshirt_image = "https://a5e8126a499f8a963166-f72e9078d72b8c998606fd6e0319b679.ssl.cf5.rackcdn.com/images/variant/large/next-level_3600_black.jpg";
+const image_tshirt_short = require("../Assets/welcome_3ds/male/male short sleev ankara.jpg");
+const image_tshirt_long_image = require("../Assets/welcome_3ds/male/male long sleev ankara.jpg");
+const image_shirt_short_image = require("../Assets/welcome_3ds/male/male short sleeve shirt.jpg");
+const image_shirt_long_image = require("../Assets/welcome_3ds/male/male long sleeve shirt.jpg");
+const image_topndown_image = require("../Assets/welcome_3ds/male/male top and down.jpg");
+const image_top_image = require("../Assets/welcome_3ds/male/male top.jpg");
+const image_blazer_image = require("../Assets/welcome_3ds/male/male blazer.jpg");
+const image_trouser_image = require("../Assets/welcome_3ds/male/male trousers.jpg");
+const image_summer_image = require("../Assets/welcome_3ds/male/male summer shorts.jpg");
+const image_shorts_image = require("../Assets/welcome_3ds/male/male shorts.jpg");
+
+
 export const mainMaleCustomize = [
   {
     id: uuid(),
     name: "Short Sleeve T-Shirt",
-    image:
-      "https://a5e8126a499f8a963166-f72e9078d72b8c998606fd6e0319b679.ssl.cf5.rackcdn.com/images/variant/large/next-level_3600_black.jpg",
+    image: image_tshirt_short,
     model: tshirtModel1,
     myNode: [
       "bottom",
@@ -141,8 +153,7 @@ export const mainMaleCustomize = [
   {
     id: uuid(),
     name: "Long Sleeve T-Shirt",
-    image:
-      "https://th.bing.com/th/id/R.090a143032d299d58a1f61c13fdb5224?rik=3IvQRj1AFgeS5A&riu=http%3a%2f%2fmemorythreads.com.au%2fwp-content%2fuploads%2f2015%2f03%2fgrey-marle-longsleeve1.jpg&ehk=mYL6G88axiyKbyZamMLyXt0FEL95o7%2bLvLOeBlxULno%3d&risl=&pid=ImgRaw&r=0",
+    image: image_tshirt_long_image,
     model: tshirtModel2,
     myNode: [
       "bottom",
@@ -192,7 +203,7 @@ export const mainMaleCustomize = [
   {
     id: uuid(),
     name: "Short Sleeve Shirt",
-    image: shirt,
+    image: image_shirt_short_image,
     model: shirtModel1,
     myNode: [
       "back",
@@ -246,8 +257,7 @@ export const mainMaleCustomize = [
   {
     id: uuid(),
     name: "Long Sleeve Shirt",
-    image:
-      "https://th.bing.com/th/id/OIP.esHHIbeG0pD-IJjavFbqwQAAAA?pid=ImgDet&rs=1",
+    image: image_shirt_long_image,
     model: shirtModel2,
     myNode: [
       "back",
@@ -303,7 +313,7 @@ export const mainMaleCustomize = [
   {
     id: uuid(),
     name: "Top And Down",
-    image: topndown,
+    image: image_topndown_image,
     model: topndown_model,
     myNode: [
       "back",
@@ -385,7 +395,7 @@ export const mainMaleCustomize = [
   {
     id: uuid(),
     name: "Top",
-    image: flare_shirt,
+    image: image_top_image,
     model: cloak,
     myNode: [
       "body",
@@ -435,7 +445,7 @@ export const mainMaleCustomize = [
     id: uuid(),
     name: "Blazer",
     model: blazer,
-    image: "https://www.flannels.com/images/products/32066803_h.jpg",
+    image: image_blazer_image,
     myNode: [
       "back",
       "collar",
@@ -495,8 +505,7 @@ export const mainMaleCustomize = [
   {
     id: uuid(),
     name: "Trousers",
-    image:
-      "https://th.bing.com/th/id/OIP.tnXk8QDidx4JKGKhl6IU0wHaJQ?pid=ImgDet&rs=1",
+    image: image_trouser_image,
     model: trousersModel1,
     myNode: [
       "left_leg",
@@ -561,8 +570,7 @@ export const mainMaleCustomize = [
   {
     id: uuid(),
     name: "Summer Shorts",
-    image:
-      "https://th.bing.com/th/id/R.ea417739b8a3cef995b4681464e7a16b?rik=uhZGGA8vxC1GIg&riu=http%3a%2f%2fi.ebayimg.com%2f00%2fs%2fNjcwWDcxNw%3d%3d%2fz%2fL9UAAOSwEK9UAwm9%2f%24_32.JPG%3fset_id%3d880000500F&ehk=r%2fZD2lrasnGhbmSDvg7rBXMXZGa34as4zF%2bMus%2f3ZIY%3d&risl=&pid=ImgRaw&r=0",
+    image: image_summer_image,
     model: summer_shorts,
     myNode: [
       "fasteners",
@@ -613,8 +621,7 @@ export const mainMaleCustomize = [
   {
     id: uuid(),
     name: "Shorts",
-    image:
-      "https://th.bing.com/th/id/OIP.A9xUqEvW0ADXy3nKfNyxKwHaJZ?pid=ImgDet&w=481&h=610&rs=1",
+    image: image_shorts_image,
     model: material_shorts,
     myNode: [
       "left_leg",

@@ -7,10 +7,10 @@ import skirt from "../Assets/Customize/skirt.jpg";
 import topndown from "../Assets/Customize/female_topndown.png";
 import dress from "../Assets/Customize/dress.png";
 import normal_top from "../Assets/Customize/normal_top.png";
-import extra_short_img from "../Assets/Customize/female_short_shirt.jpg";
-import extra_long_img from "../Assets/Customize/femlae_long_shirt.jpg";
-import booty_shorts_img from "../Assets/Customize/booty_shorts.jpg";
-import female_suit_img from "../Assets/Customize/femlae_suit.jpg";
+// import extra_short_img from "../Assets/Customize/female_short_shirt.jpg";
+// import extra_long_img from "../Assets/Customize/femlae_long_shirt.jpg";
+// import booty_shorts_img from "../Assets/Customize/booty_shorts.jpg";
+// import female_suit_img from "../Assets/Customize/femlae_suit.jpg";
 import kabanslit from "../Assets/Customize/kabanslit.JPG";
 
 //models
@@ -151,6 +151,22 @@ const leggingsParts = require.context(
   /\.(png|jpg|jpeg|gif)$/
 );
 
+const image_tshirt_short = require("../Assets/welcome_3ds/female/short slleev t shirt.jpg");
+const image_tshirt_long = require("../Assets/welcome_3ds/female/long sleev t shirt.jpg");
+const image_shirt_short = require("../Assets/welcome_3ds/female/women short sleev shirt.jpg");
+const image_shirt_long = require("../Assets/welcome_3ds/female/women long sleev shirt.jpg");
+const image_crop_top = require("../Assets/welcome_3ds/female/crop top.jpg");
+// const image_top = require("../Assets/welcome_3ds/female/");
+// const image_topndown = require("../Assets/welcome_3ds/female/");
+// const image_dress = require("../Assets/welcome_3ds/female/");
+// const image_kaba_slit = require("../Assets/welcome_3ds/female/");
+const image_blazer = require("../Assets/welcome_3ds/female/women blazer.jpg");
+// const image_cloak = require("../Assets/welcome_3ds/female/");
+// const image_long_skirt = require("../Assets/welcome_3ds/female/long skirt.jpg");
+const image_mini_skirt = require("../Assets/welcome_3ds/female/mini skirt.jpg");
+const image_booty_shorts = require("../Assets/welcome_3ds/female/booty 2.jpg");
+const image_trousers = require("../Assets/welcome_3ds/female/women trousers.jpg");
+const image_leggings = require("../Assets/welcome_3ds/female/leggings.jpg");
 
 
 
@@ -158,7 +174,8 @@ export const mainFemaleCustomize = [
   {
     id: uuid(),
     name: "Short Sleeve T-Shirt",
-    image: "https://th.bing.com/th/id/OIP.ikUETESsVO_PcDoaCrIQnAHaIw?pid=ImgDet&w=1588&h=1879&rs=1",
+    // image: "https://th.bing.com/th/id/OIP.ikUETESsVO_PcDoaCrIQnAHaIw?pid=ImgDet&w=1588&h=1879&rs=1",
+    image: image_tshirt_short,
     model: t_shirt_short,
     myNode: ["bottom", "left_hand", "left_hand_edge", "right_hand", "right_hand_edge", "top", "top_stripe", "bottom_stripe"],
     myZoom: 0.9,
@@ -201,7 +218,8 @@ sizeModels: tshirt_model,
   {
     id: uuid(),
     name: "Long Sleeve T-Shirt",
-    image: "https://images.bloomingdalesassets.com/is/image/BLM/products/0/optimized/10183950_fpx.tif?$filterlrg$&wid=327",
+    // image: "https://images.bloomingdalesassets.com/is/image/BLM/products/0/optimized/10183950_fpx.tif?$filterlrg$&wid=327",
+    image: image_tshirt_long,
     model: t_shirt_long,
     myNode: ["bottom", "left_hand", "left_hand_cuff", "right_hand", "right_hand_cuff", "top", "top_stripe", "bottom_stripe"],
     myZoom: 0.9,
@@ -244,7 +262,8 @@ sizeModels: tshirt_model,
   {
     id: uuid(),
     name: "Short Sleeve Shirt",
-    image: extra_short_img,
+    // image: extra_short_img,
+    image: image_shirt_short,
     model: extra_short,
     myNode: ["back", "collar", "front", "left_hand", "midline", "right_hand", "buttons"],
     myZoom: 0.7,
@@ -287,7 +306,8 @@ sizeModels: tshirt_model,
   {
     id: uuid(),
     name: "Long Sleeve Shirt",
-    image: extra_long_img,
+    // image: extra_long_img,
+    image: image_shirt_long,
     model: extra_long,
     myNode: ["back", "collar", "front", "left_hand", "midline", "right_hand", "buttons"],
     myZoom: 0.8,
@@ -330,7 +350,8 @@ sizeModels: tshirt_model,
   {
     id: uuid(),
     name: "Crop Top",
-    image: "https://sportsfore.com/wp-content/uploads/2020/05/5-68.jpg",
+    // image: "https://sportsfore.com/wp-content/uploads/2020/05/5-68.jpg",
+    image: image_crop_top,
     model: top_model,
     myNode: ["left_hand", "mid_body", "right_hand", "top_edge"],
     myZoom: 1.2,
@@ -567,7 +588,8 @@ sizeModels: tshirt_model,
     id: uuid(),
     name: "Blazer",
     model: blazer,
-    image: female_suit_img,
+    // image: female_suit_img,
+    image: image_blazer,
     myNode: [
       "back",
       "collar",
@@ -695,7 +717,8 @@ sizeModels: tshirt_model,
     id: uuid(),
     name: "Mini Skirt",
     model: mini_skirt_model,
-    image: "https://i.pinimg.com/736x/18/7d/c1/187dc19dca6861408cfd6d824437852e.jpg",
+    // image: "https://i.pinimg.com/736x/18/7d/c1/187dc19dca6861408cfd6d824437852e.jpg",
+    image: image_mini_skirt,
     myNode: ["all"],
     myZoom: 0.8,
     price: 20,
@@ -732,7 +755,8 @@ sizeModels: tshirt_model,
     id: uuid(),
     name: "Booty Shorts",
     model: booty_shorts,
-    image: booty_shorts_img,
+    // image: booty_shorts_img,
+    image: image_booty_shorts,
     myNode: [
       "button",
       "left_leg",
@@ -778,7 +802,8 @@ sizeModels: tshirt_model,
     id: uuid(),
     name: "Trousers",
     model: trousers,
-    image: "https://th.bing.com/th/id/R.4bc7f18679c3f2be48f44daefe523175?rik=zl2oxw9NZ7WSYw&riu=http%3a%2f%2fnibh.com%2fwp-content%2fuploads%2f2017%2f05%2fLP3.jpeg&ehk=pofT6edwVxSrGznLoVPwRpmV4ZLjt7oYMlkOzLi%2bms0%3d&risl=&pid=ImgRaw&r=0",
+    // image: "https://th.bing.com/th/id/R.4bc7f18679c3f2be48f44daefe523175?rik=zl2oxw9NZ7WSYw&riu=http%3a%2f%2fnibh.com%2fwp-content%2fuploads%2f2017%2f05%2fLP3.jpeg&ehk=pofT6edwVxSrGznLoVPwRpmV4ZLjt7oYMlkOzLi%2bms0%3d&risl=&pid=ImgRaw&r=0",
+    image: image_trousers,
     myNode: [
       "waist",
       "right_pocket",
@@ -822,7 +847,8 @@ sizeModels: tshirt_model,
     id: uuid(),
     name: "Leggings",
     model: leggings,
-    image: "https://i5.walmartimages.com/asr/8f17c018-a54f-403f-bda5-6b726d940ff6.38077f69b4dc21dbee1253fd234148ff.jpeg?odnHeight=612&odnWidth=612&odnBg=FFFFFF",
+    // image: "https://i5.walmartimages.com/asr/8f17c018-a54f-403f-bda5-6b726d940ff6.38077f69b4dc21dbee1253fd234148ff.jpeg?odnHeight=612&odnWidth=612&odnBg=FFFFFF",
+    image: image_leggings,
     myNode: [
       "left_leg",
       "waist",

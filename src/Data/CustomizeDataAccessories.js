@@ -1,6 +1,6 @@
 import { v4 as uuid } from "uuid";
 
-import handbag from "../Assets/Customize/hand_bag.png";
+// import handbag from "../Assets/Customize/hand_bag.png";
 // import bikini_img from "../Assets/Customize/bikini.png";
 
 
@@ -10,7 +10,7 @@ import h2 from "../Assets/Customize/maleAccessories/hat/2.jpg";
 
 
 // uncat
-import un2 from "../Assets/Customize/maleAccessories/Uncat/2.jpg";
+// import un2 from "../Assets/Customize/maleAccessories/Uncat/2.jpg";
 
 
 // 3d models
@@ -70,6 +70,11 @@ const bikiniParts = require.context(
   /\.(png|jpg|jpeg|gif)$/
 );
 
+
+const image_bikini = require("../Assets/welcome_3ds/female/bikini.jpg");
+const image_totebag = require("../Assets/welcome_3ds/others/tote bag.jpg");
+const image_bowtie = require("../Assets/welcome_3ds/others/bow tie.jpg");
+const image_flying_tie = require("../Assets/welcome_3ds/others/flying tie.jpg");
 
 
 export const mainMaleAccessories = [
@@ -147,7 +152,8 @@ sizeModels: tshirt_model,
   },
   {
     name: "Bow Tie",
-    image: "https://www.bewooden.com/picture/5992f3f6a584b/w960/african-bow-tie.jpg",
+    // image: "https://www.bewooden.com/picture/5992f3f6a584b/w960/african-bow-tie.jpg",
+    image: image_bowtie,
     model: bow_tie,
     myNode: ["bow", "binder" ],
     myZoom: 1.5,
@@ -181,7 +187,8 @@ sizeModels: tshirt_model,
   },
   {
     name: "Flying Tie",
-    image: un2,
+    // image: un2,
+    image: image_flying_tie,
     model: tie,
     myNode: ["top_section", "lower_section"],
     myZoom: 0.75,
@@ -222,7 +229,8 @@ export const mainFemaleAccessories = [
   {
     id: uuid(),
     name: "Tote Bag",
-    image: handbag,
+    // image: handbag,
+    image: image_totebag,
     model: hand_bag_model,
     myNode: ["mid_section", "zippers_and_locks", "handle", "right_section", "left_section"],
     myZoom: 0.9,
@@ -258,7 +266,8 @@ sizeModels: tshirt_model,
   {
     id: uuid(),
     name: "Bikini",
-    image: "https://cf.ltkcdn.net/teens/images/std/231007-275x421-low-rise-bikini.jpg",
+    // image: "https://cf.ltkcdn.net/teens/images/std/231007-275x421-low-rise-bikini.jpg",
+    image: image_bikini,
     model: bikini,
     myNode: ["top", "bottom"],
     myZoom: 1.3,
