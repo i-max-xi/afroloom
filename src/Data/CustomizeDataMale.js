@@ -2,7 +2,7 @@ import { v4 as uuid } from "uuid";
 
 // import tshirt from "../Assets/Customize/Tshirt.jpg";
 // import shirt from "../Assets/Customize/shirt.jpg";
-// import flare_shirt from "../Assets/Customize/flare_shirt.png";
+import flare_shirt from "../Assets/Customize/flare_shirt.png";
 
 // import topndown from "../Assets/Customize/topanddown.jpg";
 
@@ -90,7 +90,7 @@ const image_tshirt_long_image = require("../Assets/welcome_3ds/male/male long sl
 const image_shirt_short_image = require("../Assets/welcome_3ds/male/male short sleeve shirt.jpg");
 const image_shirt_long_image = require("../Assets/welcome_3ds/male/male long sleeve shirt.jpg");
 const image_topndown_image = require("../Assets/welcome_3ds/male/male top and down.jpg");
-const image_top_image = require("../Assets/welcome_3ds/male/male top.jpg");
+// const image_top_image = require("../Assets/welcome_3ds/male/male top.jpg");
 const image_blazer_image = require("../Assets/welcome_3ds/male/male blazer.jpg");
 const image_trouser_image = require("../Assets/welcome_3ds/male/male trousers.jpg");
 const image_summer_image = require("../Assets/welcome_3ds/male/male summer shorts.jpg");
@@ -395,7 +395,7 @@ export const mainMaleCustomize = [
   {
     id: uuid(),
     name: "Top",
-    image: image_top_image,
+    image: flare_shirt,
     model: cloak,
     myNode: [
       "body",
