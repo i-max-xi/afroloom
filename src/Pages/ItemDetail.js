@@ -13,17 +13,17 @@ const ItemDetail = ({ match }) => {
 
   const product = Products.find((p) => p.id === productId);
 
-  const [count, setCount] = useState(1);
+  const [count, ] = useState(1);
 
-  const handleIncrement = () => {
-    setCount(count + 1);
-  };
+  // const handleIncrement = () => {
+  //   setCount(count + 1);
+  // };
 
-  const handleDecrement = () => {
-    if (count > 1) {
-      setCount(count - 1);
-    }
-  };
+  // const handleDecrement = () => {
+  //   if (count > 1) {
+  //     setCount(count - 1);
+  //   }
+  // };
 
   // Redux
   const dispatch = useDispatch();
@@ -147,7 +147,7 @@ const ItemDetail = ({ match }) => {
               {product.rating.toFixed(1)} ({product.reviews} reviews)
             </div>
 
-            <div className="d-flex mb-3">
+            {/* <div className="d-flex mb-3">
               <button
                 className="btn btn-secondary btn-sm"
                 onClick={handleDecrement}
@@ -161,7 +161,7 @@ const ItemDetail = ({ match }) => {
               >
                 +
               </button>
-            </div>
+            </div> */}
             <p className="h3">
               {product.discount ? (
                 <div>
