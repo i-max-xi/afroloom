@@ -798,7 +798,7 @@ const ConfiguratorUnisex = () => {
                         width={"3%"}
                         style={{
                           position: "absolute",
-                          top: "17%", // You can set the position as per your requirement
+                          top: "16.5%", // You can set the position as per your requirement
                           left: "50.7%",
                           zIndex: 10, // Ensure it's above the canvas
                         }}
@@ -812,7 +812,7 @@ const ConfiguratorUnisex = () => {
                         width={"3%"}
                         style={{
                           position: "absolute",
-                          top: "17%", // You can set the position as per your requirement
+                          top: "16.5%", // You can set the position as per your requirement
                           left: "65.9%",
                           zIndex: 10, // Ensure it's above the canvas
                         }}

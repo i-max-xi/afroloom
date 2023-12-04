@@ -17,6 +17,9 @@ const HtmlComponent = ({
           left: 10,
           color: textColor,
           fontSize: textSize,
+          width: '5.3rem',
+          wordWrap: 'break-word', // Enable word wrapping for long words
+          overflow: 'hidden', // Ensure text doesn't overflow its container
         }}
       >
         {textLeft}
@@ -30,6 +33,9 @@ const HtmlComponent = ({
           left: 10,
           color: textColor,
           fontSize: textSize,
+          width: '5.3rem',
+          wordWrap: 'break-word', // Enable word wrapping for long words
+          overflow: 'hidden', // Ensure text doesn't overflow its container
         }}
       >
         {textRight}

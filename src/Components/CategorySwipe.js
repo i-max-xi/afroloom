@@ -35,7 +35,7 @@ const CategorySwipe = () => {
       selectedColor: "white",
       description: "Product Description",
       image:
-        "https://www.ahwenepa.com/wp-content/uploads/2019/06/Update-Your-Furniture-with-African-Prints-600x600.jpg",
+        "https://i.pinimg.com/736x/61/f3/ea/61f3ea932eb9f32df5869b8b7d61f573.jpg",
     },
     {
       id: "4000",

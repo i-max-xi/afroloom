@@ -7,7 +7,7 @@ const SocialMedia = () => {
         {/* <!-- Facebook --> */}
         <a
           className="btn text-white btn-floating m-1"
-          href="#!"
+          href="https://m.facebook.com/people/AfroLoom/61553397431290/"
           target="_blank"
           rel="noreferrer"
           role="button"

@@ -115,7 +115,7 @@ const Row = ({ mainItems, offerFix }) => {
       array: selectedmaleUnder10,
     },
     {
-      title: "Design Your Own Products With Quality African Fabric",
+      title: "Design Your Own Products With Quality African Fabrics",
       videoUrl: spinvid,
       linkTo: "/customize",
     },
