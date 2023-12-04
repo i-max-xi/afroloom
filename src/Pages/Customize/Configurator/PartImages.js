@@ -8,7 +8,7 @@ const PartImages = ({ selectedClothing, selectedPart }) => {
   return (
     <div className="part-panel" style={{ width: "20%" }}>
       <div className="d-flex flex-row">
-        {isDivided ? (
+        {isDivided || selectedClothing.name === "Sash" ? (
           // If there are more than 5 items, divide into two columns
           <>
             {/* Left Column */}

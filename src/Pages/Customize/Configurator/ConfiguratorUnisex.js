@@ -795,11 +795,11 @@ const ConfiguratorUnisex = () => {
                         ref={imageLeftRef}
                         src={uploadedImageLeft}
                         alt="Uploaded Texture"
-                        width={"3%"}
+                        width={"2.5%"}
                         style={{
                           position: "absolute",
-                          top: "16.5%", // You can set the position as per your requirement
-                          left: "50.7%",
+                          top: "15.6%", // You can set the position as per your requirement
+                          left: "51.7%",
                           zIndex: 10, // Ensure it's above the canvas
                         }}
                       />
@@ -809,10 +809,10 @@ const ConfiguratorUnisex = () => {
                         ref={imageRightRef}
                         src={uploadedImageRight}
                         alt="Uploaded Texture"
-                        width={"3%"}
+                        width={"2.5%"}
                         style={{
                           position: "absolute",
-                          top: "16.5%", // You can set the position as per your requirement
+                          top: "15.8%", // You can set the position as per your requirement
                           left: "65.9%",
                           zIndex: 10, // Ensure it's above the canvas
                         }}
