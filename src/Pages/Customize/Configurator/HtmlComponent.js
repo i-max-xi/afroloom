@@ -13,7 +13,7 @@ const HtmlComponent = ({
         id="overlay-left"
         style={{
           position: "absolute",
-          top: 10,
+          top: -10,
           left: 10,
           color: textColor,
           fontSize: textSize,
@@ -26,7 +26,7 @@ const HtmlComponent = ({
         id="overlay-right"
         style={{
           position: "absolute",
-          top: 10,
+          top: -5,
           left: 10,
           color: textColor,
           fontSize: textSize,
