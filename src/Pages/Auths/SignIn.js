@@ -53,7 +53,11 @@ const SignIn = () => {
           user.uid
         );
         userInfo = buyerInfo.data();
-        dispatch(setDashBoardPath("/user-dashboard"));
+        if(userInfo.isAdmin){
+          dispatch(setDashBoardPath("/admin-dashboard"));
+        } else {
+          dispatch(setDashBoardPath("/user-dashboard"));
+        }
       }
 
       if (userInfo !== null) {

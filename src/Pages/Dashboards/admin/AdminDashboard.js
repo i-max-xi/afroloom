@@ -6,6 +6,7 @@ import Home from "./Home";
 import AllSellers from "./AllSellers";
 import AddProduct from "../AddProduct";
 import AddDeliveryService from "../AddDeliveryService";
+import { useSelector } from "react-redux";
 
 const adminSidebarItems = [
   { label: "Home" },
@@ -16,7 +17,10 @@ const adminSidebarItems = [
 
 const AdminDashboard = () => {
   const [activeIndex, setActiveIndex] = useState(0);
-  const welcomename = "Kobby";
+  // const welcomename = "Kobby";
+  const currentUser = useSelector((state) => state.user.currentUser);
+  const welcomename = currentUser.firstName;
+
   const adminSeller = "Admin";
 
 
