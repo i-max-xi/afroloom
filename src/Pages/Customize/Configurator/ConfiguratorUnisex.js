@@ -175,7 +175,6 @@ const ConfiguratorUnisex = () => {
   const imageLeftRef = useRef();
   const imageRightRef = useRef();
 
-
   const handleImageUploadLeft = (file) => {
     setUploadedImageLeft(URL.createObjectURL(file)); // Set the uploaded image
   };
@@ -763,12 +762,12 @@ const ConfiguratorUnisex = () => {
               <div className="right-panel d-flex justify-content-between">
                 <div className="w-75 h-100">
                   <div
+                    ref={canvasRef}
                     style={{
                       height: selectedClothing.name !== "Sash" ? "100%" : "81%",
                     }}
                   >
                     <Canvas
-                      ref={canvasRef}
                       camera={{ position: [0, 0, selectedClothing.myZoom] }} // Set the initial camera position
                       gl={{ preserveDrawingBuffer: true }}
                     >
@@ -825,7 +824,7 @@ const ConfiguratorUnisex = () => {
                       {/* test text inprinting */}
                       <h5>Imprint Text on model</h5>
                       <div className="d-flex justify-content-between">
-                        <div className="flex-column" style={{width: '10%'}}>
+                        <div className="flex-column" style={{ width: "10%" }}>
                           <input
                             type="text"
                             placeholder="imprint on left side..."
@@ -886,7 +885,12 @@ const ConfiguratorUnisex = () => {
                             </div>
                           </div>
                           <div className=" d-flex flex-column">
-                            <ImageUpload labelLeft={"Upload Left Logo"} labelRight={"Upload Right Logo"} onImageUploadLeft={handleImageUploadLeft} onImageUploadRight={handleImageUploadRight} />
+                            <ImageUpload
+                              labelLeft={"Upload Left Logo"}
+                              labelRight={"Upload Right Logo"}
+                              onImageUploadLeft={handleImageUploadLeft}
+                              onImageUploadRight={handleImageUploadRight}
+                            />
                           </div>
                         </div>
                       </div>

@@ -34,7 +34,7 @@ const HtmlComponent = ({
           left: 10,
           color: textColor,
           fontSize: textSize,
-          width: '5.3rem',
+          width: '4.8rem',
           height: '12rem',
           wordWrap: 'break-word', // Enable word wrapping for long words
           overflow: 'hidden', // Ensure text doesn't overflow its container
