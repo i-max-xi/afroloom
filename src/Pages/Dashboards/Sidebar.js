@@ -1,13 +1,20 @@
-import React from "react";
+import React, { useRef } from "react";
 import { Button } from "primereact/button";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { auth, signOut } from "../../firebase";
-import { setDashBoardPath, setSignedIn, setcurrentUser } from "../../Redux/store";
+import {
+  setDashBoardPath,
+  setSignedIn,
+  setcurrentUser,
+} from "../../Redux/store";
 
 import { Divider } from "primereact/divider";
 
 const SideBar = ({ items, setActiveIndex }) => {
+  const toastRef = useRef(null);
+  const currentUser = useSelector((state) => state.user.currentUser);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -25,8 +32,19 @@ const SideBar = ({ items, setActiveIndex }) => {
       navigate("/signin");
     } catch (error) {
       // Handle sign-out error
-      console.error("Error signing out:", error);
+      toastRef.current.show({
+        severity: "error",
+        summary: "Error signing out:",
+        error,
+      });
     }
+  };
+
+  const handleMainDBPage = () => {
+    window.open(
+      "https://console.firebase.google.com/u/1/project/shopinafrica-c84cf/analytics/app/web:ZWQ1ODAyNTMtNDY4NC00Y2NjLWFlZGItODI4ZTkyMDYyNmJk/streamview/realtime~2Foverview%3Ffpn%3D343787566313",
+      "_blank"
+    );
   };
 
   return (
@@ -43,6 +61,13 @@ const SideBar = ({ items, setActiveIndex }) => {
             <Divider />
           </>
         ))}
+        {currentUser.isAdmin && (
+          <Button
+            onClick={handleMainDBPage}
+            className="p-button-text text-black"
+            label="Main Database"
+          />
+        )}
       </div>
       <Button
         onClick={handleSignOut}

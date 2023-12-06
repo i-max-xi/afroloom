@@ -21,6 +21,7 @@ const AdminDashboard = () => {
   const currentUser = useSelector((state) => state.user.currentUser);
   const welcomename = currentUser.firstName;
 
+
   const adminSeller = "Admin";
 
 
@@ -28,10 +29,10 @@ const AdminDashboard = () => {
     <>
       <Nav />
       <div className="bg-white fs-3 p-3 text-bold">
-        Welcome <span style={{color: "orange"}}>{welcomename}!</span>{" "}
+        Welcome <span style={{color: "orange"}}>{welcomename}!</span>
       </div>
       <div className="d-flex bg-white" style={{minHeight: '85vh'}}>
-        <SideBar items={adminSidebarItems} setActiveIndex={setActiveIndex} />
+        <SideBar isAdmin="Admin" items={adminSidebarItems} setActiveIndex={setActiveIndex} />
         <div className="dashboard w-75">
           <TabView
             activeIndex={activeIndex}

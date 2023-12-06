@@ -32,7 +32,10 @@ const Home = () => {
       });
       setProducts(productData);
     } catch (error) {
-      console.error("Error loading products:", error);
+      toastRef.current.show({
+        severity: "error",
+        summary: "Error loading products:", error,
+      });
     }
   };
 
