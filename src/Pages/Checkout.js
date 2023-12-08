@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import { removeItem, clearCart, updateOrders } from "../Redux/store";
@@ -12,9 +12,13 @@ import { Dialog } from "primereact/dialog";
 import Nav from "../Components/Nav";
 import { Dropdown } from "primereact/dropdown";
 import { AllDeliveries } from "../Data/DeliveryServiceData";
+import { Toast } from "primereact/toast";
+import { currencyOptions } from "../Components/CurrencyConverter";
 
 const Checkout = () => {
   const dispatch = useDispatch();
+  const toast = useRef(null);
+
   const cartItems = useSelector((state) => state.cartItems);
   const [emailAddress, setEmailAddress] = useState("");
   const [firstName, setFirstName] = useState("");
@@ -26,7 +30,7 @@ const Checkout = () => {
   // const apartment = useSelector((state) => state.apartment);
 
   const currencySymbol = useSelector((state) => state.currencySymbol.symbol);
-  const currencyFactor = useSelector((state) => state.currencySymbol.factor);
+  const currencyFactor = useSelector((state) => state.currencySymbol.factor);  
   const currentOrders = useSelector((state) => state.user.currentUser?.orders);
   const isSignedIn = useSelector((state) => state.user.signedIn);
   const [showDecison, setshowDecision] = useState(!isSignedIn);
@@ -81,6 +85,13 @@ const Checkout = () => {
     0
   );
 
+  // Total To Pay
+  const [totalToPay] = useState(
+    cartItems
+      .reduce((total, item) => total + item.price * currencyFactor, 0)
+      .toFixed(2)
+  );
+
   // Function to calculate the selected prices based on the selected delivery and dummy weight
   const calculatePrices = (delivery) => {
     const pricePerKg = delivery.pricePerKg || 0;
@@ -103,8 +114,11 @@ const Checkout = () => {
   };
 
   const publicKey = process.env.REACT_APP_paystack_publicKey;
-  const amount = 1000;
-  const email = emailAddress;
+  const totalToPayNumeric = parseFloat(totalToPay); // Convert to a number
+  const selectedDeliveryPriceNumeric = parseFloat(selectedDeliveryPrice); // Convert to a number
+
+  const amount = (totalToPayNumeric + selectedDeliveryPriceNumeric) * 100;
+    const email = emailAddress;
 
   const config = {
     reference: new Date().getTime().toString(),
@@ -145,13 +159,17 @@ const Checkout = () => {
     });
 
     // Clear the cart after successful payment
-    // dispatch(clearCart());
+    dispatch(clearCart());
   };
 
-  // const onClose = () => {
-  //   // Handle when the Paystack dialog is closed
-  //   console.log("Payment closed");
-  // };
+  const onClose = () => {
+    // Handle when the Paystack dialog is closed
+    toast.current.show({
+      severity: "info",
+      summary: "Payment Cancelled",
+      // detail: "Click on cart to checkout item",
+    });
+  };
 
   const [isInfoComplete, setIsInfoComplete] = useState(false);
 
@@ -203,6 +221,7 @@ const Checkout = () => {
     return (
       <>
         <LayoutHeaders selectedBg={Top} />
+        <Toast ref={toast} />
 
         <div className="container mb-5">
           {cartItems.length !== 0 ? (
@@ -225,9 +244,9 @@ const Checkout = () => {
                       <div className="mt-2 mx-5">
                         <span className="fs-5 fw-bold">Item: </span>{" "}
                         {selectedItem.title} <br />
-                        <span className="fw-bold">
+                        {/* <span className="fw-bold">
                           Quantity: {selectedItem.count}{" "}
-                        </span>{" "}
+                        </span>{" "} */}
                         <br />
                         <span className="fw-bold">Subtotal: </span>{" "}
                         {currencySymbol +
@@ -259,12 +278,7 @@ const Checkout = () => {
                   Total To Pay:
                   <span className="fs-5 mx-4">
                     {currencySymbol}
-                    {cartItems
-                      .reduce(
-                        (total, item) => total + ((item.price * currencyFactor) * item.count),
-                        0
-                      )
-                      .toFixed(2)}
+                    {totalToPay}
                   </span>
                 </h2>
               </div>
@@ -431,6 +445,7 @@ const Checkout = () => {
             {isInfoComplete ? (
               <PaystackButton
                 onSuccess={onSuccess}
+                onClose={onClose}
                 className="btn btn-success w-100 text-center mt-4 "
                 {...config}
               />
