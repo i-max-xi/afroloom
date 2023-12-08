@@ -137,7 +137,7 @@ const AddDeliveryService = () => {
             id="price"
             type="number"
             value={newProduct.pricePerKg}
-            placeholder="dollar equivalent value of price per..."
+            placeholder="equivalent Ghana Cedi value of price per..."
             onChange={(e) =>
               setNewProduct({ ...newProduct, pricePerKg: parseFloat(e.target.value)})
             }

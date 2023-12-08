@@ -225,7 +225,7 @@ const AddProduct = ({ currentSeller }) => {
             type="number"
             id="price"
             value={newProduct.price}
-            placeholder="dollar equivalent value..."
+            placeholder="equivalent Ghana Cedi value..."
             onChange={(e) =>
               setNewProduct({ ...newProduct, price: e.target.value })
             }
