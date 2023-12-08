@@ -5,15 +5,16 @@ import { Dropdown } from "primereact/dropdown";
 
 
 const currencyOptions = [
-  { name: "USD", factor: 1, symbol: "$" },
-  { name: "GHS", factor: 11.36, symbol: "₵" },
-  { name: "EUR", factor: 0.85, symbol: "€" }, // Corrected EUR factor
-  { name: "GBP", factor: 0.72, symbol: "£" }, // British Pound
-  { name: "ZAR", factor: 14.50, symbol: "R" }, // South African Rand
-  { name: "NGN", factor: 772.34, symbol: "₦" }, // Nigerian Naira
-  { name: "EGP", factor: 16.15, symbol: "ج.م" }, // Egyptian Pound
-  { name: "KES", factor: 112.75, symbol: "KSh" }, // Kenyan Shilling
-  { name: "JPY", factor: 110, symbol: "¥" }, // Japanese Yen
+  { name: "USD", factor: 0.088, symbol: "$" }, // Updated USD factor
+  { name: "GHS", factor: 1, symbol: "₵" }, // Set GHS as default currency with factor 1
+  { name: "EUR", factor: 0.079, symbol: "€" }, // Updated EUR factor
+  { name: "GBP", factor: 0.063, symbol: "£" }, // Updated GBP factor
+  { name: "ZAR", factor: 0.843, symbol: "R" }, // Updated ZAR factor
+  { name: "NGN", factor: 17.12, symbol: "₦" }, // Updated NGN factor
+  { name: "EGP", factor: 2.46, symbol: "ج.م" }, // Updated EGP factor
+  { name: "KES", factor: 9.61, symbol: "KSh" }, // Updated KES factor
+  { name: "JPY", factor: 9.43, symbol: "¥" }, // Updated JPY factor
+  // Update factors for other currencies accordingly...
   { name: "AUD", factor: 1.35, symbol: "$" }, // Australian Dollar
   { name: "CAD", factor: 1.25, symbol: "$" }, // Canadian Dollar
   { name: "CHF", factor: 0.92, symbol: "CHF" }, // Swiss Franc

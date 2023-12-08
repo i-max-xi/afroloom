@@ -70,7 +70,7 @@ const allProductsSlice = createSlice({
 
 const currencySymbolSlice = createSlice({
   name: "currencySymbol",
-  initialState: { symbol: "$", factor: 1 }, // Default currency symbol and factor
+  initialState: { symbol: "$", factor: 0.088 }, // Default currency symbol and factor
   reducers: {
     setCurrencySymbol: (state, action) => {
       state.symbol = action.payload.symbol;

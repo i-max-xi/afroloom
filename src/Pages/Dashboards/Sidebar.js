@@ -47,6 +47,13 @@ const SideBar = ({ items, setActiveIndex }) => {
     );
   };
 
+  const handleGoToPaystack = () => {
+    window.open(
+      "https://dashboard.paystack.com/#/dashboard?period=30",
+      "_blank"
+    );
+  };
+
   return (
     <div className="Sidebar bg-white">
       <div className="d-flex flex-column align-items-start mt-3">
@@ -65,7 +72,14 @@ const SideBar = ({ items, setActiveIndex }) => {
           <Button
             onClick={handleMainDBPage}
             className="p-button-text text-black"
-            label="Main Database"
+            label="Go To Main Database"
+          />
+        )}
+        {currentUser.isAdmin && (
+          <Button
+            onClick={handleGoToPaystack}
+            className="p-button-text text-black"
+            label="Go To Pay Stack"
           />
         )}
       </div>

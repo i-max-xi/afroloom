@@ -13,7 +13,6 @@ import Nav from "../Components/Nav";
 import { Dropdown } from "primereact/dropdown";
 import { AllDeliveries } from "../Data/DeliveryServiceData";
 import { Toast } from "primereact/toast";
-import { currencyOptions } from "../Components/CurrencyConverter";
 
 const Checkout = () => {
   const dispatch = useDispatch();
@@ -88,7 +87,7 @@ const Checkout = () => {
   // Total To Pay
   const [totalToPay] = useState(
     cartItems
-      .reduce((total, item) => total + item.price * currencyFactor, 0)
+      .reduce((total, item) => total + item.price, 0)
       .toFixed(2)
   );
 
@@ -97,12 +96,11 @@ const Checkout = () => {
     const pricePerKg = delivery.pricePerKg || 0;
     const expressExtra = delivery.expressExtra || 0;
 
-    const priceWithWeight = (pricePerKg * totalWeight * currencyFactor).toFixed(
+    const priceWithWeight = (pricePerKg * totalWeight).toFixed(
       2
     );
     const priceWithWeightAndExtra = (
-      (pricePerKg * totalWeight + expressExtra) *
-      currencyFactor
+      (pricePerKg * totalWeight + expressExtra)
     ).toFixed(2);
 
     return [priceWithWeight, priceWithWeightAndExtra];
@@ -143,7 +141,7 @@ const Checkout = () => {
       firstName: firstName,
       lastName: lastName,
       email: email,
-      selectedDelivery: selectedDelivery.name,
+      selectedDelivery: selectedDelivery,
       shippingCountry: shippingCountry,
       city: city,
       tel: tel,
@@ -278,7 +276,7 @@ const Checkout = () => {
                   Total To Pay:
                   <span className="fs-5 mx-4">
                     {currencySymbol}
-                    {totalToPay}
+                    {(totalToPay * currencyFactor).toFixed(2)}
                   </span>
                 </h2>
               </div>
@@ -411,7 +409,7 @@ const Checkout = () => {
                         }
                       />
                       {`Regular:  ${currencySymbol} ${
-                        calculatePrices(selectedDelivery)[0]
+                        (calculatePrices(selectedDelivery)[0] * currencyFactor).toFixed(2)
                       } - Within 5 working days`}
                     </label>
                   </div>
@@ -434,7 +432,7 @@ const Checkout = () => {
                         }
                       />
                       {`Express: ${currencySymbol} ${
-                        calculatePrices(selectedDelivery)[1]
+                        (calculatePrices(selectedDelivery)[1] * currencyFactor).toFixed(2)
                       } - Within 3 working days`}
                     </label>
                   </div>

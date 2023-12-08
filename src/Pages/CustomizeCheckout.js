@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-import {clear3DInfo, updateOrders } from "../Redux/store";
+import { clear3DInfo, clearCart, updateOrders } from "../Redux/store";
 
 import Top from "../Assets/Headers/Check_Out.jpg";
 import LayoutHeaders from "../Components/LayoutHeaders";
@@ -12,12 +12,17 @@ import { Dialog } from "primereact/dialog";
 import Nav from "../Components/Nav";
 import { Dropdown } from "primereact/dropdown";
 import { AllDeliveries } from "../Data/DeliveryServiceData";
+import { Toast } from "primereact/toast";
 
 const CustomizeCheckout = () => {
   const cartItems = useSelector((state) => state.customizedProduct.itemDetails);
-  const customizedItemDataSheet = useSelector((state) => state.customizedProduct.itemDataSheet);
+  const customizedItemDataSheet = useSelector(
+    (state) => state.customizedProduct.itemDataSheet
+  );
 
   const dispatch = useDispatch();
+  const toast = useRef(null);
+
   //   const cartItems = useSelector((state) => state.cartItems);
   const [emailAddress, setEmailAddress] = useState("");
   const [firstName, setFirstName] = useState("");
@@ -53,7 +58,7 @@ const CustomizeCheckout = () => {
   };
 
   function handleClearCart() {
-    dispatch(clear3DInfo)
+    dispatch(clear3DInfo);
   }
 
   // Fetch delivery services and set the options in state
@@ -86,10 +91,13 @@ const CustomizeCheckout = () => {
     // console.log("Selected Delivery:", value);
   };
 
-
   const totalWeight = cartItems.reduce(
     (total, item) => total + item.weight, // Replace 'weight' with your actual key
     0
+  );
+
+  const [totalToPay] = useState(
+    cartItems.reduce((total, item) => total + item.price * count, 0).toFixed(2)
   );
 
   const totalReadyBy = cartItems.reduce(
@@ -102,12 +110,10 @@ const CustomizeCheckout = () => {
     const pricePerKg = delivery.pricePerKg || 0;
     const expressExtra = delivery.expressExtra || 0;
 
-    const priceWithWeight = (pricePerKg * totalWeight * currencyFactor).toFixed(
-      2
-    );
+    const priceWithWeight = (pricePerKg * totalWeight).toFixed(2);
     const priceWithWeightAndExtra = (
-      (pricePerKg * totalWeight + expressExtra) *
-      currencyFactor
+      pricePerKg * totalWeight +
+      expressExtra
     ).toFixed(2);
 
     return [priceWithWeight, priceWithWeightAndExtra];
@@ -119,7 +125,10 @@ const CustomizeCheckout = () => {
   };
 
   const publicKey = process.env.REACT_APP_paystack_publicKey;
-  const amount = 1000;
+  const totalToPayNumeric = parseFloat(totalToPay); // Convert to a number
+  const selectedDeliveryPriceNumeric = parseFloat(selectedDeliveryPrice); // Convert to a number
+
+  const amount = (totalToPayNumeric + selectedDeliveryPriceNumeric) * 100;
   const email = emailAddress;
 
   const config = {
@@ -145,7 +154,7 @@ const CustomizeCheckout = () => {
       firstName: firstName,
       lastName: lastName,
       email: email,
-      selectedDelivery: selectedDelivery.name,
+      selectedDelivery: selectedDelivery,
       shippingCountry: shippingCountry,
       city: city,
       tel: tel,
@@ -163,12 +172,17 @@ const CustomizeCheckout = () => {
     });
 
     // Clear the cart after successful payment
+    dispatch(clearCart());
   };
 
-  // const onClose = () => {
-  //   // Handle when the Paystack dialog is closed
-  //   console.log("Payment closed");
-  // };
+  const onClose = () => {
+    // Handle when the Paystack dialog is closed
+    toast.current.show({
+      severity: "info",
+      summary: "Payment Cancelled",
+      // detail: "Click on cart to checkout item",
+    });
+  };
 
   const [isInfoComplete, setIsInfoComplete] = useState(false);
 
@@ -220,6 +234,7 @@ const CustomizeCheckout = () => {
     return (
       <>
         <LayoutHeaders selectedBg={Top} />
+        <Toast ref={toast} />
 
         <div className="container mb-5">
           {cartItems.length !== 0 ? (
@@ -283,13 +298,7 @@ const CustomizeCheckout = () => {
                   Total To Pay:
                   <span className="fs-5 mx-4">
                     {currencySymbol}
-                    {cartItems
-                      .reduce(
-                        (total, item) =>
-                          total + ((item.price * currencyFactor) * count),
-                        0
-                      )
-                      .toFixed(2)}
+                    {(totalToPay * currencyFactor).toFixed(2)}
                   </span>
                 </h2>
               </div>
@@ -422,7 +431,8 @@ const CustomizeCheckout = () => {
                         }
                       />
                       {`Regular:  ${currencySymbol} ${
-                        calculatePrices(selectedDelivery)[0]
+                        (calculatePrices(selectedDelivery)[0] * currencyFactor).toFixed(2)
+
                       } - Within ${5 + totalReadyBy} working days`}
                     </label>
                   </div>
@@ -445,7 +455,7 @@ const CustomizeCheckout = () => {
                         }
                       />
                       {`Express: ${currencySymbol} ${
-                        calculatePrices(selectedDelivery)[1]
+                        (calculatePrices(selectedDelivery)[1] * currencyFactor).toFixed(2)
                       } - Within ${3 + totalReadyBy} working days`}
                     </label>
                   </div>
@@ -456,6 +466,7 @@ const CustomizeCheckout = () => {
             {isInfoComplete ? (
               <PaystackButton
                 onSuccess={onSuccess}
+                onClose={onClose}
                 className="btn btn-success w-100 text-center mt-4 "
                 {...config}
               />
