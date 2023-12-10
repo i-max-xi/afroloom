@@ -112,7 +112,7 @@ const SignIn = () => {
             <span className="text-warning">Welcome</span> Back
           </h4>
           <div className="form-group mt-5">
-            <label htmlFor="email">Email/Phone No.</label>
+            <label htmlFor="email">Email</label>
             <input
               type="email"
               className="form-control"
