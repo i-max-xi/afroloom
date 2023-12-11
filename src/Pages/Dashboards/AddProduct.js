@@ -11,6 +11,7 @@ import { ref, uploadBytes, getDownloadURL } from "@firebase/storage";
 const AddProduct = ({ currentSeller }) => {
   const [newProduct, setNewProduct] = useState({
     title: "",
+    description: "",
     category: "", // Use a Dropdown to select from categoryFilter
     price: null,
     item: "", // URL of the item image
@@ -121,6 +122,7 @@ const AddProduct = ({ currentSeller }) => {
   const handleAddProduct = async () => {
     if (
       newProduct.title === "" ||
+      newProduct.description === "" ||
       newProduct.category === "" ||
       newProduct.price === null ||
       newProduct.item === "" ||
@@ -183,13 +185,24 @@ const AddProduct = ({ currentSeller }) => {
       <h2>Add a New Product</h2>
       <div className="p-fluid pr-5">
         <div className="p-field">
-          <label htmlFor="title">Name of Product</label>
+          <label className="text-info" htmlFor="title">Name of Product</label><span className="text-warning"> *</span>
           <InputText
             required
             id="title"
             value={newProduct.title}
             onChange={(e) =>
               setNewProduct({ ...newProduct, title: e.target.value })
+            }
+          />
+        </div>
+        <div className="p-field">
+          <label htmlFor="title">Description of Product</label>
+          <InputText
+            required
+            id="title"
+            value={newProduct.description}
+            onChange={(e) =>
+              setNewProduct({ ...newProduct, description: e.target.value })
             }
           />
         </div>
