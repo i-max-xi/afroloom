@@ -117,7 +117,7 @@ const ItemDetail = ({ match }) => {
 
       <div className="container mt-5">
         <div className="row">
-          <div className="col-md-6 d-flex mb-5">
+          <div className="col-md-6 d-flex">
             {extras ? (
               <div className="d-flex flex-column mx-1" style={{ width: "10%" }}>
                 {extras.map((extra, index) => (
@@ -134,8 +134,8 @@ const ItemDetail = ({ match }) => {
               ""
             )}
 
-            <div>
-              <img src={selectedImage} alt={product.title} width="80%" />
+            <div className="col-10 h-100">
+              <img src={selectedImage} alt={product.title} width="100%" height="400rem"/>
             </div>
           </div>
           <div className="col-md-6">
@@ -147,21 +147,6 @@ const ItemDetail = ({ match }) => {
               {product.rating.toFixed(1)} ({product.reviews} reviews)
             </div>
 
-            {/* <div className="d-flex mb-3">
-              <button
-                className="btn btn-secondary btn-sm"
-                onClick={handleDecrement}
-              >
-                -
-              </button>
-              <span className="mx-2">{count}</span>
-              <button
-                className="btn btn-secondary btn-sm"
-                onClick={handleIncrement}
-              >
-                +
-              </button>
-            </div> */}
             <p className="h3">
               {product.discount ? (
                 <div>
