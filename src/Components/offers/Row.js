@@ -13,7 +13,7 @@ const Row = ({ mainItems, offerFix }) => {
   const Products = useSelector((state) => state.allProducts.products);
 
   const currencySymbol = useSelector((state) => state.currencySymbol.symbol);
-  const currencyFactor = useSelector((state) => state.currencySymbol.factor);
+  const currencyFactor = useSelector((state) => state.currencySymbol.factor );
 
 
   const [selectedmaleUnder10, setselectedmaleUnder10] = useState([]);
@@ -110,7 +110,7 @@ const Row = ({ mainItems, offerFix }) => {
 
   const rowOne = [
     {
-      headTitle: `Men Clothing Under ${currencySymbol + (currencyFactor * 10)}`,
+      headTitle: `Men Clothing Under ${currencySymbol + (currencyFactor * 10/0.088).toFixed(0)}`,
       linkTo: "/offers/men clothing under $10",
       array: selectedmaleUnder10,
     },
@@ -126,7 +126,7 @@ const Row = ({ mainItems, offerFix }) => {
     },
 
     {
-      headTitle: `Women Clothing Under ${currencySymbol + (currencyFactor * 10)}`,
+      headTitle: `Women Clothing Under ${currencySymbol + (currencyFactor * 10/0.088).toFixed(0)}`,
       linkTo: "/offers/women clothing under $10",
       array: selectedFemaleUnder10,
     },
