@@ -14,6 +14,7 @@ import {
 } from "@firebase/storage";
 import { Badge } from "primereact/badge";
 import { Timestamp } from "firebase/firestore";
+import { ProgressSpinner } from "primereact/progressspinner";
 
 const AddProduct = ({ currentSeller }) => {
   const [newProduct, setNewProduct] = useState({
@@ -33,6 +34,7 @@ const AddProduct = ({ currentSeller }) => {
   });
 
   const [extraImages, setExtraImages] = useState([]); // State variable to store extra images
+  const [isUploading, setIsUploading] = useState(false); // Initialize loading state
 
   const [detailedCategoryOptions, setDetailedCategoryOptions] = useState([]);
   const [sizeOptions, setSizeOptions] = useState([]);
@@ -196,6 +198,8 @@ const AddProduct = ({ currentSeller }) => {
       return;
     }
 
+    setIsUploading(true); // Set the uploading state to true when uploading starts
+
     const productData = {
       ...newProduct,
       extras: extraImages, // Add the array of extra images to the product data
@@ -231,6 +235,8 @@ const AddProduct = ({ currentSeller }) => {
         severity: "error",
         summary: `Error adding product. Please try again: ${error}`,
       });
+    } finally {
+      setIsUploading(false); // Reset loading state after upload attempt (success or failure)
     }
   };
 
@@ -474,7 +480,19 @@ const AddProduct = ({ currentSeller }) => {
             label="Add Product"
             onClick={handleAddProduct}
             className="p-button p-component"
-          />
+            disabled={isUploading} // Disable button while uploading
+          >
+            <span className="spinner-container">
+              {isUploading && (
+                <ProgressSpinner
+                  style={{ width: "1.5rem", height: "1.5rem" }}
+                  strokeWidth="8"
+                  fill="var(--surface-ground)"
+                  className="position-absolute top-50 start-50 translate-middle"
+                />
+              )}
+            </span>
+          </Button>
         </div>
       </div>
     </div>
