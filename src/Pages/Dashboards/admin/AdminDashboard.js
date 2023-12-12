@@ -45,7 +45,7 @@ const AdminDashboard = () => {
               <AllSellers />
             </TabPanel>
             <TabPanel header="Add A New Product">
-              <AddProduct currentSeller={adminSeller}/>
+              <AddProduct currentSeller={adminSeller} sellerCountry="Ghana"/>
             </TabPanel>
             <TabPanel header="Add A New Delivery Service">
               <AddDeliveryService/>

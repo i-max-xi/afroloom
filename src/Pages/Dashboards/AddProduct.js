@@ -15,8 +15,9 @@ import {
 import { Badge } from "primereact/badge";
 import { Timestamp } from "firebase/firestore";
 import { ProgressSpinner } from "primereact/progressspinner";
+import { locationOptions } from "../../Data/SupplierAcceptedCities";
 
-const AddProduct = ({ currentSeller }) => {
+const AddProduct = ({ currentSeller, sellerCountry }) => {
   const [newProduct, setNewProduct] = useState({
     title: "",
     description: "",
@@ -26,6 +27,7 @@ const AddProduct = ({ currentSeller }) => {
     weight: "",
     location: "",
     seller: currentSeller,
+    country: sellerCountry,
     detailedCategory: "",
     gender: "",
     size: "",
@@ -449,16 +451,25 @@ const AddProduct = ({ currentSeller }) => {
         </div>
         <div className="p-field">
           <label className="text-warning" htmlFor="seller">
-            Item Location
+            Item Location (City)
           </label>
           <span className="text-danger"> *</span>
-          <InputText
+          {/* <InputText
             id="location"
             value={newProduct.location}
-            placeholder="specific city you have this item, eg. Accra"
+            placeholder="Select specific city you have this item or closest city"
             onChange={(e) =>
               setNewProduct({ ...newProduct, location: e.target.value })
             }
+          /> */}
+          <Dropdown
+            id="location"
+            value={newProduct.location}
+            options={locationOptions}
+            onChange={(e) =>
+              setNewProduct({ ...newProduct, location: e.value })
+            }
+            placeholder="Select specific city you have this item or closest city"
           />
         </div>
         <div className="p-field">
@@ -470,9 +481,23 @@ const AddProduct = ({ currentSeller }) => {
             id="seller"
             readOnly
             value={newProduct.seller}
-            onChange={(e) =>
-              setNewProduct({ ...newProduct, seller: e.target.value })
-            }
+            // onChange={(e) =>
+            //   setNewProduct({ ...newProduct, seller: e.target.value })
+            // }
+          />
+        </div>
+        <div className="p-field">
+          <label className="text-warning" htmlFor="seller">
+            Seller Country
+          </label>
+          <span className="text-danger"> *</span>
+          <InputText
+            id="country"
+            readOnly
+            value={newProduct.country}
+            // onChange={(e) =>
+            //   setNewProduct({ ...newProduct, seller: e.target.value })
+            // }
           />
         </div>
         <div className="p-field">

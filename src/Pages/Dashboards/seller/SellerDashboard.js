@@ -19,6 +19,7 @@ const SellerDashboard = () => {
   const currentUser = useSelector((state) => state.user.currentUser);
   const welcomename = currentUser.firstName;
   const sellerCompany = currentUser.companyName;
+  const sellerCountry = currentUser.country
 
   return (
     <>
@@ -37,7 +38,7 @@ const SellerDashboard = () => {
             <Home currentSeller={sellerCompany}/>
           </TabPanel>
           <TabPanel header="Add A New Product">
-            <AddProduct currentSeller={sellerCompany}/>
+            <AddProduct currentSeller={sellerCompany} sellerCountry={sellerCountry}/>
           </TabPanel>
         </TabView>
       </div>
