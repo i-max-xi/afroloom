@@ -52,13 +52,13 @@ const AllSellers = () => {
       await ProductsDataService.deleteSeller(id);
       toastRef.current.show({
         severity: "success",
-        summary: `Successfully deleted product`,
+        summary: `Successfully deleted seller`,
       });
       loadProducts();
     } catch (error) {
       toastRef.current.show({
         severity: "error",
-        summary: `Error deleting product: ${error}`,
+        summary: `Error deleting seller: ${error}`,
       });
     }
   };
@@ -97,6 +97,7 @@ const AllSellers = () => {
         /> */}
         <Column field="companyName" header="Company Name" />
         <Column field="email" header="Email" />
+        <Column field="number" header="Phone" />
         <Column
           field="supplyCategories"
           header="Supply"
