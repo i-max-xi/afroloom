@@ -15,7 +15,6 @@ const Supplier = () => {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false); // Initialize loading state
 
-
   const [isCheckboxChecked, setIsCheckboxChecked] = useState(false);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -44,7 +43,7 @@ const Supplier = () => {
   const handleSignUp = async (e) => {
     e.preventDefault();
     try {
-      setIsLoading(true)
+      setIsLoading(true);
       if (password.length < 6) {
         toastRef.current.show({
           severity: "error",
@@ -78,6 +77,7 @@ const Supplier = () => {
               companyName: companyName,
               supplyCategories: supplyCategories,
               number: number,
+              subject: `New Supplier Request from ${firstName} ${lastName}`,
             };
 
             ProductsDataService.addSeller(userInfo);
@@ -97,7 +97,7 @@ const Supplier = () => {
               detail: "Pending Approval",
             });
 
-            setIsLoading(false)
+            setIsLoading(false);
             // Redirect to "/" after successful signup and delay
             setTimeout(() => {
               navigate("/");
@@ -106,12 +106,14 @@ const Supplier = () => {
         );
       }
     } catch (error) {
-      setIsLoading(false)
+      setIsLoading(false);
       toastRef.current.show({
         severity: "error",
         summary: "Sign up failed",
         detail: error.message,
       });
+    } finally {
+      setIsLoading(false); // Always reset loading state, regardless of success or failure
     }
   };
 
@@ -159,17 +161,13 @@ const Supplier = () => {
             </div>
             <div className="form-group">
               <label htmlFor="country">Country of origin:</label>
-              {/* <input
-                type="text"
-                className="form-control"
-                placeholder="eg. Ghana, Nigeria"
-                value={country}
-                onChange={(e) => setCountry(e.target.value)}
-              /> */}
               <Dropdown
                 id="country"
                 value={country}
-                options={countryArr.map((country) => ({ label: country, value: country }))}
+                options={countryArr.map((country) => ({
+                  label: country,
+                  value: country,
+                }))}
                 onChange={(e) => setCountry(e.value)}
                 placeholder="Select country"
                 className="d-flex"
@@ -276,15 +274,15 @@ const Supplier = () => {
               disabled={!isCheckboxChecked} // Disable the button if the checkbox is not checked
             >
               <span className="spinner-container">
-              {isLoading && (
-                <ProgressSpinner
-                  style={{ width: "1.5rem", height: "1.5rem" }}
-                  strokeWidth="8"
-                  fill="var(--surface-ground)"
-                  className="position-absolute top-50 start-50 translate-middle"
-                />
-              )}
-            </span>
+                {isLoading && (
+                  <ProgressSpinner
+                    style={{ width: "1.5rem", height: "1.5rem" }}
+                    strokeWidth="8"
+                    fill="var(--surface-ground)"
+                    className="position-absolute top-50 start-50 translate-middle"
+                  />
+                )}
+              </span>
               Send Request
             </button>
 
