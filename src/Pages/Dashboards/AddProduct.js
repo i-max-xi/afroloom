@@ -8,6 +8,7 @@ import { Toast } from "primereact/toast";
 import { storage } from "../../firebase";
 import { ref, uploadBytes, getDownloadURL, deleteObject } from "@firebase/storage";
 import { Badge } from "primereact/badge";
+import { Timestamp } from "firebase/firestore";
 
 const AddProduct = ({ currentSeller }) => {
   const [newProduct, setNewProduct] = useState({
@@ -196,6 +197,7 @@ const handleDeleteImage = async (index) => {
     const productData = {
       ...newProduct,
       extras: extraImages, // Add the array of extra images to the product data
+      createdAt: Timestamp.fromMillis(Date.now()), // Convert to Firebase Timestamp
     };
 
     try {
@@ -205,6 +207,7 @@ const handleDeleteImage = async (index) => {
         title: "",
         category: "",
         price: "",
+        description: "",
         weight: 0,
         location: "",
         item: "",
@@ -301,7 +304,7 @@ const handleDeleteImage = async (index) => {
         </div>
         <div className="p-field">
           <label className="text-warning" htmlFor="price">
-            Price $
+            Price ₵
           </label>
           <span className="text-danger"> *</span>
           <InputText
@@ -309,7 +312,7 @@ const handleDeleteImage = async (index) => {
             type="number"
             id="price"
             value={newProduct.price}
-            placeholder="equivalent Ghana Cedi value..."
+            placeholder="equivalent Ghana Cedi value... eg. 10"
             onChange={(e) =>
               setNewProduct({ ...newProduct, price: e.target.value })
             }
@@ -432,21 +435,21 @@ const handleDeleteImage = async (index) => {
             required
             value={newProduct.gender}
             options={genderOptions}
-            placeholder="is this product gender specific ?"
+            placeholder="is this product gender specific eg. male or female ?"
             onChange={(e) => setNewProduct({ ...newProduct, gender: e.value })}
           />
         </div>
         <div className="p-field">
           <label className="text-warning" htmlFor="size">
             Size
-          </label>
-          <span className="text-danger"> *</span>
+          </label>{" "}
+          <span>(Optional)</span>
           <Dropdown
             id="size"
             required
             value={newProduct.size}
             options={sizeOptions}
-            placeholder="select a size"
+            placeholder="is this item size specific?"
             onChange={(e) => setNewProduct({ ...newProduct, size: e.value })}
           />
         </div>
