@@ -115,29 +115,31 @@ const AddProduct = ({ currentSeller, sellerCountry }) => {
 
   const handleImageUpload = async (e) => {
     const file = e.target.files[0];
-    
+
     // Check if file type is PNG
-    if (!file.type.includes('png')) {
+    if (!file.type.includes("png")) {
       toastRef.current.show({
-        severity: 'error',
-        summary: 'Error uploading image:',
-        detail: 'Please upload a PNG image.',
+        severity: "error",
+        summary: "Error uploading image:",
+        detail: "Please upload a PNG image.",
       });
+      e.target.value = null;
       return;
     }
-  
+
     // Create an image element to get the dimensions
     const img = new Image();
     img.src = URL.createObjectURL(file);
-  
+
     img.onload = () => {
       // Check if the image dimensions are 500x500
       if (img.width !== 500 || img.height !== 500) {
         toastRef.current.show({
-          severity: 'error',
-          summary: 'Error uploading image:',
-          detail: 'Please upload an image with dimensions 500x500.',
+          severity: "error",
+          summary: "Error uploading image:",
+          detail: "Please upload an image with dimensions 500x500.",
         });
+        e.target.value = null;
         return;
       } else {
         const storageRef = ref(storage, `images/${file.name}`);
@@ -145,7 +147,7 @@ const AddProduct = ({ currentSeller, sellerCountry }) => {
       }
     };
   };
-  
+
   const uploadImage = async (storageRef, file) => {
     try {
       await uploadBytes(storageRef, file);
@@ -153,14 +155,12 @@ const AddProduct = ({ currentSeller, sellerCountry }) => {
       setNewProduct({ ...newProduct, item: downloadURL });
     } catch (error) {
       toastRef.current.show({
-        severity: 'error',
-        summary: 'Error uploading image:',
+        severity: "error",
+        summary: "Error uploading image:",
         detail: error.message,
       });
     }
   };
-  
-
 
   const handleDeleteImage = async (index) => {
     try {
@@ -187,19 +187,46 @@ const AddProduct = ({ currentSeller, sellerCountry }) => {
   const handleExtraImageUpload = async (e) => {
     const files = e.target.files;
     const uploadPromises = Array.from(files).map(async (file) => {
-      const storageRef = ref(storage, `images/${file.name}`);
-      try {
-        await uploadBytes(storageRef, file);
-        return getDownloadURL(storageRef);
-      } catch (error) {
-        // Handle errors during upload
-        return Promise.reject(error.message);
+      // Check if file type is PNG
+      if (!file.type.includes("png")) {
+        toastRef.current.show({
+          severity: "error",
+          summary: "Error uploading image:",
+          detail: "Please upload a PNG image.",
+        });
+        e.target.value = null;
+        return null;
       }
+
+      // Create an image element to get the dimensions
+      const img = new Image();
+      img.src = URL.createObjectURL(file);
+
+      return new Promise((resolve, reject) => {
+        img.onload = () => {
+          // Check if the image dimensions are 500x500
+          if (img.width !== 500 || img.height !== 500) {
+            toastRef.current.show({
+              severity: "error",
+              summary: "Error uploading image:",
+              detail: "Please upload an image with dimensions 500x500.",
+            });
+            reject("Invalid image dimensions");
+            e.target.value = null;
+          } else {
+            const storageRef = ref(storage, `images/${file.name}`);
+            uploadImage(storageRef, file)
+              .then((downloadURL) => resolve(downloadURL))
+              .catch((error) => reject(error));
+          }
+        };
+      });
     });
 
     try {
       const downloadURLs = await Promise.all(uploadPromises);
-      setExtraImages([...extraImages, ...downloadURLs]); // Append the extra image URLs to the array
+      const validDownloadURLs = downloadURLs.filter((url) => url !== null);
+      setExtraImages([...extraImages, ...validDownloadURLs]);
     } catch (error) {
       toastRef.current.show({
         severity: "error",
@@ -208,6 +235,31 @@ const AddProduct = ({ currentSeller, sellerCountry }) => {
       });
     }
   };
+
+  // const handleExtraImageUpload = async (e) => {
+  //   const files = e.target.files;
+  //   const uploadPromises = Array.from(files).map(async (file) => {
+  //     const storageRef = ref(storage, `images/${file.name}`);
+  //     try {
+  //       await uploadBytes(storageRef, file);
+  //       return getDownloadURL(storageRef);
+  //     } catch (error) {
+  //       // Handle errors during upload
+  //       return Promise.reject(error.message);
+  //     }
+  //   });
+
+  //   try {
+  //     const downloadURLs = await Promise.all(uploadPromises);
+  //     setExtraImages([...extraImages, ...downloadURLs]); // Append the extra image URLs to the array
+  //   } catch (error) {
+  //     toastRef.current.show({
+  //       severity: "error",
+  //       summary: "Error uploading extra image:",
+  //       detail: error,
+  //     });
+  //   }
+  // };
 
   const handleAddProduct = async () => {
     if (
@@ -411,7 +463,6 @@ const AddProduct = ({ currentSeller, sellerCountry }) => {
             accept="image/*"
             onChange={handleImageUpload}
           />
-          
         </div>
 
         <div className="p-field d-flex flex-column">
