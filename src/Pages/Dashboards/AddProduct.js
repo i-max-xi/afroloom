@@ -6,7 +6,12 @@ import ProductsDataService from "../../Services/products.services";
 import { allCategory, categoryFilter } from "../../Data/categoryList";
 import { Toast } from "primereact/toast";
 import { storage } from "../../firebase";
-import { ref, uploadBytes, getDownloadURL, deleteObject } from "@firebase/storage";
+import {
+  ref,
+  uploadBytes,
+  getDownloadURL,
+  deleteObject,
+} from "@firebase/storage";
 import { Badge } from "primereact/badge";
 import { Timestamp } from "firebase/firestore";
 
@@ -17,14 +22,14 @@ const AddProduct = ({ currentSeller }) => {
     category: "", // Use a Dropdown to select from categoryFilter
     price: null,
     item: "", // URL of the item image
-    weight: null,
+    weight: "",
     location: "",
     seller: currentSeller,
     detailedCategory: "",
     gender: "",
     size: "",
     createdAt: Date.now(),
-    discount: "", // Optional field
+    discount: null, // Optional field
   });
 
   const [extraImages, setExtraImages] = useState([]); // State variable to store extra images
@@ -126,30 +131,27 @@ const AddProduct = ({ currentSeller }) => {
   //   setExtraImages(updatedImages);
   // };
 
+  const handleDeleteImage = async (index) => {
+    try {
+      const imageName = extraImages[index].split("%2F").pop().split("?")[0];
 
-const handleDeleteImage = async (index) => {
-  try {
-    const imageName = extraImages[index].split('%2F').pop().split('?')[0];
+      // Create a reference to the file to delete
+      const imageRef = ref(storage, `images/${imageName}`);
 
-    // Create a reference to the file to delete
-    const imageRef = ref(storage, `images/${imageName}`);
+      // Delete the file
+      await deleteObject(imageRef);
 
-    // Delete the file
-    await deleteObject(imageRef);
-
-    // Update state to remove the deleted image
-    const updatedImages = extraImages.filter((image, i) => i !== index);
-    setExtraImages(updatedImages);
-  } catch (error) {
-    toastRef.current.show({
-      severity: "error",
-      summary: "Error deleting image:",
-      detail: error.message,
-    });
-  }
-};
-
-  
+      // Update state to remove the deleted image
+      const updatedImages = extraImages.filter((image, i) => i !== index);
+      setExtraImages(updatedImages);
+    } catch (error) {
+      toastRef.current.show({
+        severity: "error",
+        summary: "Error deleting image:",
+        detail: error.message,
+      });
+    }
+  };
 
   const handleExtraImageUpload = async (e) => {
     const files = e.target.files;
@@ -184,7 +186,7 @@ const handleDeleteImage = async (index) => {
       newProduct.price === null ||
       newProduct.item === "" ||
       newProduct.detailedCategory === "" ||
-      newProduct.weight === null ||
+      newProduct.weight === "" ||
       newProduct.location === ""
     ) {
       toastRef.current.show({
@@ -206,7 +208,7 @@ const handleDeleteImage = async (index) => {
       setNewProduct({
         title: "",
         category: "",
-        price: "",
+        price: 0,
         description: "",
         weight: 0,
         location: "",
@@ -215,7 +217,7 @@ const handleDeleteImage = async (index) => {
         detailedCategory: "",
         gender: "",
         size: "",
-        discount: "",
+        discount: 0,
       });
 
       setExtraImages([]); // Clear the extra images array
@@ -303,129 +305,6 @@ const handleDeleteImage = async (index) => {
           />
         </div>
         <div className="p-field">
-          <label className="text-warning" htmlFor="price">
-            Price ₵
-          </label>
-          <span className="text-danger"> *</span>
-          <InputText
-            required
-            type="number"
-            id="price"
-            value={newProduct.price}
-            placeholder="equivalent Ghana Cedi value... eg. 10"
-            onChange={(e) =>
-              setNewProduct({ ...newProduct, price: e.target.value })
-            }
-          />
-        </div>
-        <div className="p-field">
-          <label className="text-warning" htmlFor="item">
-            Main Product Image
-          </label>
-          <span className="text-danger"> *</span>
-          <span>Strictly with white background and preferably png</span>
-          <InputText
-            required
-            id="item"
-            type="file"
-            accept="image/*"
-            onChange={handleImageUpload}
-          />
-        </div>
-        {/* <div className="p-field">
-          <label className="text-warning" htmlFor="item">Extra Images</label>
-          <InputText
-            required
-            id="extras"
-            type="file"
-            accept="image/*"
-            onChange={handleExtraImageUpload}
-          />
-        </div> */}
-        <div className="p-field d-flex flex-column">
-      <label className="text-warning" htmlFor="extras">
-        Extra Images
-      </label>
-
-      <div className="d-flex">
-        <input
-          required
-          id="extras"
-          type="file"
-          accept="image/*"
-          onChange={handleExtraImageUpload}
-          multiple // This attribute allows selecting multiple files
-        />
-        {extraImages.length > 0 && (
-          <div>
-            <ul className="d-flex">
-              {extraImages.map((image, index) => (
-                <div key={index} className="position-relative">
-                  <img
-                    className="mx-2 rounded"
-                    width={40}
-                    height={40}
-                    alt={image}
-                    src={image}
-                  />
-                  <Badge
-                    value="X"
-                    severity="danger"
-                    className="p-badge-sm p-overlay-badge position-absolute top-0 end-0"
-                    style={{scale: "0.8", cursor: "pointer"}}
-                    onClick={() => handleDeleteImage(index)}
-                  />
-                </div>
-              ))}
-            </ul>
-          </div>
-        )}
-      </div>
-    </div>
-
-        <div className="p-field">
-          <label className="text-warning" htmlFor="seller">
-            Seller
-          </label>
-          <span className="text-danger"> *</span>
-          <InputText
-            id="seller"
-            readOnly
-            value={newProduct.seller}
-            onChange={(e) =>
-              setNewProduct({ ...newProduct, seller: e.target.value })
-            }
-          />
-        </div>
-        <div className="p-field">
-          <label className="text-warning" htmlFor="weight">
-            Weight (kg)
-          </label>
-          <span className="text-danger"> *</span>
-          <InputText
-            id="weight"
-            type="number"
-            value={newProduct.weight}
-            onChange={(e) =>
-              setNewProduct({ ...newProduct, weight: e.target.value })
-            }
-          />
-        </div>
-        <div className="p-field">
-          <label className="text-warning" htmlFor="seller">
-            Item Location
-          </label>
-          <span className="text-danger"> *</span>
-          <InputText
-            id="location"
-            value={newProduct.location}
-            placeholder="specific city you have this item, eg. Accra"
-            onChange={(e) =>
-              setNewProduct({ ...newProduct, location: e.target.value })
-            }
-          />
-        </div>
-        <div className="p-field">
           <label className="text-warning" htmlFor="gender">
             Gender
           </label>{" "}
@@ -454,16 +333,139 @@ const handleDeleteImage = async (index) => {
           />
         </div>
         <div className="p-field">
+          <label className="text-warning" htmlFor="price">
+            Price ₵
+          </label>
+          <span className="text-danger"> *</span>
+          <InputText
+            required
+            type="number"
+            id="price"
+            value={newProduct.price}
+            placeholder="equivalent Ghana Cedi value... eg. 10"
+            onChange={(e) =>
+              setNewProduct({ ...newProduct, price: e.target.value })
+            }
+          />
+        </div>
+        <div className="p-field">
           <label className="text-warning" htmlFor="discount">
             Discount %{" "}
           </label>{" "}
           <span>(Optional)</span>
           <InputText
             id="discount"
+            type="number"
             value={newProduct.discount}
-            placeholder="percentage discount eg. '10'"
+            placeholder="percentage discount eg. 10"
             onChange={(e) =>
               setNewProduct({ ...newProduct, discount: e.target.value })
+            }
+          />
+        </div>
+        <div className="p-field">
+          <label className="text-warning" htmlFor="item">
+            Main Product Image
+          </label>
+          <span className="text-danger"> *</span>
+          <span>Strictly with white background and preferably png</span>
+          <InputText
+            required
+            id="item"
+            type="file"
+            accept="image/*"
+            onChange={handleImageUpload}
+          />
+        </div>
+        {/* <div className="p-field">
+          <label className="text-warning" htmlFor="item">Extra Images</label>
+          <InputText
+            required
+            id="extras"
+            type="file"
+            accept="image/*"
+            onChange={handleExtraImageUpload}
+          />
+        </div> */}
+        <div className="p-field d-flex flex-column">
+          <label className="text-warning" htmlFor="extras">
+            Extra Images
+          </label>
+
+          <div className="d-flex">
+            <input
+              required
+              id="extras"
+              type="file"
+              accept="image/*"
+              onChange={handleExtraImageUpload}
+              multiple // This attribute allows selecting multiple files
+            />
+            {extraImages.length > 0 && (
+              <div>
+                <ul className="d-flex">
+                  {extraImages.map((image, index) => (
+                    <div key={index} className="position-relative">
+                      <img
+                        className="mx-2 rounded"
+                        width={40}
+                        height={40}
+                        alt={image}
+                        src={image}
+                      />
+                      <Badge
+                        value="X"
+                        severity="danger"
+                        className="p-badge-sm p-overlay-badge position-absolute top-0 end-0"
+                        style={{ scale: "0.8", cursor: "pointer" }}
+                        onClick={() => handleDeleteImage(index)}
+                      />
+                    </div>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
+        </div>
+
+        <div className="p-field">
+          <label className="text-warning" htmlFor="weight">
+            Weight (kg)
+          </label>
+          <span className="text-danger"> *</span>
+          <InputText
+            id="weight"
+            value={newProduct.weight}
+            onChange={(e) =>
+              setNewProduct({ ...newProduct, weight: e.target.value })
+            }
+          />
+        </div>
+        <div className="p-field">
+          <label className="text-warning" htmlFor="seller">
+            Item Location
+          </label>
+          <span className="text-danger"> *</span>
+          <InputText
+            id="location"
+            value={newProduct.location}
+            placeholder="specific city you have this item, eg. Accra"
+            onChange={(e) =>
+              setNewProduct({ ...newProduct, location: e.target.value })
+            }
+          />
+        </div>
+        <div className="p-field">
+          <label className="text-warning" htmlFor="seller">
+            Seller
+          </label>
+          <span className="text-danger"> *</span>
+          <InputText
+            id="seller"
+            readOnly
+            value={newProduct.seller}
+            onChange={(e) =>
+              setNewProduct({ ...newProduct, seller: e.target.value })
             }
           />
         </div>
