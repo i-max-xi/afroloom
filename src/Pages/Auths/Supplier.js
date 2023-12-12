@@ -9,6 +9,7 @@ import ProductsDataService from "../../Services/products.services";
 
 import "primeicons/primeicons.css";
 import { ProgressSpinner } from "primereact/progressspinner";
+import countryArr from "../../Data/CountryArr";
 
 const Supplier = () => {
   const navigate = useNavigate();
@@ -158,12 +159,20 @@ const Supplier = () => {
             </div>
             <div className="form-group">
               <label htmlFor="country">Country of origin:</label>
-              <input
+              {/* <input
                 type="text"
                 className="form-control"
-                placeholder="Origin of supplier......"
+                placeholder="eg. Ghana, Nigeria"
                 value={country}
                 onChange={(e) => setCountry(e.target.value)}
+              /> */}
+              <Dropdown
+                id="country"
+                value={country}
+                options={countryArr.map((country) => ({ label: country, value: country }))}
+                onChange={(e) => setCountry(e.value)}
+                placeholder="Select country"
+                className="d-flex"
               />
             </div>
 
