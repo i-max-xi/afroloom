@@ -161,6 +161,7 @@ const CustomizeCheckout = () => {
       customizedItemDataSheet: customizedItemDataSheet,
       quantity: count,
       readyBy: totalReadyBy + "- regular/express delivery",
+      subject: `New 3D Product Order`,
     };
     // Submit to formspree
     fetch(process.env.REACT_APP_formSpree, {

@@ -146,6 +146,7 @@ const Checkout = () => {
       city: city,
       tel: tel,
       cart: cartItems,
+      subject: `New Product Order`,
     };
     // Submit to formspree
     fetch(process.env.REACT_APP_formSpree, {

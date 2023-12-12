@@ -72,15 +72,6 @@ const Confirmation = ({
         },
       ];
 
-      // Send the formData to Formspree
-      // const response = await fetch(process.env.REACT_APP_formSpree, {
-      //   method: "POST",
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //   },
-      //   body: JSON.stringify(formData),
-      // });
-
       dispatch(set3DItemDetails(formData));
       dispatch(setItemDataSheet(downloadURL));
 
