@@ -97,43 +97,70 @@ const AddProduct = ({ currentSeller, sellerCountry }) => {
     }
   };
 
+  // const handleImageUpload = async (e) => {
+  //   const file = e.target.files[0];
+  //   const storageRef = ref(storage, `images/${file.name}`);
+  //   try {
+  //     await uploadBytes(storageRef, file);
+  //     const downloadURL = await getDownloadURL(storageRef);
+  //     setNewProduct({ ...newProduct, item: downloadURL });
+  //   } catch (error) {
+  //     toastRef.current.show({
+  //       severity: "error",
+  //       summary: "Error uploading image:",
+  //       error,
+  //     });
+  //   }
+  // };
+
   const handleImageUpload = async (e) => {
     const file = e.target.files[0];
-    const storageRef = ref(storage, `images/${file.name}`);
+    
+    // Check if file type is PNG
+    if (!file.type.includes('png')) {
+      toastRef.current.show({
+        severity: 'error',
+        summary: 'Error uploading image:',
+        detail: 'Please upload a PNG image.',
+      });
+      return;
+    }
+  
+    // Create an image element to get the dimensions
+    const img = new Image();
+    img.src = URL.createObjectURL(file);
+  
+    img.onload = () => {
+      // Check if the image dimensions are 500x500
+      if (img.width !== 500 || img.height !== 500) {
+        toastRef.current.show({
+          severity: 'error',
+          summary: 'Error uploading image:',
+          detail: 'Please upload an image with dimensions 500x500.',
+        });
+        return;
+      } else {
+        const storageRef = ref(storage, `images/${file.name}`);
+        uploadImage(storageRef, file);
+      }
+    };
+  };
+  
+  const uploadImage = async (storageRef, file) => {
     try {
       await uploadBytes(storageRef, file);
       const downloadURL = await getDownloadURL(storageRef);
       setNewProduct({ ...newProduct, item: downloadURL });
     } catch (error) {
       toastRef.current.show({
-        severity: "error",
-        summary: "Error uploading image:",
-        error,
+        severity: 'error',
+        summary: 'Error uploading image:',
+        detail: error.message,
       });
     }
   };
+  
 
-  // const handleExtraImageUpload = async (e) => {
-  //   const file = e.target.files[0];
-  //   const storageRef = ref(storage, `images/${file.name}`);
-  //   try {
-  //     await uploadBytes(storageRef, file);
-  //     const downloadURL = await getDownloadURL(storageRef);
-  //     setExtraImages([...extraImages, downloadURL]); // Append the extra image to the array
-  //   } catch (error) {
-  //     toastRef.current.show({
-  //       severity: "error",
-  //       summary: "Error uploading extra image:",
-  //       detail: error.message,
-  //     });
-  //   }
-  // };
-
-  // const handleDeleteImage = (index) => {
-  //   const updatedImages = [...extraImages];
-  //   updatedImages.splice(index, 1);
-  //   setExtraImages(updatedImages);
-  // };
 
   const handleDeleteImage = async (index) => {
     try {
@@ -384,17 +411,9 @@ const AddProduct = ({ currentSeller, sellerCountry }) => {
             accept="image/*"
             onChange={handleImageUpload}
           />
+          
         </div>
-        {/* <div className="p-field">
-          <label className="text-warning" htmlFor="item">Extra Images</label>
-          <InputText
-            required
-            id="extras"
-            type="file"
-            accept="image/*"
-            onChange={handleExtraImageUpload}
-          />
-        </div> */}
+
         <div className="p-field d-flex flex-column">
           <label className="text-warning" htmlFor="extras">
             Extra Images
