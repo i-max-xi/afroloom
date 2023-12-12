@@ -185,7 +185,7 @@ const AddProduct = ({ currentSeller }) => {
       <h2>Add a New Product</h2>
       <div className="p-fluid pr-5">
         <div className="p-field">
-          <label className="text-info" htmlFor="title">Name of Product</label><span className="text-warning"> *</span>
+          <label className="text-warning" htmlFor="title">Name of Product</label><span className="text-danger"> *</span>
           <InputText
             required
             id="title"
@@ -196,7 +196,7 @@ const AddProduct = ({ currentSeller }) => {
           />
         </div>
         <div className="p-field">
-          <label htmlFor="title">Description of Product</label>
+          <label className="text-warning" htmlFor="title">Description of Product</label><span className="text-danger"> *</span>
           <InputText
             required
             id="title"
@@ -207,7 +207,7 @@ const AddProduct = ({ currentSeller }) => {
           />
         </div>
         <div className="p-field">
-          <label htmlFor="category">Category</label>
+          <label className="text-warning" htmlFor="category">Category</label><span className="text-danger"> *</span>
           <Dropdown
             required
             id="category"
@@ -218,7 +218,7 @@ const AddProduct = ({ currentSeller }) => {
           />
         </div>
         <div className="p-field">
-          <label htmlFor="detailedCategory">Detailed Category</label>
+          <label className="text-warning" htmlFor="detailedCategory">Detailed Category</label><span className="text-danger"> *</span>
           <Dropdown
             required
             id="detailedCategory"
@@ -232,7 +232,7 @@ const AddProduct = ({ currentSeller }) => {
           />
         </div>
         <div className="p-field">
-          <label htmlFor="price">Price $</label>
+          <label className="text-warning" htmlFor="price">Price $</label><span className="text-danger"> *</span>
           <InputText
             required
             type="number"
@@ -245,8 +245,8 @@ const AddProduct = ({ currentSeller }) => {
           />
         </div>
         <div className="p-field">
-          <label htmlFor="item">Main Product Image</label>
-          <span>*Strictly with white background and preferably png</span>
+          <label className="text-warning" htmlFor="item">Main Product Image</label><span className="text-danger"> *</span>
+          <span>Strictly with white background and preferably png</span>
           <InputText
             required
             id="item"
@@ -256,7 +256,7 @@ const AddProduct = ({ currentSeller }) => {
           />
         </div>
         <div className="p-field">
-          <label htmlFor="item">Extra Images</label>
+          <label className="text-warning" htmlFor="item">Extra Images</label>
           <InputText
             required
             id="extras"
@@ -266,7 +266,7 @@ const AddProduct = ({ currentSeller }) => {
           />
         </div>
         <div className="p-field">
-          <label htmlFor="seller">Seller</label>
+          <label className="text-warning" htmlFor="seller">Seller</label><span className="text-danger"> *</span>
           <InputText
             id="seller"
             readOnly
@@ -277,7 +277,7 @@ const AddProduct = ({ currentSeller }) => {
           />
         </div>
         <div className="p-field">
-          <label htmlFor="weight">Weight (kg)</label>
+          <label className="text-warning" htmlFor="weight">Weight (kg)</label><span className="text-danger"> *</span>
           <InputText
             id="weight"
             type="number"
@@ -288,7 +288,7 @@ const AddProduct = ({ currentSeller }) => {
           />
         </div>
         <div className="p-field">
-          <label htmlFor="seller">Item Location</label>
+          <label className="text-warning" htmlFor="seller">Item Location</label><span className="text-danger"> *</span>
           <InputText
             id="location"
             value={newProduct.location}
@@ -299,7 +299,7 @@ const AddProduct = ({ currentSeller }) => {
           />
         </div>
         <div className="p-field">
-          <label htmlFor="gender">Gender</label> <span>(Optional)</span>
+          <label className="text-warning" htmlFor="gender">Gender</label> <span>(Optional)</span>
           <Dropdown
             id="gender"
             required
@@ -310,7 +310,7 @@ const AddProduct = ({ currentSeller }) => {
           />
         </div>
         <div className="p-field">
-          <label htmlFor="size">Size</label>
+          <label className="text-warning" htmlFor="size">Size</label><span className="text-danger"> *</span>
           <Dropdown
             id="size"
             required
@@ -321,7 +321,7 @@ const AddProduct = ({ currentSeller }) => {
           />
         </div>
         <div className="p-field">
-          <label htmlFor="discount">Discount % </label> <span>(Optional)</span>
+          <label className="text-warning" htmlFor="discount">Discount % </label> <span>(Optional)</span>
           <InputText
             id="discount"
             value={newProduct.discount}
