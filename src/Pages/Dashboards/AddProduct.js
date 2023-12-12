@@ -84,7 +84,6 @@ const AddProduct = ({ currentSeller }) => {
     } else {
       setSizeOptions([]);
     }
-
   };
 
   const handleImageUpload = async (e) => {
@@ -103,18 +102,43 @@ const AddProduct = ({ currentSeller }) => {
     }
   };
 
+  // const handleExtraImageUpload = async (e) => {
+  //   const file = e.target.files[0];
+  //   const storageRef = ref(storage, `images/${file.name}`);
+  //   try {
+  //     await uploadBytes(storageRef, file);
+  //     const downloadURL = await getDownloadURL(storageRef);
+  //     setExtraImages([...extraImages, downloadURL]); // Append the extra image to the array
+  //   } catch (error) {
+  //     toastRef.current.show({
+  //       severity: "error",
+  //       summary: "Error uploading extra image:",
+  //       detail: error.message,
+  //     });
+  //   }
+  // };
+
   const handleExtraImageUpload = async (e) => {
-    const file = e.target.files[0];
-    const storageRef = ref(storage, `images/${file.name}`);
+    const files = e.target.files;
+    const uploadPromises = Array.from(files).map(async (file) => {
+      const storageRef = ref(storage, `images/${file.name}`);
+      try {
+        await uploadBytes(storageRef, file);
+        return getDownloadURL(storageRef);
+      } catch (error) {
+        // Handle errors during upload
+        return Promise.reject(error.message);
+      }
+    });
+
     try {
-      await uploadBytes(storageRef, file);
-      const downloadURL = await getDownloadURL(storageRef);
-      setExtraImages([...extraImages, downloadURL]); // Append the extra image to the array
+      const downloadURLs = await Promise.all(uploadPromises);
+      setExtraImages([...extraImages, ...downloadURLs]); // Append the extra image URLs to the array
     } catch (error) {
       toastRef.current.show({
         severity: "error",
         summary: "Error uploading extra image:",
-        detail: error.message,
+        detail: error,
       });
     }
   };
@@ -139,7 +163,7 @@ const AddProduct = ({ currentSeller }) => {
 
     const productData = {
       ...newProduct,
-      extraImages: extraImages, // Add the array of extra images to the product data
+      extras: extraImages, // Add the array of extra images to the product data
     };
 
     try {
@@ -185,7 +209,10 @@ const AddProduct = ({ currentSeller }) => {
       <h2>Add a New Product</h2>
       <div className="p-fluid pr-5">
         <div className="p-field">
-          <label className="text-warning" htmlFor="title">Name of Product</label><span className="text-danger"> *</span>
+          <label className="text-warning" htmlFor="title">
+            Name of Product
+          </label>
+          <span className="text-danger"> *</span>
           <InputText
             required
             id="title"
@@ -196,7 +223,10 @@ const AddProduct = ({ currentSeller }) => {
           />
         </div>
         <div className="p-field">
-          <label className="text-warning" htmlFor="title">Description of Product</label><span className="text-danger"> *</span>
+          <label className="text-warning" htmlFor="title">
+            Description of Product
+          </label>
+          <span className="text-danger"> *</span>
           <InputText
             required
             id="title"
@@ -207,7 +237,10 @@ const AddProduct = ({ currentSeller }) => {
           />
         </div>
         <div className="p-field">
-          <label className="text-warning" htmlFor="category">Category</label><span className="text-danger"> *</span>
+          <label className="text-warning" htmlFor="category">
+            Category
+          </label>
+          <span className="text-danger"> *</span>
           <Dropdown
             required
             id="category"
@@ -218,7 +251,10 @@ const AddProduct = ({ currentSeller }) => {
           />
         </div>
         <div className="p-field">
-          <label className="text-warning" htmlFor="detailedCategory">Detailed Category</label><span className="text-danger"> *</span>
+          <label className="text-warning" htmlFor="detailedCategory">
+            Detailed Category
+          </label>
+          <span className="text-danger"> *</span>
           <Dropdown
             required
             id="detailedCategory"
@@ -232,7 +268,10 @@ const AddProduct = ({ currentSeller }) => {
           />
         </div>
         <div className="p-field">
-          <label className="text-warning" htmlFor="price">Price $</label><span className="text-danger"> *</span>
+          <label className="text-warning" htmlFor="price">
+            Price $
+          </label>
+          <span className="text-danger"> *</span>
           <InputText
             required
             type="number"
@@ -245,7 +284,10 @@ const AddProduct = ({ currentSeller }) => {
           />
         </div>
         <div className="p-field">
-          <label className="text-warning" htmlFor="item">Main Product Image</label><span className="text-danger"> *</span>
+          <label className="text-warning" htmlFor="item">
+            Main Product Image
+          </label>
+          <span className="text-danger"> *</span>
           <span>Strictly with white background and preferably png</span>
           <InputText
             required
@@ -255,7 +297,7 @@ const AddProduct = ({ currentSeller }) => {
             onChange={handleImageUpload}
           />
         </div>
-        <div className="p-field">
+        {/* <div className="p-field">
           <label className="text-warning" htmlFor="item">Extra Images</label>
           <InputText
             required
@@ -264,9 +306,45 @@ const AddProduct = ({ currentSeller }) => {
             accept="image/*"
             onChange={handleExtraImageUpload}
           />
+        </div> */}
+        <div className="p-field d-flex flex-column">
+          <label className="text-warning" htmlFor="extras">
+            Extra Images
+          </label>
+
+          <div className="d-flex">
+            <input
+              required
+              id="extras"
+              type="file"
+              accept="image/*"
+              onChange={handleExtraImageUpload}
+              multiple // This attribute allows selecting multiple files
+            />
+            {extraImages.length > 0 && (
+              <div>
+                <ul className="d-flex">
+                  {extraImages.map((image, index) => (
+                    <img
+                      className="mx-2"
+                      width={30}
+                      height={30}
+                      alt={image}
+                      src={image}
+                      key={index}
+                    />
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
         </div>
+
         <div className="p-field">
-          <label className="text-warning" htmlFor="seller">Seller</label><span className="text-danger"> *</span>
+          <label className="text-warning" htmlFor="seller">
+            Seller
+          </label>
+          <span className="text-danger"> *</span>
           <InputText
             id="seller"
             readOnly
@@ -277,7 +355,10 @@ const AddProduct = ({ currentSeller }) => {
           />
         </div>
         <div className="p-field">
-          <label className="text-warning" htmlFor="weight">Weight (kg)</label><span className="text-danger"> *</span>
+          <label className="text-warning" htmlFor="weight">
+            Weight (kg)
+          </label>
+          <span className="text-danger"> *</span>
           <InputText
             id="weight"
             type="number"
@@ -288,7 +369,10 @@ const AddProduct = ({ currentSeller }) => {
           />
         </div>
         <div className="p-field">
-          <label className="text-warning" htmlFor="seller">Item Location</label><span className="text-danger"> *</span>
+          <label className="text-warning" htmlFor="seller">
+            Item Location
+          </label>
+          <span className="text-danger"> *</span>
           <InputText
             id="location"
             value={newProduct.location}
@@ -299,7 +383,10 @@ const AddProduct = ({ currentSeller }) => {
           />
         </div>
         <div className="p-field">
-          <label className="text-warning" htmlFor="gender">Gender</label> <span>(Optional)</span>
+          <label className="text-warning" htmlFor="gender">
+            Gender
+          </label>{" "}
+          <span>(Optional)</span>
           <Dropdown
             id="gender"
             required
@@ -310,7 +397,10 @@ const AddProduct = ({ currentSeller }) => {
           />
         </div>
         <div className="p-field">
-          <label className="text-warning" htmlFor="size">Size</label><span className="text-danger"> *</span>
+          <label className="text-warning" htmlFor="size">
+            Size
+          </label>
+          <span className="text-danger"> *</span>
           <Dropdown
             id="size"
             required
@@ -321,7 +411,10 @@ const AddProduct = ({ currentSeller }) => {
           />
         </div>
         <div className="p-field">
-          <label className="text-warning" htmlFor="discount">Discount % </label> <span>(Optional)</span>
+          <label className="text-warning" htmlFor="discount">
+            Discount %{" "}
+          </label>{" "}
+          <span>(Optional)</span>
           <InputText
             id="discount"
             value={newProduct.discount}
