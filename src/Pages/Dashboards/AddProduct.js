@@ -6,7 +6,8 @@ import ProductsDataService from "../../Services/products.services";
 import { allCategory, categoryFilter } from "../../Data/categoryList";
 import { Toast } from "primereact/toast";
 import { storage } from "../../firebase";
-import { ref, uploadBytes, getDownloadURL } from "@firebase/storage";
+import { ref, uploadBytes, getDownloadURL, deleteObject } from "@firebase/storage";
+import { Badge } from "primereact/badge";
 
 const AddProduct = ({ currentSeller }) => {
   const [newProduct, setNewProduct] = useState({
@@ -117,6 +118,37 @@ const AddProduct = ({ currentSeller }) => {
   //     });
   //   }
   // };
+
+  // const handleDeleteImage = (index) => {
+  //   const updatedImages = [...extraImages];
+  //   updatedImages.splice(index, 1);
+  //   setExtraImages(updatedImages);
+  // };
+
+
+const handleDeleteImage = async (index) => {
+  try {
+    const imageName = extraImages[index].split('%2F').pop().split('?')[0];
+
+    // Create a reference to the file to delete
+    const imageRef = ref(storage, `images/${imageName}`);
+
+    // Delete the file
+    await deleteObject(imageRef);
+
+    // Update state to remove the deleted image
+    const updatedImages = extraImages.filter((image, i) => i !== index);
+    setExtraImages(updatedImages);
+  } catch (error) {
+    toastRef.current.show({
+      severity: "error",
+      summary: "Error deleting image:",
+      detail: error.message,
+    });
+  }
+};
+
+  
 
   const handleExtraImageUpload = async (e) => {
     const files = e.target.files;
@@ -308,37 +340,45 @@ const AddProduct = ({ currentSeller }) => {
           />
         </div> */}
         <div className="p-field d-flex flex-column">
-          <label className="text-warning" htmlFor="extras">
-            Extra Images
-          </label>
+      <label className="text-warning" htmlFor="extras">
+        Extra Images
+      </label>
 
-          <div className="d-flex">
-            <input
-              required
-              id="extras"
-              type="file"
-              accept="image/*"
-              onChange={handleExtraImageUpload}
-              multiple // This attribute allows selecting multiple files
-            />
-            {extraImages.length > 0 && (
-              <div>
-                <ul className="d-flex">
-                  {extraImages.map((image, index) => (
-                    <img
-                      className="mx-2"
-                      width={30}
-                      height={30}
-                      alt={image}
-                      src={image}
-                      key={index}
-                    />
-                  ))}
-                </ul>
-              </div>
-            )}
+      <div className="d-flex">
+        <input
+          required
+          id="extras"
+          type="file"
+          accept="image/*"
+          onChange={handleExtraImageUpload}
+          multiple // This attribute allows selecting multiple files
+        />
+        {extraImages.length > 0 && (
+          <div>
+            <ul className="d-flex">
+              {extraImages.map((image, index) => (
+                <div key={index} className="position-relative">
+                  <img
+                    className="mx-2 rounded"
+                    width={40}
+                    height={40}
+                    alt={image}
+                    src={image}
+                  />
+                  <Badge
+                    value="X"
+                    severity="danger"
+                    className="p-badge-sm p-overlay-badge position-absolute top-0 end-0"
+                    style={{scale: "0.8", cursor: "pointer"}}
+                    onClick={() => handleDeleteImage(index)}
+                  />
+                </div>
+              ))}
+            </ul>
           </div>
-        </div>
+        )}
+      </div>
+    </div>
 
         <div className="p-field">
           <label className="text-warning" htmlFor="seller">
