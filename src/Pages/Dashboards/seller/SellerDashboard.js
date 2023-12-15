@@ -7,10 +7,12 @@ import Home from "./Home";
 import SideBar from "../Sidebar";
 import AddProduct from "../AddProduct";
 import { useSelector } from "react-redux";
+import PackageStickers from "../PackageStickers";
 
 const sellerSidebarItems = [
   { label: "Home" },
   { label: "Add A New Product" },
+  { label: "Package Stickers" },
 ];
 
 
@@ -40,6 +42,9 @@ const SellerDashboard = () => {
           <TabPanel header="Add A New Product">
             <AddProduct currentSeller={sellerCompany} sellerCountry={sellerCountry}/>
           </TabPanel>
+          <TabPanel header="Package Stickers">
+              <PackageStickers/>
+            </TabPanel>
         </TabView>
       </div>
     </div>

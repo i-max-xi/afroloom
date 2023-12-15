@@ -7,11 +7,13 @@ import AllSellers from "./AllSellers";
 import AddProduct from "../AddProduct";
 import AddDeliveryService from "../AddDeliveryService";
 import { useSelector } from "react-redux";
+import PackageStickers from "../PackageStickers";
 
 const adminSidebarItems = [
   { label: "Home" },
   { label: "All Sellers" },
   { label: "Add A New Product" },
+  { label: "Package Stickers" },
   { label: "Add A New Delivery Service" },
 ];
 
@@ -49,6 +51,9 @@ const AdminDashboard = () => {
             </TabPanel>
             <TabPanel header="Add A New Delivery Service">
               <AddDeliveryService/>
+            </TabPanel>
+            <TabPanel header="Package Stickers">
+              <PackageStickers/>
             </TabPanel>
           </TabView>
         </div>
