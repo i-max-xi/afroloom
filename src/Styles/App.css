@@ -1,3 +1,6 @@
+:root {
+  overflow-x: hidden;
+}
 .allBg {
   background-color: rgba(197, 195, 195, 0.165);
 }
@@ -137,11 +140,11 @@
 
 /* CAROUSEL */
 .custom-carousel{
-  transform: scale(1.07) translateX(1rem);
+  transform: translateX(0.5rem);
 }
-.custom-carousel .p-carousel-indicators {
+/* .custom-carousel .p-carousel-indicators {
     transform: translateY(-2rem);
-  }
+  } */
 
   .carousel-indicators {
   height: 10px;

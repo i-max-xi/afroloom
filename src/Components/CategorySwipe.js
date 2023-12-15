@@ -101,14 +101,15 @@ export const CategoryTemplate = ({
       style={{ color: selectedColor }}
     >
       <div
-        className="text-center px-3"
+        className="text-center"
         style={{ width: width, margin: margin }}
       >
         <div>
           <img
             src={image}
             alt={name}
-            className="shadow-2 rounded-circle w-50 mt-2"
+            width="35%"
+            className="shadow-2 rounded-circle mt-2"
           />
         </div>
         <div>
