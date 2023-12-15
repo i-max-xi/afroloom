@@ -104,7 +104,7 @@ const Footer = () => {
                     </p>
                     <p>
                       <Link to="/contact" className="text-reset">
-                        Contact Us
+                        Contact Us / <br />Report an issue
                       </Link>
                     </p>
                   </div>
