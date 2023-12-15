@@ -281,10 +281,13 @@ const AddProduct = ({ currentSeller, sellerCountry }) => {
 
     setIsUploading(true); // Set the uploading state to true when uploading starts
 
+    const randomRating = Math.floor(Math.random() * 5) + 1;
+
     const productData = {
       ...newProduct,
       extras: extraImages, // Add the array of extra images to the product data
       createdAt: Timestamp.fromMillis(Date.now()), // Convert to Firebase Timestamp
+      rating: randomRating
     };
 
     try {
