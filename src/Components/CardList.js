@@ -13,7 +13,7 @@ import { useDispatch } from "react-redux";
 import { addItem } from "../Redux/store";
 import SearchFilters from "./SearchFilters";
 import { allCategory, categoryFilter } from "../Data/categoryList";
-import countryArr from "../Data/CountryArr";
+import countryArr, { countryFlags } from "../Data/CountryArr";
 import { useSelector } from "react-redux";
 // import AdGirl from "../Assets/Ads/portraitgirl.JPG";
 // import AdGuy2 from "../Assets/Ads/portraitguy2.JPG";
@@ -34,7 +34,8 @@ export const Card = ({
   Button,
   linkless,
   weight,
-  seller
+  seller,
+  country
 }) => {
   // Toastify
   const toast = useRef(null);
@@ -85,6 +86,9 @@ export const Card = ({
     discountedPrice = (1 - discountPercentage) * price;
   }
 
+  const flagImage = countryFlags[country] || ''; // Use flag image URL based on the country
+
+
   return (
     <div className="card" data-aos="fade-up">
       <Toast ref={toast} />
@@ -116,7 +120,7 @@ export const Card = ({
             <span className="mx-1" style={{ fontSize: "0.8rem" }}>
               <img
                 width="9%"
-                src={flag}
+                src={flagImage}
                 alt="flag"
                 style={{ float: "right" }}
               />
@@ -467,6 +471,7 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
                 linkless={product.linkless}
                 weight={product.weight}
                 seller={product.seller}
+                country={product.country}
               />
             </div>
 
