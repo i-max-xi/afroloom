@@ -35,7 +35,7 @@ export const Card = ({
   linkless,
   weight,
   seller,
-  country
+  country,
 }) => {
   // Toastify
   const toast = useRef(null);
@@ -59,7 +59,7 @@ export const Card = ({
         item,
         price: discountedPrice ? discountedPrice : price,
         weight,
-        seller
+        seller,
       })
     );
     show();
@@ -86,8 +86,7 @@ export const Card = ({
     discountedPrice = (1 - discountPercentage) * price;
   }
 
-  const flagImage = countryFlags[country] || ''; // Use flag image URL based on the country
-
+  const flagImage = countryFlags[country] || ""; // Use flag image URL based on the country
 
   return (
     <div className="card" data-aos="fade-up">
@@ -134,17 +133,23 @@ export const Card = ({
               <>
                 <div>
                   <span className="original-price">
-                    {currencySymbol}{(currencyFactor * price).toFixed(2)}
+                    {currencySymbol}
+                    {(currencyFactor * price).toFixed(2)}
                   </span>
                   <span className="discount-off"> {discount}% off</span>
                 </div>
                 <span className="discounted-price">
-                {currencySymbol}{(currencyFactor * discountedPrice).toFixed(2)}
+                  {currencySymbol}
+                  {(currencyFactor * discountedPrice).toFixed(2)}
                 </span>
               </>
             ) : (
               // If no discount, display the regular price
-              `${currencySymbol}${(currencyFactor * price).toFixed(2)}`
+              // `${currencySymbol}${(currencyFactor * price).toFixed(2)}`
+              <div style={{marginBottom: '2.5rem'}}>
+                {currencySymbol}
+                {(currencyFactor * price).toFixed(2)}
+              </div>
             )}
           </h5>
 

@@ -48,13 +48,13 @@
   width: calc(25% - 20px); /* Adjust the width as needed */
   height: max-content;
   background-color: white;
+  transform: translateY(0.7rem);
 }
 
 .four-in-a-card {
   display: grid;
   grid-template-columns: repeat(2, 1fr); /* Two columns */
   background-color: white;
-
   /* grid-gap: 0.5rem; */
 }
 
@@ -67,7 +67,7 @@
   background-color: white;
 }
 
-.four-in-a-card h4 {
+.four-in-a-card h4 { 
   font-size: 12px;
   margin: 0;
 }
