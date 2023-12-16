@@ -12,7 +12,7 @@ const Fours = ({ items, headTitle, linkTo }) => {
             {items.map((item, index) => (
               <div className="item" key={index}>
                 <Link to={`/product/${item.id}`}>
-                  <img src={item.imageUrl} alt={item.title} width="90%" />
+                  <img src={item.imageUrl} alt={item.title} width="80%" />
                 </Link>
                 {item.title && <h4>{item.title}</h4>}
               </div>
