@@ -13,6 +13,7 @@ import Nav from "../Components/Nav";
 import { Dropdown } from "primereact/dropdown";
 import { AllDeliveries } from "../Data/DeliveryServiceData";
 import { Toast } from "primereact/toast";
+import ProductsDataService from '../Services/products.services';
 
 const Checkout = () => {
   const dispatch = useDispatch();
@@ -30,7 +31,8 @@ const Checkout = () => {
 
   const currencySymbol = useSelector((state) => state.currencySymbol.symbol);
   const currencyFactor = useSelector((state) => state.currencySymbol.factor);  
-  const currentOrders = useSelector((state) => state.user.currentUser?.orders);
+  const oldOrders = useSelector((state) => state.user.currentUser?.orders);
+  const user = useSelector((state) => state.user.currentUser);
   const isSignedIn = useSelector((state) => state.user.signedIn);
   const [showDecison, setshowDecision] = useState(!isSignedIn);
 
@@ -131,11 +133,16 @@ const Checkout = () => {
     text: "Place Order",
   };
 
+  console.log("new:", cartItems)
+  
+
   const onSuccess = (reference) => {
-    const updatedOrders = [...currentOrders, ...cartItems];
+    const updatedOrders = [...oldOrders, ...cartItems];
 
     // Dispatch action to update orders in the Redux state
     dispatch(updateOrders(updatedOrders));
+    ProductsDataService.updateUserOrders(user.id, updatedOrders);
+
 
     const userInfo = {
       firstName: firstName,

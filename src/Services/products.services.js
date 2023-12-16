@@ -85,19 +85,24 @@ class ProductsDataService {
     const querySnapshot = await getDocs(q);
     return querySnapshot.docs[0]; // Assuming there's at most one document with the given "id"
   };
-  updateBuyerOrders = async (buyerId, updatedOrders) => {
-    const buyerDoc = await this.getBuyerByField("id", buyerId); 
-    const buyerRef = doc(buyerCollectionRef, buyerDoc.id);
-    const currentBuyerData = buyerDoc.data();
 
-    // Assuming orders are stored within the buyer document under a field named "orders"
-    const updatedBuyerData = {
-      ...currentBuyerData,
-      orders: [...currentBuyerData.orders, ...updatedOrders], // Merge updated orders with existing orders
-    };
-
-    await updateDoc(buyerRef, updatedBuyerData); // Update buyer document with updated orders
+  updateUserOrders = async (userId, updatedOrders) => {
+    try {
+      const user = await this.getBuyerByField("id", userId);
+  
+      if (user) {
+        const userDocRef = doc(db, "users", user.id);
+        await updateDoc(userDocRef, { orders: updatedOrders });
+        return true; // Indicate successful update
+      } else {
+        throw new Error("User document not found");
+      }
+    } catch (error) {
+      console.error("Error updating user orders:", error);
+      return false; // Indicate failure in updating
+    }
   };
+  
 
 
   // Delivery Service

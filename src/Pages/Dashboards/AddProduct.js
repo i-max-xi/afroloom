@@ -24,7 +24,7 @@ const AddProduct = ({ currentSeller, sellerCountry }) => {
     category: "", // Use a Dropdown to select from categoryFilter
     price: null,
     item: "", // URL of the item image
-    weight: "",
+    weight: null,
     location: "",
     seller: currentSeller,
     country: sellerCountry,
@@ -269,7 +269,7 @@ const AddProduct = ({ currentSeller, sellerCountry }) => {
       newProduct.price === null ||
       newProduct.item === "" ||
       newProduct.detailedCategory === "" ||
-      newProduct.weight === "" ||
+      newProduct.weight === null ||
       newProduct.location === ""
     ) {
       toastRef.current.show({
@@ -517,6 +517,8 @@ const AddProduct = ({ currentSeller, sellerCountry }) => {
           <InputText
             id="weight"
             value={newProduct.weight}
+            type="number"
+            required
             onChange={(e) =>
               setNewProduct({ ...newProduct, weight: e.target.value })
             }
