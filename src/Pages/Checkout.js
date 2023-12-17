@@ -13,7 +13,7 @@ import Nav from "../Components/Nav";
 import { Dropdown } from "primereact/dropdown";
 import { AllDeliveries } from "../Data/DeliveryServiceData";
 import { Toast } from "primereact/toast";
-import ProductsDataService from '../Services/products.services';
+import ProductsDataService from "../Services/products.services";
 
 const Checkout = () => {
   const dispatch = useDispatch();
@@ -30,7 +30,7 @@ const Checkout = () => {
   // const apartment = useSelector((state) => state.apartment);
 
   const currencySymbol = useSelector((state) => state.currencySymbol.symbol);
-  const currencyFactor = useSelector((state) => state.currencySymbol.factor);  
+  const currencyFactor = useSelector((state) => state.currencySymbol.factor);
   const oldOrders = useSelector((state) => state.user.currentUser?.orders);
   const user = useSelector((state) => state.user.currentUser);
   const isSignedIn = useSelector((state) => state.user.signedIn);
@@ -88,9 +88,7 @@ const Checkout = () => {
 
   // Total To Pay
   const [totalToPay] = useState(
-    cartItems
-      .reduce((total, item) => total + item.price, 0)
-      .toFixed(2)
+    cartItems.reduce((total, item) => total + item.price, 0).toFixed(2)
   );
 
   // Function to calculate the selected prices based on the selected delivery and dummy weight
@@ -98,11 +96,10 @@ const Checkout = () => {
     const pricePerKg = delivery.pricePerKg || 0;
     const expressExtra = delivery.expressExtra || 0;
 
-    const priceWithWeight = (pricePerKg * totalWeight).toFixed(
-      2
-    );
+    const priceWithWeight = (pricePerKg * totalWeight).toFixed(2);
     const priceWithWeightAndExtra = (
-      (pricePerKg * totalWeight + expressExtra)
+      pricePerKg * totalWeight +
+      expressExtra
     ).toFixed(2);
 
     return [priceWithWeight, priceWithWeightAndExtra];
@@ -118,7 +115,7 @@ const Checkout = () => {
   const selectedDeliveryPriceNumeric = parseFloat(selectedDeliveryPrice); // Convert to a number
 
   const amount = (totalToPayNumeric + selectedDeliveryPriceNumeric) * 100;
-    const email = emailAddress;
+  const email = emailAddress;
 
   const config = {
     reference: new Date().getTime().toString(),
@@ -133,8 +130,7 @@ const Checkout = () => {
     text: "Place Order",
   };
 
-  console.log("new:", cartItems)
-  
+  console.log("new:", cartItems);
 
   const onSuccess = (reference) => {
     const updatedOrders = [...oldOrders, ...cartItems];
@@ -143,6 +139,9 @@ const Checkout = () => {
     dispatch(updateOrders(updatedOrders));
     ProductsDataService.updateUserOrders(user.id, updatedOrders);
 
+    // Get an array of product IDs from cartItems (assuming 'id' is the property representing the product ID)
+    const productIdsToDelete = cartItems.map((item) => item.id);
+    ProductsDataService.deleteProducts(productIdsToDelete);
 
     const userInfo = {
       firstName: firstName,
@@ -416,9 +415,9 @@ const Checkout = () => {
                           )
                         }
                       />
-                      {`Regular:  ${currencySymbol} ${
-                        (calculatePrices(selectedDelivery)[0] * currencyFactor).toFixed(2)
-                      } - Within 5 working days`}
+                      {`Regular:  ${currencySymbol} ${(
+                        calculatePrices(selectedDelivery)[0] * currencyFactor
+                      ).toFixed(2)} - Within 5 working days`}
                     </label>
                   </div>
                 )}
@@ -439,9 +438,9 @@ const Checkout = () => {
                           )
                         }
                       />
-                      {`Express: ${currencySymbol} ${
-                        (calculatePrices(selectedDelivery)[1] * currencyFactor).toFixed(2)
-                      } - Within 3 working days`}
+                      {`Express: ${currencySymbol} ${(
+                        calculatePrices(selectedDelivery)[1] * currencyFactor
+                      ).toFixed(2)} - Within 3 working days`}
                     </label>
                   </div>
                 )}

@@ -33,6 +33,21 @@ class ProductsDataService {
     return deleteDoc(productDoc);
   };
 
+  deleteProducts = async (productIds) => {
+    try {
+      const deletionPromises = productIds.map(async (productId) => {
+        const productDoc = doc(db, "AllProducts", productId);
+        await deleteDoc(productDoc);
+      });
+
+      await Promise.all(deletionPromises);
+      return true; // Indicate successful deletion
+    } catch (error) {
+      console.error("Error deleting products from AllProducts:", error);
+      return false; // Indicate failure in deletion
+    }
+  };
+
   getAllProducts = () => {
     return getDocs(productCollectionRef);
   };
