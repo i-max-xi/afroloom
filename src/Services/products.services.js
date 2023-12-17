@@ -85,6 +85,17 @@ class ProductsDataService {
     return querySnapshot.docs[0]; // Assuming there's at most one document with the given "id"
   };
 
+  updateSellerApproval = async (sellerId, approvedStatus) => {
+    try {
+      const sellerDocRef = doc(db, "sellers", sellerId);
+      await updateDoc(sellerDocRef, { approved: approvedStatus });
+      return true; // Indicate successful update
+    } catch (error) {
+      console.error("Error updating seller approval status:", error);
+      return false; // Indicate failure in updating
+    }
+  };
+
 
 
   // user

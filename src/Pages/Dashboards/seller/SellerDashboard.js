@@ -1,101 +1,84 @@
-import React from "react";
+import React, { useState } from "react";
 import "../styles/Dashboard.css";
 import Nav from "../../../Components/Nav";
 import { TabPanel, TabView } from "primereact/tabview";
-import { useState } from "react";
-import Home from "./Home";
+import { useSelector } from "react-redux";
 import SideBar from "../Sidebar";
 import AddProduct from "../AddProduct";
-import { useSelector } from "react-redux";
 import PackageStickers from "../PackageStickers";
-
-const sellerSidebarItems = [
-  { label: "Home" },
-  { label: "Add A New Product" },
-  { label: "Package Stickers" },
-];
-
+import { Dialog } from "primereact/dialog";
+import { Link, useNavigate } from "react-router-dom";
+import Home from "./Home";
 
 const SellerDashboard = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
+  const navigate = useNavigate();
   const currentUser = useSelector((state) => state.user.currentUser);
   const welcomename = currentUser.firstName;
   const sellerCompany = currentUser.companyName;
-  const sellerCountry = currentUser.country
+  const sellerCountry = currentUser.country;
+  const sellerApproved = currentUser.approved;
+
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [showPopup, setShowPopup] = useState(!sellerApproved);
+
+
 
   return (
     <>
-    <Nav />
-    <div className="bg-white fs-3 p-3 text-bold">
-        Welcome <span style={{color: "orange"}}>{welcomename}!</span>{" "}
+      <Nav />
+      <div className="bg-white fs-3 p-3 text-bold">
+        Welcome <span style={{ color: "orange" }}>{welcomename}!</span>{" "}
       </div>
-    <div className="d-flex bg-white" style={{minHeight: '85vh'}}>
-      <SideBar items={sellerSidebarItems} setActiveIndex={setActiveIndex} />
-      <div className="dashboard w-75">
-        <TabView
-          activeIndex={activeIndex}
-          onTabChange={(e) => setActiveIndex(e.index)}
-        >
-          <TabPanel>
-            <Home currentSeller={sellerCompany}/>
-          </TabPanel>
-          <TabPanel header="Add A New Product">
-            <AddProduct currentSeller={sellerCompany} sellerCountry={sellerCountry}/>
-          </TabPanel>
-          <TabPanel header="Package Stickers">
-              <PackageStickers/>
-            </TabPanel>
-        </TabView>
+      <div className="d-flex bg-white" style={{ minHeight: "85vh" }}>
+        <SideBar
+          items={[
+            { label: "Home" },
+            { label: "Add A New Product" },
+            { label: "Package Stickers" },
+          ]}
+          setActiveIndex={setActiveIndex}
+        />
+        <div className="dashboard w-75">
+          {sellerApproved ? (
+            <TabView
+              activeIndex={activeIndex}
+              onTabChange={(e) => setActiveIndex(e.index)}
+            >
+              <TabPanel>
+                <Home currentSeller={sellerCompany} />
+              </TabPanel>
+              <TabPanel header="Add A New Product">
+                <AddProduct
+                  currentSeller={sellerCompany}
+                  sellerCountry={sellerCountry}
+                />
+              </TabPanel>
+              <TabPanel header="Package Stickers">
+                <PackageStickers />
+              </TabPanel>
+            </TabView>
+          ) : (
+            // Render dialog if seller is not approved
+            <Dialog
+              header="Access Denied"
+              visible={showPopup}
+              style={{ width: "40vw", height: "40vh", fontSize: "1.2rem" }}
+              onHide={() => {
+                navigate("/");
+                setShowPopup(false);
+              }}
+            >
+              <div>
+                <p>You need to be approved by admin to use the dashboard.</p>
+                <p>Approval occurs within 5 working days upon signing up</p>
+                <Link to="/">Back to Home</Link>
+              </div>
+            </Dialog>
+          )}
+        </div>
       </div>
-    </div>
-  </>
+    </>
   );
 };
 
 export default SellerDashboard;
-
-
-// import React, { useState } from "react";
-// import Nav from "../../../Components/Nav";
-// import { TabPanel, TabView } from "primereact/tabview";
-// import SideBar from "../Sidebar";
-// import Home from "./Home";
-// // import AllSellers from "./AllSellers";
-// import AddProduct from "../AddProduct";
-
-// const adminSidebarItems = [
-//   { label: "Home" },
-//   { label: "Add A New Product" },
-//   { label: "All Sellers" },
-// ];
-
-// const SellerDashboard = () => {
-//   const [activeIndex, setActiveIndex] = useState(0);
-
-//   return (
-//     <>
-//       <Nav />
-//       <div className="d-flex bg-white" style={{minHeight: '85vh'}}>
-//         <SideBar items={adminSidebarItems} setActiveIndex={setActiveIndex} />
-//         <div className="dashboard w-75">
-//           <TabView
-//             activeIndex={activeIndex}
-//             onTabChange={(e) => setActiveIndex(e.index)}
-//           >
-//             <TabPanel>
-//               <Home />
-//             </TabPanel>
-//             <TabPanel header="Add A New Product">
-//               <AddProduct />
-//             </TabPanel>
-//             <TabPanel header="All Sellers">
-//               {/* <AllSellers /> */}
-//             </TabPanel>
-//           </TabView>
-//         </div>
-//       </div>
-//     </>
-//   );
-// };
-
-// export default SellerDashboard;

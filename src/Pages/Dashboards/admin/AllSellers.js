@@ -63,6 +63,22 @@ const AllSellers = () => {
     }
   };
 
+  const approveSeller = async (id) => {
+    try {
+      await ProductsDataService.updateSellerApproval(id, true);
+      toastRef.current.show({
+        severity: "success",
+        summary: `Successfully approved seller`,
+      });
+      loadProducts();
+    } catch (error) {
+      toastRef.current.show({
+        severity: "error",
+        summary: `Error approving seller: ${error}`,
+      });
+    }
+  };
+
   return (
     <div>
       <Toast ref={toastRef} position="top-right" />
@@ -113,8 +129,8 @@ const AllSellers = () => {
           body={(rowData) => (
             <button
               className="btn btn-success"
-              // onClick={() => handleEditClick(rowData)}
-            >
+              onClick={() => approveSeller(rowData.id)}
+              >
               Approve
             </button>
           )}
