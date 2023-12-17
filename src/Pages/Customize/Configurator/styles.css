@@ -50,7 +50,8 @@ h1 {
 }
 
 .selected-border {
-  border: 3px solid orange !important;
+  border: 0.3rem solid orange !important;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Adding shadow effect */
 }
 
 .right-panel {

@@ -181,10 +181,10 @@ const ItemDetail = ({ match }) => {
             <h3 className="mb-3">{product.title}</h3>
             {/* <p className="mb-3">{product.description}</p> */}
             <hr />
-            <div className="d-flex">{stars}</div>
-            <div className="mb-3">
+            <div className="d-flex mb-3">{stars}</div>
+            {/* <div className="mb-3">
               {product.rating.toFixed(1)} ({product.reviews} reviews)
-            </div>
+            </div> */}
 
             <p className="h3">
               {product.discount ? (
@@ -232,9 +232,9 @@ const ItemDetail = ({ match }) => {
           <TabPanel header="Description">
             {product.description || "No description for this product"}
           </TabPanel>
-          <TabPanel header="Reviews">
+          {/* <TabPanel header="Reviews">
             {product.rating} reviews for this product
-          </TabPanel>
+          </TabPanel> */}
           <TabPanel header="Sold By">{product.seller} </TabPanel>
         </TabView>
       </div>
