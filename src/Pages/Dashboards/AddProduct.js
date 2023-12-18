@@ -432,7 +432,7 @@ const AddProduct = ({ currentSeller, sellerCountry }) => {
             type="number"
             id="price"
             value={newProduct.price}
-            placeholder="equivalent Ghana Cedi value... eg. 10"
+            placeholder="equivalent Ghana Cedi (₵) value... eg. 10"
             onChange={(e) =>
               setNewProduct({ ...newProduct, price: e.target.value })
             }
@@ -529,14 +529,6 @@ const AddProduct = ({ currentSeller, sellerCountry }) => {
             Item Location (City)
           </label>
           <span className="text-danger"> *</span>
-          {/* <InputText
-            id="location"
-            value={newProduct.location}
-            placeholder="Select specific city you have this item or closest city"
-            onChange={(e) =>
-              setNewProduct({ ...newProduct, location: e.target.value })
-            }
-          /> */}
           <Dropdown
             id="location"
             value={newProduct.location}
@@ -556,9 +548,6 @@ const AddProduct = ({ currentSeller, sellerCountry }) => {
             id="seller"
             readOnly
             value={newProduct.seller}
-            // onChange={(e) =>
-            //   setNewProduct({ ...newProduct, seller: e.target.value })
-            // }
           />
         </div>
         <div className="p-field">
@@ -570,9 +559,6 @@ const AddProduct = ({ currentSeller, sellerCountry }) => {
             id="country"
             readOnly
             value={newProduct.country}
-            // onChange={(e) =>
-            //   setNewProduct({ ...newProduct, seller: e.target.value })
-            // }
           />
         </div>
         <div className="p-field">

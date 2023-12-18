@@ -7,6 +7,8 @@ import { Button } from "primereact/button";
 import { Dialog } from "primereact/dialog";
 import { Toast } from "primereact/toast";
 import { useSelector } from "react-redux";
+import { locationOptions } from "../../../Data/SupplierAcceptedCities";
+import { Dropdown } from "primereact/dropdown";
 
 const Home = ({ currentSeller }) => {
   const toastRef = useRef(null);
@@ -174,47 +176,96 @@ const Home = ({ currentSeller }) => {
       >
         {selectedProduct && (
           <form onSubmit={handleEditSubmit}>
-            <div className="p-fluid">
-              <div className="p-field">
-                <label htmlFor="title">Title</label>
-                <input
-                  id="title"
-                  type="text"
-                  value={selectedProduct.title}
-                  onChange={(e) =>
-                    setSelectedProduct({
-                      ...selectedProduct,
-                      title: e.target.value,
-                    })
-                  }
-                  className="p-inputtext"
-                />
-              </div>
-              <div className="p-field">
-                <label htmlFor="price">Price</label>
-                <input
-                  id="price"
-                  type="number"
-                  value={selectedProduct.price}
-                  onChange={(e) =>
-                    setSelectedProduct({
-                      ...selectedProduct,
-                      price: e.target.value,
-                    })
-                  }
-                  className="p-inputtext"
-                />
-              </div>
-            </div>
-            <div className="p-mt-2">
-              <Button
-                label="Save Changes"
-                type="submit"
-                // onClick={handleEditSubmit}
-                className="p-button p-component"
+          <div className="p-fluid">
+            <div className="p-field">
+              <label htmlFor="title">Title</label>
+              <input
+                id="title"
+                type="text"
+                value={selectedProduct.title}
+                onChange={(e) =>
+                  setSelectedProduct({
+                    ...selectedProduct,
+                    title: e.target.value,
+                  })
+                }
+                className="p-inputtext"
               />
             </div>
-          </form>
+            <div className="p-field">
+              <label htmlFor="price">Price</label>
+              <input
+                id="price"
+                type="number"
+                value={selectedProduct.price}
+                placeholder="Ghana Cedi (₵) equivalent value... 10"
+                onChange={(e) =>
+                  setSelectedProduct({
+                    ...selectedProduct,
+                    price: parseFloat(e.target.value), // Convert input to a floating-point number
+                  })
+                }
+                className="p-inputtext"
+              />
+            </div>
+            <div className="p-field">
+              <label htmlFor="price">Discount %</label>
+              <input
+                id="discount"
+                type="number"
+                placeholder="eg. 10"
+                value={selectedProduct.discount}
+                onChange={(e) =>
+                  setSelectedProduct({
+                    ...selectedProduct,
+                    discount: parseFloat(e.target.value),
+                  })
+                }
+                className="p-inputtext"
+              />
+            </div>
+            <div className="p-field">
+              <label htmlFor="price">Weight (kg) </label>
+              <input
+                id="weight"
+                type="number"
+                placeholder="eg. 10"
+                value={selectedProduct.weight}
+                onChange={(e) =>
+                  setSelectedProduct({
+                    ...selectedProduct,
+                    weight: parseFloat(e.target.value),
+                  })
+                }
+                className="p-inputtext"
+              />
+            </div>
+           
+            <div className="p-field">
+              <label className="text-warning" htmlFor="seller">
+                Item Location (City)
+              </label>
+              <Dropdown
+                id="location"
+                value={selectedProduct.location}
+                options={locationOptions}
+                onChange={(e) =>
+                  setSelectedProduct({
+                    ...selectedProduct,
+                    location: e.value,
+                  })                  }
+                placeholder="Select specific city you have this item or closest city"
+              />
+            </div>
+          </div>
+          <div className="m-3">
+            <Button
+              label="Save Changes"
+              type="submit"
+              className="p-button p-component"
+            />
+          </div>
+        </form>
         )}
       </Dialog>
     </div>
