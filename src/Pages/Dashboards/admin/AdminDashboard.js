@@ -8,13 +8,15 @@ import AddProduct from "../AddProduct";
 import AddDeliveryService from "../AddDeliveryService";
 import { useSelector } from "react-redux";
 import PackageStickers from "../PackageStickers";
+import AddPackageSticker from "./AddPackageSticker";
 
 const adminSidebarItems = [
   { label: "Home" },
   { label: "All Sellers" },
   { label: "Add A New Product" },
-  { label: "Package Stickers" },
   { label: "Add A New Delivery Service" },
+  { label: "Add New Package Sticker" },
+  { label: "Package Stickers" },
 ];
 
 const AdminDashboard = () => {
@@ -23,18 +25,20 @@ const AdminDashboard = () => {
   const currentUser = useSelector((state) => state.user.currentUser);
   const welcomename = currentUser.firstName;
 
-
   const adminSeller = "Admin";
-
 
   return (
     <>
       <Nav />
       <div className="bg-white fs-3 p-3 text-bold">
-        Welcome <span style={{color: "orange"}}>{welcomename}!</span>
+        Welcome <span style={{ color: "orange" }}>{welcomename}!</span>
       </div>
-      <div className="d-flex bg-white" style={{minHeight: '85vh'}}>
-        <SideBar isAdmin="Admin" items={adminSidebarItems} setActiveIndex={setActiveIndex} />
+      <div className="d-flex bg-white" style={{ minHeight: "85vh" }}>
+        <SideBar
+          isAdmin="Admin"
+          items={adminSidebarItems}
+          setActiveIndex={setActiveIndex}
+        />
         <div className="dashboard w-75">
           <TabView
             activeIndex={activeIndex}
@@ -47,13 +51,16 @@ const AdminDashboard = () => {
               <AllSellers />
             </TabPanel>
             <TabPanel header="Add A New Product">
-              <AddProduct currentSeller={adminSeller} sellerCountry="Ghana"/>
+              <AddProduct currentSeller={adminSeller} sellerCountry="Ghana" />
             </TabPanel>
             <TabPanel header="Add A New Delivery Service">
-              <AddDeliveryService/>
+              <AddDeliveryService />
+            </TabPanel>
+            <TabPanel header="Add New Package Sticker">
+              <AddPackageSticker />
             </TabPanel>
             <TabPanel header="Package Stickers">
-              <PackageStickers/>
+              <PackageStickers />
             </TabPanel>
           </TabView>
         </div>
