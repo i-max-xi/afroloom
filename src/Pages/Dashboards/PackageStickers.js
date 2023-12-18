@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import { ref, listAll, getDownloadURL, deleteObject } from '@firebase/storage';
-import { storage } from '../../firebase';
+import React, { useEffect, useState } from "react";
+import { ref, listAll, getDownloadURL, deleteObject } from "@firebase/storage";
+import { storage } from "../../firebase";
 
-const PackageStickers = () => {
+const PackageStickers = ({toastRef}) => {
   const [stickers, setStickers] = useState([]);
 
   useEffect(() => {
     const fetchStickers = async () => {
       try {
         // Get a reference to the stickers folder
-        const stickersRef = ref(storage, 'stickers');
+        const stickersRef = ref(storage, "stickers");
 
         // Get a list of all the items in the folder
         const stickersList = await listAll(stickersRef);
@@ -23,7 +23,7 @@ const PackageStickers = () => {
 
         setStickers(stickerURLs);
       } catch (error) {
-        console.error('Error fetching stickers:', error);
+        console.error("Error fetching stickers:", error);
       }
     };
 
@@ -32,18 +32,29 @@ const PackageStickers = () => {
 
   const handleDownload = async (index) => {
     try {
-      // Create a reference to the sticker that needs to be downloaded
-      const stickerRef = ref(storage, `stickers/sticker${index + 1}.png`);
-
-      // Get the download URL of the sticker
-      const downloadURL = await getDownloadURL(stickerRef);
-
-      // Simulate a download by opening the sticker URL in a new tab
-      window.open(downloadURL);
+      const downloadURL = stickers[index];
+  
+      // Create an anchor element
+      const link = document.createElement("a");
+      link.href = downloadURL;
+      link.target = "_blank";
+      link.download = `sticker_${index}.png`; // Set the desired file name
+  
+      // Simulate a click on the anchor to trigger the download
+      document.body.appendChild(link);
+      link.click();
+  
+      // Clean up after download
+      document.body.removeChild(link);
     } catch (error) {
-      console.error('Error downloading sticker:', error);
+      toastRef.current.show({
+        severity: "error",
+        summary: "Error downloading sticker:",
+        detail: error.message,
+      });
     }
   };
+  
 
   // const handleDelete = async (index) => {
   //   try {
@@ -62,14 +73,22 @@ const PackageStickers = () => {
   // };
 
   return (
-    <div>
-      {stickers.map((sticker, index) => (
-        <div key={index}>
-          <img src={sticker} alt={`Sticker ${index + 1}`} />
-          <button onClick={() => handleDownload(index)}>Download</button>
-          {/* <button onClick={() => handleDelete(index)}>Delete</button> */}
-        </div>
-      ))}
+    <div className="mt-4">
+      <h2>Uploaded Stickers</h2>
+      <div className="d-flex flex-wrap">
+        {stickers.map((sticker, index) => (
+          <div key={index} className="d-flex flex-column m-2">
+            <img
+              className="rounded"
+              width={100}
+              height={100}
+              alt={`Sticker ${index}`}
+              src={sticker}
+            />
+            <button className="btn btn-info" onClick={() => handleDownload(index)}>Download</button>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
