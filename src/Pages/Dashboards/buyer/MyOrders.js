@@ -8,12 +8,11 @@ const MyOrders = () => {
   // const toastRef = useRef(null);
 
   const products = useSelector((state) => state.user.currentUser.orders);
-  // const [products, setProducts] = useState([]);
-  // const [selectedProduct, setSelectedProduct] = useState(null);
+  const currencySymbol = useSelector((state) => state.currencySymbol.symbol);
+  const currencyFactor = useSelector((state) => state.currencySymbol.factor);
 
   const [filteredProducts, setFilteredProducts] = useState([]); // For filtered products
   const [searchTerm, setSearchTerm] = useState(""); // For search input
-
 
   // Function to filter products based on the search term
   const filterProducts = () => {
@@ -27,7 +26,6 @@ const MyOrders = () => {
   const handleSearchChange = (e) => {
     setSearchTerm(e.target.value);
   };
-
 
   // const deleteProduct = async (id) => {
   //   try {
@@ -61,7 +59,11 @@ const MyOrders = () => {
         />
         <Button icon="pi pi-search" onClick={filterProducts} />
       </div>
-      <DataTable value={filteredProducts.length !== 0 ? filteredProducts : products} paginator rows={10}>
+      <DataTable
+        value={filteredProducts.length !== 0 ? filteredProducts : products}
+        paginator
+        rows={10}
+      >
         <Column
           field="item"
           header="Image"
@@ -74,11 +76,12 @@ const MyOrders = () => {
           )}
         />
         <Column field="title" header="Title" />
-        <Column field="price" header="Price ($)" />
-        {/* <Column field="" header="Status" /> */}
+        <Column
+          field="price"
+          header={`Price ${currencySymbol}`}
+          body={(rowData) => `${(rowData.price * currencyFactor).toFixed(2)}`}
+        />
       </DataTable>
-
-
     </div>
   );
 };

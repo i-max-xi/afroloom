@@ -6,8 +6,9 @@ import ProductsDataService from "../../../Services/products.services";
 import { Button } from "primereact/button";
 import { Dialog } from "primereact/dialog";
 import { Toast } from "primereact/toast";
+import { useSelector } from "react-redux";
 
-const Home = ({currentSeller}) => {
+const Home = ({ currentSeller }) => {
   const toastRef = useRef(null);
 
   const [products, setProducts] = useState([]);
@@ -16,12 +17,15 @@ const Home = ({currentSeller}) => {
 
   const [filteredProducts, setFilteredProducts] = useState([]); // For filtered products
   const [searchTerm, setSearchTerm] = useState(""); // For search input
-
-
+  const currencySymbol = useSelector((state) => state.currencySymbol.symbol);
+  const currencyFactor = useSelector((state) => state.currencySymbol.factor);
 
   const loadProducts = async () => {
     try {
-      const response = await ProductsDataService.getProductByField("seller", currentSeller);
+      const response = await ProductsDataService.getProductByField(
+        "seller",
+        currentSeller
+      );
       const productData = response.map((doc) => {
         const data = doc.data();
         data.id = doc.id;
@@ -35,7 +39,7 @@ const Home = ({currentSeller}) => {
 
   useEffect(() => {
     loadProducts();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // Function to filter products based on the search term
@@ -118,7 +122,11 @@ const Home = ({currentSeller}) => {
         />
         <Button icon="pi pi-search" onClick={filterProducts} />
       </div>
-      <DataTable value={filteredProducts.length !== 0 ? filteredProducts : products} paginator rows={10}>
+      <DataTable
+        value={filteredProducts.length !== 0 ? filteredProducts : products}
+        paginator
+        rows={10}
+      >
         <Column
           field="item"
           header="Image"
@@ -131,7 +139,11 @@ const Home = ({currentSeller}) => {
           )}
         />
         <Column field="title" header="Title" />
-        <Column field="price" header="Price ($)" />
+        <Column
+          field="price"
+          header={`Price ${currencySymbol}`}
+          body={(rowData) => `${(rowData.price * currencyFactor).toFixed(2)}`}
+        />
         <Column
           body={(rowData) => (
             <button

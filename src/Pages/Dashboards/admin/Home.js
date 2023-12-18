@@ -6,9 +6,12 @@ import ProductsDataService from "../../../Services/products.services";
 import { Button } from "primereact/button";
 import { Dialog } from "primereact/dialog";
 import { Toast } from "primereact/toast";
+import { useSelector } from "react-redux";
 
 const Home = () => {
   const toastRef = useRef(null);
+  const currencySymbol = useSelector((state) => state.currencySymbol.symbol);
+  const currencyFactor = useSelector((state) => state.currencySymbol.factor);
 
   const [products, setProducts] = useState([]);
   const [selectedProduct, setSelectedProduct] = useState(null);
@@ -34,7 +37,8 @@ const Home = () => {
     } catch (error) {
       toastRef.current.show({
         severity: "error",
-        summary: "Error loading products:", error,
+        summary: "Error loading products:",
+        error,
       });
     }
   };
@@ -119,7 +123,11 @@ const Home = () => {
         />
         <Button icon="pi pi-search" onClick={filterProducts} />
       </div>
-      <DataTable value={filteredProducts.length !== 0 ? filteredProducts : products} paginator rows={10}>
+      <DataTable
+        value={filteredProducts.length !== 0 ? filteredProducts : products}
+        paginator
+        rows={10}
+      >
         <Column
           field="item"
           header="Image"
@@ -132,7 +140,13 @@ const Home = () => {
           )}
         />
         <Column field="title" header="Title" />
-        <Column field="price" header="Price ($)" />
+        <Column
+          field="price"
+          header={`Price ${currencySymbol}`}
+          body={(rowData) =>
+            `${(rowData.price * currencyFactor).toFixed(2)}`
+          }
+        />
         <Column
           body={(rowData) => (
             <button
