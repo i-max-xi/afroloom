@@ -60,7 +60,7 @@ const AdminDashboard = () => {
               <AddPackageSticker />
             </TabPanel>
             <TabPanel header="Package Stickers">
-              <PackageStickers />
+              <PackageStickers isAdmin={true}/>
             </TabPanel>
           </TabView>
         </div>

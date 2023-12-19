@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { ref, listAll, getDownloadURL, deleteObject } from "@firebase/storage";
 import { storage } from "../../firebase";
 
-const PackageStickers = ({toastRef}) => {
+const PackageStickers = ({ toastRef, isAdmin }) => {
   const [stickers, setStickers] = useState([]);
 
   useEffect(() => {
@@ -54,23 +54,22 @@ const PackageStickers = ({toastRef}) => {
       });
     }
   };
-  
 
-  // const handleDelete = async (index) => {
-  //   try {
-  //     // Create a reference to the sticker that needs to be deleted
-  //     const stickerRef = ref(storage, `stickers/sticker${index + 1}.png`);
+  const handleDelete = async (index) => {
+    try {
+      // Create a reference to the sticker that needs to be deleted
+      const stickerRef = ref(storage, `stickers/sticker${index + 1}.png`);
 
-  //     // Delete the sticker from Firebase Storage
-  //     await deleteObject(stickerRef);
+      // Delete the sticker from Firebase Storage
+      await deleteObject(stickerRef);
 
-  //     // Remove the deleted sticker from the state
-  //     const updatedStickers = stickers.filter((_, i) => i !== index);
-  //     setStickers(updatedStickers);
-  //   } catch (error) {
-  //     console.error('Error deleting sticker:', error);
-  //   }
-  // };
+      // Remove the deleted sticker from the state
+      const updatedStickers = stickers.filter((_, i) => i !== index);
+      setStickers(updatedStickers);
+    } catch (error) {
+      console.error("Error deleting sticker:", error);
+    }
+  };
 
   return (
     <div className="mt-4">
@@ -85,7 +84,20 @@ const PackageStickers = ({toastRef}) => {
               alt={`Sticker ${index}`}
               src={sticker}
             />
-            <button className="btn btn-info" onClick={() => handleDownload(index)}>Download</button>
+            <button
+              className="btn btn-info mt-1"
+              onClick={() => handleDownload(index)}
+            >
+              Download
+            </button>
+            {isAdmin && (
+              <button
+                className="btn btn-sm btn-danger mt-2"
+                onClick={() => handleDelete(index)}
+              >
+                Delete
+              </button>
+            )}
           </div>
         ))}
       </div>

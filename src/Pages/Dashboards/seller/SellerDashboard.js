@@ -54,7 +54,7 @@ const SellerDashboard = () => {
                 />
               </TabPanel>
               <TabPanel header="Package Stickers">
-                <PackageStickers />
+                <PackageStickers isAdmin={false}/>
               </TabPanel>
             </TabView>
           ) : (
