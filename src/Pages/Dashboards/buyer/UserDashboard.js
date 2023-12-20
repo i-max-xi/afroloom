@@ -22,7 +22,7 @@ const UserDashboard = () => {
       <div className="bg-white fs-3 p-3 text-bold">
         Welcome <span style={{color: "orange"}}>{welcomename}!</span>{" "}
       </div>
-      <div className="d-flex bg-white" style={{ height: "85vh" }}>
+      <div className="d-flex bg-white" >
         <SideBar items={userSidebarItems} setActiveIndex={setActiveIndex} />
         <div className="dashboard w-75">
           <TabView
