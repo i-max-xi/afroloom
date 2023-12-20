@@ -159,7 +159,7 @@ const ConfiguratorUnisex = () => {
 
   // const [textPosition] = useState([-0.65, -0.15, 0.05]); // Initialize text position
   const [textColor, setTextColor] = useState("black");
-  const [fontSize, setFontSize] = useState(16);
+  const [fontSize, setFontSize] = useState(14);
 
   const increaseFontSize = () => {
     setFontSize((prevSize) => prevSize + 1); // Increase font size by 0.01
@@ -820,7 +820,7 @@ const ConfiguratorUnisex = () => {
                   </div>
 
                   {selectedClothing.name === "Sash" && (
-                    <div className="p-2 w-100">
+                    <div className="px-2 pt-2 w-100">
                       {/* test text inprinting */}
                       <h5>Imprint Text on model</h5>
                       <div className="d-flex justify-content-between">

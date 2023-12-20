@@ -138,7 +138,7 @@ h1 {
   /* justify-content: space-between; */
   width: 70%;
   max-width: 400px;
-  margin: 0 auto;
+  /* margin: 0 auto; */
   transform: translateX(-1.5rem);
 }
 
@@ -153,7 +153,7 @@ h1 {
   width: 2.3rem;
   cursor: pointer;
   transition: 0.1s ease-in;
-  margin-bottom: 0.1rem;
+  /* margin-bottom: 0.1rem; */
   align-self: center;
 }
 

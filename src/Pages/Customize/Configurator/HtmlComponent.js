@@ -23,10 +23,10 @@ const HtmlComponent = ({
         style={{
           position: "absolute",
           top: -20,
-          left: 8,
+          left: 15,
           color: textColor,
           fontSize: textSize,
-          width: '5.8rem',
+          width: '5.4rem',
           height: '12rem',
           textAlign: "center",
           wordWrap: 'break-word', // Enable word wrapping for long words
@@ -43,12 +43,12 @@ const HtmlComponent = ({
         id="overlay-right"
         style={{
           position: "absolute",
-          top: -10,
-          left: 8,
+          top: -20,
+          left: 5,
           textAlign: "center",
           color: textColor,
           fontSize: textSize,
-          width: '5.8rem',
+          width: '5.4rem',
           height: '12rem',
           wordWrap: 'break-word', // Enable word wrapping for long words
           overflow: 'hidden', // Ensure text doesn't overflow its container
