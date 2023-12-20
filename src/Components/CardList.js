@@ -601,7 +601,7 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
         currentPage={currentPage}
         first={currentPage * itemsPerPage}
         rows={itemsPerPage}
-        totalRecords={itemsToDisplayBank.length}
+        totalRecords={Products.length}
         onPageChange={onPageChange}
       />
     </>
