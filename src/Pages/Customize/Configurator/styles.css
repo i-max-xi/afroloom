@@ -50,9 +50,14 @@ h1 {
 }
 
 .selected-border {
-  border: 0.3rem solid orange !important;
+  border: 0.2rem solid orange !important;
+}
+
+.selected-part-image-border {
+  border: 0.2rem solid orange !important;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Adding shadow effect */
 }
+
 
 .right-panel {
   flex: 4;
@@ -231,4 +236,3 @@ h1 {
 #overlay-left {
   transform: translateX(-11.5rem);
 }
-

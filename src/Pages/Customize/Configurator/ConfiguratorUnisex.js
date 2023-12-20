@@ -852,7 +852,7 @@ const ConfiguratorUnisex = () => {
                                 >
                                   <button
                                     className={`imprint-text-color-button ${
-                                      selectedPrintOn === colorOption.color
+                                      textColor === colorOption.color
                                         ? "selected-border"
                                         : ""
                                     }`}

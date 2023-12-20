@@ -22,7 +22,7 @@ const PartImages = ({ selectedClothing, selectedPart }) => {
                   style={{ maxHeight: "120px" }}
                   className={`part-image ${
                     (selectedPart !== null && selectedPart === index)
-                      ? "selected-border"
+                      ? "selected-part-image-border"
                       : ""
                   }`}
                 />
