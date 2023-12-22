@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const Fours = ({ items, headTitle, linkTo }) => {
   return (
-    <div className="four-in-a-card-container">
+    <div className="four-in-a-card-container"style={{ maxHeight: "92%" }}>
       <h3 className="headTitle">{headTitle}</h3>
       <div>
         {items.length > 0 ? (
