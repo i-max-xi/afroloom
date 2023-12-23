@@ -268,7 +268,7 @@ toastRef.current.show({
   // Welcome
   const [showTourPopup, setShowTourPopup] = useState(true);
   const [showTour, setShowTour] = useState(false);
-  const [hideText, setHideText] = useState(false);
+  const [, setHideText] = useState(false);
 
   const handleTourStart = () => {
     setShowTour(true);
