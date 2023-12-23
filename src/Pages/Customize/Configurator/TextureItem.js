@@ -10,10 +10,20 @@ function TextureItem({
   currencyFactor,
   subTextureDescriptions,
   setSelectedTexture,
+  setHideText,
   Title, textureIndex
 }) {
   const [displayDialog, setDisplayDialog] = useState(false);
 
+  const handleOpenDialog = () => {
+    setDisplayDialog(true); 
+    setHideText(true)
+  }
+
+  const handleCloseDialog = () => {
+    setDisplayDialog(false);
+    setHideText(false)
+  }
 
   return (
     <div className="texture-item">
@@ -41,7 +51,7 @@ function TextureItem({
             price: `${currencySymbol}${(currencyFactor * textureValues[texture]).toFixed(2)}`,
             description: description,
           }));
-          setDisplayDialog(true);
+          handleOpenDialog()
         }}
         
         
@@ -53,7 +63,7 @@ function TextureItem({
       <Dialog
         // header={`Texture Details: ${selectedTexture.name}`}
         visible={displayDialog}
-        onHide={() => setDisplayDialog(false)}
+        onHide={handleCloseDialog}
         style={{ width: "30vw" }} // Adjust the width as needed
       >
         <div className="d-flex flex-column">

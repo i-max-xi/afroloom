@@ -263,6 +263,7 @@ const Configurator = () => {
   // Welcome
   const [showTourPopup, setShowTourPopup] = useState(true);
   const [showTour, setShowTour] = useState(false);
+  const [hideText, setHideText] = useState(false);
 
   const handleTourStart = () => {
     setShowTourPopup(false);
@@ -515,6 +516,7 @@ const Configurator = () => {
                           <TextureItem
                             key={texture}
                             texture={texture}
+                            setHideText = {setHideText}
                             Title="batik"
                             selectedTexture={selectedTexture}
                             setSelectedTexture={setSelectedTexture} // Pass setSelectedTexture as a prop
@@ -542,6 +544,7 @@ const Configurator = () => {
                           <TextureItem
                             key={texture}
                             texture={texture}
+                            setHideText = {setHideText}
                             Title="dashiki"
                             selectedTexture={selectedTexture}
                             setSelectedTexture={setSelectedTexture} // Pass setSelectedTexture as a prop
@@ -570,6 +573,7 @@ const Configurator = () => {
                           <TextureItem
                             key={texture}
                             texture={texture}
+                            setHideText = {setHideText}
                             Title="kente"
                             selectedTexture={selectedTexture}
                             setSelectedTexture={setSelectedTexture} // Pass setSelectedTexture as a prop
@@ -596,6 +600,7 @@ const Configurator = () => {
                           <TextureItem
                             key={texture}
                             texture={texture}
+                            setHideText = {setHideText}
                             Title="waxPrint"
                             selectedTexture={selectedTexture}
                             setSelectedTexture={setSelectedTexture} // Pass setSelectedTexture as a prop
@@ -626,6 +631,7 @@ const Configurator = () => {
                           <TextureItem
                             key={texture}
                             texture={texture}
+                            setHideText = {setHideText}
                             Title="smock"
                             selectedTexture={selectedTexture}
                             setSelectedTexture={setSelectedTexture} // Pass setSelectedTexture as a prop
@@ -652,6 +658,7 @@ const Configurator = () => {
                           <TextureItem
                             key={texture}
                             texture={texture}
+                            setHideText = {setHideText}
                             Title="Crochet"
                             selectedTexture={selectedTexture}
                             setSelectedTexture={setSelectedTexture} // Pass setSelectedTexture as a prop
@@ -683,6 +690,7 @@ const Configurator = () => {
                           <TextureItem
                             key={texture}
                             texture={texture}
+                            setHideText = {setHideText}
                             Title="printed_kente"
                             selectedTexture={selectedTexture}
                             setSelectedTexture={setSelectedTexture} // Pass setSelectedTexture as a prop
@@ -711,6 +719,7 @@ const Configurator = () => {
                           <TextureItem
                             key={texture}
                             texture={texture}
+                            setHideText = {setHideText}
                             Title="Funerals"
                             selectedTexture={selectedTexture}
                             setSelectedTexture={setSelectedTexture} // Pass setSelectedTexture as a prop
