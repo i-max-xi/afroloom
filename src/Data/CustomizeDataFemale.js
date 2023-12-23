@@ -31,28 +31,26 @@ import extra_short from "../Pages/Customize/Configurator/models/FemaleClothing/f
 import booty_shorts from "../Pages/Customize/Configurator/models/FemaleClothing/booty_shorts.glb";
 import kaba_slit from "../Pages/Customize/Configurator/models/FemaleClothing/gown.glb";
 
-
 // size guides
-import tshirt_guide from '../Assets/size_guide/FemaleClothing/13.jpg';
-import tshirtlong_guide from '../Assets/size_guide/FemaleClothing/11.jpg';
-import extraShortShirt_guide from '../Assets/size_guide/FemaleClothing/15.jpg';
-import extraLongShirt_guide from '../Assets/size_guide/FemaleClothing/12.jpg';
-import cropTop_guide from '../Assets/size_guide/FemaleClothing/21.jpg';
-import normalTop_guide from '../Assets/size_guide/FemaleClothing/top.jpg';
-import topAndDown_guide from '../Assets/size_guide/FemaleClothing/25.jpg';
-import dress_guide from '../Assets/size_guide/FemaleClothing/23.jpg';
+import tshirt_guide from "../Assets/size_guide/FemaleClothing/13.jpg";
+import tshirtlong_guide from "../Assets/size_guide/FemaleClothing/11.jpg";
+import extraShortShirt_guide from "../Assets/size_guide/FemaleClothing/15.jpg";
+import extraLongShirt_guide from "../Assets/size_guide/FemaleClothing/12.jpg";
+import cropTop_guide from "../Assets/size_guide/FemaleClothing/21.jpg";
+import normalTop_guide from "../Assets/size_guide/FemaleClothing/top.jpg";
+import topAndDown_guide from "../Assets/size_guide/FemaleClothing/25.jpg";
+import dress_guide from "../Assets/size_guide/FemaleClothing/23.jpg";
 // import kabaSlit_guide from '../Assets/size_guide/FemaleClothing/';
-import cloak_guide from '../Assets/size_guide/FemaleClothing/24.jpg';
-import blazer_guide from '../Assets/size_guide/FemaleClothing/22.jpg';
-import skirt_guide from '../Assets/size_guide/FemaleClothing/long_skirt.jpg';
-import miniSkirt_guide from '../Assets/size_guide/FemaleClothing/19 copy.jpg';
-import bootyShorts_guide from '../Assets/size_guide/FemaleClothing/17.jpg';
-import leggings_guide from '../Assets/size_guide/FemaleClothing/leggings.JPG';
-import trousers_guide from '../Assets/size_guide/FemaleClothing/16.jpg'
+import cloak_guide from "../Assets/size_guide/FemaleClothing/24.jpg";
+import blazer_guide from "../Assets/size_guide/FemaleClothing/22.jpg";
+import skirt_guide from "../Assets/size_guide/FemaleClothing/long_skirt.jpg";
+import miniSkirt_guide from "../Assets/size_guide/FemaleClothing/19 copy.jpg";
+import bootyShorts_guide from "../Assets/size_guide/FemaleClothing/17.jpg";
+import leggings_guide from "../Assets/size_guide/FemaleClothing/leggings.JPG";
+import trousers_guide from "../Assets/size_guide/FemaleClothing/16.jpg";
 
 // models
 import tshirt_model from "../Pages/Customize/Configurator/size_guide/female/women.JPG";
-
 
 //part images
 const tShirtShortParts = require.context(
@@ -168,8 +166,6 @@ const image_booty_shorts = require("../Assets/welcome_3ds/female/booty 2.jpg");
 const image_trousers = require("../Assets/welcome_3ds/female/women trousers.jpg");
 const image_leggings = require("../Assets/welcome_3ds/female/leggings.jpg");
 
-
-
 export const mainFemaleCustomize = [
   {
     id: uuid(),
@@ -177,13 +173,23 @@ export const mainFemaleCustomize = [
     // image: "https://th.bing.com/th/id/OIP.ikUETESsVO_PcDoaCrIQnAHaIw?pid=ImgDet&w=1588&h=1879&rs=1",
     image: image_tshirt_short,
     model: t_shirt_short,
-    myNode: ["bottom", "left_hand", "left_hand_edge", "right_hand", "right_hand_edge", "top", "top_stripe", "bottom_stripe"],
+    myNode: [
+      "bottom",
+      "left_hand",
+      "left_hand_edge",
+      "right_hand",
+      "right_hand_edge",
+      "top",
+      "top_stripe",
+      "bottom_stripe",
+    ],
     myZoom: 0.9,
     price: 20,
     sizeGuide: tshirt_guide,
-sizeModels: tshirt_model,
+    sizeModels: tshirt_model,
     readyIn: 3,
-    weight: 0.25,    parts: tShirtShortParts.keys().map(tShirtShortParts),
+    weight: 0.25,
+    parts: tShirtShortParts.keys().map(tShirtShortParts),
     sizeOptions: [
       { label: "XS", value: 0.5 },
       { label: "S", value: 0.5 },
@@ -221,13 +227,23 @@ sizeModels: tshirt_model,
     // image: "https://images.bloomingdalesassets.com/is/image/BLM/products/0/optimized/10183950_fpx.tif?$filterlrg$&wid=327",
     image: image_tshirt_long,
     model: t_shirt_long,
-    myNode: ["bottom", "left_hand", "left_hand_cuff", "right_hand", "right_hand_cuff", "top", "top_stripe", "bottom_stripe"],
+    myNode: [
+      "bottom",
+      "bottom_stripe",
+      "left_hand",
+      "left_hand_cuff",
+      "right_hand",
+      "right_hand_cuff",
+      "top",
+      "top_stripe",
+    ],
     myZoom: 0.9,
     price: 20,
     sizeGuide: tshirtlong_guide,
-sizeModels: tshirt_model,
+    sizeModels: tshirt_model,
     readyIn: 3,
-    weight: 0.25,    parts: tShirtLongParts.keys().map(tShirtLongParts),
+    weight: 0.25,
+    parts: tShirtLongParts.keys().map(tShirtLongParts),
     sizeOptions: [
       { label: "XS", value: 0.5 },
       { label: "S", value: 0.5 },
@@ -265,13 +281,22 @@ sizeModels: tshirt_model,
     // image: extra_short_img,
     image: image_shirt_short,
     model: extra_short,
-    myNode: ["back", "buttons", "collar", "front", "left_hand", "midline", "right_hand", ],
+    myNode: [
+      "back",
+      "buttons",
+      "collar",
+      "front",
+      "left_hand",
+      "midline",
+      "right_hand",
+    ],
     myZoom: 0.7,
     price: 30,
     sizeGuide: extraShortShirt_guide,
-sizeModels: tshirt_model,
+    sizeModels: tshirt_model,
     readyIn: 3,
-    weight: 0.25,    parts: extraShortShirtParts.keys().map(extraShortShirtParts),
+    weight: 0.25,
+    parts: extraShortShirtParts.keys().map(extraShortShirtParts),
     sizeOptions: [
       { label: "XS", value: 0.5 },
       { label: "S", value: 0.5 },
@@ -309,13 +334,22 @@ sizeModels: tshirt_model,
     // image: extra_long_img,
     image: image_shirt_long,
     model: extra_long,
-    myNode: ["back", "buttons", "collar", "front", "left_hand", "midline", "right_hand", ],
+    myNode: [
+      "back",
+      "buttons",
+      "collar",
+      "front",
+      "left_hand",
+      "midline",
+      "right_hand",
+    ],
     myZoom: 0.8,
     price: 30,
     sizeGuide: extraLongShirt_guide,
-sizeModels: tshirt_model,
+    sizeModels: tshirt_model,
     readyIn: 3,
-    weight: 0.25,    parts: extraLongShirtParts.keys().map(extraLongShirtParts),
+    weight: 0.25,
+    parts: extraLongShirtParts.keys().map(extraLongShirtParts),
     sizeOptions: [
       { label: "XS", value: 0.5 },
       { label: "S", value: 0.5 },
@@ -353,13 +387,14 @@ sizeModels: tshirt_model,
     // image: "https://sportsfore.com/wp-content/uploads/2020/05/5-68.jpg",
     image: image_crop_top,
     model: top_model,
-    myNode: ["mid_body", "left_hand",  "right_hand", "top_edge"],
+    myNode: ["mid_body", "left_hand", "right_hand", "top_edge"],
     myZoom: 1.2,
     price: 20,
     sizeGuide: cropTop_guide,
-sizeModels: tshirt_model,
+    sizeModels: tshirt_model,
     readyIn: 3,
-    weight: 0.25,    parts: cropTopParts.keys().map(cropTopParts),
+    weight: 0.25,
+    parts: cropTopParts.keys().map(cropTopParts),
     sizeOptions: [
       { label: "S", value: 0.5 },
       { label: "M", value: 1 },
@@ -406,9 +441,10 @@ sizeModels: tshirt_model,
     myZoom: 0.8,
     price: 20,
     sizeGuide: normalTop_guide,
-sizeModels: tshirt_model,
+    sizeModels: tshirt_model,
     readyIn: 3,
-    weight: 0.25,    parts: normalTopParts.keys().map(normalTopParts),
+    weight: 0.25,
+    parts: normalTopParts.keys().map(normalTopParts),
     sizeOptions: [
       { label: "S", value: 0.5 },
       { label: "M", value: 1 },
@@ -457,9 +493,10 @@ sizeModels: tshirt_model,
     myZoom: 0.95,
     price: 20,
     sizeGuide: topAndDown_guide,
-sizeModels: tshirt_model,
+    sizeModels: tshirt_model,
     readyIn: 3,
-    weight: 0.25,    parts: topAndDownParts.keys().map(topAndDownParts),
+    weight: 0.25,
+    parts: topAndDownParts.keys().map(topAndDownParts),
     sizeOptions: [
       { label: "XS", value: 0.5 },
       { label: "S", value: 0.5 },
@@ -514,9 +551,10 @@ sizeModels: tshirt_model,
     myZoom: 1,
     price: 20,
     sizeGuide: dress_guide,
-sizeModels: tshirt_model,
+    sizeModels: tshirt_model,
     readyIn: 3,
-    weight: 0.25,    parts: dressParts.keys().map(dressParts),
+    weight: 0.25,
+    parts: dressParts.keys().map(dressParts),
     sizeOptions: [
       { label: "S", value: 0.5 },
       { label: "M", value: 1 },
@@ -562,9 +600,10 @@ sizeModels: tshirt_model,
     myZoom: 1.15,
     price: 20,
     // sizeGuide: kabaSlit_guide,
-sizeModels: tshirt_model,
+    sizeModels: tshirt_model,
     readyIn: 3,
-    weight: 0.25,    parts: kabaSlitParts.keys().map(kabaSlitParts),
+    weight: 0.25,
+    parts: kabaSlitParts.keys().map(kabaSlitParts),
     sizeOptions: [
       { label: "S", value: 0.5 },
       { label: "M", value: 1 },
@@ -601,9 +640,10 @@ sizeModels: tshirt_model,
     myZoom: 1.1,
     price: 20,
     sizeGuide: blazer_guide,
-sizeModels: tshirt_model,
+    sizeModels: tshirt_model,
     readyIn: 3,
-    weight: 0.25,    parts: blazerParts.keys().map(blazerParts),
+    weight: 0.25,
+    parts: blazerParts.keys().map(blazerParts),
     sizeOptions: [
       { label: "XS", value: 0.5 },
       { label: "S", value: 0.5 },
@@ -653,9 +693,10 @@ sizeModels: tshirt_model,
     myZoom: 0.8,
     price: 20,
     sizeGuide: cloak_guide,
-sizeModels: tshirt_model,
+    sizeModels: tshirt_model,
     readyIn: 3,
-    weight: 0.25,    parts: cloakParts.keys().map(cloakParts),
+    weight: 0.25,
+    parts: cloakParts.keys().map(cloakParts),
     sizeOptions: [
       { label: "S", value: 0.5 },
       { label: "M", value: 1 },
@@ -686,9 +727,10 @@ sizeModels: tshirt_model,
     myZoom: 0.7,
     price: 20,
     sizeGuide: skirt_guide,
-sizeModels: tshirt_model,
+    sizeModels: tshirt_model,
     readyIn: 3,
-    weight: 0.25,    parts: skirtParts.keys().map(skirtParts),
+    weight: 0.25,
+    parts: skirtParts.keys().map(skirtParts),
     sizeOptions: [
       { label: "S", value: 0.5 },
       { label: "M", value: 1 },
@@ -723,9 +765,10 @@ sizeModels: tshirt_model,
     myZoom: 0.8,
     price: 20,
     sizeGuide: miniSkirt_guide,
-sizeModels: tshirt_model,
+    sizeModels: tshirt_model,
     readyIn: 3,
-    weight: 0.25,    parts: miniSkirtParts.keys().map(miniSkirtParts),
+    weight: 0.25,
+    parts: miniSkirtParts.keys().map(miniSkirtParts),
     sizeOptions: [
       { label: "XS", value: 0.5 },
       { label: "S", value: 0.5 },
@@ -770,9 +813,10 @@ sizeModels: tshirt_model,
     myZoom: 0.6,
     price: 20,
     sizeGuide: bootyShorts_guide,
-sizeModels: tshirt_model,
+    sizeModels: tshirt_model,
     readyIn: 3,
-    weight: 0.25,    parts: bootyShortsParts.keys().map(bootyShortsParts),
+    weight: 0.25,
+    parts: bootyShortsParts.keys().map(bootyShortsParts),
     sizeOptions: [
       { label: "S", value: 0.5 },
       { label: "M", value: 1 },
@@ -816,9 +860,10 @@ sizeModels: tshirt_model,
     myZoom: 0.7,
     price: 20,
     sizeGuide: trousers_guide,
-sizeModels: tshirt_model,
+    sizeModels: tshirt_model,
     readyIn: 3,
-    weight: 0.25,    parts: trousersParts.keys().map(trousersParts),
+    weight: 0.25,
+    parts: trousersParts.keys().map(trousersParts),
     sizeOptions: [
       { label: "S", value: 0.5 },
       { label: "M", value: 1 },
@@ -861,9 +906,10 @@ sizeModels: tshirt_model,
     myZoom: 0.8,
     price: 20,
     sizeGuide: leggings_guide,
-sizeModels: tshirt_model,
+    sizeModels: tshirt_model,
     readyIn: 3,
-    weight: 0.25,    parts: leggingsParts.keys().map(leggingsParts),
+    weight: 0.25,
+    parts: leggingsParts.keys().map(leggingsParts),
     sizeOptions: [
       { label: "S", value: 0.5 },
       { label: "M", value: 1 },
@@ -889,7 +935,3 @@ sizeModels: tshirt_model,
     ],
   },
 ];
-
-
-
-
