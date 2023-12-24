@@ -1,11 +1,11 @@
 import { Html } from "@react-three/drei";
 
-
 const HtmlComponent = ({
-    textLeft,
-    textRight,
+  textLeft,
+  textRight,
   textColor,
   textSize,
+  fontFamily,
 }) => {
   const separateWordsWithLineBreak = (text) => {
     // Split the text into an array of words
@@ -14,7 +14,7 @@ const HtmlComponent = ({
     const textWithLineBreak = wordsArray.join("<br>");
     return textWithLineBreak;
   };
-  
+
   return (
     <Html>
       <div
@@ -26,17 +26,19 @@ const HtmlComponent = ({
           left: 15,
           color: textColor,
           fontSize: textSize,
-          width: '5.4rem',
-          height: '12rem',
+          width: "5.4rem",
+          height: "12rem",
           textAlign: "center",
-          wordWrap: 'break-word', // Enable word wrapping for long words
-          overflow: 'hidden', // Ensure text doesn't overflow its container
-          textTransform: "uppercase"
+          wordWrap: "break-word", // Enable word wrapping for long words
+          overflow: "hidden", // Ensure text doesn't overflow its container
+          textTransform: "uppercase",
+          // fontFamily: fontFamily
         }}
-        dangerouslySetInnerHTML={{ __html: separateWordsWithLineBreak(textLeft) }}
-
+        dangerouslySetInnerHTML={{
+          __html: separateWordsWithLineBreak(textLeft),
+        }}
       />
-        {/* {textLeft} */}
+      {/* {textLeft} */}
       {/* </div> */}
       <div
         className="overlay"
@@ -48,16 +50,18 @@ const HtmlComponent = ({
           textAlign: "center",
           color: textColor,
           fontSize: textSize,
-          width: '5.4rem',
-          height: '12rem',
-          wordWrap: 'break-word', // Enable word wrapping for long words
-          overflow: 'hidden', // Ensure text doesn't overflow its container
-          textTransform: "uppercase"
+          width: "5.4rem",
+          height: "12rem",
+          wordWrap: "break-word", // Enable word wrapping for long words
+          overflow: "hidden", // Ensure text doesn't overflow its container
+          textTransform: "uppercase",
+          // fontFamily: fontFamily
         }}
-        dangerouslySetInnerHTML={{ __html: separateWordsWithLineBreak(textRight) }}
-
+        dangerouslySetInnerHTML={{
+          __html: separateWordsWithLineBreak(textRight),
+        }}
       />
-        {/* {textRight} */}
+      {/* {textRight} */}
       {/* </div> */}
     </Html>
   );

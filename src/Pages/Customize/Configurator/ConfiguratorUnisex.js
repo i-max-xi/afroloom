@@ -160,7 +160,31 @@ const ConfiguratorUnisex = () => {
   // const [textPosition] = useState([-0.65, -0.15, 0.05]); // Initialize text position
   const [textColor, setTextColor] = useState("black");
   const [fontSize, setFontSize] = useState(14);
+  const [fontFamily, ] = useState("Arial");
   const [hideText, setHideText] = useState(false);
+
+  // const fonts = [
+  //   "Arial",
+  //   "Verdana",
+  //   "Courier New",
+  //   "Roboto",
+  //   "Comic Sans MS",
+  //   "Book Antiqua",
+  // ];
+  // const [currentFontIndex, setCurrentFontIndex] = useState(0);
+
+  // const handleChangeFont = (increment) => {
+  //   let newIndex = currentFontIndex + increment;
+
+  //   // Loop back to the start or end of the array if needed
+  //   if (newIndex < 0) {
+  //     newIndex = fonts.length - 1;
+  //   } else if (newIndex >= fonts.length) {
+  //     newIndex = 0;
+  //   }
+  //   setCurrentFontIndex(newIndex);
+  //   setFontFamily(fonts[newIndex]);
+  // };
 
   const increaseFontSize = () => {
     setFontSize((prevSize) => prevSize + 1); // Increase font size by 0.01
@@ -547,7 +571,7 @@ const ConfiguratorUnisex = () => {
                           <TextureItem
                             key={texture}
                             texture={texture}
-                            setHideText = {setHideText}
+                            setHideText={setHideText}
                             Title="batik"
                             selectedTexture={selectedTexture}
                             setSelectedTexture={setSelectedTexture} // Pass setSelectedTexture as a prop
@@ -575,7 +599,7 @@ const ConfiguratorUnisex = () => {
                           <TextureItem
                             key={texture}
                             texture={texture}
-                            setHideText = {setHideText}
+                            setHideText={setHideText}
                             Title="dashiki"
                             selectedTexture={selectedTexture}
                             setSelectedTexture={setSelectedTexture} // Pass setSelectedTexture as a prop
@@ -604,7 +628,7 @@ const ConfiguratorUnisex = () => {
                           <TextureItem
                             key={texture}
                             texture={texture}
-                            setHideText = {setHideText}
+                            setHideText={setHideText}
                             Title="kente"
                             selectedTexture={selectedTexture}
                             setSelectedTexture={setSelectedTexture} // Pass setSelectedTexture as a prop
@@ -631,7 +655,7 @@ const ConfiguratorUnisex = () => {
                           <TextureItem
                             key={texture}
                             texture={texture}
-                            setHideText = {setHideText}
+                            setHideText={setHideText}
                             Title="waxPrint"
                             selectedTexture={selectedTexture}
                             setSelectedTexture={setSelectedTexture} // Pass setSelectedTexture as a prop
@@ -662,7 +686,7 @@ const ConfiguratorUnisex = () => {
                           <TextureItem
                             key={texture}
                             texture={texture}
-                            setHideText = {setHideText}
+                            setHideText={setHideText}
                             Title="smock"
                             selectedTexture={selectedTexture}
                             setSelectedTexture={setSelectedTexture} // Pass setSelectedTexture as a prop
@@ -689,7 +713,7 @@ const ConfiguratorUnisex = () => {
                           <TextureItem
                             key={texture}
                             texture={texture}
-                            setHideText = {setHideText}
+                            setHideText={setHideText}
                             Title="Crochet"
                             selectedTexture={selectedTexture}
                             setSelectedTexture={setSelectedTexture} // Pass setSelectedTexture as a prop
@@ -721,7 +745,7 @@ const ConfiguratorUnisex = () => {
                           <TextureItem
                             key={texture}
                             texture={texture}
-                            setHideText = {setHideText}
+                            setHideText={setHideText}
                             Title="printed_kente"
                             selectedTexture={selectedTexture}
                             setSelectedTexture={setSelectedTexture} // Pass setSelectedTexture as a prop
@@ -750,7 +774,7 @@ const ConfiguratorUnisex = () => {
                           <TextureItem
                             key={texture}
                             texture={texture}
-                            setHideText = {setHideText}
+                            setHideText={setHideText}
                             Title="Funerals"
                             selectedTexture={selectedTexture}
                             setSelectedTexture={setSelectedTexture} // Pass setSelectedTexture as a prop
@@ -782,14 +806,16 @@ const ConfiguratorUnisex = () => {
                     >
                       <ambientLight intensity={0.5} />
                       <pointLight position={[10, 10, 10]} />
-                      {selectedClothing.name === "Sash" && hideText === false && (
-                        <HtmlComponent
-                          textLeft={enteredTextLeft}
-                          textRight={enteredTextRight}
-                          textColor={textColor}
-                          textSize={fontSize}
-                        />
-                      )}
+                      {selectedClothing.name === "Sash" &&
+                        hideText === false && (
+                          <HtmlComponent
+                            textLeft={enteredTextLeft}
+                            textRight={enteredTextRight}
+                            textColor={textColor}
+                            textSize={fontSize}
+                            fontFamily={fontFamily}
+                          />
+                        )}
                       <Shirt
                         isRotating={isRotating}
                         selectedClothing={selectedClothing}
@@ -892,6 +918,23 @@ const ConfiguratorUnisex = () => {
                                 +
                               </button>
                             </div>
+                            {/* <div className="d-flex justify-content-center">
+                              <button
+                                className="btn btn-secondary btn-sm mx-2"
+                                onClick={() => handleChangeFont(-1)} // Decrement font index
+                              >
+                                &lt;
+                              </button>
+                              <span className="font-size">
+                                {fonts[currentFontIndex]}
+                              </span>
+                              <button
+                                className="btn btn-secondary btn-sm mx-2"
+                                onClick={() => handleChangeFont(1)} // Increment font index
+                              >
+                                &gt;
+                              </button>
+                            </div> */}
                           </div>
                           <div className=" d-flex flex-column">
                             <ImageUpload
