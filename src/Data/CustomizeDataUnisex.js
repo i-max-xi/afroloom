@@ -48,8 +48,8 @@ const jacketParts = require.context(
 );
 
 const image_waist_bag = require("../Assets/welcome_3ds/others/waist bag.jpg");
-const image_jacket = require("../Assets/welcome_3ds/others/jacket.jpg");
-const image_backpack = require("../Assets/welcome_3ds/others/backpack.jpg");
+const image_jacket = require("../Assets/welcome_3ds/others/jacket.png");
+const image_backpack = require("../Assets/welcome_3ds/others/backpack.png");
 const image_sash = require("../Assets/welcome_3ds/others/sash.jpg");
 
 

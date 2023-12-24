@@ -46,8 +46,8 @@ const heelsParts = require.context(
   /\.(png|jpg|jpeg|gif)$/
 );
 
-const image_flat_shoe = require("../Assets/welcome_3ds/others/flat shoe.jpg");
-const image_slippers = require("../Assets/welcome_3ds/others/silipers.jpg");
+const image_flat_shoe = require("../Assets/welcome_3ds/others/flat shoe.png");
+const image_slippers = require("../Assets/welcome_3ds/others/silipers.png");
 
 export const mainFootwear = [
   {

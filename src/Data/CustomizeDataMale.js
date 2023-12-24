@@ -85,16 +85,16 @@ const materialShortsParts = require.context(
 );
 
 // const tshirt_image = "https://a5e8126a499f8a963166-f72e9078d72b8c998606fd6e0319b679.ssl.cf5.rackcdn.com/images/variant/large/next-level_3600_black.jpg";
-const image_tshirt_short = require("../Assets/welcome_3ds/male/male short sleev ankara.jpg");
-const image_tshirt_long_image = require("../Assets/welcome_3ds/male/male long sleev ankara.jpg");
-const image_shirt_short_image = require("../Assets/welcome_3ds/male/male short sleeve shirt.jpg");
-const image_shirt_long_image = require("../Assets/welcome_3ds/male/male long sleeve shirt.jpg");
-const image_topndown_image = require("../Assets/welcome_3ds/male/male top and down.jpg");
+const image_tshirt_short = require("../Assets/welcome_3ds/male/male short sleev ankara.png");
+const image_tshirt_long_image = require("../Assets/welcome_3ds/male/male long sleev ankara.png");
+const image_shirt_short_image = require("../Assets/welcome_3ds/male/male short sleeve shirt.png");
+const image_shirt_long_image = require("../Assets/welcome_3ds/male/male long sleeve shirt.png");
+const image_topndown_image = require("../Assets/welcome_3ds/male/male top and down.png");
 // const image_top_image = require("../Assets/welcome_3ds/male/male top.jpg");
-const image_blazer_image = require("../Assets/welcome_3ds/male/male blazer.jpg");
-const image_trouser_image = require("../Assets/welcome_3ds/male/male trousers.jpg");
-const image_summer_image = require("../Assets/welcome_3ds/male/male summer shorts.jpg");
-const image_shorts_image = require("../Assets/welcome_3ds/male/male shorts.jpg");
+const image_blazer_image = require("../Assets/welcome_3ds/male/male blazer.png");
+const image_trouser_image = require("../Assets/welcome_3ds/male/male trousers.png");
+const image_summer_image = require("../Assets/welcome_3ds/male/male summer shorts.png");
+const image_shorts_image = require("../Assets/welcome_3ds/male/male shorts.png");
 
 
 export const mainMaleCustomize = [

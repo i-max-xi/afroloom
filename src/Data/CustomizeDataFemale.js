@@ -149,22 +149,22 @@ const leggingsParts = require.context(
   /\.(png|jpg|jpeg|gif)$/
 );
 
-const image_tshirt_short = require("../Assets/welcome_3ds/female/short slleev t shirt.jpg");
-const image_tshirt_long = require("../Assets/welcome_3ds/female/long sleev t shirt.jpg");
-const image_shirt_short = require("../Assets/welcome_3ds/female/women short sleev shirt.jpg");
-const image_shirt_long = require("../Assets/welcome_3ds/female/women long sleev shirt.jpg");
-const image_crop_top = require("../Assets/welcome_3ds/female/crop top.jpg");
+const image_tshirt_short = require("../Assets/welcome_3ds/female/short slleev t shirt.png");
+const image_tshirt_long = require("../Assets/welcome_3ds/female/long sleev t shirt.png");
+const image_shirt_short = require("../Assets/welcome_3ds/female/women short sleev shirt.png");
+const image_shirt_long = require("../Assets/welcome_3ds/female/women long sleev shirt.png");
+const image_crop_top = require("../Assets/welcome_3ds/female/crop top.png");
 // const image_top = require("../Assets/welcome_3ds/female/");
 // const image_topndown = require("../Assets/welcome_3ds/female/");
 // const image_dress = require("../Assets/welcome_3ds/female/");
 // const image_kaba_slit = require("../Assets/welcome_3ds/female/");
-const image_blazer = require("../Assets/welcome_3ds/female/women blazer.jpg");
+const image_blazer = require("../Assets/welcome_3ds/female/women blazer.png");
 // const image_cloak = require("../Assets/welcome_3ds/female/");
 // const image_long_skirt = require("../Assets/welcome_3ds/female/long skirt.jpg");
-const image_mini_skirt = require("../Assets/welcome_3ds/female/mini skirt.jpg");
-const image_booty_shorts = require("../Assets/welcome_3ds/female/booty 2.jpg");
-const image_trousers = require("../Assets/welcome_3ds/female/women trousers.jpg");
-const image_leggings = require("../Assets/welcome_3ds/female/leggings.jpg");
+const image_mini_skirt = require("../Assets/welcome_3ds/female/mini skirt.png");
+const image_booty_shorts = require("../Assets/welcome_3ds/female/booty 2.png");
+const image_trousers = require("../Assets/welcome_3ds/female/women trousers.png");
+const image_leggings = require("../Assets/welcome_3ds/female/leggings.png");
 
 export const mainFemaleCustomize = [
   {
