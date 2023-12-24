@@ -146,7 +146,7 @@ export const Card = ({
             ) : (
               // If no discount, display the regular price
               // `${currencySymbol}${(currencyFactor * price).toFixed(2)}`
-              <div style={{marginBottom: '2.5rem'}}>
+              <div style={{ marginBottom: "2.5rem" }}>
                 {currencySymbol}
                 {(currencyFactor * price).toFixed(2)}
               </div>
@@ -423,7 +423,7 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
           /> */}
         {/* search ends here */}
 
-        <Row offerFix="One" />
+        {showNestedComponent && <Row offerFix="One" />}
 
         <SearchFilters
           search1="Category"
