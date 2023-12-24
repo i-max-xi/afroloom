@@ -1,15 +1,41 @@
 import React from "react";
 
-const ImageUpload = ({ labelLeft, labelRight, onImageUploadLeft, onImageUploadRight  }) => {
+const ImageUpload = ({ labelLeft, labelRight, onImageUploadLeft, onImageUploadRight }) => {
+  const handleImageChange = (e, onImageUpload) => {
+    const file = e.target.files[0];
+
+    // Check if file type is PNG
+    if (!file.type.includes("png")) {
+      alert("Please upload a PNG image.");
+      e.target.value = null;
+      return;
+    }
+
+    // // Create an image element to get the dimensions
+    // const img = new Image();
+    // img.src = URL.createObjectURL(file);
+
+    // img.onload = () => {
+    //   // Check if the image dimensions are 500x500
+    //   if (img.width !== 500 || img.height !== 500) {
+    //     alert("Please upload an image with dimensions 500x500.");
+    //     e.target.value = null;
+    //     return;
+    //   } else {
+    //     onImageUpload(file); // Pass the uploaded file to the parent component
+    //   }
+    // };
+
+    // Pass the uploaded file to the parent component without dimension check
+    onImageUpload(file);
+  };
 
   const handleImageLeftChange = (e) => {
-    const file = e.target.files[0];
-    onImageUploadLeft(file); // Pass the uploaded file to the parent component
+    handleImageChange(e, onImageUploadLeft);
   };
 
   const handleImageRightChange = (e) => {
-    const file = e.target.files[0];
-    onImageUploadRight(file); // Pass the uploaded file to the parent component
+    handleImageChange(e, onImageUploadRight);
   };
 
   return (
@@ -20,7 +46,6 @@ const ImageUpload = ({ labelLeft, labelRight, onImageUploadLeft, onImageUploadRi
       <input
         id="upload-logo-left"
         type="file"
-        accept="image/png"
         onChange={handleImageLeftChange}
         className="upload-input"
       />
@@ -30,7 +55,6 @@ const ImageUpload = ({ labelLeft, labelRight, onImageUploadLeft, onImageUploadRi
       <input
         id="upload-logo-right"
         type="file"
-        accept="image/png"
         onChange={handleImageRightChange}
         className="upload-input"
       />
