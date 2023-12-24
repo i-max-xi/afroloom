@@ -942,6 +942,7 @@ const ConfiguratorUnisex = () => {
                               labelRight={"Upload Right Logo"}
                               onImageUploadLeft={handleImageUploadLeft}
                               onImageUploadRight={handleImageUploadRight}
+                              toastRef={toastRef}
                             />
                           </div>
                         </div>

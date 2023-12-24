@@ -1,12 +1,16 @@
 import React from "react";
 
-const ImageUpload = ({ labelLeft, labelRight, onImageUploadLeft, onImageUploadRight }) => {
+const ImageUpload = ({ labelLeft, labelRight, onImageUploadLeft, onImageUploadRight, toastRef }) => {
   const handleImageChange = (e, onImageUpload) => {
     const file = e.target.files[0];
 
     // Check if file type is PNG
     if (!file.type.includes("png")) {
-      alert("Please upload a PNG image.");
+      toastRef.current.show({
+        severity: "error",
+        summary: "Cannot continue",
+        detail: "Only png images accepted",
+      });
       e.target.value = null;
       return;
     }
