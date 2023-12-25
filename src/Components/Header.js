@@ -7,15 +7,15 @@ const Header = ({ bgColor, Color, Padding, Icon1, Icon2, Icon3, Icon4 }) => {
       {/* <AfricanFlags /> */}
 
       <ul
-        className="btn-group rounded-top d-flex list-unstyled p-2 px-5 justify-content-around"
+        className="btn-group rounded-top d-flex list-unstyled p-2 px-5 justify-content-around policy-header"
         role="group"
         style={{ backgroundColor: bgColor, color: Color, padding: Padding }}
       >
         <li className="p-2 text-center rounded d-flex more-info">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
+            // width="16"
+            // height="16"
             fill="currentColor"
             className="bi bi-truck more-info-icon text-danger"
             viewBox="0 0 16 16"
@@ -29,8 +29,8 @@ const Header = ({ bgColor, Color, Padding, Icon1, Icon2, Icon3, Icon4 }) => {
         <li className="p-2 text-center rounded d-flex more-info">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
+            // width="16"
+            // height="16"
             fill="currentColor"
             className="bi bi-bag-check more-info-icon text-info"
             viewBox="0 0 16 16"
@@ -50,8 +50,8 @@ const Header = ({ bgColor, Color, Padding, Icon1, Icon2, Icon3, Icon4 }) => {
         <li className="p-2 text-center rounded d-flex more-info">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
+            // width="16"
+            // height="16"
             fill="currentColor"
             className="bi bi-cash-stack more-info-icon text-warning"
             viewBox="0 0 16 16"
@@ -68,8 +68,8 @@ const Header = ({ bgColor, Color, Padding, Icon1, Icon2, Icon3, Icon4 }) => {
         <li className="p-2 text-center rounded d-flex more-info">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
+            // width="16"
+            // height="16"
             fill="currentColor"
             className="bi bi-check2-circle more-info-icon text-success"
             viewBox="0 0 16 16"

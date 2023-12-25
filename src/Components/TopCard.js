@@ -47,7 +47,6 @@ const TopCard = () => {
 
       <div className="d-flex Map">
         <HeaderCarousel />
-        {/* <div className="w-100" style={{ marginTop: "33.5%" }}></div> */}
       </div>
     </div>
   );
