@@ -88,6 +88,35 @@
     padding: 0.2rem !important;
     font-size: 0.4rem !important;
   }
+
+  /* Search  */
+  .search-banner{
+    padding: 0;
+  }
+  
+  .search-banner button {
+    font-size: 0.3rem !important;
+  }
+
+  .search-banner h4 {
+    font-size: 0.6rem !important;
+  }
+
+  /* Banner Add */
+  .clickable-banner-container h3, .more-deals{
+    font-size: 0.6rem !important;
+  }
+  .clickable-item > div {
+    font-size: 0.8rem !important;
+  }
+  .clickable-banner {
+    height: 25% !important;
+
+  }
+  /* .clickable-item > .image-space {
+    height: 25% !important;
+  } */
+  
 }
 
 .logo {

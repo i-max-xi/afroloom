@@ -58,7 +58,7 @@ const SearchFilters = ({
 
   return (
     <div
-      className="d-flex flex-column text-white rounded pt-2"
+      className="d-flex flex-column text-white rounded pt-2 search-banner"
       style={{
         height: "max-content",
         // scale: "0.8",
