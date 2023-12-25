@@ -5,17 +5,17 @@
   background-color: rgba(197, 195, 195, 0.165);
 }
 
-@media (max-width: 900px){
+@media (max-width: 900px) {
   .navbar-nav {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
   }
-  .navbar-expand-lg .navbar-nav .nav-item { 
+  .navbar-expand-lg .navbar-nav .nav-item {
     font-size: 0.8rem;
     margin-bottom: 1rem;
   }
-  .dropdown{
+  .dropdown {
     float: left;
   }
   .vr {
@@ -23,7 +23,7 @@
     visibility: hidden;
     height: 0;
   }
-  .p-dropdown{
+  .p-dropdown {
     padding: 0;
   }
   .adjust-nav {
@@ -57,9 +57,21 @@
   .p-carousel-items-content h4 {
     font-size: 0.5rem !important;
   }
-  .p-carousel .p-carousel-indicators .p-carousel-indicator button{
+
+  .p-carousel .p-carousel-indicators .p-carousel-indicator button {
     height: 0.2rem !important;
     width: 1rem !important;
+  }
+
+  .four-in-a-card-container, .offer-card {
+    font-size: 0.5rem !important;
+    scale: 0.5;
+    margin: 0 !important;
+    width: 25% !important;
+  }
+
+  .four-in-a-card-container h3, .offer-card h3 {
+    font-size: 0.5rem !important;
   }
 }
 
@@ -68,11 +80,9 @@
   margin: 5px;
 }
 
-
 .search-input {
   width: 25rem;
   border-radius: 15rem !important;
-
 }
 
 .search-button {
@@ -81,7 +91,9 @@
   z-index: 9;
 }
 
-.nav-item a, .about, .nav-item {
+.nav-item a,
+.about,
+.nav-item {
   color: black;
   text-decoration: none;
   transition: all 0.2s ease-in-out;
@@ -89,9 +101,9 @@
   width: max-content;
 }
 
-.nav-item a:hover, .about:hover {
-  color: orange ;
-
+.nav-item a:hover,
+.about:hover {
+  color: orange;
 }
 .adjust-nav {
   transform: translateY(0.5rem);
@@ -105,7 +117,6 @@
 .nav-category {
   z-index: 100;
   transform: translateY(-0.5rem);
-  
 }
 
 .vr {
@@ -118,7 +129,6 @@
 .languages .dropdown-toggle::after {
   display: none;
 }
-
 
 .cart {
   transform: scale(1.2);
@@ -142,7 +152,7 @@
 }
 
 .signin {
-  background-color: white ;
+  background-color: white;
   color: black !important;
   border: 1px solid #ffc107;
   font-weight: 600;
@@ -154,15 +164,13 @@
   background-color: white !important;
   color: black !important;
   border: 1px solid #ffc107 !important;
-  box-shadow: 0px 10px 20px 10px rgba(0,0,0,0.1);
+  box-shadow: 0px 10px 20px 10px rgba(0, 0, 0, 0.1);
 }
 .signin:hover {
   background-color: #ffc107 !important;
   color: white !important;
-  box-shadow: 0px 10px 20px 10px rgba(0,0,0,0.1);
+  box-shadow: 0px 10px 20px 10px rgba(0, 0, 0, 0.1);
 }
-
-
 
 /* .cat-dropdown:hover {
   background-color: #ffc107;
@@ -170,14 +178,14 @@
 } */
 
 /* CAROUSEL */
-.custom-carousel{
+.custom-carousel {
   transform: translateX(0.5rem);
 }
 /* .custom-carousel .p-carousel-indicators {
     transform: translateY(-2rem);
   } */
 
-  .carousel-indicators {
+.carousel-indicators {
   height: 10px;
   opacity: 1;
   transform: translateX(-4.4rem);
@@ -189,12 +197,10 @@
   color: #ffc107;
 }
 
-.carousel-control-next-icon, .carousel-control-prev-icon {
+.carousel-control-next-icon,
+.carousel-control-prev-icon {
   transform: translateX(-1.4rem);
 }
-
-
-
 
 /* PAGINATOR  */
 
@@ -207,12 +213,10 @@
 .more-info > p {
   margin: 1rem;
   font-weight: 600;
-  
 }
 
 .more-info > p > span {
   font-weight: 400;
-
 }
 
 .more-info-icon {
@@ -239,16 +243,17 @@
   float: right;
 }
 
-.card-img-top, .card button{ 
+.card-img-top,
+.card button {
   transition: all 0.3s ease;
-
 }
-  
-.card:hover{
+
+.card:hover {
   box-shadow: 0px 10px 20px 10px rgba(202, 211, 126, 0.329);
 }
 
-.card button:hover , .card .btn:hover{
+.card button:hover,
+.card .btn:hover {
   transform: translateY(-0.2rem);
   box-shadow: 0px 10px 20px 10px rgba(156, 167, 108, 0.1);
   color: white;
@@ -271,7 +276,7 @@ form {
   transform: translateY(0.4rem);
 }
 
-.footer h5{
+.footer h5 {
   font-weight: 700;
 }
 
@@ -287,7 +292,7 @@ form {
 }
 
 .footer-header::after {
-  content: '';
+  content: "";
   display: block;
   width: 2rem;
   height: 0.2rem;
@@ -312,10 +317,9 @@ form {
   border-right: 0.7px solid rgba(255, 255, 255, 0.535);
 }
 
-.p-carousel .p-carousel-indicators .p-carousel-indicator.p-highlight button{
+.p-carousel .p-carousel-indicators .p-carousel-indicator.p-highlight button {
   background-color: #ffc107 !important;
 }
-
 
 /* contact us page */
 .info-wrapper {
@@ -341,7 +345,7 @@ form {
 
 .info-icon {
   background-color: #fff;
-  border: none!important;
+  border: none !important;
   height: 4rem;
   margin-bottom: 1.5rem;
   margin-top: -2rem;
@@ -349,7 +353,6 @@ form {
   text-align: center;
   width: 5.5rem;
 }
-
 
 /* Artisan  Page*/
 
@@ -368,7 +371,6 @@ form {
 
 /* search */
 .search-dropdown {
-
   height: 18% !important;
 }
 
@@ -387,15 +389,15 @@ form {
 } */
 
 /* dashboard */
-.dashboard > .p-tabview .p-tabview-nav{
-  display:  none;
+.dashboard > .p-tabview .p-tabview-nav {
+  display: none;
 }
 
 .dashboard > .p-tabview .p-tabview-panels {
   width: 85vw;
 }
 
-.goog-te-gadget{
+.goog-te-gadget {
   position: fixed;
   bottom: 0;
   right: 6rem;
@@ -443,8 +445,6 @@ form {
   border-color: #999;
 }
 
-.custom-upload input[type='file'] {
+.custom-upload input[type="file"] {
   display: none;
 }
-
-
