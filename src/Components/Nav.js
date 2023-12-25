@@ -67,7 +67,7 @@ const Nav = ({ handleToggleDropdown, Language, Currency }) => {
       {/* actual navs */}
       <div className="collapse navbar-collapse" id="navbarNavDropdown">
         <ul className="navbar-nav">
-          <li className="bg-warning pb-1 fw-bold nav-category">
+          <li className="bg-warning fw-bold nav-category">
             <DropDowner
               key={uuid()}
               title=""
@@ -84,7 +84,7 @@ const Nav = ({ handleToggleDropdown, Language, Currency }) => {
           </li>
           <div className="vr"></div>
 
-          <li className="nav-item" style={{ translate: "0 0.5rem" }}>
+          <li className="nav-item adjust-nav">
             <Link className="about" to="/supplier-signup">
               Sell
             </Link>
@@ -92,7 +92,7 @@ const Nav = ({ handleToggleDropdown, Language, Currency }) => {
 
           <div className="vr"></div>
 
-          <li className="nav-item" style={{ translate: "0 0.5rem" }}>
+          <li className="nav-item adjust-nav">
             <Link className="about" to="/about">
               About
             </Link>
