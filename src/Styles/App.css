@@ -49,6 +49,18 @@
     width: 1rem !important;
   }
 
+  /* Category */
+
+  .category-banner > h4 {
+    font-size: 1rem !important;
+  }
+  .p-carousel-items-content h4 {
+    font-size: 0.5rem !important;
+  }
+  .p-carousel .p-carousel-indicators .p-carousel-indicator button{
+    height: 0.2rem !important;
+    width: 1rem !important;
+  }
 }
 
 .logo {

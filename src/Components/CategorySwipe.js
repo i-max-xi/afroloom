@@ -71,7 +71,7 @@ const CategorySwipe = () => {
   ];
 
   return (
-    <div className="bg-dark d-flex flex-column p-1 mb-5">
+    <div className="bg-dark d-flex flex-column p-1 mb-5 category-banner">
       <h4 className="text-white align-self-center fs-3 mb-3 mt-2">Search By Category</h4>
 
       <Carousel
