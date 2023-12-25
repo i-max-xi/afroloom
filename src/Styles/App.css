@@ -63,15 +63,30 @@
     width: 1rem !important;
   }
 
+  .offer-container {
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .four-in-a-card-container {
+    transform: translateY(-0.1rem) !important;
+  }
+
   .four-in-a-card-container, .offer-card {
     font-size: 0.5rem !important;
-    scale: 0.5;
     margin: 0 !important;
-    width: 25% !important;
+    padding: 0.5rem !important;
+    width: 23% !important;
   }
 
   .four-in-a-card-container h3, .offer-card h3 {
     font-size: 0.5rem !important;
+  }
+
+  .fours-link {
+    padding: 0.2rem !important;
+    font-size: 0.4rem !important;
   }
 }
 
