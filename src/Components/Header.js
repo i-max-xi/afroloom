@@ -7,11 +7,11 @@ const Header = ({ bgColor, Color, Padding, Icon1, Icon2, Icon3, Icon4 }) => {
       {/* <AfricanFlags /> */}
 
       <ul
-        className="btn-group rounded-top d-flex list-unstyled p-2 px-5 justify-content-around policy-header"
+        className="btn-group rounded-top d-flex list-unstyled justify-content-around policy-header"
         role="group"
         style={{ backgroundColor: bgColor, color: Color, padding: Padding }}
       >
-        <li className="p-2 text-center rounded d-flex more-info">
+        <li className=" d-flex more-info">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             // width="16"
@@ -26,7 +26,7 @@ const Header = ({ bgColor, Color, Padding, Icon1, Icon2, Icon3, Icon4 }) => {
             Fast & Secure Delivery
           </p>
         </li>
-        <li className="p-2 text-center rounded d-flex more-info">
+        <li className="d-flex more-info">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             // width="16"
@@ -47,7 +47,7 @@ const Header = ({ bgColor, Color, Padding, Icon1, Icon2, Icon3, Icon4 }) => {
             {/* <span style={{ fontSize: "0.8rem" }}>No question asked</span> */}
           </p>
         </li>
-        <li className="p-2 text-center rounded d-flex more-info">
+        <li className=" d-flex more-info">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             // width="16"
@@ -65,7 +65,7 @@ const Header = ({ bgColor, Color, Padding, Icon1, Icon2, Icon3, Icon4 }) => {
             {/* <span style={{ fontSize: "0.8rem" }}>Within 5 Business Days</span> */}
           </p>
         </li>
-        <li className="p-2 text-center rounded d-flex more-info">
+        <li className=" d-flex more-info">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             // width="16"

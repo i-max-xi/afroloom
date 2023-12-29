@@ -35,11 +35,18 @@
   }
 
   /* nav ends here  */
+  .policy-header {
+    display: flex;
+    padding: 1rem !important;
+    width: 100%;
+  }
   .policy-header li {
     font-size: 0.4rem !important;
     flex-direction: column !important;
     justify-content: center;
     align-items: center;
+    padding-right: 0.2rem !important;
+    
   }
   .more-info > p > span {
     margin: 0 !important;
@@ -253,6 +260,19 @@
   border-color: #ffeef2;
   color: #ffffff;
 }
+
+
+.policy-header{
+  padding: 3rem;
+  display: flex;
+  justify-content: space-between;
+}
+
+.policy-header li {
+  padding-right: 2rem;
+  text-align: center;
+}
+
 
 .more-info > p {
   margin: 1rem;

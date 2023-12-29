@@ -7,15 +7,15 @@ const Header2 = ({ bgColor, Color, Padding, Icon1, Icon2, Icon3, Icon4 }) => {
       {/* <AfricanFlags /> */}
 
       <ul
-        className="btn-group rounded-top d-flex list-unstyled p-5 justify-content-around"
+        className="btn-group rounded-top d-flex list-unstyled justify-content-around policy-header"
         role="group"
         style={{ backgroundColor: bgColor, color: Color, padding: Padding }}
       >
-        <li className="p-2 text-center rounded d-flex more-info border-right">
+        <li className="d-flex more-info border-right">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
+            // width="16"
+            // height="16"
             fill="currentColor"
             className="bi bi-check2-circle more-info-icon"
             viewBox="0 0 16 16"
@@ -27,11 +27,11 @@ const Header2 = ({ bgColor, Color, Padding, Icon1, Icon2, Icon3, Icon4 }) => {
           <span className="fw-bolder">High Quality Assured</span>
           </p>
         </li>
-        <li className="p-2 text-center rounded d-flex more-info border-right">
+        <li className="d-flex more-info border-right">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
+            // width="16"
+            // height="16"
             fill="currentColor"
             className="bi bi-bag-check more-info-icon"
             viewBox="0 0 16 16"
@@ -48,11 +48,11 @@ const Header2 = ({ bgColor, Color, Padding, Icon1, Icon2, Icon3, Icon4 }) => {
             {/* <span style={{ fontSize: "0.8rem" }}> Lorem ipsum, dolor sit</span> */}
           </p>
         </li>
-        <li className="p-2 text-center rounded d-flex more-info border-right">
+        <li className="d-flex more-info border-right">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
+            // width="16"
+            // height="16"
             fill="currentColor"
             className="bi bi-bootstrap-reboot more-info-icon"
             viewBox="0 0 16 16"
@@ -69,11 +69,11 @@ const Header2 = ({ bgColor, Color, Padding, Icon1, Icon2, Icon3, Icon4 }) => {
             </span>
           </p>
         </li>
-        <li className="p-2 text-center rounded d-flex more-info border-right">
+        <li className="d-flex more-info border-right">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
+            // width="16"
+            // height="16"
             fill="currentColor"
             className="bi bi-hand-thumbs-up more-info-icon"
             viewBox="0 0 16 16"

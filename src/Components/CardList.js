@@ -413,7 +413,7 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
     <>
       {showNestedComponent && <Header />}
       {showNestedComponent === false ? <Nav /> : <></>}
-      <div className="row p-5 d-flex">
+      <div className="row px-5 d-flex">
         {showNestedComponent && <CategorySwipe />}
 
         {/* search input */}
