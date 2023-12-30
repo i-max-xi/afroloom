@@ -37,22 +37,22 @@ const Footer = () => {
           <hr />
         </div>
 
-        <section className="">
-          <div className="container text-center text-md-start mt-5">
-            <div className="row mt-3">
-              <div className="col-3 mx-auto mb-4">
+        <section className="footer-space">
+          <div className="container  mt-5">
+            <div className="row d-flex justify-content-between">
+              <div className="col-3 mb-4 footer-item">
                 <Link to="/" className="navbar-brand">
                   <h3>
                     {" "}
-                    <img src={Logo} alt="africa-logo" className="logo w-75" />
+                    <img src={Logo} alt="africa-logo" className="logo w-100" />
                   </h3>
                 </Link>
                 <h5 className="mx-3">Follow Us</h5>
                 <SocialMedia />
               </div>
 
-              <div className="col-4 mx-auto mb-4">
-                <h5 className="mb-4 footer-header">About Us</h5>
+              <div className="col-4 mb-4 footer-item">
+                <h5 className="footer-header">About Us</h5>
                 <p>
                   We specialize in providing a wide range of African products
                   , offering customers the option
@@ -61,8 +61,8 @@ const Footer = () => {
                 </p>
               </div>
 
-              <div className="col-3 mx-auto mb-4">
-                <h5 className="mb-4 footer-header">Useful Links</h5>
+              <div className="col-4 mb-4 footer-item">
+                <h5 className="footer-header">Useful Links</h5>
                 <div className="d-flex justify-content-between">
                   <div>
                     <p>
@@ -81,8 +81,8 @@ const Footer = () => {
                       </Link>
                     </p>
                     <p>
-                      <Link to="/about" className="text-reset">
-                        About Us
+                      <Link to="/contact" className="text-reset">
+                        Contact Us / <br />Report an issue
                       </Link>
                     </p>
                   </div>
@@ -103,8 +103,8 @@ const Footer = () => {
                       </Link>
                     </p>
                     <p>
-                      <Link to="/contact" className="text-reset">
-                        Contact Us / <br />Report an issue
+                      <Link to="/about" className="text-reset">
+                        About Us
                       </Link>
                     </p>
                   </div>

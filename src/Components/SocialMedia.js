@@ -3,10 +3,10 @@ import React from "react";
 const SocialMedia = () => {
   return (
     <div>
-      <section>
+      <section className="d-flex social-media-container">
         {/* <!-- Facebook --> */}
         <a
-          className="btn text-white btn-floating m-1"
+          className="text-white btn-floating"
           href="https://m.facebook.com/people/AfroLoom/61553397431290/"
           target="_blank"
           rel="noreferrer"
@@ -14,8 +14,8 @@ const SocialMedia = () => {
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
+            // width="16"
+            // height="16"
             fill="currentColor"
             className="bi bi-facebook social-media"
             viewBox="0 0 16 16"
@@ -26,7 +26,7 @@ const SocialMedia = () => {
 
         {/* <!-- Twitter --> */}
         <a
-          className="btn text-white btn-floating m-1"
+          className="text-white btn-floating"
           href="https://twitter.com/afroloomhq"
           target="_blank"
           rel="noreferrer"
@@ -34,8 +34,8 @@ const SocialMedia = () => {
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
+            // width="16"
+            // height="16"
             fill="currentColor"
             className="bi bi-twitter social-media"
             viewBox="0 0 16 16"
@@ -46,7 +46,7 @@ const SocialMedia = () => {
 
         {/* <!-- Instagram --> */}
         <a
-          className="btn text-white btn-floating m-1"
+          className="text-white btn-floating"
           href="https://www.instagram.com/afroloom/"
           target="_blank"
           rel="noreferrer"
@@ -54,8 +54,8 @@ const SocialMedia = () => {
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
+            // width="16"
+            // height="16"
             fill="currentColor"
             className="bi bi-instagram social-media"
             viewBox="0 0 16 16"
@@ -66,7 +66,7 @@ const SocialMedia = () => {
 
         {/* <!-- Linkedin --> */}
         <a
-          className="btn text-white btn-floating m-1"
+          className="text-white btn-floating"
           href="https://www.tiktok.com/@afroloomhq?is_from_webapp=1&sender_device=pc"
           target="_blank"
           rel="noreferrer"
@@ -74,8 +74,8 @@ const SocialMedia = () => {
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            width="16"
-            height="16"
+            // width="16"
+            // height="16"
             fill="currentColor"
             class="bi bi-tiktok social-media"
             viewBox="0 0 16 16"
