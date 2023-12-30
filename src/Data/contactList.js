@@ -7,8 +7,8 @@ const contactInfo = [
       img: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          width="35"
-          height="35"
+          // width="35"
+          // height="35"
           fill="currentColor"
           className="bi bi-geo-alt-fill text-warning"
           viewBox="0 0 16 16"
@@ -24,8 +24,8 @@ const contactInfo = [
       img: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          width="35"
-          height="35"
+          // width="35"
+          // height="35"
           fill="currentColor"
           className="bi bi-telephone-fill text-warning"
           viewBox="0 0 16 16"
@@ -44,8 +44,8 @@ const contactInfo = [
       img: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          width="35"
-          height="35"
+          // width="35"
+          // height="35"
           fill="currentColor"
           className="bi bi-envelope-open text-warning"
           viewBox="0 0 16 16"

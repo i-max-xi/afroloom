@@ -23,7 +23,7 @@ const Footer = () => {
       >
         {/* special contact  */}
         <div className="container p-4 pb-0">
-          <div className="d-flex justify-content-around">
+          <div className="d-flex justify-content-around policy-header">
             {contactInfo.map((contact) => (
               <FooterContact
                 key={contact.id}

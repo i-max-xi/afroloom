@@ -55,6 +55,13 @@
   .more-info-icon {
     width: 1rem !important;
   }
+  .footer-icon {
+    width: 1rem;
+  }
+  .footer-icon-title {
+    font-size: 0.5rem !important;
+    margin-top: 0.2rem;
+  }
 
   /* Category */
 

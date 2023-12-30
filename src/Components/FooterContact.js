@@ -2,13 +2,13 @@ import React from "react";
 
 export const FooterContact = ({ infoDetail, infoImage, infoTitle }) => {
   return (
-    <div className="d-flex">
-      <div className="mx-1">{infoImage}</div>
+    <li className="d-flex">
+      <div className="mx-1 footer-icon">{infoImage}</div>
       <div className="mx-auto">
-        <h5>{infoTitle}</h5>
-        <p>{infoDetail}</p>
+        <h5 className="footer-icon-title">{infoTitle}</h5>
+        <p className="footer-icon-sub-title">{infoDetail}</p>
       </div>
-    </div>
+    </li>
   );
 };
 
