@@ -104,7 +104,7 @@ export const Card = ({
       ) : (
         <Link to={`/product/${id}`}>
           <img
-            className="card-img-top"
+            className="card-img-top product-image"
             src={item}
             alt="item"
             height={Height ? Height : "200rem"}
@@ -112,23 +112,27 @@ export const Card = ({
         </Link>
       )}
 
-      <div className="card-body m-0 d-flex justify-content-center flex-column">
+      <div className="card-body d-flex flex-column">
         <div className="card-title" style={{ textAlign: TextAlign }}>
-          <span style={{ fontSize: "1rem" }}>{title}</span>
-          {country ? (
-            <span className="mx-1" style={{ fontSize: "0.8rem" }}>
-              <img
-                width="9%"
-                src={flagImage}
-                alt={country}
-                style={{ float: "right" }}
-              />
-            </span>
-          ) : (
-            <span></span>
-          )}
+          <div className="d-flex justify-content-between align-items-center">
+            <div style={{ fontSize: "1rem", width: "90%" }}>{title}</div>
+            <div className="flag" style={{width: '10%', float: "right"}}>
+              {country ? (
+                <div className="mx-1" style={{ fontSize: "0.8rem" }}>
+                  <img
+                    width="100%"
+                    src={flagImage}
+                    alt={country}
+                    style={{ float: "right" }}
+                  />
+                </div>
+              ) : (
+                <span></span>
+              )}
+            </div>
+          </div>
 
-          <h5 className="price mt-3">
+          <h5 className="price">
             {discount && discount > 0 ? (
               <>
                 <div>
@@ -146,7 +150,7 @@ export const Card = ({
             ) : (
               // If no discount, display the regular price
               // `${currencySymbol}${(currencyFactor * price).toFixed(2)}`
-              <div style={{ marginBottom: "2.5rem" }}>
+              <div className="original-price-untouched">
                 {currencySymbol}
                 {(currencyFactor * price).toFixed(2)}
               </div>
@@ -154,7 +158,7 @@ export const Card = ({
           </h5>
 
           {/* stars */}
-          <p className="mt-3">{stars}</p>
+          {/* <p className="mt-3">{stars}</p> */}
         </div>
 
         {Button || (

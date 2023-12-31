@@ -46,7 +46,6 @@
     justify-content: center;
     align-items: center;
     padding-right: 0.2rem !important;
-    
   }
   .more-info > p > span {
     margin: 0 !important;
@@ -87,14 +86,16 @@
     transform: translateY(-0.1rem) !important;
   }
 
-  .four-in-a-card-container, .offer-card {
+  .four-in-a-card-container,
+  .offer-card {
     font-size: 0.5rem !important;
     margin: 0 !important;
     padding: 0.5rem !important;
     width: 23% !important;
   }
 
-  .four-in-a-card-container h3, .offer-card h3 {
+  .four-in-a-card-container h3,
+  .offer-card h3 {
     font-size: 0.5rem !important;
   }
 
@@ -104,10 +105,10 @@
   }
 
   /* Search  */
-  .search-banner{
+  .search-banner {
     padding: 0;
   }
-  
+
   .search-banner button {
     font-size: 0.3rem !important;
   }
@@ -117,7 +118,8 @@
   }
 
   /* Banner Add */
-  .clickable-banner-container h3, .more-deals{
+  .clickable-banner-container h3,
+  .more-deals {
     font-size: 0.6rem !important;
   }
   .clickable-item > div {
@@ -125,7 +127,6 @@
   }
   .clickable-banner {
     height: 25% !important;
-
   }
   /* .clickable-item > .image-space {
     height: 25% !important;
@@ -154,17 +155,56 @@
   }
 
   .footer-item p {
-    margin-bottom:  0 !important;
+    margin-bottom: 0 !important;
   }
 
   .social-media {
     width: 0.5rem !important;
     margin: 0 !important;
   }
-  .social-media-container a{
+  .social-media-container a {
     margin: 0.5rem !important;
   }
-  
+
+  /* card */
+  .product-image {
+    height: 2rem !important;
+    border-radius: 0 !important;
+  }
+  .card {
+    border-radius: 0.1rem !important;
+  }
+
+  .card-body {
+    padding: 0.2rem !important;
+  }
+  .card-body * {
+    font-size: 0.2rem !important;
+  }
+  .card-title {
+    margin: 0 !important;
+  }
+  .price {
+    margin-top: 0 !important;
+  }
+
+  .discount-off {
+    font-size: 0.1rem !important;
+  }
+  .card-body button {
+    padding: 0 !important;
+    border-radius: 0.1rem !important;
+    border-width: 0.01rem !important;
+  }
+  .original-price-untouched {
+    margin-bottom: 0.7rem !important;
+  }
+  .flag {
+    display: flex;
+    width: 30% !important;
+    justify-content: right !important;
+    float: right !important;
+  }
 }
 
 .logo {
@@ -302,8 +342,7 @@
   color: #ffffff;
 }
 
-
-.policy-header{
+.policy-header {
   padding: 3rem;
   display: flex;
   justify-content: space-between;
@@ -313,7 +352,6 @@
   padding-right: 2rem;
   text-align: center;
 }
-
 
 .more-info > p {
   margin: 1rem;
@@ -332,6 +370,7 @@
 .price {
   /* float: right; */
   font-weight: 700;
+  margin-top: 0.5rem;
 }
 
 .original-price {
@@ -346,6 +385,10 @@
   font-weight: 500;
   font-size: 1rem;
   float: right;
+}
+
+.original-price-untouched {
+  margin-bottom: 2rem;
 }
 
 .card-img-top,
@@ -409,7 +452,7 @@ form {
   margin-top: 0.5rem;
 }
 
-.social-media-container a{
+.social-media-container a {
   margin: 1rem;
 }
 
@@ -430,7 +473,7 @@ form {
   align-items: flex-start;
 }
 
-.footer-item p{
+.footer-item p {
   text-align: left !important;
 }
 
