@@ -105,13 +105,12 @@
   }
 
   /* Search  */
-  
+
   /* search banner */
   .search-banner {
     aspect-ratio: 1/1 !important;
-    padding: 0.5rem !important;
+    padding: 0.4rem !important;
   }
-
 
   .search-dropdown {
     /* font-size: 0.4rem !important; */
@@ -120,12 +119,22 @@
     display: flex;
     align-items: center;
     justify-content: center;
+  }
 
+  .p-dropdown .p-dropdown-label.p-placeholder {
+    font-size: 0.4rem !important;
+    display: flex;
+    transform: translateX(-0.5rem);
+  }
+
+  .p-dropdown .p-dropdown-trigger {
+    width: 0.3rem !important;
+    margin: 0 0.1rem !important;
   }
 
   .search-banner button {
     font-size: 0.3rem !important;
-    padding: 0.2rem;
+    padding: 0.15rem;
     margin-bottom: 0.1rem !important;
   }
 
@@ -134,10 +143,10 @@
   }
 
   /* Banner Add */
-  .clickable-banner-container{
+  .clickable-banner-container {
     margin: 1rem 0 !important;
   }
-  
+
   .clickable-banner-container h3,
   .more-deals {
     font-size: 0.6rem !important;
@@ -148,7 +157,7 @@
   .clickable-banner {
     height: min-content !important;
   }
- 
+
   .clickable-item > .image-space {
     height: 80% !important;
   }
@@ -566,7 +575,6 @@ form {
 .search-banner button {
   margin-bottom: 1rem;
 }
-
 
 .search-modal {
   position: absolute;
