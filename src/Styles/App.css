@@ -6,6 +6,9 @@
 }
 
 @media (max-width: 900px) {
+  .logo {
+    width: 4rem !important;
+  }
   .navbar-nav {
     display: flex;
     flex-direction: column;
@@ -109,16 +112,17 @@
   /* search banner */
   .search-banner {
     aspect-ratio: 1/1 !important;
-    padding: 0.4rem !important;
+    padding: 0.2rem !important;
   }
 
   .search-dropdown {
     /* font-size: 0.4rem !important; */
-    max-height: 30% !important;
-    border-radius: 0.3rem !important;
+    max-height: 15% !important;
+    border-radius: 0.2rem !important;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-bottom: 0.2rem !important;
   }
 
   .p-dropdown .p-dropdown-label.p-placeholder {
@@ -134,12 +138,13 @@
 
   .search-banner button {
     font-size: 0.3rem !important;
-    padding: 0.15rem;
-    margin-bottom: 0.1rem !important;
+    padding: 0rem;
+    margin-bottom: 0rem !important;
   }
 
   .search-banner h4 {
     font-size: 0.4rem !important;
+    margin-bottom: 0.2rem !important;
   }
 
   /* Banner Add */
@@ -572,6 +577,12 @@ form {
 }
 
 /* search */
+.search-banner {
+  height: min-content;
+}
+.search-dropdown {
+  margin-bottom: 0.5rem;
+}
 .search-banner button {
   margin-bottom: 1rem;
 }

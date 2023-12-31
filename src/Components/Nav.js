@@ -150,7 +150,7 @@ const Nav = ({ handleToggleDropdown, Language, Currency }) => {
             <Avatar
               icon="pi pi-user"
               className="mx-1 bg-secondary text-white"
-              size="large"
+              size="medium"
               shape="circle"
             />
           </Link>

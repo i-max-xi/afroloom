@@ -76,7 +76,7 @@ const SearchFilters = ({
         options={options1}
         onChange={handleCategoryChange}
         placeholder={search1}
-        className="mb-2  search-dropdown"
+        className=" search-dropdown"
       />
       
       {search2 !== "" ? (
@@ -85,7 +85,7 @@ const SearchFilters = ({
           options={options2}
           onChange={handleCountryChange}
           placeholder={search2}
-          className="mb-2 search-dropdown"
+          className="search-dropdown"
         />
       ) : (
         <></>
@@ -97,7 +97,7 @@ const SearchFilters = ({
         options={optionPrice}
         onChange={handlePriceRangeChange}
         placeholder="Search Price"
-        className="mb-2  search-dropdown"
+        className=" search-dropdown"
       />
       ): (
         <></>
@@ -109,7 +109,7 @@ const SearchFilters = ({
           options={options3}
           onChange={handleOption3Change}
           placeholder={search3}
-          className="mb-2 search-dropdown"
+          className="search-dropdown"
         />
       ) : (
         <></>
@@ -121,7 +121,7 @@ const SearchFilters = ({
           options={options4}
           onChange={handleOption4Change}
           placeholder={search4}
-          className="mb-2 search-dropdown"
+          className="search-dropdown"
         />
       ) : (
         <></>
@@ -133,7 +133,7 @@ const SearchFilters = ({
           options={options5}
           onChange={handleOption5Change}
           placeholder={search5}
-          className="mb-2 search-dropdown"
+          className="search-dropdown"
         />
       ) : (
         <></>
