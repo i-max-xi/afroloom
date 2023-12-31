@@ -116,7 +116,7 @@ export const Card = ({
         <div className="card-title" style={{ textAlign: TextAlign }}>
           <div className="d-flex justify-content-between align-items-center">
             <div style={{ fontSize: "1rem", width: "90%" }}>{title}</div>
-            <div className="flag" style={{width: '10%', float: "right"}}>
+            <div className="flag" style={{ width: "10%", float: "right" }}>
               {country ? (
                 <div className="mx-1" style={{ fontSize: "0.8rem" }}>
                   <img
@@ -513,15 +513,16 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
                     linkless={ads[0].linkless}
                   />
                 </div> */}
-                <div className="container mt-5 mb-5" key={uuid()}>
-                  <Banner
-                    // items={bannerone}
-                    bannerFix="One"
-                    headTitle="Discover the Timeless Beauty of African Handicraft"
-                    seeMore="See More"
-                    linkTo="/category/Handicrafts"
-                  />
-                </div>
+                {/* <div className="top-down-spacing" key={uuid()}> */}
+                <Banner
+                  // items={bannerone}
+                  key={uuid()}
+                  bannerFix="One"
+                  headTitle="Discover the Timeless Beauty of African Handicraft"
+                  seeMore="See More"
+                  linkTo="/category/Handicrafts"
+                />
+                {/* </div> */}
               </>
             )}
 
@@ -546,15 +547,16 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
                 </div> */}
 
                 {/* banner 2 */}
-                <div className="container mt-5 mb-5" key={uuid()}>
-                  <Banner
-                    // items={bannerfive}
-                    bannerFix="Five"
-                    headTitle="Time is running out on these Great Discounts"
-                    seeMore="See More"
-                    linkTo="/offers/discounts"
-                  />
-                </div>
+                {/* <div className="top-down-spacing" key={uuid()}> */}
+                <Banner
+                  // items={bannerfive}
+                  key={uuid()}
+                  bannerFix="Five"
+                  headTitle="Time is running out on these Great Discounts"
+                  seeMore="See More"
+                  linkTo="/offers/discounts"
+                />
+                {/* </div> */}
                 <Row offerFix="Six" />
               </>
             )}
@@ -574,26 +576,28 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
 
             {index === 18 && showNestedComponent && (
               <>
-                <div className="container mt-5 mb-5" key={uuid()}>
-                  <Banner
-                    // items={bannereight}
-                    bannerFix="Eight"
-                    headTitle="Discover Elegant African Fabrics"
-                    seeMore="See More"
-                    linkTo="/category/Textiles"
-                  />
-                </div>
+                {/* <div className="top-down-spacing" key={uuid()}> */}
+                <Banner
+                  // items={bannereight}
+                  key={uuid()}
+                  bannerFix="Eight"
+                  headTitle="Discover Elegant African Fabrics"
+                  seeMore="See More"
+                  linkTo="/category/Textiles"
+                />
+                {/* </div> */}
 
                 <Row offerFix="Nine" />
-                <div className="container mt-5 mb-5" key={uuid()}>
-                  <Banner
-                    // items={bannerten}
-                    bannerFix="Ten"
-                    headTitle="Low Cost, High Quality Furniture"
-                    seeMore="See More"
-                    linkTo="/category/Furniture"
-                  />
-                </div>
+                {/* <div className="top-down-spacing" key={uuid()}> */}
+                <Banner
+                  key={uuid()}
+                  // items={bannerten}
+                  bannerFix="Ten"
+                  headTitle="Low Cost, High Quality Furniture"
+                  seeMore="See More"
+                  linkTo="/category/Furniture"
+                />
+                {/* </div> */}
               </>
             )}
           </React.Fragment>
