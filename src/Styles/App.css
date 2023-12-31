@@ -105,16 +105,32 @@
   }
 
   /* Search  */
+  
+  /* search banner */
   .search-banner {
-    padding: 0;
+    aspect-ratio: 1/1 !important;
+    padding: 0.5rem !important;
+  }
+
+
+  .search-dropdown {
+    /* font-size: 0.4rem !important; */
+    max-height: 30% !important;
+    border-radius: 0.3rem !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
   }
 
   .search-banner button {
     font-size: 0.3rem !important;
+    padding: 0.2rem;
+    margin-bottom: 0.1rem !important;
   }
 
   .search-banner h4 {
-    font-size: 0.6rem !important;
+    font-size: 0.4rem !important;
   }
 
   /* Banner Add */
@@ -547,9 +563,10 @@ form {
 }
 
 /* search */
-.search-dropdown {
-  height: 18% !important;
+.search-banner button {
+  margin-bottom: 1rem;
 }
+
 
 .search-modal {
   position: absolute;

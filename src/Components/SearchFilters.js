@@ -60,7 +60,7 @@ const SearchFilters = ({
     <div
       className="d-flex flex-column text-white rounded pt-2 search-banner"
       style={{
-        height: "max-content",
+        // height: "max-content",
         // scale: "0.8",
         width: "20%",
         backgroundImage: `url(${searchBG})`,
@@ -139,7 +139,7 @@ const SearchFilters = ({
         <></>
       )}
 
-      <button className="btn btn-warning text-white mb-3" onClick={handleSave}>
+      <button className="btn btn-warning text-white" onClick={handleSave}>
         Search
       </button>
     </div>
