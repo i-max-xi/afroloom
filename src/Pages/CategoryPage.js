@@ -13,11 +13,11 @@ const CategoryPage = () => {
   return (
     <>
       <Nav />
-      <div className="bg-dark container text-center p-2 mb-5">
+      <div className="bg-dark container text-center p-2 mb-5 category-page-container">
         <h3 className="text-white mt-2">Category</h3>
         <div className="row">
           {allCategory.map(({ image, name}) => (
-            <div key={uuid()} className="text-decoration-none mx-3 mt-5 p-0" style={{width: '22%'}}>
+            <div key={uuid()} className="text-decoration-none mx-3 mt-5 p-0" style={{width: '25%'}}>
               <CategoryTemplate
                 image={image}
                 name={name}

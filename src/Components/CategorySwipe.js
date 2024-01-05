@@ -96,7 +96,7 @@ export const CategoryTemplate = ({
 }) => {
   return (
     <Link
-      className="text-decoration-none fs-5"
+      className="text-decoration-none fs-5 category-template"
       to={name === "See All" ? "/category-page" : `/category/${name}`}
       style={{ color: selectedColor }}
     >
