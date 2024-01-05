@@ -256,6 +256,18 @@
     font-size: 0.7rem !important;
     margin: 0 !important;
   }
+
+  /* category */
+  .page-banner {
+    /* aspect-ratio: 1/1 !important; */
+    background-size: contain !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    height: 7rem !important;
+  }
+  .category-items-container{
+    margin-top: 0 !important;
+  }
 }
 
 .logo {
@@ -542,6 +554,11 @@ form {
 
 .p-carousel .p-carousel-indicators .p-carousel-indicator.p-highlight button {
   background-color: #ffc107 !important;
+}
+
+/* category */
+.category-items-container {
+  margin-top: 5rem;
 }
 
 /* contact us page */

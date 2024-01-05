@@ -100,17 +100,6 @@ const CategoryDetail = ({ option }) => {
   const [selectedOption3, setSelectedOption3] = useState("");
   const [selectedPriceRange, setSelectedPriceRange] = useState("");
 
-
-  // const saveFilters = () => {
-  //   if(selectedCountry !== "" || selectedCategory !== ""){
-  //     const newitemsToDisplay = Products.filter(
-  //       (product) => product.detailedCategory === selectedCountry || product.detailedCategory === selectedCategory
-  //     );
-  //     setitemsToDisplay(newitemsToDisplay);
-  //   }
-    
-  // };
-
   const saveFilters = () => {
     const newItemstoDisplay = product.filter((product) => {
       if (
@@ -142,23 +131,6 @@ const CategoryDetail = ({ option }) => {
 
     setitemsToDisplay(newItemstoDisplay);
   };
-
-
-  
-  // const saveFilters = () => {
-  //   const newItemstoDisplay = Products.filter((product) => {
-  //     if (
-  //       (selectedCountry === "" || product.gender === selectedCountry) &&
-  //       (selectedCategory === "" || product.detailedCategory === selectedCategory) &&
-  //       (selectedOption3 === "" || product.size === selectedOption3)
-  //     ) {
-  //       return true;
-  //     }
-  //     return false;
-  //   });
-  
-  //   setitemsToDisplay(newItemstoDisplay);
-  // };
 
 
     // Conditionally render type
@@ -210,8 +182,9 @@ const CategoryDetail = ({ option }) => {
           height: "12rem",
           width: "100%",
         }}
+        className="page-banner"
       ></div>
-      <div className="container mt-5">
+      <div className="container category-items-container">
         <div className="row d-flex justify-content-between">
 
 
