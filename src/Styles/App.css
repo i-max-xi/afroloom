@@ -240,6 +240,22 @@
     justify-content: right !important;
     float: right !important;
   }
+
+  /* Item detail */
+  .goog-te-gadget{
+    font-size: 8px;
+    scale: 0.6;
+  }
+  .main-product-image {
+    height: 18rem !important;
+  }
+  .product-title {
+    margin-top: 3rem;
+  }
+  .related-products, .related-products .h3, .related-products h5, .related-products del, .related-products h5 {
+    font-size: 0.7rem !important;
+    margin: 0 !important;
+  }
 }
 
 .logo {

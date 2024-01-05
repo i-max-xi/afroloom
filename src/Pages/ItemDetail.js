@@ -118,12 +118,15 @@ const ItemDetail = ({ match }) => {
         (1 - discountPercentage) * currencyFactor * product.price * count;
     }
     return (
-      <div className="text-center p-3">
-        <Link to={`/product/${relatedProduct.id}`}>
+      <div className="text-center p-3 related-products">
+        <Link to={`/product/${relatedProduct.id}`} >
           <img
             src={relatedProduct.item}
             alt={relatedProduct.title}
-            className="shadow-2 mt-3 w-50 h-50"
+            className="shadow-2 mt-3"
+            width="50%"
+            height="50%"
+            style={{ aspectRatio: 1/1 }}
           />
         </Link>
         <div>
@@ -174,11 +177,12 @@ const ItemDetail = ({ match }) => {
                 alt={product.title}
                 width="100%"
                 height="400rem"
+                className="main-product-image"
               />
             </div>
           </div>
-          <div className="col-md-6">
-            <h3 className="mb-3">{product.title}</h3>
+          <div className="col-md-6 product-info">
+            <h3 className="mb-3 product-title">{product.title}</h3>
             {/* <p className="mb-3">{product.description}</p> */}
             <hr />
             <div className="d-flex mb-3">{stars}</div>
