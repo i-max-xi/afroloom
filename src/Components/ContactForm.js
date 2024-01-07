@@ -69,7 +69,7 @@ function ContactForm() {
   };
 
   return (
-    <div className="container p-5 w-50">
+    <div className="col-12 col-sm-6 mx-auto contact-container">
       <Toast ref={toastRef} />
 
       <Form onSubmit={handleSubmit}>

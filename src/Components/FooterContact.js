@@ -14,7 +14,7 @@ export const FooterContact = ({ infoDetail, infoImage, infoTitle }) => {
 
 export const FooterContact2 = ({ infoDetail, infoImage, infoTitle, Width }) => {
   return (
-    <div className="col-sm-6 col-md-3 mx-2" style={{width: '30%'}}>
+    <div className="col-sm-6 col-md-3 col-12 mx-auto">
       <div className="info-wrapper">
         <div className="mx-1 info-icon" style={{width: Width}}>{infoImage}</div>
         <div className="mx-auto info-content">
