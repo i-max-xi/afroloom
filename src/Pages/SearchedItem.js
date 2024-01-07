@@ -19,11 +19,12 @@ const SearchedItem = () => {
           height: "15rem",
           width: "100%",
         }}
+        className="page-banner"
       ></div>
-      <h3 className="text-center mt-5">
+      <h3 className="text-center search-header">
         Products matching <span className="text-warning">{keyword}</span>
       </h3>
-      <div className="row p-5">
+      <div className="row m-auto p-2">
         {Products.length !== 0 ? (
           Products.map((product, index) => (
             <div

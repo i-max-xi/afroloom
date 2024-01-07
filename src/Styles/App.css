@@ -211,7 +211,7 @@
   }
 
   .card-body {
-    padding: 0.2rem !important;
+    padding: 0.1rem !important;
   }
   .card-body * {
     font-size: 0.2rem !important;
@@ -224,7 +224,7 @@
   }
 
   .discount-off {
-    font-size: 0.1rem !important;
+    font-size: 0.2rem !important;
   }
   .card-body button {
     padding: 0 !important;
@@ -236,7 +236,7 @@
   }
   .flag {
     display: flex;
-    width: 30% !important;
+    width: 40% !important;
     justify-content: right !important;
     float: right !important;
   }
@@ -287,6 +287,11 @@
   .info-icon {
     width: 3.5rem !important;
     margin-top: -1rem !important;
+  }
+
+  /* search */
+  .search-header {
+    margin-top: 0 !important;
   }
 }
 
@@ -657,6 +662,11 @@ form {
 
 .contact-container{
   margin-top: 1rem;
+}
+
+/* search */
+.search-header {
+  margin-top: 5rem;
 }
 
 /* dashboard */
