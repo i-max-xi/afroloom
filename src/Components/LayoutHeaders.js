@@ -43,6 +43,7 @@ function LayoutHeaders({selectedBg}) {
       height: "13rem",
       width: '100%'
     }}
+    className="page-banner"
   ></div>
     </>
     

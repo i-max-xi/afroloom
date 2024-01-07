@@ -6,7 +6,7 @@ const ShippingPolicy = () => {
   return (
     <>
       <LayoutHeaders selectedBg={Top} />
-      <div className="p-5 m-5">
+      <div className="page-container">
         {/* <h3>
           Welcome to <span className="text-warning">AfroLoom.com,</span> an
           e-commerce platform specializing in African products.

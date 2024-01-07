@@ -271,6 +271,12 @@
   .category-page-container > *, .category-template h4{
     font-size: 0.8rem !important;
   }
+
+  /* pages */
+  .page-container{
+    font-size: 0.8rem;
+    padding: 0 1rem !important;
+  }
 }
 
 .logo {
@@ -631,6 +637,11 @@ form {
 
 .p-overlaypanel .p-overlaypanel-content {
   padding: 0;
+}
+
+/* pages */
+.page-container{
+  padding: 4rem;
 }
 
 /* .search-input {

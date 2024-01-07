@@ -6,7 +6,7 @@ const PrivacyPolicy = () => {
   return (
     <>
       <LayoutHeaders selectedBg={Top} />
-      <div className="p-5 m-5">
+      <div className="page-container">
         {/* <h3>
           Privacy Policy for
           <span className="text-warning"> AfroLoom.com</span>
