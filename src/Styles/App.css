@@ -293,6 +293,15 @@
   .search-header {
     margin-top: 0 !important;
   }
+
+  /* customize page */
+  .customise-front {
+    margin: 0 !important;
+    margin-bottom: 0.5rem !important;
+  }
+  .customise-front h5 {
+    font-size: 0.5rem !important;
+  }
 }
 
 .logo {
@@ -477,6 +486,11 @@
 
 .original-price-untouched {
   margin-bottom: 2rem;
+}
+
+.card-img-top {
+  width: 20%;
+  aspect-ratio: 1/1;
 }
 
 .card-img-top,
@@ -724,4 +738,9 @@ form {
 
 .custom-upload input[type="file"] {
   display: none;
+}
+
+/* 3d customize */
+.customise-front {
+  margin: 1rem;
 }

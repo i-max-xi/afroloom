@@ -22,7 +22,7 @@ const CustomizePage = () => {
           {mainMaleCustomize.map(({ name, image }) => (
             <Link
               to={`/configurator/${name}`}
-              className="col-3 m-3 mx-3 text-decoration-none"
+              className="col-4 col-md-3 customise-front text-decoration-none"
               key={name}
             >
               <div className="card" data-aos="fade-in" data-aos-duration="1500">
@@ -30,8 +30,7 @@ const CustomizePage = () => {
                   className="card-img-top"
                   src={image}
                   alt={name}
-                  width="250px"
-                  height="250px"
+                 
                 />
                 <div className="card-body m-0 d-flex justify-content-center flex-column">
                   <h5 className="text-center">{name}</h5>
@@ -45,7 +44,7 @@ const CustomizePage = () => {
           {mainFemaleCustomize.map(({ name, image }) => (
             <Link
               to={`/configurator-female/${name}`}
-              className="col-3 m-3 mx-3 text-decoration-none"
+              className="col-4 col-md-3 customise-front text-decoration-none"
               key={name}
             >
               <div className="card" data-aos="fade-in" data-aos-duration="1500">
@@ -53,8 +52,7 @@ const CustomizePage = () => {
                   className="card-img-top"
                   src={image}
                   alt={name}
-                  width="250px"
-                  height="250px"
+                  
                 />
                 <div className="card-body m-0 d-flex justify-content-center flex-column">
                   <h5 className="text-center">{name}</h5>
@@ -68,7 +66,7 @@ const CustomizePage = () => {
           {mainMaleAccessories.map(({ name, image }) => (
             <Link
               to={`/configurator-male-accessories/${name}`}
-              className="col-3 m-3 mx-3 text-decoration-none"
+              className="col-4 col-md-3 customise-front text-decoration-none"
               key={name}
             >
               <div className="card" data-aos="fade-in" data-aos-duration="1500">
@@ -76,8 +74,7 @@ const CustomizePage = () => {
                   className="card-img-top"
                   src={image}
                   alt={name}
-                  width="250px"
-                  height="250px"
+                
                 />
                 <div className="card-body m-0 d-flex justify-content-center flex-column">
                   <h5 className="text-center">{name}</h5>
@@ -90,9 +87,8 @@ const CustomizePage = () => {
           <h5 className="mt-4 footer-header">Female Accessories</h5>
           {mainFemaleAccessories.map(({ name, image }) => (
             <Link
-              // to={`/customize-female-accessories/${name}`}
               to={`/configurator-female-accessories/${name}`}
-              className="col-3 m-3 mx-3 text-decoration-none"
+              className="col-4 col-md-3 customise-front text-decoration-none"
               key={name}
             >
               <div className="card" data-aos="fade-in" data-aos-duration="1500">
@@ -100,8 +96,7 @@ const CustomizePage = () => {
                   className="card-img-top"
                   src={image}
                   alt={name}
-                  width="250px"
-                  height="250px"
+                  
                 />
                 <div className="card-body m-0 d-flex justify-content-center flex-column">
                   <h5 className="text-center">{name}</h5>
@@ -116,7 +111,7 @@ const CustomizePage = () => {
             <Link
               // to={`/customize-unisex/${name}`}
               to={`/configurator-unisex/${name}`}
-              className="col-3 m-3 mx-3 text-decoration-none"
+              className="col-4 col-md-3 customise-front text-decoration-none"
               key={name}
             >
               <div className="card" data-aos="fade-in" data-aos-duration="1500">
@@ -124,8 +119,7 @@ const CustomizePage = () => {
                   className="card-img-top"
                   src={image}
                   alt={name}
-                  width="250px"
-                  height="250px"
+                  
                 />
                 <div className="card-body m-0 d-flex justify-content-center flex-column">
                   <h5 className="text-center">{name}</h5>
@@ -140,7 +134,7 @@ const CustomizePage = () => {
             <Link
               // to={`/customize-footwear/${name}`}
               to={`/configurator-footwear/${name}`}
-              className="col-3 m-3 mx-3 text-decoration-none"
+              className="col-4 col-md-3 customise-front text-decoration-none"
               key={name}
             >
               <div className="card" data-aos="fade-in" data-aos-duration="1500">
@@ -148,8 +142,7 @@ const CustomizePage = () => {
                   className="card-img-top"
                   src={image}
                   alt={name}
-                  width="250px"
-                  height="250px"
+                 
                 />
                 <div className="card-body m-0 d-flex justify-content-center flex-column">
                   <h5 className="text-center">{name}</h5>
