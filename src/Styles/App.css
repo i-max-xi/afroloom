@@ -66,7 +66,9 @@
   }
 
   /* Category */
-
+  .category-page-container > *, .category-template img{
+    width: 60% !important;
+  }
   .category-banner > h4 {
     font-size: 1rem !important;
   }
@@ -273,6 +275,7 @@
     margin-top: 0 !important;
   }
   .category-page-container > *, .category-template h4{
+    margin-top: 0.2rem;
     font-size: 0.8rem !important;
   }
 
