@@ -127,7 +127,7 @@ const Supplier = () => {
           <span className="text-warning">Request</span> To Become A Supplier
         </h4>
         <div className="container mb-5 mt-5 d-flex justify-content-center rounded">
-          <form onSubmit={handleSignUp} className="w-50">
+          <form onSubmit={handleSignUp} className="col-12 col-sm-6">
             <div className="row mb-4">
               <div className="col">
                 <input

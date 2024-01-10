@@ -105,7 +105,7 @@ const SignIn = () => {
       >
         <form
           onSubmit={handleSignIn}
-          className="container bg-white rounded w-50 p-5 shadow"
+          className="container bg-white rounded p-4 col-12 col-sm-6 shadow"
           style={{ marginTop: "8rem", marginBottom: "5rem" }}
         >
           <h4>
