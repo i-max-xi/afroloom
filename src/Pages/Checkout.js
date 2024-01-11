@@ -212,7 +212,8 @@ const Checkout = () => {
         <Dialog
           header="Checkout"
           visible={showDecison}
-          style={{ width: "25vw", height: "20vh", fontSize: "1.2rem" }}
+          // style={{ width: "25vw", height: "20vh", fontSize: "1.2rem" }}
+          className="col-12 col-sm-3"
           onHide={() => {
             navigate("/");
             setshowDecision(false);
@@ -230,7 +231,7 @@ const Checkout = () => {
 
         <div className="container mb-5">
           {cartItems.length !== 0 ? (
-            <div className="mt-5 mb-5">
+            <div className="checkout-container">
               <h2>Items in Cart</h2>
               <ul className="list-group">
                 {cartItems.map((selectedItem) => (
@@ -243,10 +244,9 @@ const Checkout = () => {
                       <img
                         src={selectedItem.item}
                         alt=""
-                        width="100rem"
-                        height="100rem"
+                        width="10%"
                       />
-                      <div className="mt-2 mx-5">
+                      <div className="checkout-item-details">
                         <span className="fs-5 fw-bold">Item: </span>{" "}
                         {selectedItem.title} <br />
                         {/* <span className="fw-bold">
@@ -261,7 +261,7 @@ const Checkout = () => {
                     <div>
                       {/* <button className="btn btn-primary mr-2" onClick={() => handleAddItem(selectedItem)}>Add</button> */}
                       <button
-                        className="btn btn-danger"
+                        className="btn btn-danger checkout-btns"
                         onClick={() => handleRemoveItem(selectedItem)}
                       >
                         Remove
@@ -272,7 +272,7 @@ const Checkout = () => {
               </ul>
 
               <button
-                className="btn btn-warning mt-3 text-white"
+                className="btn btn-warning mt-3 text-white checkout-btns"
                 onClick={handleClearCart}
               >
                 Clear Cart
@@ -294,7 +294,7 @@ const Checkout = () => {
 
           {/* Shipping Information */}
 
-          <div className="container bg-white rounded w-50 p-5 shadow">
+          <div className="container bg-white rounded col-12 col-sm-6 p-4 shadow">
             <h4 className="mb-4 text-center">
               <span className="text-warning">Delivery</span> Information
             </h4>
