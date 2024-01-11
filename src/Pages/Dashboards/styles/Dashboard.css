@@ -1,4 +1,9 @@
 /* Dashboard.css */
+
+@media (max-width: 900px) {
+ 
+}
+
 .dashboard {
     display: flex;
   }
