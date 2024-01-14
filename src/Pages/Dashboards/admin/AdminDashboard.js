@@ -34,7 +34,7 @@ const AdminDashboard = () => {
   return (
     <>
       <Nav />
-      <div className="bg-white fs-3 p-3 text-bold">
+      <div className="bg-white fs-3 p-3 text-bold welcome">
         Welcome <span style={{ color: "orange" }}>{welcomename}!</span>
       </div>
 

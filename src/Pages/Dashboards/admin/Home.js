@@ -113,7 +113,7 @@ const Home = () => {
     <div>
       <Toast ref={toastRef} position="top-right" />
 
-      <h2>All Products</h2>
+      <h2 className="dashboard-home-title">All Products</h2>
       {/* Search input field */}
       <div className="p-inputgroup justify-content-center mt-3 mb-3">
         <input
@@ -151,7 +151,7 @@ const Home = () => {
         <Column
           body={(rowData) => (
             <button
-              className="btn btn-info"
+              className="btn btn-info edit"
               onClick={() => handleEditClick(rowData)}
             >
               Edit
@@ -161,7 +161,7 @@ const Home = () => {
         <Column
           body={(rowData) => (
             <button
-              className="btn btn-danger"
+              className="btn btn-danger remove"
               onClick={() => deleteProduct(rowData.id)}
             >
               Delete
@@ -174,7 +174,7 @@ const Home = () => {
         header="Edit Product"
         visible={editDialogVisible}
         onHide={handleEditDialogHide}
-        style={{ width: "50vw" }}
+        className="col-12 col-sm-6"
       >
         {selectedProduct && (
           <form onSubmit={handleEditSubmit}>

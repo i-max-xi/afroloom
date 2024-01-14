@@ -71,7 +71,7 @@ const MyOrders = () => {
             <img
               src={rowData.item}
               alt={rowData.title}
-              style={{ width: "100px" }}
+              className="data-table-img"
             />
           )}
         />

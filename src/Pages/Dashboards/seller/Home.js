@@ -136,7 +136,7 @@ const Home = ({ currentSeller }) => {
             <img
               src={rowData.item}
               alt={rowData.title}
-              style={{ width: "100px" }}
+              className="data-table-img"
             />
           )}
         />
@@ -149,8 +149,8 @@ const Home = ({ currentSeller }) => {
         <Column
           body={(rowData) => (
             <button
-              className="btn btn-info"
-              onClick={() => handleEditClick(rowData)}
+            className="btn btn-info edit"
+            onClick={() => handleEditClick(rowData)}
             >
               Edit
             </button>
@@ -159,8 +159,8 @@ const Home = ({ currentSeller }) => {
         <Column
           body={(rowData) => (
             <button
-              className="btn btn-danger"
-              onClick={() => deleteProduct(rowData.id)}
+            className="btn btn-danger remove"
+            onClick={() => deleteProduct(rowData.id)}
             >
               Delete
             </button>
@@ -172,7 +172,7 @@ const Home = ({ currentSeller }) => {
         header="Edit Product"
         visible={editDialogVisible}
         onHide={handleEditDialogHide}
-        style={{ width: "50vw" }}
+        className="col-12 col-sm-6"
       >
         {selectedProduct && (
           <form onSubmit={handleEditSubmit}>
