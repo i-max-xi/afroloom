@@ -52,7 +52,7 @@ const MyOrders = () => {
       <div className="p-inputgroup justify-content-center mt-3 mb-3">
         <input
           type="text"
-          className="w-50 rounded"
+          className="dashboard-home-search rounded"
           placeholder="Search by title"
           value={searchTerm}
           onChange={handleSearchChange}

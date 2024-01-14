@@ -3,12 +3,13 @@ import "../styles/Dashboard.css";
 import Nav from "../../../Components/Nav";
 import { TabPanel, TabView } from "primereact/tabview";
 import { useSelector } from "react-redux";
-import SideBar from "../Sidebar";
 import AddProduct from "../AddProduct";
 import PackageStickers from "../PackageStickers";
 import { Dialog } from "primereact/dialog";
 import { Link, useNavigate } from "react-router-dom";
 import Home from "./Home";
+import CustomSideBar from "../CustomSidebar";
+import { Button } from "primereact/button";
 
 const SellerDashboard = () => {
   const navigate = useNavigate();
@@ -21,6 +22,7 @@ const SellerDashboard = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [showPopup, setShowPopup] = useState(!sellerApproved);
 
+  const [visible, setVisible] = useState(true);
 
 
   return (
@@ -29,14 +31,19 @@ const SellerDashboard = () => {
       <div className="bg-white fs-3 p-3 text-bold">
         Welcome <span style={{ color: "orange" }}>{welcomename}!</span>{" "}
       </div>
-      <div className="d-flex bg-white" style={{ minHeight: "85vh" }}>
-        <SideBar
+      <div className="d-flex bg-white">
+        <div className="side-bar-closed-container">
+        <Button icon="pi pi-arrow-right" onClick={() => setVisible(true)} />
+        </div>
+        <CustomSideBar
           items={[
             { label: "Home" },
             { label: "Add A New Product" },
             { label: "Package Stickers" },
           ]}
           setActiveIndex={setActiveIndex}
+          visible={visible}
+          setVisible={setVisible}
         />
         <div className="dashboard w-75">
           {sellerApproved ? (

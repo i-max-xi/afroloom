@@ -3,6 +3,7 @@ import { Button } from "primereact/button";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { auth, signOut } from "../../firebase";
+import { Sidebar } from 'primereact/sidebar';
 import {
   setDashBoardPath,
   setSignedIn,
@@ -11,7 +12,7 @@ import {
 
 import { Divider } from "primereact/divider";
 
-const SideBar = ({ items, setActiveIndex }) => {
+const CustomSideBar = ({ items, setActiveIndex, visible, setVisible }) => {
   const toastRef = useRef(null);
   const currentUser = useSelector((state) => state.user.currentUser);
 
@@ -54,8 +55,10 @@ const SideBar = ({ items, setActiveIndex }) => {
     );
   };
 
+
+
   return (
-    <div className="Sidebar bg-white">
+    <Sidebar visible={visible} onHide={() => setVisible(false)} className="Sidebar bg-white">
       <div className="d-flex flex-column align-items-start mt-3">
         {items.map((item, index) => (
           <>
@@ -88,8 +91,8 @@ const SideBar = ({ items, setActiveIndex }) => {
         className="rounded btn bg-danger m-3"
         label="Sign Out"
       />
-    </div>
+    </Sidebar>
   );
 };
 
-export default SideBar;
+export default CustomSideBar;

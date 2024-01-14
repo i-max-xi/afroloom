@@ -1,13 +1,26 @@
 /* Dashboard.css */
 
 @media (max-width: 900px) {
- 
+  .side-bar-closed-container > button {
+    scale: 0.5;
+    transform: translateY(-0.5rem);
+  }
+  .dashboard-home-search {
+    width: 15rem;
+  }
 }
 
 .dashboard {
     display: flex;
   }
   
+  .side-bar-closed-container {
+    width: 5%;
+    transform: translateY(1rem);
+  }
+  .dashboard-home-search {
+    width: 50%;
+  }
   .Sidebar {
     width: 15%;
     background-color: hsl(0, 0%, 94%);

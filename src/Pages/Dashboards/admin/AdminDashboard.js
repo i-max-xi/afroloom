@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Nav from "../../../Components/Nav";
 import { TabPanel, TabView } from "primereact/tabview";
-import SideBar from "../Sidebar";
 import Home from "./Home";
 import AllSellers from "./AllSellers";
 import AddProduct from "../AddProduct";
@@ -9,6 +8,8 @@ import AddDeliveryService from "../AddDeliveryService";
 import { useSelector } from "react-redux";
 import PackageStickers from "../PackageStickers";
 import AddPackageSticker from "./AddPackageSticker";
+import CustomSideBar from "../CustomSidebar";
+import { Button } from "primereact/button";
 
 const adminSidebarItems = [
   { label: "Home" },
@@ -27,17 +28,27 @@ const AdminDashboard = () => {
 
   const adminSeller = "Admin";
 
+  const [visible, setVisible] = useState(true);
+
+
   return (
     <>
       <Nav />
       <div className="bg-white fs-3 p-3 text-bold">
         Welcome <span style={{ color: "orange" }}>{welcomename}!</span>
       </div>
-      <div className="d-flex bg-white" style={{ minHeight: "85vh" }}>
-        <SideBar
+
+      <div className="d-flex bg-white">
+        <div className="side-bar-closed-container">
+        <Button icon="pi pi-arrow-right" onClick={() => setVisible(true)} />
+        </div>
+
+        <CustomSideBar
           isAdmin="Admin"
           items={adminSidebarItems}
           setActiveIndex={setActiveIndex}
+          visible={visible}
+          setVisible={setVisible}
         />
         <div className="dashboard w-75">
           <TabView
