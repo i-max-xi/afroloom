@@ -129,6 +129,7 @@ const Home = () => {
         value={filteredProducts.length !== 0 ? filteredProducts : products}
         paginator
         rows={10}
+        className="data-table"
       >
         <Column
           field="item"
@@ -137,7 +138,7 @@ const Home = () => {
             <img
               src={rowData.item}
               alt={rowData.title}
-              style={{ width: "100px" }}
+              className="data-table-img"
             />
           )}
         />
