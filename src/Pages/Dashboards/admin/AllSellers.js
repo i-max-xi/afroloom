@@ -83,12 +83,12 @@ const AllSellers = () => {
     <div>
       <Toast ref={toastRef} position="top-right" />
 
-      <h2 className="text-warning">All Sellers</h2>
+      <h2 className="text-warning dashboard-home-title">All Sellers</h2>
       {/* Search input field */}
       <div className="p-inputgroup justify-content-center mt-3 mb-3">
         <input
           type="text"
-          className="w-50 rounded"
+          className="dashboard-home-search rounded"
           placeholder="Search by title"
           value={searchTerm}
           onChange={handleSearchChange}
@@ -128,17 +128,17 @@ const AllSellers = () => {
         <Column
           body={(rowData) => (
             <button
-              className="btn btn-success"
+              className={`btn text-white ${rowData.approved ? "btn-success" : "btn-info" } btn-success edit`}
               onClick={() => approveSeller(rowData.id)}
               >
-              Approve
+              {rowData.approved ? "Approved" : "Approve"}
             </button>
           )}
         />
         <Column
           body={(rowData) => (
             <button
-              className="btn btn-danger"
+              className="btn btn-danger remove"
               onClick={() => deleteProduct(rowData.id)}
             >
               Delete

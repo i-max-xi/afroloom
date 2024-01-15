@@ -8,9 +8,7 @@
     width: max-content !important;
     padding: 0 !important;
   }
-  .p-button-label {
-    font-size: 0.8rem !important;
-  }
+
   .p-sidebar-content > * {
     font-size: 0.8rem !important;
   }
@@ -30,6 +28,9 @@
   .edit, .remove {
     font-size: 0.8rem !important;
   }
+  .p-button-label {
+    font-size: 0.8rem !important;
+  }
   .data-table-img {
     width: 3rem !important;
   }
@@ -46,6 +47,12 @@
     width: max-content !important;
     scale: 0.8;
   }
+  .upload-input {
+    scale: 0.8 !important;
+  }
+  .sticker-button {
+    font-size: 0.8rem !important;
+  }
 }
 
 .dashboard {
@@ -55,6 +62,7 @@
 .side-bar-closed-container {
   width: 5%;
   transform: translateY(1rem);
+  margin-left: 0.5rem;
 }
 .dashboard-home-search {
   width: 50%;

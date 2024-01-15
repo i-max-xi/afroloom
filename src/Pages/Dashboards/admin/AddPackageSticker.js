@@ -82,9 +82,9 @@ const AddPackageSticker = () => {
       <Toast ref={toastRef} position="top-right" />
 
       <div>
-        <h1>Upload multiple stickers</h1>
+        <h1 className="dashboard-home-title">Upload multiple stickers</h1>
         <div className="p-field d-flex flex-column mt-5">
-          <div className="d-flex">
+          <div className="d-flex upload-input">
             {uploading && <span>uploading...</span>}
 
             <label htmlFor="stickers" className="custom-upload">

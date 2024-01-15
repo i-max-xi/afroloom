@@ -112,7 +112,7 @@ const Home = ({ currentSeller }) => {
     <div>
       <Toast ref={toastRef} position="top-right" />
 
-      <h2>All Products</h2>
+      <h2 className="dashboard-home-title">All Products</h2>
       {/* Search input field */}
       <div className="p-inputgroup justify-content-center mt-3 mb-3">
         <input

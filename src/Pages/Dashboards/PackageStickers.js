@@ -72,11 +72,11 @@ const PackageStickers = ({ toastRef, isAdmin }) => {
   };
 
   return (
-    <div className="mt-4">
-      <h2>Uploaded Stickers</h2>
+    <div className="mt-4 stickers-container">
+      <h2 className="dashboard-home-title">Uploaded Stickers</h2>
       <div className="d-flex flex-wrap">
         {stickers.map((sticker, index) => (
-          <div key={index} className="d-flex flex-column m-2">
+          <div key={index} className="d-flex flex-column m-2 ">
             <img
               className="rounded"
               width={100}
@@ -85,14 +85,14 @@ const PackageStickers = ({ toastRef, isAdmin }) => {
               src={sticker}
             />
             <button
-              className="btn btn-info mt-1"
+              className="btn btn-info mt-1 sticker-button"
               onClick={() => handleDownload(index)}
             >
               Download
             </button>
             {isAdmin && (
               <button
-                className="btn btn-sm btn-danger mt-2"
+                className="btn btn-sm btn-danger mt-2 sticker-button"
                 onClick={() => handleDelete(index)}
               >
                 Delete
