@@ -333,7 +333,7 @@ const AddProduct = ({ currentSeller, sellerCountry }) => {
   return (
     <div>
       <Toast ref={toastRef} position="top-right" />
-      <h2>Add a New Product</h2>
+      <h2 className="dashboard-home-title">Add a New Product</h2>
       <div className="p-fluid pr-5">
         <div className="p-field">
           <label className="text-warning" htmlFor="title">

@@ -96,7 +96,7 @@ const AddDeliveryService = () => {
   return (
     <div>
       <Toast ref={toastRef} position="top-right" />
-      <h2>Add a Delivery Service</h2>
+      <h2 className="dashboard-home-title">Add a Delivery Service</h2>
       <div className="p-fluid pr-5">
         <div className="p-field">
           <label htmlFor="name">Name of Delivery Service</label>

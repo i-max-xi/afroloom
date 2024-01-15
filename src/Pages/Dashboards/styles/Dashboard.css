@@ -53,6 +53,10 @@
   .sticker-button {
     font-size: 0.8rem !important;
   }
+  .p-field > * {
+    font-size: 0.8rem !important;
+
+  }
 }
 
 .dashboard {
