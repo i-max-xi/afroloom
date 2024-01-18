@@ -2,29 +2,62 @@
   font-size: 14px;
 }
 
-@media (max-width: 900px){
-.confirmation-page {
-  font-size: 0.8rem !important;
-}
-.confirmation-page h4, .confirmation-page .h5{
-  font-size: 0.9rem !important;
-}
+@media (max-width: 900px) {
+  .confirmation-page {
+    font-size: 0.8rem !important;
+  }
+  .confirmation-page h4,
+  .confirmation-page .h5 {
+    font-size: 0.9rem !important;
+  }
 
-.confirmation-page h1, .confirmation-page h2 {
-  font-size: 1.2rem !important;
-}
-.confirmation-page button {
-  font-size: 0.8rem !important;
-}
-.all-confirmation-info p{
-  font-size: 0.8rem !important;
+  .confirmation-page h1,
+  .confirmation-page h2 {
+    font-size: 1.2rem !important;
+  }
+  .confirmation-page button {
+    font-size: 0.8rem !important;
+  }
+  .all-confirmation-info p {
+    font-size: 0.8rem !important;
+  }
 
-}
+  /* Actual 3d  */
+  .configurator-container {
+    flex-direction: column-reverse;
+    height: 100vh !important;
+  }
+
+  .right-panel > .m-3 {
+    margin: 0.2rem !important;
+  }
+  .main-space h3 {
+    font-size: 1rem !important;
+  }
+  .main-space button {
+    font-size: 0.8rem !important;
+    padding: 0.2rem 0.4rem !important;
+  }
+  .left-panel {
+    transform: translateX(0.1rem) !important;
+    width: 100% !important;
+  }
+  /* .left-panel > *{
+    font-size: 0.5rem !important;
+  } */
+  .left-panel h5 {
+    font-size: 0.7rem !important;
+  }
+  .left-panel button {
+    font-size: 0.6rem !important;
+    /* padding: 0.1rem 0.3rem !important;
+    border-radius: 0.3rem !important; */
+  }
 }
 
 .main-space {
   background-color: white;
-  /* height: 80vh; */
+  height: 78vh;
 }
 
 .btn-success {
@@ -46,7 +79,7 @@ h1 {
   align-items: flex-start;
   padding: 0.3rem 1rem;
   text-transform: uppercase;
-  transform: translateX(-5rem);
+  transform: translateX(-3rem);
   width: 45%;
 }
 
@@ -77,7 +110,6 @@ h1 {
   border: 0.2rem solid orange !important;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Adding shadow effect */
 }
-
 
 .right-panel {
   flex: 4;
@@ -216,8 +248,7 @@ h1 {
   border-radius: 0.3rem;
 }
 
-
- /* image upload */
+/* image upload */
 
 .upload-container {
   display: inline-block;
