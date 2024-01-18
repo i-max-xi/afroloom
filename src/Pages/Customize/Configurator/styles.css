@@ -2,6 +2,26 @@
   font-size: 14px;
 }
 
+@media (max-width: 900px){
+.confirmation-page {
+  font-size: 0.8rem !important;
+}
+.confirmation-page h4, .confirmation-page .h5{
+  font-size: 0.9rem !important;
+}
+
+.confirmation-page h1, .confirmation-page h2 {
+  font-size: 1.2rem !important;
+}
+.confirmation-page button {
+  font-size: 0.8rem !important;
+}
+.all-confirmation-info p{
+  font-size: 0.8rem !important;
+
+}
+}
+
 .main-space {
   background-color: white;
   /* height: 80vh; */

@@ -150,7 +150,7 @@ const Confirmation = ({
                 />
               )}
             </span>
-            Confirm Order{" "}
+            Confirm Order
           </button>
         </div>
 
@@ -186,7 +186,7 @@ export const OrderDetail = React.forwardRef(
     const [special, setSpecial] = useState("");
 
     return (
-      <div ref={ref} className="row">
+      <div ref={ref} className="row all-confirmation-info">
         <div className="col-md-6">
           <p className="h5 mt-3 mb-5 model-confirm-image">
             <img src={modelImage} alt="model img" width="80%" />
@@ -197,7 +197,7 @@ export const OrderDetail = React.forwardRef(
           <p className="h5 mt-3">
             Price: {currencySymbol}
             {total}
-          </p>
+          </p> 
           <div>
             <div className="custom-size-values">
               <p className="h5 mt-4">Client's custom size values:</p>
