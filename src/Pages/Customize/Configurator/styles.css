@@ -3,6 +3,10 @@
 }
 
 @media (max-width: 900px) {
+  .main-space {
+    overflow: hidden;
+
+  }
   .confirmation-page {
     font-size: 0.8rem !important;
   }
@@ -25,7 +29,7 @@
   /* Actual 3d  */
   .configurator-container {
     flex-direction: column-reverse;
-    height: 100vh !important;
+    /* height: 100vh !important; */
   }
 
   .right-panel > .m-3 {
@@ -48,16 +52,34 @@
   .left-panel h5 {
     font-size: 0.7rem !important;
   }
+  .left-panel h3 {
+    font-size: 0.6rem !important;
+  }
   .left-panel button {
     font-size: 0.6rem !important;
-    /* padding: 0.1rem 0.3rem !important;
-    border-radius: 0.3rem !important; */
+  }
+
+  .color-button {
+    
+  }
+  .texture-category {
+    width: 50% !important;
+  }
+
+  .texture-item svg {
+    scale: 0.7;
+  }
+  
+
+  .price > *, .price button{
+    font-size: 0.8rem !important;
   }
 }
 
 .main-space {
   background-color: white;
-  height: 78vh;
+  /* height: 78vh; */
+  /* comneted out and mobile worked */
 }
 
 .btn-success {
@@ -286,4 +308,9 @@ h1 {
 
 #overlay-left {
   transform: translateX(-11.5rem);
+}
+
+.price {
+  align-items: center;
+
 }

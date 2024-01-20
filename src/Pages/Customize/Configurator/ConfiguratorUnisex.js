@@ -979,7 +979,7 @@ const ConfiguratorUnisex = () => {
             </span>
 
             <p className="price-text m-3">
-              <span className="fs-6 fw-normal">Price:</span> {currencySymbol}
+              <span className="expect-to-be-ready">Price:</span> {currencySymbol}
               {total}
             </p>
 
