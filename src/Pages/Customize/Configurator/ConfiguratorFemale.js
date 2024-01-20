@@ -428,7 +428,7 @@ readyBy={selectedClothing.readyIn}
                   <Dialog
                     header="Sizing Guide"
                     visible={visible}
-                    style={{ width: "50vw" }}
+                    className="col-12 col-sm-6"
                     onHide={() => setVisible(false)}
                   >
                     <div className="d-flex flex-column align-items-center">

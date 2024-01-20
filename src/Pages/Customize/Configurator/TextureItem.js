@@ -64,7 +64,8 @@ function TextureItem({
         // header={`Texture Details: ${selectedTexture.name}`}
         visible={displayDialog}
         onHide={handleCloseDialog}
-        style={{ width: "30vw" }} // Adjust the width as needed
+        // style={{ width: "30vw" }}
+        className="col-12 col-sm-4"
       >
         <div className="d-flex flex-column">
           <img alt={`Texture`} src={texture} height="150px" width='250px' style={{alignSelf: 'center'}}/>

@@ -69,6 +69,10 @@
   .texture-item svg {
     scale: 0.7;
   }
+
+  .part-panel {
+    display: none !important;
+  }
   
 
   .price > *, .price button{
