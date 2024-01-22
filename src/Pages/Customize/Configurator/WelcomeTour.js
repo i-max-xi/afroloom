@@ -43,11 +43,11 @@ export const tourSteps = [
     selector: ".rotation-button",
     content: "Spin model to have a 3D view of your customized design.",
   },
-  {
-    selector: ".complete",
-    content:
-      "Hit this button when you are ready to complete your customization.",
-  },
+  // {
+  //   selector: ".complete",
+  //   content:
+  //     "Hit this button when you are ready to complete your customization.",
+  // },
 ];
 
 const WelcomeTour = ({ isOpen, onRequestClose, steps }) => {
