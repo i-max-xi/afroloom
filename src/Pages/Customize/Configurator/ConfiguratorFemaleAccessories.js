@@ -740,7 +740,7 @@ readyBy={selectedClothing.readyIn}
                 </div>
               </div>
               <div className="right-panel d-flex justify-content-between">
-                <div className="w-75 h-100">
+                <div className="resize-right-panel">
                   <Canvas
                     ref={canvasRef}
                     camera={{ position: [0, 0, selectedClothing.myZoom] }} // Set the initial camera position

@@ -5,13 +5,13 @@
 @media (max-width: 900px) {
   .main-space {
     overflow: hidden;
-
   }
   .confirmation-page {
     font-size: 0.8rem !important;
   }
   .confirmation-page h4,
-  .confirmation-page .h5 {
+  .confirmation-page .h5,
+  .text-image-imprint h5 {
     font-size: 0.9rem !important;
   }
 
@@ -46,10 +46,8 @@
     transform: translateX(0.1rem) !important;
     width: 100% !important;
   }
-  /* .left-panel > *{
-    font-size: 0.5rem !important;
-  } */
-  .left-panel h5, .text-image-imprint h5 {
+
+  .left-panel h5 {
     font-size: 0.7rem !important;
   }
   .left-panel h3 {
@@ -59,8 +57,14 @@
     font-size: 0.6rem !important;
   }
 
-  .color-button {
-    
+  /* .color-buttons-container > .p-carousel[pr_id_115] .p-carousel-item{
+    flex: 1 0 50% !important;
+  } */
+
+  .color-item {
+    scale: 0.8 !important;
+    width: fit-content;
+    flex: 1;
   }
   .texture-category {
     width: 50% !important;
@@ -73,44 +77,60 @@
   .part-panel {
     display: none !important;
   }
-  
 
-  .price > *, .price button{
+  .price > *,
+  .price button {
     font-size: 0.8rem !important;
   }
 
   .text-image-imprint-wrapper {
     display: flex;
     flex-direction: column !important;
-    gap: 0.5rem
+    font-size: 0.8rem !important;
+    gap: 0.5rem;
+  }
+
+  .resize-right-panel > div:first-child {
+    height: 20rem !important;
   }
 
   .text-image-imprint-wrapper > .inputs {
     display: flex;
     align-items: center;
     flex-direction: row !important;
-    gap: 0.5rem
+    gap: 1.5rem;
   }
-  .image-uploads  {
+
+  .text-image-imprint-wrapper > .inputs > input {
+    flex: 1;
+    height: 1.5rem !important;
+  }
+
+  .image-uploads {
     display: flex;
+    align-items: center;
     flex-direction: row !important;
-    gap: 0.5rem
+    gap: 0.5rem;
   }
 
   .image-uploads > .upload-label {
     flex: 1;
+    font-size: 0.7rem !important;
+    text-align: center;
+    transform: translateX(-1rem);
   }
 
-  .text-image-imprint-wrapper > .inputs > input {
-    height: 1.5rem !important;
+  .imprint-options {
+    display: flex;
+    justify-content: center;
   }
-
-  .resize-right-panel {
-    height: 150%;
+  .fs-button {
+    margin: 0.5rem 0;
   }
-
-
-
+  .fs-button > button {
+    /* font-size: 0.6rem !important; */
+    padding: 0 0.6rem !important;
+  }
 }
 
 .main-space {
@@ -353,7 +373,6 @@ h1 {
 
 .price {
   align-items: center;
-
 }
 
 .text-image-imprint-wrapper {

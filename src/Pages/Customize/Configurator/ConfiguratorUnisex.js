@@ -900,7 +900,7 @@ const ConfiguratorUnisex = () => {
                                 </div>
                               ))}
                             </div>
-                            <div className="d-flex justify-content-center">
+                            <div className="d-flex justify-content-center fs-button">
                               <button
                                 className="btn btn-secondary btn-sm mx-2"
                                 onClick={decreaseFontSize}
