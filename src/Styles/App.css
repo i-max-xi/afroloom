@@ -9,6 +9,9 @@
   .logo {
     width: 4rem !important;
   }
+  .signup, .signin {
+    font-size: 0.7rem !important;
+  }
   .navbar-nav {
     display: flex;
     flex-direction: column;
