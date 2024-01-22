@@ -793,7 +793,7 @@ const ConfiguratorUnisex = () => {
                 </div>
               </div>
               <div className="right-panel d-flex justify-content-between">
-                <div className="w-75 h-100">
+                <div className="resize-right-panel">
                   <div
                     ref={canvasRef}
                     style={{
@@ -855,11 +855,11 @@ const ConfiguratorUnisex = () => {
                   </div>
 
                   {selectedClothing.name === "Sash" && (
-                    <div className="px-2 pt-2 w-100">
+                    <div className="px-2 pt-2 w-100 text-image-imprint">
                       {/* test text inprinting */}
                       <h5>Imprint Text on model</h5>
-                      <div className="d-flex justify-content-between">
-                        <div className="flex-column" style={{ width: "10%" }}>
+                      <div className="d-flex text-image-imprint-wrapper">
+                        <div className="inputs">
                           <input
                             type="text"
                             placeholder="imprint on left side..."
@@ -868,7 +868,6 @@ const ConfiguratorUnisex = () => {
                           />
                           <input
                             type="text"
-                            className="mt-1"
                             placeholder="imprint on right side..."
                             value={enteredTextRight}
                             onChange={(e) =>
@@ -918,25 +917,10 @@ const ConfiguratorUnisex = () => {
                                 +
                               </button>
                             </div>
-                            {/* <div className="d-flex justify-content-center">
-                              <button
-                                className="btn btn-secondary btn-sm mx-2"
-                                onClick={() => handleChangeFont(-1)} // Decrement font index
-                              >
-                                &lt;
-                              </button>
-                              <span className="font-size">
-                                {fonts[currentFontIndex]}
-                              </span>
-                              <button
-                                className="btn btn-secondary btn-sm mx-2"
-                                onClick={() => handleChangeFont(1)} // Increment font index
-                              >
-                                &gt;
-                              </button>
-                            </div> */}
                           </div>
-                          <div className=" d-flex flex-column">
+                          
+                        </div>
+                        <div className="image-uploads">
                             <ImageUpload
                               labelLeft={"Upload Left Logo"}
                               labelRight={"Upload Right Logo"}
@@ -945,7 +929,6 @@ const ConfiguratorUnisex = () => {
                               toastRef={toastRef}
                             />
                           </div>
-                        </div>
                       </div>
                     </div>
                   )}
