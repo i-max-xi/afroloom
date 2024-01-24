@@ -115,9 +115,9 @@ export const Card = ({
       )}
 
       <div className="card-body d-flex flex-column">
-        <div className="card-title" style={{ textAlign: TextAlign }}>
+        <div>
           <div className="d-flex justify-content-between align-items-center">
-            <div style={{ fontSize: "1rem", width: "90%" }}>{title}</div>
+            <div>{title}</div>
             <div className="flag" style={{ width: "10%", float: "right" }}>
               {country ? (
                 <div className="mx-1" style={{ fontSize: "0.8rem" }}>
@@ -405,16 +405,6 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
     setItemsToDisplay(newItemstoDisplay);
   };
 
-  // const saveFilters = () => {
-  //   const newItemstoDisplay = Products.filter(
-  //     (product) =>
-  //     // product.country === selectedCountry &&
-  //     product.category === selectedCategory &&
-  //     (selectedProduct === "" || product.detailedCategory === selectedProduct)
-  //   );
-  //   setItemsToDisplay(newItemstoDisplay);
-  // };
-
   return (
     <>
       {showNestedComponent && <Header />}
@@ -422,14 +412,10 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
       <div className="row px-3 d-flex">
         {showNestedComponent && <CategorySwipe />}
 
-        {/* search input */}
-
-        {/* <SearchBar
-            // closePopup={closeSearch}
-          /> */}
-        {/* search ends here */}
+        {showNestedComponent && <Row offerFix="Professionals" />}
 
         {showNestedComponent && <Row offerFix="One" />}
+
 
         <div className="old-search-banner">
           <SearchFilters
