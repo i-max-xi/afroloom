@@ -118,6 +118,7 @@
   text-align: center;
   color: black;
   background-color: white;
+  flex: 1;
 }
 
 .clickable-item:hover {
@@ -132,7 +133,7 @@
 }
 
 .image-space {
-  height: 82%;
+  height: 15rem;
 }
 
 .item-video,

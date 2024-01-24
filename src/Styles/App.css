@@ -266,8 +266,8 @@
 
   /* Item detail */
   .goog-te-gadget {
-    font-size: 8px;
-    scale: 0.6;
+    /* font-size: 8px; */
+    /* scale: 0.6; */
   }
   .main-product-image {
     height: 18rem !important;
