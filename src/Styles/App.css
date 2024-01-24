@@ -215,10 +215,6 @@
   }
 
   /* card */
-  .product-image {
-    height: 50% !important;
-    aspect-ratio: 1/1;
-  }
   
   /* .product-image {
     height: 2rem !important;

@@ -89,7 +89,10 @@ export const Card = ({
   const flagImage = countryFlags[country] || ""; // Use flag image URL based on the country
 
   return (
-    <div className="card" data-aos="fade-up">
+    <div
+      className="card col-6 col-sm-2 mt-1 text-decoration-none text-black"
+      data-aos="fade-up"
+    >
       <Toast ref={toast} />
 
       {linkless ? (
@@ -104,10 +107,9 @@ export const Card = ({
       ) : (
         <Link to={`/product/${id}`}>
           <img
-            className="card-img-top product-image"
+            className="card-img-top "
             src={item}
             alt="item"
-            height={Height ? Height : "200rem"}
           />
         </Link>
       )}
@@ -427,7 +429,7 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
           /> */}
         {/* search ends here */}
 
-        {showNestedComponent && <Row offerFix="One"/>}
+        {showNestedComponent && <Row offerFix="One" />}
 
         <div className="old-search-banner">
           <SearchFilters
@@ -461,124 +463,54 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
 
         {/* Iteration */}
         {itemsToDisplay.map((product, index) => (
-          <React.Fragment key={uuid()}>
-            <div
-              className="mt-1 text-decoration-none text-black col-6 col-sm-4"
-              // style={{ width: product.Width || "20%" }}
-            >
-              <Card
-                key={index}
-                title={product.title}
-                discount={product.discount}
-                description={product.description}
-                rating={product.rating}
-                price={product.price}
-                item={product.item}
-                flag={product.flag}
-                id={product.id}
-                Height={product.height}
-                TextAlign={product.TextAlign}
-                Button={product.Button}
-                linkless={product.linkless}
-                weight={product.weight}
-                seller={product.seller}
-                country={product.country}
-              />
-            </div>
+          <React.Fragment>
+            <Card
+              key={index}
+              title={product.title}
+              discount={product.discount}
+              description={product.description}
+              rating={product.rating}
+              price={product.price}
+              item={product.item}
+              flag={product.flag}
+              id={product.id}
+              Height={product.height}
+              TextAlign={product.TextAlign}
+              Button={product.Button}
+              linkless={product.linkless}
+              weight={product.weight}
+              seller={product.seller}
+              country={product.country}
+            />
 
-            {/* {index === 100 && showNestedComponent && (
-              <div className="container mt-5 mb-5" key={uuid()}>
-                <img
-                  src={sofa}
-                  alt="Sofa"
-                  width="100%"
-                  style={{ height: "20rem" }}
-                />
-              </div>
-            )} */}
-
-            {/* girl ad  */}
             {index === 8 && showNestedComponent && (
               <>
-                {/* <div className="mt-1 w-25" style={{ float: "right" }}>
-                  <Card
-                    title={ads[0].title}
-                    description={ads[0].description}
-                    rating={ads[0].rating}
-                    price={ads[0].price}
-                    item={ads[0].item}
-                    flag={ads[0].flag}
-                    id={ads[0].id}
-                    Height={ads[0].height}
-                    TextAlign={ads[0].TextAlign}
-                    Button={ads[0].Button}
-                    linkless={ads[0].linkless}
-                  />
-                </div> */}
-                {/* <div className="top-down-spacing" key={uuid()}> */}
                 <Banner
-                  // items={bannerone}
                   key={uuid()}
                   bannerFix="One"
                   headTitle="Discover the Timeless Beauty of African Handicraft"
                   seeMore="See More"
                   linkTo="/category/Handicrafts"
                 />
-                {/* </div> */}
               </>
             )}
 
             {/* banner 1 */}
             {index === 13 && showNestedComponent && (
               <>
-                {/* guy ad */}
-                {/* <div className="w-25 mt-1" style={{ float: "right" }}>
-                  <Card
-                    title={ads[1].title}
-                    description={ads[1].description}
-                    rating={ads[1].rating}
-                    price={ads[1].price}
-                    item={ads[1].item}
-                    flag={ads[1].flag}
-                    id={ads[1].id}
-                    Height={ads[1].height}
-                    TextAlign={ads[1].TextAlign}
-                    Button={ads[1].Button}
-                    linkless={ads[1].linkless}
-                  />
-                </div> */}
-
-                {/* banner 2 */}
-                {/* <div className="top-down-spacing" key={uuid()}> */}
                 <Banner
-                  // items={bannerfive}
                   key={uuid()}
                   bannerFix="Five"
                   headTitle="Time is running out on these Great Discounts"
                   seeMore="See More"
                   linkTo="/offers/discounts"
                 />
-                {/* </div> */}
                 <Row offerFix="Six" />
               </>
             )}
 
-            {/* {index === 15 && showNestedComponent && (
-              <div className="container mt-5 mb-5" key={uuid()}>
-                <img
-                  src={blackFriday}
-                  alt="Black Friday"
-                  width="100%"
-                  style={{ height: "20rem" }}
-                />
-              </div>
-            )} */}
-
-            {/* {index === 18 && showNestedComponent && <Row mainItems={rowSix} />} */}
-
             {index === 18 && showNestedComponent && (
               <>
-                {/* <div className="top-down-spacing" key={uuid()}> */}
                 <Banner
                   // items={bannereight}
                   key={uuid()}
@@ -587,19 +519,15 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
                   seeMore="See More"
                   linkTo="/category/Textiles"
                 />
-                {/* </div> */}
 
                 <Row offerFix="Nine" />
-                {/* <div className="top-down-spacing" key={uuid()}> */}
                 <Banner
                   key={uuid()}
-                  // items={bannerten}
                   bannerFix="Ten"
                   headTitle="Low Cost, High Quality Furniture"
                   seeMore="See More"
                   linkTo="/category/Furniture"
                 />
-                {/* </div> */}
               </>
             )}
           </React.Fragment>
