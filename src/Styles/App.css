@@ -167,13 +167,15 @@
 
   .clickable-banner-container h3,
   .more-deals {
-    font-size: 0.6rem !important;
+    font-size: 1rem !important;
   }
   .clickable-item > div {
-    font-size: 0.5rem !important;
+    font-size: 0.8rem !important;
   }
   .clickable-banner {
-    height: min-content !important;
+    /* height: min-content !important; */
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .clickable-item > .image-space {
