@@ -37,6 +37,15 @@ const Footer = () => {
           <hr />
         </div>
 
+        <div className="col-12 mb-4 d-flex flex-column justify-content-center footer-about">
+          <h5 className="footer-header">About Us</h5>
+          <p className="w-50 align-self-center">
+            We specialize in providing a wide range of African products ,
+            offering customers the option to customize their shopping experience
+            and explore the rich cultural heritage of Africa.
+          </p>
+        </div>
+
         <section className="footer-space">
           <div className="container  mt-5">
             <div className="row d-flex justify-content-between">
@@ -51,17 +60,7 @@ const Footer = () => {
                 <SocialMedia />
               </div>
 
-              <div className="col-4 mb-4 footer-item">
-                <h5 className="footer-header">About Us</h5>
-                <p>
-                  We specialize in providing a wide range of African products
-                  , offering customers the option
-                  to customize their shopping experience and explore the rich
-                  cultural heritage of Africa.
-                </p>
-              </div>
-
-              <div className="col-4 mb-4 footer-item">
+              <div className="col-8 col-sm-4 mb-4 footer-item">
                 <h5 className="footer-header">Useful Links</h5>
                 <div className="d-flex justify-content-between">
                   <div>
@@ -82,7 +81,8 @@ const Footer = () => {
                     </p>
                     <p>
                       <Link to="/contact" className="text-reset">
-                        Contact Us / <br />Report an issue
+                        Contact Us / <br />
+                        Report an issue
                       </Link>
                     </p>
                   </div>
@@ -115,9 +115,7 @@ const Footer = () => {
         </section>
       </div>
 
-      <div className="text-center p-3 bg-dark">
-        © 2023 Copyright: AfroLoom
-      </div>
+      <div className="text-center p-3 bg-dark">© 2023 Copyright: AfroLoom</div>
     </div>
   );
 };

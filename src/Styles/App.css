@@ -9,7 +9,8 @@
   .logo {
     width: 4rem !important;
   }
-  .signup, .signin {
+  .signup,
+  .signin {
     font-size: 0.7rem !important;
   }
   .navbar-nav {
@@ -41,13 +42,18 @@
   }
 
   /* nav ends here  */
+  .footer > ul {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
   .policy-header {
     display: flex;
     padding: 1rem !important;
     width: 100%;
   }
   .policy-header li {
-    font-size: 0.4rem !important;
+    font-size: 0.8rem !important;
     flex-direction: column !important;
     justify-content: center;
     align-items: center;
@@ -55,16 +61,11 @@
   }
   .more-info > p > span {
     margin: 0 !important;
-    font-size: 0.5rem !important;
+    /* font-size: 0.5rem !important; */
   }
-  .more-info-icon {
-    width: 1rem !important;
-  }
-  .footer-icon {
-    width: 1rem !important;
-  }
+
   .footer-icon-title {
-    font-size: 0.5rem !important;
+    /* font-size: 0.5rem !important; */
     margin-top: 0.2rem;
   }
 
@@ -183,18 +184,18 @@
   }
 
   /* paginator */
-  .p-paginator {
-    font-size: 0.8rem !important;
-  }
+
   .footer-space {
-    font-size: 0.5rem;
+    /* display: grid;
+    grid-template-rows: 1fr 1fr; */
   }
+
   .footer-item {
     width: 30%;
   }
 
   .footer-space h5 {
-    font-size: 0.6rem;
+    /* font-size: 0.6rem; */
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -204,12 +205,18 @@
     margin-bottom: 1rem !important;
   }
 
-  .footer-item p {
-    margin-bottom: 0 !important;
+  .footer-about > p {
+    width: 100% !important;
   }
 
+  .footer-item p {
+    /* margin-bottom: 0 !important; */
+    font-size: 0.9rem !important;
+  }
+
+
   .social-media {
-    width: 0.5rem !important;
+    width: 1rem !important;
     margin: 0 !important;
   }
   .social-media-container a {
@@ -218,7 +225,6 @@
 
   /* card */
 
-  
   /* .product-image {
     height: 2rem !important;
     border-radius: 0 !important;
@@ -339,7 +345,6 @@
   }
   .checkout-container img {
     width: 20%;
-    
   }
 
   .checkout-btns {
@@ -348,11 +353,9 @@
 
   .checkout-container h2 {
     font-size: 1rem !important;
-
   }
 
   .list-group-item {
-
   }
   .checkout-item-details {
     margin: 0 0.5rem !important;
@@ -361,7 +364,6 @@
   .checkout-item-details > span {
     font-size: 0.8rem !important;
   }
-  
 }
 
 .logo {
@@ -603,6 +605,10 @@ form {
 
 .footer-header {
   margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .footer-header::after {
