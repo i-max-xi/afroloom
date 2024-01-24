@@ -97,20 +97,21 @@
 
   .four-in-a-card-container,
   .offer-card {
-    font-size: 0.5rem !important;
-    margin: 0 !important;
-    padding: 0.5rem !important;
-    width: 23% !important;
+    /* font-size: 0.5rem !important; */
+    margin: 0.2px !important;
+    padding: 0.5rem 1rem !important;
+    width: 49% !important;
+    height: 49% !important;
   }
 
   .four-in-a-card-container h3,
   .offer-card h3 {
-    font-size: 0.5rem !important;
+    font-size: 1rem !important;
   }
 
   .fours-link {
     padding: 0.2rem !important;
-    font-size: 0.4rem !important;
+    font-size: 1rem !important;
   }
 
   /* Search  */
@@ -119,6 +120,9 @@
   .search-banner {
     aspect-ratio: 1/1 !important;
     padding: 0.2rem !important;
+  }
+  .old-search-banner {
+    display: none;
   }
 
   .search-dropdown {
@@ -212,6 +216,11 @@
 
   /* card */
   .product-image {
+    height: 50% !important;
+    aspect-ratio: 1/1;
+  }
+  
+  /* .product-image {
     height: 2rem !important;
     border-radius: 0 !important;
   }
@@ -248,7 +257,7 @@
     width: 40% !important;
     justify-content: right !important;
     float: right !important;
-  }
+  } */
 
   /* Item detail */
   .goog-te-gadget {

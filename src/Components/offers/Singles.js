@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const OfferItem = ({ title, imageUrl, linkTo, videoUrl, itemID }) => {
   return (
-    <div className="offer-card" style={{ maxHeight: "92%" }}>
+    <div className="offer-card " style={{ maxHeight: "92%" }}>
       <h3 className="headTitle">{title}</h3>
       {videoUrl ? (
         <div>

@@ -13,6 +13,7 @@
 
 .offer-card {
   width: calc(25% - 20px); /* Adjust the width as needed */
+  aspect-ratio: 1/1;
   padding: 20px;
   border: 1px solid #ddd;
   margin: 10px;
@@ -21,6 +22,9 @@
   transition: 0.2s ease-in-out;
   background-color: white;
   height: max-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 
 }
 
@@ -48,9 +52,12 @@
   padding: 1rem;
   border: 1px solid #ddd;
   width: calc(25% - 20px); /* Adjust the width as needed */
-  height: max-content;
+  aspect-ratio: 1/1;
   background-color: white;
   transform: translateY(0.7rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .four-in-a-card {

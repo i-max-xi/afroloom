@@ -417,7 +417,7 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
     <>
       {showNestedComponent && <Header />}
       {showNestedComponent === false ? <Nav /> : <></>}
-      <div className="row px-5 d-flex">
+      <div className="row px-3 d-flex">
         {showNestedComponent && <CategorySwipe />}
 
         {/* search input */}
@@ -427,42 +427,44 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
           /> */}
         {/* search ends here */}
 
-        {showNestedComponent && <Row offerFix="One" />}
+        {showNestedComponent && <Row offerFix="One"/>}
 
-        <SearchFilters
-          search1="Category"
-          search2="Country"
-          searchPrice="Price Range" // price filter
-          search4={search4bank}
-          search3={search3bank}
-          search5={search5bank}
-          options1={categoryFilter}
-          options2={countryArr}
-          optionPrice={priceRangeOptions} // price filter
-          options3={search3Options}
-          options4={search4Options}
-          options5={search5Options}
-          selectedCategory={selectedCategory}
-          setSelectedCategory={setSelectedCategory}
-          selectedCountry={selectedCountry}
-          setSelectedCountry={setSelectedCountry}
-          selectedPriceRange={selectedPriceRange} // price
-          setSelectedPriceRange={setSelectedPriceRange} // price
-          selectedOption3={selectedProduct}
-          setSelectedOption3={setSelectedProduct}
-          selectedOption4={selectedGender}
-          setSelectedOption4={setSelectedGender}
-          selectedOption5={selectedSize}
-          setSelectedOption5={setSelectedSize}
-          handleSave={saveFilters}
-        />
+        <div className="old-search-banner">
+          <SearchFilters
+            search1="Category"
+            search2="Country"
+            searchPrice="Price Range" // price filter
+            search4={search4bank}
+            search3={search3bank}
+            search5={search5bank}
+            options1={categoryFilter}
+            options2={countryArr}
+            optionPrice={priceRangeOptions} // price filter
+            options3={search3Options}
+            options4={search4Options}
+            options5={search5Options}
+            selectedCategory={selectedCategory}
+            setSelectedCategory={setSelectedCategory}
+            selectedCountry={selectedCountry}
+            setSelectedCountry={setSelectedCountry}
+            selectedPriceRange={selectedPriceRange} // price
+            setSelectedPriceRange={setSelectedPriceRange} // price
+            selectedOption3={selectedProduct}
+            setSelectedOption3={setSelectedProduct}
+            selectedOption4={selectedGender}
+            setSelectedOption4={setSelectedGender}
+            selectedOption5={selectedSize}
+            setSelectedOption5={setSelectedSize}
+            handleSave={saveFilters}
+          />
+        </div>
 
         {/* Iteration */}
         {itemsToDisplay.map((product, index) => (
           <React.Fragment key={uuid()}>
             <div
-              className="mt-1 text-decoration-none text-black"
-              style={{ width: product.Width || "20%" }}
+              className="mt-1 text-decoration-none text-black col-6 col-sm-4"
+              // style={{ width: product.Width || "20%" }}
             >
               <Card
                 key={index}

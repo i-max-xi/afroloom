@@ -218,7 +218,7 @@ const Row = ({ mainItems, offerFix }) => {
     }
   });
 
-  return <div className="offer-container">{renderedItems}</div>;
+  return <div className="offer-container ">{renderedItems}</div>;
 };
 
 export default Row;

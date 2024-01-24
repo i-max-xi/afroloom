@@ -21,10 +21,10 @@ const Fours = ({ items, headTitle, linkTo }) => {
         ) : (
           <p>Currently Out Of Stock</p>
         )}
-        <Link to={linkTo} className="fours-link">
+      </div>
+      <Link to={linkTo} className="fours-link">
           Shop Now
         </Link>
-      </div>
     </div>
   );
 };
