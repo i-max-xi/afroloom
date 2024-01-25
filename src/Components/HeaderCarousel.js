@@ -19,12 +19,6 @@ const HeaderCarousel = () => {
     <>
       <Carousel
         className="mx-2 mb-3 w-100"
-        // style={{
-        //   position: "absolute",
-        //   top: "3rem",
-        //   left: "2rem",
-        //   width: "50%",
-        // }}
         role="listbox"
       >
         <Carousel.Item>
@@ -32,7 +26,7 @@ const HeaderCarousel = () => {
             className="d-block"
             src={s1}
             alt="First slide"
-            height="45%"
+            
             width="100%"
           />
         </Carousel.Item>
@@ -42,7 +36,7 @@ const HeaderCarousel = () => {
               className="d-block"
               src={s2}
               alt="Second slide"
-              height="45%"
+              
               width="100%"
             />
           </Link>
@@ -53,7 +47,7 @@ const HeaderCarousel = () => {
               className="d-block"
               src={s3}
               alt="Third slide"
-              height="45%"
+              
               width="100%"
             />
           </Link>
@@ -65,7 +59,7 @@ const HeaderCarousel = () => {
               className="d-block"
               src={s4}
               alt="Fourth slide"
-              height="45%"
+              
               width="100%"
             />
           </Link>
@@ -77,7 +71,7 @@ const HeaderCarousel = () => {
               className="d-block"
               src={s5}
               alt="Fourth slide"
-              height="45%"
+              
               width="100%"
             />
           </Link>
@@ -89,7 +83,7 @@ const HeaderCarousel = () => {
               className="d-block"
               src={s6}
               alt="Fourth slide"
-              height="45%"
+              
               width="100%"
             />
           </Link>
@@ -101,7 +95,7 @@ const HeaderCarousel = () => {
               className="d-block"
               src={s7}
               alt="Fourth slide"
-              height="45%"
+              
               width="100%"
             />
           </Link>
@@ -113,7 +107,7 @@ const HeaderCarousel = () => {
               className="d-block"
               src={s8}
               alt="Fourth slide"
-              height="45%"
+              
               width="100%"
             />
           </Link>
@@ -124,7 +118,7 @@ const HeaderCarousel = () => {
               className="d-block"
               src={s9}
               alt="Fourth slide"
-              height="45%"
+              
               width="100%"
             />
           </Link>
@@ -134,7 +128,7 @@ const HeaderCarousel = () => {
               className="d-block"
               src={s10}
               alt="Fourth slide"
-              height="45%"
+              
               width="100%"
             />
         </Carousel.Item>
@@ -143,7 +137,7 @@ const HeaderCarousel = () => {
             className="d-block"
             src={s11}
             alt="Fourth slide"
-            height="45%"
+            
             width="100%"
           />
         </Carousel.Item> */}

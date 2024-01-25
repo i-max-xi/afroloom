@@ -110,19 +110,22 @@ const Row = ({ mainItems, offerFix }) => {
 
   const rowProfessionals = [
     {
-      title: "Model",
-      imageUrl: require("../../Assets/model.png"),
-      linkTo: "/category/Accessories",
-    },
-    {
-      title: "Tour Guide",
+      // title: "Tour Guide",
       imageUrl: "https://cloudfront-us-east-1.images.arcpublishing.com/bostonglobe/PEVTJACBCUI6VG3Z2NTLW2NO4E.jpg",
       linkTo: "/category/Accessories",
+      action: "Book Tour Guide"
     },
     {
-      title: "Photographer",
+      // title: "Model",
+      imageUrl: require("../../Assets/model.png"),
+      linkTo: "/category/Accessories",
+      action: "Book A Model"
+    },
+    {
+      // title: "Photographer",
       imageUrl: "https://www.adorama.com/alc/wp-content/uploads/2021/04/photography-camera-types-feature.jpg",
       linkTo: "/category/Accessories",
+      action: "Book A Photographer / Videographer"
     },
 
   ];
@@ -235,6 +238,7 @@ const Row = ({ mainItems, offerFix }) => {
           linkTo={item.linkTo}
           videoUrl={item.videoUrl}
           itemID={item.itemID}
+          action={item.action}
         />
       );
     }

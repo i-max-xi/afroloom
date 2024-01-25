@@ -7,11 +7,7 @@
 
 @media (max-width: 900px) {
   .logo {
-    width: 4rem !important;
-  }
-  .signup,
-  .signin {
-    font-size: 0.7rem !important;
+    /* width: 4rem !important; */
   }
   .navbar-nav {
     display: flex;
@@ -19,7 +15,6 @@
     justify-content: space-around;
   }
   .navbar-expand-lg .navbar-nav .nav-item {
-    font-size: 0.8rem;
     margin-bottom: 1rem;
   }
   .dropdown {
@@ -30,16 +25,19 @@
     visibility: hidden;
     height: 0;
   }
-  .p-dropdown {
-    padding: 0;
+
+  #search-input {
+    display: none !important;
   }
-  .adjust-nav {
-    transform: translateY(0);
+  #mobile-search-input {
+    display: block !important;
   }
   .search-input {
-    transform: translateX(-0.3rem);
-    margin: 0.5rem 0;
+    width: 30rem !important;
+    margin-bottom: 1rem;
   }
+
+  /* carousel */
 
   /* nav ends here  */
   .footer > ul {
@@ -52,6 +50,7 @@
     padding: 1rem !important;
     width: 100%;
   }
+
   .policy-header li {
     font-size: 0.8rem !important;
     flex-direction: column !important;
@@ -59,13 +58,14 @@
     align-items: center;
     padding-right: 0.2rem !important;
   }
+  #header-1 {
+    display: none !important;
+  }
   .more-info > p > span {
     margin: 0 !important;
-    /* font-size: 0.5rem !important; */
   }
 
   .footer-icon-title {
-    /* font-size: 0.5rem !important; */
     margin-top: 0.2rem;
   }
 
@@ -74,11 +74,8 @@
   .category-template img {
     width: 60% !important;
   }
-  .category-banner > h4 {
-    font-size: 1rem !important;
-  }
-  .p-carousel-items-content h4 {
-    font-size: 0.5rem !important;
+  #category-banner {
+    display: none !important;
   }
 
   .p-carousel .p-carousel-indicators .p-carousel-indicator button {
@@ -145,11 +142,6 @@
     font-size: 0.4rem !important;
   }
 
-  .p-dropdown .p-dropdown-trigger {
-    width: 0.3rem !important;
-    margin: 0 0.1rem !important;
-  }
-
   .search-banner button {
     font-size: 0.3rem !important;
     padding: 0rem;
@@ -213,7 +205,6 @@
     /* margin-bottom: 0 !important; */
     font-size: 0.9rem !important;
   }
-
 
   .social-media {
     width: 1rem !important;
@@ -463,10 +454,9 @@
   box-shadow: 0px 10px 20px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* .cat-dropdown:hover {
-  background-color: #ffc107;
-  color: #ffc107;
-} */
+#mobile-search-input {
+  display: none;
+}
 
 /* CAROUSEL */
 .custom-carousel {

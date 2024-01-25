@@ -5,7 +5,7 @@ import { InputText } from "primereact/inputtext";
 import { Link } from "react-router-dom";
 
 
-const SearchBar2 = () => {
+const MobileSearchBar = () => {
   const dispatch = useDispatch();
   const [keyword, setKeyword] = useState("");
 
@@ -22,7 +22,7 @@ const SearchBar2 = () => {
   };
 
   return (
-    <div className="flex justify-content-center align-items-center search-input" id="search-input">
+    <div className="flex justify-content-center align-items-center search-input" id="mobile-search-input">
       <div className="p-inputgroup flex-1 mx-2 search-main">
         <InputText
           placeholder="What are you looking for?..."
@@ -48,4 +48,4 @@ const SearchBar2 = () => {
   );
 };
 
-export default SearchBar2;
+export default MobileSearchBar;

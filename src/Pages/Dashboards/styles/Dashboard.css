@@ -37,9 +37,9 @@
   .p-datatable .p-datatable-thead > tr > th {
     width: 5rem !important;
   }
-  .p-inputgroup {
+  /* .p-inputgroup {
     scale: 0.8;
-  }
+  } */
   .p-column-header-content {
     width: max-content !important;
   }

@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import Nav from "./Nav";
 import HeaderCarousel from "./HeaderCarousel";
 import LangCurrDropdown from "./LangCurrDropdown";
+import MobileSearchBar from "./MobileSearchBar";
 
 const TopCard = () => {
   const [dropdownVisible, setDropdownVisible] = useState(false);
@@ -48,6 +49,8 @@ const TopCard = () => {
       <div className="d-flex Map">
         <HeaderCarousel />
       </div>
+      <MobileSearchBar />
+
     </div>
   );
 };
