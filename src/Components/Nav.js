@@ -62,6 +62,39 @@ const Nav = ({ handleToggleDropdown, Language, Currency }) => {
             <img src={Logo} alt="africa-logo" className="logo" />
           </h3>
         </Link>
+
+        <div style={{position: "absolute", right: "1rem", top: "2.5rem"}}>
+          {signedin === false ? (
+            <div className="d-flex">
+              <button className="mx-2 btn btn-warning signup">
+                <Link
+                  to="/registeras"
+                  className="text-reset text-decoration-none"
+                >
+                  Sign Up
+                </Link>
+              </button>
+
+              <button className="btn btn-outline-warning bg-white signin">
+                <Link to="/signin" className="text-decoration-none text-reset">
+                  Login
+                </Link>
+              </button>
+            </div>
+          ) : (
+            <>
+              <GoogleTranslate />
+              <Link to={dashboardPath}>
+                <Avatar
+                  icon="pi pi-user"
+                  className="mx-1 bg-secondary text-white"
+                  size="medium"
+                  shape="circle"
+                />
+              </Link>
+            </>
+          )}
+        </div>
       </div>
 
       {/* actual navs */}
@@ -128,35 +161,6 @@ const Nav = ({ handleToggleDropdown, Language, Currency }) => {
         </ul>
       </div>
       <GoogleTranslate />
-
-      {signedin === false ? (
-        <div className="d-flex">
-
-          <button className="mx-2 btn btn-warning signup">
-            <Link to="/registeras" className="text-reset text-decoration-none">
-              Sign Up
-            </Link>
-          </button>
-
-          <button className="btn btn-outline-warning bg-white signin">
-            <Link to="/signin" className="text-decoration-none text-reset">
-              Login
-            </Link>
-          </button>
-        </div>
-      ) : (
-        <>
-          <GoogleTranslate />
-          <Link to={dashboardPath}>
-            <Avatar
-              icon="pi pi-user"
-              className="mx-1 bg-secondary text-white"
-              size="medium"
-              shape="circle"
-            />
-          </Link>
-        </>
-      )}
     </nav>
   );
 };

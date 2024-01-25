@@ -47,7 +47,7 @@
   }
   .policy-header {
     display: flex;
-    padding: 1rem !important;
+    padding: 0.5rem !important;
     width: 100%;
   }
 
@@ -67,7 +67,7 @@
 
   .footer-icon-title {
     margin-top: 0.2rem;
-    font-size: 1rem !important;
+    font-size: 0.8rem !important;
   }
 
   /* Category */
@@ -176,10 +176,7 @@
 
   /* paginator */
 
-  .footer-space {
-    /* display: grid;
-    grid-template-rows: 1fr 1fr; */
-  }
+
 
   #footer-social-media {
     display: none !important;
