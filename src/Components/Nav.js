@@ -127,9 +127,10 @@ const Nav = ({ handleToggleDropdown, Language, Currency }) => {
           <SearchBar2 />
         </ul>
       </div>
+      <GoogleTranslate />
+
       {signedin === false ? (
         <div className="d-flex">
-          <GoogleTranslate />
 
           <button className="mx-2 btn btn-warning signup">
             <Link to="/registeras" className="text-reset text-decoration-none">

@@ -22,7 +22,7 @@ const MobileSearchBar = () => {
   };
 
   return (
-    <div className="flex justify-content-center align-items-center search-input" id="mobile-search-input">
+    <div className="flex justify-content-center align-items-center align-self-center search-input" id="mobile-search-input">
       <div className="p-inputgroup flex-1 mx-2 search-main">
         <InputText
           placeholder="What are you looking for?..."

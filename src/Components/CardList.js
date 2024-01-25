@@ -469,7 +469,7 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
               country={product.country}
             />
 
-            {index === 8 && showNestedComponent && (
+            {index === 7 && showNestedComponent && (
               <>
                 <Banner
                   key={uuid()}
@@ -495,7 +495,7 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
               </>
             )}
 
-            {index === 18 && showNestedComponent && (
+            {index === 17 && showNestedComponent && (
               <>
                 <Banner
                   // items={bannereight}

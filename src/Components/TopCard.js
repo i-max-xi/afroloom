@@ -12,7 +12,6 @@ const TopCard = () => {
   const [Currency, setCurrency] = useState("USD");
   const [Language, setLanguage] = useState("Eng");
 
-
   const handleToggleDropdown = () => {
     setDropdownVisible(!dropdownVisible);
   };
@@ -46,11 +45,11 @@ const TopCard = () => {
         Language={Language}
       />
 
+      <MobileSearchBar />
+
       <div className="d-flex Map">
         <HeaderCarousel />
       </div>
-      <MobileSearchBar />
-
     </div>
   );
 };
