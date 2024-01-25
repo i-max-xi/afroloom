@@ -67,6 +67,7 @@
 
   .footer-icon-title {
     margin-top: 0.2rem;
+    font-size: 1rem !important;
   }
 
   /* Category */
@@ -96,11 +97,12 @@
   .four-in-a-card-container,
   .offer-card {
     /* font-size: 0.5rem !important; */
-    margin: 0.2px !important;
+    margin: 0.2rem 0.1rem !important;
     padding: 0.5rem 1rem !important;
-    width: 49% !important;
-    height: 49% !important;
+    width: 100% !important;
+    /* height: 49% !important; */
   }
+
 
   .four-in-a-card-container h3,
   .offer-card h3 {
@@ -182,6 +184,10 @@
     grid-template-rows: 1fr 1fr; */
   }
 
+  #footer-social-media {
+    display: none !important;
+  }
+
   .footer-item {
     width: 30%;
   }
@@ -199,11 +205,6 @@
 
   .footer-about > p {
     width: 100% !important;
-  }
-
-  .footer-item p {
-    /* margin-bottom: 0 !important; */
-    font-size: 0.9rem !important;
   }
 
   .social-media {
@@ -637,6 +638,7 @@ form {
 
 .footer-icon {
   width: 1.5rem;
+  margin: 0.5rem 0;
 }
 
 .p-carousel-item {

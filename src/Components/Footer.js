@@ -22,8 +22,8 @@ const Footer = () => {
       // }}
       >
         {/* special contact  */}
-        <div className="container p-4 pb-0">
-          <div className="d-flex justify-content-around policy-header">
+        <div className="container p-2 pb-0">
+          <div className="d-flex justify-content-between policy-header">
             {contactInfo.map((contact) => (
               <FooterContact
                 key={contact.id}
@@ -49,7 +49,7 @@ const Footer = () => {
         <section className="footer-space">
           <div className="container  mt-5">
             <div className="row d-flex justify-content-between">
-              <div className="col-3 mb-4 footer-item">
+              <div className="col-3 mb-4 footer-item" id="footer-social-media">
                 <Link to="/" className="navbar-brand">
                   <h3>
                     {" "}
@@ -60,7 +60,7 @@ const Footer = () => {
                 <SocialMedia />
               </div>
 
-              <div className="col-8 col-sm-4 mb-4 footer-item">
+              <div className="col-10 col-sm-4 mb-4 footer-item">
                 <h5 className="footer-header">Useful Links</h5>
                 <div className="d-flex justify-content-between">
                   <div>
