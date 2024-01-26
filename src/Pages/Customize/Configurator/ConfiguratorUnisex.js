@@ -832,11 +832,7 @@ const ConfiguratorUnisex = () => {
                         // width={"3%"}
                         className="uploaded-image"
                         id="uploaded-image-left"
-                        style={{
-                          top: "16.3%",
-                          left: "51%",
-                          zIndex: 10,
-                        }}
+                        
                       />
                     )}
                     {uploadedImageRight && (
@@ -846,12 +842,7 @@ const ConfiguratorUnisex = () => {
                         alt="Uploaded Texture"
                         // width={"3%"}
                         className="uploaded-image"
-                        id="uploaded-image-left"
-                        style={{
-                          top: "16%", // You can set the position as per your requirement
-                          left: "65.4%",
-                          zIndex: 10, // Ensure it's above the canvas
-                        }}
+                        id="uploaded-image-right"
                       />
                     )}
                   </div>

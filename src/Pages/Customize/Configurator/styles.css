@@ -373,7 +373,21 @@ h1 {
 
 .uploaded-image {
   width: 3%;
-  position: "absolute",
+  z-index: 10;
+  position: absolute;
+  /* top: 16.3%;
+  left: 51%;
+   */
+}
+
+#uploaded-image-left{
+  top: 14%;
+  left: 50%;
+}
+
+#uploaded-image-right{
+  top: 14%;
+  left: 64.4%;
 }
 
 .overlay {
