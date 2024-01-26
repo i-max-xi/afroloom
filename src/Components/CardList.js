@@ -216,7 +216,7 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
   // const dispatch = useDispatch();
 
   // const [Products, setProducts] = useState([]);
-  const [itemsPerPage] = useState(18);
+  const [itemsPerPage] = useState(24);
 
   const Products = useSelector((state) => state.allProducts.products);
 
@@ -487,7 +487,7 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
               country={product.country}
             />
 
-            {index === 7 && showNestedComponent && (
+            {index === 11 && showNestedComponent && (
               <>
                 <Banner
                   key={uuid()}
@@ -500,7 +500,7 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
             )}
 
             {/* banner 1 */}
-            {index === 13 && showNestedComponent && (
+            {index === 17 && showNestedComponent && (
               <>
                 <Banner
                   key={uuid()}
@@ -513,7 +513,7 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
               </>
             )}
 
-            {index === 17 && showNestedComponent && (
+            {index === 23 && showNestedComponent && (
               <>
                 <Banner
                   // items={bannereight}
