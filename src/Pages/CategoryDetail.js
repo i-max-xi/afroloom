@@ -42,7 +42,7 @@ const CategoryDetail = ({ option }) => {
     url = ""; // fallback URL
   }
 
-  const Products = useSelector((state)=> state.allProducts.products);
+  const Products = useSelector((state) => state.allProducts.products);
 
   // const category = allCategory.find((p) => p.id === parseInt(categoryId));
   let product = Products.filter((p) => p.category === categoryName);
@@ -51,13 +51,13 @@ const CategoryDetail = ({ option }) => {
   //   setproduct(Products.filter((p) => p.category === categoryName))
   // }, []);
 
-   // currency conversion
-   const currencySymbol = useSelector((state) => state.currencySymbol.symbol);
-   const currencyFactor = useSelector((state) => state.currencySymbol.factor);
-   const priceRangeOptions = getPriceRangeOptions(
-     currencySymbol,
-     currencyFactor
-   );
+  // currency conversion
+  const currencySymbol = useSelector((state) => state.currencySymbol.symbol);
+  const currencyFactor = useSelector((state) => state.currencySymbol.factor);
+  const priceRangeOptions = getPriceRangeOptions(
+    currencySymbol,
+    currencyFactor
+  );
 
   const pullFilters = allCategory.find((f) => f.name === categoryName);
 
@@ -65,7 +65,7 @@ const CategoryDetail = ({ option }) => {
 
   // Pagination starts here
   const [currentPage, setCurrentPage] = useState(0);
-  const [itemsPerPage] = useState(5);
+  const [itemsPerPage] = useState(10);
 
   const onPageChange = (event) => {
     setCurrentPage(event.page);
@@ -76,7 +76,6 @@ const CategoryDetail = ({ option }) => {
     (currentPage + 1) * itemsPerPage
   );
 
-
   const [itemsToDisplay, setitemsToDisplay] = useState(itemsToDisplayBank);
 
   const template3 = {
@@ -84,17 +83,17 @@ const CategoryDetail = ({ option }) => {
       "RowsPerPageDropdown PrevPageLink PageLinks NextPageLink CurrentPageReport",
   };
 
-
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [currentPage]);
 
-
   // Filter system
   const [typeBank, setTypeBank] = useState([]);
-  const [sizeBank, setSizeBank] = useState([]); 
-  const [sizeName, setSizeName] = useState( actualFilter[2] ? actualFilter[2].name : "");
-  
+  const [sizeBank, setSizeBank] = useState([]);
+  const [sizeName, setSizeName] = useState(
+    actualFilter[2] ? actualFilter[2].name : ""
+  );
+
   const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedCountry, setSelectedCountry] = useState("");
   const [selectedOption3, setSelectedOption3] = useState("");
@@ -107,22 +106,22 @@ const CategoryDetail = ({ option }) => {
         (selectedCategory === "" || product.category === selectedCategory) &&
         (selectedOption3 === "" || product.size === selectedOption3) &&
         (selectedPriceRange === "" ||
-        (selectedPriceRange === 10 * currencyFactor &&
-          product.price * currencyFactor < 10 * currencyFactor) ||
-        (selectedPriceRange === 201 * currencyFactor &&
-          product.price * currencyFactor > 200 * currencyFactor) ||
-        (selectedPriceRange === 25 * currencyFactor &&
-          product.price * currencyFactor >= 10 * currencyFactor &&
-          product.price * currencyFactor <= 25 * currencyFactor) ||
-        (selectedPriceRange === 50 * currencyFactor &&
-          product.price * currencyFactor >= 25 * currencyFactor &&
-          product.price * currencyFactor <= 50 * currencyFactor) ||
-        (selectedPriceRange === 100 * currencyFactor &&
-          product.price * currencyFactor >= 50 * currencyFactor &&
-          product.price * currencyFactor <= 100 * currencyFactor) ||
-        (selectedPriceRange === 200 * currencyFactor &&
-          product.price * currencyFactor >= 100 * currencyFactor &&
-          product.price * currencyFactor <= 200 * currencyFactor))
+          (selectedPriceRange === 10 * currencyFactor &&
+            product.price * currencyFactor < 10 * currencyFactor) ||
+          (selectedPriceRange === 201 * currencyFactor &&
+            product.price * currencyFactor > 200 * currencyFactor) ||
+          (selectedPriceRange === 25 * currencyFactor &&
+            product.price * currencyFactor >= 10 * currencyFactor &&
+            product.price * currencyFactor <= 25 * currencyFactor) ||
+          (selectedPriceRange === 50 * currencyFactor &&
+            product.price * currencyFactor >= 25 * currencyFactor &&
+            product.price * currencyFactor <= 50 * currencyFactor) ||
+          (selectedPriceRange === 100 * currencyFactor &&
+            product.price * currencyFactor >= 50 * currencyFactor &&
+            product.price * currencyFactor <= 100 * currencyFactor) ||
+          (selectedPriceRange === 200 * currencyFactor &&
+            product.price * currencyFactor >= 100 * currencyFactor &&
+            product.price * currencyFactor <= 200 * currencyFactor))
       ) {
         return true;
       }
@@ -132,44 +131,32 @@ const CategoryDetail = ({ option }) => {
     setitemsToDisplay(newItemstoDisplay);
   };
 
+  // Conditionally render type
 
-    // Conditionally render type
+  useEffect(() => {
+    if (selectedCategory === "Male") {
+      setTypeBank(actualFilter[1].maleOptions);
+    } else if (selectedCategory === "Female") {
+      setTypeBank(actualFilter[1].femaleOptions);
+    } else {
+      setTypeBank(actualFilter[1] ? actualFilter[1].options : []);
+    }
+  }, [selectedCategory]);
 
-    useEffect(() => {
-      if(selectedCategory === "Male"){
-        setTypeBank(actualFilter[1].maleOptions)
-      }
-      else if (selectedCategory === "Female") {
-        setTypeBank(actualFilter[1].femaleOptions);
-      }
-
-      else {
-        setTypeBank(actualFilter[1] ? actualFilter[1].options : [])
-      }
-  
-    }, [selectedCategory]);
-
-
-    // Conditionally render size
-    useEffect(() => {
-      if(selectedCountry === "Hat"){
-        setSizeBank(actualFilter[2].hatOptions)
-      }
-      else if(selectedCountry === "Belt"){
-        setSizeBank(actualFilter[2].hatOptions)
-      }
-
-      else if(selectedCountry === "Bra"){
-        setSizeBank(actualFilter[2].braOptions);
-        setSizeName("Size (UK)");
-      }
-
-      else {
-        setSizeBank(actualFilter[2] ? actualFilter[2].options : [])
-        setSizeName(actualFilter[2] ? actualFilter[2].name : "");
-      }
-  
-    }, [selectedCountry]);
+  // Conditionally render size
+  useEffect(() => {
+    if (selectedCountry === "Hat") {
+      setSizeBank(actualFilter[2].hatOptions);
+    } else if (selectedCountry === "Belt") {
+      setSizeBank(actualFilter[2].hatOptions);
+    } else if (selectedCountry === "Bra") {
+      setSizeBank(actualFilter[2].braOptions);
+      setSizeName("Size (UK)");
+    } else {
+      setSizeBank(actualFilter[2] ? actualFilter[2].options : []);
+      setSizeName(actualFilter[2] ? actualFilter[2].name : "");
+    }
+  }, [selectedCountry]);
 
   return (
     <>
@@ -184,10 +171,8 @@ const CategoryDetail = ({ option }) => {
         }}
         className="page-banner"
       ></div>
-      <div className="container category-items-container">
+      <div className="container category-items-container ">
         <div className="row d-flex justify-content-between">
-
-
           {actualFilter[0].options.length >= 1 && (
             <SearchFilters
               search1={actualFilter[0].name}
@@ -201,12 +186,10 @@ const CategoryDetail = ({ option }) => {
               options2={actualFilter[1] ? typeBank : []}
               selectedCountry={selectedCountry}
               setSelectedCountry={setSelectedCountry}
-              
               search3={actualFilter[2] ? sizeName : ""}
               options3={actualFilter[2] ? sizeBank : []}
               selectedOption3={selectedOption3}
               setSelectedOption3={setSelectedOption3}
-
               search4=""
               search5=""
               handleSave={saveFilters}
@@ -215,20 +198,16 @@ const CategoryDetail = ({ option }) => {
 
           {itemsToDisplay.length !== 0 ? (
             itemsToDisplay.map((product) => (
-              <div
-                className="mt-2 text-decoration-none text-black"
-                style={{ width: product.Width || "20%" }}
-              >
-                <Card
-                  key={product.id}
-                  title={product.title}
-                  description={product.description}
-                  price={product.price}
-                  item={product.item}
-                  flag={product.flag}
-                  id={product.id}
-                />
-              </div>
+              <Card
+                key={product.id}
+                title={product.title}
+                description={product.description}
+                price={product.price}
+                item={product.item}
+                flag={product.flag}
+                country={product.country}
+                id={product.id}
+              />
             ))
           ) : (
             <>Currently out of stock</>
@@ -237,6 +216,7 @@ const CategoryDetail = ({ option }) => {
       </div>
 
       <Paginator
+        currentPage={currentPage}
         first={currentPage * itemsPerPage}
         rows={itemsPerPage}
         totalRecords={product.length}

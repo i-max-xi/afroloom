@@ -116,9 +116,9 @@ export const Card = ({
 
       <div className="card-body d-flex flex-column">
         <div>
-          <div className="d-flex justify-content-between align-items-center">
-            <div>{title}</div>
-            <div className="flag" style={{ width: "10%", float: "right" }}>
+          <div className="d-flex justify-content-between align-items-start">
+            <div style={{flex: 5}}>{title}</div>
+            <div className="flag" style={{ flex: 1, translate: "0 0.5rem", float: "right" }}>
               {country ? (
                 <div className="mx-1" style={{ fontSize: "0.8rem" }}>
                   <img

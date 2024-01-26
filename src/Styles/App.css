@@ -210,17 +210,16 @@
   }
 
   /* card */
-  .flag {
+  /* .flag {
     display: flex;
     width: 15% !important;
     justify-content: right !important;
     float: right !important;
-  } 
+  }  */
 
   .price, .discounted-price {
     margin-top: 0 !important;
     font-size: 1rem !important;
-
   }
 
 
