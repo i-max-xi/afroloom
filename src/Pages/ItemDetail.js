@@ -118,7 +118,7 @@ const ItemDetail = ({ match }) => {
         (1 - discountPercentage) * currencyFactor * product.price * count;
     }
     return (
-      <div className="text-center p-3 related-products">
+      <div className="text-center p-3 related-products col-12">
         <Link to={`/product/${relatedProduct.id}`} >
           <img
             src={relatedProduct.item}
@@ -147,6 +147,9 @@ const ItemDetail = ({ match }) => {
       </div>
     );
   };
+
+  const isMobile = window.innerWidth <= 767;
+
 
   return (
     <div className="bg-white">
@@ -246,7 +249,7 @@ const ItemDetail = ({ match }) => {
         <h4 className="text-center">Related Products</h4>
         <Carousel
           value={relatedProducts}
-          numVisible={3}
+          numVisible={isMobile ? 1 : 3}
           numScroll={1}
           className="custom-carousel"
           circular

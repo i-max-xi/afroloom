@@ -217,7 +217,7 @@
     float: right !important;
   }  */
 
-  .price, .discounted-price {
+  .price {
     margin-top: 0 !important;
     font-size: 1rem !important;
   }
@@ -239,9 +239,9 @@
   .related-products h5,
   .related-products del,
   .related-products h5 {
-    font-size: 0.7rem !important;
     margin: 0 !important;
   }
+  
 
   /* category */
   .page-banner {
