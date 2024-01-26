@@ -102,6 +102,7 @@
 
   .text-image-imprint-wrapper > .inputs > input {
     flex: 1;
+    margin-top: 0.2rem !important;
   }
 
   .image-uploads {

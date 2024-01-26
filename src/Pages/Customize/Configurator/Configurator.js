@@ -304,7 +304,7 @@ const Configurator = () => {
           <Dialog
             // header="Welcome to the 3D Customization!"
             visible={showTourPopup}
-            style={{ width: "50vw" }}
+            className="col-12 col-sm-6"
             onHide={handleTourLater}
           >
             <div className="tour-popup">
