@@ -1,35 +1,19 @@
 /* Dashboard.css */
 
 @media (max-width: 900px) {
-  .welcome {
-    font-size: 1rem !important;
-  }
+
   .dashboard {
     width: max-content !important;
     padding: 0 !important;
   }
 
-  .p-sidebar-content > * {
-    font-size: 0.8rem !important;
-  }
+
   .side-bar-closed-container > button {
-    scale: 0.5;
-    transform: translateY(-1rem);
+    scale: 0.6;
+    transform: translateY(-0.5rem);
   }
   .dashboard-home-search {
-    width: 15rem !important;
-  }
-  .p-tabview .p-component {
-    font-size: 0.8rem !important;
-  }
-  .dashboard-home-title {
-    font-size: 1rem !important;
-  }
-  .edit, .remove {
-    font-size: 0.8rem !important;
-  }
-  .p-button-label {
-    font-size: 0.8rem !important;
+    width: 20rem !important;
   }
   .data-table-img {
     width: 3rem !important;
@@ -37,26 +21,17 @@
   .p-datatable .p-datatable-thead > tr > th {
     width: 5rem !important;
   }
-  /* .p-inputgroup {
-    scale: 0.8;
-  } */
+
   .p-column-header-content {
     width: max-content !important;
   }
   .p-datatable .p-paginator-bottom {
     width: max-content !important;
-    scale: 0.8;
   }
   .upload-input {
     scale: 0.8 !important;
   }
-  .sticker-button {
-    font-size: 0.8rem !important;
-  }
-  .p-field > * {
-    font-size: 0.8rem !important;
-
-  }
+  
 }
 
 .dashboard {
