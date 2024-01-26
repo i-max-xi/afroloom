@@ -22,7 +22,7 @@ const CustomizePage = () => {
           {mainMaleCustomize.map(({ name, image }) => (
             <Link
               to={`/configurator/${name}`}
-              className="col-4 col-md-3 customise-front text-decoration-none"
+              className="col-6 col-md-3 customise-front text-decoration-none"
               key={name}
             >
               <div className="card" data-aos="fade-in" data-aos-duration="1500">
@@ -44,7 +44,7 @@ const CustomizePage = () => {
           {mainFemaleCustomize.map(({ name, image }) => (
             <Link
               to={`/configurator-female/${name}`}
-              className="col-4 col-md-3 customise-front text-decoration-none"
+              className="col-6 col-md-3 customise-front text-decoration-none"
               key={name}
             >
               <div className="card" data-aos="fade-in" data-aos-duration="1500">
@@ -66,7 +66,7 @@ const CustomizePage = () => {
           {mainMaleAccessories.map(({ name, image }) => (
             <Link
               to={`/configurator-male-accessories/${name}`}
-              className="col-4 col-md-3 customise-front text-decoration-none"
+              className="col-6 col-md-3 customise-front text-decoration-none"
               key={name}
             >
               <div className="card" data-aos="fade-in" data-aos-duration="1500">
@@ -88,7 +88,7 @@ const CustomizePage = () => {
           {mainFemaleAccessories.map(({ name, image }) => (
             <Link
               to={`/configurator-female-accessories/${name}`}
-              className="col-4 col-md-3 customise-front text-decoration-none"
+              className="col-6 col-md-3 customise-front text-decoration-none"
               key={name}
             >
               <div className="card" data-aos="fade-in" data-aos-duration="1500">
@@ -111,7 +111,7 @@ const CustomizePage = () => {
             <Link
               // to={`/customize-unisex/${name}`}
               to={`/configurator-unisex/${name}`}
-              className="col-4 col-md-3 customise-front text-decoration-none"
+              className="col-6 col-md-3 customise-front text-decoration-none"
               key={name}
             >
               <div className="card" data-aos="fade-in" data-aos-duration="1500">
@@ -134,7 +134,7 @@ const CustomizePage = () => {
             <Link
               // to={`/customize-footwear/${name}`}
               to={`/configurator-footwear/${name}`}
-              className="col-4 col-md-3 customise-front text-decoration-none"
+              className="col-6 col-md-3 customise-front text-decoration-none"
               key={name}
             >
               <div className="card" data-aos="fade-in" data-aos-duration="1500">
