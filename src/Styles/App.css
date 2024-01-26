@@ -115,42 +115,42 @@
 
   /* search banner */
   .search-banner {
-    aspect-ratio: 1/1 !important;
-    padding: 0.2rem !important;
+    /* aspect-ratio: 1/1 !important; */
+    padding: 0.5rem !important;
+    width: 100% !important;
   }
-  .old-search-banner {
+  /* .old-search-banner {
     display: none;
-  }
+  } */
 
-  .search-dropdown {
-    /* font-size: 0.4rem !important; */
+  /* .search-dropdown {
     max-height: 15% !important;
     border-radius: 0.2rem !important;
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 0.2rem !important;
-  }
+  } */
 
-  .p-dropdown .p-dropdown-label.p-placeholder {
+  /* .p-dropdown .p-dropdown-label.p-placeholder {
     display: flex;
     transform: translateX(-0.5rem);
   }
 
   .search-dropdown > span {
     font-size: 0.4rem !important;
-  }
-
+  } */
+/* 
   .search-banner button {
     font-size: 0.3rem !important;
     padding: 0rem;
     margin-bottom: 0rem !important;
-  }
+  } */
 
-  .search-banner h4 {
+  /* .search-banner h4 {
     font-size: 0.4rem !important;
     margin-bottom: 0.2rem !important;
-  }
+  } */
 
   /* Banner Add */
   .clickable-banner-container {

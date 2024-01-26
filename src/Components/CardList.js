@@ -216,7 +216,7 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
   // const dispatch = useDispatch();
 
   // const [Products, setProducts] = useState([]);
-  const [itemsPerPage] = useState(19);
+  const [itemsPerPage] = useState(18);
 
   const Products = useSelector((state) => state.allProducts.products);
 
@@ -417,7 +417,7 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
         {showNestedComponent && <Row offerFix="One" />}
 
 
-        <div className="old-search-banner">
+        <div className="old-search-banner col-12">
           <SearchFilters
             search1="Category"
             search2="Country"

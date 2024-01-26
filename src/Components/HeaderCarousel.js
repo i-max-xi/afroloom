@@ -2,6 +2,7 @@ import React from "react";
 import Carousel from "react-bootstrap/Carousel";
 
 import s1 from "../Assets/carousel/new/afro/NEW 3 copy.jpg";
+import _s2 from "../Assets/carousel/new/afro/S2.jpg";
 import s2 from "../Assets/carousel/new/afro/FLYERS 3 copy.jpg";
 import s3 from "../Assets/carousel/new/afro/FLYERS 4 copy.jpg";
 import s4 from "../Assets/carousel/new/afro/FLYERS 5.jpg";
@@ -29,6 +30,17 @@ const HeaderCarousel = () => {
             
             width="100%"
           />
+        </Carousel.Item>
+        <Carousel.Item>
+          <Link to="/category/Accessories">
+            <img
+              className="d-block"
+              src={_s2}
+              alt="Second slide"
+              
+              width="100%"
+            />
+          </Link>
         </Carousel.Item>
         <Carousel.Item>
           <Link to="/category/Clothing">
