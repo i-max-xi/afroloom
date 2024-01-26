@@ -130,11 +130,19 @@
     padding: 0 0.6rem !important;
   }
 
-  /* .overlay {
-    font-weight: 700;
-    line-height: 3rem;
-    text-align: center;
-  } */
+  .uploaded-image {
+    width: 8% !important;
+  }
+  
+  #uploaded-image-left{
+    top: 10.5% !important;
+    left: 27% !important;
+  }
+
+  #uploaded-image-right{
+    top: 10.5% !important;
+    left: 63.4% !important;
+  }
   
   #overlay-right {
     transform: translateX(2.8rem) !important;
@@ -375,9 +383,6 @@ h1 {
   width: 3%;
   z-index: 10;
   position: absolute;
-  /* top: 16.3%;
-  left: 51%;
-   */
 }
 
 #uploaded-image-left{
