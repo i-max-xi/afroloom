@@ -17,6 +17,7 @@ import { Paginator } from "primereact/paginator";
 import SearchFilters from "../Components/SearchFilters";
 import { useSelector } from "react-redux";
 import { getPriceRangeOptions } from "../Data/PriceRangeData";
+import { Dialog } from "primereact/dialog";
 
 const CategoryDetail = ({ option }) => {
   const { categoryName } = useParams();
@@ -158,6 +159,8 @@ const CategoryDetail = ({ option }) => {
     }
   }, [selectedCountry]);
 
+  const [showSearch, setshowSearch] = useState(false);
+
   return (
     <>
       <Nav />
@@ -174,27 +177,47 @@ const CategoryDetail = ({ option }) => {
       <div className="container category-items-container ">
         <div className="row d-flex justify-content-between">
           {actualFilter[0].options.length >= 1 && (
-            <SearchFilters
-              search1={actualFilter[0].name}
-              options1={actualFilter[0].options}
-              selectedCategory={selectedCategory}
-              optionPrice={priceRangeOptions} // price filter
-              selectedPriceRange={selectedPriceRange} // price
-              setSelectedPriceRange={setSelectedPriceRange} // price
-              setSelectedCategory={setSelectedCategory}
-              search2={actualFilter[1] ? actualFilter[1].name : ""}
-              options2={actualFilter[1] ? typeBank : []}
-              selectedCountry={selectedCountry}
-              setSelectedCountry={setSelectedCountry}
-              search3={actualFilter[2] ? sizeName : ""}
-              options3={actualFilter[2] ? sizeBank : []}
-              selectedOption3={selectedOption3}
-              setSelectedOption3={setSelectedOption3}
-              search4=""
-              search5=""
-              handleSave={saveFilters}
-            />
+            <>
+              <Dialog
+                header="Advanced Search"
+                visible={showSearch}
+                className="col-10 col-sm-3 search-banner"
+                onHide={() => {
+                  setshowSearch(false);
+                }}
+              >
+                <SearchFilters
+                  search1={actualFilter[0].name}
+                  options1={actualFilter[0].options}
+                  selectedCategory={selectedCategory}
+                  optionPrice={priceRangeOptions} // price filter
+                  selectedPriceRange={selectedPriceRange} // price
+                  setSelectedPriceRange={setSelectedPriceRange} // price
+                  setSelectedCategory={setSelectedCategory}
+                  search2={actualFilter[1] ? actualFilter[1].name : ""}
+                  options2={actualFilter[1] ? typeBank : []}
+                  selectedCountry={selectedCountry}
+                  setSelectedCountry={setSelectedCountry}
+                  search3={actualFilter[2] ? sizeName : ""}
+                  options3={actualFilter[2] ? sizeBank : []}
+                  selectedOption3={selectedOption3}
+                  setSelectedOption3={setSelectedOption3}
+                  search4=""
+                  search5=""
+                  handleSave={saveFilters}
+                />
+              </Dialog>
+            </>
           )}
+          <div className="m-3 d-flex justify-content-center advance-search-trigger align-items-center">
+            <input
+              type="radio"
+              id="advancedSearch"
+              checked={showSearch}
+              onChange={() => setshowSearch(!showSearch)}
+            />
+            <label htmlFor="advancedSearch">Advanced Search</label>{" "}
+          </div>
 
           {itemsToDisplay.length !== 0 ? (
             itemsToDisplay.map((product) => (

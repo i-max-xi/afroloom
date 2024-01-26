@@ -20,6 +20,7 @@ import { useSelector } from "react-redux";
 import Row from "./offers/Row";
 import Banner from "./offers/Banner";
 import { getPriceRangeOptions } from "../Data/PriceRangeData";
+import { Dialog } from "primereact/dialog";
 
 export const Card = ({
   title,
@@ -106,19 +107,18 @@ export const Card = ({
         />
       ) : (
         <Link to={`/product/${id}`}>
-          <img
-            className="card-img-top "
-            src={item}
-            alt="item"
-          />
+          <img className="card-img-top " src={item} alt="item" />
         </Link>
       )}
 
       <div className="card-body d-flex flex-column">
         <div>
           <div className="d-flex justify-content-between align-items-start">
-            <div style={{flex: 5}}>{title}</div>
-            <div className="flag" style={{ flex: 1, translate: "0 0.5rem", float: "right" }}>
+            <div style={{ flex: 5 }}>{title}</div>
+            <div
+              className="flag"
+              style={{ flex: 1, translate: "0 0.5rem", float: "right" }}
+            >
               {country ? (
                 <div className="mx-1" style={{ fontSize: "0.8rem" }}>
                   <img
@@ -405,6 +405,8 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
     setItemsToDisplay(newItemstoDisplay);
   };
 
+  const [showSearch, setshowSearch] = useState(false);
+
   return (
     <>
       {showNestedComponent && <Header />}
@@ -416,8 +418,14 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
 
         {showNestedComponent && <Row offerFix="One" />}
 
-
-        <div className="old-search-banner col-12">
+        <Dialog
+          header="Advanced Search"
+          visible={showSearch}
+          className="col-10 col-sm-3 search-banner"
+          onHide={() => {
+            setshowSearch(false);
+          }}
+        >
           <SearchFilters
             search1="Category"
             search2="Country"
@@ -445,6 +453,16 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
             setSelectedOption5={setSelectedSize}
             handleSave={saveFilters}
           />
+        </Dialog>
+
+        <div className="mt-3 mb-3 d-flex justify-content-center advance-search-trigger align-items-center">
+          <input
+            type="radio"
+            id="advancedSearch"
+            checked={showSearch}
+            onChange={() => setshowSearch(!showSearch)}
+          />
+          <label htmlFor="advancedSearch">Advanced Search</label>{" "}
         </div>
 
         {/* Iteration */}

@@ -6,23 +6,11 @@
   .main-space {
     overflow: hidden;
   }
-  .confirmation-page {
-    /* font-size: 0.8rem !important; */
-  }
+
   .text-image-imprint h5 {
     font-size: 1rem !important;
   }
 
-  .confirmation-page h1,
-  .confirmation-page h2 {
-    /* font-size: 1.2rem !important; */
-  }
-  .confirmation-page button {
-    /* font-size: 0.8rem !important; */
-  }
-  .all-confirmation-info p {
-    /* font-size: 0.8rem !important; */
-  }
 
   /* Actual 3d  */
   .configurator-container {
@@ -33,9 +21,7 @@
   .right-panel > .m-3 {
     margin: 0.2rem !important;
   }
-  .main-space h3 {
-    /* font-size: 1rem !important; */
-  }
+
   .main-space button {
     font-size: 0.8rem !important;
     padding: 0.2rem 0.4rem !important;

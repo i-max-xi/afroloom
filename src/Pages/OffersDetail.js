@@ -15,6 +15,7 @@ import under3 from "../Assets/Headers/offers/mwUnder.JPG";
 import searchbanner from "../Assets/Headers/search.JPG";
 import { differenceInDays, fromUnixTime } from "date-fns"; // Import the functions
 import { getPriceRangeOptions } from "../Data/PriceRangeData";
+import { Dialog } from "primereact/dialog";
 
 const OffersDetail = () => {
   useEffect(() => {
@@ -100,13 +101,13 @@ const OffersDetail = () => {
       "RowsPerPageDropdown PrevPageLink PageLinks NextPageLink CurrentPageReport",
   };
 
-    // currency conversion
-    const currencySymbol = useSelector((state) => state.currencySymbol.symbol);
-    const currencyFactor = useSelector((state) => state.currencySymbol.factor);
-    const priceRangeOptions = getPriceRangeOptions(
-      currencySymbol,
-      currencyFactor
-    );
+  // currency conversion
+  const currencySymbol = useSelector((state) => state.currencySymbol.symbol);
+  const currencyFactor = useSelector((state) => state.currencySymbol.factor);
+  const priceRangeOptions = getPriceRangeOptions(
+    currencySymbol,
+    currencyFactor
+  );
 
   const [itemsToDisplay, setItemsToDisplay] = useState(itemsToDisplayBank);
   // Filters implementation start here...
@@ -116,7 +117,6 @@ const OffersDetail = () => {
   const [selectedGender, setSelectedGender] = useState("");
   const [selectedSize, setSelectedSize] = useState("");
   const [selectedPriceRange, setSelectedPriceRange] = useState("");
-
 
   const [search3bank, setSearch3Bank] = useState("");
   const [search4bank, setSearch4Bank] = useState("");
@@ -229,24 +229,24 @@ const OffersDetail = () => {
         (selectedProduct === "" ||
           product.detailedCategory === selectedProduct) &&
         (selectedGender === "" || product.gender === selectedGender) &&
-        (selectedSize === "" || product.size === selectedSize) && 
+        (selectedSize === "" || product.size === selectedSize) &&
         (selectedPriceRange === "" ||
-        (selectedPriceRange === 10 * currencyFactor &&
-          product.price * currencyFactor < 10 * currencyFactor) ||
-        (selectedPriceRange === 201 * currencyFactor &&
-          product.price * currencyFactor > 200 * currencyFactor) ||
-        (selectedPriceRange === 25 * currencyFactor &&
-          product.price * currencyFactor >= 10 * currencyFactor &&
-          product.price * currencyFactor <= 25 * currencyFactor) ||
-        (selectedPriceRange === 50 * currencyFactor &&
-          product.price * currencyFactor >= 25 * currencyFactor &&
-          product.price * currencyFactor <= 50 * currencyFactor) ||
-        (selectedPriceRange === 100 * currencyFactor &&
-          product.price * currencyFactor >= 50 * currencyFactor &&
-          product.price * currencyFactor <= 100 * currencyFactor) ||
-        (selectedPriceRange === 200 * currencyFactor &&
-          product.price * currencyFactor >= 100 * currencyFactor &&
-          product.price * currencyFactor <= 200 * currencyFactor))
+          (selectedPriceRange === 10 * currencyFactor &&
+            product.price * currencyFactor < 10 * currencyFactor) ||
+          (selectedPriceRange === 201 * currencyFactor &&
+            product.price * currencyFactor > 200 * currencyFactor) ||
+          (selectedPriceRange === 25 * currencyFactor &&
+            product.price * currencyFactor >= 10 * currencyFactor &&
+            product.price * currencyFactor <= 25 * currencyFactor) ||
+          (selectedPriceRange === 50 * currencyFactor &&
+            product.price * currencyFactor >= 25 * currencyFactor &&
+            product.price * currencyFactor <= 50 * currencyFactor) ||
+          (selectedPriceRange === 100 * currencyFactor &&
+            product.price * currencyFactor >= 50 * currencyFactor &&
+            product.price * currencyFactor <= 100 * currencyFactor) ||
+          (selectedPriceRange === 200 * currencyFactor &&
+            product.price * currencyFactor >= 100 * currencyFactor &&
+            product.price * currencyFactor <= 200 * currencyFactor))
       ) {
         return true;
       }
@@ -256,6 +256,8 @@ const OffersDetail = () => {
     setItemsToDisplay(newItemstoDisplay);
   };
 
+  const [showSearch, setshowSearch] = useState(false);
+
   return (
     <>
       <Nav />
@@ -264,11 +266,19 @@ const OffersDetail = () => {
           backgroundSize: "cover",
           backgroundImage: `url(${url})`,
           backgroundRepeat: "no-repeat",
-          height: "15rem",
+          height: "12rem",
           width: "100%",
         }}
+        className="page-banner"
       ></div>
-      <div className="row p-5">
+      <Dialog
+        header="Advanced Search"
+        visible={showSearch}
+        className="col-10 col-sm-3 search-banner"
+        onHide={() => {
+          setshowSearch(false);
+        }}
+      >
         <SearchFilters
           search1="Category"
           search2="Country"
@@ -296,28 +306,35 @@ const OffersDetail = () => {
           setSelectedOption5={setSelectedSize}
           handleSave={saveFilters}
         />
+      </Dialog>
+      <div className="m-3 d-flex justify-content-center advance-search-trigger align-items-center">
+        <input
+          type="radio"
+          id="advancedSearch"
+          checked={showSearch}
+          onChange={() => setshowSearch(!showSearch)}
+        />
+        <label htmlFor="advancedSearch">Advanced Search</label>{" "}
+      </div>
+      <div className="row p-3">
         {itemsToDisplay.length !== 0 ? (
           itemsToDisplay.map((product, index) => (
-            <div
-              className="mt-1 text-decoration-none text-black"
-              style={{ width: product.Width || "20%" }}
-            >
-              <Card
-                key={index}
-                title={product.title}
-                discount={product.discount}
-                description={product.description}
-                rating={product.rating}
-                price={product.price}
-                item={product.item}
-                flag={product.flag}
-                id={product.id}
-                Height={product.height}
-                TextAlign={product.TextAlign}
-                Button={product.Button}
-                linkless={product.linkless}
-              />
-            </div>
+            <Card
+              key={index}
+              title={product.title}
+              discount={product.discount}
+              description={product.description}
+              rating={product.rating}
+              price={product.price}
+              item={product.item}
+              flag={product.flag}
+              id={product.id}
+              Height={product.height}
+              TextAlign={product.TextAlign}
+              Button={product.Button}
+              linkless={product.linkless}
+              country={product.country}
+            />
           ))
         ) : (
           <div className="d-flex flex-column align-items-center justify-content-center p-5">

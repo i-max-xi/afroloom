@@ -1,5 +1,8 @@
 :root {
   overflow-x: hidden;
+  --light-red: rgb(255, 72, 0);
+  --orange: #ffc107;
+  --red: red;
 }
 .allBg {
   background-color: rgba(197, 195, 195, 0.165);
@@ -71,7 +74,6 @@
   }
 
   /* Category */
-  .category-page-container > *,
   .category-template img {
     width: 60% !important;
   }
@@ -115,41 +117,9 @@
 
   /* search banner */
   .search-banner {
-    padding: 0.5rem !important;
-    width: 100% !important;
-  }
-  /* .old-search-banner {
-    display: none;
-  } */
-
-  /* .search-dropdown {
-    max-height: 15% !important;
-    border-radius: 0.2rem !important;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 0.2rem !important;
-  } */
-
-  /* .p-dropdown .p-dropdown-label.p-placeholder {
-    display: flex;
-    transform: translateX(-0.5rem);
+    transform: translateX(-2rem) !important;
   }
 
-  .search-dropdown > span {
-    font-size: 0.4rem !important;
-  } */
-/* 
-  .search-banner button {
-    font-size: 0.3rem !important;
-    padding: 0rem;
-    margin-bottom: 0rem !important;
-  } */
-
-  /* .search-banner h4 {
-    font-size: 0.4rem !important;
-    margin-bottom: 0.2rem !important;
-  } */
 
   /* Banner Add */
   .clickable-banner-container {
@@ -242,7 +212,7 @@
     background-size: contain !important;
     padding: 0 !important;
     margin: 0 !important;
-    height: 7rem !important;
+    height: 5rem !important;
   }
   .category-items-container {
     margin-top: 0 !important;
@@ -250,7 +220,7 @@
   .category-page-container > *,
   .category-template h4 {
     margin-top: 0.2rem;
-    font-size: 0.8rem !important;
+    /* font-size: 0.8rem !important; */
   }
 
   /* pages */
@@ -667,9 +637,7 @@ form {
 }
 
 /* search */
-.search-banner {
-  height: min-content;
-}
+
 .search-dropdown {
   margin-bottom: 0.5rem;
 }
@@ -778,4 +746,14 @@ form {
 
 .artisan-wait > img {
   width: 40%;
+}
+
+.advance-search-trigger {
+  gap: 0.5rem;
+  color: var(--light-red);
+  font-weight: 600;
+}
+
+.advance-search-trigger label {
+  margin-bottom: 0;
 }
