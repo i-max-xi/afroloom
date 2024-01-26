@@ -6,8 +6,8 @@ const ArtisanWait = () => {
   return (
     <>
       <Nav />
-      <div className="d-flex justify-content-center align-items-center bg-white">
-        <img src={comingsoon} alt="coming soon" width="50%" className="m-3"/>
+      <div className="d-flex justify-content-center align-items-center bg-white artisan-wait">
+        <img src={comingsoon} alt="coming soon" className="m-3"/>
 
       </div>
     </>

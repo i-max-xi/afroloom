@@ -115,7 +115,6 @@
 
   /* search banner */
   .search-banner {
-    /* aspect-ratio: 1/1 !important; */
     padding: 0.5rem !important;
     width: 100% !important;
   }
@@ -210,12 +209,6 @@
   }
 
   /* card */
-  /* .flag {
-    display: flex;
-    width: 15% !important;
-    justify-content: right !important;
-    float: right !important;
-  }  */
 
   .price {
     margin-top: 0 !important;
@@ -224,10 +217,10 @@
 
 
   /* Item detail */
-  .goog-te-gadget {
-    /* font-size: 8px; */
-    /* scale: 0.6; */
-  }
+  /* .goog-te-gadget {
+    font-size: 8px;
+    scale: 0.6;
+  } */
   .main-product-image {
     height: 18rem !important;
   }
@@ -262,12 +255,12 @@
 
   /* pages */
   .page-container {
-    font-size: 0.8rem;
+    /* font-size: 0.8rem; */
     padding: 0 1rem !important;
   }
   .contact-container {
     margin-top: 0 !important;
-    font-size: 0.8rem;
+    /* font-size: 0.8rem; */
   }
   .info-wrapper > * {
     font-size: 0.8rem !important;
@@ -303,25 +296,25 @@
     margin: 0 !important;
   }
   .checkout-container img {
-    width: 20%;
+    flex: 1 !important;
   }
 
   .checkout-btns {
-    font-size: 0.7rem !important;
+    font-size: 0.9rem !important;
   }
 
-  .checkout-container h2 {
+
+  .checkout-item-details {
+    margin: 0 0.5rem !important;
+    font-size: 1rem;
+  }
+  .checkout-item-details > span {
     font-size: 1rem !important;
   }
 
-  .list-group-item {
-  }
-  .checkout-item-details {
-    margin: 0 0.5rem !important;
-    font-size: 0.8rem;
-  }
-  .checkout-item-details > span {
-    font-size: 0.8rem !important;
+  /* artisn wait */
+  .artisan-wait > img {
+    width: 100% !important;
   }
 }
 
@@ -777,4 +770,12 @@ form {
 
 .checkout-item-details {
   margin: 1rem 3rem;
+}
+
+.artisan-wait {
+  height: 80vh;
+}
+
+.artisan-wait > img {
+  width: 40%;
 }

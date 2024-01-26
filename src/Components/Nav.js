@@ -83,12 +83,11 @@ const Nav = ({ handleToggleDropdown, Language, Currency }) => {
             </div>
           ) : (
             <>
-              <GoogleTranslate />
               <Link to={dashboardPath}>
                 <Avatar
                   icon="pi pi-user"
                   className="mx-1 bg-secondary text-white"
-                  size="medium"
+                  size="large"
                   shape="circle"
                 />
               </Link>

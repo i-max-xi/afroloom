@@ -212,7 +212,6 @@ const Checkout = () => {
         <Dialog
           header="Checkout"
           visible={showDecison}
-          // style={{ width: "25vw", height: "20vh", fontSize: "1.2rem" }}
           className="col-12 col-sm-3"
           onHide={() => {
             navigate("/");
@@ -238,7 +237,6 @@ const Checkout = () => {
                   <li
                     className="list-group-item d-flex justify-content-between align-items-center mt-3"
                     key={selectedItem.id}
-                    data-aos="fade-up"
                   >
                     <div className="d-flex">
                       <img
