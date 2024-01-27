@@ -40,7 +40,7 @@ const Footer = () => {
         <div className="col-12 mb-4 d-flex flex-column justify-content-center footer-about">
           <h5 className="footer-header">About Us</h5>
           <p className="w-50 align-self-center" style={{textAlign: "justify"}}>
-            We specialize in providing a wide range of African products ,
+            We specialize in providing a wide range of African products,
             offering customers the option to customize their shopping experience
             and explore the rich cultural heritage of Africa.
           </p>

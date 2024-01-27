@@ -102,7 +102,7 @@ const ItemDetail = ({ match }) => {
   }, [product.extras, product.item, productId]);
 
   //related products
-  // const relatedProducts = Products.filter(p => p.category !== parseInt(productId)).slice(0, 5);
+
   const relatedProducts = Products.filter(
     (p) => p.category === product.category && p.id !== product.id
   ).slice(0, 5);
@@ -159,7 +159,7 @@ const ItemDetail = ({ match }) => {
         <div className="row">
           <div className="col-md-6 d-flex">
             {extras ? (
-              <div className="d-flex flex-column mx-1" style={{ width: "10%" }}>
+              <div className="d-flex flex-column mx-1" style={{ width: isMobile ? "3rem" : "5rem" }}>
                 {extras.map((extra, index) => (
                   <img
                     className="mb-1"
@@ -186,12 +186,9 @@ const ItemDetail = ({ match }) => {
           </div>
           <div className="col-md-6 product-info">
             <h3 className="mb-3 product-title">{product.title}</h3>
-            {/* <p className="mb-3">{product.description}</p> */}
             <hr />
             <div className="d-flex mb-3">{stars}</div>
-            {/* <div className="mb-3">
-              {product.rating.toFixed(1)} ({product.reviews} reviews)
-            </div> */}
+ 
 
             <p className="h3">
               {product.discount ? (
@@ -239,9 +236,6 @@ const ItemDetail = ({ match }) => {
           <TabPanel header="Description">
             {product.description || "No description for this product"}
           </TabPanel>
-          {/* <TabPanel header="Reviews">
-            {product.rating} reviews for this product
-          </TabPanel> */}
           <TabPanel header="Sold By">{product.seller} </TabPanel>
         </TabView>
       </div>
