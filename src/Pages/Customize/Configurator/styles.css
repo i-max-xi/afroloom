@@ -143,8 +143,17 @@
     top: -2rem !important;
     /* line-height: 0.5rem !important; */
     height: 8rem !important;
-
-
+  }
+  /* .fit > span {
+    flex: 1;
+    display: block;
+  } */
+  .p-inplace-display {
+    font-size: 0.9rem;
+  }
+  .p-inplace .p-inplace-content {
+    display: flex;
+    scale: 0.8;
   }
 }
 
@@ -218,6 +227,8 @@ h1 {
   text-transform: capitalize;
   display: flex;
   justify-content: space-between;
+  width: 100%;
+  gap: 2rem
 }
 
 .color-buttons-container {
