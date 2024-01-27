@@ -209,14 +209,18 @@ const CategoryDetail = ({ option }) => {
               </Dialog>
             </>
           )}
-          <div className="m-3 d-flex justify-content-center advance-search-trigger align-items-center">
-            <input
+          <div onClick={() => setshowSearch(!showSearch)} className="m-3 d-flex justify-content-center advance-search-trigger align-items-center">
+            {/* <input
               type="radio"
               id="advancedSearch"
               checked={showSearch}
               onChange={() => setshowSearch(!showSearch)}
-            />
-            <label htmlFor="advancedSearch">Advanced Search</label>{" "}
+            /> */}
+            <label htmlFor="advancedSearch">Advanced Search</label>
+            <span
+              className="pi pi-search-plus advance-search-mobile"
+              id="advance-search-for-all"
+            ></span>
           </div>
 
           {itemsToDisplay.length !== 0 ? (

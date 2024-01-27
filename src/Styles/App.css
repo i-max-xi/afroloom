@@ -39,10 +39,10 @@
     width: 25rem !important;
     margin: 0.5rem 0.5rem 0.5rem 1rem;
   }
-  .advance-search-mobile {
-    display: inline-block !important;
+  #advance-search-mobile {
+    display: block !important;
     font-size: 1.5rem !important;
-    transform: translateX(-1.5rem) !important;
+    transform: translateX(-3.5rem) !important;
   }
 
   .advance-search-pc {
@@ -761,11 +761,17 @@ form {
   display: inline-block;
   color: var(--light-red);
   font-size: 1.8rem !important;
-  transform: translateX(-2rem) !important;
+  transform: translateX(-3rem) !important;
 }
 
 .advance-search-mobile {
-  display: none;
+  display: none !important;
   color: var(--light-red);
+}
+
+#advance-search-for-all {
+  display: inline-block !important;
+  font-size: 1.2rem !important;
+  transform: translate(0.5rem, -0.2rem) !important;
 }
 

@@ -307,15 +307,19 @@ const OffersDetail = () => {
           handleSave={saveFilters}
         />
       </Dialog>
-      <div className="m-3 d-flex justify-content-center advance-search-trigger align-items-center">
-        <input
-          type="radio"
-          id="advancedSearch"
-          checked={showSearch}
-          onChange={() => setshowSearch(!showSearch)}
-        />
-        <label htmlFor="advancedSearch">Advanced Search</label>{" "}
-      </div>
+      <div onClick={() => setshowSearch(!showSearch)} className="m-3 d-flex justify-content-center advance-search-trigger align-items-center">
+            {/* <input
+              type="radio"
+              id="advancedSearch"
+              checked={showSearch}
+              onChange={() => setshowSearch(!showSearch)}
+            /> */}
+            <label htmlFor="advancedSearch">Advanced Search</label>
+            <span
+              className="pi pi-search-plus advance-search-mobile"
+              id="advance-search-for-all"
+            ></span>
+          </div>
       <div className="row p-3">
         {itemsToDisplay.length !== 0 ? (
           itemsToDisplay.map((product, index) => (

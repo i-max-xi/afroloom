@@ -51,7 +51,7 @@ const TopCard = ({ showAdvanced, setShowAdvanced }) => {
         <MobileSearchBar />
         <span
           onClick={() => setShowAdvanced(!showAdvanced)}
-          className="pi pi-search-plus advance-search-mobile "
+          className="pi pi-search-plus advance-search-mobile" id="advance-search-mobile"
         ></span>
       </div>
 
