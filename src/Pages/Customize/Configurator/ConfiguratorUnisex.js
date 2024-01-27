@@ -29,7 +29,6 @@ import {
   textureDescriptions,
   textureValues,
   responsiveNess,
-  responsiveColor,
   specialNodeNames,
   displayInplaceFor,
 } from "./arrays/neededArrays";
@@ -536,7 +535,7 @@ const ConfiguratorUnisex = () => {
                     numVisible={7}
                     numScroll={5}
                     showIndicators={false}
-                    responsiveOptions={responsiveColor}
+                    // responsiveOptions={responsiveColor}
                     itemTemplate={(colorOption) => (
                       <div key={colorOption.color} className="color-item">
                         <button

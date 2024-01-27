@@ -5,7 +5,7 @@ import HeaderCarousel from "./HeaderCarousel";
 import LangCurrDropdown from "./LangCurrDropdown";
 import MobileSearchBar from "./MobileSearchBar";
 
-const TopCard = () => {
+const TopCard = ({ showAdvanced, setShowAdvanced }) => {
   const [dropdownVisible, setDropdownVisible] = useState(false);
   const [selectedLanguage, setSelectedLanguage] = useState("English");
   const [selectedCurrency, setSelectedCurrency] = useState("USD");
@@ -43,9 +43,17 @@ const TopCard = () => {
         handleToggleDropdown={handleToggleDropdown}
         Currency={Currency}
         Language={Language}
+        showAdvanced={showAdvanced}
+        setShowAdvanced={setShowAdvanced}
       />
 
-      <MobileSearchBar />
+      <div className="d-flex justify-content-around align-items-center">
+        <MobileSearchBar />
+        <span
+          onClick={() => setShowAdvanced(!showAdvanced)}
+          className="pi pi-search-plus advance-search-mobile "
+        ></span>
+      </div>
 
       <div className="d-flex Map">
         <HeaderCarousel />

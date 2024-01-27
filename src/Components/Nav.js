@@ -14,7 +14,13 @@ import CurrencyConverter from "./CurrencyConverter";
 import SearchBar2 from "./SearchBar2";
 import "primeicons/primeicons.css";
 
-const Nav = ({ handleToggleDropdown, Language, Currency }) => {
+const Nav = ({
+  handleToggleDropdown,
+  Language,
+  Currency,
+  showAdvanced,
+  setShowAdvanced,
+}) => {
   const cartItems = useSelector((state) => state.cartItems);
   // const dispatch = useDispatch();
 
@@ -63,7 +69,7 @@ const Nav = ({ handleToggleDropdown, Language, Currency }) => {
           </h3>
         </Link>
 
-        <div style={{position: "absolute", right: "1rem", top: "2.5rem"}}>
+        <div style={{ position: "absolute", right: "1rem", top: "2.5rem" }}>
           {signedin === false ? (
             <div className="d-flex">
               <button className="mx-2 btn btn-warning signup">
@@ -156,7 +162,13 @@ const Nav = ({ handleToggleDropdown, Language, Currency }) => {
 
           <CurrencyConverter />
 
-          <SearchBar2 />
+          <div className="d-flex justify-content-around align-items-center">
+            <SearchBar2 />
+            <span
+              onClick={() => setShowAdvanced(!showAdvanced)}
+              className="pi pi-search-plus advance-search-pc"
+            ></span>
+          </div>
         </ul>
       </div>
       <GoogleTranslate />

@@ -173,7 +173,7 @@ export const Card = ({
   );
 };
 
-const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
+const CardList = ({ currentPage, setCurrentPage, showNestedComponent, showAdvanced, setShowAdvanced }) => {
   // ads
   // const ads = [
   //   {
@@ -405,7 +405,6 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
     setItemsToDisplay(newItemstoDisplay);
   };
 
-  const [showSearch, setshowSearch] = useState(false);
 
   return (
     <>
@@ -420,10 +419,10 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
 
         <Dialog
           header="Advanced Search"
-          visible={showSearch}
+          visible={showAdvanced}
           className="col-10 col-sm-3 search-banner"
           onHide={() => {
-            setshowSearch(false);
+            setShowAdvanced(false);
           }}
         >
           <SearchFilters
@@ -455,15 +454,15 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
           />
         </Dialog>
 
-        <div className="mt-3 mb-3 d-flex justify-content-center advance-search-trigger align-items-center">
+        {/* <div className="mt-3 mb-3 d-flex justify-content-center advance-search-trigger align-items-center">
           <input
             type="radio"
             id="advancedSearch"
-            checked={showSearch}
-            onChange={() => setshowSearch(!showSearch)}
+            checked={showAdvanced}
+            onChange={() => setShowAdvanced(!showAdvanced)}
           />
           <label htmlFor="advancedSearch">Advanced Search</label>{" "}
-        </div>
+        </div> */}
 
         {/* Iteration */}
         {itemsToDisplay.map((product, index) => (

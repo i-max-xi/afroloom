@@ -17,11 +17,14 @@ const Home = () => {
     }
   }, [currentPage]);
 
+  const [showSearch, setshowSearch] = useState(false);
+
+
   return (
     <div>
       {/* <Header /> */}
-      {showNestedComponent && <TopCard /> }
-      <CardList currentPage={currentPage} setCurrentPage={setCurrentPage} showNestedComponent={showNestedComponent}/>
+      {showNestedComponent && <TopCard showAdvanced={showSearch} setShowAdvanced={setshowSearch}/> }
+      <CardList showAdvanced={showSearch} setShowAdvanced={setshowSearch} currentPage={currentPage} setCurrentPage={setCurrentPage} showNestedComponent={showNestedComponent}/>
       {/* <PageNav /> */}
     </div>
   );

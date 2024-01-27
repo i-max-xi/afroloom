@@ -5,7 +5,7 @@ import { InputText } from "primereact/inputtext";
 import { Link } from "react-router-dom";
 
 
-const MobileSearchBar = () => {
+const MobileSearchBar = ({showAdvanced, setShowAdvanced}) => {
   const dispatch = useDispatch();
   const [keyword, setKeyword] = useState("");
 

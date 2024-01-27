@@ -41,9 +41,9 @@
     /* font-size: 0.6rem !important; */
   }
 
-  /* .color-buttons-container > .p-carousel[pr_id_115] .p-carousel-item{
+  .color-buttons-container > .p-carousel[pr_id_115] .p-carousel-item{
     flex: 1 0 50% !important;
-  } */
+  }
 
   .color-item {
     width: fit-content;
@@ -132,12 +132,19 @@
   #overlay-right {
     transform: translateX(2.8rem) !important;
     width: 3.4rem !important;
-
+    top: -2rem !important;
+    /* line-height: 0.5rem !important; */
+    height: 8rem !important;
   }
   
   #overlay-left {
     transform: translateX(-7.8rem) !important;
     width: 3.4rem !important;
+    top: -2rem !important;
+    /* line-height: 0.5rem !important; */
+    height: 8rem !important;
+
+
   }
 }
 
