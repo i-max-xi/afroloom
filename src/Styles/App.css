@@ -295,6 +295,10 @@
   .artisan-wait > img {
     width: 100% !important;
   }
+
+  .no-search {
+    height: 60vh !important;
+  }
 }
 
 .logo {
@@ -751,6 +755,10 @@ form {
 
 .artisan-wait {
   height: 80vh;
+}
+
+.no-search {
+  height: 50vh;
 }
 
 .artisan-wait > img {

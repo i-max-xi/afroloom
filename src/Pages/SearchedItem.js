@@ -27,10 +27,7 @@ const SearchedItem = () => {
       <div className="row m-auto p-2">
         {Products.length !== 0 ? (
           Products.map((product, index) => (
-            <div
-              className="mt-1 text-decoration-none text-black"
-              style={{ width: product.Width || "20%" }}
-            >
+
               <Card
                 key={index}
                 title={product.title}
@@ -45,10 +42,9 @@ const SearchedItem = () => {
                 Button={product.Button}
                 linkless={product.linkless}
               />
-            </div>
           ))
         ) : (
-          <div className="d-flex flex-column align-items-center justify-content-center p-5">
+          <div className="d-flex flex-column align-items-center justify-content-center p-5 text-center no-search">
             <h1>Sorry!</h1>
             <h4>Your search did not match anything in our current inventory</h4>
           </div>
