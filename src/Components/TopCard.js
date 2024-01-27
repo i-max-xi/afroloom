@@ -20,7 +20,6 @@ const TopCard = ({ showAdvanced, setShowAdvanced }) => {
     <div
       className=""
       style={{
-        // backgroundImage: `url(${Map})`,
         backgroundRepeat: "no-repeat",
         backgroundSize: "58% 95%",
         backgroundPosition: "top right",
