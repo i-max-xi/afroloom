@@ -22,14 +22,33 @@ export const fetchAllProducts = createAsyncThunk(
       const querySnapshot = await ProductsDataService.getAllProducts();
       const products = [];
 
+      console.log("olddd")
+
       querySnapshot.forEach((doc) => {
         products.push({ id: doc.id, ...doc.data() });
       });
 
-      // Dispatch the products to set the initial state of allProducts
       dispatch(addProducts(products));
     } catch (error) {
-      // Handle any potential errors (e.g., network issues, etc.)
+      throw error; // Rethrow the error for error handling in components
+    }
+  }
+);
+
+export const fetchAllModel = createAsyncThunk(
+  "allModels/fetchAllModels",
+  async (_, { dispatch }) => {
+    try {
+      const querySnapshot = await ProductsDataService.getAllModels();
+      const models = [];
+      console.log("yeahhhh")
+
+      querySnapshot.forEach((doc) => {
+        models.push({ id: doc.id, ...doc.data() });
+      });
+
+      dispatch(addModels(models));
+    } catch (error) {
       throw error; // Rethrow the error for error handling in components
     }
   }
@@ -61,9 +80,20 @@ const allProductsSlice = createSlice({
 
         state.searchedArray = filtered;
       }
-      // else {
-      //   state.searchedArray = state.buffer;
-      // }
+    },
+  },
+});
+
+const allModelsSlice = createSlice({
+  name: "allModels",
+  initialState: {
+    products: [],
+    // searchedArray: [],
+    // searchKeyDisplay: "",
+  },
+  reducers: {
+    addModels: (state, action) => {
+      state.products = action.payload;
     },
   },
 });
@@ -145,6 +175,7 @@ const customized3DSlice = createSlice({
 
 const rootReducer = combineReducers({
   allProducts: allProductsSlice.reducer,
+  allModels: allModelsSlice.reducer,
   cartItems: cartSlice.reducer,
   user: userSlice.reducer,
   currencySymbol: currencySymbolSlice.reducer,
@@ -159,6 +190,7 @@ const store = configureStore({
 });
 
 export const { addProducts, searchItem } = allProductsSlice.actions;
+export const {addModels } = allModelsSlice.actions;
 export const { setCurrencySymbol } = currencySymbolSlice.actions;
 export const { addItem, removeItem, clearCart } = cartSlice.actions;
 export const { setSignedIn, setcurrentUser, setDashBoardPath, updateOrders } = userSlice.actions;

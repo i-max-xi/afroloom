@@ -112,19 +112,19 @@ const Row = ({ mainItems, offerFix }) => {
     {
       // title: "Tour Guide",
       imageUrl: "https://cloudfront-us-east-1.images.arcpublishing.com/bostonglobe/PEVTJACBCUI6VG3Z2NTLW2NO4E.jpg",
-      linkTo: "/category/Accessories",
+      linkTo: "professional/Tour Guide",
       action: "Book A Tour Guide"
     },
     {
       // title: "Photographer",
       imageUrl: "https://www.adorama.com/alc/wp-content/uploads/2021/04/photography-camera-types-feature.jpg",
-      linkTo: "/category/Accessories",
+      linkTo: "professional/Photographer",
       action: "Book A Photographer / Videographer"
     },
     {
       // title: "Model",
       imageUrl: require("../../Assets/model.png"),
-      linkTo: "/category/Accessories",
+      linkTo: "professional/Model",
       action: "Book A Model"
     },
 

@@ -48,11 +48,12 @@ import SearchedItem from "./Pages/SearchedItem";
 import ArtisanWait from "./Pages/Artisan/ArtisanWait";
 import OffersDetail from "./Pages/OffersDetail";
 import { useDispatch } from "react-redux";
-import { fetchAllProducts } from "./Redux/store";
+import { fetchAllModel, fetchAllProducts } from "./Redux/store";
 import UserDashboard from "./Pages/Dashboards/buyer/UserDashboard";
 import Buyer from "./Pages/Auths/Buyer";
 import AdminDashboard from "./Pages/Dashboards/admin/AdminDashboard";
 import CustomizeCheckout from "./Pages/CustomizeCheckout";
+import ProfessionalsPage from "./Pages/Professionals/ProfessionalsPage";
 
 function App() {
   const dispatch = useDispatch(); // Get the dispatch function
@@ -60,6 +61,7 @@ function App() {
   useEffect(() => {
     AOS.init();
     dispatch(fetchAllProducts());
+    dispatch(fetchAllModel())
 
   }, [dispatch]);
 
@@ -94,6 +96,7 @@ function App() {
             <Route path="/admin-dashboard" element={<AdminDashboard />} />
 
             <Route path="category/:categoryName" element={<CategoryDetail />} />
+            <Route path="professional/:professionalName" element={<ProfessionalsPage />} />
             <Route path="/product/:productId" element={<ItemDetail />} />
             <Route path="/artisan/:artisanId" element={<ArtisanDetail />} />
 
