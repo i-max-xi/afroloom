@@ -35,7 +35,7 @@ export const fetchAllProducts = createAsyncThunk(
   }
 );
 
-export const fetchAllModel = createAsyncThunk(
+export const fetchAllModels = createAsyncThunk(
   "allModels/fetchAllModels",
   async (_, { dispatch }) => {
     try {

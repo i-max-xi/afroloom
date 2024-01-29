@@ -48,7 +48,7 @@ import SearchedItem from "./Pages/SearchedItem";
 import ArtisanWait from "./Pages/Artisan/ArtisanWait";
 import OffersDetail from "./Pages/OffersDetail";
 import { useDispatch } from "react-redux";
-import { fetchAllModel, fetchAllProducts } from "./Redux/store";
+import { fetchAllModels, fetchAllProducts } from "./Redux/store";
 import UserDashboard from "./Pages/Dashboards/buyer/UserDashboard";
 import Buyer from "./Pages/Auths/Buyer";
 import AdminDashboard from "./Pages/Dashboards/admin/AdminDashboard";
@@ -61,7 +61,7 @@ function App() {
   useEffect(() => {
     AOS.init();
     dispatch(fetchAllProducts());
-    dispatch(fetchAllModel())
+    dispatch(fetchAllModels())
 
   }, [dispatch]);
 
