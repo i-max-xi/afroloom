@@ -51,6 +51,42 @@ export const fetchAllModels = createAsyncThunk(
   }
 );
 
+export const fetchAllTourGuides = createAsyncThunk(
+  "allTourGuides/fetchAllTourGuides",
+  async (_, { dispatch }) => {
+    try {
+      const querySnapshot = await ProductsDataService.getAllModels();
+      const tourGuides = [];
+
+      querySnapshot.forEach((doc) => {
+        tourGuides.push({ id: doc.id, ...doc.data() });
+      });
+
+      dispatch(addTourGuides(tourGuides));
+    } catch (error) {
+      throw error; // Rethrow the error for error handling in components
+    }
+  }
+);
+
+export const fetchAllPhotographers = createAsyncThunk(
+  "allPhotographers/fetchAllPhotographers",
+  async (_, { dispatch }) => {
+    try {
+      const querySnapshot = await ProductsDataService.getAllPhotographers();
+      const photographers = [];
+
+      querySnapshot.forEach((doc) => {
+        photographers.push({ id: doc.id, ...doc.data() });
+      });
+
+      dispatch(addPhotographers(photographers));
+    } catch (error) {
+      throw error; // Rethrow the error for error handling in components
+    }
+  }
+);
+
 // Redux slice for allProducts
 
 const allProductsSlice = createSlice({
@@ -85,11 +121,33 @@ const allModelsSlice = createSlice({
   name: "allModels",
   initialState: {
     products: [],
-    // searchedArray: [],
-    // searchKeyDisplay: "",
   },
   reducers: {
     addModels: (state, action) => {
+      state.products = action.payload;
+    },
+  },
+});
+
+const allPhotographersSlice = createSlice({
+  name: "allPhotographers",
+  initialState: {
+    products: [],
+  },
+  reducers: {
+    addPhotographers: (state, action) => {
+      state.products = action.payload;
+    },
+  },
+});
+
+const allTourGuidesSlice = createSlice({
+  name: "allTourGuides",
+  initialState: {
+    products: [],
+  },
+  reducers: {
+    addTourGuides: (state, action) => {
       state.products = action.payload;
     },
   },
@@ -163,15 +221,15 @@ const customized3DSlice = createSlice({
     },
     clear3DInfo: (state) => {
       state.itemDetails = [];
-      state.itemDataSheet = ""
-    }
+      state.itemDataSheet = "";
+    },
   },
 });
 
-
-
 const rootReducer = combineReducers({
   allProducts: allProductsSlice.reducer,
+  allPhotographers: allPhotographersSlice.reducer,
+  allTourGuides: allTourGuidesSlice.reducer,
   allModels: allModelsSlice.reducer,
   cartItems: cartSlice.reducer,
   user: userSlice.reducer,
@@ -187,11 +245,15 @@ const store = configureStore({
 });
 
 export const { addProducts, searchItem } = allProductsSlice.actions;
-export const {addModels } = allModelsSlice.actions;
+export const { addModels } = allModelsSlice.actions;
+export const { addPhotographers } = allPhotographersSlice.actions;
+export const { addTourGuides } = allTourGuidesSlice.actions;
 export const { setCurrencySymbol } = currencySymbolSlice.actions;
 export const { addItem, removeItem, clearCart } = cartSlice.actions;
-export const { setSignedIn, setcurrentUser, setDashBoardPath, updateOrders } = userSlice.actions;
-export const {set3DItemDetails, setItemDataSheet, clear3DInfo} = customized3DSlice.actions;
+export const { setSignedIn, setcurrentUser, setDashBoardPath, updateOrders } =
+  userSlice.actions;
+export const { set3DItemDetails, setItemDataSheet, clear3DInfo } =
+  customized3DSlice.actions;
 
 export const persistor = persistStore(store);
 export default store;

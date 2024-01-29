@@ -34,7 +34,23 @@ const ProfessionalsPage = ({ match }) => {
   //     url = ""; // fallback URL
   //   }
 
-  const product = useSelector((state) => state.allModels.products);
+  const Models = useSelector((state) => state.allModels.products);
+  const Photographers = useSelector((state) => state.allPhotographers.products);
+  const TourGuides = useSelector((state) => state.allTourGuides.products);
+
+
+  let product;
+
+  if(professionalName === "Model"){
+    product = Models;
+  }
+  else if (professionalName === "Photographer"){
+    product = Photographers
+  }
+  else if (professionalName === "Tour Guide"){
+    product = TourGuides
+  }
+
 
   // console.log(ProfessionalName)
 
@@ -266,13 +282,13 @@ const ProfessionalsTemplate = ({
   // }
 
   return (
-    <div className="col-6 col-sm-3 mt-1 text-decoration-none">
+    <div className="col-12 col-sm-3 m-1 text-decoration-none">
       <div className="info-wrapper artisan">
         <img
           src={profile}
           alt={name}
           // width={width ? width : "30%"}
-          width="50%"
+          width="60%"
           className="mt-2"
         />
         {/* <div className="mx-1 info-icon">{infoImage}</div> */}
@@ -285,7 +301,7 @@ const ProfessionalsTemplate = ({
           <p>{skill}</p>
         </div>
         <Link
-          to={`/artisan/${professionalId}`}
+          to={`/professional/${ProfessionalName}/${professionalId}`}
           className="btn btn-dark text-white view-products"
         >
           View {ProfessionalName}
