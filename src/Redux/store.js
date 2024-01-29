@@ -22,8 +22,6 @@ export const fetchAllProducts = createAsyncThunk(
       const querySnapshot = await ProductsDataService.getAllProducts();
       const products = [];
 
-      console.log("olddd")
-
       querySnapshot.forEach((doc) => {
         products.push({ id: doc.id, ...doc.data() });
       });
@@ -41,7 +39,6 @@ export const fetchAllModels = createAsyncThunk(
     try {
       const querySnapshot = await ProductsDataService.getAllModels();
       const models = [];
-      console.log("yeahhhh")
 
       querySnapshot.forEach((doc) => {
         models.push({ id: doc.id, ...doc.data() });

@@ -8,10 +8,10 @@ import Nav from "../../Components/Nav";
 import { allProfessionalscategory } from "../../Data/professionalsCategoryList";
 import SearchFilters from "../../Components/SearchFilters";
 import { getPriceRangeOptions } from "../../Data/PriceRangeData";
-import profBanner from '../../Assets/Headers/search.JPG';
+import profBanner from "../../Assets/Headers/search.JPG";
 
-const ProfessionalsPage = ({ option }) => {
-  const { ProfessionalName } = useParams();
+const ProfessionalsPage = ({ match }) => {
+  const { professionalName } = useParams();
 
   //   let url;
   //   if (categoryName === "Footwear") {
@@ -35,6 +35,8 @@ const ProfessionalsPage = ({ option }) => {
   //   }
 
   const product = useSelector((state) => state.allModels.products);
+
+  // console.log(ProfessionalName)
 
   // currency conversion
   const currencySymbol = useSelector((state) => state.currencySymbol.symbol);
@@ -218,11 +220,11 @@ const ProfessionalsPage = ({ option }) => {
                 <ProfessionalsTemplate
                   key={id}
                   skill={skill}
-                  image={profile}
+                  profile={profile}
                   name={name}
                   rate={rate}
                   professionalId={id}
-                  ProfessionalName={ProfessionalName}
+                  ProfessionalName={professionalName}
                 />
               );
             })
@@ -245,7 +247,16 @@ const ProfessionalsPage = ({ option }) => {
   );
 };
 
-const ProfessionalsTemplate = ({ profile, name, skill, rate, professionalId, ProfessionalName }) => {
+const ProfessionalsTemplate = ({
+  profile,
+  name,
+  skill,
+  rate,
+  professionalId,
+  ProfessionalName,
+}) => {
+  const currencySymbol = useSelector((state) => state.currencySymbol.symbol);
+  const currencyFactor = useSelector((state) => state.currencySymbol.factor);
   // const stars = [];
   // for (let i = 0; i < rating; i++) {
   //   stars.push(<i key={i} className="bi bi-star-fill text-warning"></i>);
@@ -255,24 +266,27 @@ const ProfessionalsTemplate = ({ profile, name, skill, rate, professionalId, Pro
   // }
 
   return (
-    <div className=" mx-3" style={{ width: "21%" }}>
+    <div className="col-6 col-sm-3 mt-1 text-decoration-none">
       <div className="info-wrapper artisan">
         <img
           src={profile}
           alt={name}
           // width={width ? width : "30%"}
-          width="30%"
-          className="mt-4"
+          width="50%"
+          className="mt-2"
         />
         {/* <div className="mx-1 info-icon">{infoImage}</div> */}
         <div className="mx-auto info-content mt-4">
-          <div className="d-flex justify-content-center">{rate}/hr</div>
+          {/* <div className="d-flex justify-content-center">{rate}/hr</div> */}
           <h5>{name}</h5>
+          <h6>Rate: {currencySymbol}
+          {(currencyFactor * rate).toFixed(2)}/hr</h6>
+          
           <p>{skill}</p>
         </div>
         <Link
           to={`/artisan/${professionalId}`}
-          className="btn btn-warning text-white view-products"
+          className="btn btn-dark text-white view-products"
         >
           View {ProfessionalName}
         </Link>
