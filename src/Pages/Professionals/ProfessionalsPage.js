@@ -231,14 +231,15 @@ const ProfessionalsPage = ({ match }) => {
           </div>
 
           {itemsToDisplay.length !== 0 ? (
-            itemsToDisplay.map(({ profile, name, id, skill, rate }) => {
+            itemsToDisplay.map(({ profile, name, id, skill, dayRate, hourRate }) => {
               return (
                 <ProfessionalsTemplate
                   key={id}
                   skill={skill}
                   profile={profile}
                   name={name}
-                  rate={rate}
+                  dayRate={dayRate}
+                  hourRate={hourRate}
                   professionalId={id}
                   ProfessionalName={professionalName}
                 />
@@ -267,7 +268,8 @@ const ProfessionalsTemplate = ({
   profile,
   name,
   skill,
-  rate,
+  dayRate,
+  hourRate,
   professionalId,
   ProfessionalName,
 }) => {
@@ -288,15 +290,18 @@ const ProfessionalsTemplate = ({
           src={profile}
           alt={name}
           // width={width ? width : "30%"}
-          width="60%"
-          className="mt-2"
+          // width="5rem"
+          className="mt-2 card-img-top"
+          // style={{aspectRatio: 1/1}}
         />
         {/* <div className="mx-1 info-icon">{infoImage}</div> */}
         <div className="mx-auto info-content mt-4">
           {/* <div className="d-flex justify-content-center">{rate}/hr</div> */}
           <h5>{name}</h5>
-          <h6>Rate: {currencySymbol}
-          {(currencyFactor * rate).toFixed(2)}/hr</h6>
+          <h6>{currencySymbol}
+          {(currencyFactor * hourRate).toFixed(2)}/hr</h6>
+          <h6>{currencySymbol}
+          {(currencyFactor * dayRate).toFixed(2)}/day</h6>
           
           <p>{skill}</p>
         </div>
