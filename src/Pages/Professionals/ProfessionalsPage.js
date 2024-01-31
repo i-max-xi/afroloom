@@ -3,36 +3,15 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Paginator } from "primereact/paginator";
 import { useSelector } from "react-redux";
-import { Dialog } from "primereact/dialog";
 import Nav from "../../Components/Nav";
 import { allProfessionalscategory } from "../../Data/professionalsCategoryList";
-import SearchFilters from "../../Components/SearchFilters";
 import { getPriceRangeOptions } from "../../Data/PriceRangeData";
 import profBanner from "../../Assets/Headers/search.JPG";
+import { Dialog } from "primereact/dialog";
+import SearchFilters from "../../Components/SearchFilters";
 
 const ProfessionalsPage = ({ match }) => {
   const { professionalName } = useParams();
-
-  //   let url;
-  //   if (categoryName === "Footwear") {
-  //     url = footwear;
-  //   } else if (categoryName === "Accessories") {
-  //     url = accessories;
-  //   } else if (categoryName === "Clothing") {
-  //     url = clothing;
-  //   } else if (categoryName === "Textiles") {
-  //     url = textiles;
-  //   } else if (categoryName === "Furniture") {
-  //     url = furniture;
-  //   } else if (categoryName === "Pottery") {
-  //     url = pottery;
-  //   } else if (categoryName === "Basketry") {
-  //     url = basketry;
-  //   } else if (categoryName === "Handicrafts") {
-  //     url = handicraft;
-  //   } else {
-  //     url = ""; // fallback URL
-  //   }
 
   const Models = useSelector((state) => state.allModels.products);
   const Photographers = useSelector((state) => state.allPhotographers.products);
@@ -58,11 +37,11 @@ const ProfessionalsPage = ({ match }) => {
     currencyFactor
   );
 
-  // const pullFilters = allProfessionalscategory.find(
-  //   (f) => f.name === ProfessionalName
-  // );
+  const pullFilters = allProfessionalscategory.find(
+    (f) => f.name === professionalName
+  );
 
-  // const actualFilter = pullFilters.filters;
+  const actualFilter = pullFilters.filters;
 
   // Pagination starts here
   const [currentPage, setCurrentPage] = useState(0);
@@ -84,53 +63,53 @@ const ProfessionalsPage = ({ match }) => {
       "RowsPerPageDropdown PrevPageLink PageLinks NextPageLink CurrentPageReport",
   };
 
-  // useEffect(() => {
-  //   window.scrollTo(0, 0);
-  // }, [currentPage]);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [currentPage]);
 
-  // // Filter system
-  // const [typeBank, setTypeBank] = useState([]);
-  // const [sizeBank, setSizeBank] = useState([]);
-  // const [sizeName, setSizeName] = useState(
-  //   actualFilter[2] ? actualFilter[2].name : ""
-  // );
+  // Filter system
+  const [typeBank, setTypeBank] = useState([]);
+  const [sizeBank, setSizeBank] = useState([]);
+  const [sizeName, setSizeName] = useState(
+    actualFilter[2] ? actualFilter[2].name : ""
+  );
 
-  // const [selectedCategory, setSelectedCategory] = useState("");
-  // const [selectedCountry, setSelectedCountry] = useState("");
-  // const [selectedOption3, setSelectedOption3] = useState("");
-  // const [selectedPriceRange, setSelectedPriceRange] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("");
+  const [selectedCountry, setSelectedCountry] = useState("");
+  const [selectedOption3, setSelectedOption3] = useState("");
+  const [selectedPriceRange, setSelectedPriceRange] = useState("");
 
-  // const saveFilters = () => {
-  //   const newItemstoDisplay = product.filter((product) => {
-  //     if (
-  //       (selectedCountry === "" || product.country === selectedCountry) &&
-  //       (selectedCategory === "" || product.category === selectedCategory) &&
-  //       (selectedOption3 === "" || product.size === selectedOption3) &&
-  //       (selectedPriceRange === "" ||
-  //         (selectedPriceRange === 10 * currencyFactor &&
-  //           product.price * currencyFactor < 10 * currencyFactor) ||
-  //         (selectedPriceRange === 201 * currencyFactor &&
-  //           product.price * currencyFactor > 200 * currencyFactor) ||
-  //         (selectedPriceRange === 25 * currencyFactor &&
-  //           product.price * currencyFactor >= 10 * currencyFactor &&
-  //           product.price * currencyFactor <= 25 * currencyFactor) ||
-  //         (selectedPriceRange === 50 * currencyFactor &&
-  //           product.price * currencyFactor >= 25 * currencyFactor &&
-  //           product.price * currencyFactor <= 50 * currencyFactor) ||
-  //         (selectedPriceRange === 100 * currencyFactor &&
-  //           product.price * currencyFactor >= 50 * currencyFactor &&
-  //           product.price * currencyFactor <= 100 * currencyFactor) ||
-  //         (selectedPriceRange === 200 * currencyFactor &&
-  //           product.price * currencyFactor >= 100 * currencyFactor &&
-  //           product.price * currencyFactor <= 200 * currencyFactor))
-  //     ) {
-  //       return true;
-  //     }
-  //     return false;
-  //   });
+  const saveFilters = () => {
+    const newItemstoDisplay = product.filter((product) => {
+      if (
+        (selectedCountry === "" || product.country === selectedCountry) &&
+        (selectedCategory === "" || product.category === selectedCategory) &&
+        (selectedOption3 === "" || product.size === selectedOption3) &&
+        (selectedPriceRange === "" ||
+          (selectedPriceRange === 10 * currencyFactor &&
+            product.price * currencyFactor < 10 * currencyFactor) ||
+          (selectedPriceRange === 201 * currencyFactor &&
+            product.price * currencyFactor > 200 * currencyFactor) ||
+          (selectedPriceRange === 25 * currencyFactor &&
+            product.price * currencyFactor >= 10 * currencyFactor &&
+            product.price * currencyFactor <= 25 * currencyFactor) ||
+          (selectedPriceRange === 50 * currencyFactor &&
+            product.price * currencyFactor >= 25 * currencyFactor &&
+            product.price * currencyFactor <= 50 * currencyFactor) ||
+          (selectedPriceRange === 100 * currencyFactor &&
+            product.price * currencyFactor >= 50 * currencyFactor &&
+            product.price * currencyFactor <= 100 * currencyFactor) ||
+          (selectedPriceRange === 200 * currencyFactor &&
+            product.price * currencyFactor >= 100 * currencyFactor &&
+            product.price * currencyFactor <= 200 * currencyFactor))
+      ) {
+        return true;
+      }
+      return false;
+    });
 
-  //   setitemsToDisplay(newItemstoDisplay);
-  // };
+    setitemsToDisplay(newItemstoDisplay);
+  };
 
   // Conditionally render type
 
@@ -176,7 +155,7 @@ const ProfessionalsPage = ({ match }) => {
       ></div>
       <div className="container category-items-container ">
         <div className="row d-flex justify-content-between">
-          {/* {actualFilter[0].options.length >= 1 && (
+          {actualFilter[0].options.length >= 1 && (
             <>
               <Dialog
                 header="Advanced Search"
@@ -208,7 +187,7 @@ const ProfessionalsPage = ({ match }) => {
                 />
               </Dialog>
             </>
-          )} */}
+          )}
           <div
             onClick={() => setshowSearch(!showSearch)}
             className="m-3 d-flex justify-content-center advance-search-trigger align-items-center"
