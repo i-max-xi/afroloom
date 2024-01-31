@@ -1,0 +1,18 @@
+
+@media(max-width: 900px) {
+  .related-image {
+    width: 50%;
+    height: 50%;
+  }
+}
+
+.portfolio-container {
+  margin-bottom: 10rem;
+}
+
+.related-image {
+  width: 30%;
+  height: 30%;
+  aspect-ratio: 1/1;
+}
+

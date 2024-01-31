@@ -68,40 +68,36 @@ const ProfessionalsPage = ({ match }) => {
   }, [currentPage]);
 
   // Filter system
-  const [typeBank, setTypeBank] = useState([]);
-  const [sizeBank, setSizeBank] = useState([]);
-  const [sizeName, setSizeName] = useState(
-    actualFilter[2] ? actualFilter[2].name : ""
-  );
+ 
 
-  const [selectedCategory, setSelectedCategory] = useState("");
-  const [selectedCountry, setSelectedCountry] = useState("");
+  const [selectedOption1, setSelectedOption1] = useState("");
+  const [selectedOption2, setSelectedOption2] = useState("");
   const [selectedOption3, setSelectedOption3] = useState("");
   const [selectedPriceRange, setSelectedPriceRange] = useState("");
 
   const saveFilters = () => {
     const newItemstoDisplay = product.filter((product) => {
       if (
-        (selectedCountry === "" || product.country === selectedCountry) &&
-        (selectedCategory === "" || product.category === selectedCategory) &&
-        (selectedOption3 === "" || product.size === selectedOption3) &&
+        (selectedOption2 === "" || product.country === selectedOption2) &&
+        (selectedOption1 === "" || product.gender === selectedOption1) &&
+        (selectedOption3 === "" || product.age === selectedOption3) &&
         (selectedPriceRange === "" ||
           (selectedPriceRange === 10 * currencyFactor &&
-            product.price * currencyFactor < 10 * currencyFactor) ||
+            product.hourRate * currencyFactor < 10 * currencyFactor) ||
           (selectedPriceRange === 201 * currencyFactor &&
-            product.price * currencyFactor > 200 * currencyFactor) ||
+            product.hourRate * currencyFactor > 200 * currencyFactor) ||
           (selectedPriceRange === 25 * currencyFactor &&
-            product.price * currencyFactor >= 10 * currencyFactor &&
-            product.price * currencyFactor <= 25 * currencyFactor) ||
+            product.hourRate * currencyFactor >= 10 * currencyFactor &&
+            product.hourRate * currencyFactor <= 25 * currencyFactor) ||
           (selectedPriceRange === 50 * currencyFactor &&
-            product.price * currencyFactor >= 25 * currencyFactor &&
-            product.price * currencyFactor <= 50 * currencyFactor) ||
+            product.hourRate * currencyFactor >= 25 * currencyFactor &&
+            product.hourRate * currencyFactor <= 50 * currencyFactor) ||
           (selectedPriceRange === 100 * currencyFactor &&
-            product.price * currencyFactor >= 50 * currencyFactor &&
-            product.price * currencyFactor <= 100 * currencyFactor) ||
+            product.hourRate * currencyFactor >= 50 * currencyFactor &&
+            product.hourRate * currencyFactor <= 100 * currencyFactor) ||
           (selectedPriceRange === 200 * currencyFactor &&
-            product.price * currencyFactor >= 100 * currencyFactor &&
-            product.price * currencyFactor <= 200 * currencyFactor))
+            product.hourRate * currencyFactor >= 100 * currencyFactor &&
+            product.hourRate * currencyFactor <= 200 * currencyFactor))
       ) {
         return true;
       }
@@ -111,32 +107,6 @@ const ProfessionalsPage = ({ match }) => {
     setitemsToDisplay(newItemstoDisplay);
   };
 
-  // Conditionally render type
-
-  // useEffect(() => {
-  //   if (selectedCategory === "Male") {
-  //     setTypeBank(actualFilter[1].maleOptions);
-  //   } else if (selectedCategory === "Female") {
-  //     setTypeBank(actualFilter[1].femaleOptions);
-  //   } else {
-  //     setTypeBank(actualFilter[1] ? actualFilter[1].options : []);
-  //   }
-  // }, [selectedCategory]);
-
-  // Conditionally render size
-  // useEffect(() => {
-  //   if (selectedCountry === "Hat") {
-  //     setSizeBank(actualFilter[2].hatOptions);
-  //   } else if (selectedCountry === "Belt") {
-  //     setSizeBank(actualFilter[2].hatOptions);
-  //   } else if (selectedCountry === "Bra") {
-  //     setSizeBank(actualFilter[2].braOptions);
-  //     setSizeName("Size (UK)");
-  //   } else {
-  //     setSizeBank(actualFilter[2] ? actualFilter[2].options : []);
-  //     setSizeName(actualFilter[2] ? actualFilter[2].name : "");
-  //   }
-  // }, [selectedCountry]);
 
   const [showSearch, setshowSearch] = useState(false);
 
@@ -168,17 +138,17 @@ const ProfessionalsPage = ({ match }) => {
                 <SearchFilters
                   search1={actualFilter[0].name}
                   options1={actualFilter[0].options}
-                  selectedCategory={selectedCategory}
+                  selectedCategory={selectedOption1}
                   optionPrice={priceRangeOptions} // price filter
                   selectedPriceRange={selectedPriceRange} // price
                   setSelectedPriceRange={setSelectedPriceRange} // price
-                  setSelectedCategory={setSelectedCategory}
-                  search2={actualFilter[1] ? actualFilter[1].name : ""}
-                  options2={actualFilter[1] ? typeBank : []}
-                  selectedCountry={selectedCountry}
-                  setSelectedCountry={setSelectedCountry}
-                  search3={actualFilter[2] ? sizeName : ""}
-                  options3={actualFilter[2] ? sizeBank : []}
+                  setSelectedCategory={setSelectedOption1}
+                  search2={actualFilter[1].name}
+                  options2={actualFilter[1].options}
+                  selectedCountry={selectedOption2}
+                  setSelectedCountry={setSelectedOption2}
+                  search3={actualFilter[2].name}
+                  options3={actualFilter[2].options}
                   selectedOption3={selectedOption3}
                   setSelectedOption3={setSelectedOption3}
                   search4=""
@@ -192,12 +162,7 @@ const ProfessionalsPage = ({ match }) => {
             onClick={() => setshowSearch(!showSearch)}
             className="m-3 d-flex justify-content-center advance-search-trigger align-items-center"
           >
-            {/* <input
-              type="radio"
-              id="advancedSearch"
-              checked={showSearch}
-              onChange={() => setshowSearch(!showSearch)}
-            /> */}
+
             <label htmlFor="advancedSearch">Advanced Search</label>
             <span
               className="pi pi-search-plus advance-search-mobile"
@@ -224,7 +189,7 @@ const ProfessionalsPage = ({ match }) => {
                 }
               )
             ) : (
-              <>No results currently</>
+              <p className="m-5">No results currently</p>
             )}
           </div>
         </div>
