@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { TabPanel, TabView } from "primereact/tabview";
 import { Carousel } from "primereact/carousel";
 import { useDispatch, useSelector } from "react-redux";
 import Nav from "../../Components/Nav";
-// import { addItem } from "../Redux/store";
+import { Dialog } from "primereact/dialog";
+import ProfessionalsCheckout from "./ProfessionalsCheckout";
 
 const ProfessionalsDetail = ({ match }) => {
   const { professionalName, productId } = useParams();
@@ -25,22 +25,8 @@ const ProfessionalsDetail = ({ match }) => {
 
   const product = Products.find((p) => p.id === productId);
 
-  const [count] = useState(1);
-
-  // Redux
-  const dispatch = useDispatch();
-
-  // Create a state variable to store extras, including the initial product.item
-
-  const [selectedImage, setSelectedImage] = useState(product.item); // Initially set to product.item
-  const handleExtraClick = (extraImage) => {
-    setSelectedImage(extraImage);
-  };
-
   const currencySymbol = useSelector((state) => state.currencySymbol.symbol);
   const currencyFactor = useSelector((state) => state.currencySymbol.factor);
-
-  // const augmentedPrice = currencyFactor * product.price * count;
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -85,13 +71,14 @@ const ProfessionalsDetail = ({ match }) => {
 
   const isMobile = window.innerWidth <= 767;
 
+  const [showCheckoutPopup, setShowCheckoutPopup] = useState(false)
+
   return (
     <div className="bg-white">
       <Nav />
 
       <div className="container d-flex flex-column mt-5">
-        <div className="border-bottom pb-3">
-          <div className="d-flex justify-content-around">
+          <div className="d-flex justify-content-around border-bottom pb-4">
             <div className="d-flex justify-content-start align-items-center">
               <div className="col-6 col-sm-2">
                 <img
@@ -108,8 +95,8 @@ const ProfessionalsDetail = ({ match }) => {
                 </h6>
               </p>
             </div>
-            <div className="d-flex flex-column">
-              <div className=" d-flex flex-row justify-content-between">
+            <div className="d-flex flex-column col-12 col-sm-2">
+              <div className=" d-flex flex-row" style={{justifyContent: "space-evenly"}}>
                 <p>
                   <h6>
                     {currencySymbol}
@@ -125,20 +112,27 @@ const ProfessionalsDetail = ({ match }) => {
                   Per Hour
                 </p>
               </div>
-              <Link className="btn btn-dark text-white view-products">
+              <button className="btn btn-dark text-white view-products" onClick={() => setShowCheckoutPopup(true)}>
                 Book {professionalName}
-              </Link>
+              </button>
             </div>
           </div>
-        </div>
-        <div className="d-flex">
+        <div className="d-flex mt-3" style={{justifyContent: "space-evenly"}}>
           <p>
             <h6>{product.gender}</h6>
             Gender
           </p>
-          <p className="mx-3">
+          <p>
             <h6>{product.height}</h6>
             Height
+          </p>
+          <p>
+            <h6>{product.age}</h6>
+            Age
+          </p>
+          <p>
+            <h6>{product.experience}</h6>
+            Experience
           </p>
         </div>
       </div>
@@ -162,7 +156,7 @@ const ProfessionalsDetail = ({ match }) => {
         )}
       </div>
       <div className="container mt-5">
-        <h4 className="text-center">You May Be Interested In</h4>
+        <h5 className="text-center">You May Be Interested In</h5>
         <Carousel
           value={relatedProducts}
           numVisible={isMobile ? 1 : 3}
@@ -173,6 +167,14 @@ const ProfessionalsDetail = ({ match }) => {
           itemTemplate={productTemplate}
         />
       </div>
+      <Dialog
+        header="Confirm checkout"
+        visible={showCheckoutPopup}
+        className="col-12 col-sm-6"
+        onHide={() => setShowCheckoutPopup(false)}
+      >
+        <ProfessionalsCheckout product={product} professionalType={professionalName}/>
+      </Dialog>
     </div>
   );
 };

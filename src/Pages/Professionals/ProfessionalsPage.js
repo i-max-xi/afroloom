@@ -38,19 +38,15 @@ const ProfessionalsPage = ({ match }) => {
   const Photographers = useSelector((state) => state.allPhotographers.products);
   const TourGuides = useSelector((state) => state.allTourGuides.products);
 
-
   let product;
 
-  if(professionalName === "Model"){
+  if (professionalName === "Model") {
     product = Models;
+  } else if (professionalName === "Photographer") {
+    product = Photographers;
+  } else if (professionalName === "Tour Guide") {
+    product = TourGuides;
   }
-  else if (professionalName === "Photographer"){
-    product = Photographers
-  }
-  else if (professionalName === "Tour Guide"){
-    product = TourGuides
-  }
-
 
   // console.log(ProfessionalName)
 
@@ -230,24 +226,28 @@ const ProfessionalsPage = ({ match }) => {
             ></span>
           </div>
 
-          {itemsToDisplay.length !== 0 ? (
-            itemsToDisplay.map(({ profile, name, id, skill, dayRate, hourRate }) => {
-              return (
-                <ProfessionalsTemplate
-                  key={id}
-                  skill={skill}
-                  profile={profile}
-                  name={name}
-                  dayRate={dayRate}
-                  hourRate={hourRate}
-                  professionalId={id}
-                  ProfessionalName={professionalName}
-                />
-              );
-            })
-          ) : (
-            <>No results currently</>
-          )}
+          <div className="d-flex" style={{justifyContent: "space-evenly"}}>
+            {itemsToDisplay.length !== 0 ? (
+              itemsToDisplay.map(
+                ({ profile, name, id, skill, dayRate, hourRate }) => {
+                  return (
+                    <ProfessionalsTemplate
+                      key={id}
+                      skill={skill}
+                      profile={profile}
+                      name={name}
+                      dayRate={dayRate}
+                      hourRate={hourRate}
+                      professionalId={id}
+                      ProfessionalName={professionalName}
+                    />
+                  );
+                }
+              )
+            ) : (
+              <>No results currently</>
+            )}
+          </div>
         </div>
       </div>
 
@@ -259,7 +259,6 @@ const ProfessionalsPage = ({ match }) => {
         onPageChange={onPageChange}
         template={template3}
       />
-      {/* <PageNav /> */}
     </>
   );
 };
@@ -275,13 +274,6 @@ const ProfessionalsTemplate = ({
 }) => {
   const currencySymbol = useSelector((state) => state.currencySymbol.symbol);
   const currencyFactor = useSelector((state) => state.currencySymbol.factor);
-  // const stars = [];
-  // for (let i = 0; i < rating; i++) {
-  //   stars.push(<i key={i} className="bi bi-star-fill text-warning"></i>);
-  // }
-  // for (let i = rating; i < 5; i++) {
-  //   stars.push(<i key={i} className="bi bi-star text-warning"></i>);
-  // }
 
   return (
     <div className="col-12 col-sm-3 m-1 text-decoration-none">
@@ -289,21 +281,21 @@ const ProfessionalsTemplate = ({
         <img
           src={profile}
           alt={name}
-          // width={width ? width : "30%"}
-          // width="5rem"
           className="mt-2 card-img-top"
-          // style={{aspectRatio: 1/1}}
+          style={{ aspectRatio: 1 / 1 }}
         />
-        {/* <div className="mx-1 info-icon">{infoImage}</div> */}
         <div className="mx-auto info-content mt-4">
-          {/* <div className="d-flex justify-content-center">{rate}/hr</div> */}
           <h5>{name}</h5>
-          <h6>{currencySymbol}
-          {(currencyFactor * hourRate).toFixed(2)}/hr</h6>
-          <h6>{currencySymbol}
-          {(currencyFactor * dayRate).toFixed(2)}/day</h6>
-          
-          <p>{skill}</p>
+          <h6>
+            {currencySymbol}
+            {(currencyFactor * hourRate).toFixed(2)}/hr
+          </h6>
+          <h6>
+            {currencySymbol}
+            {(currencyFactor * dayRate).toFixed(2)}/day
+          </h6>
+
+          {/* <p>{skill}</p> */}
         </div>
         <Link
           to={`/professional/${ProfessionalName}/${professionalId}`}

@@ -126,7 +126,6 @@ function App() {
               path="/configurator-unisex/:Id"
               element={<ConfiguratorUnisex />}
             />
-            <Route path="/confirmation" element={<Confirmation />} />
 
             <Route path="tnc" element={<Tnc />} />
             <Route path="shippingPolicy" element={<ShippingPolicy />} />

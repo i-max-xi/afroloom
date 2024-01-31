@@ -90,18 +90,9 @@ const Confirmation = ({
             </p>
           </div>
         ),
-        life: 10000, // Duration in milliseconds
+        sticky:true
       });
 
-      // else {
-      //   setIsLoading(false);
-      //   toast.current.show({
-      //     severity: "error",
-      //     summary: "Order Confirmation Failed",
-      //     detail: "Failed to confirm order. Please try again.",
-      //     life: 3000,
-      //   });
-      // }
     } catch (error) {
       setIsLoading(false);
       toast.current.show({
