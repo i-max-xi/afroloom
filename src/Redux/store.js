@@ -55,7 +55,7 @@ export const fetchAllTourGuides = createAsyncThunk(
   "allTourGuides/fetchAllTourGuides",
   async (_, { dispatch }) => {
     try {
-      const querySnapshot = await ProductsDataService.getAllModels();
+      const querySnapshot = await ProductsDataService.getAllTourGuides();
       const tourGuides = [];
 
       querySnapshot.forEach((doc) => {
