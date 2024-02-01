@@ -48,11 +48,13 @@ import SearchedItem from "./Pages/SearchedItem";
 import ArtisanWait from "./Pages/Artisan/ArtisanWait";
 import OffersDetail from "./Pages/OffersDetail";
 import { useDispatch } from "react-redux";
-import { fetchAllProducts } from "./Redux/store";
+import { fetchAllModels, fetchAllPhotographers, fetchAllProducts, fetchAllTourGuides } from "./Redux/store";
 import UserDashboard from "./Pages/Dashboards/buyer/UserDashboard";
 import Buyer from "./Pages/Auths/Buyer";
 import AdminDashboard from "./Pages/Dashboards/admin/AdminDashboard";
 import CustomizeCheckout from "./Pages/CustomizeCheckout";
+import ProfessionalsPage from "./Pages/Professionals/ProfessionalsPage";
+import ProfessionalsDetail from "./Pages/Professionals/ProfessionalsDetail";
 
 function App() {
   const dispatch = useDispatch(); // Get the dispatch function
@@ -60,6 +62,9 @@ function App() {
   useEffect(() => {
     AOS.init();
     dispatch(fetchAllProducts());
+    dispatch(fetchAllModels());
+    dispatch(fetchAllPhotographers());
+    dispatch(fetchAllTourGuides())
 
   }, [dispatch]);
 
@@ -94,6 +99,8 @@ function App() {
             <Route path="/admin-dashboard" element={<AdminDashboard />} />
 
             <Route path="category/:categoryName" element={<CategoryDetail />} />
+            <Route path="professional/:professionalName" element={<ProfessionalsPage />} />
+            <Route path="professional/:professionalName/:productId" element={<ProfessionalsDetail />} />
             <Route path="/product/:productId" element={<ItemDetail />} />
             <Route path="/artisan/:artisanId" element={<ArtisanDetail />} />
 
@@ -119,7 +126,6 @@ function App() {
               path="/configurator-unisex/:Id"
               element={<ConfiguratorUnisex />}
             />
-            <Route path="/confirmation" element={<Confirmation />} />
 
             <Route path="tnc" element={<Tnc />} />
             <Route path="shippingPolicy" element={<ShippingPolicy />} />

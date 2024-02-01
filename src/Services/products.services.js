@@ -17,8 +17,26 @@ const productCollectionRef = collection(db, "AllProducts");
 const sellerCollectionRef = collection(db, "sellers");
 const buyerCollectionRef = collection(db, "users");
 const deliveryServicesRef = collection(db, "deliveryServices");
+const modelsRef = collection(db, "models");
+const photographerRef = collection(db, "photographer");
+const tourGuideRef = collection(db, "tourGuide");
 
 class ProductsDataService {
+
+  // Professionals
+  getAllModels = () => {
+    return getDocs(modelsRef);
+  }; 
+  
+  getAllPhotographers = () => {
+    return getDocs(photographerRef);
+  };
+
+  getAllTourGuides = () => {
+    return getDocs(tourGuideRef);
+  };
+
+
   addProduct = (newProduct) => {
     return addDoc(productCollectionRef, newProduct);
   };

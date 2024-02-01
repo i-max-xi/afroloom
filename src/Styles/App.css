@@ -619,9 +619,9 @@ form {
 }
 
 /* fix for artisan */
-.artisan {
+/* .artisan {
   transform: translateY(-2rem);
-}
+} */
 
 .info-icon {
   background-color: #fff;
