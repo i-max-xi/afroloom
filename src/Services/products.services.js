@@ -37,6 +37,26 @@ class ProductsDataService {
   };
 
 
+  // Models
+
+  addModel = (newModel) => {
+    return addDoc(modelsRef, newModel);
+  };
+
+
+  // Tour Guide
+  addTourGuide = (newTourGuide) => {
+    return addDoc(tourGuideRef, newTourGuide);
+  };
+
+  // Photographer / Videographer
+  addPhotographer = (newPhotographer) => {
+    return addDoc(photographerRef, newPhotographer);
+  };
+
+
+
+  // Products
   addProduct = (newProduct) => {
     return addDoc(productCollectionRef, newProduct);
   };

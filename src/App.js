@@ -43,7 +43,6 @@ import ConfiguratorMaleAccessories from "./Pages/Customize/Configurator/Configur
 import ConfiguratorFemaleAccessories from "./Pages/Customize/Configurator/ConfiguratorFemaleAccessories";
 import ConfiguratorFemale from "./Pages/Customize/Configurator/ConfiguratorFemale";
 import ConfiguratorUnisex from "./Pages/Customize/Configurator/ConfiguratorUnisex";
-import Confirmation from "./Pages/Customize/Configurator/Confirmation";
 import SearchedItem from "./Pages/SearchedItem";
 import ArtisanWait from "./Pages/Artisan/ArtisanWait";
 import OffersDetail from "./Pages/OffersDetail";
@@ -55,6 +54,7 @@ import AdminDashboard from "./Pages/Dashboards/admin/AdminDashboard";
 import CustomizeCheckout from "./Pages/CustomizeCheckout";
 import ProfessionalsPage from "./Pages/Professionals/ProfessionalsPage";
 import ProfessionalsDetail from "./Pages/Professionals/ProfessionalsDetail";
+import ProfessionalSignUp from "./Pages/Auths/ProfessionalSignUp";
 
 function App() {
   const dispatch = useDispatch(); // Get the dispatch function
@@ -79,6 +79,7 @@ function App() {
             <Route path="registeras" element={<RegisterAs />} />
             <Route path="buyer-signup" element={<Buyer />} />
             <Route path="supplier-signup" element={<Supplier />} />
+            <Route path="professional-signup" element={<ProfessionalSignUp />} />
             <Route path="forgotPassword" element={<ForgotPassword />} />
 
             <Route path="artisan" element={<Artisan />} />

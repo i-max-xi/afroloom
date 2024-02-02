@@ -299,6 +299,12 @@
   .no-search {
     height: 60vh !important;
   }
+
+  /* registeras */
+  .registeras {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;  }
 }
 
 .logo {
@@ -781,5 +787,9 @@ form {
   display: inline-block !important;
   font-size: 1.2rem !important;
   transform: translate(0.5rem, -0.2rem) !important;
+}
+
+.registeras {
+  display: flex;
 }
 
