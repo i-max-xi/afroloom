@@ -24,19 +24,71 @@ const tourGuideRef = collection(db, "tourGuide");
 class ProductsDataService {
 
   // Professionals
+
+  // Models
   getAllModels = () => {
     return getDocs(modelsRef);
   }; 
-  
-  getAllPhotographers = () => {
-    return getDocs(photographerRef);
+  addModel = (newModel) => {
+    return addDoc(modelsRef, newModel);
   };
 
+  getModel = (id) => {
+    const buyerDoc = doc(db, "models", id);
+    return getDoc(buyerDoc);
+  };
+
+  getModelByField = async (fieldName, value) => {
+    const q = query(modelsRef, where(fieldName, "==", value));
+    const querySnapshot = await getDocs(q);
+    return querySnapshot.docs[0];
+  };
+  
+
+
+  // Tour Guide
   getAllTourGuides = () => {
     return getDocs(tourGuideRef);
   };
 
+  addTourGuide = (newTourGuide) => {
+    return addDoc(tourGuideRef, newTourGuide);
+  };
 
+  getTourGuide = (id) => {
+    const tourGuideDoc = doc(db, "tourGuide", id);
+    return getDoc(tourGuideDoc);
+  };
+
+  getTourGuideByField = async (fieldName, value) => {
+    const q = query(tourGuideRef, where(fieldName, "==", value));
+    const querySnapshot = await getDocs(q);
+    return querySnapshot.docs[0];
+  };
+
+  // Photographer / Videographer
+  getAllPhotographers = () => {
+    return getDocs(photographerRef);
+  };
+
+  addPhotographer = (newPhotographer) => {
+    return addDoc(photographerRef, newPhotographer);
+  };
+
+  getPhotographer = (id) => {
+    const photographerDoc = doc(db, "photographer", id);
+    return getDoc(photographerDoc);
+  };
+
+  getPhotographerByField = async (fieldName, value) => {
+    const q = query(photographerRef, where(fieldName, "==", value));
+    const querySnapshot = await getDocs(q);
+    return querySnapshot.docs[0];
+  };
+
+
+
+  // Products
   addProduct = (newProduct) => {
     return addDoc(productCollectionRef, newProduct);
   };

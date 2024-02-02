@@ -9,9 +9,7 @@
 }
 
 @media (max-width: 900px) {
-  .logo {
-    /* width: 4rem !important; */
-  }
+
   .navbar-nav {
     display: flex;
     flex-direction: column;
@@ -111,7 +109,6 @@
     width: 100% !important;
   }
 
-
   .four-in-a-card-container h3,
   .offer-card h3 {
     font-size: 1rem !important;
@@ -128,7 +125,6 @@
   .search-banner {
     transform: translateX(-2rem) !important;
   }
-
 
   /* Banner Add */
   .clickable-banner-container {
@@ -153,8 +149,6 @@
   }
 
   /* paginator */
-
-
 
   #footer-social-media {
     display: none !important;
@@ -194,7 +188,6 @@
     font-size: 1rem !important;
   }
 
-
   /* Item detail */
   /* .goog-te-gadget {
     font-size: 8px;
@@ -213,7 +206,6 @@
   .related-products h5 {
     margin: 0 !important;
   }
-  
 
   /* category */
   .page-banner {
@@ -282,7 +274,6 @@
     font-size: 0.9rem !important;
   }
 
-
   .checkout-item-details {
     margin: 0 0.5rem !important;
     font-size: 1rem;
@@ -298,6 +289,17 @@
 
   .no-search {
     height: 60vh !important;
+  }
+
+  /* registeras and signin*/
+  .registeras {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  .identity-list {
+   flex-direction: column;
+   gap: 0.1rem !important;
   }
 }
 
@@ -783,3 +785,21 @@ form {
   transform: translate(0.5rem, -0.2rem) !important;
 }
 
+.registeras {
+  display: flex;
+}
+
+.identity-container {
+  line-height: 0.5rem;
+}
+
+.identity-list {
+  display: flex;
+  gap: 2rem;
+}
+
+.identity-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}

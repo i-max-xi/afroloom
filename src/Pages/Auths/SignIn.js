@@ -13,23 +13,31 @@ import { auth } from "../../firebase";
 import { Toast } from "primereact/toast";
 import ProductsDataService from "../../Services/products.services";
 import { ProgressSpinner } from "primereact/progressspinner";
+import { ProfessionalsListEnum } from "../../Data/professionalsList";
 
 const SignIn = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false); // Initialize loading state
 
-
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [isChecked, setIsChecked] = useState(false);
   const toastRef = useRef(null);
+  const [selectedIdentity, setSelectedIdentity] = useState(null);
+
+  const identities = [
+    { value: "client", label: "Client / Buyer" },
+    { value: "supplier", label: "Supplier" },
+    { value: "model", label: "Model" },
+    { value: "photographer", label: "Photographer / Videographer" },
+    { value: "tourGuide", label: "Tour Guide" },
+  ];
 
   const handleSignIn = async (e) => {
     e.preventDefault();
     try {
       // Firebase sign-in logic
-      setIsLoading(true)
+      setIsLoading(true);
       const userCredential = await signInWithEmailAndPassword(
         auth,
         email,
@@ -40,25 +48,85 @@ const SignIn = () => {
       let userInfo = null;
 
       // Try to fetch user information from seller collection
-      if (isChecked) {
-        const sellerInfo = await ProductsDataService.getSellerByField(
-          "id",
-          user.uid
-        );
-        userInfo = sellerInfo.data();
-        dispatch(setDashBoardPath("/seller-dashboard"));
-      } else {
-        const buyerInfo = await ProductsDataService.getBuyerByField(
-          "id",
-          user.uid
-        );
-        userInfo = buyerInfo.data();
-        if(userInfo.isAdmin){
-          dispatch(setDashBoardPath("/admin-dashboard"));
-        } else {
-          dispatch(setDashBoardPath("/user-dashboard"));
-        }
+      switch (selectedIdentity) {
+        case "supplier":
+          const sellerInfo = await ProductsDataService.getSellerByField(
+            "id",
+            user.uid
+          );
+          userInfo = sellerInfo.data();
+          dispatch(setDashBoardPath("/seller-dashboard"));
+
+          break;
+        case "tourGuide":
+          const tourGuideInfo = await ProductsDataService.getTourGuideByField(
+            "id",
+            user.uid
+          );
+          userInfo = tourGuideInfo.data();
+          dispatch(
+            setDashBoardPath(
+              `/professionals-dashboard/${ProfessionalsListEnum.tourGuide}`
+            )
+          );
+          break;
+        case "photographer":
+          const photographerInfo = await ProductsDataService.getPhotographerByField(
+            "id",
+            user.uid
+          );
+          userInfo = photographerInfo.data();
+          dispatch(
+            setDashBoardPath(
+              `/professionals-dashboard/${ProfessionalsListEnum.photographer}`
+            )
+          );
+          break;
+
+        case "model":
+          const modelInfo = await ProductsDataService.getModelByField(
+            "id",
+            user.uid
+          );
+          userInfo = modelInfo.data();
+          dispatch(
+            setDashBoardPath(
+              `/professionals-dashboard/${ProfessionalsListEnum.model}`
+            )
+          );
+          break;
+        default:
+          const buyerInfo = await ProductsDataService.getBuyerByField(
+            "id",
+            user.uid
+          );
+          userInfo = buyerInfo.data();
+          if (userInfo.isAdmin) {
+            dispatch(setDashBoardPath("/admin-dashboard"));
+          } else {
+            dispatch(setDashBoardPath("/user-dashboard"));
+          }
       }
+
+      // if (isSupplierChecked) {
+      //   const sellerInfo = await ProductsDataService.getSellerByField(
+      //     "id",
+      //     user.uid
+      //   );
+      //   userInfo = sellerInfo.data();
+      //   dispatch(setDashBoardPath("/seller-dashboard"));
+      // } else {
+      //   const buyerInfo = await ProductsDataService.getBuyerByField(
+      //     "id",
+      //     user.uid
+      //   );
+      //   userInfo = buyerInfo.data();
+      //   if (userInfo.isAdmin) {
+      //     dispatch(setDashBoardPath("/admin-dashboard"));
+      //   } else {
+      //     dispatch(setDashBoardPath("/user-dashboard"));
+      //   }
+      // }
 
       if (userInfo !== null) {
         setIsLoading(false);
@@ -131,19 +199,31 @@ const SignIn = () => {
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
-          <div className="form-group mt-3">
-            <input
-              type="checkbox"
-              id="check"
-              checked={isChecked}
-              onChange={(e) => setIsChecked(e.target.checked)}
-            />
-            <label className="mx-3" htmlFor="check">
-              Only check if signing in as a Supplier:
-            </label>
+          <div className="identity-container">
+            <label htmlFor="identity">I am a:</label>
+            <div className="identity-list">
+              {identities.map((identity) => (
+                <div
+                  className="form-group mt-3 identity-item"
+                  key={identity.value}
+                >
+                  <input
+                    type="radio"
+                    id={identity.value}
+                    checked={selectedIdentity === identity.value}
+                    onChange={() => setSelectedIdentity(identity.value)}
+                  />
+                  <label className="mt-2" htmlFor={identity.value}>
+                    {identity.label}
+                  </label>
+                </div>
+              ))}
+            </div>
           </div>
+
           <button
             type="submit"
+            disabled={!selectedIdentity || !email || !password}
             className="btn btn-warning w-100 text-white mt-3 position-relative"
           >
             <span className="spinner-container">
