@@ -98,6 +98,8 @@ function App() {
             <Route path="/seller-dashboard" element={<SellerDashboard />} />
             <Route path="/user-dashboard" element={<UserDashboard />} />
             <Route path="/admin-dashboard" element={<AdminDashboard />} />
+            {/* <Route path="/professionals-dashboard/:professionalType" element={<AdminDashboard />} /> */}
+
 
             <Route path="category/:categoryName" element={<CategoryDetail />} />
             <Route path="professional/:professionalName" element={<ProfessionalsPage />} />

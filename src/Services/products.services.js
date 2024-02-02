@@ -24,34 +24,47 @@ const tourGuideRef = collection(db, "tourGuide");
 class ProductsDataService {
 
   // Professionals
+
+  // Models
   getAllModels = () => {
     return getDocs(modelsRef);
   }; 
-  
-  getAllPhotographers = () => {
-    return getDocs(photographerRef);
-  };
-
-  getAllTourGuides = () => {
-    return getDocs(tourGuideRef);
-  };
-
-
-  // Models
-
   addModel = (newModel) => {
     return addDoc(modelsRef, newModel);
   };
 
+  getModel = (id) => {
+    const buyerDoc = doc(db, "models", id);
+    return getDoc(buyerDoc);
+  };
+
 
   // Tour Guide
+  getAllTourGuides = () => {
+    return getDocs(tourGuideRef);
+  };
+
   addTourGuide = (newTourGuide) => {
     return addDoc(tourGuideRef, newTourGuide);
   };
 
+  getTourGuide = (id) => {
+    const tourGuideDoc = doc(db, "tourGuide", id);
+    return getDoc(tourGuideDoc);
+  };
+
   // Photographer / Videographer
+  getAllPhotographers = () => {
+    return getDocs(photographerRef);
+  };
+
   addPhotographer = (newPhotographer) => {
     return addDoc(photographerRef, newPhotographer);
+  };
+
+  getPhotographer = (id) => {
+    const photographerDoc = doc(db, "photographer", id);
+    return getDoc(photographerDoc);
   };
 
 

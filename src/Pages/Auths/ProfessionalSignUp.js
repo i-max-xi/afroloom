@@ -10,8 +10,12 @@ import "primeicons/primeicons.css";
 import { ProgressSpinner } from "primereact/progressspinner";
 import countryArr from "../../Data/CountryArr";
 import { ProfessionalsList, ProfessionalsListEnum } from "../../Data/professionalsList";
+import { useDispatch } from "react-redux";
+import { setDashBoardPath, setSignedIn, setcurrentUser } from "../../Redux/store";
+import { genderList } from "../../Data/genderAgeList";
 
 const ProfessionalSignUp = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false); // Initialize loading state
 
@@ -22,6 +26,7 @@ const ProfessionalSignUp = () => {
   const [country, setCountry] = useState("");
   const [professionalType, setProfessionalType] = useState("")
   const [email, setEmail] = useState("");
+  const [gender, setGender] = useState("");
   const [password, setPassword] = useState("");
   const [number, setNumber] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -60,21 +65,38 @@ const ProfessionalSignUp = () => {
               name: name,
               email: email,
               country: country,
+              gender: gender,
               // brandName: brandName,
               number: number,
               // subject: `New Supplier Request from ${name}`,
             };
 
             if(professionalType === ProfessionalsListEnum.model){
-              ProductsDataService.addModel(userInfo);
+              ProductsDataService.addModel(userInfo).then (() => {
+                ProductsDataService.getModel(user.uid).then((modelData) => {
+                  dispatch(setcurrentUser(modelData.data()));
+                  dispatch(setDashBoardPath(`/professionals-dashboard/${ProfessionalsListEnum.model}`));
+              })
+            });
+
             }
 
             if(professionalType === ProfessionalsListEnum.tourGuide){
-              ProductsDataService.addTourGuide(userInfo);
+              ProductsDataService.addTourGuide(userInfo).then(() => {
+                ProductsDataService.getTourGuide(user.uid).then((tourGuideData) => {
+                  dispatch(setcurrentUser(tourGuideData.data()));
+                  dispatch(setDashBoardPath(`/professionals-dashboard/${ProfessionalsListEnum.tourGuide}`));
+              })
+              })
             }
 
             if(professionalType === ProfessionalsListEnum.photographer){
-              ProductsDataService.addPhotographer(userInfo);
+              ProductsDataService.addPhotographer(userInfo).then(() => {
+                ProductsDataService.getPhotographer(user.uid).then((photographerData) => {
+                  dispatch(setcurrentUser(photographerData.data()));
+                  dispatch(setDashBoardPath(`/professionals-dashboard/${ProfessionalsListEnum.photographer}`));
+              })
+              })
             }
 
             // Submit to formspree
@@ -89,10 +111,11 @@ const ProfessionalSignUp = () => {
             toastRef.current.show({
               severity: "success",
               summary: "Successfully signed up!",
-              // detail: "Pending Approval",
+              detail: "Head to dashboard to complete profile",
             });
 
             setIsLoading(false);
+            dispatch(setSignedIn(true)); // set signin to true
             // Redirect to "/" after successful signup and delay
             setTimeout(() => {
               navigate("/");
@@ -138,9 +161,9 @@ const ProfessionalSignUp = () => {
               <Dropdown
                 id="country"
                 value={country}
-                options={countryArr.map((country) => ({
-                  label: country,
-                  value: country,
+                options={countryArr.map((item) => ({
+                  label: item,
+                  value: item,
                 }))}
                 onChange={(e) => setCountry(e.value)}
                 placeholder="Select country"
@@ -163,12 +186,27 @@ const ProfessionalSignUp = () => {
               <Dropdown
                 id="professionalType"
                 value={professionalType}
-                options={ProfessionalsList.map((country) => ({
-                  label: country,
-                  value: country,
+                options={ProfessionalsList.map((item) => ({
+                  label: item,
+                  value: item,
                 }))}
                 onChange={(e) => setProfessionalType(e.value)}
                 placeholder="Select professional type"
+                className="d-flex"
+              />
+            </div>
+
+            <div className="form-group">
+              <label htmlFor="gender">Gender: </label>
+              <Dropdown
+                id="gender"
+                value={gender}
+                options={genderList.map((item) => ({
+                  label: item,
+                  value: item,
+                }))}
+                onChange={(e) => setGender(e.value)}
+                placeholder="Select gender"
                 className="d-flex"
               />
             </div>
