@@ -38,6 +38,13 @@ class ProductsDataService {
     return getDoc(buyerDoc);
   };
 
+  getModelByField = async (fieldName, value) => {
+    const q = query(modelsRef, where(fieldName, "==", value));
+    const querySnapshot = await getDocs(q);
+    return querySnapshot.docs[0];
+  };
+  
+
 
   // Tour Guide
   getAllTourGuides = () => {
@@ -53,6 +60,12 @@ class ProductsDataService {
     return getDoc(tourGuideDoc);
   };
 
+  getTourGuideByField = async (fieldName, value) => {
+    const q = query(tourGuideRef, where(fieldName, "==", value));
+    const querySnapshot = await getDocs(q);
+    return querySnapshot.docs[0];
+  };
+
   // Photographer / Videographer
   getAllPhotographers = () => {
     return getDocs(photographerRef);
@@ -65,6 +78,12 @@ class ProductsDataService {
   getPhotographer = (id) => {
     const photographerDoc = doc(db, "photographer", id);
     return getDoc(photographerDoc);
+  };
+
+  getPhotographerByField = async (fieldName, value) => {
+    const q = query(photographerRef, where(fieldName, "==", value));
+    const querySnapshot = await getDocs(q);
+    return querySnapshot.docs[0];
   };
 
 
