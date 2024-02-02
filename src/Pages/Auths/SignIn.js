@@ -27,6 +27,15 @@ const SignIn = () => {
   const [isPhotographerChecked, setIsPhotographerChecked] = useState(false);
   const [isTourGuideChecked, setIsTourGuideChecked] = useState(false);
   const toastRef = useRef(null);
+  const [selectedIdentity, setSelectedIdentity] = useState(null);
+
+  const identities = [
+    { value: "client", label: "Client / Buyer" },
+    { value: "supplier", label: "Supplier" },
+    { value: "model", label: "Model" },
+    { value: "photographer", label: "Photographer / Videographer" },
+    { value: "tourGuide", label: "Tour Guide" },
+  ];
 
   const handleSignIn = async (e) => {
     e.preventDefault();
@@ -137,61 +146,19 @@ const SignIn = () => {
           <div className="identity-container">
             <label htmlFor="identity">I am a:</label>
             <div className="identity-list">
-              <div className="form-group mt-3">
-                <input
-                  type="checkbox"
-                  id="check"
-                  checked={isClientChecked}
-                  onChange={(e) => setIsClientChecked(e.target.checked)}
-                />
-                <label className="mx-3" htmlFor="check">
-                  Client / Buyer
-                </label>
-              </div>
-              <div className="form-group mt-3">
-                <input
-                  type="checkbox"
-                  id="check"
-                  checked={isSupplierChecked}
-                  onChange={(e) => setIsSupplierChecked(e.target.checked)}
-                />
-                <label className="mx-3" htmlFor="check">
-                  Supplier
-                </label>
-              </div>
-              <div className="form-group mt-3">
-                <input
-                  type="checkbox"
-                  id="check"
-                  checked={isModelChecked}
-                  onChange={(e) => setIsModelChecked(e.target.checked)}
-                />
-                <label className="mx-3" htmlFor="check">
-                  Model
-                </label>
-              </div>
-              <div className="form-group mt-3">
-                <input
-                  type="checkbox"
-                  id="check"
-                  checked={isPhotographerChecked}
-                  onChange={(e) => setIsPhotographerChecked(e.target.checked)}
-                />
-                <label className="mx-3" htmlFor="check">
-                  Photographer / Videographer
-                </label>
-              </div>
-              <div className="form-group mt-3">
-                <input
-                  type="checkbox"
-                  id="check"
-                  checked={isTourGuideChecked}
-                  onChange={(e) => setIsTourGuideChecked(e.target.checked)}
-                />
-                <label className="mx-3" htmlFor="check">
-                  Tour Guide
-                </label>
-              </div>
+              {identities.map((identity) => (
+                <div className="form-group mt-3 identity-item" key={identity.value}>
+                  <input
+                    type="radio"
+                    id={identity.value}
+                    checked={selectedIdentity === identity.value}
+                    onChange={() => setSelectedIdentity(identity.value)}
+                  />
+                  <label className="mt-2" htmlFor={identity.value}>
+                    {identity.label}
+                  </label>
+                </div>
+              ))}
             </div>
           </div>
 

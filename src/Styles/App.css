@@ -301,6 +301,7 @@
   }
   .identity-list {
    flex-direction: column;
+   gap: 0.1rem !important;
   }
 }
 
@@ -796,5 +797,11 @@ form {
 
 .identity-list {
   display: flex;
-  justify-content: space-evenly;
+  gap: 2rem;
+}
+
+.identity-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
