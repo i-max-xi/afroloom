@@ -13,6 +13,7 @@ import { auth } from "../../firebase";
 import { Toast } from "primereact/toast";
 import ProductsDataService from "../../Services/products.services";
 import { ProgressSpinner } from "primereact/progressspinner";
+import { ProfessionalsListEnum } from "../../Data/professionalsList";
 
 const SignIn = () => {
   const dispatch = useDispatch();
@@ -21,11 +22,6 @@ const SignIn = () => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [isClientChecked, setIsClientChecked] = useState(false);
-  const [isSupplierChecked, setIsSupplierChecked] = useState(false);
-  const [isModelChecked, setIsModelChecked] = useState(false);
-  const [isPhotographerChecked, setIsPhotographerChecked] = useState(false);
-  const [isTourGuideChecked, setIsTourGuideChecked] = useState(false);
   const toastRef = useRef(null);
   const [selectedIdentity, setSelectedIdentity] = useState(null);
 
@@ -52,25 +48,85 @@ const SignIn = () => {
       let userInfo = null;
 
       // Try to fetch user information from seller collection
-      if (isSupplierChecked) {
-        const sellerInfo = await ProductsDataService.getSellerByField(
-          "id",
-          user.uid
-        );
-        userInfo = sellerInfo.data();
-        dispatch(setDashBoardPath("/seller-dashboard"));
-      } else {
-        const buyerInfo = await ProductsDataService.getBuyerByField(
-          "id",
-          user.uid
-        );
-        userInfo = buyerInfo.data();
-        if (userInfo.isAdmin) {
-          dispatch(setDashBoardPath("/admin-dashboard"));
-        } else {
-          dispatch(setDashBoardPath("/user-dashboard"));
-        }
+      switch (selectedIdentity) {
+        case "supplier":
+          const sellerInfo = await ProductsDataService.getSellerByField(
+            "id",
+            user.uid
+          );
+          userInfo = sellerInfo.data();
+          dispatch(setDashBoardPath("/seller-dashboard"));
+
+          break;
+        case "tourGuide":
+          const tourGuideInfo = await ProductsDataService.getTourGuideByField(
+            "id",
+            user.uid
+          );
+          userInfo = tourGuideInfo.data();
+          dispatch(
+            setDashBoardPath(
+              `/professionals-dashboard/${ProfessionalsListEnum.tourGuide}`
+            )
+          );
+          break;
+        case "photographer":
+          const photographerInfo = await ProductsDataService.getPhotographerByField(
+            "id",
+            user.uid
+          );
+          userInfo = photographerInfo.data();
+          dispatch(
+            setDashBoardPath(
+              `/professionals-dashboard/${ProfessionalsListEnum.photographer}`
+            )
+          );
+          break;
+
+        case "model":
+          const modelInfo = await ProductsDataService.getModelByField(
+            "id",
+            user.uid
+          );
+          userInfo = modelInfo.data();
+          dispatch(
+            setDashBoardPath(
+              `/professionals-dashboard/${ProfessionalsListEnum.model}`
+            )
+          );
+          break;
+        default:
+          const buyerInfo = await ProductsDataService.getBuyerByField(
+            "id",
+            user.uid
+          );
+          userInfo = buyerInfo.data();
+          if (userInfo.isAdmin) {
+            dispatch(setDashBoardPath("/admin-dashboard"));
+          } else {
+            dispatch(setDashBoardPath("/user-dashboard"));
+          }
       }
+
+      // if (isSupplierChecked) {
+      //   const sellerInfo = await ProductsDataService.getSellerByField(
+      //     "id",
+      //     user.uid
+      //   );
+      //   userInfo = sellerInfo.data();
+      //   dispatch(setDashBoardPath("/seller-dashboard"));
+      // } else {
+      //   const buyerInfo = await ProductsDataService.getBuyerByField(
+      //     "id",
+      //     user.uid
+      //   );
+      //   userInfo = buyerInfo.data();
+      //   if (userInfo.isAdmin) {
+      //     dispatch(setDashBoardPath("/admin-dashboard"));
+      //   } else {
+      //     dispatch(setDashBoardPath("/user-dashboard"));
+      //   }
+      // }
 
       if (userInfo !== null) {
         setIsLoading(false);
@@ -147,7 +203,10 @@ const SignIn = () => {
             <label htmlFor="identity">I am a:</label>
             <div className="identity-list">
               {identities.map((identity) => (
-                <div className="form-group mt-3 identity-item" key={identity.value}>
+                <div
+                  className="form-group mt-3 identity-item"
+                  key={identity.value}
+                >
                   <input
                     type="radio"
                     id={identity.value}
@@ -164,6 +223,7 @@ const SignIn = () => {
 
           <button
             type="submit"
+            disabled={!selectedIdentity || !email || !password}
             className="btn btn-warning w-100 text-white mt-3 position-relative"
           >
             <span className="spinner-container">

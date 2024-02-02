@@ -9,9 +9,7 @@
 }
 
 @media (max-width: 900px) {
-  .logo {
-    /* width: 4rem !important; */
-  }
+
   .navbar-nav {
     display: flex;
     flex-direction: column;
