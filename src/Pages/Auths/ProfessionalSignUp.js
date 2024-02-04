@@ -9,7 +9,7 @@ import ProductsDataService from "../../Services/products.services";
 import "primeicons/primeicons.css";
 import { ProgressSpinner } from "primereact/progressspinner";
 import countryArr from "../../Data/CountryArr";
-import { ProfessionalsList, ProfessionalsListEnum } from "../../Data/professionalsList";
+import { ProfessionalsDbEnum, ProfessionalsList, ProfessionalsListEnum } from "../../Data/professionalsList";
 import { useDispatch } from "react-redux";
 import { setDashBoardPath, setSignedIn, setcurrentUser } from "../../Redux/store";
 import { genderList } from "../../Data/genderAgeList";
@@ -75,7 +75,7 @@ const ProfessionalSignUp = () => {
               ProductsDataService.addModel(userInfo).then (() => {
                 ProductsDataService.getModel(user.uid).then((modelData) => {
                   dispatch(setcurrentUser(modelData.data()));
-                  dispatch(setDashBoardPath(`/professionals-dashboard/${ProfessionalsListEnum.model}`));
+                  dispatch(setDashBoardPath(`/professionals-dashboard/${ProfessionalsDbEnum.model}`));
               })
             });
 
@@ -85,7 +85,7 @@ const ProfessionalSignUp = () => {
               ProductsDataService.addTourGuide(userInfo).then(() => {
                 ProductsDataService.getTourGuide(user.uid).then((tourGuideData) => {
                   dispatch(setcurrentUser(tourGuideData.data()));
-                  dispatch(setDashBoardPath(`/professionals-dashboard/${ProfessionalsListEnum.tourGuide}`));
+                  dispatch(setDashBoardPath(`/professionals-dashboard/${ProfessionalsDbEnum.tourGuide}`));
               })
               })
             }
@@ -94,7 +94,7 @@ const ProfessionalSignUp = () => {
               ProductsDataService.addPhotographer(userInfo).then(() => {
                 ProductsDataService.getPhotographer(user.uid).then((photographerData) => {
                   dispatch(setcurrentUser(photographerData.data()));
-                  dispatch(setDashBoardPath(`/professionals-dashboard/${ProfessionalsListEnum.photographer}`));
+                  dispatch(setDashBoardPath(`/professionals-dashboard/${ProfessionalsDbEnum.photographer}`));
               })
               })
             }

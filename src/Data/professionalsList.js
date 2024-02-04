@@ -9,3 +9,9 @@ export const ProfessionalsListEnum = {
     photographer: "Photographer / Videographer",
     tourGuide: "Tour Guide"
 }
+
+export const ProfessionalsDbEnum = {
+    model: "models",
+    photographer: "photographers",
+    tourGuide: "tourGuide"
+}
