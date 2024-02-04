@@ -14,45 +14,24 @@ import { Timestamp } from "firebase/firestore";
 import { ProgressSpinner } from "primereact/progressspinner";
 import { storage } from "../../../firebase";
 import productsServices from "../../../Services/products.services";
+import { ageList, genderList } from "../../../Data/genderAgeList";
+import {
+  ProfessionalsDbEnum,
+  modelSpecialties,
+  photographySpecialties,
+  tourGuideSpecialties,
+} from "../../../Data/professionalsList";
 
-const UpdateInfo = ({ currentSeller, sellerCountry }) => {
-  const [newProduct, setNewProduct] = useState({
-    title: "",
-    description: "",
-    category: "", // Use a Dropdown to select from categoryFilter
-    price: null,
-    item: "", // URL of the item image
-    weight: null,
-    location: "",
-    seller: currentSeller,
-    country: sellerCountry,
-    detailedCategory: "",
-    gender: "",
-    size: "",
-    createdAt: Date.now(),
-    discount: null, // Optional field
-  });
+const UpdateInfo = ({ currentUser, proffesionalType }) => {
+  const [userInfo, setuserInfo] = useState(currentUser);
 
   const [extraImages, setExtraImages] = useState([]); // State variable to store extra images
   const [isUploading, setIsUploading] = useState(false); // Initialize loading state
 
-
   const toastRef = useRef(null);
-
 
   const handleImageUpload = async (e) => {
     const file = e.target.files[0];
-
-    // Check if file type is PNG
-    if (!file.type.includes("png")) {
-      toastRef.current.show({
-        severity: "error",
-        summary: "Error uploading image:",
-        detail: "Please upload a PNG image.",
-      });
-      e.target.value = null;
-      return;
-    }
 
     // Create an image element to get the dimensions
     const img = new Image();
@@ -79,7 +58,7 @@ const UpdateInfo = ({ currentSeller, sellerCountry }) => {
     try {
       await uploadBytes(storageRef, file);
       const downloadURL = await getDownloadURL(storageRef);
-      setNewProduct({ ...newProduct, item: downloadURL });
+      setuserInfo({ ...userInfo, item: downloadURL });
     } catch (error) {
       toastRef.current.show({
         severity: "error",
@@ -111,7 +90,6 @@ const UpdateInfo = ({ currentSeller, sellerCountry }) => {
     }
   };
 
-
   const handleExtraImageUpload = async (e) => {
     const files = e.target.files;
     const uploadPromises = Array.from(files).map(async (file) => {
@@ -137,161 +115,154 @@ const UpdateInfo = ({ currentSeller, sellerCountry }) => {
     }
   };
 
-  const handleAddProduct = async () => {
-    if (
-      newProduct.title === "" ||
-      newProduct.description === "" ||
-      newProduct.category === "" ||
-      newProduct.price === null ||
-      newProduct.item === "" ||
-      newProduct.detailedCategory === "" ||
-      newProduct.weight === null ||
-      newProduct.location === ""
-    ) {
-      toastRef.current.show({
-        severity: "error",
-        summary: "Please fill in all the required fields.",
-      });
-      return;
-    }
-
-    setIsUploading(true); // Set the uploading state to true when uploading starts
-
-    const randomRating = Math.floor(Math.random() * 5) + 1;
-
-    const productData = {
-      ...newProduct,
-      extras: extraImages, // Add the array of extra images to the product data
-      createdAt: Timestamp.fromMillis(Date.now()), // Convert to Firebase Timestamp
-      rating: randomRating
-    };
-
-    try {
-      const response = await productsServices.addProduct(productData);
-      // Reset the form
-      setNewProduct({
-        title: "",
-        category: "",
-        price: 0,
-        description: "",
-        weight: 0,
-        location: "",
-        item: "",
-        seller: currentSeller,
-        detailedCategory: "",
-        gender: "",
-        size: "",
-        discount: 0,
-      });
-
-      setExtraImages([]); // Clear the extra images array
-
-      toastRef.current.show({
-        severity: "success",
-        summary: `Product added successfully. Document ID: ${response.id}`,
-      });
-    } catch (error) {
-      toastRef.current.show({
-        severity: "error",
-        summary: `Error adding product. Please try again: ${error}`,
-      });
-    } finally {
-      setIsUploading(false); // Reset loading state after upload attempt (success or failure)
-    }
+  const handleUpdateSubmit = async (e) => {
+    e.preventDefault();
   };
 
-  // dropdown infos
-  const genderOptions = [
-    { label: "Male", value: "Male" },
-    { label: "Female", value: "Female" },
-  ];
+  const [specialties, setSpecialties] = useState([""]);
+
+  const addSpecialty = () => {
+    setSpecialties([...specialties, ""]);
+  };
+
+  const removeSpecialty = (indexToRemove) => {
+    const updatedSpecialties = specialties.filter(
+      (_, index) => index !== indexToRemove
+    );
+    setSpecialties(updatedSpecialties);
+  };
+
+  let specialtyOptions;
+
+  switch (proffesionalType) {
+    case ProfessionalsDbEnum.model:
+      specialtyOptions = modelSpecialties;
+      break;
+    case ProfessionalsDbEnum.photographer:
+      specialtyOptions = photographySpecialties;
+      break;
+    case ProfessionalsDbEnum.tourGuide:
+      specialtyOptions = tourGuideSpecialties;
+      break;
+    default:
+      break;
+  }
 
   return (
     <div>
       <Toast ref={toastRef} position="top-right" />
       <h2 className="dashboard-home-title">Update Profile Info</h2>
       <div className="p-fluid pr-5">
-        <div className="p-field">
+        {/* <div className="p-field">
           <label className="text-warning" htmlFor="title">
-            Name of Product
+            Name
           </label>
           <span className="text-danger"> *</span>
           <InputText
             required
             id="title"
-            value={newProduct.title}
-            onChange={(e) =>
-              setNewProduct({ ...newProduct, title: e.target.value })
-            }
+            value={userInfo.name}
+            onChange={(e) => setuserInfo({ ...userInfo, name: e.target.value })}
           />
-        </div>
-        <div className="p-field">
+        </div> */}
+        {/* <div className="p-field">
           <label className="text-warning" htmlFor="title">
-            Description of Product
+            Email
           </label>
           <span className="text-danger"> *</span>
           <InputText
             required
             id="title"
-            value={newProduct.description}
+            value={userInfo.email}
             onChange={(e) =>
-              setNewProduct({ ...newProduct, description: e.target.value })
+              setuserInfo({ ...userInfo, email: e.target.value })
             }
           />
-        </div>
-
-        <div className="p-field">
+        </div> */}
+        {/* <div className="p-field">
+          <label className="text-warning" htmlFor="country">
+            Country
+          </label>
+          <span className="text-danger"> *</span>
+          <InputText id="country" readOnly value={userInfo.country} />
+        </div> */}
+        {/* <div className="p-field">
           <label className="text-warning" htmlFor="gender">
             Gender
-          </label>{" "}
-          <span>(Optional)</span>
+          </label>
           <Dropdown
             id="gender"
             required
-            value={newProduct.gender}
-            options={genderOptions}
-            placeholder="is this product gender specific eg. male or female ?"
-            onChange={(e) => setNewProduct({ ...newProduct, gender: e.value })}
+            value={userInfo.gender}
+            options={genderList}
+            onChange={(e) => setuserInfo({ ...userInfo, gender: e.value })}
+          />
+        </div> */}
+        {/* <div className="p-field">
+          <label className="text-warning" htmlFor="city">
+            City
+          </label>
+          <span className="text-danger"> *</span>
+          <InputText
+            id="city"
+            readOnly
+            value={userInfo.city}
+            onChange={(e) => setuserInfo({ ...userInfo, city: e.target.value })}
+          />
+        </div> */}
+
+        <div className="p-field">
+          <label className="text-warning" htmlFor="gender">
+            Age
+          </label>
+          <Dropdown
+            id="age"
+            required
+            value={userInfo.age}
+            options={ageList}
+            onChange={(e) => setuserInfo({ ...userInfo, age: e.value })}
           />
         </div>
 
         <div className="p-field">
           <label className="text-warning" htmlFor="price">
-            Price ₵
+            Lower price limit ₵
           </label>
           <span className="text-danger"> *</span>
           <InputText
             required
             type="number"
             id="price"
-            value={newProduct.price}
-            placeholder="equivalent Ghana Cedi (₵) value... eg. 10"
+            value={userInfo.price}
+            placeholder="strictly equivalent Ghana Cedi (₵) value... eg. 10"
             onChange={(e) =>
-              setNewProduct({ ...newProduct, price: e.target.value })
+              setuserInfo({ ...userInfo, lowerPrice: e.target.value })
             }
           />
         </div>
+
         <div className="p-field">
-          <label className="text-warning" htmlFor="discount">
-            Discount %{" "}
-          </label>{" "}
-          <span>(Optional)</span>
-          <InputText
-            id="discount"
-            type="number"
-            value={newProduct.discount}
-            placeholder="percentage discount eg. 10"
-            onChange={(e) =>
-              setNewProduct({ ...newProduct, discount: e.target.value })
-            }
-          />
-        </div>
-        <div className="p-field">
-          <label className="text-warning" htmlFor="item">
-            Main Product Image
+          <label className="text-warning" htmlFor="price">
+            Upper price limit ₵
           </label>
           <span className="text-danger"> *</span>
-          <span>Strictly with white background and preferably png</span>
+          <InputText
+            required
+            type="number"
+            id="price"
+            value={userInfo.price}
+            placeholder="strictly equivalent Ghana Cedi (₵) value... eg. 10"
+            onChange={(e) =>
+              setuserInfo({ ...userInfo, UpperPrice: e.target.value })
+            }
+          />
+        </div>
+
+        <div className="p-field">
+          <label className="text-warning" htmlFor="item">
+            Upload Licence of work
+          </label>
+          <span className="text-danger"> *</span>
           <InputText
             required
             id="item"
@@ -303,7 +274,7 @@ const UpdateInfo = ({ currentSeller, sellerCountry }) => {
 
         <div className="p-field d-flex flex-column">
           <label className="text-warning" htmlFor="extras">
-            Extra Images
+            Upload Portfolios (any images of you work you can share with us)
           </label>
 
           <div className="d-flex">
@@ -313,7 +284,7 @@ const UpdateInfo = ({ currentSeller, sellerCountry }) => {
               type="file"
               accept="image/*"
               onChange={handleExtraImageUpload}
-              multiple // This attribute allows selecting multiple files
+              multiple
             />
             {extraImages.length > 0 && (
               <div>
@@ -342,48 +313,65 @@ const UpdateInfo = ({ currentSeller, sellerCountry }) => {
           </div>
         </div>
 
-        <div className="p-field">
+        <div className="p-field d-flex flex-column">
+          <label className="text-warning" htmlFor="extras">
+            What is your specialty
+          </label>
+          {specialties.map((category, index) => (
+            <div key={index} className="d-flex align-items-center">
+              <Dropdown
+                value={category}
+                options={specialtyOptions}
+                onChange={(e) => {
+                  const updatedCategories = [...specialties];
+                  updatedCategories[index] = e.value;
+                  setSpecialties(updatedCategories);
+                }}
+                placeholder="Select supply Category"
+                className="w-50 d-flex justify-content-center align-items-center mt-1"
+                style={{ height: "3rem" }}
+              />
+              {index === specialties.length - 1 ? (
+                <button
+                  type="button"
+                  onClick={addSpecialty}
+                  className="btn btn-primary mx-2"
+                >
+                  <span className="pi pi-plus"></span>
+                </button>
+              ) : (
+                <button
+                  type="button"
+                  onClick={() => removeSpecialty(index)}
+                  className="btn btn-danger mx-2"
+                >
+                  <span className="pi pi-minus"></span>
+                </button>
+              )}
+            </div>
+          ))}
+        </div>
+
+        {/* <div className="p-field">
           <label className="text-warning" htmlFor="weight">
             Weight (kg)
           </label>
           <span className="text-danger"> *</span>
           <InputText
             id="weight"
-            value={newProduct.weight}
+            value={userInfo.weight}
             type="number"
             required
             onChange={(e) =>
-              setNewProduct({ ...newProduct, weight: e.target.value })
+              setuserInfo({ ...userInfo, weight: e.target.value })
             }
           />
-        </div>
+        </div> */}
 
-        <div className="p-field">
-          <label className="text-warning" htmlFor="seller">
-            Seller
-          </label>
-          <span className="text-danger"> *</span>
-          <InputText
-            id="seller"
-            readOnly
-            value={newProduct.seller}
-          />
-        </div>
-        <div className="p-field">
-          <label className="text-warning" htmlFor="seller">
-            Seller Country
-          </label>
-          <span className="text-danger"> *</span>
-          <InputText
-            id="country"
-            readOnly
-            value={newProduct.country}
-          />
-        </div>
         <div className="p-field">
           <Button
             label="Add Product"
-            onClick={handleAddProduct}
+            onClick={handleUpdateSubmit}
             className="p-button p-component"
             disabled={isUploading}
           >

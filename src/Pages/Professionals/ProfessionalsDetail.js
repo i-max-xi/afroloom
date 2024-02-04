@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Carousel } from "primereact/carousel";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import Nav from "../../Components/Nav";
 import { Dialog } from "primereact/dialog";
 import ProfessionalsCheckout from "./ProfessionalsCheckout";

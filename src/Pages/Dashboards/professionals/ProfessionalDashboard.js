@@ -3,8 +3,7 @@ import "../styles/Dashboard.css";
 import Nav from "../../../Components/Nav";
 import { TabPanel, TabView } from "primereact/tabview";
 import { useSelector } from "react-redux";
-import AddProduct from "../AddProduct";
-import PackageStickers from "../PackageStickers";
+
 import { useParams } from "react-router-dom";
 import Home from "./Home";
 import CustomSideBar from "../CustomSidebar";
@@ -69,8 +68,8 @@ const ProfessionalDashboard = () => {
             </TabPanel>
             <TabPanel header="Update Profile Info">
               <UpdateInfo
-                currentSeller={welcomename}
-                sellerCountry={sellerCountry}
+                currentUser={currentUser}
+                proffesionalType={professionalType}
               />
             </TabPanel>
           </TabView>

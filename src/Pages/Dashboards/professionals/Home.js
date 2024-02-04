@@ -1,12 +1,10 @@
 // Home.js
 import React, { useEffect, useRef, useState } from "react";
-import { DataTable } from "primereact/datatable";
-import { Column } from "primereact/column";
 import ProductsDataService from "../../../Services/products.services";
 import { Button } from "primereact/button";
 import { Dialog } from "primereact/dialog";
 import { Toast } from "primereact/toast";
-import { useSelector } from "react-redux";
+// import { useSelector } from "react-redux";
 import { locationOptions } from "../../../Data/SupplierAcceptedCities";
 import { Dropdown } from "primereact/dropdown";
 import { ProfessionalsDbEnum } from "../../../Data/professionalsList";
@@ -19,8 +17,8 @@ const Home = ({ currentProfessional, proffesionalType }) => {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [editDialogVisible, setEditDialogVisible] = useState(false);
 
-  const currencySymbol = useSelector((state) => state.currencySymbol.symbol);
-  const currencyFactor = useSelector((state) => state.currencySymbol.factor);
+  // const currencySymbol = useSelector((state) => state.currencySymbol.symbol);
+  // const currencyFactor = useSelector((state) => state.currencySymbol.factor);
 
   const loadInfo = async () => {
     let response;
@@ -67,10 +65,10 @@ const Home = ({ currentProfessional, proffesionalType }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const handleEditClick = (product) => {
-    setSelectedProduct(product);
-    setEditDialogVisible(true);
-  };
+  // const handleEditClick = (product) => {
+  //   setSelectedProduct(product);
+  //   setEditDialogVisible(true);
+  // };
 
   const handleEditDialogHide = () => {
     setEditDialogVisible(false);
@@ -101,21 +99,21 @@ const Home = ({ currentProfessional, proffesionalType }) => {
     }
   };
 
-  const deleteProduct = async (id) => {
-    try {
-      await ProductsDataService.deleteProduct(id);
-      toastRef.current.show({
-        severity: "success",
-        summary: `Successfully deleted product`,
-      });
-      loadInfo();
-    } catch (error) {
-      toastRef.current.show({
-        severity: "error",
-        summary: `Error deleting product: ${error}`,
-      });
-    }
-  };
+  // const deleteProduct = async (id) => {
+  //   try {
+  //     await ProductsDataService.deleteProduct(id);
+  //     toastRef.current.show({
+  //       severity: "success",
+  //       summary: `Successfully deleted product`,
+  //     });
+  //     loadInfo();
+  //   } catch (error) {
+  //     toastRef.current.show({
+  //       severity: "error",
+  //       summary: `Error deleting product: ${error}`,
+  //     });
+  //   }
+  // };
 
   return (
     <div>
