@@ -139,6 +139,10 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
       ...userInfo,
       portfolio: extraImages,
       createdAt: Timestamp.fromMillis(Date.now()),
+      specialties: specialties,
+      offers: priceBreakdown,
+      approved: true,
+
     };
 
     let Path;
