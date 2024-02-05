@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Dropdown } from "primereact/dropdown";
 import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
@@ -132,6 +132,26 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
     setSpecialties(updatedSpecialties);
   };
 
+  const [priceBreakdown, setPriceBreakdown] = useState([{ offer: "", priceValue: 0 }]);
+
+  const addPriceBreakdown = () => {
+    setPriceBreakdown([...priceBreakdown, { offer: "", priceValue: 0 }]);
+  };
+
+  const updatePriceBreakdown = (index, field, value) => {
+    const updatedPriceBreakdown = [...priceBreakdown];
+    updatedPriceBreakdown[index][field] = value;
+    setPriceBreakdown(updatedPriceBreakdown);
+  };
+  
+
+  const removePriceBreakdown = (indexToRemove) => {
+    setPriceBreakdown((prevPriceBreakdown) =>
+      prevPriceBreakdown.filter((_, index) => index !== indexToRemove)
+    );
+  };
+  
+
   let specialtyOptions;
 
   switch (proffesionalType) {
@@ -148,69 +168,15 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
       break;
   }
 
+  useEffect(() => {
+    console.log(priceBreakdown)
+  },[priceBreakdown])
+
   return (
     <div>
       <Toast ref={toastRef} position="top-right" />
       <h2 className="dashboard-home-title">Update Profile Info</h2>
       <div className="p-fluid pr-5">
-        {/* <div className="p-field">
-          <label className="text-warning" htmlFor="title">
-            Name
-          </label>
-          <span className="text-danger"> *</span>
-          <InputText
-            required
-            id="title"
-            value={userInfo.name}
-            onChange={(e) => setuserInfo({ ...userInfo, name: e.target.value })}
-          />
-        </div> */}
-        {/* <div className="p-field">
-          <label className="text-warning" htmlFor="title">
-            Email
-          </label>
-          <span className="text-danger"> *</span>
-          <InputText
-            required
-            id="title"
-            value={userInfo.email}
-            onChange={(e) =>
-              setuserInfo({ ...userInfo, email: e.target.value })
-            }
-          />
-        </div> */}
-        {/* <div className="p-field">
-          <label className="text-warning" htmlFor="country">
-            Country
-          </label>
-          <span className="text-danger"> *</span>
-          <InputText id="country" readOnly value={userInfo.country} />
-        </div> */}
-        {/* <div className="p-field">
-          <label className="text-warning" htmlFor="gender">
-            Gender
-          </label>
-          <Dropdown
-            id="gender"
-            required
-            value={userInfo.gender}
-            options={genderList}
-            onChange={(e) => setuserInfo({ ...userInfo, gender: e.value })}
-          />
-        </div> */}
-        {/* <div className="p-field">
-          <label className="text-warning" htmlFor="city">
-            City
-          </label>
-          <span className="text-danger"> *</span>
-          <InputText
-            id="city"
-            readOnly
-            value={userInfo.city}
-            onChange={(e) => setuserInfo({ ...userInfo, city: e.target.value })}
-          />
-        </div> */}
-
         <div className="p-field">
           <label className="text-warning" htmlFor="gender">
             Age
@@ -223,6 +189,8 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
             onChange={(e) => setuserInfo({ ...userInfo, age: e.value })}
           />
         </div>
+
+        <h6 className="mt-3">We list your prices in ranges (eg. ₵ 50 - 250 ) </h6>
 
         <div className="p-field">
           <label className="text-warning" htmlFor="price">
@@ -257,6 +225,56 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
             }
           />
         </div>
+
+        <h6 className="mt-3">
+          We also encourage you to break down prices into offers. eg. (5 photos
+          for ₵ 100){" "}
+        </h6>
+        {priceBreakdown.map((item, index) => (
+          <div key={index} className="d-flex align-items-center p-field" style={{gap: "1rem"}}>
+            <div className="form-group">
+              <label className="text-warning">Offer:</label>
+              <InputText
+                required
+                type="text"
+                value={item.offer}
+                placeholder="Specify your offer in few words"
+                onChange={(e) =>
+                  updatePriceBreakdown(index, "offer", e.target.value)
+                }
+              />
+            </div>
+            <div className="form-group">
+              <label className="text-warning">Price Value (₵):</label>
+              <InputText
+                required
+                type="number"
+                value={item.priceValue}
+                placeholder="Strictly equivalent Ghana Cedi (₵) value... eg. 10"
+                onChange={(e) =>
+                  updatePriceBreakdown(index, "priceValue", e.target.value)
+                }
+              />
+            </div>
+            {index === priceBreakdown.length - 1 ? (
+              <button
+                type="button"
+                onClick={addPriceBreakdown}
+                className="btn btn-primary mx-2"
+              >
+                <span className="pi pi-plus"></span>
+              </button>
+            ) : (
+              <button
+                type="button"
+                onClick={() => removePriceBreakdown(index)}
+                className="btn btn-danger mx-2"
+              >
+                <span className="pi pi-minus"></span>
+              </button>
+            )}
+          </div>
+        ))}
 
         <div className="p-field">
           <label className="text-warning" htmlFor="item">
@@ -351,22 +369,6 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
             </div>
           ))}
         </div>
-
-        {/* <div className="p-field">
-          <label className="text-warning" htmlFor="weight">
-            Weight (kg)
-          </label>
-          <span className="text-danger"> *</span>
-          <InputText
-            id="weight"
-            value={userInfo.weight}
-            type="number"
-            required
-            onChange={(e) =>
-              setuserInfo({ ...userInfo, weight: e.target.value })
-            }
-          />
-        </div> */}
 
         <div className="p-field">
           <Button
