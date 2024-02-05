@@ -20,7 +20,7 @@ const ProfessionalDashboard = () => {
 
   console.log(currentUser);
 
-  const sellerCountry = currentUser.country;
+  // const sellerCountry = currentUser.country;
   const professionalApproved = currentUser.approved;
 
   const [activeIndex, setActiveIndex] = useState(0);

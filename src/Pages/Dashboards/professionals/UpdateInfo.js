@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import { Dropdown } from "primereact/dropdown";
 import { InputText } from "primereact/inputtext";
 import { Button } from "primereact/button";
@@ -13,14 +13,14 @@ import { Badge } from "primereact/badge";
 import { Timestamp } from "firebase/firestore";
 import { ProgressSpinner } from "primereact/progressspinner";
 import { storage } from "../../../firebase";
-import productsServices from "../../../Services/products.services";
-import { ageList, genderList } from "../../../Data/genderAgeList";
+import { ageList } from "../../../Data/genderAgeList";
 import {
   ProfessionalsDbEnum,
   modelSpecialties,
   photographySpecialties,
   tourGuideSpecialties,
 } from "../../../Data/professionalsList";
+import productsServices from "../../../Services/products.services";
 
 const UpdateInfo = ({ currentUser, proffesionalType }) => {
   const [userInfo, setuserInfo] = useState(currentUser);
@@ -58,7 +58,7 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
     try {
       await uploadBytes(storageRef, file);
       const downloadURL = await getDownloadURL(storageRef);
-      setuserInfo({ ...userInfo, item: downloadURL });
+      setuserInfo({ ...userInfo, license: downloadURL });
     } catch (error) {
       toastRef.current.show({
         severity: "error",
@@ -117,6 +117,64 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
 
   const handleUpdateSubmit = async (e) => {
     e.preventDefault();
+    if (
+      !userInfo.age ||
+      !userInfo.lowerPrice ||
+      !userInfo.UpperPrice ||
+      !userInfo.profile ||
+      priceBreakdown.length < 1 ||
+      specialties.length < 1 ||
+      extraImages.length < 1
+    ) {
+      toastRef.current.show({
+        severity: "error",
+        summary: "Please fill in all the required fields.",
+      });
+      return;
+    }
+
+    setIsUploading(true);
+
+    const newData = {
+      ...userInfo,
+      portfolio: extraImages,
+      createdAt: Timestamp.fromMillis(Date.now()),
+    };
+
+    let Path;
+
+    switch (proffesionalType) {
+      case ProfessionalsDbEnum.model:
+        Path = await productsServices.updateModel(userInfo.id, newData);
+        break;
+      case ProfessionalsDbEnum.photographer:
+        Path = await productsServices.updatePhotographer(userInfo.id, newData);
+        break;
+
+      case ProfessionalsDbEnum.tourGuide:
+        Path = await productsServices.updateTourGuide(userInfo.id, newData);
+        break;
+
+      default:
+        break;
+    }
+
+    try {
+      await Path;
+      // Reset the form
+
+      toastRef.current.show({
+        severity: "success",
+        summary: `Information successfully updated added`,
+      });
+    } catch (error) {
+      toastRef.current.show({
+        severity: "error",
+        summary: `Error updating information. Please try again: ${error}`,
+      });
+    } finally {
+      setIsUploading(false);
+    }
   };
 
   const [specialties, setSpecialties] = useState([""]);
@@ -132,7 +190,9 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
     setSpecialties(updatedSpecialties);
   };
 
-  const [priceBreakdown, setPriceBreakdown] = useState([{ offer: "", priceValue: 0 }]);
+  const [priceBreakdown, setPriceBreakdown] = useState([
+    { offer: "", priceValue: 0 },
+  ]);
 
   const addPriceBreakdown = () => {
     setPriceBreakdown([...priceBreakdown, { offer: "", priceValue: 0 }]);
@@ -143,14 +203,12 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
     updatedPriceBreakdown[index][field] = value;
     setPriceBreakdown(updatedPriceBreakdown);
   };
-  
 
   const removePriceBreakdown = (indexToRemove) => {
     setPriceBreakdown((prevPriceBreakdown) =>
       prevPriceBreakdown.filter((_, index) => index !== indexToRemove)
     );
   };
-  
 
   let specialtyOptions;
 
@@ -167,10 +225,6 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
     default:
       break;
   }
-
-  useEffect(() => {
-    console.log(priceBreakdown)
-  },[priceBreakdown])
 
   return (
     <div>
@@ -190,7 +244,9 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
           />
         </div>
 
-        <h6 className="mt-3">We list your prices in ranges (eg. ₵ 50 - 250 ) </h6>
+        <h6 className="mt-3">
+          We list your prices in ranges (eg. ₵ 50 - 250 ){" "}
+        </h6>
 
         <div className="p-field">
           <label className="text-warning" htmlFor="price">
@@ -231,7 +287,11 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
           for ₵ 100){" "}
         </h6>
         {priceBreakdown.map((item, index) => (
-          <div key={index} className="d-flex align-items-center p-field" style={{gap: "1rem"}}>
+          <div
+            key={index}
+            className="d-flex align-items-center p-field"
+            style={{ gap: "1rem" }}
+          >
             <div className="form-group">
               <label className="text-warning">Offer:</label>
               <InputText
@@ -332,9 +392,9 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
         </div>
 
         <div className="p-field d-flex flex-column">
-        <h6 className="mt-3">
-          List <b> at most 3</b> of your specialties
-        </h6>
+          <h6 className="mt-3">
+            List <b> at most 3</b> of your specialties
+          </h6>
           <label className="text-warning" htmlFor="extras">
             What is your specialty
           </label>
