@@ -176,7 +176,7 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
     <div>
       <Toast ref={toastRef} position="top-right" />
       <h2 className="dashboard-home-title">Update Profile Info</h2>
-      <div className="p-fluid pr-5">
+      <div className="p-fluid">
         <div className="p-field">
           <label className="text-warning" htmlFor="gender">
             Age
@@ -332,6 +332,9 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
         </div>
 
         <div className="p-field d-flex flex-column">
+        <h6 className="mt-3">
+          List <b> at most 3</b> of your specialties
+        </h6>
           <label className="text-warning" htmlFor="extras">
             What is your specialty
           </label>
