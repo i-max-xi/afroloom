@@ -13,7 +13,7 @@ import { Badge } from "primereact/badge";
 import { Timestamp } from "firebase/firestore";
 import { ProgressSpinner } from "primereact/progressspinner";
 import { storage } from "../../../firebase";
-import { ageList } from "../../../Data/genderAgeList";
+import { ageList, genderListEnum } from "../../../Data/genderAgeList";
 import {
   ProfessionalsDbEnum,
   modelSpecialties,
@@ -39,18 +39,9 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
 
     img.onload = () => {
       // Check if the image dimensions are 500x500
-      if (img.width !== 500 || img.height !== 500) {
-        toastRef.current.show({
-          severity: "error",
-          summary: "Error uploading image:",
-          detail: "Please upload an image with dimensions 500x500.",
-        });
-        e.target.value = null;
-        return;
-      } else {
-        const storageRef = ref(storage, `images/${file.name}`);
-        uploadImage(storageRef, file);
-      }
+
+      const storageRef = ref(storage, `images/${file.name}`);
+      uploadImage(storageRef, file);
     };
   };
 
@@ -142,10 +133,10 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
       specialties: specialties,
       offers: priceBreakdown,
       approved: true,
-
     };
 
     let Path;
+
 
     switch (proffesionalType) {
       case ProfessionalsDbEnum.model:
@@ -236,7 +227,7 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
       <h2 className="dashboard-home-title">Update Profile Info</h2>
       <div className="p-fluid">
         <div className="p-field">
-          <label className="text-warning" htmlFor="gender">
+          <label className="text-warning" htmlFor="age">
             Age
           </label>
           <Dropdown
@@ -253,7 +244,7 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
         </h6>
 
         <div className="p-field">
-          <label className="text-warning" htmlFor="price">
+          <label className="text-warning" htmlFor="lowerprice">
             Lower price limit ₵
           </label>
           <span className="text-danger"> *</span>
@@ -261,7 +252,7 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
             required
             type="number"
             id="price"
-            value={userInfo.price}
+            value={userInfo.lowerPrice}
             placeholder="strictly equivalent Ghana Cedi (₵) value... eg. 10"
             onChange={(e) =>
               setuserInfo({ ...userInfo, lowerPrice: e.target.value })
@@ -270,7 +261,7 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
         </div>
 
         <div className="p-field">
-          <label className="text-warning" htmlFor="price">
+          <label className="text-warning" htmlFor="upperprice">
             Upper price limit ₵
           </label>
           <span className="text-danger"> *</span>
@@ -278,7 +269,7 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
             required
             type="number"
             id="price"
-            value={userInfo.price}
+            value={userInfo.UpperPrice}
             placeholder="strictly equivalent Ghana Cedi (₵) value... eg. 10"
             onChange={(e) =>
               setuserInfo({ ...userInfo, UpperPrice: e.target.value })
@@ -356,7 +347,7 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
 
         <div className="p-field d-flex flex-column">
           <label className="text-warning" htmlFor="extras">
-            Upload Portfolios (any images of you work you can share with us)
+            Upload Portfolios (any images of your work you can share with us)
           </label>
 
           <div className="d-flex">
@@ -436,6 +427,207 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
             </div>
           ))}
         </div>
+
+        {proffesionalType === ProfessionalsDbEnum.model && (
+          <>
+            <h6 className="mt-3">Other required details: </h6>
+            {currentUser.gender === genderListEnum.female ? (
+              <div className="container">
+                <div className="row">
+                  <div className="col-md-4">
+                    <div
+                      className="d-flex align-items-center p-field"
+                      style={{ gap: "1rem" }}
+                    >
+                      <div className="form-group">
+                        <label className="text-warning">Height:</label>
+                        <InputText
+                          required
+                          type="text"
+                          value={userInfo.height}
+                          placeholder="eg. 5.4ft"
+                          onChange={(e) =>
+                            setuserInfo({
+                              ...userInfo,
+                              height: e.target.value,
+                            })
+                          }
+                        />
+                      </div>
+                      <div className="form-group">
+                        <label className="text-warning">Waist:</label>
+                        <InputText
+                          required
+                          type="number"
+                          value={userInfo.waist}
+                          placeholder="eg. 26in"
+                          onChange={(e) =>
+                            setuserInfo({
+                              ...userInfo,
+                              waist: e.target.value,
+                            })
+                          }
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="col-md-4">
+                    <div
+                      className="d-flex align-items-center p-field"
+                      style={{ gap: "1rem" }}
+                    >
+                      <div className="form-group">
+                        <label className="text-warning">Hips:</label>
+                        <InputText
+                          required
+                          type="text"
+                          value={userInfo.hips}
+                          placeholder="eg. 36in"
+                          onChange={(e) =>
+                            setuserInfo({
+                              ...userInfo,
+                              hips: e.target.value,
+                            })
+                          }
+                        />
+                      </div>
+                      <div className="form-group">
+                        <label className="text-warning">Bust</label>
+                        <InputText
+                          required
+                          type="text"
+                          value={userInfo.bust}
+                          placeholder="eg. 32/C"
+                          onChange={(e) =>
+                            setuserInfo({
+                              ...userInfo,
+                              bust: e.target.value,
+                            })
+                          }
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="col-md-4">
+                    <div
+                      className="d-flex align-items-center p-field"
+                      style={{ gap: "1rem" }}
+                    >
+                      <div className="form-group">
+                        <label className="text-warning">Dress Size:</label>
+                        <InputText
+                          required
+                          type="text"
+                          value={userInfo.dressSize}
+                          onChange={(e) =>
+                            setuserInfo({
+                              ...userInfo,
+                              dressSize: e.target.value,
+                            })
+                          }
+                        />
+                      </div>
+                      <div className="form-group">
+                        <label className="text-warning">Shoe size:</label>
+                        <InputText
+                          required
+                          type="text"
+                          value={userInfo.shoeSize}
+                          onChange={(e) =>
+                            setuserInfo({
+                              ...userInfo,
+                              shoeSize: e.target.value,
+                            })
+                          }
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <div className="container">
+                <div className="row">
+                  <div className="col-md-4">
+                    <div
+                      className="d-flex align-items-center p-field"
+                      style={{ gap: "1rem" }}
+                    >
+                      <div className="form-group">
+                        <label className="text-warning">Height:</label>
+                        <InputText
+                          required
+                          type="text"
+                          value={userInfo.height}
+                          placeholder="eg. 5.4ft"
+                          onChange={(e) =>
+                            setuserInfo({
+                              ...userInfo,
+                              height: e.target.value,
+                            })
+                          }
+                        />
+                      </div>
+                      <div className="form-group">
+                        <label className="text-warning">Waist:</label>
+                        <InputText
+                          required
+                          type="number"
+                          value={userInfo.waist}
+                          placeholder="eg. 26in"
+                          onChange={(e) =>
+                            setuserInfo({
+                              ...userInfo,
+                              waist: e.target.value,
+                            })
+                          }
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="col-md-4">
+                    <div
+                      className="d-flex align-items-center p-field"
+                      style={{ gap: "1rem" }}
+                    >
+                      <div className="form-group">
+                        <label className="text-warning">Shirt Size:</label>
+                        <InputText
+                          required
+                          type="text"
+                          value={userInfo.shirtSize}
+                          onChange={(e) =>
+                            setuserInfo({
+                              ...userInfo,
+                              shirtSize: e.target.value,
+                            })
+                          }
+                        />
+                      </div>
+                      <div className="form-group">
+                        <label className="text-warning">Shoe Size</label>
+                        <InputText
+                          required
+                          type="text"
+                          value={userInfo.shoeSize}
+                          onChange={(e) =>
+                            setuserInfo({
+                              ...userInfo,
+                              shoeSize: e.target.value,
+                            })
+                          }
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+          </>
+        )}
 
         <div className="p-field">
           <Button

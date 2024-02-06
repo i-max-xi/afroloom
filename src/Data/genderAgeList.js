@@ -3,6 +3,11 @@ export const genderList = [
     "Female"
 ]
 
+export const genderListEnum = {
+    male: "Male",
+    female: "Female"
+}
+
 export const ageList = [
     "Under 18",
     "18 - 24",
