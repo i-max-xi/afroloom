@@ -14,7 +14,6 @@ import CurrencyConverter from "./CurrencyConverter";
 import SearchBar2 from "./SearchBar2";
 import "primeicons/primeicons.css";
 import MobileNav from "./MobileNav";
-import { Button } from "primereact/button";
 
 const Nav = ({
   handleToggleDropdown,
