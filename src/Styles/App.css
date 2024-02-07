@@ -18,6 +18,10 @@
   .navbar-expand-lg .navbar-nav .nav-item {
     margin-bottom: 1rem;
   }
+
+  #mobileNavToggler {
+    display: inline-block !important;
+  }
   .dropdown {
     float: left;
   }
@@ -306,6 +310,10 @@
 .logo {
   width: 8rem;
   margin: 5px;
+}
+
+#mobileNavToggler {
+  display: none;
 }
 
 .search-input {

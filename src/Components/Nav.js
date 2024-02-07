@@ -29,7 +29,7 @@ const Nav = ({
   const signedin = useSelector((state) => state.user.signedIn);
   const dashboardPath = useSelector((state) => state.user.dashboardPath);
 
-  const [visible, setVisible] = useState(true);
+  const [visible, setVisible] = useState(false);
 
   const hamburger = (
     <svg
@@ -60,7 +60,7 @@ const Nav = ({
         >
           <span className="navbar-toggler-icon"></span>
         </button> */}
-          <Button icon="pi pi-arrow-right" onClick={() => setVisible(true)} />
+        <i className="pi pi-align-justify" id="mobileNavToggler" style={{ fontSize: '2rem' }} onClick={() => setVisible(true)}></i>
 
         <MobileNav visible={visible} setVisible={setVisible} />
         <Link to="/" className="navbar-brand">
