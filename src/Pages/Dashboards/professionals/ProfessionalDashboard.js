@@ -18,7 +18,6 @@ const ProfessionalDashboard = () => {
   const welcomename = currentUser.name;
   // const sellerCompany = currentUser.companyName;
 
-  console.log(currentUser);
 
   // const sellerCountry = currentUser.country;
   const professionalApproved = currentUser.approved;

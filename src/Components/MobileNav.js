@@ -10,7 +10,6 @@ import CurrencyConverter from "./CurrencyConverter";
 import { categoryArr } from "../Data/categoryList";
 import Logo from "../Assets/AFRO LOGO 4.jpg";
 
-
 const MobileNav = ({ visible, setVisible }) => {
   const cartItems = useSelector((state) => state.cartItems);
 
@@ -22,11 +21,12 @@ const MobileNav = ({ visible, setVisible }) => {
       header={<h1 className="text-black">Your Custom Header</h1>} // Add this line to customize the header
     >
       <div className="custom-header">
-      <Link to="/" className="navbar-brand">
+        <Link to="/" className="navbar-brand">
           <h3>
             <img src={Logo} alt="africa-logo" className="logo" />
           </h3>
-        </Link>      </div>
+        </Link>{" "}
+      </div>
       <div className="d-flex justify-content-between">
         <CurrencyConverter />
 
@@ -54,38 +54,62 @@ const MobileNav = ({ visible, setVisible }) => {
         </li>
       </div>
       <div className="d-flex flex-column align-items-start mt-3">
-        
         <ul className="navbar-nav">
-          <li className="bg-warning fw-bold nav-category"></li>
+          {/* <li className="bg-warning fw-bold nav-category"></li> */}
           <li className="nav-item">
             <Link className="nav-link" to="/customize">
               Create Your Own
             </Link>
           </li>
 
-          <li className="nav-item adjust-nav">
-            <Link className="about" to="/supplier-signup">
+          <li className="nav-item">
+            <Link className="nav-link" to="/supplier-signup">
               Sell
             </Link>
           </li>
 
-          <li className="nav-item adjust-nav">
-            <Link className="about" to="/about">
+          <li className="nav-item">
+            <Link className="nav-link" to="/about">
               About
             </Link>
           </li>
         </ul>
         <Divider />
 
-        {categoryArr.map((option) => (
-          <Link
-            to={option.link}
-            className={`mb-2 cat-dropdown text-decoration-none text-${option.variant}`}
-            key={option.name}
-          >
-            {option.name}
-          </Link>
-        ))}
+        <ul className="navbar-nav">
+          <li className="nav-item">
+            <Link className="nav-link" to="/professional/Model">
+              Book A Model
+            </Link>
+          </li>
+
+          <li className="nav-item">
+            <Link className="nav-link" to="/professional/Tour Guide">
+              Book A Tour Guide
+            </Link>
+          </li>
+
+          <li className="nav-item">
+            <Link className="nav-link" to="/professional/Photographer">
+              Book A Photographer / VideoGrapher
+            </Link>
+          </li>
+        </ul>
+
+        <Divider />
+        <ul className="navbar-nav">
+          {categoryArr.map((option) => (
+            <li className="nav-item">
+              <Link
+                to={option.link}
+                className={`mb-2 nav-link cat-dropdown text-decoration-none text-${option.variant}`}
+                key={option.name}
+              >
+                {option.name}
+              </Link>
+            </li>
+          ))}
+        </ul>
         <Divider />
       </div>
     </Sidebar>

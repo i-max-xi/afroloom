@@ -6,6 +6,11 @@ export const categoryArr = [
     variant: "black"
   },
   {
+    name: "Herbal and Beauty",
+    link: "",
+    variant: "black"
+  },
+  {
     name: "Furniture",
     link: "/category/Furniture",
     variant: "black"
@@ -33,6 +38,7 @@ export const categoryArr = [
 ];
 
 export const categoryFilter = [
+  "Herbal and Beauty",
   "Accessories",
   "Clothing",
   "Textiles",
