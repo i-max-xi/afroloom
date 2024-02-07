@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import DropDowner from "./DropDowner";
 import { Link } from "react-router-dom";
 import Logo from "../Assets/AFRO LOGO 4.jpg";
@@ -13,6 +13,7 @@ import GoogleTranslate from "../GoogleTranslate";
 import CurrencyConverter from "./CurrencyConverter";
 import SearchBar2 from "./SearchBar2";
 import "primeicons/primeicons.css";
+import MobileNav from "./MobileNav";
 
 const Nav = ({
   handleToggleDropdown,
@@ -27,11 +28,7 @@ const Nav = ({
   const signedin = useSelector((state) => state.user.signedIn);
   const dashboardPath = useSelector((state) => state.user.dashboardPath);
 
-  // const isVisible = useSelector((state) => state.search.visible);
-
-  // const showHideSearch = () => {
-  //   dispatch(setVisible(true));
-  // };
+  const [visible, setVisible] = useState(false);
 
   const hamburger = (
     <svg
@@ -52,9 +49,8 @@ const Nav = ({
   return (
     <nav className="navbar navbar-expand-lg text-black d-flex px-3 bg-white border-bottom">
       <div>
-        <button
-          className="navbar-toggler"
-          type="button"
+        {/* <button
+          className="navbar-toggler btn"
           data-toggle="collapse"
           data-target="#navbarNavDropdown"
           aria-controls="navbarNavDropdown"
@@ -62,7 +58,10 @@ const Nav = ({
           aria-label="Toggle navigation"
         >
           <span className="navbar-toggler-icon"></span>
-        </button>
+        </button> */}
+        <i className="pi pi-align-justify" id="mobileNavToggler" style={{ fontSize: '2rem' }} onClick={() => setVisible(true)}></i>
+
+        <MobileNav visible={visible} setVisible={setVisible} />
         <Link to="/" className="navbar-brand">
           <h3>
             <img src={Logo} alt="africa-logo" className="logo" />

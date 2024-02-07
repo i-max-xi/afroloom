@@ -13,7 +13,7 @@ import { auth } from "../../firebase";
 import { Toast } from "primereact/toast";
 import ProductsDataService from "../../Services/products.services";
 import { ProgressSpinner } from "primereact/progressspinner";
-import { ProfessionalsListEnum } from "../../Data/professionalsList";
+import { ProfessionalsDbEnum } from "../../Data/professionalsList";
 
 const SignIn = () => {
   const dispatch = useDispatch();
@@ -66,7 +66,7 @@ const SignIn = () => {
           userInfo = tourGuideInfo.data();
           dispatch(
             setDashBoardPath(
-              `/professionals-dashboard/${ProfessionalsListEnum.tourGuide}`
+              `/professionals-dashboard/${ProfessionalsDbEnum.tourGuide}`
             )
           );
           break;
@@ -78,7 +78,7 @@ const SignIn = () => {
           userInfo = photographerInfo.data();
           dispatch(
             setDashBoardPath(
-              `/professionals-dashboard/${ProfessionalsListEnum.photographer}`
+              `/professionals-dashboard/${ProfessionalsDbEnum.photographer}`
             )
           );
           break;
@@ -91,7 +91,7 @@ const SignIn = () => {
           userInfo = modelInfo.data();
           dispatch(
             setDashBoardPath(
-              `/professionals-dashboard/${ProfessionalsListEnum.model}`
+              `/professionals-dashboard/${ProfessionalsDbEnum.model}`
             )
           );
           break;
@@ -153,7 +153,8 @@ const SignIn = () => {
       setIsLoading(false);
       toastRef.current.show({
         severity: "error",
-        summary: `Sign in failed. Please try again ${error}`,
+        summary: `Sign in failed. Please try again`,
+        detail: "Perhaps you checked the wrong category"
       });
     }
   };

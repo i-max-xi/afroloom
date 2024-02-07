@@ -55,6 +55,7 @@ import CustomizeCheckout from "./Pages/CustomizeCheckout";
 import ProfessionalsPage from "./Pages/Professionals/ProfessionalsPage";
 import ProfessionalsDetail from "./Pages/Professionals/ProfessionalsDetail";
 import ProfessionalSignUp from "./Pages/Auths/ProfessionalSignUp";
+import ProfessionalDashboard from "./Pages/Dashboards/professionals/ProfessionalDashboard";
 
 function App() {
   const dispatch = useDispatch(); // Get the dispatch function
@@ -98,7 +99,7 @@ function App() {
             <Route path="/seller-dashboard" element={<SellerDashboard />} />
             <Route path="/user-dashboard" element={<UserDashboard />} />
             <Route path="/admin-dashboard" element={<AdminDashboard />} />
-            {/* <Route path="/professionals-dashboard/:professionalType" element={<AdminDashboard />} /> */}
+            <Route path="/professionals-dashboard/:professionalType" element={<ProfessionalDashboard />} />
 
 
             <Route path="category/:categoryName" element={<CategoryDetail />} />
