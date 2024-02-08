@@ -173,49 +173,7 @@ export const Card = ({
   );
 };
 
-const CardList = ({ currentPage, setCurrentPage, showNestedComponent, showAdvanced, setShowAdvanced }) => {
-  // ads
-  // const ads = [
-  //   {
-  //     id: 1,
-  //     title: "Female Collection",
-  //     item: AdGirl,
-  //     description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
-  //     price: "20.99 - 80.99",
-  //     height: "400rem",
-  //     Width: "28%",
-  //     TextAlign: "center",
-  //     Button: (
-  //       <Link to="/category/Clothing" className="btn btn-outline-warning">
-  //         View More
-  //       </Link>
-  //     ),
-  //     linkless: true,
-  //     rating: 5,
-  //   },
-
-  //   {
-  //     id: 2,
-  //     title: "Men's Collection",
-  //     item: AdGuy2,
-  //     description: "Lorem ipsum dolor sit amet, consectetur adipisicing elit.",
-  //     price: "20.99 - 80.99",
-  //     height: "400rem",
-  //     Width: "28%",
-  //     TextAlign: "center",
-  //     Button: (
-  //       <Link to="/category/Clothing" className="btn btn-outline-warning">
-  //         View More
-  //       </Link>
-  //     ),
-  //     linkless: true,
-  //     rating: 5,
-  //   },
-  // ];
-
-  // const dispatch = useDispatch();
-
-  // const [Products, setProducts] = useState([]);
+const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
   const [itemsPerPage] = useState(24);
 
   const Products = useSelector((state) => state.allProducts.products);
@@ -405,6 +363,7 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent, showAdvanc
     setItemsToDisplay(newItemstoDisplay);
   };
 
+  const [showSearch, setshowSearch] = useState(false);
 
   return (
     <>
@@ -414,15 +373,19 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent, showAdvanc
         {showNestedComponent && <CategorySwipe />}
 
         {/* {showNestedComponent && <Row offerFix="Professionals" />} */}
+        <div onClick={() => setshowSearch(!showSearch)} className="advanced-search-button rounded-circle">
+          {/* <label htmlFor="advancedSearch">Advanced Search</label> */}
+          <span className="pi pi-search-plus" style={{fontSize: "2rem"}}></span>
+        </div>
 
         {showNestedComponent && <Row offerFix="One" />}
 
         <Dialog
           header="Advanced Search"
-          visible={showAdvanced}
+          visible={showSearch}
           className="col-10 col-sm-3 search-banner"
           onHide={() => {
-            setShowAdvanced(false);
+            setshowSearch(false);
           }}
         >
           <SearchFilters

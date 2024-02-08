@@ -72,7 +72,7 @@ export const mobileCategoryArr = [
   },
   {
     name: "Herbal and Beauty Supplies",
-    link: "",
+    link: "/category/Herbal and Beauty Supplies",
     variant: "black"
   },
   {
@@ -384,5 +384,18 @@ export const allCategory = [
     rating: "4",
     image:
       "https://www.contemporary-african-art.com/images/nala-sisters-david-ross.jpg",
+  },
+  {
+    id: "10000",
+    name: "Herbal and Beauty Supplies",
+    filters: [
+      {
+        name: "Type",
+        options: [],
+      },
+    ],
+    rating: "4",
+    image:
+      "https://5.imimg.com/data5/DR/DY/MY-52827986/herbal-products-500x500.jpg",
   },
 ];

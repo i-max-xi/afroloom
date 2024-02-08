@@ -801,6 +801,26 @@ form {
   transform: translate(0.5rem, -0.2rem) !important;
 }
 
+/* the one at bottm of screen */
+.advanced-search-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 1rem;
+  left:  80%;
+  padding: 0.7rem 0;
+  width: max-content !important;
+  
+  font-size: 2rem !important;
+  background-color: var(--light-red);
+  color: white;
+  cursor: pointer;
+  z-index: 100;
+}
+
+
+
 .registeras {
   display: flex;
 }
