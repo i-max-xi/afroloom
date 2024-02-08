@@ -42,7 +42,7 @@
   #search-input {
     display: none !important;
   }
-  #mobile-search-input {
+  #mobile-search-header {
     display: block !important;
   }
   .search-input {
@@ -416,7 +416,7 @@
   box-shadow: 0px 10px 20px 10px rgba(0, 0, 0, 0.1);
 }
 
-#mobile-search-input {
+#mobile-search-header {
   display: none;
 }
 

@@ -22,8 +22,8 @@ const MobileSearchBar = ({showAdvanced, setShowAdvanced}) => {
   };
 
   return (
-    <div className="d-flex justify-content-center align-items-center align-self-center col-12" id="mobile-search-input">
-      <div className="p-inputgroup flex-1 search-main">
+    <div className="d-flex justify-content-center align-items-center align-self-center col-12">
+      <div className="p-inputgroup">
         <InputText
           placeholder="What are you looking for?..."
           onChange={handleInput}

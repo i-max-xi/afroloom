@@ -6,8 +6,6 @@ import MobileSearchBar from "./MobileSearchBar";
 import Subheader from "./subheader/Subheader";
 
 const TopCard = () => {
-
-
   return (
     <div
       className=""
@@ -17,13 +15,13 @@ const TopCard = () => {
         backgroundPosition: "top right",
       }}
     >
-
       <Nav />
 
-      <MobileSearchBar />
+      <section id="mobile-search-header">
+        <MobileSearchBar />
 
-      <Subheader />
-
+        <Subheader />
+      </section>
 
       <div className="d-flex Map">
         <HeaderCarousel />
