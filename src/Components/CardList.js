@@ -413,7 +413,7 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent, showAdvanc
       <div className="row px-3 d-flex">
         {showNestedComponent && <CategorySwipe />}
 
-        {showNestedComponent && <Row offerFix="Professionals" />}
+        {/* {showNestedComponent && <Row offerFix="Professionals" />} */}
 
         {showNestedComponent && <Row offerFix="One" />}
 

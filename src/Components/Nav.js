@@ -16,13 +16,7 @@ import "primeicons/primeicons.css";
 import MobileNav from "./MobileNav";
 import { isMobile } from "../utils/constants";
 
-const Nav = ({
-  handleToggleDropdown,
-  Language,
-  Currency,
-  showAdvanced,
-  setShowAdvanced,
-}) => {
+const Nav = () => {
   const cartItems = useSelector((state) => state.cartItems);
   // const dispatch = useDispatch();
 
@@ -194,10 +188,10 @@ const Nav = ({
 
           <div className="d-flex justify-content-around align-items-center">
             <SearchBar2 />
-            <span
+            {/* <span
               onClick={() => setShowAdvanced(!showAdvanced)}
               className="pi pi-search-plus advance-search-pc"
-            ></span>
+            ></span> */}
           </div>
         </ul>
       </div>

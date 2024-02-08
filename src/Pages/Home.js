@@ -23,7 +23,7 @@ const Home = () => {
   return (
     <div>
       {/* <Header /> */}
-      {showNestedComponent && <TopCard showAdvanced={showSearch} setShowAdvanced={setshowSearch}/> }
+      {showNestedComponent && <TopCard /> }
       <CardList showAdvanced={showSearch} setShowAdvanced={setshowSearch} currentPage={currentPage} setCurrentPage={setCurrentPage} showNestedComponent={showNestedComponent}/>
       {/* <PageNav /> */}
     </div>
