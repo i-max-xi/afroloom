@@ -6,23 +6,8 @@ export const categoryArr = [
     variant: "black"
   },
   {
-    name: "Herbal and Beauty",
-    link: "",
-    variant: "black"
-  },
-  {
-    name: "Furniture",
-    link: "/category/Furniture",
-    variant: "black"
-  },
-  {
     name: "Clothing",
     link: "/category/Clothing",
-    variant: "black"
-  },
-  {
-    name: "Textile",
-    link: "/category/Textiles",
     variant: "black"
   },
   {
@@ -31,22 +16,90 @@ export const categoryArr = [
     variant: "black"
   },
   {
+    name: "Furniture",
+    link: "/category/Furniture",
+    variant: "black"
+  },
+  {
+    name: "Herbal and Beauty Supplies",
+    link: "",
+    variant: "black"
+  },
+
+  {
+    name: "Textile",
+    link: "/category/Textiles",
+    variant: "black"
+  },
+
+  {
     name: "See All",
     link: "/category-page",
     variant: "warning"
   },
 ];
 
+export const mobileCategoryArr = [
+  {
+    name: "Accessories",
+    link: "/category/Accessories",
+    variant: "black"
+  },
+  {
+    name: "Basketry",
+    link: "/category/Basketry",
+    variant: "black"
+  },
+  {
+    name: "Clothing",
+    link: "/category/Clothing",
+    variant: "black"
+  },
+  {
+    name: "Footwear",
+    link: "/category/Footwear",
+    variant: "black"
+  },
+  {
+    name: "Furniture",
+    link: "/category/Furniture",
+    variant: "black"
+  },
+  {
+    name: "Handicrafts",
+    link: "/category/Handicrafts",
+    variant: "black"
+  },
+  {
+    name: "Herbal and Beauty Supplies",
+    link: "",
+    variant: "black"
+  },
+  {
+    name: "Pottery",
+    link: "/category/Pottery",
+    variant: "black"
+  },
+
+  {
+    name: "Textiles",
+    link: "/category/Textiles",
+    variant: "black"
+  },
+
+
+];
+
 export const categoryFilter = [
-  "Herbal and Beauty",
   "Accessories",
-  "Clothing",
-  "Textiles",
-  "Footwear",
   "Basketry",
-  "Pottery",
+  "Clothing",
+  "Footwear",
   "Furniture",
-  "Handicrafts"
+  "Handicrafts",
+  "Herbal and Beauty Supplies",
+  "Pottery",
+  "Textiles",
 ];
 
 export const allCategory = [

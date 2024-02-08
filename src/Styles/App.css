@@ -17,12 +17,18 @@
     font-size: 1rem !important;
     gap: 1rem;
   }
+
+  /* .custom-divider {
+    height: 4px;
+    background-color: #00000074;
+  } */
   /* .navbar-expand-lg .navbar-nav .nav-item {
     margin-bottom: 1rem;
   } */
 
   #mobileNavToggler {
     display: inline-block !important;
+    transform: translateY(0.5rem);
   }
   /* .dropdown {
     float: left;
