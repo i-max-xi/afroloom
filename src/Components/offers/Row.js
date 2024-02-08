@@ -161,9 +161,10 @@ const Row = ({ mainItems, offerFix }) => {
       array: selectedFashionAccessories,
     },
     {
-      title: "Discover Fashion Trends",
-      imageUrl: require("../../Assets/Offers/fashion_trend/cd664fd6d9e14b009b2657e27345a94b.jpg"),
-      linkTo: "/category/Clothing",
+      title: "Herbal and Beauty Supplies",
+      // imageUrl: require("../../Assets/Offers/fashion_trend/cd664fd6d9e14b009b2657e27345a94b.jpg"),
+      imageUrl: "https://5.imimg.com/data5/DR/DY/MY-52827986/herbal-products-500x500.jpg",
+      linkTo: "/category/Herbal and Beauty Supplies",
     },
     {
       title: "We get it done like you design it",
