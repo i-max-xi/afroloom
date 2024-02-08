@@ -5,7 +5,7 @@ import { InputText } from "primereact/inputtext";
 import { Link } from "react-router-dom";
 
 
-const MobileSearchBar = ({showAdvanced, setShowAdvanced}) => {
+const MobileSearchBar = () => {
   const dispatch = useDispatch();
   const [keyword, setKeyword] = useState("");
 
@@ -22,16 +22,14 @@ const MobileSearchBar = ({showAdvanced, setShowAdvanced}) => {
   };
 
   return (
-    <div className="d-flex justify-content-center align-items-center align-self-center col-12">
-      <div className="p-inputgroup">
+      <div className="p-inputgroup w-100">
         <InputText
           placeholder="What are you looking for?..."
           onChange={handleInput}
-          className="search-input" 
         />
 
         <button
-          className="btn btn-warning search-button"
+          className="btn btn-warning"
           onClick={handleSearchInputChange}
         >
           <Link
@@ -42,7 +40,6 @@ const MobileSearchBar = ({showAdvanced, setShowAdvanced}) => {
           </Link>
         </button>
       </div>
-    </div>
   );
 };
 
