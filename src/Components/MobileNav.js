@@ -1,35 +1,30 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import { Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Sidebar } from "primereact/sidebar";
 
 import { Divider } from "primereact/divider";
 import { Badge } from "primereact/badge";
 import CurrencyConverter from "./CurrencyConverter";
-import { categoryArr } from "../Data/categoryList";
+import { categoryArr, mobileCategoryArr } from "../Data/categoryList";
 import Logo from "../Assets/AFRO LOGO 4.jpg";
 
 const MobileNav = ({ visible, setVisible }) => {
   const cartItems = useSelector((state) => state.cartItems);
+  const [showAllDepartments, setShowAllDepartments] = useState(false);
+
+  const initialDepartmentsToShow = 6;
+  const visibleDepartments = showAllDepartments
+    ? mobileCategoryArr
+    : mobileCategoryArr.slice(0, initialDepartmentsToShow);
 
   return (
-    <Sidebar
-      visible={visible}
-      onHide={() => setVisible(false)}
-      className="Sidebar bg-white"
-      header={<h1 className="text-black">Your Custom Header</h1>} // Add this line to customize the header
-    >
-      <div className="custom-header">
-        <Link to="/" className="navbar-brand">
-          <h3>
-            <img src={Logo} alt="africa-logo" className="logo" />
-          </h3>
-        </Link>{" "}
-      </div>
+    <Sidebar visible={visible} onHide={() => setVisible(false)} className=" ">
+      <div className="custom-header bg-secondary p-5"><h2>Browse AfroLoom</h2></div>
       <div className="d-flex justify-content-between">
         <CurrencyConverter />
 
-        <li className="nav-item">
+        {/* <li className="nav-item list-unstyled">
           <Link to="/checkout" className="nav-link" href="#cart">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -50,17 +45,17 @@ const MobileNav = ({ visible, setVisible }) => {
               <span></span>
             )}
           </Link>
-        </li>
+        </li> */}
       </div>
       <div className="d-flex flex-column align-items-start mt-3">
         <ul className="navbar-nav">
           {/* <li className="bg-warning fw-bold nav-category"></li> */}
+
           <li className="nav-item">
-            <Link className="nav-link" to="/customize">
-              Create Your Own
+            <Link to="/" className="navbar-brand">
+              Home
             </Link>
           </li>
-
           <li className="nav-item">
             <Link className="nav-link" to="/supplier-signup">
               Sell
@@ -73,31 +68,43 @@ const MobileNav = ({ visible, setVisible }) => {
             </Link>
           </li>
         </ul>
-        <Divider />
+        <Divider className="custom-divider" />
 
         <ul className="navbar-nav">
           <li className="nav-item">
-            <Link className="nav-link" to="/professional/Model">
-              Book A Model
+            <Link className="nav-link" to="/customize">
+              Create Your Own
             </Link>
           </li>
+        </ul>
 
+        <Divider className="custom-divider" />
+
+        <h5>Book Professionals</h5>
+        <ul className="navbar-nav">
           <li className="nav-item">
             <Link className="nav-link" to="/professional/Tour Guide">
-              Book A Tour Guide
+              Tour Guide
             </Link>
           </li>
 
           <li className="nav-item">
             <Link className="nav-link" to="/professional/Photographer">
-              Book A Photographer / VideoGrapher
+              Photographer / VideoGrapher
+            </Link>
+          </li>
+
+          <li className="nav-item">
+            <Link className="nav-link" to="/professional/Model">
+              Model
             </Link>
           </li>
         </ul>
 
-        <Divider />
+        <Divider className="custom-divider" />
+        <h5>Shopping Departments</h5>
         <ul className="navbar-nav">
-          {categoryArr.map((option) => (
+          {visibleDepartments.map((option) => (
             <li className="nav-item">
               <Link
                 to={option.link}
@@ -108,8 +115,18 @@ const MobileNav = ({ visible, setVisible }) => {
               </Link>
             </li>
           ))}
+          {categoryArr.length > initialDepartmentsToShow && (
+            <div
+              className="text-warning"
+              onClick={() => setShowAllDepartments(!showAllDepartments)}
+            >
+              {showAllDepartments ? "See Less" : "See More"}<i className={showAllDepartments ? "pi pi-angle-up": "pi pi-angle-down"} style={{ fontSize: '1rem', marginLeft: "0.5rem" }}></i>
+
+            </div>
+          )}
         </ul>
-        <Divider />
+
+        <Divider className="custom-divider" />
       </div>
     </Sidebar>
   );

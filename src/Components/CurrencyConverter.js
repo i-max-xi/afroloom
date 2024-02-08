@@ -110,7 +110,7 @@ const CurrencyConverter = () => {
   };
 
   return (
-    <div className="currency-converter">
+    <div className="currency-converter" style={{flex: 1}}>
       <Dropdown
         value={currencyOptions.find(
           (option) => option.symbol === currencySymbol.symbol
