@@ -22,17 +22,15 @@ const MobileSearchBar = ({showAdvanced, setShowAdvanced}) => {
   };
 
   return (
-    <div className="flex justify-content-center align-items-center align-self-center search-input" id="mobile-search-input">
-      <div className="p-inputgroup flex-1 mx-2 search-main">
+    <div className="d-flex justify-content-center align-items-center align-self-center col-12" id="mobile-search-input">
+      <div className="p-inputgroup flex-1 search-main">
         <InputText
           placeholder="What are you looking for?..."
           onChange={handleInput}
-          className="search-input"
+          className="search-input" 
         />
 
-        <button // className={`btn btn-warning text-white ${
-          //   keyword.trim() === "" ? "disabled" : ""
-          // }`}
+        <button
           className="btn btn-warning search-button"
           onClick={handleSearchInputChange}
         >

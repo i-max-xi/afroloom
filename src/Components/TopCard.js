@@ -3,6 +3,7 @@ import React from "react";
 import Nav from "./Nav";
 import HeaderCarousel from "./HeaderCarousel";
 import MobileSearchBar from "./MobileSearchBar";
+import Subheader from "./subheader/Subheader";
 
 const TopCard = () => {
 
@@ -19,14 +20,10 @@ const TopCard = () => {
 
       <Nav />
 
-      <div className="d-flex justify-content-around align-items-center">
-        <MobileSearchBar />
-        {/* <span
-          onClick={() => setShowAdvanced(!showAdvanced)}
-          className="pi pi-search-plus advance-search-mobile"
-          id="advance-search-mobile"
-        ></span> */}
-      </div>
+      <MobileSearchBar />
+
+      <Subheader />
+
 
       <div className="d-flex Map">
         <HeaderCarousel />

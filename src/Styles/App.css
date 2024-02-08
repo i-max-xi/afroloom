@@ -47,7 +47,7 @@
   }
   .search-input {
     width: 25rem !important;
-    margin: 0.5rem 0.5rem 0.5rem 1rem;
+    /* margin: 0.5rem 0.5rem 0.5rem 1rem; */
   }
   #advance-search-mobile {
     display: block !important;
@@ -326,12 +326,12 @@
 
 .search-input {
   width: 25rem;
-  border-radius: 15rem !important;
+  /* border-radius: 5rem !important; */
 }
 
 .search-button {
   transform: translateX(-4rem);
-  border-radius: 15rem !important;
+  /* border-radius: 5rem !important; */
   z-index: 9;
 }
 
