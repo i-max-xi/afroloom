@@ -161,7 +161,9 @@ const Row = ({ mainItems, offerFix }) => {
       array: selectedFashionAccessories,
     },
     {
-      title: "Herbal and Beauty Supplies",
+      // title: "Herbal and Beauty Supplies",
+      title: "Herbal Haven: Discover the Power of Nature for Your Health and Beauty Journey",
+
       // imageUrl: require("../../Assets/Offers/fashion_trend/cd664fd6d9e14b009b2657e27345a94b.jpg"),
       imageUrl: "https://5.imimg.com/data5/DR/DY/MY-52827986/herbal-products-500x500.jpg",
       linkTo: "/category/Herbal and Beauty Supplies",

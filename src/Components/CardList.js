@@ -21,6 +21,7 @@ import Row from "./offers/Row";
 import Banner from "./offers/Banner";
 import { getPriceRangeOptions } from "../Data/PriceRangeData";
 import { Dialog } from "primereact/dialog";
+import { isMobile } from "../utils/constants";
 
 export const Card = ({
   title,
@@ -372,12 +373,12 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
       <div className="row px-3 d-flex">
         {showNestedComponent && <CategorySwipe />}
 
-        {/* {showNestedComponent && <Row offerFix="Professionals" />} */}
         <div onClick={() => setshowSearch(!showSearch)} className="advanced-search-button rounded-circle">
           {/* <label htmlFor="advancedSearch">Advanced Search</label> */}
           <span className="pi pi-search-plus" style={{fontSize: "2rem"}}></span>
         </div>
 
+        {showNestedComponent && !isMobile && <Row offerFix="Professionals" />}
         {showNestedComponent && <Row offerFix="One" />}
 
         <Dialog
