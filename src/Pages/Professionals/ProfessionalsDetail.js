@@ -122,18 +122,18 @@ const ProfessionalsDetail = ({ match }) => {
               <h6>
                 {product.city}, {product.country}
               </h6>
-            </p>
-          </div>
-          <div className="d-flex flex-column justify-content-center align-items-center col-12 col-sm-2">
-            <div
+              <div
               className=" d-flex flex-row"
-              style={{ justifyContent: "space-evenly" }}
             >
               {currencySymbol}
               {(currencyFactor * product.lowerPrice).toFixed(2)} -{" "}
               {currencySymbol}
               {(currencyFactor * product.UpperPrice).toFixed(2)}
             </div>
+            </p>
+          </div>
+          <div className="d-flex flex-column justify-content-center align-items-center col-12 col-sm-2">
+            
             <div className=" d-flex flex-column">
               {product.offers.map(({ offer, priceValue }) => (
                 <div className="identity-item" key={offer}>

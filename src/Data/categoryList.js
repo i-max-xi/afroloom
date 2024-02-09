@@ -1,3 +1,6 @@
+const book = require("../Assets/vid/book.jpg");
+const herbal = require("../Assets/vid/herbal.jpg");
+
 
 export const categoryArr = [
   {
@@ -51,6 +54,11 @@ export const mobileCategoryArr = [
     variant: "black"
   },
   {
+    name: "Books",
+    link: "/category/Books",
+    variant: "black"
+  },
+  {
     name: "Clothing",
     link: "/category/Clothing",
     variant: "black"
@@ -93,6 +101,7 @@ export const mobileCategoryArr = [
 export const categoryFilter = [
   "Accessories",
   "Basketry",
+  "Books",
   "Clothing",
   "Footwear",
   "Furniture",
@@ -395,7 +404,29 @@ export const allCategory = [
       },
     ],
     rating: "4",
-    image:
-      "https://5.imimg.com/data5/DR/DY/MY-52827986/herbal-products-500x500.jpg",
+    image: herbal,
+  },
+  {
+    id: "12000",
+    name: "Books",
+    filters: [
+      {
+        name: "Type",
+        options: [
+          "Fiction",
+          "Non-Fiction",
+          "Poetry",
+          "Drama",
+          "Children's Literature",
+          "Cookbooks",
+          "Mystery",
+          "Academic Books",
+          "Religious Books"
+        ],
+        
+      },
+    ],
+    rating: "4",
+    image: "https://eagle.co.ug/wp-content/uploads/2022/08/Best-Africa-Books-Feature-Image-1-1.png",
   },
 ];
