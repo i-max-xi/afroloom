@@ -16,7 +16,7 @@ const MobileNav = ({ visible, setVisible }) => {
 
   return (
     <Sidebar visible={visible} onHide={() => setVisible(false)} className=" ">
-      <div className="custom-header bg-warning text-white p-3 mb-2"><h2>Browse Afroloom</h2></div>
+      <div className="custom-header bg-warning text-white p-3 mb-4"><h2>Browse Afroloom</h2></div>
       <div className="d-flex justify-content-between">
         <CurrencyConverter />
       </div>

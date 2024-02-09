@@ -131,6 +131,10 @@ const ProfessionalsDetail = ({ match }) => {
               {(currencyFactor * product.UpperPrice).toFixed(2)}
             </div>
             </p>
+            <p>
+            <h6>{product.gender}</h6>
+            Gender
+          </p>
           </div>
           <div className="d-flex flex-column justify-content-center align-items-center col-12 col-sm-2">
             
