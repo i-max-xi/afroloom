@@ -7,13 +7,16 @@ import { Dialog } from "primereact/dialog";
 import ProfessionalsCheckout from "./ProfessionalsCheckout";
 import { Image } from "primereact/image";
 import "./styles/ProfessionalStyle.css";
+import { ProfessionalsListEnum } from "../../Data/professionalsList";
+import { genderListEnum } from "../../Data/genderAgeList";
+import { Divider } from "primereact/divider";
 
 const ProfessionalsDetail = ({ match }) => {
   const { professionalName, productId } = useParams();
 
   const [selectedOffer, setSelectedOffer] = useState({
     offer: "",
-    priceValue: 0
+    priceValue: 0,
   });
 
   const Models = useSelector((state) => state.allModels.products);
@@ -84,7 +87,7 @@ const ProfessionalsDetail = ({ match }) => {
       <div className="container d-flex flex-column mt-5">
         <div className="d-flex justify-content-around border-bottom pb-4">
           <div className="d-flex justify-content-start align-items-center">
-            <div className="col-6 col-sm-2">
+            <div className="col-12 col-sm-6">
               <img
                 width="100%"
                 className="rounded-circle card-img-top"
@@ -105,28 +108,26 @@ const ProfessionalsDetail = ({ match }) => {
               style={{ justifyContent: "space-evenly" }}
             >
               {currencySymbol}
-              {(currencyFactor * product.lowerPrice).toFixed(2)} - {currencySymbol}
+              {(currencyFactor * product.lowerPrice).toFixed(2)} -{" "}
+              {currencySymbol}
               {(currencyFactor * product.UpperPrice).toFixed(2)}
             </div>
-            <div
-              className=" d-flex flex-column"
-            >
-              {product.offers.map(({offer, priceValue}) => (
-                <div
-                className="identity-item"
-                key={offer}
-              >
-                <input
-                  type="radio"
-                  id={offer}
-                  checked={selectedOffer.offer === offer}
-                  onChange={() => setSelectedOffer({offer: offer, priceValue: priceValue})}
-                />
-                <label className="mt-2" htmlFor={offer}>
-                  {offer} - {currencySymbol}
-              {(currencyFactor * priceValue).toFixed(2)}
-                </label>
-              </div>
+            <div className=" d-flex flex-column">
+              {product.offers.map(({ offer, priceValue }) => (
+                <div className="identity-item" key={offer}>
+                  <input
+                    type="radio"
+                    id={offer}
+                    checked={selectedOffer.offer === offer}
+                    onChange={() =>
+                      setSelectedOffer({ offer: offer, priceValue: priceValue })
+                    }
+                  />
+                  <label className="mt-2" htmlFor={offer}>
+                    {offer} - {currencySymbol}
+                    {(currencyFactor * priceValue).toFixed(2)}
+                  </label>
+                </div>
               ))}
             </div>
             <button
@@ -138,36 +139,92 @@ const ProfessionalsDetail = ({ match }) => {
           </div>
         </div>
         <div className="d-flex mt-3" style={{ justifyContent: "space-evenly" }}>
-          <p>
+          {/* <p>
             <h6>{product.gender}</h6>
             Gender
-          </p>
-          <p>
-            <h6>{product.height}</h6>
-            Height
-          </p>
-          <p>
-            <h6>{product.age}</h6>
-            Age
-          </p>
-          <p>
-            <h6>{product.experience}</h6>
-            Experience
-          </p>
+          </p> */}
+          {professionalName === ProfessionalsListEnum.model && (
+            <>
+              <p>
+                <h6>{product.age}</h6>
+                Age
+              </p>
+              <p>
+                <h6>{product.height}</h6>
+                Height
+              </p>
+              <p>
+                <h6>{product.waist}</h6>
+                Waist
+              </p>
+            </>
+          )}
+          {product.gender === genderListEnum.female && (
+            <>
+              <p>
+                <h6>{product.hips}</h6>
+                Hips
+              </p>
+              <p>
+                <h6>{product.bust}</h6>
+                Bust
+              </p>
+              <p>
+                <h6>{product.dressSize}</h6>
+                Dress Size
+              </p>
+              <p>
+                <h6>{product.shoeSize}</h6>
+                Shoe Size
+              </p>
+            </>
+          )}
+          {product.gender === genderListEnum.male && (
+            <>
+              <p>
+                <h6>{product.shirtSize}</h6>
+                Shirt Size
+              </p>
+              <p>
+                <h6>{product.shoeSize}</h6>
+                Shoe Size
+              </p>
+            </>
+          )}
         </div>
       </div>
       <hr />
 
+      <div className="container mt-5 mb-5">
+        <h3 className="d-flex justify-content-center footer-header">
+          Specialties
+        </h3>
+        <div className="d-flex mt-3" style={{ justifyContent: "space-evenly" }}>
+          {product.specialties.length !== 0 ? (
+            product.specialties.map((specialty, index) => (
+              <React.Fragment key={index}>
+                <h5>{specialty}</h5>
+                {index !== product.specialties.length - 1 && (
+                  <Divider layout="vertical" />
+                )}
+              </React.Fragment>
+            ))
+          ) : (
+            <p className="m-5">No specialties available to show</p>
+          )}
+        </div>
+      </div>
+
       <div className="container portfolio-container">
-        <h1>Portfolio</h1>
-        <div className=" row">
+        <h3 className="footer-header">Portfolio</h3>
+        <div className="row">
           {product.portfolio.length !== 0 ? (
             product.portfolio.map((sample, index) => (
-              <div key={index} className="col-6 col-sm-4 mt-1">
+              <div key={index} className="col-12 col-sm-4 mt-1 portfolio-item">
                 <Image
                   src={sample}
                   alt={"portfolio" + index}
-                  width="100%"
+                  className="portfolio-image"
                   preview
                 />
               </div>
@@ -177,6 +234,7 @@ const ProfessionalsDetail = ({ match }) => {
           )}
         </div>
       </div>
+
       <div className="container mt-5">
         <h5 className="text-center">You May Be Interested In</h5>
         <Carousel

@@ -147,16 +147,14 @@ const Home = ({ currentProfessional, proffesionalType }) => {
         </div>
       </div>
       <div className="container portfolio-container">
-        <h1>Portfolio</h1>
-        <div className=" row">
+        <h3 className="footer-header">Portfolio</h3>
+        <div className="row">
           {user[0]?.portfolio?.length !== 0 ? (
             user[0]?.portfolio?.map((sample, index) => (
-              <div key={index} className="col-6 col-sm-4 mt-1">
+              <div key={index} className="col-12 col-sm-4 mt-1 portfolio-item">
                 <Image
                   src={sample}
                   alt={"portfolio" + index}
-                  // width="100%"
-                  // height="100%"
                   className="portfolio-image"
                   preview
                 />
