@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Carousel } from "primereact/carousel";
 import { useSelector } from "react-redux";
@@ -10,6 +10,7 @@ import "./styles/ProfessionalStyle.css";
 import { ProfessionalsListEnum } from "../../Data/professionalsList";
 import { genderListEnum } from "../../Data/genderAgeList";
 import { Divider } from "primereact/divider";
+import { Toast } from "primereact/toast";
 
 const ProfessionalsDetail = ({ match }) => {
   const { professionalName, productId } = useParams();
@@ -80,9 +81,30 @@ const ProfessionalsDetail = ({ match }) => {
 
   const [showCheckoutPopup, setShowCheckoutPopup] = useState(false);
 
+  const toast = useRef(null);
+
+  const cannotCheckout = () => {
+    toast.current.show({
+      severity: "error",
+      summary: "Cannot Proceed",
+      detail: "Please select one of the offers provided by this professional",
+    });
+  };
+
+  const handleBook = () => {
+    if(selectedOffer.offer !== ""){
+      setShowCheckoutPopup(true)
+    }
+    else {
+      cannotCheckout()
+    }
+  }
+
   return (
     <div className="bg-white">
       <Nav />
+      <Toast ref={toast} />
+
 
       <div className="container d-flex flex-column mt-5">
         <div className="d-flex justify-content-around border-bottom pb-4">
@@ -132,7 +154,7 @@ const ProfessionalsDetail = ({ match }) => {
             </div>
             <button
               className="btn btn-dark text-white view-products"
-              onClick={() => setShowCheckoutPopup(true)}
+              onClick={handleBook}
             >
               Book {professionalName}
             </button>
@@ -256,6 +278,7 @@ const ProfessionalsDetail = ({ match }) => {
         <ProfessionalsCheckout
           product={product}
           professionalType={professionalName}
+          selectedOffer={selectedOffer}
         />
       </Dialog>
     </div>

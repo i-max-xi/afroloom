@@ -9,7 +9,7 @@ import { Dropdown } from "primereact/dropdown";
 import { Toast } from "primereact/toast";
 import ProductsDataService from "../../Services/products.services";
 
-const ProfessionalsCheckout = ({ professionalType, product }) => {
+const ProfessionalsCheckout = ({ professionalType, product, selectedOffer }) => {
   const dispatch = useDispatch();
   const toast = useRef(null);
 
