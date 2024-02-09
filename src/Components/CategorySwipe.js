@@ -102,13 +102,15 @@ export const CategoryTemplate = ({
     >
       <div
         className="text-center"
-        style={{ width: width, margin: margin }}
+        style={{ width: width, margin: margin, overflow: "hidden" }}
       >
         <div>
           <img
             src={image}
             alt={name}
             width="35%"
+            height="35%"
+            style={{objectFit: "cover", aspectRatio: 1/1}}
             className="shadow-2 rounded-circle mt-2"
           />
         </div>
