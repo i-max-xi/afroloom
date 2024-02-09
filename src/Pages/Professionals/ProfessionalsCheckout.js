@@ -9,7 +9,11 @@ import { Dropdown } from "primereact/dropdown";
 import { Toast } from "primereact/toast";
 import ProductsDataService from "../../Services/products.services";
 
-const ProfessionalsCheckout = ({ professionalType, product }) => {
+const ProfessionalsCheckout = ({
+  professionalType,
+  product,
+  selectedOffer,
+}) => {
   const dispatch = useDispatch();
   const toast = useRef(null);
 
@@ -19,19 +23,8 @@ const ProfessionalsCheckout = ({ professionalType, product }) => {
   const [city, setCity] = useState("");
   const [tel, setTel] = useState("");
   const [country, setCountry] = useState("");
-  const [selectedDuration, setSelectedDuration] = useState();
-  const durationsArray = [
-    { label: "1hr", value: 1 },
-    { label: "6hr", value: 6 },
-    { label: "12hr", value: 12 },
-    { label: "1 day", value: 24 },
-    { label: "2 days", value: 48 },
-    { label: "3 days", value: 72 },
-    { label: "4 days", value: 96 },
-    { label: "5 days", value: 120 },
-  ];
-  const [totalToPay, setTotalToPay] = useState(null);
 
+  const totalToPay = selectedOffer.priceValue
 
   const currencySymbol = useSelector((state) => state.currencySymbol.symbol);
   const currencyFactor = useSelector((state) => state.currencySymbol.factor);
@@ -73,8 +66,9 @@ const ProfessionalsCheckout = ({ professionalType, product }) => {
       customer_contact: tel,
       professional_type: professionalType,
       professional_contact: product.phone,
-      work_duration: selectedDuration,
-      subject: `New Pofessional Book`,
+      selectedOffer: selectedOffer.offer,
+      amountPaid: selectedOffer.priceValue,
+      subject: `New Pofessional Booking`,
     };
     // Submit to formspree
     fetch(process.env.REACT_APP_formSpree, {
@@ -95,26 +89,16 @@ const ProfessionalsCheckout = ({ professionalType, product }) => {
 
   const [isInfoComplete, setIsInfoComplete] = useState(false);
 
-  useEffect(() => {
-    if (selectedDuration !== undefined) {
-      const isHourDuration = selectedDuration <= 12;
 
-      const newTotalToPay = isHourDuration
-        ? selectedDuration * product.hourRate
-        : (selectedDuration / 24) * product.dayRate;
-
-      setTotalToPay(newTotalToPay);
-    }
-  }, [selectedDuration, product.dayRate, product.hourRate]);
 
   useEffect(() => {
     // Check if all necessary information is provided
-    if (name && emailAddress && tel && country && city && selectedDuration) {
+    if (name && emailAddress && tel && country && city) {
       setIsInfoComplete(true);
     } else {
       setIsInfoComplete(false);
     }
-  }, [name, emailAddress, tel, city, country, selectedDuration]);
+  }, [name, emailAddress, tel, city, country]);
 
   if (isSignedIn === false) {
     return (
@@ -132,7 +116,7 @@ const ProfessionalsCheckout = ({ professionalType, product }) => {
         <div className="container mb-5">
           <div className="d-flex justify-content-around border-bottom pb-4">
             <div className="d-flex justify-content-start align-items-center">
-              <div className="col-6 col-sm-2">
+              <div className="col-6 col-sm-4">
                 <img
                   width="100%"
                   className="rounded-circle card-img-top"
@@ -147,27 +131,22 @@ const ProfessionalsCheckout = ({ professionalType, product }) => {
                 </h6>
               </p>
             </div>
-            <div className="d-flex flex-column col-12 col-sm-2">
+            <div className="d-flex flex-column  justify-content-center align-items-center col-12 col-sm-4">
+              <div
+                className=" d-flex flex-row"
+                style={{ justifyContent: "space-evenly" }}
+              >
+                {currencySymbol}
+                {(currencyFactor * product.lowerPrice).toFixed(2)} -{" "}
+                {currencySymbol}
+                {(currencyFactor * product.UpperPrice).toFixed(2)}
+              </div>
               <div className=" d-flex flex-column">
-                <h6>
-                  {currencySymbol}
-                  {(currencyFactor * product.dayRate).toFixed(2)} / d
-                </h6>
-                <h6>
-                  {currencySymbol}
-                  {(currencyFactor * product.hourRate).toFixed(2)} / hr
-                </h6>
+                <h6>Selected Offer: {selectedOffer.offer}</h6> 
               </div>
             </div>
           </div>
           <div className="mt-5 mb-5 text-center">
-            <p>Select a duration of working with this {professionalType}</p>
-            <Dropdown
-              value={selectedDuration}
-              options={durationsArray}
-              onChange={(e) => setSelectedDuration(e.value)}
-              placeholder="Select Duration"
-            />
             <h4>
               Total To Pay:
               <span className="fs-5 mx-4">

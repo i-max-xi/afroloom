@@ -21,6 +21,8 @@ import {
   tourGuideSpecialties,
 } from "../../../Data/professionalsList";
 import productsServices from "../../../Services/products.services";
+import { setcurrentUser } from "../../../Redux/store";
+import { useDispatch } from "react-redux";
 
 const UpdateInfo = ({ currentUser, proffesionalType }) => {
   const [userInfo, setuserInfo] = useState(currentUser);
@@ -29,6 +31,8 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
   const [isUploading, setIsUploading] = useState(false); // Initialize loading state
 
   const toastRef = useRef(null);
+
+  const dispatch = useDispatch()
 
   const handleImageUpload = async (e) => {
     const file = e.target.files[0];
@@ -157,6 +161,8 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
     try {
       await Path;
       // Reset the form
+
+      dispatch(setcurrentUser(newData));
 
       toastRef.current.show({
         severity: "success",

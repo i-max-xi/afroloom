@@ -44,9 +44,21 @@ class ProductsDataService {
     return querySnapshot.docs[0];
   };
 
-  updateModel = (id, updatedInfo) => {
-    const userDoc = doc(db, "models", id);
-    return updateDoc(userDoc, updatedInfo);
+  // updateModel = (id, updatedInfo) => {
+  //   const userDoc = doc(db, "models", id);
+  //   return updateDoc(userDoc, updatedInfo);
+  // };
+
+  updateModel = async (idValue, updatedInfo) => {
+    const q = query(modelsRef, where("id", "==", idValue));
+    const querySnapshot = await getDocs(q);
+
+    if (querySnapshot.docs.length === 0) {
+      throw new Error("Document not found"); // Handle the case when the document with the specified idValue is not found.
+    }
+
+    const docRef = querySnapshot.docs[0].ref;
+    return updateDoc(docRef, updatedInfo);
   };
   
 

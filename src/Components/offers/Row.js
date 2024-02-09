@@ -8,6 +8,10 @@ import { differenceInDays, fromUnixTime } from "date-fns"; // Import the functio
 const spinvid = require("../../Assets/vid/vid.mp4");
 const crop = require("../../Assets/vid/crop.MP4");
 const booty = require("../../Assets/vid/booty.MP4");
+const book = require("../../Assets/vid/book.jpg");
+const herbal = require("../../Assets/vid/herbal.jpg");
+
+
 
 const Row = ({ mainItems, offerFix }) => {
   const Products = useSelector((state) => state.allProducts.products);
@@ -28,7 +32,6 @@ const Row = ({ mainItems, offerFix }) => {
 
   const [selectednewThisWeek, setselectednewThisWeek] = useState([]);
 
-  const [selectedPopular, setselectedPopular] = useState("");
 
   const [selectedLowest, setselectedLowest] = useState("");
 
@@ -98,9 +101,7 @@ const Row = ({ mainItems, offerFix }) => {
     );
 
     // Pouplar
-    const popularProduct = Products.find((item) => item.rating >= 4);
-    setselectedPopular(popularProduct);
-    // setselectedPopularImage(popularProduct.item ? popularProduct.item : "");
+
 
     // Lowest
     const lowestProduct = Products.find((item) => item.price < 10);
@@ -161,9 +162,8 @@ const Row = ({ mainItems, offerFix }) => {
       array: selectedFashionAccessories,
     },
     {
-      title: "Herbal and Beauty Supplies",
-      // imageUrl: require("../../Assets/Offers/fashion_trend/cd664fd6d9e14b009b2657e27345a94b.jpg"),
-      imageUrl: "https://5.imimg.com/data5/DR/DY/MY-52827986/herbal-products-500x500.jpg",
+      title: "Herbal Haven: Discover the Power of Nature for Your Health and Beauty Journey",
+      imageUrl: herbal,
       linkTo: "/category/Herbal and Beauty Supplies",
     },
     {
@@ -187,10 +187,10 @@ const Row = ({ mainItems, offerFix }) => {
     },
 
     {
-      title: "Most Popular",
-      imageUrl: selectedPopular ? selectedPopular.item : "",
-      itemID: selectedPopular ? selectedPopular.id : '',
-      linkTo: "/offers/popular",
+      title: "Unearth the Hidden Gems of African Literature",
+      imageUrl: "https://eagle.co.ug/wp-content/uploads/2022/08/Best-Africa-Books-Feature-Image-1-1.png",
+      // itemID: selectedPopular ? selectedPopular.id : '',
+      linkTo: "/category/Books",
     },
     {
       title: "We make your thoughts into reality",

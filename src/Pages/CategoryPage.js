@@ -17,7 +17,7 @@ const CategoryPage = () => {
         <h3 className="text-white mt-2">Category</h3>
         <div className="row">
           {allCategory.map(({ image, name}) => (
-            <div key={uuid()} className="text-decoration-none mx-3 mt-5 p-0 col-5 col-sm-4">
+            <div key={uuid()} className="text-decoration-none mx-3 mt-5 p-0 col-5 col-sm-2">
               <CategoryTemplate
                 image={image}
                 name={name}

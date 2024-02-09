@@ -68,7 +68,6 @@ const ProfessionalsPage = ({ match }) => {
   }, [currentPage]);
 
   // Filter system
- 
 
   const [selectedOption1, setSelectedOption1] = useState("");
   const [selectedOption2, setSelectedOption2] = useState("");
@@ -106,7 +105,6 @@ const ProfessionalsPage = ({ match }) => {
 
     setitemsToDisplay(newItemstoDisplay);
   };
-
 
   const [showSearch, setshowSearch] = useState(false);
 
@@ -162,7 +160,6 @@ const ProfessionalsPage = ({ match }) => {
             onClick={() => setshowSearch(!showSearch)}
             className="m-3 d-flex justify-content-center advance-search-trigger align-items-center"
           >
-
             <label htmlFor="advancedSearch">Advanced Search</label>
             <span
               className="pi pi-search-plus advance-search-mobile"
@@ -170,28 +167,28 @@ const ProfessionalsPage = ({ match }) => {
             ></span>
           </div>
 
-          <div className="d-flex" style={{justifyContent: "space-evenly"}}>
-            {itemsToDisplay.length !== 0 ? (
-              itemsToDisplay.map(
-                ({ profile, name, id, skill, dayRate, hourRate }) => {
-                  return (
-                    <ProfessionalsTemplate
-                      key={id}
-                      skill={skill}
-                      profile={profile}
-                      name={name}
-                      dayRate={dayRate}
-                      hourRate={hourRate}
-                      professionalId={id}
-                      ProfessionalName={professionalName}
-                    />
-                  );
-                }
-              )
-            ) : (
-              <p className="m-5">No results currently</p>
-            )}
-          </div>
+          {/* <div className="d-flex" style={{justifyContent: "space-evenly"}}> */}
+          {itemsToDisplay.length !== 0 ? (
+            itemsToDisplay.map(
+              ({ profile, name, id, country, lowerPrice, UpperPrice }) => {
+                return (
+                  <ProfessionalsTemplate
+                    key={id}
+                    profile={profile}
+                    name={name}
+                    country={country}
+                    upperPrice={UpperPrice}
+                    lowerPrice={lowerPrice}
+                    professionalId={id}
+                    ProfessionalName={professionalName}
+                  />
+                );
+              }
+            )
+          ) : (
+            <p className="m-5">No results currently</p>
+          )}
+          {/* </div> */}
         </div>
       </div>
 
@@ -210,9 +207,9 @@ const ProfessionalsPage = ({ match }) => {
 const ProfessionalsTemplate = ({
   profile,
   name,
-  skill,
-  dayRate,
-  hourRate,
+  upperPrice,
+  lowerPrice,
+  country,
   professionalId,
   ProfessionalName,
 }) => {
@@ -232,14 +229,10 @@ const ProfessionalsTemplate = ({
           <h5>{name}</h5>
           <h6>
             {currencySymbol}
-            {(currencyFactor * hourRate).toFixed(2)}/hr
-          </h6>
-          <h6>
-            {currencySymbol}
-            {(currencyFactor * dayRate).toFixed(2)}/day
+            {(currencyFactor * lowerPrice).toFixed(2)} - {currencySymbol}
+            {(currencyFactor * upperPrice).toFixed(2)}
           </h6>
 
-          {/* <p>{skill}</p> */}
         </div>
         <Link
           to={`/professional/${ProfessionalName}/${professionalId}`}
