@@ -11,6 +11,11 @@ import "./styles/ProfessionalStyle.css";
 const ProfessionalsDetail = ({ match }) => {
   const { professionalName, productId } = useParams();
 
+  const [selectedOffer, setSelectedOffer] = useState({
+    offer: "",
+    priceValue: 0
+  });
+
   const Models = useSelector((state) => state.allModels.products);
   const Photographers = useSelector((state) => state.allPhotographers.products);
   const TourGuides = useSelector((state) => state.allTourGuides.products);
@@ -99,20 +104,30 @@ const ProfessionalsDetail = ({ match }) => {
               className=" d-flex flex-row"
               style={{ justifyContent: "space-evenly" }}
             >
-              <p>
-                <h6>
-                  {currencySymbol}
-                  {(currencyFactor * product.dayRate).toFixed(2)}
-                </h6>
-                Per Day
-              </p>
-              <p>
-                <h6>
-                  {currencySymbol}
-                  {(currencyFactor * product.hourRate).toFixed(2)}
-                </h6>
-                Per Hour
-              </p>
+              {currencySymbol}
+              {(currencyFactor * product.lowerPrice).toFixed(2)} - {currencySymbol}
+              {(currencyFactor * product.UpperPrice).toFixed(2)}
+            </div>
+            <div
+              className=" d-flex flex-column"
+            >
+              {product.offers.map(({offer, priceValue}) => (
+                <div
+                className="identity-item"
+                key={offer}
+              >
+                <input
+                  type="radio"
+                  id={offer}
+                  checked={selectedOffer.offer === offer}
+                  onChange={() => setSelectedOffer({offer: offer, priceValue: priceValue})}
+                />
+                <label className="mt-2" htmlFor={offer}>
+                  {offer} - {currencySymbol}
+              {(currencyFactor * priceValue).toFixed(2)}
+                </label>
+              </div>
+              ))}
             </div>
             <button
               className="btn btn-dark text-white view-products"
