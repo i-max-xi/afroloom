@@ -658,10 +658,10 @@ form {
   transition: all 0.5s ease-in-out;
 }
 
-.view-products:hover {
+/* .view-products:hover {
   transform: translateY(-0.2rem);
   box-shadow: 5px 6px 6px 2px #e9ecef;
-}
+} */
 
 .artisan-filter .dropdown-toggle {
   float: left !important;

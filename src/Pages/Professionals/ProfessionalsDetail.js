@@ -62,16 +62,14 @@ const ProfessionalsDetail = ({ match }) => {
         </Link>
         <div className="p-2">
           <h5>{relatedProduct.name}</h5>
-          <p className="h3">
-            <h6>
-              {currencySymbol}
-              {(currencyFactor * relatedProduct.hourRate).toFixed(2)}/hr
-            </h6>
-            <h6>
-              {currencySymbol}
-              {(currencyFactor * relatedProduct.dayRate).toFixed(2)}/day
-            </h6>
-          </p>
+          {/* <p className="h3"> */}
+          <div className=" d-flex flex-row">
+                {currencySymbol}
+                {(currencyFactor * product.lowerPrice).toFixed(2)} -{" "}
+                {currencySymbol}
+                {(currencyFactor * product.UpperPrice).toFixed(2)}
+              </div>
+          {/* </p> */}
         </div>
       </div>
     );
@@ -92,24 +90,22 @@ const ProfessionalsDetail = ({ match }) => {
   };
 
   const handleBook = () => {
-    if(selectedOffer.offer !== ""){
-      setShowCheckoutPopup(true)
+    if (selectedOffer.offer !== "") {
+      setShowCheckoutPopup(true);
+    } else {
+      cannotCheckout();
     }
-    else {
-      cannotCheckout()
-    }
-  }
+  };
 
   return (
     <div className="bg-white">
       <Nav />
       <Toast ref={toast} />
 
-
       <div className="container d-flex flex-column mt-5">
-        <div className="d-flex justify-content-around border-bottom pb-4">
-          <div className="d-flex justify-content-start align-items-center">
-            <div className="col-12 col-sm-6">
+        <div className={`d-flex ${isMobile ? "flex-column": ""} justify-content-between border-bottom pb-4`}>
+          <div className={`d-flex ${isMobile ? "flex-column": ""} align-items-center col-12 col-sm-6`} style={{gap: "1rem"}}>
+            <div className="">
               <img
                 width="100%"
                 className="rounded-circle card-img-top"
@@ -122,22 +118,11 @@ const ProfessionalsDetail = ({ match }) => {
               <h6>
                 {product.city}, {product.country}
               </h6>
-              <div
-              className=" d-flex flex-row"
-            >
-              {currencySymbol}
-              {(currencyFactor * product.lowerPrice).toFixed(2)} -{" "}
-              {currencySymbol}
-              {(currencyFactor * product.UpperPrice).toFixed(2)}
-            </div>
+             
             </p>
-            <p>
-            <h6>{product.gender}</h6>
-            Gender
-          </p>
+            
           </div>
           <div className="d-flex flex-column justify-content-center align-items-center col-12 col-sm-2">
-            
             <div className=" d-flex flex-column">
               {product.offers.map(({ offer, priceValue }) => (
                 <div className="identity-item" key={offer}>
@@ -157,14 +142,14 @@ const ProfessionalsDetail = ({ match }) => {
               ))}
             </div>
             <button
-              className="btn btn-dark text-white view-products"
+              className="btn btn-dark text-white  col-12"
               onClick={handleBook}
             >
               Book {professionalName}
             </button>
           </div>
         </div>
-        <div className="d-flex mt-3" style={{ justifyContent: "space-evenly" }}>
+        <div className="d-flex mt-3 professional-detail-info" style={{ justifyContent: "space-evenly" }}>
           {/* <p>
             <h6>{product.gender}</h6>
             Gender

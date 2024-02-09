@@ -17,14 +17,14 @@ const ProfessionalsPage = ({ match }) => {
   const Photographers = useSelector((state) => state.allPhotographers.products);
   const TourGuides = useSelector((state) => state.allTourGuides.products);
 
-  let product;
+  let products;
 
   if (professionalName === "Model") {
-    product = Models;
+    products = Models;
   } else if (professionalName === "Photographer") {
-    product = Photographers;
+    products = Photographers;
   } else if (professionalName === "Tour Guide") {
-    product = TourGuides;
+    products = TourGuides;
   }
 
   // console.log(ProfessionalName)
@@ -51,7 +51,7 @@ const ProfessionalsPage = ({ match }) => {
     setCurrentPage(event.page);
   };
 
-  const itemsToDisplayBank = product.slice(
+  const itemsToDisplayBank = products.slice(
     currentPage * itemsPerPage,
     (currentPage + 1) * itemsPerPage
   );
@@ -75,28 +75,31 @@ const ProfessionalsPage = ({ match }) => {
   const [selectedPriceRange, setSelectedPriceRange] = useState("");
 
   const saveFilters = () => {
-    const newItemstoDisplay = product.filter((product) => {
+    const newItemstoDisplay = products.filter((product) => {
+      console.log(product.specialties[0])
+      console.log("selected", selectedOption3)
+
       if (
         (selectedOption2 === "" || product.country === selectedOption2) &&
         (selectedOption1 === "" || product.gender === selectedOption1) &&
-        (selectedOption3 === "" || product.age === selectedOption3) &&
+        (selectedOption3 === "" || product.specialties[0] === selectedOption3) &&
         (selectedPriceRange === "" ||
           (selectedPriceRange === 10 * currencyFactor &&
-            product.hourRate * currencyFactor < 10 * currencyFactor) ||
+            product.lowerPrice * currencyFactor < 10 * currencyFactor) ||
           (selectedPriceRange === 201 * currencyFactor &&
-            product.hourRate * currencyFactor > 200 * currencyFactor) ||
+            product.lowerPrice * currencyFactor > 200 * currencyFactor) ||
           (selectedPriceRange === 25 * currencyFactor &&
-            product.hourRate * currencyFactor >= 10 * currencyFactor &&
-            product.hourRate * currencyFactor <= 25 * currencyFactor) ||
+            product.lowerPrice * currencyFactor >= 10 * currencyFactor &&
+            product.lowerPrice * currencyFactor <= 25 * currencyFactor) ||
           (selectedPriceRange === 50 * currencyFactor &&
-            product.hourRate * currencyFactor >= 25 * currencyFactor &&
-            product.hourRate * currencyFactor <= 50 * currencyFactor) ||
+            product.lowerPrice * currencyFactor >= 25 * currencyFactor &&
+            product.lowerPrice * currencyFactor <= 50 * currencyFactor) ||
           (selectedPriceRange === 100 * currencyFactor &&
-            product.hourRate * currencyFactor >= 50 * currencyFactor &&
-            product.hourRate * currencyFactor <= 100 * currencyFactor) ||
+            product.lowerPrice * currencyFactor >= 50 * currencyFactor &&
+            product.lowerPrice * currencyFactor <= 100 * currencyFactor) ||
           (selectedPriceRange === 200 * currencyFactor &&
-            product.hourRate * currencyFactor >= 100 * currencyFactor &&
-            product.hourRate * currencyFactor <= 200 * currencyFactor))
+            product.lowerPrice * currencyFactor >= 100 * currencyFactor &&
+            product.lowerPrice * currencyFactor <= 200 * currencyFactor))
       ) {
         return true;
       }
@@ -196,7 +199,7 @@ const ProfessionalsPage = ({ match }) => {
         currentPage={currentPage}
         first={currentPage * itemsPerPage}
         rows={itemsPerPage}
-        totalRecords={product.length}
+        totalRecords={products.length}
         onPageChange={onPageChange}
         template={template3}
       />
