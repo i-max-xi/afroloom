@@ -807,8 +807,8 @@ form {
   justify-content: center;
   align-items: center;
   position: fixed;
-  bottom: 1rem;
-  left:  80%;
+  bottom: 10%;
+  right:  0;
   padding: 0.7rem 0;
   width: max-content !important;
   
