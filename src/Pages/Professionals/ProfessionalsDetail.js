@@ -124,7 +124,7 @@ const ProfessionalsDetail = ({ match }) => {
               </h6>
             </p>
           </div>
-          <div className="d-flex flex-column col-12 col-sm-2">
+          <div className="d-flex flex-column justify-content-center align-items-center col-12 col-sm-2">
             <div
               className=" d-flex flex-row"
               style={{ justifyContent: "space-evenly" }}
