@@ -9,6 +9,7 @@ import { getPriceRangeOptions } from "../../Data/PriceRangeData";
 import profBanner from "../../Assets/Headers/search.JPG";
 import { Dialog } from "primereact/dialog";
 import SearchFilters from "../../Components/SearchFilters";
+import { countryFlags } from "../../Data/CountryArr";
 
 const ProfessionalsPage = ({ match }) => {
   const { professionalName } = useParams();
@@ -76,16 +77,17 @@ const ProfessionalsPage = ({ match }) => {
 
   const saveFilters = () => {
     const newItemstoDisplay = products.filter((product) => {
-      console.log(product.specialties[0])
-      console.log("selected", selectedOption3)
+      console.log("selected", selectedPriceRange);
+      console.log("data", product?.lowerPrice * currencyFactor);
 
       if (
         (selectedOption2 === "" || product.country === selectedOption2) &&
         (selectedOption1 === "" || product.gender === selectedOption1) &&
-        (selectedOption3 === "" || product.specialties[0] === selectedOption3) &&
+        (selectedOption3 === "" ||
+          product?.specialties?.[0] === selectedOption3) &&
         (selectedPriceRange === "" ||
           (selectedPriceRange === 10 * currencyFactor &&
-            product.lowerPrice * currencyFactor < 10 * currencyFactor) ||
+            product?.lowerPrice * currencyFactor < 10 * currencyFactor) ||
           (selectedPriceRange === 201 * currencyFactor &&
             product.lowerPrice * currencyFactor > 200 * currencyFactor) ||
           (selectedPriceRange === 25 * currencyFactor &&
@@ -173,7 +175,15 @@ const ProfessionalsPage = ({ match }) => {
           {/* <div className="d-flex" style={{justifyContent: "space-evenly"}}> */}
           {itemsToDisplay.length !== 0 ? (
             itemsToDisplay.map(
-              ({ profile, name, id, country, lowerPrice, UpperPrice }) => {
+              ({
+                profile,
+                name,
+                id,
+                country,
+                lowerPrice,
+                UpperPrice,
+                specialties,
+              }) => {
                 return (
                   <ProfessionalsTemplate
                     key={id}
@@ -181,6 +191,7 @@ const ProfessionalsPage = ({ match }) => {
                     name={name}
                     country={country}
                     upperPrice={UpperPrice}
+                    specialty={specialties?.[0]}
                     lowerPrice={lowerPrice}
                     professionalId={id}
                     ProfessionalName={professionalName}
@@ -213,11 +224,13 @@ const ProfessionalsTemplate = ({
   upperPrice,
   lowerPrice,
   country,
+  specialty,
   professionalId,
   ProfessionalName,
 }) => {
   const currencySymbol = useSelector((state) => state.currencySymbol.symbol);
   const currencyFactor = useSelector((state) => state.currencySymbol.factor);
+  const flagImage = countryFlags[country] || ""; // Use flag image URL based on the country
 
   return (
     <div className="col-12 col-sm-3 m-1 text-decoration-none">
@@ -229,17 +242,33 @@ const ProfessionalsTemplate = ({
           style={{ aspectRatio: 1 / 1 }}
         />
         <div className="mx-auto info-content mt-4">
-          <h5>{name}</h5>
+          <div>
+            <h5>{name}</h5>
+            {country ? (
+              <div className="mx-1">
+                <img
+                  width="10%"
+                  src={flagImage}
+                  alt={country}
+                  style={{ float: "right", transform: "translateY(-1.8rem)" }}
+                />
+              </div>
+            ) : (
+              <span></span>
+            )}
+          </div>
+
+          <h6>{specialty}</h6>
+
           <h6>
             {currencySymbol}
             {(currencyFactor * lowerPrice).toFixed(2)} - {currencySymbol}
             {(currencyFactor * upperPrice).toFixed(2)}
           </h6>
-
         </div>
         <Link
           to={`/professional/${ProfessionalName}/${professionalId}`}
-          className="btn btn-dark text-white view-products"
+          className="btn btn-dark text-white view-products col-6"
         >
           View {ProfessionalName}
         </Link>

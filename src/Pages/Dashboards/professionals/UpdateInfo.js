@@ -116,7 +116,6 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
       !userInfo.age ||
       !userInfo.lowerPrice ||
       !userInfo.UpperPrice ||
-      !userInfo.profile ||
       priceBreakdown.length < 1 ||
       specialties.length < 1 ||
       extraImages.length < 1
@@ -230,7 +229,7 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
   return (
     <div>
       <Toast ref={toastRef} position="top-right" />
-      <h2 className="dashboard-home-title">Update Profile Info</h2>
+      <h2 className="dashboard-home-title">Complete Profile Info</h2>
       <div className="p-fluid">
         <div className="p-field">
           <label className="text-warning" htmlFor="age">
@@ -261,7 +260,7 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
             value={userInfo.lowerPrice}
             placeholder="strictly equivalent Ghana Cedi (₵) value... eg. 10"
             onChange={(e) =>
-              setuserInfo({ ...userInfo, lowerPrice: e.target.value })
+              setuserInfo({ ...userInfo, lowerPrice: parseFloat(e.target.value) })
             }
           />
         </div>
@@ -278,7 +277,7 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
             value={userInfo.UpperPrice}
             placeholder="strictly equivalent Ghana Cedi (₵) value... eg. 10"
             onChange={(e) =>
-              setuserInfo({ ...userInfo, UpperPrice: e.target.value })
+              setuserInfo({ ...userInfo, UpperPrice: parseFloat(e.target.value) })
             }
           />
         </div>
@@ -313,7 +312,7 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
                 value={item.priceValue}
                 placeholder="Strictly equivalent Ghana Cedi (₵) value... eg. 10"
                 onChange={(e) =>
-                  updatePriceBreakdown(index, "priceValue", e.target.value)
+                  updatePriceBreakdown(index, "priceValue", parseFloat(e.target.value))
                 }
               />
             </div>
@@ -397,7 +396,7 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
             List <b> at most 3</b> of your specialties
           </h6>
           <label className="text-warning" htmlFor="extras">
-            What is your specialty
+            What are your specialties
           </label>
           {specialties.map((category, index) => (
             <div key={index} className="d-flex align-items-center">
