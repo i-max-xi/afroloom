@@ -1,11 +1,11 @@
 :root {
-  overflow-x: hidden;
   --light-red: rgb(255, 72, 0);
   --orange: #ffc107;
   --red: red;
 }
 .allBg {
   background-color: rgba(197, 195, 195, 0.165);
+  overflow-x: hidden;
 }
 
 @media (max-width: 900px) {
@@ -305,9 +305,9 @@
 
   /* registeras and signin*/
   .registeras {
-    display: grid !important;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
+    flex-direction: column !important;
+    gap: 1rem !important;
+    margin: 1rem 0 !important;
   }
   .identity-list {
    flex-direction: column;
@@ -658,10 +658,10 @@ form {
   transition: all 0.5s ease-in-out;
 }
 
-.view-products:hover {
+/* .view-products:hover {
   transform: translateY(-0.2rem);
   box-shadow: 5px 6px 6px 2px #e9ecef;
-}
+} */
 
 .artisan-filter .dropdown-toggle {
   float: left !important;
@@ -808,7 +808,7 @@ form {
   align-items: center;
   position: fixed;
   bottom: 10%;
-  right:  0;
+  right:  2%;
   padding: 0.7rem 0;
   width: max-content !important;
   
@@ -823,6 +823,8 @@ form {
 
 .registeras {
   display: flex;
+  justify-content: space-between;
+  padding: 5rem 0;
 }
 
 .identity-container {

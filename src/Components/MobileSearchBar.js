@@ -22,7 +22,7 @@ const MobileSearchBar = () => {
   };
 
   return (
-      <div className="p-inputgroup w-100">
+      <div className="p-inputgroup px-1 bg-white">
         <InputText
           placeholder="What are you looking for?..."
           onChange={handleInput}

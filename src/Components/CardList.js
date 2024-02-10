@@ -375,7 +375,7 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
 
         <div onClick={() => setshowSearch(!showSearch)} className="advanced-search-button rounded-circle">
           {/* <label htmlFor="advancedSearch">Advanced Search</label> */}
-          <span className="pi pi-search-plus" style={{fontSize: "2rem"}}></span>
+          <span className="pi pi-search-plus" style={{fontSize: "1.2rem"}}></span>
         </div>
 
         {showNestedComponent && !isMobile && <Row offerFix="Professionals" />}

@@ -113,7 +113,7 @@ const Row = ({ mainItems, offerFix }) => {
     {
       // title: "Tour Guide",
       imageUrl: "https://cloudfront-us-east-1.images.arcpublishing.com/bostonglobe/PEVTJACBCUI6VG3Z2NTLW2NO4E.jpg",
-      linkTo: "professional/Tour Guide",
+      linkTo: "professional/TourGuide",
       action: "Book A Tour Guide"
     },
     {

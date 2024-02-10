@@ -5,14 +5,25 @@ import { Toast } from "primereact/toast";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { Dropdown } from "primereact/dropdown";
 import ProductsDataService from "../../Services/products.services";
+import { ref, uploadBytes, getDownloadURL } from "@firebase/storage";
 
 import "primeicons/primeicons.css";
 import { ProgressSpinner } from "primereact/progressspinner";
 import countryArr from "../../Data/CountryArr";
-import { ProfessionalsDbEnum, ProfessionalsList, ProfessionalsListEnum } from "../../Data/professionalsList";
+import {
+  ProfessionalsDbEnum,
+  ProfessionalsList,
+  ProfessionalsListEnum,
+} from "../../Data/professionalsList";
 import { useDispatch } from "react-redux";
-import { setDashBoardPath, setSignedIn, setcurrentUser } from "../../Redux/store";
+import {
+  setDashBoardPath,
+  setSignedIn,
+  setcurrentUser,
+} from "../../Redux/store";
 import { genderList } from "../../Data/genderAgeList";
+import { InputText } from "primereact/inputtext";
+import { storage } from "../../firebase";
 
 const ProfessionalSignUp = () => {
   const dispatch = useDispatch();
@@ -21,10 +32,10 @@ const ProfessionalSignUp = () => {
 
   const [isCheckboxChecked, setIsCheckboxChecked] = useState(false);
   const [name, setName] = useState("");
-  // const [brandName, setBrandName] = useState("");
+  const [profilePic, setProflePic] = useState("");
   const [city, setCity] = useState("");
   const [country, setCountry] = useState("");
-  const [professionalType, setProfessionalType] = useState("")
+  const [professionalType, setProfessionalType] = useState("");
   const [email, setEmail] = useState("");
   const [gender, setGender] = useState("");
   const [password, setPassword] = useState("");
@@ -32,25 +43,53 @@ const ProfessionalSignUp = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const toastRef = useRef(null);
 
+  const uploadProfilePic = async (storageRef, file) => {
+    try {
+      await uploadBytes(storageRef, file);
+      const downloadURL = await getDownloadURL(storageRef);
+      setProflePic(downloadURL);
+    } catch (error) {
+      toastRef.current.show({
+        severity: "error",
+        summary: "Error uploading image:",
+        detail: error.message,
+      });
+    }
+  };
+
+  const handleImageUpload = async (e) => {
+    const file = e.target.files[0];
+
+    // Create an image element to get the dimensions
+    const img = new Image();
+    img.src = URL.createObjectURL(file);
+
+    img.onload = () => {
+      // Check if the image dimensions are 500x500
+
+      const storageRef = ref(storage, `images/${file.name}`);
+      uploadProfilePic(storageRef, file);
+    };
+  };
 
   const handleSignUp = async (e) => {
     e.preventDefault();
     try {
       setIsLoading(true);
       if (password.length < 6) {
-        toastRef.current.show({
+        return toastRef.current.show({
           severity: "error",
           summary: "Sign up failed",
           detail: "Password cannot be less than 6 characters",
         });
       } else if (password !== confirmPassword) {
-        toastRef.current.show({
+        return toastRef.current.show({
           severity: "error",
           summary: "Sign up failed",
           detail: "Passwords are not the same",
         });
-      } else if (professionalType === '') {
-        toastRef.current.show({
+      } else if (professionalType === "") {
+        return toastRef.current.show({
           severity: "error",
           summary: "Sign up failed",
           detail: "Please select a professional Type",
@@ -63,40 +102,59 @@ const ProfessionalSignUp = () => {
             const userInfo = {
               id: user.uid,
               name: name,
+              profile: profilePic,
               email: email,
               country: country,
               gender: gender,
-              // brandName: brandName,
+              city: city,
               number: number,
               // subject: `New Supplier Request from ${name}`,
             };
 
-            if(professionalType === ProfessionalsListEnum.model){
-              ProductsDataService.addModel(userInfo).then (() => {
-                ProductsDataService.getModel(user.uid).then((modelData) => {
-                  dispatch(setcurrentUser(modelData.data()));
-                  dispatch(setDashBoardPath(`/professionals-dashboard/${ProfessionalsDbEnum.model}`));
-              })
-            });
-
+            if (professionalType === ProfessionalsListEnum.model) {
+              ProductsDataService.addModel(userInfo).then(() => {
+                ProductsDataService.getModelByField("id", user.uid).then(
+                  (modelData) => {
+                    dispatch(setcurrentUser(modelData.data()));
+                    console.log(modelData.data());
+                    dispatch(
+                      setDashBoardPath(
+                        `/professionals-dashboard/${ProfessionalsDbEnum.model}`
+                      )
+                    );
+                  }
+                );
+              });
             }
 
-            if(professionalType === ProfessionalsListEnum.tourGuide){
+            if (professionalType === ProfessionalsListEnum.tourGuide) {
               ProductsDataService.addTourGuide(userInfo).then(() => {
-                ProductsDataService.getTourGuide(user.uid).then((tourGuideData) => {
-                  dispatch(setcurrentUser(tourGuideData.data()));
-                  dispatch(setDashBoardPath(`/professionals-dashboard/${ProfessionalsDbEnum.tourGuide}`));
-              })
-              })
+                ProductsDataService.getTourGuideByField("id", user.uid).then(
+                  (tourGuideData) => {
+                    dispatch(setcurrentUser(tourGuideData.data()));
+                    dispatch(
+                      setDashBoardPath(
+                        `/professionals-dashboard/${ProfessionalsDbEnum.tourGuide}`
+                      )
+                    );
+                  }
+                );
+              });
             }
 
-            if(professionalType === ProfessionalsListEnum.photographer){
+            if (professionalType === ProfessionalsListEnum.photographer) {
               ProductsDataService.addPhotographer(userInfo).then(() => {
-                ProductsDataService.getPhotographer(user.uid).then((photographerData) => {
-                  dispatch(setcurrentUser(photographerData.data()));
-                  dispatch(setDashBoardPath(`/professionals-dashboard/${ProfessionalsDbEnum.photographer}`));
-              })
-              })
+                ProductsDataService.getPhotographerByField("id", user.uid).then(
+                  (photographerData) => {
+                    dispatch(setcurrentUser(photographerData.data()));
+                    dispatch(
+                      setDashBoardPath(
+                        `/professionals-dashboard/${ProfessionalsDbEnum.photographer}`
+                      )
+                    );
+                  }
+                );
+              });
             }
 
             // Submit to formspree
@@ -156,6 +214,17 @@ const ProfessionalSignUp = () => {
                 onChange={(e) => setName(e.target.value)}
               />
             </div>
+            <div className="form-group">
+              <label htmlFor="company name">Upload Profile Picture:</label> <br />
+              <InputText
+                required
+                id="item"
+                type="file"
+                accept="image/*"
+                onChange={handleImageUpload}
+              />
+            </div>
+
             <div className="form-group">
               <label htmlFor="country">Country of origin:</label>
               <Dropdown
@@ -271,7 +340,15 @@ const ProfessionalSignUp = () => {
             <button
               type="submit"
               className="btn btn-warning text-white w-100 mt-4 shadow-sm position-relative"
-              disabled={!isCheckboxChecked} // Disable the button if the checkbox is not checked
+              disabled={
+                !isCheckboxChecked ||
+                name === "" ||
+                profilePic === "" ||
+                country === "" ||
+                city === "" ||
+                email === "" ||
+                number === ""
+              }
             >
               <span className="spinner-container">
                 {isLoading && (

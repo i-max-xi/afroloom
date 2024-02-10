@@ -9,6 +9,7 @@ import { getPriceRangeOptions } from "../../Data/PriceRangeData";
 import profBanner from "../../Assets/Headers/search.JPG";
 import { Dialog } from "primereact/dialog";
 import SearchFilters from "../../Components/SearchFilters";
+import { countryFlags } from "../../Data/CountryArr";
 
 const ProfessionalsPage = ({ match }) => {
   const { professionalName } = useParams();
@@ -17,14 +18,14 @@ const ProfessionalsPage = ({ match }) => {
   const Photographers = useSelector((state) => state.allPhotographers.products);
   const TourGuides = useSelector((state) => state.allTourGuides.products);
 
-  let product;
+  let products;
 
   if (professionalName === "Model") {
-    product = Models;
+    products = Models;
   } else if (professionalName === "Photographer") {
-    product = Photographers;
-  } else if (professionalName === "Tour Guide") {
-    product = TourGuides;
+    products = Photographers;
+  } else if (professionalName === "TourGuide") {
+    products = TourGuides;
   }
 
   // console.log(ProfessionalName)
@@ -37,9 +38,8 @@ const ProfessionalsPage = ({ match }) => {
     currencyFactor
   );
 
-  const pullFilters = allProfessionalscategory.find(
-    (f) => f.name === professionalName
-  );
+  const pullFilters =
+    allProfessionalscategory.find((f) => f.name === professionalName) || [];
 
   const actualFilter = pullFilters.filters;
 
@@ -51,7 +51,7 @@ const ProfessionalsPage = ({ match }) => {
     setCurrentPage(event.page);
   };
 
-  const itemsToDisplayBank = product.slice(
+  const itemsToDisplayBank = products.slice(
     currentPage * itemsPerPage,
     (currentPage + 1) * itemsPerPage
   );
@@ -75,28 +75,29 @@ const ProfessionalsPage = ({ match }) => {
   const [selectedPriceRange, setSelectedPriceRange] = useState("");
 
   const saveFilters = () => {
-    const newItemstoDisplay = product.filter((product) => {
+    const newItemstoDisplay = products.filter((product) => {
       if (
         (selectedOption2 === "" || product.country === selectedOption2) &&
         (selectedOption1 === "" || product.gender === selectedOption1) &&
-        (selectedOption3 === "" || product.age === selectedOption3) &&
+        (selectedOption3 === "" ||
+          product?.specialties?.[0] === selectedOption3) &&
         (selectedPriceRange === "" ||
           (selectedPriceRange === 10 * currencyFactor &&
-            product.hourRate * currencyFactor < 10 * currencyFactor) ||
+            product?.lowerPrice * currencyFactor < 10 * currencyFactor) ||
           (selectedPriceRange === 201 * currencyFactor &&
-            product.hourRate * currencyFactor > 200 * currencyFactor) ||
+            product.lowerPrice * currencyFactor > 200 * currencyFactor) ||
           (selectedPriceRange === 25 * currencyFactor &&
-            product.hourRate * currencyFactor >= 10 * currencyFactor &&
-            product.hourRate * currencyFactor <= 25 * currencyFactor) ||
+            product.lowerPrice * currencyFactor >= 10 * currencyFactor &&
+            product.lowerPrice * currencyFactor <= 25 * currencyFactor) ||
           (selectedPriceRange === 50 * currencyFactor &&
-            product.hourRate * currencyFactor >= 25 * currencyFactor &&
-            product.hourRate * currencyFactor <= 50 * currencyFactor) ||
+            product.lowerPrice * currencyFactor >= 25 * currencyFactor &&
+            product.lowerPrice * currencyFactor <= 50 * currencyFactor) ||
           (selectedPriceRange === 100 * currencyFactor &&
-            product.hourRate * currencyFactor >= 50 * currencyFactor &&
-            product.hourRate * currencyFactor <= 100 * currencyFactor) ||
+            product.lowerPrice * currencyFactor >= 50 * currencyFactor &&
+            product.lowerPrice * currencyFactor <= 100 * currencyFactor) ||
           (selectedPriceRange === 200 * currencyFactor &&
-            product.hourRate * currencyFactor >= 100 * currencyFactor &&
-            product.hourRate * currencyFactor <= 200 * currencyFactor))
+            product.lowerPrice * currencyFactor >= 100 * currencyFactor &&
+            product.lowerPrice * currencyFactor <= 200 * currencyFactor))
       ) {
         return true;
       }
@@ -170,7 +171,15 @@ const ProfessionalsPage = ({ match }) => {
           {/* <div className="d-flex" style={{justifyContent: "space-evenly"}}> */}
           {itemsToDisplay.length !== 0 ? (
             itemsToDisplay.map(
-              ({ profile, name, id, country, lowerPrice, UpperPrice }) => {
+              ({
+                profile,
+                name,
+                id,
+                country,
+                lowerPrice,
+                UpperPrice,
+                specialties,
+              }) => {
                 return (
                   <ProfessionalsTemplate
                     key={id}
@@ -178,6 +187,7 @@ const ProfessionalsPage = ({ match }) => {
                     name={name}
                     country={country}
                     upperPrice={UpperPrice}
+                    specialty={specialties?.[0]}
                     lowerPrice={lowerPrice}
                     professionalId={id}
                     ProfessionalName={professionalName}
@@ -196,7 +206,7 @@ const ProfessionalsPage = ({ match }) => {
         currentPage={currentPage}
         first={currentPage * itemsPerPage}
         rows={itemsPerPage}
-        totalRecords={product.length}
+        totalRecords={products.length}
         onPageChange={onPageChange}
         template={template3}
       />
@@ -210,11 +220,13 @@ const ProfessionalsTemplate = ({
   upperPrice,
   lowerPrice,
   country,
+  specialty,
   professionalId,
   ProfessionalName,
 }) => {
   const currencySymbol = useSelector((state) => state.currencySymbol.symbol);
   const currencyFactor = useSelector((state) => state.currencySymbol.factor);
+  const flagImage = countryFlags[country] || ""; // Use flag image URL based on the country
 
   return (
     <div className="col-12 col-sm-3 m-1 text-decoration-none">
@@ -226,19 +238,38 @@ const ProfessionalsTemplate = ({
           style={{ aspectRatio: 1 / 1 }}
         />
         <div className="mx-auto info-content mt-4">
-          <h5>{name}</h5>
-          <h6>
-            {currencySymbol}
-            {(currencyFactor * lowerPrice).toFixed(2)} - {currencySymbol}
-            {(currencyFactor * upperPrice).toFixed(2)}
-          </h6>
+          <div>
+            <h5>{name}</h5>
+            {country && flagImage !=="" ? (
+              <div className="mx-1">
+                <img
+                  width="10%"
+                  src={flagImage}
+                  alt={country}
+                  style={{ float: "right", transform: "translateY(-1.8rem)" }}
+                />
+              </div>
+            ) : (
+              <span></span>
+            )}
+          </div>
 
+          <h6 className="mx-5">{specialty}</h6>
+
+          {ProfessionalName !== "Model" && (
+            <h6>
+              {currencySymbol}
+              {(currencyFactor * lowerPrice).toFixed(2)} - {currencySymbol}
+              {(currencyFactor * upperPrice).toFixed(2)}
+            </h6>
+          )}
         </div>
         <Link
           to={`/professional/${ProfessionalName}/${professionalId}`}
           className="btn btn-dark text-white view-products"
         >
-          View {ProfessionalName}
+          View{" "}
+          {ProfessionalName !== "TourGuide" ? ProfessionalName : "Tour Guide"}
         </Link>
       </div>
     </div>

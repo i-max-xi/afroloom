@@ -1,4 +1,5 @@
 import countryArr from "./CountryArr";
+import { modelSpecialties } from "./professionalsList";
 
 export const allProfessionalscategory = [
   {
@@ -16,8 +17,8 @@ export const allProfessionalscategory = [
       },
 
       {
-        name: "Age",
-        options: [],
+        name: "Specialty",
+        options: modelSpecialties,
       },
     ],
   },
@@ -36,14 +37,14 @@ export const allProfessionalscategory = [
       },
 
       {
-        name: "Age",
-        options: [],
+        name: "Specialty",
+        options: modelSpecialties,
       },
     ],
   },
   {
     id: "3000",
-    name: "Tour Guide",
+    name: "TourGuide",
     filters: [
       {
         name: "Gender",
@@ -56,7 +57,7 @@ export const allProfessionalscategory = [
       },
 
       {
-        name: "Age",
+        name: "",
         options: [],
       },
     ],

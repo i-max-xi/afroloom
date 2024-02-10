@@ -16,6 +16,7 @@ import { storage } from "../../../firebase";
 import { ageList, genderListEnum } from "../../../Data/genderAgeList";
 import {
   ProfessionalsDbEnum,
+  canAccomodate,
   modelSpecialties,
   photographySpecialties,
   tourGuideSpecialties,
@@ -32,7 +33,7 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
 
   const toastRef = useRef(null);
 
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const handleImageUpload = async (e) => {
     const file = e.target.files[0];
@@ -113,12 +114,11 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
   const handleUpdateSubmit = async (e) => {
     e.preventDefault();
     if (
-      !userInfo.age ||
       !userInfo.lowerPrice ||
       !userInfo.UpperPrice ||
-      !userInfo.profile ||
       priceBreakdown.length < 1 ||
-      specialties.length < 1 ||
+      // specialties.length < 1 ||
+      // destinations.length < 1 ||
       extraImages.length < 1
     ) {
       toastRef.current.show({
@@ -134,13 +134,13 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
       ...userInfo,
       portfolio: extraImages,
       createdAt: Timestamp.fromMillis(Date.now()),
-      specialties: specialties,
+      specialties: specialties || [],
       offers: priceBreakdown,
+      // destinations: destinations,
       approved: true,
     };
 
     let Path;
-
 
     switch (proffesionalType) {
       case ProfessionalsDbEnum.model:
@@ -211,6 +211,24 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
     );
   };
 
+  // const [destinations, setDestinations] = useState([""]);
+
+  // const addDestination = () => {
+  //   setDestinations([...destinations, ""]);
+  // };
+
+  // const updateDestination = (index, value) => {
+  //   const updatedDestinations = [...destinations];
+  //   updatedDestinations[index] = value;
+  //   setDestinations(updatedDestinations);
+  // };
+
+  // const removeDestination = (indexToRemove) => {
+  //   setDestinations((prevDestinations) =>
+  //     prevDestinations.filter((_, index) => index !== indexToRemove)
+  //   );
+  // };
+
   let specialtyOptions;
 
   switch (proffesionalType) {
@@ -230,112 +248,144 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
   return (
     <div>
       <Toast ref={toastRef} position="top-right" />
-      <h2 className="dashboard-home-title">Update Profile Info</h2>
+      <h2 className="dashboard-home-title">Complete Profile Info</h2>
       <div className="p-fluid">
-        <div className="p-field">
-          <label className="text-warning" htmlFor="age">
-            Age
-          </label>
-          <Dropdown
-            id="age"
-            required
-            value={userInfo.age}
-            options={ageList}
-            onChange={(e) => setuserInfo({ ...userInfo, age: e.value })}
-          />
-        </div>
+        {proffesionalType === ProfessionalsDbEnum.model && (
+          <div className="p-field">
+            <label className="text-warning" htmlFor="age">
+              Age
+            </label>
+            <Dropdown
+              id="age"
+              required
+              value={userInfo.age}
+              options={ageList}
+              onChange={(e) => setuserInfo({ ...userInfo, age: e.value })}
+            />
+          </div>
+        )}
 
-        <h6 className="mt-3">
-          We list your prices in ranges (eg. ₵ 50 - 250 ){" "}
-        </h6>
+        {proffesionalType !== ProfessionalsDbEnum.model && (
+          <>
+            <h6 className="mt-3">
+              We list your prices in ranges (eg. ₵ 50 - 250 ){" "}
+            </h6>
 
-        <div className="p-field">
-          <label className="text-warning" htmlFor="lowerprice">
-            Lower price limit ₵
-          </label>
-          <span className="text-danger"> *</span>
-          <InputText
-            required
-            type="number"
-            id="price"
-            value={userInfo.lowerPrice}
-            placeholder="strictly equivalent Ghana Cedi (₵) value... eg. 10"
-            onChange={(e) =>
-              setuserInfo({ ...userInfo, lowerPrice: e.target.value })
-            }
-          />
-        </div>
-
-        <div className="p-field">
-          <label className="text-warning" htmlFor="upperprice">
-            Upper price limit ₵
-          </label>
-          <span className="text-danger"> *</span>
-          <InputText
-            required
-            type="number"
-            id="price"
-            value={userInfo.UpperPrice}
-            placeholder="strictly equivalent Ghana Cedi (₵) value... eg. 10"
-            onChange={(e) =>
-              setuserInfo({ ...userInfo, UpperPrice: e.target.value })
-            }
-          />
-        </div>
-
-        <h6 className="mt-3">
-          We also encourage you to break down prices into offers. eg. (5 photos
-          for ₵ 100){" "}
-        </h6>
-        {priceBreakdown.map((item, index) => (
-          <div
-            key={index}
-            className="d-flex align-items-center p-field"
-            style={{ gap: "1rem" }}
-          >
-            <div className="form-group">
-              <label className="text-warning">Offer:</label>
-              <InputText
-                required
-                type="text"
-                value={item.offer}
-                placeholder="Specify your offer in few words"
-                onChange={(e) =>
-                  updatePriceBreakdown(index, "offer", e.target.value)
-                }
-              />
-            </div>
-            <div className="form-group">
-              <label className="text-warning">Price Value (₵):</label>
+            <div className="p-field">
+              <label className="text-warning" htmlFor="lowerprice">
+                Lower price limit ₵
+              </label>
+              <span className="text-danger"> *</span>
               <InputText
                 required
                 type="number"
-                value={item.priceValue}
-                placeholder="Strictly equivalent Ghana Cedi (₵) value... eg. 10"
+                id="price"
+                value={userInfo.lowerPrice}
+                placeholder="strictly equivalent Ghana Cedi (₵) value... eg. 10"
                 onChange={(e) =>
-                  updatePriceBreakdown(index, "priceValue", e.target.value)
+                  setuserInfo({
+                    ...userInfo,
+                    lowerPrice: parseFloat(e.target.value),
+                  })
                 }
               />
             </div>
-            {index === priceBreakdown.length - 1 ? (
-              <button
-                type="button"
-                onClick={addPriceBreakdown}
-                className="btn btn-primary mx-2"
-              >
-                <span className="pi pi-plus"></span>
-              </button>
+
+            <div className="p-field">
+              <label className="text-warning" htmlFor="upperprice">
+                Upper price limit ₵
+              </label>
+              <span className="text-danger"> *</span>
+              <InputText
+                required
+                type="number"
+                id="price"
+                value={userInfo.UpperPrice}
+                placeholder="strictly equivalent Ghana Cedi (₵) value... eg. 10"
+                onChange={(e) =>
+                  setuserInfo({
+                    ...userInfo,
+                    UpperPrice: parseFloat(e.target.value),
+                  })
+                }
+              />
+            </div>
+
+            {proffesionalType === ProfessionalsDbEnum.tourGuide ? (
+              <h6 className="mt-3">
+                List locations that you would be available to take clients on
+                tour
+              </h6>
             ) : (
-              <button
-                type="button"
-                onClick={() => removePriceBreakdown(index)}
-                className="btn btn-danger mx-2"
-              >
-                <span className="pi pi-minus"></span>
-              </button>
+              <h6 className="mt-3">
+                We also encourage you to break down prices into offers. eg. (5
+                photos for ₵ 100)
+              </h6>
             )}
-          </div>
-        ))}
+
+            {priceBreakdown.map((item, index) => (
+              <div
+                key={index}
+                className="d-flex align-items-center p-field"
+                style={{ gap: "1rem" }}
+              >
+                <div className="form-group">
+                  <label className="text-warning">
+                    {proffesionalType === ProfessionalsDbEnum.tourGuide
+                      ? "Destination"
+                      : "Offer:"}
+                  </label>
+                  <InputText
+                    required
+                    type="text"
+                    value={item.offer}
+                    placeholder={`${
+                      proffesionalType === ProfessionalsDbEnum.tourGuide
+                        ? "eg. Cape Coast Castle..."
+                        : "eg. 5 photos..."
+                    }`}
+                    onChange={(e) =>
+                      updatePriceBreakdown(index, "offer", e.target.value)
+                    }
+                  />
+                </div>
+                <div className="form-group">
+                  <label className="text-warning">Price Value (₵):</label>
+                  <InputText
+                    required
+                    type="number"
+                    value={item.priceValue}
+                    placeholder="Strictly equivalent Ghana Cedi (₵) value... eg. 10"
+                    onChange={(e) =>
+                      updatePriceBreakdown(
+                        index,
+                        "priceValue",
+                        parseFloat(e.target.value)
+                      )
+                    }
+                  />
+                </div>
+                {index === priceBreakdown.length - 1 ? (
+                  <button
+                    type="button"
+                    onClick={addPriceBreakdown}
+                    className="btn btn-primary mx-2"
+                  >
+                    <span className="pi pi-plus"></span>
+                  </button>
+                ) : (
+                  <button
+                    type="button"
+                    onClick={() => removePriceBreakdown(index)}
+                    className="btn btn-danger mx-2"
+                  >
+                    <span className="pi pi-minus"></span>
+                  </button>
+                )}
+              </div>
+            ))}
+          </>
+        )}
 
         <div className="p-field">
           <label className="text-warning" htmlFor="item">
@@ -392,47 +442,107 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
           </div>
         </div>
 
-        <div className="p-field d-flex flex-column">
-          <h6 className="mt-3">
-            List <b> at most 3</b> of your specialties
-          </h6>
-          <label className="text-warning" htmlFor="extras">
-            What is your specialty
-          </label>
-          {specialties.map((category, index) => (
-            <div key={index} className="d-flex align-items-center">
+        {proffesionalType !== ProfessionalsDbEnum.tourGuide && (
+          <div className="p-field d-flex flex-column">
+            <h6 className="mt-3">
+              List <b> at most 3</b> of your specialties
+            </h6>
+            <label className="text-warning" htmlFor="extras">
+              What are your specialties
+            </label>
+            {specialties.map((category, index) => (
+              <div key={index} className="d-flex align-items-center">
+                <Dropdown
+                  value={category}
+                  options={specialtyOptions}
+                  onChange={(e) => {
+                    const updatedCategories = [...specialties];
+                    updatedCategories[index] = e.value;
+                    setSpecialties(updatedCategories);
+                  }}
+                  placeholder="Select supply Category"
+                  className="w-50 d-flex justify-content-center align-items-center mt-1"
+                  style={{ height: "3rem" }}
+                />
+                {index === specialties.length - 1 ? (
+                  <button
+                    type="button"
+                    onClick={addSpecialty}
+                    className="btn btn-primary mx-2"
+                  >
+                    <span className="pi pi-plus"></span>
+                  </button>
+                ) : (
+                  <button
+                    type="button"
+                    onClick={() => removeSpecialty(index)}
+                    className="btn btn-danger mx-2"
+                  >
+                    <span className="pi pi-minus"></span>
+                  </button>
+                )}
+              </div>
+            ))}
+          </div>
+        )}
+
+        {proffesionalType === ProfessionalsDbEnum.tourGuide && (
+          <>
+            {/* <div className="p-field d-flex flex-column">
+              <h6 className="mt-3">
+                List locations that you would be available to take clients on
+                tour
+              </h6>
+              <label className="text-warning" htmlFor="extras">
+                Indicate destinations
+              </label>
+              {destinations.map((item, index) => (
+                <div key={index} className="d-flex align-items-center ">
+                  <div className="form-group w-50">
+                    <InputText
+                      required
+                      type="text"
+                      value={item.offer}
+                      placeholder="eg. Cape Coast"
+                      onChange={(e) => updateDestination(index, e.target.value)}
+                    />
+                  </div>
+                  {index === destinations.length - 1 ? (
+                    <button
+                      type="button"
+                      onClick={addDestination}
+                      className="btn btn-primary mx-2"
+                    >
+                      <span className="pi pi-plus"></span>
+                    </button>
+                  ) : (
+                    <button
+                      type="button"
+                      onClick={() => removeDestination(index)}
+                      className="btn btn-danger mx-2"
+                    >
+                      <span className="pi pi-minus"></span>
+                    </button>
+                  )}
+                </div>
+              ))}
+            </div> */}
+            <div className="p-field">
+              <label className="text-warning" htmlFor="age">
+                Can You Accommodate your clients
+              </label>
               <Dropdown
-                value={category}
-                options={specialtyOptions}
-                onChange={(e) => {
-                  const updatedCategories = [...specialties];
-                  updatedCategories[index] = e.value;
-                  setSpecialties(updatedCategories);
-                }}
-                placeholder="Select supply Category"
-                className="w-50 d-flex justify-content-center align-items-center mt-1"
-                style={{ height: "3rem" }}
+                id="canAccommodate"
+                required
+                value={userInfo.canAccommodate}
+                options={canAccomodate}
+                onChange={(e) =>
+                  setuserInfo({ ...userInfo, canAccommodate: e.value })
+                }
               />
-              {index === specialties.length - 1 ? (
-                <button
-                  type="button"
-                  onClick={addSpecialty}
-                  className="btn btn-primary mx-2"
-                >
-                  <span className="pi pi-plus"></span>
-                </button>
-              ) : (
-                <button
-                  type="button"
-                  onClick={() => removeSpecialty(index)}
-                  className="btn btn-danger mx-2"
-                >
-                  <span className="pi pi-minus"></span>
-                </button>
-              )}
             </div>
-          ))}
-        </div>
+          </>
+        )}
 
         {proffesionalType === ProfessionalsDbEnum.model && (
           <>
@@ -464,7 +574,7 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
                         <label className="text-warning">Waist:</label>
                         <InputText
                           required
-                          type="number"
+                          type="text"
                           value={userInfo.waist}
                           placeholder="eg. 26in"
                           onChange={(e) =>
@@ -580,7 +690,7 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
                         <label className="text-warning">Waist:</label>
                         <InputText
                           required
-                          type="number"
+                          type="text"
                           value={userInfo.waist}
                           placeholder="eg. 26in"
                           onChange={(e) =>

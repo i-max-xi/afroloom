@@ -83,9 +83,21 @@ class ProductsDataService {
     return querySnapshot.docs[0];
   };
 
-  updateTourGuide = (id, updatedInfo) => {
-    const userDoc = doc(db, "tourGuide", id);
-    return updateDoc(userDoc, updatedInfo);
+  // updateTourGuide = (id, updatedInfo) => {
+  //   const userDoc = doc(db, "tourGuide", id);
+  //   return updateDoc(userDoc, updatedInfo);
+  // };
+
+  updateTourGuide = async (idValue, updatedInfo) => {
+    const q = query(tourGuideRef, where("id", "==", idValue));
+    const querySnapshot = await getDocs(q);
+
+    if (querySnapshot.docs.length === 0) {
+      throw new Error("Document not found"); // Handle the case when the document with the specified idValue is not found.
+    }
+
+    const docRef = querySnapshot.docs[0].ref;
+    return updateDoc(docRef, updatedInfo);
   };
 
   // Photographer / Videographer
@@ -108,9 +120,21 @@ class ProductsDataService {
     return querySnapshot.docs[0];
   };
 
-  updatePhotographer = (id, updatedInfo) => {
-    const userDoc = doc(db, "photographer", id);
-    return updateDoc(userDoc, updatedInfo);
+  // updatePhotographer = (id, updatedInfo) => {
+  //   const userDoc = doc(db, "photographer", id);
+  //   return updateDoc(userDoc, updatedInfo);
+  // };
+
+  updatePhotographer = async (idValue, updatedInfo) => {
+    const q = query(photographerRef, where("id", "==", idValue));
+    const querySnapshot = await getDocs(q);
+
+    if (querySnapshot.docs.length === 0) {
+      throw new Error("Document not found"); // Handle the case when the document with the specified idValue is not found.
+    }
+
+    const docRef = querySnapshot.docs[0].ref;
+    return updateDoc(docRef, updatedInfo);
   };
 
 
