@@ -77,8 +77,6 @@ const ProfessionalsPage = ({ match }) => {
 
   const saveFilters = () => {
     const newItemstoDisplay = products.filter((product) => {
-      console.log("selected", selectedPriceRange);
-      console.log("data", product?.lowerPrice * currencyFactor);
 
       if (
         (selectedOption2 === "" || product.country === selectedOption2) &&
