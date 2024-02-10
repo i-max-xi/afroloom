@@ -24,7 +24,7 @@ const ProfessionalsPage = ({ match }) => {
     products = Models;
   } else if (professionalName === "Photographer") {
     products = Photographers;
-  } else if (professionalName === "Tour Guide") {
+  } else if (professionalName === "TourGuide") {
     products = TourGuides;
   }
 
@@ -38,9 +38,8 @@ const ProfessionalsPage = ({ match }) => {
     currencyFactor
   );
 
-  const pullFilters = allProfessionalscategory.find(
-    (f) => f.name === professionalName
-  );
+  const pullFilters =
+    allProfessionalscategory.find((f) => f.name === professionalName) || [];
 
   const actualFilter = pullFilters.filters;
 
@@ -77,7 +76,6 @@ const ProfessionalsPage = ({ match }) => {
 
   const saveFilters = () => {
     const newItemstoDisplay = products.filter((product) => {
-
       if (
         (selectedOption2 === "" || product.country === selectedOption2) &&
         (selectedOption1 === "" || product.gender === selectedOption1) &&
@@ -242,7 +240,7 @@ const ProfessionalsTemplate = ({
         <div className="mx-auto info-content mt-4">
           <div>
             <h5>{name}</h5>
-            {country ? (
+            {country && flagImage !=="" ? (
               <div className="mx-1">
                 <img
                   width="10%"
@@ -256,19 +254,22 @@ const ProfessionalsTemplate = ({
             )}
           </div>
 
-          <h6>{specialty}</h6>
+          <h6 className="mx-5">{specialty}</h6>
 
-          <h6>
-            {currencySymbol}
-            {(currencyFactor * lowerPrice).toFixed(2)} - {currencySymbol}
-            {(currencyFactor * upperPrice).toFixed(2)}
-          </h6>
+          {ProfessionalName !== "Model" && (
+            <h6>
+              {currencySymbol}
+              {(currencyFactor * lowerPrice).toFixed(2)} - {currencySymbol}
+              {(currencyFactor * upperPrice).toFixed(2)}
+            </h6>
+          )}
         </div>
         <Link
           to={`/professional/${ProfessionalName}/${professionalId}`}
-          className="btn btn-dark text-white view-products col-6"
+          className="btn btn-dark text-white view-products"
         >
-          View {ProfessionalName}
+          View{" "}
+          {ProfessionalName !== "TourGuide" ? ProfessionalName : "Tour Guide"}
         </Link>
       </div>
     </div>

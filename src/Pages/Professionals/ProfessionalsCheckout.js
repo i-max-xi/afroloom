@@ -5,7 +5,6 @@ import { updateOrders } from "../../Redux/store";
 
 import { Link, useNavigate } from "react-router-dom";
 import { PaystackButton } from "react-paystack";
-import { Dropdown } from "primereact/dropdown";
 import { Toast } from "primereact/toast";
 import ProductsDataService from "../../Services/products.services";
 
@@ -20,11 +19,15 @@ const ProfessionalsCheckout = ({
   const cartItems = useSelector((state) => state.cartItems);
   const [emailAddress, setEmailAddress] = useState("");
   const [name, setName] = useState("");
+  const [projectDetails, setProjectDetails] = useState("");
+  const [time, setTime] = useState("");
+  const [projectLocation, setprojectLocation] = useState("");
+
   const [city, setCity] = useState("");
   const [tel, setTel] = useState("");
   const [country, setCountry] = useState("");
 
-  const totalToPay = selectedOffer.priceValue
+  const totalToPay = selectedOffer.priceValue;
 
   const currencySymbol = useSelector((state) => state.currencySymbol.symbol);
   const currencyFactor = useSelector((state) => state.currencySymbol.factor);
@@ -64,10 +67,14 @@ const ProfessionalsCheckout = ({
       country: country,
       city: city,
       customer_contact: tel,
-      professional_type: professionalType,
       professional_contact: product.phone,
+      professional_type: professionalType,
       selectedOffer: selectedOffer.offer,
-      amountPaid: selectedOffer.priceValue,
+      amountPaid: selectedOffer.priceValue || "Not Applicable",
+      projectDetails: projectDetails || "Not Applicable",
+      projectDateTime: time || "Not Applicable",
+      projectLocation: projectLocation || "Not Applicable",
+
       subject: `New Pofessional Booking`,
     };
     // Submit to formspree
@@ -77,6 +84,12 @@ const ProfessionalsCheckout = ({
         "Content-Type": "application/json",
       },
       body: JSON.stringify(userInfo),
+    });
+
+    toast.current.show({
+      severity: "success",
+      summary: `Request for this ${professionalType} is successfull`,
+      detail: "We will contact you in 24hours",
     });
   };
 
@@ -88,8 +101,6 @@ const ProfessionalsCheckout = ({
   };
 
   const [isInfoComplete, setIsInfoComplete] = useState(false);
-
-
 
   useEffect(() => {
     // Check if all necessary information is provided
@@ -132,29 +143,79 @@ const ProfessionalsCheckout = ({
               </p>
             </div>
             <div className="d-flex flex-column  justify-content-center align-items-center col-12 col-sm-4">
-              <div
-                className=" d-flex flex-row"
-                style={{ justifyContent: "space-evenly" }}
-              >
-                {currencySymbol}
-                {(currencyFactor * product.lowerPrice).toFixed(2)} -{" "}
-                {currencySymbol}
-                {(currencyFactor * product.UpperPrice).toFixed(2)}
-              </div>
-              <div className=" d-flex flex-column">
-                <h6>Selected Offer: {selectedOffer.offer}</h6> 
-              </div>
+              {professionalType !== "Model" && (
+                <>
+                  <div
+                    className=" d-flex flex-row"
+                    style={{ justifyContent: "space-evenly" }}
+                  >
+                    {currencySymbol}
+                    {(currencyFactor * product.lowerPrice).toFixed(2)} -{" "}
+                    {currencySymbol}
+                    {(currencyFactor * product.UpperPrice).toFixed(2)}
+                  </div>
+                  <div className=" d-flex flex-column">
+                    <h6>Selected Offer: {selectedOffer.offer}</h6>
+                  </div>
+                </>
+              )}
             </div>
           </div>
-          <div className="mt-5 mb-5 text-center">
-            <h4>
-              Total To Pay:
-              <span className="fs-5 mx-4">
-                {currencySymbol}
-                {(totalToPay * currencyFactor).toFixed(2)}
-              </span>
-            </h4>
-          </div>
+
+          {professionalType !== "Model" ? (
+            <>
+              <div className="mt-5 mb-5 text-center">
+                <h4>
+                  Total To Pay:
+                  <span className="fs-5 mx-4">
+                    {currencySymbol}
+                    {(totalToPay * currencyFactor).toFixed(2)}
+                  </span>
+                </h4>
+              </div>
+            </>
+          ) : (
+            <>
+              <h4 className="mb-4 text-center">Project Information</h4>
+              <div className="mt-4">
+                <div className="form-group">
+                  <textarea
+                    className="form-control"
+                    id="details"
+                    value={projectDetails}
+                    onChange={(e) => setProjectDetails(e.target.value)}
+                    placeholder="Describe your project in detail..."
+                    rows={5} // Set the number of rows for multiline textarea
+                  />
+                </div>
+              </div>
+              <div className="mt-4">
+                <div className="form-group">
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="time"
+                    value={time}
+                    onChange={(e) => setTime(e.target.value)}
+                    placeholder="Prefered date and time of project"
+                  />
+                </div>
+              </div>
+              <div className="mt-4">
+                <div className="form-group">
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="proect-location"
+                    value={projectLocation}
+                    onChange={(e) => setprojectLocation(e.target.value)}
+                    placeholder="Location"
+                  />
+                </div>
+              </div>
+            </>
+          )}
+
           {/* Shipping Information */}
           <div className="container bg-white rounded p-4">
             <h4 className="mb-4 text-center">
@@ -229,12 +290,21 @@ const ProfessionalsCheckout = ({
             {/* Dropdown with filtered delivery options */}
 
             {isInfoComplete ? (
-              <PaystackButton
-                onSuccess={onSuccess}
-                onClose={onClose}
-                className="btn btn-success w-100 text-center mt-4 "
-                {...config}
-              />
+              professionalType !== "Model" ? (
+                <PaystackButton
+                  onSuccess={onSuccess}
+                  onClose={onClose}
+                  className="btn btn-success w-100 text-center mt-4 "
+                  {...config}
+                />
+              ) : (
+                <button
+                  className="btn btn-success w-100 text-center mt-4 "
+                  onClick={onSuccess}
+                >
+                  Request Model
+                </button>
+              )
             ) : (
               <button
                 disabled

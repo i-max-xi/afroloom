@@ -55,7 +55,7 @@ const MobileNav = ({ visible, setVisible }) => {
         <h5>Book Professionals</h5>
         <ul className="navbar-nav">
           <li className="nav-item">
-            <Link className="nav-link" to="/professional/Tour Guide">
+            <Link className="nav-link" to="/professional/TourGuide">
               Tour Guide
             </Link>
           </li>

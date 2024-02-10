@@ -62,7 +62,7 @@ const ProfessionalsDetail = ({ match }) => {
         </Link>
         <div className="p-2">
           <h5>{relatedProduct.name}</h5>
-          <p >
+          <p>
             {currencySymbol}
             {(currencyFactor * product.lowerPrice).toFixed(2)} -{" "}
             {currencySymbol}
@@ -88,6 +88,8 @@ const ProfessionalsDetail = ({ match }) => {
   };
 
   const handleBook = () => {
+    if (professionalName === "Model") return setShowCheckoutPopup(true);
+
     if (selectedOffer.offer !== "") {
       setShowCheckoutPopup(true);
     } else {
@@ -129,7 +131,7 @@ const ProfessionalsDetail = ({ match }) => {
           </div>
           <div className="d-flex flex-column justify-content-center align-items-center col-12 col-sm-2">
             <div className=" d-flex flex-column">
-              {product.offers.map(({ offer, priceValue }) => (
+              {product.offers?.map(({ offer, priceValue }) => (
                 <div className="identity-item" key={offer}>
                   <input
                     type="radio"

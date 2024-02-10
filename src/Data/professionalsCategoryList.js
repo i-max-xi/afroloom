@@ -44,7 +44,7 @@ export const allProfessionalscategory = [
   },
   {
     id: "3000",
-    name: "Tour Guide",
+    name: "TourGuide",
     filters: [
       {
         name: "Gender",
@@ -56,10 +56,10 @@ export const allProfessionalscategory = [
         options: countryArr,
       },
 
-      // {
-      //   name: "Age",
-      //   options: [],
-      // },
+      {
+        name: "",
+        options: [],
+      },
     ],
   },
 ];
