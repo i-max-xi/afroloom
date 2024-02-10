@@ -30,7 +30,7 @@ const ProfessionalsDetail = ({ match }) => {
     Products = Models;
   } else if (professionalName === "Photographer") {
     Products = Photographers;
-  } else if (professionalName === "Tour Guide") {
+  } else if (professionalName === "TourGuide") {
     Products = TourGuides;
   }
 
@@ -273,6 +273,7 @@ const ProfessionalsDetail = ({ match }) => {
         visible={showCheckoutPopup}
         className="col-12 col-sm-6"
         onHide={() => setShowCheckoutPopup(false)}
+        dismissableMask={true}
       >
         <ProfessionalsCheckout
           product={product}

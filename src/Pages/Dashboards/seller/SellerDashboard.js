@@ -74,6 +74,7 @@ const SellerDashboard = () => {
                 navigate("/");
                 setShowPopup(false);
               }}
+              dismissableMask={true}
             >
               <div>
                 <p>You need to be approved by admin to use the dashboard.</p>

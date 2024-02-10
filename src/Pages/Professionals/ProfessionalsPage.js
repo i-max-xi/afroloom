@@ -133,6 +133,7 @@ const ProfessionalsPage = ({ match }) => {
                 onHide={() => {
                   setshowSearch(false);
                 }}
+                dismissableMask={true}
               >
                 <SearchFilters
                   search1={actualFilter[0].name}

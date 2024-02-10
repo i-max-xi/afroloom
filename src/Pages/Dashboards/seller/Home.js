@@ -173,6 +173,8 @@ const Home = ({ currentSeller }) => {
         visible={editDialogVisible}
         onHide={handleEditDialogHide}
         className="col-12 col-sm-6"
+        dismissableMask={true}
+
       >
         {selectedProduct && (
           <form onSubmit={handleEditSubmit}>

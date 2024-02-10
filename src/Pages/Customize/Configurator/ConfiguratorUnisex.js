@@ -362,6 +362,8 @@ const ConfiguratorUnisex = () => {
             visible={showTourPopup}
             className="col-12 col-sm-6"
             onHide={handleTourLater}
+            dismissableMask={true}
+
           >
             <div className="tour-popup">
               <h2>Welcome to the 3D customization!</h2>
@@ -482,6 +484,8 @@ const ConfiguratorUnisex = () => {
                     visible={visible}
                     className="col-12 col-sm-6"
                     onHide={() => setVisible(false)}
+                    dismissableMask={true}
+
                   >
                     <div className="d-flex flex-column align-items-center">
                       {selectedClothing.sizeModels ? (

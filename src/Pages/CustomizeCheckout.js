@@ -226,6 +226,8 @@ const CustomizeCheckout = () => {
             navigate("/");
             setshowDecision(false);
           }}
+          dismissableMask={true}
+
         >
           You need to <Link to={"/signin"}>Login</Link> to continue to Checkout
         </Dialog>

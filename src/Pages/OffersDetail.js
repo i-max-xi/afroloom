@@ -278,6 +278,8 @@ const OffersDetail = () => {
         onHide={() => {
           setshowSearch(false);
         }}
+        dismissableMask={true}
+
       >
         <SearchFilters
           search1="Category"
