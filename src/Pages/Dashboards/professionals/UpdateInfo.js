@@ -463,7 +463,7 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
                         <label className="text-warning">Waist:</label>
                         <InputText
                           required
-                          type="number"
+                          type="text"
                           value={userInfo.waist}
                           placeholder="eg. 26in"
                           onChange={(e) =>
@@ -579,7 +579,7 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
                         <label className="text-warning">Waist:</label>
                         <InputText
                           required
-                          type="number"
+                          type="text"
                           value={userInfo.waist}
                           placeholder="eg. 26in"
                           onChange={(e) =>
