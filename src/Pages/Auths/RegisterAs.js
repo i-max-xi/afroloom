@@ -12,7 +12,7 @@ const RegisterAs = () => {
       <div className="container registeras">
         <Link
           to="/buyer-signup"
-          className="border rounded p-4 px-5 text-decoration-none text-black d-flex flex-column align-items-center justify-content-center"
+          className="border rounded p-4 px-5 text-decoration-none text-black d-flex col-12 col-sm-3 flex-column align-items-center justify-content-center"
         >
           <div className="" data-aos="fade-in" data-aos-duration="1500">
             <div className=" d-flex justify-content-center flex-column">
@@ -22,18 +22,18 @@ const RegisterAs = () => {
         </Link>
         <Link
           to="/professional-signup"
-          className="border rounded p-4 text-decoration-none text-black d-flex flex-column align-items-center justify-content-center"
+          className="border rounded p-4 text-decoration-none text-black d-flex col-12 col-sm-3 flex-column align-items-center justify-content-center"
         >
           <div className=" " data-aos="fade-in" data-aos-duration="1500">
             <div className="d-flex justify-content-center flex-column">
               <h5 className="text-center">Professional</h5>
-              <p>Model, Photographer/VideoGrapher, Tour Guide</p>
+              <p className="text-center">Model, Photographer/VideoGrapher, Tour Guide</p>
             </div>
           </div>
         </Link>
         <Link
           to="/supplier-signup"
-          className="border rounded p-4 px-5 text-decoration-none text-black d-flex flex-column align-items-center justify-content-center"
+          className="border rounded p-4 px-5 text-decoration-none text-black d-flex col-12 col-sm-3 flex-column align-items-center justify-content-center"
         >
           <div className=" " data-aos="fade-in" data-aos-duration="1500">
             <div className="d-flex justify-content-center flex-column">

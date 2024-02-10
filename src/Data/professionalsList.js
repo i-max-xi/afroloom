@@ -16,6 +16,11 @@ export const ProfessionalsDbEnum = {
     tourGuide: "tourGuide"
 }
 
+export const canAccomodate = [
+    "Yes",
+    "No"
+]
+
 export const photographySpecialties = [
     "Portrait photography",
     "Landscape photography",
