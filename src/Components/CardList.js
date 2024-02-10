@@ -388,6 +388,8 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
           onHide={() => {
             setshowSearch(false);
           }}
+          dismissableMask={true}
+
         >
           <SearchFilters
             search1="Category"

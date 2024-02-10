@@ -109,6 +109,9 @@ const ProfessionalsPage = ({ match }) => {
 
   const [showSearch, setshowSearch] = useState(false);
 
+
+  
+
   return (
     <>
       <Nav />
@@ -133,6 +136,7 @@ const ProfessionalsPage = ({ match }) => {
                 onHide={() => {
                   setshowSearch(false);
                 }}
+                dismissableMask={true}
               >
                 <SearchFilters
                   search1={actualFilter[0].name}
@@ -167,7 +171,6 @@ const ProfessionalsPage = ({ match }) => {
               id="advance-search-for-all"
             ></span>
           </div>
-
           {/* <div className="d-flex" style={{justifyContent: "space-evenly"}}> */}
           {itemsToDisplay.length !== 0 ? (
             itemsToDisplay.map(
@@ -179,6 +182,7 @@ const ProfessionalsPage = ({ match }) => {
                 lowerPrice,
                 UpperPrice,
                 specialties,
+                offers,
               }) => {
                 return (
                   <ProfessionalsTemplate
@@ -188,9 +192,13 @@ const ProfessionalsPage = ({ match }) => {
                     country={country}
                     upperPrice={UpperPrice}
                     specialty={specialties?.[0]}
+                    specialties={specialties}
+                    destinations={offers}
                     lowerPrice={lowerPrice}
                     professionalId={id}
                     ProfessionalName={professionalName}
+                    // showSeeAll={showSeeAll}
+                    // setshowSeeAll={setshowSeeAll}
                   />
                 );
               }
@@ -198,7 +206,6 @@ const ProfessionalsPage = ({ match }) => {
           ) : (
             <p className="m-5">No results currently</p>
           )}
-          {/* </div> */}
         </div>
       </div>
 
@@ -223,10 +230,25 @@ const ProfessionalsTemplate = ({
   specialty,
   professionalId,
   ProfessionalName,
+  // setshowSeeAll,
+  // showSeeAll,
+  specialties,
+  destinations,
 }) => {
   const currencySymbol = useSelector((state) => state.currencySymbol.symbol);
   const currencyFactor = useSelector((state) => state.currencySymbol.factor);
   const flagImage = countryFlags[country] || ""; // Use flag image URL based on the country
+
+  const [showSeeAll, setshowSeeAll] = useState(false);
+
+
+  const openDialog = () => {
+    setshowSeeAll(true);
+  };
+
+  const closeDialog = () => {
+    setshowSeeAll(false);
+  };
 
   return (
     <div className="col-12 col-sm-3 m-1 text-decoration-none">
@@ -240,7 +262,7 @@ const ProfessionalsTemplate = ({
         <div className="mx-auto info-content mt-4">
           <div>
             <h5>{name}</h5>
-            {country && flagImage !=="" ? (
+            {country && flagImage !== "" ? (
               <div className="mx-1">
                 <img
                   width="10%"
@@ -264,14 +286,58 @@ const ProfessionalsTemplate = ({
             </h6>
           )}
         </div>
-        <Link
-          to={`/professional/${ProfessionalName}/${professionalId}`}
-          className="btn btn-dark text-white view-products"
-        >
-          View{" "}
-          {ProfessionalName !== "TourGuide" ? ProfessionalName : "Tour Guide"}
-        </Link>
+        <div className="d-flex justify-content-between" style={{ gap: "2rem" }}>
+          <Link
+            to={`/professional/${ProfessionalName}/${professionalId}`}
+            className="btn btn-dark text-white view-products"
+          >
+            View{" "}
+            {ProfessionalName !== "TourGuide" ? ProfessionalName : "Tour Guide"}
+          </Link>
+          <Link
+            onClick={openDialog}
+            className="btn btn-outline-dark view-products"
+          >
+            {ProfessionalName !== "TourGuide" ? "Specialties" : "Destinations"}
+          </Link>
+        </div>
       </div>
+      <Dialog
+        header={
+          ProfessionalName !== "TourGuide" ? "Specialties" : "Destinations"
+        }
+        visible={showSeeAll}
+        className="col-10 col-sm-3 search-banner"
+        onHide={closeDialog}
+        dismissableMask={true}
+      >
+        {ProfessionalName === "TourGuide" ? (
+          <ol>
+            {destinations?.length > 0 ? (
+              destinations.map(({offer}, index) => (
+                <li key={index}>
+                  {offer}
+                </li>
+              ))
+            ) : (
+              <p className="m-5">No destinations available to show</p>
+            )}
+          </ol>
+        ) : (
+          <ol>
+            {specialties?.length > 0 ? (
+              specialties.map((item, index) => (
+                <li key={index}>
+                  {/* Display each specialty here, you can customize this part */}
+                  {item}
+                </li>
+              ))
+            ) : (
+              <p className="m-5">No specialties available to show</p>
+            )}
+          </ol>
+        )}
+      </Dialog>
     </div>
   );
 };

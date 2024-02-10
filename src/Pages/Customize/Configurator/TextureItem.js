@@ -66,6 +66,8 @@ function TextureItem({
         onHide={handleCloseDialog}
         // style={{ width: "30vw" }}
         className="col-12 col-sm-4"
+        dismissableMask={true}
+
       >
         <div className="d-flex flex-column">
           <img alt={`Texture`} src={texture} height="150px" width='250px' style={{alignSelf: 'center'}}/>

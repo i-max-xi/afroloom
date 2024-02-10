@@ -30,7 +30,7 @@ const ProfessionalsDetail = ({ match }) => {
     Products = Models;
   } else if (professionalName === "Photographer") {
     Products = Photographers;
-  } else if (professionalName === "Tour Guide") {
+  } else if (professionalName === "TourGuide") {
     Products = TourGuides;
   }
 
@@ -114,10 +114,10 @@ const ProfessionalsDetail = ({ match }) => {
             } align-items-center col-12 col-sm-6`}
             style={{ gap: "1rem" }}
           >
-            <div className="">
+            <div className="profile-item">
               <img
-                width="100%"
-                className="rounded-circle card-img-top"
+                // width="100%"
+                className="rounded-circle profile-img card-img-top"
                 src={product.profile}
                 alt="profile"
               />
@@ -156,16 +156,12 @@ const ProfessionalsDetail = ({ match }) => {
             </button>
           </div>
         </div>
-        <div
-          className="d-flex mt-3 professional-detail-info"
-          style={{ justifyContent: "space-evenly" }}
-        >
-          {/* <p>
-            <h6>{product.gender}</h6>
-            Gender
-          </p> */}
-          {professionalName === ProfessionalsListEnum.model && (
-            <>
+        {professionalName === ProfessionalsListEnum.model && (
+          <>
+            <div
+              className="d-flex mt-3 professional-detail-info"
+              style={{ justifyContent: "space-evenly" }}
+            >
               <p>
                 <h6>{product.age}</h6>
                 Age
@@ -178,63 +174,70 @@ const ProfessionalsDetail = ({ match }) => {
                 <h6>{product.waist}</h6>
                 Waist
               </p>
-            </>
-          )}
-          {product.gender === genderListEnum.female && (
-            <>
-              <p>
-                <h6>{product.hips}</h6>
-                Hips
-              </p>
-              <p>
-                <h6>{product.bust}</h6>
-                Bust
-              </p>
-              <p>
-                <h6>{product.dressSize}</h6>
-                Dress Size
-              </p>
-              <p>
-                <h6>{product.shoeSize}</h6>
-                Shoe Size
-              </p>
-            </>
-          )}
-          {product.gender === genderListEnum.male && (
-            <>
-              <p>
-                <h6>{product.shirtSize}</h6>
-                Shirt Size
-              </p>
-              <p>
-                <h6>{product.shoeSize}</h6>
-                Shoe Size
-              </p>
-            </>
-          )}
-        </div>
+              {product.gender === genderListEnum.female && (
+                <>
+                  <p>
+                    <h6>{product.hips}</h6>
+                    Hips
+                  </p>
+                  <p>
+                    <h6>{product.bust}</h6>
+                    Bust
+                  </p>
+                  <p>
+                    <h6>{product.dressSize}</h6>
+                    Dress Size
+                  </p>
+                  <p>
+                    <h6>{product.shoeSize}</h6>
+                    Shoe Size
+                  </p>
+                </>
+              )}
+              {product.gender === genderListEnum.male && (
+                <>
+                  <p>
+                    <h6>{product.shirtSize}</h6>
+                    Shirt Size
+                  </p>
+                  <p>
+                    <h6>{product.shoeSize}</h6>
+                    Shoe Size
+                  </p>
+                </>
+              )}
+            </div>
+            <hr />
+          </>
+        )}
       </div>
-      <hr />
 
-      <div className="container mt-5 mb-5">
-        <h3 className="d-flex justify-content-center footer-header">
-          Specialties
-        </h3>
-        <div className="d-flex mt-3" style={{ justifyContent: "space-evenly" }}>
-          {product.specialties.length !== 0 ? (
-            product.specialties.map((specialty, index) => (
-              <React.Fragment key={index}>
-                <h5>{specialty}</h5>
-                {index !== product.specialties.length - 1 && (
-                  <Divider layout="vertical" />
-                )}
-              </React.Fragment>
-            ))
-          ) : (
-            <p className="m-5">No specialties available to show</p>
-          )}
-        </div>
-      </div>
+      {professionalName !== "TourGuide" && (
+        <>
+          <div className="container mt-5 mb-5">
+            <h3 className="d-flex justify-content-center footer-header">
+              Specialties
+            </h3>
+            <div
+              className="d-flex mt-3"
+              style={{ justifyContent: "space-evenly" }}
+            >
+              {product.specialties?.length > 1 ? (
+                product.specialties?.map((specialty, index) => (
+                  <React.Fragment key={index}>
+                    <h5>{specialty}</h5>
+                    {index !== product.specialties.length - 1 && (
+                      <Divider layout="vertical" />
+                    )}
+                  </React.Fragment>
+                ))
+              ) : (
+                <p className="m-5">No specialties available to show</p>
+              )}
+            </div>
+          </div>
+        </>
+      )}
 
       <div className="container portfolio-container">
         <h3 className="footer-header">Portfolio</h3>
@@ -273,6 +276,7 @@ const ProfessionalsDetail = ({ match }) => {
         visible={showCheckoutPopup}
         className="col-12 col-sm-6"
         onHide={() => setShowCheckoutPopup(false)}
+        dismissableMask={true}
       >
         <ProfessionalsCheckout
           product={product}
