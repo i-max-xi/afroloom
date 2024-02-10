@@ -747,7 +747,7 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
 
         <div className="p-field">
           <Button
-            label="Add Product"
+            label="Update Information"
             onClick={handleUpdateSubmit}
             className="p-button p-component"
             disabled={isUploading}
