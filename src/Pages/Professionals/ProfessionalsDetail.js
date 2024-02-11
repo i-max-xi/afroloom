@@ -11,6 +11,7 @@ import { ProfessionalsListEnum } from "../../Data/professionalsList";
 import { genderListEnum } from "../../Data/genderAgeList";
 import { Divider } from "primereact/divider";
 import { Toast } from "primereact/toast";
+import { Avatar } from "primereact/avatar";
 
 const ProfessionalsDetail = ({ match }) => {
   const { professionalName, productId } = useParams();
@@ -104,7 +105,7 @@ const ProfessionalsDetail = ({ match }) => {
 
       <div className="container d-flex flex-column mt-5">
         <div
-          className={`d-flex ${
+          className={`d-flex top-profile-container ${
             isMobile ? "flex-column" : ""
           } justify-content-between border-bottom pb-4`}
         >
@@ -114,14 +115,8 @@ const ProfessionalsDetail = ({ match }) => {
             } align-items-center col-12 col-sm-6 head-profile`}
             style={{ gap: "1rem" }}
           >
-            <div className="profile-item">
-              <img
-                // width="100%"
-                className="rounded-circle profile-img card-img-top"
-                src={product.profile}
-                alt="profile"
-              />
-            </div>
+            
+            <Avatar className="profile-img" image={product.profile} size="xlarge" shape="circle"/>
             <p>
               <h5>{product.name}</h5>
               <h6>
