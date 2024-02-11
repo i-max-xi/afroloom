@@ -16,6 +16,7 @@ import { ProgressSpinner } from "primereact/progressspinner";
 import { set3DItemDetails, setItemDataSheet } from "../../../Redux/store";
 import { useDispatch } from "react-redux";
 import { parseTitle } from "../../../utils/functions";
+import { Divider } from "primereact/divider";
 
 const Confirmation = ({
   total,
@@ -95,9 +96,8 @@ const Confirmation = ({
             </p>
           </div>
         ),
-        sticky:true
+        sticky: true,
       });
-
     } catch (error) {
       setIsLoading(false);
       toast.current.show({
@@ -193,7 +193,7 @@ export const OrderDetail = React.forwardRef(
           <p className="h5 mt-3">
             Price: {currencySymbol}
             {total}
-          </p> 
+          </p>
           <div>
             <div className="custom-size-values">
               <p className="h5 mt-4">Client's custom size values:</p>
@@ -238,45 +238,45 @@ export const OrderDetail = React.forwardRef(
               <div key={index} className="mb-4">
                 <h4 className="text-capitalize"> {parseTitle(part.name)}</h4>
                 <p>
-                  Color:{" "}
-                  {part.color ? (
-                    <div
-                      className="color-display"
-                      style={{
-                        backgroundColor: part.color,
-                        width: "20px",
-                        height: "20px",
-                        border: "1px solid black",
-                        borderRadius: "4rem",
-                        display: "inline-block",
-                        marginLeft: "1rem",
-                      }}
-                    ></div>
-                  ) : (
-                    <span>None Selected</span>
+                  {part.color && (
+                    <>
+                      Color
+                      <div
+                        className="color-display"
+                        style={{
+                          backgroundColor: part.color,
+                          width: "20px",
+                          height: "20px",
+                          border: "1px solid black",
+                          borderRadius: "4rem",
+                          display: "inline-block",
+                          marginLeft: "1rem",
+                        }}
+                      ></div>
+                    </>
                   )}
                 </p>
 
                 <p>
-                  Texture:{" "}
-                  {part.texture ? (
-                    <p>
-                      <img
-                        src={part.texture}
-                        alt="Selected Texture"
-                        style={{
-                          maxWidth: "70px",
-                          maxHeight: "70px",
-                          display: "inline-block",
-                        }}
-                      />
-                    </p>
-                  ) : (
-                    <span>None Selected</span>
+                  {part.texture && (
+                    <>
+                      Texture:
+                      <p>
+                        <img
+                          src={part.texture}
+                          alt="Selected Texture"
+                          style={{
+                            maxWidth: "70px",
+                            maxHeight: "70px",
+                            display: "inline-block",
+                          }}
+                        />
+                      </p>
+                    </>
                   )}
                 </p>
 
-                {index !== selectedParts.length - 1 && <hr />}
+                {index !== selectedParts.length - 1 && <Divider />}
               </div>
             ))}
           </div>
