@@ -92,7 +92,7 @@ export const Card = ({
 
   return (
     <div
-      className="card col-6 col-sm-2 mt-1 text-decoration-none text-black"
+      className="card mt-1 text-decoration-none text-black"
       data-aos="fade-up"
     >
       <Toast ref={toast} />
@@ -115,7 +115,7 @@ export const Card = ({
       <div className="card-body d-flex flex-column">
         <div>
           <div className="d-flex justify-content-between align-items-start">
-            <div style={{ flex: 5 }}>{title}</div>
+          <div style={{ flex: 5, whiteSpace: "nowrap" }}>{title}</div>
             <div
               className="flag"
               style={{ flex: 1, translate: "0 0.5rem", float: "right" }}
@@ -373,9 +373,15 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
       <div className="row px-3 d-flex">
         {showNestedComponent && <CategorySwipe />}
 
-        <div onClick={() => setshowSearch(!showSearch)} className="advanced-search-button rounded-circle">
+        <div
+          onClick={() => setshowSearch(!showSearch)}
+          className="advanced-search-button rounded-circle"
+        >
           {/* <label htmlFor="advancedSearch">Advanced Search</label> */}
-          <span className="pi pi-search-plus" style={{fontSize: "1.4rem"}}></span>
+          <span
+            className="pi pi-search-plus"
+            style={{ fontSize: "1.4rem" }}
+          ></span>
         </div>
 
         {showNestedComponent && !isMobile && <Row offerFix="Professionals" />}
@@ -389,7 +395,6 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
             setshowSearch(false);
           }}
           dismissableMask={true}
-
         >
           <SearchFilters
             search1="Category"
@@ -433,24 +438,26 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
         {/* Iteration */}
         {itemsToDisplay.map((product, index) => (
           <React.Fragment>
-            <Card
-              key={index}
-              title={product.title}
-              discount={product.discount}
-              description={product.description}
-              rating={product.rating}
-              price={product.price}
-              item={product.item}
-              flag={product.flag}
-              id={product.id}
-              Height={product.height}
-              TextAlign={product.TextAlign}
-              Button={product.Button}
-              linkless={product.linkless}
-              weight={product.weight}
-              seller={product.seller}
-              country={product.country}
-            />
+            <div className="col-6 col-sm-2 p-1">
+              <Card
+                key={index}
+                title={product.title}
+                discount={product.discount}
+                description={product.description}
+                rating={product.rating}
+                price={product.price}
+                item={product.item}
+                flag={product.flag}
+                id={product.id}
+                Height={product.height}
+                TextAlign={product.TextAlign}
+                Button={product.Button}
+                linkless={product.linkless}
+                weight={product.weight}
+                seller={product.seller}
+                country={product.country}
+              />
+            </div>
 
             {index === 11 && showNestedComponent && (
               <>
