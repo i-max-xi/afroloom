@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useReactToPrint } from "react-to-print";
 import html2canvas from "html2canvas";
 import { Link } from "react-router-dom";
@@ -15,6 +15,7 @@ import { Toast } from "primereact/toast";
 import { ProgressSpinner } from "primereact/progressspinner";
 import { set3DItemDetails, setItemDataSheet } from "../../../Redux/store";
 import { useDispatch } from "react-redux";
+import { parseTitle } from "../../../utils/functions";
 
 const Confirmation = ({
   total,
@@ -37,6 +38,10 @@ const Confirmation = ({
   const handlePrint = useReactToPrint({
     content: () => componentRef.current,
   });
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const storage = getStorage(app);
 
@@ -231,7 +236,7 @@ export const OrderDetail = React.forwardRef(
             <h2>Information On Parts</h2>
             {selectedParts.map((part, index) => (
               <div key={index} className="mb-4">
-                <h4>{part.name}</h4>
+                <h4 className="text-capitalize"> {parseTitle(part.name)}</h4>
                 <p>
                   Color:{" "}
                   {part.color ? (
