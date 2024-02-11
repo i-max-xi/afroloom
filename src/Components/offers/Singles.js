@@ -12,6 +12,7 @@ const OfferItem = ({ title, imageUrl, linkTo, videoUrl, itemID, action }) => {
             alt={title}
             className="item-video"
             autoPlay
+            playsInline
             loop
             muted
           />

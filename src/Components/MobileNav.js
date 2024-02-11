@@ -62,7 +62,7 @@ const MobileNav = ({ visible, setVisible }) => {
 
           <li className="nav-item">
             <Link className="nav-link" to="/professional/Photographer">
-              Photographer / VideoGrapher
+              Photographer / Videographer
             </Link>
           </li>
 

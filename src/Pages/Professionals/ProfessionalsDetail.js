@@ -41,7 +41,7 @@ const ProfessionalsDetail = ({ match }) => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, []);
+  }, [professionalName, productId]);
 
   //related products
 
@@ -152,16 +152,23 @@ const ProfessionalsDetail = ({ match }) => {
               className="btn btn-dark text-white  col-12"
               onClick={handleBook}
             >
-              Book {professionalName}
+              Book {professionalName === "TourGuide" ? "Tour Guide": professionalName}
             </button>
+            {professionalName !== ProfessionalsListEnum.model && (
+              <small className="text-center">Select an offer to book</small>
+            )}
           </div>
         </div>
-        {professionalName === ProfessionalsListEnum.model && (
-          <>
-            <div
-              className="d-flex mt-3 professional-detail-info"
-              style={{ justifyContent: "space-evenly" }}
-            >
+        <div
+          className="d-flex mt-3 professional-detail-info"
+          style={{ justifyContent: "space-evenly" }}
+        >
+          <p>
+            <h6>{product.gender}</h6>
+            Gender
+          </p>
+          {professionalName === ProfessionalsListEnum.model && (
+            <>
               <p>
                 <h6>{product.age}</h6>
                 Age
@@ -186,11 +193,11 @@ const ProfessionalsDetail = ({ match }) => {
                   </p>
                   <p>
                     <h6>{product.dressSize}</h6>
-                    Dress Size
+                    Dress
                   </p>
                   <p>
                     <h6>{product.shoeSize}</h6>
-                    Shoe Size
+                    Shoe
                   </p>
                 </>
               )}
@@ -198,18 +205,18 @@ const ProfessionalsDetail = ({ match }) => {
                 <>
                   <p>
                     <h6>{product.shirtSize}</h6>
-                    Shirt Size
+                    Shirt
                   </p>
                   <p>
                     <h6>{product.shoeSize}</h6>
-                    Shoe Size
+                    Shoe
                   </p>
                 </>
               )}
-            </div>
-            <hr />
-          </>
-        )}
+            </>
+          )}
+        </div>
+        <hr />
       </div>
 
       {professionalName !== "TourGuide" && (

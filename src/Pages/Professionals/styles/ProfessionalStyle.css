@@ -42,4 +42,10 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  color: rgba(0, 0, 0, 0.733);
+}
+
+.professional-detail-info > p > h6 {
+  color: black;
+  font-weight: bold;
 }
