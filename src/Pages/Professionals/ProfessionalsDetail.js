@@ -111,7 +111,7 @@ const ProfessionalsDetail = ({ match }) => {
           <div
             className={`d-flex ${
               isMobile ? "flex-column" : ""
-            } align-items-center col-12 col-sm-6`}
+            } align-items-center col-12 col-sm-6 head-profile`}
             style={{ gap: "1rem" }}
           >
             <div className="profile-item">
