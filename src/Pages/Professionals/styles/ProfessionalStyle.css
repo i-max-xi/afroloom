@@ -23,7 +23,7 @@
 .profile-img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  /* object-fit: cover; */
 }
 
 .portfolio-item {
@@ -48,4 +48,8 @@
 .professional-detail-info > p > h6 {
   color: black;
   font-weight: bold;
+}
+
+.head-profile > p > h6 {
+  color: rgba(0, 0, 0, 0.634);
 }
