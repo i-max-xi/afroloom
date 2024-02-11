@@ -8,7 +8,7 @@ import { differenceInDays, fromUnixTime } from "date-fns"; // Import the functio
 const spinvid = require("../../Assets/vid/vid.mp4");
 const crop = require("../../Assets/vid/crop.MP4");
 const booty = require("../../Assets/vid/booty.MP4");
-const book = require("../../Assets/vid/book.jpg");
+// const book = require("../../Assets/vid/book.jpg");
 const herbal = require("../../Assets/vid/herbal.jpg");
 
 
