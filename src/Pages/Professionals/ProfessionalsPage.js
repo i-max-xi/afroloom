@@ -28,6 +28,8 @@ const ProfessionalsPage = ({ match }) => {
     products = TourGuides;
   }
 
+  const ApproveProducts = products.filter((item) => item.approved === true);
+
   // console.log(ProfessionalName)
 
   // currency conversion
@@ -51,7 +53,7 @@ const ProfessionalsPage = ({ match }) => {
     setCurrentPage(event.page);
   };
 
-  const itemsToDisplayBank = products.slice(
+  const itemsToDisplayBank = ApproveProducts.slice(
     currentPage * itemsPerPage,
     (currentPage + 1) * itemsPerPage
   );
@@ -75,7 +77,7 @@ const ProfessionalsPage = ({ match }) => {
   const [selectedPriceRange, setSelectedPriceRange] = useState("");
 
   const saveFilters = () => {
-    const newItemstoDisplay = products.filter((product) => {
+    const newItemstoDisplay = ApproveProducts.filter((product) => {
       if (
         (selectedOption2 === "" || product.country === selectedOption2) &&
         (selectedOption1 === "" || product.gender === selectedOption1) &&
@@ -108,9 +110,6 @@ const ProfessionalsPage = ({ match }) => {
   };
 
   const [showSearch, setshowSearch] = useState(false);
-
-
-  
 
   return (
     <>
@@ -241,7 +240,6 @@ const ProfessionalsTemplate = ({
 
   const [showSeeAll, setshowSeeAll] = useState(false);
 
-
   const openDialog = () => {
     setshowSeeAll(true);
   };
@@ -314,10 +312,8 @@ const ProfessionalsTemplate = ({
         {ProfessionalName === "TourGuide" ? (
           <ol>
             {destinations?.length > 0 ? (
-              destinations.map(({offer}, index) => (
-                <li key={index}>
-                  {offer}
-                </li>
+              destinations.map(({ offer }, index) => (
+                <li key={index}>{offer}</li>
               ))
             ) : (
               <p className="m-5">No destinations available to show</p>

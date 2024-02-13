@@ -115,8 +115,12 @@ const ProfessionalsDetail = ({ match }) => {
             } align-items-center col-12 col-sm-6 head-profile`}
             style={{ gap: "1rem" }}
           >
-            
-            <Avatar className="profile-img" image={product.profile} size="xlarge" shape="circle"/>
+            <Avatar
+              className="profile-img"
+              image={product.profile}
+              size="xlarge"
+              shape="circle"
+            />
             <p>
               <h5>{product.name}</h5>
               <h6>
@@ -147,7 +151,10 @@ const ProfessionalsDetail = ({ match }) => {
               className="btn btn-dark text-white  col-12"
               onClick={handleBook}
             >
-              Book {professionalName === "TourGuide" ? "Tour Guide": professionalName}
+              Book{" "}
+              {professionalName === "TourGuide"
+                ? "Tour Guide"
+                : professionalName}
             </button>
             {professionalName !== ProfessionalsListEnum.model && (
               <small className="text-center">Select an offer to book</small>
@@ -158,10 +165,13 @@ const ProfessionalsDetail = ({ match }) => {
           className="d-flex mt-3 professional-detail-info"
           style={{ justifyContent: "space-evenly" }}
         >
-          <p>
-            <h6>{product.gender}</h6>
-            Gender
-          </p>
+          {product.gender !== genderListEnum.notSpecified && (
+            <p>
+              <h6>{product.gender}</h6>
+              Gender
+            </p>
+          )}
+
           {professionalName === ProfessionalsListEnum.model && (
             <>
               <p>
