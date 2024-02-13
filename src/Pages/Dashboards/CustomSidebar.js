@@ -3,7 +3,7 @@ import { Button } from "primereact/button";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { auth, signOut } from "../../firebase";
-import { Sidebar } from 'primereact/sidebar';
+import { Sidebar } from "primereact/sidebar";
 import {
   setDashBoardPath,
   setSignedIn,
@@ -55,16 +55,21 @@ const CustomSideBar = ({ items, setActiveIndex, visible, setVisible }) => {
     );
   };
 
-
-
   return (
-    <Sidebar visible={visible} onHide={() => setVisible(false)} className="Sidebar bg-white">
+    <Sidebar
+      visible={visible}
+      onHide={() => setVisible(false)}
+      className="Sidebar bg-white"
+    >
       <div className="d-flex flex-column align-items-start mt-3">
         {items.map((item, index) => (
           <>
             <Button
               key={index}
-              onClick={() => setActiveIndex(index)}
+              onClick={() => {
+                setActiveIndex(index);
+                setVisible(false)
+              }}
               className="p-button-text text-black"
               label={item.label}
             />
