@@ -137,7 +137,7 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
       specialties: specialties || [],
       offers: priceBreakdown,
       // destinations: destinations,
-      approved: true,
+      completed: true,
     };
 
     let Path;
