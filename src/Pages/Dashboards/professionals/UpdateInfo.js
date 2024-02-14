@@ -17,6 +17,7 @@ import { ageList, genderListEnum } from "../../../Data/genderAgeList";
 import {
   ProfessionalsDbEnum,
   canAccomodate,
+  imageUploadType,
   modelSpecialties,
   photographySpecialties,
   tourGuideSpecialties,
@@ -30,7 +31,9 @@ import { InputTextarea } from "primereact/inputtextarea";
 const UpdateInfo = ({ currentUser, proffesionalType }) => {
   const [userInfo, setuserInfo] = useState(currentUser);
 
-  const [extraImages, setExtraImages] = useState([]); // State variable to store extra images
+  const [extraImages, setExtraImages] = useState([]);
+  const [residenceImages, setResidenceImages] = useState([]);
+
   const [isUploading, setIsUploading] = useState(false); // Initialize loading state
 
   const toastRef = useRef(null);
@@ -66,9 +69,17 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
     }
   };
 
-  const handleDeleteImage = async (index) => {
+  const handleDeleteImage = async (index, type) => {
     try {
-      const imageName = extraImages[index].split("%2F").pop().split("?")[0];
+      let imageName;
+
+      if (type === imageUploadType.portfolio) {
+        imageName = extraImages[index].split("%2F").pop().split("?")[0];
+      }
+
+      if (type === imageUploadType.residence) {
+        imageName = residenceImages[index].split("%2F").pop().split("?")[0];
+      }
 
       // Create a reference to the file to delete
       const imageRef = ref(storage, `images/${imageName}`);
@@ -77,8 +88,14 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
       await deleteObject(imageRef);
 
       // Update state to remove the deleted image
-      const updatedImages = extraImages.filter((image, i) => i !== index);
-      setExtraImages(updatedImages);
+      if (type === imageUploadType.portfolio) {
+        const updatedImages = extraImages.filter((image, i) => i !== index);
+        setExtraImages(updatedImages);
+      }
+      if (type === imageUploadType.residence) {
+        const updatedImages = residenceImages.filter((image, i) => i !== index);
+        setExtraImages(updatedImages);
+      }
     } catch (error) {
       toastRef.current.show({
         severity: "error",
@@ -88,7 +105,7 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
     }
   };
 
-  const handleExtraImageUpload = async (e) => {
+  const handleExtraImageUpload = async (e, type) => {
     const files = e.target.files;
     const uploadPromises = Array.from(files).map(async (file) => {
       const storageRef = ref(storage, `images/${file.name}`);
@@ -103,7 +120,13 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
 
     try {
       const downloadURLs = await Promise.all(uploadPromises);
-      setExtraImages([...extraImages, ...downloadURLs]); // Append the extra image URLs to the array
+
+      if (type === imageUploadType.portfolio) {
+        setExtraImages([...extraImages, ...downloadURLs]);
+      }
+      if (type === imageUploadType.residence) {
+        setResidenceImages([...residenceImages, ...downloadURLs]);
+      }
     } catch (error) {
       toastRef.current.show({
         severity: "error",
@@ -115,16 +138,21 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
 
   const handleUpdateSubmit = async (e) => {
     e.preventDefault();
-    if (
-      proffesionalType === ProfessionalsDbEnum.tourGuide &&
-      !userInfo.license
-    ) {
-      toastRef.current.show({
-        severity: "error",
-        summary: "Please fill in the required license field for tour guides.",
-      });
-      return;
+    if (proffesionalType === ProfessionalsDbEnum.tourGuide) {
+      if (
+        !userInfo.license ||
+        userInfo.canAccommodate ||
+        userInfo.canAccommodateNumber ||
+        residenceImages.length < 1
+      ) {
+        toastRef.current.show({
+          severity: "error",
+          summary: "Please fill in the required license field for tour guides.",
+        });
+        return;
+      }
     }
+
     if (
       !userInfo.lowerPrice ||
       !userInfo.UpperPrice ||
@@ -146,6 +174,7 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
     const newData = {
       ...userInfo,
       portfolio: extraImages,
+      residenceImages: residenceImages,
       createdAt: Timestamp.fromMillis(Date.now()),
       specialties: specialties || [],
       offers: priceBreakdown,
@@ -519,7 +548,9 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
               id="extras"
               type="file"
               accept="image/*"
-              onChange={handleExtraImageUpload}
+              onChange={(e) =>
+                handleExtraImageUpload(e, imageUploadType.portfolio)
+              }
               multiple
             />
             {extraImages.length > 0 && (
@@ -539,7 +570,9 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
                         severity="danger"
                         className="p-badge-sm p-overlay-badge position-absolute top-0 end-0"
                         style={{ scale: "0.8", cursor: "pointer" }}
-                        onClick={() => handleDeleteImage(index)}
+                        onClick={() =>
+                          handleDeleteImage(index, imageUploadType.portfolio)
+                        }
                       />
                     </div>
                   ))}
@@ -630,6 +663,54 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
                       })
                     }
                   />
+                </div>
+                <div className="p-field d-flex flex-column">
+                  <label className="text-warning" htmlFor="extras">
+                    Upload images of place of accommodation
+                    <span className="text-danger"> *</span>
+                  </label>
+
+                  <div className="d-flex">
+                    <input
+                      required
+                      id="extras"
+                      type="file"
+                      accept="image/*"
+                      onChange={(e) =>
+                        handleExtraImageUpload(e, imageUploadType.residence)
+                      }
+                      multiple
+                    />
+                    {residenceImages.length > 0 && (
+                      <div>
+                        <ul className="d-flex">
+                          {residenceImages.map((image, index) => (
+                            <div key={index} className="position-relative">
+                              <img
+                                className="mx-2 rounded"
+                                width={40}
+                                height={40}
+                                alt={image}
+                                src={image}
+                              />
+                              <Badge
+                                value="X"
+                                severity="danger"
+                                className="p-badge-sm p-overlay-badge position-absolute top-0 end-0"
+                                style={{ scale: "0.8", cursor: "pointer" }}
+                                onClick={() =>
+                                  handleDeleteImage(
+                                    index,
+                                    imageUploadType.residence
+                                  )
+                                }
+                              />
+                            </div>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                  </div>
                 </div>
               </>
             )}

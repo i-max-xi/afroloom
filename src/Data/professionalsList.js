@@ -21,6 +21,12 @@ export const canAccomodate = [
     "No"
 ]
 
+export const imageUploadType = {
+    residence: "residence",
+    portfolio: "portfolio"
+
+}
+
 export const photographySpecialties = [
     "Portrait photography",
     "Landscape photography",
