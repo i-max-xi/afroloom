@@ -129,6 +129,7 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
       !userInfo.lowerPrice ||
       !userInfo.UpperPrice ||
       priceBreakdown.length < 1 ||
+      languages.length < 1 ||
       // specialties.length < 1 ||
       // destinations.length < 1 ||
       extraImages.length < 1
@@ -148,6 +149,7 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
       createdAt: Timestamp.fromMillis(Date.now()),
       specialties: specialties || [],
       offers: priceBreakdown,
+      languages: languages,
       destinations: destinations,
       completed: true,
     };
@@ -242,6 +244,24 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
     );
   };
 
+  const [languages, setLanguages] = useState([""]);
+
+  const addLanguages = () => {
+    setLanguages([...languages, ""]);
+  };
+
+  const updateLanguages = (index, value) => {
+    const updatedLanguages = [...languages];
+    updatedLanguages[index] = value;
+    setDestinations(updatedLanguages);
+  };
+
+  const removeLanguages = (indexToRemove) => {
+    setLanguages((prevLanguages) =>
+      prevLanguages.filter((_, index) => index !== indexToRemove)
+    );
+  };
+
   let specialtyOptions;
 
   switch (proffesionalType) {
@@ -277,6 +297,42 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
             />
           </div>
         )}
+        <div className="p-field d-flex flex-column">
+          <label className="text-warning" htmlFor="extras">
+            Languages spoken
+            <span className="text-danger"> *</span>
+          </label>
+          {languages.map((item, index) => (
+            <div key={index} className="d-flex align-items-center ">
+              <div className="form-group w-50">
+                <InputText
+                  required
+                  type="text"
+                  value={item.offer}
+                  placeholder="eg. English"
+                  onChange={(e) => updateLanguages(index, e.target.value)}
+                />
+              </div>
+              {index === destinations.length - 1 ? (
+                <button
+                  type="button"
+                  onClick={addLanguages}
+                  className="btn btn-primary mx-2"
+                >
+                  <span className="pi pi-plus"></span>
+                </button>
+              ) : (
+                <button
+                  type="button"
+                  onClick={() => removeLanguages(index)}
+                  className="btn btn-danger mx-2"
+                >
+                  <span className="pi pi-minus"></span>
+                </button>
+              )}
+            </div>
+          ))}
+        </div>
 
         {proffesionalType !== ProfessionalsDbEnum.model && (
           <>
