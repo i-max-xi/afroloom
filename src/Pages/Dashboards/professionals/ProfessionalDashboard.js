@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import "../styles/Dashboard.css";
 import Nav from "../../../Components/Nav";
 import { TabPanel, TabView } from "primereact/tabview";
@@ -18,13 +18,25 @@ const ProfessionalDashboard = () => {
   const welcomename = currentUser.name;
   // const sellerCompany = currentUser.companyName;
 
-
   // const sellerCountry = currentUser.country;
   const professionalApproved = currentUser.approved;
+  const profileCompleted = currentUser.completed;
 
   const [activeIndex, setActiveIndex] = useState(0);
 
   const [visible, setVisible] = useState(true);
+
+  const StatusBadge = useMemo(() => {
+    if (professionalApproved && profileCompleted)
+      return <Badge value="Verified" size="large" severity="success"></Badge>;
+    if (!profileCompleted && !profileCompleted)
+      return (
+        <button onClick={() => setActiveIndex(1)} className="btn btn-danger">
+          Complete Profile
+        </button>
+      );
+    if(profileCompleted && !professionalApproved) return (<Badge value="Verified" size="large" severity="success"></Badge>)
+  }, [professionalApproved, profileCompleted]);
 
   return (
     <>
@@ -34,11 +46,17 @@ const ProfessionalDashboard = () => {
           Welcome <span style={{ color: "orange" }}>{welcomename}!</span>
         </div>
         <div>
-          {professionalApproved ? (
+          {/* {professionalApproved ? (
             <Badge value="Verified" size="large" severity="success"></Badge>
           ) : (
-            <button onClick={() => setActiveIndex(1)} className="btn btn-danger">Complete Profile</button>
-          )}
+            <button
+              onClick={() => setActiveIndex(1)}
+              className="btn btn-danger"
+            >
+              Complete Profile
+            </button>
+          )} */}
+          {StatusBadge}
         </div>
       </div>
       <div className="d-flex bg-white">
@@ -46,10 +64,7 @@ const ProfessionalDashboard = () => {
           <Button icon="pi pi-arrow-right" onClick={() => setVisible(true)} />
         </div>
         <CustomSideBar
-          items={[
-            { label: "Home" },
-            { label: "Update Profile Info" },
-          ]}
+          items={[{ label: "Home" }, { label: "Update Profile Info" }]}
           setActiveIndex={setActiveIndex}
           visible={visible}
           setVisible={setVisible}

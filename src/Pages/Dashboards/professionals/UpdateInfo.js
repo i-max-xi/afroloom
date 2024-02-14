@@ -113,6 +113,13 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
 
   const handleUpdateSubmit = async (e) => {
     e.preventDefault();
+    if (proffesionalType === ProfessionalsDbEnum.tourGuide && !userInfo.license) {
+      toastRef.current.show({
+        severity: "error",
+        summary: "Please fill in the required license field for tour guides.",
+      });
+      return;
+    }
     if (
       !userInfo.lowerPrice ||
       !userInfo.UpperPrice ||
@@ -137,7 +144,7 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
       specialties: specialties || [],
       offers: priceBreakdown,
       // destinations: destinations,
-      approved: true,
+      completed: true,
     };
 
     let Path;
@@ -273,7 +280,7 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
 
             <div className="p-field">
               <label className="text-warning" htmlFor="lowerprice">
-                Lower price limit ₵
+                Lowest price ₵
               </label>
               <span className="text-danger"> *</span>
               <InputText
@@ -293,7 +300,7 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
 
             <div className="p-field">
               <label className="text-warning" htmlFor="upperprice">
-                Upper price limit ₵
+                Highest price ₵
               </label>
               <span className="text-danger"> *</span>
               <InputText
@@ -387,19 +394,21 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
           </>
         )}
 
-        <div className="p-field">
-          <label className="text-warning" htmlFor="item">
-            Upload Licence of work
-          </label>
-          <span className="text-danger"> *</span>
-          <InputText
-            required
-            id="item"
-            type="file"
-            accept="image/*"
-            onChange={handleImageUpload}
-          />
-        </div>
+        {proffesionalType === ProfessionalsDbEnum.tourGuide && (
+          <div className="p-field">
+            <label className="text-warning" htmlFor="item">
+              Upload Licence of work
+            </label>
+            <span className="text-danger"> *</span>
+            <InputText
+              required
+              id="item"
+              type="file"
+              accept="image/*"
+              onChange={handleImageUpload}
+            />
+          </div>
+        )}
 
         <div className="p-field d-flex flex-column">
           <label className="text-warning" htmlFor="extras">

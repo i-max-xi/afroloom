@@ -1,11 +1,13 @@
 export const genderList = [
     "Male",
-    "Female"
+    "Female",
+    "Prefer not to say"
 ]
 
 export const genderListEnum = {
     male: "Male",
-    female: "Female"
+    female: "Female",
+    notSpecified: "Prefer not to say"
 }
 
 export const ageList = [
