@@ -17,6 +17,7 @@ import { ageList, genderListEnum } from "../../../Data/genderAgeList";
 import {
   ProfessionalsDbEnum,
   canAccomodate,
+  imageUploadType,
   modelSpecialties,
   photographySpecialties,
   tourGuideSpecialties,
@@ -25,10 +26,14 @@ import productsServices from "../../../Services/products.services";
 import { setcurrentUser } from "../../../Redux/store";
 import { useDispatch } from "react-redux";
 
+import { InputTextarea } from "primereact/inputtextarea";
+
 const UpdateInfo = ({ currentUser, proffesionalType }) => {
   const [userInfo, setuserInfo] = useState(currentUser);
 
-  const [extraImages, setExtraImages] = useState([]); // State variable to store extra images
+  const [extraImages, setExtraImages] = useState([]);
+  const [residenceImages, setResidenceImages] = useState([]);
+
   const [isUploading, setIsUploading] = useState(false); // Initialize loading state
 
   const toastRef = useRef(null);
@@ -64,9 +69,17 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
     }
   };
 
-  const handleDeleteImage = async (index) => {
+  const handleDeleteImage = async (index, type) => {
     try {
-      const imageName = extraImages[index].split("%2F").pop().split("?")[0];
+      let imageName;
+
+      if (type === imageUploadType.portfolio) {
+        imageName = extraImages[index].split("%2F").pop().split("?")[0];
+      }
+
+      if (type === imageUploadType.residence) {
+        imageName = residenceImages[index].split("%2F").pop().split("?")[0];
+      }
 
       // Create a reference to the file to delete
       const imageRef = ref(storage, `images/${imageName}`);
@@ -75,8 +88,14 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
       await deleteObject(imageRef);
 
       // Update state to remove the deleted image
-      const updatedImages = extraImages.filter((image, i) => i !== index);
-      setExtraImages(updatedImages);
+      if (type === imageUploadType.portfolio) {
+        const updatedImages = extraImages.filter((image, i) => i !== index);
+        setExtraImages(updatedImages);
+      }
+      if (type === imageUploadType.residence) {
+        const updatedImages = residenceImages.filter((image, i) => i !== index);
+        setResidenceImages(updatedImages);
+      }
     } catch (error) {
       toastRef.current.show({
         severity: "error",
@@ -86,7 +105,7 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
     }
   };
 
-  const handleExtraImageUpload = async (e) => {
+  const handleExtraImageUpload = async (e, type) => {
     const files = e.target.files;
     const uploadPromises = Array.from(files).map(async (file) => {
       const storageRef = ref(storage, `images/${file.name}`);
@@ -101,7 +120,13 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
 
     try {
       const downloadURLs = await Promise.all(uploadPromises);
-      setExtraImages([...extraImages, ...downloadURLs]); // Append the extra image URLs to the array
+
+      if (type === imageUploadType.portfolio) {
+        setExtraImages([...extraImages, ...downloadURLs]);
+      }
+      if (type === imageUploadType.residence) {
+        setResidenceImages([...residenceImages, ...downloadURLs]);
+      }
     } catch (error) {
       toastRef.current.show({
         severity: "error",
@@ -113,17 +138,26 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
 
   const handleUpdateSubmit = async (e) => {
     e.preventDefault();
-    if (proffesionalType === ProfessionalsDbEnum.tourGuide && !userInfo.license) {
-      toastRef.current.show({
-        severity: "error",
-        summary: "Please fill in the required license field for tour guides.",
-      });
-      return;
+    if (proffesionalType === ProfessionalsDbEnum.tourGuide) {
+      if (
+        !userInfo.license ||
+        userInfo.canAccommodate ||
+        userInfo.canAccommodateNumber ||
+        residenceImages.length < 1
+      ) {
+        toastRef.current.show({
+          severity: "error",
+          summary: "Please fill in the required license field for tour guides.",
+        });
+        return;
+      }
     }
+
     if (
       !userInfo.lowerPrice ||
       !userInfo.UpperPrice ||
       priceBreakdown.length < 1 ||
+      languages.length < 1 ||
       // specialties.length < 1 ||
       // destinations.length < 1 ||
       extraImages.length < 1
@@ -140,10 +174,12 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
     const newData = {
       ...userInfo,
       portfolio: extraImages,
+      residenceImages: residenceImages,
       createdAt: Timestamp.fromMillis(Date.now()),
       specialties: specialties || [],
       offers: priceBreakdown,
-      // destinations: destinations,
+      languages: languages,
+      destinations: destinations,
       completed: true,
     };
 
@@ -174,6 +210,7 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
       toastRef.current.show({
         severity: "success",
         summary: `Information successfully updated added`,
+        detail: "You approval status would be updated within 48 hours",
       });
     } catch (error) {
       toastRef.current.show({
@@ -218,23 +255,41 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
     );
   };
 
-  // const [destinations, setDestinations] = useState([""]);
+  const [destinations, setDestinations] = useState([""]);
 
-  // const addDestination = () => {
-  //   setDestinations([...destinations, ""]);
-  // };
+  const addDestination = () => {
+    setDestinations([...destinations, ""]);
+  };
 
-  // const updateDestination = (index, value) => {
-  //   const updatedDestinations = [...destinations];
-  //   updatedDestinations[index] = value;
-  //   setDestinations(updatedDestinations);
-  // };
+  const updateDestination = (index, value) => {
+    const updatedDestinations = [...destinations];
+    updatedDestinations[index] = value;
+    setDestinations(updatedDestinations);
+  };
 
-  // const removeDestination = (indexToRemove) => {
-  //   setDestinations((prevDestinations) =>
-  //     prevDestinations.filter((_, index) => index !== indexToRemove)
-  //   );
-  // };
+  const removeDestination = (indexToRemove) => {
+    setDestinations((prevDestinations) =>
+      prevDestinations.filter((_, index) => index !== indexToRemove)
+    );
+  };
+
+  const [languages, setLanguages] = useState([""]);
+
+  const addLanguages = () => {
+    setLanguages([...languages, ""]);
+  };
+
+  const updateLanguages = (index, value) => {
+    const updatedLanguages = [...languages];
+    updatedLanguages[index] = value;
+    setDestinations(updatedLanguages);
+  };
+
+  const removeLanguages = (indexToRemove) => {
+    setLanguages((prevLanguages) =>
+      prevLanguages.filter((_, index) => index !== indexToRemove)
+    );
+  };
 
   let specialtyOptions;
 
@@ -260,7 +315,7 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
         {proffesionalType === ProfessionalsDbEnum.model && (
           <div className="p-field">
             <label className="text-warning" htmlFor="age">
-              Age
+              Age <span className="text-danger"> *</span>
             </label>
             <Dropdown
               id="age"
@@ -271,18 +326,54 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
             />
           </div>
         )}
+        <div className="p-field d-flex flex-column">
+          <label className="text-warning" htmlFor="extras">
+            Languages spoken
+            <span className="text-danger"> *</span>
+          </label>
+          {languages.map((item, index) => (
+            <div key={index} className="d-flex align-items-center ">
+              <div className="form-group w-50">
+                <InputText
+                  required
+                  type="text"
+                  value={item.offer}
+                  placeholder="eg. English"
+                  onChange={(e) => updateLanguages(index, e.target.value)}
+                />
+              </div>
+              {index === destinations.length - 1 ? (
+                <button
+                  type="button"
+                  onClick={addLanguages}
+                  className="btn btn-primary mx-2"
+                >
+                  <span className="pi pi-plus"></span>
+                </button>
+              ) : (
+                <button
+                  type="button"
+                  onClick={() => removeLanguages(index)}
+                  className="btn btn-danger mx-2"
+                >
+                  <span className="pi pi-minus"></span>
+                </button>
+              )}
+            </div>
+          ))}
+        </div>
 
         {proffesionalType !== ProfessionalsDbEnum.model && (
           <>
             <h6 className="mt-3">
               We list your prices in ranges (eg. ₵ 50 - 250 ){" "}
+              <span className="text-danger"> *</span>
             </h6>
 
             <div className="p-field">
               <label className="text-warning" htmlFor="lowerprice">
                 Lowest price ₵
               </label>
-              <span className="text-danger"> *</span>
               <InputText
                 required
                 type="number"
@@ -302,7 +393,6 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
               <label className="text-warning" htmlFor="upperprice">
                 Highest price ₵
               </label>
-              <span className="text-danger"> *</span>
               <InputText
                 required
                 type="number"
@@ -318,15 +408,60 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
               />
             </div>
 
+            {proffesionalType === ProfessionalsDbEnum.tourGuide && (
+              <>
+                <div className="p-field d-flex flex-column">
+                  <label className="text-warning" htmlFor="extras">
+                    Indicate destinations
+                    <span className="text-danger"> *</span>
+                  </label>
+                  {destinations.map((item, index) => (
+                    <div key={index} className="d-flex align-items-center ">
+                      <div className="form-group w-50">
+                        <InputText
+                          required
+                          type="text"
+                          value={item.offer}
+                          placeholder="eg. Cape Coast Castle"
+                          onChange={(e) =>
+                            updateDestination(index, e.target.value)
+                          }
+                        />
+                      </div>
+                      {index === destinations.length - 1 ? (
+                        <button
+                          type="button"
+                          onClick={addDestination}
+                          className="btn btn-primary mx-2"
+                        >
+                          <span className="pi pi-plus"></span>
+                        </button>
+                      ) : (
+                        <button
+                          type="button"
+                          onClick={() => removeDestination(index)}
+                          className="btn btn-danger mx-2"
+                        >
+                          <span className="pi pi-minus"></span>
+                        </button>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </>
+            )}
+
             {proffesionalType === ProfessionalsDbEnum.tourGuide ? (
               <h6 className="mt-3">
-                List locations that you would be available to take clients on
-                tour
+                We also encourage you to break down prices into offers /
+                packages
+                <span className="text-danger"> *</span>
               </h6>
             ) : (
               <h6 className="mt-3">
-                We also encourage you to break down prices into offers. eg. (5
-                photos for ₵ 100)
+                We also encourage you to break down prices into offers /
+                packages. eg. (5 photos for ₵ 100)
+                <span className="text-danger"> *</span>
               </h6>
             )}
 
@@ -337,20 +472,11 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
                 style={{ gap: "1rem" }}
               >
                 <div className="form-group">
-                  <label className="text-warning">
-                    {proffesionalType === ProfessionalsDbEnum.tourGuide
-                      ? "Destination"
-                      : "Offer:"}
-                  </label>
+                  <label className="text-warning">Offer / Package</label>
                   <InputText
                     required
                     type="text"
                     value={item.offer}
-                    placeholder={`${
-                      proffesionalType === ProfessionalsDbEnum.tourGuide
-                        ? "eg. Cape Coast Castle..."
-                        : "eg. 5 photos..."
-                    }`}
                     onChange={(e) =>
                       updatePriceBreakdown(index, "offer", e.target.value)
                     }
@@ -413,6 +539,7 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
         <div className="p-field d-flex flex-column">
           <label className="text-warning" htmlFor="extras">
             Upload Portfolios (any images of your work you can share with us)
+            <span className="text-danger"> *</span>
           </label>
 
           <div className="d-flex">
@@ -421,7 +548,9 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
               id="extras"
               type="file"
               accept="image/*"
-              onChange={handleExtraImageUpload}
+              onChange={(e) =>
+                handleExtraImageUpload(e, imageUploadType.portfolio)
+              }
               multiple
             />
             {extraImages.length > 0 && (
@@ -441,7 +570,9 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
                         severity="danger"
                         className="p-badge-sm p-overlay-badge position-absolute top-0 end-0"
                         style={{ scale: "0.8", cursor: "pointer" }}
-                        onClick={() => handleDeleteImage(index)}
+                        onClick={() =>
+                          handleDeleteImage(index, imageUploadType.portfolio)
+                        }
                       />
                     </div>
                   ))}
@@ -453,12 +584,11 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
 
         {proffesionalType !== ProfessionalsDbEnum.tourGuide && (
           <div className="p-field d-flex flex-column">
-            <h6 className="mt-3">
-              List <b> at most 3</b> of your specialties
-            </h6>
             <label className="text-warning" htmlFor="extras">
               What are your specialties
             </label>
+            <span className="text-danger"> *</span>
+
             {specialties.map((category, index) => (
               <div key={index} className="d-flex align-items-center">
                 <Dropdown
@@ -497,49 +627,12 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
 
         {proffesionalType === ProfessionalsDbEnum.tourGuide && (
           <>
-            {/* <div className="p-field d-flex flex-column">
-              <h6 className="mt-3">
-                List locations that you would be available to take clients on
-                tour
-              </h6>
-              <label className="text-warning" htmlFor="extras">
-                Indicate destinations
-              </label>
-              {destinations.map((item, index) => (
-                <div key={index} className="d-flex align-items-center ">
-                  <div className="form-group w-50">
-                    <InputText
-                      required
-                      type="text"
-                      value={item.offer}
-                      placeholder="eg. Cape Coast"
-                      onChange={(e) => updateDestination(index, e.target.value)}
-                    />
-                  </div>
-                  {index === destinations.length - 1 ? (
-                    <button
-                      type="button"
-                      onClick={addDestination}
-                      className="btn btn-primary mx-2"
-                    >
-                      <span className="pi pi-plus"></span>
-                    </button>
-                  ) : (
-                    <button
-                      type="button"
-                      onClick={() => removeDestination(index)}
-                      className="btn btn-danger mx-2"
-                    >
-                      <span className="pi pi-minus"></span>
-                    </button>
-                  )}
-                </div>
-              ))}
-            </div> */}
             <div className="p-field">
               <label className="text-warning" htmlFor="age">
                 Can You Accommodate your clients
               </label>
+              <span className="text-danger"> *</span>
+
               <Dropdown
                 id="canAccommodate"
                 required
@@ -550,12 +643,100 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
                 }
               />
             </div>
+
+            {userInfo.canAccommodate === "Yes" && (
+              <>
+                <div className="p-field">
+                  <label className="text-warning" htmlFor="upperprice">
+                    Input number you can accommodate
+                  </label>
+                  <InputText
+                    required
+                    type="number"
+                    id="accommodate number"
+                    value={userInfo.canAccommodateNumber}
+                    placeholder="eg. 1"
+                    onChange={(e) =>
+                      setuserInfo({
+                        ...userInfo,
+                        canAccommodateNumber: e.target.value,
+                      })
+                    }
+                  />
+                </div>
+                <div className="p-field d-flex flex-column">
+                  <label className="text-warning" htmlFor="extras">
+                    Upload images of place of accommodation
+                    <span className="text-danger"> *</span>
+                  </label>
+
+                  <div className="d-flex">
+                    <input
+                      required
+                      id="extras"
+                      type="file"
+                      accept="image/*"
+                      onChange={(e) =>
+                        handleExtraImageUpload(e, imageUploadType.residence)
+                      }
+                      multiple
+                    />
+                    {residenceImages.length > 0 && (
+                      <div>
+                        <ul className="d-flex">
+                          {residenceImages.map((image, index) => (
+                            <div key={index} className="position-relative">
+                              <img
+                                className="mx-2 rounded"
+                                width={40}
+                                height={40}
+                                alt={image}
+                                src={image}
+                              />
+                              <Badge
+                                value="X"
+                                severity="danger"
+                                className="p-badge-sm p-overlay-badge position-absolute top-0 end-0"
+                                style={{ scale: "0.8", cursor: "pointer" }}
+                                onClick={() =>
+                                  handleDeleteImage(
+                                    index,
+                                    imageUploadType.residence
+                                  )
+                                }
+                              />
+                            </div>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </>
+            )}
           </>
         )}
 
+        <div className="p-field">
+          <label className="text-warning">Description:</label>
+          <InputTextarea
+            value={userInfo.description}
+            placeholder="eg. I have two years experience in..."
+            onChange={(e) =>
+              setuserInfo({
+                ...userInfo,
+                description: e.target.value,
+              })
+            }
+            rows={5}
+            cols={30}
+          />
+        </div>
+
         {proffesionalType === ProfessionalsDbEnum.model && (
           <>
-            <h6 className="mt-3">Other required details: </h6>
+            <h6 className="mt-3">Other required details: </h6>{" "}
+            <span className="text-danger"> *</span>
             {currentUser.gender === genderListEnum.female ? (
               <div className="container">
                 <div className="row">

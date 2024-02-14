@@ -35,7 +35,17 @@ const ProfessionalDashboard = () => {
           Complete Profile
         </button>
       );
-    if(profileCompleted && !professionalApproved) return (<Badge value="Verified" size="large" severity="success"></Badge>)
+    if (profileCompleted && !professionalApproved)
+      return (
+        <div className="d-flex flex-column align-items-center justify-content-center">
+          <Badge
+            value="Verification pending"
+            size="large"
+            severity="info"
+          ></Badge>
+          <p className="fs-6">Your profile would only be listed after approval</p>
+        </div>
+      );
   }, [professionalApproved, profileCompleted]);
 
   return (
