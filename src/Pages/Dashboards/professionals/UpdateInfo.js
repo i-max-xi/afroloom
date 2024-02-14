@@ -610,6 +610,29 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
                 }
               />
             </div>
+
+            {userInfo.canAccommodate === "Yes" && (
+              <>
+                <div className="p-field">
+                  <label className="text-warning" htmlFor="upperprice">
+                    Input number you can accommodate
+                  </label>
+                  <InputText
+                    required
+                    type="number"
+                    id="accommodate number"
+                    value={userInfo.canAccommodateNumber}
+                    placeholder="eg. 1"
+                    onChange={(e) =>
+                      setuserInfo({
+                        ...userInfo,
+                        canAccommodateNumber: e.target.value,
+                      })
+                    }
+                  />
+                </div>
+              </>
+            )}
           </>
         )}
 
