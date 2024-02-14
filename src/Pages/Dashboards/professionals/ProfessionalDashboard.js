@@ -27,7 +27,7 @@ const ProfessionalDashboard = () => {
   const [visible, setVisible] = useState(true);
 
   const StatusBadge = useMemo(() => {
-    if (professionalApproved && !profileCompleted)
+    if (professionalApproved && profileCompleted)
       return <Badge value="Verified" size="large" severity="success"></Badge>;
     if (!profileCompleted && !profileCompleted)
       return (
@@ -35,7 +35,7 @@ const ProfessionalDashboard = () => {
           Complete Profile
         </button>
       );
-    if (profileCompleted && professionalApproved)
+    if (profileCompleted && !professionalApproved)
       return (
         <div className="d-flex flex-column align-items-center justify-content-center">
           <Badge
