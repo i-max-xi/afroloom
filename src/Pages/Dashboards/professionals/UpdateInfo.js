@@ -94,7 +94,7 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
       }
       if (type === imageUploadType.residence) {
         const updatedImages = residenceImages.filter((image, i) => i !== index);
-        setExtraImages(updatedImages);
+        setResidenceImages(updatedImages);
       }
     } catch (error) {
       toastRef.current.show({
