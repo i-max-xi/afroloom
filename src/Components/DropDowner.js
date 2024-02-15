@@ -19,7 +19,7 @@ const DropDowner = ({
         </span>
         <Dropdown.Toggle
           variant="none"
-          style={{ color: selectedColor, float: "right" }}
+          // style={{ color: selectedColor, float: "right" }}
         >
           <span className="mx-1">{icon}</span>
 
