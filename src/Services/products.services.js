@@ -38,6 +38,22 @@ class ProductsDataService {
     return getDoc(buyerDoc);
   };
 
+  deleteModel = (id) => {
+    const modelDoc = doc(db, "models", id);
+    return deleteDoc(modelDoc);
+  };
+
+  updateModelApproval = async (modelId, approvedStatus) => {
+    try {
+      const modelDocRef = doc(db, "models", modelId);
+      await updateDoc(modelDocRef, { approved: approvedStatus });
+      return true;
+    } catch (error) {
+      console.error("Error updating model approval status:", error);
+      return false;
+    }
+  };
+
   getModelByField = async (fieldName, value) => {
     const q = query(modelsRef, where(fieldName, "==", value));
     const querySnapshot = await getDocs(q);
@@ -83,6 +99,22 @@ class ProductsDataService {
     return querySnapshot.docs[0];
   };
 
+  deleteTourGuide = (id) => {
+    const tourGuideDoc = doc(db, "tourGuide", id);
+    return deleteDoc(tourGuideDoc);
+  };
+
+  updateTourGuideApproval = async (tourGuideId, approvedStatus) => {
+    try {
+      const tourGuideDocRef = doc(db, "tourGuide", tourGuideId);
+      await updateDoc(tourGuideDocRef, { approved: approvedStatus });
+      return true; 
+    } catch (error) {
+      console.error("Error updating tour guide approval status:", error);
+      return false; 
+    }
+  };
+
   // updateTourGuide = (id, updatedInfo) => {
   //   const userDoc = doc(db, "tourGuide", id);
   //   return updateDoc(userDoc, updatedInfo);
@@ -118,6 +150,22 @@ class ProductsDataService {
     const q = query(photographerRef, where(fieldName, "==", value));
     const querySnapshot = await getDocs(q);
     return querySnapshot.docs[0];
+  };
+
+  deletePhotographer = (id) => {
+    const photographerDoc = doc(db, "photographer", id);
+    return deleteDoc(photographerDoc);
+  };
+
+  updatePhotographerApproval = async (photographerId, approvedStatus) => {
+    try {
+      const photographerDocRef = doc(db, "photographer", photographerId);
+      await updateDoc(photographerDocRef, { approved: approvedStatus });
+      return true;
+    } catch (error) {
+      console.error("Error updating photographer approval status:", error);
+      return false;
+    }
   };
 
   // updatePhotographer = (id, updatedInfo) => {

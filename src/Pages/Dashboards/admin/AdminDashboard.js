@@ -10,10 +10,16 @@ import PackageStickers from "../PackageStickers";
 import AddPackageSticker from "./AddPackageSticker";
 import CustomSideBar from "../CustomSidebar";
 import { Button } from "primereact/button";
+import AllModels from "./AllModels";
+import AllTourGuides from "./AllTourGuide";
+import AllPhotographers from "./AllPhotographers";
 
 const adminSidebarItems = [
   { label: "Home" },
   { label: "All Sellers" },
+  { label: "All Models" },
+  { label: "All Tour Guides" },
+  { label: "All Photographers" },
   { label: "Add A New Product" },
   { label: "Add A New Delivery Service" },
   { label: "Add New Package Sticker" },
@@ -30,7 +36,6 @@ const AdminDashboard = () => {
 
   const [visible, setVisible] = useState(true);
 
-
   return (
     <>
       <Nav />
@@ -40,7 +45,7 @@ const AdminDashboard = () => {
 
       <div className="d-flex bg-white">
         <div className="side-bar-closed-container">
-        <Button icon="pi pi-arrow-right" onClick={() => setVisible(true)} />
+          <Button icon="pi pi-arrow-right" onClick={() => setVisible(true)} />
         </div>
 
         <CustomSideBar
@@ -61,6 +66,15 @@ const AdminDashboard = () => {
             <TabPanel header="All Sellers">
               <AllSellers />
             </TabPanel>
+            <TabPanel header="All Models">
+              <AllModels />
+            </TabPanel>
+            <TabPanel header="All Tour Guides">
+              <AllTourGuides />
+            </TabPanel>
+            <TabPanel header="All Photographers / Videographers">
+              <AllPhotographers />
+            </TabPanel>
             <TabPanel header="Add A New Product">
               <AddProduct currentSeller={adminSeller} sellerCountry="Ghana" />
             </TabPanel>
@@ -71,7 +85,7 @@ const AdminDashboard = () => {
               <AddPackageSticker />
             </TabPanel>
             <TabPanel header="Package Stickers">
-              <PackageStickers isAdmin={true}/>
+              <PackageStickers isAdmin={true} />
             </TabPanel>
           </TabView>
         </div>

@@ -1,4 +1,4 @@
-const book = require("../Assets/vid/book.jpg");
+// const book = require("../Assets/vid/book.jpg");
 const herbal = require("../Assets/vid/herbal.jpg");
 
 
@@ -360,7 +360,7 @@ export const allCategory = [
     name: "Handicrafts",
     filters: [
       {
-        name: "Type",
+        name: "Product",
         options: ["Art Doll", "Mask and Wall Decor", "Wall Painting"],
       },
     ],
@@ -373,7 +373,7 @@ export const allCategory = [
     name: "Basketry",
     filters: [
       {
-        name: "Type",
+        name: "Product",
         options: [],
       },
     ],
@@ -386,7 +386,7 @@ export const allCategory = [
     name: "Pottery",
     filters: [
       {
-        name: "Type",
+        name: "Product",
         options: [],
       },
     ],
@@ -399,7 +399,7 @@ export const allCategory = [
     name: "Herbal and Beauty Supplies",
     filters: [
       {
-        name: "Type",
+        name: "Product",
         options: [],
       },
     ],
@@ -411,7 +411,7 @@ export const allCategory = [
     name: "Books",
     filters: [
       {
-        name: "Type",
+        name: "Product",
         options: [
           "Fiction",
           "Non-Fiction",

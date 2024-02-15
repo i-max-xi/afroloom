@@ -5,11 +5,12 @@ import { Column } from "primereact/column";
 import ProductsDataService from "../../../Services/products.services";
 import { Button } from "primereact/button";
 import { Toast } from "primereact/toast";
+import { Image } from "primereact/image";
 
-const AllSellers = () => {
+const AllModels = () => {
   const toastRef = useRef(null);
 
-  const [sellers, setSellers] = useState([]);
+  const [models, setModels] = useState([]);
 
   const [filteredProducts, setFilteredProducts] = useState([]); // For filtered products
   const [searchTerm, setSearchTerm] = useState(""); // For search input
@@ -20,25 +21,25 @@ const AllSellers = () => {
 
   const loadProducts = async () => {
     try {
-      const response = await ProductsDataService.getAllSellers();
-      const sellerData = [];
+      const response = await ProductsDataService.getAllModels();
+      const modelData = [];
       response.forEach((doc) => {
         const data = doc.data();
         data.id = doc.id;
-        sellerData.push(data);
+        modelData.push(data);
       });
-      setSellers(sellerData);
+      setModels(modelData);
     } catch (error) {
       toastRef.current.show({
         severity: "error",
-        summary: `Error loading sellers: ${error}`,
+        summary: `Error loading models: ${error}`,
       });    }
   };
 
   // Function to filter products based on the search term
   const filterProducts = () => {
-    const filtered = sellers.filter((product) =>
-      product.companyName.toLowerCase().includes(searchTerm.toLowerCase())
+    const filtered = models.filter((product) =>
+      product.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
     setFilteredProducts(filtered);
   };
@@ -48,35 +49,34 @@ const AllSellers = () => {
     setSearchTerm(e.target.value);
   };
 
-
   const deleteProduct = async (id) => {
     try {
-      await ProductsDataService.deleteSeller(id);
+      await ProductsDataService.deleteModel(id);
       toastRef.current.show({
         severity: "success",
-        summary: `Successfully deleted seller`,
+        summary: `Successfully deleted model`,
       });
       loadProducts();
     } catch (error) {
       toastRef.current.show({
         severity: "error",
-        summary: `Error deleting seller: ${error}`,
+        summary: `Error deleting model: ${error}`,
       });
     }
   };
 
-  const approveSeller = async (id) => {
+  const approveModel = async (id) => {
     try {
       await ProductsDataService.updateSellerApproval(id, true);
       toastRef.current.show({
         severity: "success",
-        summary: `Successfully approved seller`,
+        summary: `Successfully approved model`,
       });
       loadProducts();
     } catch (error) {
       toastRef.current.show({
         severity: "error",
-        summary: `Error approving seller: ${error}`,
+        summary: `Error approving model: ${error}`,
       });
     }
   };
@@ -85,7 +85,7 @@ const AllSellers = () => {
     <div>
       <Toast ref={toastRef} position="top-right" />
 
-      <h2 className="text-warning dashboard-home-title">All Sellers</h2>
+      <h4 className="text-warning dashboard-home-title">All Models</h4>
       {/* Search input field */}
       <div className="p-inputgroup justify-content-center mt-3 mb-3">
         <input
@@ -98,31 +98,33 @@ const AllSellers = () => {
         <Button icon="pi pi-search" onClick={filterProducts} />
       </div>
       <DataTable
-        value={filteredProducts.length !== 0 ? filteredProducts : sellers}
+        value={filteredProducts.length !== 0 ? filteredProducts : models}
         paginator
         rows={10}
       >
-        {/* <Column
+        <Column
           field="item"
           header="Image"
           body={(rowData) => (
-            <img
-              src={rowData.item}
-              alt={rowData.title}
-              style={{ width: "100px" }}
+            <Image
+              src={rowData.profile}
+              alt={rowData.name + "profile"}
+              width="50rem"
+              height="50rem"
+              preview
             />
           )}
-        /> */}
-        <Column field="companyName" header="Company Name" />
+        />
+        <Column field="name" header="Name" />
         <Column field="email" header="Email" />
         <Column field="number" header="Phone" />
         <Column
-          field="supplyCategories"
-          header="Supply"
+          field="specialties"
+          header="Specialties"
           body={(rowData) => (
             <div>
-              {rowData.supplyCategories?.map((category, index) => (
-                <div key={index}>{category}</div>
+              {rowData.specialties?.map((specialty, index) => (
+                <div key={index}>{specialty}</div>
               ))}
             </div>
           )}
@@ -130,9 +132,11 @@ const AllSellers = () => {
         <Column
           body={(rowData) => (
             <button
-              className={`btn text-white ${rowData.approved ? "btn-success" : "btn-info" } btn-success edit`}
-              onClick={() => approveSeller(rowData.id)}
-              >
+              className={`btn text-white ${
+                rowData.approved ? "btn-success" : "btn-info"
+              } btn-success edit`}
+              onClick={() => approveModel(rowData.id)}
+            >
               {rowData.approved ? "Approved" : "Approve"}
             </button>
           )}
@@ -152,4 +156,4 @@ const AllSellers = () => {
   );
 };
 
-export default AllSellers;
+export default AllModels;

@@ -5,11 +5,12 @@ import { Column } from "primereact/column";
 import ProductsDataService from "../../../Services/products.services";
 import { Button } from "primereact/button";
 import { Toast } from "primereact/toast";
+import { Image } from "primereact/image";
 
-const AllSellers = () => {
+const AllTourGuides = () => {
   const toastRef = useRef(null);
 
-  const [sellers, setSellers] = useState([]);
+  const [tourGuide, setTourGuide] = useState([]);
 
   const [filteredProducts, setFilteredProducts] = useState([]); // For filtered products
   const [searchTerm, setSearchTerm] = useState(""); // For search input
@@ -20,25 +21,26 @@ const AllSellers = () => {
 
   const loadProducts = async () => {
     try {
-      const response = await ProductsDataService.getAllSellers();
-      const sellerData = [];
+      const response = await ProductsDataService.getAllTourGuides();
+      const tourGuideData = [];
       response.forEach((doc) => {
         const data = doc.data();
         data.id = doc.id;
-        sellerData.push(data);
+        tourGuideData.push(data);
       });
-      setSellers(sellerData);
+      setTourGuide(tourGuideData);
     } catch (error) {
       toastRef.current.show({
         severity: "error",
-        summary: `Error loading sellers: ${error}`,
-      });    }
+        summary: `Error loading tour guides: ${error}`,
+      });
+    }
   };
 
   // Function to filter products based on the search term
   const filterProducts = () => {
-    const filtered = sellers.filter((product) =>
-      product.companyName.toLowerCase().includes(searchTerm.toLowerCase())
+    const filtered = tourGuide.filter((product) =>
+      product.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
     setFilteredProducts(filtered);
   };
@@ -48,35 +50,34 @@ const AllSellers = () => {
     setSearchTerm(e.target.value);
   };
 
-
   const deleteProduct = async (id) => {
     try {
-      await ProductsDataService.deleteSeller(id);
+      await ProductsDataService.deleteTourGuide(id);
       toastRef.current.show({
         severity: "success",
-        summary: `Successfully deleted seller`,
+        summary: `Successfully deleted tour guide`,
       });
       loadProducts();
     } catch (error) {
       toastRef.current.show({
         severity: "error",
-        summary: `Error deleting seller: ${error}`,
+        summary: `Error deleting tour guide: ${error}`,
       });
     }
   };
 
-  const approveSeller = async (id) => {
+  const approveTourGuide = async (id) => {
     try {
-      await ProductsDataService.updateSellerApproval(id, true);
+      await ProductsDataService.updateTourGuideApproval(id, true);
       toastRef.current.show({
         severity: "success",
-        summary: `Successfully approved seller`,
+        summary: `Successfully approved tour guide`,
       });
       loadProducts();
     } catch (error) {
       toastRef.current.show({
         severity: "error",
-        summary: `Error approving seller: ${error}`,
+        summary: `Error approving tour guide: ${error}`,
       });
     }
   };
@@ -85,7 +86,7 @@ const AllSellers = () => {
     <div>
       <Toast ref={toastRef} position="top-right" />
 
-      <h2 className="text-warning dashboard-home-title">All Sellers</h2>
+      <h4 className="text-warning dashboard-home-title">All Tour Guides</h4>
       {/* Search input field */}
       <div className="p-inputgroup justify-content-center mt-3 mb-3">
         <input
@@ -98,31 +99,46 @@ const AllSellers = () => {
         <Button icon="pi pi-search" onClick={filterProducts} />
       </div>
       <DataTable
-        value={filteredProducts.length !== 0 ? filteredProducts : sellers}
+        value={filteredProducts.length !== 0 ? filteredProducts : tourGuide}
         paginator
         rows={10}
       >
-        {/* <Column
+        <Column
           field="item"
           header="Image"
           body={(rowData) => (
-            <img
-              src={rowData.item}
-              alt={rowData.title}
-              style={{ width: "100px" }}
+            <Image
+              src={rowData.profile}
+              alt={rowData.name + "profile"}
+              width="50rem"
+              height="50rem"
+              preview
             />
           )}
-        /> */}
-        <Column field="companyName" header="Company Name" />
+        />
+        <Column
+          field="license"
+          header="License"
+          body={(rowData) => (
+            <Image
+              src={rowData.licence}
+              alt={rowData.name + "license"}
+              width="50rem"
+              height="50rem"
+              preview
+            />
+          )}
+        />
+        <Column field="name" header="Name" />
         <Column field="email" header="Email" />
         <Column field="number" header="Phone" />
         <Column
-          field="supplyCategories"
-          header="Supply"
+          field="destinations"
+          header="Destinations"
           body={(rowData) => (
             <div>
-              {rowData.supplyCategories?.map((category, index) => (
-                <div key={index}>{category}</div>
+              {rowData.destinations?.map((destination, index) => (
+                <div key={index}>{destination}</div>
               ))}
             </div>
           )}
@@ -130,9 +146,11 @@ const AllSellers = () => {
         <Column
           body={(rowData) => (
             <button
-              className={`btn text-white ${rowData.approved ? "btn-success" : "btn-info" } btn-success edit`}
-              onClick={() => approveSeller(rowData.id)}
-              >
+              className={`btn text-white ${
+                rowData.approved ? "btn-success" : "btn-info"
+              } btn-success edit`}
+              onClick={() => approveTourGuide(rowData.id)}
+            >
               {rowData.approved ? "Approved" : "Approve"}
             </button>
           )}
@@ -152,4 +170,4 @@ const AllSellers = () => {
   );
 };
 
-export default AllSellers;
+export default AllTourGuides;

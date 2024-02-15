@@ -333,7 +333,7 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
           </label>
           {languages.map((item, index) => (
             <div key={index} className="d-flex align-items-center ">
-              <div className="form-group w-50">
+              <div className="form-group">
                 <InputText
                   required
                   type="text"
@@ -361,6 +361,22 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
               )}
             </div>
           ))}
+        </div>
+
+        <div className="p-field">
+          <label className="text-warning">Profile Description:</label>
+          <InputTextarea
+            value={userInfo.description}
+            placeholder="eg. I have two years experience in..."
+            onChange={(e) =>
+              setuserInfo({
+                ...userInfo,
+                description: e.target.value,
+              })
+            }
+            rows={5}
+            cols={30}
+          />
         </div>
 
         {proffesionalType !== ProfessionalsDbEnum.model && (
@@ -417,7 +433,7 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
                   </label>
                   {destinations.map((item, index) => (
                     <div key={index} className="d-flex align-items-center ">
-                      <div className="form-group w-50">
+                      <div className="form-group">
                         <InputText
                           required
                           type="text"
@@ -473,13 +489,15 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
               >
                 <div className="form-group">
                   <label className="text-warning">Offer / Package</label>
-                  <InputText
+                  <InputTextarea
                     required
                     type="text"
                     value={item.offer}
                     onChange={(e) =>
                       updatePriceBreakdown(index, "offer", e.target.value)
                     }
+                    rows={2}
+                    cols={30}
                   />
                 </div>
                 <div className="form-group">
@@ -716,22 +734,6 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
             )}
           </>
         )}
-
-        <div className="p-field">
-          <label className="text-warning">Description:</label>
-          <InputTextarea
-            value={userInfo.description}
-            placeholder="eg. I have two years experience in..."
-            onChange={(e) =>
-              setuserInfo({
-                ...userInfo,
-                description: e.target.value,
-              })
-            }
-            rows={5}
-            cols={30}
-          />
-        </div>
 
         {proffesionalType === ProfessionalsDbEnum.model && (
           <>

@@ -425,15 +425,6 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
           />
         </Dialog>
 
-        {/* <div className="mt-3 mb-3 d-flex justify-content-center advance-search-trigger align-items-center">
-          <input
-            type="radio"
-            id="advancedSearch"
-            checked={showAdvanced}
-            onChange={() => setShowAdvanced(!showAdvanced)}
-          />
-          <label htmlFor="advancedSearch">Advanced Search</label>{" "}
-        </div> */}
 
         {/* Iteration */}
         {itemsToDisplay.map((product, index) => (

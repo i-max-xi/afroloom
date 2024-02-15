@@ -43,13 +43,13 @@ const CategoryDetail = ({ option }) => {
     url = ""; // fallback URL
   }
 
-  const Products = useSelector((state) => state.allProducts.products);
+  const Products = useSelector((state) => state.allProducts.products.filter((p) => p.category === categoryName));
 
   // const category = allCategory.find((p) => p.id === parseInt(categoryId));
-  let product = Products.filter((p) => p.category === categoryName);
+  // const [product, setproduct] = useState([]);
 
   // useEffect(() => {
-  //   setproduct(Products.filter((p) => p.category === categoryName))
+  //   setproduct(Products?);
   // }, []);
 
   // currency conversion
@@ -72,7 +72,7 @@ const CategoryDetail = ({ option }) => {
     setCurrentPage(event.page);
   };
 
-  const itemsToDisplayBank = product.slice(
+  const itemsToDisplayBank = Products?.slice(
     currentPage * itemsPerPage,
     (currentPage + 1) * itemsPerPage
   );
@@ -101,7 +101,7 @@ const CategoryDetail = ({ option }) => {
   const [selectedPriceRange, setSelectedPriceRange] = useState("");
 
   const saveFilters = () => {
-    const newItemstoDisplay = product.filter((product) => {
+    const newItemstoDisplay = Products.filter((product) => {
       if (
         (selectedCountry === "" || product.country === selectedCountry) &&
         (selectedCategory === "" || product.category === selectedCategory) &&
@@ -186,7 +186,6 @@ const CategoryDetail = ({ option }) => {
                   setshowSearch(false);
                 }}
                 dismissableMask={true}
-
               >
                 <SearchFilters
                   search1={actualFilter[0].name}
@@ -211,13 +210,10 @@ const CategoryDetail = ({ option }) => {
               </Dialog>
             </>
           )}
-          <div onClick={() => setshowSearch(!showSearch)} className="m-3 d-flex justify-content-center advance-search-trigger align-items-center">
-            {/* <input
-              type="radio"
-              id="advancedSearch"
-              checked={showSearch}
-              onChange={() => setshowSearch(!showSearch)}
-            /> */}
+          <div
+            onClick={() => setshowSearch(!showSearch)}
+            className="m-3 d-flex justify-content-center advance-search-trigger align-items-center"
+          >
             <label htmlFor="advancedSearch">Advanced Search</label>
             <span
               className="pi pi-search-plus advance-search-mobile"
@@ -227,16 +223,18 @@ const CategoryDetail = ({ option }) => {
 
           {itemsToDisplay.length !== 0 ? (
             itemsToDisplay.map((product) => (
-              <Card
-                key={product.id}
-                title={product.title}
-                description={product.description}
-                price={product.price}
-                item={product.item}
-                flag={product.flag}
-                country={product.country}
-                id={product.id}
-              />
+              <div className="col-6 col-sm-2 p-1">
+                <Card
+                  key={product.id}
+                  title={product.title}
+                  description={product.description}
+                  price={product.price}
+                  item={product.item}
+                  flag={product.flag}
+                  country={product.country}
+                  id={product.id}
+                />
+              </div>
             ))
           ) : (
             <>Currently out of stock</>
@@ -248,7 +246,7 @@ const CategoryDetail = ({ option }) => {
         currentPage={currentPage}
         first={currentPage * itemsPerPage}
         rows={itemsPerPage}
-        totalRecords={product.length}
+        totalRecords={Products.length}
         onPageChange={onPageChange}
         template={template3}
       />

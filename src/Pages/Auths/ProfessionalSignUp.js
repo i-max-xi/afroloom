@@ -244,7 +244,6 @@ const ProfessionalSignUp = () => {
               <input
                 type="text"
                 className="form-control"
-                placeholder="Name of your organization..."
                 value={city}
                 onChange={(e) => setCity(e.target.value)}
               />
