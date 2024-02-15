@@ -5,6 +5,7 @@ import { Column } from "primereact/column";
 import ProductsDataService from "../../../Services/products.services";
 import { Button } from "primereact/button";
 import { Toast } from "primereact/toast";
+import { Image } from "primereact/image";
 
 const AllModels = () => {
   const toastRef = useRef(null);
@@ -29,8 +30,10 @@ const AllModels = () => {
       });
       setModels(modelData);
     } catch (error) {
-      console.error("Error loading sellers:", error);
-    }
+      toastRef.current.show({
+        severity: "error",
+        summary: `Error loading models: ${error}`,
+      });    }
   };
 
   // Function to filter products based on the search term
@@ -45,7 +48,6 @@ const AllModels = () => {
   const handleSearchChange = (e) => {
     setSearchTerm(e.target.value);
   };
-
 
   const deleteProduct = async (id) => {
     try {
@@ -104,10 +106,12 @@ const AllModels = () => {
           field="item"
           header="Image"
           body={(rowData) => (
-            <img
+            <Image
               src={rowData.profile}
-              alt={rowData.name}
-              style={{ width: "5rem", aspectRatio: 1/1 }}
+              alt={rowData.name + "profile"}
+              width="50rem"
+              height="50rem"
+              preview
             />
           )}
         />
@@ -128,9 +132,11 @@ const AllModels = () => {
         <Column
           body={(rowData) => (
             <button
-              className={`btn text-white ${rowData.approved ? "btn-success" : "btn-info" } btn-success edit`}
+              className={`btn text-white ${
+                rowData.approved ? "btn-success" : "btn-info"
+              } btn-success edit`}
               onClick={() => approveModel(rowData.id)}
-              >
+            >
               {rowData.approved ? "Approved" : "Approve"}
             </button>
           )}
