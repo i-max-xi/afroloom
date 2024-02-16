@@ -128,9 +128,22 @@ const ProfessionalsDetail = ({ match }) => {
               <h6>
                 {product.city}, {product.country}
               </h6>
+
               <h6>
-                Can Accommodate: {product.canAccommodate}
+                Languages:{" "}
+                {product?.languages?.map((language, index) => (
+                  <span>{language}{index !== product.languages.length - 1 && ", " }</span>
+                ))}
               </h6>
+
+              <h6>Willing to travel outside country: {product.travelCountry}</h6>
+              <h6>Willing to travel outside region: {product.travelRegion}</h6>
+
+
+
+              {professionalName === "TourGuide" && (
+                <h6>Can Accommodate: {product.canAccommodate}</h6>
+              )}
             </p>
           </div>
           <div className="d-flex flex-column justify-content-center align-items-center col-12 col-sm-2">
@@ -312,7 +325,6 @@ const ProfessionalsDetail = ({ match }) => {
                   <Image
                     src={sample}
                     alt={"portfolio" + index}
-   
                     className="portfolio-image"
                     preview
                   />
