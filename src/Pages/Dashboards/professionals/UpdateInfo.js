@@ -21,6 +21,7 @@ import {
   modelSpecialties,
   photographySpecialties,
   tourGuideSpecialties,
+  willTravel,
 } from "../../../Data/professionalsList";
 import productsServices from "../../../Services/products.services";
 import { setcurrentUser } from "../../../Redux/store";
@@ -139,9 +140,7 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
   const handleUpdateSubmit = async (e) => {
     e.preventDefault();
     if (proffesionalType === ProfessionalsDbEnum.tourGuide) {
-      if (
-        !userInfo.license
-      ) {
+      if (!userInfo.license) {
         toastRef.current.show({
           severity: "error",
           summary: "Please fill in the required license field for tour guides.",
@@ -372,6 +371,36 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
             }
             rows={5}
             cols={30}
+          />
+        </div>
+
+        <div className="p-field">
+          <label className="text-warning">
+            Willing to travel outside country:
+          </label>
+          <Dropdown
+            id="canAccommodate"
+            required
+            value={userInfo.travelCountry}
+            options={willTravel}
+            onChange={(e) =>
+              setuserInfo({ ...userInfo, travelCountry: e.value })
+            }
+          />
+        </div>
+
+        <div className="p-field">
+          <label className="text-warning">
+            Willing to travel outside region:
+          </label>
+          <Dropdown
+            id="canAccommodate"
+            required
+            value={userInfo.travelRegion}
+            options={willTravel}
+            onChange={(e) =>
+              setuserInfo({ ...userInfo, travelRegion: e.value })
+            }
           />
         </div>
 

@@ -21,6 +21,12 @@ export const canAccomodate = [
     "No"
 ]
 
+export const willTravel = [
+    "Yes",
+    "No"
+]
+
+
 export const imageUploadType = {
     residence: "residence",
     portfolio: "portfolio"

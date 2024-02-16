@@ -126,24 +126,23 @@ const ProfessionalsDetail = ({ match }) => {
             <p>
               <h5>{product.name}</h5>
               <h6>
+                <i
+                  className="pi pi-map-marker
+"
+                  style={{ fontSize: "1rem", marginRight: "0.5rem" }}
+                ></i>
                 {product.city}, {product.country}
               </h6>
 
               <h6>
-                Languages:{" "}
+                <i className="pi pi-book" style={{ fontSize: "1rem", marginRight: "0.5rem" }}></i>
                 {product?.languages?.map((language, index) => (
-                  <span>{language}{index !== product.languages.length - 1 && ", " }</span>
+                  <span>
+                    {language}
+                    {index !== product.languages.length - 1 && ", "}
+                  </span>
                 ))}
               </h6>
-
-              <h6>Willing to travel outside country: {product.travelCountry}</h6>
-              <h6>Willing to travel outside region: {product.travelRegion}</h6>
-
-
-
-              {professionalName === "TourGuide" && (
-                <h6>Can Accommodate: {product.canAccommodate}</h6>
-              )}
             </p>
           </div>
           <div className="d-flex flex-column justify-content-center align-items-center col-12 col-sm-2">
@@ -237,6 +236,21 @@ const ProfessionalsDetail = ({ match }) => {
           )}
         </div>
         <hr />
+      </div>
+
+      <div className="container professional-detail-blocks">
+        <h4 className="footer-header">Preferences</h4>
+        <p>
+          Willing to travel outside country: <b>{product.travelCountry}</b>
+        </p>
+        <p>
+          Willing to travel outside region: <b>{product.travelRegion}</b>
+        </p>
+        {professionalName === "TourGuide" && (
+          <p>
+            Can Accommodate: <b>{product.canAccommodate}</b>
+          </p>
+        )}
       </div>
 
       {professionalName !== "TourGuide" && (
