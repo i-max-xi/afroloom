@@ -7,7 +7,10 @@ import { Dialog } from "primereact/dialog";
 import ProfessionalsCheckout from "./ProfessionalsCheckout";
 import { Image } from "primereact/image";
 import "./styles/ProfessionalStyle.css";
-import { ProfessionalsListEnum } from "../../Data/professionalsList";
+import {
+  ProfessionalsListEnum,
+  canAccomodate,
+} from "../../Data/professionalsList";
 import { genderListEnum } from "../../Data/genderAgeList";
 import { Divider } from "primereact/divider";
 import { Toast } from "primereact/toast";
@@ -46,10 +49,9 @@ const ProfessionalsDetail = ({ match }) => {
 
   //related products
 
-  const relatedProducts = Products.filter((p) => p.id !== product.id).slice(
-    0,
-    5
-  );
+  const relatedProducts = Products.filter(
+    (p) => p.id !== product.id && p.approved
+  ).slice(0, 5);
 
   const productTemplate = (relatedProduct) => {
     return (
@@ -80,22 +82,22 @@ const ProfessionalsDetail = ({ match }) => {
 
   const toast = useRef(null);
 
-  const cannotCheckout = () => {
-    toast.current.show({
-      severity: "error",
-      summary: "Cannot Proceed",
-      detail: "Please select one of the offers provided by this professional",
-    });
-  };
+  // const cannotCheckout = () => {
+  //   toast.current.show({
+  //     severity: "error",
+  //     summary: "Cannot Proceed",
+  //     detail: "Please select one of the offers provided by this professional",
+  //   });
+  // };
 
   const handleBook = () => {
-    if (professionalName === "Model") return setShowCheckoutPopup(true);
+    setShowCheckoutPopup(true);
 
-    if (selectedOffer.offer !== "") {
-      setShowCheckoutPopup(true);
-    } else {
-      cannotCheckout();
-    }
+    // if (selectedOffer.offer !== "") {
+    //   setShowCheckoutPopup(true);
+    // } else {
+    //   cannotCheckout();
+    // }
   };
 
   return (
@@ -124,12 +126,27 @@ const ProfessionalsDetail = ({ match }) => {
             <p>
               <h5>{product.name}</h5>
               <h6>
+                <i
+                  className="pi pi-map-marker
+"
+                  style={{ fontSize: "1rem", marginRight: "0.5rem" }}
+                ></i>
                 {product.city}, {product.country}
+              </h6>
+
+              <h6>
+                <i className="pi pi-book" style={{ fontSize: "1rem", marginRight: "0.5rem" }}></i>
+                {product?.languages?.map((language, index) => (
+                  <span>
+                    {language}
+                    {index !== product.languages.length - 1 && ", "}
+                  </span>
+                ))}
               </h6>
             </p>
           </div>
           <div className="d-flex flex-column justify-content-center align-items-center col-12 col-sm-2">
-            <div className=" d-flex flex-column">
+            {/* <div className=" d-flex flex-column">
               {product.offers?.map(({ offer, priceValue }) => (
                 <div className="identity-item" key={offer}>
                   <input
@@ -146,7 +163,7 @@ const ProfessionalsDetail = ({ match }) => {
                   </label>
                 </div>
               ))}
-            </div>
+            </div> */}
             <button
               className="btn btn-dark text-white  col-12"
               onClick={handleBook}
@@ -156,9 +173,6 @@ const ProfessionalsDetail = ({ match }) => {
                 ? "Tour Guide"
                 : professionalName}
             </button>
-            {professionalName !== ProfessionalsListEnum.model && (
-              <small className="text-center">Select an offer to book</small>
-            )}
           </div>
         </div>
         <div
@@ -224,12 +238,27 @@ const ProfessionalsDetail = ({ match }) => {
         <hr />
       </div>
 
+      <div className="container professional-detail-blocks">
+        <h4 className="footer-header">Preferences</h4>
+        <p>
+          Willing to travel outside country: <b>{product.travelCountry}</b>
+        </p>
+        <p>
+          Willing to travel outside region: <b>{product.travelRegion}</b>
+        </p>
+        {professionalName === "TourGuide" && (
+          <p>
+            Can Accommodate: <b>{product.canAccommodate}</b>
+          </p>
+        )}
+      </div>
+
       {professionalName !== "TourGuide" && (
         <>
           <div className="container mt-5 mb-5">
-            <h3 className="d-flex justify-content-center footer-header">
+            <h4 className="d-flex justify-content-center footer-header">
               Specialties
-            </h3>
+            </h4>
             <div
               className="d-flex mt-3"
               style={{ justifyContent: "space-evenly" }}
@@ -251,9 +280,31 @@ const ProfessionalsDetail = ({ match }) => {
         </>
       )}
 
-      <div className="container portfolio-container">
-        <h3 className="footer-header">Portfolio</h3>
-        <div className="row">
+      {product?.description && (
+        <div className="container professional-detail-blocks">
+          <h4 className="footer-header">Profile Description</h4>
+
+          <p>{product.description}</p>
+        </div>
+      )}
+
+      {product.offers.length > 1 &&
+        professionalName !== ProfessionalsListEnum.model && (
+          <div className="container professional-detail-blocks">
+            <h4 className="footer-header">Packages</h4>
+
+            {product.offers?.map(({ offer, priceValue }) => (
+              <p key={offer} className="mt-2">
+                {offer} - {currencySymbol}
+                {(currencyFactor * priceValue).toFixed(2)}
+              </p>
+            ))}
+          </div>
+        )}
+
+      <div className="container portfolio-container ">
+        <h4 className="footer-header">Portfolio</h4>
+        <div className="row  justify-content-center align-items-center">
           {product.portfolio.length !== 0 ? (
             product.portfolio.map((sample, index) => (
               <div key={index} className="col-12 col-sm-4 mt-1 portfolio-item">
@@ -269,6 +320,43 @@ const ProfessionalsDetail = ({ match }) => {
             <p className="m-5">No portfolio available to show</p>
           )}
         </div>
+      </div>
+
+      {professionalName === "TourGuide" &&
+        product.canAccommodate === canAccomodate[0] && (
+          <div className="container professional-detail-blocks ">
+            <h4 className="footer-header">Accommodation</h4>
+            <p className="mb-3">
+              Can Accommodate:<b> {product.canAccommodateNumber} individuals</b>
+            </p>
+
+            <div className="row  justify-content-center align-items-center">
+              {product.residenceImages.map((sample, index) => (
+                <div
+                  key={index}
+                  className="col-12 col-sm-4 mt-1 portfolio-item"
+                >
+                  <Image
+                    src={sample}
+                    alt={"portfolio" + index}
+                    className="portfolio-image"
+                    preview
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+      <hr />
+      <div
+        className="container d-flex justify-content-center align-items-center"
+        style={{ marginBottom: "8rem" }}
+      >
+        <button className="btn btn-dark text-white  col-8" onClick={handleBook}>
+          Book{" "}
+          {professionalName === "TourGuide" ? "Tour Guide" : professionalName}
+        </button>
       </div>
 
       <div className="container mt-5">

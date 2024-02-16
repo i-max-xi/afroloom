@@ -101,21 +101,7 @@ const Home = ({ currentProfessional, proffesionalType }) => {
     }
   };
 
-  // const deleteProduct = async (id) => {
-  //   try {
-  //     await ProductsDataService.deleteProduct(id);
-  //     toastRef.current.show({
-  //       severity: "success",
-  //       summary: `Successfully deleted product`,
-  //     });
-  //     loadInfo();
-  //   } catch (error) {
-  //     toastRef.current.show({
-  //       severity: "error",
-  //       summary: `Error deleting product: ${error}`,
-  //     });
-  //   }
-  // };
+
 
   return (
     <div>

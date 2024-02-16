@@ -79,7 +79,7 @@ const ProfessionalDashboard = () => {
           visible={visible}
           setVisible={setVisible}
         />
-        <div className="dashboard w-75">
+        <div className="dashboard">
           <TabView
             activeIndex={activeIndex}
             onTabChange={(e) => setActiveIndex(e.index)}

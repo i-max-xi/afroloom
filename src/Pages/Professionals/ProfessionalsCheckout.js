@@ -7,25 +7,28 @@ import { Link, useNavigate } from "react-router-dom";
 import { PaystackButton } from "react-paystack";
 import { Toast } from "primereact/toast";
 import ProductsDataService from "../../Services/products.services";
+import { InputTextarea } from "primereact/inputtextarea";
 
-const ProfessionalsCheckout = ({
-  professionalType,
-  product,
-  selectedOffer,
-}) => {
+const ProfessionalsCheckout = ({ professionalType, product }) => {
   const dispatch = useDispatch();
   const toast = useRef(null);
+
+  const [selectedOffer, setSelectedOffer] = useState({
+    offer: "",
+    priceValue: 0,
+  });
 
   const cartItems = useSelector((state) => state.cartItems);
   const [emailAddress, setEmailAddress] = useState("");
   const [name, setName] = useState("");
   const [projectDetails, setProjectDetails] = useState("");
   const [time, setTime] = useState("");
-  const [projectLocation, setprojectLocation] = useState("");
+  // const [projectLocation, setprojectLocation] = useState("");
 
-  const [city, setCity] = useState("");
+  const [venue, setVenue] = useState("");
   const [tel, setTel] = useState("");
-  const [country, setCountry] = useState("");
+  const [date, setDate] = useState("");
+  const [extraDetails, setExtraDetails] = useState("");
 
   const totalToPay = selectedOffer.priceValue;
 
@@ -55,6 +58,14 @@ const ProfessionalsCheckout = ({
     text: "Confirm Order",
   };
 
+  // const cannotCheckout = () => {
+  //   toast.current.show({
+  //     severity: "error",
+  //     summary: "Cannot Proceed",
+  //     detail: "Please select one of the offers provided by this professional",
+  //   });
+  // };
+
   const onSuccess = (reference) => {
     const updatedOrders = [...oldOrders, ...cartItems];
 
@@ -64,16 +75,18 @@ const ProfessionalsCheckout = ({
     const userInfo = {
       name: name,
       email: email,
-      country: country,
-      city: city,
+      date: date,
+      time: time,
+      venue: venue,
       customer_contact: tel,
       professional_contact: product.phone,
       professional_type: professionalType,
       selectedOffer: selectedOffer.offer,
       amountPaid: selectedOffer.priceValue || "Not Applicable",
       projectDetails: projectDetails || "Not Applicable",
-      projectDateTime: time || "Not Applicable",
-      projectLocation: projectLocation || "Not Applicable",
+      // projectDateTime: time || "Not Applicable",
+      // projectLocation: projectLocation || "Not Applicable",
+      extraDetails: extraDetails,
 
       subject: `New Pofessional Booking`,
     };
@@ -104,12 +117,29 @@ const ProfessionalsCheckout = ({
 
   useEffect(() => {
     // Check if all necessary information is provided
-    if (name && emailAddress && tel && country && city) {
+    if (
+      name &&
+      emailAddress &&
+      tel &&
+      venue &&
+      time &&
+      date &&
+      (professionalType !== "Model" || selectedOffer.offer !== "")
+    ) {
       setIsInfoComplete(true);
     } else {
       setIsInfoComplete(false);
     }
-  }, [name, emailAddress, tel, city, country]);
+  }, [
+    name,
+    emailAddress,
+    tel,
+    selectedOffer,
+    professionalType,
+    venue,
+    time,
+    date,
+  ]);
 
   if (isSignedIn === false) {
     return (
@@ -142,28 +172,32 @@ const ProfessionalsCheckout = ({
                 </h6>
               </p>
             </div>
-            <div className="d-flex flex-column  justify-content-center align-items-center col-12 col-sm-4">
-              {professionalType !== "Model" && (
-                <>
-                  <div
-                    className=" d-flex flex-row"
-                    style={{ justifyContent: "space-evenly" }}
-                  >
-                    {currencySymbol}
-                    {(currencyFactor * product.lowerPrice).toFixed(2)} -{" "}
-                    {currencySymbol}
-                    {(currencyFactor * product.UpperPrice).toFixed(2)}
-                  </div>
-                  <div className=" d-flex flex-column">
-                    <h6>Selected Offer: {selectedOffer.offer}</h6>
-                  </div>
-                </>
-              )}
-            </div>
           </div>
 
           {professionalType !== "Model" ? (
             <>
+              <div className=" d-flex flex-column justify-content-center align-items-center mt-5">
+                <h5>Select from these Packages</h5>
+                {product.offers?.map(({ offer, priceValue }) => (
+                  <div className="identity-item" key={offer}>
+                    <input
+                      type="radio"
+                      id={offer}
+                      checked={selectedOffer.offer === offer}
+                      onChange={() =>
+                        setSelectedOffer({
+                          offer: offer,
+                          priceValue: priceValue,
+                        })
+                      }
+                    />
+                    <label className="mt-2" htmlFor={offer}>
+                      {offer} - {currencySymbol}
+                      {(currencyFactor * priceValue).toFixed(2)}
+                    </label>
+                  </div>
+                ))}
+              </div>
               <div className="mt-5 mb-5 text-center">
                 <h4>
                   Total To Pay:
@@ -189,7 +223,7 @@ const ProfessionalsCheckout = ({
                   />
                 </div>
               </div>
-              <div className="mt-4">
+              {/* <div className="mt-4">
                 <div className="form-group">
                   <input
                     type="text"
@@ -212,9 +246,68 @@ const ProfessionalsCheckout = ({
                     placeholder="Location"
                   />
                 </div>
-              </div>
+              </div> */}
             </>
           )}
+
+          <div className=" container">
+            <h4 className="mb-4 text-center">
+              <span className="text-warning">Meet Up</span> Details
+            </h4>
+            <div className="mt-2">
+              <label className="fw-bold">Date</label><br/>
+              <small>We advice you book outside the range of <b>72hours</b> to account preparation time of this {professionalType}</small>
+              <div className="form-group">
+                <input
+                  type="text"
+                  className="form-control"
+                  id="shipping-address"
+                  value={date}
+                  onChange={(e) => setDate(e.target.value)}
+                  placeholder="eg. 26th October, 2024"
+                />
+              </div>
+            </div>
+            <div className="mt-3">
+              <label className="fw-bold">Time</label>
+
+              <div className="form-group">
+                <input
+                  type="text"
+                  className="form-control"
+                  id="city"
+                  value={time}
+                  onChange={(e) => setTime(e.target.value)}
+                />
+              </div>
+            </div>
+            <div className="mt-3">
+              <label className="fw-bold">Venue</label>
+              <div className="form-group">
+                <input
+                  type="text"
+                  className="form-control"
+                  id="city"
+                  value={venue}
+                  onChange={(e) => setVenue(e.target.value)}
+                  placeholder="include landmarks"
+                />
+              </div>
+            </div>
+            <div className="form-group d-flex flex-column mt-2">
+              <label className="fw-bold">
+                Any extra details you need to share with us?
+              </label>
+              <InputTextarea
+                required
+                type="text"
+                value={extraDetails}
+                onChange={(e) => setExtraDetails(e.target.value)}
+                rows={2}
+                cols={30}
+              />
+            </div>
+          </div>
 
           {/* Shipping Information */}
           <div className="container bg-white rounded p-4">
@@ -257,32 +350,6 @@ const ProfessionalsCheckout = ({
                   value={tel}
                   onChange={(e) => setTel(e.target.value)}
                   placeholder="Phone Number"
-                />
-              </div>
-            </div>
-
-            <div className="mt-2">
-              <div className="form-group">
-                <input
-                  type="text"
-                  className="form-control"
-                  id="shipping-address"
-                  value={country}
-                  onChange={(e) => setCountry(e.target.value)}
-                  placeholder="Location (Country)"
-                />
-              </div>
-            </div>
-
-            <div className="mt-3">
-              <div className="form-group">
-                <input
-                  type="text"
-                  className="form-control"
-                  id="city"
-                  value={city}
-                  onChange={(e) => setCity(e.target.value)}
-                  placeholder="Location (City)"
                 />
               </div>
             </div>

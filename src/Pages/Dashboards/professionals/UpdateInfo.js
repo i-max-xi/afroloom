@@ -21,6 +21,7 @@ import {
   modelSpecialties,
   photographySpecialties,
   tourGuideSpecialties,
+  willTravel,
 } from "../../../Data/professionalsList";
 import productsServices from "../../../Services/products.services";
 import { setcurrentUser } from "../../../Redux/store";
@@ -139,12 +140,7 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
   const handleUpdateSubmit = async (e) => {
     e.preventDefault();
     if (proffesionalType === ProfessionalsDbEnum.tourGuide) {
-      if (
-        !userInfo.license ||
-        userInfo.canAccommodate ||
-        userInfo.canAccommodateNumber ||
-        residenceImages.length < 1
-      ) {
+      if (!userInfo.license) {
         toastRef.current.show({
           severity: "error",
           summary: "Please fill in the required license field for tour guides.",
@@ -158,8 +154,6 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
       !userInfo.UpperPrice ||
       priceBreakdown.length < 1 ||
       languages.length < 1 ||
-      // specialties.length < 1 ||
-      // destinations.length < 1 ||
       extraImages.length < 1
     ) {
       toastRef.current.show({
@@ -211,6 +205,7 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
         severity: "success",
         summary: `Information successfully updated added`,
         detail: "You approval status would be updated within 48 hours",
+        sticky: true,
       });
     } catch (error) {
       toastRef.current.show({
@@ -282,7 +277,7 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
   const updateLanguages = (index, value) => {
     const updatedLanguages = [...languages];
     updatedLanguages[index] = value;
-    setDestinations(updatedLanguages);
+    setLanguages(updatedLanguages);
   };
 
   const removeLanguages = (indexToRemove) => {
@@ -376,6 +371,36 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
             }
             rows={5}
             cols={30}
+          />
+        </div>
+
+        <div className="p-field">
+          <label className="text-warning">
+            Willing to travel outside country:
+          </label>
+          <Dropdown
+            id="canAccommodate"
+            required
+            value={userInfo.travelCountry}
+            options={willTravel}
+            onChange={(e) =>
+              setuserInfo({ ...userInfo, travelCountry: e.value })
+            }
+          />
+        </div>
+
+        <div className="p-field">
+          <label className="text-warning">
+            Willing to travel outside region:
+          </label>
+          <Dropdown
+            id="canAccommodate"
+            required
+            value={userInfo.travelRegion}
+            options={willTravel}
+            onChange={(e) =>
+              setuserInfo({ ...userInfo, travelRegion: e.value })
+            }
           />
         </div>
 

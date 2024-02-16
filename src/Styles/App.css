@@ -706,7 +706,7 @@ form {
 }
 
 .dashboard > .p-tabview .p-tabview-panels {
-  /* width: 85vw; */
+  width: 90vw;
 }
 
 .goog-te-gadget {
