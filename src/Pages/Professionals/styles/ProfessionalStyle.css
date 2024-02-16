@@ -55,3 +55,11 @@
 .head-profile > p > h6 {
   color: rgba(0, 0, 0, 0.634);
 }
+
+.professional-detail-blocks {
+  display: flex;
+  flex-direction: column;
+  margin: 3rem auto;
+  justify-content: center;
+  align-items: center;
+}

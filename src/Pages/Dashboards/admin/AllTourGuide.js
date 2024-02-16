@@ -121,7 +121,7 @@ const AllTourGuides = () => {
           header="License"
           body={(rowData) => (
             <Image
-              src={rowData.licence}
+              src={rowData.license}
               alt={rowData.name + "license"}
               width="50rem"
               height="50rem"

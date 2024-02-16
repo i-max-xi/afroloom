@@ -140,10 +140,7 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
     e.preventDefault();
     if (proffesionalType === ProfessionalsDbEnum.tourGuide) {
       if (
-        !userInfo.license ||
-        userInfo.canAccommodate ||
-        userInfo.canAccommodateNumber ||
-        residenceImages.length < 1
+        !userInfo.license
       ) {
         toastRef.current.show({
           severity: "error",
@@ -158,8 +155,6 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
       !userInfo.UpperPrice ||
       priceBreakdown.length < 1 ||
       languages.length < 1 ||
-      // specialties.length < 1 ||
-      // destinations.length < 1 ||
       extraImages.length < 1
     ) {
       toastRef.current.show({
@@ -211,6 +206,7 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
         severity: "success",
         summary: `Information successfully updated added`,
         detail: "You approval status would be updated within 48 hours",
+        sticky: true,
       });
     } catch (error) {
       toastRef.current.show({
@@ -282,7 +278,7 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
   const updateLanguages = (index, value) => {
     const updatedLanguages = [...languages];
     updatedLanguages[index] = value;
-    setDestinations(updatedLanguages);
+    setLanguages(updatedLanguages);
   };
 
   const removeLanguages = (indexToRemove) => {
