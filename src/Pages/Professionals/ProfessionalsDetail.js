@@ -82,22 +82,22 @@ const ProfessionalsDetail = ({ match }) => {
 
   const toast = useRef(null);
 
-  const cannotCheckout = () => {
-    toast.current.show({
-      severity: "error",
-      summary: "Cannot Proceed",
-      detail: "Please select one of the offers provided by this professional",
-    });
-  };
+  // const cannotCheckout = () => {
+  //   toast.current.show({
+  //     severity: "error",
+  //     summary: "Cannot Proceed",
+  //     detail: "Please select one of the offers provided by this professional",
+  //   });
+  // };
 
   const handleBook = () => {
-    if (professionalName === "Model") return setShowCheckoutPopup(true);
+    setShowCheckoutPopup(true);
 
-    if (selectedOffer.offer !== "") {
-      setShowCheckoutPopup(true);
-    } else {
-      cannotCheckout();
-    }
+    // if (selectedOffer.offer !== "") {
+    //   setShowCheckoutPopup(true);
+    // } else {
+    //   cannotCheckout();
+    // }
   };
 
   return (
@@ -134,7 +134,7 @@ const ProfessionalsDetail = ({ match }) => {
             </p>
           </div>
           <div className="d-flex flex-column justify-content-center align-items-center col-12 col-sm-2">
-            <div className=" d-flex flex-column">
+            {/* <div className=" d-flex flex-column">
               {product.offers?.map(({ offer, priceValue }) => (
                 <div className="identity-item" key={offer}>
                   <input
@@ -151,7 +151,7 @@ const ProfessionalsDetail = ({ match }) => {
                   </label>
                 </div>
               ))}
-            </div>
+            </div> */}
             <button
               className="btn btn-dark text-white  col-12"
               onClick={handleBook}

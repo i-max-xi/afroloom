@@ -8,13 +8,14 @@ import { PaystackButton } from "react-paystack";
 import { Toast } from "primereact/toast";
 import ProductsDataService from "../../Services/products.services";
 
-const ProfessionalsCheckout = ({
-  professionalType,
-  product,
-  selectedOffer,
-}) => {
+const ProfessionalsCheckout = ({ professionalType, product }) => {
   const dispatch = useDispatch();
   const toast = useRef(null);
+
+  const [selectedOffer, setSelectedOffer] = useState({
+    offer: "",
+    priceValue: 0,
+  });
 
   const cartItems = useSelector((state) => state.cartItems);
   const [emailAddress, setEmailAddress] = useState("");
@@ -54,6 +55,14 @@ const ProfessionalsCheckout = ({
     publicKey,
     text: "Confirm Order",
   };
+
+  // const cannotCheckout = () => {
+  //   toast.current.show({
+  //     severity: "error",
+  //     summary: "Cannot Proceed",
+  //     detail: "Please select one of the offers provided by this professional",
+  //   });
+  // };
 
   const onSuccess = (reference) => {
     const updatedOrders = [...oldOrders, ...cartItems];
@@ -104,12 +113,20 @@ const ProfessionalsCheckout = ({
 
   useEffect(() => {
     // Check if all necessary information is provided
-    if (name && emailAddress && tel && country && city) {
+    if (
+      name &&
+      emailAddress &&
+      tel &&
+      country &&
+      city &&
+      professionalType !== "Model" &&
+      selectedOffer.offer !== ""
+    ) {
       setIsInfoComplete(true);
     } else {
       setIsInfoComplete(false);
     }
-  }, [name, emailAddress, tel, city, country]);
+  }, [name, emailAddress, tel, city, country, selectedOffer, professionalType]);
 
   if (isSignedIn === false) {
     return (
@@ -142,7 +159,7 @@ const ProfessionalsCheckout = ({
                 </h6>
               </p>
             </div>
-            <div className="d-flex flex-column  justify-content-center align-items-center col-12 col-sm-4">
+            {/* <div className="d-flex flex-column  justify-content-center align-items-center col-12 col-sm-4">
               {professionalType !== "Model" && (
                 <>
                   <div
@@ -159,11 +176,33 @@ const ProfessionalsCheckout = ({
                   </div>
                 </>
               )}
-            </div>
+            </div> */}
           </div>
 
           {professionalType !== "Model" ? (
             <>
+              <div className=" d-flex flex-column justify-content-center align-items-center mt-5">
+                <h5>Select from these Packages</h5>
+                {product.offers?.map(({ offer, priceValue }) => (
+                  <div className="identity-item" key={offer}>
+                    <input
+                      type="radio"
+                      id={offer}
+                      checked={selectedOffer.offer === offer}
+                      onChange={() =>
+                        setSelectedOffer({
+                          offer: offer,
+                          priceValue: priceValue,
+                        })
+                      }
+                    />
+                    <label className="mt-2" htmlFor={offer}>
+                      {offer} - {currencySymbol}
+                      {(currencyFactor * priceValue).toFixed(2)}
+                    </label>
+                  </div>
+                ))}
+              </div>
               <div className="mt-5 mb-5 text-center">
                 <h4>
                   Total To Pay:
