@@ -30,7 +30,6 @@ const ProfessionalsCheckout = ({ professionalType, product }) => {
   const [date, setDate] = useState("");
   const [extraDetails, setExtraDetails] = useState("");
 
-
   const totalToPay = selectedOffer.priceValue;
 
   const currencySymbol = useSelector((state) => state.currencySymbol.symbol);
@@ -131,8 +130,16 @@ const ProfessionalsCheckout = ({ professionalType, product }) => {
     } else {
       setIsInfoComplete(false);
     }
-  }, [name, emailAddress, tel, selectedOffer, professionalType, venue, time, date]);
-  
+  }, [
+    name,
+    emailAddress,
+    tel,
+    selectedOffer,
+    professionalType,
+    venue,
+    time,
+    date,
+  ]);
 
   if (isSignedIn === false) {
     return (
@@ -248,6 +255,8 @@ const ProfessionalsCheckout = ({ professionalType, product }) => {
               <span className="text-warning">Meet Up</span> Details
             </h4>
             <div className="mt-2">
+              <label className="fw-bold">Date</label><br/>
+              <small>We advice you book outside the range of <b>72hours</b> to account preparation time of this {professionalType}</small>
               <div className="form-group">
                 <input
                   type="text"
@@ -255,11 +264,13 @@ const ProfessionalsCheckout = ({ professionalType, product }) => {
                   id="shipping-address"
                   value={date}
                   onChange={(e) => setDate(e.target.value)}
-                  placeholder="Date"
+                  placeholder="eg. 26th October, 2024"
                 />
               </div>
             </div>
             <div className="mt-3">
+              <label className="fw-bold">Time</label>
+
               <div className="form-group">
                 <input
                   type="text"
@@ -267,11 +278,11 @@ const ProfessionalsCheckout = ({ professionalType, product }) => {
                   id="city"
                   value={time}
                   onChange={(e) => setTime(e.target.value)}
-                  placeholder="Time"
                 />
               </div>
             </div>
             <div className="mt-3">
+              <label className="fw-bold">Venue</label>
               <div className="form-group">
                 <input
                   type="text"
@@ -279,19 +290,19 @@ const ProfessionalsCheckout = ({ professionalType, product }) => {
                   id="city"
                   value={venue}
                   onChange={(e) => setVenue(e.target.value)}
-                  placeholder="Venue"
+                  placeholder="include landmarks"
                 />
               </div>
             </div>
             <div className="form-group d-flex flex-column mt-2">
-              <label className="text-warning">Any extra details you need to share with us?</label>
+              <label className="fw-bold">
+                Any extra details you need to share with us?
+              </label>
               <InputTextarea
                 required
                 type="text"
                 value={extraDetails}
-                onChange={(e) =>
-                  setExtraDetails(e.target.value)
-                }
+                onChange={(e) => setExtraDetails(e.target.value)}
                 rows={2}
                 cols={30}
               />
