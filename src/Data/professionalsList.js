@@ -1,3 +1,21 @@
+export const ProfessionalsArr = [
+    {
+      name: "Model",
+      link: "/professional/Model",
+      variant: "black"
+    },
+    {
+      name: "Photographer / Videographer",
+      link: "/professional/Photographer",
+      variant: "black"
+    },
+    {
+      name: "Tour Guide",
+      link: "/professional/TourGuide",
+      variant: "black"
+    },
+  ];
+
 export const ProfessionalsList = [
     "Model",
     "Photographer / Videographer",

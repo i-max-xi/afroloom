@@ -15,6 +15,9 @@ import SearchBar2 from "./SearchBar2";
 import "primeicons/primeicons.css";
 import MobileNav from "./MobileNav";
 import { isMobile } from "../utils/constants";
+import DropDownButton from "./DropDownButton";
+import { buttonVariant } from "./types";
+import { ProfessionalsArr } from "../Data/professionalsList";
 
 const Nav = () => {
   const cartItems = useSelector((state) => state.cartItems);
@@ -126,18 +129,23 @@ const Nav = () => {
         </div>
       </div>
 
+      <div className="nav-category">
+        <DropDownButton variant={buttonVariant.primary} iconleft={hamburger} title="Category" options={categoryArr} />
+        <DropDownButton variant={buttonVariant.link} title="Professionals" options={ProfessionalsArr} />
+      </div>
+
       {/* actual navs */}
       <div className="collapse navbar-collapse" id="navbarNavDropdown">
         <ul className="navbar-nav">
           <li className="bg-warning fw-bold nav-category">
-            <DropDowner
+            {/* <DropDowner
               key={uuid()}
               title=""
               alternative="Category"
               icon={hamburger}
               options={categoryArr}
               selectedColor="white"
-            />
+            /> */}
           </li>
           <li className="nav-item">
             <Link className="nav-link" to="/customize">
