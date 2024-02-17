@@ -377,14 +377,14 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
           onClick={() => setshowSearch(!showSearch)}
           className="advanced-search-button rounded-circle"
         >
-          {/* <label htmlFor="advancedSearch">Advanced Search</label> */}
           <span
             className="pi pi-search-plus"
             style={{ fontSize: "1.4rem" }}
           ></span>
         </div>
 
-        {showNestedComponent && !isMobile && <Row offerFix="Professionals" />}
+        {/* {showNestedComponent && !isMobile && <Row offerFix="Professionals" />} */}
+
         {showNestedComponent && <Row offerFix="One" />}
 
         <Dialog
@@ -429,7 +429,7 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
         {/* Iteration */}
         {itemsToDisplay.map((product, index) => (
           <React.Fragment>
-            <div className="col-6 col-sm-2 p-1">
+            <div className="col-6 col-sm-2 product-card-container">
               <Card
                 key={index}
                 title={product.title}
