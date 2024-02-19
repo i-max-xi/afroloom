@@ -103,7 +103,7 @@ const CurrencyConverter = () => {
     const fetchExchangeRates = async () => {
       try {
         const response = await fetch(
-          "https://api.exchangerate-api.com/v4/latest/GHS?apiKey=0651e829f6d3b22d609be20f05960d2c"
+          `https://api.exchangerate-api.com/v4/latest/GHS?apiKey=${process.env.REACT_APP_currency_apiKey}`
         );
   
         if (!response.ok) {
