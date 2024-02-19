@@ -22,13 +22,12 @@ const photographerRef = collection(db, "photographer");
 const tourGuideRef = collection(db, "tourGuide");
 
 class ProductsDataService {
-
   // Professionals
 
   // Models
   getAllModels = () => {
     return getDocs(modelsRef);
-  }; 
+  };
   addModel = (newModel) => {
     return addDoc(modelsRef, newModel);
   };
@@ -60,24 +59,25 @@ class ProductsDataService {
     return querySnapshot.docs[0];
   };
 
-  // updateModel = (id, updatedInfo) => {
-  //   const userDoc = doc(db, "models", id);
-  //   return updateDoc(userDoc, updatedInfo);
-  // };
-
   updateModel = async (idValue, updatedInfo) => {
     const q = query(modelsRef, where("id", "==", idValue));
     const querySnapshot = await getDocs(q);
-
     if (querySnapshot.docs.length === 0) {
-      throw new Error("Document not found"); // Handle the case when the document with the specified idValue is not found.
+      throw new Error("Document not found");
     }
-
     const docRef = querySnapshot.docs[0].ref;
     return updateDoc(docRef, updatedInfo);
   };
-  
 
+  updateAvailableModelBooking = async (modelId, newAvailableDates) => {
+    try {
+      const modelDocRef = doc(db, "models", modelId);
+      await updateDoc(modelDocRef, { availableDates: newAvailableDates });
+      return true;
+    } catch (error) {
+      return false;
+    }
+  };
 
   // Tour Guide
   getAllTourGuides = () => {
@@ -108,28 +108,33 @@ class ProductsDataService {
     try {
       const tourGuideDocRef = doc(db, "tourGuide", tourGuideId);
       await updateDoc(tourGuideDocRef, { approved: approvedStatus });
-      return true; 
+      return true;
     } catch (error) {
       console.error("Error updating tour guide approval status:", error);
-      return false; 
+      return false;
     }
   };
-
-  // updateTourGuide = (id, updatedInfo) => {
-  //   const userDoc = doc(db, "tourGuide", id);
-  //   return updateDoc(userDoc, updatedInfo);
-  // };
 
   updateTourGuide = async (idValue, updatedInfo) => {
     const q = query(tourGuideRef, where("id", "==", idValue));
     const querySnapshot = await getDocs(q);
 
     if (querySnapshot.docs.length === 0) {
-      throw new Error("Document not found"); // Handle the case when the document with the specified idValue is not found.
+      throw new Error("Document not found");
     }
 
     const docRef = querySnapshot.docs[0].ref;
     return updateDoc(docRef, updatedInfo);
+  };
+
+  updateAvailableTourGuideBooking = async (tourGuideId, newAvailableDates) => {
+    try {
+      const tourGuideDocRef = doc(db, "tourGuide", tourGuideId);
+      await updateDoc(tourGuideDocRef, { availableDates: newAvailableDates });
+      return true;
+    } catch (error) {
+      return false;
+    }
   };
 
   // Photographer / Videographer
@@ -168,24 +173,27 @@ class ProductsDataService {
     }
   };
 
-  // updatePhotographer = (id, updatedInfo) => {
-  //   const userDoc = doc(db, "photographer", id);
-  //   return updateDoc(userDoc, updatedInfo);
-  // };
-
   updatePhotographer = async (idValue, updatedInfo) => {
     const q = query(photographerRef, where("id", "==", idValue));
     const querySnapshot = await getDocs(q);
 
     if (querySnapshot.docs.length === 0) {
-      throw new Error("Document not found"); // Handle the case when the document with the specified idValue is not found.
+      throw new Error("Document not found");
     }
 
     const docRef = querySnapshot.docs[0].ref;
     return updateDoc(docRef, updatedInfo);
   };
 
-
+  updateAvailablePhotographerBooking = async (photographerId, newAvailableDates) => {
+    try {
+      const photographerDocRef = doc(db, "photographer", photographerId);
+      await updateDoc(photographerDocRef, { availableDates: newAvailableDates });
+      return true;
+    } catch (error) {
+      return false;
+    }
+  };
 
   // Products
   addProduct = (newProduct) => {
@@ -265,8 +273,6 @@ class ProductsDataService {
     }
   };
 
-
-
   // user
   getBuyer = (id) => {
     const buyerDoc = doc(db, "users", id);
@@ -284,7 +290,7 @@ class ProductsDataService {
   updateUserOrders = async (userId, updatedOrders) => {
     try {
       const user = await this.getBuyerByField("id", userId);
-  
+
       if (user) {
         const userDocRef = doc(db, "users", user.id);
         await updateDoc(userDocRef, { orders: updatedOrders });
@@ -297,8 +303,6 @@ class ProductsDataService {
       return false; // Indicate failure in updating
     }
   };
-  
-
 
   // Delivery Service
   addDelivery = (newProduct) => {
@@ -314,7 +318,7 @@ class ProductsDataService {
     return deleteDoc(productDoc);
   };
 
-  getAllDelivery= () => {
+  getAllDelivery = () => {
     return getDocs(deliveryServicesRef);
   };
 }
