@@ -105,22 +105,22 @@ const CurrencyConverter = () => {
         const response = await fetch(
           "https://api.exchangerate-api.com/v4/latest/GHS?apiKey=0651e829f6d3b22d609be20f05960d2c"
         );
-
+  
         if (!response.ok) {
           throw new Error("Failed to fetch exchange rates");
         }
-
+  
         const data = await response.json();
-
+  
         if (data && data.rates) {
-          const modifiedRates = Object.keys(data.rates).map((currencyName) => ({
-            name: currencyName,
-            symbol:
-              currencyOptions.find((option) => option.name === currencyName)
-                ?.symbol || "",
-            factor: data.rates[currencyName] || 1,
-          }));
-
+          const modifiedRates = currencyOptions
+            .filter((option) => data.rates.hasOwnProperty(option.name))
+            .map((option) => ({
+              name: option.name,
+              symbol: option.symbol,
+              factor: data.rates[option.name] || 1,
+            }));
+  
           setExchangeRates(modifiedRates);
         } else {
           console.error("Invalid response structure from the API");
@@ -129,9 +129,10 @@ const CurrencyConverter = () => {
         console.error("Error fetching exchange rates", error);
       }
     };
-
+  
     fetchExchangeRates();
   }, [currencyOptions]);
+  
 
   const handleCurrencyChange = (selectedOption) => {
     dispatch(
@@ -152,7 +153,6 @@ const CurrencyConverter = () => {
         optionLabel={(option) => `${option.name} (${option.symbol})`}
         onChange={(e) => handleCurrencyChange(e.value)}
         filter
-        showClear
         filterPlaceholder="Search"
         style={{ width: "100%" }}
         appendTo={document.body}

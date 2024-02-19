@@ -279,7 +279,6 @@ const OffersDetail = () => {
           setshowSearch(false);
         }}
         dismissableMask={true}
-
       >
         <SearchFilters
           search1="Category"
@@ -309,22 +308,21 @@ const OffersDetail = () => {
           handleSave={saveFilters}
         />
       </Dialog>
-      <div onClick={() => setshowSearch(!showSearch)} className="m-3 d-flex justify-content-center advance-search-trigger align-items-center">
-            {/* <input
-              type="radio"
-              id="advancedSearch"
-              checked={showSearch}
-              onChange={() => setshowSearch(!showSearch)}
-            /> */}
-            <label htmlFor="advancedSearch">Advanced Search</label>
-            <span
-              className="pi pi-search-plus advance-search-mobile"
-              id="advance-search-for-all"
-            ></span>
-          </div>
+      <div
+        onClick={() => setshowSearch(!showSearch)}
+        className="m-3 d-flex justify-content-center advance-search-trigger align-items-center"
+      >
+        <label htmlFor="advancedSearch">Advanced Search</label>
+        <span
+          className="pi pi-search-plus advance-search-mobile"
+          id="advance-search-for-all"
+        ></span>
+      </div>
       <div className="row p-3">
         {itemsToDisplay.length !== 0 ? (
           itemsToDisplay.map((product, index) => (
+            <div className="col-6 col-sm-2 p-1">
+
             <Card
               key={index}
               title={product.title}
@@ -341,6 +339,7 @@ const OffersDetail = () => {
               linkless={product.linkless}
               country={product.country}
             />
+            </div>
           ))
         ) : (
           <div className="d-flex flex-column align-items-center justify-content-center p-5">
