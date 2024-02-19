@@ -9,13 +9,15 @@ import { locationOptions } from "../../../Data/SupplierAcceptedCities";
 import { Dropdown } from "primereact/dropdown";
 import { ProfessionalsDbEnum } from "../../../Data/professionalsList";
 import { Image } from "primereact/image";
+import BookingCalendar from "../../../Components/calendar/BookingCalendar";
 
-const Home = ({ currentProfessional, proffesionalType }) => {
+const Home = ({ currentProfessionalId, proffesionalType }) => {
   const toastRef = useRef(null);
 
   const [user, setUser] = useState([]);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [editDialogVisible, setEditDialogVisible] = useState(false);
+  const [selectedDate, setSelectedDate] = useState();
 
   // const currencySymbol = useSelector((state) => state.currencySymbol.symbol);
   // const currencyFactor = useSelector((state) => state.currencySymbol.factor);
@@ -26,21 +28,21 @@ const Home = ({ currentProfessional, proffesionalType }) => {
     switch (proffesionalType) {
       case ProfessionalsDbEnum.model:
         response = await ProductsDataService.getModelByField(
-          "name",
-          currentProfessional
+          "id",
+          currentProfessionalId
         );
         break;
       case ProfessionalsDbEnum.photographer:
         response = await ProductsDataService.getPhotographerByField(
-          "name",
-          currentProfessional
+          "id",
+          currentProfessionalId
         );
         break;
 
       case ProfessionalsDbEnum.tourGuide:
         response = await ProductsDataService.getTourGuideByField(
-          "name",
-          currentProfessional
+          "id",
+          currentProfessionalId
         );
         break;
 
@@ -59,8 +61,6 @@ const Home = ({ currentProfessional, proffesionalType }) => {
       });
     }
   };
-
-  // console.log(user)
 
   useEffect(() => {
     loadInfo();
@@ -102,6 +102,47 @@ const Home = ({ currentProfessional, proffesionalType }) => {
   };
 
 
+  const [newDates, setNewDates] = useState([])
+
+  const handleDatesSubmit = async () => {
+    
+    let response;
+
+    switch (proffesionalType) {
+      case ProfessionalsDbEnum.model:
+        response = await ProductsDataService.updateAvailableModelBooking(
+          currentProfessionalId,
+          newDates
+        );
+        break;
+      case ProfessionalsDbEnum.photographer:
+        response = await ProductsDataService.updateAvailableTourGuideBooking(
+          currentProfessionalId,
+          newDates
+        );
+        break;
+
+      case ProfessionalsDbEnum.tourGuide:
+        response = await ProductsDataService.updateAvailableTourGuideBooking(
+          currentProfessionalId,
+          newDates
+        );
+        break;
+
+      default:
+        break;
+    }
+
+    try {
+      
+    } catch (error) {
+      toastRef.current.show({
+        severity: "error",
+        summary: ``,
+        detail: error,
+      });
+    }
+  };
 
   return (
     <div>
@@ -151,13 +192,19 @@ const Home = ({ currentProfessional, proffesionalType }) => {
           )}
         </div>
       </div>
+
+      <BookingCalendar
+        bookedDates={user[0].bookedDates}
+        // onDateSelect={handleDateSelect}
+        onDateSubmit={handleDatesSubmit}
+      />
+
       <Dialog
         header="Edit Profile Info"
         visible={editDialogVisible}
         onHide={handleEditDialogHide}
         className="col-12 col-sm-6"
         dismissableMask={true}
-
       >
         {selectedProduct && (
           <form onSubmit={handleEditSubmit}>

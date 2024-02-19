@@ -19,6 +19,8 @@ const ProfessionalDashboard = () => {
   // const sellerCompany = currentUser.companyName;
 
   // const sellerCountry = currentUser.country;
+
+  console.log(currentUser.id)
   const professionalApproved = currentUser.approved;
   const profileCompleted = currentUser.completed;
 
@@ -87,7 +89,7 @@ const ProfessionalDashboard = () => {
             <TabPanel>
               <Home
                 proffesionalType={professionalType}
-                currentProfessional={welcomename}
+                currentProfessionalId={currentUser.id}
               />
             </TabPanel>
             <TabPanel header="Update Profile Info">
