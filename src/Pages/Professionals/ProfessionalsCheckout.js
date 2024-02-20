@@ -23,7 +23,6 @@ const ProfessionalsCheckout = ({ professionalType, product }) => {
   const [emailAddress, setEmailAddress] = useState("");
   const [name, setName] = useState("");
   const [projectDetails, setProjectDetails] = useState("");
-  const [time, setTime] = useState("");
   // const [projectLocation, setprojectLocation] = useState("");
 
   const [venue, setVenue] = useState("");
@@ -70,8 +69,7 @@ const ProfessionalsCheckout = ({ professionalType, product }) => {
     const userInfo = {
       name: name,
       email: email,
-      date: date,
-      time: time,
+      date: date.toLocaleDateString(),
       venue: venue,
       customer_contact: tel,
       professional_contact: product.phone,
@@ -81,7 +79,7 @@ const ProfessionalsCheckout = ({ professionalType, product }) => {
       projectDetails: projectDetails || "Not Applicable",
       extraDetails: extraDetails,
 
-      subject: `New Pofessional Booking`,
+      subject: "New Pofessional Booking",
     };
     // Submit to formspree
     fetch(process.env.REACT_APP_formSpree, {
@@ -110,16 +108,14 @@ const ProfessionalsCheckout = ({ professionalType, product }) => {
 
   useEffect(() => {
     // Check if all necessary information is provided
-    if (
-      name &&
-      emailAddress &&
-      tel &&
-      venue &&
-      time &&
-      date &&
-      (professionalType !== "Model" || selectedOffer.offer !== "")
-    ) {
-      setIsInfoComplete(true);
+    if (professionalType !== "Model") {
+      if (name && emailAddress && tel && venue && date && selectedOffer.offer !== '') {
+        setIsInfoComplete(true);
+      }
+    } else if (professionalType === "Model") {
+      if (name && emailAddress && tel && venue && date) {
+        setIsInfoComplete(true);
+      }
     } else {
       setIsInfoComplete(false);
     }
@@ -130,14 +126,12 @@ const ProfessionalsCheckout = ({ professionalType, product }) => {
     selectedOffer,
     professionalType,
     venue,
-    time,
     date,
+    totalToPay,
   ]);
 
   // date
   const bookedDates = product.bookedDates;
-
-  // console.log(product.bookedDates)
 
   if (isSignedIn === false) {
     return (
@@ -174,7 +168,7 @@ const ProfessionalsCheckout = ({ professionalType, product }) => {
 
           {professionalType !== "Model" ? (
             <>
-              <div className=" d-flex flex-column justify-content-center align-items-center mt-5">
+              <div className=" d-flex flex-column  mt-5">
                 <h5>Select from these Packages</h5>
                 {product.offers?.map(({ offer, priceValue }) => (
                   <div className="identity-item" key={offer}>
@@ -231,35 +225,13 @@ const ProfessionalsCheckout = ({ professionalType, product }) => {
             <div className="mt-2">
               <label className="fw-bold">Date</label>
               <br />
-              {/* <div className="form-group">
-                <input
-                  type="text"
-                  className="form-control"
-                  id="shipping-address"
-                  value={date}
-                  onChange={(e) => setDate(e.target.value)}
-                  placeholder="eg. 26th October, 2024"
-                />
-              </div> */}
               <BookingCalendar
                 value={date}
                 onDateSelect={(newDate) => setDate(newDate)}
                 bookedDates={bookedDates}
               />
             </div>
-            <div className="mt-3">
-              <label className="fw-bold">Time</label>
 
-              <div className="form-group">
-                <input
-                  type="text"
-                  className="form-control"
-                  id="city"
-                  value={time}
-                  onChange={(e) => setTime(e.target.value)}
-                />
-              </div>
-            </div>
             <div className="mt-3">
               <label className="fw-bold">Venue</label>
               <div className="form-group">
