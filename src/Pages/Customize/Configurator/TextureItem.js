@@ -67,7 +67,7 @@ function TextureItem({
             width="250px"
             style={{ alignSelf: "center" }}
           />
-          <p style={{ paddingBottom: "5rem", paddingTop: "1rem" }}>
+          <p style={{paddingTop: "1rem" }}>
             {subTextureDescriptions[textureIndex].textureDescription}
           </p>
         </div>
