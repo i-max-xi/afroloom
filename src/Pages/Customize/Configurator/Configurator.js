@@ -481,8 +481,8 @@ const Configurator = () => {
                 <div className="color-buttons-container">
                   <Carousel
                     value={colorOptions}
-                    numVisible={isMobile ? 5 : 7}
-                    numScroll={isMobile ? 2: 5}
+                    numVisible={isMobile ? 4 : 7}
+                    numScroll={isMobile ? 2 : 5}
                     showIndicators={false}
                     responsiveOptions={responsiveColor}
                     itemTemplate={(colorOption) => (
@@ -514,7 +514,7 @@ const Configurator = () => {
                         numVisible={isMobile ? 1 : 4}
                         numScroll={isMobile ? 1 : 4}
                         showIndicators={false}
-                        responsiveOptions={responsiveNess}
+                        // responsiveOptions={responsiveNess}
                         itemTemplate={(texture) => (
                           <TextureItem
                             key={texture}
