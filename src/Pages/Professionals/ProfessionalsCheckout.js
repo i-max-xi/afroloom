@@ -134,10 +134,10 @@ const ProfessionalsCheckout = ({ professionalType, product }) => {
     date,
   ]);
 
-  // date 
-  const bookedDates = [
-    new Date(2024, 2, 10),
-  ];
+  // date
+  const bookedDates = product.bookedDates;
+
+  // console.log(product.bookedDates)
 
   if (isSignedIn === false) {
     return (
@@ -217,7 +217,7 @@ const ProfessionalsCheckout = ({ professionalType, product }) => {
                     value={projectDetails}
                     onChange={(e) => setProjectDetails(e.target.value)}
                     placeholder="Describe your project in detail..."
-                    rows={5} // Set the number of rows for multiline textarea
+                    rows={5}
                   />
                 </div>
               </div>
@@ -243,10 +243,7 @@ const ProfessionalsCheckout = ({ professionalType, product }) => {
               </div> */}
               <BookingCalendar
                 value={date}
-                onDateSelect={(newDate) => {
-                  setDate(newDate);
-                  console.log({date})
-                }}
+                onDateSelect={(newDate) => setDate(newDate)}
                 bookedDates={bookedDates}
               />
             </div>

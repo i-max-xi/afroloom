@@ -16,9 +16,12 @@ const BookingCalendar = ({ bookedDates, onDateSelect, selectedDate }) => {
   // };
 
   const tileDisabled = ({ date }) => {
-    const isBooked = bookedDates.some(bookedDate => (
-      date.getDate() === bookedDate.getDate()
-    ));
+    const isBooked = bookedDates.some(timestamp => {
+      const timestampDate = timestamp.toDate();
+      return date.getDate() === timestampDate.getDate() &&
+             date.getMonth() === timestampDate.getMonth() &&
+             date.getFullYear() === timestampDate.getFullYear();
+    });
 
     return isBooked;
   };
