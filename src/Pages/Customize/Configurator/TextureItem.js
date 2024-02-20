@@ -15,11 +15,8 @@ function TextureItem({
   textureIndex,
 }) {
   const [displayDialog, setDisplayDialog] = useState(false);
-  const [description, setDescription] = useState('')
 
   const handleOpenDialog = (e) => {
-    console.log({textureIndex})
-    setDescription("hi")
     setDisplayDialog(true);
     // setHideText(true)
   };
@@ -56,7 +53,7 @@ function TextureItem({
       </svg>
 
       <Dialog
-        // header={`Texture Details: ${selectedTexture.name}`}
+        header={subTextureDescriptions[textureIndex].textureName}
         visible={displayDialog}
         onHide={handleCloseDialog}
         className="col-12 col-sm-4"
@@ -71,7 +68,7 @@ function TextureItem({
             style={{ alignSelf: "center" }}
           />
           <p style={{ paddingBottom: "5rem", paddingTop: "1rem" }}>
-            {subTextureDescriptions[textureIndex]}
+            {subTextureDescriptions[textureIndex].textureDescription}
           </p>
         </div>
       </Dialog>

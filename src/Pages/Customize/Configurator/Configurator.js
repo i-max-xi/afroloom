@@ -30,12 +30,14 @@ import {
   responsiveNess,
   specialNodeNames,
   displayInplaceFor,
+  responsiveColor,
 } from "./arrays/neededArrays";
 import TextureItem from "./TextureItem";
 import PartImages from "./PartImages";
 import WelcomeTour, { tourSteps } from "./WelcomeTour";
 import { InputText } from "primereact/inputtext";
 import { Toast } from "primereact/toast";
+import { isMobile } from "../../../utils/constants";
 
 const Shirt = ({
   isRotating,
@@ -479,10 +481,10 @@ const Configurator = () => {
                 <div className="color-buttons-container">
                   <Carousel
                     value={colorOptions}
-                    numVisible={7}
-                    numScroll={5}
+                    numVisible={isMobile ? 5 : 7}
+                    numScroll={isMobile ? 2: 5}
                     showIndicators={false}
-                    // responsiveOptions={responsiveColor}
+                    responsiveOptions={responsiveColor}
                     itemTemplate={(colorOption) => (
                       <div key={colorOption.color} className="color-item">
                         <button
@@ -509,8 +511,8 @@ const Configurator = () => {
                       </h3>
                       <Carousel
                         value={textureArrays.batik}
-                        numVisible={4}
-                        numScroll={4}
+                        numVisible={isMobile ? 1 : 4}
+                        numScroll={isMobile ? 1 : 4}
                         showIndicators={false}
                         responsiveOptions={responsiveNess}
                         itemTemplate={(texture) => (
@@ -537,8 +539,8 @@ const Configurator = () => {
                       </h3>
                       <Carousel
                         value={textureArrays.dashiki}
-                        numVisible={4}
-                        numScroll={4}
+                        numVisible={isMobile ? 1 : 4}
+                        numScroll={isMobile ? 1 : 4}
                         showIndicators={false}
                         responsiveOptions={responsiveNess}
                         itemTemplate={(texture) => (
@@ -553,7 +555,9 @@ const Configurator = () => {
                             currencySymbol={currencySymbol}
                             currencyFactor={currencyFactor}
                             subTextureDescriptions={textureDescriptions.dashiki}
-                            textureIndex={textureArrays.dashiki.indexOf(texture)}
+                            textureIndex={textureArrays.dashiki.indexOf(
+                              texture
+                            )}
                           />
                         )}
                       />
@@ -567,8 +571,8 @@ const Configurator = () => {
                       </h3>
                       <Carousel
                         value={textureArrays.kente}
-                        numVisible={4}
-                        numScroll={4}
+                        numVisible={isMobile ? 1 : 4}
+                        numScroll={isMobile ? 1 : 4}
                         showIndicators={false}
                         responsiveOptions={responsiveNess}
                         itemTemplate={(texture) => (
@@ -595,8 +599,8 @@ const Configurator = () => {
                       </h3>
                       <Carousel
                         value={textureArrays.waxPrint}
-                        numVisible={4}
-                        numScroll={4}
+                        numVisible={isMobile ? 1 : 4}
+                        numScroll={isMobile ? 1 : 4}
                         showIndicators={false}
                         responsiveOptions={responsiveNess}
                         itemTemplate={(texture) => (
@@ -613,7 +617,9 @@ const Configurator = () => {
                             subTextureDescriptions={
                               textureDescriptions.waxPrint
                             }
-                            textureIndex={textureArrays.waxPrint.indexOf(texture)}
+                            textureIndex={textureArrays.waxPrint.indexOf(
+                              texture
+                            )}
                           />
                         )}
                       />
@@ -627,8 +633,8 @@ const Configurator = () => {
                       </h3>
                       <Carousel
                         value={textureArrays.smock}
-                        numVisible={4}
-                        numScroll={4}
+                        numVisible={isMobile ? 1 : 4}
+                        numScroll={isMobile ? 1 : 4}
                         showIndicators={false}
                         responsiveOptions={responsiveNess}
                         itemTemplate={(texture) => (
@@ -655,8 +661,8 @@ const Configurator = () => {
                       </h3>
                       <Carousel
                         value={textureArrays.Crochet}
-                        numVisible={4}
-                        numScroll={4}
+                        numVisible={isMobile ? 1 : 4}
+                        numScroll={isMobile ? 1 : 4}
                         showIndicators={false}
                         responsiveOptions={responsiveNess}
                         itemTemplate={(texture) => (
@@ -671,7 +677,9 @@ const Configurator = () => {
                             currencySymbol={currencySymbol}
                             currencyFactor={currencyFactor}
                             subTextureDescriptions={textureDescriptions.Crochet}
-                            textureIndex={textureArrays.Crochet.indexOf(texture)}
+                            textureIndex={textureArrays.Crochet.indexOf(
+                              texture
+                            )}
                           />
                         )}
                       />
@@ -688,8 +696,8 @@ const Configurator = () => {
                       </h3>
                       <Carousel
                         value={textureArrays.printed_kente}
-                        numVisible={4}
-                        numScroll={4}
+                        numVisible={isMobile ? 1 : 4}
+                        numScroll={isMobile ? 1 : 4}
                         showIndicators={false}
                         responsiveOptions={responsiveNess}
                         itemTemplate={(texture) => (
@@ -706,7 +714,9 @@ const Configurator = () => {
                             subTextureDescriptions={
                               textureDescriptions.printed_kente
                             }
-                            textureIndex={textureArrays.printed_kente.indexOf(texture)}
+                            textureIndex={textureArrays.printed_kente.indexOf(
+                              texture
+                            )}
                           />
                         )}
                       />
@@ -718,8 +728,8 @@ const Configurator = () => {
                       </h3>
                       <Carousel
                         value={textureArrays.Funerals}
-                        numVisible={4}
-                        numScroll={4}
+                        numVisible={isMobile ? 1 : 4}
+                        numScroll={isMobile ? 1 : 4}
                         showIndicators={false}
                         responsiveOptions={responsiveNess}
                         itemTemplate={(texture) => (
@@ -736,7 +746,9 @@ const Configurator = () => {
                             subTextureDescriptions={
                               textureDescriptions.Funerals
                             }
-                            textureIndex={textureArrays.Funerals.indexOf(texture)}
+                            textureIndex={textureArrays.Funerals.indexOf(
+                              texture
+                            )}
                           />
                         )}
                       />

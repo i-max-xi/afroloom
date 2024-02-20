@@ -39,6 +39,7 @@ import { InputText } from "primereact/inputtext";
 import { Toast } from "primereact/toast";
 import ImageUpload from "./ImageUpload";
 import HtmlComponent from "./HtmlComponent";
+import { isMobile } from "../../../utils/constants";
 const Shirt = ({
   isRotating,
   selectedClothing,
@@ -566,8 +567,8 @@ const ConfiguratorUnisex = () => {
                       </h3>
                       <Carousel
                         value={textureArrays.batik}
-                        numVisible={4}
-                        numScroll={4}
+                        numVisible={isMobile ? 1 : 4}
+                        numScroll={isMobile ? 1 : 4}
                         showIndicators={false}
                         responsiveOptions={responsiveNess}
                         itemTemplate={(texture, index) => (
@@ -594,8 +595,8 @@ const ConfiguratorUnisex = () => {
                       </h3>
                       <Carousel
                         value={textureArrays.dashiki}
-                        numVisible={4}
-                        numScroll={4}
+                        numVisible={isMobile ? 1 : 4}
+                        numScroll={isMobile ? 1 : 4}
                         showIndicators={false}
                         responsiveOptions={responsiveNess}
                         itemTemplate={(texture) => (
@@ -623,8 +624,8 @@ subTextureDescriptions={textureDescriptions.dashiki}
                       </h3>
                       <Carousel
                         value={textureArrays.kente}
-                        numVisible={4}
-                        numScroll={4}
+                        numVisible={isMobile ? 1 : 4}
+                        numScroll={isMobile ? 1 : 4}
                         showIndicators={false}
                         responsiveOptions={responsiveNess}
                         itemTemplate={(texture) => (
@@ -650,8 +651,8 @@ subTextureDescriptions={textureDescriptions.kente}
                       </h3>
                       <Carousel
                         value={textureArrays.waxPrint}
-                        numVisible={4}
-                        numScroll={4}
+                        numVisible={isMobile ? 1 : 4}
+                        numScroll={isMobile ? 1 : 4}
                         showIndicators={false}
                         responsiveOptions={responsiveNess}
                         itemTemplate={(texture) => (
@@ -682,8 +683,8 @@ subTextureDescriptions={textureDescriptions.kente}
                       </h3>
                       <Carousel
                         value={textureArrays.smock}
-                        numVisible={4}
-                        numScroll={4}
+                        numVisible={isMobile ? 1 : 4}
+                        numScroll={isMobile ? 1 : 4}
                         showIndicators={false}
                         responsiveOptions={responsiveNess}
                         itemTemplate={(texture) => (
@@ -709,8 +710,8 @@ subTextureDescriptions={textureDescriptions.smock}
                       </h3>
                       <Carousel
                         value={textureArrays.Crochet}
-                        numVisible={4}
-                        numScroll={4}
+                        numVisible={isMobile ? 1 : 4}
+                        numScroll={isMobile ? 1 : 4}
                         showIndicators={false}
                         responsiveOptions={responsiveNess}
                         itemTemplate={(texture) => (
@@ -742,8 +743,8 @@ subTextureDescriptions={textureDescriptions.smock}
                       </h3>
                       <Carousel
                         value={textureArrays.printed_kente}
-                        numVisible={4}
-                        numScroll={4}
+                        numVisible={isMobile ? 1 : 4}
+                        numScroll={isMobile ? 1 : 4}
                         showIndicators={false}
                         responsiveOptions={responsiveNess}
                         itemTemplate={(texture) => (
@@ -772,8 +773,8 @@ subTextureDescriptions={textureDescriptions.smock}
                       </h3>
                       <Carousel
                         value={textureArrays.Funerals}
-                        numVisible={4}
-                        numScroll={4}
+                        numVisible={isMobile ? 1 : 4}
+                        numScroll={isMobile ? 1 : 4}
                         showIndicators={false}
                         responsiveOptions={responsiveNess}
                         itemTemplate={(texture) => (
