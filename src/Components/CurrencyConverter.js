@@ -7,7 +7,7 @@ const CurrencyConverter = () => {
   const dispatch = useDispatch();
   const currencySymbol = useSelector((state) => state.currencySymbol);
   const [exchangeRates, setExchangeRates] = useState([]);
-  const currencyOptions = [
+  const currencyOptions =  [
     { name: "USD", symbol: "$" },
     { name: "GHS", symbol: "₵" },
     { name: "EUR", symbol: "€" },
@@ -118,7 +118,7 @@ const CurrencyConverter = () => {
             .map((option) => ({
               name: option.name,
               symbol: option.symbol,
-              factor: data.rates[option.name] || 1,
+              factor: data.rates[option.name],
             }));
   
           setExchangeRates(modifiedRates);

@@ -28,15 +28,16 @@ import {
   textureDescriptions,
   textureValues,
   responsiveNess,
-  
   specialNodeNames,
   displayInplaceFor,
+  responsiveColor,
 } from "./arrays/neededArrays";
 import TextureItem from "./TextureItem";
 import PartImages from "./PartImages";
 import WelcomeTour, { tourSteps } from "./WelcomeTour";
 import { InputText } from "primereact/inputtext";
 import { Toast } from "primereact/toast";
+import { isMobile } from "../../../utils/constants";
 
 const Shirt = ({
   isRotating,
@@ -307,7 +308,6 @@ const Configurator = () => {
             className="col-12 col-sm-6"
             onHide={handleTourLater}
             dismissableMask={true}
-
           >
             <div className="tour-popup">
               <h2>Welcome to the 3D customization!</h2>
@@ -430,7 +430,6 @@ const Configurator = () => {
                     className="col-12 col-sm-6"
                     onHide={() => setVisible(false)}
                     dismissableMask={true}
-
                   >
                     <div className="d-flex flex-column align-items-center">
                       {selectedClothing.sizeModels ? (
@@ -482,10 +481,10 @@ const Configurator = () => {
                 <div className="color-buttons-container">
                   <Carousel
                     value={colorOptions}
-                    numVisible={7}
-                    numScroll={5}
+                    numVisible={isMobile ? 4 : 7}
+                    numScroll={isMobile ? 2 : 5}
                     showIndicators={false}
-                    // responsiveOptions={responsiveColor}
+                    responsiveOptions={responsiveColor}
                     itemTemplate={(colorOption) => (
                       <div key={colorOption.color} className="color-item">
                         <button
@@ -512,15 +511,15 @@ const Configurator = () => {
                       </h3>
                       <Carousel
                         value={textureArrays.batik}
-                        numVisible={4}
-                        numScroll={4}
+                        numVisible={isMobile ? 1 : 4}
+                        numScroll={isMobile ? 1 : 4}
                         showIndicators={false}
-                        responsiveOptions={responsiveNess}
-                        itemTemplate={(texture, index) => (
+                        // responsiveOptions={responsiveNess}
+                        itemTemplate={(texture) => (
                           <TextureItem
                             key={texture}
                             texture={texture}
-                            setHideText = {setHideText}
+                            setHideText={setHideText}
                             Title="batik"
                             selectedTexture={selectedTexture}
                             setSelectedTexture={setSelectedTexture} // Pass setSelectedTexture as a prop
@@ -528,7 +527,7 @@ const Configurator = () => {
                             currencySymbol={currencySymbol}
                             currencyFactor={currencyFactor}
                             subTextureDescriptions={textureDescriptions.batik}
-                            textureIndex={index}
+                            textureIndex={textureArrays.batik.indexOf(texture)}
                           />
                         )}
                       />
@@ -540,15 +539,15 @@ const Configurator = () => {
                       </h3>
                       <Carousel
                         value={textureArrays.dashiki}
-                        numVisible={4}
-                        numScroll={4}
+                        numVisible={isMobile ? 1 : 4}
+                        numScroll={isMobile ? 1 : 4}
                         showIndicators={false}
                         responsiveOptions={responsiveNess}
                         itemTemplate={(texture) => (
                           <TextureItem
                             key={texture}
                             texture={texture}
-                            setHideText = {setHideText}
+                            setHideText={setHideText}
                             Title="dashiki"
                             selectedTexture={selectedTexture}
                             setSelectedTexture={setSelectedTexture} // Pass setSelectedTexture as a prop
@@ -556,6 +555,9 @@ const Configurator = () => {
                             currencySymbol={currencySymbol}
                             currencyFactor={currencyFactor}
                             subTextureDescriptions={textureDescriptions.dashiki}
+                            textureIndex={textureArrays.dashiki.indexOf(
+                              texture
+                            )}
                           />
                         )}
                       />
@@ -569,15 +571,15 @@ const Configurator = () => {
                       </h3>
                       <Carousel
                         value={textureArrays.kente}
-                        numVisible={4}
-                        numScroll={4}
+                        numVisible={isMobile ? 1 : 4}
+                        numScroll={isMobile ? 1 : 4}
                         showIndicators={false}
                         responsiveOptions={responsiveNess}
                         itemTemplate={(texture) => (
                           <TextureItem
                             key={texture}
                             texture={texture}
-                            setHideText = {setHideText}
+                            setHideText={setHideText}
                             Title="kente"
                             selectedTexture={selectedTexture}
                             setSelectedTexture={setSelectedTexture} // Pass setSelectedTexture as a prop
@@ -585,6 +587,7 @@ const Configurator = () => {
                             currencySymbol={currencySymbol}
                             currencyFactor={currencyFactor}
                             subTextureDescriptions={textureDescriptions.kente}
+                            textureIndex={textureArrays.kente.indexOf(texture)}
                           />
                         )}
                       />
@@ -596,15 +599,15 @@ const Configurator = () => {
                       </h3>
                       <Carousel
                         value={textureArrays.waxPrint}
-                        numVisible={4}
-                        numScroll={4}
+                        numVisible={isMobile ? 1 : 4}
+                        numScroll={isMobile ? 1 : 4}
                         showIndicators={false}
                         responsiveOptions={responsiveNess}
                         itemTemplate={(texture) => (
                           <TextureItem
                             key={texture}
                             texture={texture}
-                            setHideText = {setHideText}
+                            setHideText={setHideText}
                             Title="waxPrint"
                             selectedTexture={selectedTexture}
                             setSelectedTexture={setSelectedTexture} // Pass setSelectedTexture as a prop
@@ -614,6 +617,9 @@ const Configurator = () => {
                             subTextureDescriptions={
                               textureDescriptions.waxPrint
                             }
+                            textureIndex={textureArrays.waxPrint.indexOf(
+                              texture
+                            )}
                           />
                         )}
                       />
@@ -627,15 +633,15 @@ const Configurator = () => {
                       </h3>
                       <Carousel
                         value={textureArrays.smock}
-                        numVisible={4}
-                        numScroll={4}
+                        numVisible={isMobile ? 1 : 4}
+                        numScroll={isMobile ? 1 : 4}
                         showIndicators={false}
                         responsiveOptions={responsiveNess}
                         itemTemplate={(texture) => (
                           <TextureItem
                             key={texture}
                             texture={texture}
-                            setHideText = {setHideText}
+                            setHideText={setHideText}
                             Title="smock"
                             selectedTexture={selectedTexture}
                             setSelectedTexture={setSelectedTexture} // Pass setSelectedTexture as a prop
@@ -643,6 +649,7 @@ const Configurator = () => {
                             currencySymbol={currencySymbol}
                             currencyFactor={currencyFactor}
                             subTextureDescriptions={textureDescriptions.smock}
+                            textureIndex={textureArrays.smock.indexOf(texture)}
                           />
                         )}
                       />
@@ -654,15 +661,15 @@ const Configurator = () => {
                       </h3>
                       <Carousel
                         value={textureArrays.Crochet}
-                        numVisible={4}
-                        numScroll={4}
+                        numVisible={isMobile ? 1 : 4}
+                        numScroll={isMobile ? 1 : 4}
                         showIndicators={false}
                         responsiveOptions={responsiveNess}
                         itemTemplate={(texture) => (
                           <TextureItem
                             key={texture}
                             texture={texture}
-                            setHideText = {setHideText}
+                            setHideText={setHideText}
                             Title="Crochet"
                             selectedTexture={selectedTexture}
                             setSelectedTexture={setSelectedTexture} // Pass setSelectedTexture as a prop
@@ -670,6 +677,9 @@ const Configurator = () => {
                             currencySymbol={currencySymbol}
                             currencyFactor={currencyFactor}
                             subTextureDescriptions={textureDescriptions.Crochet}
+                            textureIndex={textureArrays.Crochet.indexOf(
+                              texture
+                            )}
                           />
                         )}
                       />
@@ -686,15 +696,15 @@ const Configurator = () => {
                       </h3>
                       <Carousel
                         value={textureArrays.printed_kente}
-                        numVisible={4}
-                        numScroll={4}
+                        numVisible={isMobile ? 1 : 4}
+                        numScroll={isMobile ? 1 : 4}
                         showIndicators={false}
                         responsiveOptions={responsiveNess}
                         itemTemplate={(texture) => (
                           <TextureItem
                             key={texture}
                             texture={texture}
-                            setHideText = {setHideText}
+                            setHideText={setHideText}
                             Title="printed_kente"
                             selectedTexture={selectedTexture}
                             setSelectedTexture={setSelectedTexture} // Pass setSelectedTexture as a prop
@@ -704,6 +714,9 @@ const Configurator = () => {
                             subTextureDescriptions={
                               textureDescriptions.printed_kente
                             }
+                            textureIndex={textureArrays.printed_kente.indexOf(
+                              texture
+                            )}
                           />
                         )}
                       />
@@ -715,15 +728,15 @@ const Configurator = () => {
                       </h3>
                       <Carousel
                         value={textureArrays.Funerals}
-                        numVisible={4}
-                        numScroll={4}
+                        numVisible={isMobile ? 1 : 4}
+                        numScroll={isMobile ? 1 : 4}
                         showIndicators={false}
                         responsiveOptions={responsiveNess}
                         itemTemplate={(texture) => (
                           <TextureItem
                             key={texture}
                             texture={texture}
-                            setHideText = {setHideText}
+                            setHideText={setHideText}
                             Title="Funerals"
                             selectedTexture={selectedTexture}
                             setSelectedTexture={setSelectedTexture} // Pass setSelectedTexture as a prop
@@ -733,6 +746,9 @@ const Configurator = () => {
                             subTextureDescriptions={
                               textureDescriptions.Funerals
                             }
+                            textureIndex={textureArrays.Funerals.indexOf(
+                              texture
+                            )}
                           />
                         )}
                       />
@@ -787,7 +803,8 @@ const Configurator = () => {
             </span>
 
             <p className="price-text m-3">
-              <span className="expect-to-be-ready">Price:</span> {currencySymbol}
+              <span className="expect-to-be-ready">Price:</span>{" "}
+              {currencySymbol}
               {total}
             </p>
 

@@ -37,6 +37,7 @@ import PartImages from "./PartImages";
 import WelcomeTour, { tourSteps } from "./WelcomeTour";
 import { InputText } from "primereact/inputtext";
 import { Toast } from "primereact/toast";
+import { isMobile } from "../../../utils/constants";
 const Shirt = ({
   isRotating,
   selectedClothing,
@@ -513,15 +514,15 @@ readyBy={selectedClothing.readyIn}
                       </h3>
                       <Carousel
                         value={textureArrays.batik}
-                        numVisible={4}
-                        numScroll={4}
+                        numVisible={isMobile ? 1 : 4}
+                        numScroll={isMobile ? 1 : 4}
                         showIndicators={false}
                         responsiveOptions={responsiveNess}
                         itemTemplate={(texture, index) => (
                           <TextureItem
                             key={texture}
                             texture={texture}
-                            setHideText = {setHideText}
+                            setHideText={setHideText}
                             Title="batik"
                             selectedTexture={selectedTexture}
                             setSelectedTexture={setSelectedTexture} // Pass setSelectedTexture as a prop
@@ -529,7 +530,7 @@ readyBy={selectedClothing.readyIn}
                             currencySymbol={currencySymbol}
                             currencyFactor={currencyFactor}
                             subTextureDescriptions={textureDescriptions.batik}
-                            textureIndex={index}
+                            textureIndex={textureArrays.batik.indexOf(texture)}
                           />
                         )}
                       />
@@ -541,8 +542,8 @@ readyBy={selectedClothing.readyIn}
                       </h3>
                       <Carousel
                         value={textureArrays.dashiki}
-                        numVisible={4}
-                        numScroll={4}
+                        numVisible={isMobile ? 1 : 4}
+                        numScroll={isMobile ? 1 : 4}
                         showIndicators={false}
                         responsiveOptions={responsiveNess}
                         itemTemplate={(texture) => (
@@ -556,8 +557,8 @@ readyBy={selectedClothing.readyIn}
                             handleTextureChange={handleTextureChange}
                             currencySymbol={currencySymbol}
                             currencyFactor={currencyFactor}
-                            subTextureDescriptions={textureDescriptions.dashiki}
-                          />
+subTextureDescriptions={textureDescriptions.dashiki}
+                            textureIndex={textureArrays.dashiki.indexOf(texture)}                          />
                         )}
                       />
                     </div>
@@ -570,8 +571,8 @@ readyBy={selectedClothing.readyIn}
                       </h3>
                       <Carousel
                         value={textureArrays.kente}
-                        numVisible={4}
-                        numScroll={4}
+                        numVisible={isMobile ? 1 : 4}
+                        numScroll={isMobile ? 1 : 4}
                         showIndicators={false}
                         responsiveOptions={responsiveNess}
                         itemTemplate={(texture) => (
@@ -585,8 +586,8 @@ readyBy={selectedClothing.readyIn}
                             handleTextureChange={handleTextureChange}
                             currencySymbol={currencySymbol}
                             currencyFactor={currencyFactor}
-                            subTextureDescriptions={textureDescriptions.kente}
-                          />
+subTextureDescriptions={textureDescriptions.kente}
+                            textureIndex={textureArrays.kente.indexOf(texture)}                          />
                         )}
                       />
                     </div>
@@ -597,8 +598,8 @@ readyBy={selectedClothing.readyIn}
                       </h3>
                       <Carousel
                         value={textureArrays.waxPrint}
-                        numVisible={4}
-                        numScroll={4}
+                        numVisible={isMobile ? 1 : 4}
+                        numScroll={isMobile ? 1 : 4}
                         showIndicators={false}
                         responsiveOptions={responsiveNess}
                         itemTemplate={(texture) => (
@@ -615,6 +616,7 @@ readyBy={selectedClothing.readyIn}
                             subTextureDescriptions={
                               textureDescriptions.waxPrint
                             }
+                            textureIndex={textureArrays.waxPrint.indexOf(texture)}
                           />
                         )}
                       />
@@ -628,8 +630,8 @@ readyBy={selectedClothing.readyIn}
                       </h3>
                       <Carousel
                         value={textureArrays.smock}
-                        numVisible={4}
-                        numScroll={4}
+                        numVisible={isMobile ? 1 : 4}
+                        numScroll={isMobile ? 1 : 4}
                         showIndicators={false}
                         responsiveOptions={responsiveNess}
                         itemTemplate={(texture) => (
@@ -643,8 +645,8 @@ readyBy={selectedClothing.readyIn}
                             handleTextureChange={handleTextureChange}
                             currencySymbol={currencySymbol}
                             currencyFactor={currencyFactor}
-                            subTextureDescriptions={textureDescriptions.smock}
-                          />
+subTextureDescriptions={textureDescriptions.smock}
+                            textureIndex={textureArrays.smock.indexOf(texture)}                          />
                         )}
                       />
                     </div>
@@ -655,8 +657,8 @@ readyBy={selectedClothing.readyIn}
                       </h3>
                       <Carousel
                         value={textureArrays.Crochet}
-                        numVisible={4}
-                        numScroll={4}
+                        numVisible={isMobile ? 1 : 4}
+                        numScroll={isMobile ? 1 : 4}
                         showIndicators={false}
                         responsiveOptions={responsiveNess}
                         itemTemplate={(texture) => (
@@ -671,6 +673,7 @@ readyBy={selectedClothing.readyIn}
                             currencySymbol={currencySymbol}
                             currencyFactor={currencyFactor}
                             subTextureDescriptions={textureDescriptions.Crochet}
+                            textureIndex={textureArrays.Crochet.indexOf(texture)}
                           />
                         )}
                       />
@@ -687,8 +690,8 @@ readyBy={selectedClothing.readyIn}
                       </h3>
                       <Carousel
                         value={textureArrays.printed_kente}
-                        numVisible={4}
-                        numScroll={4}
+                        numVisible={isMobile ? 1 : 4}
+                        numScroll={isMobile ? 1 : 4}
                         showIndicators={false}
                         responsiveOptions={responsiveNess}
                         itemTemplate={(texture) => (
@@ -705,6 +708,7 @@ readyBy={selectedClothing.readyIn}
                             subTextureDescriptions={
                               textureDescriptions.printed_kente
                             }
+                            textureIndex={textureArrays.printed_kente.indexOf(texture)}
                           />
                         )}
                       />
@@ -716,8 +720,8 @@ readyBy={selectedClothing.readyIn}
                       </h3>
                       <Carousel
                         value={textureArrays.Funerals}
-                        numVisible={4}
-                        numScroll={4}
+                        numVisible={isMobile ? 1 : 4}
+                        numScroll={isMobile ? 1 : 4}
                         showIndicators={false}
                         responsiveOptions={responsiveNess}
                         itemTemplate={(texture) => (
@@ -734,6 +738,7 @@ readyBy={selectedClothing.readyIn}
                             subTextureDescriptions={
                               textureDescriptions.Funerals
                             }
+                            textureIndex={textureArrays.Funerals.indexOf(texture)}
                           />
                         )}
                       />
