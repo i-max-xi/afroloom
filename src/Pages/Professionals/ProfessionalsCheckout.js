@@ -8,6 +8,7 @@ import { PaystackButton } from "react-paystack";
 import { Toast } from "primereact/toast";
 import ProductsDataService from "../../Services/products.services";
 import { InputTextarea } from "primereact/inputtextarea";
+import BookingCalendar from "../../Components/calendar/BookingCalendar";
 
 const ProfessionalsCheckout = ({ professionalType, product }) => {
   const dispatch = useDispatch();
@@ -27,7 +28,9 @@ const ProfessionalsCheckout = ({ professionalType, product }) => {
 
   const [venue, setVenue] = useState("");
   const [tel, setTel] = useState("");
-  const [date, setDate] = useState("");
+
+  const [date, setDate] = useState(new Date());
+
   const [extraDetails, setExtraDetails] = useState("");
 
   const totalToPay = selectedOffer.priceValue;
@@ -58,14 +61,6 @@ const ProfessionalsCheckout = ({ professionalType, product }) => {
     text: "Confirm Order",
   };
 
-  // const cannotCheckout = () => {
-  //   toast.current.show({
-  //     severity: "error",
-  //     summary: "Cannot Proceed",
-  //     detail: "Please select one of the offers provided by this professional",
-  //   });
-  // };
-
   const onSuccess = (reference) => {
     const updatedOrders = [...oldOrders, ...cartItems];
 
@@ -84,8 +79,6 @@ const ProfessionalsCheckout = ({ professionalType, product }) => {
       selectedOffer: selectedOffer.offer,
       amountPaid: selectedOffer.priceValue || "Not Applicable",
       projectDetails: projectDetails || "Not Applicable",
-      // projectDateTime: time || "Not Applicable",
-      // projectLocation: projectLocation || "Not Applicable",
       extraDetails: extraDetails,
 
       subject: `New Pofessional Booking`,
@@ -140,6 +133,11 @@ const ProfessionalsCheckout = ({ professionalType, product }) => {
     time,
     date,
   ]);
+
+  // date 
+  const bookedDates = [
+    new Date(2024, 2, 10),
+  ];
 
   if (isSignedIn === false) {
     return (
@@ -223,30 +221,6 @@ const ProfessionalsCheckout = ({ professionalType, product }) => {
                   />
                 </div>
               </div>
-              {/* <div className="mt-4">
-                <div className="form-group">
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="time"
-                    value={time}
-                    onChange={(e) => setTime(e.target.value)}
-                    placeholder="Prefered date and time of project"
-                  />
-                </div>
-              </div>
-              <div className="mt-4">
-                <div className="form-group">
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="proect-location"
-                    value={projectLocation}
-                    onChange={(e) => setprojectLocation(e.target.value)}
-                    placeholder="Location"
-                  />
-                </div>
-              </div> */}
             </>
           )}
 
@@ -255,9 +229,9 @@ const ProfessionalsCheckout = ({ professionalType, product }) => {
               <span className="text-warning">Meet Up</span> Details
             </h4>
             <div className="mt-2">
-              <label className="fw-bold">Date</label><br/>
-              <small>We advice you book outside the range of <b>72hours</b> to account preparation time of this {professionalType}</small>
-              <div className="form-group">
+              <label className="fw-bold">Date</label>
+              <br />
+              {/* <div className="form-group">
                 <input
                   type="text"
                   className="form-control"
@@ -266,7 +240,15 @@ const ProfessionalsCheckout = ({ professionalType, product }) => {
                   onChange={(e) => setDate(e.target.value)}
                   placeholder="eg. 26th October, 2024"
                 />
-              </div>
+              </div> */}
+              <BookingCalendar
+                value={date}
+                onDateSelect={(newDate) => {
+                  setDate(newDate);
+                  console.log({date})
+                }}
+                bookedDates={bookedDates}
+              />
             </div>
             <div className="mt-3">
               <label className="fw-bold">Time</label>

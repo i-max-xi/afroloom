@@ -1,33 +1,35 @@
-// BookingCalendar.js
-import React, { useState } from 'react';
+import React from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
+import './style.css';
 
-const BookingCalendar = ({ bookedDates, onDateSelect }) => {
-  const [selectedDate, setSelectedDate] = useState(new Date());
+const BookingCalendar = ({ bookedDates, onDateSelect, selectedDate }) => {
 
+  
+  // const tileClassName = ({ date }) => {
+  //   const isBooked = bookedDates.some(bookedDate => (
 
+  //     date.getDate() === bookedDate.getDate()
+  //   ));
 
-  // const tileClassName = ({ date, view }) => {
-  //   if (view === 'month') {
-  //     const isBooked = isDateBooked(date);
-  //     return isBooked ? 'booked-date' : '';
-  //   }
-  //   return '';
+  //   return isBooked ? 'booked-date' : '';
   // };
 
-  const handleDateSelect = (date) => {
-    setSelectedDate(date);
-    onDateSelect(date); // Pass the selected date to the parent component
+  const tileDisabled = ({ date }) => {
+    const isBooked = bookedDates.some(bookedDate => (
+      date.getDate() === bookedDate.getDate()
+    ));
+
+    return isBooked;
   };
 
   return (
     <div>
-      <h3>Select a Date for Booking</h3>
       <Calendar
-        onChange={handleDateSelect}
+        onChange={onDateSelect}
         value={selectedDate}
         // tileClassName={tileClassName}
+        tileDisabled={tileDisabled}
       />
     </div>
   );
