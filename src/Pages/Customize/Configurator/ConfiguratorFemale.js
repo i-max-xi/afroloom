@@ -521,7 +521,7 @@ readyBy={selectedClothing.readyIn}
                           <TextureItem
                             key={texture}
                             texture={texture}
-                            setHideText = {setHideText}
+                            setHideText={setHideText}
                             Title="batik"
                             selectedTexture={selectedTexture}
                             setSelectedTexture={setSelectedTexture} // Pass setSelectedTexture as a prop
@@ -529,7 +529,7 @@ readyBy={selectedClothing.readyIn}
                             currencySymbol={currencySymbol}
                             currencyFactor={currencyFactor}
                             subTextureDescriptions={textureDescriptions.batik}
-                            textureIndex={index}
+                            textureIndex={textureArrays.batik.indexOf(texture)}
                           />
                         )}
                       />
@@ -556,8 +556,8 @@ readyBy={selectedClothing.readyIn}
                             handleTextureChange={handleTextureChange}
                             currencySymbol={currencySymbol}
                             currencyFactor={currencyFactor}
-                            subTextureDescriptions={textureDescriptions.dashiki}
-                          />
+subTextureDescriptions={textureDescriptions.dashiki}
+                            textureIndex={textureArrays.dashiki.indexOf(texture)}                          />
                         )}
                       />
                     </div>
@@ -585,8 +585,8 @@ readyBy={selectedClothing.readyIn}
                             handleTextureChange={handleTextureChange}
                             currencySymbol={currencySymbol}
                             currencyFactor={currencyFactor}
-                            subTextureDescriptions={textureDescriptions.kente}
-                          />
+subTextureDescriptions={textureDescriptions.kente}
+                            textureIndex={textureArrays.kente.indexOf(texture)}                          />
                         )}
                       />
                     </div>
@@ -615,6 +615,7 @@ readyBy={selectedClothing.readyIn}
                             subTextureDescriptions={
                               textureDescriptions.waxPrint
                             }
+                            textureIndex={textureArrays.waxPrint.indexOf(texture)}
                           />
                         )}
                       />
@@ -643,8 +644,8 @@ readyBy={selectedClothing.readyIn}
                             handleTextureChange={handleTextureChange}
                             currencySymbol={currencySymbol}
                             currencyFactor={currencyFactor}
-                            subTextureDescriptions={textureDescriptions.smock}
-                          />
+subTextureDescriptions={textureDescriptions.smock}
+                            textureIndex={textureArrays.smock.indexOf(texture)}                          />
                         )}
                       />
                     </div>
@@ -671,6 +672,7 @@ readyBy={selectedClothing.readyIn}
                             currencySymbol={currencySymbol}
                             currencyFactor={currencyFactor}
                             subTextureDescriptions={textureDescriptions.Crochet}
+                            textureIndex={textureArrays.Crochet.indexOf(texture)}
                           />
                         )}
                       />
@@ -705,6 +707,7 @@ readyBy={selectedClothing.readyIn}
                             subTextureDescriptions={
                               textureDescriptions.printed_kente
                             }
+                            textureIndex={textureArrays.printed_kente.indexOf(texture)}
                           />
                         )}
                       />
@@ -734,6 +737,7 @@ readyBy={selectedClothing.readyIn}
                             subTextureDescriptions={
                               textureDescriptions.Funerals
                             }
+                            textureIndex={textureArrays.Funerals.indexOf(texture)}
                           />
                         )}
                       />

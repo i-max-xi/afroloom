@@ -46,73 +46,99 @@ import p_kente3 from "../textures/p_kente3.jpg";
 import p_kente4 from "../textures/p_kente4.jpg";
 
 export const colorOptions = [
-    { color: "#ff0000", label: "Red" },
-    { color: "#ffffff", label: "White" },
-    { color: "#00ff00", label: "Green" },
-    { color: "#ffd700", label: "Gold" },
-    { color: "#0000ff", label: "Blue" },
-    { color: "#000000", label: "Black" },
-    { color: "#ffff00", label: "Yellow" },
-    { color: "#87ceeb", label: "Seablue" },
-    { color: "#ff7f50", label: "Coral" },
-    { color: "#008080", label: "Teal" },
-    { color: "#808000", label: "Olive" },
-    { color: "#e0b0ff", label: "Mauve" },
-    { color: "#c0c0c0", label: "Silver" },
-    { color: "#ffa500", label: "Orange" },
-    { color: "#800080", label: "Purple" },
-    { color: "#ff69b4", label: "Pink" },
-    { color: "#a52a2a", label: "Brown" },
-    { color: "#808080", label: "Gray" },
-    { color: "#00ffff", label: "Cyan" },
-    { color: "#ff00ff", label: "Magenta" },
-    { color: "#8a2be2", label: "Blue Violet" },
-    { color: "#deb887", label: "Burly Wood" },
-    { color: "#5f9ea0", label: "Cadet Blue" },
-    { color: "#7fff00", label: "Chartreuse" },
-    { color: "#d2691e", label: "Chocolate" },
-    { color: "#ff7f50", label: "Coral" },
-    { color: "#6495ed", label: "Cornflower Blue" },
-    { color: "#dc143c", label: "Crimson" },
-    { color: "#00ffff", label: "Cyan" },
-    { color: "#00008b", label: "Dark Blue" },
-    { color: "#008b8b", label: "Dark Cyan" },
-    { color: "#b8860b", label: "Dark Golden Rod" },
-    { color: "#a9a9a9", label: "Dark Gray" },
-    { color: "#006400", label: "Dark Green" },
-    { color: "#bdb76b", label: "Dark Khaki" },
-    { color: "#8b008b", label: "Dark Magenta" },
-    { color: "#556b2f", label: "Dark Olive Green" },
-    { color: "#ff8c00", label: "Dark Orange" },
-    { color: "#9932cc", label: "Dark Orchid" },
-    { color: "#8b0000", label: "Dark Red" },
-    { color: "#e9967a", label: "Dark Salmon" },
-    { color: "#8fbc8f", label: "Dark Sea Green" },
-    { color: "#483d8b", label: "Dark Slate Blue" },
-    { color: "#2f4f4f", label: "Dark Slate Gray" },
-    { color: "#00ced1", label: "Dark Turquoise" },
-    { color: "#9400d3", label: "Dark Violet" },
-    { color: "#ff1493", label: "Deep Pink" },
-    { color: "#00bfff", label: "Deep Sky Blue" },
-    { color: "#696969", label: "Dim Gray" },
-    { color: "#1e90ff", label: "Dodger Blue" },
-    { color: "#b22222", label: "Fire Brick" },
-    { color: "#ff4500", label: "Orange Red" },
-  ];
+  { color: "#ff0000", label: "Red" },
+  { color: "#ffffff", label: "White" },
+  { color: "#00ff00", label: "Green" },
+  { color: "#ffd700", label: "Gold" },
+  { color: "#0000ff", label: "Blue" },
+  { color: "#000000", label: "Black" },
+  { color: "#ffff00", label: "Yellow" },
+  { color: "#87ceeb", label: "Seablue" },
+  { color: "#ff7f50", label: "Coral" },
+  { color: "#008080", label: "Teal" },
+  { color: "#808000", label: "Olive" },
+  { color: "#e0b0ff", label: "Mauve" },
+  { color: "#c0c0c0", label: "Silver" },
+  { color: "#ffa500", label: "Orange" },
+  { color: "#800080", label: "Purple" },
+  { color: "#ff69b4", label: "Pink" },
+  { color: "#a52a2a", label: "Brown" },
+  { color: "#808080", label: "Gray" },
+  { color: "#00ffff", label: "Cyan" },
+  { color: "#ff00ff", label: "Magenta" },
+  { color: "#8a2be2", label: "Blue Violet" },
+  { color: "#deb887", label: "Burly Wood" },
+  { color: "#5f9ea0", label: "Cadet Blue" },
+  { color: "#7fff00", label: "Chartreuse" },
+  { color: "#d2691e", label: "Chocolate" },
+  { color: "#ff7f50", label: "Coral" },
+  { color: "#6495ed", label: "Cornflower Blue" },
+  { color: "#dc143c", label: "Crimson" },
+  { color: "#00ffff", label: "Cyan" },
+  { color: "#00008b", label: "Dark Blue" },
+  { color: "#008b8b", label: "Dark Cyan" },
+  { color: "#b8860b", label: "Dark Golden Rod" },
+  { color: "#a9a9a9", label: "Dark Gray" },
+  { color: "#006400", label: "Dark Green" },
+  { color: "#bdb76b", label: "Dark Khaki" },
+  { color: "#8b008b", label: "Dark Magenta" },
+  { color: "#556b2f", label: "Dark Olive Green" },
+  { color: "#ff8c00", label: "Dark Orange" },
+  { color: "#9932cc", label: "Dark Orchid" },
+  { color: "#8b0000", label: "Dark Red" },
+  { color: "#e9967a", label: "Dark Salmon" },
+  { color: "#8fbc8f", label: "Dark Sea Green" },
+  { color: "#483d8b", label: "Dark Slate Blue" },
+  { color: "#2f4f4f", label: "Dark Slate Gray" },
+  { color: "#00ced1", label: "Dark Turquoise" },
+  { color: "#9400d3", label: "Dark Violet" },
+  { color: "#ff1493", label: "Deep Pink" },
+  { color: "#00bfff", label: "Deep Sky Blue" },
+  { color: "#696969", label: "Dim Gray" },
+  { color: "#1e90ff", label: "Dodger Blue" },
+  { color: "#b22222", label: "Fire Brick" },
+  { color: "#ff4500", label: "Orange Red" },
+];
 
 export const specialNodeNames = ["button", "buttons", "sole", "zippers"]; // Add your special node names here
 
-
 export const textureArrays = {
-    batik: [batik1, batik2, batik3, batik4, batik5, batik1, batik2, batik3, batik4, batik5, batik1, batik2, batik3, batik4, batik5],
-    dashiki: [dashiki1, dashiki2, dashiki3, dashiki4, dashiki5,dashiki1, dashiki2, dashiki3, dashiki4, dashiki5],
-    kente: [kente1, kente2, kente3, kente4, kente5],
-    waxPrint: [waxPrint1, waxPrint2, waxPrint3, waxPrint4, waxPrint5],
-    smock: [smock1, smock2, smock3, smock4 , smock3], // Uncomment if needed
-    Crochet: [lace1, lace2, lace3, lace4, lace5],
-    printed_kente: [p_kente1, p_kente2, p_kente3, p_kente4, p_kente3],
-    Funerals: [Funerals1, Funerals2, Funerals3, Funerals4, Funerals5],
-  };
+  batik: [
+    batik1,
+    batik2,
+    batik3,
+    batik4,
+    batik5,
+    batik1,
+    batik2,
+    batik3,
+    batik4,
+    batik5,
+    batik1,
+    batik2,
+    batik3,
+    batik4,
+    batik5,
+  ],
+  dashiki: [
+    dashiki1,
+    dashiki2,
+    dashiki3,
+    dashiki4,
+    dashiki5,
+    dashiki1,
+    dashiki2,
+    dashiki3,
+    dashiki4,
+    dashiki5,
+  ],
+  kente: [kente1, kente2, kente3, kente4, kente5],
+  waxPrint: [waxPrint1, waxPrint2, waxPrint3, waxPrint4, waxPrint5],
+  smock: [smock1, smock2, smock3, smock4, smock3], // Uncomment if needed
+  Crochet: [lace1, lace2, lace3, lace4, lace5],
+  printed_kente: [p_kente1, p_kente2, p_kente3, p_kente4, p_kente3],
+  Funerals: [Funerals1, Funerals2, Funerals3, Funerals4, Funerals5],
+};
 
 export const textureDescriptions = {
   batik: [
@@ -137,7 +163,7 @@ export const textureDescriptions = {
     "Description for kente5",
   ],
   waxPrint: [
-    "Description for waxPrint1",
+    "Money has wings is the translation for this fabric. Money indeed flies where it wants to go. If it is not handled well, it will be lost. Bad or wrong investment decisions will cause one to lose money. Birds are a group of feathered theropod dinosaurs and constitute the only living dinosaurs.Likewise, birds are considered reptiles in the modern cladistic sense of the term, and their closest living relatives are the crocodilians. Birds are descendants of the primitive. The ability to fly is one  of the most unique features of birds. The motif is a profile of a bird in an oval shape repeated systematically to give a feeling of movement. It is also made of some horizontal lines repeated throughout the design and serves as fabric textures.",
     "Description for waxPrint2",
     "Description for waxPrint3",
     "Description for waxPrint4",
@@ -216,8 +242,6 @@ export const europeanShoeSizes = [
   // Add more sizes as needed
 ];
 
-
-
 export const responsiveNess = [
   {
     breakpoint: "1024px",
@@ -234,25 +258,25 @@ export const responsiveNess = [
     numVisible: 1,
     numScroll: 1,
   },
-]
+];
 
 export const responsiveColor = [
-    {
-      breakpoint: "1024px",
-      numVisible: 3,
-      numScroll: 1,
-    },
-    {
-      breakpoint: "768px",
-      numVisible: 2,
-      numScroll: 1,
-    },
-    {
-      breakpoint: "576px",
-      numVisible: 1,
-      numScroll: 1,
-    },
-]
+  {
+    breakpoint: "1024px",
+    numVisible: 3,
+    numScroll: 1,
+  },
+  {
+    breakpoint: "768px",
+    numVisible: 2,
+    numScroll: 1,
+  },
+  {
+    breakpoint: "576px",
+    numVisible: 1,
+    numScroll: 1,
+  },
+];
 
 export const displayInplaceFor = [
   "Trousers",

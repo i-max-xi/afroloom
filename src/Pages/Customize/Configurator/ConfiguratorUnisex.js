@@ -609,8 +609,8 @@ const ConfiguratorUnisex = () => {
                             handleTextureChange={handleTextureChange}
                             currencySymbol={currencySymbol}
                             currencyFactor={currencyFactor}
-                            subTextureDescriptions={textureDescriptions.dashiki}
-                          />
+subTextureDescriptions={textureDescriptions.dashiki}
+                            textureIndex={textureArrays.dashiki.indexOf(texture)}                          />
                         )}
                       />
                     </div>
@@ -638,8 +638,8 @@ const ConfiguratorUnisex = () => {
                             handleTextureChange={handleTextureChange}
                             currencySymbol={currencySymbol}
                             currencyFactor={currencyFactor}
-                            subTextureDescriptions={textureDescriptions.kente}
-                          />
+subTextureDescriptions={textureDescriptions.kente}
+                            textureIndex={textureArrays.kente.indexOf(texture)}                          />
                         )}
                       />
                     </div>
@@ -668,6 +668,7 @@ const ConfiguratorUnisex = () => {
                             subTextureDescriptions={
                               textureDescriptions.waxPrint
                             }
+                            textureIndex={textureArrays.waxPrint.indexOf(texture)}
                           />
                         )}
                       />
@@ -696,8 +697,8 @@ const ConfiguratorUnisex = () => {
                             handleTextureChange={handleTextureChange}
                             currencySymbol={currencySymbol}
                             currencyFactor={currencyFactor}
-                            subTextureDescriptions={textureDescriptions.smock}
-                          />
+subTextureDescriptions={textureDescriptions.smock}
+                            textureIndex={textureArrays.smock.indexOf(texture)}                          />
                         )}
                       />
                     </div>
@@ -724,6 +725,7 @@ const ConfiguratorUnisex = () => {
                             currencySymbol={currencySymbol}
                             currencyFactor={currencyFactor}
                             subTextureDescriptions={textureDescriptions.Crochet}
+                            textureIndex={textureArrays.Crochet.indexOf(texture)}
                           />
                         )}
                       />
@@ -758,6 +760,7 @@ const ConfiguratorUnisex = () => {
                             subTextureDescriptions={
                               textureDescriptions.printed_kente
                             }
+                            textureIndex={textureArrays.printed_kente.indexOf(texture)}
                           />
                         )}
                       />
@@ -787,6 +790,7 @@ const ConfiguratorUnisex = () => {
                             subTextureDescriptions={
                               textureDescriptions.Funerals
                             }
+                            textureIndex={textureArrays.Funerals.indexOf(texture)}
                           />
                         )}
                       />

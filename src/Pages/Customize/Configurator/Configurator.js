@@ -28,7 +28,6 @@ import {
   textureDescriptions,
   textureValues,
   responsiveNess,
-  
   specialNodeNames,
   displayInplaceFor,
 } from "./arrays/neededArrays";
@@ -307,7 +306,6 @@ const Configurator = () => {
             className="col-12 col-sm-6"
             onHide={handleTourLater}
             dismissableMask={true}
-
           >
             <div className="tour-popup">
               <h2>Welcome to the 3D customization!</h2>
@@ -430,7 +428,6 @@ const Configurator = () => {
                     className="col-12 col-sm-6"
                     onHide={() => setVisible(false)}
                     dismissableMask={true}
-
                   >
                     <div className="d-flex flex-column align-items-center">
                       {selectedClothing.sizeModels ? (
@@ -516,11 +513,11 @@ const Configurator = () => {
                         numScroll={4}
                         showIndicators={false}
                         responsiveOptions={responsiveNess}
-                        itemTemplate={(texture, index) => (
+                        itemTemplate={(texture) => (
                           <TextureItem
                             key={texture}
                             texture={texture}
-                            setHideText = {setHideText}
+                            setHideText={setHideText}
                             Title="batik"
                             selectedTexture={selectedTexture}
                             setSelectedTexture={setSelectedTexture} // Pass setSelectedTexture as a prop
@@ -528,7 +525,7 @@ const Configurator = () => {
                             currencySymbol={currencySymbol}
                             currencyFactor={currencyFactor}
                             subTextureDescriptions={textureDescriptions.batik}
-                            textureIndex={index}
+                            textureIndex={textureArrays.batik.indexOf(texture)}
                           />
                         )}
                       />
@@ -548,7 +545,7 @@ const Configurator = () => {
                           <TextureItem
                             key={texture}
                             texture={texture}
-                            setHideText = {setHideText}
+                            setHideText={setHideText}
                             Title="dashiki"
                             selectedTexture={selectedTexture}
                             setSelectedTexture={setSelectedTexture} // Pass setSelectedTexture as a prop
@@ -556,6 +553,7 @@ const Configurator = () => {
                             currencySymbol={currencySymbol}
                             currencyFactor={currencyFactor}
                             subTextureDescriptions={textureDescriptions.dashiki}
+                            textureIndex={textureArrays.dashiki.indexOf(texture)}
                           />
                         )}
                       />
@@ -577,7 +575,7 @@ const Configurator = () => {
                           <TextureItem
                             key={texture}
                             texture={texture}
-                            setHideText = {setHideText}
+                            setHideText={setHideText}
                             Title="kente"
                             selectedTexture={selectedTexture}
                             setSelectedTexture={setSelectedTexture} // Pass setSelectedTexture as a prop
@@ -585,6 +583,7 @@ const Configurator = () => {
                             currencySymbol={currencySymbol}
                             currencyFactor={currencyFactor}
                             subTextureDescriptions={textureDescriptions.kente}
+                            textureIndex={textureArrays.kente.indexOf(texture)}
                           />
                         )}
                       />
@@ -604,7 +603,7 @@ const Configurator = () => {
                           <TextureItem
                             key={texture}
                             texture={texture}
-                            setHideText = {setHideText}
+                            setHideText={setHideText}
                             Title="waxPrint"
                             selectedTexture={selectedTexture}
                             setSelectedTexture={setSelectedTexture} // Pass setSelectedTexture as a prop
@@ -614,6 +613,7 @@ const Configurator = () => {
                             subTextureDescriptions={
                               textureDescriptions.waxPrint
                             }
+                            textureIndex={textureArrays.waxPrint.indexOf(texture)}
                           />
                         )}
                       />
@@ -635,7 +635,7 @@ const Configurator = () => {
                           <TextureItem
                             key={texture}
                             texture={texture}
-                            setHideText = {setHideText}
+                            setHideText={setHideText}
                             Title="smock"
                             selectedTexture={selectedTexture}
                             setSelectedTexture={setSelectedTexture} // Pass setSelectedTexture as a prop
@@ -643,6 +643,7 @@ const Configurator = () => {
                             currencySymbol={currencySymbol}
                             currencyFactor={currencyFactor}
                             subTextureDescriptions={textureDescriptions.smock}
+                            textureIndex={textureArrays.smock.indexOf(texture)}
                           />
                         )}
                       />
@@ -662,7 +663,7 @@ const Configurator = () => {
                           <TextureItem
                             key={texture}
                             texture={texture}
-                            setHideText = {setHideText}
+                            setHideText={setHideText}
                             Title="Crochet"
                             selectedTexture={selectedTexture}
                             setSelectedTexture={setSelectedTexture} // Pass setSelectedTexture as a prop
@@ -670,6 +671,7 @@ const Configurator = () => {
                             currencySymbol={currencySymbol}
                             currencyFactor={currencyFactor}
                             subTextureDescriptions={textureDescriptions.Crochet}
+                            textureIndex={textureArrays.Crochet.indexOf(texture)}
                           />
                         )}
                       />
@@ -694,7 +696,7 @@ const Configurator = () => {
                           <TextureItem
                             key={texture}
                             texture={texture}
-                            setHideText = {setHideText}
+                            setHideText={setHideText}
                             Title="printed_kente"
                             selectedTexture={selectedTexture}
                             setSelectedTexture={setSelectedTexture} // Pass setSelectedTexture as a prop
@@ -704,6 +706,7 @@ const Configurator = () => {
                             subTextureDescriptions={
                               textureDescriptions.printed_kente
                             }
+                            textureIndex={textureArrays.printed_kente.indexOf(texture)}
                           />
                         )}
                       />
@@ -723,7 +726,7 @@ const Configurator = () => {
                           <TextureItem
                             key={texture}
                             texture={texture}
-                            setHideText = {setHideText}
+                            setHideText={setHideText}
                             Title="Funerals"
                             selectedTexture={selectedTexture}
                             setSelectedTexture={setSelectedTexture} // Pass setSelectedTexture as a prop
@@ -733,6 +736,7 @@ const Configurator = () => {
                             subTextureDescriptions={
                               textureDescriptions.Funerals
                             }
+                            textureIndex={textureArrays.Funerals.indexOf(texture)}
                           />
                         )}
                       />
@@ -787,7 +791,8 @@ const Configurator = () => {
             </span>
 
             <p className="price-text m-3">
-              <span className="expect-to-be-ready">Price:</span> {currencySymbol}
+              <span className="expect-to-be-ready">Price:</span>{" "}
+              {currencySymbol}
               {total}
             </p>
 
