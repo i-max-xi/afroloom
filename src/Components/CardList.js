@@ -429,7 +429,7 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
         {/* Iteration */}
         {itemsToDisplay.map((product, index) => (
           <React.Fragment>
-            <div className="col-6 col-sm-2 product-card-container">
+            {/* <div className="col-6 col-sm-2 product-card-container">
               <Card
                 key={index}
                 title={product.title}
@@ -448,7 +448,7 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
                 seller={product.seller}
                 country={product.country}
               />
-            </div>
+            </div> */}
 
             {index === 11 && showNestedComponent && (
               <>

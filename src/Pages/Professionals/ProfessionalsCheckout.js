@@ -8,6 +8,7 @@ import { PaystackButton } from "react-paystack";
 import { Toast } from "primereact/toast";
 import ProductsDataService from "../../Services/products.services";
 import { InputTextarea } from "primereact/inputtextarea";
+import BookingCalendar from "../../Components/calendar/BookingCalendar";
 
 const ProfessionalsCheckout = ({ professionalType, product }) => {
   const dispatch = useDispatch();
@@ -22,12 +23,13 @@ const ProfessionalsCheckout = ({ professionalType, product }) => {
   const [emailAddress, setEmailAddress] = useState("");
   const [name, setName] = useState("");
   const [projectDetails, setProjectDetails] = useState("");
-  const [time, setTime] = useState("");
   // const [projectLocation, setprojectLocation] = useState("");
 
   const [venue, setVenue] = useState("");
   const [tel, setTel] = useState("");
-  const [date, setDate] = useState("");
+
+  const [date, setDate] = useState(new Date());
+
   const [extraDetails, setExtraDetails] = useState("");
 
   const totalToPay = selectedOffer.priceValue;
@@ -58,25 +60,41 @@ const ProfessionalsCheckout = ({ professionalType, product }) => {
     text: "Confirm Order",
   };
 
-  // const cannotCheckout = () => {
-  //   toast.current.show({
-  //     severity: "error",
-  //     summary: "Cannot Proceed",
-  //     detail: "Please select one of the offers provided by this professional",
-  //   });
-  // };
-
   const onSuccess = (reference) => {
-    const updatedOrders = [...oldOrders, ...cartItems];
+    const updatedOrderDates = [...product.bookedDates, ...date];
 
-    dispatch(updateOrders(updatedOrders));
-    ProductsDataService.updateUserOrders(user.id, updatedOrders);
+    // console.log(updatedOrderDates);
+    console.log(product);
+
+    // switch (professionalType) {
+    //   case "Model":
+    //     await ProductsDataService.updateAvailableModelBooking(
+    //       product.id,
+    //       updatedOrderDates
+    //     );
+    //     break;
+    //   case "Photographer":
+    //     await ProductsDataService.updateAvailablePhotographerBooking(
+    //       product.id,
+    //       updatedOrderDates
+    //     );
+    //     break;
+
+    //   case "TourGuide":
+    //     await ProductsDataService.updateAvailableTourGuideBooking(
+    //       product.id,
+    //       updatedOrderDates
+    //     );
+    //     break;
+
+    //   default:
+    //     break;
+    // }
 
     const userInfo = {
       name: name,
       email: email,
-      date: date,
-      time: time,
+      date: date.toLocaleDateString(),
       venue: venue,
       customer_contact: tel,
       professional_contact: product.phone,
@@ -84,11 +102,9 @@ const ProfessionalsCheckout = ({ professionalType, product }) => {
       selectedOffer: selectedOffer.offer,
       amountPaid: selectedOffer.priceValue || "Not Applicable",
       projectDetails: projectDetails || "Not Applicable",
-      // projectDateTime: time || "Not Applicable",
-      // projectLocation: projectLocation || "Not Applicable",
       extraDetails: extraDetails,
 
-      subject: `New Pofessional Booking`,
+      subject: "New Pofessional Booking",
     };
     // Submit to formspree
     fetch(process.env.REACT_APP_formSpree, {
@@ -117,16 +133,14 @@ const ProfessionalsCheckout = ({ professionalType, product }) => {
 
   useEffect(() => {
     // Check if all necessary information is provided
-    if (
-      name &&
-      emailAddress &&
-      tel &&
-      venue &&
-      time &&
-      date &&
-      (professionalType !== "Model" || selectedOffer.offer !== "")
-    ) {
-      setIsInfoComplete(true);
+    if (professionalType !== "Model") {
+      if (name && emailAddress && tel && venue && date && selectedOffer.offer !== '') {
+        setIsInfoComplete(true);
+      }
+    } else if (professionalType === "Model") {
+      if (name && emailAddress && tel && venue && date) {
+        setIsInfoComplete(true);
+      }
     } else {
       setIsInfoComplete(false);
     }
@@ -137,9 +151,12 @@ const ProfessionalsCheckout = ({ professionalType, product }) => {
     selectedOffer,
     professionalType,
     venue,
-    time,
     date,
+    totalToPay,
   ]);
+
+  // date
+  const bookedDates = product.bookedDates;
 
   if (isSignedIn === false) {
     return (
@@ -176,7 +193,7 @@ const ProfessionalsCheckout = ({ professionalType, product }) => {
 
           {professionalType !== "Model" ? (
             <>
-              <div className=" d-flex flex-column justify-content-center align-items-center mt-5">
+              <div className=" d-flex flex-column  mt-5">
                 <h5>Select from these Packages</h5>
                 {product.offers?.map(({ offer, priceValue }) => (
                   <div className="identity-item" key={offer}>
@@ -219,34 +236,10 @@ const ProfessionalsCheckout = ({ professionalType, product }) => {
                     value={projectDetails}
                     onChange={(e) => setProjectDetails(e.target.value)}
                     placeholder="Describe your project in detail..."
-                    rows={5} // Set the number of rows for multiline textarea
+                    rows={5}
                   />
                 </div>
               </div>
-              {/* <div className="mt-4">
-                <div className="form-group">
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="time"
-                    value={time}
-                    onChange={(e) => setTime(e.target.value)}
-                    placeholder="Prefered date and time of project"
-                  />
-                </div>
-              </div>
-              <div className="mt-4">
-                <div className="form-group">
-                  <input
-                    type="text"
-                    className="form-control"
-                    id="proect-location"
-                    value={projectLocation}
-                    onChange={(e) => setprojectLocation(e.target.value)}
-                    placeholder="Location"
-                  />
-                </div>
-              </div> */}
             </>
           )}
 
@@ -255,32 +248,15 @@ const ProfessionalsCheckout = ({ professionalType, product }) => {
               <span className="text-warning">Meet Up</span> Details
             </h4>
             <div className="mt-2">
-              <label className="fw-bold">Date</label><br/>
-              <small>We advice you book outside the range of <b>72hours</b> to account preparation time of this {professionalType}</small>
-              <div className="form-group">
-                <input
-                  type="text"
-                  className="form-control"
-                  id="shipping-address"
-                  value={date}
-                  onChange={(e) => setDate(e.target.value)}
-                  placeholder="eg. 26th October, 2024"
-                />
-              </div>
+              <label className="fw-bold">Date</label>
+              <br />
+              <BookingCalendar
+                value={date}
+                onDateSelect={(newDate) => setDate(newDate)}
+                bookedDates={bookedDates}
+              />
             </div>
-            <div className="mt-3">
-              <label className="fw-bold">Time</label>
 
-              <div className="form-group">
-                <input
-                  type="text"
-                  className="form-control"
-                  id="city"
-                  value={time}
-                  onChange={(e) => setTime(e.target.value)}
-                />
-              </div>
-            </div>
             <div className="mt-3">
               <label className="fw-bold">Venue</label>
               <div className="form-group">

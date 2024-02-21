@@ -73,14 +73,11 @@ const Row = ({ mainItems, offerFix }) => {
     );
 
     // New This week
-      // new products this week
   const newProductsThisWeek = Products.filter((item) => {
     if (item.createdAt?.seconds) {
-      // Use optional chaining to safely access 'seconds'
-      const createdAtTimestamp = item.createdAt.seconds;
+      const createdAtTimestamp = item?.createdAt?.seconds;
       const currentTimestamp = Date.now() / 1000; // Convert to seconds
 
-      // Calculate the difference in days
       const daysDifference = differenceInDays(
         fromUnixTime(currentTimestamp),
         fromUnixTime(createdAtTimestamp)
@@ -106,7 +103,6 @@ const Row = ({ mainItems, offerFix }) => {
     // Lowest
     const lowestProduct = Products.find((item) => item.price < 10);
     setselectedLowest(lowestProduct);
-    // setselectedLowestImage(lowestProduct.item)
   }, [Products]);
 
   const rowProfessionals = [
