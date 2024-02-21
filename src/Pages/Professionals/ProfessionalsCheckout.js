@@ -61,10 +61,35 @@ const ProfessionalsCheckout = ({ professionalType, product }) => {
   };
 
   const onSuccess = (reference) => {
-    const updatedOrders = [...oldOrders, ...cartItems];
+    const updatedOrderDates = [...product.bookedDates, ...date];
 
-    dispatch(updateOrders(updatedOrders));
-    ProductsDataService.updateUserOrders(user.id, updatedOrders);
+    // console.log(updatedOrderDates);
+    console.log(product);
+
+    // switch (professionalType) {
+    //   case "Model":
+    //     await ProductsDataService.updateAvailableModelBooking(
+    //       product.id,
+    //       updatedOrderDates
+    //     );
+    //     break;
+    //   case "Photographer":
+    //     await ProductsDataService.updateAvailablePhotographerBooking(
+    //       product.id,
+    //       updatedOrderDates
+    //     );
+    //     break;
+
+    //   case "TourGuide":
+    //     await ProductsDataService.updateAvailableTourGuideBooking(
+    //       product.id,
+    //       updatedOrderDates
+    //     );
+    //     break;
+
+    //   default:
+    //     break;
+    // }
 
     const userInfo = {
       name: name,
