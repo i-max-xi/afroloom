@@ -97,7 +97,7 @@ const ProfessionalsCheckout = ({ professionalType, product }) => {
       professional_type: professionalType,
       selectedOffer: selectedOffer.offer,
       amountPaid: selectedOffer.priceValue || "Not Applicable",
-      projectDetails: projectDetails || "Not Applicable",
+      Details: projectDetails || "Not Applicable",
       extraDetails: extraDetails,
 
       subject: "New Pofessional Booking",

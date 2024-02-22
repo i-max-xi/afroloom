@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import "../styles/Dashboard.css";
 import Nav from "../../../Components/Nav";
 import { TabPanel, TabView } from "primereact/tabview";
@@ -48,6 +48,11 @@ const ProfessionalDashboard = () => {
         </div>
       );
   }, [professionalApproved, profileCompleted]);
+
+  useEffect(() => {
+    window.scrollTo(0,0)
+  }, [])
+  
 
   return (
     <>

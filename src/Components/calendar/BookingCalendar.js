@@ -4,14 +4,7 @@ import "react-calendar/dist/Calendar.css";
 import "./style.css";
 
 const BookingCalendar = ({ bookedDates, onDateSelect, selectedDates }) => {
-  // const tileClassName = ({ date }) => {
-  //   const isBooked = bookedDates.some(bookedDate => (
 
-  //     date.getDate() === bookedDate.getDate()
-  //   ));
-
-  //   return isBooked ? 'booked-date' : '';
-  // };
 
   console.log({selectedDates})
 

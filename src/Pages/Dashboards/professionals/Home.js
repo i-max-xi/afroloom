@@ -105,12 +105,30 @@ const Home = ({ currentProfessionalId, proffesionalType }) => {
   const [bookedDates, setBookedDates] = useState([]);
   const [isDatesUpdating, setIsDatesUpdating] = useState(false);
 
+  const handleDateSelect = (clickedDate) => {
+    const isDateSelected = bookedDates.some(date => date.toISOString() === clickedDate.toISOString());
+  
+    let updatedDates;
+  
+    if (isDateSelected) {
+      updatedDates = bookedDates.filter((date) => date.toISOString() !== clickedDate.toISOString());
+      console.log("exists");
+    } else {
+      updatedDates = [...bookedDates, clickedDate];
+      console.log("not exists");
+    }
+  
+    setBookedDates(updatedDates);
+  };
+  
+  
+
   const handleDatesSubmit = async () => {
     setIsDatesUpdating(true);
-  
+
     try {
       let updatedDates;
-      
+
       switch (proffesionalType) {
         case ProfessionalsDbEnum.model:
           updatedDates = [...user[0].bookedDates, ...bookedDates];
@@ -136,15 +154,14 @@ const Home = ({ currentProfessionalId, proffesionalType }) => {
         default:
           break;
       }
-  
+
       toastRef.current.show({
         severity: "success",
         summary: `Dates unavailable successfully updated`,
       });
-  
+
       // Update state after successful Firebase update
       loadInfo();
-  
     } catch (error) {
       toastRef.current.show({
         severity: "error",
@@ -154,7 +171,6 @@ const Home = ({ currentProfessionalId, proffesionalType }) => {
       setIsDatesUpdating(false);
     }
   };
-  
 
   return (
     <div>
@@ -207,16 +223,14 @@ const Home = ({ currentProfessionalId, proffesionalType }) => {
       {user[0]?.bookedDates && (
         <>
           <BookingCalendar
-            onDateSelect={(clickedDate) =>
-              setBookedDates([...bookedDates, clickedDate])
-            }
+            onDateSelect={(clickedDate) => handleDateSelect(clickedDate)}
             bookedDates={user[0].bookedDates}
             selectedDates={bookedDates}
           />
 
           <button
             type="submit"
-            disabled={ bookedDates.length === 0}
+            disabled={bookedDates.length === 0}
             className="btn btn-success mt-1 position-relative"
             onClick={handleDatesSubmit}
           >
