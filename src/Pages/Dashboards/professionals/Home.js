@@ -10,6 +10,7 @@ import { Dropdown } from "primereact/dropdown";
 import { ProfessionalsDbEnum } from "../../../Data/professionalsList";
 import { Image } from "primereact/image";
 import BookingCalendar from "../../../Components/calendar/BookingCalendar";
+import { ProgressSpinner } from "primereact/progressspinner";
 
 const Home = ({ currentProfessionalId, proffesionalType }) => {
   const toastRef = useRef(null);
@@ -101,52 +102,63 @@ const Home = ({ currentProfessionalId, proffesionalType }) => {
     }
   };
 
-  const [newDates, setNewDates] = useState([]);
+  const [bookedDates, setBookedDates] = useState([]);
+  const [isDatesUpdating, setIsDatesUpdating] = useState(false);
 
   const handleDatesSubmit = async () => {
-    let response;
-
-    switch (proffesionalType) {
-      case ProfessionalsDbEnum.model:
-        response = await ProductsDataService.updateAvailableModelBooking(
-          currentProfessionalId,
-          newDates
-        );
-        break;
-      case ProfessionalsDbEnum.photographer:
-        response = await ProductsDataService.updateAvailableTourGuideBooking(
-          currentProfessionalId,
-          newDates
-        );
-        break;
-
-      case ProfessionalsDbEnum.tourGuide:
-        response = await ProductsDataService.updateAvailableTourGuideBooking(
-          currentProfessionalId,
-          newDates
-        );
-        break;
-
-      default:
-        break;
-    }
-
+    setIsDatesUpdating(true);
+  
     try {
+      let updatedDates;
+      
+      switch (proffesionalType) {
+        case ProfessionalsDbEnum.model:
+          updatedDates = [...user[0].bookedDates, ...bookedDates];
+          await ProductsDataService.updateAvailableModelBooking(
+            currentProfessionalId,
+            updatedDates
+          );
+          break;
+        case ProfessionalsDbEnum.photographer:
+          updatedDates = [...user[0].bookedDates, ...bookedDates];
+          await ProductsDataService.updateAvailablePhotographerBooking(
+            currentProfessionalId,
+            updatedDates
+          );
+          break;
+        case ProfessionalsDbEnum.tourGuide:
+          updatedDates = [...user[0].bookedDates, ...bookedDates];
+          await ProductsDataService.updateAvailableTourGuideBooking(
+            currentProfessionalId,
+            updatedDates
+          );
+          break;
+        default:
+          break;
+      }
+  
+      toastRef.current.show({
+        severity: "success",
+        summary: `Dates unavailable successfully updated`,
+      });
+  
+      // Update state after successful Firebase update
+      loadInfo();
+  
     } catch (error) {
       toastRef.current.show({
         severity: "error",
-        summary: ``,
-        detail: error,
+        summary: `Error updating information. Please try again: ${error}`,
       });
+    } finally {
+      setIsDatesUpdating(false);
     }
   };
-
-  console.log(user[0]);
+  
 
   return (
     <div>
       <Toast ref={toastRef} position="top-right" />
-      {/* <h2 className="dashboard-home-title">Your Information</h2> */}
       <div className="user-details">
         <div className="">
           <img
@@ -193,10 +205,34 @@ const Home = ({ currentProfessionalId, proffesionalType }) => {
       </div>
 
       {user[0]?.bookedDates && (
-        <BookingCalendar
-          onDateSelect={(newDate) => setNewDates(newDate)}
-          bookedDates={user[0].bookedDates}
-        />
+        <>
+          <BookingCalendar
+            onDateSelect={(clickedDate) =>
+              setBookedDates([...bookedDates, clickedDate])
+            }
+            bookedDates={user[0].bookedDates}
+            selectedDates={bookedDates}
+          />
+
+          <button
+            type="submit"
+            disabled={ bookedDates.length === 0}
+            className="btn btn-success mt-1 position-relative"
+            onClick={handleDatesSubmit}
+          >
+            <span className="spinner-container">
+              {isDatesUpdating && (
+                <ProgressSpinner
+                  style={{ width: "1.5rem", height: "1.5rem" }}
+                  strokeWidth="8"
+                  fill="var(--surface-ground)"
+                  className="position-absolute top-50 start-50 translate-middle"
+                />
+              )}
+            </span>
+            Save Changes
+          </button>
+        </>
       )}
 
       <Dialog

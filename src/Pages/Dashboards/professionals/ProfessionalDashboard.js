@@ -57,16 +57,6 @@ const ProfessionalDashboard = () => {
           Welcome <span style={{ color: "orange" }}>{welcomename}!</span>
         </div>
         <div>
-          {/* {professionalApproved ? (
-            <Badge value="Verified" size="large" severity="success"></Badge>
-          ) : (
-            <button
-              onClick={() => setActiveIndex(1)}
-              className="btn btn-danger"
-            >
-              Complete Profile
-            </button>
-          )} */}
           {StatusBadge}
         </div>
       </div>

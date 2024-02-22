@@ -3,7 +3,7 @@ import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
 import "./style.css";
 
-const BookingCalendar = ({ bookedDates, onDateSelect, selectedDate }) => {
+const BookingCalendar = ({ bookedDates, onDateSelect, selectedDates }) => {
   // const tileClassName = ({ date }) => {
   //   const isBooked = bookedDates.some(bookedDate => (
 
@@ -13,7 +13,7 @@ const BookingCalendar = ({ bookedDates, onDateSelect, selectedDate }) => {
   //   return isBooked ? 'booked-date' : '';
   // };
 
-  console.log({bookedDates})
+  console.log({selectedDates})
 
   const tileDisabled = ({ date }) => {
     const isBooked = bookedDates.some((timestamp) => {
@@ -32,7 +32,7 @@ const BookingCalendar = ({ bookedDates, onDateSelect, selectedDate }) => {
     <div>
       <Calendar
         onChange={onDateSelect}
-        value={selectedDate}
+        value={selectedDates}
         // tileClassName={tileClassName}
         tileDisabled={tileDisabled}
       />

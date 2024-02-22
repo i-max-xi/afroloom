@@ -71,13 +71,25 @@ class ProductsDataService {
 
   updateAvailableModelBooking = async (modelId, newAvailableDates) => {
     try {
-      const modelDocRef = doc(db, "models", modelId);
-      await updateDoc(modelDocRef, { availableDates: newAvailableDates });
+      const q = query(modelsRef, where("id", "==", modelId));
+      const querySnapshot = await getDocs(q);
+  
+      if (querySnapshot.docs.length === 0) {
+        console.error("Model not found");
+        return false;
+      }
+  
+      const modelDocRef = querySnapshot.docs[0].ref;
+  
+      await updateDoc(modelDocRef, { bookedDates: newAvailableDates });
+  
       return true;
     } catch (error) {
+      console.error("Error updating model approval status:", error);
       return false;
     }
   };
+  
 
   // Tour Guide
   getAllTourGuides = () => {
@@ -129,13 +141,25 @@ class ProductsDataService {
 
   updateAvailableTourGuideBooking = async (tourGuideId, newAvailableDates) => {
     try {
-      const tourGuideDocRef = doc(db, "tourGuide", tourGuideId);
-      await updateDoc(tourGuideDocRef, { availableDates: newAvailableDates });
+      const q = query(tourGuideRef, where("id", "==", tourGuideId));
+      const querySnapshot = await getDocs(q);
+  
+      if (querySnapshot.docs.length === 0) {
+        console.error("Tour guide not found");
+        return false;
+      }
+  
+      const tourGuideDocRef = querySnapshot.docs[0].ref;
+  
+      await updateDoc(tourGuideDocRef, { bookedDates: newAvailableDates });
+  
       return true;
     } catch (error) {
+      console.error("Error updating tour guide approval status:", error);
       return false;
     }
   };
+  
 
   // Photographer / Videographer
   getAllPhotographers = () => {
@@ -187,13 +211,25 @@ class ProductsDataService {
 
   updateAvailablePhotographerBooking = async (photographerId, newAvailableDates) => {
     try {
-      const photographerDocRef = doc(db, "photographer", photographerId);
-      await updateDoc(photographerDocRef, { availableDates: newAvailableDates });
+      const q = query(photographerRef, where("id", "==", photographerId));
+      const querySnapshot = await getDocs(q);
+  
+      if (querySnapshot.docs.length === 0) {
+        console.error("Photographer not found");
+        return false;
+      }
+  
+      const photographerDocRef = querySnapshot.docs[0].ref;
+  
+      await updateDoc(photographerDocRef, { bookedDates: newAvailableDates });
+  
       return true;
     } catch (error) {
+      console.error("Error updating photographer approval status:", error);
       return false;
     }
   };
+  
 
   // Products
   addProduct = (newProduct) => {

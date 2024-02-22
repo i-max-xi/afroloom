@@ -175,6 +175,7 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
       languages: languages,
       destinations: destinations,
       completed: true,
+      bookedDates: []
     };
 
     let Path;
@@ -203,7 +204,7 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
 
       toastRef.current.show({
         severity: "success",
-        summary: `Information successfully updated added`,
+        summary: `Information successfully updated`,
         detail: "You approval status would be updated within 48 hours",
         sticky: true,
       });
