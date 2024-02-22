@@ -15,7 +15,6 @@
   /* Actual 3d  */
   .configurator-container {
     flex-direction: column-reverse;
-    /* height: 100vh !important; */
   }
 
   .right-panel > .m-3 {
@@ -24,26 +23,25 @@
 
   .main-space button {
     font-size: 0.8rem !important;
-    padding: 0.2rem 0.4rem !important;
+    padding: 0.2rem 0.6rem !important;
+    margin: 0.2rem ;
   }
+
   .left-panel {
     transform: translateX(0.1rem) !important;
     width: 100% !important;
   }
 
-  .left-panel h5 {
-    /* font-size: 0.7rem !important; */
-  }
   .left-panel h3 {
     font-size: 0.8rem !important;
   }
-  .left-panel button {
-    /* font-size: 0.6rem !important; */
+
+  .left-panel h5 {
+    margin-top: 1rem;
   }
 
-  .color-buttons-container > .p-carousel[pr_id_115] .p-carousel-item{
-    flex: 1 0 50% !important;
-  }
+
+
 
   .color-item {
     width: fit-content;
@@ -53,23 +51,14 @@
     width: 50% !important;
   }
 
-  /* .texture-item svg {
-    scale: 0.7;
-  } */
-
   .part-panel {
     display: none !important;
   }
 
-  .price > *,
-  .price button {
-    /* font-size: 0.8rem !important; */
-  }
 
   .text-image-imprint-wrapper {
     display: flex;
     flex-direction: column !important;
-    /* font-size: 0.8rem !important; */
     gap: 0.5rem;
   }
 
@@ -247,10 +236,10 @@ h1 {
   /* transition: all 0.3s ease; */
 }
 
-/* .color-button:hover {
+.color-button:hover {
   transform: scale(1.1);
    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-} */
+}
 
 .imprint-text-color-button {
   position: relative;
@@ -322,6 +311,7 @@ h1 {
   display: block;
   align-self: center;
   cursor: pointer;
+  margin-top: 0.2rem;
 }
 
 /* .texture-button:hover {

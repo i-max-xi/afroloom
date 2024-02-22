@@ -61,35 +61,31 @@ const ProfessionalsCheckout = ({ professionalType, product }) => {
   };
 
   const onSuccess = (reference) => {
-    const updatedOrderDates = [...product.bookedDates, ...date];
+    const updatedOrderDates = [...product.bookedDates, date];
 
-    // console.log(updatedOrderDates);
-    console.log(product);
+    switch (professionalType) {
+      case "Model":
+        ProductsDataService.updateAvailableModelBooking(
+          product.id,
+          updatedOrderDates
+        );
+        break;
+      case "Photographer":
+        ProductsDataService.updateAvailablePhotographerBooking(
+          product.id,
+          updatedOrderDates
+        );
+        break;
+      case "TourGuide":
+        ProductsDataService.updateAvailableTourGuideBooking(
+          product.id,
+          updatedOrderDates
+        );
+        break;
+      default:
+        break;
+    }
 
-    // switch (professionalType) {
-    //   case "Model":
-    //     await ProductsDataService.updateAvailableModelBooking(
-    //       product.id,
-    //       updatedOrderDates
-    //     );
-    //     break;
-    //   case "Photographer":
-    //     await ProductsDataService.updateAvailablePhotographerBooking(
-    //       product.id,
-    //       updatedOrderDates
-    //     );
-    //     break;
-
-    //   case "TourGuide":
-    //     await ProductsDataService.updateAvailableTourGuideBooking(
-    //       product.id,
-    //       updatedOrderDates
-    //     );
-    //     break;
-
-    //   default:
-    //     break;
-    // }
 
     const userInfo = {
       name: name,
@@ -101,7 +97,7 @@ const ProfessionalsCheckout = ({ professionalType, product }) => {
       professional_type: professionalType,
       selectedOffer: selectedOffer.offer,
       amountPaid: selectedOffer.priceValue || "Not Applicable",
-      projectDetails: projectDetails || "Not Applicable",
+      Details: projectDetails || "Not Applicable",
       extraDetails: extraDetails,
 
       subject: "New Pofessional Booking",
@@ -134,7 +130,14 @@ const ProfessionalsCheckout = ({ professionalType, product }) => {
   useEffect(() => {
     // Check if all necessary information is provided
     if (professionalType !== "Model") {
-      if (name && emailAddress && tel && venue && date && selectedOffer.offer !== '') {
+      if (
+        name &&
+        emailAddress &&
+        tel &&
+        venue &&
+        date &&
+        selectedOffer.offer !== ""
+      ) {
         setIsInfoComplete(true);
       }
     } else if (professionalType === "Model") {
@@ -251,7 +254,7 @@ const ProfessionalsCheckout = ({ professionalType, product }) => {
               <label className="fw-bold">Date</label>
               <br />
               <BookingCalendar
-                value={date}
+                selectedDates={date}
                 onDateSelect={(newDate) => setDate(newDate)}
                 bookedDates={bookedDates}
               />

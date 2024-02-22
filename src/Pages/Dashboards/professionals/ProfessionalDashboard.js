@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import "../styles/Dashboard.css";
 import Nav from "../../../Components/Nav";
 import { TabPanel, TabView } from "primereact/tabview";
@@ -20,7 +20,6 @@ const ProfessionalDashboard = () => {
 
   // const sellerCountry = currentUser.country;
 
-  console.log(currentUser.id)
   const professionalApproved = currentUser.approved;
   const profileCompleted = currentUser.completed;
 
@@ -50,6 +49,11 @@ const ProfessionalDashboard = () => {
       );
   }, [professionalApproved, profileCompleted]);
 
+  useEffect(() => {
+    window.scrollTo(0,0)
+  }, [])
+  
+
   return (
     <>
       <Nav />
@@ -58,16 +62,6 @@ const ProfessionalDashboard = () => {
           Welcome <span style={{ color: "orange" }}>{welcomename}!</span>
         </div>
         <div>
-          {/* {professionalApproved ? (
-            <Badge value="Verified" size="large" severity="success"></Badge>
-          ) : (
-            <button
-              onClick={() => setActiveIndex(1)}
-              className="btn btn-danger"
-            >
-              Complete Profile
-            </button>
-          )} */}
           {StatusBadge}
         </div>
       </div>
