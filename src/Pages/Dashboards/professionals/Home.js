@@ -169,6 +169,7 @@ const Home = ({ currentProfessionalId, proffesionalType }) => {
       });
     } finally {
       setIsDatesUpdating(false);
+      setBookedDates([])
     }
   };
 
