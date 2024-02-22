@@ -7,6 +7,7 @@ import SocialMedia from "./SocialMedia";
 import Header2 from "./Header2";
 import { FooterContact } from "./FooterContact";
 import contactInfo from "../Data/contactList";
+import { isMobile } from "../utils/constants";
 
 const Footer = () => {
   return (
@@ -41,7 +42,7 @@ const Footer = () => {
           <h5 className="footer-header">About Us</h5>
           <p
             className=" mx-auto "
-            style={{ textAlign: "justify" }}
+            style={{ textAlign: isMobile ? "justify" : "center" }}
           >
             We specialize in offering a diverse selection of African products,
             allowing customers to customize their shopping experience and

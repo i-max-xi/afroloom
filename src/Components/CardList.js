@@ -501,14 +501,14 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
         ))}
         {/* Iteration ends here */}
       </div>
-      <Paginator
+      {/* <Paginator
         template={template3.layout}
         currentPage={currentPage}
         first={currentPage * itemsPerPage}
         rows={itemsPerPage}
         totalRecords={Products.length}
         onPageChange={onPageChange}
-      />
+      /> */}
     </>
   );
 };

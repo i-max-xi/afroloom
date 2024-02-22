@@ -27,6 +27,7 @@ const SearchedItem = () => {
       <div className="row m-auto p-2">
         {Products.length !== 0 ? (
           Products.map((product, index) => (
+            <div className="col-6 col-sm-2 product-card-container">
 
               <Card
                 key={index}
@@ -42,6 +43,7 @@ const SearchedItem = () => {
                 Button={product.Button}
                 linkless={product.linkless}
               />
+              </div>
           ))
         ) : (
           <div className="d-flex flex-column align-items-center justify-content-center p-5 text-center no-search">

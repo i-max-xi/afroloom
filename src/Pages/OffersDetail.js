@@ -61,15 +61,15 @@ const OffersDetail = () => {
       selectedProducts = Products.filter((item) => item.price < 20);
       url = lowestPrices;
       break;
-    case "men clothing under $10":
+    case "men clothing under ₵100":
       selectedProducts = Products.filter(
-        (item) => item.gender === "Male" && item.price <= 10
+        (item) => item.gender === "Male" && item.price <= 100
       );
       url = under3;
       break;
-    case "women clothing under $10":
+    case "women clothing under ₵100":
       selectedProducts = Products.filter(
-        (item) => item.gender === "Female" && item.price <= 10
+        (item) => item.gender === "Female" && item.price <= 100
       );
       url = under3;
       break;

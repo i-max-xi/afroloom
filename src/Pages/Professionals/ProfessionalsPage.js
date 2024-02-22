@@ -125,7 +125,7 @@ const ProfessionalsPage = ({ match }) => {
         className="page-banner"
       ></div>
       <div className="container category-items-container ">
-        <div className="row d-flex justify-content-between">
+        <div className="row d-flex ">
           {actualFilter[0].options.length >= 1 && (
             <>
               <Dialog
