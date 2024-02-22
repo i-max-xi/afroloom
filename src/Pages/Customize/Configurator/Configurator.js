@@ -484,7 +484,7 @@ const Configurator = () => {
                     numVisible={isMobile ? 4 : 7}
                     numScroll={isMobile ? 2 : 5}
                     showIndicators={false}
-                    responsiveOptions={responsiveColor}
+                    // responsiveOptions={responsiveColor}
                     itemTemplate={(colorOption) => (
                       <div key={colorOption.color} className="color-item">
                         <button

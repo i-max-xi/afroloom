@@ -485,8 +485,8 @@ readyBy={selectedClothing.readyIn}
                 <div className="color-buttons-container">
                   <Carousel
                     value={colorOptions}
-                    numVisible={7}
-                    numScroll={5}
+                    numVisible={isMobile ? 4 : 7}
+                    numScroll={isMobile ? 2 : 5}
                     showIndicators={false}
                     // responsiveOptions={responsiveColor}
                     itemTemplate={(colorOption) => (
