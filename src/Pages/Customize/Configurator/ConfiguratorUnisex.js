@@ -160,7 +160,7 @@ const ConfiguratorUnisex = () => {
   // const [textPosition] = useState([-0.65, -0.15, 0.05]); // Initialize text position
   const [textColor, setTextColor] = useState("black");
   const [fontSize, setFontSize] = useState(14);
-  const [fontFamily, ] = useState("Arial");
+  const [fontFamily] = useState("Arial");
   const [hideText, setHideText] = useState(false);
 
   // const fonts = [
@@ -364,7 +364,6 @@ const ConfiguratorUnisex = () => {
             className="col-12 col-sm-6"
             onHide={handleTourLater}
             dismissableMask={true}
-
           >
             <div className="tour-popup">
               <h2>Welcome to the 3D customization!</h2>
@@ -486,7 +485,6 @@ const ConfiguratorUnisex = () => {
                     className="col-12 col-sm-6"
                     onHide={() => setVisible(false)}
                     dismissableMask={true}
-
                   >
                     <div className="d-flex flex-column align-items-center">
                       {selectedClothing.sizeModels ? (
@@ -570,7 +568,7 @@ const ConfiguratorUnisex = () => {
                         numVisible={isMobile ? 1 : 4}
                         numScroll={isMobile ? 1 : 4}
                         showIndicators={false}
-                        responsiveOptions={responsiveNess}
+                        // responsiveOptions={responsiveNess}
                         itemTemplate={(texture, index) => (
                           <TextureItem
                             key={texture}
@@ -583,7 +581,7 @@ const ConfiguratorUnisex = () => {
                             currencySymbol={currencySymbol}
                             currencyFactor={currencyFactor}
                             subTextureDescriptions={textureDescriptions.batik}
-                            textureIndex={index}
+                            textureIndex={textureArrays.batik.indexOf(texture)}
                           />
                         )}
                       />
@@ -610,8 +608,11 @@ const ConfiguratorUnisex = () => {
                             handleTextureChange={handleTextureChange}
                             currencySymbol={currencySymbol}
                             currencyFactor={currencyFactor}
-subTextureDescriptions={textureDescriptions.dashiki}
-                            textureIndex={textureArrays.dashiki.indexOf(texture)}                          />
+                            subTextureDescriptions={textureDescriptions.dashiki}
+                            textureIndex={textureArrays.dashiki.indexOf(
+                              texture
+                            )}
+                          />
                         )}
                       />
                     </div>
@@ -639,8 +640,9 @@ subTextureDescriptions={textureDescriptions.dashiki}
                             handleTextureChange={handleTextureChange}
                             currencySymbol={currencySymbol}
                             currencyFactor={currencyFactor}
-subTextureDescriptions={textureDescriptions.kente}
-                            textureIndex={textureArrays.kente.indexOf(texture)}                          />
+                            subTextureDescriptions={textureDescriptions.kente}
+                            textureIndex={textureArrays.kente.indexOf(texture)}
+                          />
                         )}
                       />
                     </div>
@@ -669,7 +671,9 @@ subTextureDescriptions={textureDescriptions.kente}
                             subTextureDescriptions={
                               textureDescriptions.waxPrint
                             }
-                            textureIndex={textureArrays.waxPrint.indexOf(texture)}
+                            textureIndex={textureArrays.waxPrint.indexOf(
+                              texture
+                            )}
                           />
                         )}
                       />
@@ -698,8 +702,9 @@ subTextureDescriptions={textureDescriptions.kente}
                             handleTextureChange={handleTextureChange}
                             currencySymbol={currencySymbol}
                             currencyFactor={currencyFactor}
-subTextureDescriptions={textureDescriptions.smock}
-                            textureIndex={textureArrays.smock.indexOf(texture)}                          />
+                            subTextureDescriptions={textureDescriptions.smock}
+                            textureIndex={textureArrays.smock.indexOf(texture)}
+                          />
                         )}
                       />
                     </div>
@@ -726,7 +731,9 @@ subTextureDescriptions={textureDescriptions.smock}
                             currencySymbol={currencySymbol}
                             currencyFactor={currencyFactor}
                             subTextureDescriptions={textureDescriptions.Crochet}
-                            textureIndex={textureArrays.Crochet.indexOf(texture)}
+                            textureIndex={textureArrays.Crochet.indexOf(
+                              texture
+                            )}
                           />
                         )}
                       />
@@ -761,7 +768,9 @@ subTextureDescriptions={textureDescriptions.smock}
                             subTextureDescriptions={
                               textureDescriptions.printed_kente
                             }
-                            textureIndex={textureArrays.printed_kente.indexOf(texture)}
+                            textureIndex={textureArrays.printed_kente.indexOf(
+                              texture
+                            )}
                           />
                         )}
                       />
@@ -791,7 +800,9 @@ subTextureDescriptions={textureDescriptions.smock}
                             subTextureDescriptions={
                               textureDescriptions.Funerals
                             }
-                            textureIndex={textureArrays.Funerals.indexOf(texture)}
+                            textureIndex={textureArrays.Funerals.indexOf(
+                              texture
+                            )}
                           />
                         )}
                       />
@@ -840,7 +851,6 @@ subTextureDescriptions={textureDescriptions.smock}
                         // width={"3%"}
                         className="uploaded-image"
                         id="uploaded-image-left"
-                        
                       />
                     )}
                     {uploadedImageRight && (
@@ -919,17 +929,16 @@ subTextureDescriptions={textureDescriptions.smock}
                               </button>
                             </div>
                           </div>
-                          
                         </div>
                         <div className="image-uploads">
-                            <ImageUpload
-                              labelLeft={"Upload Left Logo"}
-                              labelRight={"Upload Right Logo"}
-                              onImageUploadLeft={handleImageUploadLeft}
-                              onImageUploadRight={handleImageUploadRight}
-                              toastRef={toastRef}
-                            />
-                          </div>
+                          <ImageUpload
+                            labelLeft={"Upload Left Logo"}
+                            labelRight={"Upload Right Logo"}
+                            onImageUploadLeft={handleImageUploadLeft}
+                            onImageUploadRight={handleImageUploadRight}
+                            toastRef={toastRef}
+                          />
+                        </div>
                       </div>
                     </div>
                   )}
@@ -963,7 +972,8 @@ subTextureDescriptions={textureDescriptions.smock}
             </span>
 
             <p className="price-text m-3">
-              <span className="expect-to-be-ready">Price:</span> {currencySymbol}
+              <span className="expect-to-be-ready">Price:</span>{" "}
+              {currencySymbol}
               {total}
             </p>
 
