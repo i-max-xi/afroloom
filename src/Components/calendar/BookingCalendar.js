@@ -13,6 +13,8 @@ const BookingCalendar = ({ bookedDates, onDateSelect, selectedDate }) => {
   //   return isBooked ? 'booked-date' : '';
   // };
 
+  console.log({bookedDates})
+
   const tileDisabled = ({ date }) => {
     const isBooked = bookedDates.some((timestamp) => {
       const timestampDate = timestamp.toDate();

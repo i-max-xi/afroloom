@@ -101,11 +101,9 @@ const Home = ({ currentProfessionalId, proffesionalType }) => {
     }
   };
 
-
-  const [newDates, setNewDates] = useState([])
+  const [newDates, setNewDates] = useState([]);
 
   const handleDatesSubmit = async () => {
-    
     let response;
 
     switch (proffesionalType) {
@@ -134,7 +132,6 @@ const Home = ({ currentProfessionalId, proffesionalType }) => {
     }
 
     try {
-      
     } catch (error) {
       toastRef.current.show({
         severity: "error",
@@ -143,6 +140,8 @@ const Home = ({ currentProfessionalId, proffesionalType }) => {
       });
     }
   };
+
+  console.log(user[0]);
 
   return (
     <div>
@@ -193,11 +192,12 @@ const Home = ({ currentProfessionalId, proffesionalType }) => {
         </div>
       </div>
 
-      <BookingCalendar
-        bookedDates={user[0].bookedDates}
-        // onDateSelect={handleDateSelect}
-        onDateSubmit={handleDatesSubmit}
-      />
+      {user[0]?.bookedDates && (
+        <BookingCalendar
+          onDateSelect={(newDate) => setNewDates(newDate)}
+          bookedDates={user[0].bookedDates}
+        />
+      )}
 
       <Dialog
         header="Edit Profile Info"

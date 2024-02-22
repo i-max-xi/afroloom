@@ -20,7 +20,6 @@ const ProfessionalDashboard = () => {
 
   // const sellerCountry = currentUser.country;
 
-  console.log(currentUser.id)
   const professionalApproved = currentUser.approved;
   const profileCompleted = currentUser.completed;
 
