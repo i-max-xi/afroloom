@@ -37,18 +37,18 @@ const Row = ({ mainItems, offerFix }) => {
 
   useEffect(() => {
     // male underten
-    const maleUnder10 = Products.filter((item) => item.gender === "Male" && item.price <= 10);
+    const maleUnder10 = Products.filter((item) => item.gender === "Male" && item.price <= 100);
     setselectedmaleUnder10(
-      maleUnder10.slice(0, 2).map((item) => ({
+      maleUnder10.slice(0, 4).map((item) => ({
         imageUrl: item.item,
         id: item.id,
       }))
     );
 
     // female underten
-    const femaleUnder10 = Products.filter((item) => item.gender === "Female" && item.price <= 10);
+    const femaleUnder10 = Products.filter((item) => item.gender === "Female" && item.price <= 100);
     setselectedFemaleUnder10(
-      femaleUnder10.slice(0, 2).map((item) => ({
+      femaleUnder10.slice(0, 4).map((item) => ({
         imageUrl: item.item,
         id: item.id,
       }))
@@ -101,7 +101,7 @@ const Row = ({ mainItems, offerFix }) => {
 
 
     // Lowest
-    const lowestProduct = Products.find((item) => item.price < 10);
+    const lowestProduct = Products.find((item) => item.price < 50);
     setselectedLowest(lowestProduct);
   }, [Products]);
 
@@ -129,8 +129,8 @@ const Row = ({ mainItems, offerFix }) => {
 
   const rowOne = [
     {
-      headTitle: `Men Clothing Under ${currencySymbol + (currencyFactor * 10/0.088).toFixed(0)}`,
-      linkTo: "/offers/men clothing under $10",
+      headTitle: `Men Clothing Under ${currencySymbol + (currencyFactor * 100).toFixed(0)}`,
+      linkTo: "/offers/men clothing under ₵100",
       array: selectedmaleUnder10,
     },
     {
@@ -145,8 +145,8 @@ const Row = ({ mainItems, offerFix }) => {
     },
 
     {
-      headTitle: `Women Clothing Under ${currencySymbol + (currencyFactor * 10/0.088).toFixed(0)}`,
-      linkTo: "/offers/women clothing under $10",
+      headTitle: `Women Clothing Under ${currencySymbol + (currencyFactor * 100).toFixed(0)}`,
+      linkTo: "/offers/women clothing under ₵100",
       array: selectedFemaleUnder10,
     },
   ];
