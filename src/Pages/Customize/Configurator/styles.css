@@ -281,11 +281,10 @@ h1 {
 
 .texture-row {
   display: flex;
-  /* justify-content: space-between; */
   width: 70%;
   max-width: 400px;
-  /* margin: 0 auto; */
   transform: translateX(-1.5rem);
+  margin-top: 0.3rem;
 }
 
 .texture-item {

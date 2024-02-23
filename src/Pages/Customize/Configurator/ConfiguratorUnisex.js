@@ -586,7 +586,7 @@ const ConfiguratorUnisex = () => {
                         )}
                       />
                     </div>
-                    <div className="texture-category">
+                    {/* <div className="texture-category">
                       <h3>
                         Dashiki (+{currencySymbol}
                         {(currencyFactor * textureValues.dashiki).toFixed(2)})
@@ -610,6 +610,36 @@ const ConfiguratorUnisex = () => {
                             currencyFactor={currencyFactor}
                             subTextureDescriptions={textureDescriptions.dashiki}
                             textureIndex={textureArrays.dashiki.indexOf(
+                              texture
+                            )}
+                          />
+                        )}
+                      />
+                    </div> */}
+                    <div className="texture-category">
+                      <h3>
+                        Crochet (+{currencySymbol}
+                        {(currencyFactor * textureValues.Crochet).toFixed(2)})
+                      </h3>
+                      <Carousel
+                        value={textureArrays.Crochet}
+                        numVisible={isMobile ? 1 : 4}
+                        numScroll={isMobile ? 1 : 4}
+                        showIndicators={false}
+                        responsiveOptions={responsiveNess}
+                        itemTemplate={(texture) => (
+                          <TextureItem
+                            key={texture}
+                            texture={texture}
+                            setHideText={setHideText}
+                            Title="Crochet"
+                            selectedTexture={selectedTexture}
+                            setSelectedTexture={setSelectedTexture} // Pass setSelectedTexture as a prop
+                            handleTextureChange={handleTextureChange}
+                            currencySymbol={currencySymbol}
+                            currencyFactor={currencyFactor}
+                            subTextureDescriptions={textureDescriptions.Crochet}
+                            textureIndex={textureArrays.Crochet.indexOf(
                               texture
                             )}
                           />
@@ -739,7 +769,7 @@ const ConfiguratorUnisex = () => {
                       />
                     </div>
                   </div>
-                  <div className="texture-row">
+                  {/*<div className="texture-row">
                     <div className="texture-category">
                       <h3>
                         Printed Kente (+{currencySymbol}
@@ -761,7 +791,7 @@ const ConfiguratorUnisex = () => {
                             setHideText={setHideText}
                             Title="printed_kente"
                             selectedTexture={selectedTexture}
-                            setSelectedTexture={setSelectedTexture} // Pass setSelectedTexture as a prop
+                            setSelectedTexture={setSelectedTexture}
                             handleTextureChange={handleTextureChange}
                             currencySymbol={currencySymbol}
                             currencyFactor={currencyFactor}
@@ -793,7 +823,7 @@ const ConfiguratorUnisex = () => {
                             setHideText={setHideText}
                             Title="Funerals"
                             selectedTexture={selectedTexture}
-                            setSelectedTexture={setSelectedTexture} // Pass setSelectedTexture as a prop
+                            setSelectedTexture={setSelectedTexture}
                             handleTextureChange={handleTextureChange}
                             currencySymbol={currencySymbol}
                             currencyFactor={currencyFactor}
@@ -807,7 +837,7 @@ const ConfiguratorUnisex = () => {
                         )}
                       />
                     </div>
-                  </div>
+                            </div> */}
                   {/* Add more rows of texture categories as needed */}
                 </div>
               </div>
