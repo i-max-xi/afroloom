@@ -84,22 +84,22 @@ const ProfessionalsPage = ({ match }) => {
         (selectedOption3 === "" ||
           product?.specialties?.[0] === selectedOption3) &&
         (selectedPriceRange === "" ||
-          (selectedPriceRange === 10 * currencyFactor &&
-            product?.lowerPrice * currencyFactor < 10 * currencyFactor) ||
-          (selectedPriceRange === 201 * currencyFactor &&
-            product.lowerPrice * currencyFactor > 200 * currencyFactor) ||
-          (selectedPriceRange === 25 * currencyFactor &&
-            product.lowerPrice * currencyFactor >= 10 * currencyFactor &&
-            product.lowerPrice * currencyFactor <= 25 * currencyFactor) ||
-          (selectedPriceRange === 50 * currencyFactor &&
-            product.lowerPrice * currencyFactor >= 25 * currencyFactor &&
-            product.lowerPrice * currencyFactor <= 50 * currencyFactor) ||
           (selectedPriceRange === 100 * currencyFactor &&
-            product.lowerPrice * currencyFactor >= 50 * currencyFactor &&
-            product.lowerPrice * currencyFactor <= 100 * currencyFactor) ||
-          (selectedPriceRange === 200 * currencyFactor &&
+            product?.lowerPrice * currencyFactor < 100 * currencyFactor) ||
+          (selectedPriceRange === 2001 * currencyFactor &&
+            product.lowerPrice * currencyFactor > 2000 * currencyFactor) ||
+          (selectedPriceRange === 250 * currencyFactor &&
             product.lowerPrice * currencyFactor >= 100 * currencyFactor &&
-            product.lowerPrice * currencyFactor <= 200 * currencyFactor))
+            product.lowerPrice * currencyFactor <= 250 * currencyFactor) ||
+          (selectedPriceRange === 500 * currencyFactor &&
+            product.lowerPrice * currencyFactor >= 250 * currencyFactor &&
+            product.lowerPrice * currencyFactor <= 500 * currencyFactor) ||
+          (selectedPriceRange === 1000 * currencyFactor &&
+            product.lowerPrice * currencyFactor >= 500 * currencyFactor &&
+            product.lowerPrice * currencyFactor <= 1000 * currencyFactor) ||
+          (selectedPriceRange === 2000 * currencyFactor &&
+            product.lowerPrice * currencyFactor >= 1000 * currencyFactor &&
+            product.lowerPrice * currencyFactor <= 2000 * currencyFactor))
       ) {
         return true;
       }
