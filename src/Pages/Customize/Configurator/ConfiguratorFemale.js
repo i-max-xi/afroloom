@@ -28,7 +28,6 @@ import {
   textureDescriptions,
   textureValues,
   responsiveNess,
-  
   specialNodeNames,
   displayInplaceFor,
 } from "./arrays/neededArrays";
@@ -91,11 +90,10 @@ const Shirt = ({
         </>
       ) : (
         selectedClothing.myNode.map((nodeName, index) => {
-         
           const color = specialNodeNames.includes(nodeName)
-          ? snap.color[index] || "#333333"
-          : snap.color[index] || "#ffffff";
-          
+            ? snap.color[index] || "#333333"
+            : snap.color[index] || "#ffffff";
+
           const texture = snap.texture[index] || null;
 
           return (
@@ -142,8 +140,8 @@ const ConfiguratorFemale = () => {
 
   const [isRotating, setIsRotating] = useState(false);
 
-const canvasRef = useRef();
-    // toast
+  const canvasRef = useRef();
+  // toast
   const toastRef = useRef(null);
   // currency conversion
   const currencySymbol = useSelector((state) => state.currencySymbol.symbol);
@@ -164,14 +162,14 @@ const canvasRef = useRef();
     Array(selectedClothing.myNode.length).fill(0)
   );
 
-  const semitotal = (
-    partPrices.reduce((total, price) => total + price, 0)
-  )
+  const semitotal = partPrices.reduce((total, price) => total + price, 0);
 
   //total price
   const total = (
-    (((semitotal + selectedClothing.price) * selectedClothing.sizeOptions[selectedSize].value) * currencyFactor).toFixed(2)
-  )
+    (semitotal + selectedClothing.price) *
+    selectedClothing.sizeOptions[selectedSize].value *
+    currencyFactor
+  ).toFixed(2);
 
   const handleTextureChange = (newTexture) => {
     if (selectedPart !== null) {
@@ -212,18 +210,18 @@ const canvasRef = useRef();
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [stateImage, setStateImage] = useState("");
 
- const captureCanvasAsImage = async () => {
-
+  const captureCanvasAsImage = async () => {
     const requiresHeight = displayInplaceFor.includes(selectedClothing.name);
     const heightProvided = height !== "";
 
     if (requiresHeight && !heightProvided) {
       // Prevent completing if height is required but not provided
-toastRef.current.show({
+      toastRef.current.show({
         severity: "error",
         summary: "Cannot continue",
         detail: "Please input your height for accurate design",
-      });      return;
+      });
+      return;
     }
 
     const canvas = canvasRef.current;
@@ -255,7 +253,6 @@ toastRef.current.show({
     }));
   };
 
-
   // description dialogs
   const [selectedTexture, setSelectedTexture] = useState({});
 
@@ -279,14 +276,14 @@ toastRef.current.show({
     setShowTourPopup(false);
   };
 
-    const handleTourClose = () => {
+  const handleTourClose = () => {
     setShowTour(false);
-    localStorage.setItem('tourCompleted', 'true'); // Save tour completion status
+    localStorage.setItem("tourCompleted", "true"); // Save tour completion status
   };
 
   useEffect(() => {
-    const tourCompleted = localStorage.getItem('tourCompleted');
-    if (tourCompleted === 'true') {
+    const tourCompleted = localStorage.getItem("tourCompleted");
+    if (tourCompleted === "true") {
       setShowTourPopup(false); // If tour completed, don't show it
     } else {
       setShowTourPopup(true); // Show the tour for new users
@@ -302,17 +299,16 @@ toastRef.current.show({
 
   return (
     <>
-<Nav />
+      <Nav />
       <Toast ref={toastRef} />
       <>
-      {showTourPopup && (
+        {showTourPopup && (
           <Dialog
             // header="Welcome to the 3D Customization!"
             visible={showTourPopup}
             className="col-12 col-sm-6"
             onHide={handleTourLater}
             dismissableMask={true}
-
           >
             <div className="tour-popup">
               <h2>Welcome to the 3D customization!</h2>
@@ -342,9 +338,10 @@ toastRef.current.show({
         <Confirmation
           currencySymbol={currencySymbol}
           total={total}
-readyBy={selectedClothing.readyIn}
+          readyBy={selectedClothing.readyIn}
           weight={selectedClothing.weight}
-          name={selectedClothing.name}          selectedParts={selectedParts}
+          name={selectedClothing.name}
+          selectedParts={selectedParts}
           setShowConfirmation={setShowConfirmation}
           selectedSize={
             selectedClothing.sizeOptions.find(
@@ -353,11 +350,12 @@ readyBy={selectedClothing.readyIn}
           }
           modelImage={stateImage}
           customSizeValues={sizeFormValues}
-          height={height}        />
+          height={height}
+        />
       ) : (
         <>
           <div className="main-space">
-<h3 className="text-center">Customizing {selectedClothing.name}</h3>
+            <h3 className="text-center">Customizing {selectedClothing.name}</h3>
             <button
               className="btn btn-info text-white mx-3"
               style={{ float: "right" }}
@@ -401,10 +399,7 @@ readyBy={selectedClothing.readyIn}
                       Customize Your Size &#8594;
                     </span>
                     {displayInplaceFor.includes(selectedClothing.name) && (
-                    <Inplace
-                        className="text-black"
-                        closable
-                      >
+                      <Inplace className="text-black" closable>
                         <InplaceDisplay>
                           {height || "Click to input your height "}
                           <span
@@ -434,7 +429,6 @@ readyBy={selectedClothing.readyIn}
                     className="col-12 col-sm-6"
                     onHide={() => setVisible(false)}
                     dismissableMask={true}
-
                   >
                     <div className="d-flex flex-column align-items-center">
                       {selectedClothing.sizeModels ? (
@@ -535,7 +529,7 @@ readyBy={selectedClothing.readyIn}
                         )}
                       />
                     </div>
-                    <div className="texture-category">
+                    {/* <div className="texture-category">
                       <h3>
                         Dashiki (+{currencySymbol}
                         {(currencyFactor * textureValues.dashiki).toFixed(2)})
@@ -550,15 +544,48 @@ readyBy={selectedClothing.readyIn}
                           <TextureItem
                             key={texture}
                             texture={texture}
-                            setHideText = {setHideText}
+                            setHideText={setHideText}
                             Title="dashiki"
                             selectedTexture={selectedTexture}
                             setSelectedTexture={setSelectedTexture} // Pass setSelectedTexture as a prop
                             handleTextureChange={handleTextureChange}
                             currencySymbol={currencySymbol}
                             currencyFactor={currencyFactor}
-subTextureDescriptions={textureDescriptions.dashiki}
-                            textureIndex={textureArrays.dashiki.indexOf(texture)}                          />
+                            subTextureDescriptions={textureDescriptions.dashiki}
+                            textureIndex={textureArrays.dashiki.indexOf(
+                              texture
+                            )}
+                          />
+                        )}
+                      />
+                    </div> */}
+                    <div className="texture-category">
+                      <h3>
+                        Crochet (+{currencySymbol}
+                        {(currencyFactor * textureValues.Crochet).toFixed(2)})
+                      </h3>
+                      <Carousel
+                        value={textureArrays.Crochet}
+                        numVisible={isMobile ? 1 : 4}
+                        numScroll={isMobile ? 1 : 4}
+                        showIndicators={false}
+                        responsiveOptions={responsiveNess}
+                        itemTemplate={(texture) => (
+                          <TextureItem
+                            key={texture}
+                            texture={texture}
+                            setHideText={setHideText}
+                            Title="Crochet"
+                            selectedTexture={selectedTexture}
+                            setSelectedTexture={setSelectedTexture} // Pass setSelectedTexture as a prop
+                            handleTextureChange={handleTextureChange}
+                            currencySymbol={currencySymbol}
+                            currencyFactor={currencyFactor}
+                            subTextureDescriptions={textureDescriptions.Crochet}
+                            textureIndex={textureArrays.Crochet.indexOf(
+                              texture
+                            )}
+                          />
                         )}
                       />
                     </div>
@@ -579,15 +606,16 @@ subTextureDescriptions={textureDescriptions.dashiki}
                           <TextureItem
                             key={texture}
                             texture={texture}
-                            setHideText = {setHideText}
+                            setHideText={setHideText}
                             Title="kente"
                             selectedTexture={selectedTexture}
                             setSelectedTexture={setSelectedTexture} // Pass setSelectedTexture as a prop
                             handleTextureChange={handleTextureChange}
                             currencySymbol={currencySymbol}
                             currencyFactor={currencyFactor}
-subTextureDescriptions={textureDescriptions.kente}
-                            textureIndex={textureArrays.kente.indexOf(texture)}                          />
+                            subTextureDescriptions={textureDescriptions.kente}
+                            textureIndex={textureArrays.kente.indexOf(texture)}
+                          />
                         )}
                       />
                     </div>
@@ -606,7 +634,7 @@ subTextureDescriptions={textureDescriptions.kente}
                           <TextureItem
                             key={texture}
                             texture={texture}
-                            setHideText = {setHideText}
+                            setHideText={setHideText}
                             Title="waxPrint"
                             selectedTexture={selectedTexture}
                             setSelectedTexture={setSelectedTexture} // Pass setSelectedTexture as a prop
@@ -616,7 +644,9 @@ subTextureDescriptions={textureDescriptions.kente}
                             subTextureDescriptions={
                               textureDescriptions.waxPrint
                             }
-                            textureIndex={textureArrays.waxPrint.indexOf(texture)}
+                            textureIndex={textureArrays.waxPrint.indexOf(
+                              texture
+                            )}
                           />
                         )}
                       />
@@ -638,15 +668,16 @@ subTextureDescriptions={textureDescriptions.kente}
                           <TextureItem
                             key={texture}
                             texture={texture}
-                            setHideText = {setHideText}
+                            setHideText={setHideText}
                             Title="smock"
                             selectedTexture={selectedTexture}
                             setSelectedTexture={setSelectedTexture} // Pass setSelectedTexture as a prop
                             handleTextureChange={handleTextureChange}
                             currencySymbol={currencySymbol}
                             currencyFactor={currencyFactor}
-subTextureDescriptions={textureDescriptions.smock}
-                            textureIndex={textureArrays.smock.indexOf(texture)}                          />
+                            subTextureDescriptions={textureDescriptions.smock}
+                            textureIndex={textureArrays.smock.indexOf(texture)}
+                          />
                         )}
                       />
                     </div>
@@ -665,7 +696,7 @@ subTextureDescriptions={textureDescriptions.smock}
                           <TextureItem
                             key={texture}
                             texture={texture}
-                            setHideText = {setHideText}
+                            setHideText={setHideText}
                             Title="Crochet"
                             selectedTexture={selectedTexture}
                             setSelectedTexture={setSelectedTexture} // Pass setSelectedTexture as a prop
@@ -673,13 +704,15 @@ subTextureDescriptions={textureDescriptions.smock}
                             currencySymbol={currencySymbol}
                             currencyFactor={currencyFactor}
                             subTextureDescriptions={textureDescriptions.Crochet}
-                            textureIndex={textureArrays.Crochet.indexOf(texture)}
+                            textureIndex={textureArrays.Crochet.indexOf(
+                              texture
+                            )}
                           />
                         )}
                       />
                     </div>
                   </div>
-                  <div className="texture-row">
+                  {/* <div className="texture-row">
                     <div className="texture-category">
                       <h3>
                         Printed Kente (+{currencySymbol}
@@ -698,7 +731,7 @@ subTextureDescriptions={textureDescriptions.smock}
                           <TextureItem
                             key={texture}
                             texture={texture}
-                            setHideText = {setHideText}
+                            setHideText={setHideText}
                             Title="printed_kente"
                             selectedTexture={selectedTexture}
                             setSelectedTexture={setSelectedTexture} // Pass setSelectedTexture as a prop
@@ -708,7 +741,9 @@ subTextureDescriptions={textureDescriptions.smock}
                             subTextureDescriptions={
                               textureDescriptions.printed_kente
                             }
-                            textureIndex={textureArrays.printed_kente.indexOf(texture)}
+                            textureIndex={textureArrays.printed_kente.indexOf(
+                              texture
+                            )}
                           />
                         )}
                       />
@@ -728,7 +763,7 @@ subTextureDescriptions={textureDescriptions.smock}
                           <TextureItem
                             key={texture}
                             texture={texture}
-                            setHideText = {setHideText}
+                            setHideText={setHideText}
                             Title="Funerals"
                             selectedTexture={selectedTexture}
                             setSelectedTexture={setSelectedTexture} // Pass setSelectedTexture as a prop
@@ -738,12 +773,14 @@ subTextureDescriptions={textureDescriptions.smock}
                             subTextureDescriptions={
                               textureDescriptions.Funerals
                             }
-                            textureIndex={textureArrays.Funerals.indexOf(texture)}
+                            textureIndex={textureArrays.Funerals.indexOf(
+                              texture
+                            )}
                           />
                         )}
                       />
                     </div>
-                  </div>
+                  </div> */}
                   {/* Add more rows of texture categories as needed */}
                 </div>
               </div>
@@ -788,11 +825,13 @@ subTextureDescriptions={textureDescriptions.smock}
             </div>
           </div>
           <div className="price w-100 d-flex bg-dark text-white justify-content-between">
-            <span className="m-3 expect-to-be-ready">Estimated time to make this order: {selectedClothing.readyIn} days </span>
-
+            <span className="m-3 expect-to-be-ready">
+              Estimated time to make this order: {selectedClothing.readyIn} days{" "}
+            </span>
 
             <p className="price-text m-3">
-              <span className="expect-to-be-ready">Price:</span> {currencySymbol}
+              <span className="expect-to-be-ready">Price:</span>{" "}
+              {currencySymbol}
               {total}
             </p>
 
