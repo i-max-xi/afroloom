@@ -11,14 +11,11 @@ const booty = require("../../Assets/vid/booty.MP4");
 // const book = require("../../Assets/vid/book.jpg");
 const herbal = require("../../Assets/vid/herbal.jpg");
 
-
-
 const Row = ({ mainItems, offerFix }) => {
   const Products = useSelector((state) => state.allProducts.products);
 
   const currencySymbol = useSelector((state) => state.currencySymbol.symbol);
-  const currencyFactor = useSelector((state) => state.currencySymbol.factor );
-
+  const currencyFactor = useSelector((state) => state.currencySymbol.factor);
 
   const [selectedmaleUnder10, setselectedmaleUnder10] = useState([]);
 
@@ -32,12 +29,16 @@ const Row = ({ mainItems, offerFix }) => {
 
   const [selectednewThisWeek, setselectednewThisWeek] = useState([]);
 
-
   const [selectedLowest, setselectedLowest] = useState("");
 
   useEffect(() => {
     // male underten
-    const maleUnder10 = Products.filter((item) => item.gender === "Male" && item.price <= 100);
+    const maleUnder10 = Products.filter(
+      (item) =>
+        item.category === "Clothing" &&
+        item.gender === "Male" &&
+        item.price <= 100
+    );
     setselectedmaleUnder10(
       maleUnder10.slice(0, 4).map((item) => ({
         imageUrl: item.item,
@@ -46,7 +47,12 @@ const Row = ({ mainItems, offerFix }) => {
     );
 
     // female underten
-    const femaleUnder10 = Products.filter((item) => item.gender === "Female" && item.price <= 100);
+    const femaleUnder10 = Products.filter(
+      (item) =>
+        item.category === "Clothing" &&
+        item.gender === "Female" &&
+        item.price <= 100
+    );
     setselectedFemaleUnder10(
       femaleUnder10.slice(0, 4).map((item) => ({
         imageUrl: item.item,
@@ -55,7 +61,9 @@ const Row = ({ mainItems, offerFix }) => {
     );
 
     // fashion accessories
-    const fashionAccessories = Products.filter((item) => item.category === "Accessories");
+    const fashionAccessories = Products.filter(
+      (item) => item.category === "Accessories"
+    );
     setselectedFashionAccessories(
       fashionAccessories.slice(0, 4).map((item) => ({
         imageUrl: item.item,
@@ -73,22 +81,27 @@ const Row = ({ mainItems, offerFix }) => {
     );
 
     // New This week
-  const newProductsThisWeek = Products.filter((item) => {
-    if (item.createdAt?.seconds) {
-      const createdAtTimestamp = item?.createdAt?.seconds;
-      const currentTimestamp = Date.now() / 1000; // Convert to seconds
+    const newProductsThisWeek = Products.filter((item) => {
+      if (item.createdAt?.seconds) {
+        const createdAtTimestamp = item?.createdAt?.seconds;
+        const currentTimestamp = Date.now() / 1000; // Convert to seconds
 
-      const daysDifference = differenceInDays(
-        fromUnixTime(currentTimestamp),
-        fromUnixTime(createdAtTimestamp)
-      );
+        const daysDifference = differenceInDays(
+          fromUnixTime(currentTimestamp),
+          fromUnixTime(createdAtTimestamp)
+        );
 
-      // Check if the product was created within the last 7 days
-      return daysDifference <= 7;
-    }
-    // Handle the case where 'createdAt' or 'seconds' is undefined
-    return false;
-  });
+        return daysDifference <= 7;
+      }
+      return false;
+    });
+
+    // Sort the newProductsThisWeek array by createdAtTimestamp in descending order
+    newProductsThisWeek.sort((a, b) => {
+      const createdAtTimestampA = a?.createdAt?.seconds || 0;
+      const createdAtTimestampB = b?.createdAt?.seconds || 0;
+      return createdAtTimestampB - createdAtTimestampA;
+    });
 
     setselectednewThisWeek(
       newProductsThisWeek.slice(0, 4).map((item) => ({
@@ -99,7 +112,6 @@ const Row = ({ mainItems, offerFix }) => {
 
     // Pouplar
 
-
     // Lowest
     const lowestProduct = Products.find((item) => item.price < 50);
     setselectedLowest(lowestProduct);
@@ -108,28 +120,31 @@ const Row = ({ mainItems, offerFix }) => {
   const rowProfessionals = [
     {
       // title: "Tour Guide",
-      imageUrl: "https://cloudfront-us-east-1.images.arcpublishing.com/bostonglobe/PEVTJACBCUI6VG3Z2NTLW2NO4E.jpg",
+      imageUrl:
+        "https://cloudfront-us-east-1.images.arcpublishing.com/bostonglobe/PEVTJACBCUI6VG3Z2NTLW2NO4E.jpg",
       linkTo: "professional/TourGuide",
-      action: "Book A Tour Guide"
+      action: "Book A Tour Guide",
     },
     {
       // title: "Photographer",
-      imageUrl: "https://www.adorama.com/alc/wp-content/uploads/2021/04/photography-camera-types-feature.jpg",
+      imageUrl:
+        "https://www.adorama.com/alc/wp-content/uploads/2021/04/photography-camera-types-feature.jpg",
       linkTo: "professional/Photographer",
-      action: "Book A Photographer / Videographer"
+      action: "Book A Photographer / Videographer",
     },
     {
       // title: "Model",
       imageUrl: require("../../Assets/model.png"),
       linkTo: "professional/Model",
-      action: "Book A Model"
+      action: "Book A Model",
     },
-
   ];
 
   const rowOne = [
     {
-      headTitle: `Men Clothing Under ${currencySymbol + (currencyFactor * 100).toFixed(0)}`,
+      headTitle: `Men Clothing Under ${
+        currencySymbol + (currencyFactor * 100).toFixed(0)
+      }`,
       linkTo: "/offers/men clothing under ₵100",
       array: selectedmaleUnder10,
     },
@@ -145,7 +160,9 @@ const Row = ({ mainItems, offerFix }) => {
     },
 
     {
-      headTitle: `Women Clothing Under ${currencySymbol + (currencyFactor * 100).toFixed(0)}`,
+      headTitle: `Women Clothing Under ${
+        currencySymbol + (currencyFactor * 100).toFixed(0)
+      }`,
       linkTo: "/offers/women clothing under ₵100",
       array: selectedFemaleUnder10,
     },
@@ -158,7 +175,8 @@ const Row = ({ mainItems, offerFix }) => {
       array: selectedFashionAccessories,
     },
     {
-      title: "Herbal Haven: Discover the Power of Nature for Your Health and Beauty Journey",
+      title:
+        "Herbal Haven: Discover the Power of Nature for Your Health and Beauty Journey",
       imageUrl: herbal,
       linkTo: "/category/Herbal and Beauty Supplies",
     },
@@ -178,13 +196,14 @@ const Row = ({ mainItems, offerFix }) => {
     {
       title: "Lowest Prices in 60 Days",
       imageUrl: selectedLowest ? selectedLowest.item : "",
-      itemID: selectedLowest ? selectedLowest.id : '',
+      itemID: selectedLowest ? selectedLowest.id : "",
       linkTo: "/offers/Lowest Prices in 60 Days",
     },
 
     {
       title: "Unearth the Hidden Gems of African Literature",
-      imageUrl: "https://eagle.co.ug/wp-content/uploads/2022/08/Best-Africa-Books-Feature-Image-1-1.png",
+      imageUrl:
+        "https://eagle.co.ug/wp-content/uploads/2022/08/Best-Africa-Books-Feature-Image-1-1.png",
       // itemID: selectedPopular ? selectedPopular.id : '',
       linkTo: "/category/Books",
     },
@@ -202,10 +221,9 @@ const Row = ({ mainItems, offerFix }) => {
 
   if (offerFix === "One") {
     mainItems = rowOne;
-  } 
-  else if (offerFix === "Professionals") {
+  } else if (offerFix === "Professionals") {
     mainItems = rowProfessionals;
-  }else if (offerFix === "Nine") {
+  } else if (offerFix === "Nine") {
     mainItems = rowNine;
   } else if (offerFix === "Six") {
     mainItems = rowSix;
