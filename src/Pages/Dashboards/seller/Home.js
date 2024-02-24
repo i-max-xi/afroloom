@@ -22,6 +22,7 @@ const Home = ({ currentSeller }) => {
   const currencySymbol = useSelector((state) => state.currencySymbol.symbol);
   const currencyFactor = useSelector((state) => state.currencySymbol.factor);
 
+  console.log({currentSeller})
   const loadProducts = async () => {
     try {
       const response = await ProductsDataService.getProductByField(

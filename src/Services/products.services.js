@@ -271,6 +271,7 @@ class ProductsDataService {
   };
 
   getProductByField = async (fieldName, value) => {
+    console.log({fieldName, value})
     const q = query(productCollectionRef, where(fieldName, "==", value));
     const querySnapshot = await getDocs(q);
     return querySnapshot.docs;
