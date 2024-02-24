@@ -42,6 +42,7 @@ const SearchedItem = () => {
                 TextAlign={product.TextAlign}
                 Button={product.Button}
                 linkless={product.linkless}
+                discount={product.discount}
               />
               </div>
           ))

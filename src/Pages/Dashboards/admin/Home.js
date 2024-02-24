@@ -68,15 +68,20 @@ const Home = () => {
   };
 
   const handleEditSubmit = async (e) => {
+    console.log({selectedProduct});
+
     e.preventDefault(); // Prevent page refresh
 
     try {
       if (selectedProduct) {
-        console.log("Updating product...");
         await ProductsDataService.updateProduct(selectedProduct.id, {
           title: selectedProduct.title,
           price: selectedProduct.price,
-          // Update other fields as needed
+          discount: selectedProduct.discount,
+          weight: selectedProduct.weight,
+          description: selectedProduct.description,
+          location: selectedProduct.location
+
         });
         toastRef.current.show({
           severity: "success",
