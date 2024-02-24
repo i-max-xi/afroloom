@@ -16,6 +16,7 @@ import { Badge } from "primereact/badge";
 import { Timestamp } from "firebase/firestore";
 import { ProgressSpinner } from "primereact/progressspinner";
 import { locationOptions } from "../../Data/SupplierAcceptedCities";
+import { InputTextarea } from "primereact/inputtextarea";
 
 const AddProduct = ({ currentSeller, sellerCountry }) => {
   const [newProduct, setNewProduct] = useState({
@@ -354,13 +355,23 @@ const AddProduct = ({ currentSeller, sellerCountry }) => {
             Description of Product
           </label>
           <span className="text-danger"> *</span>
-          <InputText
+          {/* <InputText
             required
             id="title"
             value={newProduct.description}
             onChange={(e) =>
               setNewProduct({ ...newProduct, description: e.target.value })
             }
+          /> */}
+          <InputTextarea
+            required
+            id="title"
+            value={newProduct.description}
+            onChange={(e) =>
+              setNewProduct({ ...newProduct, description: e.target.value })
+            }
+            rows={5}
+            cols={30}
           />
         </div>
         <div className="p-field">
