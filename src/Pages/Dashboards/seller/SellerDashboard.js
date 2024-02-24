@@ -24,6 +24,8 @@ const SellerDashboard = () => {
 
   const [visible, setVisible] = useState(true);
 
+  console.log({sellerCompany})
+
 
   return (
     <>

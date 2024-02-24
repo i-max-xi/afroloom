@@ -10,6 +10,7 @@ import ProductsDataService from "../../Services/products.services";
 import "primeicons/primeicons.css";
 import { ProgressSpinner } from "primereact/progressspinner";
 import countryArr from "../../Data/CountryArr";
+import { isEmpty } from "../../utils/functions";
 
 const Supplier = () => {
   const navigate = useNavigate();
@@ -25,6 +26,8 @@ const Supplier = () => {
   const [number, setNumber] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const toastRef = useRef(null);
+
+  const notCompleted= isEmpty(companyName) || isEmpty(firstName) || isEmpty(lastName) || isEmpty(country) || isEmpty(email) || isEmpty(password) || isEmpty(number) || isEmpty(confirmPassword);
 
   // Supply categories
   const [supplyCategories, setSupplyCategories] = useState([""]);
@@ -150,7 +153,7 @@ const Supplier = () => {
             </div>
 
             <div className="form-group">
-              <label htmlFor="company name">Company Name:</label>
+              <label htmlFor="company name">Company / Brand Name:</label>
               <input
                 type="text"
                 className="form-control"
@@ -271,7 +274,7 @@ const Supplier = () => {
             <button
               type="submit"
               className="btn btn-warning text-white w-100 mt-4 shadow-sm position-relative"
-              disabled={!isCheckboxChecked} // Disable the button if the checkbox is not checked
+              disabled={!isCheckboxChecked || notCompleted} // Disable the button if the checkbox is not checked
             >
               <span className="spinner-container">
                 {isLoading && (

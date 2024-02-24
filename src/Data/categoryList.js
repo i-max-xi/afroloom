@@ -293,7 +293,7 @@ export const allCategory = [
     filters: [
       {
         name: "Product",
-        options: ["Batik", "Dashiki", "Kaftan", "Kente", "Smock"],
+        options: ["Batik", "Dashiki", "Kaftan", "Kente", "Smock", "Wax Print"],
       },
     ],
     rating: "5",

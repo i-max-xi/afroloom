@@ -22,6 +22,7 @@ const Home = ({ currentSeller }) => {
   const currencySymbol = useSelector((state) => state.currencySymbol.symbol);
   const currencyFactor = useSelector((state) => state.currencySymbol.factor);
 
+  console.log({currentSeller})
   const loadProducts = async () => {
     try {
       const response = await ProductsDataService.getProductByField(
@@ -149,8 +150,8 @@ const Home = ({ currentSeller }) => {
         <Column
           body={(rowData) => (
             <button
-            className="btn btn-info edit"
-            onClick={() => handleEditClick(rowData)}
+              className="btn btn-info edit"
+              onClick={() => handleEditClick(rowData)}
             >
               Edit
             </button>
@@ -159,8 +160,8 @@ const Home = ({ currentSeller }) => {
         <Column
           body={(rowData) => (
             <button
-            className="btn btn-danger remove"
-            onClick={() => deleteProduct(rowData.id)}
+              className="btn btn-danger remove"
+              onClick={() => deleteProduct(rowData.id)}
             >
               Delete
             </button>
@@ -174,100 +175,115 @@ const Home = ({ currentSeller }) => {
         onHide={handleEditDialogHide}
         className="col-12 col-sm-6"
         dismissableMask={true}
-
       >
         {selectedProduct && (
           <form onSubmit={handleEditSubmit}>
-          <div className="p-fluid">
-            <div className="p-field">
-              <label htmlFor="title">Title</label>
-              <input
-                id="title"
-                type="text"
-                value={selectedProduct.title}
-                onChange={(e) =>
-                  setSelectedProduct({
-                    ...selectedProduct,
-                    title: e.target.value,
-                  })
-                }
-                className="p-inputtext"
+            <div className="p-fluid">
+              <div className="p-field">
+                <label htmlFor="title">Title</label>
+                <input
+                  id="title"
+                  type="text"
+                  value={selectedProduct.title}
+                  onChange={(e) =>
+                    setSelectedProduct({
+                      ...selectedProduct,
+                      title: e.target.value,
+                    })
+                  }
+                  className="p-inputtext"
+                />
+              </div>
+              <div className="p-field">
+                <label htmlFor="title">Description</label>
+                <textarea
+                  id="description"
+                  type="text"
+                  value={selectedProduct.description}
+                  onChange={(e) =>
+                    setSelectedProduct({
+                      ...selectedProduct,
+                      description: e.target.value,
+                    })
+                  }
+                  className="p-inputtext"
+                />
+              </div>
+              <div className="p-field">
+                <label htmlFor="price">Price</label>
+                <input
+                  id="price"
+                  type="number"
+                  value={selectedProduct.price}
+                  placeholder="Ghana Cedi (₵) equivalent value... 10"
+                  onChange={(e) =>
+                    setSelectedProduct({
+                      ...selectedProduct,
+                      price: parseFloat(e.target.value), // Convert input to a floating-point number
+                    })
+                  }
+                  className="p-inputtext"
+                />
+              </div>
+              <div className="p-field">
+                <label htmlFor="price">Discount %</label>
+                <input
+                  id="discount"
+                  type="number"
+                  placeholder="eg. 10"
+                  value={selectedProduct.discount}
+                  onChange={(e) =>
+                    setSelectedProduct({
+                      ...selectedProduct,
+                      discount: parseFloat(e.target.value),
+                    })
+                  }
+                  className="p-inputtext"
+                />
+              </div>
+              <div className="p-field">
+                <label htmlFor="price">Weight (kg) </label>
+                <input
+                  id="weight"
+                  type="number"
+                  placeholder="eg. 10"
+                  value={selectedProduct.weight}
+                  onChange={(e) =>
+                    setSelectedProduct({
+                      ...selectedProduct,
+                      weight: parseFloat(e.target.value),
+                    })
+                  }
+                  className="p-inputtext"
+                />
+              </div>
+
+              <div className="p-field">
+                <label className="text-warning" htmlFor="seller">
+                  Item Location (City)
+                </label>
+                <Dropdown
+                  id="location"
+                  value={selectedProduct.location}
+                  options={locationOptions}
+                  onChange={(e) =>
+                    setSelectedProduct({
+                      ...selectedProduct,
+                      location: e.value,
+                    })
+                  }
+                  placeholder="Select specific city you have this item or closest city"
+                />
+              </div>
+            </div>
+            <div className="m-3">
+              <Button
+                label="Save Changes"
+                type="submit"
+                className="p-button p-component"
               />
             </div>
-            <div className="p-field">
-              <label htmlFor="price">Price</label>
-              <input
-                id="price"
-                type="number"
-                value={selectedProduct.price}
-                placeholder="Ghana Cedi (₵) equivalent value... 10"
-                onChange={(e) =>
-                  setSelectedProduct({
-                    ...selectedProduct,
-                    price: parseFloat(e.target.value), // Convert input to a floating-point number
-                  })
-                }
-                className="p-inputtext"
-              />
-            </div>
-            <div className="p-field">
-              <label htmlFor="price">Discount %</label>
-              <input
-                id="discount"
-                type="number"
-                placeholder="eg. 10"
-                value={selectedProduct.discount}
-                onChange={(e) =>
-                  setSelectedProduct({
-                    ...selectedProduct,
-                    discount: parseFloat(e.target.value),
-                  })
-                }
-                className="p-inputtext"
-              />
-            </div>
-            <div className="p-field">
-              <label htmlFor="price">Weight (kg) </label>
-              <input
-                id="weight"
-                type="number"
-                placeholder="eg. 10"
-                value={selectedProduct.weight}
-                onChange={(e) =>
-                  setSelectedProduct({
-                    ...selectedProduct,
-                    weight: parseFloat(e.target.value),
-                  })
-                }
-                className="p-inputtext"
-              />
-            </div>
-           
-            <div className="p-field">
-              <label className="text-warning" htmlFor="seller">
-                Item Location (City)
-              </label>
-              <Dropdown
-                id="location"
-                value={selectedProduct.location}
-                options={locationOptions}
-                onChange={(e) =>
-                  setSelectedProduct({
-                    ...selectedProduct,
-                    location: e.value,
-                  })                  }
-                placeholder="Select specific city you have this item or closest city"
-              />
-            </div>
-          </div>
-          <div className="m-3">
-            <Button
-              label="Save Changes"
-              type="submit"
-              className="p-button p-component"
-            />
-          </div>
-        </form>
+          </form>
         )}
       </Dialog>
     </div>
