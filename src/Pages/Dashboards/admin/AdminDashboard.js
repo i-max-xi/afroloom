@@ -38,7 +38,7 @@ const AdminDashboard = () => {
 
   return (
     <>
-      <Nav />
+      <Nav noCurrency={true} />
       <div className="bg-white fs-3 p-3 text-bold welcome">
         Welcome <span style={{ color: "orange" }}>{welcomename}!</span>
       </div>

@@ -19,7 +19,7 @@ import DropDownButton from "./DropDownButton";
 import { buttonVariant } from "./types";
 import { ProfessionalsArr } from "../Data/professionalsList";
 
-const Nav = () => {
+const Nav = ({ noCurrency }) => {
   const cartItems = useSelector((state) => state.cartItems);
   // const dispatch = useDispatch();
 
@@ -130,8 +130,17 @@ const Nav = () => {
       </div>
 
       <div className="nav-category">
-        <DropDownButton variant={buttonVariant.primary} iconleft={hamburger} title="Category" options={categoryArr} />
-        <DropDownButton variant={buttonVariant.link} title="Professionals" options={ProfessionalsArr} />
+        <DropDownButton
+          variant={buttonVariant.primary}
+          iconleft={hamburger}
+          title="Category"
+          options={categoryArr}
+        />
+        <DropDownButton
+          variant={buttonVariant.link}
+          title="Professionals"
+          options={ProfessionalsArr}
+        />
       </div>
 
       {/* actual navs */}
@@ -192,7 +201,7 @@ const Nav = () => {
             </Link>
           </li>
 
-          <CurrencyConverter />
+          {noCurrency ? null : <CurrencyConverter />}
 
           <div className="d-flex justify-content-around align-items-center">
             <SearchBar2 />
