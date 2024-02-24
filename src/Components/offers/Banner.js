@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../../Styles/Offers.css"; // Import your CSS file for styling
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { isMobile } from "../../utils/constants";
 
 const Banner = ({ items, headTitle, seeMore, linkTo, bannerFix }) => {
   // currency conversion
@@ -21,7 +22,7 @@ const Banner = ({ items, headTitle, seeMore, linkTo, bannerFix }) => {
     );
 
     setselectedHandicraft(
-      handicraft.slice(0, 5).map((item) => ({
+      handicraft.slice(0, isMobile ? 4 : 5).map((item) => ({
         imageUrl: item.item,
         id: item.id,
         price: item.price,
@@ -31,7 +32,7 @@ const Banner = ({ items, headTitle, seeMore, linkTo, bannerFix }) => {
     const discount = Products.filter((item) => item.discount > 0);
 
     setselectedDiscount(
-      discount.slice(0, 5).map((item) => {
+      discount.slice(0, isMobile ? 4 : 5).map((item) => {
         const discountPercentage = item.discount / 100;
 
         const discountedPrice = (1 - discountPercentage) * item.price; // Calculate the discounted price
@@ -49,7 +50,7 @@ const Banner = ({ items, headTitle, seeMore, linkTo, bannerFix }) => {
     const fabric = Products.filter((item) => item.category === "Textiles");
 
     setselectedFabric(
-      fabric.slice(0, 5).map((item) => ({
+      fabric.slice(0, isMobile ? 4 : 5).map((item) => ({
         imageUrl: item.item,
         id: item.id,
         price: item.price,
@@ -59,7 +60,7 @@ const Banner = ({ items, headTitle, seeMore, linkTo, bannerFix }) => {
     const furniture = Products.filter((item) => item.category === "Furniture");
 
     setselectedFurniture(
-      furniture.slice(0, 5).map((item) => ({
+      furniture.slice(0, isMobile ? 4 : 5).map((item) => ({
         imageUrl: item.item,
         id: item.id,
         price: item.price,
@@ -121,20 +122,20 @@ const Banner = ({ items, headTitle, seeMore, linkTo, bannerFix }) => {
               {item.discount ? (
                 <>
                   <div className="original-price">
-                      {currencySymbol}
-                      {(currencyFactor * item.price).toFixed(2)}
+                    {currencySymbol}
+                    {(currencyFactor * item.price).toFixed(2)}
                   </div>
                   <div className="price">
                     {currencySymbol}
-                    { (currencyFactor * item.discountedPrice).toFixed(2)}
+                    {(currencyFactor * item.discountedPrice).toFixed(2)}
                   </div>
                 </>
               ) : (
                 // If no discount, display the regular price
                 <div className="price">
-                      {currencySymbol}
-                      {(currencyFactor * item.price).toFixed(2)}
-                  </div>                
+                  {currencySymbol}
+                  {(currencyFactor * item.price).toFixed(2)}
+                </div>
               )}
             </div>
           </div>
