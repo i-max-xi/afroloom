@@ -56,7 +56,7 @@ const ProfessionalDashboard = () => {
 
   return (
     <>
-      <Nav />
+      <Nav noCurrency={true}  />
       <div className="bg-white fs-3 p-3 text-bold d-flex justify-content-between">
         <div>
           Welcome <span style={{ color: "orange" }}>{welcomename}!</span>
