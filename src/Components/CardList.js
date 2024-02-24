@@ -108,14 +108,14 @@ export const Card = ({
         />
       ) : (
         <Link to={`/product/${id}`}>
-          <img className="card-img-top " src={item} alt="item" />
+          <img className="card-img-top p-1" src={item} alt="item" />
         </Link>
       )}
 
       <div className="card-body d-flex flex-column">
         <div>
           <div className="d-flex justify-content-between align-items-start">
-          <div style={{ flex: 5, whiteSpace: "nowrap" }}>{title}</div>
+          <div style={{ flex: 5 }}>{title}</div>
             <div
               className="flag"
               style={{ flex: 1, translate: "0 0.5rem", float: "right" }}
