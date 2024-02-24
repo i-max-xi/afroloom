@@ -176,7 +176,6 @@ const Home = () => {
         onHide={handleEditDialogHide}
         className="col-12 col-sm-6"
         dismissableMask={true}
-
       >
         {selectedProduct && (
           <form onSubmit={handleEditSubmit}>
@@ -191,6 +190,21 @@ const Home = () => {
                     setSelectedProduct({
                       ...selectedProduct,
                       title: e.target.value,
+                    })
+                  }
+                  className="p-inputtext"
+                />
+              </div>
+              <div className="p-field">
+                <label htmlFor="title">Description</label>
+                <textarea
+                  id="description"
+                  type="text"
+                  value={selectedProduct.description}
+                  onChange={(e) =>
+                    setSelectedProduct({
+                      ...selectedProduct,
+                      description: e.target.value,
                     })
                   }
                   className="p-inputtext"
@@ -244,7 +258,7 @@ const Home = () => {
                   className="p-inputtext"
                 />
               </div>
-             
+
               <div className="p-field">
                 <label className="text-warning" htmlFor="seller">
                   Item Location (City)
@@ -257,7 +271,8 @@ const Home = () => {
                     setSelectedProduct({
                       ...selectedProduct,
                       location: e.value,
-                    })                  }
+                    })
+                  }
                   placeholder="Select specific city you have this item or closest city"
                 />
               </div>
