@@ -135,7 +135,7 @@ const AddProduct = ({ currentSeller, sellerCountry }) => {
 
     img.onload = () => {
       // Check if the image dimensions are 500x500
-      if (img.width !== 1080 || img.height !== 1920) {
+      if (img.width !== 1080 || img.height !== 720) {
         toastRef.current.show({
           severity: "error",
           summary: "Error uploading image:",
