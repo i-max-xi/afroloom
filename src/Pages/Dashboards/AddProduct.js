@@ -363,10 +363,10 @@ const AddProduct = ({ currentSeller, sellerCountry }) => {
           <span className="text-danger"> *</span>
           <InputTextarea
             required
-            id="title"
+            id="description"
             value={newProduct.description}
             onChange={(e) => {
-              if (e.target.value <= descriptionLimit) {
+              if (e.target.value.length <= descriptionLimit) {
                 setNewProduct({ ...newProduct, description: e.target.value });
               }
             }}

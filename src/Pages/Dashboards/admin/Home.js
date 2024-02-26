@@ -10,6 +10,7 @@ import { useSelector } from "react-redux";
 import { locationOptions } from "../../../Data/SupplierAcceptedCities";
 import { Dropdown } from "primereact/dropdown";
 import { descriptionLimit, titleLimit } from "../../../utils/constants";
+import { InputTextarea } from "primereact/inputtextarea";
 
 const Home = () => {
   const toastRef = useRef(null);
@@ -207,7 +208,22 @@ const Home = () => {
               </div>
               <div className="p-field">
                 <label htmlFor="title">Description</label>
-                <textarea
+                <InputTextarea
+                  required
+                  id="description"
+                  value={selectedProduct.description}
+                  onChange={(e) => {
+                    if (e.target.value.length <= descriptionLimit) {
+                      setSelectedProduct({
+                        ...selectedProduct,
+                        description: e.target.value,
+                      });
+                    }
+                  }}
+                  rows={5}
+                  cols={30}
+                />
+                {/* <textarea
                   id="description"
                   type="text"
                   value={selectedProduct.description}
@@ -220,7 +236,7 @@ const Home = () => {
                     }
                   }}
                   className="p-inputtext"
-                />
+                /> */}
                 <span style={{ float: "right" }}>
                   {selectedProduct.description.length}/{descriptionLimit}
                 </span>

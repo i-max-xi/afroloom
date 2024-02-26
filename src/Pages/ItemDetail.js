@@ -119,14 +119,14 @@ const ItemDetail = ({ match }) => {
     }
     return (
       <div className="text-center p-3 related-products col-12">
-        <Link to={`/product/${relatedProduct.id}`} >
+        <Link to={`/product/${relatedProduct.id}`}>
           <img
             src={relatedProduct.item}
             alt={relatedProduct.title}
             className="shadow-2 mt-3"
             width="50%"
             height="50%"
-            style={{ aspectRatio: 1/1 }}
+            style={{ aspectRatio: 1 / 1 }}
           />
         </Link>
         <div>
@@ -150,7 +150,6 @@ const ItemDetail = ({ match }) => {
 
   const isMobile = window.innerWidth <= 767;
 
-
   return (
     <div className="bg-white">
       <Nav />
@@ -159,7 +158,10 @@ const ItemDetail = ({ match }) => {
         <div className="row">
           <div className="col-md-6 d-flex">
             {extras ? (
-              <div className="d-flex flex-column mx-1" style={{ width: isMobile ? "3rem" : "5rem" }}>
+              <div
+                className="d-flex flex-column mx-1"
+                style={{ width: isMobile ? "3rem" : "5rem" }}
+              >
                 {extras.map((extra, index) => (
                   <img
                     className="mb-1"
@@ -188,7 +190,6 @@ const ItemDetail = ({ match }) => {
             <h3 className="mb-3 product-title">{product.title}</h3>
             <hr />
             <div className="d-flex mb-3">{stars}</div>
- 
 
             <p className="h3">
               {product.discount ? (
@@ -234,7 +235,13 @@ const ItemDetail = ({ match }) => {
       <div className="container">
         <TabView className="mt-2">
           <TabPanel header="Description">
-            {product.description || "No description for this product"}
+            <div
+              style={{ whiteSpace: "pre-line" }}
+              dangerouslySetInnerHTML={{
+                __html:
+                  product.description || "No description for this product",
+              }}
+            />
           </TabPanel>
           <TabPanel header="Sold By">{product.seller} </TabPanel>
         </TabView>
