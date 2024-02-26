@@ -17,6 +17,7 @@ import { Timestamp } from "firebase/firestore";
 import { ProgressSpinner } from "primereact/progressspinner";
 import { locationOptions } from "../../Data/SupplierAcceptedCities";
 import { InputTextarea } from "primereact/inputtextarea";
+import { descriptionLimit, titleLimit } from "../../utils/constants";
 
 const AddProduct = ({ currentSeller, sellerCountry }) => {
   const [newProduct, setNewProduct] = useState({
@@ -288,7 +289,7 @@ const AddProduct = ({ currentSeller, sellerCountry }) => {
       ...newProduct,
       extras: extraImages, // Add the array of extra images to the product data
       createdAt: Timestamp.fromMillis(Date.now()), // Convert to Firebase Timestamp
-      rating: randomRating
+      rating: randomRating,
     };
 
     try {
@@ -345,34 +346,36 @@ const AddProduct = ({ currentSeller, sellerCountry }) => {
             required
             id="title"
             value={newProduct.title}
-            onChange={(e) =>
-              setNewProduct({ ...newProduct, title: e.target.value })
-            }
+            onChange={(e) => {
+              if (e.target.value.length <= titleLimit) {
+                setNewProduct({ ...newProduct, title: e.target.value });
+              }
+            }}
           />
+          <span style={{ float: "right" }}>
+            {newProduct.title.length}/{titleLimit}
+          </span>
         </div>
         <div className="p-field">
           <label className="text-warning" htmlFor="title">
             Description of Product
           </label>
           <span className="text-danger"> *</span>
-          {/* <InputText
-            required
-            id="title"
-            value={newProduct.description}
-            onChange={(e) =>
-              setNewProduct({ ...newProduct, description: e.target.value })
-            }
-          /> */}
           <InputTextarea
             required
             id="title"
             value={newProduct.description}
-            onChange={(e) =>
-              setNewProduct({ ...newProduct, description: e.target.value })
-            }
+            onChange={(e) => {
+              if (e.target.value <= descriptionLimit) {
+                setNewProduct({ ...newProduct, description: e.target.value });
+              }
+            }}
             rows={5}
             cols={30}
           />
+          <span style={{ float: "right" }}>
+            {newProduct.description.length}/{descriptionLimit}
+          </span>
         </div>
         <div className="p-field">
           <label className="text-warning" htmlFor="category">
@@ -555,22 +558,14 @@ const AddProduct = ({ currentSeller, sellerCountry }) => {
             Seller
           </label>
           <span className="text-danger"> *</span>
-          <InputText
-            id="seller"
-            readOnly
-            value={newProduct.seller}
-          />
+          <InputText id="seller" readOnly value={newProduct.seller} />
         </div>
         <div className="p-field">
           <label className="text-warning" htmlFor="seller">
             Seller Country
           </label>
           <span className="text-danger"> *</span>
-          <InputText
-            id="country"
-            readOnly
-            value={newProduct.country}
-          />
+          <InputText id="country" readOnly value={newProduct.country} />
         </div>
         <div className="p-field">
           <Button

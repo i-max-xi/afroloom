@@ -9,6 +9,7 @@ import { Toast } from "primereact/toast";
 import { useSelector } from "react-redux";
 import { locationOptions } from "../../../Data/SupplierAcceptedCities";
 import { Dropdown } from "primereact/dropdown";
+import { descriptionLimit, titleLimit } from "../../../utils/constants";
 
 const Home = () => {
   const toastRef = useRef(null);
@@ -68,7 +69,7 @@ const Home = () => {
   };
 
   const handleEditSubmit = async (e) => {
-    console.log({selectedProduct});
+    console.log({ selectedProduct });
 
     e.preventDefault(); // Prevent page refresh
 
@@ -80,8 +81,7 @@ const Home = () => {
           discount: selectedProduct.discount,
           weight: selectedProduct.weight,
           description: selectedProduct.description,
-          location: selectedProduct.location
-
+          location: selectedProduct.location,
         });
         toastRef.current.show({
           severity: "success",
@@ -191,14 +191,19 @@ const Home = () => {
                   id="title"
                   type="text"
                   value={selectedProduct.title}
-                  onChange={(e) =>
-                    setSelectedProduct({
-                      ...selectedProduct,
-                      title: e.target.value,
-                    })
-                  }
+                  onChange={(e) => {
+                    if (e.target.value.length <= titleLimit) {
+                      setSelectedProduct({
+                        ...selectedProduct,
+                        title: e.target.value,
+                      });
+                    }
+                  }}
                   className="p-inputtext"
                 />
+                <span style={{ float: "right" }}>
+                  {selectedProduct.title.length}/{titleLimit}
+                </span>
               </div>
               <div className="p-field">
                 <label htmlFor="title">Description</label>
@@ -206,14 +211,19 @@ const Home = () => {
                   id="description"
                   type="text"
                   value={selectedProduct.description}
-                  onChange={(e) =>
-                    setSelectedProduct({
-                      ...selectedProduct,
-                      description: e.target.value,
-                    })
-                  }
+                  onChange={(e) => {
+                    if (e.target.value <= descriptionLimit) {
+                      setSelectedProduct({
+                        ...selectedProduct,
+                        description: e.target.value,
+                      });
+                    }
+                  }}
                   className="p-inputtext"
                 />
+                <span style={{ float: "right" }}>
+                  {selectedProduct.description.length}/{descriptionLimit}
+                </span>
               </div>
               <div className="p-field">
                 <label htmlFor="price">Price</label>
