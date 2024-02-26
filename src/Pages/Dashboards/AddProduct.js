@@ -139,7 +139,7 @@ const AddProduct = ({ currentSeller, sellerCountry }) => {
         toastRef.current.show({
           severity: "error",
           summary: "Error uploading image:",
-          detail: "Please upload an image with dimensions 1080x1920.",
+          detail: "Please upload an image with dimensions 1080x720.",
         });
         e.target.value = null;
         return;
