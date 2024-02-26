@@ -116,6 +116,7 @@ const AllSellers = () => {
         <Column field="companyName" header="Company Name" />
         <Column field="email" header="Email" />
         <Column field="number" header="Phone" />
+        <Column field="country" header="Country" />
         <Column
           field="supplyCategories"
           header="Supply"

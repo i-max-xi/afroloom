@@ -9,6 +9,8 @@ import { Toast } from "primereact/toast";
 import { useSelector } from "react-redux";
 import { locationOptions } from "../../../Data/SupplierAcceptedCities";
 import { Dropdown } from "primereact/dropdown";
+import { descriptionLimit, titleLimit } from "../../../utils/constants";
+import { InputTextarea } from "primereact/inputtextarea";
 
 const Home = ({ currentSeller }) => {
   const toastRef = useRef(null);
@@ -22,7 +24,7 @@ const Home = ({ currentSeller }) => {
   const currencySymbol = useSelector((state) => state.currencySymbol.symbol);
   const currencyFactor = useSelector((state) => state.currencySymbol.factor);
 
-  console.log({currentSeller})
+  console.log({ currentSeller });
   const loadProducts = async () => {
     try {
       const response = await ProductsDataService.getProductByField(
@@ -78,7 +80,7 @@ const Home = ({ currentSeller }) => {
           discount: selectedProduct.discount,
           weight: selectedProduct.weight,
           description: selectedProduct.description,
-          location: selectedProduct.location
+          location: selectedProduct.location,
         });
         toastRef.current.show({
           severity: "success",
@@ -187,29 +189,40 @@ const Home = ({ currentSeller }) => {
                   id="title"
                   type="text"
                   value={selectedProduct.title}
-                  onChange={(e) =>
-                    setSelectedProduct({
-                      ...selectedProduct,
-                      title: e.target.value,
-                    })
-                  }
+                  onChange={(e) => {
+                    if (e.target.value.length <= titleLimit) {
+                      setSelectedProduct({
+                        ...selectedProduct,
+                        title: e.target.value,
+                      });
+                    }
+                  }}
                   className="p-inputtext"
                 />
+                <span style={{ float: "right" }}>
+                  {selectedProduct.title.length}/{titleLimit}
+                </span>
               </div>
               <div className="p-field">
                 <label htmlFor="title">Description</label>
-                <textarea
+                <InputTextarea
+                  required
                   id="description"
-                  type="text"
                   value={selectedProduct.description}
-                  onChange={(e) =>
-                    setSelectedProduct({
-                      ...selectedProduct,
-                      description: e.target.value,
-                    })
-                  }
-                  className="p-inputtext"
+                  onChange={(e) => {
+                    if (e.target.value.length <= descriptionLimit) {
+                      setSelectedProduct({
+                        ...selectedProduct,
+                        description: e.target.value,
+                      });
+                    }
+                  }}
+                  rows={5}
+                  cols={30}
                 />
+                <span style={{ float: "right" }}>
+                  {selectedProduct.description.length}/{descriptionLimit}
+                </span>
               </div>
               <div className="p-field">
                 <label htmlFor="price">Price</label>
