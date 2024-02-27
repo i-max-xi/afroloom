@@ -119,15 +119,15 @@ const AddProduct = ({ currentSeller, sellerCountry }) => {
     const file = e.target.files[0];
 
     // Check if file type is PNG
-    // if (!file.type.includes("png")) {
-    //   toastRef.current.show({
-    //     severity: "error",
-    //     summary: "Error uploading image:",
-    //     detail: "Please upload a PNG image.",
-    //   });
-    //   e.target.value = null;
-    //   return;
-    // }
+    if (!file.type.includes("png")) {
+      toastRef.current.show({
+        severity: "error",
+        summary: "Error uploading image:",
+        detail: "Please upload a PNG image.",
+      });
+      e.target.value = null;
+      return;
+    }
 
     // Create an image element to get the dimensions
     const img = new Image();
