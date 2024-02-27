@@ -90,6 +90,13 @@ export const Card = ({
 
   const flagImage = countryFlags[country] || ""; // Use flag image URL based on the country
 
+  // Apply marginBottom only if the title spans one line
+  const CHAR_LIMIT_FOR_MARGIN = 25;
+  const titleStyle =
+  title.length <= CHAR_LIMIT_FOR_MARGIN
+    ? { marginBottom: '1.5rem' }
+    : {};
+
   return (
     <div
       className="card mt-1 text-decoration-none text-black"
@@ -123,7 +130,7 @@ export const Card = ({
       <div className="card-body d-flex flex-column">
         <div>
           <div className="d-flex justify-content-between align-items-start">
-            <div style={{ flex: 5 }}>{title}</div>
+            <div style={{ flex: 5, marginRight: "0.4rem", ...titleStyle }}>{title}</div>
             <div
               className="flag"
               style={{ flex: 1, translate: "0 0.5rem", float: "right" }}

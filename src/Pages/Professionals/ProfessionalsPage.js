@@ -47,7 +47,7 @@ const ProfessionalsPage = ({ match }) => {
 
   // Pagination starts here
   const [currentPage, setCurrentPage] = useState(0);
-  const [itemsPerPage] = useState(10);
+  const [itemsPerPage] = useState(20);
 
   const onPageChange = (event) => {
     setCurrentPage(event.page);
@@ -119,7 +119,7 @@ const ProfessionalsPage = ({ match }) => {
           backgroundImage: `url(${profBanner})`,
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
-          height: "12rem",
+          height: "16rem",
           width: "100%",
         }}
         className="page-banner"
@@ -290,7 +290,7 @@ const ProfessionalsTemplate = ({
             className="btn btn-dark text-white view-products"
           >
             View{" "}
-            {ProfessionalName !== "TourGuide" ? ProfessionalName : "Tour Guide"}
+            {ProfessionalName === "Photographer"? "Profile" : ProfessionalName === "TourGuide" ? "Tour Guide" : ProfessionalName}
           </Link>
           <Link
             onClick={openDialog}
