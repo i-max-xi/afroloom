@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useRef, useState } from "react";
-import { Paginator } from "primereact/paginator";
+// import { Paginator } from "primereact/paginator";
 import { Toast } from "primereact/toast";
 import Nav from "./Nav";
 import Header from "./Header";
@@ -107,15 +107,23 @@ export const Card = ({
           height={Height ? Height : "200rem"}
         />
       ) : (
-        <Link to={`/product/${id}`}>
-          <img className="card-img-top p-1" src={item} alt="item" />
+        <Link
+          to={`/product/${id}`}
+          style={{ height: isMobile ? "10rem" : "15rem", overflow: "hidden" }}
+        >
+          <img
+            className="p-1"
+            src={item}
+            alt="item"
+            style={{ width: "100%", height: "100%", objectFit: "scale-down" }}
+          />
         </Link>
       )}
 
       <div className="card-body d-flex flex-column">
         <div>
           <div className="d-flex justify-content-between align-items-start">
-          <div style={{ flex: 5 }}>{title}</div>
+            <div style={{ flex: 5 }}>{title}</div>
             <div
               className="flag"
               style={{ flex: 1, translate: "0 0.5rem", float: "right" }}
@@ -197,14 +205,14 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
 
   // Pagination starts here
 
-  const onPageChange = (event) => {
-    setCurrentPage(event.page);
-  };
+  // const onPageChange = (event) => {
+  //   setCurrentPage(event.page);
+  // };
 
-  const template3 = {
-    layout:
-      "RowsPerPageDropdown PrevPageLink PageLinks NextPageLink CurrentPageReport",
-  };
+  // const template3 = {
+  //   layout:
+  //     "RowsPerPageDropdown PrevPageLink PageLinks NextPageLink CurrentPageReport",
+  // };
 
   const currencySymbol = useSelector((state) => state.currencySymbol.symbol);
   const currencyFactor = useSelector((state) => state.currencySymbol.factor);
@@ -424,7 +432,6 @@ const CardList = ({ currentPage, setCurrentPage, showNestedComponent }) => {
             handleSave={saveFilters}
           />
         </Dialog>
-
 
         {/* Iteration */}
         {itemsToDisplay.map((product, index) => (

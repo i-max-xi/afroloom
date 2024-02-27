@@ -49,43 +49,83 @@ const OffersDetail = () => {
 
   switch (offerType) {
     case "popular":
-      selectedProducts = Products.filter((item) => item.rating >= 5);
+      selectedProducts = Products.filter((item) => item.rating >= 4);
+      selectedProducts.sort((a, b) => {
+        const createdAtTimestampA = a?.createdAt?.seconds || 0;
+        const createdAtTimestampB = b?.createdAt?.seconds || 0;
+        return createdAtTimestampB - createdAtTimestampA;
+      });
       url = popular;
       break;
     case "New Products this Week":
-      // Add logic to filter by new products
       selectedProducts = newProductsThisWeek;
+      selectedProducts.sort((a, b) => {
+        const createdAtTimestampA = a?.createdAt?.seconds || 0;
+        const createdAtTimestampB = b?.createdAt?.seconds || 0;
+        return createdAtTimestampB - createdAtTimestampA;
+      });
       url = newProducts;
       break;
     case "Lowest Prices in 60 Days":
       selectedProducts = Products.filter((item) => item.price < 20);
+      selectedProducts.sort((a, b) => {
+        const createdAtTimestampA = a?.createdAt?.seconds || 0;
+        const createdAtTimestampB = b?.createdAt?.seconds || 0;
+        return createdAtTimestampB - createdAtTimestampA;
+      });
       url = lowestPrices;
       break;
     case "men clothing under ₵100":
       selectedProducts = Products.filter(
-        (item) => item.gender === "Male" && item.price <= 100
+        (item) =>
+          item.category === "Clothing" &&
+          item.gender === "Male" &&
+          item.price <= 100
       );
+      selectedProducts.sort((a, b) => {
+        const createdAtTimestampA = a?.createdAt?.seconds || 0;
+        const createdAtTimestampB = b?.createdAt?.seconds || 0;
+        return createdAtTimestampB - createdAtTimestampA;
+      });
       url = under3;
       break;
     case "women clothing under ₵100":
       selectedProducts = Products.filter(
-        (item) => item.gender === "Female" && item.price <= 100
+        (item) =>
+          item.category === "Clothing" &&
+          item.gender === "Female" &&
+          item.price <= 100
       );
+      selectedProducts.sort((a, b) => {
+        const createdAtTimestampA = a?.createdAt?.seconds || 0;
+        const createdAtTimestampB = b?.createdAt?.seconds || 0;
+        return createdAtTimestampB - createdAtTimestampA;
+      });
       url = under3;
       break;
     case "discounts":
       selectedProducts = Products.filter((item) => item.discount > 0);
+      selectedProducts.sort((a, b) => {
+        const createdAtTimestampA = a?.createdAt?.seconds || 0;
+        const createdAtTimestampB = b?.createdAt?.seconds || 0;
+        return createdAtTimestampB - createdAtTimestampA;
+      });
       url = discount;
       break;
     default:
       selectedProducts = Products;
+      selectedProducts.sort((a, b) => {
+        const createdAtTimestampA = a?.createdAt?.seconds || 0;
+        const createdAtTimestampB = b?.createdAt?.seconds || 0;
+        return createdAtTimestampB - createdAtTimestampA;
+      });
       url = searchbanner;
       break;
   }
 
   // pagination
   const [currentPage, setCurrentPage] = useState(0);
-  const [itemsPerPage] = useState(19);
+  const [itemsPerPage] = useState(24);
 
   const onPageChange = (event) => {
     setCurrentPage(event.page);
@@ -266,7 +306,7 @@ const OffersDetail = () => {
           backgroundSize: "cover",
           backgroundImage: `url(${url})`,
           backgroundRepeat: "no-repeat",
-          height: "12rem",
+          height: "15rem",
           width: "100%",
         }}
         className="page-banner"
@@ -322,23 +362,22 @@ const OffersDetail = () => {
         {itemsToDisplay.length !== 0 ? (
           itemsToDisplay.map((product, index) => (
             <div className="col-6 col-sm-2 p-1">
-
-            <Card
-              key={index}
-              title={product.title}
-              discount={product.discount}
-              description={product.description}
-              rating={product.rating}
-              price={product.price}
-              item={product.item}
-              flag={product.flag}
-              id={product.id}
-              Height={product.height}
-              TextAlign={product.TextAlign}
-              Button={product.Button}
-              linkless={product.linkless}
-              country={product.country}
-            />
+              <Card
+                key={index}
+                title={product.title}
+                discount={product.discount}
+                description={product.description}
+                rating={product.rating}
+                price={product.price}
+                item={product.item}
+                flag={product.flag}
+                id={product.id}
+                Height={product.height}
+                TextAlign={product.TextAlign}
+                Button={product.Button}
+                linkless={product.linkless}
+                country={product.country}
+              />
             </div>
           ))
         ) : (
