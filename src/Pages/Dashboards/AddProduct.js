@@ -302,16 +302,18 @@ const AddProduct = ({ currentSeller, sellerCountry }) => {
       setNewProduct({
         title: "",
         category: "",
-        price: 0,
+        price: null,
         description: "",
-        weight: 0,
+        weight: null,
         location: "",
         item: "",
         seller: currentSeller,
         detailedCategory: "",
         gender: "",
         size: "",
-        discount: 0,
+        discount: null,
+        extraImages: [],
+        country: newProduct.country
       });
 
       setExtraImages([]); // Clear the extra images array
