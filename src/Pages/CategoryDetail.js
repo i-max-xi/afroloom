@@ -43,7 +43,9 @@ const CategoryDetail = ({ option }) => {
     url = ""; // fallback URL
   }
 
-  const Products = useSelector((state) => state.allProducts.products.filter((p) => p.category === categoryName));
+  const Products = useSelector((state) =>
+    state.allProducts.products.filter((p) => p.category === categoryName)
+  );
 
   // const category = allCategory.find((p) => p.id === parseInt(categoryId));
   // const [product, setproduct] = useState([]);
@@ -66,7 +68,7 @@ const CategoryDetail = ({ option }) => {
 
   // Pagination starts here
   const [currentPage, setCurrentPage] = useState(0);
-  const [itemsPerPage] = useState(10);
+  const [itemsPerPage] = useState(24);
 
   const onPageChange = (event) => {
     setCurrentPage(event.page);
@@ -169,7 +171,7 @@ const CategoryDetail = ({ option }) => {
           backgroundImage: `url(${url})`,
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
-          height: "12rem",
+          height: "15rem",
           width: "100%",
         }}
         className="page-banner"
@@ -221,24 +223,26 @@ const CategoryDetail = ({ option }) => {
             ></span>
           </div>
 
-          {itemsToDisplay.length !== 0 ? (
-            itemsToDisplay.map((product) => (
-              <div className="col-6 col-sm-2 p-1">
-                <Card
-                  key={product.id}
-                  title={product.title}
-                  description={product.description}
-                  price={product.price}
-                  item={product.item}
-                  flag={product.flag}
-                  country={product.country}
-                  id={product.id}
-                />
-              </div>
-            ))
-          ) : (
-            <>Currently out of stock</>
-          )}
+          <div className="row p-3">
+            {itemsToDisplay.length !== 0 ? (
+              itemsToDisplay.map((product) => (
+                <div className="col-6 col-sm-2 p-1">
+                  <Card
+                    key={product.id}
+                    title={product.title}
+                    description={product.description}
+                    price={product.price}
+                    item={product.item}
+                    flag={product.flag}
+                    country={product.country}
+                    id={product.id}
+                  />
+                </div>
+              ))
+            ) : (
+              <>Currently out of stock</>
+            )}
+          </div>
         </div>
       </div>
 

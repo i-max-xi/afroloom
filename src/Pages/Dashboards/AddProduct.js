@@ -133,20 +133,24 @@ const AddProduct = ({ currentSeller, sellerCountry }) => {
     const img = new Image();
     img.src = URL.createObjectURL(file);
 
+    // img.onload = () => {
+    //   // Check if the image dimensions are 500x500
+    //   if (img.width !== 500 || img.height !== 500) {
+    //     toastRef.current.show({
+    //       severity: "error",
+    //       summary: "Error uploading image:",
+    //       detail: "Please upload an image with dimensions 500x500.",
+    //     });
+    //     e.target.value = null;
+    //     return;
+    //   } else {
+    //     const storageRef = ref(storage, `images/${file.name}`);
+    //     uploadImage(storageRef, file);
+    //   }
+    // };
     img.onload = () => {
-      // Check if the image dimensions are 500x500
-      if (img.width !== 500 || img.height !== 500) {
-        toastRef.current.show({
-          severity: "error",
-          summary: "Error uploading image:",
-          detail: "Please upload an image with dimensions 500x500.",
-        });
-        e.target.value = null;
-        return;
-      } else {
-        const storageRef = ref(storage, `images/${file.name}`);
-        uploadImage(storageRef, file);
-      }
+      const storageRef = ref(storage, `images/${file.name}`);
+      uploadImage(storageRef, file);
     };
   };
 
@@ -298,16 +302,18 @@ const AddProduct = ({ currentSeller, sellerCountry }) => {
       setNewProduct({
         title: "",
         category: "",
-        price: 0,
+        price: null,
         description: "",
-        weight: 0,
+        weight: null,
         location: "",
         item: "",
         seller: currentSeller,
+        country: sellerCountry,
         detailedCategory: "",
         gender: "",
         size: "",
-        discount: 0,
+        discount: null,
+        extraImages: [],
       });
 
       setExtraImages([]); // Clear the extra images array

@@ -39,6 +39,11 @@ const Row = ({ mainItems, offerFix }) => {
         item.gender === "Male" &&
         item.price <= 100
     );
+    maleUnder10.sort((a, b) => {
+      const createdAtTimestampA = a?.createdAt?.seconds || 0;
+      const createdAtTimestampB = b?.createdAt?.seconds || 0;
+      return createdAtTimestampB - createdAtTimestampA;
+    });
     setselectedmaleUnder10(
       maleUnder10.slice(0, 4).map((item) => ({
         imageUrl: item.item,
@@ -53,6 +58,11 @@ const Row = ({ mainItems, offerFix }) => {
         item.gender === "Female" &&
         item.price <= 100
     );
+    femaleUnder10.sort((a, b) => {
+      const createdAtTimestampA = a?.createdAt?.seconds || 0;
+      const createdAtTimestampB = b?.createdAt?.seconds || 0;
+      return createdAtTimestampB - createdAtTimestampA;
+    });
     setselectedFemaleUnder10(
       femaleUnder10.slice(0, 4).map((item) => ({
         imageUrl: item.item,
@@ -64,6 +74,11 @@ const Row = ({ mainItems, offerFix }) => {
     const fashionAccessories = Products.filter(
       (item) => item.category === "Accessories"
     );
+    fashionAccessories.sort((a, b) => {
+      const createdAtTimestampA = a?.createdAt?.seconds || 0;
+      const createdAtTimestampB = b?.createdAt?.seconds || 0;
+      return createdAtTimestampB - createdAtTimestampA;
+    });
     setselectedFashionAccessories(
       fashionAccessories.slice(0, 4).map((item) => ({
         imageUrl: item.item,
@@ -73,6 +88,12 @@ const Row = ({ mainItems, offerFix }) => {
 
     // Footwear
     const feet = Products.filter((item) => item.category === "Footwear");
+    feet.sort((a, b) => {
+      const createdAtTimestampA = a?.createdAt?.seconds || 0;
+      const createdAtTimestampB = b?.createdAt?.seconds || 0;
+      return createdAtTimestampB - createdAtTimestampA;
+    });
+
     setselectedFeet(
       feet.slice(0, 4).map((item) => ({
         imageUrl: item.item,
