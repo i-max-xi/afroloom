@@ -21,17 +21,16 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   transition: 0.2s ease-in-out;
   background-color: white;
-  height: max-content;
+  /* height: max-content; */
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-
+  justify-content: space-between;
 }
 
-.four-in-a-card .item:hover,
+/* .four-in-a-card .item:hover,
 .offer-card:hover {
   scale: 1.05;
-}
+} */
 
 .headTitle {
   /* margin-bottom: 1rem; */
@@ -51,7 +50,7 @@
 .four-in-a-card-container {
   padding: 1rem;
   border: 1px solid #ddd;
-  width: calc(25% - 20px); /* Adjust the width as needed */
+  width: calc(25% - 20px);
   /* aspect-ratio: 1/1; */
   background-color: white;
   transform: translateY(0.7rem);
