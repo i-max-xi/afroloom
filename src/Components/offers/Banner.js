@@ -17,9 +17,17 @@ const Banner = ({ items, headTitle, seeMore, linkTo, bannerFix }) => {
   const [selectedFurniture, setselectedFurniture] = useState([]);
 
   useEffect(() => {
+    
+
     const handicraft = Products.filter(
       (item) => item.category === "Handicrafts"
     );
+
+    handicraft.sort((a, b) => {
+      const createdAtTimestampA = a?.createdAt?.seconds || 0;
+      const createdAtTimestampB = b?.createdAt?.seconds || 0;
+      return createdAtTimestampB - createdAtTimestampA;
+    });
 
     setselectedHandicraft(
       handicraft.slice(0, isMobile ? 4 : 5).map((item) => ({
@@ -30,6 +38,11 @@ const Banner = ({ items, headTitle, seeMore, linkTo, bannerFix }) => {
     );
 
     const discount = Products.filter((item) => item.discount > 0);
+    discount.sort((a, b) => {
+      const createdAtTimestampA = a?.createdAt?.seconds || 0;
+      const createdAtTimestampB = b?.createdAt?.seconds || 0;
+      return createdAtTimestampB - createdAtTimestampA;
+    });
 
     setselectedDiscount(
       discount.slice(0, isMobile ? 4 : 5).map((item) => {
@@ -48,6 +61,11 @@ const Banner = ({ items, headTitle, seeMore, linkTo, bannerFix }) => {
     );
 
     const fabric = Products.filter((item) => item.category === "Textiles");
+    fabric.sort((a, b) => {
+      const createdAtTimestampA = a?.createdAt?.seconds || 0;
+      const createdAtTimestampB = b?.createdAt?.seconds || 0;
+      return createdAtTimestampB - createdAtTimestampA;
+    });
 
     setselectedFabric(
       fabric.slice(0, isMobile ? 4 : 5).map((item) => ({
@@ -58,6 +76,11 @@ const Banner = ({ items, headTitle, seeMore, linkTo, bannerFix }) => {
     );
 
     const furniture = Products.filter((item) => item.category === "Furniture");
+    furniture.sort((a, b) => {
+      const createdAtTimestampA = a?.createdAt?.seconds || 0;
+      const createdAtTimestampB = b?.createdAt?.seconds || 0;
+      return createdAtTimestampB - createdAtTimestampA;
+    });
 
     setselectedFurniture(
       furniture.slice(0, isMobile ? 4 : 5).map((item) => ({
