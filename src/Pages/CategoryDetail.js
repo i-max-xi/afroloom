@@ -88,7 +88,7 @@ const CategoryDetail = ({ option }) => {
         (currentPage + 1) * itemsPerPage
       )
     );
-  }, [currentPage, Products, itemsPerPage, categoryName]);
+  }, [currentPage, categoryName]);
 
 
   const template3 = {
