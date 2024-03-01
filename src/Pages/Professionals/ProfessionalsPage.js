@@ -60,6 +60,15 @@ const ProfessionalsPage = ({ match }) => {
 
   const [itemsToDisplay, setitemsToDisplay] = useState(itemsToDisplayBank);
 
+  useEffect(() => {
+    setitemsToDisplay(
+      ApproveProducts.slice(
+        currentPage * itemsPerPage,
+        (currentPage + 1) * itemsPerPage
+      )
+    );
+  }, [currentPage]);
+
   const template3 = {
     layout:
       "RowsPerPageDropdown PrevPageLink PageLinks NextPageLink CurrentPageReport",
