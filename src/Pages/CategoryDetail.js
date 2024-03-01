@@ -81,6 +81,15 @@ const CategoryDetail = ({ option }) => {
 
   const [itemsToDisplay, setitemsToDisplay] = useState(itemsToDisplayBank);
 
+  useEffect(() => {
+    setitemsToDisplay(
+      Products.slice(
+        currentPage * itemsPerPage,
+        (currentPage + 1) * itemsPerPage
+      )
+    );
+  }, [currentPage, Products, itemsPerPage, categoryName]);
+
 
   const template3 = {
     layout:

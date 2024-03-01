@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { Card } from "../Components/CardList";
 import { useSelector } from "react-redux";
 import Nav from "../Components/Nav";
@@ -18,14 +18,12 @@ import { getPriceRangeOptions } from "../Data/PriceRangeData";
 import { Dialog } from "primereact/dialog";
 
 const OffersDetail = () => {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+
 
   const { offerType } = useParams();
   const Products = useSelector((state) => state.allProducts.products);
 
-  let selectedProducts = [];
+  let selectedProducts = useMemo(() => [], [])
   let url = "";
 
   const newProductsThisWeek = Products.filter((item) => {
@@ -136,6 +134,10 @@ const OffersDetail = () => {
     (currentPage + 1) * itemsPerPage
   );
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [currentPage]);
+
   const template3 = {
     layout:
       "RowsPerPageDropdown PrevPageLink PageLinks NextPageLink CurrentPageReport",
@@ -150,6 +152,16 @@ const OffersDetail = () => {
   );
 
   const [itemsToDisplay, setItemsToDisplay] = useState(itemsToDisplayBank);
+
+  useEffect(() => {
+    setItemsToDisplay(
+      selectedProducts.slice(
+        currentPage * itemsPerPage,
+        (currentPage + 1) * itemsPerPage
+      )
+    );
+  }, [currentPage, itemsPerPage, selectedProducts]);
+
   // Filters implementation start here...
   const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedCountry, setSelectedCountry] = useState("");
