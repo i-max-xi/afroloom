@@ -160,7 +160,7 @@ const ItemDetail = ({ match }) => {
             {extras ? (
               <div
                 className="d-flex flex-column mx-1"
-                style={{ width: isMobile ? "3rem" : "5rem" }}
+                style={{ width: "5rem" }}
               >
                 {extras.map((extra, index) => (
                   <img
@@ -169,6 +169,8 @@ const ItemDetail = ({ match }) => {
                     key={index}
                     alt={extra + " " + index}
                     onClick={() => handleExtraClick(extra)}
+                    style={{objectFit: "cover"}}
+
                   />
                 ))}
               </div>
@@ -182,6 +184,7 @@ const ItemDetail = ({ match }) => {
                 alt={product.title}
                 width="100%"
                 height="400rem"
+                style={{objectFit: "cover"}}
                 className="main-product-image"
               />
             </div>

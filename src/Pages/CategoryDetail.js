@@ -44,15 +44,15 @@ const CategoryDetail = ({ option }) => {
   }
 
   const Products = useSelector((state) =>
-    state.allProducts.products.filter((p) => p.category === categoryName)
+    state.allProducts?.products?.filter((p) => p?.category === categoryName)
   );
 
   // const category = allCategory.find((p) => p.id === parseInt(categoryId));
-  // const [product, setproduct] = useState([]);
+  // const [Products, setProducts] = useState([]);
 
   // useEffect(() => {
-  //   setproduct(Products?);
-  // }, []);
+  //   setProducts(products?.filter((p) => p.category === categoryName));
+  // }, [categoryName]);
 
   // currency conversion
   const currencySymbol = useSelector((state) => state.currencySymbol.symbol);
@@ -80,6 +80,16 @@ const CategoryDetail = ({ option }) => {
   );
 
   const [itemsToDisplay, setitemsToDisplay] = useState(itemsToDisplayBank);
+
+  useEffect(() => {
+    setitemsToDisplay(
+      Products.slice(
+        currentPage * itemsPerPage,
+        (currentPage + 1) * itemsPerPage
+      )
+    );
+  }, [currentPage, categoryName]);
+
 
   const template3 = {
     layout:
@@ -224,8 +234,8 @@ const CategoryDetail = ({ option }) => {
           </div>
 
           <div className="row p-3">
-            {itemsToDisplay.length !== 0 ? (
-              itemsToDisplay.map((product) => (
+            {itemsToDisplay?.length !== 0 ? (
+              itemsToDisplay?.map((product) => (
                 <div className="col-6 col-sm-2 p-1">
                   <Card
                     key={product.id}
@@ -250,7 +260,7 @@ const CategoryDetail = ({ option }) => {
         currentPage={currentPage}
         first={currentPage * itemsPerPage}
         rows={itemsPerPage}
-        totalRecords={Products.length}
+        totalRecords={Products?.length}
         onPageChange={onPageChange}
         template={template3}
       />
