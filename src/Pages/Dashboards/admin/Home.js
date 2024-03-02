@@ -118,8 +118,9 @@ const Home = () => {
       loadProducts();
     } catch (error) {
       toastRef.current.show({
-        severity: "error",
-        summary: `Error deleting product: ${error}`,
+        severity: "success",
+        summary: "Error loading products.",
+        detail: error,
       });
     }
   };
@@ -140,6 +141,11 @@ const Home = () => {
         />
         <Button icon="pi pi-search" onClick={filterProducts} />
       </div>
+
+      <h6 className="p-inputgroup justify-content-center mt-3 mb-3">
+        Total: {products.length}
+      </h6>
+
       <DataTable
         value={filteredProducts.length !== 0 ? filteredProducts : products}
         paginator
@@ -235,20 +241,6 @@ const Home = () => {
                   rows={5}
                   cols={30}
                 />
-                {/* <textarea
-                  id="description"
-                  type="text"
-                  value={selectedProduct.description}
-                  onChange={(e) => {
-                    if (e.target.value <= descriptionLimit) {
-                      setSelectedProduct({
-                        ...selectedProduct,
-                        description: e.target.value,
-                      });
-                    }
-                  }}
-                  className="p-inputtext"
-                /> */}
                 <span style={{ float: "right" }}>
                   {selectedProduct.description.length}/{descriptionLimit}
                 </span>

@@ -42,7 +42,11 @@ const Home = ({ currentSeller }) => {
       });
       setProducts(productData);
     } catch (error) {
-      console.error("Error loading products:", error);
+      toastRef.current.show({
+        severity: "success",
+        summary: "Error loading products.",
+        detail: error,
+      });
     }
   };
 
@@ -137,10 +141,14 @@ const Home = ({ currentSeller }) => {
         />
         <Button icon="pi pi-search" onClick={filterProducts} />
       </div>
+
+      <h6 className="p-inputgroup justify-content-center mt-3 mb-3">
+        Total: {products.length}
+      </h6>
       <DataTable
         value={filteredProducts.length !== 0 ? filteredProducts : products}
         paginator
-        rows={10}
+        rows={4}
         onPage={handlePageChange}
       >
         <Column
