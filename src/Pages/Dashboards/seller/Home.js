@@ -9,7 +9,11 @@ import { Toast } from "primereact/toast";
 import { useSelector } from "react-redux";
 import { locationOptions } from "../../../Data/SupplierAcceptedCities";
 import { Dropdown } from "primereact/dropdown";
-import { descriptionLimit, isMobile, titleLimit } from "../../../utils/constants";
+import {
+  descriptionLimit,
+  isMobile,
+  titleLimit,
+} from "../../../utils/constants";
 import { InputTextarea } from "primereact/inputtextarea";
 import { Image } from "primereact/image";
 
@@ -25,7 +29,6 @@ const Home = ({ currentSeller }) => {
   const currencySymbol = useSelector((state) => state.currencySymbol.symbol);
   const currencyFactor = useSelector((state) => state.currencySymbol.factor);
 
-  console.log({ currentSeller });
   const loadProducts = async () => {
     try {
       const response = await ProductsDataService.getProductByField(
@@ -47,6 +50,10 @@ const Home = ({ currentSeller }) => {
     loadProducts();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const handlePageChange = (event) => {
+    window.scrollTo(0, 0);
+  };
 
   // Function to filter products based on the search term
   const filterProducts = () => {
@@ -134,6 +141,7 @@ const Home = ({ currentSeller }) => {
         value={filteredProducts.length !== 0 ? filteredProducts : products}
         paginator
         rows={10}
+        onPage={handlePageChange}
       >
         <Column
           field="item"

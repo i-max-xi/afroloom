@@ -24,6 +24,10 @@ const MyOrders = () => {
     setFilteredProducts(filtered);
   };
 
+  const handlePageChange = (event) => {
+    window.scrollTo(0, 0);
+  };
+
   // Handle search input change
   const handleSearchChange = (e) => {
     setSearchTerm(e.target.value);
@@ -65,6 +69,7 @@ const MyOrders = () => {
         value={filteredProducts.length !== 0 ? filteredProducts : products}
         paginator
         rows={10}
+        onPage={handlePageChange}
       >
         <Column
           field="item"
