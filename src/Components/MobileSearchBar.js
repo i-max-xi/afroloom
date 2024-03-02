@@ -26,6 +26,7 @@ const MobileSearchBar = () => {
         <InputText
           placeholder="What are you looking for?..."
           onChange={handleInput}
+          className="search-input"
         />
 
         <button
