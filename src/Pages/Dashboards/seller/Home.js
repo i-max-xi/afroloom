@@ -9,8 +9,9 @@ import { Toast } from "primereact/toast";
 import { useSelector } from "react-redux";
 import { locationOptions } from "../../../Data/SupplierAcceptedCities";
 import { Dropdown } from "primereact/dropdown";
-import { descriptionLimit, titleLimit } from "../../../utils/constants";
+import { descriptionLimit, isMobile, titleLimit } from "../../../utils/constants";
 import { InputTextarea } from "primereact/inputtextarea";
+import { Image } from "primereact/image";
 
 const Home = ({ currentSeller }) => {
   const toastRef = useRef(null);
@@ -138,10 +139,12 @@ const Home = ({ currentSeller }) => {
           field="item"
           header="Image"
           body={(rowData) => (
-            <img
+            <Image
               src={rowData.item}
               alt={rowData.title}
-              className="data-table-img"
+              width="100%"
+              style={{ width: isMobile ? "5rem" : "10rem" }}
+              preview
             />
           )}
         />
