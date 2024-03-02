@@ -26,7 +26,7 @@ const SignIn = () => {
   const [selectedIdentity, setSelectedIdentity] = useState(null);
 
   const identities = [
-    { value: "client", label: "Client / Buyer" },
+    { value: "Customer", label: "Customer" },
     { value: "supplier", label: "Supplier" },
     { value: "model", label: "Model" },
     { value: "photographer", label: "Photographer / Videographer" },

@@ -3,6 +3,8 @@ import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import { Button } from "primereact/button";
 import { useSelector } from "react-redux";
+import { Image } from "primereact/image";
+import { isMobile } from "../../../utils/constants";
 
 const MyOrders = () => {
   // const toastRef = useRef(null);
@@ -20,6 +22,10 @@ const MyOrders = () => {
       product.title.toLowerCase().includes(searchTerm.toLowerCase())
     );
     setFilteredProducts(filtered);
+  };
+
+  const handlePageChange = (event) => {
+    window.scrollTo(0, 0);
   };
 
   // Handle search input change
@@ -63,15 +69,18 @@ const MyOrders = () => {
         value={filteredProducts.length !== 0 ? filteredProducts : products}
         paginator
         rows={10}
+        onPage={handlePageChange}
       >
         <Column
           field="item"
           header="Image"
           body={(rowData) => (
-            <img
+            <Image
               src={rowData.item}
               alt={rowData.title}
-              className="data-table-img"
+              width="100%"
+              style={{ width: isMobile ? "5rem" : "10rem" }}
+              preview
             />
           )}
         />
