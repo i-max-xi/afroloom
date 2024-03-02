@@ -17,7 +17,7 @@ import { Timestamp } from "firebase/firestore";
 import { ProgressSpinner } from "primereact/progressspinner";
 import { locationOptions } from "../../Data/SupplierAcceptedCities";
 import { InputTextarea } from "primereact/inputtextarea";
-import { descriptionLimit, titleLimit } from "../../utils/constants";
+import { descriptionLimit, genderOptions, titleLimit } from "../../utils/constants";
 import { Image } from "primereact/image";
 
 const AddProduct = ({ currentSeller, sellerCountry }) => {
@@ -334,10 +334,7 @@ const AddProduct = ({ currentSeller, sellerCountry }) => {
   };
 
   // dropdown infos
-  const genderOptions = [
-    { label: "Male", value: "Male" },
-    { label: "Female", value: "Female" },
-  ];
+  
 
   return (
     <div>
@@ -410,9 +407,6 @@ const AddProduct = ({ currentSeller, sellerCountry }) => {
             options={detailedCategoryOptions}
             placeholder="select a more specific category..."
             onChange={handleDetailedCategoryChange}
-            // onChange={(e) =>
-            //   setNewProduct({ ...newProduct, detailedCategory: e.value })
-            // }
           />
         </div>
         <div className="p-field">
