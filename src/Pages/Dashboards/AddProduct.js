@@ -394,16 +394,16 @@ const AddProduct = ({ currentSeller, sellerCountry }) => {
             id="description"
             value={newProduct.description}
             onChange={(e) => {
-              if (e.target.value.length <= descriptionLimit) {
+              // if (e.target.value.length <= descriptionLimit) {
                 setNewProduct({ ...newProduct, description: e.target.value });
-              }
+              // }
             }}
             rows={5}
             cols={30}
           />
-          <span style={{ float: "right" }}>
+          {/* <span style={{ float: "right" }}>
             {newProduct.description.length}/{descriptionLimit}
-          </span>
+          </span> */}
         </div>
         <div className="p-field">
           <label className="text-warning" htmlFor="category">
