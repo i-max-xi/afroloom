@@ -113,7 +113,7 @@ const AllSellers = () => {
             />
           )}
         /> */}
-        <Column field="companyName" header="Company Name" />
+        <Column field="companyName" header="Brand Name" />
         <Column field="email" header="Email" />
         <Column field="number" header="Phone" />
         <Column field="country" header="Country" />

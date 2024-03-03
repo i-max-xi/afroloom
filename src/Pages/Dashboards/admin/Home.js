@@ -11,11 +11,13 @@ import { locationOptions } from "../../../Data/SupplierAcceptedCities";
 import { Dropdown } from "primereact/dropdown";
 import {
   descriptionLimit,
+  genderOptions,
   isMobile,
   titleLimit,
 } from "../../../utils/constants";
 import { InputTextarea } from "primereact/inputtextarea";
 import { Image } from "primereact/image";
+import { allCategory, categoryFilter } from "../../../Data/categoryList";
 
 const Home = () => {
   const toastRef = useRef(null);
@@ -118,9 +120,67 @@ const Home = () => {
       loadProducts();
     } catch (error) {
       toastRef.current.show({
-        severity: "error",
-        summary: `Error deleting product: ${error}`,
+        severity: "success",
+        summary: "Error loading products.",
+        detail: error,
       });
+    }
+  };
+
+  const [detailedCategoryOptions, setDetailedCategoryOptions] = useState([]);
+  const [sizeOptions, setSizeOptions] = useState([]);
+
+  const handleCategoryChange = (e) => {
+    const selectedCategory = e.value;
+    setSelectedProduct({ ...selectedProduct, category: selectedCategory });
+
+    // Update the "Detailed Category" options based on the selected category
+    const productFilter = allCategory
+      .find((category) => category.name === selectedCategory)
+      .filters.find((filter) => filter.name === "Product");
+    const detailedCategoryOptions = productFilter.options;
+    setDetailedCategoryOptions(detailedCategoryOptions);
+
+    // Update the "Size" options based on the selected category
+    const sizeFilter = allCategory
+      .find((category) => category.name === selectedCategory)
+      .filters.find((filter) => filter.name === "Size");
+
+    sizeFilter !== undefined
+      ? setSizeOptions(sizeFilter.options)
+      : setSizeOptions([]);
+  };
+
+  const handleDetailedCategoryChange = (e) => {
+    const selectedDetailedCategory = e.value;
+    setSelectedProduct({
+      ...selectedProduct,
+      detailedCategory: selectedDetailedCategory,
+    });
+
+    // Update the "Detailed Category" options based on the selected category
+
+    const sizeFilter = allCategory
+      .find((category) => category.name === selectedProduct.category)
+      .filters.find((filter) => filter.name === "Size");
+
+    let allsizeOptions;
+    let braSizes;
+    let hatSizes;
+
+    if (sizeFilter !== undefined) {
+      allsizeOptions = sizeFilter.options;
+      braSizes = sizeFilter.braOptions;
+      hatSizes = sizeFilter.hatOptions;
+      if (selectedDetailedCategory === "Hat") {
+        setSizeOptions(hatSizes);
+      } else if (selectedDetailedCategory === "Bra") {
+        setSizeOptions(braSizes);
+      } else {
+        setSizeOptions(allsizeOptions);
+      }
+    } else {
+      setSizeOptions([]);
     }
   };
 
@@ -140,6 +200,11 @@ const Home = () => {
         />
         <Button icon="pi pi-search" onClick={filterProducts} />
       </div>
+
+      <h6 className="p-inputgroup justify-content-center mt-3 mb-3">
+        Total: {products.length}
+      </h6>
+
       <DataTable
         value={filteredProducts.length !== 0 ? filteredProducts : products}
         paginator
@@ -235,22 +300,8 @@ const Home = () => {
                   rows={5}
                   cols={30}
                 />
-                {/* <textarea
-                  id="description"
-                  type="text"
-                  value={selectedProduct.description}
-                  onChange={(e) => {
-                    if (e.target.value <= descriptionLimit) {
-                      setSelectedProduct({
-                        ...selectedProduct,
-                        description: e.target.value,
-                      });
-                    }
-                  }}
-                  className="p-inputtext"
-                /> */}
                 <span style={{ float: "right" }}>
-                  {selectedProduct.description.length}/{descriptionLimit}
+                  {selectedProduct?.description?.length}/{descriptionLimit}
                 </span>
               </div>
               <div className="p-field">
@@ -299,6 +350,66 @@ const Home = () => {
                     })
                   }
                   className="p-inputtext"
+                />
+              </div>
+
+              <div className="p-field">
+                <label className="text-warning" htmlFor="category">
+                  Category
+                </label>
+                <Dropdown
+                  required
+                  id="category"
+                  value={selectedProduct.category}
+                  options={categoryFilter}
+                  onChange={handleCategoryChange}
+                  placeholder="select a Category..."
+                />
+              </div>
+
+              <div className="p-field">
+                <label className="text-warning" htmlFor="detailedCategory">
+                  Detailed Category
+                </label>
+                <Dropdown
+                  required
+                  id="detailedCategory"
+                  value={selectedProduct.detailedCategory}
+                  options={detailedCategoryOptions}
+                  placeholder="select a more specific category..."
+                  onChange={handleDetailedCategoryChange}
+                />
+              </div>
+
+              <div className="p-field">
+                <label className="text-warning" htmlFor="gender">
+                  Gender
+                </label>{" "}
+                <Dropdown
+                  id="gender"
+                  required
+                  value={selectedProduct.gender}
+                  options={genderOptions}
+                  placeholder="is this product gender specific eg. male or female ?"
+                  onChange={(e) =>
+                    setSelectedProduct({ ...selectedProduct, gender: e.value })
+                  }
+                />
+              </div>
+
+              <div className="p-field">
+                <label className="text-warning" htmlFor="size">
+                  Size
+                </label>{" "}
+                <Dropdown
+                  id="size"
+                  required
+                  value={selectedProduct.size}
+                  options={sizeOptions}
+                  placeholder="is this item size specific?"
+                  onChange={(e) =>
+                    setSelectedProduct({ ...selectedProduct, size: e.value })
+                  }
                 />
               </div>
 

@@ -28,12 +28,16 @@ import { setcurrentUser } from "../../../Redux/store";
 import { useDispatch } from "react-redux";
 
 import { InputTextarea } from "primereact/inputtextarea";
+import countryArr from "../../../Data/CountryArr";
+import { Image } from "primereact/image";
 
-const UpdateInfo = ({ currentUser, proffesionalType }) => {
+const EditProfessionalProfile = ({ currentUser, proffesionalType }) => {
   const [userInfo, setuserInfo] = useState(currentUser);
 
-  const [extraImages, setExtraImages] = useState([]);
-  const [residenceImages, setResidenceImages] = useState([]);
+  const [extraImages, setExtraImages] = useState([...currentUser.portfolio]);
+  const [residenceImages, setResidenceImages] = useState([
+    ...currentUser.residenceImages,
+  ]);
 
   const [isUploading, setIsUploading] = useState(false); // Initialize loading state
 
@@ -139,29 +143,6 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
 
   const handleUpdateSubmit = async (e) => {
     e.preventDefault();
-    if (proffesionalType === ProfessionalsDbEnum.tourGuide) {
-      if (!userInfo.license) {
-        toastRef.current.show({
-          severity: "error",
-          summary: "Please fill in the required license field for tour guides.",
-        });
-        return;
-      }
-    }
-
-    if (
-      !userInfo.lowerPrice ||
-      !userInfo.UpperPrice ||
-      priceBreakdown.length < 1 ||
-      languages.length < 1 ||
-      extraImages.length < 1
-    ) {
-      toastRef.current.show({
-        severity: "error",
-        summary: "Please fill in all the required fields.",
-      });
-      return;
-    }
 
     setIsUploading(true);
 
@@ -175,7 +156,7 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
       languages: languages,
       destinations: destinations,
       completed: true,
-      bookedDates: []
+      bookedDates: [],
     };
 
     let Path;
@@ -218,7 +199,7 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
     }
   };
 
-  const [specialties, setSpecialties] = useState([""]);
+  const [specialties, setSpecialties] = useState([...currentUser.specialties]);
 
   const addSpecialty = () => {
     setSpecialties([...specialties, ""]);
@@ -231,9 +212,7 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
     setSpecialties(updatedSpecialties);
   };
 
-  const [priceBreakdown, setPriceBreakdown] = useState([
-    { offer: "", priceValue: 0 },
-  ]);
+  const [priceBreakdown, setPriceBreakdown] = useState([...currentUser.offers]);
 
   const addPriceBreakdown = () => {
     setPriceBreakdown([...priceBreakdown, { offer: "", priceValue: 0 }]);
@@ -251,7 +230,9 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
     );
   };
 
-  const [destinations, setDestinations] = useState([""]);
+  const [destinations, setDestinations] = useState([
+    ...currentUser.destinations,
+  ]);
 
   const addDestination = () => {
     setDestinations([...destinations, ""]);
@@ -269,7 +250,7 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
     );
   };
 
-  const [languages, setLanguages] = useState([""]);
+  const [languages, setLanguages] = useState([...currentUser.languages]);
 
   const addLanguages = () => {
     setLanguages([...languages, ""]);
@@ -306,12 +287,12 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
   return (
     <div>
       <Toast ref={toastRef} position="top-right" />
-      <h2 className="dashboard-home-title">Complete Profile Info</h2>
+      <h2 className="dashboard-home-title">Edit Profile Info</h2>
       <div className="p-fluid">
         {proffesionalType === ProfessionalsDbEnum.model && (
           <div className="p-field">
             <label className="text-warning" htmlFor="age">
-              Age <span className="text-danger"> *</span>
+              Age
             </label>
             <Dropdown
               id="age"
@@ -322,10 +303,92 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
             />
           </div>
         )}
+        <div className="p-field">
+          <label className="text-warning" htmlFor="upperprice">
+            Personal / Brand name
+          </label>
+          <InputText
+            required
+            type="text"
+            id="name"
+            value={userInfo.name}
+            onChange={(e) =>
+              setuserInfo({
+                ...userInfo,
+                name: e.target.value,
+              })
+            }
+          />
+        </div>
+        <div className="p-field">
+          <label className="text-warning" htmlFor="age">
+            Country of Origin
+          </label>
+          <Dropdown
+            id="country"
+            required
+            value={userInfo.country}
+            options={countryArr.map((item) => ({
+              label: item,
+              value: item,
+            }))}
+            onChange={(e) => setuserInfo({ ...userInfo, country: e.value })}
+          />
+        </div>
+        <div className="p-field">
+          <label className="text-warning" htmlFor="upperprice">
+            City
+          </label>
+          <InputText
+            required
+            type="text"
+            id="city"
+            value={userInfo.city}
+            onChange={(e) =>
+              setuserInfo({
+                ...userInfo,
+                city: e.target.value,
+              })
+            }
+          />
+        </div>
+        <div className="p-field">
+          <label className="text-warning" htmlFor="upperprice">
+            Email
+          </label>
+          <InputText
+            required
+            type="text"
+            id="email"
+            value={userInfo.email}
+            onChange={(e) =>
+              setuserInfo({
+                ...userInfo,
+                email: e.target.value,
+              })
+            }
+          />
+        </div>
+        <div className="p-field">
+          <label className="text-warning" htmlFor="upperprice">
+            Phone Number
+          </label>
+          <InputText
+            required
+            type="text"
+            id="name"
+            value={userInfo.number}
+            onChange={(e) =>
+              setuserInfo({
+                ...userInfo,
+                number: e.target.value,
+              })
+            }
+          />
+        </div>
         <div className="p-field d-flex flex-column">
           <label className="text-warning" htmlFor="extras">
             Languages spoken
-            <span className="text-danger"> *</span>
           </label>
           {languages.map((item, index) => (
             <div key={index} className="d-flex align-items-center ">
@@ -334,7 +397,6 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
                   required
                   type="text"
                   value={item}
-                  placeholder="eg. English"
                   onChange={(e) => updateLanguages(index, e.target.value)}
                 />
               </div>
@@ -409,7 +471,6 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
           <>
             <h6 className="mt-3">
               We list your prices in ranges (eg. ₵ 50 - 250 ){" "}
-              <span className="text-danger"> *</span>
             </h6>
 
             <div className="p-field">
@@ -455,7 +516,6 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
                 <div className="p-field d-flex flex-column">
                   <label className="text-warning" htmlFor="extras">
                     Indicate destinations
-                    <span className="text-danger"> *</span>
                   </label>
                   {destinations.map((item, index) => (
                     <div key={index} className="d-flex align-items-center ">
@@ -497,13 +557,11 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
               <h6 className="mt-3">
                 We also encourage you to break down prices into offers /
                 packages
-                <span className="text-danger"> *</span>
               </h6>
             ) : (
               <h6 className="mt-3">
                 We also encourage you to break down prices into offers /
                 packages. eg. (5 photos for ₵ 100)
-                <span className="text-danger"> *</span>
               </h6>
             )}
 
@@ -569,7 +627,7 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
             <label className="text-warning" htmlFor="item">
               Upload Licence of work
             </label>
-            <span className="text-danger"> *</span>
+
             <InputText
               required
               id="item"
@@ -577,13 +635,32 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
               accept="image/*"
               onChange={handleImageUpload}
             />
+            {/* <div>
+              <div className="position-relative">
+                <img
+                  className="mx-2 rounded"
+                  width={40}
+                  height={40}
+                  alt={userInfo.license}
+                  src={userInfo.license}
+                />
+                <Badge
+                  value="X"
+                  severity="danger"
+                  className="p-badge-sm p-overlay-badge position-absolute top-0 end-0"
+                  style={{ scale: "0.8", cursor: "pointer" }}
+                  onClick={() =>
+                    handleDeleteImage(index, imageUploadType.portfolio)
+                  }
+                />
+              </div>
+            </div> */}
           </div>
         )}
 
         <div className="p-field d-flex flex-column">
           <label className="text-warning" htmlFor="extras">
             Upload Portfolios (any images of your work you can share with us)
-            <span className="text-danger"> *</span>
           </label>
 
           <div className="d-flex">
@@ -602,12 +679,20 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
                 <ul className="d-flex">
                   {extraImages.map((image, index) => (
                     <div key={index} className="position-relative">
-                      <img
+                      {/* <img
                         className="mx-2 rounded"
                         width={40}
                         height={40}
                         alt={image}
                         src={image}
+                      /> */}
+                      <Image
+                        className="mx-2 rounded"
+                        width={40}
+                        height={40}
+                        alt={image}
+                        src={image}
+                        preview
                       />
                       <Badge
                         value="X"
@@ -631,7 +716,6 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
             <label className="text-warning" htmlFor="extras">
               What are your specialties
             </label>
-            <span className="text-danger"> *</span>
 
             {specialties.map((category, index) => (
               <div key={index} className="d-flex align-items-center">
@@ -675,7 +759,6 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
               <label className="text-warning" htmlFor="age">
                 Can You Accommodate your clients
               </label>
-              <span className="text-danger"> *</span>
 
               <Dropdown
                 id="canAccommodate"
@@ -711,7 +794,6 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
                 <div className="p-field d-flex flex-column">
                   <label className="text-warning" htmlFor="extras">
                     Upload images of place of accommodation
-                    <span className="text-danger"> *</span>
                   </label>
 
                   <div className="d-flex">
@@ -730,12 +812,20 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
                         <ul className="d-flex">
                           {residenceImages.map((image, index) => (
                             <div key={index} className="position-relative">
-                              <img
+                              {/* <img
                                 className="mx-2 rounded"
                                 width={40}
                                 height={40}
                                 alt={image}
                                 src={image}
+                              /> */}
+                              <Image
+                                className="mx-2 rounded"
+                                width={40}
+                                height={40}
+                                alt={image}
+                                src={image}
+                                preview
                               />
                               <Badge
                                 value="X"
@@ -764,7 +854,6 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
         {proffesionalType === ProfessionalsDbEnum.model && (
           <>
             <h6 className="mt-3">Other required details: </h6>{" "}
-            <span className="text-danger"> *</span>
             {currentUser.gender === genderListEnum.female ? (
               <div className="container">
                 <div className="row">
@@ -987,4 +1076,4 @@ const UpdateInfo = ({ currentUser, proffesionalType }) => {
   );
 };
 
-export default UpdateInfo;
+export default EditProfessionalProfile;

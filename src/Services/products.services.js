@@ -299,6 +299,24 @@ class ProductsDataService {
     return querySnapshot.docs[0]; // Assuming there's at most one document with the given "id"
   };
 
+  updateSeller = async (id, updatedSeller) => {
+    try {
+      const sellerDoc = await this.getSellerByField("id", id);
+      
+      if (sellerDoc) {
+        // Assuming there's at most one document with the given "id"
+        await updateDoc(sellerDoc.ref, updatedSeller);
+      } else {
+        // Handle the case when the document is not found
+        console.error(`Seller with id ${id} not found.`);
+      }
+    } catch (error) {
+      console.error(`Error updating seller: ${error}`);
+      throw error;
+    }
+  };
+  
+
   updateSellerApproval = async (sellerId, approvedStatus) => {
     try {
       const sellerDocRef = doc(db, "sellers", sellerId);

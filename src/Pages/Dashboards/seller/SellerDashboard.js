@@ -24,18 +24,27 @@ const SellerDashboard = () => {
 
   const [visible, setVisible] = useState(true);
 
-  console.log({sellerCompany})
-
+  const [editDialogVisible, setEditDialogVisible] = useState(false);
 
   return (
     <>
       <Nav noCurrency={true} />
-      <div className="bg-white fs-3 p-3 text-bold">
-        Welcome <span style={{ color: "orange" }}>{welcomename}!</span>{" "}
+      <div className="d-flex justify-content-between bg-white fs-3 p-3 text-bold">
+        <div>
+          Welcome <span style={{ color: "orange" }}>{welcomename}!</span>{" "}
+        </div>
+        <div>
+          <button
+            onClick={() => setEditDialogVisible(true)}
+            className="btn btn-info text-white"
+          >
+            Edit Profile
+          </button>
+        </div>
       </div>
       <div className="d-flex bg-white">
         <div className="side-bar-closed-container">
-        <Button icon="pi pi-arrow-right" onClick={() => setVisible(true)} />
+          <Button icon="pi pi-arrow-right" onClick={() => setVisible(true)} />
         </div>
         <CustomSideBar
           items={[
@@ -54,7 +63,7 @@ const SellerDashboard = () => {
               onTabChange={(e) => setActiveIndex(e.index)}
             >
               <TabPanel>
-                <Home currentSeller={sellerCompany} />
+                <Home editProfileVisible={editDialogVisible} setEditProfileVisible={setEditDialogVisible} currentSeller={sellerCompany} />
               </TabPanel>
               <TabPanel header="Add A New Product">
                 <AddProduct
@@ -63,7 +72,7 @@ const SellerDashboard = () => {
                 />
               </TabPanel>
               <TabPanel header="Package Stickers">
-                <PackageStickers isAdmin={false}/>
+                <PackageStickers isAdmin={false} />
               </TabPanel>
             </TabView>
           ) : (

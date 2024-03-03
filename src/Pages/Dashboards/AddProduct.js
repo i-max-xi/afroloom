@@ -17,7 +17,8 @@ import { Timestamp } from "firebase/firestore";
 import { ProgressSpinner } from "primereact/progressspinner";
 import { locationOptions } from "../../Data/SupplierAcceptedCities";
 import { InputTextarea } from "primereact/inputtextarea";
-import { descriptionLimit, titleLimit } from "../../utils/constants";
+import { descriptionLimit, genderOptions, titleLimit } from "../../utils/constants";
+import { Image } from "primereact/image";
 
 const AddProduct = ({ currentSeller, sellerCountry }) => {
   const [newProduct, setNewProduct] = useState({
@@ -37,7 +38,7 @@ const AddProduct = ({ currentSeller, sellerCountry }) => {
     discount: null, // Optional field
   });
 
-  const [extraImages, setExtraImages] = useState([]); // State variable to store extra images
+  const [extraImages, setExtraImages] = useState([]);
   const [isUploading, setIsUploading] = useState(false); // Initialize loading state
 
   const [detailedCategoryOptions, setDetailedCategoryOptions] = useState([]);
@@ -333,10 +334,7 @@ const AddProduct = ({ currentSeller, sellerCountry }) => {
   };
 
   // dropdown infos
-  const genderOptions = [
-    { label: "Male", value: "Male" },
-    { label: "Female", value: "Female" },
-  ];
+  
 
   return (
     <div>
@@ -409,9 +407,6 @@ const AddProduct = ({ currentSeller, sellerCountry }) => {
             options={detailedCategoryOptions}
             placeholder="select a more specific category..."
             onChange={handleDetailedCategoryChange}
-            // onChange={(e) =>
-            //   setNewProduct({ ...newProduct, detailedCategory: e.value })
-            // }
           />
         </div>
         <div className="p-field">
@@ -473,11 +468,12 @@ const AddProduct = ({ currentSeller, sellerCountry }) => {
             }
           />
         </div>
+
         <div className="p-field">
           <label className="text-warning" htmlFor="item">
             Main Product Image
           </label>
-          <span className="text-danger"> *</span>
+          <span className="text-danger"> * </span>
           <span>Strictly with white background and preferably png</span>
           <InputText
             required
@@ -486,12 +482,34 @@ const AddProduct = ({ currentSeller, sellerCountry }) => {
             accept="image/*"
             onChange={handleImageUpload}
           />
+          {newProduct.item && (
+            <div className="position-relative">
+              <Image
+                className="mx-2 rounded"
+                width={40}
+                height={40}
+                alt={newProduct.item}
+                src={newProduct.item}
+                preview
+              />
+              <Badge
+                value="X"
+                severity="danger"
+                className="p-badge-sm p-overlay-badge position-absolute top-0 end-0"
+                style={{ scale: "0.8", cursor: "pointer" }}
+                onClick={() => setNewProduct({ ...newProduct, item: "" })}
+              />
+            </div>
+          )}
         </div>
 
         <div className="p-field d-flex flex-column">
-          <label className="text-warning" htmlFor="extras">
-            Extra Images
-          </label>
+          <div>
+            <label className="text-warning" htmlFor="extras">
+              Extra Images
+            </label>
+            <span> Upload multiple</span>
+          </div>
 
           <div className="d-flex">
             <input
@@ -507,12 +525,13 @@ const AddProduct = ({ currentSeller, sellerCountry }) => {
                 <ul className="d-flex">
                   {extraImages.map((image, index) => (
                     <div key={index} className="position-relative">
-                      <img
+                      <Image
                         className="mx-2 rounded"
                         width={40}
                         height={40}
                         alt={image}
                         src={image}
+                        preview
                       />
                       <Badge
                         value="X"
