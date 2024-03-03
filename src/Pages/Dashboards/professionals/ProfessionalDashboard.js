@@ -72,8 +72,9 @@ const ProfessionalDashboard = () => {
         <CustomSideBar
           items={[
             { label: "Home" },
-            { label: "Complete Profile Info" },
-            { label: "Edit Profile Info" },
+            profileCompleted
+              ? { label: "Edit Profile Info" }
+              : { label: "Complete Profile Info" },
           ]}
           setActiveIndex={setActiveIndex}
           visible={visible}
@@ -90,18 +91,21 @@ const ProfessionalDashboard = () => {
                 currentProfessionalId={currentUser.id}
               />
             </TabPanel>
-            <TabPanel header="Complete Profile Info">
-              <UpdateInfo
-                currentUser={currentUser}
-                proffesionalType={professionalType}
-              />
-            </TabPanel>
-            <TabPanel header="Edit Profile Info">
-              <EditProfessionalProfile
-                currentUser={currentUser}
-                proffesionalType={professionalType}
-              />
-            </TabPanel>
+            {profileCompleted ? (
+              <TabPanel header="Edit Profile Info">
+                <EditProfessionalProfile
+                  currentUser={currentUser}
+                  proffesionalType={professionalType}
+                />
+              </TabPanel>
+            ) : (
+              <TabPanel header="Complete Profile Info">
+                <UpdateInfo
+                  currentUser={currentUser}
+                  proffesionalType={professionalType}
+                />
+              </TabPanel>
+            )}
           </TabView>
         </div>
       </div>

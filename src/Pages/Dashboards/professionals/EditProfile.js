@@ -29,6 +29,7 @@ import { useDispatch } from "react-redux";
 
 import { InputTextarea } from "primereact/inputtextarea";
 import countryArr from "../../../Data/CountryArr";
+import { Image } from "primereact/image";
 
 const EditProfessionalProfile = ({ currentUser, proffesionalType }) => {
   const [userInfo, setuserInfo] = useState(currentUser);
@@ -678,12 +679,20 @@ const EditProfessionalProfile = ({ currentUser, proffesionalType }) => {
                 <ul className="d-flex">
                   {extraImages.map((image, index) => (
                     <div key={index} className="position-relative">
-                      <img
+                      {/* <img
                         className="mx-2 rounded"
                         width={40}
                         height={40}
                         alt={image}
                         src={image}
+                      /> */}
+                      <Image
+                        className="mx-2 rounded"
+                        width={40}
+                        height={40}
+                        alt={image}
+                        src={image}
+                        preview
                       />
                       <Badge
                         value="X"
@@ -803,12 +812,20 @@ const EditProfessionalProfile = ({ currentUser, proffesionalType }) => {
                         <ul className="d-flex">
                           {residenceImages.map((image, index) => (
                             <div key={index} className="position-relative">
-                              <img
+                              {/* <img
                                 className="mx-2 rounded"
                                 width={40}
                                 height={40}
                                 alt={image}
                                 src={image}
+                              /> */}
+                              <Image
+                                className="mx-2 rounded"
+                                width={40}
+                                height={40}
+                                alt={image}
+                                src={image}
+                                preview
                               />
                               <Badge
                                 value="X"
