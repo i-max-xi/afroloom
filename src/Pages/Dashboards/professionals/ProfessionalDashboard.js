@@ -10,6 +10,7 @@ import CustomSideBar from "../CustomSidebar";
 import { Button } from "primereact/button";
 import { Badge } from "primereact/badge";
 import UpdateInfo from "./UpdateInfo";
+import EditProfessionalProfile from "./EditProfile";
 
 const ProfessionalDashboard = () => {
   const { professionalType } = useParams();
@@ -44,33 +45,36 @@ const ProfessionalDashboard = () => {
             size="large"
             severity="info"
           ></Badge>
-          <p className="fs-6">Your profile would only be listed after approval</p>
+          <p className="fs-6">
+            Your profile would only be listed after approval
+          </p>
         </div>
       );
   }, [professionalApproved, profileCompleted]);
 
   useEffect(() => {
-    window.scrollTo(0,0)
-  }, [])
-  
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <>
-      <Nav noCurrency={true}  />
+      <Nav noCurrency={true} />
       <div className="bg-white fs-3 p-3 text-bold d-flex justify-content-between">
         <div>
           Welcome <span style={{ color: "orange" }}>{welcomename}!</span>
         </div>
-        <div>
-          {StatusBadge}
-        </div>
+        <div>{StatusBadge}</div>
       </div>
       <div className="d-flex bg-white">
         <div className="side-bar-closed-container">
           <Button icon="pi pi-arrow-right" onClick={() => setVisible(true)} />
         </div>
         <CustomSideBar
-          items={[{ label: "Home" }, { label: "Update Profile Info" }]}
+          items={[
+            { label: "Home" },
+            { label: "Complete Profile Info" },
+            { label: "Edit Profile Info" },
+          ]}
           setActiveIndex={setActiveIndex}
           visible={visible}
           setVisible={setVisible}
@@ -86,8 +90,14 @@ const ProfessionalDashboard = () => {
                 currentProfessionalId={currentUser.id}
               />
             </TabPanel>
-            <TabPanel header="Update Profile Info">
+            <TabPanel header="Complete Profile Info">
               <UpdateInfo
+                currentUser={currentUser}
+                proffesionalType={professionalType}
+              />
+            </TabPanel>
+            <TabPanel header="Edit Profile Info">
+              <EditProfessionalProfile
                 currentUser={currentUser}
                 proffesionalType={professionalType}
               />
