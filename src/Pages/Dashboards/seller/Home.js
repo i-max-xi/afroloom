@@ -299,19 +299,19 @@ const Home = ({ currentSeller, editProfileVisible, setEditProfileVisible }) => {
                   id="description"
                   value={selectedProduct.description}
                   onChange={(e) => {
-                    if (e.target.value.length <= descriptionLimit) {
+                    // if (e.target.value.length <= descriptionLimit) {
                       setSelectedProduct({
                         ...selectedProduct,
                         description: e.target.value,
                       });
-                    }
+                    // }
                   }}
                   rows={5}
                   cols={30}
                 />
-                <span style={{ float: "right" }}>
+                {/* <span style={{ float: "right" }}>
                   {selectedProduct.description?.length}/{descriptionLimit}
-                </span>
+                </span> */}
               </div>
               <div className="p-field">
                 <label htmlFor="price">Price</label>
