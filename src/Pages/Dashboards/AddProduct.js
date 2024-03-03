@@ -17,8 +17,12 @@ import { Timestamp } from "firebase/firestore";
 import { ProgressSpinner } from "primereact/progressspinner";
 import { locationOptions } from "../../Data/SupplierAcceptedCities";
 import { InputTextarea } from "primereact/inputtextarea";
-import { descriptionLimit, genderOptions, titleLimit } from "../../utils/constants";
-import { Image } from "primereact/image";
+import {
+  descriptionLimit,
+  genderOptions,
+  titleLimit,
+} from "../../utils/constants";
+import { Image as ReactImage } from "primereact/image";
 
 const AddProduct = ({ currentSeller, sellerCountry }) => {
   const [newProduct, setNewProduct] = useState({
@@ -279,10 +283,31 @@ const AddProduct = ({ currentSeller, sellerCountry }) => {
       newProduct.weight === null ||
       newProduct.location === ""
     ) {
+      const missingFields = [];
+
+      if (newProduct.title === "") missingFields.push("Title");
+      if (newProduct.description === "") missingFields.push("Description");
+      if (newProduct.category === "") missingFields.push("Category");
+      if (newProduct.price === null) missingFields.push("Price");
+      if (newProduct.item === "") missingFields.push("Main Image");
+      if (newProduct.detailedCategory === "")
+        missingFields.push("Detailed Category");
+      if (newProduct.weight === null) missingFields.push("Weight");
+      if (newProduct.location === "") missingFields.push("Location");
+
+      const errorMessage = `The following fields are missing: ${missingFields.join(
+        ", "
+      )}`;
+
       toastRef.current.show({
         severity: "error",
-        summary: "Please fill in all the required fields.",
+        summary: "Please fill in the following required fields",
+        detail: errorMessage,
       });
+      // toastRef.current.show({
+      //   severity: "error",
+      //   summary: "Please fill in all the required fields.",
+      // });
       return;
     }
 
@@ -334,7 +359,6 @@ const AddProduct = ({ currentSeller, sellerCountry }) => {
   };
 
   // dropdown infos
-  
 
   return (
     <div>
@@ -343,7 +367,7 @@ const AddProduct = ({ currentSeller, sellerCountry }) => {
       <div className="p-fluid pr-5">
         <div className="p-field">
           <label className="text-warning" htmlFor="title">
-            Name of Product
+            Name / Title of Product
           </label>
           <span className="text-danger"> *</span>
           <InputText
@@ -474,7 +498,7 @@ const AddProduct = ({ currentSeller, sellerCountry }) => {
             Main Product Image
           </label>
           <span className="text-danger"> * </span>
-          <span>Strictly with white background and preferably png</span>
+          <span>Strictly with white background and png</span>
           <InputText
             required
             id="item"
@@ -482,7 +506,7 @@ const AddProduct = ({ currentSeller, sellerCountry }) => {
             accept="image/*"
             onChange={handleImageUpload}
           />
-          {newProduct.item && (
+          {/* {newProduct.item && (
             <div className="position-relative">
               <Image
                 className="mx-2 rounded"
@@ -500,7 +524,7 @@ const AddProduct = ({ currentSeller, sellerCountry }) => {
                 onClick={() => setNewProduct({ ...newProduct, item: "" })}
               />
             </div>
-          )}
+          )} */}
         </div>
 
         <div className="p-field d-flex flex-column">
@@ -525,7 +549,7 @@ const AddProduct = ({ currentSeller, sellerCountry }) => {
                 <ul className="d-flex">
                   {extraImages.map((image, index) => (
                     <div key={index} className="position-relative">
-                      <Image
+                      <ReactImage
                         className="mx-2 rounded"
                         width={40}
                         height={40}
