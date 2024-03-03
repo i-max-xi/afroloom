@@ -385,7 +385,6 @@ const Home = () => {
                 <label className="text-warning" htmlFor="gender">
                   Gender
                 </label>{" "}
-                <span>(Optional)</span>
                 <Dropdown
                   id="gender"
                   required
@@ -402,7 +401,6 @@ const Home = () => {
                 <label className="text-warning" htmlFor="size">
                   Size
                 </label>{" "}
-                <span>(Optional)</span>
                 <Dropdown
                   id="size"
                   required

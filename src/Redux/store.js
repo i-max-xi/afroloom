@@ -191,6 +191,12 @@ const userSlice = createSlice({
     setcurrentUser: (state, action) => {
       state.currentUser = action.payload;
     },
+    updateCurrentUser: (state, action) => {
+      state.currentUser = {
+        ...state.currentUser,
+        ...action.payload,
+      };
+    },
     updateOrders: (state, action) => {
       state.currentUser = {
         ...state.currentUser,
@@ -250,7 +256,7 @@ export const { addPhotographers } = allPhotographersSlice.actions;
 export const { addTourGuides } = allTourGuidesSlice.actions;
 export const { setCurrencySymbol } = currencySymbolSlice.actions;
 export const { addItem, removeItem, clearCart } = cartSlice.actions;
-export const { setSignedIn, setcurrentUser, setDashBoardPath, updateOrders } =
+export const { setSignedIn, setcurrentUser, setDashBoardPath, updateOrders, updateCurrentUser } =
   userSlice.actions;
 export const { set3DItemDetails, setItemDataSheet, clear3DInfo } =
   customized3DSlice.actions;

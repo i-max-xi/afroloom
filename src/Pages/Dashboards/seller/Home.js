@@ -18,8 +18,9 @@ import {
 import { InputTextarea } from "primereact/inputtextarea";
 import { Image } from "primereact/image";
 import { allCategory, categoryFilter } from "../../../Data/categoryList";
+import EditProfile from "../EditProfile";
 
-const Home = ({ currentSeller }) => {
+const Home = ({ currentSeller, editProfileVisible, setEditProfileVisible }) => {
   const toastRef = useRef(null);
 
   const [products, setProducts] = useState([]);
@@ -126,7 +127,6 @@ const Home = ({ currentSeller }) => {
       });
     }
   };
-
 
   const [detailedCategoryOptions, setDetailedCategoryOptions] = useState([]);
   const [sizeOptions, setSizeOptions] = useState([]);
@@ -251,6 +251,16 @@ const Home = ({ currentSeller }) => {
           )}
         />
       </DataTable>
+
+      <Dialog
+        header="Edit Profile"
+        visible={editProfileVisible}
+        onHide={() => setEditProfileVisible(false)}
+        className="col-12 col-sm-6"
+        dismissableMask={true}
+      >
+        <EditProfile toastRef={toastRef} setEditProfileVisible={setEditProfileVisible}/>
+      </Dialog>
 
       <Dialog
         header="Edit Product"
@@ -384,7 +394,6 @@ const Home = ({ currentSeller }) => {
                 <label className="text-warning" htmlFor="gender">
                   Gender
                 </label>{" "}
-                <span>(Optional)</span>
                 <Dropdown
                   id="gender"
                   required
@@ -401,7 +410,6 @@ const Home = ({ currentSeller }) => {
                 <label className="text-warning" htmlFor="size">
                   Size
                 </label>{" "}
-                <span>(Optional)</span>
                 <Dropdown
                   id="size"
                   required
