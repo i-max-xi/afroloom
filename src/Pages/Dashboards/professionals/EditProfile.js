@@ -28,6 +28,7 @@ import { setcurrentUser } from "../../../Redux/store";
 import { useDispatch } from "react-redux";
 
 import { InputTextarea } from "primereact/inputtextarea";
+import countryArr from "../../../Data/CountryArr";
 
 const EditProfessionalProfile = ({ currentUser, proffesionalType }) => {
   const [userInfo, setuserInfo] = useState(currentUser);
@@ -301,6 +302,89 @@ const EditProfessionalProfile = ({ currentUser, proffesionalType }) => {
             />
           </div>
         )}
+        <div className="p-field">
+          <label className="text-warning" htmlFor="upperprice">
+            Personal / Brand name
+          </label>
+          <InputText
+            required
+            type="text"
+            id="name"
+            value={userInfo.name}
+            onChange={(e) =>
+              setuserInfo({
+                ...userInfo,
+                name: e.target.value,
+              })
+            }
+          />
+        </div>
+        <div className="p-field">
+          <label className="text-warning" htmlFor="age">
+            Country of Origin
+          </label>
+          <Dropdown
+            id="country"
+            required
+            value={userInfo.country}
+            options={countryArr.map((item) => ({
+              label: item,
+              value: item,
+            }))}
+            onChange={(e) => setuserInfo({ ...userInfo, country: e.value })}
+          />
+        </div>
+        <div className="p-field">
+          <label className="text-warning" htmlFor="upperprice">
+            City
+          </label>
+          <InputText
+            required
+            type="text"
+            id="city"
+            value={userInfo.city}
+            onChange={(e) =>
+              setuserInfo({
+                ...userInfo,
+                city: e.target.value,
+              })
+            }
+          />
+        </div>
+        <div className="p-field">
+          <label className="text-warning" htmlFor="upperprice">
+            Email
+          </label>
+          <InputText
+            required
+            type="text"
+            id="email"
+            value={userInfo.email}
+            onChange={(e) =>
+              setuserInfo({
+                ...userInfo,
+                email: e.target.value,
+              })
+            }
+          />
+        </div>
+        <div className="p-field">
+          <label className="text-warning" htmlFor="upperprice">
+            Phone Number
+          </label>
+          <InputText
+            required
+            type="text"
+            id="name"
+            value={userInfo.number}
+            onChange={(e) =>
+              setuserInfo({
+                ...userInfo,
+                number: e.target.value,
+              })
+            }
+          />
+        </div>
         <div className="p-field d-flex flex-column">
           <label className="text-warning" htmlFor="extras">
             Languages spoken
