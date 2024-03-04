@@ -9,7 +9,6 @@ function TextureItem({
   currencySymbol,
   currencyFactor,
   subTextureDescriptions,
-  setSelectedTexture,
   setHideText,
   Title,
   textureIndex,

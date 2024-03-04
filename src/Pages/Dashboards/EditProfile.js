@@ -32,7 +32,7 @@ const EditProfile = ({toastRef, setEditProfileVisible}) => {
           severity: "success",
           summary: `Information updated successfully.`,
         });
-        updateCurrentUser(updatedUser)
+        updateCurrentUser(Data)
         setEditProfileVisible(false);
       }
     } catch (error) {

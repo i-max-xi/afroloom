@@ -236,10 +236,10 @@ h1 {
   /* transition: all 0.3s ease; */
 }
 
-.color-button:hover {
+/* .color-button:hover {
   transform: scale(1.1);
    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-}
+} */
 
 .imprint-text-color-button {
   position: relative;

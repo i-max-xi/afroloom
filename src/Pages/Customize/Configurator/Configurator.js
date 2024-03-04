@@ -153,6 +153,12 @@ const Configurator = () => {
   };
 
   const handleColorChange = (newColor) => {
+    if (selectedPart === "all") {
+      state.texture = Array(selectedClothing.myNode.length).fill(null);
+      state.color = Array(selectedClothing.myNode.length).fill(newColor);
+      setSelectedPrintOn(newColor);
+      return;
+    }
     state.color[selectedPart] = newColor;
     state.texture[selectedPart] = null;
     setSelectedPrintOn(newColor);
@@ -172,6 +178,12 @@ const Configurator = () => {
   ).toFixed(2);
 
   const handleTextureChange = (newTexture) => {
+    if (selectedPart === "all") {
+      state.texture = Array(selectedClothing.myNode.length).fill(newTexture);
+      state.color = Array(selectedClothing.myNode.length).fill(null);
+      setSelectedPrintOn(newTexture);
+      return;
+    }
     if (selectedPart !== null) {
       state.texture[selectedPart] = newTexture;
       state.color[selectedPart] = null;
@@ -296,6 +308,11 @@ const Configurator = () => {
   // customer height
   const [height, setHeight] = useState("");
 
+  const handleAllPartsClick = () => {
+    // Select all parts when the "All" button is clicked
+    setSelectedPart("all");
+  };
+
   return (
     <>
       <Nav />
@@ -367,6 +384,14 @@ const Configurator = () => {
               <div className="left-panel rounded shadow">
                 <h5>Select Part</h5>
                 <div className="select-part-container">
+                  <button
+                    className={`size-button btn btn-outline-dark ${
+                      selectedPart === "all" ? "selected" : ""
+                    }`}
+                    onClick={handleAllPartsClick}
+                  >
+                    All
+                  </button>
                   {selectedClothing.myNode.map((nodeName, index) => (
                     <button
                       key={index}
@@ -522,7 +547,7 @@ const Configurator = () => {
                             setHideText={setHideText}
                             Title="batik"
                             selectedTexture={selectedTexture}
-                            setSelectedTexture={setSelectedTexture} // Pass setSelectedTexture as a prop
+                            // setSelectedTexture={setSelectedTexture}
                             handleTextureChange={handleTextureChange}
                             currencySymbol={currencySymbol}
                             currencyFactor={currencyFactor}
@@ -684,7 +709,6 @@ const Configurator = () => {
                         )}
                       />
                     </div>
-                    
                   </div>
                   {/*<div className="texture-row">
                     <div className="texture-category">

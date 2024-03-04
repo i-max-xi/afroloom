@@ -43,6 +43,11 @@ const Home = ({ currentSeller, editProfileVisible, setEditProfileVisible }) => {
         data.id = doc.id;
         return data;
       });
+      productData.sort((a, b) => {
+        const createdAtTimestampA = a?.createdAt?.seconds || 0;
+        const createdAtTimestampB = b?.createdAt?.seconds || 0;
+        return createdAtTimestampB - createdAtTimestampA;
+      });
       setProducts(productData);
     } catch (error) {
       toastRef.current.show({
@@ -85,7 +90,10 @@ const Home = ({ currentSeller, editProfileVisible, setEditProfileVisible }) => {
   };
 
   const handleEditSubmit = async (e) => {
+    console.log("fired")
+
     e.preventDefault(); // Prevent page refresh
+
 
     try {
       if (selectedProduct) {
@@ -103,12 +111,14 @@ const Home = ({ currentSeller, editProfileVisible, setEditProfileVisible }) => {
         });
         loadProducts();
         setEditDialogVisible(false);
+        console.log("success")
       }
     } catch (error) {
       toastRef.current.show({
         severity: "error",
         summary: `Error editing product: ${error}`,
       });
+      console.log("error")
     }
   };
 
@@ -259,7 +269,10 @@ const Home = ({ currentSeller, editProfileVisible, setEditProfileVisible }) => {
         className="col-12 col-sm-6"
         dismissableMask={true}
       >
-        <EditProfile toastRef={toastRef} setEditProfileVisible={setEditProfileVisible}/>
+        <EditProfile
+          toastRef={toastRef}
+          setEditProfileVisible={setEditProfileVisible}
+        />
       </Dialog>
 
       <Dialog
@@ -300,10 +313,10 @@ const Home = ({ currentSeller, editProfileVisible, setEditProfileVisible }) => {
                   value={selectedProduct.description}
                   onChange={(e) => {
                     // if (e.target.value.length <= descriptionLimit) {
-                      setSelectedProduct({
-                        ...selectedProduct,
-                        description: e.target.value,
-                      });
+                    setSelectedProduct({
+                      ...selectedProduct,
+                      description: e.target.value,
+                    });
                     // }
                   }}
                   rows={5}
@@ -320,12 +333,13 @@ const Home = ({ currentSeller, editProfileVisible, setEditProfileVisible }) => {
                   type="number"
                   value={selectedProduct.price}
                   placeholder="Ghana Cedi (₵) equivalent value... 10"
-                  onChange={(e) =>
+                  onChange={(e) => {
                     setSelectedProduct({
                       ...selectedProduct,
                       price: parseFloat(e.target.value), // Convert input to a floating-point number
-                    })
-                  }
+                    });
+                    console.log(e.target.value);
+                  }}
                   className="p-inputtext"
                 />
               </div>
