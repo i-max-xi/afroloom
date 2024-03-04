@@ -1,6 +1,6 @@
 import { Dropdown } from "primereact/dropdown";
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import countryArr from "../../Data/CountryArr";
 import { Button } from "primereact/button";
 import { categoryFilter } from "../../Data/categoryList";
@@ -10,6 +10,8 @@ import { updateCurrentUser } from "../../Redux/store";
 const EditProfile = ({toastRef, setEditProfileVisible}) => {
   const currentUser = useSelector((state) => state.user.currentUser);
 
+  const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch()
   const [updatedUser, setUpdatedUser] = useState({
     companyName: currentUser.companyName,
     email: currentUser.email,
@@ -19,6 +21,7 @@ const EditProfile = ({toastRef, setEditProfileVisible}) => {
 
   const handleEditSubmit = async (e) => {
     e.preventDefault(); // Prevent page refresh
+    setLoading(true);
 
     const Data = {
         ...updatedUser,
@@ -32,7 +35,7 @@ const EditProfile = ({toastRef, setEditProfileVisible}) => {
           severity: "success",
           summary: `Information updated successfully.`,
         });
-        updateCurrentUser(Data)
+        dispatch(updateCurrentUser(Data));
         setEditProfileVisible(false);
       }
     } catch (error) {
@@ -41,6 +44,7 @@ const EditProfile = ({toastRef, setEditProfileVisible}) => {
         summary: `Error editing your info: ${error}`,
       });
     }
+    setLoading(false)
   };
 
   const [supplyCategories, setSupplyCategories] = useState([
@@ -172,6 +176,7 @@ const EditProfile = ({toastRef, setEditProfileVisible}) => {
           label="Save Changes"
           type="submit"
           className="p-button p-component"
+          loading={loading}
         />
       </div>
     </form>
