@@ -547,7 +547,7 @@ const Configurator = () => {
                             setHideText={setHideText}
                             Title="batik"
                             selectedTexture={selectedTexture}
-                            // setSelectedTexture={setSelectedTexture}
+                            setSelectedTexture={setSelectedTexture}
                             handleTextureChange={handleTextureChange}
                             currencySymbol={currencySymbol}
                             currencyFactor={currencyFactor}
