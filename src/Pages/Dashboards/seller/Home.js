@@ -32,6 +32,9 @@ const Home = ({ currentSeller, editProfileVisible, setEditProfileVisible }) => {
   const currencySymbol = useSelector((state) => state.currencySymbol.symbol);
   const currencyFactor = useSelector((state) => state.currencySymbol.factor);
 
+  const [editIsLoading, setEditIsLoading] = useState(false);
+
+
   const loadProducts = async () => {
     try {
       const response = await ProductsDataService.getProductByField(
@@ -90,9 +93,9 @@ const Home = ({ currentSeller, editProfileVisible, setEditProfileVisible }) => {
   };
 
   const handleEditSubmit = async (e) => {
-    console.log("fired")
 
     e.preventDefault(); // Prevent page refresh
+    setEditIsLoading(true);
 
 
     try {
@@ -111,15 +114,14 @@ const Home = ({ currentSeller, editProfileVisible, setEditProfileVisible }) => {
         });
         loadProducts();
         setEditDialogVisible(false);
-        console.log("success")
       }
     } catch (error) {
       toastRef.current.show({
         severity: "error",
         summary: `Error editing product: ${error}`,
       });
-      console.log("error")
     }
+    setEditIsLoading(false);
   };
 
   const deleteProduct = async (id) => {
@@ -283,7 +285,7 @@ const Home = ({ currentSeller, editProfileVisible, setEditProfileVisible }) => {
         dismissableMask={true}
       >
         {selectedProduct && (
-          <form onSubmit={handleEditSubmit}>
+          <form>
             <div className="p-fluid">
               <div className="p-field">
                 <label htmlFor="title">Title</label>
@@ -459,6 +461,8 @@ const Home = ({ currentSeller, editProfileVisible, setEditProfileVisible }) => {
                 label="Save Changes"
                 type="submit"
                 className="p-button p-component"
+                loading={editIsLoading}
+                onClick={handleEditSubmit}
               />
             </div>
           </form>

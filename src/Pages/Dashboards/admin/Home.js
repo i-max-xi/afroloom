@@ -24,9 +24,13 @@ const Home = () => {
   const currencySymbol = useSelector((state) => state.currencySymbol.symbol);
   const currencyFactor = useSelector((state) => state.currencySymbol.factor);
 
+
   const [products, setProducts] = useState([]);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [editDialogVisible, setEditDialogVisible] = useState(false);
+
+  const [editIsLoading, setEditIsLoading] = useState(false);
+
 
   const [filteredProducts, setFilteredProducts] = useState([]); // For filtered products
   const [searchTerm, setSearchTerm] = useState(""); // For search input
@@ -34,6 +38,8 @@ const Home = () => {
   useEffect(() => {
     loadProducts();
   }, []);
+
+
 
   const handlePageChange = (event) => {
     window.scrollTo(0, 0);
@@ -86,9 +92,8 @@ const Home = () => {
   };
 
   const handleEditSubmit = async (e) => {
-    console.log("fired");
-
     e.preventDefault(); // Prevent page refresh
+    setEditIsLoading(true);
 
     try {
       if (selectedProduct) {
@@ -113,6 +118,7 @@ const Home = () => {
         summary: `Error editing product: ${error}`,
       });
     }
+    setEditIsLoading(false)
   };
 
   const deleteProduct = async (id) => {
@@ -266,7 +272,7 @@ const Home = () => {
         dismissableMask={true}
       >
         {selectedProduct && (
-          <form onSubmit={handleEditSubmit}>
+          <form>
             <div className="p-fluid">
               <div className="p-field">
                 <label htmlFor="title">Title</label>
@@ -335,7 +341,7 @@ const Home = () => {
                   onChange={(e) =>
                     setSelectedProduct({
                       ...selectedProduct,
-                      discount: parseFloat(e.target.value),
+                      discount: parseInt(e.target.value),
                     })
                   }
                   className="p-inputtext"
@@ -441,6 +447,8 @@ const Home = () => {
                 label="Save Changes"
                 type="submit"
                 className="p-button p-component"
+                onClick={handleEditSubmit}
+                loading={editIsLoading}
               />
             </div>
           </form>
