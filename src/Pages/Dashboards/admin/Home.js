@@ -48,6 +48,11 @@ const Home = () => {
         data.id = doc.id;
         productData.push(data);
       });
+      productData.sort((a, b) => {
+        const createdAtTimestampA = a?.createdAt?.seconds || 0;
+        const createdAtTimestampB = b?.createdAt?.seconds || 0;
+        return createdAtTimestampB - createdAtTimestampA;
+      });
       setProducts(productData);
     } catch (error) {
       toastRef.current.show({
@@ -81,7 +86,7 @@ const Home = () => {
   };
 
   const handleEditSubmit = async (e) => {
-    console.log({ selectedProduct });
+    console.log("fired");
 
     e.preventDefault(); // Prevent page refresh
 
