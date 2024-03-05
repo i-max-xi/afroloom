@@ -14,6 +14,7 @@ import { Toast } from "primereact/toast";
 import ProductsDataService from "../../Services/products.services";
 import { ProgressSpinner } from "primereact/progressspinner";
 import { ProfessionalsDbEnum } from "../../Data/professionalsList";
+import { InputText } from "primereact/inputtext";
 
 const SignIn = () => {
   const dispatch = useDispatch();
@@ -71,10 +72,8 @@ const SignIn = () => {
           );
           break;
         case "photographer":
-          const photographerInfo = await ProductsDataService.getPhotographerByField(
-            "id",
-            user.uid
-          );
+          const photographerInfo =
+            await ProductsDataService.getPhotographerByField("id", user.uid);
           userInfo = photographerInfo.data();
           dispatch(
             setDashBoardPath(
@@ -154,10 +153,13 @@ const SignIn = () => {
       toastRef.current.show({
         severity: "error",
         summary: `Sign in failed. Please try again`,
-        detail: "Perhaps you checked the wrong category"
+        detail: "Perhaps you checked the wrong category",
       });
     }
   };
+
+  const [showPassword, setShowPassword] = useState(false);
+
 
   return (
     <>
@@ -192,13 +194,27 @@ const SignIn = () => {
           </div>
           <div className="form-group mt-3">
             <label htmlFor="password">Password:</label>
-            <input
+            {/* <input
               type="password"
               className="form-control"
               id="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-            />
+            /> */}
+            
+            <span className="p-input-icon-right w-100">
+              <InputText
+                type={showPassword ? "text" : "password"}
+                className="form-control"
+                id="password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+              <i
+                className={`pi ${showPassword ? "pi-eye-slash" : "pi-eye"}`}
+                onClick={() => setShowPassword(!showPassword)}
+              />
+            </span>
           </div>
           <div className="identity-container">
             <label htmlFor="identity">I am a:</label>

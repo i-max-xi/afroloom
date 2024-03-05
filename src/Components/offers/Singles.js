@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { isMobile } from "../../utils/constants";
 
 const OfferItem = ({ title, imageUrl, linkTo, videoUrl, itemID, action }) => {
   return (
@@ -22,7 +23,13 @@ const OfferItem = ({ title, imageUrl, linkTo, videoUrl, itemID, action }) => {
           to={`/product/${itemID}`}
           className="d-flex justify-content-center"
         >
-          <img src={imageUrl} alt={title} width="92%" />
+          <img
+            src={imageUrl}
+            alt={title}
+            width="100%"
+            height="250rem"
+            style={{ objectFit: 'cover',  }}
+          />
         </Link>
       ) : (
         <Link to={linkTo} className="d-flex justify-content-center">

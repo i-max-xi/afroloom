@@ -184,13 +184,13 @@ const ItemDetail = ({ match }) => {
                 alt={product.title}
                 width="100%"
                 height="400rem"
-                style={{objectFit: "cover"}}
+                style={{objectFit: isMobile ? "cover": "scale-down"}}
                 className="main-product-image"
               />
             </div>
           </div>
           <div className="col-md-6 product-info">
-            <h3 className="mb-3 product-title">{product.title}</h3>
+            <h3 className="mb-3 product-title" style={{textTransform: "capitalize"}}>{product.title}</h3>
             <hr />
             <div className="d-flex mb-3">{stars}</div>
 

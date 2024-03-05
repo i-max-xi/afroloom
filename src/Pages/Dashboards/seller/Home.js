@@ -107,6 +107,10 @@ const Home = ({ currentSeller, editProfileVisible, setEditProfileVisible }) => {
           weight: selectedProduct.weight,
           description: selectedProduct.description,
           location: selectedProduct.location,
+          category: selectedProduct.category,
+          detailedCategory: selectedProduct.detailedCategory,
+          size: selectedProduct.size,
+          gender: selectedProduct.gender,
         });
         toastRef.current.show({
           severity: "success",
@@ -221,7 +225,7 @@ const Home = ({ currentSeller, editProfileVisible, setEditProfileVisible }) => {
         value={filteredProducts.length !== 0 ? filteredProducts : products}
         paginator
         rows={4}
-        onPage={handlePageChange}
+        // onPage={handlePageChange}
       >
         <Column
           field="item"
@@ -338,7 +342,7 @@ const Home = ({ currentSeller, editProfileVisible, setEditProfileVisible }) => {
                   onChange={(e) => {
                     setSelectedProduct({
                       ...selectedProduct,
-                      price: parseFloat(e.target.value), // Convert input to a floating-point number
+                      price: parseInt(e.target.value), // Convert input to a floating-point number
                     });
                     console.log(e.target.value);
                   }}
@@ -355,7 +359,7 @@ const Home = ({ currentSeller, editProfileVisible, setEditProfileVisible }) => {
                   onChange={(e) =>
                     setSelectedProduct({
                       ...selectedProduct,
-                      discount: parseFloat(e.target.value),
+                      discount: parseInt(e.target.value),
                     })
                   }
                   className="p-inputtext"

@@ -24,13 +24,11 @@ const Home = () => {
   const currencySymbol = useSelector((state) => state.currencySymbol.symbol);
   const currencyFactor = useSelector((state) => state.currencySymbol.factor);
 
-
   const [products, setProducts] = useState([]);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [editDialogVisible, setEditDialogVisible] = useState(false);
 
   const [editIsLoading, setEditIsLoading] = useState(false);
-
 
   const [filteredProducts, setFilteredProducts] = useState([]); // For filtered products
   const [searchTerm, setSearchTerm] = useState(""); // For search input
@@ -39,11 +37,9 @@ const Home = () => {
     loadProducts();
   }, []);
 
-
-
-  const handlePageChange = (event) => {
+  useEffect(() => {
     window.scrollTo(0, 0);
-  };
+  }, []);
 
   const loadProducts = async () => {
     try {
@@ -104,6 +100,10 @@ const Home = () => {
           weight: selectedProduct.weight,
           description: selectedProduct.description,
           location: selectedProduct.location,
+          category: selectedProduct.category,
+          detailedCategory: selectedProduct.detailedCategory,
+          size: selectedProduct.size,
+          gender: selectedProduct.gender,
         });
         toastRef.current.show({
           severity: "success",
@@ -118,7 +118,7 @@ const Home = () => {
         summary: `Error editing product: ${error}`,
       });
     }
-    setEditIsLoading(false)
+    setEditIsLoading(false);
   };
 
   const deleteProduct = async (id) => {
@@ -140,6 +140,20 @@ const Home = () => {
 
   const [detailedCategoryOptions, setDetailedCategoryOptions] = useState([]);
   const [sizeOptions, setSizeOptions] = useState([]);
+
+  // useEffect(() => {
+  //   // const productFilter = allCategory
+  //   //   .find((category) => category.name ===)
+  //   //   .filters.find((filter) => filter.name = selectedProduct.category== "Product");
+  //   // const detailedCategoryOptions = productFilter.options;
+  //   // setDetailedCategoryOptions(detailedCategoryOptions);
+  //   toastRef.current.show({
+  //     severity: "info",
+  //     summary: "it works",
+  //     detail:  selectedProduct.title,
+  //   });
+  // }, [selectedProduct])
+  
 
   const handleCategoryChange = (e) => {
     const selectedCategory = e.value;
@@ -221,7 +235,7 @@ const Home = () => {
         paginator
         rows={10}
         className="data-table"
-        onPage={handlePageChange}
+        // onPage={handlePageChange}
       >
         <Column
           field="item"
