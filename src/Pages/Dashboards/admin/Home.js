@@ -100,6 +100,10 @@ const Home = () => {
           weight: selectedProduct.weight,
           description: selectedProduct.description,
           location: selectedProduct.location,
+          category: selectedProduct.category,
+          detailedCategory: selectedProduct.detailedCategory,
+          size: selectedProduct.size,
+          gender: selectedProduct.gender,
         });
         toastRef.current.show({
           severity: "success",
