@@ -1,44 +1,43 @@
 // const book = require("../Assets/vid/book.jpg");
 const herbal = require("../Assets/vid/herbal.jpg");
 
-
 export const categoryArr = [
   {
     name: "Accessories",
     link: "/category/Accessories",
-    variant: "black"
+    variant: "black",
   },
   {
     name: "Clothing",
     link: "/category/Clothing",
-    variant: "black"
+    variant: "black",
   },
   {
     name: "Footwear",
     link: "/category/Footwear",
-    variant: "black"
+    variant: "black",
   },
   {
     name: "Furniture",
     link: "/category/Furniture",
-    variant: "black"
+    variant: "black",
   },
   {
     name: "Herbal and Beauty Supplies",
     link: "",
-    variant: "black"
+    variant: "black",
   },
 
   {
     name: "Textile",
     link: "/category/Textiles",
-    variant: "black"
+    variant: "black",
   },
 
   {
     name: "See All",
     link: "/category-page",
-    variant: "warning"
+    variant: "warning",
   },
 ];
 
@@ -46,56 +45,54 @@ export const mobileCategoryArr = [
   {
     name: "Accessories",
     link: "/category/Accessories",
-    variant: "black"
+    variant: "black",
   },
   {
     name: "Basketry",
     link: "/category/Basketry",
-    variant: "black"
+    variant: "black",
   },
   {
     name: "Books",
     link: "/category/Books",
-    variant: "black"
+    variant: "black",
   },
   {
     name: "Clothing",
     link: "/category/Clothing",
-    variant: "black"
+    variant: "black",
   },
   {
     name: "Footwear",
     link: "/category/Footwear",
-    variant: "black"
+    variant: "black",
   },
   {
     name: "Furniture",
     link: "/category/Furniture",
-    variant: "black"
+    variant: "black",
   },
   {
     name: "Handicrafts",
     link: "/category/Handicrafts",
-    variant: "black"
+    variant: "black",
   },
   {
     name: "Herbal and Beauty Supplies",
     link: "/category/Herbal and Beauty Supplies",
-    variant: "black"
+    variant: "black",
   },
   {
     name: "Pottery",
     link: "/category/Pottery",
-    variant: "black"
+    variant: "black",
   },
 
   {
     name: "Textiles",
     link: "/category/Textiles",
-    variant: "black"
+    variant: "black",
   },
-
-
 ];
 
 export const categoryFilter = [
@@ -112,7 +109,6 @@ export const categoryFilter = [
 ];
 
 export const allCategory = [
-
   {
     id: "2000",
     name: "Accessories",
@@ -141,7 +137,7 @@ export const allCategory = [
           "Purse",
           "Wallet",
           "Waist Jewelry",
-          "others"
+          "others",
         ],
         maleOptions: [
           "Bag",
@@ -155,7 +151,7 @@ export const allCategory = [
           "Sash",
           "Tie",
           "Wallet",
-          "Others"
+          "Others",
         ],
         femaleOptions: [
           "Anklet",
@@ -172,7 +168,7 @@ export const allCategory = [
           "Purse",
           "Wallet",
           "Waist Jewelry",
-          "others"
+          "others",
         ],
       },
 
@@ -198,8 +194,18 @@ export const allCategory = [
           "2X-Large",
         ],
         braOptions: [
-          "28", "30", "32", "34", "36", "38", "40", "42", "44", "46", "48"
-        ]
+          "28",
+          "30",
+          "32",
+          "34",
+          "36",
+          "38",
+          "40",
+          "42",
+          "44",
+          "46",
+          "48",
+        ],
       },
     ],
     rating: "5",
@@ -339,16 +345,7 @@ export const allCategory = [
 
       {
         name: "Size",
-        options: [
-          "35",
-          "36",
-          "37",
-          "38",
-          "39",
-          "40",
-          "41",
-          "42",
-        ],
+        options: ["35", "36", "37", "38", "39", "40", "41", "42"],
       },
     ],
     rating: "5",
@@ -361,7 +358,23 @@ export const allCategory = [
     filters: [
       {
         name: "Product",
-        options: ["Art Doll", "Mask and Wall Decor", "Wall Painting"],
+        options: [
+          "Art Doll",
+          "Mask and Wall Decor",
+          "Wall Painting",
+          "Bow",
+          "Amulet",
+          "Hand Fan",
+          "Stool",
+          "Table",
+          "Mirror",
+          "Bowl",
+          "Key Holder",
+          "Drum",
+          "Pen",
+          "Table Mat",
+          "Short Sword",
+        ],
       },
     ],
     rating: "4",
@@ -421,12 +434,12 @@ export const allCategory = [
           "Cookbooks",
           "Mystery",
           "Academic Books",
-          "Religious Books"
+          "Religious Books",
         ],
-        
       },
     ],
     rating: "4",
-    image: "https://eagle.co.ug/wp-content/uploads/2022/08/Best-Africa-Books-Feature-Image-1-1.png",
+    image:
+      "https://eagle.co.ug/wp-content/uploads/2022/08/Best-Africa-Books-Feature-Image-1-1.png",
   },
 ];

@@ -31,16 +31,18 @@ const SellerDashboard = () => {
       <Nav noCurrency={true} />
       <div className="d-flex justify-content-between bg-white fs-3 p-3 text-bold">
         <div>
-          Welcome <span style={{ color: "orange" }}>{welcomename}!</span>{" "}
+          Welcome <span style={{ color: "orange", textTransform: "capitalize" }}>{welcomename}!</span>
         </div>
-        <div>
-          <button
-            onClick={() => setEditDialogVisible(true)}
-            className="btn btn-info text-white"
-          >
-            Edit Profile
-          </button>
-        </div>
+        {activeIndex === 0 && (
+          <div>
+            <button
+              onClick={() => setEditDialogVisible(true)}
+              className="btn btn-info text-white"
+            >
+              Edit Profile
+            </button>
+          </div>
+        )}
       </div>
       <div className="d-flex bg-white">
         <div className="side-bar-closed-container">
@@ -63,7 +65,11 @@ const SellerDashboard = () => {
               onTabChange={(e) => setActiveIndex(e.index)}
             >
               <TabPanel>
-                <Home editProfileVisible={editDialogVisible} setEditProfileVisible={setEditDialogVisible} currentSeller={sellerCompany} />
+                <Home
+                  editProfileVisible={editDialogVisible}
+                  setEditProfileVisible={setEditDialogVisible}
+                  currentSeller={sellerCompany}
+                />
               </TabPanel>
               <TabPanel header="Add A New Product">
                 <AddProduct

@@ -23,7 +23,7 @@ const UserDashboard = () => {
     <>
       <Nav noCurrency={true} />
       <div className="bg-white fs-3 p-3 text-bold">
-        Welcome <span style={{ color: "orange" }}>{welcomename}!</span>{" "}
+        Welcome <span style={{ color: "orange", textTransform: "capitalize" }}>{welcomename}!</span>
       </div>
       <div className="d-flex bg-white">
         <div className="side-bar-closed-container">
