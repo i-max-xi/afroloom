@@ -11,6 +11,7 @@ import "primeicons/primeicons.css";
 import { ProgressSpinner } from "primereact/progressspinner";
 import countryArr from "../../Data/CountryArr";
 import { isEmpty } from "../../utils/functions";
+import { InputText } from "primereact/inputtext";
 
 const Supplier = () => {
   const navigate = useNavigate();
@@ -27,7 +28,15 @@ const Supplier = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const toastRef = useRef(null);
 
-  const notCompleted= isEmpty(companyName) || isEmpty(firstName) || isEmpty(lastName) || isEmpty(country) || isEmpty(email) || isEmpty(password) || isEmpty(number) || isEmpty(confirmPassword);
+  const notCompleted =
+    isEmpty(companyName) ||
+    isEmpty(firstName) ||
+    isEmpty(lastName) ||
+    isEmpty(country) ||
+    isEmpty(email) ||
+    isEmpty(password) ||
+    isEmpty(number) ||
+    isEmpty(confirmPassword);
 
   // Supply categories
   const [supplyCategories, setSupplyCategories] = useState([""]);
@@ -119,6 +128,9 @@ const Supplier = () => {
       setIsLoading(false); // Always reset loading state, regardless of success or failure
     }
   };
+
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   return (
     <div className="bg-white">
@@ -240,25 +252,53 @@ const Supplier = () => {
 
             <div className="form-group">
               <label htmlFor="password">Password:</label>
-              <input
+              {/* <input
                 type="password"
                 className="form-control"
                 id="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-              />
+              /> */}
+              <span className="p-input-icon-right w-100">
+                <InputText
+                  type={showPassword ? "text" : "password"}
+                  className="form-control"
+                  id="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+                <i
+                  className={`pi ${showPassword ? "pi-eye-slash" : "pi-eye"}`}
+                  onClick={() => setShowPassword(!showPassword)}
+                />
+              </span>
             </div>
 
             <div className="form-group">
               <label htmlFor="number">Confirm Password:</label>
-              <input
+              {/* <input
                 type="password"
                 required
                 className="form-control"
                 id="confirmPassword"
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
-              />
+              /> */}
+              <span className="p-input-icon-right w-100">
+                <InputText
+                  type={showConfirmPassword ? "text" : "password"}
+                  className="form-control"
+                  id="confirmPassword"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                />
+                <i
+                  className={`pi ${
+                    showConfirmPassword ? "pi-eye-slash" : "pi-eye"
+                  }`}
+                  onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                />
+              </span>
             </div>
 
             <p className="mt-3">

@@ -193,6 +193,9 @@ const ProfessionalSignUp = () => {
     }
   };
 
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
   return (
     <div className="bg-white">
       <Nav />
@@ -215,7 +218,8 @@ const ProfessionalSignUp = () => {
               />
             </div>
             <div className="form-group">
-              <label htmlFor="company name">Upload Profile Picture:</label> <br />
+              <label htmlFor="company name">Upload Profile Picture:</label>{" "}
+              <br />
               <InputText
                 required
                 id="item"
@@ -305,25 +309,53 @@ const ProfessionalSignUp = () => {
 
             <div className="form-group">
               <label htmlFor="password">Password:</label>
-              <input
+              {/* <input
                 type="password"
                 className="form-control"
                 id="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-              />
+              /> */}
+              <span className="p-input-icon-right w-100">
+                <InputText
+                  type={showPassword ? "text" : "password"}
+                  className="form-control"
+                  id="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+                <i
+                  className={`pi ${showPassword ? "pi-eye-slash" : "pi-eye"}`}
+                  onClick={() => setShowPassword(!showPassword)}
+                />
+              </span>
             </div>
 
             <div className="form-group">
               <label htmlFor="number">Confirm Password:</label>
-              <input
+              {/* <input
                 type="password"
                 required
                 className="form-control"
                 id="confirmPassword"
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
-              />
+              /> */}
+              <span className="p-input-icon-right w-100">
+                <InputText
+                  type={showConfirmPassword ? "text" : "password"}
+                  className="form-control"
+                  id="confirmPassword"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                />
+                <i
+                  className={`pi ${
+                    showConfirmPassword ? "pi-eye-slash" : "pi-eye"
+                  }`}
+                  onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                />
+              </span>
             </div>
 
             <p className="mt-3">
