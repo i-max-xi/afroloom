@@ -175,10 +175,10 @@ const AddProduct = ({ currentSeller, sellerCountry }) => {
 
   const handleDeleteImage = async (index) => {
     try {
-      const imageName = extraImages[index].split("%2F").pop().split("?")[0];
+      const imageName = extraImages[index];
 
       // Create a reference to the file to delete
-      const imageRef = ref(storage, `images/${imageName}`);
+      const imageRef = ref(storage, imageName);
 
       // Delete the file
       await deleteObject(imageRef);

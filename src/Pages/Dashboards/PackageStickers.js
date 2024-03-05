@@ -33,17 +33,17 @@ const PackageStickers = ({ toastRef, isAdmin }) => {
   const handleDownload = async (index) => {
     try {
       const downloadURL = stickers[index];
-  
+
       // Create an anchor element
       const link = document.createElement("a");
       link.href = downloadURL;
       link.target = "_blank";
       link.download = `sticker_${index}.png`; // Set the desired file name
-  
+
       // Simulate a click on the anchor to trigger the download
       document.body.appendChild(link);
       link.click();
-  
+
       // Clean up after download
       document.body.removeChild(link);
     } catch (error) {
@@ -58,7 +58,11 @@ const PackageStickers = ({ toastRef, isAdmin }) => {
   const handleDelete = async (index) => {
     try {
       // Create a reference to the sticker that needs to be deleted
-      const stickerRef = ref(storage, `stickers/sticker${index + 1}.png`);
+
+      const imageName = stickers[index];
+
+      const stickerRef = ref(storage, imageName);
+      // const stickerRef = ref(storage, `stickers/sticker${index + 1}.png`);
 
       // Delete the sticker from Firebase Storage
       await deleteObject(stickerRef);
@@ -66,8 +70,16 @@ const PackageStickers = ({ toastRef, isAdmin }) => {
       // Remove the deleted sticker from the state
       const updatedStickers = stickers.filter((_, i) => i !== index);
       setStickers(updatedStickers);
+      toastRef.current.show({
+        severity: "success",
+        summary: "Sticker deleted successfully!",
+      });
     } catch (error) {
-      console.error("Error deleting sticker:", error);
+      toastRef.current.show({
+        severity: "error",
+        summary: "Error deleting sticker:",
+        detail: error.message,
+      });
     }
   };
 
