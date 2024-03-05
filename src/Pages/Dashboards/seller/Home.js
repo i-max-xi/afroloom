@@ -221,7 +221,7 @@ const Home = ({ currentSeller, editProfileVisible, setEditProfileVisible }) => {
         value={filteredProducts.length !== 0 ? filteredProducts : products}
         paginator
         rows={4}
-        onPage={handlePageChange}
+        // onPage={handlePageChange}
       >
         <Column
           field="item"
@@ -400,8 +400,8 @@ const Home = ({ currentSeller, editProfileVisible, setEditProfileVisible }) => {
                   required
                   id="detailedCategory"
                   value={selectedProduct.detailedCategory}
-                  options={detailedCategoryOptions}
-                  placeholder="select a more specific category..."
+                  // options={detailedCategoryOptions}
+                  // placeholder="select a more specific category..."
                   onChange={handleDetailedCategoryChange}
                 />
               </div>
