@@ -1,9 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { ref, listAll, getDownloadURL, deleteObject } from "@firebase/storage";
 import { storage } from "../../firebase";
+import { saveAs } from "file-saver";
+import { Toast } from "primereact/toast";
 
-const PackageStickers = ({ toastRef, isAdmin }) => {
+const PackageStickers = ({ isAdmin }) => {
   const [stickers, setStickers] = useState([]);
+
+  const toastRef = useRef(null);
 
   useEffect(() => {
     const fetchStickers = async () => {
@@ -33,19 +37,9 @@ const PackageStickers = ({ toastRef, isAdmin }) => {
   const handleDownload = async (index) => {
     try {
       const downloadURL = stickers[index];
-  
-      // Create an anchor element
-      const link = document.createElement("a");
-      link.href = downloadURL;
-      link.target = "_blank";
-      link.download = `sticker_${index}.png`; // Set the desired file name
-  
-      // Simulate a click on the anchor to trigger the download
-      document.body.appendChild(link);
-      link.click();
-  
-      // Clean up after download
-      document.body.removeChild(link);
+
+      // Use FileSaver.js to trigger the download
+      saveAs(downloadURL, `sticker${index + 1}.png`);
     } catch (error) {
       toastRef.current.show({
         severity: "error",
@@ -58,7 +52,11 @@ const PackageStickers = ({ toastRef, isAdmin }) => {
   const handleDelete = async (index) => {
     try {
       // Create a reference to the sticker that needs to be deleted
-      const stickerRef = ref(storage, `stickers/sticker${index + 1}.png`);
+
+      const imageName = stickers[index];
+
+      const stickerRef = ref(storage, imageName);
+      // const stickerRef = ref(storage, `stickers/sticker${index + 1}.png`);
 
       // Delete the sticker from Firebase Storage
       await deleteObject(stickerRef);
@@ -66,13 +64,23 @@ const PackageStickers = ({ toastRef, isAdmin }) => {
       // Remove the deleted sticker from the state
       const updatedStickers = stickers.filter((_, i) => i !== index);
       setStickers(updatedStickers);
+      toastRef.current.show({
+        severity: "success",
+        summary: "Sticker deleted successfully!",
+      });
     } catch (error) {
-      console.error("Error deleting sticker:", error);
+      toastRef.current.show({
+        severity: "error",
+        summary: "Error deleting sticker:",
+        detail: error.message,
+      });
     }
   };
 
   return (
     <div className="mt-4 stickers-container">
+      <Toast ref={toastRef} position="top-right" />
+
       <h2 className="dashboard-home-title">Uploaded Stickers</h2>
       <div className="d-flex flex-wrap">
         {stickers.map((sticker, index) => (
@@ -87,6 +95,7 @@ const PackageStickers = ({ toastRef, isAdmin }) => {
             <button
               className="btn btn-info mt-1 sticker-button"
               onClick={() => handleDownload(index)}
+              download={`sticker${index + 1}.png`}
             >
               Download
             </button>

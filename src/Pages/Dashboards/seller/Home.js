@@ -10,7 +10,6 @@ import { useSelector } from "react-redux";
 import { locationOptions } from "../../../Data/SupplierAcceptedCities";
 import { Dropdown } from "primereact/dropdown";
 import {
-  descriptionLimit,
   genderOptions,
   isMobile,
   titleLimit,
@@ -66,9 +65,7 @@ const Home = ({ currentSeller, editProfileVisible, setEditProfileVisible }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const handlePageChange = (event) => {
-    window.scrollTo(0, 0);
-  };
+
 
   // Function to filter products based on the search term
   const filterProducts = () => {

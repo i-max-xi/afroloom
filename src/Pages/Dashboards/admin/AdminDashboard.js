@@ -40,7 +40,7 @@ const AdminDashboard = () => {
     <>
       <Nav noCurrency={true} />
       <div className="bg-white fs-3 p-3 text-bold welcome">
-        Welcome <span style={{ color: "orange" }}>{welcomename}!</span>
+        Welcome <span style={{ color: "orange",  textTransform: "capitalize" }}>{welcomename}!</span>
       </div>
 
       <div className="d-flex bg-white">

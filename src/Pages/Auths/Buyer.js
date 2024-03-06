@@ -7,6 +7,7 @@ import { useDispatch } from "react-redux";
 import { setSignedIn, setcurrentUser } from "../../Redux/store";
 import ProductsDataService from "../../Services/products.services";
 import { ProgressSpinner } from "primereact/progressspinner";
+import { InputText } from "primereact/inputtext";
 
 const Buyer = () => {
   const dispatch = useDispatch();
@@ -24,7 +25,7 @@ const Buyer = () => {
   const handleSignUp = async (e) => {
     e.preventDefault();
     try {
-      setIsLoading(true)
+      setIsLoading(true);
 
       if (password.length < 6) {
         toastRef.current.show({
@@ -84,6 +85,9 @@ const Buyer = () => {
     }
   };
 
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
   return (
     <div className="bg-white">
       <Nav />
@@ -131,26 +135,54 @@ const Buyer = () => {
 
             <div className="form-group">
               <label htmlFor="password">Password:</label>
-              <input
+              {/* <input
                 type="password"
                 className="form-control"
                 required
                 id="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-              />
+              /> */}
+              <span className="p-input-icon-right w-100">
+                <InputText
+                  type={showPassword ? "text" : "password"}
+                  className="form-control"
+                  id="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+                <i
+                  className={`pi ${showPassword ? "pi-eye-slash" : "pi-eye"}`}
+                  onClick={() => setShowPassword(!showPassword)}
+                />
+              </span>
             </div>
 
             <div className="form-group">
               <label htmlFor="number">Confirm Password:</label>
-              <input
+              {/* <input
                 type="password"
                 required
                 className="form-control"
                 id="confirmPassword"
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
-              />
+              /> */}
+              <span className="p-input-icon-right w-100">
+                <InputText
+                  type={showConfirmPassword ? "text" : "password"}
+                  className="form-control"
+                  id="confirmPassword"
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                />
+                <i
+                  className={`pi ${
+                    showConfirmPassword ? "pi-eye-slash" : "pi-eye"
+                  }`}
+                  onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                />
+              </span>
             </div>
 
             <button

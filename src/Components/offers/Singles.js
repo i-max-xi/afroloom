@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { isMobile } from "../../utils/constants";
 
 const OfferItem = ({ title, imageUrl, linkTo, videoUrl, itemID, action }) => {
   return (

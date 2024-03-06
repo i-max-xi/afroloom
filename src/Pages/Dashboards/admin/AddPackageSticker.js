@@ -41,8 +41,8 @@ const AddPackageSticker = () => {
 
     try {
       const downloadURLs = await Promise.all(uploadPromises);
-      const validDownloadURLs = downloadURLs.filter((url) => url !== null);
-      setStickers([...stickers, ...validDownloadURLs]);
+      // const validDownloadURLs = downloadURLs.filter((url) => url !== null);
+      setStickers([...stickers, ...downloadURLs]);
     } catch (error) {
       toastRef.current.show({
         severity: "error",
@@ -56,9 +56,9 @@ const AddPackageSticker = () => {
 
   const handleDeleteSticker = async (index) => {
     try {
-      const imageName = stickers[index].split("%2F").pop().split("?")[0];
+      const imageName = stickers[index];
 
-      const stickerRef = ref(storage, `stickers/${imageName}`);
+      const stickerRef = ref(storage, imageName);
 
       await deleteObject(stickerRef);
 
@@ -128,7 +128,7 @@ const AddPackageSticker = () => {
           </div>
         </div>
         <div style={{marginTop: '5rem'}}>
-        <PackageStickers toastRef={toastRef} isAdmin={true}/>
+        <PackageStickers isAdmin={true}/>
 
         </div>
       </div>
