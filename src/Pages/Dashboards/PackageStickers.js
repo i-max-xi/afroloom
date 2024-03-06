@@ -1,9 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { ref, listAll, getDownloadURL, deleteObject } from "@firebase/storage";
 import { storage } from "../../firebase";
+import { saveAs } from "file-saver";
+import { Toast } from "primereact/toast";
 
-const PackageStickers = ({ toastRef, isAdmin }) => {
+const PackageStickers = ({ isAdmin }) => {
   const [stickers, setStickers] = useState([]);
+
+  const toastRef = useRef(null);
 
   useEffect(() => {
     const fetchStickers = async () => {
@@ -34,18 +38,8 @@ const PackageStickers = ({ toastRef, isAdmin }) => {
     try {
       const downloadURL = stickers[index];
 
-      // Create an anchor element
-      const link = document.createElement("a");
-      link.href = downloadURL;
-      link.target = "_blank";
-      link.download = `sticker_${index}.png`; // Set the desired file name
-
-      // Simulate a click on the anchor to trigger the download
-      document.body.appendChild(link);
-      link.click();
-
-      // Clean up after download
-      document.body.removeChild(link);
+      // Use FileSaver.js to trigger the download
+      saveAs(downloadURL, `sticker${index + 1}.png`);
     } catch (error) {
       toastRef.current.show({
         severity: "error",
@@ -85,6 +79,8 @@ const PackageStickers = ({ toastRef, isAdmin }) => {
 
   return (
     <div className="mt-4 stickers-container">
+      <Toast ref={toastRef} position="top-right" />
+
       <h2 className="dashboard-home-title">Uploaded Stickers</h2>
       <div className="d-flex flex-wrap">
         {stickers.map((sticker, index) => (
@@ -99,6 +95,7 @@ const PackageStickers = ({ toastRef, isAdmin }) => {
             <button
               className="btn btn-info mt-1 sticker-button"
               onClick={() => handleDownload(index)}
+              download={`sticker${index + 1}.png`}
             >
               Download
             </button>

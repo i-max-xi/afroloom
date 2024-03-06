@@ -128,7 +128,7 @@ const AddPackageSticker = () => {
           </div>
         </div>
         <div style={{marginTop: '5rem'}}>
-        <PackageStickers toastRef={toastRef} isAdmin={true}/>
+        <PackageStickers isAdmin={true}/>
 
         </div>
       </div>
