@@ -9,11 +9,7 @@ import { Toast } from "primereact/toast";
 import { useSelector } from "react-redux";
 import { locationOptions } from "../../../Data/SupplierAcceptedCities";
 import { Dropdown } from "primereact/dropdown";
-import {
-  genderOptions,
-  isMobile,
-  titleLimit,
-} from "../../../utils/constants";
+import { genderOptions, isMobile, titleLimit } from "../../../utils/constants";
 import { InputTextarea } from "primereact/inputtextarea";
 import { Image } from "primereact/image";
 import { allCategory, categoryFilter } from "../../../Data/categoryList";
@@ -32,7 +28,6 @@ const Home = ({ currentSeller, editProfileVisible, setEditProfileVisible }) => {
   const currencyFactor = useSelector((state) => state.currencySymbol.factor);
 
   const [editIsLoading, setEditIsLoading] = useState(false);
-
 
   const loadProducts = async () => {
     try {
@@ -65,8 +60,6 @@ const Home = ({ currentSeller, editProfileVisible, setEditProfileVisible }) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-
-
   // Function to filter products based on the search term
   const filterProducts = () => {
     const filtered = products.filter((product) =>
@@ -90,10 +83,8 @@ const Home = ({ currentSeller, editProfileVisible, setEditProfileVisible }) => {
   };
 
   const handleEditSubmit = async (e) => {
-
     e.preventDefault(); // Prevent page refresh
     setEditIsLoading(true);
-
 
     try {
       if (selectedProduct) {
@@ -143,6 +134,25 @@ const Home = ({ currentSeller, editProfileVisible, setEditProfileVisible }) => {
 
   const [detailedCategoryOptions, setDetailedCategoryOptions] = useState([]);
   const [sizeOptions, setSizeOptions] = useState([]);
+
+  useEffect(() => {
+    if (editDialogVisible === true) {
+      const productFilter = allCategory
+        .find((category) => category.name === selectedProduct.category)
+        .filters.find((filter) => filter.name === "Product");
+      const detailedCategoryOptions = productFilter.options;
+      setDetailedCategoryOptions(detailedCategoryOptions);
+
+      // Update the "Size" options based on the selected category
+      const sizeFilter = allCategory
+        .find((category) => category.name === selectedProduct.category)
+        .filters.find((filter) => filter.name === "Size");
+
+      sizeFilter !== undefined
+        ? setSizeOptions(sizeFilter.options)
+        : setSizeOptions([]);
+    }
+  }, [editDialogVisible]);
 
   const handleCategoryChange = (e) => {
     const selectedCategory = e.value;
