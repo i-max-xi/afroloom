@@ -96,7 +96,7 @@ const Shirt = ({
             ? snap.color[index] || "#333333"
             : snap.color[index] || "#ffffff";
 
-          const texture = snap.texture[index] || null;
+          const texture = snap.texture[index] || null;          
 
           return (
             <mesh
@@ -182,6 +182,14 @@ const Configurator = () => {
       state.texture = Array(selectedClothing.myNode.length).fill(newTexture);
       state.color = Array(selectedClothing.myNode.length).fill(null);
       setSelectedPrintOn(newTexture);
+
+      const textureCategory = Object.keys(textureArrays).find((category) =>
+        textureArrays[category].includes(newTexture)
+      );
+
+      const newPartPrice = textureValues[textureCategory];
+
+      setPartPrices(Array(selectedClothing.myNode.length).fill(newPartPrice));
       return;
     }
     if (selectedPart !== null) {
