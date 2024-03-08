@@ -141,18 +141,24 @@ const Home = () => {
   const [detailedCategoryOptions, setDetailedCategoryOptions] = useState([]);
   const [sizeOptions, setSizeOptions] = useState([]);
 
-  // useEffect(() => {
-  //   // const productFilter = allCategory
-  //   //   .find((category) => category.name ===)
-  //   //   .filters.find((filter) => filter.name = selectedProduct.category== "Product");
-  //   // const detailedCategoryOptions = productFilter.options;
-  //   // setDetailedCategoryOptions(detailedCategoryOptions);
-  //   toastRef.current.show({
-  //     severity: "info",
-  //     summary: "it works",
-  //     detail:  selectedProduct.title,
-  //   });
-  // }, [selectedProduct])
+  useEffect(() => {
+    if (editDialogVisible === true) {
+      const productFilter = allCategory
+        .find((category) => category.name === selectedProduct.category)
+        .filters.find((filter) => filter.name === "Product");
+      const detailedCategoryOptions = productFilter.options;
+      setDetailedCategoryOptions(detailedCategoryOptions);
+
+      // Update the "Size" options based on the selected category
+      const sizeFilter = allCategory
+        .find((category) => category.name === selectedProduct.category)
+        .filters.find((filter) => filter.name === "Size");
+
+      sizeFilter !== undefined
+        ? setSizeOptions(sizeFilter.options)
+        : setSizeOptions([]);
+    }
+  }, [editDialogVisible]);
   
 
   const handleCategoryChange = (e) => {

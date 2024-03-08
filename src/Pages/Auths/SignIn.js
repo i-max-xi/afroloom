@@ -153,13 +153,17 @@ const SignIn = () => {
       toastRef.current.show({
         severity: "error",
         summary: `Sign in failed. Please try again`,
-        detail: "Perhaps you checked the wrong category",
+        detail: (
+          <>
+            Please verify your inputs and select the right category. Send in a{" "}
+            <Link to="/contact">complaint</Link> if it persists
+          </>
+        ),
       });
     }
   };
 
   const [showPassword, setShowPassword] = useState(false);
-
 
   return (
     <>
@@ -201,7 +205,7 @@ const SignIn = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             /> */}
-            
+
             <span className="p-input-icon-right w-100">
               <InputText
                 type={showPassword ? "text" : "password"}
