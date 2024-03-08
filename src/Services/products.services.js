@@ -277,6 +277,23 @@ class ProductsDataService {
     return querySnapshot.docs;
   };
 
+  deleteProductsByField = async (fieldName, value) => {
+    try {
+      const productsToDelete = await this.getProductByField(fieldName, value);
+
+      const deletionPromises = productsToDelete.map(async (product) => {
+        const productDoc = doc(db, "AllProducts", product.id);
+        await deleteDoc(productDoc);
+      });
+
+      await Promise.all(deletionPromises);
+      return true; // Indicate successful deletion
+    } catch (error) {
+      console.error(`Error deleting products by ${fieldName}:`, error);
+      return false; // Indicate failure in deletion
+    }
+  };
+
   // sellers
   getAllSellers = () => {
     return getDocs(sellerCollectionRef);

@@ -5,11 +5,13 @@ import { Column } from "primereact/column";
 import ProductsDataService from "../../../Services/products.services";
 import { Button } from "primereact/button";
 import { Toast } from "primereact/toast";
+import { ProgressSpinner } from "primereact/progressspinner";
 
 const AllSellers = () => {
   const toastRef = useRef(null);
 
   const [sellers, setSellers] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const [filteredProducts, setFilteredProducts] = useState([]); // For filtered products
   const [searchTerm, setSearchTerm] = useState(""); // For search input
@@ -32,7 +34,8 @@ const AllSellers = () => {
       toastRef.current.show({
         severity: "error",
         summary: `Error loading sellers: ${error}`,
-      });    }
+      });
+    }
   };
 
   // Function to filter products based on the search term
@@ -48,15 +51,18 @@ const AllSellers = () => {
     setSearchTerm(e.target.value);
   };
 
-
-  const deleteProduct = async (id) => {
+  const deleteSeller = async (id, name) => {
+    setLoading(true);
     try {
+      await ProductsDataService.deleteProductsByField("seller", name);
+
       await ProductsDataService.deleteSeller(id);
       toastRef.current.show({
         severity: "success",
         summary: `Successfully deleted seller`,
       });
       loadProducts();
+      setLoading(false);
     } catch (error) {
       toastRef.current.show({
         severity: "error",
@@ -131,9 +137,11 @@ const AllSellers = () => {
         <Column
           body={(rowData) => (
             <button
-              className={`btn text-white ${rowData.approved ? "btn-success" : "btn-info" } btn-success edit`}
+              className={`btn text-white ${
+                rowData.approved ? "btn-success" : "btn-info"
+              } btn-success edit`}
               onClick={() => approveSeller(rowData.id)}
-              >
+            >
               {rowData.approved ? "Approved" : "Approve"}
             </button>
           )}
@@ -142,8 +150,18 @@ const AllSellers = () => {
           body={(rowData) => (
             <button
               className="btn btn-danger remove"
-              onClick={() => deleteProduct(rowData.id)}
+              onClick={() => deleteSeller(rowData.id, rowData.companyName)}
             >
+              <span className="spinner-container">
+                {loading && (
+                  <ProgressSpinner
+                    style={{ width: "1.5rem", height: "1.5rem" }}
+                    strokeWidth="8"
+                    fill="var(--surface-ground)"
+                    className="position-absolute top-50 start-50 translate-middle"
+                  />
+                )}
+              </span>
               Delete
             </button>
           )}
