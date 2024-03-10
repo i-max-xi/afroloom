@@ -38,6 +38,7 @@ import WelcomeTour, { tourSteps } from "./WelcomeTour";
 import { InputText } from "primereact/inputtext";
 import { Toast } from "primereact/toast";
 import { isMobile } from "../../../utils/constants";
+import uuid from "react-uuid";
 
 const Shirt = ({
   isRotating,
@@ -81,6 +82,11 @@ const Shirt = ({
       state.color[i] = "#ffffff";
     }
 
+    for (let i = 0; i < state.texture.length; i++) {
+      // to fix color keeping on to next page
+      state.texture[i] = null;
+    }
+
     return () => clearTimeout(loadingTimeout); // Cleanup the timeout if component unmounts
   }, []);
 
@@ -100,7 +106,7 @@ const Shirt = ({
 
           return (
             <mesh
-              key={selectedTexture}
+              key={uuid()}
               castShadow
               geometry={nodes[nodeName].geometry}
               onClick={() => handlePartClick(index)}
