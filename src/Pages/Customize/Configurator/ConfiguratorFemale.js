@@ -37,6 +37,7 @@ import WelcomeTour, { tourSteps } from "./WelcomeTour";
 import { InputText } from "primereact/inputtext";
 import { Toast } from "primereact/toast";
 import { isMobile } from "../../../utils/constants";
+import uuid from "react-uuid";
 const Shirt = ({
   isRotating,
   selectedClothing,
@@ -75,8 +76,11 @@ const Shirt = ({
     }, 2000);
 
     for (let i = 0; i < state.color.length; i++) {
-      // to fix color keeping on to next page
       state.color[i] = "#ffffff";
+    }
+
+    for (let i = 0; i < state.texture.length; i++) {
+      state.texture[i] = null;
     }
 
     return () => clearTimeout(loadingTimeout); // Cleanup the timeout if component unmounts
@@ -98,10 +102,10 @@ const Shirt = ({
 
           return (
             <mesh
-              key={selectedTexture}
+              key={uuid()}
               castShadow
               geometry={nodes[nodeName].geometry}
-              onClick={() => handlePartClick(index)}
+              // onClick={() => handlePartClick(index)}
             >
               <meshStandardMaterial
                 attach="material"
@@ -153,6 +157,12 @@ const ConfiguratorFemale = () => {
   };
 
   const handleColorChange = (newColor) => {
+    if (selectedPart === "all") {
+      state.texture = Array(selectedClothing.myNode.length).fill(null);
+      state.color = Array(selectedClothing.myNode.length).fill(newColor);
+      setSelectedPrintOn(newColor);
+      return;
+    }
     state.color[selectedPart] = newColor;
     state.texture[selectedPart] = null;
     setSelectedPrintOn(newColor);
@@ -172,16 +182,29 @@ const ConfiguratorFemale = () => {
   ).toFixed(2);
 
   const handleTextureChange = (newTexture) => {
+    if (selectedPart === "all") {
+      state.texture = Array(selectedClothing.myNode.length).fill(newTexture);
+      state.color = Array(selectedClothing.myNode.length).fill(null);
+      setSelectedPrintOn(newTexture);
+
+      const textureCategory = Object.keys(textureArrays).find((category) =>
+        textureArrays[category].includes(newTexture)
+      );
+
+      const newPartPrice = textureValues[textureCategory];
+
+      setPartPrices(Array(selectedClothing.myNode.length).fill(newPartPrice));
+      return;
+    }
+
     if (selectedPart !== null) {
       state.texture[selectedPart] = newTexture;
       state.color[selectedPart] = null;
       setSelectedPrintOn(newTexture);
 
-      // Get the texture category based on the newTexture
       const textureCategory = Object.keys(textureArrays).find((category) =>
         textureArrays[category].includes(newTexture)
       );
-      // Calculate the new price for the selected part
       const newPartPrice =
         selectedClothing.price + textureValues[textureCategory];
 
@@ -297,6 +320,11 @@ const ConfiguratorFemale = () => {
   // customer height
   const [height, setHeight] = useState("");
 
+  const handleAllPartsClick = () => {
+    // Select all parts when the "All" button is clicked
+    setSelectedPart("all");
+  };
+
   return (
     <>
       <Nav />
@@ -367,6 +395,14 @@ const ConfiguratorFemale = () => {
               <div className="left-panel rounded shadow">
                 <h5>Select Part</h5>
                 <div className="select-part-container">
+                  <button
+                    className={`size-button btn btn-outline-dark ${
+                      selectedPart === "all" ? "selected" : ""
+                    }`}
+                    onClick={handleAllPartsClick}
+                  >
+                    All
+                  </button>
                   {selectedClothing.myNode.map((nodeName, index) => (
                     <button
                       key={index}

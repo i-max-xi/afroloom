@@ -72,18 +72,15 @@ const Shirt = ({
   useEffect(() => {
     window.scrollTo(0, 0);
 
-    // Simulate loading for 2 seconds (you can replace this with your actual loading code)
     const loadingTimeout = setTimeout(() => {
       setIsLoading(false); // Set loading state to false once model is loaded (replace with your actual model loading logic)
     }, 2000);
 
     for (let i = 0; i < state.color.length; i++) {
-      // to fix color keeping on to next page
       state.color[i] = "#ffffff";
     }
 
     for (let i = 0; i < state.texture.length; i++) {
-      // to fix color keeping on to next page
       state.texture[i] = null;
     }
 
@@ -109,7 +106,7 @@ const Shirt = ({
               key={uuid()}
               castShadow
               geometry={nodes[nodeName].geometry}
-              onClick={() => handlePartClick(index)}
+              // onClick={() => handlePartClick(index)}
             >
               <meshStandardMaterial
                 attach="material"
@@ -165,6 +162,7 @@ const Configurator = () => {
       setSelectedPrintOn(newColor);
       return;
     }
+
     state.color[selectedPart] = newColor;
     state.texture[selectedPart] = null;
     setSelectedPrintOn(newColor);
@@ -198,19 +196,17 @@ const Configurator = () => {
       setPartPrices(Array(selectedClothing.myNode.length).fill(newPartPrice));
       return;
     }
+    
     if (selectedPart !== null) {
       state.texture[selectedPart] = newTexture;
       state.color[selectedPart] = null;
       setSelectedPrintOn(newTexture);
 
-      // Get the texture category based on the newTexture
       const textureCategory = Object.keys(textureArrays).find((category) =>
         textureArrays[category].includes(newTexture)
       );
-      // Calculate the new price for the selected part
       const newPartPrice = textureValues[textureCategory];
 
-      // Update the partPrices array with the new price for the selected part
       setPartPrices((prevPrices) =>
         prevPrices.map((price, index) =>
           index === selectedPart ? newPartPrice : price
@@ -323,7 +319,6 @@ const Configurator = () => {
   const [height, setHeight] = useState("");
 
   const handleAllPartsClick = () => {
-    // Select all parts when the "All" button is clicked
     setSelectedPart("all");
   };
 
