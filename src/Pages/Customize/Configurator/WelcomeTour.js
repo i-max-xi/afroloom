@@ -5,7 +5,7 @@ export const tourSteps = [
   {
     selector: ".select-part-container",
     content:
-      "Clothes are seperated into parts which to you can apply individual colors/textures",
+      "Clothes are seperated into parts to which you can apply individual colors/textures",
   },
   {
     selector: ".size-button-container",

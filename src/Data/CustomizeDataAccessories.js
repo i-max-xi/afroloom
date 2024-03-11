@@ -3,15 +3,12 @@ import { v4 as uuid } from "uuid";
 // import handbag from "../Assets/Customize/hand_bag.png";
 // import bikini_img from "../Assets/Customize/bikini.png";
 
-
 // hats
 import h1 from "../Assets/Customize/maleAccessories/hat/1.jpg";
 import h2 from "../Assets/Customize/maleAccessories/hat/2.jpg";
 
-
 // uncat
 // import un2 from "../Assets/Customize/maleAccessories/Uncat/2.jpg";
-
 
 // 3d models
 import tie from "../Pages/Customize/Configurator/models/Accessories/tie_main.glb";
@@ -22,13 +19,12 @@ import bikini from "../Pages/Customize/Configurator/models/Accessories/bikini.gl
 import hand_bag_model from "../Pages/Customize/Configurator/models/Accessories/handbag.glb";
 
 // Importing size guides
-import roundCap_guide from '../Assets/size_guide/Accessories/Male/28.jpg';
-import knittedCap_guide from '../Assets/size_guide/Accessories/Male/knited.jpg';
-import bowTie_guide from '../Assets/size_guide/Accessories/Male/27.jpg';
-import flyingTie_guide from '../Assets/size_guide/Accessories/Male/26.jpg';
-import handbag_guide from '../Assets/size_guide/Accessories/Female/33.jpg';
-import bikini_guide from '../Assets/size_guide/Accessories/Female/31.jpg';
-
+import roundCap_guide from "../Assets/size_guide/Accessories/Male/28.jpg";
+import knittedCap_guide from "../Assets/size_guide/Accessories/Male/knited.jpg";
+import bowTie_guide from "../Assets/size_guide/Accessories/Male/27.jpg";
+import flyingTie_guide from "../Assets/size_guide/Accessories/Male/26.jpg";
+import handbag_guide from "../Assets/size_guide/Accessories/Female/33.jpg";
+import bikini_guide from "../Assets/size_guide/Accessories/Female/31.jpg";
 
 // Markeying Models
 const tshirt_model = "";
@@ -70,12 +66,10 @@ const bikiniParts = require.context(
   /\.(png|jpg|jpeg|gif)$/
 );
 
-
 const image_bikini = require("../Assets/welcome_3ds/female/bikini.png");
 const image_totebag = require("../Assets/welcome_3ds/others/tote bag.png");
 const image_bowtie = require("../Assets/welcome_3ds/others/bow tie.png");
 const image_flying_tie = require("../Assets/welcome_3ds/others/flying tie.png");
-
 
 export const mainMaleAccessories = [
   {
@@ -88,9 +82,10 @@ export const mainMaleAccessories = [
     price: 20,
     parts: roundCapParts.keys().map(roundCapParts),
     sizeGuide: roundCap_guide,
-sizeModels: tshirt_model,
+    sizeModels: tshirt_model,
     readyIn: 3,
-    weight: 0.25,    sizeOptions: [
+    weight: 0.25,
+    sizeOptions: [
       { label: "S", value: 0.5 },
       { label: "M", value: 1 },
       { label: "L", value: 2 },
@@ -119,14 +114,15 @@ sizeModels: tshirt_model,
     name: "Knitted Cap",
     image: h2,
     model: knitted_cap,
-    myNode: ["bottom_section", "top_section" , "mid_section"],
+    myNode: ["bottom_section", "top_section", "mid_section"],
     myZoom: 0.5,
     price: 20,
     parts: knittedCapParts.keys().map(knittedCapParts),
     sizeGuide: knittedCap_guide,
-sizeModels: tshirt_model,
+    sizeModels: tshirt_model,
     readyIn: 3,
-    weight: 0.25,    sizeOptions: [
+    weight: 0.25,
+    sizeOptions: [
       { label: "S", value: 0.5 },
       { label: "M", value: 1 },
       { label: "L", value: 2 },
@@ -155,13 +151,14 @@ sizeModels: tshirt_model,
     // image: "https://www.bewooden.com/picture/5992f3f6a584b/w960/african-bow-tie.jpg",
     image: image_bowtie,
     model: bow_tie,
-    myNode: ["bow", "binder" ],
+    myNode: ["bow", "binder"],
     myZoom: 1.5,
     price: 20,
     parts: bowTieParts.keys().map(bowTieParts),
-sizeModels: tshirt_model,
+    sizeModels: tshirt_model,
     readyIn: 3,
-    weight: 0.25,    sizeGuide: bowTie_guide,
+    weight: 0.25,
+    sizeGuide: bowTie_guide,
     sizeOptions: [
       { label: "S", value: 0.5 },
       { label: "M", value: 1 },
@@ -194,9 +191,10 @@ sizeModels: tshirt_model,
     myZoom: 0.75,
     price: 20,
     parts: flyingTieParts.keys().map(flyingTieParts),
-sizeModels: tshirt_model,
+    sizeModels: tshirt_model,
     readyIn: 3,
-    weight: 0.25,    sizeGuide: flyingTie_guide,
+    weight: 0.25,
+    sizeGuide: flyingTie_guide,
     sizeOptions: [
       // { label: "XS", value: 0.5 },
       { label: "Skinny", value: 0.5 },
@@ -232,14 +230,21 @@ export const mainFemaleAccessories = [
     // image: handbag,
     image: image_totebag,
     model: hand_bag_model,
-    myNode: ["mid_section", "zippers_and_locks", "handle", "right_section", "left_section"],
-    myZoom: 0.9,
+    myNode: [
+      "mid_section",
+      "zippers_and_locks",
+      "handle",
+      "right_section",
+      "left_section",
+    ],
+    myZoom: 1.2,
     price: 55,
     parts: handbagParts.keys().map(handbagParts),
     sizeGuide: handbag_guide,
-sizeModels: tshirt_model,
+    sizeModels: tshirt_model,
     readyIn: 3,
-    weight: 0.25,    sizeOptions: [
+    weight: 0.25,
+    sizeOptions: [
       { label: "S", value: 0.5 },
       { label: "M", value: 1 },
       { label: "L", value: 2 },
@@ -273,9 +278,10 @@ sizeModels: tshirt_model,
     myZoom: 1.3,
     price: 55,
     parts: bikiniParts.keys().map(bikiniParts),
-sizeModels: tshirt_model,
+    sizeModels: tshirt_model,
     readyIn: 3,
-    weight: 0.25,    sizeGuide: bikini_guide,
+    weight: 0.25,
+    sizeGuide: bikini_guide,
     sizeOptions: [
       { label: "XS", value: 0.5 },
       { label: "S", value: 0.5 },
@@ -306,4 +312,3 @@ sizeModels: tshirt_model,
     ],
   },
 ];
-
