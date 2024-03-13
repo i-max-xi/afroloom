@@ -106,12 +106,37 @@ const allProductsSlice = createSlice({
       state.searchKeyDisplay = action.payload;
 
       if (searchTerm !== "") {
-        const filtered = state.products.filter(
+        const titleFiltered = state.products.filter(
           (product) =>
-            product.title && product.title.toLowerCase().includes(searchTerm) // Convert product title to lowercase
+            product.title && product.title.toLowerCase().includes(searchTerm)
         );
 
-        state.searchedArray = filtered;
+        const categoryFiltered = state.products.filter(
+          (product) =>
+            product.category &&
+            product.category.toLowerCase().includes(searchTerm)
+        );
+
+        const detailedCategoryFiltered = state.products.filter(
+          (product) =>
+            product.detailedCategory &&
+            product.detailedCategory.toLowerCase().includes(searchTerm)
+        );
+
+        // Combine the results from all three searches while ensuring no duplicates
+        const combinedResults = [...titleFiltered];
+        categoryFiltered.forEach((product) => {
+          if (!combinedResults.some((item) => item.id === product.id)) {
+            combinedResults.push(product);
+          }
+        });
+        detailedCategoryFiltered.forEach((product) => {
+          if (!combinedResults.some((item) => item.id === product.id)) {
+            combinedResults.push(product);
+          }
+        });
+
+        state.searchedArray = combinedResults;
       }
     },
   },
@@ -256,8 +281,13 @@ export const { addPhotographers } = allPhotographersSlice.actions;
 export const { addTourGuides } = allTourGuidesSlice.actions;
 export const { setCurrencySymbol } = currencySymbolSlice.actions;
 export const { addItem, removeItem, clearCart } = cartSlice.actions;
-export const { setSignedIn, setcurrentUser, setDashBoardPath, updateOrders, updateCurrentUser } =
-  userSlice.actions;
+export const {
+  setSignedIn,
+  setcurrentUser,
+  setDashBoardPath,
+  updateOrders,
+  updateCurrentUser,
+} = userSlice.actions;
 export const { set3DItemDetails, setItemDataSheet, clear3DInfo } =
   customized3DSlice.actions;
 

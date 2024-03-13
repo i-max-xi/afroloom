@@ -18,10 +18,32 @@ const MyOrders = () => {
 
   // Function to filter products based on the search term
   const filterProducts = () => {
-    const filtered = products.filter((product) =>
+    const titleFiltered = products.filter((product) =>
       product.title.toLowerCase().includes(searchTerm.toLowerCase())
     );
-    setFilteredProducts(filtered);
+  
+    const categoryFiltered = products.filter((product) =>
+      product.category && product.category.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+  
+    const detailedCategoryFiltered = products.filter((product) =>
+      product.detailedCategory && product.detailedCategory.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+  
+    // Combine the results from all three searches while ensuring no duplicates
+    const combinedResults = [...titleFiltered];
+    categoryFiltered.forEach((product) => {
+      if (!combinedResults.some((item) => item.id === product.id)) {
+        combinedResults.push(product);
+      }
+    });
+    detailedCategoryFiltered.forEach((product) => {
+      if (!combinedResults.some((item) => item.id === product.id)) {
+        combinedResults.push(product);
+      }
+    });
+  
+    setFilteredProducts(combinedResults);
   };
 
   const handlePageChange = (event) => {
