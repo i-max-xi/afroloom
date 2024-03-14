@@ -321,7 +321,7 @@ const Home = () => {
         {selectedProduct && (
           <form>
             <div className="p-fluid">
-              <div className="p-field">
+              {/* <div className="p-field">
                 <label htmlFor="title">Image</label>
                 <input
                   id="title"
@@ -329,7 +329,7 @@ const Home = () => {
                   value={selectedProduct.item}
                   className="p-inputtext"
                 />
-              </div>
+              </div> */}
               <div className="p-field">
                 <label htmlFor="title">Title</label>
                 <input

@@ -17,8 +17,6 @@ const Banner = ({ items, headTitle, seeMore, linkTo, bannerFix }) => {
   const [selectedFurniture, setselectedFurniture] = useState([]);
 
   useEffect(() => {
-    
-
     const handicraft = Products.filter(
       (item) => item.category === "Handicrafts"
     );
@@ -30,11 +28,18 @@ const Banner = ({ items, headTitle, seeMore, linkTo, bannerFix }) => {
     });
 
     setselectedHandicraft(
-      handicraft.slice(0, isMobile ? 4 : 5).map((item) => ({
-        imageUrl: item.item,
-        id: item.id,
-        price: item.price,
-      }))
+      handicraft.slice(0, isMobile ? 4 : 5).map((item) => {
+        const discountPercentage = item.discount / 100;
+
+        const discountedPrice = (1 - discountPercentage) * item.price; // Calculate the discounted price
+        return {
+          imageUrl: item.item,
+          id: item.id,
+          price: item.price,
+          discount: item.discount,
+          discountedPrice: discountedPrice,
+        };
+      })
     );
 
     const discount = Products.filter((item) => item.discount > 0);
@@ -68,11 +73,18 @@ const Banner = ({ items, headTitle, seeMore, linkTo, bannerFix }) => {
     });
 
     setselectedFabric(
-      fabric.slice(0, isMobile ? 4 : 5).map((item) => ({
-        imageUrl: item.item,
-        id: item.id,
-        price: item.price,
-      }))
+      fabric.slice(0, isMobile ? 4 : 5).map((item) => {
+        const discountPercentage = item.discount / 100;
+
+        const discountedPrice = (1 - discountPercentage) * item.price; // Calculate the discounted price
+        return {
+          imageUrl: item.item,
+          id: item.id,
+          price: item.price,
+          discount: item.discount,
+          discountedPrice: discountedPrice,
+        };
+      })
     );
 
     const furniture = Products.filter((item) => item.category === "Furniture");
@@ -83,11 +95,18 @@ const Banner = ({ items, headTitle, seeMore, linkTo, bannerFix }) => {
     });
 
     setselectedFurniture(
-      furniture.slice(0, isMobile ? 4 : 5).map((item) => ({
-        imageUrl: item.item,
-        id: item.id,
-        price: item.price,
-      }))
+      furniture.slice(0, isMobile ? 4 : 5).map((item) => {
+        const discountPercentage = item.discount / 100;
+
+        const discountedPrice = (1 - discountPercentage) * item.price; // Calculate the discounted price
+        return {
+          imageUrl: item.item,
+          id: item.id,
+          price: item.price,
+          discount: item.discount,
+          discountedPrice: discountedPrice,
+        };
+      })
     );
   }, [Products]);
 
@@ -142,7 +161,7 @@ const Banner = ({ items, headTitle, seeMore, linkTo, bannerFix }) => {
               )}
             </div>
             <div className="price-space">
-              {item.discount ? (
+              {item.discount && item.discount > 0 ? (
                 <>
                   <div className="original-price">
                     {currencySymbol}
