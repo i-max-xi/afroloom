@@ -70,15 +70,21 @@ const Home = () => {
     const titleFiltered = products.filter((product) =>
       product.title.toLowerCase().includes(searchTerm.toLowerCase())
     );
-  
-    const categoryFiltered = products.filter((product) =>
-      product.category && product.category.toLowerCase().includes(searchTerm.toLowerCase())
+
+    const categoryFiltered = products.filter(
+      (product) =>
+        product.category &&
+        product.category.toLowerCase().includes(searchTerm.toLowerCase())
     );
-  
-    const detailedCategoryFiltered = products.filter((product) =>
-      product.detailedCategory && product.detailedCategory.toLowerCase().includes(searchTerm.toLowerCase())
+
+    const detailedCategoryFiltered = products.filter(
+      (product) =>
+        product.detailedCategory &&
+        product.detailedCategory
+          .toLowerCase()
+          .includes(searchTerm.toLowerCase())
     );
-  
+
     // Combine the results from all three searches while ensuring no duplicates
     const combinedResults = [...titleFiltered];
     categoryFiltered.forEach((product) => {
@@ -91,10 +97,9 @@ const Home = () => {
         combinedResults.push(product);
       }
     });
-  
+
     setFilteredProducts(combinedResults);
   };
-  
 
   // Handle search input change
   const handleSearchChange = (e) => {
@@ -182,7 +187,6 @@ const Home = () => {
         : setSizeOptions([]);
     }
   }, [editDialogVisible]);
-  
 
   const handleCategoryChange = (e) => {
     const selectedCategory = e.value;
@@ -317,6 +321,15 @@ const Home = () => {
         {selectedProduct && (
           <form>
             <div className="p-fluid">
+              {/* <div className="p-field">
+                <label htmlFor="title">Image</label>
+                <input
+                  id="title"
+                  type="text"
+                  value={selectedProduct.item}
+                  className="p-inputtext"
+                />
+              </div> */}
               <div className="p-field">
                 <label htmlFor="title">Title</label>
                 <input

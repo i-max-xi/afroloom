@@ -14,9 +14,14 @@ import { InputTextarea } from "primereact/inputtextarea";
 import { Image } from "primereact/image";
 import { allCategory, categoryFilter } from "../../../Data/categoryList";
 import EditProfile from "../EditProfile";
+import { useParams } from "react-router";
 
 const Home = ({ currentSeller, editProfileVisible, setEditProfileVisible }) => {
   const toastRef = useRef(null);
+
+  const { selectedSeller } = useParams();
+
+  const _currentSeller = selectedSeller || currentSeller;
 
   const [products, setProducts] = useState([]);
   const [selectedProduct, setSelectedProduct] = useState(null);
@@ -33,7 +38,7 @@ const Home = ({ currentSeller, editProfileVisible, setEditProfileVisible }) => {
     try {
       const response = await ProductsDataService.getProductByField(
         "seller",
-        currentSeller
+        _currentSeller
       );
       const productData = response.map((doc) => {
         const data = doc.data();
@@ -61,20 +66,25 @@ const Home = ({ currentSeller, editProfileVisible, setEditProfileVisible }) => {
   }, []);
 
   // Function to filter products based on the search term
-  // Function to filter products based on the search term
   const filterProducts = () => {
     const titleFiltered = products.filter((product) =>
       product.title.toLowerCase().includes(searchTerm.toLowerCase())
     );
-  
-    const categoryFiltered = products.filter((product) =>
-      product.category && product.category.toLowerCase().includes(searchTerm.toLowerCase())
+
+    const categoryFiltered = products.filter(
+      (product) =>
+        product.category &&
+        product.category.toLowerCase().includes(searchTerm.toLowerCase())
     );
-  
-    const detailedCategoryFiltered = products.filter((product) =>
-      product.detailedCategory && product.detailedCategory.toLowerCase().includes(searchTerm.toLowerCase())
+
+    const detailedCategoryFiltered = products.filter(
+      (product) =>
+        product.detailedCategory &&
+        product.detailedCategory
+          .toLowerCase()
+          .includes(searchTerm.toLowerCase())
     );
-  
+
     // Combine the results from all three searches while ensuring no duplicates
     const combinedResults = [...titleFiltered];
     categoryFiltered.forEach((product) => {
@@ -87,7 +97,7 @@ const Home = ({ currentSeller, editProfileVisible, setEditProfileVisible }) => {
         combinedResults.push(product);
       }
     });
-  
+
     setFilteredProducts(combinedResults);
   };
 

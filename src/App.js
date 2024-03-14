@@ -56,6 +56,7 @@ import ProfessionalsPage from "./Pages/Professionals/ProfessionalsPage";
 import ProfessionalsDetail from "./Pages/Professionals/ProfessionalsDetail";
 import ProfessionalSignUp from "./Pages/Auths/ProfessionalSignUp";
 import ProfessionalDashboard from "./Pages/Dashboards/professionals/ProfessionalDashboard";
+import SellerHome from "./Pages/Dashboards/seller/Home";
 
 function App() {
   const dispatch = useDispatch(); // Get the dispatch function
@@ -99,6 +100,7 @@ function App() {
             <Route path="/seller-dashboard" element={<SellerDashboard />} />
             <Route path="/user-dashboard" element={<UserDashboard />} />
             <Route path="/admin-dashboard" element={<AdminDashboard />} />
+            <Route path="/seller-products/:selectedSeller" element={<SellerHome />} />
             <Route path="/professionals-dashboard/:professionalType" element={<ProfessionalDashboard />} />
 
 
