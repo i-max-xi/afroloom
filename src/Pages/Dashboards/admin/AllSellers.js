@@ -6,6 +6,7 @@ import ProductsDataService from "../../../Services/products.services";
 import { Button } from "primereact/button";
 import { Toast } from "primereact/toast";
 import { ProgressSpinner } from "primereact/progressspinner";
+import { Link } from "react-router-dom";
 
 const AllSellers = () => {
   const toastRef = useRef(null);
@@ -146,6 +147,15 @@ const AllSellers = () => {
             </button>
           )}
         />
+        {/* <Column
+          body={(rowData) => (
+            <Link to={`/seller-products/${rowData.companyName}`}
+              className={`btn text-white btn-info edit`}
+            >
+              View Products
+            </Link>
+          )}
+        /> */}
         <Column
           body={(rowData) => (
             <button
