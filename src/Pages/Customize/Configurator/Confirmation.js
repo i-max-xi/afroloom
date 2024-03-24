@@ -34,16 +34,21 @@ const Confirmation = ({
   const [isLoading, setIsLoading] = useState(false); // Initialize loading state
   const dispatch = useDispatch();
 
-
   const [count, setCount] = useState(1);
+  const [special, setSpecial] = useState("");
+
+  const [readyByCount, setReadyByCount] = useState(readyBy)
+
 
   const handleIncrement = () => {
     setCount((prevCount) => prevCount + 1);
+    setReadyByCount((prevCount) => prevCount + 3);
   };
 
   const handleDecrement = () => {
     if (count > 1) {
       setCount((prevCount) => prevCount - 1);
+      setReadyByCount((prevCount) => prevCount + 3);
     }
   };
 
@@ -81,11 +86,14 @@ const Confirmation = ({
           price: total,
           modelImage,
           currencySymbol,
-          readyBy,
+          readyBy: readyByCount,
           name,
           selectedSize,
-          message: "Please use the link to access the client's order",
           quantity: count,
+          selectedParts: selectedParts,
+          customSizeValues: customSizeValues,
+          height: height,
+          specialRequests: special,
           // Other properties specific to your object
         },
       ];
@@ -130,7 +138,7 @@ const Confirmation = ({
       <OrderDetail
         total={total}
         currencySymbol={currencySymbol}
-        readyBy={readyBy}
+        readyBy={readyByCount}
         selectedParts={selectedParts}
         selectedSize={selectedSize}
         ref={componentRef}
@@ -141,6 +149,8 @@ const Confirmation = ({
         count={count}
         handleDecrement={handleDecrement}
         handleIncrement={handleIncrement}
+        special={special}
+        setSpecial={setSpecial}
       />
       <div className="container justify-content-center">
         <div className="d-flex">
@@ -196,12 +206,11 @@ export const OrderDetail = React.forwardRef(
       count,
       handleDecrement,
       handleIncrement,
+      special,
+      setSpecial
     },
     ref
   ) => {
-    const [special, setSpecial] = useState("");
-
-
 
     const currencySymbol = useSelector((state) => state.currencySymbol.symbol);
     const currencyFactor = useSelector((state) => state.currencySymbol.factor);

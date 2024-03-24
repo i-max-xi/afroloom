@@ -9,6 +9,9 @@ import { Link, useNavigate } from "react-router-dom";
 import { PaystackButton } from "react-paystack";
 import { Toast } from "primereact/toast";
 import { RadioButton } from "primereact/radiobutton";
+import { useReactToPrint } from "react-to-print";
+import { parseTitle } from "../utils/functions";
+import { Divider } from "primereact/divider";
 
 const CustomizeCheckout = () => {
   const cartItems = useSelector((state) => state.customizedProduct.itemDetails);
@@ -33,13 +36,9 @@ const CustomizeCheckout = () => {
 
   const count = cartItems[0].quantity;
 
+
   const [totalToPay] = useState(
     cartItems.reduce((total, item) => total + item.price * count, 0).toFixed(2)
-  );
-
-  const totalReadyBy = cartItems.reduce(
-    (total, item) => total + item.readyBy, // Replace 'weight' with your actual key
-    0
   );
 
   const publicKey = process.env.REACT_APP_paystack_publicKey;
@@ -66,11 +65,14 @@ const CustomizeCheckout = () => {
     text: "Place Order",
   };
 
-  const onSuccess = (reference) => {
-    // const updatedOrders = [...currentOrders, ...cartItems];
+  const componentRef = useRef();
+  const handlePrint = useReactToPrint({
+    content: () => componentRef.current,
+  });
 
-    // // Dispatch action to update orders in the Redux state
-    // dispatch(updateOrders(updatedOrders));
+  const onSuccess = (reference) => {
+    handlePrint();
+
 
     const userInfo = {
       firstName: firstName,
@@ -81,7 +83,7 @@ const CustomizeCheckout = () => {
       tel: tel,
       customizedItemDataSheet: customizedItemDataSheet,
       quantity: count,
-      readyBy: totalReadyBy + "- regular/express delivery",
+      readyBy: cartItems[0].readyBy + 'days',
       subject: `New 3D Product Order`,
     };
     // Submit to formspree
@@ -121,6 +123,24 @@ const CustomizeCheckout = () => {
       <LayoutHeaders selectedBg={Top} />
       <Toast ref={toast} />
 
+      <div style={{ display: "none" }}>
+      <OrderDetail
+        total={totalToPayNumeric}
+        actualTotal={totalToPay}
+        currencySymbol={currencySymbol}
+        readyBy={cartItems[0].readyBy}
+        selectedParts={cartItems[0].selectedParts}
+        selectedSize={cartItems[0].selectedSize}
+        ref={componentRef}
+        modelImage={cartItems[0].modelImage}
+        customSizeValues={cartItems[0].customSizeValues}
+        height={cartItems[0].height}
+        name={cartItems[0].name}
+        count={cartItems[0].quantity}
+        specialRequest={cartItems[0].specialRequests}
+      />
+      </div>
+
       <div className="container mb-5">
         {cartItems.length !== 0 ? (
           <div className="mt-5 mb-5">
@@ -155,26 +175,25 @@ const CustomizeCheckout = () => {
             <div className="mt-5 mb-5 text-center"></div>
             <h5>Down Payment</h5>
             <div className="d-flex flex-column gap-1">
-              <div className="aligh-items-center">
+              <div className="d-flex aligh-items-center">
                 <RadioButton
                   onChange={(e) => setPayPercentage(!payPercenTage)}
                   checked={payPercenTage === true}
                 />
-                <label htmlFor="ingredient1" className="ml-2">
-                  Pay 45% of amount
-                </label>
+                <label className="ml-2">Pay 45% of amount</label>
               </div>
 
-              <div className="aligh-items-center">
+              <div className="d-flex aligh-items-center">
                 <RadioButton
                   onChange={(e) => setPayPercentage(!payPercenTage)}
                   checked={payPercenTage === false}
                 />
-                <label className="ml-2">Pay full amount</label>
+                <label className="ml-2 ">Pay full amount</label>
               </div>
 
               <h2 className="text-center mt-3">
-                Price To Pay: {currencySymbol}{totalToPayNumeric}
+                Price To Pay: {currencySymbol}
+                {totalToPayNumeric}
               </h2>
             </div>
           </div>
@@ -295,5 +314,146 @@ const CustomizeCheckout = () => {
     </>
   );
 };
+
+export const OrderDetail = React.forwardRef(
+  (
+    {
+      total,
+      actualTotal,
+      // currencySymbol,
+      readyBy,
+      selectedParts,
+      selectedSize,
+      modelImage,
+      customSizeValues,
+      height,
+      name,
+      count,
+      specialRequest,
+    },
+    ref
+  ) => {
+    const currencySymbol = useSelector((state) => state.currencySymbol.symbol);
+
+    return (
+      <div ref={ref} className="row all-confirmation-info">
+        <div className="col-md-6">
+          <p className="h5 mt-3 mb-5 model-confirm-image">
+            <img src={modelImage} alt="model img" width="80%" />
+          </p>
+          <div className=" d-flex justify-content-center align-items-center mt-3">
+            <div className="d-flex">
+              <div className="m-1">
+                <span className="fw-bold">Name: </span> {name} <br />
+                <span className="fw-bold">Quantity: </span> {count} <br />
+                <span className="fw-bold">Selected Size: </span>
+                {selectedSize || "None Selected"}
+                {/* <span className="fw-bold">
+                    Price: {currencySymbol}
+                    {total}
+                  </span> */}
+                <br />
+                <span className="fw-bold">Amount Paid: </span>
+                {currencySymbol} {total}
+                <br />
+                <span className="fw-bold">Amount Left: </span>
+                {currencySymbol} {actualTotal - total}
+                <br />
+
+                <span className="fw-bold">Estimated time to make this order: {readyBy} days</span>
+                <br />
+
+                <span span className="fw-bold">{specialRequest}</span>
+              </div>
+            </div>
+          </div>
+
+          {/* <div>
+            <div className="custom-size-values">
+              <p className="h5 mt-4">Client's custom size values:</p>
+              {!height && Object.entries(customSizeValues)?.length === 0 ? (
+                <span>N/A</span>
+              ) : (
+                <>
+                  {height && (
+                    <div>
+                      <strong className="text-warning">Your Height:</strong>
+                      {height + ""} cm
+                    </div>
+                  )}
+
+                  <ul>
+                    {Object.entries(customSizeValues)?.map(([label, value]) => (
+                      <li key={label}>
+                        <strong>{label}:</strong> {value}
+                      </li>
+                    ))}
+                  </ul>
+                </>
+              )}
+            </div>
+          </div> */}
+        </div>
+        <div className="col-md-6 px-5">
+          <div className="mt-4">
+            <h2>Information On Parts</h2>
+            {selectedParts?.map(
+              (part, index) =>
+                // Check if the part has color or texture before rendering
+                (part.color || part.texture) && (
+                  <div key={index} className="mb-4">
+                    <h4 className="text-capitalize">{parseTitle(part.name)}</h4>
+                    <p>
+                      {part.color && (
+                        <>
+                          Color
+                          <div
+                            className="color-display"
+                            style={{
+                              backgroundColor: part.color,
+                              width: "20px",
+                              height: "20px",
+                              border: "1px solid black",
+                              borderRadius: "4rem",
+                              display: "inline-block",
+                              marginLeft: "1rem",
+                            }}
+                          ></div>
+                        </>
+                      )}
+                    </p>
+
+                    <p>
+                      {part.texture && (
+                        <>
+                          Texture:
+                          <p>
+                            <img
+                              src={part.texture}
+                              alt="Selected Texture"
+                              style={{
+                                maxWidth: "70px",
+                                maxHeight: "70px",
+                                display: "inline-block",
+                              }}
+                            />
+                          </p>
+                        </>
+                      )}
+                    </p>
+
+                    {index !== selectedParts.length - 1 && <Divider />}
+                  </div>
+                )
+            )}
+          </div>
+        </div>
+      </div>
+      // <div ref={ref}>
+      //   <h1>Hi</h1>
+      // </div>
+    );
+  }
+);
 
 export default CustomizeCheckout;
