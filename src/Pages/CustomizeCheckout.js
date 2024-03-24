@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-import { clear3DInfo, clearCart, updateOrders } from "../Redux/store";
+import { clear3DInfo,  updateOrders } from "../Redux/store";
 
 import Top from "../Assets/Headers/Check_Out.jpg";
 import LayoutHeaders from "../Components/LayoutHeaders";
@@ -11,7 +11,6 @@ import { PaystackButton } from "react-paystack";
 import { Dialog } from "primereact/dialog";
 import Nav from "../Components/Nav";
 import { Dropdown } from "primereact/dropdown";
-import { AllDeliveries } from "../Data/DeliveryServiceData";
 import { Toast } from "primereact/toast";
 
 const CustomizeCheckout = () => {
@@ -62,14 +61,14 @@ const CustomizeCheckout = () => {
   }
 
   // Fetch delivery services and set the options in state
-  useEffect(() => {
-    const fetchDeliveryServices = async () => {
-      const allDeliveries = await AllDeliveries();
-      setDeliveryOptions(allDeliveries);
-    };
+  // useEffect(() => {
+  //   const fetchDeliveryServices = async () => {
+  //     const allDeliveries = await AllDeliveries();
+  //     setDeliveryOptions(allDeliveries);
+  //   };
 
-    fetchDeliveryServices();
-  }, []);
+  //   fetchDeliveryServices();
+  // }, []);
 
   // Function to filter delivery options based on shipping country
   let filteredOptions = deliveryOptions.filter(
@@ -173,7 +172,6 @@ const CustomizeCheckout = () => {
     });
 
     // Clear the cart after successful payment
-    dispatch(clearCart());
   };
 
   const onClose = () => {
@@ -289,12 +287,7 @@ const CustomizeCheckout = () => {
                 ))}
               </ul>
 
-              <button
-                className="btn btn-warning mt-3 text-white"
-                onClick={handleClearCart}
-              >
-                Clear Cart
-              </button>
+             
 
               <div className="mt-5 mb-5 text-center">
                 <h2>

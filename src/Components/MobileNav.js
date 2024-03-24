@@ -4,15 +4,10 @@ import { Sidebar } from "primereact/sidebar";
 
 import { Divider } from "primereact/divider";
 import CurrencyConverter from "./CurrencyConverter";
-import { categoryArr, mobileCategoryArr } from "../Data/categoryList";
 
 const MobileNav = ({ visible, setVisible }) => {
   const [showAllDepartments, setShowAllDepartments] = useState(false);
 
-  const initialDepartmentsToShow = 6;
-  const visibleDepartments = showAllDepartments
-    ? mobileCategoryArr
-    : mobileCategoryArr.slice(0, initialDepartmentsToShow);
 
   return (
     <Sidebar visible={visible} onHide={() => setVisible(false)} className=" ">
@@ -76,26 +71,7 @@ const MobileNav = ({ visible, setVisible }) => {
         <Divider className="custom-divider" />
         <h5>Shopping Departments</h5>
         <ul className="navbar-nav">
-          {visibleDepartments.map((option) => (
-            <li className="nav-item">
-              <Link
-                to={option.link}
-                className={`mb-2 nav-link cat-dropdown text-decoration-none text-${option.variant}`}
-                key={option.name}
-              >
-                {option.name}
-              </Link>
-            </li>
-          ))}
-          {categoryArr.length > initialDepartmentsToShow && (
-            <div
-              className="text-warning"
-              onClick={() => setShowAllDepartments(!showAllDepartments)}
-            >
-              {showAllDepartments ? "See Less" : "See More"}<i className={showAllDepartments ? "pi pi-angle-up": "pi pi-angle-down"} style={{ fontSize: '1rem', marginLeft: "0.5rem" }}></i>
-
-            </div>
-          )}
+          
         </ul>
 
         <Divider className="custom-divider" />

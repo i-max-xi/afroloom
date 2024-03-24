@@ -7,121 +7,60 @@ const Tnc = () => {
     <>
       <LayoutHeaders selectedBg={Top} />
       <div className="page-container">
-        {/* <h4>
-          Welcome to <span className="text-warning">AfroLoom.com,</span> an
-          e-commerce platform specializing in African products.
-        </h4> */}
         <p>
-          By accessing and using our website, you agree to be bound by the
-          following terms and conditions. Please read them carefully before
-          making a purchase or using our services.
+          Welcome to Afroloom, your one-stop destination for customizing and
+          creating unique clothing and accessories tailored just for you. By
+          using our website, you agree to abide by the following terms and
+          conditions:
         </p>
-        <h5>Definitions</h5>
-        <ul>
+        <ol>
           <li>
-            "Website" refers to AfroLoom.com and all its associated pages
-            and content.
+            Customization Process: Our website allows you to design and
+            customize your clothing and accessories to your liking. Once your
+            order is placed and confirmed, our talented team will begin the
+            process of creating your unique piece. Please note that all
+            customization options are final and cannot be altered once
+            production begins.
           </li>
           <li>
-            "User" refers to any individual or entity accessing and using our
-            website.
+            Returns: We understand that sometimes a product may not meet your
+            expectations. If for any reason you are not satisfied with your
+            purchase, you may return the product within 48 hours for a full
+            refund or exchange. Please note that the product must be returned in
+            its original condition and packaging to be eligible for a refund.
           </li>
           <li>
-            "Customer" refers to a user who makes a purchase through our
-            website.
+            Payment: Clients have the option to pay 40% of the total cost price
+            upfront and the remaining balance once the product is ready for
+            delivery. Alternatively, clients may choose to pay in full at the
+            time of purchase. Payment can be made securely through our website
+            using various payment methods.
           </li>
           <li>
-            "Product(s)" refers to any item available for purchase on our
-            website.
+            Notification: Once your customized product is ready, we will notify
+            you via email or phone call to arrange for delivery or pickup.
+            Please ensure that your contact information provided is accurate to
+            avoid any delays in receiving your order.
           </li>
           <li>
-            "Seller" refers to the individual or company selling their products
-            on our website.
+            Intellectual Property: All designs, images, and content on our
+            website are the property of Afroloom and are protected by copyright
+            laws. Any unauthorized use, reproduction, or distribution of our
+            intellectual property is strictly prohibited.
           </li>
-        </ul>
-        <h5>Acceptance of Terms</h5>
+        </ol>
+
         <p>
-          By accessing and using our website, you confirm that you have read,
-          understood, and agreed to comply with these terms and conditions. If
-          you do not agree with any aspect of these terms, please refrain from
-          using our website.
+          By using our website, you agree to comply with these terms and
+          conditions. We reserve the right to modify or update these terms at
+          any time without prior notice. If you have any questions or concerns,
+          please contact us at info@afroloom.com
         </p>
-        <h5>Registration and Account</h5>
+
         <p>
-          In order to make a purchase and access certain features of our
-          website, you may be required to create an account. When creating an
-          account, you agree to provide accurate and up-to-date information. You
-          are solely responsible for maintaining the confidentiality of your
-          account details and any activities performed using your account.
+          Thank you for choosing Afroloom for your custom clothing and accessory
+          needs. We look forward to creating something truly special for you!
         </p>
-        <h5>Product Listings and Descriptions</h5>
-        <p>
-          We strive to provide accurate and detailed product listings and
-          descriptions. However, we do not warrant the accuracy, completeness,
-          or reliability of any product information. It is the customer's
-          responsibility to review and verify all product details before making
-          a purchase.
-        </p>
-        <h5>Ordering and Payment</h5>
-        <p>
-          By placing an order, you agree to purchase the selected product(s) at
-          the listed price, including any applicable taxes, shipping fees, and
-          handling charges. Payment must be made in full at the time of purchase
-          using one of our accepted payment methods.
-        </p>
-        <h5>Shipping and Delivery</h5>
-        <p>
-          We aim to provide accurate shipping and delivery information, but
-          cannot guarantee specific delivery dates or times. Any estimated
-          delivery times provided are for reference purposes only. Customers are
-          responsible for providing accurate delivery information during the
-          checkout process. Any additional customs duties, taxes, or fees
-          imposed by the customer's country are the customer's responsibility.
-        </p>
-        <h5>Returns and Refunds</h5>
-        <p>
-          We accept returns and provide refunds in accordance with our Returns
-          and Refunds Policy. Please review this policy before making a
-          purchase.
-        </p>
-        <h5>Intellectual Property</h5>
-        <p>
-          All content, including but not limited to images, logos, text, and
-          graphics, on our website are the intellectual property of
-          AfroLoom.com or its sellers. You are prohibited from using,
-          reproducing, or distributing any content without obtaining explicit
-          permission from the respective owner(s).
-        </p>
-        <h5>Limitation of Liability</h5>
-        <p>
-          Under no circumstances shall AfroLoom.com be liable for any
-          direct, indirect, incidental, consequential, or punitive damages
-          arising from the use of our website or the purchase of any product.
-          This limitation of liability applies to the fullest extent permitted
-          by applicable law law.
-        </p>
-        <h5>Governing Law and Jurisdiction</h5>
-        <p>
-          These terms and conditions shall be governed by and construed in
-          accordance with the laws of Ghana. Any disputes arising from these
-          terms shall be subject to the exclusive jurisdiction of the courts
-          located within Ghana.
-        </p>
-        <h5>Modifications</h5>
-        <p>
-          AfroLoom.com reserves the right to modify, update, or remove
-          portions of these terms and conditions at any time without prior
-          notice. It is your responsibility to regularly review these terms for
-          any changes. Continued use of our website after any modifications
-          constitutes acceptance of the updated terms and conditions.
-        </p>
-        <p>
-          By using our website and making a purchase, you indicate that you have
-          read, understood, and agreed to these terms and conditions. If you
-          have any questions or concerns, please don't hesitate to contact our
-          customer service team.
-        </p>
-        <p>Thank you for shopping with us!</p>
       </div>
     </>
   );

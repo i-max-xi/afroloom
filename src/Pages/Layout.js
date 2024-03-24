@@ -1,7 +1,6 @@
 import { Outlet } from "react-router-dom";
 import Footer from "../Components/Footer";
 import React, { useEffect } from "react";
-// import Nav from "../Components/Nav";
 import { ScrollTop } from "primereact/scrolltop";
 //
 

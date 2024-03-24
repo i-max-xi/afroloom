@@ -17,98 +17,35 @@ import "aos/dist/aos.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Layout from "./Pages/Layout";
 import NoPage from "./Pages/NoPage";
-import Home from "./Pages/Home";
-import SignIn from "./Pages/Auths/SignIn";
 import About from "./Pages/About";
-import ForgotPassword from "./Pages/Auths/ForgotPassword";
-import Artisan from "./Pages/Artisan/Artisan";
-import Checkout from "./Pages/Checkout";
 import Tnc from "./Pages/Care/Tnc";
 import ShippingPolicy from "./Pages/Care/ShippingPolicy";
 import Returnpolicy from "./Pages/Care/ReturnPolicy";
 import PrivacyPolicy from "./Pages/Care/PrivacyPolicy";
 import ContactUs from "./Pages/Care/ContactUs";
-import ItemDetail from "./Pages/ItemDetail";
-import CategoryPage from "./Pages/CategoryPage";
-import CategoryDetail from "./Pages/CategoryDetail";
-import ArtisanDetail from "./Pages/Artisan/ArtisanDetail";
 import { useEffect } from "react";
 import CustomizePage from "./Pages/Customize/CustomizePage";
-import SellerDashboard from "./Pages/Dashboards/seller/SellerDashboard";
-import RegisterAs from "./Pages/Auths/RegisterAs";
-import Supplier from "./Pages/Auths/Supplier";
 import Configurator from "./Pages/Customize/Configurator/Configurator";
 import ConfiguratorFootwear from "./Pages/Customize/Configurator/ConfiguratorFootwear";
 import ConfiguratorMaleAccessories from "./Pages/Customize/Configurator/ConfiguratorMaleAccessories";
 import ConfiguratorFemaleAccessories from "./Pages/Customize/Configurator/ConfiguratorFemaleAccessories";
 import ConfiguratorFemale from "./Pages/Customize/Configurator/ConfiguratorFemale";
 import ConfiguratorUnisex from "./Pages/Customize/Configurator/ConfiguratorUnisex";
-import SearchedItem from "./Pages/SearchedItem";
-import ArtisanWait from "./Pages/Artisan/ArtisanWait";
-import OffersDetail from "./Pages/OffersDetail";
-import { useDispatch } from "react-redux";
-import { fetchAllModels, fetchAllPhotographers, fetchAllProducts, fetchAllTourGuides } from "./Redux/store";
-import UserDashboard from "./Pages/Dashboards/buyer/UserDashboard";
-import Buyer from "./Pages/Auths/Buyer";
-import AdminDashboard from "./Pages/Dashboards/admin/AdminDashboard";
 import CustomizeCheckout from "./Pages/CustomizeCheckout";
-import ProfessionalsPage from "./Pages/Professionals/ProfessionalsPage";
-import ProfessionalsDetail from "./Pages/Professionals/ProfessionalsDetail";
-import ProfessionalSignUp from "./Pages/Auths/ProfessionalSignUp";
-import ProfessionalDashboard from "./Pages/Dashboards/professionals/ProfessionalDashboard";
-import SellerHome from "./Pages/Dashboards/seller/Home";
 
 function App() {
-  const dispatch = useDispatch(); // Get the dispatch function
 
   useEffect(() => {
     AOS.init();
-    dispatch(fetchAllProducts());
-    dispatch(fetchAllModels());
-    dispatch(fetchAllPhotographers());
-    dispatch(fetchAllTourGuides())
-
-  }, [dispatch]);
+  }, []);
 
   return (
     <div className="allBg">
       <BrowserRouter future={{ v7_startTransition: true }}>
         <Routes>
           <Route path="/" element={<Layout />}>
-            <Route index element={<Home />} />
+            <Route index element={<CustomizePage />} />
             <Route path="about" element={<About />} />
-            <Route path="signin" element={<SignIn />} />
-            <Route path="registeras" element={<RegisterAs />} />
-            <Route path="buyer-signup" element={<Buyer />} />
-            <Route path="supplier-signup" element={<Supplier />} />
-            <Route path="professional-signup" element={<ProfessionalSignUp />} />
-            <Route path="forgotPassword" element={<ForgotPassword />} />
-
-            <Route path="artisan" element={<Artisan />} />
-            <Route path="artisancomingsoon" element={<ArtisanWait />} />
-
-
-            <Route path="searched" element={<SearchedItem />} />
-            <Route path="offers/:offerType" element={<OffersDetail />} />
-
-
-            <Route path="checkout" element={<Checkout />} />
-            <Route path="customize-checkout" element={<CustomizeCheckout />} />
-
-            <Route path="category-page" element={<CategoryPage />} />
-
-            <Route path="/seller-dashboard" element={<SellerDashboard />} />
-            <Route path="/user-dashboard" element={<UserDashboard />} />
-            <Route path="/admin-dashboard" element={<AdminDashboard />} />
-            <Route path="/seller-products/:selectedSeller" element={<SellerHome />} />
-            <Route path="/professionals-dashboard/:professionalType" element={<ProfessionalDashboard />} />
-
-
-            <Route path="category/:categoryName" element={<CategoryDetail />} />
-            <Route path="professional/:professionalName" element={<ProfessionalsPage />} />
-            <Route path="professional/:professionalName/:productId" element={<ProfessionalsDetail />} />
-            <Route path="/product/:productId" element={<ItemDetail />} />
-            <Route path="/artisan/:artisanId" element={<ArtisanDetail />} />
 
             <Route path="customize" element={<CustomizePage />} />
             <Route path="/configurator/:Id" element={<Configurator />} />

@@ -309,6 +309,10 @@
   margin: 5px;
 }
 
+.navbar-nav {
+  gap: 4rem
+}
+
 #mobileNavToggler {
   display: none;
 }
@@ -332,6 +336,7 @@
   transition: all 0.2s ease-in-out;
   margin: 0 0.3rem;
   width: max-content;
+  font-size: 1.2rem;
 }
 
 .nav-item a:hover,

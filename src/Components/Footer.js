@@ -45,11 +45,13 @@ const Footer = () => {
             style={{ textAlign: isMobile ? "justify" : "center" }}
             // style={{textAlign: "justify"}}
           >
-            We specialize in offering a diverse selection of African products,
-            allowing customers to customize their shopping experience and
-            discover the rich cultural heritage of Africa. Our services include
-            booking tour guides, photographers/videographers, and models, as
-            well as purchasing African books and herbal and beauty products.
+            At Afroloom, our mission is to help you bring your unique style to
+            life through personalized clothing and accessories. With our
+            easy-to-use customization tools, you can design a wardrobe that
+            truly reflects your individuality. And with our flexible payment
+            options and satisfaction guarantee, you can shop with complete peace
+            of mind. Join the Afroloom family today and start creating your
+            perfect look!
           </p>
         </div>
 
@@ -72,11 +74,6 @@ const Footer = () => {
                 <div className="d-flex justify-content-between">
                   <div>
                     <p>
-                      <Link to="/artisancomingsoon" className="text-reset">
-                        Become an Artisan
-                      </Link>
-                    </p>
-                    <p>
                       <Link to="/tnc" className="text-reset">
                         Terms and Conditions
                       </Link>
@@ -88,17 +85,12 @@ const Footer = () => {
                     </p>
                     <p>
                       <Link to="/contact" className="text-reset">
-                        Contact Us / <br />
-                        Report an issue
+                        Contact Us
+                        <br />
                       </Link>
                     </p>
                   </div>
                   <div>
-                    <p>
-                      <Link to="/category-page" className="text-reset">
-                        All Categories
-                      </Link>
-                    </p>
                     <p>
                       <Link to="/privacyPolicy" className="text-reset">
                         Privacy Policy
