@@ -46,8 +46,8 @@ function App() {
           <Route path="/" element={<Layout />}>
             <Route index element={<CustomizePage />} />
             <Route path="about" element={<About />} />
+            <Route path="customize-checkout" element={<CustomizeCheckout />} />
 
-            <Route path="customize" element={<CustomizePage />} />
             <Route path="/configurator/:Id" element={<Configurator />} />
             <Route
               path="/configurator-female/:Id"

@@ -14,7 +14,7 @@ import {
 import { Toast } from "primereact/toast";
 import { ProgressSpinner } from "primereact/progressspinner";
 import { set3DItemDetails, setItemDataSheet } from "../../../Redux/store";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { parseTitle } from "../../../utils/functions";
 import { Divider } from "primereact/divider";
 
@@ -24,7 +24,6 @@ const Confirmation = ({
   setShowConfirmation,
   readyBy,
   name,
-  weight,
   selectedParts,
   selectedSize,
   modelImage,
@@ -34,6 +33,19 @@ const Confirmation = ({
   const toast = useRef(null);
   const [isLoading, setIsLoading] = useState(false); // Initialize loading state
   const dispatch = useDispatch();
+
+
+  const [count, setCount] = useState(1);
+
+  const handleIncrement = () => {
+    setCount((prevCount) => prevCount + 1);
+  };
+
+  const handleDecrement = () => {
+    if (count > 1) {
+      setCount((prevCount) => prevCount - 1);
+    }
+  };
 
   const componentRef = useRef();
   const handlePrint = useReactToPrint({
@@ -70,10 +82,10 @@ const Confirmation = ({
           modelImage,
           currencySymbol,
           readyBy,
-          weight,
           name,
           selectedSize,
           message: "Please use the link to access the client's order",
+          quantity: count,
           // Other properties specific to your object
         },
       ];
@@ -125,6 +137,10 @@ const Confirmation = ({
         modelImage={modelImage}
         customSizeValues={customSizeValues}
         height={height}
+        name={name}
+        count={count}
+        handleDecrement={handleDecrement}
+        handleIncrement={handleIncrement}
       />
       <div className="container justify-content-center">
         <div className="d-flex">
@@ -169,17 +185,26 @@ export const OrderDetail = React.forwardRef(
   (
     {
       total,
-      currencySymbol,
+      // currencySymbol,
       readyBy,
       selectedParts,
       selectedSize,
       modelImage,
       customSizeValues,
       height,
+      name,
+      count,
+      handleDecrement,
+      handleIncrement,
     },
     ref
   ) => {
     const [special, setSpecial] = useState("");
+
+
+
+    const currencySymbol = useSelector((state) => state.currencySymbol.symbol);
+    const currencyFactor = useSelector((state) => state.currencySymbol.factor);
 
     return (
       <div ref={ref} className="row all-confirmation-info">
@@ -187,30 +212,69 @@ export const OrderDetail = React.forwardRef(
           <p className="h5 mt-3 mb-5 model-confirm-image">
             <img src={modelImage} alt="model img" width="80%" />
           </p>
-          <p className="h5 mt-4">
-            Selected Size: {selectedSize || "None Selected"}
-          </p>
-          <p className="h5 mt-3">
-            Price: {currencySymbol}
-            {total}
-          </p>
+          <ul className="list-group">
+            <li
+              className="list-group-item d-flex justify-content-between align-items-center mt-3"
+              data-aos="fade-up"
+            >
+              <div className="d-flex">
+                <div className="m-1">
+                  <span className="fw-bold">Name: </span> {name} <br />
+                  <span className="fw-bold">Selected Size: </span>
+                  {selectedSize || "None Selected"}
+                  {/* <span className="fw-bold">
+                    Price: {currencySymbol}
+                    {total}
+                  </span> */}
+                  <br />
+                  <span className="fw-bold">Price: </span>
+                  {currencySymbol + (currencyFactor * total * count).toFixed(2)}
+                </div>
+              </div>
+              <div>
+                <div className="d-flex mb-3">
+                  <button
+                    className="btn btn-secondary btn-sm"
+                    onClick={handleDecrement}
+                  >
+                    -
+                  </button>
+                  <span className="mx-2">{count}</span>
+                  <button
+                    className="btn btn-secondary btn-sm"
+                    onClick={handleIncrement}
+                  >
+                    +
+                  </button>
+                </div>
+                <span className="fw-bold">Quantity: {count}</span>
+              </div>
+            </li>
+          </ul>
+
           <div>
             <div className="custom-size-values">
               <p className="h5 mt-4">Client's custom size values:</p>
-              {height && (
-                <div>
-                  <strong className="text-warning">Your Height:</strong>
-                  {height + ""} cm
-                </div>
-              )}
+              {!height && Object.entries(customSizeValues).length === 0 ? (
+                <span>N/A</span>
+              ) : (
+                <>
+                  {height && (
+                    <div>
+                      <strong className="text-warning">Your Height:</strong>
+                      {height + ""} cm
+                    </div>
+                  )}
 
-              <ul>
-                {Object.entries(customSizeValues).map(([label, value]) => (
-                  <li key={label}>
-                    <strong>{label}:</strong> {value}
-                  </li>
-                ))}
-              </ul>
+                  <ul>
+                    {Object.entries(customSizeValues).map(([label, value]) => (
+                      <li key={label}>
+                        <strong>{label}:</strong> {value}
+                      </li>
+                    ))}
+                  </ul>
+                </>
+              )}
             </div>
           </div>
           <p>Estimated time to make this order: {readyBy} days</p>
