@@ -1,7 +1,6 @@
 import {
   createSlice,
   configureStore,
-  createAsyncThunk,
   combineReducers,
   // createAsyncThunk,
 } from "@reduxjs/toolkit";

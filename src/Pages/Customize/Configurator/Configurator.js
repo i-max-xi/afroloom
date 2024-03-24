@@ -823,10 +823,10 @@ const Configurator = () => {
                 </div>
 
                 {/* parts images start */}
-                <PartImages
+                {/* <PartImages
                   selectedClothing={selectedClothing}
                   selectedPart={selectedPart}
-                />
+                /> */}
                 {/* parts images end */}
               </div>
             </div>
