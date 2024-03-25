@@ -116,7 +116,7 @@ const Shirt = ({
                 map={texture && new TextureLoader().load(texture)}
                 roughness={1}
                 emissive={selectedPart === index ? "#FF8C00" : null} // Apply golden glow if part is selected
-                emissiveIntensity={showGlow && selectedPart === index ? 1 : 0} // Adjust glow intensity
+                emissiveIntensity={showGlow && selectedPart === index ? 2 : 0} // Adjust glow intensity
               />
             </mesh>
           );
@@ -329,7 +329,7 @@ const Configurator = () => {
   // customer height
   const [height, setHeight] = useState("");
 
-  const handleAllPartsClick = () => {
+   const handleAllPartsClick = () => {
     setSelectedPart("all");
   };
 
@@ -407,7 +407,7 @@ const Configurator = () => {
             </button>
 
             <div className="configurator-container container">
-              <div className="left-panel rounded shadow">
+              <div className="left-panel rounded-top border">
                 <h5>Select Part</h5>
                 <div className="select-part-container">
                   <button

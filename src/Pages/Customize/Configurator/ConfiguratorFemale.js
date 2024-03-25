@@ -44,6 +44,7 @@ const Shirt = ({
   selectedPart,
   setSelectedPart,
   selectedTexture,
+  showGlow
 }) => {
   const snap = useSnapshot(state);
   const { nodes } = useGLTF(selectedClothing.model);
@@ -112,6 +113,8 @@ const Shirt = ({
                 color={color}
                 map={texture && new TextureLoader().load(texture)}
                 roughness={1}
+                emissive={selectedPart === index ? "#FF8C00" : null} // Apply golden glow if part is selected
+                emissiveIntensity={showGlow && selectedPart === index ? 2 : 0} // Adjust glow intensity
               />
             </mesh>
           );
@@ -152,9 +155,10 @@ const ConfiguratorFemale = () => {
   const currencyFactor = useSelector((state) => state.currencySymbol.factor);
 
   const handleSizeChange = (factor) => {
-    // setPrice(selectedClothing.price * factor);
     setSelectedSize(factor);
   };
+
+  const [showGlow, setShowGlow] = useState(false)
 
   const handleColorChange = (newColor) => {
     if (selectedPart === "all") {
@@ -166,6 +170,8 @@ const ConfiguratorFemale = () => {
     state.color[selectedPart] = newColor;
     state.texture[selectedPart] = null;
     setSelectedPrintOn(newColor);
+
+    setShowGlow(false)
   };
 
   const [partPrices, setPartPrices] = useState(
@@ -208,13 +214,15 @@ const ConfiguratorFemale = () => {
       const newPartPrice =
         selectedClothing.price + textureValues[textureCategory];
 
-      // Update the partPrices array with the new price for the selected part
-      setPartPrices((prevPrices) =>
+       setPartPrices((prevPrices) =>
         prevPrices.map((price, index) =>
           index === selectedPart ? newPartPrice : price
         )
       );
     }
+
+    setShowGlow(false)
+
   };
 
   const handleRotation = () => {
@@ -321,9 +329,14 @@ const ConfiguratorFemale = () => {
   const [height, setHeight] = useState("");
 
   const handleAllPartsClick = () => {
-    // Select all parts when the "All" button is clicked
     setSelectedPart("all");
   };
+
+  const handleSelectPart = (index) => {
+    setSelectedPart(index)
+    setShowGlow(true)
+
+  }
 
   return (
     <>
@@ -834,6 +847,7 @@ const ConfiguratorFemale = () => {
                       selectedClothing={selectedClothing}
                       selectedPart={selectedPart}
                       selectedTexture={state.texture[selectedPart]}
+                      showGlow={showGlow}
                     />
                     <CameraControls />{" "}
                     {/* Add camera controls for interaction */}

@@ -47,6 +47,7 @@ const Shirt = ({
   selectedPart,
   setSelectedPart,
   selectedTexture,
+  showGlow
 }) => {
   const snap = useSnapshot(state);
   const { nodes } = useGLTF(selectedClothing.model);
@@ -115,6 +116,8 @@ const Shirt = ({
                 color={color}
                 map={texture && new TextureLoader().load(texture)}
                 roughness={1}
+                emissive={selectedPart === index ? "#FF8C00" : null} // Apply golden glow if part is selected
+                emissiveIntensity={showGlow && selectedPart === index ? 2 : 0} // Adjust glow intensity
               />
             </mesh>
           );
@@ -156,6 +159,9 @@ const ConfiguratorUnisex = () => {
   const handleSizeChange = (factor) => {
     setSelectedSize(factor);
   };
+
+  const [showGlow, setShowGlow] = useState(false)
+
 
   // Declare state for entered text and generated texture
   const [enteredTextLeft, setEnteredTextLeft] = useState("");
@@ -223,6 +229,8 @@ const ConfiguratorUnisex = () => {
     state.color[selectedPart] = newColor;
     state.texture[selectedPart] = null;
     setSelectedPrintOn(newColor);
+
+    setShowGlow(false)
   };
 
   const [partPrices, setPartPrices] = useState(
@@ -267,13 +275,15 @@ const ConfiguratorUnisex = () => {
       const newPartPrice =
         selectedClothing.price + textureValues[textureCategory];
 
-      // Update the partPrices array with the new price for the selected part
-      setPartPrices((prevPrices) =>
+       setPartPrices((prevPrices) =>
         prevPrices.map((price, index) =>
           index === selectedPart ? newPartPrice : price
         )
       );
     }
+
+    setShowGlow(false)
+
   };
 
   const handleRotation = () => {
@@ -378,9 +388,15 @@ const ConfiguratorUnisex = () => {
   // customer height
   const [height, setHeight] = useState("");
 
-  const handleAllPartsClick = () => {
+   const handleAllPartsClick = () => {
     setSelectedPart("all");
   };
+
+  const handleSelectPart = (index) => {
+    setSelectedPart(index)
+    setShowGlow(true)
+
+  }
 
   return (
     <>
@@ -908,6 +924,7 @@ const ConfiguratorUnisex = () => {
                         selectedClothing={selectedClothing}
                         selectedPart={selectedPart}
                         selectedTexture={state.texture[selectedPart]}
+                        showGlow={showGlow}
                       />
                       {selectedClothing.name !== "Sash" && <CameraControls />}
                     </Canvas>
