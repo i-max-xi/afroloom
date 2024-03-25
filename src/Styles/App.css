@@ -112,7 +112,7 @@
   /* pages */
   .page-container {
     /* font-size: 0.8rem; */
-    padding: 0 1rem !important;
+    padding: 1rem !important;
   }
   .contact-container {
     margin-top: 0 !important;
@@ -216,6 +216,7 @@
   text-align: center;
 }
 
+
 .more-info > p {
   margin: 1rem;
   font-weight: 600;
@@ -227,6 +228,10 @@
 
 .more-info-icon {
   width: 2rem;
+}
+
+.expect-to-be-ready, .price-text {
+  font-weight: bold;
 }
 
 

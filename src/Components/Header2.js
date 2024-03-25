@@ -61,10 +61,11 @@ const Header2 = ({ bgColor, Color, Padding, Icon1, Icon2, Icon3, Icon4 }) => {
             <path d="M6.641 11.671V8.843h1.57l1.498 2.828h1.314L9.377 8.665c.897-.3 1.427-1.106 1.427-2.1 0-1.37-.943-2.246-2.456-2.246H5.5v7.352h1.141zm0-3.75V5.277h1.57c.881 0 1.416.499 1.416 1.32 0 .84-.504 1.324-1.386 1.324h-1.6z" />
           </svg>
 
-          <p className="d-flex flex-column justify-content-center">
-            <span className="fw-bolder">Free Returns</span>
-            <span style={{ fontSize: "0.8rem" }}>
-              Free return within 48hours of purchase
+          <p className="d-flex flex-column justify-content-center text-justify">
+            <span className="fw-bolder text-center">Return Policy</span>
+            <span style={{ fontSize: "0.8rem",  }}>
+              Products can be returned within 48 hours if they do not meet
+              your expectations
             </span>
           </p>
         </li>
@@ -85,10 +86,10 @@ const Header2 = ({ bgColor, Color, Padding, Icon1, Icon2, Icon3, Icon4 }) => {
             <path d="M1 0a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h4.083q.088-.517.258-1H3a2 2 0 0 0-2-2V3a2 2 0 0 0 2-2h10a2 2 0 0 0 2 2v3.528c.38.34.717.728 1 1.154V1a1 1 0 0 0-1-1z" />
             <path d="M9.998 5.083 10 5a2 2 0 1 0-3.132 1.65 6 6 0 0 1 3.13-1.567" />
           </svg>
-          <p className="d-flex flex-column justify-content-center">
-            <span className="fw-bolder">45% Down Payment</span>
+          <p className="d-flex flex-column justify-content-center text-justify">
+            <span className="fw-bolder text-center">45% Down Payment</span>
             <span style={{ fontSize: "0.8rem" }}>
-              Pay just 45% now, top up upon delivery.
+              Pay 45% deposit now and settle the remaining balance upon delivery
             </span>
           </p>
         </li>

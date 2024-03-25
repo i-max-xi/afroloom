@@ -7,10 +7,7 @@ const About = () => {
     <>
       <LayoutHeaders selectedBg={Top} />
       <div className="page-container">
-        <h3>
-          Welcome to <span className="text-warning">AfroLoom.com</span>, where
-          style meets craftsmanship.
-        </h3>
+        <p>Welcome to AfroLoom where style meets craftsmanship.</p>
         <p>
           At Afroloom, we believe that every individual is unique and deserves
           to express themselves through their clothing and accessories. That's
@@ -32,9 +29,6 @@ const About = () => {
           in every stitch.
         </p>
         {/* <h5>Sustainable and Ethical Practices:</h5> */}
-        
-       
-      
       </div>
     </>
   );

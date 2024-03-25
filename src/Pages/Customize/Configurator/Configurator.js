@@ -46,7 +46,7 @@ const Shirt = ({
   selectedPart,
   setSelectedPart,
   selectedTexture,
-  showGlow
+  showGlow,
 }) => {
   const snap = useSnapshot(state);
   const { nodes } = useGLTF(selectedClothing.model);
@@ -96,12 +96,11 @@ const Shirt = ({
         </>
       ) : (
         selectedClothing.myNode.map((nodeName, index) => {
-          
           const color = specialNodeNames.includes(nodeName)
             ? snap.color[index] || "#333333"
             : snap.color[index] || "#ffffff";
 
-          const texture = snap.texture[index] || null;          
+          const texture = snap.texture[index] || null;
 
           return (
             <mesh
@@ -159,7 +158,7 @@ const Configurator = () => {
     setSelectedSize(factor);
   };
 
-  const [showGlow, setShowGlow] = useState(false)
+  const [showGlow, setShowGlow] = useState(false);
 
   const handleColorChange = (newColor) => {
     if (selectedPart === "all") {
@@ -173,7 +172,7 @@ const Configurator = () => {
     state.texture[selectedPart] = null;
     setSelectedPrintOn(newColor);
 
-    setShowGlow(false)
+    setShowGlow(false);
   };
 
   const [partPrices, setPartPrices] = useState(
@@ -204,7 +203,7 @@ const Configurator = () => {
       setPartPrices(Array(selectedClothing.myNode.length).fill(newPartPrice));
       return;
     }
-    
+
     if (selectedPart !== null) {
       state.texture[selectedPart] = newTexture;
       state.color[selectedPart] = null;
@@ -222,8 +221,7 @@ const Configurator = () => {
       );
     }
 
-    setShowGlow(false)
-
+    setShowGlow(false);
   };
 
   const handleRotation = () => {
@@ -329,15 +327,19 @@ const Configurator = () => {
   // customer height
   const [height, setHeight] = useState("");
 
-   const handleAllPartsClick = () => {
+  const handleAllPartsClick = () => {
     setSelectedPart("all");
   };
 
   const handleSelectPart = (index) => {
-    setSelectedPart(index)
-    setShowGlow(true)
-
-  }
+    if (selectedPart === index) {
+      setShowGlow(false);
+      setSelectedPart(null);
+      return;
+    }
+    setSelectedPart(index);
+    setShowGlow(true);
+  };
 
   return (
     <>
@@ -583,7 +585,7 @@ const Configurator = () => {
                         )}
                       />
                     </div>
-                   
+
                     <div className="texture-category">
                       <h3>
                         Crochet (+{currencySymbol}
@@ -707,7 +709,6 @@ const Configurator = () => {
                       />
                     </div>
                   </div>
-                  
                 </div>
               </div>
               <div className="right-panel d-flex justify-content-between">

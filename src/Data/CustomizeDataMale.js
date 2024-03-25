@@ -259,7 +259,7 @@ export const mainMaleCustomize = [
   },
   {
     id: uuid(),
-    name: "Top And Down",
+    name: "Top And Down Kaftan",
     image: image_topndown_image,
     model: topndown_model,
     myNode: [

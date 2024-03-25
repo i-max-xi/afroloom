@@ -295,6 +295,7 @@ export const OrderDetail = React.forwardRef(
                 id="special-request"
                 value={special}
                 onChange={(e) => setSpecial(e.target.value)}
+                placeholder="This may attract extra cost"
                 rows={5}
                 cols={50}
               />
