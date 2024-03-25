@@ -805,7 +805,7 @@ const ConfiguratorFootwear = () => {
                   </Canvas>
                 </div>
 
-                {/* <div className="m-3">
+                {/* {/* <div className="m-3">
                   <button
                     className={`btn rotation-button text-white m-3 ${
                       isRotating === true ? "btn-danger" : "btn-warning"
@@ -814,7 +814,7 @@ const ConfiguratorFootwear = () => {
                   >
                     {isRotating ? "Stop" : "Spin"}
                   </button>
-                </div> */}
+                </div> */} */}
 
                 {/* parts images start */}
                 <PartImages

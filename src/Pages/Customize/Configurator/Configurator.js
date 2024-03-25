@@ -409,7 +409,7 @@ const Configurator = () => {
             </button>
 
             <div className="configurator-container container">
-              <div className="left-panel rounded-top border">
+              <div className="left-panel rounded border shadow">
                 <h5>Select Part</h5>
                 <div className="select-part-container">
                   <button
@@ -556,64 +556,61 @@ const Configurator = () => {
 
                 <h5>Choose Textile</h5>
                 <div className="texture-buttons-container">
-                    <div className="texture-category">
-                      <h3>
-                        Batik (+{currencySymbol}
-                        {(currencyFactor * textureValues.batik).toFixed(2)})
-                      </h3>
-                      <Carousel
-                        value={textureArrays.batik}
-                        numVisible={4}
-                        numScroll={2}
-                        showIndicators={false}
-                        itemTemplate={(texture) => (
-                          <TextureItem
-                            key={texture}
-                            texture={texture}
-                            setHideText={setHideText}
-                            Title="batik"
-                            selectedTexture={selectedTexture}
-                            setSelectedTexture={setSelectedTexture}
-                            handleTextureChange={handleTextureChange}
-                            currencySymbol={currencySymbol}
-                            currencyFactor={currencyFactor}
-                            subTextureDescriptions={textureDescriptions.batik}
-                            textureIndex={textureArrays.batik.indexOf(texture)}
-                          />
-                        )}
-                      />
-                    </div>
+                  <div className="texture-category">
+                    <h3>
+                      Batik (+{currencySymbol}
+                      {(currencyFactor * textureValues.batik).toFixed(2)})
+                    </h3>
+                    <Carousel
+                      value={textureArrays.batik}
+                      numVisible={4}
+                      numScroll={2}
+                      showIndicators={false}
+                      itemTemplate={(texture) => (
+                        <TextureItem
+                          key={texture}
+                          texture={texture}
+                          setHideText={setHideText}
+                          Title="batik"
+                          selectedTexture={selectedTexture}
+                          setSelectedTexture={setSelectedTexture}
+                          handleTextureChange={handleTextureChange}
+                          currencySymbol={currencySymbol}
+                          currencyFactor={currencyFactor}
+                          subTextureDescriptions={textureDescriptions.batik}
+                          textureIndex={textureArrays.batik.indexOf(texture)}
+                        />
+                      )}
+                    />
+                  </div>
 
-                    <div className="texture-category">
-                      <h3>
-                        Crochet (+{currencySymbol}
-                        {(currencyFactor * textureValues.Crochet).toFixed(2)})
-                      </h3>
-                      <Carousel
-                        value={textureArrays.Crochet}
-                        numVisible={4}
-                        numScroll={2}
-                        showIndicators={false}
-                        responsiveOptions={responsiveNess}
-                        itemTemplate={(texture) => (
-                          <TextureItem
-                            key={texture}
-                            texture={texture}
-                            setHideText={setHideText}
-                            Title="Crochet"
-                            selectedTexture={selectedTexture}
-                            setSelectedTexture={setSelectedTexture} // Pass setSelectedTexture as a prop
-                            handleTextureChange={handleTextureChange}
-                            currencySymbol={currencySymbol}
-                            currencyFactor={currencyFactor}
-                            subTextureDescriptions={textureDescriptions.Crochet}
-                            textureIndex={textureArrays.Crochet.indexOf(
-                              texture
-                            )}
-                          />
-                        )}
-                      />
-                    </div>
+                  <div className="texture-category">
+                    <h3>
+                      Crochet (+{currencySymbol}
+                      {(currencyFactor * textureValues.Crochet).toFixed(2)})
+                    </h3>
+                    <Carousel
+                      value={textureArrays.Crochet}
+                      numVisible={2}
+                      numScroll={2}
+                      showIndicators={false}
+                      itemTemplate={(texture) => (
+                        <TextureItem
+                          key={texture}
+                          texture={texture}
+                          setHideText={setHideText}
+                          Title="Crochet"
+                          selectedTexture={selectedTexture}
+                          setSelectedTexture={setSelectedTexture} // Pass setSelectedTexture as a prop
+                          handleTextureChange={handleTextureChange}
+                          currencySymbol={currencySymbol}
+                          currencyFactor={currencyFactor}
+                          subTextureDescriptions={textureDescriptions.Crochet}
+                          textureIndex={textureArrays.Crochet.indexOf(texture)}
+                        />
+                      )}
+                    />
+                  </div>
                   <div className="texture-row">
                     <div className="texture-category">
                       <h3>
@@ -622,10 +619,9 @@ const Configurator = () => {
                       </h3>
                       <Carousel
                         value={textureArrays.waxPrint}
-                        numVisible={4}
+                        numVisible={2}
                         numScroll={2}
                         showIndicators={false}
-                        responsiveOptions={responsiveNess}
                         itemTemplate={(texture) => (
                           <TextureItem
                             key={texture}
@@ -648,7 +644,6 @@ const Configurator = () => {
                       />
                     </div>
                   </div>
-                  
                 </div>
               </div>
               <div className="right-panel d-flex justify-content-between">
@@ -672,7 +667,7 @@ const Configurator = () => {
                   </Canvas>
                 </div>
 
-                {/* <div className="m-3">
+                {/* {/* <div className="m-3">
                   <button
                     className={`btn rotation-button text-white m-3 ${
                       isRotating === true ? "btn-danger" : "btn-warning"
@@ -693,9 +688,10 @@ const Configurator = () => {
             </div>
           </div>
           <div className="price w-100 d-flex bg-dark text-white justify-content-between">
-            <span className="m-3 expect-to-be-ready">
-              Estimated time to make this order: {selectedClothing.readyIn} days
-            </span>
+            <p className="m-3 expect-to-be-ready">
+              Estimated time to make this order:
+              <p>{selectedClothing.readyIn} days</p>
+            </p>
 
             <p className="price-text m-3">
               <span className="expect-to-be-ready">Price:</span>{" "}

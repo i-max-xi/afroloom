@@ -233,7 +233,7 @@
 }
 
 .expect-to-be-ready, .price-text {
-  font-weight: bold;
+  /* font-weight: bold; */
 }
 
 

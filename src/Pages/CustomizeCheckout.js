@@ -191,11 +191,11 @@ const CustomizeCheckout = () => {
                 <label className="ml-2 ">Pay full amount</label>
               </div>
 
-              <h2 className="text-center mt-3">
+              <h3 className="text-center mt-3">
                 Price To Pay: {currencySymbol}
                 {totalToPayNumeric}
-                <p className="fs-5">We will contact you when your product is ready</p>
-              </h2>
+                <p className="fs-6">We will contact you when your product is ready</p>
+              </h3>
             </div>
           </div>
         ) : (

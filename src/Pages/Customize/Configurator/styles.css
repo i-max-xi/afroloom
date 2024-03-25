@@ -6,6 +6,8 @@
 
   .left-panel {
     width: 100% !important;
+    border-top-left-radius: 3rem !important;
+    border-top-right-radius: 3rem !important;
   }
 
   .text-image-imprint h5 {
@@ -37,8 +39,8 @@
   }
 
   .texture-button {
-    height: 3rem;
-    width: 3.5rem;
+    height: 3.5rem;
+    width: 4rem;
     cursor: pointer;
     align-self: center;
   }
@@ -158,6 +160,7 @@ h1 {
 
 .configurator-container {
   display: flex;
+  padding: 0 !important
 }
 
 .left-panel {
@@ -207,9 +210,7 @@ h1 {
   gap: 2rem
 }
 
-.color-buttons-container {
-  width: 90%;
-}
+
 
 .color-button {
   /* position: relative; */
@@ -285,9 +286,9 @@ h1 {
 /* .p-carousel-prev,
 .p-carousel-next {
   transform: translateY(-0.75rem);
-}
+} */
 
-.p-carousel-items-content {
+/* .p-carousel-items-content {
   transform: translateY(-0.25rem);
 } */
 

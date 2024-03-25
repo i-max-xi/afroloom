@@ -578,36 +578,7 @@ const ConfiguratorFemale = () => {
                         )}
                       />
                     </div>
-                    {/* <div className="texture-category">
-                      <h3>
-                        Dashiki (+{currencySymbol}
-                        {(currencyFactor * textureValues.dashiki).toFixed(2)})
-                      </h3>
-                      <Carousel
-                        value={textureArrays.dashiki}
-                        numVisible={isMobile ? 1 : 4}
-                        numScroll={isMobile ? 1 : 4}
-                        showIndicators={false}
-                        responsiveOptions={responsiveNess}
-                        itemTemplate={(texture) => (
-                          <TextureItem
-                            key={texture}
-                            texture={texture}
-                            setHideText={setHideText}
-                            Title="dashiki"
-                            selectedTexture={selectedTexture}
-                            setSelectedTexture={setSelectedTexture} // Pass setSelectedTexture as a prop
-                            handleTextureChange={handleTextureChange}
-                            currencySymbol={currencySymbol}
-                            currencyFactor={currencyFactor}
-                            subTextureDescriptions={textureDescriptions.dashiki}
-                            textureIndex={textureArrays.dashiki.indexOf(
-                              texture
-                            )}
-                          />
-                        )}
-                      />
-                    </div> */}
+                   
                     <div className="texture-category">
                       <h3>
                         Crochet (+{currencySymbol}
@@ -674,109 +645,8 @@ const ConfiguratorFemale = () => {
                       />
                     </div>
                   </div>
-                  <div className="texture-row">
-                    
-                    <div className="texture-category">
-                      <h3>
-                        Crochet (+{currencySymbol}
-                        {(currencyFactor * textureValues.Crochet).toFixed(2)})
-                      </h3>
-                      <Carousel
-                        value={textureArrays.Crochet}
-                        numVisible={isMobile ? 1 : 4}
-                        numScroll={isMobile ? 1 : 4}
-                        showIndicators={false}
-                        responsiveOptions={responsiveNess}
-                        itemTemplate={(texture) => (
-                          <TextureItem
-                            key={texture}
-                            texture={texture}
-                            setHideText={setHideText}
-                            Title="Crochet"
-                            selectedTexture={selectedTexture}
-                            setSelectedTexture={setSelectedTexture} // Pass setSelectedTexture as a prop
-                            handleTextureChange={handleTextureChange}
-                            currencySymbol={currencySymbol}
-                            currencyFactor={currencyFactor}
-                            subTextureDescriptions={textureDescriptions.Crochet}
-                            textureIndex={textureArrays.Crochet.indexOf(
-                              texture
-                            )}
-                          />
-                        )}
-                      />
-                    </div>
-                  </div>
-                  {/* <div className="texture-row">
-                    <div className="texture-category">
-                      <h3>
-                        Printed Kente (+{currencySymbol}
-                        {(currencyFactor * textureValues.printed_kente).toFixed(
-                          2
-                        )}
-                        )
-                      </h3>
-                      <Carousel
-                        value={textureArrays.printed_kente}
-                        numVisible={isMobile ? 1 : 4}
-                        numScroll={isMobile ? 1 : 4}
-                        showIndicators={false}
-                        responsiveOptions={responsiveNess}
-                        itemTemplate={(texture) => (
-                          <TextureItem
-                            key={texture}
-                            texture={texture}
-                            setHideText={setHideText}
-                            Title="printed_kente"
-                            selectedTexture={selectedTexture}
-                            setSelectedTexture={setSelectedTexture} // Pass setSelectedTexture as a prop
-                            handleTextureChange={handleTextureChange}
-                            currencySymbol={currencySymbol}
-                            currencyFactor={currencyFactor}
-                            subTextureDescriptions={
-                              textureDescriptions.printed_kente
-                            }
-                            textureIndex={textureArrays.printed_kente.indexOf(
-                              texture
-                            )}
-                          />
-                        )}
-                      />
-                    </div>
-                    <div className="texture-category">
-                      <h3>
-                        Funerals (+{currencySymbol}
-                        {(currencyFactor * textureValues.Funerals).toFixed(2)})
-                      </h3>
-                      <Carousel
-                        value={textureArrays.Funerals}
-                        numVisible={isMobile ? 1 : 4}
-                        numScroll={isMobile ? 1 : 4}
-                        showIndicators={false}
-                        responsiveOptions={responsiveNess}
-                        itemTemplate={(texture) => (
-                          <TextureItem
-                            key={texture}
-                            texture={texture}
-                            setHideText={setHideText}
-                            Title="Funerals"
-                            selectedTexture={selectedTexture}
-                            setSelectedTexture={setSelectedTexture} // Pass setSelectedTexture as a prop
-                            handleTextureChange={handleTextureChange}
-                            currencySymbol={currencySymbol}
-                            currencyFactor={currencyFactor}
-                            subTextureDescriptions={
-                              textureDescriptions.Funerals
-                            }
-                            textureIndex={textureArrays.Funerals.indexOf(
-                              texture
-                            )}
-                          />
-                        )}
-                      />
-                    </div>
-                  </div> */}
-                  {/* Add more rows of texture categories as needed */}
+                  
+                  
                 </div>
               </div>
               <div className="right-panel d-flex justify-content-between">
@@ -800,7 +670,7 @@ const ConfiguratorFemale = () => {
                   </Canvas>
                 </div>
 
-                <div className="m-3">
+                {/* <div className="m-3">
                   <button
                     className={`btn rotation-button text-white m-3 ${
                       isRotating === true ? "btn-danger" : "btn-warning"
@@ -809,7 +679,7 @@ const ConfiguratorFemale = () => {
                   >
                     {isRotating ? "Stop" : "Spin"}
                   </button>
-                </div>
+                </div> */}
 
                 {/* parts images start */}
                 <PartImages
