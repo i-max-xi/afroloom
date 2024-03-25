@@ -645,34 +645,7 @@ const ConfiguratorMaleAccessories = () => {
                     </div>
                   </div>
                   <div className="texture-row">
-                    <div className="texture-category">
-                      <h3>
-                        Kente (+{currencySymbol}
-                        {(currencyFactor * textureValues.kente).toFixed(2)})
-                      </h3>
-                      <Carousel
-                        value={textureArrays.kente}
-                        numVisible={isMobile ? 1 : 4}
-                        numScroll={isMobile ? 1 : 4}
-                        showIndicators={false}
-                        responsiveOptions={responsiveNess}
-                        itemTemplate={(texture) => (
-                          <TextureItem
-                            key={texture}
-                            texture={texture}
-                            setHideText={setHideText}
-                            Title="kente"
-                            selectedTexture={selectedTexture}
-                            setSelectedTexture={setSelectedTexture} // Pass setSelectedTexture as a prop
-                            handleTextureChange={handleTextureChange}
-                            currencySymbol={currencySymbol}
-                            currencyFactor={currencyFactor}
-                            subTextureDescriptions={textureDescriptions.kente}
-                            textureIndex={textureArrays.kente.indexOf(texture)}
-                          />
-                        )}
-                      />
-                    </div>
+                    
                     <div className="texture-category">
                       <h3>
                         waxPrint (+{currencySymbol}
@@ -707,34 +680,7 @@ const ConfiguratorMaleAccessories = () => {
                     </div>
                   </div>
                   <div className="texture-row">
-                    <div className="texture-category">
-                      <h3>
-                        Smock (+{currencySymbol}
-                        {(currencyFactor * textureValues.smock).toFixed(2)})
-                      </h3>
-                      <Carousel
-                        value={textureArrays.smock}
-                        numVisible={isMobile ? 1 : 4}
-                        numScroll={isMobile ? 1 : 4}
-                        showIndicators={false}
-                        responsiveOptions={responsiveNess}
-                        itemTemplate={(texture) => (
-                          <TextureItem
-                            key={texture}
-                            texture={texture}
-                            setHideText={setHideText}
-                            Title="smock"
-                            selectedTexture={selectedTexture}
-                            setSelectedTexture={setSelectedTexture} // Pass setSelectedTexture as a prop
-                            handleTextureChange={handleTextureChange}
-                            currencySymbol={currencySymbol}
-                            currencyFactor={currencyFactor}
-                            subTextureDescriptions={textureDescriptions.smock}
-                            textureIndex={textureArrays.smock.indexOf(texture)}
-                          />
-                        )}
-                      />
-                    </div>
+                    
                   </div>
                   {/*<div className="texture-row">
                     <div className="texture-category">
@@ -829,7 +775,7 @@ const ConfiguratorMaleAccessories = () => {
                   </Canvas>
                 </div>
 
-                <div className="m-3">
+                {/* <div className="m-3">
                   <button
                     className={`btn rotation-button text-white m-3 ${
                       isRotating === true ? "btn-danger" : "btn-warning"
@@ -838,7 +784,7 @@ const ConfiguratorMaleAccessories = () => {
                   >
                     {isRotating ? "Stop" : "Spin"}
                   </button>
-                </div>
+                </div> */}
 
                 {/* parts images start */}
                 <PartImages

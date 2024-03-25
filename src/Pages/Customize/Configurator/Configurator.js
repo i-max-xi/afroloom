@@ -433,7 +433,7 @@ const Configurator = () => {
                   ))}
                 </div>
                 <h5>Choose Size</h5>
-                <div className="size w-75">
+                <div className="size ">
                   <p className="size-button-container">
                     {selectedClothing.sizeOptions.map((option) => (
                       <button
@@ -556,7 +556,6 @@ const Configurator = () => {
 
                 <h5>Choose Textile</h5>
                 <div className="texture-buttons-container">
-                  <div className="texture-row">
                     <div className="texture-category">
                       <h3>
                         Batik (+{currencySymbol}
@@ -564,10 +563,9 @@ const Configurator = () => {
                       </h3>
                       <Carousel
                         value={textureArrays.batik}
-                        numVisible={isMobile ? 1 : 4}
-                        numScroll={isMobile ? 1 : 4}
+                        numVisible={4}
+                        numScroll={2}
                         showIndicators={false}
-                        // responsiveOptions={responsiveNess}
                         itemTemplate={(texture) => (
                           <TextureItem
                             key={texture}
@@ -593,8 +591,8 @@ const Configurator = () => {
                       </h3>
                       <Carousel
                         value={textureArrays.Crochet}
-                        numVisible={isMobile ? 1 : 4}
-                        numScroll={isMobile ? 1 : 4}
+                        numVisible={4}
+                        numScroll={2}
                         showIndicators={false}
                         responsiveOptions={responsiveNess}
                         itemTemplate={(texture) => (
@@ -616,36 +614,7 @@ const Configurator = () => {
                         )}
                       />
                     </div>
-                  </div>
                   <div className="texture-row">
-                    <div className="texture-category">
-                      <h3>
-                        Kente (+{currencySymbol}
-                        {(currencyFactor * textureValues.kente).toFixed(2)})
-                      </h3>
-                      <Carousel
-                        value={textureArrays.kente}
-                        numVisible={isMobile ? 1 : 4}
-                        numScroll={isMobile ? 1 : 4}
-                        showIndicators={false}
-                        responsiveOptions={responsiveNess}
-                        itemTemplate={(texture) => (
-                          <TextureItem
-                            key={texture}
-                            texture={texture}
-                            setHideText={setHideText}
-                            Title="kente"
-                            selectedTexture={selectedTexture}
-                            setSelectedTexture={setSelectedTexture} // Pass setSelectedTexture as a prop
-                            handleTextureChange={handleTextureChange}
-                            currencySymbol={currencySymbol}
-                            currencyFactor={currencyFactor}
-                            subTextureDescriptions={textureDescriptions.kente}
-                            textureIndex={textureArrays.kente.indexOf(texture)}
-                          />
-                        )}
-                      />
-                    </div>
                     <div className="texture-category">
                       <h3>
                         waxPrint (+{currencySymbol}
@@ -653,8 +622,8 @@ const Configurator = () => {
                       </h3>
                       <Carousel
                         value={textureArrays.waxPrint}
-                        numVisible={isMobile ? 1 : 4}
-                        numScroll={isMobile ? 1 : 4}
+                        numVisible={4}
+                        numScroll={2}
                         showIndicators={false}
                         responsiveOptions={responsiveNess}
                         itemTemplate={(texture) => (
@@ -679,36 +648,7 @@ const Configurator = () => {
                       />
                     </div>
                   </div>
-                  <div className="texture-row">
-                    <div className="texture-category">
-                      <h3>
-                        Smock (+{currencySymbol}
-                        {(currencyFactor * textureValues.smock).toFixed(2)})
-                      </h3>
-                      <Carousel
-                        value={textureArrays.smock}
-                        numVisible={isMobile ? 1 : 4}
-                        numScroll={isMobile ? 1 : 4}
-                        showIndicators={false}
-                        responsiveOptions={responsiveNess}
-                        itemTemplate={(texture) => (
-                          <TextureItem
-                            key={texture}
-                            texture={texture}
-                            setHideText={setHideText}
-                            Title="smock"
-                            selectedTexture={selectedTexture}
-                            setSelectedTexture={setSelectedTexture} // Pass setSelectedTexture as a prop
-                            handleTextureChange={handleTextureChange}
-                            currencySymbol={currencySymbol}
-                            currencyFactor={currencyFactor}
-                            subTextureDescriptions={textureDescriptions.smock}
-                            textureIndex={textureArrays.smock.indexOf(texture)}
-                          />
-                        )}
-                      />
-                    </div>
-                  </div>
+                  
                 </div>
               </div>
               <div className="right-panel d-flex justify-content-between">
@@ -732,7 +672,7 @@ const Configurator = () => {
                   </Canvas>
                 </div>
 
-                <div className="m-3">
+                {/* <div className="m-3">
                   <button
                     className={`btn rotation-button text-white m-3 ${
                       isRotating === true ? "btn-danger" : "btn-warning"
@@ -741,7 +681,7 @@ const Configurator = () => {
                   >
                     {isRotating ? "Stop" : "Spin"}
                   </button>
-                </div>
+                </div> */}
 
                 {/* parts images start */}
                 {/* <PartImages

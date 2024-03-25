@@ -1,10 +1,11 @@
 :root {
-  font-size: 14px;
+  font-size: 16px;
 }
 
 @media (max-width: 900px) {
-  .main-space {
-    overflow: hidden;
+
+  .left-panel {
+    width: 100% !important;
   }
 
   .text-image-imprint h5 {
@@ -22,34 +23,30 @@
   }
 
   .main-space button {
-    font-size: 0.8rem !important;
     padding: 0.2rem 0.6rem !important;
     margin: 0.2rem ;
   }
 
-  .left-panel {
-    transform: translateX(0.1rem) !important;
-    width: 100% !important;
-  }
 
   .left-panel h3 {
-    font-size: 0.8rem !important;
+    font-size: 0.9rem !important;
   }
 
   .left-panel h5 {
     margin-top: 1rem;
   }
 
-
-
-
-  .color-item {
-    width: fit-content;
-    flex: 1;
+  .texture-button {
+    height: 3rem;
+    width: 3.5rem;
+    cursor: pointer;
+    align-self: center;
   }
-  .texture-category {
+
+
+  /* .texture-category {
     width: 50% !important;
-  }
+  } */
 
   .part-panel {
     display: none !important;
@@ -63,7 +60,7 @@
   }
 
   .resize-right-panel > div:first-child {
-    height: 20rem !important;
+    height: 30rem !important;
   }
 
   .text-image-imprint-wrapper > .inputs {
@@ -148,8 +145,7 @@
 
 .main-space {
   background-color: white;
-  /* height: 78vh; */
-  /* comneted out and mobile worked */
+
 }
 
 .btn-success {
@@ -162,27 +158,19 @@ h1 {
 
 .configurator-container {
   display: flex;
-  /* width: 100%; */
 }
 
 .left-panel {
-  display: flex;
   flex-direction: column;
-  align-items: flex-start;
   padding: 0.3rem 1rem;
   text-transform: uppercase;
-  transform: translateX(-3rem);
-  width: 45%;
+  width: 50%;
 }
 
 .left-panel > h5 {
-  /* margin-top: 0.3rem; */
   font-size: 1rem;
 }
 
-.left-panel button {
-  /* font-size: 0.8rem; */
-}
 
 .left-panel button:hover {
   background-color: none !important;
@@ -204,7 +192,6 @@ h1 {
 }
 
 .right-panel {
-  flex: 4;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -221,30 +208,23 @@ h1 {
 }
 
 .color-buttons-container {
-  /* margin-bottom: 1rem; */
   width: 90%;
 }
 
 .color-button {
-  position: relative;
-  width: 17px;
-  height: 17px;
+  /* position: relative; */
+  width: 1.5rem;
+  height: 1.5rem;
   border-radius: 50%;
   border: 0.5px solid rgba(0, 0, 0, 0.418);
   cursor: pointer;
-  transform: translateY(0.3rem);
-  /* transition: all 0.3s ease; */
 }
 
-/* .color-button:hover {
-  transform: scale(1.1);
-   box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-} */
 
 .imprint-text-color-button {
   position: relative;
-  width: 17px;
-  height: 17px;
+  width: 1.5rem;
+  height: 1.5rem;
   border-radius: 50%;
   border: 0.5px solid rgba(0, 0, 0, 0.418);
   cursor: pointer;
@@ -254,38 +234,15 @@ h1 {
   transform: translateY(0.2rem);
 }
 
-.texture-buttons-container h3 {
-  font-size: medium;
-  transform: translateX(0.5rem);
-}
-
 .texture-buttons-container {
-  display: flex;
-  flex-wrap: wrap;
   justify-content: center;
-  /* margin-bottom: 1rem; */
 }
 
-.texture-category {
-  transform: translateX(-4rem);
-  width: 60%;
-}
-
-.texture-category:nth-child(even) {
-  margin-left: 3rem;
-}
 
 .texture-category h3 {
   font-size: 1rem;
 }
 
-.texture-row {
-  display: flex;
-  width: 70%;
-  max-width: 400px;
-  transform: translateX(-1.5rem);
-  margin-top: 0.3rem;
-}
 
 .texture-item {
   display: flex;
@@ -294,16 +251,14 @@ h1 {
 }
 
 .texture-button {
-  height: 1.6rem;
-  width: 2.3rem;
+  height: 1.5rem;
+  width: 2.4rem;
   cursor: pointer;
-  transition: 0.1s ease-in;
-  /* margin-bottom: 0.1rem; */
   align-self: center;
 }
 
 .p-carousel-items-container {
-  width: 100% !important;
+  /* width: 100% !important; */
 }
 
 .bi-info-circle {
@@ -327,14 +282,14 @@ h1 {
   text-transform: capitalize;
 }
 
-.p-carousel-prev,
+/* .p-carousel-prev,
 .p-carousel-next {
   transform: translateY(-0.75rem);
 }
 
 .p-carousel-items-content {
   transform: translateY(-0.25rem);
-}
+} */
 
 .part-image {
   margin-bottom: 0.2rem;
