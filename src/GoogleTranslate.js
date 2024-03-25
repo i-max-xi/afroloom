@@ -24,16 +24,16 @@ const GoogleTranslate = () => {
       '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
     document.body.appendChild(addGoogleTranslateScript);
 
-    return () => {
-      // Clean up the added script when the component is unmounted
-      document.body.removeChild(addGoogleTranslateScript);
-    };
+    // return () => {
+    //   // Clean up the added script when the component is unmounted
+    //   document.body.removeChild(addGoogleTranslateScript);
+    // };
   }, []);
 
   return (
     <div>
       {loading ? (
-        <p style={{fontSize: '0.6rem'}}>...</p>
+        <p style={{fontSize: '0.6rem'}}>Loading...</p>
       ) : (
         <div id="google_translate_element"></div>
       )}

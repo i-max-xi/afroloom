@@ -4,6 +4,7 @@ import { Sidebar } from "primereact/sidebar";
 
 import { Divider } from "primereact/divider";
 import CurrencyConverter from "./CurrencyConverter";
+import GoogleTranslate from "../GoogleTranslate";
 
 const MobileNav = ({ visible, setVisible }) => {
 
@@ -38,6 +39,9 @@ const MobileNav = ({ visible, setVisible }) => {
         <Divider className="custom-divider" />
 
       </div>
+
+      <GoogleTranslate />
+
     </Sidebar>
   );
 };

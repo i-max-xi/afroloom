@@ -5,10 +5,11 @@ import GoogleTranslate from "../GoogleTranslate";
 import CurrencyConverter from "./CurrencyConverter";
 import "primeicons/primeicons.css";
 import MobileNav from "./MobileNav";
+import { isMobile } from "../utils/constants";
+
 
 const Nav = ({ noCurrency }) => {
   const [visible, setVisible] = useState(false);
-
 
   return (
     <nav className="navbar navbar-expand-lg text-black d-flex px-3 bg-white border-bottom">
@@ -55,7 +56,7 @@ const Nav = ({ noCurrency }) => {
           <div className="d-flex justify-content-around align-items-center"></div>
         </ul>
       </div>
-      <GoogleTranslate />
+      {isMobile ? null : <GoogleTranslate />}
     </nav>
   );
 };
