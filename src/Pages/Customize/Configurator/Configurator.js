@@ -400,13 +400,24 @@ const Configurator = () => {
         <>
           <div className="main-space">
             <h3 className="text-center">Customizing {selectedClothing.name}</h3>
-            <button
-              className="btn btn-info text-white mx-3"
-              style={{ float: "right" }}
-              onClick={handleRetakeTour}
-            >
-              Take Tour
-            </button>
+            <div className="d-flex justify-content-center">
+              <button
+                className={`btn rotation-button text-white  ${
+                  isRotating === true ? "btn-danger" : "btn-warning"
+                }`}
+                onClick={handleRotation}
+              >
+                {isRotating ? "Stop" : "Spin"}
+              </button>
+
+              <button
+                className="btn btn-info text-white mx-3"
+                // style={{ float: "right" }}
+                onClick={handleRetakeTour}
+              >
+                Take Tour
+              </button>
+            </div>
 
             <div className="configurator-container container">
               <div className="left-panel rounded border shadow">
@@ -646,7 +657,7 @@ const Configurator = () => {
                   </div>
                 </div>
               </div>
-              <div className="right-panel d-flex justify-content-between">
+              <div className="right-panel">
                 <div className="resize-right-panel">
                   <Canvas
                     ref={canvasRef}
