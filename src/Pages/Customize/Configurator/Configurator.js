@@ -46,6 +46,7 @@ const Shirt = ({
   selectedPart,
   setSelectedPart,
   selectedTexture,
+  showGlow
 }) => {
   const snap = useSnapshot(state);
   const { nodes } = useGLTF(selectedClothing.model);
@@ -95,6 +96,7 @@ const Shirt = ({
         </>
       ) : (
         selectedClothing.myNode.map((nodeName, index) => {
+          
           const color = specialNodeNames.includes(nodeName)
             ? snap.color[index] || "#333333"
             : snap.color[index] || "#ffffff";
@@ -113,6 +115,8 @@ const Shirt = ({
                 color={color}
                 map={texture && new TextureLoader().load(texture)}
                 roughness={1}
+                emissive={selectedPart === index ? "#FF8C00" : null} // Apply golden glow if part is selected
+                emissiveIntensity={showGlow && selectedPart === index ? 1 : 0} // Adjust glow intensity
               />
             </mesh>
           );
@@ -155,6 +159,8 @@ const Configurator = () => {
     setSelectedSize(factor);
   };
 
+  const [showGlow, setShowGlow] = useState(false)
+
   const handleColorChange = (newColor) => {
     if (selectedPart === "all") {
       state.texture = Array(selectedClothing.myNode.length).fill(null);
@@ -166,6 +172,8 @@ const Configurator = () => {
     state.color[selectedPart] = newColor;
     state.texture[selectedPart] = null;
     setSelectedPrintOn(newColor);
+
+    setShowGlow(false)
   };
 
   const [partPrices, setPartPrices] = useState(
@@ -213,6 +221,9 @@ const Configurator = () => {
         )
       );
     }
+
+    setShowGlow(false)
+
   };
 
   const handleRotation = () => {
@@ -322,6 +333,12 @@ const Configurator = () => {
     setSelectedPart("all");
   };
 
+  const handleSelectPart = (index) => {
+    setSelectedPart(index)
+    setShowGlow(true)
+
+  }
+
   return (
     <>
       <Nav />
@@ -407,7 +424,7 @@ const Configurator = () => {
                       className={`size-button btn btn-outline-dark ${
                         selectedPart === index ? "selected" : ""
                       }`}
-                      onClick={() => setSelectedPart(index)}
+                      onClick={() => handleSelectPart(index)}
                     >
                       {parseTitle(nodeName)}
                     </button>
@@ -566,36 +583,7 @@ const Configurator = () => {
                         )}
                       />
                     </div>
-                    {/* <div className="texture-category">
-                      <h3>
-                        Dashiki (+{currencySymbol}
-                        {(currencyFactor * textureValues.dashiki).toFixed(2)})
-                      </h3>
-                      <Carousel
-                        value={textureArrays.dashiki}
-                        numVisible={isMobile ? 1 : 4}
-                        numScroll={isMobile ? 1 : 4}
-                        showIndicators={false}
-                        responsiveOptions={responsiveNess}
-                        itemTemplate={(texture) => (
-                          <TextureItem
-                            key={texture}
-                            texture={texture}
-                            setHideText={setHideText}
-                            Title="dashiki"
-                            selectedTexture={selectedTexture}
-                            setSelectedTexture={setSelectedTexture} // Pass setSelectedTexture as a prop
-                            handleTextureChange={handleTextureChange}
-                            currencySymbol={currencySymbol}
-                            currencyFactor={currencyFactor}
-                            subTextureDescriptions={textureDescriptions.dashiki}
-                            textureIndex={textureArrays.dashiki.indexOf(
-                              texture
-                            )}
-                          />
-                        )}
-                      />
-                    </div> */}
+                   
                     <div className="texture-category">
                       <h3>
                         Crochet (+{currencySymbol}
@@ -719,76 +707,7 @@ const Configurator = () => {
                       />
                     </div>
                   </div>
-                  {/*<div className="texture-row">
-                    <div className="texture-category">
-                      <h3>
-                        Printed Kente (+{currencySymbol}
-                        {(currencyFactor * textureValues.printed_kente).toFixed(
-                          2
-                        )}
-                        )
-                      </h3>
-                      <Carousel
-                        value={textureArrays.printed_kente}
-                        numVisible={isMobile ? 1 : 4}
-                        numScroll={isMobile ? 1 : 4}
-                        showIndicators={false}
-                        responsiveOptions={responsiveNess}
-                        itemTemplate={(texture) => (
-                          <TextureItem
-                            key={texture}
-                            texture={texture}
-                            setHideText={setHideText}
-                            Title="printed_kente"
-                            selectedTexture={selectedTexture}
-                            setSelectedTexture={setSelectedTexture}
-                            handleTextureChange={handleTextureChange}
-                            currencySymbol={currencySymbol}
-                            currencyFactor={currencyFactor}
-                            subTextureDescriptions={
-                              textureDescriptions.printed_kente
-                            }
-                            textureIndex={textureArrays.printed_kente.indexOf(
-                              texture
-                            )}
-                          />
-                        )}
-                      />
-                    </div>
-                    <div className="texture-category">
-                      <h3>
-                        Funerals (+{currencySymbol}
-                        {(currencyFactor * textureValues.Funerals).toFixed(2)})
-                      </h3>
-                      <Carousel
-                        value={textureArrays.Funerals}
-                        numVisible={isMobile ? 1 : 4}
-                        numScroll={isMobile ? 1 : 4}
-                        showIndicators={false}
-                        responsiveOptions={responsiveNess}
-                        itemTemplate={(texture) => (
-                          <TextureItem
-                            key={texture}
-                            texture={texture}
-                            setHideText={setHideText}
-                            Title="Funerals"
-                            selectedTexture={selectedTexture}
-                            setSelectedTexture={setSelectedTexture}
-                            handleTextureChange={handleTextureChange}
-                            currencySymbol={currencySymbol}
-                            currencyFactor={currencyFactor}
-                            subTextureDescriptions={
-                              textureDescriptions.Funerals
-                            }
-                            textureIndex={textureArrays.Funerals.indexOf(
-                              texture
-                            )}
-                          />
-                        )}
-                      />
-                    </div>
-                            </div> */}
-                  {/* Add more rows of texture categories as needed */}
+                  
                 </div>
               </div>
               <div className="right-panel d-flex justify-content-between">
@@ -805,6 +724,7 @@ const Configurator = () => {
                       selectedClothing={selectedClothing}
                       selectedPart={selectedPart}
                       selectedTexture={state.texture[selectedPart]}
+                      showGlow={showGlow}
                     />
                     <CameraControls />{" "}
                     {/* Add camera controls for interaction */}
