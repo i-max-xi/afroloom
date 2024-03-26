@@ -112,7 +112,6 @@ export const mainMaleCustomize = [
     price: 20,
     sizeModels: tshirt_model,
     readyIn: 3,
-    weight: 0.25,
     sizeGuide: tshirt_guide,
     parts: tshirtParts.keys().map(tshirtParts),
     sizeOptions: [
@@ -120,6 +119,7 @@ export const mainMaleCustomize = [
       { label: "M", value: 1 },
       { label: "L", value: 2 },
       { label: "XL", value: 3 },
+      { label: "2XL", value: 4 },
     ],
     sizeForms: [
       {
@@ -149,7 +149,6 @@ export const mainMaleCustomize = [
     price: 20,
     sizeModels: tshirt_model,
     readyIn: 3,
-    weight: 0.25,
     sizeGuide: tshirtlong_guide,
     parts: tshirtLongParts.keys().map(tshirtLongParts),
     sizeOptions: [
@@ -157,7 +156,8 @@ export const mainMaleCustomize = [
       { label: "M", value: 1 },
       { label: "L", value: 2 },
       { label: "XL", value: 3 },
-      { label: "2XL", value: 3 },
+      { label: "2XL", value: 4 },
+      
     ],
     sizeForms: [
       {
@@ -190,7 +190,6 @@ export const mainMaleCustomize = [
     price: 30,
     sizeModels: tshirt_model,
     readyIn: 3,
-    weight: 0.25,
     sizeGuide: shirt_guide,
     parts: shirtParts.keys().map(shirtParts),
     sizeOptions: [
@@ -198,7 +197,8 @@ export const mainMaleCustomize = [
       { label: "M", value: 1 },
       { label: "L", value: 2 },
       { label: "XL", value: 3 },
-      { label: "2XL", value: 3 },
+      { label: "2XL", value: 4 },
+      
     ],
     sizeForms: [
       {
@@ -232,14 +232,14 @@ export const mainMaleCustomize = [
     sizeGuide: shirtlong_guide,
     sizeModels: tshirt_model,
     readyIn: 3,
-    weight: 0.25,
     parts: shirtLongParts.keys().map(shirtLongParts),
     sizeOptions: [
       { label: "S", value: 0.5 },
       { label: "M", value: 1 },
       { label: "L", value: 2 },
       { label: "XL", value: 3 },
-      { label: "2XL", value: 3 },
+      { label: "2XL", value: 4 },
+      
     ],
     sizeForms: [
       {
@@ -273,14 +273,14 @@ export const mainMaleCustomize = [
     sizeGuide: top_down_guide,
     sizeModels: tshirt_model,
     readyIn: 3,
-    weight: 0.25,
     parts: topndownParts.keys().map(topndownParts),
     sizeOptions: [
       { label: "S", value: 0.5 },
       { label: "M", value: 1 },
       { label: "L", value: 2 },
       { label: "XL", value: 3 },
-      { label: "2XL", value: 3 },
+      { label: "2XL", value: 4 },
+      
     ],
     sizeForms: [
       {
@@ -341,14 +341,14 @@ export const mainMaleCustomize = [
     sizeGuide: cloak_guide,
     sizeModels: tshirt_model,
     readyIn: 3,
-    weight: 0.25,
     parts: topParts.keys().map(topParts),
     sizeOptions: [
       { label: "S", value: 0.5 },
       { label: "M", value: 1 },
       { label: "L", value: 2 },
       { label: "XL", value: 3 },
-      { label: "2XL", value: 3 },
+      { label: "2XL", value: 4 },
+      
     ],
     sizeForms: [
       {
@@ -380,14 +380,14 @@ export const mainMaleCustomize = [
     sizeGuide: blazer_guide,
     sizeModels: tshirt_model,
     readyIn: 3,
-    weight: 0.25,
     parts: blazerParts.keys().map(blazerParts),
     sizeOptions: [
       { label: "S", value: 0.5 },
       { label: "M", value: 1 },
       { label: "L", value: 2 },
       { label: "XL", value: 3 },
-      { label: "2XL", value: 3 },
+      { label: "2XL", value: 4 },
+      
     ],
     sizeForms: [
       {
@@ -428,13 +428,13 @@ export const mainMaleCustomize = [
     sizeGuide: trouser_guide,
     sizeModels: tshirt_model,
     readyIn: 3,
-    weight: 0.25,
     sizeOptions: [
       { label: "S", value: 0.5 },
       { label: "M", value: 1 },
       { label: "L", value: 2 },
       { label: "XL", value: 3 },
-      { label: "2XL", value: 3 },
+      { label: "2XL", value: 4 },
+      
     ],
     parts: trouserParts.keys().map(trouserParts),
     sizeForms: [
@@ -481,13 +481,13 @@ export const mainMaleCustomize = [
     sizeGuide: summer_shorts_guide,
     sizeModels: tshirt_model,
     readyIn: 3,
-    weight: 0.25,
     sizeOptions: [
       { label: "S", value: 0.5 },
       { label: "M", value: 1 },
       { label: "L", value: 2 },
       { label: "XL", value: 3 },
-      { label: "2XL", value: 3 },
+      { label: "2XL", value: 4 },
+      
     ],
     parts: summerShortsParts.keys().map(summerShortsParts),
     sizeForms: [
@@ -518,14 +518,14 @@ export const mainMaleCustomize = [
     sizeGuide: material_shorts_guide,
     sizeModels: tshirt_model,
     readyIn: 3,
-    weight: 0.25,
     parts: materialShortsParts.keys().map(materialShortsParts),
     sizeOptions: [
       { label: "S", value: 0.5 },
       { label: "M", value: 1 },
       { label: "L", value: 2 },
       { label: "XL", value: 3 },
-      { label: "2XL", value: 3 },
+      { label: "2XL", value: 4 },
+      
     ],
     sizeForms: [
       {

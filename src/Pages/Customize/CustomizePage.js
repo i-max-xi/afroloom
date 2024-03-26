@@ -129,7 +129,7 @@ const CustomizePage = () => {
           ))}
 
           {/* Footwear */}
-          <h5 className="mt-4 footer-header">Footwear</h5>
+          {/* <h5 className="mt-4 footer-header">Footwear</h5>
           {mainFootwear.map(({ name, image }) => (
             <Link
               // to={`/customize-footwear/${name}`}
@@ -149,7 +149,7 @@ const CustomizePage = () => {
                 </div>
               </div>
             </Link>
-          ))}
+          ))} */}
         </div>
       </div>
     </>

@@ -588,8 +588,8 @@ const ConfiguratorFemale = () => {
                             texture={texture}
                             setHideText={setHideText}
                             Title="batik"
-                            selectedTexture={selectedTexture}
-                            setSelectedTexture={setSelectedTexture} // Pass setSelectedTexture as a prop
+                            selectedTexture={selectedPrintOn}
+                             // Pass setSelectedTexture as a prop
                             handleTextureChange={handleTextureChange}
                             currencySymbol={currencySymbol}
                             currencyFactor={currencyFactor}
@@ -616,11 +616,10 @@ const ConfiguratorFemale = () => {
                           texture={texture}
                           setHideText={setHideText}
                           Title="Crochet"
-                          selectedTexture={selectedTexture}
-                          setSelectedTexture={setSelectedTexture} // Pass setSelectedTexture as a prop
+                          selectedTexture={selectedPrintOn}
+                           // Pass setSelectedTexture as a prop
                           handleTextureChange={handleTextureChange}
-                          currencySymbol={currencySymbol}
-                          currencyFactor={currencyFactor}
+                          
                           subTextureDescriptions={textureDescriptions.Crochet}
                           textureIndex={textureArrays.Crochet.indexOf(texture)}
                         />
@@ -649,8 +648,8 @@ const ConfiguratorFemale = () => {
                             texture={texture}
                             setHideText={setHideText}
                             Title="waxPrint"
-                            selectedTexture={selectedTexture}
-                            setSelectedTexture={setSelectedTexture} // Pass setSelectedTexture as a prop
+                            selectedTexture={selectedPrintOn}
+                             // Pass setSelectedTexture as a prop
                             handleTextureChange={handleTextureChange}
                             currencySymbol={currencySymbol}
                             currencyFactor={currencyFactor}

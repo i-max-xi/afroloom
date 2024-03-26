@@ -593,8 +593,8 @@ const ConfiguratorFootwear = () => {
                             texture={texture}
                             setHideText={setHideText}
                             Title="batik"
-                            selectedTexture={selectedTexture}
-                            setSelectedTexture={setSelectedTexture} // Pass setSelectedTexture as a prop
+                            selectedTexture={selectedPrintOn}
+                             // Pass setSelectedTexture as a prop
                             handleTextureChange={handleTextureChange}
                             currencySymbol={currencySymbol}
                             currencyFactor={currencyFactor}
@@ -621,8 +621,8 @@ const ConfiguratorFootwear = () => {
                             texture={texture}
                             setHideText={setHideText}
                             Title="dashiki"
-                            selectedTexture={selectedTexture}
-                            setSelectedTexture={setSelectedTexture} // Pass setSelectedTexture as a prop
+                            selectedTexture={selectedPrintOn}
+                             // Pass setSelectedTexture as a prop
                             handleTextureChange={handleTextureChange}
                             currencySymbol={currencySymbol}
                             currencyFactor={currencyFactor}
@@ -650,11 +650,10 @@ const ConfiguratorFootwear = () => {
                           texture={texture}
                           setHideText={setHideText}
                           Title="Crochet"
-                          selectedTexture={selectedTexture}
-                          setSelectedTexture={setSelectedTexture} // Pass setSelectedTexture as a prop
+                          selectedTexture={selectedPrintOn}
+                           // Pass setSelectedTexture as a prop
                           handleTextureChange={handleTextureChange}
-                          currencySymbol={currencySymbol}
-                          currencyFactor={currencyFactor}
+                          
                           subTextureDescriptions={textureDescriptions.Crochet}
                           textureIndex={textureArrays.Crochet.indexOf(texture)}
                         />
@@ -683,8 +682,8 @@ const ConfiguratorFootwear = () => {
                             texture={texture}
                             setHideText={setHideText}
                             Title="waxPrint"
-                            selectedTexture={selectedTexture}
-                            setSelectedTexture={setSelectedTexture} // Pass setSelectedTexture as a prop
+                            selectedTexture={selectedPrintOn}
+                             // Pass setSelectedTexture as a prop
                             handleTextureChange={handleTextureChange}
                             currencySymbol={currencySymbol}
                             currencyFactor={currencyFactor}
@@ -716,11 +715,10 @@ const ConfiguratorFootwear = () => {
                           texture={texture}
                           setHideText={setHideText}
                           Title="Crochet"
-                          selectedTexture={selectedTexture}
-                          setSelectedTexture={setSelectedTexture} // Pass setSelectedTexture as a prop
+                          selectedTexture={selectedPrintOn}
+                           // Pass setSelectedTexture as a prop
                           handleTextureChange={handleTextureChange}
-                          currencySymbol={currencySymbol}
-                          currencyFactor={currencyFactor}
+                          
                           subTextureDescriptions={textureDescriptions.Crochet}
                           textureIndex={textureArrays.Crochet.indexOf(texture)}
                         />
@@ -749,8 +747,8 @@ const ConfiguratorFootwear = () => {
                             texture={texture}
                             setHideText={setHideText}
                             Title="printed_kente"
-                            selectedTexture={selectedTexture}
-                            setSelectedTexture={setSelectedTexture}
+                            selectedTexture={selectedPrintOn}
+                            
                             handleTextureChange={handleTextureChange}
                             currencySymbol={currencySymbol}
                             currencyFactor={currencyFactor}
@@ -781,8 +779,8 @@ const ConfiguratorFootwear = () => {
                             texture={texture}
                             setHideText={setHideText}
                             Title="Funerals"
-                            selectedTexture={selectedTexture}
-                            setSelectedTexture={setSelectedTexture}
+                            selectedTexture={selectedPrintOn}
+                            
                             handleTextureChange={handleTextureChange}
                             currencySymbol={currencySymbol}
                             currencyFactor={currencyFactor}

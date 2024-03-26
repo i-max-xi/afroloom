@@ -1,9 +1,5 @@
 import { v4 as uuid } from "uuid";
 
-// backpacks
-// import bp1 from '../Assets/Customize/unisex/backpack/1.jpg'
-
-// import jacket_img from '../Assets/Customize/jacket.jpg'
 
 //models
 import backpack_model from "../Pages/Customize/Configurator/models/Accessories/Unisex/backpack.glb";
@@ -51,59 +47,53 @@ const image_backpack = require("../Assets/welcome_3ds/others/backpack.png");
 const image_sash = require("../Assets/welcome_3ds/others/sash.jpg");
 
 export const mainUnisex = [
-  // {
-  //   id: uuid(),
-  //   name: "Sash",
-  //   image: image_sash,
-  //   model: sash_model,
-  //   myNode: ["plain_sections", "Stripe_1", "Stripe_2", "mid_stripes"],
-  //   myZoom: 1.5,
-  //   price: 55,
-  //   parts: sashParts.keys().map(sashParts),
-  //   sizeModels: tshirt_model,
-  //   readyIn: 3,
-  //   weight: 0.25,
-  //   sizeGuide: sash_guide,
-  //   sizeOptions: [
-  //     { label: "S", value: 0.5 },
-  //     { label: "M", value: 1 },
-  //     { label: "L", value: 2 },
-  //     { label: "XL", value: 3 },
-  //   ],
-  //   sizeForms: [
-  //     {
-  //       label: "Length (inch)",
-  //     },
-  //     {
-  //       label: "Width (inch)",
-  //     },
-  //   ],
-  // },
+  {
+    id: uuid(),
+    name: "Sash",
+    image: image_sash,
+    model: sash_model,
+    myNode: ["plain_sections", "Stripe_1", "Stripe_2", "mid_stripes"],
+    myZoom: 1.5,
+    price: 55,
+    parts: sashParts.keys().map(sashParts),
+    sizeModels: tshirt_model,
+    readyIn: 3,
+    weight: 0.25,
+    sizeGuide: sash_guide,
+    sizeOptions: [
+      { label: "S", value: 0.5 },
+      { label: "M", value: 1 },
+      { label: "L", value: 2 },
+      { label: "XL", value: 3 },
+      { label: "2XL", value: 4 },
+    ],
+    sizeForms: [
+      {
+        label: "Length (inch)",
+      },
+      {
+        label: "Width (inch)",
+      },
+    ],
+  },
   {
     id: uuid(),
     name: "Waist Bag",
-    // image: bp1,
     image: image_waist_bag,
     model: mini_bag_model,
-    myNode: ["main_body", "handle", "cover", "zippers"],
+    myNode: [{ name: "all", yardNeeded: 1 }],
     myZoom: 0.6,
     price: 55,
     parts: miniBagParts.keys().map(miniBagParts),
     sizeModels: tshirt_model,
     readyIn: 3,
-    weight: 0.25,
     sizeGuide: miniBag_guide,
     sizeOptions: [
       { label: "S", value: 0.5 },
       { label: "M", value: 1 },
       { label: "L", value: 2 },
       { label: "XL", value: 3 },
-      // { label: "XXL", value: 4 },
-      // { label: "3XL", value: 5 },
-      // { label: "4XL", value: 6 },
-      // { label: "5XL", value: 7 },
-      // { label: "6XL", value: 8 },
-      // { label: "7XL", value: 9 },
+      { label: "2XL", value: 4 },
     ],
     sizeForms: [
       {
@@ -118,37 +108,19 @@ export const mainUnisex = [
   {
     id: uuid(),
     name: "Backpack",
-    // image:
-    //   'https://pisces.bbystatic.com/image2/BestBuy_US/images/products/5286/5286137cv12d.jpg',
     image: image_backpack,
     model: backpack_model,
-    myNode: [
-      "front_1",
-      "front_2",
-      "front_3",
-      "left_handle",
-      "right_handle",
-      "top_handle",
-      "zippers",
-    ],
+    myNode: [{ name: "all", yardNeeded: 2 }],
     myZoom: 0.75,
     price: 55,
     parts: backpackParts.keys().map(backpackParts),
     sizeModels: tshirt_model,
     readyIn: 3,
-    weight: 0.25,
     sizeGuide: backpack_guide,
     sizeOptions: [
       { label: "S", value: 0.5 },
       { label: "M", value: 1 },
       { label: "L", value: 2 },
-      // { label: "35L", value: 3 },
-      // { label: "XXL", value: 4 },
-      // { label: "3XL", value: 5 },
-      // { label: "4XL", value: 6 },
-      // { label: "5XL", value: 7 },
-      // { label: "6XL", value: 8 },
-      // { label: "7XL", value: 9 },
     ],
     sizeForms: [
       {
@@ -165,26 +137,14 @@ export const mainUnisex = [
   {
     id: uuid(),
     name: "Jacket",
-    // image: jacket_img,
     image: image_jacket,
     model: jacket,
-    myNode: [
-      "midline",
-      "left_hand",
-      "left_hand_cuff",
-      "right_hand",
-      "right_hand_cuff",
-      "collar",
-      "front_right",
-      "front_left",
-      "back",
-    ],
+    myNode: [{ name: "all", yardNeeded: 2 }],
     myZoom: 0.9,
     price: 55,
     parts: jacketParts.keys().map(jacketParts),
     sizeModels: tshirt_model,
     readyIn: 3,
-    weight: 0.25,
     sizeGuide: jacket_guide,
     sizeOptions: [
       { label: "XS", value: 0.5 },
@@ -193,11 +153,6 @@ export const mainUnisex = [
       { label: "L", value: 2 },
       { label: "XL", value: 3 },
       { label: "2XL", value: 4 },
-      { label: "3XL", value: 5 },
-      // { label: "4XL", value: 6 },
-      // { label: "5XL", value: 7 },
-      // { label: "6XL", value: 8 },
-      // { label: "7XL", value: 9 },
     ],
     sizeForms: [
       {

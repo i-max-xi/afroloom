@@ -6,11 +6,7 @@ function TextureItem({
   texture,
   selectedTexture,
   handleTextureChange,
-  currencySymbol,
-  currencyFactor,
   subTextureDescriptions,
-  setHideText,
-  Title,
   textureIndex,
 }) {
   const [displayDialog, setDisplayDialog] = useState(false);
@@ -24,6 +20,8 @@ function TextureItem({
     setDisplayDialog(false);
     // setHideText(false)
   };
+
+  console.log({selectedTexture, texture})
 
 
   return (
