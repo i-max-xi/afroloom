@@ -12,7 +12,7 @@ const GoogleTranslate = () => {
         {
           pageLanguage: 'en',
           includedLanguages: 'en,hi,es,ar,ru,pt,de,bg,hr,cs,da,nl,et,fi,fr,el,hu,ga,it,lv,lt,mt,pl,pt,ro,sk,sl,sv,ja,zh-CN,tr,vi',
-        }, // Include selected languages
+        },
         'google_translate_element'
       );
     };
@@ -24,10 +24,10 @@ const GoogleTranslate = () => {
       '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
     document.body.appendChild(addGoogleTranslateScript);
 
-    // return () => {
-    //   // Clean up the added script when the component is unmounted
-    //   document.body.removeChild(addGoogleTranslateScript);
-    // };
+    return () => {
+      // Clean up the added script when the component is unmounted
+      document.body.removeChild(addGoogleTranslateScript);
+    };
   }, []);
 
   return (

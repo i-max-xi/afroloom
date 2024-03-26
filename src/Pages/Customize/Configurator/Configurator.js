@@ -407,7 +407,15 @@ const Configurator = () => {
                 }`}
                 onClick={handleRotation}
               >
-                {isRotating ? "Stop" : "Spin"}
+                {isRotating ? (
+                  <span>
+                    Stop <i className="pi pi-ban"></i>
+                  </span>
+                ) : (
+                  <span>
+                    Take a Spin <i className="pi pi-sync"></i>
+                  </span>
+                )}
               </button>
 
               <button
@@ -685,7 +693,15 @@ const Configurator = () => {
                     }`}
                     onClick={handleRotation}
                   >
-                    {isRotating ? "Stop" : "Spin"}
+                    {isRotating ? (
+                  <span>
+                    Stop <i className="pi pi-ban"></i>
+                  </span>
+                ) : (
+                  <span>
+                    Take a Spin <i className="pi pi-sync"></i>
+                  </span>
+                )}
                   </button>
                 </div> */}
 

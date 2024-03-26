@@ -7,7 +7,6 @@ import CurrencyConverter from "./CurrencyConverter";
 import GoogleTranslate from "../GoogleTranslate";
 
 const MobileNav = ({ visible, setVisible }) => {
-
   return (
     <Sidebar visible={visible} onHide={() => setVisible(false)} className=" ">
       <div className="custom-header bg-warning text-white p-3 mb-4">
@@ -17,31 +16,32 @@ const MobileNav = ({ visible, setVisible }) => {
         <CurrencyConverter />
       </div>
       <div className="d-flex flex-column align-items-start mt-3">
-        <ul className="navbar-nav">
-          <li className="nav-item">
+        <ul className="navbar-nav mobile-nav-item-container">
+          <li className="nav-item mobile-nav-item">
             <Link className="nav-link" to="/">
               Home
             </Link>
           </li>
+          <Divider className="custom-divider" />
 
-          <li className="nav-item adjust-nav">
+          <li className="nav-item adjust-nav mobile-nav-item">
             <Link className="about" to="/about">
               About
             </Link>
           </li>
+          <Divider className="custom-divider" />
 
-          <li className="nav-item adjust-nav">
+          <li className="nav-item adjust-nav mobile-nav-item">
             <Link className="about" to="/contact">
               Contact Us
             </Link>
           </li>
+          <Divider className="custom-divider" />
         </ul>
-        <Divider className="custom-divider" />
-
+        {/* <Divider className="custom-divider" /> */}
       </div>
 
       <GoogleTranslate />
-
     </Sidebar>
   );
 };

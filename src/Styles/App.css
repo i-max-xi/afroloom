@@ -183,6 +183,12 @@
 }
 
 
+.mobile-nav-item-container {
+  width: 100%;
+  gap: 0.1rem
+}
+
+
 .nav-item a,
 .about,
 .nav-item {
