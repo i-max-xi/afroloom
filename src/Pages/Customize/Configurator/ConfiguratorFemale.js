@@ -44,7 +44,7 @@ const Shirt = ({
   selectedPart,
   setSelectedPart,
   selectedTexture,
-  showGlow
+  showGlow,
 }) => {
   const snap = useSnapshot(state);
   const { nodes } = useGLTF(selectedClothing.model);
@@ -94,7 +94,8 @@ const Shirt = ({
           <LoadingAnimation />
         </>
       ) : (
-        selectedClothing.myNode.map((nodeName, index) => {
+        selectedClothing.myNode.map((node, index) => {
+          const nodeName = node?.name; // Access the name property of the node object
           const color = specialNodeNames.includes(nodeName)
             ? snap.color[index] || "#333333"
             : snap.color[index] || "#ffffff";
@@ -105,7 +106,7 @@ const Shirt = ({
             <mesh
               key={uuid()}
               castShadow
-              geometry={nodes[nodeName].geometry}
+              geometry={nodes[nodeName]?.geometry}
               // onClick={() => handlePartClick(index)}
             >
               <meshStandardMaterial
@@ -158,7 +159,7 @@ const ConfiguratorFemale = () => {
     setSelectedSize(factor);
   };
 
-  const [showGlow, setShowGlow] = useState(false)
+  const [showGlow, setShowGlow] = useState(false);
 
   const handleColorChange = (newColor) => {
     if (selectedPart === "all") {
@@ -171,7 +172,7 @@ const ConfiguratorFemale = () => {
     state.texture[selectedPart] = null;
     setSelectedPrintOn(newColor);
 
-    setShowGlow(false)
+    setShowGlow(false);
   };
 
   const [partPrices, setPartPrices] = useState(
@@ -214,15 +215,14 @@ const ConfiguratorFemale = () => {
       const newPartPrice =
         selectedClothing.price + textureValues[textureCategory];
 
-       setPartPrices((prevPrices) =>
+      setPartPrices((prevPrices) =>
         prevPrices.map((price, index) =>
           index === selectedPart ? newPartPrice : price
         )
       );
     }
 
-    setShowGlow(false)
-
+    setShowGlow(false);
   };
 
   const handleRotation = () => {
@@ -232,7 +232,7 @@ const ConfiguratorFemale = () => {
 
   // Create an array to store selected parts with their color and texture information
   const selectedParts = selectedClothing.myNode.map((nodeName, index) => ({
-    name: nodeName,
+    name: nodeName.name,
     color: state.color[index] || null,
     texture: state.texture[index] || null,
   }));
@@ -333,10 +333,9 @@ const ConfiguratorFemale = () => {
   };
 
   const handleSelectPart = (index) => {
-    setSelectedPart(index)
-    setShowGlow(true)
-
-  }
+    setSelectedPart(index);
+    setShowGlow(true);
+  };
 
   return (
     <>
@@ -443,7 +442,7 @@ const ConfiguratorFemale = () => {
                       }`}
                       onClick={() => setSelectedPart(index)}
                     >
-                      {parseTitle(nodeName)}
+                      {parseTitle(nodeName.name)}
                     </button>
                   ))}
                 </div>
@@ -572,7 +571,10 @@ const ConfiguratorFemale = () => {
                     <div className="texture-category">
                       <h3>
                         Batik (+{currencySymbol}
-                        {(currencyFactor * textureValues.batik).toFixed(2)})
+                        {(currencyFactor * textureValues.batik.price).toFixed(
+                          2
+                        )}
+                        )
                       </h3>
                       <Carousel
                         value={textureArrays.batik}
@@ -597,11 +599,14 @@ const ConfiguratorFemale = () => {
                         )}
                       />
                     </div>
-                   
+
                     <div className="texture-category">
                       <h3>
                         Crochet (+{currencySymbol}
-                        {(currencyFactor * textureValues.Crochet).toFixed(2)})
+                        {(currencyFactor * textureValues.Crochet.price).toFixed(
+                          2
+                        )}
+                        )
                       </h3>
                       <Carousel
                         value={textureArrays.Crochet}
@@ -630,11 +635,13 @@ const ConfiguratorFemale = () => {
                     </div>
                   </div>
                   <div className="texture-row">
-                    
                     <div className="texture-category">
                       <h3>
                         waxPrint (+{currencySymbol}
-                        {(currencyFactor * textureValues.waxPrint).toFixed(2)})
+                        {(
+                          currencyFactor * textureValues.waxPrint.price
+                        ).toFixed(2)}
+                        )
                       </h3>
                       <Carousel
                         value={textureArrays.waxPrint}
@@ -664,8 +671,6 @@ const ConfiguratorFemale = () => {
                       />
                     </div>
                   </div>
-                  
-                  
                 </div>
               </div>
               <div className="right-panel">

@@ -95,7 +95,9 @@ const Shirt = ({
           <LoadingAnimation />
         </>
       ) : (
-        selectedClothing.myNode.map((nodeName, index) => {
+        selectedClothing.myNode.map((node, index) => {
+          const nodeName = node?.name; // Access the name property of the node object
+
           const color = specialNodeNames.includes(nodeName)
             ? snap.color[index] || "#333333"
             : snap.color[index] || "#ffffff";
@@ -106,7 +108,7 @@ const Shirt = ({
             <mesh
               key={uuid()}
               castShadow
-              geometry={nodes[nodeName].geometry}
+              geometry={nodes[nodeName]?.geometry}
               // onClick={() => handlePartClick(index)}
             >
               <meshStandardMaterial
@@ -231,7 +233,7 @@ const Configurator = () => {
 
   // Create an array to store selected parts with their color and texture information
   const selectedParts = selectedClothing.myNode.map((nodeName, index) => ({
-    name: nodeName,
+    name: nodeName.name,
     color: state.color[index] || null,
     texture: state.texture[index] || null,
   }));
@@ -447,7 +449,7 @@ const Configurator = () => {
                       }`}
                       onClick={() => handleSelectPart(index)}
                     >
-                      {parseTitle(nodeName)}
+                      {parseTitle(nodeName.name)}
                     </button>
                   ))}
                 </div>
@@ -578,7 +580,7 @@ const Configurator = () => {
                   <div className="texture-category">
                     <h3>
                       Batik (+{currencySymbol}
-                      {(currencyFactor * textureValues.batik).toFixed(2)})
+                      {(currencyFactor * textureValues.batik.price).toFixed(2)})
                     </h3>
                     <Carousel
                       value={textureArrays.batik}
@@ -606,7 +608,7 @@ const Configurator = () => {
                   <div className="texture-category">
                     <h3>
                       Crochet (+{currencySymbol}
-                      {(currencyFactor * textureValues.Crochet).toFixed(2)})
+                      {(currencyFactor * textureValues.Crochet.price).toFixed(2)})
                     </h3>
                     <Carousel
                       value={textureArrays.Crochet}
@@ -634,7 +636,7 @@ const Configurator = () => {
                     <div className="texture-category">
                       <h3>
                         waxPrint (+{currencySymbol}
-                        {(currencyFactor * textureValues.waxPrint).toFixed(2)})
+                        {(currencyFactor * textureValues.waxPrint.price).toFixed(2)})
                       </h3>
                       <Carousel
                         value={textureArrays.waxPrint}

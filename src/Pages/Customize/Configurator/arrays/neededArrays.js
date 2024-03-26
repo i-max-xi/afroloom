@@ -314,14 +314,22 @@ export const textureDescriptions = {
 };
 
 export const textureValues = {
-  batik: 10,
-  dashiki: 15,
-  kente: 20,
-  waxPrint: 25,
-  smock: 30,
-  Crochet: 35,
-  printed_kente: 40,
-  Funerals: 45,
+  batik: {
+    price: 5,
+    yarnAvailable: 1
+  },
+  dashiki: {
+    price: 10,
+    yarnAvailable: 1,
+  },
+  waxPrint: {
+    price: 25,
+    yardAvailable: 2
+  },
+  Crochet: {
+    price: 30,
+    yardAvailable: 1
+  },
 };
 
 export const sizeOptions = [

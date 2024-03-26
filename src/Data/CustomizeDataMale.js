@@ -96,17 +96,13 @@ const image_trouser_image = require("../Assets/welcome_3ds/male/male trousers.pn
 const image_summer_image = require("../Assets/welcome_3ds/male/male summer shorts.png");
 const image_shorts_image = require("../Assets/welcome_3ds/male/male shorts.png");
 
-
 export const mainMaleCustomize = [
   {
     id: uuid(),
     name: "Short Sleeve T-Shirt",
     image: image_tshirt_short,
     model: tshirtModel1,
-    myNode: [
-      "torso",
-      "hands",
-    ],
+    myNode: ["torso", "hands"],
     myZoom: 0.7,
     myX: 0,
     myY: 10,
@@ -142,10 +138,7 @@ export const mainMaleCustomize = [
     name: "Long Sleeve T-Shirt",
     image: image_tshirt_long_image,
     model: tshirtModel2,
-    myNode: [
-      "torso",
-      "hands",
-    ],
+    myNode: ["torso", "hands"],
     myZoom: 0.7,
     price: 20,
     sizeModels: tshirt_model,
@@ -179,11 +172,7 @@ export const mainMaleCustomize = [
     name: "Short Sleeve Shirt",
     image: image_shirt_short_image,
     model: shirtModel1,
-    myNode: [
-      "torso",
-      "hands",
-      "buttons"
-    ],
+    myNode: ["torso", "hands", "buttons"],
     myZoom: 0.7,
     myX: 0,
     myY: 10,
@@ -219,11 +208,7 @@ export const mainMaleCustomize = [
     name: "Long Sleeve Shirt",
     image: image_shirt_long_image,
     model: shirtModel2,
-    myNode: [
-      "torso",
-      "hands",
-      "buttons"
-    ],
+    myNode: ["torso", "hands", "buttons"],
     myZoom: 0.8,
     myX: 0,
     myY: 10,
@@ -262,10 +247,7 @@ export const mainMaleCustomize = [
     name: "Top And Down Kaftan",
     image: image_topndown_image,
     model: topndown_model,
-    myNode: [
-      "top",
-      "trousers"
-    ],
+    myNode: ["top", "trousers"],
     myZoom: 0.6,
     price: 55,
     sizeGuide: top_down_guide,
@@ -328,8 +310,8 @@ export const mainMaleCustomize = [
     image: flare_shirt,
     model: cloak,
     myNode: [
-      "torso",
-      "hands",
+      { name: "torso", yardNeeded: 2 },
+      { name: "hands", yardNeeded: 1 },
     ],
     myZoom: 0.8,
     myX: 0,
@@ -345,12 +327,6 @@ export const mainMaleCustomize = [
       { label: "M", value: 1 },
       { label: "L", value: 2 },
       { label: "XL", value: 3 },
-      // { label: "2XL", value: 4 },
-      // { label: "3XL", value: 5 },
-      // { label: "4XL", value: 6 },
-      // { label: "5XL", value: 7 },
-      // { label: "6XL", value: 8 },
-      // { label: "7XL", value: 9 },
     ],
     sizeForms: [
       {
@@ -372,11 +348,7 @@ export const mainMaleCustomize = [
     name: "Blazer",
     model: blazer,
     image: image_blazer_image,
-    myNode: [
-      "torso",
-      "hands",
-      "buttons"
-    ],
+    myNode: ["torso", "hands", "buttons"],
     myZoom: 0.77,
     price: 20,
     sizeGuide: blazer_guide,
@@ -389,12 +361,6 @@ export const mainMaleCustomize = [
       { label: "M", value: 1 },
       { label: "L", value: 2 },
       { label: "XL", value: 3 },
-      // { label: "2XL", value: 4 },
-      // { label: "3XL", value: 5 },
-      // { label: "4XL", value: 6 },
-      // { label: "5XL", value: 7 },
-      // { label: "6XL", value: 8 },
-      // { label: "7XL", value: 9 },
     ],
     sizeForms: [
       {
@@ -428,9 +394,7 @@ export const mainMaleCustomize = [
     name: "Trousers",
     image: image_trouser_image,
     model: trousersModel1,
-    myNode: [
-      "all"
-    ],
+    myNode: ["all"],
     myZoom: 0.8,
     price: 22,
     sizeGuide: trouser_guide,
@@ -480,9 +444,7 @@ export const mainMaleCustomize = [
     name: "Summer Shorts",
     image: image_summer_image,
     model: summer_shorts,
-    myNode: [
-      "all"
-    ],
+    myNode: ["all"],
     myZoom: 0.7,
     myX: 0,
     myY: 10,
@@ -496,7 +458,6 @@ export const mainMaleCustomize = [
       { label: "M", value: 1 },
       { label: "L", value: 2 },
       { label: "XL", value: 3 },
-
     ],
     parts: summerShortsParts.keys().map(summerShortsParts),
     sizeForms: [
@@ -519,9 +480,7 @@ export const mainMaleCustomize = [
     name: "Shorts",
     image: image_shorts_image,
     model: material_shorts,
-    myNode: [
-     "all"
-    ],
+    myNode: ["all"],
     myZoom: 0.5,
     myX: 0,
     myY: 10,

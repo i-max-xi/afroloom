@@ -44,7 +44,7 @@ const Shirt = ({
   selectedPart,
   setSelectedPart,
   selectedTexture,
-  showGlow
+  showGlow,
 }) => {
   const snap = useSnapshot(state);
   const { nodes } = useGLTF(selectedClothing.model);
@@ -94,7 +94,8 @@ const Shirt = ({
           <LoadingAnimation />
         </>
       ) : (
-        selectedClothing.myNode.map((nodeName, index) => {
+        selectedClothing.myNode.map((node, index) => {
+          const nodeName = node?.name; // Access the name property of the node object
           const color = specialNodeNames.includes(nodeName)
             ? snap.color[index] || "#333333"
             : snap.color[index] || "#ffffff";
@@ -105,7 +106,7 @@ const Shirt = ({
             <mesh
               key={uuid()}
               castShadow
-              geometry={nodes[nodeName].geometry}
+              geometry={nodes[nodeName]?.geometry}
               // onClick={() => handlePartClick(index)}
             >
               <meshStandardMaterial
@@ -158,7 +159,7 @@ const ConfiguratorFootwear = () => {
     setSelectedSize(factor);
   };
 
-  const [showGlow, setShowGlow] = useState(false)
+  const [showGlow, setShowGlow] = useState(false);
 
   const handleColorChange = (newColor) => {
     if (selectedPart === "all") {
@@ -172,7 +173,7 @@ const ConfiguratorFootwear = () => {
     state.texture[selectedPart] = null;
     setSelectedPrintOn(newColor);
 
-    setShowGlow(false)
+    setShowGlow(false);
   };
 
   const [partPrices, setPartPrices] = useState(
@@ -217,15 +218,14 @@ const ConfiguratorFootwear = () => {
       const newPartPrice =
         selectedClothing.price + textureValues[textureCategory];
 
-       setPartPrices((prevPrices) =>
+      setPartPrices((prevPrices) =>
         prevPrices.map((price, index) =>
           index === selectedPart ? newPartPrice : price
         )
       );
     }
 
-    setShowGlow(false)
-
+    setShowGlow(false);
   };
 
   const handleRotation = () => {
@@ -235,7 +235,7 @@ const ConfiguratorFootwear = () => {
 
   // Create an array to store selected parts with their color and texture information
   const selectedParts = selectedClothing.myNode.map((nodeName, index) => ({
-    name: nodeName,
+    name: nodeName.name,
     color: state.color[index] || null,
     texture: state.texture[index] || null,
   }));
@@ -331,15 +331,14 @@ const ConfiguratorFootwear = () => {
   // customer height
   const [height, setHeight] = useState("");
 
-   const handleAllPartsClick = () => {
+  const handleAllPartsClick = () => {
     setSelectedPart("all");
   };
 
   const handleSelectPart = (index) => {
-    setSelectedPart(index)
-    setShowGlow(true)
-
-  }
+    setSelectedPart(index);
+    setShowGlow(true);
+  };
 
   return (
     <>
@@ -431,7 +430,7 @@ const ConfiguratorFootwear = () => {
               <div className="left-panel rounded shadow">
                 <h5>Select Part</h5>
                 <div className="select-part-container">
-                <button
+                  <button
                     className={`size-button btn btn-outline-dark ${
                       selectedPart === "all" ? "selected" : ""
                     }`}
@@ -447,7 +446,7 @@ const ConfiguratorFootwear = () => {
                       }`}
                       onClick={() => setSelectedPart(index)}
                     >
-                      {parseTitle(nodeName)}
+                      {parseTitle(nodeName.name)}
                     </button>
                   ))}
                 </div>
@@ -577,7 +576,10 @@ const ConfiguratorFootwear = () => {
                     <div className="texture-category">
                       <h3>
                         Batik (+{currencySymbol}
-                        {(currencyFactor * textureValues.batik).toFixed(2)})
+                        {(currencyFactor * textureValues.batik.price).toFixed(
+                          2
+                        )}
+                        )
                       </h3>
                       <Carousel
                         value={textureArrays.batik}
@@ -635,7 +637,10 @@ const ConfiguratorFootwear = () => {
                     <div className="texture-category">
                       <h3>
                         Crochet (+{currencySymbol}
-                        {(currencyFactor * textureValues.Crochet).toFixed(2)})
+                        {(currencyFactor * textureValues.Crochet.price).toFixed(
+                          2
+                        )}
+                        )
                       </h3>
                       <Carousel
                         value={textureArrays.Crochet}
@@ -664,11 +669,13 @@ const ConfiguratorFootwear = () => {
                     </div>
                   </div>
                   <div className="texture-row">
-                    
                     <div className="texture-category">
                       <h3>
                         waxPrint (+{currencySymbol}
-                        {(currencyFactor * textureValues.waxPrint).toFixed(2)})
+                        {(
+                          currencyFactor * textureValues.waxPrint.price
+                        ).toFixed(2)}
+                        )
                       </h3>
                       <Carousel
                         value={textureArrays.waxPrint}
@@ -699,11 +706,13 @@ const ConfiguratorFootwear = () => {
                     </div>
                   </div>
                   <div className="texture-row">
-                    
                     <div className="texture-category">
                       <h3>
                         Crochet (+{currencySymbol}
-                        {(currencyFactor * textureValues.Crochet).toFixed(2)})
+                        {(currencyFactor * textureValues.Crochet.price).toFixed(
+                          2
+                        )}
+                        )
                       </h3>
                       <Carousel
                         value={textureArrays.Crochet}
@@ -841,7 +850,7 @@ const ConfiguratorFootwear = () => {
                   </span>
                 )}
                   </button>
-                </div> */} */}
+                </div> */}
 
                 {/* parts images start */}
                 <PartImages
