@@ -120,24 +120,8 @@ export const textureArrays = {
     batik4,
     batik5,
   ],
-  dashiki: [
-    dashiki1,
-    dashiki2,
-    dashiki3,
-    dashiki4,
-    dashiki5,
-    dashiki1,
-    dashiki2,
-    dashiki3,
-    dashiki4,
-    dashiki5,
-  ],
-  kente: [kente1, kente2, kente3, kente4, kente5],
-  waxPrint: [waxPrint1, waxPrint2, waxPrint3, waxPrint4, waxPrint5],
-  smock: [smock1, smock2, smock3, smock4, smock3], // Uncomment if needed
-  Crochet: [lace1, lace2, lace3, lace4, lace5],
-  printed_kente: [p_kente1, p_kente2, p_kente3, p_kente4, p_kente3],
-  Funerals: [Funerals1, Funerals2, Funerals3, Funerals4, Funerals5],
+
+  waxPrint: [waxPrint1, waxPrint2, waxPrint3, waxPrint4, waxPrint5,  ],
 };
 
 export const textureDescriptions = {
@@ -315,7 +299,7 @@ export const textureDescriptions = {
 
 export const textureValues = {
   batik: {
-    price: 5,
+    price: 35,
     yarnAvailable: 1
   },
   dashiki: {
@@ -323,7 +307,7 @@ export const textureValues = {
     yarnAvailable: 1,
   },
   waxPrint: {
-    price: 25,
+    price: 70,
     yardAvailable: 2
   },
   Crochet: {

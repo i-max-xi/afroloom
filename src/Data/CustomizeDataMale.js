@@ -157,6 +157,7 @@ export const mainMaleCustomize = [
       { label: "M", value: 1 },
       { label: "L", value: 2 },
       { label: "XL", value: 3 },
+      { label: "2XL", value: 3 },
     ],
     sizeForms: [
       {
@@ -197,6 +198,7 @@ export const mainMaleCustomize = [
       { label: "M", value: 1 },
       { label: "L", value: 2 },
       { label: "XL", value: 3 },
+      { label: "2XL", value: 3 },
     ],
     sizeForms: [
       {
@@ -237,6 +239,7 @@ export const mainMaleCustomize = [
       { label: "M", value: 1 },
       { label: "L", value: 2 },
       { label: "XL", value: 3 },
+      { label: "2XL", value: 3 },
     ],
     sizeForms: [
       {
@@ -277,6 +280,7 @@ export const mainMaleCustomize = [
       { label: "M", value: 1 },
       { label: "L", value: 2 },
       { label: "XL", value: 3 },
+      { label: "2XL", value: 3 },
     ],
     sizeForms: [
       {
@@ -344,6 +348,7 @@ export const mainMaleCustomize = [
       { label: "M", value: 1 },
       { label: "L", value: 2 },
       { label: "XL", value: 3 },
+      { label: "2XL", value: 3 },
     ],
     sizeForms: [
       {
@@ -382,6 +387,7 @@ export const mainMaleCustomize = [
       { label: "M", value: 1 },
       { label: "L", value: 2 },
       { label: "XL", value: 3 },
+      { label: "2XL", value: 3 },
     ],
     sizeForms: [
       {
@@ -428,6 +434,7 @@ export const mainMaleCustomize = [
       { label: "M", value: 1 },
       { label: "L", value: 2 },
       { label: "XL", value: 3 },
+      { label: "2XL", value: 3 },
     ],
     parts: trouserParts.keys().map(trouserParts),
     sizeForms: [
@@ -480,6 +487,7 @@ export const mainMaleCustomize = [
       { label: "M", value: 1 },
       { label: "L", value: 2 },
       { label: "XL", value: 3 },
+      { label: "2XL", value: 3 },
     ],
     parts: summerShortsParts.keys().map(summerShortsParts),
     sizeForms: [
@@ -517,6 +525,7 @@ export const mainMaleCustomize = [
       { label: "M", value: 1 },
       { label: "L", value: 2 },
       { label: "XL", value: 3 },
+      { label: "2XL", value: 3 },
     ],
     sizeForms: [
       {

@@ -214,7 +214,14 @@ const Configurator = () => {
       const textureCategory = Object.keys(textureArrays).find((category) =>
         textureArrays[category].includes(newTexture)
       );
-      const newPartPrice = textureValues[textureCategory];
+
+      const yardNeeded = selectedClothing.myNode[selectedPart].yardNeeded;
+      const yardPrice = textureValues[textureCategory].price;
+      const yardAvailable = textureValues[textureCategory].yardAvailable;
+
+      const newPartPrice = null;
+
+      console.log(yardAvailable);
 
       setPartPrices((prevPrices) =>
         prevPrices.map((price, index) =>
@@ -449,7 +456,9 @@ const Configurator = () => {
                       }`}
                       onClick={() => handleSelectPart(index)}
                     >
-                      {parseTitle(nodeName.name)}
+                      {nodeName.name === "hands"
+                        ? parseTitle("sleeves")
+                        : parseTitle(nodeName.name)}
                     </button>
                   ))}
                 </div>
@@ -550,7 +559,10 @@ const Configurator = () => {
                     </div>
                   </Dialog>
                 </div>
-                <h5>Choose Color</h5>
+                <h5>
+                  Choose Color{" "}
+                  ({currencySymbol}{(currencyFactor * 35).toFixed(2)})
+                </h5>
 
                 <div className="color-buttons-container">
                   <Carousel
@@ -579,7 +591,7 @@ const Configurator = () => {
                 <div className="texture-buttons-container">
                   <div className="texture-category">
                     <h3>
-                      Batik (+{currencySymbol}
+                      Tie and Dye (+{currencySymbol}
                       {(currencyFactor * textureValues.batik.price).toFixed(2)})
                     </h3>
                     <Carousel
@@ -605,7 +617,7 @@ const Configurator = () => {
                     />
                   </div>
 
-                  <div className="texture-category">
+                  {/* <div className="texture-category">
                     <h3>
                       Crochet (+{currencySymbol}
                       {(currencyFactor * textureValues.Crochet.price).toFixed(2)})
@@ -631,17 +643,20 @@ const Configurator = () => {
                         />
                       )}
                     />
-                  </div>
+                  </div> */}
                   <div className="texture-row">
                     <div className="texture-category">
                       <h3>
                         waxPrint (+{currencySymbol}
-                        {(currencyFactor * textureValues.waxPrint.price).toFixed(2)})
+                        {(
+                          currencyFactor * textureValues.waxPrint.price
+                        ).toFixed(2)}
+                        )
                       </h3>
                       <Carousel
                         value={textureArrays.waxPrint}
-                        numVisible={2}
-                        numScroll={2}
+                        numVisible={4}
+                        numScroll={1}
                         showIndicators={false}
                         itemTemplate={(texture) => (
                           <TextureItem

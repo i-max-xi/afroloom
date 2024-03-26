@@ -17,7 +17,7 @@ root.render(
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         {isMobileDevice ? <App /> : <DesktopDevicePrompt /> }
-        <App />
+        {/* <App /> */}
       </PersistGate>
     </Provider>
   </React.StrictMode>
