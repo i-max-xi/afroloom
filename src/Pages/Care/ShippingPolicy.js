@@ -40,7 +40,7 @@ const ShippingPolicy = () => {
           country. Any additional fees or charges are the responsibility of the
           buyer and not included in the product or shipping costs.
         </p>
-        <h5>Trackingt</h5>
+        <h5>Tracking</h5>
         <p>
           We provide tracking numbers for all shipped orders. Once your order is
           shipped, you will receive a confirmation email with the tracking
