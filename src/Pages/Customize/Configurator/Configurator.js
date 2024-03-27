@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useMemo } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { useGLTF, OrbitControls } from "@react-three/drei";
 import { useSnapshot } from "valtio";
@@ -350,6 +350,47 @@ const Configurator = () => {
     setShowGlow(true);
   };
 
+  const masterSelectionPartOptions = useMemo(() => {
+    if (selectedClothing.myNode.length === 1) {
+      return (
+        <button
+          className={`size-button btn btn-outline-dark ${
+            selectedPart === "all" ? "selected" : ""
+          }`}
+          onClick={handleAllPartsClick}
+        >
+          All
+        </button>
+      );
+    } else {
+      return (
+        <>
+          <button
+            className={`size-button btn btn-outline-dark ${
+              selectedPart === "all" ? "selected" : ""
+            }`}
+            onClick={handleAllPartsClick}
+          >
+            All
+          </button>
+          {selectedClothing.myNode.map((nodeName, index) => (
+            <button
+              key={index}
+              className={`size-button btn btn-outline-dark ${
+                selectedPart === index ? "selected" : ""
+              }`}
+              onClick={() => handleSelectPart(index)}
+            >
+              {nodeName.name === "hands"
+                ? parseTitle("sleeves")
+                : parseTitle(nodeName.name)}
+            </button>
+          ))}
+        </>
+      );
+    }
+  }, [selectedClothing]);
+
   return (
     <>
       <Nav />
@@ -440,27 +481,7 @@ const Configurator = () => {
               <div className="left-panel rounded border shadow">
                 <h5>Select Part</h5>
                 <div className="select-part-container">
-                  <button
-                    className={`size-button btn btn-outline-dark ${
-                      selectedPart === "all" ? "selected" : ""
-                    }`}
-                    onClick={handleAllPartsClick}
-                  >
-                    All
-                  </button>
-                  {selectedClothing.myNode.map((nodeName, index) => (
-                    <button
-                      key={index}
-                      className={`size-button btn btn-outline-dark ${
-                        selectedPart === index ? "selected" : ""
-                      }`}
-                      onClick={() => handleSelectPart(index)}
-                    >
-                      {nodeName.name === "hands"
-                        ? parseTitle("sleeves")
-                        : parseTitle(nodeName.name)}
-                    </button>
-                  ))}
+                  {masterSelectionPartOptions}
                 </div>
                 <h5>Choose Size</h5>
                 <div className="size ">
@@ -560,8 +581,8 @@ const Configurator = () => {
                   </Dialog>
                 </div>
                 <h5>
-                  Choose Color{" "}
-                  (+{currencySymbol}{(currencyFactor * 35).toFixed(2)})
+                  Choose Color (+{currencySymbol}
+                  {(currencyFactor * 35).toFixed(2)})
                 </h5>
 
                 <div className="color-buttons-container">
@@ -606,9 +627,7 @@ const Configurator = () => {
                           setHideText={setHideText}
                           Title="batik"
                           selectedTexture={selectedPrintOn}
-                          
                           handleTextureChange={handleTextureChange}
-                          
                           subTextureDescriptions={textureDescriptions.batik}
                           textureIndex={textureArrays.batik.indexOf(texture)}
                         />
@@ -663,7 +682,7 @@ const Configurator = () => {
                             setHideText={setHideText}
                             Title="waxPrint"
                             selectedTexture={selectedPrintOn}
-                             // Pass setSelectedTexture as a prop
+                            // Pass setSelectedTexture as a prop
                             handleTextureChange={handleTextureChange}
                             currencySymbol={currencySymbol}
                             currencyFactor={currencyFactor}
