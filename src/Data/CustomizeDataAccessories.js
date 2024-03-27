@@ -72,160 +72,160 @@ const image_bowtie = require("../Assets/welcome_3ds/others/bow tie.png");
 const image_flying_tie = require("../Assets/welcome_3ds/others/flying tie.png");
 
 export const mainMaleAccessories = [
-  {
-    id: uuid(),
-    name: "Round Cap",
-    image: h1,
-    model: round_cap,
-    myNode: [{ name: "all", yardNeeded: 1 }],
-    myZoom: 0.5,
-    price: 20,
-    parts: roundCapParts.keys().map(roundCapParts),
-    sizeGuide: roundCap_guide,
-    sizeModels: tshirt_model,
-    readyIn: 3,
-    sizeOptions: [
-      { label: "S", value: 0.5 },
-      { label: "M", value: 1 },
-      { label: "L", value: 2 },
-      { label: "XL", value: 3 },
-      { label: "2XL", value: 4 },
-    ],
-    sizeForms: [
-      {
-        label: "Length (inch)",
-        value: "",
-      },
-      {
-        label: "Width (inch)",
-        value: "",
-      },
-      // Add more form fields as needed
-    ],
-  },
-  {
-    id: uuid(),
-    name: "Knitted Cap",
-    image: h2,
-    model: knitted_cap,
-    myNode: [{ name: "all", yardNeeded: 1 }],
-    myZoom: 0.5,
-    price: 20,
-    parts: knittedCapParts.keys().map(knittedCapParts),
-    sizeGuide: knittedCap_guide,
-    sizeModels: tshirt_model,
-    readyIn: 3,
-    sizeOptions: [
-      { label: "S", value: 0.5 },
-      { label: "M", value: 1 },
-      { label: "L", value: 2 },
-      { label: "XL", value: 3 },
-      { label: "2XL", value: 4 },
-    ],
-    sizeForms: [
-      {
-        label: "Length (inch)",
-        value: "",
-      },
-      {
-        label: "Width (inch)",
-        value: "",
-      },
-      // Add more form fields as needed
-    ],
-  },
-  {
-    name: "Bow Tie",
-    image: image_bowtie,
-    model: bow_tie,
-    myNode: [{ name: "all", yardNeeded: 1 }],
-    myZoom: 1.5,
-    price: 20,
-    parts: bowTieParts.keys().map(bowTieParts),
-    sizeModels: tshirt_model,
-    readyIn: 3,
-    sizeGuide: bowTie_guide,
-    sizeOptions: [
-      { label: "S", value: 0.5 },
-      { label: "M", value: 1 },
-      { label: "L", value: 2 },
-      { label: "XL", value: 3 },
-      { label: "2XL", value: 4 },
-    ],
-    sizeForms: [
-      {
-        label: "Length (cm)",
-        value: "",
-      },
-      {
-        label: "Height (cm)",
-        value: "",
-      },
-    ],
-  },
-  {
-    name: "Flying Tie",
-    image: image_flying_tie,
-    model: tie,
-    myNode: [{ name: "all", yardNeeded: 1 }],
-    myZoom: 0.75,
-    price: 20,
-    parts: flyingTieParts.keys().map(flyingTieParts),
-    sizeModels: tshirt_model,
-    readyIn: 3,
-    sizeGuide: flyingTie_guide,
-    sizeOptions: [
-      { label: "Skinny", value: 0.5 },
-      { label: "Standard", value: 1 },
-      { label: "Extra Large", value: 2 },
-      { label: "2XL", value: 4 },
-    ],
-    sizeForms: [
-      {
-        label: "Tie's Head (inch)",
-      },
-      {
-        label: "Tie's End (inch)",
-      },
-      {
-        label: "Length (inch)",
-      },
-      // Add more form fields as needed
-    ],
-  },
+  // {
+  //   id: uuid(),
+  //   name: "Round Cap",
+  //   image: h1,
+  //   model: round_cap,
+  //   myNode: [{ name: "all", yardNeeded: 1 }],
+  //   myZoom: 0.5,
+  //   price: 20,
+  //   parts: roundCapParts.keys().map(roundCapParts),
+  //   sizeGuide: roundCap_guide,
+  //   sizeModels: tshirt_model,
+  //   readyIn: 3,
+  //   sizeOptions: [
+  //     { label: "S", value: 0.5 },
+  //     { label: "M", value: 1 },
+  //     { label: "L", value: 2 },
+  //     { label: "XL", value: 3 },
+  //     { label: "2XL", value: 4 },
+  //   ],
+  //   sizeForms: [
+  //     {
+  //       label: "Length (inch)",
+  //       value: "",
+  //     },
+  //     {
+  //       label: "Width (inch)",
+  //       value: "",
+  //     },
+  //     // Add more form fields as needed
+  //   ],
+  // },
+  // {
+  //   id: uuid(),
+  //   name: "Knitted Cap",
+  //   image: h2,
+  //   model: knitted_cap,
+  //   myNode: [{ name: "all", yardNeeded: 1 }],
+  //   myZoom: 0.5,
+  //   price: 20,
+  //   parts: knittedCapParts.keys().map(knittedCapParts),
+  //   sizeGuide: knittedCap_guide,
+  //   sizeModels: tshirt_model,
+  //   readyIn: 3,
+  //   sizeOptions: [
+  //     { label: "S", value: 0.5 },
+  //     { label: "M", value: 1 },
+  //     { label: "L", value: 2 },
+  //     { label: "XL", value: 3 },
+  //     { label: "2XL", value: 4 },
+  //   ],
+  //   sizeForms: [
+  //     {
+  //       label: "Length (inch)",
+  //       value: "",
+  //     },
+  //     {
+  //       label: "Width (inch)",
+  //       value: "",
+  //     },
+  //     // Add more form fields as needed
+  //   ],
+  // },
+  // {
+  //   name: "Bow Tie",
+  //   image: image_bowtie,
+  //   model: bow_tie,
+  //   myNode: [{ name: "all", yardNeeded: 1 }],
+  //   myZoom: 1.5,
+  //   price: 20,
+  //   parts: bowTieParts.keys().map(bowTieParts),
+  //   sizeModels: tshirt_model,
+  //   readyIn: 3,
+  //   sizeGuide: bowTie_guide,
+  //   sizeOptions: [
+  //     { label: "S", value: 0.5 },
+  //     { label: "M", value: 1 },
+  //     { label: "L", value: 2 },
+  //     { label: "XL", value: 3 },
+  //     { label: "2XL", value: 4 },
+  //   ],
+  //   sizeForms: [
+  //     {
+  //       label: "Length (cm)",
+  //       value: "",
+  //     },
+  //     {
+  //       label: "Height (cm)",
+  //       value: "",
+  //     },
+  //   ],
+  // },
+  // {
+  //   name: "Flying Tie",
+  //   image: image_flying_tie,
+  //   model: tie,
+  //   myNode: [{ name: "all", yardNeeded: 1 }],
+  //   myZoom: 0.75,
+  //   price: 20,
+  //   parts: flyingTieParts.keys().map(flyingTieParts),
+  //   sizeModels: tshirt_model,
+  //   readyIn: 3,
+  //   sizeGuide: flyingTie_guide,
+  //   sizeOptions: [
+  //     { label: "Skinny", value: 0.5 },
+  //     { label: "Standard", value: 1 },
+  //     { label: "Extra Large", value: 2 },
+  //     { label: "2XL", value: 4 },
+  //   ],
+  //   sizeForms: [
+  //     {
+  //       label: "Tie's Head (inch)",
+  //     },
+  //     {
+  //       label: "Tie's End (inch)",
+  //     },
+  //     {
+  //       label: "Length (inch)",
+  //     },
+  //     // Add more form fields as needed
+  //   ],
+  // },
 ];
 
 export const mainFemaleAccessories = [
-  {
-    id: uuid(),
-    name: "Tote Bag",
-    image: image_totebag,
-    model: hand_bag_model,
-    myNode: [{ name: "all", yardNeeded: 1 }],
-    myZoom: 1.2,
-    price: 55,
-    parts: handbagParts.keys().map(handbagParts),
-    sizeGuide: handbag_guide,
-    sizeModels: tshirt_model,
-    readyIn: 3,
-    sizeOptions: [
-      { label: "S", value: 0.5 },
-      { label: "M", value: 1 },
-      { label: "L", value: 2 },
-      { label: "2XL", value: 4 },
-    ],
-    sizeForms: [
-      {
-        label: "Length (inch)",
-      },
-      {
-        label: "Width (inch)",
-      },
-      {
-        label: "Height (inch)",
-      },
-    ],
-  },
+  // {
+  //   id: uuid(),
+  //   name: "Tote Bag",
+  //   image: image_totebag,
+  //   model: hand_bag_model,
+  //   myNode: [{ name: "all", yardNeeded: 1 }],
+  //   myZoom: 1.2,
+  //   price: 55,
+  //   parts: handbagParts.keys().map(handbagParts),
+  //   sizeGuide: handbag_guide,
+  //   sizeModels: tshirt_model,
+  //   readyIn: 3,
+  //   sizeOptions: [
+  //     { label: "S", value: 0.5 },
+  //     { label: "M", value: 1 },
+  //     { label: "L", value: 2 },
+  //     { label: "2XL", value: 4 },
+  //   ],
+  //   sizeForms: [
+  //     {
+  //       label: "Length (inch)",
+  //     },
+  //     {
+  //       label: "Width (inch)",
+  //     },
+  //     {
+  //       label: "Height (inch)",
+  //     },
+  //   ],
+  // },
   {
     id: uuid(),
     name: "Bikini",

@@ -427,53 +427,53 @@ export const mainFemaleCustomize = [
       },
     ],
   },
-  {
-    id: uuid(),
-    name: "Top And Down",
-    model: topndown_model,
-    image: topndown,
-    myNode: [
-      { name: "top", yardNeeded: 2 },
-      { name: "trousers", yardNeeded: 2 },
-    ],
-    myZoom: 0.95,
-    price: 20,
-    sizeGuide: topAndDown_guide,
-    sizeModels: tshirt_model,
-    readyIn: 3,
-    parts: topAndDownParts.keys().map(topAndDownParts),
-    sizeOptions: [
-      { label: "XS", value: 0.5 },
-      { label: "S", value: 0.5 },
-      { label: "M", value: 1 },
-      { label: "L", value: 2 },
-      { label: "XL", value: 3 },
-      { label: "2XL", value: 4 },
-    ],
-    sizeForms: [
-      {
-        label: "Bust (cm)",
-      },
-      {
-        label: "Waist (cm)",
-      },
-      {
-        label: "Hip (cm)",
-      },
-      {
-        label: "Sleeve Length (cm)",
-      },
-      {
-        label: "Around arm (cm)",
-      },
-      {
-        label: "Cuff (cm)",
-      },
-      {
-        label: "Short Length (cm)",
-      },
-    ],
-  },
+  // {
+  //   id: uuid(),
+  //   name: "Top And Down",
+  //   model: topndown_model,
+  //   image: topndown,
+  //   myNode: [
+  //     { name: "top", yardNeeded: 2 },
+  //     { name: "trousers", yardNeeded: 2 },
+  //   ],
+  //   myZoom: 0.95,
+  //   price: 20,
+  //   sizeGuide: topAndDown_guide,
+  //   sizeModels: tshirt_model,
+  //   readyIn: 3,
+  //   parts: topAndDownParts.keys().map(topAndDownParts),
+  //   sizeOptions: [
+  //     { label: "XS", value: 0.5 },
+  //     { label: "S", value: 0.5 },
+  //     { label: "M", value: 1 },
+  //     { label: "L", value: 2 },
+  //     { label: "XL", value: 3 },
+  //     { label: "2XL", value: 4 },
+  //   ],
+  //   sizeForms: [
+  //     {
+  //       label: "Bust (cm)",
+  //     },
+  //     {
+  //       label: "Waist (cm)",
+  //     },
+  //     {
+  //       label: "Hip (cm)",
+  //     },
+  //     {
+  //       label: "Sleeve Length (cm)",
+  //     },
+  //     {
+  //       label: "Around arm (cm)",
+  //     },
+  //     {
+  //       label: "Cuff (cm)",
+  //     },
+  //     {
+  //       label: "Short Length (cm)",
+  //     },
+  //   ],
+  // },
   // {
   //   id: uuid(),
   //   name: "Dress",

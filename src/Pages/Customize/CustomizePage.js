@@ -62,7 +62,7 @@ const CustomizePage = () => {
           ))}
 
           {/* Male accessories */}
-          <h5 className="mt-4 footer-header">Male Accessories</h5>
+          {/* <h5 className="mt-4 footer-header">Male Accessories</h5>
           {mainMaleAccessories.map(({ name, image }) => (
             <Link
               to={`/configurator-male-accessories/${name}`}
@@ -81,7 +81,7 @@ const CustomizePage = () => {
                 </div>
               </div>
             </Link>
-          ))}
+          ))} */}
 
           {/* Female accessories */}
           <h5 className="mt-4 footer-header">Female Accessories</h5>

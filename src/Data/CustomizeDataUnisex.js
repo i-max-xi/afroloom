@@ -76,64 +76,64 @@ export const mainUnisex = [
       },
     ],
   },
-  {
-    id: uuid(),
-    name: "Waist Bag",
-    image: image_waist_bag,
-    model: mini_bag_model,
-    myNode: [{ name: "all", yardNeeded: 1 }],
-    myZoom: 0.6,
-    price: 55,
-    parts: miniBagParts.keys().map(miniBagParts),
-    sizeModels: tshirt_model,
-    readyIn: 3,
-    sizeGuide: miniBag_guide,
-    sizeOptions: [
-      { label: "S", value: 0.5 },
-      { label: "M", value: 1 },
-      { label: "L", value: 2 },
-      { label: "XL", value: 3 },
-      { label: "2XL", value: 4 },
-    ],
-    sizeForms: [
-      {
-        label: "Min-Max circumference (inch)",
-      },
-      {
-        label: "Width (inch)",
-      },
-      // Add more form fields as needed
-    ],
-  },
-  {
-    id: uuid(),
-    name: "Backpack",
-    image: image_backpack,
-    model: backpack_model,
-    myNode: [{ name: "all", yardNeeded: 2 }],
-    myZoom: 0.75,
-    price: 55,
-    parts: backpackParts.keys().map(backpackParts),
-    sizeModels: tshirt_model,
-    readyIn: 3,
-    sizeGuide: backpack_guide,
-    sizeOptions: [
-      { label: "S", value: 0.5 },
-      { label: "M", value: 1 },
-      { label: "L", value: 2 },
-    ],
-    sizeForms: [
-      {
-        label: "Height (inch)",
-      },
-      {
-        label: "Depth (inch)",
-      },
-      {
-        label: "Width (inch)",
-      },
-    ],
-  },
+  // {
+  //   id: uuid(),
+  //   name: "Waist Bag",
+  //   image: image_waist_bag,
+  //   model: mini_bag_model,
+  //   myNode: [{ name: "all", yardNeeded: 1 }],
+  //   myZoom: 0.6,
+  //   price: 55,
+  //   parts: miniBagParts.keys().map(miniBagParts),
+  //   sizeModels: tshirt_model,
+  //   readyIn: 3,
+  //   sizeGuide: miniBag_guide,
+  //   sizeOptions: [
+  //     { label: "S", value: 0.5 },
+  //     { label: "M", value: 1 },
+  //     { label: "L", value: 2 },
+  //     { label: "XL", value: 3 },
+  //     { label: "2XL", value: 4 },
+  //   ],
+  //   sizeForms: [
+  //     {
+  //       label: "Min-Max circumference (inch)",
+  //     },
+  //     {
+  //       label: "Width (inch)",
+  //     },
+  //     // Add more form fields as needed
+  //   ],
+  // },
+  // {
+  //   id: uuid(),
+  //   name: "Backpack",
+  //   image: image_backpack,
+  //   model: backpack_model,
+  //   myNode: [{ name: "all", yardNeeded: 2 }],
+  //   myZoom: 0.75,
+  //   price: 55,
+  //   parts: backpackParts.keys().map(backpackParts),
+  //   sizeModels: tshirt_model,
+  //   readyIn: 3,
+  //   sizeGuide: backpack_guide,
+  //   sizeOptions: [
+  //     { label: "S", value: 0.5 },
+  //     { label: "M", value: 1 },
+  //     { label: "L", value: 2 },
+  //   ],
+  //   sizeForms: [
+  //     {
+  //       label: "Height (inch)",
+  //     },
+  //     {
+  //       label: "Depth (inch)",
+  //     },
+  //     {
+  //       label: "Width (inch)",
+  //     },
+  //   ],
+  // },
   {
     id: uuid(),
     name: "Jacket",
