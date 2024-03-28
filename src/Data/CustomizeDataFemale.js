@@ -732,7 +732,8 @@ export const mainFemaleCustomize = [
     id: uuid(),
     name: "Trousers",
     model: trousers,
-    image: image_trousers,
+    // image: image_trousers,
+    image: image_leggings,
     myNode: [
       { name: "all", yardNeeded: 2 },
     ],
@@ -761,37 +762,37 @@ export const mainFemaleCustomize = [
       },
     ],
   },
-  {
-    id: uuid(),
-    name: "Leggings",
-    model: leggings,
-    image: image_leggings,
-    myNode: [
-      { name: "all", yardNeeded: 2 },
-    ],
-    myZoom: 0.8,
-    price: 20,
-    sizeGuide: leggings_guide,
-    sizeModels: tshirt_model,
-    readyIn: 3,
-    parts: leggingsParts.keys().map(leggingsParts),
-    sizeOptions: [
-      { label: "S", value: 0.5 },
-      { label: "M", value: 1 },
-      { label: "L", value: 2 },
-      { label: "XL", value: 3 },
-      { label: "2XL", value: 4 },
-    ],
-    sizeForms: [
-      {
-        label: "Trouser Length (cm)",
-      },
-      {
-        label: "Waist (cm)",
-      },
-      {
-        label: "Hip (cm)",
-      },
-    ],
-  },
+  // {
+  //   id: uuid(),
+  //   name: "Leggings",
+  //   model: leggings,
+  //   image: image_leggings,
+  //   myNode: [
+  //     { name: "all", yardNeeded: 2 },
+  //   ],
+  //   myZoom: 0.8,
+  //   price: 20,
+  //   sizeGuide: leggings_guide,
+  //   sizeModels: tshirt_model,
+  //   readyIn: 3,
+  //   parts: leggingsParts.keys().map(leggingsParts),
+  //   sizeOptions: [
+  //     { label: "S", value: 0.5 },
+  //     { label: "M", value: 1 },
+  //     { label: "L", value: 2 },
+  //     { label: "XL", value: 3 },
+  //     { label: "2XL", value: 4 },
+  //   ],
+  //   sizeForms: [
+  //     {
+  //       label: "Trouser Length (cm)",
+  //     },
+  //     {
+  //       label: "Waist (cm)",
+  //     },
+  //     {
+  //       label: "Hip (cm)",
+  //     },
+  //   ],
+  // },
 ];
