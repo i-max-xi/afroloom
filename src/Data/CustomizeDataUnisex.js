@@ -1,11 +1,12 @@
 import { v4 as uuid } from "uuid";
 
-
 //models
 import backpack_model from "../Pages/Customize/Configurator/models/Accessories/Unisex/backpack.glb";
 import mini_bag_model from "../Pages/Customize/Configurator/models/Accessories/Unisex/mini_bag_handle_main_body.glb";
 import sash_model from "../Pages/Customize/Configurator/models/Accessories/Unisex/sash.glb";
 import jacket from "../Pages/Customize/Configurator/models/Accessories/Unisex/jacket_main.glb";
+import bangles_model from "../Pages/Customize/Configurator/models/Accessories/Unisex/bangles.glb";
+import earring_model from "../Pages/Customize/Configurator/models/Accessories/Unisex/earring.glb";
 
 // Importing size guides
 import sash_guide from "../Assets/size_guide/Unisex/the_sash.jpg";
@@ -45,6 +46,8 @@ const image_waist_bag = require("../Assets/welcome_3ds/others/waist bag.jpg");
 const image_jacket = require("../Assets/welcome_3ds/others/jacket.png");
 const image_backpack = require("../Assets/welcome_3ds/others/backpack.png");
 const image_sash = require("../Assets/welcome_3ds/others/sash.jpg");
+const bangles = require("../Assets/welcome_3ds/others/bangles.jpg");
+const earring = require("../Assets/welcome_3ds/others/earring.jpg");
 
 export const mainUnisex = [
   {
@@ -52,13 +55,85 @@ export const mainUnisex = [
     name: "Sash",
     image: image_sash,
     model: sash_model,
-    myNode: ["plain_sections", "Stripe_1", "Stripe_2", "mid_stripes"],
+    // myNode: ["plain_sections", "Stripe_1", "Stripe_2", "mid_stripes"],
+    myNode: [
+      { name: "plain_sections", yardNeeded: 1 },
+      { name: "Stripe_1", yardNeeded: 1 },
+      { name: "Stripe_2", yardNeeded: 1 },
+      { name: "mid_stripes", yardNeeded: 1 },
+    ],
     myZoom: 1.5,
     price: 55,
     parts: sashParts.keys().map(sashParts),
     sizeModels: tshirt_model,
     readyIn: 3,
     weight: 0.25,
+    sizeGuide: sash_guide,
+    sizeOptions: [
+      { label: "S", value: 0.5 },
+      { label: "M", value: 1 },
+      { label: "L", value: 2 },
+      { label: "XL", value: 3 },
+      { label: "2XL", value: 4 },
+    ],
+    sizeForms: [
+      {
+        label: "Length (inch)",
+      },
+      {
+        label: "Width (inch)",
+      },
+    ],
+  },
+  {
+    id: uuid(),
+    name: "Bangles",
+    image: bangles,
+    model: bangles_model,
+    // myNode: ["large_beads", "small_beads", "mid_section"],
+    myNode: [
+      { name: "large_beads", yardNeeded: 1 },
+      { name: "small_beads", yardNeeded: 1 },
+      { name: "mid_section", yardNeeded: 1 },
+    ],
+
+    myZoom: 0.8,
+    price: 55,
+    parts: sashParts.keys().map(sashParts),
+    sizeModels: tshirt_model,
+    readyIn: 3,
+    sizeGuide: sash_guide,
+    sizeOptions: [
+      { label: "S", value: 0.5 },
+      { label: "M", value: 1 },
+      { label: "L", value: 2 },
+      { label: "XL", value: 3 },
+      { label: "2XL", value: 4 },
+    ],
+    sizeForms: [
+      {
+        label: "Length (inch)",
+      },
+      {
+        label: "Width (inch)",
+      },
+    ],
+  },
+  {
+    id: uuid(),
+    name: "Earring",
+    image: earring,
+    model: earring_model,
+    myNode: [
+      { name: "bead", yardNeeded: 1 },
+      { name: "extension", yardNeeded: 1 },
+    ],
+
+    myZoom: 0.8,
+    price: 55,
+    parts: sashParts.keys().map(sashParts),
+    sizeModels: tshirt_model,
+    readyIn: 3,
     sizeGuide: sash_guide,
     sizeOptions: [
       { label: "S", value: 0.5 },
@@ -139,7 +214,11 @@ export const mainUnisex = [
     name: "Jacket",
     image: image_jacket,
     model: jacket,
-    myNode: [{ name: "all", yardNeeded: 2 }],
+    myNode: [
+      { name: "torso", yardNeeded: 2 },
+      { name: "hands", yardNeeded: 1 },
+      { name: "buttons", yardNeeded: 1 },
+    ],
     myZoom: 0.9,
     price: 55,
     parts: jacketParts.keys().map(jacketParts),

@@ -183,10 +183,12 @@ const Configurator = () => {
 
   const semitotal = partPrices.reduce((total, price) => total + price, 0);
 
+  const selectedSizeIndex = selectedSize !== 0.5 ? selectedSize : 0
+
   //total price
   const total = (
     (semitotal + selectedClothing.price) *
-    selectedClothing.sizeOptions[selectedSize].value *
+    selectedClothing.sizeOptions[selectedSizeIndex].value *
     currencyFactor
   ).toFixed(2);
 

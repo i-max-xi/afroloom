@@ -17,6 +17,8 @@ import summer_shorts from "../Pages/Customize/Configurator/models/MaleClothing/s
 import cloak from "../Pages/Customize/Configurator/models/MaleClothing/cloak.glb";
 import topndown_model from "../Pages/Customize/Configurator/models/MaleClothing/male_topndown.glb";
 import blazer from "../Pages/Customize/Configurator/models/MaleClothing/male_suit.glb";
+import jacket from "../Pages/Customize/Configurator/models/Accessories/Unisex/jacket_main.glb";
+
 
 //size-guides
 import tshirt_model from "../Pages/Customize/Configurator/size_guide/male/men.JPG";
@@ -31,6 +33,8 @@ import blazer_guide from "../Assets/size_guide/MaleClothing/9.jpg";
 import trouser_guide from "../Assets/size_guide/MaleClothing/6.jpg";
 import summer_shorts_guide from "../Assets/size_guide/MaleClothing/8.jpg";
 import material_shorts_guide from "../Assets/size_guide/MaleClothing/7.jpg";
+import jacket_guide from "../Assets/size_guide/Unisex/35.jpg";
+
 
 // parts
 const tshirtParts = require.context(
@@ -84,6 +88,12 @@ const materialShortsParts = require.context(
   /\.(png|jpg|jpeg|gif)$/
 );
 
+const jacketParts = require.context(
+  "../Assets/model_parts/Accessories/Unisex/jacket_main",
+  false,
+  /\.(png|jpg|jpeg|gif)$/
+);
+
 // const tshirt_image = "https://a5e8126a499f8a963166-f72e9078d72b8c998606fd6e0319b679.ssl.cf5.rackcdn.com/images/variant/large/next-level_3600_black.jpg";
 const image_tshirt_short = require("../Assets/welcome_3ds/male/male short sleev ankara.png");
 const image_tshirt_long_image = require("../Assets/welcome_3ds/male/male long sleev ankara.png");
@@ -95,11 +105,13 @@ const image_blazer_image = require("../Assets/welcome_3ds/male/male blazer.png")
 const image_trouser_image = require("../Assets/welcome_3ds/male/male trousers.png");
 const image_summer_image = require("../Assets/welcome_3ds/male/male summer shorts.png");
 const image_shorts_image = require("../Assets/welcome_3ds/male/male shorts.png");
+const image_jacket = require("../Assets/welcome_3ds/others/jacket.png");
+
 
 export const mainMaleCustomize = [
   {
     id: uuid(),
-    name: "Short Sleeve T-Shirt",
+    name: "Loose Short Sleeve T-Shirt",
     image: image_tshirt_short,
     model: tshirtModel1,
     myNode: [
@@ -261,7 +273,7 @@ export const mainMaleCustomize = [
   },
   {
     id: uuid(),
-    name: "Top And Down Kaftan",
+    name: "Long Sleeve Top And Down Kaftan",
     image: image_topndown_image,
     model: topndown_model,
     myNode: [
@@ -363,6 +375,47 @@ export const mainMaleCustomize = [
       {
         label: "Sleeve Length (cm)",
       },
+    ],
+  },
+  
+  {
+    id: uuid(),
+    name: "Kimono Ankara Jacket",
+    image: image_jacket,
+    model: jacket,
+    myNode: [
+      { name: "torso", yardNeeded: 2 },
+      { name: "hands", yardNeeded: 1 },
+      { name: "buttons", yardNeeded: 1 },
+    ],
+    myZoom: 0.9,
+    price: 55,
+    parts: jacketParts.keys().map(jacketParts),
+    sizeModels: tshirt_model,
+    readyIn: 3,
+    sizeGuide: jacket_guide,
+    sizeOptions: [
+      { label: "XS", value: 0.5 },
+      { label: "S", value: 0.5 },
+      { label: "M", value: 1 },
+      { label: "L", value: 2 },
+      { label: "XL", value: 3 },
+      { label: "2XL", value: 4 },
+    ],
+    sizeForms: [
+      {
+        label: "Shoulder (inch)",
+      },
+      {
+        label: "Chest (inch)",
+      },
+      {
+        label: "Body Length (inch)",
+      },
+      {
+        label: "Sleeve Length(inch)",
+      },
+      // Add more form fields as needed
     ],
   },
   {

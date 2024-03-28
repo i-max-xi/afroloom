@@ -231,7 +231,10 @@ export const mainFemaleAccessories = [
     name: "Bikini",
     image: image_bikini,
     model: bikini,
-    myNode: [{ name: "all", yardNeeded: 1 }],
+    myNode: [
+      { name: "top", yardNeeded: 1 },
+      { name: "bottom", yardNeeded: 1 },
+    ],
     myZoom: 1.3,
     price: 55,
     parts: bikiniParts.keys().map(bikiniParts),

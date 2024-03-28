@@ -97,7 +97,7 @@ const Shirt = ({
           <LoadingAnimation />
         </>
       ) : (
-        selectedClothing.myNode.map((node, index) => {
+        selectedClothing.myNode?.map((node, index) => {
           const nodeName = node?.name; // Access the name property of the node object
           const color = specialNodeNames.includes(nodeName)
             ? snap.color[index] || "#333333"
@@ -239,10 +239,12 @@ const ConfiguratorUnisex = () => {
 
   const semitotal = partPrices.reduce((total, price) => total + price, 0);
 
+  const selectedSizeIndex = selectedSize !== 0.5 ? selectedSize : 0;
+
   //total price
   const total = (
     (semitotal + selectedClothing.price) *
-    selectedClothing.sizeOptions[selectedSize].value *
+    selectedClothing.sizeOptions[selectedSizeIndex].value *
     currencyFactor
   ).toFixed(2);
 
@@ -291,7 +293,7 @@ const ConfiguratorUnisex = () => {
   };
 
   // Create an array to store selected parts with their color and texture information
-  const selectedParts = selectedClothing.myNode.map((nodeName, index) => ({
+  const selectedParts = selectedClothing.myNode?.map((nodeName, index) => ({
     name: nodeName.name,
     color: state.color[index] || null,
     texture: state.texture[index] || null,
@@ -349,8 +351,8 @@ const ConfiguratorUnisex = () => {
 
   // parse part title
   const parseTitle = (title) => {
-    const split = title.split("_");
-    return split.join(" ");
+    const split = title?.split("_");
+    return split?.join(" ");
   };
 
   // Welcome
@@ -631,8 +633,8 @@ const ConfiguratorUnisex = () => {
                   </Dialog>
                 </div>
                 <h5>
-                  Choose Color{" "}
-                  (+{currencySymbol}{(currencyFactor * 35).toFixed(2)})
+                  Choose Color (+{currencySymbol}
+                  {(currencyFactor * 35).toFixed(2)})
                 </h5>
                 <div className="color-buttons-container">
                   <Carousel
@@ -681,7 +683,7 @@ const ConfiguratorUnisex = () => {
                             setHideText={setHideText}
                             Title="batik"
                             selectedTexture={selectedPrintOn}
-                             // Pass setSelectedTexture as a prop
+                            // Pass setSelectedTexture as a prop
                             handleTextureChange={handleTextureChange}
                             currencySymbol={currencySymbol}
                             currencyFactor={currencyFactor}
@@ -691,62 +693,6 @@ const ConfiguratorUnisex = () => {
                         )}
                       />
                     </div>
-                    {/* <div className="texture-category">
-                      <h3>
-                        Dashiki (+{currencySymbol}
-                        {(currencyFactor * textureValues.dashiki).toFixed(2)})
-                      </h3>
-                      <Carousel
-                        value={textureArrays.dashiki}
-                        numVisible={isMobile ? 1 : 4}
-                        numScroll={isMobile ? 1 : 4}
-                        showIndicators={false}
-                        responsiveOptions={responsiveNess}
-                        itemTemplate={(texture) => (
-                          <TextureItem
-                            key={texture}
-                            texture={texture}
-                            setHideText={setHideText}
-                            Title="dashiki"
-                            selectedTexture={selectedPrintOn}
-                             // Pass setSelectedTexture as a prop
-                            handleTextureChange={handleTextureChange}
-                            currencySymbol={currencySymbol}
-                            currencyFactor={currencyFactor}
-                            subTextureDescriptions={textureDescriptions.dashiki}
-                            textureIndex={textureArrays.dashiki.indexOf(
-                              texture
-                            )}
-                          />
-                        )}
-                      />
-                    </div> */}
-                    {/* <div className="texture-category">
-                    <h3>
-                      Crochet (+{currencySymbol}
-                      {(currencyFactor * textureValues.Crochet.price).toFixed(2)})
-                    </h3>
-                    <Carousel
-                      value={textureArrays.Crochet}
-                      numVisible={2}
-                      numScroll={2}
-                      showIndicators={false}
-                      itemTemplate={(texture) => (
-                        <TextureItem
-                          key={texture}
-                          texture={texture}
-                          setHideText={setHideText}
-                          Title="Crochet"
-                          selectedTexture={selectedPrintOn}
-                           // Pass setSelectedTexture as a prop
-                          handleTextureChange={handleTextureChange}
-                          
-                          subTextureDescriptions={textureDescriptions.Crochet}
-                          textureIndex={textureArrays.Crochet.indexOf(texture)}
-                        />
-                      )}
-                    />
-                  </div> */}
                   </div>
                   <div className="texture-row">
                     <div className="texture-category">
@@ -770,7 +716,7 @@ const ConfiguratorUnisex = () => {
                             setHideText={setHideText}
                             Title="waxPrint"
                             selectedTexture={selectedPrintOn}
-                             // Pass setSelectedTexture as a prop
+                            // Pass setSelectedTexture as a prop
                             handleTextureChange={handleTextureChange}
                             currencySymbol={currencySymbol}
                             currencyFactor={currencyFactor}
@@ -785,104 +731,6 @@ const ConfiguratorUnisex = () => {
                       />
                     </div>
                   </div>
-                  <div className="texture-row">
-                    {/* <div className="texture-category">
-                    <h3>
-                      Crochet (+{currencySymbol}
-                      {(currencyFactor * textureValues.Crochet.price).toFixed(2)})
-                    </h3>
-                    <Carousel
-                      value={textureArrays.Crochet}
-                      numVisible={2}
-                      numScroll={2}
-                      showIndicators={false}
-                      itemTemplate={(texture) => (
-                        <TextureItem
-                          key={texture}
-                          texture={texture}
-                          setHideText={setHideText}
-                          Title="Crochet"
-                          selectedTexture={selectedPrintOn}
-                           // Pass setSelectedTexture as a prop
-                          handleTextureChange={handleTextureChange}
-                          
-                          subTextureDescriptions={textureDescriptions.Crochet}
-                          textureIndex={textureArrays.Crochet.indexOf(texture)}
-                        />
-                      )}
-                    />
-                  </div> */}
-                  </div>
-                  {/*<div className="texture-row">
-                    <div className="texture-category">
-                      <h3>
-                        Printed Kente (+{currencySymbol}
-                        {(currencyFactor * textureValues.printed_kente).toFixed(
-                          2
-                        )}
-                        )
-                      </h3>
-                      <Carousel
-                        value={textureArrays.printed_kente}
-                        numVisible={isMobile ? 1 : 4}
-                        numScroll={isMobile ? 1 : 4}
-                        showIndicators={false}
-                        responsiveOptions={responsiveNess}
-                        itemTemplate={(texture) => (
-                          <TextureItem
-                            key={texture}
-                            texture={texture}
-                            setHideText={setHideText}
-                            Title="printed_kente"
-                            selectedTexture={selectedPrintOn}
-                            
-                            handleTextureChange={handleTextureChange}
-                            currencySymbol={currencySymbol}
-                            currencyFactor={currencyFactor}
-                            subTextureDescriptions={
-                              textureDescriptions.printed_kente
-                            }
-                            textureIndex={textureArrays.printed_kente.indexOf(
-                              texture
-                            )}
-                          />
-                        )}
-                      />
-                    </div>
-                    <div className="texture-category">
-                      <h3>
-                        Funerals (+{currencySymbol}
-                        {(currencyFactor * textureValues.Funerals).toFixed(2)})
-                      </h3>
-                      <Carousel
-                        value={textureArrays.Funerals}
-                        numVisible={isMobile ? 1 : 4}
-                        numScroll={isMobile ? 1 : 4}
-                        showIndicators={false}
-                        responsiveOptions={responsiveNess}
-                        itemTemplate={(texture) => (
-                          <TextureItem
-                            key={texture}
-                            texture={texture}
-                            setHideText={setHideText}
-                            Title="Funerals"
-                            selectedTexture={selectedPrintOn}
-                            
-                            handleTextureChange={handleTextureChange}
-                            currencySymbol={currencySymbol}
-                            currencyFactor={currencyFactor}
-                            subTextureDescriptions={
-                              textureDescriptions.Funerals
-                            }
-                            textureIndex={textureArrays.Funerals.indexOf(
-                              texture
-                            )}
-                          />
-                        )}
-                      />
-                    </div>
-                            </div> */}
-                  {/* Add more rows of texture categories as needed */}
                 </div>
               </div>
               <div className="right-panel">
@@ -1019,26 +867,7 @@ const ConfiguratorUnisex = () => {
                   )}
                 </div>
 
-                {selectedClothing.name !== "Sash" && (
-                  <div className="m-3">
-                    <button
-                      className={`btn rotation-button text-white m-3 ${
-                        isRotating === true ? "btn-danger" : "btn-warning"
-                      }`}
-                      onClick={handleRotation}
-                    >
-                      {isRotating ? (
-                        <span>
-                          Stop <i className="pi pi-ban"></i>
-                        </span>
-                      ) : (
-                        <span>
-                          Take a Spin <i className="pi pi-sync"></i>
-                        </span>
-                      )}
-                    </button>
-                  </div>
-                )}
+              
 
                 {/* parts images start */}
                 <PartImages

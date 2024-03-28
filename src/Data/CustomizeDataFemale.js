@@ -558,9 +558,8 @@ export const mainFemaleCustomize = [
     myNode: [
       { name: "torso", yardNeeded: 2 },
       { name: "hands", yardNeeded: 1 },
-      { name: "buttons", yardNeeded: 0 },
     ],
-    myZoom: 1.1,
+    myZoom: 0.8,
     price: 20,
     sizeGuide: blazer_guide,
     sizeModels: tshirt_model,
