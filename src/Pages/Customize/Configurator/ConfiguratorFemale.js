@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useMemo } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { useGLTF, OrbitControls } from "@react-three/drei";
 import { useSnapshot } from "valtio";
@@ -333,9 +333,55 @@ const ConfiguratorFemale = () => {
   };
 
   const handleSelectPart = (index) => {
+    if (selectedPart === index) {
+      setShowGlow(false);
+      setSelectedPart(null);
+      return;
+    }
     setSelectedPart(index);
     setShowGlow(true);
   };
+
+  const masterSelectionPartOptions = useMemo(() => {
+    if (selectedClothing.myNode.length === 1) {
+      return (
+        <button
+          className={`size-button btn btn-outline-dark ${
+            selectedPart === "all" ? "selected" : ""
+          }`}
+          onClick={handleAllPartsClick}
+        >
+          All
+        </button>
+      );
+    } else {
+      return (
+        <>
+          <button
+            className={`size-button btn btn-outline-dark ${
+              selectedPart === "all" ? "selected" : ""
+            }`}
+            onClick={handleAllPartsClick}
+          >
+            All
+          </button>
+          {selectedClothing.myNode.map((nodeName, index) => (
+            <button
+              key={index}
+              className={`size-button btn btn-outline-dark ${
+                selectedPart === index ? "selected" : ""
+              }`}
+              onClick={() => handleSelectPart(index)}
+            >
+              {nodeName.name === "hands"
+                ? parseTitle("sleeves")
+                : parseTitle(nodeName.name)}
+            </button>
+          ))}
+        </>
+      );
+    }
+  }, [selectedClothing]);
 
   return (
     <>
@@ -426,25 +472,7 @@ const ConfiguratorFemale = () => {
               <div className="left-panel rounded shadow">
                 <h5>Select Part</h5>
                 <div className="select-part-container">
-                  <button
-                    className={`size-button btn btn-outline-dark ${
-                      selectedPart === "all" ? "selected" : ""
-                    }`}
-                    onClick={handleAllPartsClick}
-                  >
-                    All
-                  </button>
-                  {selectedClothing.myNode.map((nodeName, index) => (
-                    <button
-                      key={index}
-                      className={`size-button btn btn-outline-dark ${
-                        selectedPart === index ? "selected" : ""
-                      }`}
-                      onClick={() => setSelectedPart(index)}
-                    >
-                      {parseTitle(nodeName.name)}
-                    </button>
-                  ))}
+                  {masterSelectionPartOptions}
                 </div>
                 <h5>Choose Size</h5>
                 <div className="size w-75">
