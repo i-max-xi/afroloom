@@ -18,22 +18,24 @@ import cloak from "../Pages/Customize/Configurator/models/MaleClothing/cloak.glb
 import topndown_model from "../Pages/Customize/Configurator/models/MaleClothing/male_topndown.glb";
 import blazer from "../Pages/Customize/Configurator/models/MaleClothing/male_suit.glb";
 import jacket from "../Pages/Customize/Configurator/models/Accessories/Unisex/jacket_main.glb";
+import cloak_model from "../Pages/Customize/Configurator/models/FemaleClothing/cloak.glb";
+
 
 
 //size-guides
 import tshirt_model from "../Pages/Customize/Configurator/size_guide/male/men.JPG";
 
-import tshirt_guide from "../Assets/size_guide/MaleClothing/4.jpg";
-import tshirtlong_guide from "../Assets/size_guide/MaleClothing/1.jpg";
-import shirt_guide from "../Assets/size_guide/MaleClothing/3.jpg";
-import shirtlong_guide from "../Assets/size_guide/MaleClothing/2.jpg";
-import top_down_guide from "../Assets/size_guide/MaleClothing/topndown.jpg";
-import cloak_guide from "../Assets/size_guide/MaleClothing/5.jpg";
-import blazer_guide from "../Assets/size_guide/MaleClothing/9.jpg";
-import trouser_guide from "../Assets/size_guide/MaleClothing/6.jpg";
-import summer_shorts_guide from "../Assets/size_guide/MaleClothing/8.jpg";
-import material_shorts_guide from "../Assets/size_guide/MaleClothing/7.jpg";
-import jacket_guide from "../Assets/size_guide/Unisex/35.jpg";
+import tshirt_guide from "../Assets/size_guide/MaleClothing/men short sleeve  t-shirt_.jpg";
+import tshirtlong_guide from "../Assets/size_guide/MaleClothing/Men-long-sleeve t-shirt.jpg";
+import shirt_guide from "../Assets/size_guide/MaleClothing/men short sleeve shirt.jpg";
+import shirtlong_guide from "../Assets/size_guide/MaleClothing/men long sleeve shirt.png";
+import top_down_guide from "../Assets/size_guide/MaleClothing/mens kaftan.jpg";
+import cloak_guide from "../Assets/size_guide/MaleClothing/mens kimono jacket.jpg";
+import blazer_guide from "../Assets/size_guide/MaleClothing/men blazer.png";
+import trouser_guide from "../Assets/size_guide/MaleClothing/mens trousers.jpg";
+import summer_shorts_guide from "../Assets/size_guide/MaleClothing/men summer shorts.jpg";
+import material_shorts_guide from "../Assets/size_guide/MaleClothing/men material shorts.jpg";
+import jacket_guide from "../Assets/size_guide/MaleClothing/men Bomber_Jacket.jpg";
 
 
 // parts
@@ -105,13 +107,15 @@ const image_blazer_image = require("../Assets/welcome_3ds/male/male blazer.png")
 const image_trouser_image = require("../Assets/welcome_3ds/male/male trousers.png");
 const image_summer_image = require("../Assets/welcome_3ds/male/male summer shorts.png");
 const image_shorts_image = require("../Assets/welcome_3ds/male/male shorts.png");
-const image_jacket = require("../Assets/welcome_3ds/others/jacket.png");
+const image_jacket = require("../Assets/welcome_3ds/male/bomber_jacket.png");
+const image_kimono = require("../Assets/welcome_3ds/male/kimono.png");
+
 
 
 export const mainMaleCustomize = [
   {
     id: uuid(),
-    name: "Loose Short Sleeve T-Shirt",
+    name: "Short Sleeve T-Shirt",
     image: image_tshirt_short,
     model: tshirtModel1,
     myNode: [
@@ -339,7 +343,7 @@ export const mainMaleCustomize = [
   },
   {
     id: uuid(),
-    name: "Top",
+    name: "Loose Short Sleeves Shirt",
     image: flare_shirt,
     model: cloak,
     myNode: [
@@ -380,7 +384,7 @@ export const mainMaleCustomize = [
   
   {
     id: uuid(),
-    name: "Kimono Ankara Jacket",
+    name: "Bomber Jacket",
     image: image_jacket,
     model: jacket,
     myNode: [
@@ -466,6 +470,34 @@ export const mainMaleCustomize = [
       },
       {
         label: "Scye Depth (cm)",
+      },
+    ],
+  },
+  {
+    id: uuid(),
+    name: "Kimono Ankara Jacket",
+    model: cloak_model,
+    image: image_kimono,
+    myNode: [{ name: "all", yardNeeded: 2 }],
+    myZoom: 0.8,
+    price: 20,
+    sizeGuide: cloak_guide,
+    sizeModels: tshirt_model,
+    readyIn: 3,
+    // parts: cloakParts.keys().map(cloakParts),
+    sizeOptions: [
+      { label: "S", value: 0.5 },
+      { label: "M", value: 1 },
+      { label: "L", value: 2 },
+      { label: "XL", value: 3 },
+      { label: "2XL", value: 4 },
+    ],
+    sizeForms: [
+      {
+        label: "Top Length (cm)",
+      },
+      {
+        label: "Sleeve Length (cm)",
       },
     ],
   },
@@ -560,7 +592,7 @@ export const mainMaleCustomize = [
   },
   {
     id: uuid(),
-    name: "Shorts",
+    name: "Material Shorts",
     image: image_shorts_image,
     model: material_shorts,
     myNode: [{ name: "all", yardNeeded: 2 }],

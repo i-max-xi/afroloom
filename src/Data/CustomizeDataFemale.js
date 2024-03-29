@@ -13,6 +13,7 @@ import normal_top from "../Assets/Customize/normal_top.png";
 // import female_suit_img from "../Assets/Customize/femlae_suit.jpg";
 import kabanslit from "../Assets/Customize/kabanslit.JPG";
 
+
 //models
 import t_shirt_short from "../Pages/Customize/Configurator/models/FemaleClothing/tshirt_short_two.glb";
 import t_shirt_long from "../Pages/Customize/Configurator/models/FemaleClothing/tshirt_long_two.glb";
@@ -24,30 +25,41 @@ import top_model from "../Pages/Customize/Configurator/models/FemaleClothing/sho
 import normal_top_model from "../Pages/Customize/Configurator/models/FemaleClothing/ladies_normal_top.glb";
 import mini_skirt_model from "../Pages/Customize/Configurator/models/FemaleClothing/mini_skirt_main.glb";
 import cloak_model from "../Pages/Customize/Configurator/models/FemaleClothing/cloak.glb";
-import topndown_model from "../Pages/Customize/Configurator/models/FemaleClothing/female_topndown_top_down.glb";
+import topndown_model from "../Pages/Customize/Configurator/models/MaleClothing/male_topndown.glb";
 import blazer from "../Pages/Customize/Configurator/models/FemaleClothing/female_suit_main.glb";
 import extra_long from "../Pages/Customize/Configurator/models/FemaleClothing/female_shirt_extra_long_two.glb";
 import extra_short from "../Pages/Customize/Configurator/models/FemaleClothing/female_shirt_extra_short.glb";
 import booty_shorts from "../Pages/Customize/Configurator/models/FemaleClothing/booty_shorts.glb";
 import kaba_slit from "../Pages/Customize/Configurator/models/FemaleClothing/gown.glb";
+import material_shorts from "../Pages/Customize/Configurator/models/MaleClothing/material_shorts.glb";
+import jacket from "../Pages/Customize/Configurator/models/Accessories/Unisex/jacket_main.glb";
+import summer_shorts from "../Pages/Customize/Configurator/models/MaleClothing/summer_shorts.glb";
+
+
+
 
 // size guides
-import tshirt_guide from "../Assets/size_guide/FemaleClothing/13.jpg";
-import tshirtlong_guide from "../Assets/size_guide/FemaleClothing/11.jpg";
-import extraShortShirt_guide from "../Assets/size_guide/FemaleClothing/15.jpg";
-import extraLongShirt_guide from "../Assets/size_guide/FemaleClothing/12.jpg";
-import cropTop_guide from "../Assets/size_guide/FemaleClothing/21.jpg";
-import normalTop_guide from "../Assets/size_guide/FemaleClothing/top.jpg";
-import topAndDown_guide from "../Assets/size_guide/FemaleClothing/25.jpg";
-import dress_guide from "../Assets/size_guide/FemaleClothing/23.jpg";
+import tshirt_guide from "../Assets/size_guide/FemaleClothing/short_sleeves_tshirt.png";
+import tshirtlong_guide from "../Assets/size_guide/FemaleClothing/women long t shirt.jpg";
+import extraShortShirt_guide from "../Assets/size_guide/FemaleClothing/women short sleeve shirt.jpg";
+import extraLongShirt_guide from "../Assets/size_guide/FemaleClothing/long sleeve shirt.png";
+import cropTop_guide from "../Assets/size_guide/FemaleClothing/crop_top.jpg";
+import normalTop_guide from "../Assets/size_guide/FemaleClothing/ladies short sleeve loose top.jpg";
+import material_shorts_guide from "../Assets/size_guide/FemaleClothing/ladies material shorts.jpg";
+import top_down_guide from "../Assets/size_guide/FemaleClothing/ladies kaftan_page-0001.jpg";
 // import kabaSlit_guide from '../Assets/size_guide/FemaleClothing/';
-import cloak_guide from "../Assets/size_guide/FemaleClothing/24.jpg";
-import blazer_guide from "../Assets/size_guide/FemaleClothing/22.jpg";
-import skirt_guide from "../Assets/size_guide/FemaleClothing/long_skirt.jpg";
-import miniSkirt_guide from "../Assets/size_guide/FemaleClothing/19 copy.jpg";
-import bootyShorts_guide from "../Assets/size_guide/FemaleClothing/17.jpg";
-import leggings_guide from "../Assets/size_guide/FemaleClothing/leggings.JPG";
-import trousers_guide from "../Assets/size_guide/FemaleClothing/16.jpg";
+import cloak_guide from "../Assets/size_guide/FemaleClothing/ladies kimono.jpg";
+import blazer_guide from "../Assets/size_guide/FemaleClothing/female  blazer.jpg";
+import skirt_guide from "../Assets/size_guide/FemaleClothing/women long skirt.jpg";
+import miniSkirt_guide from "../Assets/size_guide/FemaleClothing/women mini skirt.jpg";
+import bootyShorts_guide from "../Assets/size_guide/FemaleClothing/booty shorts.jpg";
+import trousers_guide from "../Assets/size_guide/FemaleClothing/women trousers.jpg";
+import jacket_guide from "../Assets/size_guide/FemaleClothing/ladies bomber.png";
+import summer_shorts_guide from "../Assets/size_guide/FemaleClothing/women summer shorts.jpg";
+
+
+
+
 
 // models
 import tshirt_model from "../Pages/Customize/Configurator/size_guide/female/women.JPG";
@@ -165,6 +177,14 @@ const image_mini_skirt = require("../Assets/welcome_3ds/female/mini skirt.png");
 const image_booty_shorts = require("../Assets/welcome_3ds/female/booty 2.png");
 const image_trousers = require("../Assets/welcome_3ds/female/women trousers.png");
 const image_leggings = require("../Assets/welcome_3ds/female/leggings.png");
+const image_jacket = require("../Assets/welcome_3ds/female/bomber_jacket.png");
+const image_topndown_image = require("../Assets/welcome_3ds/female/kaftan.png");
+const image_material_shorts_image = require("../Assets/welcome_3ds/female/material_shorts.png");
+const image_summer_image = require("../Assets/welcome_3ds/female/summer_shorts.png");
+
+
+
+
 
 export const mainFemaleCustomize = [
   {
@@ -389,7 +409,7 @@ export const mainFemaleCustomize = [
   },
   {
     id: uuid(),
-    name: "Top",
+    name: "Loose Short Sleeves Top",
     image: normal_top,
     model: normal_top_model,
     myNode: [
@@ -552,6 +572,112 @@ export const mainFemaleCustomize = [
   // },
   {
     id: uuid(),
+    name: "Long Sleeve Top And Down Kaftan",
+    image: image_topndown_image,
+    model: topndown_model,
+    myNode: [
+      { name: "top", yardNeeded: 2 },
+      { name: "trousers", yardNeeded: 2 },
+    ],
+    myZoom: 0.6,
+    price: 55,
+    sizeGuide: top_down_guide,
+    sizeModels: tshirt_model,
+    readyIn: 3,
+    // parts: topndownParts.keys().map(topndownParts),
+    sizeOptions: [
+      { label: "S", value: 0.5 },
+      { label: "M", value: 1 },
+      { label: "L", value: 2 },
+      { label: "XL", value: 3 },
+      { label: "2XL", value: 4 },
+      
+    ],
+    sizeForms: [
+      {
+        label: "Neck Size (cm)",
+      },
+      {
+        label: "Half Across Back (cm)",
+      },
+      {
+        label: "Chest (cm)",
+      },
+      {
+        label: "Sleeve Length (cm)",
+      },
+      {
+        label: "Cuff (cm)",
+      },
+      {
+        label: "Natural waist (cm)",
+      },
+      {
+        label: "Trouser Waist (cm)",
+      },
+      {
+        label: "Inside Leg (cm)",
+      },
+      {
+        label: "Trouser Bottom (cm)",
+      },
+      {
+        label: "Trouser Length (cm)",
+      },
+      {
+        label: "Seat (cm)",
+      },
+
+      {
+        label: "Thigh (cm)",
+      },
+      {
+        label: "Knee (cm)",
+      },
+    ],
+  },
+  {
+    id: uuid(),
+    name: "Bomber Jacket",
+    image: image_jacket,
+    model: jacket,
+    myNode: [
+      { name: "torso", yardNeeded: 2 },
+      { name: "hands", yardNeeded: 1 },
+      { name: "buttons", yardNeeded: 1 },
+    ],
+    myZoom: 0.9,
+    price: 55,
+    // parts: jacketParts.keys().map(jacketParts),
+    sizeModels: tshirt_model,
+    readyIn: 3,
+    sizeGuide: jacket_guide,
+    sizeOptions: [
+      { label: "XS", value: 0.5 },
+      { label: "S", value: 0.5 },
+      { label: "M", value: 1 },
+      { label: "L", value: 2 },
+      { label: "XL", value: 3 },
+      { label: "2XL", value: 4 },
+    ],
+    sizeForms: [
+      {
+        label: "Shoulder (inch)",
+      },
+      {
+        label: "Chest (inch)",
+      },
+      {
+        label: "Body Length (inch)",
+      },
+      {
+        label: "Sleeve Length(inch)",
+      },
+      // Add more form fields as needed
+    ],
+  },
+  {
+    id: uuid(),
     name: "Blazer",
     model: blazer,
     image: image_blazer,
@@ -602,7 +728,7 @@ export const mainFemaleCustomize = [
   },
   {
     id: uuid(),
-    name: "Cloak",
+    name: "Kimono Ankara Jacket",
     model: cloak_model,
     image: cloak,
     myNode: [{ name: "all", yardNeeded: 2 }],
@@ -725,6 +851,86 @@ export const mainFemaleCustomize = [
         label: "Length (inch)",
       },
       // Add more form fields as needed
+    ],
+  },
+  {
+    id: uuid(),
+    name: "Summer Shorts",
+    image: image_summer_image,
+    model: summer_shorts,
+    myNode: [{ name: "all", yardNeeded: 2 }],
+    myZoom: 0.7,
+    myX: 0,
+    myY: 10,
+    price: 30,
+    sizeGuide: summer_shorts_guide,
+    sizeModels: tshirt_model,
+    readyIn: 3,
+    sizeOptions: [
+      { label: "S", value: 0.5 },
+      { label: "M", value: 1 },
+      { label: "L", value: 2 },
+      { label: "XL", value: 3 },
+      { label: "2XL", value: 4 },
+      
+    ],
+    // parts: summerShortsParts.keys().map(summerShortsParts),
+    sizeForms: [
+      {
+        label: "Shorts Length (cm)",
+      },
+      {
+        label: "Seat (cm)",
+      },
+      {
+        label: "Thigh (cm)",
+      },
+      {
+        label: "Knee (cm)",
+      },
+    ],
+  },
+  {
+    id: uuid(),
+    name: "Material Shorts",
+    image: image_material_shorts_image,
+    model: material_shorts,
+    myNode: [{ name: "all", yardNeeded: 2 }],
+    myZoom: 0.5,
+    myX: 0,
+    myY: 10,
+    price: 30,
+    sizeGuide: material_shorts_guide,
+    sizeModels: tshirt_model,
+    readyIn: 3,
+    // parts: materialShortsParts.keys().map(materialShortsParts),
+    sizeOptions: [
+      { label: "S", value: 0.5 },
+      { label: "M", value: 1 },
+      { label: "L", value: 2 },
+      { label: "XL", value: 3 },
+      { label: "2XL", value: 4 },
+      
+    ],
+    sizeForms: [
+      {
+        label: "Natural Waist (cm)",
+      },
+      {
+        label: "Shorts Waist (cm)",
+      },
+      {
+        label: "Shorts Length (cm)",
+      },
+      {
+        label: "Seat (cm)",
+      },
+      {
+        label: "Thigh (cm)",
+      },
+      {
+        label: "Knee (cm)",
+      },
     ],
   },
   {
