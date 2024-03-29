@@ -7,12 +7,16 @@ import sash_model from "../Pages/Customize/Configurator/models/Accessories/Unise
 import jacket from "../Pages/Customize/Configurator/models/Accessories/Unisex/jacket_main.glb";
 import bangles_model from "../Pages/Customize/Configurator/models/Accessories/Unisex/bangles.glb";
 import earring_model from "../Pages/Customize/Configurator/models/Accessories/Unisex/earring.glb";
+import bikini from "../Pages/Customize/Configurator/models/Accessories/bikini.glb";
+
 
 // Importing size guides
 import sash_guide from "../Assets/size_guide/Unisex/the_sash.jpg";
 import miniBag_guide from "../Assets/size_guide/Unisex/30.jpg";
 import backpack_guide from "../Assets/size_guide/Unisex/29.jpg";
 import jacket_guide from "../Assets/size_guide/Unisex/35.jpg";
+import bikini_guide from "../Assets/size_guide/Accessories/Female/31.jpg";
+
 
 // Marketing Models
 const tshirt_model = "";
@@ -48,6 +52,8 @@ const image_backpack = require("../Assets/welcome_3ds/others/backpack.png");
 const image_sash = require("../Assets/welcome_3ds/others/sash.jpg");
 const bangles = require("../Assets/welcome_3ds/others/bangles.jpg");
 const earring = require("../Assets/welcome_3ds/others/earring.jpg");
+const image_bikini = require("../Assets/welcome_3ds/female/bikini.png");
+
 
 export const mainUnisex = [
   {
@@ -87,7 +93,7 @@ export const mainUnisex = [
   },
   {
     id: uuid(),
-    name: "Bangles",
+    name: "Beads Bracelets",
     image: bangles,
     model: bangles_model,
     // myNode: ["large_beads", "small_beads", "mid_section"],
@@ -151,6 +157,45 @@ export const mainUnisex = [
       },
     ],
   },
+  {
+    id: uuid(),
+    name: "Bikini",
+    image: image_bikini,
+    model: bikini,
+    myNode: [
+      { name: "top", yardNeeded: 1 },
+      { name: "bottom", yardNeeded: 1 },
+    ],
+    myZoom: 1.3,
+    price: 55,
+    // parts: bikiniParts.keys().map(bikiniParts),
+    sizeModels: tshirt_model,
+    readyIn: 3,
+    sizeGuide: bikini_guide,
+    sizeOptions: [
+      { label: "XS", value: 0.5 },
+      { label: "S", value: 0.5 },
+      { label: "M", value: 1 },
+      { label: "L", value: 2 },
+      { label: "XL", value: 3 },
+      { label: "2XL", value: 4 },
+    ],
+    sizeForms: [
+      {
+        label: "Upper Bust (inch)",
+      },
+      {
+        label: "Under Bust (inch)",
+      },
+      {
+        label: "Waist (inch)",
+      },
+      {
+        label: "Bottom Length (inch)",
+      },
+      // Add more form fields as needed
+    ],
+  },
   // {
   //   id: uuid(),
   //   name: "Waist Bag",
@@ -209,44 +254,44 @@ export const mainUnisex = [
   //     },
   //   ],
   // },
-  {
-    id: uuid(),
-    name: "Jacket",
-    image: image_jacket,
-    model: jacket,
-    myNode: [
-      { name: "torso", yardNeeded: 2 },
-      { name: "hands", yardNeeded: 1 },
-      { name: "buttons", yardNeeded: 1 },
-    ],
-    myZoom: 0.9,
-    price: 55,
-    parts: jacketParts.keys().map(jacketParts),
-    sizeModels: tshirt_model,
-    readyIn: 3,
-    sizeGuide: jacket_guide,
-    sizeOptions: [
-      { label: "XS", value: 0.5 },
-      { label: "S", value: 0.5 },
-      { label: "M", value: 1 },
-      { label: "L", value: 2 },
-      { label: "XL", value: 3 },
-      { label: "2XL", value: 4 },
-    ],
-    sizeForms: [
-      {
-        label: "Shoulder (inch)",
-      },
-      {
-        label: "Chest (inch)",
-      },
-      {
-        label: "Body Length (inch)",
-      },
-      {
-        label: "Sleeve Length(inch)",
-      },
-      // Add more form fields as needed
-    ],
-  },
+  // {
+  //   id: uuid(),
+  //   name: "Jacket",
+  //   image: image_jacket,
+  //   model: jacket,
+  //   myNode: [
+  //     { name: "torso", yardNeeded: 2 },
+  //     { name: "hands", yardNeeded: 1 },
+  //     { name: "buttons", yardNeeded: 1 },
+  //   ],
+  //   myZoom: 0.9,
+  //   price: 55,
+  //   parts: jacketParts.keys().map(jacketParts),
+  //   sizeModels: tshirt_model,
+  //   readyIn: 3,
+  //   sizeGuide: jacket_guide,
+  //   sizeOptions: [
+  //     { label: "XS", value: 0.5 },
+  //     { label: "S", value: 0.5 },
+  //     { label: "M", value: 1 },
+  //     { label: "L", value: 2 },
+  //     { label: "XL", value: 3 },
+  //     { label: "2XL", value: 4 },
+  //   ],
+  //   sizeForms: [
+  //     {
+  //       label: "Shoulder (inch)",
+  //     },
+  //     {
+  //       label: "Chest (inch)",
+  //     },
+  //     {
+  //       label: "Body Length (inch)",
+  //     },
+  //     {
+  //       label: "Sleeve Length(inch)",
+  //     },
+  //     // Add more form fields as needed
+  //   ],
+  // },
 ];

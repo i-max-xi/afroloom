@@ -853,43 +853,43 @@ export const mainFemaleCustomize = [
       // Add more form fields as needed
     ],
   },
-  {
-    id: uuid(),
-    name: "Summer Shorts",
-    image: image_summer_image,
-    model: summer_shorts,
-    myNode: [{ name: "all", yardNeeded: 2 }],
-    myZoom: 0.7,
-    myX: 0,
-    myY: 10,
-    price: 30,
-    sizeGuide: summer_shorts_guide,
-    sizeModels: tshirt_model,
-    readyIn: 3,
-    sizeOptions: [
-      { label: "S", value: 0.5 },
-      { label: "M", value: 1 },
-      { label: "L", value: 2 },
-      { label: "XL", value: 3 },
-      { label: "2XL", value: 4 },
+  // {
+  //   id: uuid(),
+  //   name: "Summer Shorts",
+  //   image: image_summer_image,
+  //   model: summer_shorts,
+  //   myNode: [{ name: "all", yardNeeded: 2 }],
+  //   myZoom: 0.7,
+  //   myX: 0,
+  //   myY: 10,
+  //   price: 30,
+  //   sizeGuide: summer_shorts_guide,
+  //   sizeModels: tshirt_model,
+  //   readyIn: 3,
+  //   sizeOptions: [
+  //     { label: "S", value: 0.5 },
+  //     { label: "M", value: 1 },
+  //     { label: "L", value: 2 },
+  //     { label: "XL", value: 3 },
+  //     { label: "2XL", value: 4 },
       
-    ],
-    // parts: summerShortsParts.keys().map(summerShortsParts),
-    sizeForms: [
-      {
-        label: "Shorts Length (cm)",
-      },
-      {
-        label: "Seat (cm)",
-      },
-      {
-        label: "Thigh (cm)",
-      },
-      {
-        label: "Knee (cm)",
-      },
-    ],
-  },
+  //   ],
+  //   // parts: summerShortsParts.keys().map(summerShortsParts),
+  //   sizeForms: [
+  //     {
+  //       label: "Shorts Length (cm)",
+  //     },
+  //     {
+  //       label: "Seat (cm)",
+  //     },
+  //     {
+  //       label: "Thigh (cm)",
+  //     },
+  //     {
+  //       label: "Knee (cm)",
+  //     },
+  //   ],
+  // },
   {
     id: uuid(),
     name: "Material Shorts",
