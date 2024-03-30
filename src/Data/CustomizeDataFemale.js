@@ -196,7 +196,7 @@ export const mainFemaleCustomize = [
       { name: "torso", yardNeeded: 2 },
       { name: "sleeves", yardNeeded: 1 },
     ],
-    myZoom: 0.9,
+    myZoom: 0.7,
     price: 20,
     sizeGuide: tshirt_guide,
     sizeModels: tshirt_model,
@@ -728,7 +728,7 @@ export const mainFemaleCustomize = [
   },
   {
     id: uuid(),
-    name: "Kimono Ankara Jacket",
+    name: "Kimono Jacket",
     model: cloak_model,
     image: cloak,
     myNode: [{ name: "all", yardNeeded: 2 }],

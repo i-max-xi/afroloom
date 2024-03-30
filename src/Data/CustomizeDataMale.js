@@ -475,7 +475,7 @@ export const mainMaleCustomize = [
   },
   {
     id: uuid(),
-    name: "Kimono Ankara Jacket",
+    name: "Kimono Jacket",
     model: cloak_model,
     image: image_kimono,
     myNode: [{ name: "all", yardNeeded: 2 }],
