@@ -9,14 +9,12 @@ import bangles_model from "../Pages/Customize/Configurator/models/Accessories/Un
 import earring_model from "../Pages/Customize/Configurator/models/Accessories/Unisex/earring.glb";
 import bikini from "../Pages/Customize/Configurator/models/Accessories/bikini.glb";
 
-
 // Importing size guides
 import sash_guide from "../Assets/size_guide/Unisex/the_sash.jpg";
 import miniBag_guide from "../Assets/size_guide/Unisex/30.jpg";
 import backpack_guide from "../Assets/size_guide/Unisex/29.jpg";
 import jacket_guide from "../Assets/size_guide/Unisex/35.jpg";
 import bikini_guide from "../Assets/size_guide/Accessories/Female/31.jpg";
-
 
 // Marketing Models
 const tshirt_model = "";
@@ -54,43 +52,7 @@ const bangles = require("../Assets/welcome_3ds/others/bangles.jpg");
 const earring = require("../Assets/welcome_3ds/others/earring.jpg");
 const image_bikini = require("../Assets/welcome_3ds/female/bikini.png");
 
-
 export const mainUnisex = [
-  {
-    id: uuid(),
-    name: "Sash",
-    image: image_sash,
-    model: sash_model,
-    // myNode: ["plain_sections", "Stripe_1", "Stripe_2", "mid_stripes"],
-    myNode: [
-      { name: "plain_sections", yardNeeded: 1 },
-      { name: "Stripe_1", yardNeeded: 1 },
-      { name: "Stripe_2", yardNeeded: 1 },
-      { name: "mid_stripes", yardNeeded: 1 },
-    ],
-    myZoom: 1.5,
-    price: 55,
-    parts: sashParts.keys().map(sashParts),
-    sizeModels: tshirt_model,
-    readyIn: 3,
-    weight: 0.25,
-    sizeGuide: sash_guide,
-    sizeOptions: [
-      { label: "S", value: 0.5 },
-      { label: "M", value: 1 },
-      { label: "L", value: 2 },
-      { label: "XL", value: 3 },
-      { label: "2XL", value: 4 },
-    ],
-    sizeForms: [
-      {
-        label: "Length (inch)",
-      },
-      {
-        label: "Width (inch)",
-      },
-    ],
-  },
   {
     id: uuid(),
     name: "Beads Bracelets",
@@ -294,4 +256,39 @@ export const mainUnisex = [
   //     // Add more form fields as needed
   //   ],
   // },
+  {
+    id: uuid(),
+    name: "Sash",
+    image: image_sash,
+    model: sash_model,
+    // myNode: ["plain_sections", "Stripe_1", "Stripe_2", "mid_stripes"],
+    myNode: [
+      { name: "plain_sections", yardNeeded: 1 },
+      { name: "Stripe_1", yardNeeded: 1 },
+      { name: "Stripe_2", yardNeeded: 1 },
+      { name: "mid_stripes", yardNeeded: 1 },
+    ],
+    myZoom: 1.5,
+    price: 55,
+    parts: sashParts.keys().map(sashParts),
+    sizeModels: tshirt_model,
+    readyIn: 3,
+    weight: 0.25,
+    sizeGuide: sash_guide,
+    sizeOptions: [
+      { label: "S", value: 0.5 },
+      { label: "M", value: 1 },
+      { label: "L", value: 2 },
+      { label: "XL", value: 3 },
+      { label: "2XL", value: 4 },
+    ],
+    sizeForms: [
+      {
+        label: "Length (inch)",
+      },
+      {
+        label: "Width (inch)",
+      },
+    ],
+  },
 ];

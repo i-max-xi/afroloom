@@ -94,7 +94,7 @@ const Shirt = ({
           <LoadingAnimation />
         </>
       ) : (
-        selectedClothing.myNode.map((node, index) => {
+        selectedClothing.myNode?.map((node, index) => {
           const nodeName = node?.name; // Access the name property of the node object
           const color = specialNodeNames.includes(nodeName)
             ? snap.color[index] || "#333333"
@@ -163,8 +163,8 @@ const ConfiguratorFemale = () => {
 
   const handleColorChange = (newColor) => {
     if (selectedPart === "all") {
-      state.texture = Array(selectedClothing.myNode.length).fill(null);
-      state.color = Array(selectedClothing.myNode.length).fill(newColor);
+      state.texture = Array(selectedClothing.myNode?.length).fill(null);
+      state.color = Array(selectedClothing.myNode?.length).fill(newColor);
       setSelectedPrintOn(newColor);
       return;
     }
@@ -176,7 +176,7 @@ const ConfiguratorFemale = () => {
   };
 
   const [partPrices, setPartPrices] = useState(
-    Array(selectedClothing.myNode.length).fill(0)
+    Array(selectedClothing.myNode?.length).fill(0)
   );
 
   const semitotal = partPrices.reduce((total, price) => total + price, 0);
@@ -192,8 +192,8 @@ const ConfiguratorFemale = () => {
 
   const handleTextureChange = (newTexture) => {
     if (selectedPart === "all") {
-      state.texture = Array(selectedClothing.myNode.length).fill(newTexture);
-      state.color = Array(selectedClothing.myNode.length).fill(null);
+      state.texture = Array(selectedClothing.myNode?.length).fill(newTexture);
+      state.color = Array(selectedClothing.myNode?.length).fill(null);
       setSelectedPrintOn(newTexture);
 
       const textureCategory = Object.keys(textureArrays).find((category) =>
@@ -202,7 +202,7 @@ const ConfiguratorFemale = () => {
 
       const newPartPrice = textureValues[textureCategory];
 
-      setPartPrices(Array(selectedClothing.myNode.length).fill(newPartPrice));
+      setPartPrices(Array(selectedClothing.myNode?.length).fill(newPartPrice));
       return;
     }
 
@@ -345,7 +345,7 @@ const ConfiguratorFemale = () => {
   };
 
   const masterSelectionPartOptions = useMemo(() => {
-    if (selectedClothing.myNode.length === 1) {
+    if (selectedClothing.myNode?.length === 1) {
       return (
         <button
           className={`size-button btn btn-outline-dark ${
@@ -367,7 +367,7 @@ const ConfiguratorFemale = () => {
           >
             All
           </button>
-          {selectedClothing.myNode.map((nodeName, index) => (
+          {selectedClothing.myNode?.map((nodeName, index) => (
             <button
               key={index}
               className={`size-button btn btn-outline-dark ${
@@ -739,12 +739,7 @@ const ConfiguratorFemale = () => {
                   </button>
                 </div> */}
 
-                {/* parts images start */}
-                <PartImages
-                  selectedClothing={selectedClothing}
-                  selectedPart={selectedPart}
-                />
-                {/* parts images end */}
+                
               </div>
             </div>
           </div>

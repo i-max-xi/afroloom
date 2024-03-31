@@ -13,7 +13,6 @@ import normal_top from "../Assets/Customize/normal_top.png";
 // import female_suit_img from "../Assets/Customize/femlae_suit.jpg";
 import kabanslit from "../Assets/Customize/kabanslit.JPG";
 
-
 //models
 import t_shirt_short from "../Pages/Customize/Configurator/models/FemaleClothing/tshirt_short_two.glb";
 import t_shirt_long from "../Pages/Customize/Configurator/models/FemaleClothing/tshirt_long_two.glb";
@@ -31,12 +30,9 @@ import extra_long from "../Pages/Customize/Configurator/models/FemaleClothing/fe
 import extra_short from "../Pages/Customize/Configurator/models/FemaleClothing/female_shirt_extra_short.glb";
 import booty_shorts from "../Pages/Customize/Configurator/models/FemaleClothing/booty_shorts.glb";
 import kaba_slit from "../Pages/Customize/Configurator/models/FemaleClothing/gown.glb";
-import material_shorts from "../Pages/Customize/Configurator/models/MaleClothing/material_shorts.glb";
+import material_shorts from "../Pages/Customize/Configurator/models/FemaleClothing/material_shorts.glb";
 import jacket from "../Pages/Customize/Configurator/models/Accessories/Unisex/jacket_main.glb";
 import summer_shorts from "../Pages/Customize/Configurator/models/MaleClothing/summer_shorts.glb";
-
-
-
 
 // size guides
 import tshirt_guide from "../Assets/size_guide/FemaleClothing/short_sleeves_tshirt.png";
@@ -56,10 +52,6 @@ import bootyShorts_guide from "../Assets/size_guide/FemaleClothing/booty shorts.
 import trousers_guide from "../Assets/size_guide/FemaleClothing/women trousers.jpg";
 import jacket_guide from "../Assets/size_guide/FemaleClothing/ladies bomber.png";
 import summer_shorts_guide from "../Assets/size_guide/FemaleClothing/women summer shorts.jpg";
-
-
-
-
 
 // models
 import tshirt_model from "../Pages/Customize/Configurator/size_guide/female/women.JPG";
@@ -181,10 +173,6 @@ const image_jacket = require("../Assets/welcome_3ds/female/bomber_jacket.png");
 const image_topndown_image = require("../Assets/welcome_3ds/female/kaftan.png");
 const image_material_shorts_image = require("../Assets/welcome_3ds/female/material_shorts.png");
 const image_summer_image = require("../Assets/welcome_3ds/female/summer_shorts.png");
-
-
-
-
 
 export const mainFemaleCustomize = [
   {
@@ -591,7 +579,6 @@ export const mainFemaleCustomize = [
       { label: "L", value: 2 },
       { label: "XL", value: 3 },
       { label: "2XL", value: 4 },
-      
     ],
     sizeForms: [
       {
@@ -790,9 +777,7 @@ export const mainFemaleCustomize = [
     name: "Mini Skirt",
     model: mini_skirt_model,
     image: image_mini_skirt,
-    myNode: [
-      { name: "all", yardNeeded: 2 },
-    ],
+    myNode: [{ name: "all", yardNeeded: 2 }],
     myZoom: 0.8,
     price: 20,
     sizeGuide: miniSkirt_guide,
@@ -824,9 +809,7 @@ export const mainFemaleCustomize = [
     name: "Booty Shorts",
     model: booty_shorts,
     image: image_booty_shorts,
-    myNode: [
-      { name: "all", yardNeeded: 2 },
-    ],
+    myNode: [{ name: "all", yardNeeded: 2 }],
     myZoom: 0.6,
     price: 20,
     sizeGuide: bootyShorts_guide,
@@ -872,7 +855,7 @@ export const mainFemaleCustomize = [
   //     { label: "L", value: 2 },
   //     { label: "XL", value: 3 },
   //     { label: "2XL", value: 4 },
-      
+
   //   ],
   //   // parts: summerShortsParts.keys().map(summerShortsParts),
   //   sizeForms: [
@@ -910,7 +893,6 @@ export const mainFemaleCustomize = [
       { label: "L", value: 2 },
       { label: "XL", value: 3 },
       { label: "2XL", value: 4 },
-      
     ],
     sizeForms: [
       {
@@ -939,9 +921,7 @@ export const mainFemaleCustomize = [
     model: trousers,
     // image: image_trousers,
     image: image_leggings,
-    myNode: [
-      { name: "all", yardNeeded: 2 },
-    ],
+    myNode: [{ name: "all", yardNeeded: 2 }],
     myZoom: 0.7,
     price: 20,
     sizeGuide: trousers_guide,

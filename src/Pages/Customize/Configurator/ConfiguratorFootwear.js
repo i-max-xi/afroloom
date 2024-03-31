@@ -871,12 +871,7 @@ const ConfiguratorFootwear = () => {
                   </button>
                 </div> */}
 
-                {/* parts images start */}
-                <PartImages
-                  selectedClothing={selectedClothing}
-                  selectedPart={selectedPart}
-                />
-                {/* parts images end */}
+                
               </div>
             </div>
           </div>
