@@ -18,7 +18,7 @@ import cloak from "../Pages/Customize/Configurator/models/MaleClothing/cloak.glb
 import topndown_model from "../Pages/Customize/Configurator/models/MaleClothing/male_topndown.glb";
 import blazer from "../Pages/Customize/Configurator/models/MaleClothing/male_suit.glb";
 import jacket from "../Pages/Customize/Configurator/models/Accessories/Unisex/jacket_main.glb";
-import cloak_model from "../Pages/Customize/Configurator/models/FemaleClothing/cloak.glb";
+import cloak_model from "../Pages/Customize/Configurator/models/MaleClothing/kimono.glb";
 
 
 
