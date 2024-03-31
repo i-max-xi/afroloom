@@ -719,7 +719,7 @@ export const mainFemaleCustomize = [
     model: cloak_model,
     image: cloak,
     myNode: [{ name: "all", yardNeeded: 2 }],
-    myZoom: 0.8,
+    myZoom: 0.6,
     price: 20,
     sizeGuide: cloak_guide,
     sizeModels: tshirt_model,
