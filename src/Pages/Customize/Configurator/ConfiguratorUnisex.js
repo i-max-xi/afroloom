@@ -42,6 +42,8 @@ import ImageUpload from "./ImageUpload";
 import HtmlComponent from "./HtmlComponent";
 import { isMobile } from "../../../utils/constants";
 import uuid from "react-uuid";
+import { OverlayPanel } from "primereact/overlaypanel";
+
 const Shirt = ({
   isRotating,
   selectedClothing,
@@ -183,6 +185,8 @@ const ConfiguratorUnisex = () => {
     "Book Antiqua",
   ];
   const [currentFontIndex, setCurrentFontIndex] = useState(0);
+
+  const textEditRef = useRef(null);
 
   const handleChangeFont = () => {
     let newIndex = currentFontIndex + 1;
@@ -813,9 +817,15 @@ const ConfiguratorUnisex = () => {
                             }
                           />
                         </div>
-                        <h5>Edit Text</h5>
-
-                        <div className="d-flex imprint-options">
+                        <h5 className="d-flex" style={{gap: "1rem"}} onClick={(e) => textEditRef.current.toggle(e)}>
+                          Edit Text
+                          <i className={ "pi pi-chevron-right"}></i>
+                        </h5>
+                        <OverlayPanel
+                          showCloseIcon
+                          ref={textEditRef}
+                          className="d-flex imprint-options"
+                        >
                           <div className="flex-column">
                             <div className="d-flex">
                               {colorOptions.slice(0, 6).map((colorOption) => (
@@ -839,44 +849,37 @@ const ConfiguratorUnisex = () => {
                                 </div>
                               ))}
                             </div>
-                            <div className="d-flex justify-content-center fs-button">
-                              {/* <button
-                                className="btn btn-secondary btn-sm m-2"
-                                onClick={() => handleChangeFont("decrement")}
-                              >
-                                {"<"}
-                              </button> */}
+                            <div className="d-flex gap-2 justify-content-center fs-button">
                               <span className="font-size">
-                                Font Style: {fontFamily}
+                                Style: {fontFamily}
                               </span>
                               <button
-                                className="btn btn-secondary btn-sm m-2"
+                                className="btn btn-info btn-sm p-2 text-white"
                                 onClick={handleChangeFont}
                               >
                                 <i className="pi pi-sync"></i>
                               </button>
                             </div>
-                            <div className="d-flex justify-content-center fs-button">
+                            <div className="d-flex  gap-2 justify-content-center fs-button">
                               <button
-                                className="btn btn-secondary btn-sm mx-2"
+                                className="btn btn-info btn-sm p-2 text-white"
                                 onClick={decreaseFontSize}
                               >
                                 -
                               </button>
                               <span className="font-size">
-                                Font Size: {fontSize}
+                                Size: {fontSize}
                               </span>
                               <button
-                                className="btn btn-secondary btn-sm mx-2"
+                                className="btn btn-info btn-sm p-2 text-white"
                                 onClick={increaseFontSize}
                               >
                                 +
                               </button>
                             </div>
                           </div>
-                        </div>
+                        </OverlayPanel>
                         <h5>Imprint images or Logos</h5>
-
                         <div className="image-uploads">
                           <ImageUpload
                             labelLeft={"Upload for left"}
