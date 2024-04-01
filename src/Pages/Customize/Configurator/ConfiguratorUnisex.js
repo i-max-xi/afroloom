@@ -165,37 +165,37 @@ const ConfiguratorUnisex = () => {
   const [showGlow, setShowGlow] = useState(false);
 
   // Declare state for entered text and generated texture
-  const [enteredTextLeft, setEnteredTextLeft] = useState("");
-  const [enteredTextRight, setEnteredTextRight] = useState("");
+  const [enteredTextLeft, setEnteredTextLeft] = useState("Your Name");
+  const [enteredTextRight, setEnteredTextRight] = useState("Other Info");
 
   // const [textPosition] = useState([-0.65, -0.15, 0.05]); // Initialize text position
   const [textColor, setTextColor] = useState("black");
-  const [fontSize, setFontSize] = useState(14);
-  const [fontFamily] = useState("Arial");
+  const [fontSize, setFontSize] = useState(11);
+  const [fontFamily, setFontFamily] = useState("Arial");
   const [hideText, setHideText] = useState(false);
 
-  // const fonts = [
-  //   "Arial",
-  //   "Verdana",
-  //   "Courier New",
-  //   "Roboto",
-  //   "Comic Sans MS",
-  //   "Book Antiqua",
-  // ];
-  // const [currentFontIndex, setCurrentFontIndex] = useState(0);
+  const fonts = [
+    "Arial",
+    "Verdana",
+    "Courier New",
+    "Roboto",
+    "Comic Sans MS",
+    "Book Antiqua",
+  ];
+  const [currentFontIndex, setCurrentFontIndex] = useState(0);
 
-  // const handleChangeFont = (increment) => {
-  //   let newIndex = currentFontIndex + increment;
+  const handleChangeFont = () => {
+    let newIndex = currentFontIndex + 1;
 
-  //   // Loop back to the start or end of the array if needed
-  //   if (newIndex < 0) {
-  //     newIndex = fonts.length - 1;
-  //   } else if (newIndex >= fonts.length) {
-  //     newIndex = 0;
-  //   }
-  //   setCurrentFontIndex(newIndex);
-  //   setFontFamily(fonts[newIndex]);
-  // };
+    // Loop back to the start or end of the array if needed
+    if (newIndex < 0) {
+      newIndex = fonts.length - 1;
+    } else if (newIndex >= fonts.length) {
+      newIndex = 0;
+    }
+    setCurrentFontIndex(newIndex);
+    setFontFamily(fonts[newIndex]);
+  };
 
   const increaseFontSize = () => {
     setFontSize((prevSize) => prevSize + 1); // Increase font size by 0.01
@@ -667,7 +667,7 @@ const ConfiguratorUnisex = () => {
                   <div className="texture-row">
                     <div className="texture-category">
                       <h3>
-                        Batik (+{currencySymbol}
+                        Tie and Dye (+{currencySymbol}
                         {(currencyFactor * textureValues.batik.price).toFixed(
                           2
                         )}
@@ -813,7 +813,7 @@ const ConfiguratorUnisex = () => {
                             }
                           />
                         </div>
-                        <h5>Font color and size</h5>
+                        <h5>Edit Text</h5>
 
                         <div className="d-flex imprint-options">
                           <div className="flex-column">
@@ -840,13 +840,32 @@ const ConfiguratorUnisex = () => {
                               ))}
                             </div>
                             <div className="d-flex justify-content-center fs-button">
+                              {/* <button
+                                className="btn btn-secondary btn-sm m-2"
+                                onClick={() => handleChangeFont("decrement")}
+                              >
+                                {"<"}
+                              </button> */}
+                              <span className="font-size">
+                                Font Style: {fontFamily}
+                              </span>
+                              <button
+                                className="btn btn-secondary btn-sm m-2"
+                                onClick={handleChangeFont}
+                              >
+                                <i className="pi pi-sync"></i>
+                              </button>
+                            </div>
+                            <div className="d-flex justify-content-center fs-button">
                               <button
                                 className="btn btn-secondary btn-sm mx-2"
                                 onClick={decreaseFontSize}
                               >
                                 -
                               </button>
-                              <span className="font-size">{fontSize}</span>
+                              <span className="font-size">
+                                Font Size: {fontSize}
+                              </span>
                               <button
                                 className="btn btn-secondary btn-sm mx-2"
                                 onClick={increaseFontSize}

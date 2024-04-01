@@ -23,7 +23,7 @@ const HtmlComponent = ({
         style={{
           position: "absolute",
           top: -20,
-          left: 15,
+          left: 10,
           color: textColor,
           fontSize: textSize,
           width: "5.4rem",
@@ -32,7 +32,7 @@ const HtmlComponent = ({
           wordWrap: "break-word", // Enable word wrapping for long words
           overflow: "hidden", // Ensure text doesn't overflow its container
           textTransform: "uppercase",
-          // fontFamily: fontFamily
+          fontFamily: fontFamily
         }}
         dangerouslySetInnerHTML={{
           __html: separateWordsWithLineBreak(textLeft),
@@ -46,7 +46,7 @@ const HtmlComponent = ({
         style={{
           position: "absolute",
           top: -20,
-          left: 5,
+          left: 13,
           textAlign: "center",
           color: textColor,
           fontSize: textSize,
@@ -55,7 +55,7 @@ const HtmlComponent = ({
           wordWrap: "break-word", // Enable word wrapping for long words
           overflow: "hidden", // Ensure text doesn't overflow its container
           textTransform: "uppercase",
-          // fontFamily: fontFamily
+          fontFamily: fontFamily
         }}
         dangerouslySetInnerHTML={{
           __html: separateWordsWithLineBreak(textRight),

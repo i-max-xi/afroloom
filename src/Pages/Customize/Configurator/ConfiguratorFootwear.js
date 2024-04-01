@@ -608,12 +608,9 @@ const ConfiguratorFootwear = () => {
                   <div className="texture-row">
                     <div className="texture-category">
                       <h3>
-                        Batik (+{currencySymbol}
-                        {(currencyFactor * textureValues.batik.price).toFixed(
-                          2
-                        )}
-                        )
-                      </h3>
+                      Tie and Dye (+{currencySymbol}
+                      {(currencyFactor * textureValues.batik.price).toFixed(2)})
+                    </h3>
                       <Carousel
                         value={textureArrays.batik}
                         numVisible={4}
