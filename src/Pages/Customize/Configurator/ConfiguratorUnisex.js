@@ -169,6 +169,9 @@ const ConfiguratorUnisex = () => {
   // Declare state for entered text and generated texture
   const [enteredTextLeft, setEnteredTextLeft] = useState("Your Name");
   const [enteredTextRight, setEnteredTextRight] = useState("Other Info");
+  const [textLeftOrientation, setTextLeftOrientation] = useState("horizontal");
+  const [textRightOrientation, setTextRightOrientation] =
+    useState("horizontal");
 
   // const [textPosition] = useState([-0.65, -0.15, 0.05]); // Initialize text position
   const [textColor, setTextColor] = useState("black");
@@ -187,6 +190,26 @@ const ConfiguratorUnisex = () => {
   const [currentFontIndex, setCurrentFontIndex] = useState(0);
 
   const textEditRef = useRef(null);
+
+  const handleLeftTextOrientation = () => {
+    if (textLeftOrientation === "horizontal") {
+      setTextLeftOrientation("vertical");
+    }
+
+    if (textLeftOrientation === "vertical") {
+      setTextLeftOrientation("horizontal");
+    }
+  };
+
+  const handleRightTextOrientation = () => {
+    if (textRightOrientation === "horizontal") {
+      setTextRightOrientation("vertical");
+    }
+
+    if (textRightOrientation === "vertical") {
+      setTextRightOrientation("horizontal");
+    }
+  };
 
   const handleChangeFont = () => {
     let newIndex = currentFontIndex + 1;
@@ -763,6 +786,8 @@ const ConfiguratorUnisex = () => {
                             textColor={textColor}
                             textSize={fontSize}
                             fontFamily={fontFamily}
+                            textLeftOrientation={textLeftOrientation}
+                            textRightOrientation={textRightOrientation}
                           />
                         )}
                       <Shirt
@@ -817,16 +842,17 @@ const ConfiguratorUnisex = () => {
                             }
                           />
                         </div>
-                        <h5 className="d-flex" style={{gap: "1rem"}} onClick={(e) => textEditRef.current.toggle(e)}>
-                          Edit Text
-                          <i className={ "pi pi-chevron-right"}></i>
-                        </h5>
-                        <OverlayPanel
-                          showCloseIcon
-                          ref={textEditRef}
-                          className="d-flex imprint-options"
+                        <h5
+                          className="d-flex"
+                          style={{ gap: "1rem" }}
+                          onClick={(e) => textEditRef.current.toggle(e)}
                         >
-                          <div className="flex-column">
+                          Edit Text
+                          <i className={"pi pi-chevron-right"}></i>
+                        </h5>
+                        <OverlayPanel showCloseIcon ref={textEditRef}>
+                          <div className="flex-column imprint-options">
+                            <h6>Color</h6>
                             <div className="d-flex">
                               {colorOptions.slice(0, 6).map((colorOption) => (
                                 <div
@@ -849,10 +875,10 @@ const ConfiguratorUnisex = () => {
                                 </div>
                               ))}
                             </div>
+
+                            <h6>Style</h6>
                             <div className="d-flex gap-2 justify-content-center fs-button">
-                              <span className="font-size">
-                                Style: {fontFamily}
-                              </span>
+                              <span className="font-size">{fontFamily}</span>
                               <button
                                 className="btn btn-info btn-sm p-2 text-white"
                                 onClick={handleChangeFont}
@@ -860,6 +886,8 @@ const ConfiguratorUnisex = () => {
                                 <i className="pi pi-sync"></i>
                               </button>
                             </div>
+
+                            <h6>Size</h6>
                             <div className="d-flex  gap-2 justify-content-center fs-button">
                               <button
                                 className="btn btn-info btn-sm p-2 text-white"
@@ -867,15 +895,36 @@ const ConfiguratorUnisex = () => {
                               >
                                 -
                               </button>
-                              <span className="font-size">
-                                Size: {fontSize}
-                              </span>
+                              <span className="font-size">{fontSize}</span>
                               <button
                                 className="btn btn-info btn-sm p-2 text-white"
                                 onClick={increaseFontSize}
                               >
                                 +
                               </button>
+                            </div>
+                            <div>
+                              <h6>Orientation</h6>
+                              <div className="d-flex justify-content-around  gap-4">
+                                <div className="d-flex gap-1 align-items-center justify-content-center">
+                                  Toggle Left
+                                  <button
+                                    className="btn btn-info btn-sm p-2 text-white"
+                                    onClick={handleLeftTextOrientation}
+                                  >
+                                    <i className="pi pi-sync"></i>
+                                  </button>
+                                </div>
+                                <div className="d-flex gap-1 align-items-center justify-content-center">
+                                  Toggle Right
+                                  <button
+                                    className="btn btn-info btn-sm p-2 text-white"
+                                    onClick={handleRightTextOrientation}
+                                  >
+                                    <i className="pi pi-sync"></i>
+                                  </button>
+                                </div>
+                              </div>
                             </div>
                           </div>
                         </OverlayPanel>

@@ -6,6 +6,8 @@ const HtmlComponent = ({
   textColor,
   textSize,
   fontFamily,
+  textLeftOrientation,
+  textRightOrientation
 }) => {
   const separateWordsWithLineBreak = (text) => {
     // Split the text into an array of words
@@ -32,14 +34,14 @@ const HtmlComponent = ({
           wordWrap: "break-word", // Enable word wrapping for long words
           overflow: "hidden", // Ensure text doesn't overflow its container
           textTransform: "uppercase",
-          fontFamily: fontFamily
+          fontFamily: fontFamily,
+          writingMode: `${textLeftOrientation === 'vertical' ? 'vertical-rl' : 'horizontal-tb'}`, // Apply text orientation
         }}
         dangerouslySetInnerHTML={{
           __html: separateWordsWithLineBreak(textLeft),
         }}
       />
-      {/* {textLeft} */}
-      {/* </div> */}
+    
       <div
         className="overlay"
         id="overlay-right"
@@ -55,14 +57,14 @@ const HtmlComponent = ({
           wordWrap: "break-word", // Enable word wrapping for long words
           overflow: "hidden", // Ensure text doesn't overflow its container
           textTransform: "uppercase",
-          fontFamily: fontFamily
+          fontFamily: fontFamily,
+          writingMode: `${textRightOrientation === 'vertical' ? 'vertical-rl' : 'horizontal-tb'}`, // Apply text orientation
+
         }}
         dangerouslySetInnerHTML={{
           __html: separateWordsWithLineBreak(textRight),
         }}
       />
-      {/* {textRight} */}
-      {/* </div> */}
     </Html>
   );
 };

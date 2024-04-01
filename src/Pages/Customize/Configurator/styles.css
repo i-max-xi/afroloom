@@ -94,6 +94,7 @@
   .imprint-options {
     display: flex;
     justify-content: center;
+    /* gap: 0.5rem */
   }
   .fs-button {
     margin: 0.5rem 0;
