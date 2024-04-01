@@ -390,3 +390,9 @@ export const displayInplaceFor = [
   "Leggings",
   "Top And Down Kaftan"
 ];
+
+
+export const noSpinFor = [
+  "Sash",
+  "Beads Bracelet",
+];

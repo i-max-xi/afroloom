@@ -181,7 +181,7 @@ const ConfiguratorFemale = () => {
 
   const semitotal = partPrices.reduce((total, price) => total + price, 0);
 
-    const selectedSizeIndex = selectedSize !== 0.5 ? selectedSize : 0
+  const selectedSizeIndex = selectedSize !== 0.5 ? selectedSize : 0;
 
   //total price
   const total = (
@@ -573,8 +573,8 @@ const ConfiguratorFemale = () => {
                   </Dialog>
                 </div>
                 <h5>
-                  Choose Color{" "}
-                  (+{currencySymbol}{(currencyFactor * 35).toFixed(2)})
+                  Choose Color (+{currencySymbol}
+                  {(currencyFactor * 35).toFixed(2)})
                 </h5>
                 <div className="color-buttons-container">
                   <Carousel
@@ -611,10 +611,9 @@ const ConfiguratorFemale = () => {
                       </h3>
                       <Carousel
                         value={textureArrays.batik}
-                        numVisible={isMobile ? 1 : 4}
-                        numScroll={isMobile ? 1 : 4}
+                        numVisible={4}
+                        numScroll={2}
                         showIndicators={false}
-                        responsiveOptions={responsiveNess}
                         itemTemplate={(texture, index) => (
                           <TextureItem
                             key={texture}
@@ -622,7 +621,7 @@ const ConfiguratorFemale = () => {
                             setHideText={setHideText}
                             Title="batik"
                             selectedTexture={selectedPrintOn}
-                             // Pass setSelectedTexture as a prop
+                            // Pass setSelectedTexture as a prop
                             handleTextureChange={handleTextureChange}
                             currencySymbol={currencySymbol}
                             currencyFactor={currencyFactor}
@@ -671,10 +670,9 @@ const ConfiguratorFemale = () => {
                       </h3>
                       <Carousel
                         value={textureArrays.waxPrint}
-                        numVisible={isMobile ? 1 : 4}
-                        numScroll={isMobile ? 1 : 4}
+                        numVisible={4}
+                        numScroll={2}
                         showIndicators={false}
-                        responsiveOptions={responsiveNess}
                         itemTemplate={(texture) => (
                           <TextureItem
                             key={texture}
@@ -682,7 +680,7 @@ const ConfiguratorFemale = () => {
                             setHideText={setHideText}
                             Title="waxPrint"
                             selectedTexture={selectedPrintOn}
-                             // Pass setSelectedTexture as a prop
+                            // Pass setSelectedTexture as a prop
                             handleTextureChange={handleTextureChange}
                             currencySymbol={currencySymbol}
                             currencyFactor={currencyFactor}
@@ -738,8 +736,6 @@ const ConfiguratorFemale = () => {
                 )}
                   </button>
                 </div> */}
-
-                
               </div>
             </div>
           </div>

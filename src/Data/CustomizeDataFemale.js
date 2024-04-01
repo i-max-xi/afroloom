@@ -356,47 +356,6 @@ export const mainFemaleCustomize = [
   },
   {
     id: uuid(),
-    name: "Crop Top",
-    // image: "https://sportsfore.com/wp-content/uploads/2020/05/5-68.jpg",
-    image: image_crop_top,
-    model: top_model,
-    myNode: [
-      { name: "torso", yardNeeded: 2 },
-      { name: "sleeves", yardNeeded: 2 },
-    ],
-    myZoom: 1.2,
-    price: 20,
-    sizeGuide: cropTop_guide,
-    sizeModels: tshirt_model,
-    readyIn: 3,
-    parts: cropTopParts.keys().map(cropTopParts),
-    sizeOptions: [
-      { label: "S", value: 0.5 },
-      { label: "M", value: 1 },
-      { label: "L", value: 2 },
-      { label: "XL", value: 3 },
-      { label: "2XL", value: 4 },
-    ],
-    sizeForms: [
-      {
-        label: "Bust (cm)",
-      },
-      {
-        label: "Waist (cm)",
-      },
-      {
-        label: "Hip (cm)",
-      },
-      {
-        label: "Top Length (cm)",
-      },
-      {
-        label: "Sleeve Length (cm)",
-      },
-    ],
-  },
-  {
-    id: uuid(),
     name: "Loose Short Sleeves Top",
     image: normal_top,
     model: normal_top_model,
@@ -620,6 +579,47 @@ export const mainFemaleCustomize = [
       },
       {
         label: "Knee (cm)",
+      },
+    ],
+  },
+  {
+    id: uuid(),
+    name: "Crop Top",
+    // image: "https://sportsfore.com/wp-content/uploads/2020/05/5-68.jpg",
+    image: image_crop_top,
+    model: top_model,
+    myNode: [
+      { name: "torso", yardNeeded: 2 },
+      { name: "sleeves", yardNeeded: 2 },
+    ],
+    myZoom: 1.2,
+    price: 20,
+    sizeGuide: cropTop_guide,
+    sizeModels: tshirt_model,
+    readyIn: 3,
+    parts: cropTopParts.keys().map(cropTopParts),
+    sizeOptions: [
+      { label: "S", value: 0.5 },
+      { label: "M", value: 1 },
+      { label: "L", value: 2 },
+      { label: "XL", value: 3 },
+      { label: "2XL", value: 4 },
+    ],
+    sizeForms: [
+      {
+        label: "Bust (cm)",
+      },
+      {
+        label: "Waist (cm)",
+      },
+      {
+        label: "Hip (cm)",
+      },
+      {
+        label: "Top Length (cm)",
+      },
+      {
+        label: "Sleeve Length (cm)",
       },
     ],
   },

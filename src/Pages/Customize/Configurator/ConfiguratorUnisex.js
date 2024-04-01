@@ -31,6 +31,7 @@ import {
   responsiveNess,
   specialNodeNames,
   displayInplaceFor,
+  noSpinFor,
 } from "./arrays/neededArrays";
 import TextureItem from "./TextureItem";
 import PartImages from "./PartImages";
@@ -118,7 +119,7 @@ const Shirt = ({
                 map={texture && new TextureLoader().load(texture)}
                 roughness={1}
                 emissive={selectedPart === index ? "#FF8C00" : null} // Apply golden glow if part is selected
-                emissiveIntensity={showGlow && selectedPart === index ? 2 : 0} // Adjust glow intensity
+                emissiveIntensity={showGlow && selectedPart === index ? 5 : 0} // Adjust glow intensity
               />
             </mesh>
           );
@@ -505,22 +506,24 @@ const ConfiguratorUnisex = () => {
           <div className="main-space">
             <h3 className="text-center">Customizing {selectedClothing.name}</h3>
             <div className="d-flex justify-content-center">
-              <button
-                className={`btn rotation-button text-white  ${
-                  isRotating === true ? "btn-danger" : "btn-warning"
-                }`}
-                onClick={handleRotation}
-              >
-                {isRotating ? (
-                  <span>
-                    Stop <i className="pi pi-ban"></i>
-                  </span>
-                ) : (
-                  <span>
-                    Take a Spin <i className="pi pi-sync"></i>
-                  </span>
-                )}
-              </button>
+              {noSpinFor.includes(selectedClothing.name) ? null : (
+                <button
+                  className={`btn rotation-button text-white  ${
+                    isRotating === true ? "btn-danger" : "btn-warning"
+                  }`}
+                  onClick={handleRotation}
+                >
+                  {isRotating ? (
+                    <span>
+                      Stop <i className="pi pi-ban"></i>
+                    </span>
+                  ) : (
+                    <span>
+                      Take a Spin <i className="pi pi-sync"></i>
+                    </span>
+                  )}
+                </button>
+              )}
 
               <button
                 className="btn btn-info text-white mx-3"
@@ -672,8 +675,8 @@ const ConfiguratorUnisex = () => {
                       </h3>
                       <Carousel
                         value={textureArrays.batik}
-                        numVisible={isMobile ? 1 : 4}
-                        numScroll={isMobile ? 1 : 4}
+                        numVisible={4}
+                        numScroll={2}
                         showIndicators={false}
                         // responsiveOptions={responsiveNess}
                         itemTemplate={(texture, index) => (
@@ -705,10 +708,9 @@ const ConfiguratorUnisex = () => {
                       </h3>
                       <Carousel
                         value={textureArrays.waxPrint}
-                        numVisible={isMobile ? 1 : 4}
-                        numScroll={isMobile ? 1 : 4}
+                        numVisible={4}
+                        numScroll={2}
                         showIndicators={false}
-                        responsiveOptions={responsiveNess}
                         itemTemplate={(texture) => (
                           <TextureItem
                             key={texture}
@@ -737,9 +739,11 @@ const ConfiguratorUnisex = () => {
                 <div className="resize-right-panel">
                   <div
                     ref={canvasRef}
-                    style={{
-                      height: selectedClothing.name !== "Sash" ? "100%" : "81%",
-                    }}
+                    style={
+                      {
+                        // height: selectedClothing.name !== "Sash" ? "100%" : "81%",
+                      }
+                    }
                   >
                     <Canvas
                       camera={{ position: [0, 0, selectedClothing.myZoom] }} // Set the initial camera position
@@ -791,7 +795,7 @@ const ConfiguratorUnisex = () => {
                   {selectedClothing.name === "Sash" && (
                     <div className="px-2 pt-2 w-100 text-image-imprint">
                       {/* test text inprinting */}
-                      <h5>Imprint Text on model</h5>
+                      <h5>Imprint text on model</h5>
                       <div className="d-flex text-image-imprint-wrapper">
                         <div className="inputs">
                           <input
@@ -809,6 +813,7 @@ const ConfiguratorUnisex = () => {
                             }
                           />
                         </div>
+                        <h5>Font color and size</h5>
 
                         <div className="d-flex imprint-options">
                           <div className="flex-column">
@@ -841,9 +846,7 @@ const ConfiguratorUnisex = () => {
                               >
                                 -
                               </button>
-                              <span className="font-size">
-                                font size: {fontSize}
-                              </span>
+                              <span className="font-size">{fontSize}</span>
                               <button
                                 className="btn btn-secondary btn-sm mx-2"
                                 onClick={increaseFontSize}
@@ -853,10 +856,12 @@ const ConfiguratorUnisex = () => {
                             </div>
                           </div>
                         </div>
+                        <h5>Imprint images or Logos</h5>
+
                         <div className="image-uploads">
                           <ImageUpload
-                            labelLeft={"Upload Left Logo"}
-                            labelRight={"Upload Right Logo"}
+                            labelLeft={"Upload for left"}
+                            labelRight={"Upload for right"}
                             onImageUploadLeft={handleImageUploadLeft}
                             onImageUploadRight={handleImageUploadRight}
                             toastRef={toastRef}
@@ -866,10 +871,6 @@ const ConfiguratorUnisex = () => {
                     </div>
                   )}
                 </div>
-
-              
-
-                
               </div>
             </div>
           </div>

@@ -14,7 +14,7 @@ const CustomizePage = () => {
   return (
     <>
       <Nav />
-      <div className="container p-5">
+      <div className="container">
         <h1 className="text-center mb-5">Design your own product</h1>
         <div className="row">
           {/* Accessories */}

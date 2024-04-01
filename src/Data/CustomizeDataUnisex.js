@@ -55,7 +55,7 @@ const image_bikini = require("../Assets/welcome_3ds/female/bikini.png");
 export const mainUnisex = [
   {
     id: uuid(),
-    name: "Beads Bracelets",
+    name: "Beads Bracelet",
     image: bangles,
     model: bangles_model,
     // myNode: ["large_beads", "small_beads", "mid_section"],
@@ -268,7 +268,7 @@ export const mainUnisex = [
       { name: "Stripe_2", yardNeeded: 1 },
       { name: "mid_stripes", yardNeeded: 1 },
     ],
-    myZoom: 1.5,
+    myZoom: 2,
     price: 55,
     parts: sashParts.keys().map(sashParts),
     sizeModels: tshirt_model,
