@@ -4,6 +4,7 @@ import { v4 as uuid } from "uuid";
 import backpack_model from "../Pages/Customize/Configurator/models/Accessories/Unisex/backpack.glb";
 import mini_bag_model from "../Pages/Customize/Configurator/models/Accessories/Unisex/mini_bag_handle_main_body.glb";
 import sash_model from "../Pages/Customize/Configurator/models/Accessories/Unisex/sash.glb";
+import sash_model_two from "../Pages/Customize/Configurator/models/Accessories/Unisex/sash_two.glb";
 import jacket from "../Pages/Customize/Configurator/models/Accessories/Unisex/jacket_main.glb";
 import bangles_model from "../Pages/Customize/Configurator/models/Accessories/Unisex/bangles.glb";
 import earring_model from "../Pages/Customize/Configurator/models/Accessories/Unisex/earring.glb";
@@ -261,7 +262,6 @@ export const mainUnisex = [
     name: "Sash",
     image: image_sash,
     model: sash_model,
-    // myNode: ["plain_sections", "Stripe_1", "Stripe_2", "mid_stripes"],
     myNode: [
       { name: "plain_sections", yardNeeded: 1 },
       { name: "Stripe_1", yardNeeded: 1 },
@@ -291,4 +291,37 @@ export const mainUnisex = [
       },
     ],
   },
+  // {
+  //   id: uuid(),
+  //   name: "Sash Variant Two",
+  //   image: "",
+  //   model: sash_model_two,
+  //   myNode: [
+  //     { name: "sashpolySurface158_rrambu_0.001", yardNeeded: 1 },
+  //     { name: "all", yardNeeded: 1 },
+
+  //   ],
+  //   myZoom: 2,
+  //   price: 55,
+  //   // parts: sashParts.keys().map(sashParts),
+  //   // sizeModels: tshirt_model,
+  //   readyIn: 3,
+  //   // weight: 0.25,
+  //   sizeGuide: sash_guide,
+  //   sizeOptions: [
+  //     { label: "S", value: 0.5 },
+  //     { label: "M", value: 1 },
+  //     { label: "L", value: 2 },
+  //     { label: "XL", value: 3 },
+  //     { label: "2XL", value: 4 },
+  //   ],
+  //   sizeForms: [
+  //     {
+  //       label: "Length (inch)",
+  //     },
+  //     {
+  //       label: "Width (inch)",
+  //     },
+  //   ],
+  // },
 ];
