@@ -6,6 +6,7 @@ import mini_bag_model from "../Pages/Customize/Configurator/models/Accessories/U
 import sash_model from "../Pages/Customize/Configurator/models/Accessories/Unisex/sash.glb";
 import sash_model_new from "../Pages/Customize/Configurator/models/Accessories/Unisex/sash_new.glb";
 import sash_model_two from "../Pages/Customize/Configurator/models/Accessories/Unisex/sash_two.glb";
+import sash_both_down from "../Pages/Customize/Configurator/models/Accessories/Unisex/sash_both_down.glb";
 import jacket from "../Pages/Customize/Configurator/models/Accessories/Unisex/jacket_main.glb";
 import bangles_model from "../Pages/Customize/Configurator/models/Accessories/Unisex/bangles.glb";
 import earring_model from "../Pages/Customize/Configurator/models/Accessories/Unisex/earring.glb";
@@ -292,14 +293,14 @@ export const mainUnisex = [
   },
   {
     id: uuid(),
-    name: "Sash Variant Two",
+    name: "Sash Both Down",
     image: "",
-    model: sash_model,
+    model: sash_both_down,
     myNode: [
-      { name: "plain_sections", yardNeeded: 1 },
-      { name: "Stripe_1", yardNeeded: 1 },
-      { name: "Stripe_2", yardNeeded: 1 },
-      { name: "mid_stripes", yardNeeded: 1 },
+      { name: "plain_section", yardNeeded: 1 },
+      { name: "stripe_1", yardNeeded: 1 },
+      { name: "stripe_2", yardNeeded: 1 },
+      { name: "stripe_3", yardNeeded: 1 },
     ],
     myZoom: 2,
     price: 55,
@@ -324,13 +325,13 @@ export const mainUnisex = [
   },
   {
     id: uuid(),
-    name: "Sash Variant Three",
+    name: "Sash One down one up",
     image: "",
-    model: sash_model_new,
+    model: sash_both_down,
     myNode: [
-      { name: "all", yardNeeded: 1 },
-      // { name: "Stripe_1", yardNeeded: 1 },
-      // { name: "Stripe_2", yardNeeded: 1 },
+      { name: "plain_section", yardNeeded: 1 },
+      { name: "stripe_1", yardNeeded: 1 },
+      { name: "stripe_2", yardNeeded: 1 },
       // { name: "mid_stripes", yardNeeded: 1 },
     ],
     myZoom: 2,

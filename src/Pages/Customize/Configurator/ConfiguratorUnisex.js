@@ -256,9 +256,9 @@ const ConfiguratorUnisex = () => {
           width: "5.4rem",
           lineHeight: "",
           image: {
-            top: "-8rem",
+            top: "-10rem",
             left: "5rem",
-            width: "8%",
+            width: "10%",
           },
         },
         right: {
@@ -269,9 +269,9 @@ const ConfiguratorUnisex = () => {
           width: "5.4rem",
           lineHeight: "",
           image: {
-            top: "-9.5rem",
+            top: "-11rem",
             left: "16rem",
-            width: "8%",
+            width: "10%",
           },
         },
       };
@@ -1002,7 +1002,7 @@ const ConfiguratorUnisex = () => {
                         alt="Uploaded Texture"
                         width={ImprintTextPosition.left?.image?.width || "8%"}
                         style={{
-                          transform: `translate(${ImprintTextPosition.left?.image?.left}, ${ImprintTextPosition.left?.image?.top})`,
+                          transform: `translate(${ImprintTextPosition.left?.image?.left}, ${ImprintTextPosition?.left?.image?.top})`,
                         }}
                       />
                     ) : (
@@ -1010,7 +1010,7 @@ const ConfiguratorUnisex = () => {
                         style={{
                           fontSize: "0.5rem",
                           opacity: 0.5,
-                          transform: `translate(${ImprintTextPosition.left?.image?.left}, ${ImprintTextPosition.left?.image?.top})`,
+                          transform: `translate(${ImprintTextPosition.left?.image?.left}, ${ImprintTextPosition?.left?.image?.top})`,
                         }}
                       >
                         Logo here

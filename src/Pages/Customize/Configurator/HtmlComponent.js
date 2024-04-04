@@ -27,11 +27,11 @@ const HtmlComponent = ({
           position: "absolute",
           // top: ImprintTextPosition?.left.top,
           // left: ImprintTextPosition?.left.left,
-          transform: `translate(${ImprintTextPosition.left.left}, ${ImprintTextPosition.left?.top})`,
+          transform: `translate(${ImprintTextPosition?.left?.left}, ${ImprintTextPosition.left?.top})`,
           color: textColor,
           fontSize: textSize,
-          width: ImprintTextPosition?.left.width,
-          height: ImprintTextPosition?.left.height,
+          width: ImprintTextPosition?.left?.width,
+          height: ImprintTextPosition?.left?.height,
           textAlign: "center",
           wordWrap: "break-word", // Enable word wrapping for long words
           overflow: "hidden", // Ensure text doesn't overflow its container

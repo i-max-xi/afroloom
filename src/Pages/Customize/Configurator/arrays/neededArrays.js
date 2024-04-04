@@ -395,8 +395,8 @@ export const displayInplaceFor = [
 export const noSpinFor = [
   "Beads Bracelet",
   "Sash",
-  "Sash Variant Two",
-  "Sash Variant Three",
+  "Sash Both Down",
+  "Sash One down one up",
   "Sash Variant Four",
   "Sash Variant Five",
 ];
