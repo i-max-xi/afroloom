@@ -118,11 +118,10 @@
     left: 63.4% !important;
   }
   
-  #overlay-right {
+  /* #overlay-right {
     transform: translateX(2.8rem) !important;
     width: 3.4rem !important;
     top: -2rem !important;
-    /* line-height: 0.5rem !important; */
     height: 8rem !important;
   }
   
@@ -130,9 +129,8 @@
     transform: translateX(-7.8rem) !important;
     width: 3.4rem !important;
     top: -2rem !important;
-    /* line-height: 0.5rem !important; */
     height: 8rem !important;
-  }
+  } */
   /* .fit > span {
     flex: 1;
     display: block;
@@ -349,16 +347,15 @@ h1 {
   font-weight: 700;
   line-height: 3rem;
   text-align: center;
-  /* transform: translateY(-6rem); */
 }
 
-#overlay-right {
+/* #overlay-right {
   transform: translateX(4.5rem);
 }
 
 #overlay-left {
   transform: translateX(-11.5rem);
-}
+} */
 
 .price {
   align-items: center;

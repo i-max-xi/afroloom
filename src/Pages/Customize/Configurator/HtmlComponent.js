@@ -8,7 +8,7 @@ const HtmlComponent = ({
   fontFamily,
   textLeftOrientation,
   textRightOrientation,
-  ImprintTextPosition
+  ImprintTextPosition,
 }) => {
   const separateWordsWithLineBreak = (text) => {
     // Split the text into an array of words
@@ -22,11 +22,12 @@ const HtmlComponent = ({
     <Html>
       <div
         className="overlay"
-        id="overlay-left"
+        // id="overlay-left"
         style={{
           position: "absolute",
-          top: ImprintTextPosition?.left.top,
-          left: ImprintTextPosition?.left.left,
+          // top: ImprintTextPosition?.left.top,
+          // left: ImprintTextPosition?.left.left,
+          transform: `translate(${ImprintTextPosition.left.left}, ${ImprintTextPosition.left?.top})`,
           color: textColor,
           fontSize: textSize,
           width: ImprintTextPosition?.left.width,
@@ -36,20 +37,24 @@ const HtmlComponent = ({
           overflow: "hidden", // Ensure text doesn't overflow its container
           textTransform: "uppercase",
           fontFamily: fontFamily,
-          writingMode: `${textLeftOrientation === 'vertical' ? 'vertical-rl' : 'horizontal-tb'}`, // Apply text orientation
+          writingMode: `${
+            textLeftOrientation === "vertical" ? "vertical-rl" : "horizontal-tb"
+          }`,
+          opacity: ImprintTextPosition?.right.text !== "" ? 1 : 0.3
         }}
         dangerouslySetInnerHTML={{
-          __html: separateWordsWithLineBreak(ImprintTextPosition?.left.text),
+          __html: separateWordsWithLineBreak(ImprintTextPosition?.left.text || "TEXT HERE"),
         }}
       />
-    
+
       <div
         className="overlay"
-        id="overlay-right"
+        // id="overlay-right"
         style={{
           position: "absolute",
-          top: ImprintTextPosition?.right.top,
-          left: ImprintTextPosition?.right.left,
+          // top: ImprintTextPosition?.right.top,
+          // left: ImprintTextPosition?.right.left,
+          transform: `translate(${ImprintTextPosition.right.left}, ${ImprintTextPosition.right?.top})`,
           textAlign: "center",
           color: textColor,
           fontSize: textSize,
@@ -59,11 +64,15 @@ const HtmlComponent = ({
           overflow: "hidden", // Ensure text doesn't overflow its container
           textTransform: "uppercase",
           fontFamily: fontFamily,
-          writingMode: `${textRightOrientation === 'vertical' ? 'vertical-rl' : 'horizontal-tb'}`, // Apply text orientation
-
+          writingMode: `${
+            textRightOrientation === "vertical"
+              ? "vertical-rl"
+              : "horizontal-tb"
+          }`,
+          opacity: ImprintTextPosition?.right.text !== "" ? 1 : 0.3
         }}
         dangerouslySetInnerHTML={{
-          __html: separateWordsWithLineBreak(ImprintTextPosition?.right.text),
+          __html: separateWordsWithLineBreak(ImprintTextPosition?.right.text || "TEXT HERE"),
         }}
       />
     </Html>

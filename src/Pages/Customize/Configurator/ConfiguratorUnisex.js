@@ -167,8 +167,8 @@ const ConfiguratorUnisex = () => {
   const [showGlow, setShowGlow] = useState(false);
 
   // Declare state for entered text and generated texture
-  const [enteredTextLeft, setEnteredTextLeft] = useState("Your Name");
-  const [enteredTextRight, setEnteredTextRight] = useState("Other Info");
+  const [enteredTextLeft, setEnteredTextLeft] = useState("");
+  const [enteredTextRight, setEnteredTextRight] = useState("");
   const [textLeftOrientation, setTextLeftOrientation] = useState("horizontal");
   const [textRightOrientation, setTextRightOrientation] =
     useState("horizontal");
@@ -200,7 +200,7 @@ const ConfiguratorUnisex = () => {
           left: "4rem",
           height: "12rem",
           width: "5.4rem",
-          
+          lineHeight: "",
         },
         right: {
           text: "",
@@ -208,6 +208,7 @@ const ConfiguratorUnisex = () => {
           left: 13,
           height: "12rem",
           width: "5.4rem",
+          lineHeight: "",
         },
       };
     }
@@ -216,27 +217,29 @@ const ConfiguratorUnisex = () => {
       return {
         left: {
           text: enteredTextLeft,
-          top: -20,
-          left: 10,
+          top: "-1rem",
+          left: "-8rem",
           height: "12rem",
           width: "5.4rem",
+          lineHeight: "",
           image: {
             top: "-22rem",
-            left: "5.5rem",
-            width: "8%"
-          }
+            left: "5.1rem",
+            width: "8%",
+          },
         },
         right: {
           text: enteredTextRight,
-          top: -20,
-          left: 13,
+          top: "-1rem",
+          left: "3rem",
           height: "12rem",
           width: "5.4rem",
+          lineHeight: "",
           image: {
             top: "-22rem",
-            left: "15rem",
-            width: "8%"
-          }
+            left: "14.5rem",
+            width: "8%",
+          },
         },
       };
     }
@@ -248,11 +251,12 @@ const ConfiguratorUnisex = () => {
           left: 10,
           height: "12rem",
           width: "5.4rem",
+          lineHeight: "",
           image: {
             top: "-8rem",
             left: "5rem",
-            width: "8%"
-          }
+            width: "8%",
+          },
         },
         right: {
           text: enteredTextRight,
@@ -260,11 +264,12 @@ const ConfiguratorUnisex = () => {
           left: 13,
           height: "12rem",
           width: "5.4rem",
+          lineHeight: "",
           image: {
             top: "-8rem",
             left: "15rem",
-            width: "8%"
-          }
+            width: "8%",
+          },
         },
       };
     }
@@ -276,11 +281,12 @@ const ConfiguratorUnisex = () => {
           left: 10,
           height: "12rem",
           width: "5.4rem",
+          lineHeight: "",
           image: {
             top: "-22rem",
             left: "5rem",
-            width: "8%"
-          }
+            width: "8%",
+          },
         },
         right: {
           text: enteredTextRight,
@@ -288,11 +294,12 @@ const ConfiguratorUnisex = () => {
           left: 13,
           height: "12rem",
           width: "5.4rem",
+          lineHeight: "",
           image: {
             top: "-8rem",
             left: "15rem",
-            width: "8%"
-          }
+            width: "8%",
+          },
         },
       };
     }
@@ -304,11 +311,12 @@ const ConfiguratorUnisex = () => {
           left: 10,
           height: "12rem",
           width: "5.4rem",
+          lineHeight: "",
           image: {
             top: "-8rem",
             left: "4.5rem",
-            width: "15%"
-          }
+            width: "15%",
+          },
         },
         right: {
           text: enteredTextRight,
@@ -316,11 +324,12 @@ const ConfiguratorUnisex = () => {
           left: 13,
           height: "12rem",
           width: "5.4rem",
+          lineHeight: "",
           image: {
             top: "-8rem",
             left: "12rem",
-            width: "15%"
-          }
+            width: "15%",
+          },
         },
       };
     }
@@ -332,11 +341,12 @@ const ConfiguratorUnisex = () => {
           left: 10,
           height: "12rem",
           width: "5.4rem",
+          lineHeight: "",
           image: {
             top: "-22rem",
             left: "5rem",
-            width: "8%"
-          }
+            width: "8%",
+          },
         },
         right: {
           text: enteredTextRight,
@@ -344,11 +354,12 @@ const ConfiguratorUnisex = () => {
           left: 13,
           height: "12rem",
           width: "5.4rem",
+          lineHeight: "",
           image: {
             top: "-8rem",
             left: "15rem",
-            width: "8%"
-          }
+            width: "8%",
+          },
         },
       };
     }
@@ -971,9 +982,10 @@ const ConfiguratorUnisex = () => {
                         src={uploadedImageLeft}
                         alt="Uploaded Texture"
                         width={ImprintTextPosition.left?.image?.width || "8%"}
-                        // style={{ transform: `translate(5rem, -8rem)` }} // Added "px" units
-                        style={{ transform: `translate(${ImprintTextPosition.left?.image?.left}, ${ImprintTextPosition.left?.image?.top})` }} // Added "px" units
-                        />
+                        style={{
+                          transform: `translate(${ImprintTextPosition.left?.image?.left}, ${ImprintTextPosition.left?.image?.top})`,
+                        }}
+                      />
                     )}
                     {uploadedImageRight && (
                       <img
@@ -982,8 +994,9 @@ const ConfiguratorUnisex = () => {
                         alt="Uploaded Texture"
                         width={ImprintTextPosition.left?.image?.width || "8%"}
                         // style={{ transform: `translate(13rem, -8rem)` }} // Added "px" units
-                        style={{ transform: `translate(${ImprintTextPosition.right?.image?.left}, ${ImprintTextPosition.right?.image?.top})` }} // Added "px" units
-
+                        style={{
+                          transform: `translate(${ImprintTextPosition.right?.image?.left}, ${ImprintTextPosition.right?.image?.top})`,
+                        }} // Added "px" units
                       />
                     )}
                   </div>
