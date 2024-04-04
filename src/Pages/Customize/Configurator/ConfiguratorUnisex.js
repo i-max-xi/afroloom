@@ -368,6 +368,16 @@ const ConfiguratorUnisex = () => {
     }
   }, [selectedClothing.name]);
 
+  const [isLoading, setIsLoading] = useState(true); // Add loading state
+
+  useEffect(() => {
+    const loadingTimeout = setTimeout(() => {
+      setIsLoading(false); 
+    }, 3000);
+
+    return () => clearTimeout(loadingTimeout);
+  }, []);
+
   const handleLeftTextOrientation = () => {
     if (textLeftOrientation === "horizontal") {
       setTextLeftOrientation("vertical");
@@ -962,7 +972,7 @@ const ConfiguratorUnisex = () => {
                       <ambientLight intensity={0.5} />
                       <pointLight position={[10, 10, 10]} />
                       {noSpinFor.includes(selectedClothing.name) &&
-                        hideText === false && (
+                        isLoading === false && (
                           <HtmlComponent
                             textLeft={enteredTextLeft}
                             textRight={enteredTextRight}
