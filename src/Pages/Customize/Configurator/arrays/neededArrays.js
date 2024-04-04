@@ -100,7 +100,7 @@ export const colorOptions = [
   { color: "#ff4500", label: "Orange Red" },
 ];
 
-export const specialNodeNames = ["button", "buttons", "sole", "zippers"]; // Add your special node names here
+export const specialNodeNames = ["button", "buttons", "sole", "zippers", "brass"]; // Add your special node names here
 
 export const textureArrays = {
   batik: [
@@ -400,3 +400,4 @@ export const noSpinFor = [
   "Sash Variant Four",
   "Sash Variant Five",
 ];
+

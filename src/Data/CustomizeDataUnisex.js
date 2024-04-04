@@ -64,7 +64,7 @@ export const mainUnisex = [
     myNode: [
       { name: "large_beads", yardNeeded: 1 },
       { name: "small_beads", yardNeeded: 1 },
-      { name: "mid_section", yardNeeded: 1 },
+      { name: "brass", yardNeeded: 1 },
     ],
 
     myZoom: 0.8,

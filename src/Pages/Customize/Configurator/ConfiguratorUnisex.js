@@ -102,9 +102,12 @@ const Shirt = ({
       ) : (
         selectedClothing.myNode?.map((node, index) => {
           const nodeName = node?.name; // Access the name property of the node object
-          const color = specialNodeNames.includes(nodeName)
-            ? snap.color[index] || "#333333"
-            : snap.color[index] || "#ffffff";
+          const color =
+            specialNodeNames.includes(nodeName) && nodeName === "brass"
+              ? "#cd7f32"
+              : specialNodeNames.includes(nodeName) && nodeName !== "brass"
+              ? snap.color[index] || "#333333"
+              : snap.color[index] || "#ffffff";
 
           const texture = snap.texture[index] || null;
 
@@ -196,16 +199,16 @@ const ConfiguratorUnisex = () => {
       return {
         left: {
           text: enteredTextLeft,
-          top: "30rem",
-          left: "4rem",
-          height: "12rem",
+          top: "2.5rem",
+          left: "-3rem",
+          height: "2rem",
           width: "5.4rem",
           lineHeight: "",
         },
         right: {
-          text: "",
-          top: -20,
-          left: 13,
+          text: " ",
+          top: "-1rem",
+          left: "4rem",
           height: "12rem",
           width: "5.4rem",
           lineHeight: "",
@@ -628,19 +631,25 @@ const ConfiguratorUnisex = () => {
           >
             All
           </button>
-          {selectedClothing.myNode.map((nodeName, index) => (
-            <button
-              key={index}
-              className={`size-button btn btn-outline-dark ${
-                selectedPart === index ? "selected" : ""
-              }`}
-              onClick={() => handleSelectPart(index)}
-            >
-              {nodeName.name === "hands"
-                ? parseTitle("sleeves")
-                : parseTitle(nodeName.name)}
-            </button>
-          ))}
+          {selectedClothing.myNode.map((nodeName, index) => {
+            if (specialNodeNames.includes(nodeName.name)) {
+              return null; // Skip rendering this node
+            } else {
+              return (
+                <button
+                  key={index}
+                  className={`size-button btn btn-outline-dark ${
+                    selectedPart === index ? "selected" : ""
+                  }`}
+                  onClick={() => handleSelectPart(index)}
+                >
+                  {nodeName.name === "hands"
+                    ? parseTitle("sleeves")
+                    : parseTitle(nodeName.name)}
+                </button>
+              );
+            }
+          })}
         </>
       );
     }
