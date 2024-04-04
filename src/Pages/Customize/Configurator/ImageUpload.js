@@ -5,15 +5,15 @@ const ImageUpload = ({ labelLeft, labelRight, onImageUploadLeft, onImageUploadRi
     const file = e.target.files[0];
 
     // Check if file type is PNG
-    if (!file.type.includes("png")) {
-      toastRef.current.show({
-        severity: "error",
-        summary: "Cannot continue",
-        detail: "Only png images accepted",
-      });
-      e.target.value = null;
-      return;
-    }
+    // if (!file.type.includes("png")) {
+    //   toastRef.current.show({
+    //     severity: "error",
+    //     summary: "Cannot continue",
+    //     detail: "Only png images accepted",
+    //   });
+    //   e.target.value = null;
+    //   return;
+    // }
 
     // // Create an image element to get the dimensions
     // const img = new Image();

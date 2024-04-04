@@ -191,6 +191,169 @@ const ConfiguratorUnisex = () => {
 
   const textEditRef = useRef(null);
 
+  const ImprintTextPosition = useMemo(() => {
+    if (selectedClothing.name === noSpinFor[0]) {
+      return {
+        left: {
+          text: enteredTextLeft,
+          top: "30rem",
+          left: "4rem",
+          height: "12rem",
+          width: "5.4rem",
+          
+        },
+        right: {
+          text: "",
+          top: -20,
+          left: 13,
+          height: "12rem",
+          width: "5.4rem",
+        },
+      };
+    }
+
+    if (selectedClothing.name === noSpinFor[1]) {
+      return {
+        left: {
+          text: enteredTextLeft,
+          top: -20,
+          left: 10,
+          height: "12rem",
+          width: "5.4rem",
+          image: {
+            top: "-22rem",
+            left: "5.5rem",
+            width: "8%"
+          }
+        },
+        right: {
+          text: enteredTextRight,
+          top: -20,
+          left: 13,
+          height: "12rem",
+          width: "5.4rem",
+          image: {
+            top: "-22rem",
+            left: "15rem",
+            width: "8%"
+          }
+        },
+      };
+    }
+    if (selectedClothing.name === noSpinFor[2]) {
+      return {
+        left: {
+          text: enteredTextLeft,
+          top: -20,
+          left: 10,
+          height: "12rem",
+          width: "5.4rem",
+          image: {
+            top: "-8rem",
+            left: "5rem",
+            width: "8%"
+          }
+        },
+        right: {
+          text: enteredTextRight,
+          top: -20,
+          left: 13,
+          height: "12rem",
+          width: "5.4rem",
+          image: {
+            top: "-8rem",
+            left: "15rem",
+            width: "8%"
+          }
+        },
+      };
+    }
+    if (selectedClothing.name === noSpinFor[3]) {
+      return {
+        left: {
+          text: enteredTextLeft,
+          top: -20,
+          left: 10,
+          height: "12rem",
+          width: "5.4rem",
+          image: {
+            top: "-22rem",
+            left: "5rem",
+            width: "8%"
+          }
+        },
+        right: {
+          text: enteredTextRight,
+          top: -20,
+          left: 13,
+          height: "12rem",
+          width: "5.4rem",
+          image: {
+            top: "-8rem",
+            left: "15rem",
+            width: "8%"
+          }
+        },
+      };
+    }
+    if (selectedClothing.name === noSpinFor[4]) {
+      return {
+        left: {
+          text: enteredTextLeft,
+          top: -20,
+          left: 10,
+          height: "12rem",
+          width: "5.4rem",
+          image: {
+            top: "-8rem",
+            left: "4.5rem",
+            width: "15%"
+          }
+        },
+        right: {
+          text: enteredTextRight,
+          top: -20,
+          left: 13,
+          height: "12rem",
+          width: "5.4rem",
+          image: {
+            top: "-8rem",
+            left: "12rem",
+            width: "15%"
+          }
+        },
+      };
+    }
+    if (selectedClothing.name === noSpinFor[5]) {
+      return {
+        left: {
+          text: enteredTextLeft,
+          top: -20,
+          left: 10,
+          height: "12rem",
+          width: "5.4rem",
+          image: {
+            top: "-22rem",
+            left: "5rem",
+            width: "8%"
+          }
+        },
+        right: {
+          text: enteredTextRight,
+          top: -20,
+          left: 13,
+          height: "12rem",
+          width: "5.4rem",
+          image: {
+            top: "-8rem",
+            left: "15rem",
+            width: "8%"
+          }
+        },
+      };
+    }
+  }, [selectedClothing.name]);
+
   const handleLeftTextOrientation = () => {
     if (textLeftOrientation === "horizontal") {
       setTextLeftOrientation("vertical");
@@ -778,7 +941,7 @@ const ConfiguratorUnisex = () => {
                     >
                       <ambientLight intensity={0.5} />
                       <pointLight position={[10, 10, 10]} />
-                      {selectedClothing.name === "Sash" &&
+                      {noSpinFor.includes(selectedClothing.name) &&
                         hideText === false && (
                           <HtmlComponent
                             textLeft={enteredTextLeft}
@@ -788,6 +951,7 @@ const ConfiguratorUnisex = () => {
                             fontFamily={fontFamily}
                             textLeftOrientation={textLeftOrientation}
                             textRightOrientation={textRightOrientation}
+                            ImprintTextPosition={ImprintTextPosition}
                           />
                         )}
                       <Shirt
@@ -797,31 +961,34 @@ const ConfiguratorUnisex = () => {
                         selectedTexture={state.texture[selectedPart]}
                         showGlow={showGlow}
                       />
-                      {selectedClothing.name !== "Sash" && <CameraControls />}
+                      {!noSpinFor.includes(selectedClothing.name) && (
+                        <CameraControls />
+                      )}
                     </Canvas>
                     {uploadedImageLeft && (
                       <img
                         ref={imageLeftRef}
                         src={uploadedImageLeft}
                         alt="Uploaded Texture"
-                        // width={"3%"}
-                        className="uploaded-image"
-                        id="uploaded-image-left"
-                      />
+                        width={ImprintTextPosition.left?.image?.width || "8%"}
+                        // style={{ transform: `translate(5rem, -8rem)` }} // Added "px" units
+                        style={{ transform: `translate(${ImprintTextPosition.left?.image?.left}, ${ImprintTextPosition.left?.image?.top})` }} // Added "px" units
+                        />
                     )}
                     {uploadedImageRight && (
                       <img
                         ref={imageRightRef}
                         src={uploadedImageRight}
                         alt="Uploaded Texture"
-                        // width={"3%"}
-                        className="uploaded-image"
-                        id="uploaded-image-right"
+                        width={ImprintTextPosition.left?.image?.width || "8%"}
+                        // style={{ transform: `translate(13rem, -8rem)` }} // Added "px" units
+                        style={{ transform: `translate(${ImprintTextPosition.right?.image?.left}, ${ImprintTextPosition.right?.image?.top})` }} // Added "px" units
+
                       />
                     )}
                   </div>
 
-                  {selectedClothing.name === "Sash" && (
+                  {noSpinFor.includes(selectedClothing.name) && (
                     <div className="px-2 pt-2 w-100 text-image-imprint">
                       {/* test text inprinting */}
                       <h5>Imprint text on model</h5>
@@ -833,14 +1000,16 @@ const ConfiguratorUnisex = () => {
                             value={enteredTextLeft}
                             onChange={(e) => setEnteredTextLeft(e.target.value)}
                           />
-                          <input
-                            type="text"
-                            placeholder="imprint on right side..."
-                            value={enteredTextRight}
-                            onChange={(e) =>
-                              setEnteredTextRight(e.target.value)
-                            }
-                          />
+                          {selectedClothing.name === noSpinFor[0] ? null : (
+                            <input
+                              type="text"
+                              placeholder="imprint on right side..."
+                              value={enteredTextRight}
+                              onChange={(e) =>
+                                setEnteredTextRight(e.target.value)
+                              }
+                            />
+                          )}
                         </div>
                         <h5
                           className="d-flex"
@@ -928,16 +1097,20 @@ const ConfiguratorUnisex = () => {
                             </div>
                           </div>
                         </OverlayPanel>
-                        <h5>Imprint images or Logos</h5>
-                        <div className="image-uploads">
-                          <ImageUpload
-                            labelLeft={"Upload for left"}
-                            labelRight={"Upload for right"}
-                            onImageUploadLeft={handleImageUploadLeft}
-                            onImageUploadRight={handleImageUploadRight}
-                            toastRef={toastRef}
-                          />
-                        </div>
+                        {selectedClothing.name === noSpinFor[0] ? null : (
+                          <>
+                            <h5>Imprint images or Logos</h5>
+                            <div className="image-uploads">
+                              <ImageUpload
+                                labelLeft={"Upload for left"}
+                                labelRight={"Upload for right"}
+                                onImageUploadLeft={handleImageUploadLeft}
+                                onImageUploadRight={handleImageUploadRight}
+                                toastRef={toastRef}
+                              />
+                            </div>
+                          </>
+                        )}
                       </div>
                     </div>
                   )}

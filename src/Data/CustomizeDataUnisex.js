@@ -279,8 +279,6 @@ export const mainUnisex = [
       { label: "S", value: 0.5 },
       { label: "M", value: 1 },
       { label: "L", value: 2 },
-      { label: "XL", value: 3 },
-      { label: "2XL", value: 4 },
     ],
     sizeForms: [
       {
@@ -291,37 +289,132 @@ export const mainUnisex = [
       },
     ],
   },
-  // {
-  //   id: uuid(),
-  //   name: "Sash Variant Two",
-  //   image: "",
-  //   model: sash_model_two,
-  //   myNode: [
-  //     { name: "sashpolySurface158_rrambu_0.001", yardNeeded: 1 },
-  //     { name: "all", yardNeeded: 1 },
-
-  //   ],
-  //   myZoom: 2,
-  //   price: 55,
-  //   // parts: sashParts.keys().map(sashParts),
-  //   // sizeModels: tshirt_model,
-  //   readyIn: 3,
-  //   // weight: 0.25,
-  //   sizeGuide: sash_guide,
-  //   sizeOptions: [
-  //     { label: "S", value: 0.5 },
-  //     { label: "M", value: 1 },
-  //     { label: "L", value: 2 },
-  //     { label: "XL", value: 3 },
-  //     { label: "2XL", value: 4 },
-  //   ],
-  //   sizeForms: [
-  //     {
-  //       label: "Length (inch)",
-  //     },
-  //     {
-  //       label: "Width (inch)",
-  //     },
-  //   ],
-  // },
+  {
+    id: uuid(),
+    name: "Sash Variant Two",
+    image: "",
+    model: sash_model,
+    myNode: [
+      { name: "plain_sections", yardNeeded: 1 },
+      { name: "Stripe_1", yardNeeded: 1 },
+      { name: "Stripe_2", yardNeeded: 1 },
+      { name: "mid_stripes", yardNeeded: 1 },
+    ],
+    myZoom: 2,
+    price: 55,
+    // parts: sashParts.keys().map(sashParts),
+    // sizeModels: tshirt_model,
+    readyIn: 3,
+    // weight: 0.25,
+    sizeGuide: sash_guide,
+    sizeOptions: [
+      { label: "S", value: 0.5 },
+      { label: "M", value: 1 },
+      { label: "L", value: 2 },
+    ],
+    sizeForms: [
+      {
+        label: "Length (inch)",
+      },
+      {
+        label: "Width (inch)",
+      },
+    ],
+  },
+  {
+    id: uuid(),
+    name: "Sash Variant Three",
+    image: "",
+    model: sash_model,
+    myNode: [
+      { name: "plain_sections", yardNeeded: 1 },
+      { name: "Stripe_1", yardNeeded: 1 },
+      { name: "Stripe_2", yardNeeded: 1 },
+      { name: "mid_stripes", yardNeeded: 1 },
+    ],
+    myZoom: 2,
+    price: 55,
+    // parts: sashParts.keys().map(sashParts),
+    // sizeModels: tshirt_model,
+    readyIn: 3,
+    // weight: 0.25,
+    sizeGuide: sash_guide,
+    sizeOptions: [
+      { label: "S", value: 0.5 },
+      { label: "M", value: 1 },
+      { label: "L", value: 2 },
+    ],
+    sizeForms: [
+      {
+        label: "Length (inch)",
+      },
+      {
+        label: "Width (inch)",
+      },
+    ],
+  },
+  {
+    id: uuid(),
+    name: "Sash Variant Four",
+    image: "",
+    model: sash_model,
+    myNode: [
+      { name: "plain_sections", yardNeeded: 1 },
+      { name: "Stripe_1", yardNeeded: 1 },
+      { name: "Stripe_2", yardNeeded: 1 },
+      { name: "mid_stripes", yardNeeded: 1 },
+    ],
+    myZoom: 2,
+    price: 55,
+    // parts: sashParts.keys().map(sashParts),
+    // sizeModels: tshirt_model,
+    readyIn: 3,
+    // weight: 0.25,
+    sizeGuide: sash_guide,
+    sizeOptions: [
+      { label: "S", value: 0.5 },
+      { label: "M", value: 1 },
+      { label: "L", value: 2 },
+    ],
+    sizeForms: [
+      {
+        label: "Length (inch)",
+      },
+      {
+        label: "Width (inch)",
+      },
+    ],
+  },
+  {
+    id: uuid(),
+    name: "Sash Variant Five",
+    image: "",
+    model: sash_model,
+    myNode: [
+      { name: "plain_sections", yardNeeded: 1 },
+      { name: "Stripe_1", yardNeeded: 1 },
+      { name: "Stripe_2", yardNeeded: 1 },
+      { name: "mid_stripes", yardNeeded: 1 },
+    ],
+    myZoom: 2,
+    price: 55,
+    // parts: sashParts.keys().map(sashParts),
+    // sizeModels: tshirt_model,
+    readyIn: 3,
+    // weight: 0.25,
+    sizeGuide: sash_guide,
+    sizeOptions: [
+      { label: "S", value: 0.5 },
+      { label: "M", value: 1 },
+      { label: "L", value: 2 },
+    ],
+    sizeForms: [
+      {
+        label: "Length (inch)",
+      },
+      {
+        label: "Width (inch)",
+      },
+    ],
+  },
 ];

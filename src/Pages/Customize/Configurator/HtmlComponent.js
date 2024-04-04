@@ -7,13 +7,14 @@ const HtmlComponent = ({
   textSize,
   fontFamily,
   textLeftOrientation,
-  textRightOrientation
+  textRightOrientation,
+  ImprintTextPosition
 }) => {
   const separateWordsWithLineBreak = (text) => {
     // Split the text into an array of words
-    const wordsArray = text.split(" ");
+    const wordsArray = text?.split(" ");
     // Insert <br> after each word and join them back into a string
-    const textWithLineBreak = wordsArray.join("<br>");
+    const textWithLineBreak = wordsArray?.join("<br>");
     return textWithLineBreak;
   };
 
@@ -24,12 +25,12 @@ const HtmlComponent = ({
         id="overlay-left"
         style={{
           position: "absolute",
-          top: -20,
-          left: 10,
+          top: ImprintTextPosition?.left.top,
+          left: ImprintTextPosition?.left.left,
           color: textColor,
           fontSize: textSize,
-          width: "5.4rem",
-          height: "12rem",
+          width: ImprintTextPosition?.left.width,
+          height: ImprintTextPosition?.left.height,
           textAlign: "center",
           wordWrap: "break-word", // Enable word wrapping for long words
           overflow: "hidden", // Ensure text doesn't overflow its container
@@ -38,7 +39,7 @@ const HtmlComponent = ({
           writingMode: `${textLeftOrientation === 'vertical' ? 'vertical-rl' : 'horizontal-tb'}`, // Apply text orientation
         }}
         dangerouslySetInnerHTML={{
-          __html: separateWordsWithLineBreak(textLeft),
+          __html: separateWordsWithLineBreak(ImprintTextPosition?.left.text),
         }}
       />
     
@@ -47,13 +48,13 @@ const HtmlComponent = ({
         id="overlay-right"
         style={{
           position: "absolute",
-          top: -20,
-          left: 13,
+          top: ImprintTextPosition?.right.top,
+          left: ImprintTextPosition?.right.left,
           textAlign: "center",
           color: textColor,
           fontSize: textSize,
-          width: "5.4rem",
-          height: "12rem",
+          width: ImprintTextPosition?.right.width,
+          height: ImprintTextPosition?.right.height,
           wordWrap: "break-word", // Enable word wrapping for long words
           overflow: "hidden", // Ensure text doesn't overflow its container
           textTransform: "uppercase",
@@ -62,7 +63,7 @@ const HtmlComponent = ({
 
         }}
         dangerouslySetInnerHTML={{
-          __html: separateWordsWithLineBreak(textRight),
+          __html: separateWordsWithLineBreak(ImprintTextPosition?.right.text),
         }}
       />
     </Html>
