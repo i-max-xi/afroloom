@@ -239,8 +239,8 @@ const ConfiguratorUnisex = () => {
           width: "5.4rem",
           lineHeight: "",
           image: {
-            top: "-22rem",
-            left: "14.5rem",
+            top: "-24rem",
+            left: "16rem",
             width: "8%",
           },
         },
@@ -372,7 +372,7 @@ const ConfiguratorUnisex = () => {
 
   useEffect(() => {
     const loadingTimeout = setTimeout(() => {
-      setIsLoading(false); 
+      setIsLoading(false);
     }, 3000);
 
     return () => clearTimeout(loadingTimeout);
@@ -995,7 +995,7 @@ const ConfiguratorUnisex = () => {
                         <CameraControls />
                       )}
                     </Canvas>
-                    {uploadedImageLeft && (
+                    {uploadedImageLeft ? (
                       <img
                         ref={imageLeftRef}
                         src={uploadedImageLeft}
@@ -1005,18 +1005,35 @@ const ConfiguratorUnisex = () => {
                           transform: `translate(${ImprintTextPosition.left?.image?.left}, ${ImprintTextPosition.left?.image?.top})`,
                         }}
                       />
+                    ) : (
+                      <p
+                        style={{
+                          fontSize: "0.5rem",
+                          transform: `translate(${ImprintTextPosition.left?.image?.left}, ${ImprintTextPosition.left?.image?.top})`,
+                        }}
+                      >
+                        Logo here
+                      </p>
                     )}
-                    {uploadedImageRight && (
+                    {uploadedImageRight ? (
                       <img
                         ref={imageRightRef}
                         src={uploadedImageRight}
                         alt="Uploaded Texture"
                         width={ImprintTextPosition.left?.image?.width || "8%"}
-                        // style={{ transform: `translate(13rem, -8rem)` }} // Added "px" units
                         style={{
                           transform: `translate(${ImprintTextPosition.right?.image?.left}, ${ImprintTextPosition.right?.image?.top})`,
-                        }} // Added "px" units
+                        }}
                       />
+                    ) : (
+                      <p
+                        style={{
+                          fontSize: "0.5rem",
+                          transform: `translate(${ImprintTextPosition.right?.image?.left}, ${ImprintTextPosition.right?.image?.top})`,
+                        }}
+                      >
+                        Logo here
+                      </p>
                     )}
                   </div>
 
