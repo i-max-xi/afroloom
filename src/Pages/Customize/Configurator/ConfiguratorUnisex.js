@@ -247,8 +247,8 @@ const ConfiguratorUnisex = () => {
       return {
         left: {
           text: enteredTextLeft,
-          top: -20,
-          left: 10,
+          top: "-1rem",
+          left: "-8rem",
           height: "12rem",
           width: "5.4rem",
           lineHeight: "",
@@ -260,8 +260,8 @@ const ConfiguratorUnisex = () => {
         },
         right: {
           text: enteredTextRight,
-          top: -20,
-          left: 13,
+          top: "-1rem",
+          left: "3rem",
           height: "12rem",
           width: "5.4rem",
           lineHeight: "",
@@ -277,8 +277,8 @@ const ConfiguratorUnisex = () => {
       return {
         left: {
           text: enteredTextLeft,
-          top: -20,
-          left: 10,
+          top: "-1rem",
+          left: "-8rem",
           height: "12rem",
           width: "5.4rem",
           lineHeight: "",
@@ -290,8 +290,8 @@ const ConfiguratorUnisex = () => {
         },
         right: {
           text: enteredTextRight,
-          top: -20,
-          left: 13,
+          top: "-1rem",
+          left: "3rem",
           height: "12rem",
           width: "5.4rem",
           lineHeight: "",
@@ -307,8 +307,8 @@ const ConfiguratorUnisex = () => {
       return {
         left: {
           text: enteredTextLeft,
-          top: -20,
-          left: 10,
+          top: "-1rem",
+          left: "-8rem",
           height: "12rem",
           width: "5.4rem",
           lineHeight: "",
@@ -320,8 +320,8 @@ const ConfiguratorUnisex = () => {
         },
         right: {
           text: enteredTextRight,
-          top: -20,
-          left: 13,
+          top: "-1rem",
+          left: "3rem",
           height: "12rem",
           width: "5.4rem",
           lineHeight: "",
@@ -337,8 +337,8 @@ const ConfiguratorUnisex = () => {
       return {
         left: {
           text: enteredTextLeft,
-          top: -20,
-          left: 10,
+          top: "-1rem",
+          left: "-8rem",
           height: "12rem",
           width: "5.4rem",
           lineHeight: "",
@@ -350,8 +350,8 @@ const ConfiguratorUnisex = () => {
         },
         right: {
           text: enteredTextRight,
-          top: -20,
-          left: 13,
+          top: "-1rem",
+          left: "3rem",
           height: "12rem",
           width: "5.4rem",
           lineHeight: "",

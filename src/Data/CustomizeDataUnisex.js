@@ -4,6 +4,7 @@ import { v4 as uuid } from "uuid";
 import backpack_model from "../Pages/Customize/Configurator/models/Accessories/Unisex/backpack.glb";
 import mini_bag_model from "../Pages/Customize/Configurator/models/Accessories/Unisex/mini_bag_handle_main_body.glb";
 import sash_model from "../Pages/Customize/Configurator/models/Accessories/Unisex/sash.glb";
+import sash_model_new from "../Pages/Customize/Configurator/models/Accessories/Unisex/sash_new.glb";
 import sash_model_two from "../Pages/Customize/Configurator/models/Accessories/Unisex/sash_two.glb";
 import jacket from "../Pages/Customize/Configurator/models/Accessories/Unisex/jacket_main.glb";
 import bangles_model from "../Pages/Customize/Configurator/models/Accessories/Unisex/bangles.glb";
@@ -325,12 +326,12 @@ export const mainUnisex = [
     id: uuid(),
     name: "Sash Variant Three",
     image: "",
-    model: sash_model,
+    model: sash_model_new,
     myNode: [
-      { name: "plain_sections", yardNeeded: 1 },
-      { name: "Stripe_1", yardNeeded: 1 },
-      { name: "Stripe_2", yardNeeded: 1 },
-      { name: "mid_stripes", yardNeeded: 1 },
+      { name: "all", yardNeeded: 1 },
+      // { name: "Stripe_1", yardNeeded: 1 },
+      // { name: "Stripe_2", yardNeeded: 1 },
+      // { name: "mid_stripes", yardNeeded: 1 },
     ],
     myZoom: 2,
     price: 55,
