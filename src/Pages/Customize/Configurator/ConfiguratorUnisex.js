@@ -250,7 +250,7 @@ const ConfiguratorUnisex = () => {
       return {
         left: {
           text: enteredTextLeft,
-          top: "-1rem",
+          top: "-8rem",
           left: "-8rem",
           height: "12rem",
           width: "5.4rem",
@@ -263,14 +263,14 @@ const ConfiguratorUnisex = () => {
         },
         right: {
           text: enteredTextRight,
-          top: "-1rem",
+          top: "-8rem",
           left: "3rem",
           height: "12rem",
           width: "5.4rem",
           lineHeight: "",
           image: {
-            top: "-8rem",
-            left: "15rem",
+            top: "-9.5rem",
+            left: "16rem",
             width: "8%",
           },
         },
@@ -995,7 +995,7 @@ const ConfiguratorUnisex = () => {
                         <CameraControls />
                       )}
                     </Canvas>
-                    {uploadedImageLeft ? (
+                    {isLoading === false && (uploadedImageLeft ? (
                       <img
                         ref={imageLeftRef}
                         src={uploadedImageLeft}
@@ -1009,13 +1009,14 @@ const ConfiguratorUnisex = () => {
                       <p
                         style={{
                           fontSize: "0.5rem",
+                          opacity: 0.5,
                           transform: `translate(${ImprintTextPosition.left?.image?.left}, ${ImprintTextPosition.left?.image?.top})`,
                         }}
                       >
                         Logo here
                       </p>
-                    )}
-                    {uploadedImageRight ? (
+                    ))}
+                    {isLoading === false && (uploadedImageRight ? (
                       <img
                         ref={imageRightRef}
                         src={uploadedImageRight}
@@ -1029,12 +1030,13 @@ const ConfiguratorUnisex = () => {
                       <p
                         style={{
                           fontSize: "0.5rem",
+                          opacity: 0.5,
                           transform: `translate(${ImprintTextPosition.right?.image?.left}, ${ImprintTextPosition.right?.image?.top})`,
                         }}
                       >
                         Logo here
                       </p>
-                    )}
+                    ))}
                   </div>
 
                   {noSpinFor.includes(selectedClothing.name) && (
