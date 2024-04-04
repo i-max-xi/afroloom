@@ -310,27 +310,27 @@ const ConfiguratorUnisex = () => {
       return {
         left: {
           text: enteredTextLeft,
-          top: "-1rem",
-          left: "-8rem",
+          top: "-8rem",
+          left: "-7rem",
           height: "12rem",
           width: "5.4rem",
           lineHeight: "",
           image: {
-            top: "-8rem",
+            top: "-9.5rem",
             left: "4.5rem",
             width: "15%",
           },
         },
         right: {
           text: enteredTextRight,
-          top: "-1rem",
+          top: "-7rem",
           left: "3rem",
           height: "12rem",
           width: "5.4rem",
           lineHeight: "",
           image: {
-            top: "-8rem",
-            left: "12rem",
+            top: "-11.5rem",
+            left: "16rem",
             width: "15%",
           },
         },
@@ -995,48 +995,61 @@ const ConfiguratorUnisex = () => {
                         <CameraControls />
                       )}
                     </Canvas>
-                    {isLoading === false && (uploadedImageLeft ? (
-                      <img
+                    {isLoading === false &&
+                      (uploadedImageLeft ? (
+                        <div
                         ref={imageLeftRef}
-                        src={uploadedImageLeft}
-                        alt="Uploaded Texture"
-                        width={ImprintTextPosition.left?.image?.width || "8%"}
-                        style={{
-                          transform: `translate(${ImprintTextPosition.left?.image?.left}, ${ImprintTextPosition?.left?.image?.top})`,
-                        }}
-                      />
-                    ) : (
-                      <p
-                        style={{
-                          fontSize: "0.5rem",
-                          opacity: 0.5,
-                          transform: `translate(${ImprintTextPosition.left?.image?.left}, ${ImprintTextPosition?.left?.image?.top})`,
-                        }}
-                      >
-                        Logo here
-                      </p>
-                    ))}
-                    {isLoading === false && (uploadedImageRight ? (
-                      <img
-                        ref={imageRightRef}
-                        src={uploadedImageRight}
-                        alt="Uploaded Texture"
-                        width={ImprintTextPosition.left?.image?.width || "8%"}
-                        style={{
-                          transform: `translate(${ImprintTextPosition.right?.image?.left}, ${ImprintTextPosition.right?.image?.top})`,
-                        }}
-                      />
-                    ) : (
-                      <p
-                        style={{
-                          fontSize: "0.5rem",
-                          opacity: 0.5,
-                          transform: `translate(${ImprintTextPosition.right?.image?.left}, ${ImprintTextPosition.right?.image?.top})`,
-                        }}
-                      >
-                        Logo here
-                      </p>
-                    ))}
+
+                          style={{
+                            transform: `translate(${ImprintTextPosition.left?.image?.left}, ${ImprintTextPosition?.left?.image?.top})`,
+                            width:
+                              ImprintTextPosition.left?.image?.width || "8%",
+                              overflow: "hidden",
+                              display: "flex",
+                              alignItems: "center",
+                              justifyContent: "center",
+                              maxHeight: "3rem"
+                          }}
+                        >
+                          <img
+                            src={uploadedImageLeft}
+                            alt="Uploaded Texture"
+                            width="120%"
+                          />
+                        </div>
+                      ) : (
+                        <p
+                          style={{
+                            fontSize: "0.5rem",
+                            opacity: 0.5,
+                            transform: `translate(${ImprintTextPosition.left?.image?.left}, ${ImprintTextPosition?.left?.image?.top})`,
+                          }}
+                        >
+                          Logo here
+                        </p>
+                      ))}
+                    {isLoading === false &&
+                      (uploadedImageRight ? (
+                        <img
+                          ref={imageRightRef}
+                          src={uploadedImageRight}
+                          alt="Uploaded Texture"
+                          width={ImprintTextPosition.left?.image?.width || "8%"}
+                          style={{
+                            transform: `translate(${ImprintTextPosition.right?.image?.left}, ${ImprintTextPosition.right?.image?.top})`,
+                          }}
+                        />
+                      ) : (
+                        <p
+                          style={{
+                            fontSize: "0.5rem",
+                            opacity: 0.5,
+                            transform: `translate(${ImprintTextPosition.right?.image?.left}, ${ImprintTextPosition.right?.image?.top})`,
+                          }}
+                        >
+                          Logo here
+                        </p>
+                      ))}
                   </div>
 
                   {noSpinFor.includes(selectedClothing.name) && (
