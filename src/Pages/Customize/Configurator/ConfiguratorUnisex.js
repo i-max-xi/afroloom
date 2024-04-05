@@ -1039,7 +1039,8 @@ const ConfiguratorUnisex = () => {
                             textLeftOrientation={textLeftOrientation}
                             textRightOrientation={textRightOrientation}
                             ImprintTextPosition={ImprintTextPosition}
-                          />
+                            hideRightText={selectedClothing.name === "Beads Bracelet"}
+                            />
                         )}
                       <Shirt
                         isRotating={isRotating}
