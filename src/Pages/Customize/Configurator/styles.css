@@ -96,11 +96,8 @@
     justify-content: center;
     /* gap: 0.5rem */
   }
-  .fs-button {
-    margin: 0.5rem 0;
-  }
+
   .fs-button > button {
-    /* font-size: 0.6rem !important; */
     padding: 0 0.6rem !important;
   }
 
@@ -222,7 +219,6 @@ h1 {
 
 
 .imprint-text-color-button {
-  position: relative;
   width: 1.5rem;
   height: 1.5rem;
   border-radius: 50%;

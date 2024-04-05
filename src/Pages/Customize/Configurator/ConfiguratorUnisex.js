@@ -905,9 +905,7 @@ const ConfiguratorUnisex = () => {
                     </div>
                   </Dialog>
                 </div>
-                <h5>
-                  Choose Color
-                </h5>
+                <h5>Choose Color</h5>
                 <div className="color-buttons-container">
                   <Carousel
                     value={colorOptions}
@@ -930,10 +928,13 @@ const ConfiguratorUnisex = () => {
                     )}
                   />
                 </div>
-                {(selectedClothing.name === "Beads Bracelet" || selectedClothing.name === "Earring") ? null : (
+                {selectedClothing.name === "Beads Bracelet" ||
+                selectedClothing.name === "Earring" ? null : (
                   <>
                     <h5>Choose Textile</h5>
-                    <h1>{"this is" + selectedClothing.name !== "Beads Bracelet"}</h1>
+                    <h1>
+                      {"this is" + selectedClothing.name !== "Beads Bracelet"}
+                    </h1>
                     <div className="texture-buttons-container">
                       <div className="texture-row">
                         <div className="texture-category">
@@ -1039,8 +1040,10 @@ const ConfiguratorUnisex = () => {
                             textLeftOrientation={textLeftOrientation}
                             textRightOrientation={textRightOrientation}
                             ImprintTextPosition={ImprintTextPosition}
-                            hideRightText={selectedClothing.name === "Beads Bracelet"}
-                            />
+                            hideRightText={
+                              selectedClothing.name === "Beads Bracelet"
+                            }
+                          />
                         )}
                       <Shirt
                         isRotating={isRotating}
@@ -1094,7 +1097,8 @@ const ConfiguratorUnisex = () => {
                     {isLoading === false &&
                       noSpinFor.includes(selectedClothing.name) &&
                       selectedClothing.name !== "Beads Bracelet" &&
-                      selectedClothing.name !== "One-Sided Logo, Two-Sided Text Sash" &&
+                      selectedClothing.name !==
+                        "One-Sided Logo, Two-Sided Text Sash" &&
                       (uploadedImageRight ? (
                         <div
                           ref={imageRightRef}
@@ -1165,10 +1169,12 @@ const ConfiguratorUnisex = () => {
                           </span>
                         </h5>
                         <OverlayPanel
-                          className="mr-5"
                           showCloseIcon
                           ref={textEditRef}
-                          style={{ zIndex: 9999 }}
+                          style={{
+                            zIndex: 9999,
+                            transform: `translateX(-4rem)`,
+                          }}
                         >
                           <div className="flex-column imprint-options">
                             <h6>Color</h6>
@@ -1181,7 +1187,7 @@ const ConfiguratorUnisex = () => {
                                 itemTemplate={(colorOption) => (
                                   <div
                                     key={colorOption.color}
-                                    className="color-item"
+                                    // className="color-item"
                                   >
                                     <button
                                       className={`color-button ${
@@ -1213,7 +1219,7 @@ const ConfiguratorUnisex = () => {
                             </div>
 
                             <h6>Size</h6>
-                            <div className="d-flex  gap-2 justify-content-center fs-button">
+                            <div className="d-flex  gap-2 justify-content-center align-items-center fs-button">
                               <button
                                 className="btn btn-info btn-sm p-2 text-white"
                                 onClick={decreaseFontSize}
@@ -1228,7 +1234,7 @@ const ConfiguratorUnisex = () => {
                                 +
                               </button>
                             </div>
-                            <div>
+                            {/* <div>
                               <h6>Orientation</h6>
                               <div className="d-flex justify-content-around  gap-4">
                                 <div className="d-flex gap-1 align-items-center justify-content-center">
@@ -1250,7 +1256,7 @@ const ConfiguratorUnisex = () => {
                                   </button>
                                 </div>
                               </div>
-                            </div>
+                            </div> */}
                           </div>
                         </OverlayPanel>
                         {selectedClothing.name === noSpinFor[0] ? null : (
@@ -1260,7 +1266,10 @@ const ConfiguratorUnisex = () => {
                               <ImageUpload
                                 labelLeft={"Upload for left"}
                                 labelRight={"Upload for right"}
-                                hideRightButton={selectedClothing.name === "One-Sided Logo, Two-Sided Text Sash"}
+                                hideRightButton={
+                                  selectedClothing.name ===
+                                  "One-Sided Logo, Two-Sided Text Sash"
+                                }
                                 onImageUploadLeft={handleImageUploadLeft}
                                 onImageUploadRight={handleImageUploadRight}
                                 toastRef={toastRef}
