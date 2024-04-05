@@ -287,9 +287,9 @@ h1 {
   transform: translateY(-0.75rem);
 } */
 
-/* .p-carousel-items-content {
-  transform: translateY(-0.25rem);
-} */
+.p-carousel-items-content {
+  transform: translateY(0.4rem);
+}
 
 .part-image {
   margin-bottom: 0.2rem;

@@ -230,6 +230,11 @@ const ConfiguratorUnisex = () => {
             left: "5.1rem",
             width: "8%",
           },
+          placeholder: {
+            top: "-22rem",
+            left: "5.3rem",
+            width: "8%",
+          },
         },
         right: {
           text: enteredTextRight,
@@ -239,8 +244,13 @@ const ConfiguratorUnisex = () => {
           width: "5.4rem",
           lineHeight: "",
           image: {
-            top: "-24rem",
+            top: "-23rem",
             left: "16rem",
+            width: "8%",
+          },
+          placeholder: {
+            top: "-24.5rem",
+            left: "16.4rem",
             width: "8%",
           },
         },
@@ -260,6 +270,11 @@ const ConfiguratorUnisex = () => {
             left: "5rem",
             width: "10%",
           },
+          placeholder: {
+            top: "-9.5rem",
+            left: "5rem",
+            width: "10%",
+          },
         },
         right: {
           text: enteredTextRight,
@@ -270,6 +285,11 @@ const ConfiguratorUnisex = () => {
           lineHeight: "",
           image: {
             top: "-11rem",
+            left: "16rem",
+            width: "10%",
+          },
+          placeholder: {
+            top: "-11.5rem",
             left: "16rem",
             width: "10%",
           },
@@ -287,7 +307,12 @@ const ConfiguratorUnisex = () => {
           lineHeight: "",
           image: {
             top: "-22rem",
-            left: "5.5rem",
+            left: "5.8rem",
+            width: "8%",
+          },
+          placeholder: {
+            top: "-22rem",
+            left: "6rem",
             width: "8%",
           },
         },
@@ -300,7 +325,12 @@ const ConfiguratorUnisex = () => {
           lineHeight: "",
           image: {
             top: "-8rem",
-            left: "15.5rem",
+            left: "15.8rem",
+            width: "8%",
+          },
+          placeholder: {
+            top: "-8rem",
+            left: "16rem",
             width: "8%",
           },
         },
@@ -317,6 +347,11 @@ const ConfiguratorUnisex = () => {
           lineHeight: "",
           image: {
             top: "-10.5rem",
+            left: "4.1rem",
+            width: "17.78%",
+          },
+          placeholder: {
+            top: "-10.5rem",
             left: "5rem",
             width: "17.78%",
           },
@@ -329,6 +364,11 @@ const ConfiguratorUnisex = () => {
           width: "5.4rem",
           lineHeight: "",
           image: {
+            top: "-12.3rem",
+            left: "15rem",
+            width: "18.8%",
+          },
+          placeholder: {
             top: "-12.3rem",
             left: "16rem",
             width: "18.8%",
@@ -347,21 +387,31 @@ const ConfiguratorUnisex = () => {
           lineHeight: "",
           image: {
             top: "-22rem",
-            left: "5.5rem",
-            width: "8%",
+            left: "6rem",
+            width: "6%",
+          },
+          placeholder: {
+            top: "-22rem",
+            left: "6rem",
+            width: "6%",
           },
         },
         right: {
           text: enteredTextRight,
           top: "-1rem",
-          left: "2rem",
+          left: "2.2rem",
           height: "12rem",
           width: "5.4rem",
           lineHeight: "",
           image: {
             top: "-8rem",
-            left: "15.5rem",
-            width: "8%",
+            left: "16rem",
+            width: "6%",
+          },
+          placeholder: {
+            top: "-8rem",
+            left: "16rem",
+            width: "6%",
           },
         },
       };
@@ -996,6 +1046,7 @@ const ConfiguratorUnisex = () => {
                       )}
                     </Canvas>
                     {isLoading === false &&
+                      noSpinFor.includes(selectedClothing.name) &&
                       selectedClothing.name !== "Beads Bracelet" &&
                       (uploadedImageLeft ? (
                         <div
@@ -1023,13 +1074,17 @@ const ConfiguratorUnisex = () => {
                           style={{
                             fontSize: "0.5rem",
                             opacity: 0.5,
-                            transform: `translate(${ImprintTextPosition.left?.image?.left}, ${ImprintTextPosition?.left?.image?.top})`,
+                            transform: `translate(${ImprintTextPosition.left?.placeholder?.left}, ${ImprintTextPosition?.left?.placeholder?.top})`,
+                            width:
+                              ImprintTextPosition.left?.placeholder?.width ||
+                              "8%",
                           }}
                         >
                           Logo here
                         </p>
                       ))}
                     {isLoading === false &&
+                      noSpinFor.includes(selectedClothing.name) &&
                       selectedClothing.name !== "Beads Bracelet" &&
                       (uploadedImageRight ? (
                         <div
@@ -1057,7 +1112,10 @@ const ConfiguratorUnisex = () => {
                           style={{
                             fontSize: "0.5rem",
                             opacity: 0.5,
-                            transform: `translate(${ImprintTextPosition.right?.image?.left}, ${ImprintTextPosition.right?.image?.top})`,
+                            transform: `translate(${ImprintTextPosition.right?.placeholder?.left}, ${ImprintTextPosition.right?.placeholder?.top})`,
+                            width:
+                              ImprintTextPosition.right?.placeholder?.width ||
+                              "8%",
                           }}
                         >
                           Logo here
@@ -1101,30 +1159,38 @@ const ConfiguratorUnisex = () => {
                           className="mr-5"
                           showCloseIcon
                           ref={textEditRef}
+                          style={{zIndex: 9999}}
                         >
                           <div className="flex-column imprint-options">
                             <h6>Color</h6>
                             <div className="d-flex">
-                              {colorOptions.slice(0, 6).map((colorOption) => (
-                                <div
-                                  key={colorOption.color}
-                                  className="color-item mx-2"
-                                >
-                                  <button
-                                    className={`imprint-text-color-button ${
-                                      textColor === colorOption.color
-                                        ? "selected-border"
-                                        : ""
-                                    }`}
-                                    onClick={() =>
-                                      setTextColor(colorOption.label)
-                                    }
-                                    style={{
-                                      backgroundColor: colorOption.color,
-                                    }}
-                                  ></button>
-                                </div>
-                              ))}
+                              <Carousel
+                                value={colorOptions.slice(0, 6)}
+                                numVisible={isMobile ? 4 : 7}
+                                numScroll={isMobile ? 2 : 5}
+                                showIndicators={false}
+                                itemTemplate={(colorOption) => (
+                                  <div
+                                    key={colorOption.color}
+                                    className="color-item"
+                                  >
+                                    <button
+                                      className={`color-button ${
+                                        selectedPrintOn === colorOption.color
+                                          ? "selected-border"
+                                          : ""
+                                      }`}
+                                      onClick={() =>
+                                        setTextColor(colorOption.label)
+                                      }
+                                      style={{
+                                        backgroundColor: colorOption.color,
+                                      }}
+                                    ></button>
+                                  </div>
+                                )}
+                              />
+                              
                             </div>
 
                             <h6>Style</h6>

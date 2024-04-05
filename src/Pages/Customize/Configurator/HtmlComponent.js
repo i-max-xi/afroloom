@@ -49,13 +49,9 @@ const HtmlComponent = ({
 
       <div
         className="overlay"
-        // id="overlay-right"
         style={{
           position: "absolute",
-          // top: ImprintTextPosition?.right.top,
-          // left: ImprintTextPosition?.right.left,
           transform: `translate(${ImprintTextPosition.right.left}, ${ImprintTextPosition.right?.top})`,
-          // textAlign: "center",
           color: textColor,
           fontSize: textSize,
           width: ImprintTextPosition?.right.width,
@@ -69,7 +65,8 @@ const HtmlComponent = ({
               ? "vertical-rl"
               : "horizontal-tb"
           }`,
-          opacity: ImprintTextPosition?.right.text !== "" ? 1 : 0.3
+          opacity: ImprintTextPosition?.right.text !== "" ? 1 : 0.3,
+          zIndex: 0.8
         }}
         dangerouslySetInnerHTML={{
           __html: separateWordsWithLineBreak(textRight !=="" ? textRight : "TEXT HERE"),
