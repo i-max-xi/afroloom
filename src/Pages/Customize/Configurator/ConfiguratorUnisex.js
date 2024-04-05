@@ -268,7 +268,7 @@ const ConfiguratorUnisex = () => {
           image: {
             top: "-10rem",
             left: "6rem",
-            width: "10%",
+            width: "8%",
           },
           placeholder: {
             top: "-9.5rem",
@@ -286,7 +286,7 @@ const ConfiguratorUnisex = () => {
           image: {
             top: "-12rem",
             left: "17rem",
-            width: "10%",
+            width: "8%",
           },
           placeholder: {
             top: "-11.5rem",
