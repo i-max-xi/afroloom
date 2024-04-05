@@ -58,6 +58,10 @@ const image_sash = require("../Assets/welcome_3ds/others/sash.jpg");
 const bangles = require("../Assets/welcome_3ds/others/bangles.jpg");
 const earring = require("../Assets/welcome_3ds/others/earring.jpg");
 const image_bikini = require("../Assets/welcome_3ds/female/bikini.png");
+const image_sash_logos_both_down = require("../Assets/welcome_3ds/others/sash_both_logos_down.jpg");
+const image_sash_logos_one_up_one_down = require("../Assets/welcome_3ds/others/sash_one_up_one_down.jpg");
+const image_sash_with_images = require("../Assets/welcome_3ds/others/sash_with_image.jpg");
+const image_sash_striped_edge = require("../Assets/welcome_3ds/others/sash_with_edges.png");
 
 export const mainUnisex = [
   {
@@ -298,7 +302,7 @@ export const mainUnisex = [
   {
     id: uuid(),
     name: "Sash Both Down",
-    image: "",
+    image: image_sash_logos_both_down,
     model: sash_both_down,
     myNode: [
       { name: "plain_section", yardNeeded: 1 },
@@ -308,8 +312,6 @@ export const mainUnisex = [
     ],
     myZoom: 2,
     price: 55,
-    // parts: sashParts.keys().map(sashParts),
-    // sizeModels: tshirt_model,
     readyIn: 3,
     // weight: 0.25,
     sizeGuide: sash_guide,
@@ -330,7 +332,7 @@ export const mainUnisex = [
   {
     id: uuid(),
     name: "Sash One down one up",
-    image: "",
+    image: image_sash_logos_one_up_one_down,
     model: sash_one_top_one_down,
     myNode: [
       { name: "all", yardNeeded: 1 },
@@ -340,8 +342,6 @@ export const mainUnisex = [
     ],
     myZoom: 2,
     price: 55,
-    // parts: sashParts.keys().map(sashParts),
-    // sizeModels: tshirt_model,
     readyIn: 3,
     // weight: 0.25,
     sizeGuide: sash_guide,
@@ -362,7 +362,7 @@ export const mainUnisex = [
   {
     id: uuid(),
     name: "Sash With Image",
-    image: "",
+    image: image_sash_with_images,
     model: sash_with_image,
     myNode: [
       { name: "plain_section", yardNeeded: 1 },
@@ -394,7 +394,7 @@ export const mainUnisex = [
   {
     id: uuid(),
     name: "Sash With Striped Edge",
-    image: "",
+    image: image_sash_striped_edge,
     model: sash_striped_edge,
     myNode: [
       { name: "mid_section", yardNeeded: 1 },
