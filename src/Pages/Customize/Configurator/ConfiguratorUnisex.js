@@ -931,79 +931,87 @@ const ConfiguratorUnisex = () => {
                     )}
                   />
                 </div>
-                <h5>Choose Textile</h5> {/* Add heading for textures */}
-                {/* ... */}
-                <div className="texture-buttons-container">
-                  <div className="texture-row">
-                    <div className="texture-category">
-                      <h3>
-                        Tie and Dye (+{currencySymbol}
-                        {(currencyFactor * textureValues.batik.price).toFixed(
-                          2
-                        )}
-                        )
-                      </h3>
-                      <Carousel
-                        value={textureArrays.batik}
-                        numVisible={4}
-                        numScroll={2}
-                        showIndicators={false}
-                        // responsiveOptions={responsiveNess}
-                        itemTemplate={(texture, index) => (
-                          <TextureItem
-                            key={texture}
-                            texture={texture}
-                            setHideText={setHideText}
-                            Title="batik"
-                            selectedTexture={selectedPrintOn}
-                            // Pass setSelectedTexture as a prop
-                            handleTextureChange={handleTextureChange}
-                            currencySymbol={currencySymbol}
-                            currencyFactor={currencyFactor}
-                            subTextureDescriptions={textureDescriptions.batik}
-                            textureIndex={textureArrays.batik.indexOf(texture)}
-                          />
-                        )}
-                      />
-                    </div>
-                  </div>
-                  <div className="texture-row">
-                    <div className="texture-category">
-                      <h3>
-                        waxPrint (+{currencySymbol}
-                        {(
-                          currencyFactor * textureValues.waxPrint.price
-                        ).toFixed(2)}
-                        )
-                      </h3>
-                      <Carousel
-                        value={textureArrays.waxPrint}
-                        numVisible={4}
-                        numScroll={2}
-                        showIndicators={false}
-                        itemTemplate={(texture) => (
-                          <TextureItem
-                            key={texture}
-                            texture={texture}
-                            setHideText={setHideText}
-                            Title="waxPrint"
-                            selectedTexture={selectedPrintOn}
-                            // Pass setSelectedTexture as a prop
-                            handleTextureChange={handleTextureChange}
-                            currencySymbol={currencySymbol}
-                            currencyFactor={currencyFactor}
-                            subTextureDescriptions={
-                              textureDescriptions.waxPrint
-                            }
-                            textureIndex={textureArrays.waxPrint.indexOf(
-                              texture
+                {(selectedClothing.name === "Beads Bracelet" || selectedClothing.name === "Earring") ? null : (
+                  <>
+                    <h5>Choose Textile</h5>
+                    <h1>{"this is" + selectedClothing.name !== "Beads Bracelet"}</h1>
+                    <div className="texture-buttons-container">
+                      <div className="texture-row">
+                        <div className="texture-category">
+                          <h3>
+                            Tie and Dye (+{currencySymbol}
+                            {(
+                              currencyFactor * textureValues.batik.price
+                            ).toFixed(2)}
+                            )
+                          </h3>
+                          <Carousel
+                            value={textureArrays.batik}
+                            numVisible={4}
+                            numScroll={2}
+                            showIndicators={false}
+                            // responsiveOptions={responsiveNess}
+                            itemTemplate={(texture, index) => (
+                              <TextureItem
+                                key={texture}
+                                texture={texture}
+                                setHideText={setHideText}
+                                Title="batik"
+                                selectedTexture={selectedPrintOn}
+                                // Pass setSelectedTexture as a prop
+                                handleTextureChange={handleTextureChange}
+                                currencySymbol={currencySymbol}
+                                currencyFactor={currencyFactor}
+                                subTextureDescriptions={
+                                  textureDescriptions.batik
+                                }
+                                textureIndex={textureArrays.batik.indexOf(
+                                  texture
+                                )}
+                              />
                             )}
                           />
-                        )}
-                      />
+                        </div>
+                      </div>
+                      <div className="texture-row">
+                        <div className="texture-category">
+                          <h3>
+                            waxPrint (+{currencySymbol}
+                            {(
+                              currencyFactor * textureValues.waxPrint.price
+                            ).toFixed(2)}
+                            )
+                          </h3>
+                          <Carousel
+                            value={textureArrays.waxPrint}
+                            numVisible={4}
+                            numScroll={2}
+                            showIndicators={false}
+                            itemTemplate={(texture) => (
+                              <TextureItem
+                                key={texture}
+                                texture={texture}
+                                setHideText={setHideText}
+                                Title="waxPrint"
+                                selectedTexture={selectedPrintOn}
+                                // Pass setSelectedTexture as a prop
+                                handleTextureChange={handleTextureChange}
+                                currencySymbol={currencySymbol}
+                                currencyFactor={currencyFactor}
+                                subTextureDescriptions={
+                                  textureDescriptions.waxPrint
+                                }
+                                textureIndex={textureArrays.waxPrint.indexOf(
+                                  texture
+                                )}
+                              />
+                            )}
+                          />
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </div>
+                  </>
+                )}
               </div>
               <div className="right-panel">
                 <div className="resize-right-panel">
@@ -1159,7 +1167,7 @@ const ConfiguratorUnisex = () => {
                           className="mr-5"
                           showCloseIcon
                           ref={textEditRef}
-                          style={{zIndex: 9999}}
+                          style={{ zIndex: 9999 }}
                         >
                           <div className="flex-column imprint-options">
                             <h6>Color</h6>
@@ -1190,7 +1198,6 @@ const ConfiguratorUnisex = () => {
                                   </div>
                                 )}
                               />
-                              
                             </div>
 
                             <h6>Style</h6>
