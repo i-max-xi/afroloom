@@ -43,7 +43,7 @@ const HtmlComponent = ({
           opacity: ImprintTextPosition?.right.text !== "" ? 1 : 0.3
         }}
         dangerouslySetInnerHTML={{
-          __html: separateWordsWithLineBreak(ImprintTextPosition?.left.text !=="" ? ImprintTextPosition?.left.text : "TEXT HERE"),
+          __html: separateWordsWithLineBreak(textLeft !=="" ? textLeft : "TEXT HERE"),
         }}
       />
 
@@ -72,7 +72,7 @@ const HtmlComponent = ({
           opacity: ImprintTextPosition?.right.text !== "" ? 1 : 0.3
         }}
         dangerouslySetInnerHTML={{
-          __html: separateWordsWithLineBreak(ImprintTextPosition?.right.text !=="" ? ImprintTextPosition?.right.text : "TEXT HERE"),
+          __html: separateWordsWithLineBreak(textRight !=="" ? textRight : "TEXT HERE"),
         }}
       />
     </Html>

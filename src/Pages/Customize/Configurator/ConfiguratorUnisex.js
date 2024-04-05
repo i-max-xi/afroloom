@@ -995,7 +995,7 @@ const ConfiguratorUnisex = () => {
                         <CameraControls />
                       )}
                     </Canvas>
-                    {isLoading === false &&
+                    {isLoading === false && selectedClothing.name !== "Beads Bracelet" && 
                       (uploadedImageLeft ? (
                         <div
                           ref={imageLeftRef}
@@ -1029,7 +1029,7 @@ const ConfiguratorUnisex = () => {
                           Logo here
                         </p>
                       ))}
-                    {isLoading === false &&
+                    {isLoading === false && selectedClothing.name !== "Beads Bracelet" && 
                       (uploadedImageRight ? (
                         <div
                           ref={imageRightRef}
