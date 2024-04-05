@@ -287,20 +287,20 @@ const ConfiguratorUnisex = () => {
           lineHeight: "",
           image: {
             top: "-22rem",
-            left: "5rem",
+            left: "5.5rem",
             width: "8%",
           },
         },
         right: {
           text: enteredTextRight,
           top: "-1rem",
-          left: "3rem",
+          left: "2rem",
           height: "12rem",
           width: "5.4rem",
           lineHeight: "",
           image: {
             top: "-8rem",
-            left: "15rem",
+            left: "15.5rem",
             width: "8%",
           },
         },
@@ -317,7 +317,7 @@ const ConfiguratorUnisex = () => {
           lineHeight: "",
           image: {
             top: "-10.5rem",
-            left: "3.9rem",
+            left: "5rem",
             width: "17.78%",
           },
         },
@@ -330,7 +330,7 @@ const ConfiguratorUnisex = () => {
           lineHeight: "",
           image: {
             top: "-12.3rem",
-            left: "15rem",
+            left: "16rem",
             width: "18.8%",
           },
         },
@@ -347,20 +347,20 @@ const ConfiguratorUnisex = () => {
           lineHeight: "",
           image: {
             top: "-22rem",
-            left: "5rem",
+            left: "5.5rem",
             width: "8%",
           },
         },
         right: {
           text: enteredTextRight,
           top: "-1rem",
-          left: "3rem",
+          left: "2rem",
           height: "12rem",
           width: "5.4rem",
           lineHeight: "",
           image: {
             top: "-8rem",
-            left: "15rem",
+            left: "15.5rem",
             width: "8%",
           },
         },
@@ -995,7 +995,8 @@ const ConfiguratorUnisex = () => {
                         <CameraControls />
                       )}
                     </Canvas>
-                    {isLoading === false && selectedClothing.name !== "Beads Bracelet" && 
+                    {isLoading === false &&
+                      selectedClothing.name !== "Beads Bracelet" &&
                       (uploadedImageLeft ? (
                         <div
                           ref={imageLeftRef}
@@ -1015,7 +1016,6 @@ const ConfiguratorUnisex = () => {
                             alt="Uploaded Texture"
                             width="100%"
                             height="100%"
-
                           />
                         </div>
                       ) : (
@@ -1029,7 +1029,8 @@ const ConfiguratorUnisex = () => {
                           Logo here
                         </p>
                       ))}
-                    {isLoading === false && selectedClothing.name !== "Beads Bracelet" && 
+                    {isLoading === false &&
+                      selectedClothing.name !== "Beads Bracelet" &&
                       (uploadedImageRight ? (
                         <div
                           ref={imageRightRef}
@@ -1088,14 +1089,19 @@ const ConfiguratorUnisex = () => {
                           )}
                         </div>
                         <h5
-                          className="d-flex"
-                          style={{ gap: "1rem" }}
+                          className="d-flex edit-text flex-column mt-1"
                           onClick={(e) => textEditRef.current.toggle(e)}
                         >
-                          Edit Text
-                          <i className={"pi pi-chevron-right"}></i>
+                          <span>
+                            Edit Text
+                            <i className={"pi pi-chevron-right mx-2"}></i>
+                          </span>
                         </h5>
-                        <OverlayPanel showCloseIcon ref={textEditRef}>
+                        <OverlayPanel
+                          className="mr-5"
+                          showCloseIcon
+                          ref={textEditRef}
+                        >
                           <div className="flex-column imprint-options">
                             <h6>Color</h6>
                             <div className="d-flex">

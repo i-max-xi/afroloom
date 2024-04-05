@@ -309,6 +309,17 @@ form {
   margin-top: 0.5rem;
 }
 
+.edit-text::after {
+  content: "";
+  display: block;
+  width: 4rem;
+  height: 0.2rem;
+  background-color: yellow;
+  margin-top: 0.2rem;
+}
+
+
+
 .social-media-container a {
   margin: 1rem;
 }
