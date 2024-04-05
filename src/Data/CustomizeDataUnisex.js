@@ -86,8 +86,8 @@ export const mainUnisex = [
       { label: "S", value: 0.5 },
       { label: "M", value: 1 },
       { label: "L", value: 2 },
-      { label: "XL", value: 3 },
-      { label: "2XL", value: 4 },
+      // { label: "XL", value: 3 },
+      // { label: "2XL", value: 4 },
     ],
     sizeForms: [
       {
@@ -118,8 +118,8 @@ export const mainUnisex = [
       { label: "S", value: 0.5 },
       { label: "M", value: 1 },
       { label: "L", value: 2 },
-      { label: "XL", value: 3 },
-      { label: "2XL", value: 4 },
+      // { label: "XL", value: 3 },
+      // { label: "2XL", value: 4 },
     ],
     sizeForms: [
       {
@@ -150,8 +150,8 @@ export const mainUnisex = [
       { label: "S", value: 0.5 },
       { label: "M", value: 1 },
       { label: "L", value: 2 },
-      { label: "XL", value: 3 },
-      { label: "2XL", value: 4 },
+      // { label: "XL", value: 3 },
+      // { label: "2XL", value: 4 },
     ],
     sizeForms: [
       {

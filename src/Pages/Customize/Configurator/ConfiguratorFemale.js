@@ -573,8 +573,7 @@ const ConfiguratorFemale = () => {
                   </Dialog>
                 </div>
                 <h5>
-                  Choose Color (+{currencySymbol}
-                  {(currencyFactor * 35).toFixed(2)})
+                  Choose Color
                 </h5>
                 <div className="color-buttons-container">
                   <Carousel
