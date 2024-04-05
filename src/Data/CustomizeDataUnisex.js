@@ -105,7 +105,7 @@ export const mainUnisex = [
     model: earring_model,
     myNode: [
       { name: "bead", yardNeeded: 1 },
-      { name: "extension", yardNeeded: 1 },
+      { name: "brass", yardNeeded: 1 },
     ],
 
     myZoom: 0.8,
