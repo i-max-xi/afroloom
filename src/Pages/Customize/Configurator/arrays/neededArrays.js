@@ -398,6 +398,6 @@ export const noSpinFor = [
   "Sash Both Down",
   "Sash One down one up",
   "Sash With Image",
-  "Sash Variant Five",
+  "Sash With Striped Edge",
 ];
 

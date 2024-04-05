@@ -310,15 +310,15 @@ const ConfiguratorUnisex = () => {
       return {
         left: {
           text: enteredTextLeft,
-          top: "-8rem",
-          left: "-7rem",
+          top: "-7rem",
+          left: "-8.5rem",
           height: "12rem",
           width: "5.4rem",
           lineHeight: "",
           image: {
-            top: "-9.5rem",
-            left: "4.5rem",
-            width: "15%",
+            top: "-10.5rem",
+            left: "3.9rem",
+            width: "17.78%",
           },
         },
         right: {
@@ -329,9 +329,9 @@ const ConfiguratorUnisex = () => {
           width: "5.4rem",
           lineHeight: "",
           image: {
-            top: "-11.5rem",
-            left: "16rem",
-            width: "15%",
+            top: "-12.3rem",
+            left: "15rem",
+            width: "18.8%",
           },
         },
       };
@@ -998,23 +998,24 @@ const ConfiguratorUnisex = () => {
                     {isLoading === false &&
                       (uploadedImageLeft ? (
                         <div
-                        ref={imageLeftRef}
-
+                          ref={imageLeftRef}
                           style={{
                             transform: `translate(${ImprintTextPosition.left?.image?.left}, ${ImprintTextPosition?.left?.image?.top})`,
                             width:
                               ImprintTextPosition.left?.image?.width || "8%",
-                              overflow: "hidden",
-                              display: "flex",
-                              alignItems: "center",
-                              justifyContent: "center",
-                              maxHeight: "3rem"
+                            overflow: "hidden",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            maxHeight: "3.4rem",
                           }}
                         >
                           <img
                             src={uploadedImageLeft}
                             alt="Uploaded Texture"
-                            width="120%"
+                            width="100%"
+                            height="100%"
+
                           />
                         </div>
                       ) : (
@@ -1030,15 +1031,26 @@ const ConfiguratorUnisex = () => {
                       ))}
                     {isLoading === false &&
                       (uploadedImageRight ? (
-                        <img
+                        <div
                           ref={imageRightRef}
-                          src={uploadedImageRight}
-                          alt="Uploaded Texture"
-                          width={ImprintTextPosition.left?.image?.width || "8%"}
                           style={{
                             transform: `translate(${ImprintTextPosition.right?.image?.left}, ${ImprintTextPosition.right?.image?.top})`,
+                            width:
+                              ImprintTextPosition.right?.image?.width || "8%",
+                            overflow: "hidden",
+                            display: "flex",
+                            alignItems: "center",
+                            justifyContent: "center",
+                            maxHeight: "3.4rem",
                           }}
-                        />
+                        >
+                          <img
+                            src={uploadedImageRight}
+                            alt="Uploaded Texture"
+                            width="100%"
+                            height="100%"
+                          />
+                        </div>
                       ) : (
                         <p
                           style={{

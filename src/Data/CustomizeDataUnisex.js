@@ -7,7 +7,9 @@ import sash_model from "../Pages/Customize/Configurator/models/Accessories/Unise
 import sash_model_new from "../Pages/Customize/Configurator/models/Accessories/Unisex/sash_new.glb";
 import sash_model_two from "../Pages/Customize/Configurator/models/Accessories/Unisex/sash_two.glb";
 import sash_both_down from "../Pages/Customize/Configurator/models/Accessories/Unisex/sash_both_down.glb";
-import sash_with_model from "../Pages/Customize/Configurator/models/Accessories/Unisex/sash_both_down.glb";
+import sash_with_image from "../Pages/Customize/Configurator/models/Accessories/Unisex/sash_with_picture.glb";
+import sash_one_top_one_down from "../Pages/Customize/Configurator/models/Accessories/Unisex/sash_one_top_one_down.glb";
+import sash_striped_edge from "../Pages/Customize/Configurator/models/Accessories/Unisex/sash_striped_edge.glb";
 
 import jacket from "../Pages/Customize/Configurator/models/Accessories/Unisex/jacket_main.glb";
 import bangles_model from "../Pages/Customize/Configurator/models/Accessories/Unisex/bangles.glb";
@@ -329,11 +331,11 @@ export const mainUnisex = [
     id: uuid(),
     name: "Sash One down one up",
     image: "",
-    model: sash_both_down,
+    model: sash_one_top_one_down,
     myNode: [
-      { name: "plain_section", yardNeeded: 1 },
-      { name: "stripe_1", yardNeeded: 1 },
-      { name: "stripe_2", yardNeeded: 1 },
+      { name: "all", yardNeeded: 1 },
+      // { name: "strings", yardNeeded: 1 },
+      // { name: "stripe_2", yardNeeded: 1 },
       // { name: "mid_stripes", yardNeeded: 1 },
     ],
     myZoom: 2,
@@ -361,7 +363,7 @@ export const mainUnisex = [
     id: uuid(),
     name: "Sash With Image",
     image: "",
-    model: sash_with_model,
+    model: sash_with_image,
     myNode: [
       { name: "plain_section", yardNeeded: 1 },
       { name: "stripe_1", yardNeeded: 1 },
@@ -391,14 +393,13 @@ export const mainUnisex = [
   },
   {
     id: uuid(),
-    name: "Sash Variant Five",
+    name: "Sash With Striped Edge",
     image: "",
-    model: sash_model,
+    model: sash_striped_edge,
     myNode: [
-      { name: "plain_sections", yardNeeded: 1 },
-      { name: "Stripe_1", yardNeeded: 1 },
-      { name: "Stripe_2", yardNeeded: 1 },
-      { name: "mid_stripes", yardNeeded: 1 },
+      { name: "mid_section", yardNeeded: 1 },
+      { name: "stripe_1", yardNeeded: 1 },
+      { name: "stripe_2", yardNeeded: 1 },
     ],
     myZoom: 2,
     price: 55,
