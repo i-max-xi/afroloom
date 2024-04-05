@@ -219,8 +219,9 @@ h1 {
 
 
 .imprint-text-color-button {
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 1rem;
+  /* height: 1.5rem; */
+  aspect-ratio: 1/1;
   border-radius: 50%;
   border: 0.5px solid rgba(0, 0, 0, 0.418);
   cursor: pointer;

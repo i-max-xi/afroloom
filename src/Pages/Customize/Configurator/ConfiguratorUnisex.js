@@ -1185,12 +1185,9 @@ const ConfiguratorUnisex = () => {
                                 numScroll={isMobile ? 2 : 5}
                                 showIndicators={false}
                                 itemTemplate={(colorOption) => (
-                                  <div
-                                    key={colorOption.color}
-                                    // className="color-item"
-                                  >
+                                  
                                     <button
-                                      className={`color-button ${
+                                      className={`imprint-text-color-button ${
                                         selectedPrintOn === colorOption.color
                                           ? "selected-border"
                                           : ""
@@ -1202,7 +1199,6 @@ const ConfiguratorUnisex = () => {
                                         backgroundColor: colorOption.color,
                                       }}
                                     ></button>
-                                  </div>
                                 )}
                               />
                             </div>
