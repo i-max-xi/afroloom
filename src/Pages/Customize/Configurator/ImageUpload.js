@@ -1,6 +1,13 @@
 import React from "react";
 
-const ImageUpload = ({ labelLeft, labelRight, onImageUploadLeft, onImageUploadRight, toastRef }) => {
+const ImageUpload = ({
+  labelLeft,
+  labelRight,
+  onImageUploadLeft,
+  onImageUploadRight,
+  toastRef,
+  hideRightButton,
+}) => {
   const handleImageChange = (e, onImageUpload) => {
     const file = e.target.files[0];
 
@@ -53,15 +60,19 @@ const ImageUpload = ({ labelLeft, labelRight, onImageUploadLeft, onImageUploadRi
         onChange={handleImageLeftChange}
         className="upload-input"
       />
-      <label className="upload-label" htmlFor="upload-logo-right">
-        {labelRight}
-      </label>
-      <input
-        id="upload-logo-right"
-        type="file"
-        onChange={handleImageRightChange}
-        className="upload-input"
-      />
+      {!hideRightButton && (
+        <>
+          <label className="upload-label" htmlFor="upload-logo-right">
+            {labelRight}
+          </label>
+          <input
+            id="upload-logo-right"
+            type="file"
+            onChange={handleImageRightChange}
+            className="upload-input"
+          />
+        </>
+      )}
     </>
   );
 };

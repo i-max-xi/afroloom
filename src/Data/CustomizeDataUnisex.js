@@ -269,7 +269,7 @@ export const mainUnisex = [
   // },
   {
     id: uuid(),
-    name: "Sash",
+    name: "Logo Up, Text Down Sash",
     image: image_sash,
     model: sash_model,
     myNode: [
@@ -302,7 +302,7 @@ export const mainUnisex = [
   },
   {
     id: uuid(),
-    name: "Sash Both Down",
+    name: "Text Up, Logo Down Sash",
     image: image_sash_logos_both_down,
     model: sash_both_down,
     myNode: [
@@ -333,7 +333,7 @@ export const mainUnisex = [
   },
   {
     id: uuid(),
-    name: "Sash One down one up",
+    name: "Contrasting Logo and Text Sash",
     image: image_sash_logos_one_up_one_down,
     model: sash_one_top_one_down,
     myNode: [
@@ -363,7 +363,7 @@ export const mainUnisex = [
   },
   {
     id: uuid(),
-    name: "Sash With Image",
+    name: "Text Up, Image Down Sash",
     image: image_sash_with_images,
     model: sash_with_image,
     myNode: [
@@ -396,7 +396,7 @@ export const mainUnisex = [
   },
   {
     id: uuid(),
-    name: "Sash With Striped Edge",
+    name: "One-Sided Logo, Two-Sided Text Sash",
     image: image_sash_striped_edge,
     model: sash_striped_edge,
     myNode: [

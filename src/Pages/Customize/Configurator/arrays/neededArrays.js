@@ -394,10 +394,10 @@ export const displayInplaceFor = [
 
 export const noSpinFor = [
   "Beads Bracelet",
-  "Sash",
-  "Sash Both Down",
-  "Sash One down one up",
-  "Sash With Image",
-  "Sash With Striped Edge",
+  "Logo Up, Text Down Sash",
+  "Text Up, Logo Down Sash",
+  "Contrasting Logo and Text Sash",
+  "Text Up, Image Down Sash",
+  "One-Sided Logo, Two-Sided Text Sash",
 ];
 

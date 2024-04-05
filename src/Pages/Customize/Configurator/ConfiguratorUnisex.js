@@ -1019,7 +1019,7 @@ const ConfiguratorUnisex = () => {
                     ref={canvasRef}
                     style={
                       {
-                        // height: selectedClothing.name !== "Sash" ? "100%" : "81%",
+                        // height: selectedClothing.name !== "Logo Up, Text Down Sash" ? "100%" : "81%",
                       }
                     }
                   >
@@ -1094,6 +1094,7 @@ const ConfiguratorUnisex = () => {
                     {isLoading === false &&
                       noSpinFor.includes(selectedClothing.name) &&
                       selectedClothing.name !== "Beads Bracelet" &&
+                      selectedClothing.name !== "One-Sided Logo, Two-Sided Text Sash" &&
                       (uploadedImageRight ? (
                         <div
                           ref={imageRightRef}
@@ -1259,6 +1260,7 @@ const ConfiguratorUnisex = () => {
                               <ImageUpload
                                 labelLeft={"Upload for left"}
                                 labelRight={"Upload for right"}
+                                hideRightButton={selectedClothing.name === "One-Sided Logo, Two-Sided Text Sash"}
                                 onImageUploadLeft={handleImageUploadLeft}
                                 onImageUploadRight={handleImageUploadRight}
                                 toastRef={toastRef}
