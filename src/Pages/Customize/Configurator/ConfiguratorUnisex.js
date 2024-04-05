@@ -222,7 +222,7 @@ const ConfiguratorUnisex = () => {
           text: enteredTextLeft,
           top: "-1rem",
           left: "-8rem",
-          height: "12rem",
+          height: "8rem",
           width: "5.4rem",
           lineHeight: "",
           image: {
@@ -235,7 +235,7 @@ const ConfiguratorUnisex = () => {
           text: enteredTextRight,
           top: "-1rem",
           left: "3rem",
-          height: "12rem",
+          height: "8rem",
           width: "5.4rem",
           lineHeight: "",
           image: {
@@ -252,7 +252,7 @@ const ConfiguratorUnisex = () => {
           text: enteredTextLeft,
           top: "-8rem",
           left: "-8rem",
-          height: "12rem",
+          height: "8rem",
           width: "5.4rem",
           lineHeight: "",
           image: {
@@ -265,7 +265,7 @@ const ConfiguratorUnisex = () => {
           text: enteredTextRight,
           top: "-8rem",
           left: "3rem",
-          height: "12rem",
+          height: "8rem",
           width: "5.4rem",
           lineHeight: "",
           image: {

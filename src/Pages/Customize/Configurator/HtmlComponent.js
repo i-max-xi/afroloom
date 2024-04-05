@@ -32,7 +32,7 @@ const HtmlComponent = ({
           fontSize: textSize,
           width: ImprintTextPosition?.left?.width,
           height: ImprintTextPosition?.left?.height,
-          textAlign: "center",
+          // textAlign: "center",
           wordWrap: "break-word", // Enable word wrapping for long words
           overflow: "hidden", // Ensure text doesn't overflow its container
           textTransform: "uppercase",
@@ -55,7 +55,7 @@ const HtmlComponent = ({
           // top: ImprintTextPosition?.right.top,
           // left: ImprintTextPosition?.right.left,
           transform: `translate(${ImprintTextPosition.right.left}, ${ImprintTextPosition.right?.top})`,
-          textAlign: "center",
+          // textAlign: "center",
           color: textColor,
           fontSize: textSize,
           width: ImprintTextPosition?.right.width,
