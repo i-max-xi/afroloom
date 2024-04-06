@@ -347,13 +347,13 @@ const ConfiguratorUnisex = () => {
           lineHeight: "",
           image: {
             top: "-10.5rem",
-            left: "4.1rem",
-            width: "17.78%",
+            left: "5.2rem",
+            width: "16.75%",
           },
           placeholder: {
-            top: "-10.5rem",
-            left: "5rem",
-            width: "17.78%",
+            top: "-9.5rem",
+            left: "5.8rem",
+            width: "19.78%",
           },
         },
         right: {
@@ -364,13 +364,13 @@ const ConfiguratorUnisex = () => {
           width: "5.4rem",
           lineHeight: "",
           image: {
-            top: "-12.3rem",
-            left: "15rem",
-            width: "18.8%",
+            top: "-13.7rem",
+            left: "16.2rem",
+            width: "16.2%",
           },
           placeholder: {
-            top: "-12.3rem",
-            left: "16rem",
+            top: "-11.3rem",
+            left: "16.8rem",
             width: "18.8%",
           },
         },
