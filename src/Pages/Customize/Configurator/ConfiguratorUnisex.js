@@ -398,11 +398,11 @@ const ConfiguratorUnisex = () => {
         },
         right: {
           text: enteredTextRight,
-          top: "-4rem",
+          top: "-6rem",
           left: "4.5rem",
-          height: "12rem",
+          height: "16rem",
           width: "0.5rem",
-          lineHeight: "",
+          lineHeight: "2rem",
           image: {
             top: "-8rem",
             left: "16rem",
@@ -1091,7 +1091,9 @@ const ConfiguratorUnisex = () => {
                               "8%",
                           }}
                         >
-                          {selectedClothing.name === "Text Up, Image Down Sash" ? "Image here" : "Logo here" }
+                          {selectedClothing.name === "Text Up, Image Down Sash"
+                            ? "Image here"
+                            : "Logo here"}
                         </p>
                       ))}
                     {isLoading === false &&
@@ -1131,7 +1133,9 @@ const ConfiguratorUnisex = () => {
                               "8%",
                           }}
                         >
-                          {selectedClothing.name === "Text Up, Image Down Sash" ? "Image here" : "Logo here" }
+                          {selectedClothing.name === "Text Up, Image Down Sash"
+                            ? "Image here"
+                            : "Logo here"}
                         </p>
                       ))}
                   </div>
@@ -1174,18 +1178,21 @@ const ConfiguratorUnisex = () => {
                           style={{
                             zIndex: 9999,
                             transform: `translateX(-4rem)`,
+                            minWidth: "15rem"
                           }}
                         >
                           <div className="flex-column imprint-options">
                             <h6>Color</h6>
-                            <div className="d-flex">
-                              <Carousel
-                                value={colorOptions.slice(0, 6)}
-                                numVisible={isMobile ? 4 : 7}
-                                numScroll={isMobile ? 2 : 5}
-                                showIndicators={false}
-                                itemTemplate={(colorOption) => (
-                                  
+                            {selectedClothing.name === "Beads Bracelet" ? (
+                              "N/A"
+                            ) : (
+                              <div className="d-flex">
+                                <Carousel
+                                  value={colorOptions.slice(0, 6)}
+                                  numVisible={isMobile ? 4 : 7}
+                                  numScroll={isMobile ? 2 : 5}
+                                  showIndicators={false}
+                                  itemTemplate={(colorOption) => (
                                     <button
                                       className={`imprint-text-color-button ${
                                         selectedPrintOn === colorOption.color
@@ -1199,9 +1206,10 @@ const ConfiguratorUnisex = () => {
                                         backgroundColor: colorOption.color,
                                       }}
                                     ></button>
-                                )}
-                              />
-                            </div>
+                                  )}
+                                />
+                              </div>
+                            )}
 
                             <h6>Style</h6>
                             <div className="d-flex gap-2 justify-content-center fs-button">

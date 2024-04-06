@@ -37,7 +37,7 @@ const HtmlComponent = ({
           writingMode: `${
             textLeftOrientation === "vertical" ? "vertical-rl" : "horizontal-tb"
           }`,
-          opacity: ImprintTextPosition?.left.text !== "" ? 1 : 0.3,
+          opacity: textLeft !== "" ? 1 : 0.3,
         }}
         dangerouslySetInnerHTML={{
           __html: hideRightText ? textLeft !== "" ? textLeft : "TEXT HERE" : separateWordsWithLineBreak(
@@ -65,8 +65,9 @@ const HtmlComponent = ({
                 ? "vertical-rl"
                 : "horizontal-tb"
             }`,
-            opacity: ImprintTextPosition?.right.text !== "" ? 1 : 0.3,
+            opacity: textRight !== "" ? 1 : 0.3,
             zIndex: 0.8,
+            lineHeight: ImprintTextPosition.right?.lineHeight
           }}
           dangerouslySetInnerHTML={{
             __html: separateWordsWithLineBreak(
