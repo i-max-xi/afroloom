@@ -69,7 +69,6 @@ const bikiniParts = require.context(
 const image_bikini = require("../Assets/welcome_3ds/female/bikini.png");
 const image_totebag = require("../Assets/welcome_3ds/others/tote bag.png");
 const image_bowtie = require("../Assets/welcome_3ds/others/bow tie.png");
-const image_flying_tie = require("../Assets/welcome_3ds/others/flying tie.png");
 
 export const mainMaleAccessories = [
   // {

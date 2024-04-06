@@ -50,7 +50,7 @@ function TextureItem({
       </svg>
 
       <Dialog
-        header={subTextureDescriptions[textureIndex].textureName}
+        header={subTextureDescriptions[textureIndex]?.textureName !== "" ? subTextureDescriptions[textureIndex]?.textureName : "Title N/A"}
         visible={displayDialog}
         onHide={handleCloseDialog}
         className="col-12 col-sm-4"
@@ -65,7 +65,7 @@ function TextureItem({
             style={{ alignSelf: "center" }}
           />
           <p style={{paddingTop: "1rem" }}>
-            {subTextureDescriptions[textureIndex].textureDescription}
+            {subTextureDescriptions[textureIndex]?.textureDescription !== "" ? subTextureDescriptions[textureIndex]?.textureDescription : "Description N/A"}
           </p>
         </div>
       </Dialog>
