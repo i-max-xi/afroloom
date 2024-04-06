@@ -1091,7 +1091,7 @@ const ConfiguratorUnisex = () => {
                               "8%",
                           }}
                         >
-                          Logo here
+                          {selectedClothing.name === "Text Up, Image Down Sash" ? "Image here" : "Logo here" }
                         </p>
                       ))}
                     {isLoading === false &&
@@ -1131,7 +1131,7 @@ const ConfiguratorUnisex = () => {
                               "8%",
                           }}
                         >
-                          Logo here
+                          {selectedClothing.name === "Text Up, Image Down Sash" ? "Image here" : "Logo here" }
                         </p>
                       ))}
                   </div>
