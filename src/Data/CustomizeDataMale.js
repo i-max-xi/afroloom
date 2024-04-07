@@ -23,7 +23,7 @@ import cloak_model from "../Pages/Customize/Configurator/models/MaleClothing/kim
 
 
 //size-guides
-import tshirt_model from "../Pages/Customize/Configurator/size_guide/male/men.JPG";
+// import tshirt_model from "../Pages/Customize/Configurator/size_guide/male/men.JPG";
 
 import tshirt_guide from "../Assets/size_guide/MaleClothing/men short sleeve  t-shirt_.jpg";
 import tshirtlong_guide from "../Assets/size_guide/MaleClothing/Men-long-sleeve t-shirt.jpg";
@@ -126,7 +126,7 @@ export const mainMaleCustomize = [
     myX: 0,
     myY: 10,
     price: 20,
-    sizeModels: tshirt_model,
+    // sizeModels: tshirt_model,
     readyIn: 3,
     sizeGuide: tshirt_guide,
     parts: tshirtParts.keys().map(tshirtParts),
@@ -163,7 +163,7 @@ export const mainMaleCustomize = [
     ],
     myZoom: 0.7,
     price: 20,
-    sizeModels: tshirt_model,
+    // sizeModels: tshirt_model,
     readyIn: 3,
     sizeGuide: tshirtlong_guide,
     parts: tshirtLongParts.keys().map(tshirtLongParts),
@@ -204,7 +204,7 @@ export const mainMaleCustomize = [
     myX: 0,
     myY: 10,
     price: 30,
-    sizeModels: tshirt_model,
+    // sizeModels: tshirt_model,
     readyIn: 3,
     sizeGuide: shirt_guide,
     parts: shirtParts.keys().map(shirtParts),
@@ -246,7 +246,7 @@ export const mainMaleCustomize = [
     myY: 10,
     price: 30,
     sizeGuide: shirtlong_guide,
-    sizeModels: tshirt_model,
+    // sizeModels: tshirt_model,
     readyIn: 3,
     parts: shirtLongParts.keys().map(shirtLongParts),
     sizeOptions: [
@@ -287,7 +287,7 @@ export const mainMaleCustomize = [
     myZoom: 0.6,
     price: 55,
     sizeGuide: top_down_guide,
-    sizeModels: tshirt_model,
+    // sizeModels: tshirt_model,
     readyIn: 3,
     parts: topndownParts.keys().map(topndownParts),
     sizeOptions: [
@@ -355,7 +355,7 @@ export const mainMaleCustomize = [
     myY: 10,
     price: 35,
     sizeGuide: cloak_guide,
-    sizeModels: tshirt_model,
+    // sizeModels: tshirt_model,
     readyIn: 3,
     parts: topParts.keys().map(topParts),
     sizeOptions: [
@@ -395,7 +395,7 @@ export const mainMaleCustomize = [
     myZoom: 0.9,
     price: 55,
     parts: jacketParts.keys().map(jacketParts),
-    sizeModels: tshirt_model,
+    // sizeModels: tshirt_model,
     readyIn: 3,
     sizeGuide: jacket_guide,
     sizeOptions: [
@@ -435,7 +435,7 @@ export const mainMaleCustomize = [
     myZoom: 0.77,
     price: 20,
     sizeGuide: blazer_guide,
-    sizeModels: tshirt_model,
+    // sizeModels: tshirt_model,
     readyIn: 3,
     parts: blazerParts.keys().map(blazerParts),
     sizeOptions: [
@@ -482,7 +482,7 @@ export const mainMaleCustomize = [
     myZoom: 0.8,
     price: 20,
     sizeGuide: cloak_guide,
-    sizeModels: tshirt_model,
+    // sizeModels: tshirt_model,
     readyIn: 3,
     // parts: cloakParts.keys().map(cloakParts),
     sizeOptions: [
@@ -511,7 +511,7 @@ export const mainMaleCustomize = [
     myZoom: 0.8,
     price: 22,
     sizeGuide: trouser_guide,
-    sizeModels: tshirt_model,
+    // sizeModels: tshirt_model,
     readyIn: 3,
     sizeOptions: [
       { label: "S", value: 0.5 },
@@ -564,7 +564,7 @@ export const mainMaleCustomize = [
     myY: 10,
     price: 30,
     sizeGuide: summer_shorts_guide,
-    sizeModels: tshirt_model,
+    // sizeModels: tshirt_model,
     readyIn: 3,
     sizeOptions: [
       { label: "S", value: 0.5 },
@@ -601,7 +601,7 @@ export const mainMaleCustomize = [
     myY: 10,
     price: 30,
     sizeGuide: material_shorts_guide,
-    sizeModels: tshirt_model,
+    // sizeModels: tshirt_model,
     readyIn: 3,
     parts: materialShortsParts.keys().map(materialShortsParts),
     sizeOptions: [

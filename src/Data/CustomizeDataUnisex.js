@@ -79,7 +79,7 @@ export const mainUnisex = [
     myZoom: 0.8,
     price: 55,
     parts: sashParts.keys().map(sashParts),
-    sizeModels: tshirt_model,
+    // sizeModels: tshirt_model,
     readyIn: 3,
     sizeGuide: sash_guide,
     sizeOptions: [
@@ -111,7 +111,7 @@ export const mainUnisex = [
     myZoom: 0.8,
     price: 55,
     parts: sashParts.keys().map(sashParts),
-    sizeModels: tshirt_model,
+    // sizeModels: tshirt_model,
     readyIn: 3,
     sizeGuide: sash_guide,
     sizeOptions: [
@@ -142,7 +142,7 @@ export const mainUnisex = [
     myZoom: 1.3,
     price: 55,
     // parts: bikiniParts.keys().map(bikiniParts),
-    sizeModels: tshirt_model,
+    // sizeModels: tshirt_model,
     readyIn: 3,
     sizeGuide: bikini_guide,
     sizeOptions: [
@@ -282,7 +282,7 @@ export const mainUnisex = [
     myZoom: 2,
     price: 55,
     parts: sashParts.keys().map(sashParts),
-    sizeModels: tshirt_model,
+    // sizeModels: tshirt_model,
     readyIn: 3,
     weight: 0.25,
     sizeGuide: sash_guide,

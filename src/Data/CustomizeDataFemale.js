@@ -187,7 +187,7 @@ export const mainFemaleCustomize = [
     myZoom: 0.7,
     price: 20,
     sizeGuide: tshirt_guide,
-    sizeModels: tshirt_model,
+    // sizeModels: tshirt_model,
     readyIn: 3,
     parts: tShirtShortParts.keys().map(tShirtShortParts),
     sizeOptions: [
@@ -228,7 +228,7 @@ export const mainFemaleCustomize = [
     myZoom: 0.9,
     price: 20,
     sizeGuide: tshirtlong_guide,
-    sizeModels: tshirt_model,
+    // sizeModels: tshirt_model,
     readyIn: 3,
     parts: tShirtLongParts.keys().map(tShirtLongParts),
     sizeOptions: [
@@ -277,7 +277,7 @@ export const mainFemaleCustomize = [
     myZoom: 0.7,
     price: 30,
     sizeGuide: extraShortShirt_guide,
-    sizeModels: tshirt_model,
+    // sizeModels: tshirt_model,
     readyIn: 3,
     parts: extraShortShirtParts.keys().map(extraShortShirtParts),
     sizeOptions: [
@@ -319,7 +319,7 @@ export const mainFemaleCustomize = [
     myZoom: 0.8,
     price: 30,
     sizeGuide: extraLongShirt_guide,
-    sizeModels: tshirt_model,
+    // sizeModels: tshirt_model,
     readyIn: 3,
     parts: extraLongShirtParts.keys().map(extraLongShirtParts),
     sizeOptions: [
@@ -366,7 +366,7 @@ export const mainFemaleCustomize = [
     myZoom: 0.8,
     price: 20,
     sizeGuide: normalTop_guide,
-    sizeModels: tshirt_model,
+    // sizeModels: tshirt_model,
     readyIn: 3,
     parts: normalTopParts.keys().map(normalTopParts),
     sizeOptions: [
@@ -529,7 +529,7 @@ export const mainFemaleCustomize = [
     myZoom: 0.6,
     price: 55,
     sizeGuide: top_down_guide,
-    sizeModels: tshirt_model,
+    // sizeModels: tshirt_model,
     readyIn: 3,
     // parts: topndownParts.keys().map(topndownParts),
     sizeOptions: [
@@ -595,7 +595,7 @@ export const mainFemaleCustomize = [
     myZoom: 1.2,
     price: 20,
     sizeGuide: cropTop_guide,
-    sizeModels: tshirt_model,
+    // sizeModels: tshirt_model,
     readyIn: 3,
     parts: cropTopParts.keys().map(cropTopParts),
     sizeOptions: [
@@ -636,7 +636,7 @@ export const mainFemaleCustomize = [
     myZoom: 0.9,
     price: 55,
     // parts: jacketParts.keys().map(jacketParts),
-    sizeModels: tshirt_model,
+    // sizeModels: tshirt_model,
     readyIn: 3,
     sizeGuide: jacket_guide,
     sizeOptions: [
@@ -675,7 +675,7 @@ export const mainFemaleCustomize = [
     myZoom: 0.8,
     price: 20,
     sizeGuide: blazer_guide,
-    sizeModels: tshirt_model,
+    // sizeModels: tshirt_model,
     readyIn: 3,
     parts: blazerParts.keys().map(blazerParts),
     sizeOptions: [
@@ -722,7 +722,7 @@ export const mainFemaleCustomize = [
     myZoom: 0.9,
     price: 20,
     sizeGuide: cloak_guide,
-    sizeModels: tshirt_model,
+    // sizeModels: tshirt_model,
     readyIn: 3,
     parts: cloakParts.keys().map(cloakParts),
     sizeOptions: [
@@ -750,7 +750,7 @@ export const mainFemaleCustomize = [
     myZoom: 0.7,
     price: 20,
     sizeGuide: skirt_guide,
-    sizeModels: tshirt_model,
+    // sizeModels: tshirt_model,
     readyIn: 3,
     parts: skirtParts.keys().map(skirtParts),
     sizeOptions: [
@@ -781,7 +781,7 @@ export const mainFemaleCustomize = [
     myZoom: 0.8,
     price: 20,
     sizeGuide: miniSkirt_guide,
-    sizeModels: tshirt_model,
+    // sizeModels: tshirt_model,
     readyIn: 3,
     parts: miniSkirtParts.keys().map(miniSkirtParts),
     sizeOptions: [
@@ -813,7 +813,7 @@ export const mainFemaleCustomize = [
     myZoom: 0.6,
     price: 20,
     sizeGuide: bootyShorts_guide,
-    sizeModels: tshirt_model,
+    // sizeModels: tshirt_model,
     readyIn: 3,
     parts: bootyShortsParts.keys().map(bootyShortsParts),
     sizeOptions: [
@@ -884,7 +884,7 @@ export const mainFemaleCustomize = [
     myY: 10,
     price: 30,
     sizeGuide: material_shorts_guide,
-    sizeModels: tshirt_model,
+    // sizeModels: tshirt_model,
     readyIn: 3,
     // parts: materialShortsParts.keys().map(materialShortsParts),
     sizeOptions: [
@@ -925,7 +925,7 @@ export const mainFemaleCustomize = [
     myZoom: 0.7,
     price: 20,
     sizeGuide: trousers_guide,
-    sizeModels: tshirt_model,
+    // sizeModels: tshirt_model,
     readyIn: 3,
     parts: trousersParts.keys().map(trousersParts),
     sizeOptions: [

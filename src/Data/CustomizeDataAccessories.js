@@ -237,7 +237,7 @@ export const mainFemaleAccessories = [
     myZoom: 1.3,
     price: 55,
     parts: bikiniParts.keys().map(bikiniParts),
-    sizeModels: tshirt_model,
+    // sizeModels: tshirt_model,
     readyIn: 3,
     sizeGuide: bikini_guide,
     sizeOptions: [
