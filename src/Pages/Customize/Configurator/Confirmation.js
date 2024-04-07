@@ -266,26 +266,26 @@ export const OrderDetail = React.forwardRef(
           <div>
             <div className="custom-size-values">
               <p className="h5 mt-4">Client's custom size values:</p>
-              {!height && Object.entries(customSizeValues).length === 0 ? (
+              {!height && !gender && Object.entries(customSizeValues)?.length === 0 ? (
                 <span>N/A</span>
               ) : (
                 <>
                   {height && (
                     <div>
-                      <strong className="text-warning">Your Height:</strong>
+                      <strong className="text-warning">Your Height: </strong>
                       {height + ""} cm
                     </div>
                   )}
 
                   {gender && (
                     <div>
-                      <strong className="text-warning">Your Gender:</strong>
+                      <strong className="text-warning">Your Gender: </strong>
                       {gender}
                     </div>
                   )}
 
                   <ul>
-                    {Object.entries(customSizeValues).map(([label, value]) => (
+                    {customSizeValues && Object.entries(customSizeValues)?.map(([label, value]) => (
                       <li key={label}>
                         <strong>{label}:</strong> {value}
                       </li>

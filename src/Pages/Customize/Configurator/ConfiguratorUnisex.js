@@ -595,15 +595,15 @@ const ConfiguratorUnisex = () => {
   const [stateImage, setStateImage] = useState("");
 
   const captureCanvasAsImage = async () => {
-    const requiresHeight = displayInplaceFor.includes(selectedClothing.name);
+    const requiresGender = displayInplaceFor.includes(selectedClothing.name);
     const genderProvided = gender !== "";
 
-    if (requiresHeight && !genderProvided) {
+    if (requiresGender && !genderProvided) {
       // Prevent completing if height is required but not provided
       toastRef.current.show({
         severity: "error",
         summary: "Cannot continue",
-        detail: "Please input your height for accurate design",
+        detail: "Please input your gender for accurate design",
       });
       return;
     }
@@ -865,7 +865,7 @@ const ConfiguratorUnisex = () => {
                             style={{
                               color: "red",
                               fontWeight: "bolder",
-                              textTransform: "lowercase",
+                              textTransform: "capitalize",
                             }}
                           >
                             {gender || "Tap to input your gender"}
@@ -1254,7 +1254,8 @@ const ConfiguratorUnisex = () => {
                               </button>
                             </div>
 
-                            <h6>Size (Left)</h6>
+                            <h6 className="mt-3">Size {selectedClothing.name ===
+                            "Beads Bracelet" ? null : "(Left)"}</h6>
                             <div className="d-flex  gap-2 justify-content-center align-items-center fs-button">
                               <button
                                 className="btn btn-info btn-sm p-2 text-white"
@@ -1271,22 +1272,30 @@ const ConfiguratorUnisex = () => {
                               </button>
                             </div>
 
-                            <h6>Size (Right)</h6>
-                            <div className="d-flex  gap-2 justify-content-center align-items-center fs-button">
-                              <button
-                                className="btn btn-info btn-sm p-2 text-white"
-                                onClick={decreaseFontSizeRight}
-                              >
-                                -
-                              </button>
-                              <span className="font-size">{fontSizeRight}</span>
-                              <button
-                                className="btn btn-info btn-sm p-2 text-white"
-                                onClick={increaseFontSizeRight}
-                              >
-                                +
-                              </button>
-                            </div>
+                            {selectedClothing.name ===
+                            "Beads Bracelet" ? null : (
+                              <>
+                                <h6 className="mt-3">Size (Right)</h6>
+                                <div className="d-flex  gap-2 justify-content-center align-items-center fs-button">
+                                  <button
+                                    className="btn btn-info btn-sm p-2 text-white"
+                                    onClick={decreaseFontSizeRight}
+                                  >
+                                    -
+                                  </button>
+                                  <span className="font-size">
+                                    {fontSizeRight}
+                                  </span>
+                                  <button
+                                    className="btn btn-info btn-sm p-2 text-white"
+                                    onClick={increaseFontSizeRight}
+                                  >
+                                    +
+                                  </button>
+                                </div>
+                              </>
+                            )}
+
                             {/* <div>
                               <h6>Orientation</h6>
                               <div className="d-flex justify-content-around  gap-4">

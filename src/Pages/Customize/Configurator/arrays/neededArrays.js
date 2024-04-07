@@ -476,7 +476,8 @@ export const displayInplaceFor = [
   "Booty Shorts",
   "Leggings",
   "Top And Down Kaftan",
-  "Earring"
+  "Earring",
+  "Beads Bracelet"
 ];
 
 export const noSpinFor = [
