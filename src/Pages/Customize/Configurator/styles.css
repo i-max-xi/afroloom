@@ -376,3 +376,8 @@ h1 {
   flex: 1;
   flex-direction: column;
 }
+
+/* for canvas zindex */
+.main-canvas > div {
+  z-index: 1 !important;
+}

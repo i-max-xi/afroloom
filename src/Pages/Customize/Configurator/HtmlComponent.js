@@ -21,7 +21,7 @@ const HtmlComponent = ({
   };
 
   return (
-    <Html>
+    <Html style={{zIndex: 1, backgroundColor: "red"}}>
       <div
         className="overlay"
         style={{

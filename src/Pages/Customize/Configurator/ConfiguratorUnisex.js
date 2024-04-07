@@ -1055,8 +1055,9 @@ const ConfiguratorUnisex = () => {
                     }
                   >
                     <Canvas
-                      camera={{ position: [0, 0, selectedClothing.myZoom] }} // Set the initial camera position
+                      camera={{ position: [0, 0, selectedClothing.myZoom] }}
                       gl={{ preserveDrawingBuffer: true }}
+                      className="main-canvas"
                     >
                       <ambientLight intensity={0.5} />
                       <pointLight position={[10, 10, 10]} />
@@ -1208,7 +1209,6 @@ const ConfiguratorUnisex = () => {
                           showCloseIcon
                           ref={textEditRef}
                           style={{
-                            zIndex: 9999,
                             transform: `translateX(-4rem)`,
                             minWidth: "15rem",
                           }}
