@@ -146,7 +146,7 @@ export const mainUnisex = [
     readyIn: 3,
     sizeGuide: bikini_guide,
     sizeOptions: [
-      { label: "XS", value: 0.5 },
+      // { label: "XS", value: 0.5 },
       { label: "S", value: 0.5 },
       { label: "M", value: 1 },
       { label: "L", value: 2 },
@@ -244,7 +244,7 @@ export const mainUnisex = [
   //   readyIn: 3,
   //   sizeGuide: jacket_guide,
   //   sizeOptions: [
-  //     { label: "XS", value: 0.5 },
+  //     // { label: "XS", value: 0.5 },
   //     { label: "S", value: 0.5 },
   //     { label: "M", value: 1 },
   //     { label: "L", value: 2 },

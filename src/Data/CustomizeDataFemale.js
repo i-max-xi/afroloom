@@ -191,7 +191,7 @@ export const mainFemaleCustomize = [
     readyIn: 3,
     parts: tShirtShortParts.keys().map(tShirtShortParts),
     sizeOptions: [
-      { label: "XS", value: 0.5 },
+      // { label: "XS", value: 0.5 },
       { label: "S", value: 0.5 },
       { label: "M", value: 1 },
       { label: "L", value: 2 },
@@ -232,7 +232,7 @@ export const mainFemaleCustomize = [
     readyIn: 3,
     parts: tShirtLongParts.keys().map(tShirtLongParts),
     sizeOptions: [
-      { label: "XS", value: 0.5 },
+      // { label: "XS", value: 0.5 },
       { label: "S", value: 0.5 },
       { label: "M", value: 1 },
       { label: "L", value: 2 },
@@ -281,7 +281,7 @@ export const mainFemaleCustomize = [
     readyIn: 3,
     parts: extraShortShirtParts.keys().map(extraShortShirtParts),
     sizeOptions: [
-      { label: "XS", value: 0.5 },
+      // { label: "XS", value: 0.5 },
       { label: "S", value: 0.5 },
       { label: "M", value: 1 },
       { label: "L", value: 2 },
@@ -323,7 +323,7 @@ export const mainFemaleCustomize = [
     readyIn: 3,
     parts: extraLongShirtParts.keys().map(extraLongShirtParts),
     sizeOptions: [
-      { label: "XS", value: 0.5 },
+      // { label: "XS", value: 0.5 },
       { label: "S", value: 0.5 },
       { label: "M", value: 1 },
       { label: "L", value: 2 },
@@ -410,7 +410,7 @@ export const mainFemaleCustomize = [
   //   readyIn: 3,
   //   parts: topAndDownParts.keys().map(topAndDownParts),
   //   sizeOptions: [
-  //     { label: "XS", value: 0.5 },
+  //     // { label: "XS", value: 0.5 },
   //     { label: "S", value: 0.5 },
   //     { label: "M", value: 1 },
   //     { label: "L", value: 2 },
@@ -640,7 +640,7 @@ export const mainFemaleCustomize = [
     readyIn: 3,
     sizeGuide: jacket_guide,
     sizeOptions: [
-      { label: "XS", value: 0.5 },
+      // { label: "XS", value: 0.5 },
       { label: "S", value: 0.5 },
       { label: "M", value: 1 },
       { label: "L", value: 2 },
@@ -679,7 +679,7 @@ export const mainFemaleCustomize = [
     readyIn: 3,
     parts: blazerParts.keys().map(blazerParts),
     sizeOptions: [
-      { label: "XS", value: 0.5 },
+      // { label: "XS", value: 0.5 },
       { label: "S", value: 0.5 },
       { label: "M", value: 1 },
       { label: "L", value: 2 },
@@ -785,7 +785,7 @@ export const mainFemaleCustomize = [
     readyIn: 3,
     parts: miniSkirtParts.keys().map(miniSkirtParts),
     sizeOptions: [
-      { label: "XS", value: 0.5 },
+      // { label: "XS", value: 0.5 },
       { label: "S", value: 0.5 },
       { label: "M", value: 1 },
       { label: "L", value: 2 },

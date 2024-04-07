@@ -399,7 +399,7 @@ export const mainMaleCustomize = [
     readyIn: 3,
     sizeGuide: jacket_guide,
     sizeOptions: [
-      { label: "XS", value: 0.5 },
+      // { label: "XS", value: 0.5 },
       { label: "S", value: 0.5 },
       { label: "M", value: 1 },
       { label: "L", value: 2 },
