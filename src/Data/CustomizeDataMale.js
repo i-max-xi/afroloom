@@ -35,7 +35,7 @@ import loose_top_guide from "../Assets/size_guide/MaleClothing/mens loose short 
 import blazer_guide from "../Assets/size_guide/MaleClothing/men blazer.png";
 import trouser_guide from "../Assets/size_guide/MaleClothing/mens trousers.jpg";
 import summer_shorts_guide from "../Assets/size_guide/MaleClothing/men summer shorts.jpg";
-import material_shorts_guide from "../Assets/size_guide/MaleClothing/men material shorts.jpg";
+import material_shorts_guide from "../Assets/size_guide/MaleClothing/men material shorts.png";
 import jacket_guide from "../Assets/size_guide/MaleClothing/men Bomber_Jacket.jpg";
 
 
