@@ -92,9 +92,9 @@ const Header2 = ({ bgColor, Color, Padding, Icon1, Icon2, Icon3, Icon4 }) => {
           </svg>
 
           <p className="d-flex flex-column justify-content-center">
-            <span className="fw-bolder text-left">Return Policy</span>
+            <span className="fw-bolder text-left">Retouch Policy</span>
             <span className="text-left" style={{ fontSize: "0.8rem" }}>
-              Products can be returned within 48 hours if expectations are not met
+              Products can be retouched within 48 hours if expectations are not met
             </span>
           </p>
         </li>

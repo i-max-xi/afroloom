@@ -592,7 +592,7 @@ export const mainMaleCustomize = [
   },
   {
     id: uuid(),
-    name: "Material Shorts",
+    name: "Shorts",
     image: image_shorts_image,
     model: material_shorts,
     myNode: [{ name: "all", yardNeeded: 2 }],
