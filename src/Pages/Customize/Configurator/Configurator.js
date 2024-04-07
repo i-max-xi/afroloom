@@ -221,11 +221,11 @@ const Configurator = () => {
         textureArrays[category].includes(newTexture)
       );
 
-      // const yardNeeded = selectedClothing.myNode[selectedPart].yardNeeded;
+      const yardNeeded = selectedClothing.myNode[selectedPart].yardNeeded;
       const yardPrice = textureValues[textureCategory].price;
-      // const yardAvailable = textureValues[textureCategory].yardAvailable;
+      const yardAvailable = textureValues[textureCategory].yardAvailable;
       
-      const newPartPrice = yardPrice;
+      const newPartPrice = yardNeeded === yardAvailable ? (yardPrice): (yardNeeded * yardPrice);
 
 
       setPartPrices((prevPrices) =>
