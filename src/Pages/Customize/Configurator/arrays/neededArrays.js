@@ -17,29 +17,29 @@ import kente3 from "../textures/kente3.jpg";
 import kente4 from "../textures/kente4.jpg";
 import kente5 from "../textures/kente5.jpg";
 
-import waxPrint1 from "../textures/waxPrint1.jpg";
+// import waxPrint1 from "../textures/waxPrint1.jpg";
 // import waxPrint2 from "../textures/waxPrint2.jpg";
-import waxPrint3 from "../textures/waxPrint3.jpg";
+// import waxPrint3 from "../textures/waxPrint3.jpg";
 // import waxPrint4 from "../textures/waxPrint4.jpg";
 // import waxPrint5 from "../textures/waxPrint5.jpg";
 
-import waxPrint6 from "../textures/waxPrint/10 woni sika a wontwa block.jpg";
-import waxPrint7 from "../textures/waxPrint/15 ring.jpg";
-import waxPrint8 from "../textures/waxPrint/16 kyempr3.jpg";
-import waxPrint10 from "../textures/waxPrint/2 owuo akyi ahere ho).jpg";
+// import waxPrint6 from "../textures/waxPrint/10 woni sika a wontwa block.jpg";
+// import waxPrint7 from "../textures/waxPrint/15 ring.jpg";
+// import waxPrint8 from "../textures/waxPrint/16 kyempr3.jpg";
+// import waxPrint10 from "../textures/waxPrint/2 owuo akyi ahere ho).jpg";
 import waxPrint11 from "../textures/waxPrint/27 sugar lady.jpg";
-import waxPrint12 from "../textures/waxPrint/28.jpg";
+// import waxPrint12 from "../textures/waxPrint/28.jpg";
 import waxPrint13 from "../textures/waxPrint/26 3moo.jpg";
 import waxPrint14 from "../textures/waxPrint/29 aso bayere ahaban.jpg";
 import waxPrint15 from "../textures/waxPrint/3 aso bayere.jpg";
-import waxPrint16 from "../textures/waxPrint/31.jpg";
-import waxPrint17 from "../textures/waxPrint/32.jpg";
+// import waxPrint16 from "../textures/waxPrint/31.jpg";
+// import waxPrint17 from "../textures/waxPrint/32.jpg";
 import waxPrint18 from "../textures/waxPrint/35 sankofa.jpg";
-import waxPrint19 from "../textures/waxPrint/37 obiara se 3y3.jpg";
-import waxPrint20 from "../textures/waxPrint/38 flower.jpg";
-import waxPrint21 from "../textures/waxPrint/40 ab3n beb) mu.jpg";
+// import waxPrint19 from "../textures/waxPrint/37 obiara se 3y3.jpg";
+// import waxPrint20 from "../textures/waxPrint/38 flower.jpg";
+// import waxPrint21 from "../textures/waxPrint/40 ab3n beb) mu.jpg";
 import waxPrint22 from "../textures/waxPrint/5 nkitinkiti.jpg";
-import waxPrint23 from "../textures/waxPrint/6 sekyi bridge.jpg";
+// import waxPrint23 from "../textures/waxPrint/6 sekyi bridge.jpg";
 import waxPrint24 from "../textures/waxPrint/8 town hall.jpg";
 
 import smock1 from "../textures/smock1.jpg";
@@ -135,25 +135,25 @@ export const textureArrays = {
   ],
 
   waxPrint: [
-    waxPrint1,
-    waxPrint3,
-    waxPrint6,
-    waxPrint7,
-    waxPrint8,
-    waxPrint10,
+    // waxPrint1,
+    // waxPrint3,
+    // waxPrint6,
+    // waxPrint7,
+    // waxPrint8,
+    // waxPrint10,
     waxPrint11,
-    waxPrint12,
+    // waxPrint12,
     waxPrint13,
     waxPrint14,
     waxPrint15,
-    waxPrint16,
-    waxPrint17,
+    // waxPrint16,
+    // waxPrint17,
     waxPrint18,
-    waxPrint19,
-    waxPrint20,
-    waxPrint21,
+    // waxPrint19,
+    // waxPrint20,
+    // waxPrint21,
     waxPrint22,
-    waxPrint23,
+    // waxPrint23,
     waxPrint24,
   ],
 };
@@ -210,41 +210,41 @@ export const textureDescriptions = {
   //   },
   // ],
   waxPrint: [
-    {
-      textureName: "SIKA WO NTABAN (Money has wings)",
-      textureDescription:
-        '"Sika wo ataban" (Money has wings), a captivating fabric design from the Ashanti people of Ghana, serves as a vibrant reminder to handle money wisely. The design symbolizes the fleeting nature of wealth, emphasizing the importance of careful financial management to prevent its dissipation',
-    },
-    {
-      textureName: "Ahwene pa nkasa",
-      textureDescription: `"Ahwenepa nkasa" fabric exhorts individuals to let their actions and character speak for themselves rather than relying on arrogance or boasting. This intricate design, featuring floral patterns and various elements, symbolizes the notion that a truly good person's virtues are evident through their interactions, making them recognizable without the need for excessive self-promotion.`,
-    },
-    {
-      textureName: "",
-      textureDescription: "",
-    },
-    {
-      textureName: "Ring",
-      textureDescription:
-        "Step up your style game and make a statement with the vibrant African fabric called ring. Don't blend in when you can stand out in these bold and eye-catching prints. Embrace the rich culture and unique designs of African textiles by incorporating ring into your wardrobe. Dare to be different and show off your individuality by wearing this stunning fabric. Join the fashion revolution and let your wardrobe reflect your adventurous spirit with ring fabric",
-    },
-    {
-      textureName: "",
-      textureDescription: "",
-    },
-    {
-      textureName: "Owuo Akyi  Awereho",
-      textureDescription:
-        "Introducing Owuo Akyi Awereho: the fabric that captures the essence of sadness after death while reminding us to live our best lives. Wear this unique design as a powerful reminder to cherish each moment and strive for greatness. Let Owuo Akyi Awereho inspire you to embrace life to the fullest and make every day count. Wear the fabric, embrace the message, and live your best life",
-    },
+    // {
+    //   textureName: "SIKA WO NTABAN (Money has wings)",
+    //   textureDescription:
+    //     '"Sika wo ataban" (Money has wings), a captivating fabric design from the Ashanti people of Ghana, serves as a vibrant reminder to handle money wisely. The design symbolizes the fleeting nature of wealth, emphasizing the importance of careful financial management to prevent its dissipation',
+    // },
+    // {
+    //   textureName: "Ahwene pa nkasa",
+    //   textureDescription: `"Ahwenepa nkasa" fabric exhorts individuals to let their actions and character speak for themselves rather than relying on arrogance or boasting. This intricate design, featuring floral patterns and various elements, symbolizes the notion that a truly good person's virtues are evident through their interactions, making them recognizable without the need for excessive self-promotion.`,
+    // },
+    // {
+    //   textureName: "",
+    //   textureDescription: "",
+    // },
+    // {
+    //   textureName: "Ring",
+    //   textureDescription:
+    //     "Step up your style game and make a statement with the vibrant African fabric called ring. Don't blend in when you can stand out in these bold and eye-catching prints. Embrace the rich culture and unique designs of African textiles by incorporating ring into your wardrobe. Dare to be different and show off your individuality by wearing this stunning fabric. Join the fashion revolution and let your wardrobe reflect your adventurous spirit with ring fabric",
+    // },
+    // {
+    //   textureName: "",
+    //   textureDescription: "",
+    // },
+    // {
+    //   textureName: "Owuo Akyi  Awereho",
+    //   textureDescription:
+    //     "Introducing Owuo Akyi Awereho: the fabric that captures the essence of sadness after death while reminding us to live our best lives. Wear this unique design as a powerful reminder to cherish each moment and strive for greatness. Let Owuo Akyi Awereho inspire you to embrace life to the fullest and make every day count. Wear the fabric, embrace the message, and live your best life",
+    // },
     {
       textureName: "Sugar Lady",
       textureDescription: `Introducing the stunning African fabric known as "Sugar Lady" - it's not just material, it's a statement of style and culture. Embrace the vibrancy and beauty of Africa by wearing this unique fabric that will make you stand out from the crowd. Don't just wear a garment, wear a piece of art that tells a story and celebrates tradition. Join the movement and show off your individuality with the enchanting "Sugar Lady" fabric.`,
     },
-    {
-      textureName: "",
-      textureDescription: "",
-    },
+    // {
+    //   textureName: "",
+    //   textureDescription: "",
+    // },
     {
       textureName: "ɛmo (rice)",
       textureDescription:
@@ -260,42 +260,42 @@ export const textureDescriptions = {
       textureDescription:
         "Introducing Aso Bayere - the sweet yam-inspired fabric that celebrates the beauty and versatility of a mother's touch. Just like the many ways sweet yam can be prepared, this fabric offers endless possibilities for styling and wearing. Embrace the tradition and creativity of African fashion with Aso Bayere, and let your unique style shine through in every outfit. Add this timeless piece to your wardrobe and discover the magic of the mother's touch.",
     },
-    {
-      textureName: "",
-      textureDescription: "",
-    },
-    {
-      textureName: "",
-      textureDescription: "",
-    },
+    // {
+    //   textureName: "",
+    //   textureDescription: "",
+    // },
+    // {
+    //   textureName: "",
+    //   textureDescription: "",
+    // },
     {
       textureName: "Sankofa",
       textureDescription:
         "Wrap yourself in the vibrant patterns and rich history of Sankofa fabric, a symbol of learning from the past to build a better future. Embrace the beauty and culture of Africa by wearing this unique and meaningful fabric, and let it inspire you to reflect on your own journey while honoring the roots of a powerful tradition. Let the colors and designs of Sankofa fabric ignite your sense of style and pride in wearing garments that tell a story of resilience and heritage. Join the movement to celebrate and elevate African fashion with Sankofa fabric today",
     },
-    {
-      textureName: "Obiara Se 3y3",
-      textureDescription: `Step out in style with the vibrant and culturally rich African fabric known as obiara se 3y3, which translates to "everyone approve of it" in English. Embrace the intricate patterns and bold colors of this fabric that not only adds a touch of elegance to your wardrobe, but also celebrates unity and acceptance. So why blend in when you can stand out in the unique beauty of African fabric? Join the movement and wear obiara se 3y3 with pride!`,
-    },
-    {
-      textureName: "Flower",
-      textureDescription: `Wear the vibrant African fabric called "Flower" and add a touch of culture to your wardrobe! Embrace the beautiful patterns and colors of this unique textile and stand out from the crowd. Let your style bloom with Flower fabric and show off your individuality and appreciation for African fashion. Join the fashion revolution and rock this stunning fabric with confidence!`,
-    },
-    {
-      textureName: "Ab3n Beb) Mu",
-      textureDescription:
-        "Get ready to blow the horn of fashion with Aben B3bom, the vibrant African fabric that is sure to turn heads wherever you go. In Akan, this fabric embodies the spirit of celebration and unity, making it the perfect choice for those who want to stand out and make a statement. Embrace your roots and add a pop of color to your wardrobe by incorporating Aben B3bom into your style. Join the movement and wear the beauty of African fabric with pride!",
-    },
+    // {
+    //   textureName: "Obiara Se 3y3",
+    //   textureDescription: `Step out in style with the vibrant and culturally rich African fabric known as obiara se 3y3, which translates to "everyone approve of it" in English. Embrace the intricate patterns and bold colors of this fabric that not only adds a touch of elegance to your wardrobe, but also celebrates unity and acceptance. So why blend in when you can stand out in the unique beauty of African fabric? Join the movement and wear obiara se 3y3 with pride!`,
+    // },
+    // {
+    //   textureName: "Flower",
+    //   textureDescription: `Wear the vibrant African fabric called "Flower" and add a touch of culture to your wardrobe! Embrace the beautiful patterns and colors of this unique textile and stand out from the crowd. Let your style bloom with Flower fabric and show off your individuality and appreciation for African fashion. Join the fashion revolution and rock this stunning fabric with confidence!`,
+    // },
+    // {
+    //   textureName: "Ab3n Beb) Mu",
+    //   textureDescription:
+    //     "Get ready to blow the horn of fashion with Aben B3bom, the vibrant African fabric that is sure to turn heads wherever you go. In Akan, this fabric embodies the spirit of celebration and unity, making it the perfect choice for those who want to stand out and make a statement. Embrace your roots and add a pop of color to your wardrobe by incorporating Aben B3bom into your style. Join the movement and wear the beauty of African fabric with pride!",
+    // },
     {
       textureName: "Nkitinkiti",
       textureDescription:
         "Embrace the vibrant and rich culture of Africa by wearing Nkitinkiti fabric! Make a bold statement and stand out in the crowd with these unique and eye-catching patterns. Whether you're attending a special event or just want to add some flair to your everyday wardrobe, Nkitinkiti is the perfect choice. Show off your individuality and support African artisans by rocking this beautiful fabric. Join the fashion revolution and make a statement with Nkitinkiti!",
     },
-    {
-      textureName: "Cha cha cha / Senchi Bridge",
-      textureDescription:
-        "Embrace the lively rhythm of cha cha cha and the daring spirit of the Senchi bridge with this unique fabric pattern. Feel the energy of the dance and the thrill of crossing a turbulent river as you wear it with style. Let the names and meanings behind this design inspire you to embrace adventure and movement in every step you take. Don't just wear the fabric, embody the essence of cha cha cha / senchi bridge and make a statement.",
-    },
+    // {
+    //   textureName: "Cha cha cha / Senchi Bridge",
+    //   textureDescription:
+    //     "Embrace the lively rhythm of cha cha cha and the daring spirit of the Senchi bridge with this unique fabric pattern. Feel the energy of the dance and the thrill of crossing a turbulent river as you wear it with style. Let the names and meanings behind this design inspire you to embrace adventure and movement in every step you take. Don't just wear the fabric, embody the essence of cha cha cha / senchi bridge and make a statement.",
+    // },
     {
       textureName: "Town Hall",
       textureDescription:
