@@ -206,7 +206,6 @@ const Configurator = () => {
       const yardPrice = textureValues[textureCategory].price;
       // const yardAvailable = textureValues[textureCategory].yardAvailable;
 
-
       const newPartPrice = yardPrice;
 
       setPartPrices(Array(selectedClothing.myNode.length).fill(newPartPrice));
@@ -225,8 +224,7 @@ const Configurator = () => {
       // const yardNeeded = selectedClothing.myNode[selectedPart].yardNeeded;
       const yardPrice = textureValues[textureCategory].price;
       // const yardAvailable = textureValues[textureCategory].yardAvailable;
-
-
+      
       const newPartPrice = yardPrice;
 
 

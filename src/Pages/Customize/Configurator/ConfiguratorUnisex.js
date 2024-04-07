@@ -523,7 +523,11 @@ const ConfiguratorUnisex = () => {
         textureArrays[category].includes(newTexture)
       );
 
-      const newPartPrice = textureValues[textureCategory];
+      // const yardNeeded = selectedClothing.myNode[selectedPart].yardNeeded;
+      const yardPrice = textureValues[textureCategory].price;
+      // const yardAvailable = textureValues[textureCategory].yardAvailable;
+
+      const newPartPrice = yardPrice;
 
       setPartPrices(Array(selectedClothing.myNode.length).fill(newPartPrice));
       return;
@@ -539,8 +543,12 @@ const ConfiguratorUnisex = () => {
         textureArrays[category].includes(newTexture)
       );
       // Calculate the new price for the selected part
-      const newPartPrice =
-        selectedClothing.price + textureValues[textureCategory];
+
+      // const yardNeeded = selectedClothing.myNode[selectedPart].yardNeeded;
+      const yardPrice = textureValues[textureCategory].price;
+      // const yardAvailable = textureValues[textureCategory].yardAvailable;
+
+      const newPartPrice = yardPrice;
 
       setPartPrices((prevPrices) =>
         prevPrices.map((price, index) =>
@@ -1178,7 +1186,7 @@ const ConfiguratorUnisex = () => {
                           style={{
                             zIndex: 9999,
                             transform: `translateX(-4rem)`,
-                            minWidth: "15rem"
+                            minWidth: "15rem",
                           }}
                         >
                           <div className="flex-column imprint-options">

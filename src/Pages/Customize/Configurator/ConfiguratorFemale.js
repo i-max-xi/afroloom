@@ -200,7 +200,11 @@ const ConfiguratorFemale = () => {
         textureArrays[category].includes(newTexture)
       );
 
-      const newPartPrice = textureValues[textureCategory];
+      // const yardNeeded = selectedClothing.myNode[selectedPart].yardNeeded;
+      const yardPrice = textureValues[textureCategory].price;
+      // const yardAvailable = textureValues[textureCategory].yardAvailable;
+
+      const newPartPrice = yardPrice;
 
       setPartPrices(Array(selectedClothing.myNode?.length).fill(newPartPrice));
       return;
@@ -214,8 +218,12 @@ const ConfiguratorFemale = () => {
       const textureCategory = Object.keys(textureArrays).find((category) =>
         textureArrays[category].includes(newTexture)
       );
-      const newPartPrice =
-        selectedClothing.price + textureValues[textureCategory];
+
+      // const yardNeeded = selectedClothing.myNode[selectedPart].yardNeeded;
+      const yardPrice = textureValues[textureCategory].price;
+      // const yardAvailable = textureValues[textureCategory].yardAvailable;
+
+      const newPartPrice = yardPrice;
 
       setPartPrices((prevPrices) =>
         prevPrices.map((price, index) =>
@@ -572,9 +580,7 @@ const ConfiguratorFemale = () => {
                     </div>
                   </Dialog>
                 </div>
-                <h5>
-                  Choose Color
-                </h5>
+                <h5>Choose Color</h5>
                 <div className="color-buttons-container">
                   <Carousel
                     value={colorOptions}
@@ -602,9 +608,12 @@ const ConfiguratorFemale = () => {
                   <div className="texture-row">
                     <div className="texture-category">
                       <h3>
-                      Tie and Dye (+{currencySymbol}
-                      {(currencyFactor * textureValues.batik.price).toFixed(2)})
-                    </h3>
+                        Tie and Dye (+{currencySymbol}
+                        {(currencyFactor * textureValues.batik.price).toFixed(
+                          2
+                        )}
+                        )
+                      </h3>
                       <Carousel
                         value={textureArrays.batik}
                         numVisible={4}
