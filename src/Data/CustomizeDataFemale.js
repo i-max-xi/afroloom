@@ -187,7 +187,7 @@ export const mainFemaleCustomize = [
     price: 20,
     sizeGuide: tshirt_guide,
     // sizeModels: tshirt_model,
-    readyIn: 3,
+    readyIn: 7,
     parts: tShirtShortParts.keys().map(tShirtShortParts),
     sizeOptions: [
       // { label: "XS", value: 0.5 },
@@ -228,7 +228,7 @@ export const mainFemaleCustomize = [
     price: 20,
     sizeGuide: tshirtlong_guide,
     // sizeModels: tshirt_model,
-    readyIn: 3,
+    readyIn: 7,
     parts: tShirtLongParts.keys().map(tShirtLongParts),
     sizeOptions: [
       // { label: "XS", value: 0.5 },
@@ -277,7 +277,7 @@ export const mainFemaleCustomize = [
     price: 30,
     sizeGuide: extraShortShirt_guide,
     // sizeModels: tshirt_model,
-    readyIn: 3,
+    readyIn: 7,
     parts: extraShortShirtParts.keys().map(extraShortShirtParts),
     sizeOptions: [
       // { label: "XS", value: 0.5 },
@@ -319,7 +319,7 @@ export const mainFemaleCustomize = [
     price: 30,
     sizeGuide: extraLongShirt_guide,
     // sizeModels: tshirt_model,
-    readyIn: 3,
+    readyIn: 7,
     parts: extraLongShirtParts.keys().map(extraLongShirtParts),
     sizeOptions: [
       // { label: "XS", value: 0.5 },
@@ -366,7 +366,7 @@ export const mainFemaleCustomize = [
     price: 20,
     sizeGuide: normalTop_guide,
     // sizeModels: tshirt_model,
-    readyIn: 3,
+    readyIn: 7,
     parts: normalTopParts.keys().map(normalTopParts),
     sizeOptions: [
       { label: "S", value: 0.5 },
@@ -406,7 +406,7 @@ export const mainFemaleCustomize = [
   //   price: 20,
   //   sizeGuide: topAndDown_guide,
   //   sizeModels: tshirt_model,
-  //   readyIn: 3,
+  //   readyIn: 7,
   //   parts: topAndDownParts.keys().map(topAndDownParts),
   //   sizeOptions: [
   //     // { label: "XS", value: 0.5 },
@@ -458,7 +458,7 @@ export const mainFemaleCustomize = [
   //   price: 20,
   //   sizeGuide: dress_guide,
   //   sizeModels: tshirt_model,
-  //   readyIn: 3,
+  //   readyIn: 7,
   //   parts: dressParts.keys().map(dressParts),
   //   sizeOptions: [
   //     { label: "S", value: 0.5 },
@@ -500,7 +500,7 @@ export const mainFemaleCustomize = [
   //   myZoom: 1.15,
   //   price: 20,
   //   sizeModels: tshirt_model,
-  //   readyIn: 3,
+  //   readyIn: 7,
   //   parts: kabaSlitParts.keys().map(kabaSlitParts),
   //   sizeOptions: [
   //     { label: "S", value: 0.5 },
@@ -529,7 +529,7 @@ export const mainFemaleCustomize = [
     price: 55,
     sizeGuide: top_down_guide,
     // sizeModels: tshirt_model,
-    readyIn: 3,
+    readyIn: 7,
     // parts: topndownParts.keys().map(topndownParts),
     sizeOptions: [
       { label: "S", value: 0.5 },
@@ -595,7 +595,7 @@ export const mainFemaleCustomize = [
     price: 20,
     sizeGuide: cropTop_guide,
     // sizeModels: tshirt_model,
-    readyIn: 3,
+    readyIn: 7,
     parts: cropTopParts.keys().map(cropTopParts),
     sizeOptions: [
       { label: "S", value: 0.5 },
@@ -636,7 +636,7 @@ export const mainFemaleCustomize = [
     price: 55,
     // parts: jacketParts.keys().map(jacketParts),
     // sizeModels: tshirt_model,
-    readyIn: 3,
+    readyIn: 7,
     sizeGuide: jacket_guide,
     sizeOptions: [
       // { label: "XS", value: 0.5 },
@@ -675,7 +675,7 @@ export const mainFemaleCustomize = [
     price: 20,
     sizeGuide: blazer_guide,
     // sizeModels: tshirt_model,
-    readyIn: 3,
+    readyIn: 7,
     parts: blazerParts.keys().map(blazerParts),
     sizeOptions: [
       // { label: "XS", value: 0.5 },
@@ -722,7 +722,7 @@ export const mainFemaleCustomize = [
     price: 20,
     sizeGuide: cloak_guide,
     // sizeModels: tshirt_model,
-    readyIn: 3,
+    readyIn: 7,
     parts: cloakParts.keys().map(cloakParts),
     sizeOptions: [
       { label: "S", value: 0.5 },
@@ -750,7 +750,7 @@ export const mainFemaleCustomize = [
     price: 20,
     sizeGuide: skirt_guide,
     // sizeModels: tshirt_model,
-    readyIn: 3,
+    readyIn: 7,
     parts: skirtParts.keys().map(skirtParts),
     sizeOptions: [
       { label: "S", value: 0.5 },
@@ -781,7 +781,7 @@ export const mainFemaleCustomize = [
     price: 20,
     sizeGuide: miniSkirt_guide,
     // sizeModels: tshirt_model,
-    readyIn: 3,
+    readyIn: 7,
     parts: miniSkirtParts.keys().map(miniSkirtParts),
     sizeOptions: [
       // { label: "XS", value: 0.5 },
@@ -813,7 +813,7 @@ export const mainFemaleCustomize = [
     price: 20,
     sizeGuide: bootyShorts_guide,
     // sizeModels: tshirt_model,
-    readyIn: 3,
+    readyIn: 7,
     parts: bootyShortsParts.keys().map(bootyShortsParts),
     sizeOptions: [
       { label: "S", value: 0.5 },
@@ -847,7 +847,7 @@ export const mainFemaleCustomize = [
   //   price: 30,
   //   sizeGuide: summer_shorts_guide,
   //   sizeModels: tshirt_model,
-  //   readyIn: 3,
+  //   readyIn: 7,
   //   sizeOptions: [
   //     { label: "S", value: 0.5 },
   //     { label: "M", value: 1 },
@@ -884,7 +884,7 @@ export const mainFemaleCustomize = [
     price: 30,
     sizeGuide: material_shorts_guide,
     // sizeModels: tshirt_model,
-    readyIn: 3,
+    readyIn: 7,
     // parts: materialShortsParts.keys().map(materialShortsParts),
     sizeOptions: [
       { label: "S", value: 0.5 },
@@ -925,7 +925,7 @@ export const mainFemaleCustomize = [
     price: 20,
     sizeGuide: trousers_guide,
     // sizeModels: tshirt_model,
-    readyIn: 3,
+    readyIn: 7,
     parts: trousersParts.keys().map(trousersParts),
     sizeOptions: [
       { label: "S", value: 0.5 },
@@ -958,7 +958,7 @@ export const mainFemaleCustomize = [
   //   price: 20,
   //   sizeGuide: leggings_guide,
   //   sizeModels: tshirt_model,
-  //   readyIn: 3,
+  //   readyIn: 7,
   //   parts: leggingsParts.keys().map(leggingsParts),
   //   sizeOptions: [
   //     { label: "S", value: 0.5 },

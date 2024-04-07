@@ -54,7 +54,7 @@ export const mainUnisex = [
     price: 55,
     // parts: sashParts.keys().map(sashParts),
     // sizeModels: tshirt_model,
-    readyIn: 3,
+    readyIn: 7,
     sizeGuide: bangle_guide,
     sizeOptions: [
       { label: "S", value: 0.5 },
@@ -83,7 +83,7 @@ export const mainUnisex = [
     price: 55,
     // parts: sashParts.keys().map(sashParts),
     // sizeModels: tshirt_model,
-    readyIn: 3,
+    readyIn: 7,
     sizeGuide: earring_guide,
     sizeOptions: [
       { label: "S", value: 0.5 },
@@ -114,7 +114,7 @@ export const mainUnisex = [
     price: 55,
     // parts: bikiniParts.keys().map(bikiniParts),
     // sizeModels: tshirt_model,
-    readyIn: 3,
+    readyIn: 7,
     sizeGuide: bikini_guide,
     sizeOptions: [
       // { label: "XS", value: 0.5 },
@@ -150,7 +150,7 @@ export const mainUnisex = [
   //   price: 55,
   //   parts: miniBagParts.keys().map(miniBagParts),
   //   sizeModels: tshirt_model,
-  //   readyIn: 3,
+  //   readyIn: 7,
   //   sizeGuide: miniBag_guide,
   //   sizeOptions: [
   //     { label: "S", value: 0.5 },
@@ -179,7 +179,7 @@ export const mainUnisex = [
   //   price: 55,
   //   parts: backpackParts.keys().map(backpackParts),
   //   sizeModels: tshirt_model,
-  //   readyIn: 3,
+  //   readyIn: 7,
   //   sizeGuide: backpack_guide,
   //   sizeOptions: [
   //     { label: "S", value: 0.5 },
@@ -212,7 +212,7 @@ export const mainUnisex = [
   //   price: 55,
   //   parts: jacketParts.keys().map(jacketParts),
   //   sizeModels: tshirt_model,
-  //   readyIn: 3,
+  //   readyIn: 7,
   //   sizeGuide: jacket_guide,
   //   sizeOptions: [
   //     // { label: "XS", value: 0.5 },
@@ -254,7 +254,7 @@ export const mainUnisex = [
     price: 55,
     // parts: sashParts.keys().map(sashParts),
     // sizeModels: tshirt_model,
-    readyIn: 3,
+    readyIn: 7,
     weight: 0.25,
     sizeGuide: sash_guide,
     sizeOptions: [
@@ -285,7 +285,7 @@ export const mainUnisex = [
     ],
     myZoom: 2,
     price: 55,
-    readyIn: 3,
+    readyIn: 7,
     // weight: 0.25,
     sizeGuide: sash_guide,
     sizeOptions: [
@@ -314,7 +314,7 @@ export const mainUnisex = [
     ],
     myZoom: 2,
     price: 55,
-    readyIn: 3,
+    readyIn: 7,
     // weight: 0.25,
     sizeGuide: sash_guide,
     sizeOptions: [
@@ -347,7 +347,7 @@ export const mainUnisex = [
     price: 55,
     // parts: sashParts.keys().map(sashParts),
     // sizeModels: tshirt_model,
-    readyIn: 3,
+    readyIn: 7,
     // weight: 0.25,
     sizeGuide: sash_guide,
     sizeOptions: [
@@ -378,7 +378,7 @@ export const mainUnisex = [
     price: 55,
     // parts: sashParts.keys().map(sashParts),
     // sizeModels: tshirt_model,
-    readyIn: 3,
+    readyIn: 7,
     // weight: 0.25,
     sizeGuide: sash_guide,
     sizeOptions: [

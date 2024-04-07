@@ -82,7 +82,7 @@ export const mainMaleAccessories = [
   //   parts: roundCapParts.keys().map(roundCapParts),
   //   sizeGuide: roundCap_guide,
   //   sizeModels: tshirt_model,
-  //   readyIn: 3,
+  //   readyIn: 7,
   //   sizeOptions: [
   //     { label: "S", value: 0.5 },
   //     { label: "M", value: 1 },
@@ -113,7 +113,7 @@ export const mainMaleAccessories = [
   //   parts: knittedCapParts.keys().map(knittedCapParts),
   //   sizeGuide: knittedCap_guide,
   //   sizeModels: tshirt_model,
-  //   readyIn: 3,
+  //   readyIn: 7,
   //   sizeOptions: [
   //     { label: "S", value: 0.5 },
   //     { label: "M", value: 1 },
@@ -142,7 +142,7 @@ export const mainMaleAccessories = [
   //   price: 20,
   //   parts: bowTieParts.keys().map(bowTieParts),
   //   sizeModels: tshirt_model,
-  //   readyIn: 3,
+  //   readyIn: 7,
   //   sizeGuide: bowTie_guide,
   //   sizeOptions: [
   //     { label: "S", value: 0.5 },
@@ -171,7 +171,7 @@ export const mainMaleAccessories = [
   //   price: 20,
   //   parts: flyingTieParts.keys().map(flyingTieParts),
   //   sizeModels: tshirt_model,
-  //   readyIn: 3,
+  //   readyIn: 7,
   //   sizeGuide: flyingTie_guide,
   //   sizeOptions: [
   //     { label: "Skinny", value: 0.5 },
@@ -206,7 +206,7 @@ export const mainFemaleAccessories = [
   //   parts: handbagParts.keys().map(handbagParts),
   //   sizeGuide: handbag_guide,
   //   sizeModels: tshirt_model,
-  //   readyIn: 3,
+  //   readyIn: 7,
   //   sizeOptions: [
   //     { label: "S", value: 0.5 },
   //     { label: "M", value: 1 },
@@ -238,7 +238,7 @@ export const mainFemaleAccessories = [
     price: 55,
     parts: bikiniParts.keys().map(bikiniParts),
     // sizeModels: tshirt_model,
-    readyIn: 3,
+    readyIn: 7,
     sizeGuide: bikini_guide,
     sizeOptions: [
       // // { label: "XS", value: 0.5 },
