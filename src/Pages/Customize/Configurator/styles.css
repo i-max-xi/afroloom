@@ -201,9 +201,10 @@ h1 {
   color: blue;
   text-transform: capitalize;
   display: flex;
-  justify-content: space-between;
-  width: 100%;
-  gap: 2rem
+  width: 150%;
+  gap: 2rem;
+  align-items: center;
+  
 }
 
 

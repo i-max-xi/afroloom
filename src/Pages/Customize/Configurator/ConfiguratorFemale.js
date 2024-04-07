@@ -280,7 +280,7 @@ const ConfiguratorFemale = () => {
 
   // Create a state object to store the form field values
   const [sizeFormValues, setSizeFormValues] = useState(
-    selectedClothing.sizeForms.reduce((acc, formField) => {
+    selectedClothing.sizeForms?.reduce((acc, formField) => {
       acc[formField.label] = formField.value;
       return acc;
     }, {})
@@ -558,7 +558,7 @@ const ConfiguratorFemale = () => {
                         <h4 className="mt-3">
                           Customize Your Own Measurements
                         </h4>
-                        {selectedClothing.sizeForms.map((formField) => (
+                        {selectedClothing.sizeForms?.map((formField) => (
                           <div className="m-3" key={formField.label}>
                             <label className="form-label">
                               {formField.label}

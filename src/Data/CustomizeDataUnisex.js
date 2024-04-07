@@ -22,6 +22,9 @@ import miniBag_guide from "../Assets/size_guide/Unisex/30.jpg";
 import backpack_guide from "../Assets/size_guide/Unisex/29.jpg";
 import jacket_guide from "../Assets/size_guide/Unisex/35.jpg";
 import bikini_guide from "../Assets/size_guide/Accessories/Female/31.jpg";
+import earring_guide from "../Assets/size_guide/Unisex/earring size chart.jpg";
+import bangle_guide from "../Assets/size_guide/Unisex/bracelet size chart.jpg";
+
 
 // Marketing Models
 const tshirt_model = "";
@@ -81,7 +84,7 @@ export const mainUnisex = [
     parts: sashParts.keys().map(sashParts),
     // sizeModels: tshirt_model,
     readyIn: 3,
-    sizeGuide: sash_guide,
+    sizeGuide: bangle_guide,
     sizeOptions: [
       { label: "S", value: 0.5 },
       { label: "M", value: 1 },
@@ -89,14 +92,14 @@ export const mainUnisex = [
       // { label: "XL", value: 3 },
       // { label: "2XL", value: 4 },
     ],
-    sizeForms: [
-      {
-        label: "Length (inch)",
-      },
-      {
-        label: "Width (inch)",
-      },
-    ],
+    // sizeForms: [
+    //   {
+    //     label: "Length (inch)",
+    //   },
+    //   {
+    //     label: "Width (inch)",
+    //   },
+    // ],
   },
   {
     id: uuid(),
@@ -104,7 +107,7 @@ export const mainUnisex = [
     image: earring,
     model: earring_model,
     myNode: [
-      { name: "bead", yardNeeded: 1 },
+      { name: "balls", yardNeeded: 1 },
       { name: "brass", yardNeeded: 1 },
     ],
 
@@ -113,7 +116,7 @@ export const mainUnisex = [
     parts: sashParts.keys().map(sashParts),
     // sizeModels: tshirt_model,
     readyIn: 3,
-    sizeGuide: sash_guide,
+    sizeGuide: earring_guide,
     sizeOptions: [
       { label: "S", value: 0.5 },
       { label: "M", value: 1 },
@@ -121,14 +124,14 @@ export const mainUnisex = [
       // { label: "XL", value: 3 },
       // { label: "2XL", value: 4 },
     ],
-    sizeForms: [
-      {
-        label: "Length (inch)",
-      },
-      {
-        label: "Width (inch)",
-      },
-    ],
+    // sizeForms: [
+    //   {
+    //     label: "Length (inch)",
+    //   },
+    //   {
+    //     label: "Width (inch)",
+    //   },
+    // ],
   },
   {
     id: uuid(),

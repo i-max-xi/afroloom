@@ -1,4 +1,4 @@
-import batik1 from "../textures/waxPrint/17.jpg";
+import batik1 from "../textures/tie_and_dye/21 tie and dye.jpg";
 
 import batik2 from "../textures/batik2.jpg";
 import batik3 from "../textures/batik3.jpg";
@@ -476,6 +476,7 @@ export const displayInplaceFor = [
   "Booty Shorts",
   "Leggings",
   "Top And Down Kaftan",
+  "Earring"
 ];
 
 export const noSpinFor = [
@@ -486,3 +487,7 @@ export const noSpinFor = [
   "Text Up, Image Down Sash",
   "One-Sided Logo, Two-Sided Text Sash",
 ];
+
+export const notAll = [
+  "Earring"
+]

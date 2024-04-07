@@ -32,6 +32,7 @@ import {
   specialNodeNames,
   displayInplaceFor,
   noSpinFor,
+  notAll,
 } from "./arrays/neededArrays";
 import TextureItem from "./TextureItem";
 import PartImages from "./PartImages";
@@ -578,9 +579,9 @@ const ConfiguratorUnisex = () => {
 
   const captureCanvasAsImage = async () => {
     const requiresHeight = displayInplaceFor.includes(selectedClothing.name);
-    const heightProvided = height !== "";
+    const genderProvided = gender !== "";
 
-    if (requiresHeight && !heightProvided) {
+    if (requiresHeight && !genderProvided) {
       // Prevent completing if height is required but not provided
       toastRef.current.show({
         severity: "error",
@@ -605,7 +606,7 @@ const ConfiguratorUnisex = () => {
 
   // Create a state object to store the form field values
   const [sizeFormValues, setSizeFormValues] = useState(
-    selectedClothing.sizeForms.reduce((acc, formField) => {
+    selectedClothing.sizeForms?.reduce((acc, formField) => {
       acc[formField.label] = formField.value;
       return acc;
     }, {})
@@ -660,7 +661,7 @@ const ConfiguratorUnisex = () => {
   };
 
   // customer height
-  const [height, setHeight] = useState("");
+  const [gender, setGender] = useState("");
 
   const handleAllPartsClick = () => {
     setSelectedPart("all");
@@ -691,14 +692,17 @@ const ConfiguratorUnisex = () => {
     } else {
       return (
         <>
-          <button
-            className={`size-button btn btn-outline-dark ${
-              selectedPart === "all" ? "selected" : ""
-            }`}
-            onClick={handleAllPartsClick}
-          >
-            All
-          </button>
+          {!notAll.includes(selectedClothing.name) && (
+            <button
+              className={`size-button btn btn-outline-dark ${
+                selectedPart === "all" ? "selected" : ""
+              }`}
+              onClick={handleAllPartsClick}
+            >
+              All
+            </button>
+          )}
+
           {selectedClothing.myNode.map((nodeName, index) => {
             if (specialNodeNames.includes(nodeName.name)) {
               return null; // Skip rendering this node
@@ -777,7 +781,8 @@ const ConfiguratorUnisex = () => {
           }
           modelImage={stateImage}
           customSizeValues={sizeFormValues}
-          height={height}
+          // height={height}
+          gender={gender}
         />
       ) : (
         <>
@@ -839,7 +844,6 @@ const ConfiguratorUnisex = () => {
                     {displayInplaceFor.includes(selectedClothing.name) && (
                       <Inplace className="text-black" closable>
                         <InplaceDisplay>
-                          {height || "Click to input your height "}
                           <span
                             style={{
                               color: "red",
@@ -847,13 +851,14 @@ const ConfiguratorUnisex = () => {
                               textTransform: "lowercase",
                             }}
                           >
-                            (cm*)
+                            {gender ||
+                              "Tap to input your gender (sizes differ with gender)"}
                           </span>
                         </InplaceDisplay>
                         <InplaceContent>
                           <InputText
-                            value={height}
-                            onChange={(e) => setHeight(e.target.value)}
+                            value={gender}
+                            onChange={(e) => setGender(e.target.value)}
                             autoFocus
                             tooltip="we need this for accurate design"
                           />
@@ -891,24 +896,26 @@ const ConfiguratorUnisex = () => {
                         <h4 className="mt-3">
                           Customize Your Own Measurements
                         </h4>
-                        {selectedClothing.sizeForms.map((formField) => (
-                          <div className="m-3" key={formField.label}>
-                            <label className="form-label">
-                              {formField.label}
-                            </label>
-                            <input
-                              type="number"
-                              className="form-control"
-                              value={sizeFormValues[formField.label]}
-                              onChange={(e) =>
-                                handleSizeFormChange(
-                                  formField.label,
-                                  e.target.value
-                                )
-                              }
-                            />
-                          </div>
-                        ))}
+                        {selectedClothing?.sizeForms
+                          ? selectedClothing.sizeForms?.map((formField) => (
+                              <div className="m-3" key={formField.label}>
+                                <label className="form-label">
+                                  {formField.label}
+                                </label>
+                                <input
+                                  type="number"
+                                  className="form-control"
+                                  value={sizeFormValues[formField.label]}
+                                  onChange={(e) =>
+                                    handleSizeFormChange(
+                                      formField.label,
+                                      e.target.value
+                                    )
+                                  }
+                                />
+                              </div>
+                            ))
+                          : "N/A"}
                       </form>
                     </div>
                   </Dialog>

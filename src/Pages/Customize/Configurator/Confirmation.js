@@ -29,6 +29,7 @@ const Confirmation = ({
   modelImage,
   customSizeValues,
   height,
+  gender,
 }) => {
   const toast = useRef(null);
   const [isLoading, setIsLoading] = useState(false); // Initialize loading state
@@ -37,8 +38,7 @@ const Confirmation = ({
   const [count, setCount] = useState(1);
   const [special, setSpecial] = useState("");
 
-  const [readyByCount, setReadyByCount] = useState(readyBy)
-
+  const [readyByCount, setReadyByCount] = useState(readyBy);
 
   const handleIncrement = () => {
     setCount((prevCount) => prevCount + 1);
@@ -93,6 +93,7 @@ const Confirmation = ({
           selectedParts: selectedParts,
           customSizeValues: customSizeValues,
           height: height,
+          gender: gender,
           specialRequests: special,
           // Other properties specific to your object
         },
@@ -145,6 +146,7 @@ const Confirmation = ({
         modelImage={modelImage}
         customSizeValues={customSizeValues}
         height={height}
+        gender={gender}
         name={name}
         count={count}
         handleDecrement={handleDecrement}
@@ -202,16 +204,16 @@ export const OrderDetail = React.forwardRef(
       modelImage,
       customSizeValues,
       height,
+      gender,
       name,
       count,
       handleDecrement,
       handleIncrement,
       special,
-      setSpecial
+      setSpecial,
     },
     ref
   ) => {
-
     const currencySymbol = useSelector((state) => state.currencySymbol.symbol);
     const currencyFactor = useSelector((state) => state.currencySymbol.factor);
 
@@ -272,6 +274,13 @@ export const OrderDetail = React.forwardRef(
                     <div>
                       <strong className="text-warning">Your Height:</strong>
                       {height + ""} cm
+                    </div>
+                  )}
+
+                  {gender && (
+                    <div>
+                      <strong className="text-warning">Your Gender:</strong>
+                      {gender}
                     </div>
                   )}
 
