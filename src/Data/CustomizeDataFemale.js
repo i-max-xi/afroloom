@@ -54,7 +54,6 @@ import jacket_guide from "../Assets/size_guide/FemaleClothing/ladies bomber.png"
 import summer_shorts_guide from "../Assets/size_guide/FemaleClothing/women summer shorts.jpg";
 
 // models
-import tshirt_model from "../Pages/Customize/Configurator/size_guide/female/women.JPG";
 
 //part images
 const tShirtShortParts = require.context(

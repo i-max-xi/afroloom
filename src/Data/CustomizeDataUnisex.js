@@ -26,33 +26,6 @@ import earring_guide from "../Assets/size_guide/Unisex/earring size chart.jpg";
 import bangle_guide from "../Assets/size_guide/Unisex/bracelet size chart.jpg";
 
 
-// Marketing Models
-const tshirt_model = "";
-
-// parts
-const sashParts = require.context(
-  "../Assets/model_parts/Accessories/Unisex/sash",
-  false,
-  /\.(png|jpg|jpeg|gif)$/
-);
-
-const miniBagParts = require.context(
-  "../Assets/model_parts/Accessories/Unisex/mini_bag_handle_main_body",
-  false,
-  /\.(png|jpg|jpeg|gif)$/
-);
-
-const backpackParts = require.context(
-  "../Assets/model_parts/Accessories/Unisex/backpack",
-  false,
-  /\.(png|jpg|jpeg|gif)$/
-);
-
-const jacketParts = require.context(
-  "../Assets/model_parts/Accessories/Unisex/jacket_main",
-  false,
-  /\.(png|jpg|jpeg|gif)$/
-);
 
 const image_waist_bag = require("../Assets/welcome_3ds/others/waist bag.jpg");
 const image_jacket = require("../Assets/welcome_3ds/others/jacket.png");
@@ -81,7 +54,7 @@ export const mainUnisex = [
 
     myZoom: 0.8,
     price: 55,
-    parts: sashParts.keys().map(sashParts),
+    // parts: sashParts.keys().map(sashParts),
     // sizeModels: tshirt_model,
     readyIn: 3,
     sizeGuide: bangle_guide,
@@ -113,7 +86,7 @@ export const mainUnisex = [
 
     myZoom: 0.8,
     price: 55,
-    parts: sashParts.keys().map(sashParts),
+    // parts: sashParts.keys().map(sashParts),
     // sizeModels: tshirt_model,
     readyIn: 3,
     sizeGuide: earring_guide,
@@ -153,8 +126,8 @@ export const mainUnisex = [
       { label: "S", value: 0.5 },
       { label: "M", value: 1 },
       { label: "L", value: 2 },
-      // { label: "XL", value: 3 },
-      // { label: "2XL", value: 4 },
+      { label: "XL", value: 3 },
+      { label: "2XL", value: 4 },
     ],
     sizeForms: [
       {
@@ -284,7 +257,7 @@ export const mainUnisex = [
     ],
     myZoom: 2,
     price: 55,
-    parts: sashParts.keys().map(sashParts),
+    // parts: sashParts.keys().map(sashParts),
     // sizeModels: tshirt_model,
     readyIn: 3,
     weight: 0.25,
