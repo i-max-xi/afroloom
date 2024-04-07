@@ -179,7 +179,6 @@ const ConfiguratorUnisex = () => {
 
   // const [textPosition] = useState([-0.65, -0.15, 0.05]); // Initialize text position
   const [textColor, setTextColor] = useState("black");
-  const [fontSize, setFontSize] = useState(11);
   const [fontFamily, setFontFamily] = useState("Arial");
   const [hideText, setHideText] = useState(false);
 
@@ -222,9 +221,9 @@ const ConfiguratorUnisex = () => {
         left: {
           text: enteredTextLeft,
           top: "-1rem",
-          left: "-8rem",
+          left: "-7.4rem",
           height: "8rem",
-          width: "5.4rem",
+          width: "3.6rem",
           lineHeight: "",
           image: {
             top: "-22rem",
@@ -240,9 +239,9 @@ const ConfiguratorUnisex = () => {
         right: {
           text: enteredTextRight,
           top: "-1rem",
-          left: "3rem",
+          left: "3.8rem",
           height: "8rem",
-          width: "5.4rem",
+          width: "3.6rem",
           lineHeight: "",
           image: {
             top: "-24rem",
@@ -261,10 +260,10 @@ const ConfiguratorUnisex = () => {
       return {
         left: {
           text: enteredTextLeft,
-          top: "-8rem",
-          left: "-8rem",
+          top: "-7rem",
+          left: "-7.4rem",
           height: "8rem",
-          width: "5.4rem",
+          width: "3.6rem",
           lineHeight: "",
           image: {
             top: "-10.2rem",
@@ -279,10 +278,10 @@ const ConfiguratorUnisex = () => {
         },
         right: {
           text: enteredTextRight,
-          top: "-8rem",
-          left: "3rem",
+          top: "-7rem",
+          left: "3.8rem",
           height: "8rem",
-          width: "5.4rem",
+          width: "3.6rem",
           lineHeight: "",
           image: {
             top: "-12.2rem",
@@ -301,11 +300,12 @@ const ConfiguratorUnisex = () => {
       return {
         left: {
           text: enteredTextLeft,
-          top: "2.8rem",
-          left: "-8.3rem",
-          height: "12rem",
-          width: "5.4rem",
+          top: "1.8rem",
+          left: "-6.5rem",
+          height: "10rem",
+          width: "2rem",
           lineHeight: "",
+          size: 6,
           image: {
             top: "-18rem",
             left: "6.8rem",
@@ -320,10 +320,11 @@ const ConfiguratorUnisex = () => {
         right: {
           text: enteredTextRight,
           top: "-3.8rem",
-          left: "2rem",
-          height: "12rem",
-          width: "5.4rem",
+          left: "3.75rem",
+          height: "10rem",
+          width: "2rem",
           lineHeight: "",
+          size: 6,
           image: {
             top: "-12rem",
             left: "16.8rem",
@@ -342,9 +343,9 @@ const ConfiguratorUnisex = () => {
         left: {
           text: enteredTextLeft,
           top: "-7rem",
-          left: "-8.5rem",
-          height: "12rem",
-          width: "5.4rem",
+          left: "-7.4rem",
+          height: "10rem",
+          width: "3.6rem",
           lineHeight: "",
           image: {
             top: "-10.5rem",
@@ -360,9 +361,9 @@ const ConfiguratorUnisex = () => {
         right: {
           text: enteredTextRight,
           top: "-7rem",
-          left: "3rem",
-          height: "12rem",
-          width: "5.4rem",
+          left: "3.8rem",
+          height: "10rem",
+          width: "3.6rem",
           lineHeight: "",
           image: {
             top: "-13.7rem",
@@ -382,10 +383,11 @@ const ConfiguratorUnisex = () => {
         left: {
           text: enteredTextLeft,
           top: "-1rem",
-          left: "-8rem",
+          left: "-6.45rem",
           height: "12rem",
-          width: "5.4rem",
+          width: "2rem",
           lineHeight: "",
+          size: 6,
           image: {
             top: "-18rem",
             left: "7rem",
@@ -418,6 +420,13 @@ const ConfiguratorUnisex = () => {
       };
     }
   }, [selectedClothing.name]);
+
+  const [fontSizeLeft, setFontSizeLeft] = useState(
+    ImprintTextPosition?.left?.size || 11
+  );
+  const [fontSizeRight, setFontSizeRight] = useState(
+    ImprintTextPosition?.right?.size || 11
+  );
 
   const [isLoading, setIsLoading] = useState(true); // Add loading state
 
@@ -462,12 +471,20 @@ const ConfiguratorUnisex = () => {
     setFontFamily(fonts[newIndex]);
   };
 
-  const increaseFontSize = () => {
-    setFontSize((prevSize) => prevSize + 1); // Increase font size by 0.01
+  const increaseFontSizeLeft = () => {
+    setFontSizeLeft((prevSize) => prevSize + 1);
   };
 
-  const decreaseFontSize = () => {
-    setFontSize((prevSize) => prevSize - 1); // Decrease font size by 0.01
+  const decreaseFontSizeLeft = () => {
+    setFontSizeLeft((prevSize) => prevSize - 1);
+  };
+
+  const increaseFontSizeRight = () => {
+    setFontSizeRight((prevSize) => prevSize + 1);
+  };
+
+  const decreaseFontSizeRight = () => {
+    setFontSizeRight((prevSize) => prevSize - 1);
   };
 
   // Image imprint
@@ -851,8 +868,7 @@ const ConfiguratorUnisex = () => {
                               textTransform: "lowercase",
                             }}
                           >
-                            {gender ||
-                              "Tap to input your gender (sizes differ with gender)"}
+                            {gender || "Tap to input your gender"}
                           </span>
                         </InplaceDisplay>
                         <InplaceContent>
@@ -1050,7 +1066,8 @@ const ConfiguratorUnisex = () => {
                             textLeft={enteredTextLeft}
                             textRight={enteredTextRight}
                             textColor={textColor}
-                            textSize={fontSize}
+                            textSizeleft={fontSizeLeft}
+                            textSizeRight={fontSizeRight}
                             fontFamily={fontFamily}
                             textLeftOrientation={textLeftOrientation}
                             textRightOrientation={textRightOrientation}
@@ -1237,18 +1254,35 @@ const ConfiguratorUnisex = () => {
                               </button>
                             </div>
 
-                            <h6>Size</h6>
+                            <h6>Size (Left)</h6>
                             <div className="d-flex  gap-2 justify-content-center align-items-center fs-button">
                               <button
                                 className="btn btn-info btn-sm p-2 text-white"
-                                onClick={decreaseFontSize}
+                                onClick={decreaseFontSizeLeft}
                               >
                                 -
                               </button>
-                              <span className="font-size">{fontSize}</span>
+                              <span className="font-size">{fontSizeLeft}</span>
                               <button
                                 className="btn btn-info btn-sm p-2 text-white"
-                                onClick={increaseFontSize}
+                                onClick={increaseFontSizeLeft}
+                              >
+                                +
+                              </button>
+                            </div>
+
+                            <h6>Size (Right)</h6>
+                            <div className="d-flex  gap-2 justify-content-center align-items-center fs-button">
+                              <button
+                                className="btn btn-info btn-sm p-2 text-white"
+                                onClick={decreaseFontSizeRight}
+                              >
+                                -
+                              </button>
+                              <span className="font-size">{fontSizeRight}</span>
+                              <button
+                                className="btn btn-info btn-sm p-2 text-white"
+                                onClick={increaseFontSizeRight}
                               >
                                 +
                               </button>

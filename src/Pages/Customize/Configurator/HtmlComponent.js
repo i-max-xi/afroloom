@@ -4,7 +4,8 @@ const HtmlComponent = ({
   textLeft,
   textRight,
   textColor,
-  textSize,
+  textSizeleft,
+  textSizeRight,
   fontFamily,
   textLeftOrientation,
   textRightOrientation,
@@ -27,7 +28,7 @@ const HtmlComponent = ({
           position: "absolute",
           transform: `translate(${ImprintTextPosition?.left?.left}, ${ImprintTextPosition.left?.top})`,
           color: textColor,
-          fontSize: textSize,
+          fontSize: textSizeleft,
           width: ImprintTextPosition?.left?.width,
           height: ImprintTextPosition?.left?.height,
           wordWrap: "break-word", // Enable word wrapping for long words
@@ -53,7 +54,7 @@ const HtmlComponent = ({
             position: "absolute",
             transform: `translate(${ImprintTextPosition.right.left}, ${ImprintTextPosition.right?.top})`,
             color: textColor,
-            fontSize: textSize,
+            fontSize: textSizeRight,
             width: ImprintTextPosition?.right.width,
             height: ImprintTextPosition?.right.height,
             wordWrap: "break-word", // Enable word wrapping for long words
