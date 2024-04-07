@@ -31,6 +31,7 @@ import shirt_guide from "../Assets/size_guide/MaleClothing/men short sleeve shir
 import shirtlong_guide from "../Assets/size_guide/MaleClothing/men long sleeve shirt.png";
 import top_down_guide from "../Assets/size_guide/MaleClothing/mens kaftan.jpg";
 import cloak_guide from "../Assets/size_guide/MaleClothing/mens kimono jacket.jpg";
+import loose_top_guide from "../Assets/size_guide/MaleClothing/mens loose short sleeve t shirt.jpg";
 import blazer_guide from "../Assets/size_guide/MaleClothing/men blazer.png";
 import trouser_guide from "../Assets/size_guide/MaleClothing/mens trousers.jpg";
 import summer_shorts_guide from "../Assets/size_guide/MaleClothing/men summer shorts.jpg";
@@ -354,7 +355,7 @@ export const mainMaleCustomize = [
     myX: 0,
     myY: 10,
     price: 35,
-    sizeGuide: cloak_guide,
+    sizeGuide: loose_top_guide,
     // sizeModels: tshirt_model,
     readyIn: 3,
     parts: topParts.keys().map(topParts),
