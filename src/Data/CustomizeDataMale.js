@@ -343,7 +343,7 @@ export const mainMaleCustomize = [
   },
   {
     id: uuid(),
-    name: "Loose Short Sleeves Shirt",
+    name: "Loose Short Sleeve Shirt",
     image: flare_shirt,
     model: cloak,
     myNode: [
