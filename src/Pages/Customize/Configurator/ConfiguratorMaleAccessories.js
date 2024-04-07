@@ -509,7 +509,7 @@ const ConfiguratorMaleAccessories = () => {
                     {displayInplaceFor.includes(selectedClothing.name) && (
                       <Inplace className="text-black" closable>
                         <InplaceDisplay>
-                          {height || "Click to input your height "}
+                          {height || "Click to input height "}
                           <span
                             style={{
                               color: "red",

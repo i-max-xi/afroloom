@@ -475,9 +475,12 @@ export const displayInplaceFor = [
   "Summer Shorts",
   "Booty Shorts",
   "Leggings",
-  "Top And Down Kaftan",
+  "Long Sleeve Top And Down Kaftan",
   "Earring",
-  "Beads Bracelet"
+  "Beads Bracelet",
+  "Kimono Jacket",
+  "Mini Skirt",
+  "Long Skirt"
 ];
 
 export const noSpinFor = [

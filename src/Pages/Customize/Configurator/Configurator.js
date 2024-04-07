@@ -202,11 +202,11 @@ const Configurator = () => {
         textureArrays[category].includes(newTexture)
       );
 
-      // const yardNeeded = selectedClothing.myNode[selectedPart].yardNeeded;
+      const yardNeeded = selectedClothing.myNode[selectedPart].yardNeeded;
       const yardPrice = textureValues[textureCategory].price;
       // const yardAvailable = textureValues[textureCategory].yardAvailable;
 
-      const newPartPrice = yardPrice;
+      const newPartPrice = (yardNeeded * yardPrice);
 
       setPartPrices(Array(selectedClothing.myNode.length).fill(newPartPrice));
       return;
@@ -511,7 +511,7 @@ const Configurator = () => {
                     {displayInplaceFor.includes(selectedClothing.name) && (
                       <Inplace className="text-black" closable>
                         <InplaceDisplay>
-                          {height || "Click to input your height "}
+                          {height || "Click to input height "}
                           <span
                             style={{
                               color: "red",

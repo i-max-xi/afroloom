@@ -25,8 +25,6 @@ import bikini_guide from "../Assets/size_guide/Accessories/Female/31.jpg";
 import earring_guide from "../Assets/size_guide/Unisex/earring size chart.jpg";
 import bangle_guide from "../Assets/size_guide/Unisex/bracelet size chart.jpg";
 
-
-
 const image_waist_bag = require("../Assets/welcome_3ds/others/waist bag.jpg");
 const image_jacket = require("../Assets/welcome_3ds/others/jacket.png");
 const image_backpack = require("../Assets/welcome_3ds/others/backpack.png");
@@ -65,14 +63,11 @@ export const mainUnisex = [
       // { label: "XL", value: 3 },
       // { label: "2XL", value: 4 },
     ],
-    // sizeForms: [
-    //   {
-    //     label: "Length (cm)",
-    //   },
-    //   {
-    //     label: "Width (cm)",
-    //   },
-    // ],
+    sizeForms: [
+      {
+        label: "Earlobe (mm)",
+      },
+    ],
   },
   {
     id: uuid(),
