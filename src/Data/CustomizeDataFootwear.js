@@ -79,7 +79,7 @@ sizeModels: tshirt_model,
     ],
     sizeForms: [
       {
-        label: "Length (inch)",
+        label: "Length (cm)",
       },
       // Add more form fields as needed
     ],
@@ -113,7 +113,7 @@ sizeModels: tshirt_model,
     ],
     sizeForms: [
       {
-        label: "Length (inch)",
+        label: "Length (cm)",
       },
       // Add more form fields as needed
     ],
@@ -148,10 +148,10 @@ sizeModels: tshirt_model,
     ],
     sizeForms: [
       {
-        label: "Length (inch)",
+        label: "Length (cm)",
       },
       {
-        label: "Width (inch)",
+        label: "Width (cm)",
       },
     ],
   },
@@ -180,10 +180,10 @@ sizeModels: tshirt_model,
     ],
     sizeForms: [
       {
-        label: "Heel-to-Toe Length (inch)",
+        label: "Heel-to-Toe Length (cm)",
       },
       {
-        label: "Heel Height (inch)",
+        label: "Heel Height (cm)",
       },
       // Add more form fields as needed
     ],

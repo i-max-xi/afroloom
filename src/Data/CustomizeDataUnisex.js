@@ -94,10 +94,10 @@ export const mainUnisex = [
     ],
     // sizeForms: [
     //   {
-    //     label: "Length (inch)",
+    //     label: "Length (cm)",
     //   },
     //   {
-    //     label: "Width (inch)",
+    //     label: "Width (cm)",
     //   },
     // ],
   },
@@ -126,10 +126,10 @@ export const mainUnisex = [
     ],
     // sizeForms: [
     //   {
-    //     label: "Length (inch)",
+    //     label: "Length (cm)",
     //   },
     //   {
-    //     label: "Width (inch)",
+    //     label: "Width (cm)",
     //   },
     // ],
   },
@@ -158,16 +158,16 @@ export const mainUnisex = [
     ],
     sizeForms: [
       {
-        label: "Upper Bust (inch)",
+        label: "Upper Bust (cm)",
       },
       {
-        label: "Under Bust (inch)",
+        label: "Under Bust (cm)",
       },
       {
-        label: "Waist (inch)",
+        label: "Waist (cm)",
       },
       {
-        label: "Bottom Length (inch)",
+        label: "Bottom Length (cm)",
       },
       // Add more form fields as needed
     ],
@@ -193,10 +193,10 @@ export const mainUnisex = [
   //   ],
   //   sizeForms: [
   //     {
-  //       label: "Min-Max circumference (inch)",
+  //       label: "Min-Max circumference (cm)",
   //     },
   //     {
-  //       label: "Width (inch)",
+  //       label: "Width (cm)",
   //     },
   //     // Add more form fields as needed
   //   ],
@@ -220,13 +220,13 @@ export const mainUnisex = [
   //   ],
   //   sizeForms: [
   //     {
-  //       label: "Height (inch)",
+  //       label: "Height (cm)",
   //     },
   //     {
-  //       label: "Depth (inch)",
+  //       label: "Depth (cm)",
   //     },
   //     {
-  //       label: "Width (inch)",
+  //       label: "Width (cm)",
   //     },
   //   ],
   // },
@@ -256,16 +256,16 @@ export const mainUnisex = [
   //   ],
   //   sizeForms: [
   //     {
-  //       label: "Shoulder (inch)",
+  //       label: "Shoulder (cm)",
   //     },
   //     {
-  //       label: "Chest (inch)",
+  //       label: "Chest (cm)",
   //     },
   //     {
-  //       label: "Body Length (inch)",
+  //       label: "Body Length (cm)",
   //     },
   //     {
-  //       label: "Sleeve Length(inch)",
+  //       label: "Sleeve Length(cm)",
   //     },
   //     // Add more form fields as needed
   //   ],
@@ -296,10 +296,10 @@ export const mainUnisex = [
     ],
     sizeForms: [
       {
-        label: "Length (inch)",
+        label: "Length (cm)",
       },
       {
-        label: "Width (inch)",
+        label: "Width (cm)",
       },
     ],
   },
@@ -327,10 +327,10 @@ export const mainUnisex = [
     ],
     sizeForms: [
       {
-        label: "Length (inch)",
+        label: "Length (cm)",
       },
       {
-        label: "Width (inch)",
+        label: "Width (cm)",
       },
     ],
   },
@@ -356,10 +356,10 @@ export const mainUnisex = [
     ],
     sizeForms: [
       {
-        label: "Length (inch)",
+        label: "Length (cm)",
       },
       {
-        label: "Width (inch)",
+        label: "Width (cm)",
       },
     ],
   },
@@ -389,10 +389,10 @@ export const mainUnisex = [
     ],
     sizeForms: [
       {
-        label: "Length (inch)",
+        label: "Length (cm)",
       },
       {
-        label: "Width (inch)",
+        label: "Width (cm)",
       },
     ],
   },
@@ -420,10 +420,10 @@ export const mainUnisex = [
     ],
     sizeForms: [
       {
-        label: "Length (inch)",
+        label: "Length (cm)",
       },
       {
-        label: "Width (inch)",
+        label: "Width (cm)",
       },
     ],
   },

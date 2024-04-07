@@ -408,16 +408,16 @@ export const mainMaleCustomize = [
     ],
     sizeForms: [
       {
-        label: "Shoulder (inch)",
+        label: "Shoulder (cm)",
       },
       {
-        label: "Chest (inch)",
+        label: "Chest (cm)",
       },
       {
-        label: "Body Length (inch)",
+        label: "Body Length (cm)",
       },
       {
-        label: "Sleeve Length(inch)",
+        label: "Sleeve Length(cm)",
       },
       // Add more form fields as needed
     ],

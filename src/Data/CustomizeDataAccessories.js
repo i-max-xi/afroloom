@@ -92,11 +92,11 @@ export const mainMaleAccessories = [
   //   ],
   //   sizeForms: [
   //     {
-  //       label: "Length (inch)",
+  //       label: "Length (cm)",
   //       value: "",
   //     },
   //     {
-  //       label: "Width (inch)",
+  //       label: "Width (cm)",
   //       value: "",
   //     },
   //     // Add more form fields as needed
@@ -123,11 +123,11 @@ export const mainMaleAccessories = [
   //   ],
   //   sizeForms: [
   //     {
-  //       label: "Length (inch)",
+  //       label: "Length (cm)",
   //       value: "",
   //     },
   //     {
-  //       label: "Width (inch)",
+  //       label: "Width (cm)",
   //       value: "",
   //     },
   //     // Add more form fields as needed
@@ -181,13 +181,13 @@ export const mainMaleAccessories = [
   //   ],
   //   sizeForms: [
   //     {
-  //       label: "Tie's Head (inch)",
+  //       label: "Tie's Head (cm)",
   //     },
   //     {
-  //       label: "Tie's End (inch)",
+  //       label: "Tie's End (cm)",
   //     },
   //     {
-  //       label: "Length (inch)",
+  //       label: "Length (cm)",
   //     },
   //     // Add more form fields as needed
   //   ],
@@ -215,13 +215,13 @@ export const mainFemaleAccessories = [
   //   ],
   //   sizeForms: [
   //     {
-  //       label: "Length (inch)",
+  //       label: "Length (cm)",
   //     },
   //     {
-  //       label: "Width (inch)",
+  //       label: "Width (cm)",
   //     },
   //     {
-  //       label: "Height (inch)",
+  //       label: "Height (cm)",
   //     },
   //   ],
   // },
@@ -250,16 +250,16 @@ export const mainFemaleAccessories = [
     ],
     sizeForms: [
       {
-        label: "Upper Bust (inch)",
+        label: "Upper Bust (cm)",
       },
       {
-        label: "Under Bust (inch)",
+        label: "Under Bust (cm)",
       },
       {
-        label: "Waist (inch)",
+        label: "Waist (cm)",
       },
       {
-        label: "Bottom Length (inch)",
+        label: "Bottom Length (cm)",
       },
       // Add more form fields as needed
     ],

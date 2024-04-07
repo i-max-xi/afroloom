@@ -512,7 +512,7 @@ export const mainFemaleCustomize = [
   //   ],
   //   sizeForms: [
   //     {
-  //       label: "Length (inch)",
+  //       label: "Length (cm)",
   //     },
   //     // Add more form fields as needed
   //   ],
@@ -649,16 +649,16 @@ export const mainFemaleCustomize = [
     ],
     sizeForms: [
       {
-        label: "Shoulder (inch)",
+        label: "Shoulder (cm)",
       },
       {
-        label: "Chest (inch)",
+        label: "Chest (cm)",
       },
       {
-        label: "Body Length (inch)",
+        label: "Body Length (cm)",
       },
       {
-        label: "Sleeve Length(inch)",
+        label: "Sleeve Length(cm)",
       },
       // Add more form fields as needed
     ],
@@ -825,13 +825,13 @@ export const mainFemaleCustomize = [
     ],
     sizeForms: [
       {
-        label: "Waist (inch)",
+        label: "Waist (cm)",
       },
       {
-        label: "Hip (inch)",
+        label: "Hip (cm)",
       },
       {
-        label: "Length (inch)",
+        label: "Length (cm)",
       },
       // Add more form fields as needed
     ],
