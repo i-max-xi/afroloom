@@ -125,7 +125,7 @@ export const mainMaleCustomize = [
     myZoom: 0.7,
     myX: 0,
     myY: 10,
-    price: 20,
+    price: 0,
     // sizeModels: tshirt_model,
     readyIn: 3,
     sizeGuide: tshirt_guide,

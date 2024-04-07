@@ -21,7 +21,7 @@ function TextureItem({
     // setHideText(false)
   };
 
-  console.log({selectedTexture, texture})
+  // console.log({selectedTexture, texture})
 
 
   return (

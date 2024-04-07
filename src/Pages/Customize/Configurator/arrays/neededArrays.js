@@ -138,7 +138,6 @@ export const textureArrays = {
     waxPrint1,
     waxPrint3,
     waxPrint6,
-    waxPrint6,
     waxPrint7,
     waxPrint8,
     waxPrint10,
@@ -150,7 +149,6 @@ export const textureArrays = {
     waxPrint16,
     waxPrint17,
     waxPrint18,
-    waxPrint19,
     waxPrint19,
     waxPrint20,
     waxPrint21,
@@ -389,11 +387,11 @@ export const textureDescriptions = {
 export const textureValues = {
   batik: {
     price: 35,
-    yarnAvailable: 1,
+    yardAvailable: 1,
   },
   dashiki: {
     price: 10,
-    yarnAvailable: 1,
+    yardAvailable: 1,
   },
   waxPrint: {
     price: 70,

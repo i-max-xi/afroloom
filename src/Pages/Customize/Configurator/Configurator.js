@@ -202,7 +202,12 @@ const Configurator = () => {
         textureArrays[category].includes(newTexture)
       );
 
-      const newPartPrice = textureValues[textureCategory];
+      // const yardNeeded = selectedClothing.myNode[selectedPart].yardNeeded;
+      const yardPrice = textureValues[textureCategory].price;
+      // const yardAvailable = textureValues[textureCategory].yardAvailable;
+
+
+      const newPartPrice = yardPrice;
 
       setPartPrices(Array(selectedClothing.myNode.length).fill(newPartPrice));
       return;
@@ -217,13 +222,13 @@ const Configurator = () => {
         textureArrays[category].includes(newTexture)
       );
 
-      const yardNeeded = selectedClothing.myNode[selectedPart].yardNeeded;
+      // const yardNeeded = selectedClothing.myNode[selectedPart].yardNeeded;
       const yardPrice = textureValues[textureCategory].price;
-      const yardAvailable = textureValues[textureCategory].yardAvailable;
+      // const yardAvailable = textureValues[textureCategory].yardAvailable;
 
-      const newPartPrice = null;
 
-      console.log(yardAvailable);
+      const newPartPrice = yardPrice;
+
 
       setPartPrices((prevPrices) =>
         prevPrices.map((price, index) =>
