@@ -63,11 +63,11 @@ export const mainUnisex = [
       // { label: "XL", value: 3 },
       // { label: "2XL", value: 4 },
     ],
-    sizeForms: [
-      {
-        label: "Earlobe (mm)",
-      },
-    ],
+    // sizeForms: [
+    //   {
+    //     label: "Earlobe (mm)",
+    //   },
+    // ],
   },
   {
     id: uuid(),
@@ -92,14 +92,14 @@ export const mainUnisex = [
       // { label: "XL", value: 3 },
       // { label: "2XL", value: 4 },
     ],
-    // sizeForms: [
-    //   {
-    //     label: "Length (cm)",
-    //   },
-    //   {
-    //     label: "Width (cm)",
-    //   },
-    // ],
+    sizeForms: [
+      {
+        label: "Length (cm)",
+      },
+      {
+        label: "Width (cm)",
+      },
+    ],
   },
   {
     id: uuid(),
