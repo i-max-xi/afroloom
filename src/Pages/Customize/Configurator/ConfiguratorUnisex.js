@@ -1348,13 +1348,13 @@ const ConfiguratorUnisex = () => {
           </div>
           <div className="price w-100 d-flex bg-dark text-white justify-content-between">
             <span className="m-3 expect-to-be-ready">
-              Estimated time to make this order: {selectedClothing.readyIn} days{" "}
+              Estimated time to make this order: <span className="customize-focus">{selectedClothing.readyIn} days </span>
             </span>
 
             <p className="price-text m-3">
               <span className="expect-to-be-ready">Price:</span>{" "}
-              {currencySymbol}
-              {total}
+              <span className="customize-focus">{currencySymbol}
+              {total}</span>
             </p>
 
             <p className="complete m-2">

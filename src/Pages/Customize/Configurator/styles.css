@@ -381,3 +381,8 @@ h1 {
 .main-canvas > div {
   z-index: 1 !important;
 }
+
+
+.customize-focus {
+  font-weight: 700;
+}
