@@ -616,7 +616,7 @@ const Configurator = () => {
                 <div className="texture-buttons-container">
                   <div className="texture-category">
                     <h3>
-                      Tie and Dye (+{currencySymbol}
+                      Batik (+{currencySymbol}
                       {(currencyFactor * textureValues.batik.price).toFixed(2)})
                     </h3>
                     <Carousel

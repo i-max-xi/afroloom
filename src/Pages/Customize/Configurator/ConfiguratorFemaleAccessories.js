@@ -612,7 +612,7 @@ const ConfiguratorFemaleAccessories = () => {
                   <div className="texture-row">
                     <div className="texture-category">
                       <h3>
-                        Tie and Dye (+{currencySymbol}
+                        Batik (+{currencySymbol}
                         {(currencyFactor * textureValues.batik.price).toFixed(
                           2
                         )}
