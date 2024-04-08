@@ -51,7 +51,7 @@ export const mainUnisex = [
     ],
 
     myZoom: 0.8,
-    price: 55,
+    price: 40,
     // parts: sashParts.keys().map(sashParts),
     // sizeModels: tshirt_model,
     readyIn: 7,
@@ -63,11 +63,11 @@ export const mainUnisex = [
       // { label: "XL", value: 3 },
       // { label: "2XL", value: 4 },
     ],
-    // sizeForms: [
-    //   {
-    //     label: "Earlobe (mm)",
-    //   },
-    // ],
+    sizeForms: [
+      {
+        label: "Wrist size (cm)",
+      },
+    ],
   },
   {
     id: uuid(),
@@ -80,7 +80,7 @@ export const mainUnisex = [
     ],
 
     myZoom: 0.8,
-    price: 55,
+    price: 10,
     // parts: sashParts.keys().map(sashParts),
     // sizeModels: tshirt_model,
     readyIn: 7,
@@ -92,12 +92,9 @@ export const mainUnisex = [
       // { label: "XL", value: 3 },
       // { label: "2XL", value: 4 },
     ],
-    sizeForms: [
+     sizeForms: [
       {
-        label: "Length (cm)",
-      },
-      {
-        label: "Width (cm)",
+        label: "Earlobe (mm)",
       },
     ],
   },
@@ -111,7 +108,7 @@ export const mainUnisex = [
       { name: "bottom", yardNeeded: 1 },
     ],
     myZoom: 1.3,
-    price: 55,
+    price: 100,
     // parts: bikiniParts.keys().map(bikiniParts),
     // sizeModels: tshirt_model,
     readyIn: 7,
@@ -251,7 +248,7 @@ export const mainUnisex = [
       { name: "cuttings", yardNeeded: 1 },
     ],
     myZoom: 2,
-    price: 55,
+    price: 100,
     // parts: sashParts.keys().map(sashParts),
     // sizeModels: tshirt_model,
     readyIn: 7,
@@ -284,7 +281,7 @@ export const mainUnisex = [
       { name: "cuttings", yardNeeded: 1 },
     ],
     myZoom: 2,
-    price: 55,
+    price: 100,
     readyIn: 7,
     // weight: 0.25,
     sizeGuide: sash_guide,
@@ -313,7 +310,7 @@ export const mainUnisex = [
       { name: "stripe_2", yardNeeded: 1 },
     ],
     myZoom: 2,
-    price: 55,
+    price: 100,
     readyIn: 7,
     // weight: 0.25,
     sizeGuide: sash_guide,
@@ -344,7 +341,7 @@ export const mainUnisex = [
       { name: "cuttings", yardNeeded: 1 },
     ],
     myZoom: 2,
-    price: 55,
+    price: 150,
     // parts: sashParts.keys().map(sashParts),
     // sizeModels: tshirt_model,
     readyIn: 7,
@@ -375,7 +372,7 @@ export const mainUnisex = [
       { name: "stripe_2", yardNeeded: 1 },
     ],
     myZoom: 2,
-    price: 55,
+    price: 100,
     // parts: sashParts.keys().map(sashParts),
     // sizeModels: tshirt_model,
     readyIn: 7,

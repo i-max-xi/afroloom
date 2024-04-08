@@ -959,7 +959,7 @@ const ConfiguratorUnisex = () => {
                     )}
                   />
                 </div>
-                {selectedClothing.name === "Beads Bracelet" ||
+                {noSpinFor.includes(selectedClothing.name) ||
                 selectedClothing.name === "Earring" ? null : (
                   <>
                     <h5>Choose Textile</h5>
