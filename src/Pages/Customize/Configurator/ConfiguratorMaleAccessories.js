@@ -144,7 +144,7 @@ const ConfiguratorMaleAccessories = () => {
   const [selectedSize, setSelectedSize] = useState(1);
   const [selectedPrintOn, setSelectedPrintOn] = useState(null);
 
-  const [selectedPart, setSelectedPart] = useState(null);
+  const [selectedPart, setSelectedPart] = useState(0);
 
   const [isRotating, setIsRotating] = useState(false);
 
@@ -156,6 +156,55 @@ const ConfiguratorMaleAccessories = () => {
   const currencyFactor = useSelector((state) => state.currencySymbol.factor);
 
   const handleSizeChange = (factor) => {
+    let yardNeeded;
+
+    switch (factor) {
+      case 0.5:
+        yardNeeded = selectedClothing.otherYards.small;
+        break;
+
+      case 1:
+        yardNeeded = selectedClothing.myNode[selectedPart].yardNeeded;
+        break;
+
+      case 2:
+        yardNeeded = selectedClothing.otherYards.large;
+        break;
+
+      case 3:
+        yardNeeded = selectedClothing.otherYards.extraLarge;
+        break;
+
+      case 4:
+        yardNeeded = selectedClothing.otherYards.extraExtraLarge;
+        break;
+
+      default:
+        break;
+    }
+
+    const textureCategory = Object.keys(textureArrays).find((category) =>
+      textureArrays[category].includes(selectedTexture)
+    );
+
+    const yardPrice = textureValues[textureCategory]?.price;
+    const yardStart = textureValues[textureCategory]?.yardStart;
+
+    let newPartPrice;
+
+    if (!yardPrice || !yardStart) {
+      newPartPrice = selectedClothing.price;
+    } else {
+      newPartPrice =
+        yardStart === 2 ? yardNeeded * (yardPrice / 2) : yardNeeded * yardPrice;
+    }
+
+    setPartPrices((prevPrices) =>
+      prevPrices.map((price, index) =>
+        index === selectedPart ? newPartPrice : price
+      )
+    );
+
     setSelectedSize(factor);
   };
 
@@ -187,7 +236,7 @@ const ConfiguratorMaleAccessories = () => {
   //total price
   const total = (
     (semitotal + selectedClothing.price) *
-    selectedClothing.sizeOptions[selectedSizeIndex].value *
+    // selectedClothing.sizeOptions[selectedSizeIndex].value *
     currencyFactor
   ).toFixed(2);
 
@@ -215,6 +264,7 @@ const ConfiguratorMaleAccessories = () => {
       state.texture[selectedPart] = newTexture;
       state.color[selectedPart] = null;
       setSelectedPrintOn(newTexture);
+      setSelectedTexture(newTexture); // needed to transfer to size
 
       const textureCategory = Object.keys(textureArrays).find((category) =>
         textureArrays[category].includes(newTexture)
@@ -239,15 +289,16 @@ const ConfiguratorMaleAccessories = () => {
 
   const handleRotation = () => {
     setIsRotating((prev) => !prev);
-    setSelectedPart(null); // Deselect the part when rotating the entire model
+    // setSelectedPart(null);
   };
 
   // Create an array to store selected parts with their color and texture information
-  const selectedParts = selectedClothing.myNode.map((nodeName, index) => ({
-    name: nodeName.name,
-    color: state.color[index] || null,
-    texture: state.texture[index] || null,
-  }));
+  // Create an array to store selected parts with their color and texture information
+  // const selectedParts = selectedClothing.myNode.map((nodeName, index) => ({
+  //   name: nodeName.name,
+  //   color: state.color[index] || null,
+  //   texture: state.texture[index] || null,
+  // }));
 
   // Confrimation or not
   const [showConfirmation, setShowConfirmation] = useState(false);
@@ -354,33 +405,25 @@ const ConfiguratorMaleAccessories = () => {
     setShowGlow(true);
   };
 
-  const masterSelectionPartOptions = useMemo(() => {
-    return (
-      <>
-        <button
-          className={`size-button btn btn-outline-dark ${
-            selectedPart === "all" ? "selected" : ""
-          }`}
-          onClick={handleAllPartsClick}
-        >
-          All
-        </button>
-        {selectedClothing.myNode.map((nodeName, index) => (
-          <button
-            key={index}
-            className={`size-button btn btn-outline-dark ${
-              selectedPart === index ? "selected" : ""
-            }`}
-            onClick={() => handleSelectPart(index)}
-          >
-            {nodeName.name === "hands"
-              ? parseTitle("sleeves")
-              : parseTitle(nodeName.name)}
-          </button>
-        ))}
-      </>
-    );
-  }, [selectedClothing]);
+ // const masterSelectionPartOptions = useMemo(() => {
+  //   return (
+  //     <>
+  //       {selectedClothing.myNode.map((nodeName, index) => (
+  //         <button
+  //           key={index}
+  //           className={`size-button btn btn-outline-dark ${
+  //             selectedPart === index ? "selected" : ""
+  //           }`}
+  //           onClick={() => handleSelectPart(index)}
+  //         >
+  //           {nodeName.name === "hands"
+  //             ? parseTitle("sleeves")
+  //             : parseTitle(nodeName.name)}
+  //         </button>
+  //       ))}
+  //     </>
+  //   );
+  // }, [selectedClothing]);
 
   return (
     <>
@@ -427,7 +470,7 @@ const ConfiguratorMaleAccessories = () => {
           readyBy={selectedClothing.readyIn}
           weight={selectedClothing.weight}
           name={selectedClothing.name}
-          selectedParts={selectedParts}
+          // // selectedParts={selectedParts}
           setShowConfirmation={setShowConfirmation}
           selectedSize={
             selectedClothing.sizeOptions.find(
@@ -470,10 +513,10 @@ const ConfiguratorMaleAccessories = () => {
             </div>
             <div className="configurator-container container">
               <div className="left-panel rounded shadow">
-                <h5>Select Part</h5>
+                {/* <h5>Select Part</h5>
                 <div className="select-part-container">
                   {masterSelectionPartOptions}
-                </div>
+                </div> */}
                 <h5>Choose Size</h5>
                 <div className="size w-75">
                   <p className="size-button-container">

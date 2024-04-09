@@ -154,6 +154,7 @@ export const mainMaleCustomize = [
     myNode: [
       { name: "all", yardNeeded: 3 },
     ],
+    otherYards: {small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
     myZoom: 0.7,
     price: 0,
     // sizeModels: tshirt_model,
@@ -188,10 +189,11 @@ export const mainMaleCustomize = [
     image: image_shirt_short_image,
     model: shirtModel1,
     myNode: [
-      { name: "torso", yardNeeded: 2 },
+      { name: "torso", yardNeeded: 3 },
       { name: "hands", yardNeeded: 1 },
-      { name: "buttons", yardNeeded: 0 },
+      { name: "buttons", yardNeeded: 1 },
     ],
+    otherYards: {small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
     myZoom: 0.7,
     myX: 0,
     myY: 10,

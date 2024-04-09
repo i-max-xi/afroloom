@@ -144,7 +144,7 @@ const ConfiguratorFemale = () => {
   const [selectedSize, setSelectedSize] = useState(1);
   const [selectedPrintOn, setSelectedPrintOn] = useState(null);
 
-  const [selectedPart, setSelectedPart] = useState(null);
+  const [selectedPart, setSelectedPart] = useState(0);
 
   const [isRotating, setIsRotating] = useState(false);
 
@@ -155,22 +155,28 @@ const ConfiguratorFemale = () => {
   const currencySymbol = useSelector((state) => state.currencySymbol.symbol);
   const currencyFactor = useSelector((state) => state.currencySymbol.factor);
 
-  const handleSizeChange = (factor) => {
+ const handleSizeChange = (factor) => {
     let yardNeeded;
 
     switch (factor) {
       case 0.5:
-        yardNeeded = 2;
+        yardNeeded = selectedClothing.otherYards.small;
         break;
 
       case 1:
+       yardNeeded = selectedClothing.myNode[selectedPart].yardNeeded;
+        break;
+
       case 2:
-        yardNeeded = 3;
+        yardNeeded = selectedClothing.otherYards.large;
         break;
 
       case 3:
+        yardNeeded = selectedClothing.otherYards.extraLarge;
+        break;
+
       case 4:
-        yardNeeded = 4;
+        yardNeeded = selectedClothing.otherYards.extraExtraLarge;
         break;
 
       default:
@@ -181,11 +187,21 @@ const ConfiguratorFemale = () => {
       textureArrays[category].includes(selectedTexture)
     );
 
-    const yardPrice = textureValues[textureCategory].price;
-    const yardStart = textureValues[textureCategory].yardStart;
+    const yardPrice = textureValues[textureCategory]?.price;
+    const yardStart = textureValues[textureCategory]?.yardStart;
 
-    const newPartPrice =
+    let newPartPrice;
+
+    if (!yardPrice || !yardStart){
+      newPartPrice = selectedClothing.price
+    }
+
+    else {
+      newPartPrice =
       yardStart === 2 ? yardNeeded * (yardPrice / 2) : yardNeeded * yardPrice;
+    }
+
+    
 
     setPartPrices((prevPrices) =>
       prevPrices.map((price, index) =>
@@ -223,7 +239,7 @@ const ConfiguratorFemale = () => {
   //total price
   const total = (
     (semitotal + selectedClothing.price) *
-    selectedClothing.sizeOptions[selectedSizeIndex].value *
+    // selectedClothing.sizeOptions[selectedSizeIndex].value *
     currencyFactor
   ).toFixed(2);
 
@@ -251,6 +267,7 @@ const ConfiguratorFemale = () => {
       state.texture[selectedPart] = newTexture;
       state.color[selectedPart] = null;
       setSelectedPrintOn(newTexture);
+      setSelectedTexture(newTexture); // needed to transfer to size
 
       const textureCategory = Object.keys(textureArrays).find((category) =>
         textureArrays[category].includes(newTexture)
@@ -275,15 +292,16 @@ const ConfiguratorFemale = () => {
 
   const handleRotation = () => {
     setIsRotating((prev) => !prev);
-    setSelectedPart(null); // Deselect the part when rotating the entire model
+    // setSelectedPart(null);
   };
 
   // Create an array to store selected parts with their color and texture information
-  const selectedParts = selectedClothing.myNode.map((nodeName, index) => ({
-    name: nodeName.name,
-    color: state.color[index] || null,
-    texture: state.texture[index] || null,
-  }));
+  // Create an array to store selected parts with their color and texture information
+  // const selectedParts = selectedClothing.myNode.map((nodeName, index) => ({
+  //   name: nodeName.name,
+  //   color: state.color[index] || null,
+  //   texture: state.texture[index] || null,
+  // }));
 
   // Confrimation or not
   const [showConfirmation, setShowConfirmation] = useState(false);
@@ -462,7 +480,7 @@ const ConfiguratorFemale = () => {
           readyBy={selectedClothing.readyIn}
           weight={selectedClothing.weight}
           name={selectedClothing.name}
-          selectedParts={selectedParts}
+          // selectedParts={selectedParts}
           setShowConfirmation={setShowConfirmation}
           selectedSize={
             selectedClothing.sizeOptions.find(
@@ -505,10 +523,10 @@ const ConfiguratorFemale = () => {
             </div>
             <div className="configurator-container container">
               <div className="left-panel rounded shadow">
-                <h5>Select Part</h5>
+                {/* <h5>Select Part</h5>
                 <div className="select-part-container">
                   {masterSelectionPartOptions}
-                </div>
+                </div> */}
                 <h5>Choose Size</h5>
                 <div className="size w-75">
                   <p className="size-button-container">

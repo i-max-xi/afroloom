@@ -155,7 +155,7 @@ const ConfiguratorUnisex = () => {
   const [selectedSize, setSelectedSize] = useState(1);
   const [selectedPrintOn, setSelectedPrintOn] = useState(null);
 
-  const [selectedPart, setSelectedPart] = useState(null);
+  const [selectedPart, setSelectedPart] = useState(0);
 
   const [isRotating, setIsRotating] = useState(false);
 
@@ -166,6 +166,59 @@ const ConfiguratorUnisex = () => {
   const currencyFactor = useSelector((state) => state.currencySymbol.factor);
 
   const handleSizeChange = (factor) => {
+    let yardNeeded;
+
+    switch (factor) {
+      case 0.5:
+        yardNeeded = selectedClothing.otherYards.small;
+        break;
+
+      case 1:
+       yardNeeded = selectedClothing.myNode[selectedPart].yardNeeded;
+        break;
+
+      case 2:
+        yardNeeded = selectedClothing.otherYards.large;
+        break;
+
+      case 3:
+        yardNeeded = selectedClothing.otherYards.extraLarge;
+        break;
+
+      case 4:
+        yardNeeded = selectedClothing.otherYards.extraExtraLarge;
+        break;
+
+      default:
+        break;
+    }
+
+    const textureCategory = Object.keys(textureArrays).find((category) =>
+      textureArrays[category].includes(selectedTexture)
+    );
+
+    const yardPrice = textureValues[textureCategory]?.price;
+    const yardStart = textureValues[textureCategory]?.yardStart;
+
+    let newPartPrice;
+
+    if (!yardPrice || !yardStart){
+      newPartPrice = selectedClothing.price
+    }
+
+    else {
+      newPartPrice =
+      yardStart === 2 ? yardNeeded * (yardPrice / 2) : yardNeeded * yardPrice;
+    }
+
+    
+
+    setPartPrices((prevPrices) =>
+      prevPrices.map((price, index) =>
+        index === selectedPart ? newPartPrice : price
+      )
+    );
+
     setSelectedSize(factor);
   };
 
@@ -528,7 +581,7 @@ const ConfiguratorUnisex = () => {
   //total price
   const total = (
     (semitotal + selectedClothing.price) *
-    selectedClothing.sizeOptions[selectedSizeIndex].value *
+    // selectedClothing.sizeOptions[selectedSizeIndex].value *
     currencyFactor
   ).toFixed(2);
 
@@ -556,6 +609,7 @@ const ConfiguratorUnisex = () => {
       state.texture[selectedPart] = newTexture;
       state.color[selectedPart] = null;
       setSelectedPrintOn(newTexture);
+      setSelectedTexture(newTexture); // needed to transfer to size
 
       const textureCategory = Object.keys(textureArrays).find((category) =>
         textureArrays[category].includes(newTexture)
@@ -580,7 +634,7 @@ const ConfiguratorUnisex = () => {
 
   const handleRotation = () => {
     setIsRotating((prev) => !prev);
-    setSelectedPart(null); // Deselect the part when rotating the entire model
+    // setSelectedPart(null);
   };
 
   // Create an array to store selected parts with their color and texture information
@@ -788,7 +842,7 @@ const ConfiguratorUnisex = () => {
           readyBy={selectedClothing.readyIn}
           weight={selectedClothing.weight}
           name={selectedClothing.name}
-          selectedParts={selectedParts}
+          // selectedParts={selectedParts}
           setShowConfirmation={setShowConfirmation}
           selectedSize={
             selectedClothing.sizeOptions.find(
@@ -834,10 +888,10 @@ const ConfiguratorUnisex = () => {
             </div>
             <div className="configurator-container container">
               <div className="left-panel rounded shadow">
-                <h5>Select Part</h5>
+                {/* <h5>Select Part</h5>
                 <div className="select-part-container">
                   {masterSelectionPartOptions}
-                </div>
+                </div> */}
                 <h5>Choose Size</h5>
                 <div className="size w-75">
                   <p className="size-button-container">
