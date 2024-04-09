@@ -3,20 +3,17 @@ import { v4 as uuid } from "uuid";
 // sneakers
 // import s2 from "../Assets/Customize/footwear/sneaker/2.jpg";
 
-
-
 // 3d models
-import flex_shoe from '../Pages/Customize/Configurator/models/Shoes/flexible_shoe_main_two.glb';
-import slippers from '../Pages/Customize/Configurator/models/Shoes/slippers_main.glb';
-import heels from '../Pages/Customize/Configurator/models/Shoes/heels_main.glb';
-import sneaker_model from '../Pages/Customize/Configurator/models/Shoes/sneaker.glb';
+import flex_shoe from "../Pages/Customize/Configurator/models/Shoes/flexible_shoe_main_two.glb";
+import slippers from "../Pages/Customize/Configurator/models/Shoes/slippers_main.glb";
+import heels from "../Pages/Customize/Configurator/models/Shoes/heels_main.glb";
+import sneaker_model from "../Pages/Customize/Configurator/models/Shoes/sneaker.glb";
 
 // Importing size guides
-import flatShoe_guide from '../Assets/size_guide/Footwear/slipper.jpg';
-import sneaker_guide from '../Assets/size_guide/Footwear/slipper.jpg';
-import slipper_guide from '../Assets/size_guide/Footwear/slipper.jpg';
-import heels_guide from '../Assets/size_guide/Footwear/34.jpg';
-
+import flatShoe_guide from "../Assets/size_guide/Footwear/slipper.jpg";
+import sneaker_guide from "../Assets/size_guide/Footwear/slipper.jpg";
+import slipper_guide from "../Assets/size_guide/Footwear/slipper.jpg";
+import heels_guide from "../Assets/size_guide/Footwear/34.jpg";
 
 // models
 const tshirt_model = "";
@@ -57,13 +54,15 @@ export const mainFootwear = [
     image: image_flat_shoe,
     model: flex_shoe,
     myNode: ["sole", "front", "back"],
+    otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
     myZoom: 0.9,
     price: 20,
     parts: flexShoeParts.keys().map(flexShoeParts),
     sizeGuide: flatShoe_guide,
-sizeModels: tshirt_model,
+    sizeModels: tshirt_model,
     readyIn: 7,
-    weight: 0.25,    sizeOptions: [
+    weight: 0.25,
+    sizeOptions: [
       { label: "35", value: 0.5 },
       { label: "36", value: 1 },
       { label: "37", value: 2 },
@@ -90,14 +89,16 @@ sizeModels: tshirt_model,
     image:
       "https://th.bing.com/th/id/R.ed02939b666f5978946b4b104022f5ee?rik=N3Ja0bD%2boLeYgw&pid=ImgRaw&r=0",
     model: sneaker_model,
-    myNode: ["front", "lace", "sole", "back",],
+    myNode: ["front", "lace", "sole", "back"],
+    otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
     myZoom: 0.9,
     price: 20,
     parts: sneakerParts.keys().map(sneakerParts),
     sizeGuide: sneaker_guide,
-sizeModels: tshirt_model,
+    sizeModels: tshirt_model,
     readyIn: 7,
-    weight: 0.25,    sizeOptions: [
+    weight: 0.25,
+    sizeOptions: [
       { label: "35", value: 0.5 },
       { label: "36", value: 1 },
       { label: "37", value: 2 },
@@ -125,11 +126,13 @@ sizeModels: tshirt_model,
     image: image_slippers,
     model: slippers,
     myNode: ["padding", "top", "sole"],
+    otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
     myZoom: 1.2,
     price: 20,
-sizeModels: tshirt_model,
+    sizeModels: tshirt_model,
     readyIn: 7,
-    weight: 0.25,    parts: slippersParts.keys().map(slippersParts),
+    weight: 0.25,
+    parts: slippersParts.keys().map(slippersParts),
     sizeGuide: slipper_guide,
     sizeOptions: [
       { label: "35", value: 0.5 },
@@ -162,13 +165,15 @@ sizeModels: tshirt_model,
       "https://th.bing.com/th/id/OIP.UMGJguReHwKJtDNEdf5-NQHaHa?pid=ImgDet&rs=1",
     model: heels,
     myNode: ["sole", "top"],
+    otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
     myZoom: 0.6,
     price: 20,
     parts: heelsParts.keys().map(heelsParts),
     sizeGuide: heels_guide,
-sizeModels: tshirt_model,
+    sizeModels: tshirt_model,
     readyIn: 7,
-    weight: 0.25,    sizeOptions: [
+    weight: 0.25,
+    sizeOptions: [
       { label: "35", value: 0.5 },
       { label: "36", value: 1 },
       { label: "37", value: 2 },
@@ -189,5 +194,3 @@ sizeModels: tshirt_model,
     ],
   },
 ];
-
-

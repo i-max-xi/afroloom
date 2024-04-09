@@ -234,6 +234,7 @@ export const mainFemaleAccessories = [
       { name: "top", yardNeeded: 1 },
       { name: "bottom", yardNeeded: 1 },
     ],
+    otherYards: {small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
     myZoom: 1.3,
     price: 55,
     parts: bikiniParts.keys().map(bikiniParts),
