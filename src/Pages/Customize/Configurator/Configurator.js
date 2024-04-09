@@ -161,17 +161,23 @@ const Configurator = () => {
 
     switch (factor) {
       case 0.5:
-        yardNeeded = 2;
+        yardNeeded = selectedClothing.otherYards.small;
         break;
 
       case 1:
+       yardNeeded = selectedClothing.myNode[selectedPart].yardNeeded;
+        break;
+
       case 2:
-        yardNeeded = 3;
+        yardNeeded = selectedClothing.otherYards.large;
         break;
 
       case 3:
+        yardNeeded = selectedClothing.otherYards.extraLarge;
+        break;
+
       case 4:
-        yardNeeded = 4;
+        yardNeeded = selectedClothing.otherYards.extraExtraLarge;
         break;
 
       default:
@@ -182,11 +188,21 @@ const Configurator = () => {
       textureArrays[category].includes(selectedTexture)
     );
 
-    const yardPrice = textureValues[textureCategory].price;
-    const yardStart = textureValues[textureCategory].yardStart;
+    const yardPrice = textureValues[textureCategory]?.price;
+    const yardStart = textureValues[textureCategory]?.yardStart;
 
-    const newPartPrice =
+    let newPartPrice;
+
+    if (!yardPrice || !yardStart){
+      newPartPrice = selectedClothing.price
+    }
+
+    else {
+      newPartPrice =
       yardStart === 2 ? yardNeeded * (yardPrice / 2) : yardNeeded * yardPrice;
+    }
+
+    
 
     setPartPrices((prevPrices) =>
       prevPrices.map((price, index) =>

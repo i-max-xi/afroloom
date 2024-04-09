@@ -156,6 +156,43 @@ const ConfiguratorFemale = () => {
   const currencyFactor = useSelector((state) => state.currencySymbol.factor);
 
   const handleSizeChange = (factor) => {
+    let yardNeeded;
+
+    switch (factor) {
+      case 0.5:
+        yardNeeded = 2;
+        break;
+
+      case 1:
+      case 2:
+        yardNeeded = 3;
+        break;
+
+      case 3:
+      case 4:
+        yardNeeded = 4;
+        break;
+
+      default:
+        break;
+    }
+
+    const textureCategory = Object.keys(textureArrays).find((category) =>
+      textureArrays[category].includes(selectedTexture)
+    );
+
+    const yardPrice = textureValues[textureCategory].price;
+    const yardStart = textureValues[textureCategory].yardStart;
+
+    const newPartPrice =
+      yardStart === 2 ? yardNeeded * (yardPrice / 2) : yardNeeded * yardPrice;
+
+    setPartPrices((prevPrices) =>
+      prevPrices.map((price, index) =>
+        index === selectedPart ? newPartPrice : price
+      )
+    );
+
     setSelectedSize(factor);
   };
 

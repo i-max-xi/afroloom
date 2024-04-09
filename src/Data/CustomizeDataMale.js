@@ -115,7 +115,7 @@ export const mainMaleCustomize = [
     image: image_tshirt_short,
     model: tshirtModel1,
     myNode: [{ name: "all", yardNeeded: 3 }],
-    otherYards: [{small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 }],
+    otherYards: {small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
     myZoom: 0.7,
     myX: 0,
     myY: 10,
