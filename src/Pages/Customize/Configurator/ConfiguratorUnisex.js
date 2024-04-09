@@ -8,6 +8,7 @@ import { state } from "./store";
 import { Carousel } from "primereact/carousel";
 import Confirmation from "./Confirmation";
 import html2canvas from "html2canvas";
+import domtoimage from "dom-to-image";
 
 import { TextureLoader } from "three/src/loaders/TextureLoader";
 import LoadingAnimation from "./LoadingAnimation";
@@ -610,12 +611,24 @@ const ConfiguratorUnisex = () => {
 
     const canvas = canvasRef.current;
 
-    const canvasImage = await html2canvas(canvas);
-    const dataUrl = canvasImage.toDataURL();
+    // const canvasImage = await html2canvas(canvas);
+    // const dataUrl = canvasImage.toDataURL();
 
-    setStateImage(dataUrl); // Save the data URL to state
+    // setStateImage(dataUrl);
 
-    setShowConfirmation(true); // Show confirmation
+    // setShowConfirmation(true);
+
+    try {
+      const dataUrl = await domtoimage.toPng(canvas);
+      setStateImage(dataUrl); // Save the data URL to state
+      setShowConfirmation(true); // Show confirmation
+    } catch (error) {
+      toastRef.current.show({
+        severity: "error",
+        summary: "Image no capture",
+        detail: error,
+      });
+    }
   };
 
   //size guide popup
@@ -1254,8 +1267,12 @@ const ConfiguratorUnisex = () => {
                               </button>
                             </div>
 
-                            <h6 className="mt-3">Size {selectedClothing.name ===
-                            "Beads Bracelet" ? null : "(Left)"}</h6>
+                            <h6 className="mt-3">
+                              Size{" "}
+                              {selectedClothing.name === "Beads Bracelet"
+                                ? null
+                                : "(Left)"}
+                            </h6>
                             <div className="d-flex  gap-2 justify-content-center align-items-center fs-button">
                               <button
                                 className="btn btn-info btn-sm p-2 text-white"
@@ -1348,13 +1365,18 @@ const ConfiguratorUnisex = () => {
           </div>
           <div className="price w-100 d-flex bg-dark text-white justify-content-between">
             <span className="m-3 expect-to-be-ready">
-              Estimated time to make this order: <span className="customize-focus">{selectedClothing.readyIn} days </span>
+              Estimated time to make this order:{" "}
+              <span className="customize-focus">
+                {selectedClothing.readyIn} days{" "}
+              </span>
             </span>
 
             <p className="price-text m-3">
               <span className="expect-to-be-ready">Price:</span>{" "}
-              <span className="customize-focus">{currencySymbol}
-              {total}</span>
+              <span className="customize-focus">
+                {currencySymbol}
+                {total}
+              </span>
             </p>
 
             <p className="complete m-2">
