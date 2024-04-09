@@ -20,8 +20,6 @@ import blazer from "../Pages/Customize/Configurator/models/MaleClothing/male_sui
 import jacket from "../Pages/Customize/Configurator/models/Accessories/Unisex/jacket_main.glb";
 import cloak_model from "../Pages/Customize/Configurator/models/MaleClothing/kimono.glb";
 
-
-
 //size-guides
 // import tshirt_model from "../Pages/Customize/Configurator/size_guide/male/men.JPG";
 
@@ -37,7 +35,6 @@ import trouser_guide from "../Assets/size_guide/MaleClothing/mens trousers.jpg";
 import summer_shorts_guide from "../Assets/size_guide/MaleClothing/men summer shorts.jpg";
 import material_shorts_guide from "../Assets/size_guide/MaleClothing/men material shorts.png";
 import jacket_guide from "../Assets/size_guide/MaleClothing/men Bomber_Jacket.jpg";
-
 
 // parts
 const tshirtParts = require.context(
@@ -111,18 +108,13 @@ const image_shorts_image = require("../Assets/welcome_3ds/male/male shorts.png")
 const image_jacket = require("../Assets/welcome_3ds/male/bomber_jacket.png");
 const image_kimono = require("../Assets/welcome_3ds/male/kimono.png");
 
-
-
 export const mainMaleCustomize = [
   {
     id: uuid(),
     name: "Short Sleeve T-Shirt",
     image: image_tshirt_short,
     model: tshirtModel1,
-    myNode: [
-      { name: "torso", yardNeeded: 2 },
-      { name: "hands", yardNeeded: 1 },
-    ],
+    myNode: [{ name: "all", yardNeeded: 3 }],
     myZoom: 0.7,
     myX: 0,
     myY: 10,
@@ -174,7 +166,6 @@ export const mainMaleCustomize = [
       { label: "L", value: 2 },
       { label: "XL", value: 3 },
       { label: "2XL", value: 4 },
-      
     ],
     sizeForms: [
       {
@@ -215,7 +206,6 @@ export const mainMaleCustomize = [
       { label: "L", value: 2 },
       { label: "XL", value: 3 },
       { label: "2XL", value: 4 },
-      
     ],
     sizeForms: [
       {
@@ -256,7 +246,6 @@ export const mainMaleCustomize = [
       { label: "L", value: 2 },
       { label: "XL", value: 3 },
       { label: "2XL", value: 4 },
-      
     ],
     sizeForms: [
       {
@@ -297,7 +286,6 @@ export const mainMaleCustomize = [
       { label: "L", value: 2 },
       { label: "XL", value: 3 },
       { label: "2XL", value: 4 },
-      
     ],
     sizeForms: [
       {
@@ -365,7 +353,6 @@ export const mainMaleCustomize = [
       { label: "L", value: 2 },
       { label: "XL", value: 3 },
       { label: "2XL", value: 4 },
-      
     ],
     sizeForms: [
       {
@@ -382,7 +369,7 @@ export const mainMaleCustomize = [
       },
     ],
   },
-  
+
   {
     id: uuid(),
     name: "Bomber Jacket",
@@ -445,7 +432,6 @@ export const mainMaleCustomize = [
       { label: "L", value: 2 },
       { label: "XL", value: 3 },
       { label: "2XL", value: 4 },
-      
     ],
     sizeForms: [
       {
@@ -520,7 +506,6 @@ export const mainMaleCustomize = [
       { label: "L", value: 2 },
       { label: "XL", value: 3 },
       { label: "2XL", value: 4 },
-      
     ],
     parts: trouserParts.keys().map(trouserParts),
     sizeForms: [
@@ -573,7 +558,6 @@ export const mainMaleCustomize = [
       { label: "L", value: 2 },
       { label: "XL", value: 3 },
       { label: "2XL", value: 4 },
-      
     ],
     parts: summerShortsParts.keys().map(summerShortsParts),
     sizeForms: [
@@ -611,7 +595,6 @@ export const mainMaleCustomize = [
       { label: "L", value: 2 },
       { label: "XL", value: 3 },
       { label: "2XL", value: 4 },
-      
     ],
     sizeForms: [
       {

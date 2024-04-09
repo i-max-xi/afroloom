@@ -191,24 +191,24 @@ const ConfiguratorFemale = () => {
   ).toFixed(2);
 
   const handleTextureChange = (newTexture) => {
-    if (selectedPart === "all") {
-      state.texture = Array(selectedClothing.myNode?.length).fill(newTexture);
-      state.color = Array(selectedClothing.myNode?.length).fill(null);
-      setSelectedPrintOn(newTexture);
+    // if (selectedPart === "all") {
+    //   state.texture = Array(selectedClothing.myNode.length).fill(newTexture);
+    //   state.color = Array(selectedClothing.myNode.length).fill(null);
+    //   setSelectedPrintOn(newTexture);
 
-      const textureCategory = Object.keys(textureArrays).find((category) =>
-        textureArrays[category].includes(newTexture)
-      );
+    //   const textureCategory = Object.keys(textureArrays).find((category) =>
+    //     textureArrays[category].includes(newTexture)
+    //   );
 
-      // const yardNeeded = selectedClothing.myNode[selectedPart].yardNeeded;
-      const yardPrice = textureValues[textureCategory].price;
-      // const yardAvailable = textureValues[textureCategory].yardAvailable;
+    //   const yardNeeded = selectedClothing.myNode[selectedPart].yardNeeded;
+    //   const yardPrice = textureValues[textureCategory].price;
+    //   // const yardStart = textureValues[textureCategory].yardStart;
 
-      const newPartPrice = yardPrice;
+    //   const newPartPrice = (yardNeeded * yardPrice);
 
-      setPartPrices(Array(selectedClothing.myNode?.length).fill(newPartPrice));
-      return;
-    }
+    //   setPartPrices(Array(selectedClothing.myNode.length).fill(newPartPrice));
+    //   return;
+    // }
 
     if (selectedPart !== null) {
       state.texture[selectedPart] = newTexture;
@@ -219,11 +219,12 @@ const ConfiguratorFemale = () => {
         textureArrays[category].includes(newTexture)
       );
 
-      // const yardNeeded = selectedClothing.myNode[selectedPart].yardNeeded;
+      const yardNeeded = selectedClothing.myNode[selectedPart].yardNeeded;
       const yardPrice = textureValues[textureCategory].price;
-      // const yardAvailable = textureValues[textureCategory].yardAvailable;
+      const yardStart = textureValues[textureCategory].yardStart;
 
-      const newPartPrice = yardPrice;
+      const newPartPrice =
+        yardStart === 2 ? yardNeeded * (yardPrice / 2) : yardNeeded * yardPrice;
 
       setPartPrices((prevPrices) =>
         prevPrices.map((price, index) =>
@@ -353,18 +354,6 @@ const ConfiguratorFemale = () => {
   };
 
   const masterSelectionPartOptions = useMemo(() => {
-    if (selectedClothing.myNode?.length === 1) {
-      return (
-        <button
-          className={`size-button btn btn-outline-dark ${
-            selectedPart === "all" ? "selected" : ""
-          }`}
-          onClick={handleAllPartsClick}
-        >
-          All
-        </button>
-      );
-    } else {
       return (
         <>
           <button
@@ -390,7 +379,6 @@ const ConfiguratorFemale = () => {
           ))}
         </>
       );
-    }
   }, [selectedClothing]);
 
   return (
@@ -636,33 +624,6 @@ const ConfiguratorFemale = () => {
                         )}
                       />
                     </div>
-
-                    {/* <div className="texture-category">
-                    <h3>
-                      Crochet (+{currencySymbol}
-                      {(currencyFactor * textureValues.Crochet.price).toFixed(2)})
-                    </h3>
-                    <Carousel
-                      value={textureArrays.Crochet}
-                      numVisible={2}
-                      numScroll={2}
-                      showIndicators={false}
-                      itemTemplate={(texture) => (
-                        <TextureItem
-                          key={texture}
-                          texture={texture}
-                          setHideText={setHideText}
-                          Title="Crochet"
-                          selectedTexture={selectedPrintOn}
-                           // Pass setSelectedTexture as a prop
-                          handleTextureChange={handleTextureChange}
-                          
-                          subTextureDescriptions={textureDescriptions.Crochet}
-                          textureIndex={textureArrays.Crochet.indexOf(texture)}
-                        />
-                      )}
-                    />
-                  </div> */}
                   </div>
                   <div className="texture-row">
                     <div className="texture-category">
@@ -722,37 +683,23 @@ const ConfiguratorFemale = () => {
                     {/* Add camera controls for interaction */}
                   </Canvas>
                 </div>
-
-                {/* <div className="m-3">
-                  <button
-                    className={`btn rotation-button text-white m-3 ${
-                      isRotating === true ? "btn-danger" : "btn-warning"
-                    }`}
-                    onClick={handleRotation}
-                  >
-                    {isRotating ? (
-                  <span>
-                    Stop <i className="pi pi-ban"></i>
-                  </span>
-                ) : (
-                  <span>
-                    Take a Spin <i className="pi pi-sync"></i>
-                  </span>
-                )}
-                  </button>
-                </div> */}
               </div>
             </div>
           </div>
           <div className="price w-100 d-flex bg-dark text-white justify-content-between">
             <span className="m-3 expect-to-be-ready">
-              Estimated time to make this order: <span className="customize-focus">{selectedClothing.readyIn} days </span>
+              Estimated time to make this order:{" "}
+              <span className="customize-focus">
+                {selectedClothing.readyIn} days{" "}
+              </span>
             </span>
 
             <p className="price-text m-3">
               <span className="expect-to-be-ready">Price:</span>{" "}
-              <span className="customize-focus">{currencySymbol}
-              {total}</span>
+              <span className="customize-focus">
+                {currencySymbol}
+                {total}
+              </span>
             </p>
 
             <p className="complete m-2">

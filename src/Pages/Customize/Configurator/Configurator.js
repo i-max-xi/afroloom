@@ -183,7 +183,7 @@ const Configurator = () => {
 
   const semitotal = partPrices.reduce((total, price) => total + price, 0);
 
-  const selectedSizeIndex = selectedSize !== 0.5 ? selectedSize : 0
+  const selectedSizeIndex = selectedSize !== 0.5 ? selectedSize : 0;
 
   //total price
   const total = (
@@ -193,24 +193,24 @@ const Configurator = () => {
   ).toFixed(2);
 
   const handleTextureChange = (newTexture) => {
-    if (selectedPart === "all") {
-      state.texture = Array(selectedClothing.myNode.length).fill(newTexture);
-      state.color = Array(selectedClothing.myNode.length).fill(null);
-      setSelectedPrintOn(newTexture);
+    // if (selectedPart === "all") {
+    //   state.texture = Array(selectedClothing.myNode.length).fill(newTexture);
+    //   state.color = Array(selectedClothing.myNode.length).fill(null);
+    //   setSelectedPrintOn(newTexture);
 
-      const textureCategory = Object.keys(textureArrays).find((category) =>
-        textureArrays[category].includes(newTexture)
-      );
+    //   const textureCategory = Object.keys(textureArrays).find((category) =>
+    //     textureArrays[category].includes(newTexture)
+    //   );
 
-      const yardNeeded = selectedClothing.myNode[selectedPart].yardNeeded;
-      const yardPrice = textureValues[textureCategory].price;
-      // const yardAvailable = textureValues[textureCategory].yardAvailable;
+    //   const yardNeeded = selectedClothing.myNode[selectedPart].yardNeeded;
+    //   const yardPrice = textureValues[textureCategory].price;
+    //   // const yardStart = textureValues[textureCategory].yardStart;
 
-      const newPartPrice = (yardNeeded * yardPrice);
+    //   const newPartPrice = (yardNeeded * yardPrice);
 
-      setPartPrices(Array(selectedClothing.myNode.length).fill(newPartPrice));
-      return;
-    }
+    //   setPartPrices(Array(selectedClothing.myNode.length).fill(newPartPrice));
+    //   return;
+    // }
 
     if (selectedPart !== null) {
       state.texture[selectedPart] = newTexture;
@@ -223,10 +223,10 @@ const Configurator = () => {
 
       const yardNeeded = selectedClothing.myNode[selectedPart].yardNeeded;
       const yardPrice = textureValues[textureCategory].price;
-      const yardAvailable = textureValues[textureCategory].yardAvailable;
-      
-      const newPartPrice = yardNeeded === yardAvailable ? (yardPrice): (yardNeeded * yardPrice);
+      const yardStart = textureValues[textureCategory].yardStart;
 
+      const newPartPrice =
+        yardStart === 2 ? yardNeeded * (yardPrice / 2) : yardNeeded * yardPrice;
 
       setPartPrices((prevPrices) =>
         prevPrices.map((price, index) =>
@@ -356,44 +356,23 @@ const Configurator = () => {
   };
 
   const masterSelectionPartOptions = useMemo(() => {
-    if (selectedClothing.myNode.length === 1) {
-      return (
-        <button
-          className={`size-button btn btn-outline-dark ${
-            selectedPart === "all" ? "selected" : ""
-          }`}
-          onClick={handleAllPartsClick}
-        >
-          All
-        </button>
-      );
-    } else {
-      return (
-        <>
+    return (
+      <>
+        {selectedClothing.myNode.map((nodeName, index) => (
           <button
+            key={index}
             className={`size-button btn btn-outline-dark ${
-              selectedPart === "all" ? "selected" : ""
+              selectedPart === index ? "selected" : ""
             }`}
-            onClick={handleAllPartsClick}
+            onClick={() => handleSelectPart(index)}
           >
-            All
+            {nodeName.name === "hands"
+              ? parseTitle("sleeves")
+              : parseTitle(nodeName.name)}
           </button>
-          {selectedClothing.myNode.map((nodeName, index) => (
-            <button
-              key={index}
-              className={`size-button btn btn-outline-dark ${
-                selectedPart === index ? "selected" : ""
-              }`}
-              onClick={() => handleSelectPart(index)}
-            >
-              {nodeName.name === "hands"
-                ? parseTitle("sleeves")
-                : parseTitle(nodeName.name)}
-            </button>
-          ))}
-        </>
-      );
-    }
+        ))}
+      </>
+    );
   }, [selectedClothing]);
 
   return (
@@ -585,9 +564,7 @@ const Configurator = () => {
                     </div>
                   </Dialog>
                 </div>
-                <h5>
-                  Choose Color
-                </h5>
+                <h5>Choose Color</h5>
 
                 <div className="color-buttons-container">
                   <Carousel
@@ -754,13 +731,18 @@ const Configurator = () => {
           </div>
           <div className="price w-100 d-flex bg-dark text-white justify-content-between">
             <span className="m-3 expect-to-be-ready">
-              Estimated time to make this order: <span className="customize-focus">{selectedClothing.readyIn} days </span>
+              Estimated time to make this order:{" "}
+              <span className="customize-focus">
+                {selectedClothing.readyIn} days{" "}
+              </span>
             </span>
 
             <p className="price-text m-3">
               <span className="expect-to-be-ready">Price:</span>{" "}
-              <span className="customize-focus">{currencySymbol}
-              {total}</span>
+              <span className="customize-focus">
+                {currencySymbol}
+                {total}
+              </span>
             </p>
 
             <p className="complete m-2">

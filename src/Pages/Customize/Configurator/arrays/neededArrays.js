@@ -130,9 +130,7 @@ export const specialNodeNames = [
 ]; // Add your special node names here
 
 export const textureArrays = {
-  batik: [
-    batik1,
-  ],
+  batik: [batik1],
 
   waxPrint: [
     // waxPrint1,
@@ -387,19 +385,19 @@ export const textureDescriptions = {
 export const textureValues = {
   batik: {
     price: 35,
-    yardAvailable: 1,
+    yardStart: 1,
   },
   dashiki: {
     price: 10,
-    yardAvailable: 1,
+    yardStart: 1,
   },
   waxPrint: {
     price: 70,
-    yardAvailable: 2,
+    yardStart: 2,
   },
   Crochet: {
     price: 30,
-    yardAvailable: 1,
+    yardStart: 1,
   },
 };
 
@@ -480,7 +478,7 @@ export const displayInplaceFor = [
   "Beads Bracelet",
   "Kimono Jacket",
   "Mini Skirt",
-  "Long Skirt"
+  "Long Skirt",
 ];
 
 export const noSpinFor = [
@@ -492,6 +490,4 @@ export const noSpinFor = [
   "One-Sided Logo, Two-Sided Text Sash",
 ];
 
-export const notAll = [
-  "Earring"
-]
+export const notAll = ["Earring"];

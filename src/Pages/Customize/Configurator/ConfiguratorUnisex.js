@@ -533,41 +533,40 @@ const ConfiguratorUnisex = () => {
   ).toFixed(2);
 
   const handleTextureChange = (newTexture) => {
-    if (selectedPart === "all") {
-      state.texture = Array(selectedClothing.myNode.length).fill(newTexture);
-      state.color = Array(selectedClothing.myNode.length).fill(null);
-      setSelectedPrintOn(newTexture);
+    // if (selectedPart === "all") {
+    //   state.texture = Array(selectedClothing.myNode.length).fill(newTexture);
+    //   state.color = Array(selectedClothing.myNode.length).fill(null);
+    //   setSelectedPrintOn(newTexture);
 
-      const textureCategory = Object.keys(textureArrays).find((category) =>
-        textureArrays[category].includes(newTexture)
-      );
+    //   const textureCategory = Object.keys(textureArrays).find((category) =>
+    //     textureArrays[category].includes(newTexture)
+    //   );
 
-      // const yardNeeded = selectedClothing.myNode[selectedPart].yardNeeded;
-      const yardPrice = textureValues[textureCategory].price;
-      // const yardAvailable = textureValues[textureCategory].yardAvailable;
+    //   const yardNeeded = selectedClothing.myNode[selectedPart].yardNeeded;
+    //   const yardPrice = textureValues[textureCategory].price;
+    //   // const yardStart = textureValues[textureCategory].yardStart;
 
-      const newPartPrice = yardPrice;
+    //   const newPartPrice = (yardNeeded * yardPrice);
 
-      setPartPrices(Array(selectedClothing.myNode.length).fill(newPartPrice));
-      return;
-    }
+    //   setPartPrices(Array(selectedClothing.myNode.length).fill(newPartPrice));
+    //   return;
+    // }
 
     if (selectedPart !== null) {
       state.texture[selectedPart] = newTexture;
       state.color[selectedPart] = null;
       setSelectedPrintOn(newTexture);
 
-      // Get the texture category based on the newTexture
       const textureCategory = Object.keys(textureArrays).find((category) =>
         textureArrays[category].includes(newTexture)
       );
-      // Calculate the new price for the selected part
 
-      // const yardNeeded = selectedClothing.myNode[selectedPart].yardNeeded;
+      const yardNeeded = selectedClothing.myNode[selectedPart].yardNeeded;
       const yardPrice = textureValues[textureCategory].price;
-      // const yardAvailable = textureValues[textureCategory].yardAvailable;
+      const yardStart = textureValues[textureCategory].yardStart;
 
-      const newPartPrice = yardPrice;
+      const newPartPrice =
+        yardStart === 2 ? yardNeeded * (yardPrice / 2) : yardNeeded * yardPrice;
 
       setPartPrices((prevPrices) =>
         prevPrices.map((price, index) =>
@@ -708,53 +707,40 @@ const ConfiguratorUnisex = () => {
   };
 
   const masterSelectionPartOptions = useMemo(() => {
-    if (selectedClothing.myNode.length === 1) {
-      return (
-        <button
-          className={`size-button btn btn-outline-dark ${
-            selectedPart === "all" ? "selected" : ""
-          }`}
-          onClick={handleAllPartsClick}
-        >
-          All
-        </button>
-      );
-    } else {
-      return (
-        <>
-          {!notAll.includes(selectedClothing.name) && (
-            <button
-              className={`size-button btn btn-outline-dark ${
-                selectedPart === "all" ? "selected" : ""
-              }`}
-              onClick={handleAllPartsClick}
-            >
-              All
-            </button>
-          )}
+    return (
+      <>
+        {!notAll.includes(selectedClothing.name) && (
+          <button
+            className={`size-button btn btn-outline-dark ${
+              selectedPart === "all" ? "selected" : ""
+            }`}
+            onClick={handleAllPartsClick}
+          >
+            All
+          </button>
+        )}
 
-          {selectedClothing.myNode.map((nodeName, index) => {
-            if (specialNodeNames.includes(nodeName.name)) {
-              return null; // Skip rendering this node
-            } else {
-              return (
-                <button
-                  key={index}
-                  className={`size-button btn btn-outline-dark ${
-                    selectedPart === index ? "selected" : ""
-                  }`}
-                  onClick={() => handleSelectPart(index)}
-                >
-                  {nodeName.name === "hands"
-                    ? parseTitle("sleeves")
-                    : parseTitle(nodeName.name)}
-                </button>
-              );
-            }
-          })}
-        </>
-      );
-    }
+        {selectedClothing.myNode.map((nodeName, index) => {
+          if (specialNodeNames.includes(nodeName.name)) {
+            return null; // Skip rendering this node
+          } else {
+            return (
+              <button
+                key={index}
+                className={`size-button btn btn-outline-dark ${
+                  selectedPart === index ? "selected" : ""
+                }`}
+                onClick={() => handleSelectPart(index)}
+              >
+                {nodeName.name === "hands"
+                  ? parseTitle("sleeves")
+                  : parseTitle(nodeName.name)}
+              </button>
+            );
+          }
+        })}
+      </>
+    );
   }, [selectedClothing]);
 
   return (
