@@ -30,6 +30,7 @@ import {
   responsiveNess,
   specialNodeNames,
   displayInplaceFor,
+  colorBasePrice,
 } from "./arrays/neededArrays";
 import TextureItem from "./TextureItem";
 import PartImages from "./PartImages";
@@ -155,6 +156,15 @@ const ConfiguratorMaleAccessories = () => {
   const currencySymbol = useSelector((state) => state.currencySymbol.symbol);
   const currencyFactor = useSelector((state) => state.currencySymbol.factor);
 
+  const [partPrices, setPartPrices] = useState(0);
+  const [colorPrice, setColorPrice] = useState(colorBasePrice);
+
+  //total price
+  const total = (
+    (partPrices + selectedClothing.price + colorPrice) *
+    currencyFactor
+  ).toFixed(2);
+
   const handleSizeChange = (factor) => {
     let yardNeeded;
 
@@ -164,7 +174,7 @@ const ConfiguratorMaleAccessories = () => {
         break;
 
       case 1:
-        yardNeeded = selectedClothing.myNode[selectedPart].yardNeeded;
+        yardNeeded = selectedClothing.myNode[0].yardNeeded;
         break;
 
       case 2:
@@ -193,17 +203,14 @@ const ConfiguratorMaleAccessories = () => {
     let newPartPrice;
 
     if (!yardPrice || !yardStart) {
-      newPartPrice = selectedClothing.price;
+      setColorPrice(yardNeeded * colorBasePrice);
+      return;
     } else {
       newPartPrice =
         yardStart === 2 ? yardNeeded * (yardPrice / 2) : yardNeeded * yardPrice;
     }
 
-    setPartPrices((prevPrices) =>
-      prevPrices.map((price, index) =>
-        index === selectedPart ? newPartPrice : price
-      )
-    );
+    setPartPrices(newPartPrice);
 
     setSelectedSize(factor);
   };
@@ -211,55 +218,22 @@ const ConfiguratorMaleAccessories = () => {
   const [showGlow, setShowGlow] = useState(false);
 
   const handleColorChange = (newColor) => {
-    if (selectedPart === "all") {
-      state.texture = Array(selectedClothing.myNode.length).fill(null);
-      state.color = Array(selectedClothing.myNode.length).fill(newColor);
-      setSelectedPrintOn(newColor);
-      return;
-    }
+    // if (selectedPart === "all") {
+    //   state.texture = Array(selectedClothing.myNode.length).fill(null);
+    //   state.color = Array(selectedClothing.myNode.length).fill(newColor);
+    //   setSelectedPrintOn(newColor);
+    //   return;
+    // }
 
     state.color[selectedPart] = newColor;
     state.texture[selectedPart] = null;
     setSelectedPrintOn(newColor);
 
+    setPartPrices(0);
     setShowGlow(false);
   };
 
-  const [partPrices, setPartPrices] = useState(
-    Array(selectedClothing.myNode.length).fill(0)
-  );
-
-  const semitotal = partPrices.reduce((total, price) => total + price, 0);
-
-  const selectedSizeIndex = selectedSize !== 0.5 ? selectedSize : 0;
-
-  //total price
-  const total = (
-    (semitotal + selectedClothing.price) *
-    // selectedClothing.sizeOptions[selectedSizeIndex].value *
-    currencyFactor
-  ).toFixed(2);
-
   const handleTextureChange = (newTexture) => {
-    // if (selectedPart === "all") {
-    //   state.texture = Array(selectedClothing.myNode.length).fill(newTexture);
-    //   state.color = Array(selectedClothing.myNode.length).fill(null);
-    //   setSelectedPrintOn(newTexture);
-
-    //   const textureCategory = Object.keys(textureArrays).find((category) =>
-    //     textureArrays[category].includes(newTexture)
-    //   );
-
-    //   const yardNeeded = selectedClothing.myNode[selectedPart].yardNeeded;
-    //   const yardPrice = textureValues[textureCategory].price;
-    //   // const yardStart = textureValues[textureCategory].yardStart;
-
-    //   const newPartPrice = (yardNeeded * yardPrice);
-
-    //   setPartPrices(Array(selectedClothing.myNode.length).fill(newPartPrice));
-    //   return;
-    // }
-
     if (selectedPart !== null) {
       state.texture[selectedPart] = newTexture;
       state.color[selectedPart] = null;
@@ -277,11 +251,7 @@ const ConfiguratorMaleAccessories = () => {
       const newPartPrice =
         yardStart === 2 ? yardNeeded * (yardPrice / 2) : yardNeeded * yardPrice;
 
-      setPartPrices((prevPrices) =>
-        prevPrices.map((price, index) =>
-          index === selectedPart ? newPartPrice : price
-        )
-      );
+      setPartPrices(newPartPrice);
     }
 
     setShowGlow(false);
@@ -405,7 +375,7 @@ const ConfiguratorMaleAccessories = () => {
     setShowGlow(true);
   };
 
- // const masterSelectionPartOptions = useMemo(() => {
+  // const masterSelectionPartOptions = useMemo(() => {
   //   return (
   //     <>
   //       {selectedClothing.myNode.map((nodeName, index) => (

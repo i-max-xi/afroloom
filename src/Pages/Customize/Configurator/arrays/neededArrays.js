@@ -65,6 +65,8 @@ import p_kente2 from "../textures/p_kente2.jpg";
 import p_kente3 from "../textures/p_kente3.jpg";
 import p_kente4 from "../textures/p_kente4.jpg";
 
+export const colorBasePrice = 5;
+
 export const colorOptions = [
   { color: "#ff0000", label: "Red" },
   { color: "#ffffff", label: "White" },
