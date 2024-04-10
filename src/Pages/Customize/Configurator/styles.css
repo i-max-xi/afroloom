@@ -3,7 +3,6 @@
 }
 
 @media (max-width: 900px) {
-
   .left-panel {
     width: 100% !important;
     border-top-left-radius: 3rem !important;
@@ -13,7 +12,6 @@
   .text-image-imprint h5 {
     font-size: 1rem !important;
   }
-
 
   /* Actual 3d  */
   .configurator-container {
@@ -26,9 +24,8 @@
 
   .main-space button {
     padding: 0.2rem 0.6rem !important;
-    margin: 0.2rem ;
+    margin: 0.2rem;
   }
-
 
   .left-panel h3 {
     font-size: 0.9rem !important;
@@ -45,7 +42,6 @@
     align-self: center;
   }
 
-
   /* .texture-category {
     width: 50% !important;
   } */
@@ -53,7 +49,6 @@
   .part-panel {
     display: none !important;
   }
-
 
   .text-image-imprint-wrapper {
     display: flex;
@@ -104,17 +99,17 @@
   .uploaded-image {
     width: 8% !important;
   }
-  
-  #uploaded-image-left{
+
+  #uploaded-image-left {
     top: 10.5% !important;
     left: 27% !important;
   }
 
-  #uploaded-image-right{
+  #uploaded-image-right {
     top: 10.5% !important;
     left: 63.4% !important;
   }
-  
+
   /* #overlay-right {
     transform: translateX(2.8rem) !important;
     width: 3.4rem !important;
@@ -143,7 +138,6 @@
 
 .main-space {
   background-color: white;
-
 }
 
 .btn-success {
@@ -156,7 +150,7 @@ h1 {
 
 .configurator-container {
   display: flex;
-  padding: 0 !important
+  padding: 0 !important;
 }
 
 .left-panel {
@@ -169,7 +163,6 @@ h1 {
 .left-panel > h5 {
   font-size: 1rem;
 }
-
 
 .left-panel button:hover {
   background-color: none !important;
@@ -204,10 +197,7 @@ h1 {
   width: 150%;
   gap: 2rem;
   align-items: center;
-  
 }
-
-
 
 .color-button {
   /* position: relative; */
@@ -217,7 +207,6 @@ h1 {
   border: 0.5px solid rgba(0, 0, 0, 0.418);
   cursor: pointer;
 }
-
 
 .imprint-text-color-button {
   width: 1rem;
@@ -236,11 +225,9 @@ h1 {
   justify-content: center;
 }
 
-
 .texture-category h3 {
   font-size: 1rem;
 }
-
 
 .texture-item {
   display: flex;
@@ -331,12 +318,12 @@ h1 {
   position: absolute;
 }
 
-#uploaded-image-left{
+#uploaded-image-left {
   top: 14%;
   left: 50%;
 }
 
-#uploaded-image-right{
+#uploaded-image-right {
   top: 14%;
   left: 64.4%;
 }
@@ -382,7 +369,10 @@ h1 {
   z-index: 1 !important;
 }
 
-
 .customize-focus {
   font-weight: 700;
+}
+
+.resize-right-panel > div > div {
+  z-index: 1 !important;
 }

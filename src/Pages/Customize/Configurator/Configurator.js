@@ -165,7 +165,7 @@ const Configurator = () => {
         break;
 
       case 1:
-       yardNeeded = selectedClothing.myNode[selectedPart].yardNeeded;
+        yardNeeded = selectedClothing.myNode[selectedPart].yardNeeded;
         break;
 
       case 2:
@@ -193,16 +193,12 @@ const Configurator = () => {
 
     let newPartPrice;
 
-    if (!yardPrice || !yardStart){
-      newPartPrice = selectedClothing.price
-    }
-
-    else {
+    if (!yardPrice || !yardStart) {
+      newPartPrice = selectedClothing.price;
+    } else {
       newPartPrice =
-      yardStart === 2 ? yardNeeded * (yardPrice / 2) : yardNeeded * yardPrice;
+        yardStart === 2 ? yardNeeded * (yardPrice / 2) : yardNeeded * yardPrice;
     }
-
-    
 
     setPartPrices((prevPrices) =>
       prevPrices.map((price, index) =>
