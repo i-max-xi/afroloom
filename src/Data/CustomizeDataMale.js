@@ -375,7 +375,10 @@ export const mainMaleCustomize = [
     name: "Bomber Jacket",
     image: image_jacket,
     model: jacket,
-    myNode: [{ name: "all", yardNeeded: 3 }],
+    myNode: [
+      { name: "all", yardNeeded: 3 },
+      { name: "buttons", yardNeeded: 1 },
+    ],
     otherYards: { small: 3, large: 3, extraLarge: 4, extraExtraLarge: 4 },
     myZoom: 0.9,
     price: 35 + 20,
@@ -413,8 +416,7 @@ export const mainMaleCustomize = [
     model: blazer,
     image: image_blazer_image,
     myNode: [
-      { name: "torso", yardNeeded: 3 },
-      { name: "hands", yardNeeded: 1 },
+      { name: "all", yardNeeded: 3 },
       { name: "buttons", yardNeeded: 0 },
     ],
     otherYards: { small: 3, large: 3, extraLarge: 4, extraExtraLarge: 4 },
