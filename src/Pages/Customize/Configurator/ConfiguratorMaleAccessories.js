@@ -440,7 +440,11 @@ const ConfiguratorMaleAccessories = () => {
           readyBy={selectedClothing.readyIn}
           weight={selectedClothing.weight}
           name={selectedClothing.name}
-          // // selectedParts={selectedParts}
+          // // selectedParts={selectedClothing.myNode[0]}
+          selectedPrintOn={{
+            isColor: state.texture[selectedPart] === null,
+            item: selectedPrintOn,
+          }}
           setShowConfirmation={setShowConfirmation}
           selectedSize={
             selectedClothing.sizeOptions.find(

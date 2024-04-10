@@ -25,6 +25,7 @@ const Confirmation = ({
   readyBy,
   name,
   selectedParts,
+  selectedPrintOn,
   selectedSize,
   modelImage,
   customSizeValues,
@@ -141,6 +142,7 @@ const Confirmation = ({
         currencySymbol={currencySymbol}
         readyBy={readyByCount}
         selectedParts={selectedParts}
+        selectedPrintOn={selectedPrintOn}
         selectedSize={selectedSize}
         ref={componentRef}
         modelImage={modelImage}
@@ -200,6 +202,7 @@ export const OrderDetail = React.forwardRef(
       // currencySymbol,
       readyBy,
       selectedParts,
+      selectedPrintOn,
       selectedSize,
       modelImage,
       customSizeValues,
@@ -224,10 +227,7 @@ export const OrderDetail = React.forwardRef(
             <img src={modelImage} alt="model img" width="80%" />
           </p>
           <ul className="list-group">
-            <li
-              className="list-group-item d-flex justify-content-between align-items-center mt-3"
-              data-aos="fade-up"
-            >
+            <li className="list-group-item d-flex justify-content-between align-items-center mt-3">
               <div className="d-flex">
                 <div className="m-1">
                   <span className="fw-bold">Name: </span> {name} <br />
@@ -261,6 +261,36 @@ export const OrderDetail = React.forwardRef(
                 <span className="fw-bold">Quantity: {count}</span>
               </div>
             </li>
+            <li className="list-group-item d-flex justify-content-between align-items-center mt-3">
+              <div className="d-flex align-items-centers gap-3">
+                <h5>{selectedPrintOn.isColor ? "Color" : "Textile"}</h5>
+
+                {selectedPrintOn.isColor ? (
+                  <div
+                    className="color-display"
+                    style={{
+                      backgroundColor: selectedPrintOn.item,
+                      width: "20px",
+                      height: "20px",
+                      border: "1px solid black",
+                      borderRadius: "4rem",
+                      display: "inline-block",
+                      marginLeft: "1rem",
+                    }}
+                  ></div>
+                ) : (
+                  <img
+                    src={selectedPrintOn.item}
+                    alt="Selected Texture"
+                    style={{
+                      maxWidth: "70px",
+                      maxHeight: "70px",
+                      display: "inline-block",
+                    }}
+                  />
+                )}
+              </div>
+            </li>
           </ul>
 
           <div>
@@ -291,7 +321,7 @@ export const OrderDetail = React.forwardRef(
                       Object.entries(customSizeValues)?.map(
                         ([label, value]) => (
                           <li key={label}>
-                            <strong>{label}:</strong> {value}
+                            <strong>{label}:</strong> {value ? value : "N/A"}
                           </li>
                         )
                       )}
@@ -318,60 +348,6 @@ export const OrderDetail = React.forwardRef(
               </label>
             </span>
           </p>
-        </div>
-        <div className="col-md-6">
-          <div className="mt-4">
-            <h2>Information On Parts</h2>
-            {selectedParts.map(
-              (part, index) =>
-                // Check if the part has color or texture before rendering
-                (part.color || part.texture) && (
-                  <div key={index} className="mb-4">
-                    <h4 className="text-capitalize">{parseTitle(part.name)}</h4>
-                    <p>
-                      {part.color && (
-                        <>
-                          Color
-                          <div
-                            className="color-display"
-                            style={{
-                              backgroundColor: part.color,
-                              width: "20px",
-                              height: "20px",
-                              border: "1px solid black",
-                              borderRadius: "4rem",
-                              display: "inline-block",
-                              marginLeft: "1rem",
-                            }}
-                          ></div>
-                        </>
-                      )}
-                    </p>
-
-                    <p>
-                      {part.texture && (
-                        <>
-                          Texture:
-                          <p>
-                            <img
-                              src={part.texture}
-                              alt="Selected Texture"
-                              style={{
-                                maxWidth: "70px",
-                                maxHeight: "70px",
-                                display: "inline-block",
-                              }}
-                            />
-                          </p>
-                        </>
-                      )}
-                    </p>
-
-                    {index !== selectedParts.length - 1 && <Divider />}
-                  </div>
-                )
-            )}
-          </div>
         </div>
       </div>
     );
