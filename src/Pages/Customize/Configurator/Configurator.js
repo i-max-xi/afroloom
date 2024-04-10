@@ -36,7 +36,8 @@ import {
 import TextureItem from "./TextureItem";
 import PartImages from "./PartImages";
 import WelcomeTour, { tourSteps } from "./WelcomeTour";
-import { InputText } from "primereact/inputtext";
+
+import { InputNumber } from "primereact/inputnumber";
 import { Toast } from "primereact/toast";
 import { isMobile } from "../../../utils/constants";
 import uuid from "react-uuid";
@@ -375,26 +376,6 @@ const Configurator = () => {
     setShowGlow(true);
   };
 
-  // const masterSelectionPartOptions = useMemo(() => {
-  //   return (
-  //     <>
-  //       {selectedClothing.myNode.map((nodeName, index) => (
-  //         <button
-  //           key={index}
-  //           className={`size-button btn btn-outline-dark ${
-  //             selectedPart === index ? "selected" : ""
-  //           }`}
-  //           onClick={() => handleSelectPart(index)}
-  //         >
-  //           {nodeName.name === "hands"
-  //             ? parseTitle("sleeves")
-  //             : parseTitle(nodeName.name)}
-  //         </button>
-  //       ))}
-  //     </>
-  //   );
-  // }, [selectedClothing]);
-
   return (
     <>
       <Nav />
@@ -526,11 +507,10 @@ const Configurator = () => {
                           </span>
                         </InplaceDisplay>
                         <InplaceContent>
-                          <InputText
+                          <InputNumber
                             value={height}
-                            onChange={(e) => setHeight(e.target.value)}
-                            autoFocus
-                            tooltip="we need this for accurate design"
+                            onValueChange={(e) => setHeight(e.target.value)}
+                            suffix="cm"
                           />
                         </InplaceContent>
                       </Inplace>

@@ -39,11 +39,12 @@ import {
 import TextureItem from "./TextureItem";
 import PartImages from "./PartImages";
 import WelcomeTour, { tourSteps } from "./WelcomeTour";
-import { InputText } from "primereact/inputtext";
+import { Dropdown } from "primereact/dropdown";
+
 import { Toast } from "primereact/toast";
 import ImageUpload from "./ImageUpload";
 import HtmlComponent from "./HtmlComponent";
-import { isMobile } from "../../../utils/constants";
+import { genderOptions, isMobile } from "../../../utils/constants";
 import uuid from "react-uuid";
 import { OverlayPanel } from "primereact/overlaypanel";
 
@@ -895,11 +896,18 @@ const ConfiguratorUnisex = () => {
                           </span>
                         </InplaceDisplay>
                         <InplaceContent>
-                          <InputText
+                          {/* <InputText
                             value={gender}
                             onChange={(e) => setGender(e.target.value)}
                             autoFocus
                             tooltip="we need this for accurate design"
+                          /> */}
+                          <Dropdown
+                            value={gender}
+                            onChange={(e) => setGender(e.value)}
+                            options={genderOptions}
+                            optionLabel="label"
+                            placeholder="Select a Gender"
                           />
                         </InplaceContent>
                       </Inplace>

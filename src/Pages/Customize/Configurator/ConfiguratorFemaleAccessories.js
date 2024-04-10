@@ -35,7 +35,8 @@ import {
 import TextureItem from "./TextureItem";
 import PartImages from "./PartImages";
 import WelcomeTour, { tourSteps } from "./WelcomeTour";
-import { InputText } from "primereact/inputtext";
+import { InputNumber } from "primereact/inputnumber";
+
 import { Toast } from "primereact/toast";
 import { isMobile } from "../../../utils/constants";
 import uuid from "react-uuid";
@@ -525,11 +526,10 @@ const ConfiguratorFemaleAccessories = () => {
                           </span>
                         </InplaceDisplay>
                         <InplaceContent>
-                          <InputText
+                          <InputNumber
                             value={height}
-                            onChange={(e) => setHeight(e.target.value)}
-                            autoFocus
-                            tooltip="we need this for accurate design"
+                            onValueChange={(e) => setHeight(e.target.value)}
+                            suffix="cm"
                           />
                         </InplaceContent>
                       </Inplace>
