@@ -639,9 +639,13 @@ const ConfiguratorUnisex = () => {
     // setShowConfirmation(true);
 
     try {
-      const dataUrl = await domtoimage.toPng(canvas);
-      setStateImage(dataUrl); // Save the data URL to state
-      setShowConfirmation(true); // Show confirmation
+      // const dataUrl = await domtoimage.toPng(canvas);
+      // setStateImage(dataUrl); // Save the data URL to state
+      // setShowConfirmation(true); // Show confirmation
+      await domtoimage.toPng(canvas).then((dataUrl) => {
+        setStateImage(dataUrl);
+        setShowConfirmation(true);
+      });
     } catch (error) {
       toastRef.current.show({
         severity: "error",
