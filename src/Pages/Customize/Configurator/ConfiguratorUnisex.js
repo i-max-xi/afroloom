@@ -742,42 +742,11 @@ const ConfiguratorUnisex = () => {
     setShowGlow(true);
   };
 
-  const masterSelectionPartOptions = useMemo(() => {
-    return (
-      <>
-        {!notAll.includes(selectedClothing.name) && (
-          <button
-            className={`size-button btn btn-outline-dark ${
-              selectedPart === "all" ? "selected" : ""
-            }`}
-            onClick={handleAllPartsClick}
-          >
-            All
-          </button>
-        )}
+  // const masterSelectionPartOptions = useMemo(() => {
+  //   return (
 
-        {selectedClothing.myNode.map((nodeName, index) => {
-          if (specialNodeNames.includes(nodeName.name)) {
-            return null; // Skip rendering this node
-          } else {
-            return (
-              <button
-                key={index}
-                className={`size-button btn btn-outline-dark ${
-                  selectedPart === index ? "selected" : ""
-                }`}
-                onClick={() => handleSelectPart(index)}
-              >
-                {nodeName.name === "hands"
-                  ? parseTitle("sleeves")
-                  : parseTitle(nodeName.name)}
-              </button>
-            );
-          }
-        })}
-      </>
-    );
-  }, [selectedClothing]);
+  //   );
+  // }, [selectedClothing]);
 
   return (
     <>
@@ -876,7 +845,38 @@ const ConfiguratorUnisex = () => {
               <div className="left-panel rounded shadow">
                 <h5>Select Part</h5>
                 <div className="select-part-container">
-                  {masterSelectionPartOptions}
+                  <>
+                    {!notAll.includes(selectedClothing.name) && (
+                      <button
+                        className={`size-button btn btn-outline-dark ${
+                          selectedPart === "all" ? "selected" : ""
+                        }`}
+                        onClick={handleAllPartsClick}
+                      >
+                        All
+                      </button>
+                    )}
+
+                    {selectedClothing.myNode.map((nodeName, index) => {
+                      if (specialNodeNames.includes(nodeName.name)) {
+                        return null; // Skip rendering this node
+                      } else {
+                        return (
+                          <button
+                            key={index}
+                            className={`size-button btn btn-outline-dark ${
+                              selectedPart === index ? "selected" : ""
+                            }`}
+                            onClick={() => handleSelectPart(index)}
+                          >
+                            {nodeName.name === "hands"
+                              ? parseTitle("sleeves")
+                              : parseTitle(nodeName.name)}
+                          </button>
+                        );
+                      }
+                    })}
+                  </>{" "}
                 </div>
                 <h5>Choose Size</h5>
                 <div className="size w-75">
