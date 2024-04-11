@@ -171,10 +171,18 @@ const ConfiguratorUnisex = () => {
   const [colorPrice, setColorPrice] = useState(colorBasePrice);
 
   //total price
-  const total = (
-    (partPrices + selectedClothing.price + colorPrice) *
-    currencyFactor
-  ).toFixed(2);
+  const total = useMemo(() => {
+    if (noSpinFor.includes(selectedClothing.name)) {
+      return ((partPrices + selectedClothing.price) * currencyFactor).toFixed(
+        2
+      );
+    } else {
+      return (
+        (partPrices + selectedClothing.price + colorPrice) *
+        currencyFactor
+      ).toFixed(2);
+    }
+  }, [selectedClothing.name]);
 
   const handleSizeChange = (factor) => {
     let yardNeeded;
