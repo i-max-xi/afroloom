@@ -178,6 +178,7 @@ const ConfiguratorUnisex = () => {
 
   const handleSizeChange = (factor) => {
     let yardNeeded;
+    setSelectedSize(factor);
 
     switch (factor) {
       case 0.5:
@@ -222,8 +223,6 @@ const ConfiguratorUnisex = () => {
     }
 
     setPartPrices(newPartPrice);
-
-    setSelectedSize(factor);
   };
 
   const [showGlow, setShowGlow] = useState(false);
