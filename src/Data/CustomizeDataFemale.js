@@ -665,7 +665,7 @@ export const mainFemaleCustomize = [
       // { name: "sleeves", yardNeeded: 0 },
     ],
     otherYards: { small: 3, large: 3, extraLarge: 4, extraExtraLarge: 4 },
-    myZoom: 0.8,
+    myZoom: 1,
     price: 130 + 50,
     sizeGuide: blazer_guide,
     // sizeModels: tshirt_model,
