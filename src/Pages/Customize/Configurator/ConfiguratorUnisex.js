@@ -653,21 +653,18 @@ const ConfiguratorUnisex = () => {
 
     const canvas = canvasRef.current;
 
-    // const canvasImage = await html2canvas(canvas);
-    // const dataUrl = canvasImage.toDataURL();
-
-    // setStateImage(dataUrl);
-
-    // setShowConfirmation(true);
-
     try {
-      // const dataUrl = await domtoimage.toPng(canvas);
-      // setStateImage(dataUrl); // Save the data URL to state
-      // setShowConfirmation(true); // Show confirmation
       await domtoimage.toPng(canvas).then((dataUrl) => {
         setStateImage(dataUrl);
         setShowConfirmation(true);
       });
+
+      // const canvasImage = await html2canvas(canvas);
+      // const dataUrl = canvasImage.toDataURL();
+
+      // setStateImage(dataUrl);
+
+      // setShowConfirmation(true);
     } catch (error) {
       toastRef.current.show({
         severity: "error",
@@ -1102,9 +1099,9 @@ const ConfiguratorUnisex = () => {
                 )}
               </div>
               <div className="right-panel">
-                <div className="resize-right-panel">
+                <div ref={canvasRef} className="resize-right-panel">
                   <div
-                    ref={canvasRef}
+                    // ref={canvasRef}
                     style={
                       {
                         // height: selectedClothing.name !== "Logo Up, Text Down Sash" ? "100%" : "81%",
