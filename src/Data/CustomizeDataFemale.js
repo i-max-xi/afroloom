@@ -660,7 +660,10 @@ export const mainFemaleCustomize = [
     name: "Blazer",
     model: blazer,
     image: image_blazer,
-    myNode: [{ name: "all", yardNeeded: 3 }],
+    myNode: [
+      // { name: "all", yardNeeded: 3 },
+      { name: "buttons", yardNeeded: 0 },
+    ],
     otherYards: { small: 3, large: 3, extraLarge: 4, extraExtraLarge: 4 },
     myZoom: 0.8,
     price: 130 + 50,
