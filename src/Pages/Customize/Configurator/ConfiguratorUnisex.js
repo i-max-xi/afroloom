@@ -157,7 +157,7 @@ const ConfiguratorUnisex = () => {
   const [selectedSize, setSelectedSize] = useState(1);
   const [selectedPrintOn, setSelectedPrintOn] = useState(null);
 
-  const [selectedPart, setSelectedPart] = useState(0);
+  const [selectedPart, setSelectedPart] = useState(null);
 
   const [isRotating, setIsRotating] = useState(false);
 
@@ -559,12 +559,12 @@ const ConfiguratorUnisex = () => {
   };
 
   const handleColorChange = (newColor) => {
-    // if (selectedPart === "all") {
-    //   state.texture = Array(selectedClothing.myNode.length).fill(null);
-    //   state.color = Array(selectedClothing.myNode.length).fill(newColor);
-    //   setSelectedPrintOn(newColor);
-    //   return;
-    // }
+    if (selectedPart === "all") {
+      state.texture = Array(selectedClothing.myNode.length).fill(null);
+      state.color = Array(selectedClothing.myNode.length).fill(newColor);
+      setSelectedPrintOn(newColor);
+      return;
+    }
 
     state.color[selectedPart] = newColor;
     state.texture[selectedPart] = null;
@@ -716,6 +716,10 @@ const ConfiguratorUnisex = () => {
   // customer height
   const [gender, setGender] = useState("");
 
+  useEffect(() => {
+    console.log(selectedPart);
+  }, [selectedPart]);
+
   const handleAllPartsClick = () => {
     setSelectedPart("all");
   };
@@ -862,10 +866,10 @@ const ConfiguratorUnisex = () => {
             </div>
             <div className="configurator-container container">
               <div className="left-panel rounded shadow">
-                {/* <h5>Select Part</h5>
+                <h5>Select Part</h5>
                 <div className="select-part-container">
                   {masterSelectionPartOptions}
-                </div> */}
+                </div>
                 <h5>Choose Size</h5>
                 <div className="size w-75">
                   <p className="size-button-container">
