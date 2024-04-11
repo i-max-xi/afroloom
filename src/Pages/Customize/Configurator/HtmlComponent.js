@@ -21,7 +21,7 @@ const HtmlComponent = ({
   };
 
   return (
-    <Html style={{zIndex: 1, backgroundColor: "red"}}>
+    <Html style={{ zIndex: 1, backgroundColor: "red" }}>
       <div
         className="overlay"
         style={{
@@ -41,9 +41,13 @@ const HtmlComponent = ({
           opacity: textLeft !== "" ? 1 : 0.3,
         }}
         dangerouslySetInnerHTML={{
-          __html: hideRightText ? textLeft !== "" ? textLeft : "TEXT HERE" : separateWordsWithLineBreak(
-            textLeft !== "" ? textLeft : "TEXT HERE"
-          ),
+          __html: hideRightText
+            ? textLeft !== ""
+              ? textLeft
+              : "TEXT HERE"
+            : separateWordsWithLineBreak(
+                textLeft !== "" ? textLeft : "TEXT HERE"
+              ),
         }}
       />
 
@@ -68,7 +72,7 @@ const HtmlComponent = ({
             }`,
             opacity: textRight !== "" ? 1 : 0.3,
             zIndex: 0.8,
-            lineHeight: ImprintTextPosition.right?.lineHeight
+            lineHeight: ImprintTextPosition.right?.lineHeight,
           }}
           dangerouslySetInnerHTML={{
             __html: separateWordsWithLineBreak(

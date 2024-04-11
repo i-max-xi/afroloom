@@ -583,6 +583,21 @@ const ConfiguratorUnisex = () => {
   };
 
   const handleTextureChange = (newTexture) => {
+    if (selectedPart === "all") {
+      state.texture = Array(selectedClothing.myNode.length).fill(newTexture);
+      state.color = Array(selectedClothing.myNode.length).fill(null);
+      setSelectedPrintOn(newTexture);
+
+      const textureCategory = Object.keys(textureArrays).find((category) =>
+        textureArrays[category].includes(newTexture)
+      );
+
+      const newPartPrice = textureValues[textureCategory];
+
+      setPartPrices(Array(selectedClothing.myNode.length).fill(newPartPrice));
+      return;
+    }
+
     if (selectedPart !== null) {
       state.texture[selectedPart] = newTexture;
       state.color[selectedPart] = null;
@@ -723,10 +738,6 @@ const ConfiguratorUnisex = () => {
 
   // customer height
   const [gender, setGender] = useState("");
-
-  useEffect(() => {
-    console.log(selectedPart);
-  }, [selectedPart]);
 
   const handleAllPartsClick = () => {
     setSelectedPart("all");
@@ -1168,6 +1179,7 @@ const ConfiguratorUnisex = () => {
                             width:
                               ImprintTextPosition.left?.placeholder?.width ||
                               "8%",
+                            zIndex: 1,
                           }}
                         >
                           {selectedClothing.name === "Text Up, Image Down Sash"

@@ -373,6 +373,6 @@ h1 {
   font-weight: 700;
 }
 
-.resize-right-panel > div > div {
+/* .resize-right-panel > div > div {
   z-index: 1 !important;
-}
+} */
