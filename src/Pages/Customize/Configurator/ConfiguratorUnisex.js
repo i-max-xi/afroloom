@@ -651,8 +651,6 @@ const ConfiguratorUnisex = () => {
       return;
     }
 
-    const canvas = canvasRef.current;
-
     // const canvasImage = await html2canvas(canvas);
     // const dataUrl = canvasImage.toDataURL();
 
@@ -666,7 +664,7 @@ const ConfiguratorUnisex = () => {
       //   setShowConfirmation(true);
       // });
 
-      const dataUrl = await domtoimage.toPng(canvas);
+      const dataUrl = await domtoimage.toPng(canvasRef.current);
 
       // Set the state image and show confirmation after conversion is complete
       setStateImage(dataUrl);
@@ -679,6 +677,10 @@ const ConfiguratorUnisex = () => {
       });
     }
   };
+
+  useEffect(() => {
+    console.log("the state", stateImage);
+  }, [stateImage]);
 
   //size guide popup
   const [visible, setVisible] = useState(false);
