@@ -661,10 +661,16 @@ const ConfiguratorUnisex = () => {
     // setShowConfirmation(true);
 
     try {
-      await domtoimage.toPng(canvas).then((dataUrl) => {
-        setStateImage(dataUrl);
-        setShowConfirmation(true);
-      });
+      // await domtoimage.toPng(canvas).then((dataUrl) => {
+      //   setStateImage(dataUrl);
+      //   setShowConfirmation(true);
+      // });
+
+      const dataUrl = await domtoimage.toPng(canvas);
+
+      // Set the state image and show confirmation after conversion is complete
+      setStateImage(dataUrl);
+      setShowConfirmation(true);
     } catch (error) {
       toastRef.current.show({
         severity: "error",
