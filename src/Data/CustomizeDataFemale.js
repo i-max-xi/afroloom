@@ -516,8 +516,8 @@ export const mainFemaleCustomize = [
     image: image_topndown_image,
     model: topndown_model,
     myNode: [
-      { name: "top", yardNeeded: 3 },
-      { name: "trousers", yardNeeded: 2 },
+      { name: "all", yardNeeded: 3 },
+      // { name: "trousers", yardNeeded: 2 },
     ],
     otherYards: { small: 3, large: 4, extraLarge: 4, extraExtraLarge: 4 },
     myZoom: 0.6,
