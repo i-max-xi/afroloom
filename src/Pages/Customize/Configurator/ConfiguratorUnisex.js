@@ -433,8 +433,8 @@ const ConfiguratorUnisex = () => {
           },
           placeholder: {
             top: "-9.5rem",
-            left: "6.3rem",
-            width: "8%",
+            left: "7rem",
+            width: "6%",
           },
         },
         right: {
@@ -450,9 +450,9 @@ const ConfiguratorUnisex = () => {
             width: "15.8%",
           },
           placeholder: {
-            top: "-10.1rem",
-            left: "17.3rem",
-            width: "8%",
+            top: "-11rem",
+            left: "18rem",
+            width: "6%",
           },
         },
       };
