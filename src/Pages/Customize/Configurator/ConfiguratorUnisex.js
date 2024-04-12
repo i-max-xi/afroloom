@@ -259,6 +259,20 @@ const ConfiguratorUnisex = () => {
 
   const textEditRef = useRef(null);
 
+  // Image imprint
+  const [uploadedImageLeft, setUploadedImageLeft] = useState(null); // State to store the uploaded image
+  const [uploadedImageRight, setUploadedImageRight] = useState(null); // State to store the uploaded image
+  const imageLeftRef = useRef();
+  const imageRightRef = useRef();
+
+  const handleImageUploadLeft = (file) => {
+    setUploadedImageLeft(URL.createObjectURL(file)); // Set the uploaded image
+  };
+
+  const handleImageUploadRight = (file) => {
+    setUploadedImageRight(URL.createObjectURL(file)); // Set the uploaded image
+  };
+
   const ImprintTextPosition = useMemo(() => {
     if (selectedClothing.name === noSpinFor[0]) {
       return {
@@ -292,12 +306,12 @@ const ConfiguratorUnisex = () => {
           lineHeight: "",
           image: {
             top: "-22rem",
-            left: "6.1rem",
+            left: "7.1rem",
             width: "8%",
           },
           placeholder: {
             top: "-22rem",
-            left: "6.3rem",
+            left: "7.3rem",
             width: "8%",
           },
         },
@@ -309,12 +323,12 @@ const ConfiguratorUnisex = () => {
           width: "3.6rem",
           lineHeight: "",
           image: {
-            top: "-24rem",
+            top: "-23rem",
             left: "17.5rem",
             width: "8%",
           },
           placeholder: {
-            top: "-24.5rem",
+            top: "-23.5rem",
             left: "18rem",
             width: "8%",
           },
@@ -552,20 +566,6 @@ const ConfiguratorUnisex = () => {
     setFontSizeRight((prevSize) => prevSize - 1);
   };
 
-  // Image imprint
-  const [uploadedImageLeft, setUploadedImageLeft] = useState(null); // State to store the uploaded image
-  const [uploadedImageRight, setUploadedImageRight] = useState(null); // State to store the uploaded image
-  const imageLeftRef = useRef();
-  const imageRightRef = useRef();
-
-  const handleImageUploadLeft = (file) => {
-    setUploadedImageLeft(URL.createObjectURL(file)); // Set the uploaded image
-  };
-
-  const handleImageUploadRight = (file) => {
-    setUploadedImageRight(URL.createObjectURL(file)); // Set the uploaded image
-  };
-
   const handleColorChange = (newColor) => {
     if (selectedPart === "all") {
       state.texture = Array(selectedClothing.myNode.length).fill(null);
@@ -651,36 +651,27 @@ const ConfiguratorUnisex = () => {
       return;
     }
 
-    // const canvasImage = await html2canvas(canvas);
-    // const dataUrl = canvasImage.toDataURL();
+    const canvasImage = await html2canvas(canvasRef.current);
+    const dataUrl = canvasImage.toDataURL();
 
-    // setStateImage(dataUrl);
+    setStateImage(dataUrl);
 
-    // setShowConfirmation(true);
+    setShowConfirmation(true);
 
-    try {
-      // await domtoimage.toPng(canvas).then((dataUrl) => {
-      //   setStateImage(dataUrl);
-      //   setShowConfirmation(true);
-      // });
+    // try {
+    //   const dataUrl = await domtoimage.toPng(canvasRef.current);
 
-      const dataUrl = await domtoimage.toPng(canvasRef.current);
-
-      // Set the state image and show confirmation after conversion is complete
-      setStateImage(dataUrl);
-      setShowConfirmation(true);
-    } catch (error) {
-      toastRef.current.show({
-        severity: "error",
-        summary: "Image no capture",
-        detail: error,
-      });
-    }
+    //   // Set the state image and show confirmation after conversion is complete
+    //   setStateImage(dataUrl);
+    //   setShowConfirmation(true);
+    // } catch (error) {
+    //   toastRef.current.show({
+    //     severity: "error",
+    //     summary: "Image no capture",
+    //     detail: error,
+    //   });
+    // }
   };
-
-  useEffect(() => {
-    console.log("the state", stateImage);
-  }, [stateImage]);
 
   //size guide popup
   const [visible, setVisible] = useState(false);
@@ -1176,7 +1167,7 @@ const ConfiguratorUnisex = () => {
                           />
                         </div>
                       ) : (
-                        <p
+                        <div
                           style={{
                             fontSize: "0.5rem",
                             opacity: 0.5,
@@ -1190,7 +1181,7 @@ const ConfiguratorUnisex = () => {
                           {selectedClothing.name === "Text Up, Image Down Sash"
                             ? "Image here"
                             : "Logo here"}
-                        </p>
+                        </div>
                       ))}
                     {isLoading === false &&
                       noSpinFor.includes(selectedClothing.name) &&
@@ -1219,7 +1210,7 @@ const ConfiguratorUnisex = () => {
                           />
                         </div>
                       ) : (
-                        <p
+                        <div
                           style={{
                             fontSize: "0.5rem",
                             opacity: 0.5,
@@ -1232,7 +1223,7 @@ const ConfiguratorUnisex = () => {
                           {selectedClothing.name === "Text Up, Image Down Sash"
                             ? "Image here"
                             : "Logo here"}
-                        </p>
+                        </div>
                       ))}
                   </div>
 
