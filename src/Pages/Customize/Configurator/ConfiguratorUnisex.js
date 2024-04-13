@@ -692,8 +692,16 @@ const ConfiguratorUnisex = () => {
 
     try {
       // Capture the screen of the current tab
+      // const stream = await navigator.mediaDevices.getDisplayMedia({
+      //   preferCurrentTab: true,
+      // });
+
       const stream = await navigator.mediaDevices.getDisplayMedia({
-        preferCurrentTab: true,
+        video: {
+          width: { ideal: 1280 },
+          height: { ideal: 720 },
+          frameRate: { ideal: 30 },
+        },
       });
 
       // Create a video element to handle the stream
