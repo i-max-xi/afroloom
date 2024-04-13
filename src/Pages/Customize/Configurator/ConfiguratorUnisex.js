@@ -1176,7 +1176,7 @@ const ConfiguratorUnisex = () => {
                             display: "flex",
                             alignItems: "center",
                             justifyContent: "center",
-                            maxHeight: "3rem",
+                            maxHeight: "4rem",
                           }}
                         >
                           <img
@@ -1219,7 +1219,7 @@ const ConfiguratorUnisex = () => {
                             display: "flex",
                             alignItems: "center",
                             justifyContent: "center",
-                            maxHeight: "3rem",
+                            maxHeight: "4rem",
                           }}
                         >
                           <img
