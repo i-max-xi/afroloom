@@ -689,15 +689,30 @@ const ConfiguratorUnisex = () => {
     }
 
     try {
-      await domtoimage.toPng(canvasRef.current).then((dataUrl) => {
-        setStateImage(dataUrl);
-        setStateImage(dataUrl);
-        setStateImage(dataUrl);
-
-        setTimeout(() => {
-          setShowConfirmation(true);
-        }, 500);
+      // Wait for all images and other resources to load
+      const images = canvasRef.current.querySelectorAll("img");
+      const loadPromises = Array.from(images).map((image) => {
+        return new Promise((resolve, reject) => {
+          image.onload = resolve;
+          image.onerror = reject;
+          // If image is already loaded, resolve immediately
+          if (image.complete) {
+            resolve();
+          }
+        });
       });
+
+      // Wait for all resources to load
+      await Promise.all(loadPromises);
+
+      // Once all images and resources have loaded, capture the entire contents of the div
+      const dataUrl = await domtoimage.toPng(canvasRef.current);
+
+      // Set the state image with the captured data URL
+      setStateImage(dataUrl);
+
+      // Show confirmation after capturing the image
+      setShowConfirmation(true);
     } catch (error) {
       toastRef.current.show({
         severity: "error",
