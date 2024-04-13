@@ -708,7 +708,7 @@ const ConfiguratorUnisex = () => {
 
         video.play();
 
-        ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+        ctx.drawImage(video, 0, -300, canvas.width, canvas.height);
 
         stream.getVideoTracks()[0].stop();
 
