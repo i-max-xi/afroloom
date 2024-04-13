@@ -96,7 +96,7 @@ const Shirt = ({
     }
 
     return () => clearTimeout(loadingTimeout); // Cleanup the timeout if component unmounts
-  }, []);
+  }, [selectedClothing.name]);
 
   return (
     <group ref={groupRef}>
@@ -691,6 +691,9 @@ const ConfiguratorUnisex = () => {
     try {
       await domtoimage.toPng(canvasRef.current).then((dataUrl) => {
         setStateImage(dataUrl);
+        setStateImage(dataUrl);
+        setStateImage(dataUrl);
+
         setTimeout(() => {
           setShowConfirmation(true);
         }, 500);
