@@ -265,36 +265,38 @@ export const OrderDetail = React.forwardRef(
                 <span className="fw-bold">Quantity: {count}</span>
               </div>
             </li>
-            <li className="list-group-item d-flex justify-content-between align-items-center mt-3">
-              <div className="d-flex align-items-centers gap-3">
-                <h5>{selectedPrintOn.isColor ? "Color" : "Textile"}</h5>
+            {!selectedParts && (
+              <li className="list-group-item d-flex justify-content-between align-items-center mt-3">
+                <div className="d-flex align-items-centers gap-3">
+                  <h5>{selectedPrintOn.isColor ? "Color" : "Textile"}</h5>
 
-                {selectedPrintOn.isColor ? (
-                  <div
-                    className="color-display"
-                    style={{
-                      backgroundColor: selectedPrintOn.item,
-                      width: "20px",
-                      height: "20px",
-                      border: "1px solid black",
-                      borderRadius: "4rem",
-                      display: "inline-block",
-                      marginLeft: "1rem",
-                    }}
-                  ></div>
-                ) : (
-                  <img
-                    src={selectedPrintOn.item}
-                    alt="Selected Texture"
-                    style={{
-                      maxWidth: "70px",
-                      maxHeight: "70px",
-                      display: "inline-block",
-                    }}
-                  />
-                )}
-              </div>
-            </li>
+                  {selectedPrintOn.isColor ? (
+                    <div
+                      className="color-display"
+                      style={{
+                        backgroundColor: selectedPrintOn.item,
+                        width: "20px",
+                        height: "20px",
+                        border: "1px solid black",
+                        borderRadius: "4rem",
+                        display: "inline-block",
+                        marginLeft: "1rem",
+                      }}
+                    ></div>
+                  ) : (
+                    <img
+                      src={selectedPrintOn.item}
+                      alt="Selected Texture"
+                      style={{
+                        maxWidth: "70px",
+                        maxHeight: "70px",
+                        display: "inline-block",
+                      }}
+                    />
+                  )}
+                </div>
+              </li>
+            )}
           </ul>
 
           <div>

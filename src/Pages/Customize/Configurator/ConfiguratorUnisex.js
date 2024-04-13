@@ -288,7 +288,7 @@ const ConfiguratorUnisex = () => {
     try {
       const dataURL = await readFileAsDataURL(file);
       const downloadURL = await uploadToStorage(dataURL, "sash");
-      setFirebaseImageLeft(downloadURL);
+      setFirebaseImageRight(downloadURL);
     } catch (error) {
       console.error("Image upload failed:", error);
     }
@@ -682,7 +682,10 @@ const ConfiguratorUnisex = () => {
     try {
       await domtoimage.toPng(canvasRef.current).then((dataUrl) => {
         setStateImage(dataUrl);
-        setShowConfirmation(true);
+
+        setTimeout(() => {
+          setShowConfirmation(true);
+        }, 200);
       });
     } catch (error) {
       toastRef.current.show({
