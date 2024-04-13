@@ -679,13 +679,21 @@ const ConfiguratorUnisex = () => {
 
     // setShowConfirmation(true);
 
+    if (!canvasRef.current) {
+      toastRef.current.show({
+        severity: "error",
+        summary: "Error",
+        detail: "Canvas reference is not available",
+      });
+      return;
+    }
+
     try {
       await domtoimage.toPng(canvasRef.current).then((dataUrl) => {
         setStateImage(dataUrl);
-
         setTimeout(() => {
           setShowConfirmation(true);
-        }, 200);
+        }, 500);
       });
     } catch (error) {
       toastRef.current.show({
