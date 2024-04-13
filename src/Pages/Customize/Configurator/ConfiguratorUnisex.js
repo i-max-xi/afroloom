@@ -463,12 +463,12 @@ const ConfiguratorUnisex = () => {
           width: "3.6rem",
           lineHeight: "",
           image: {
-            top: "-10.5rem",
+            top: "-11.5rem",
             left: "16.3rem",
             width: "15.8%",
           },
           placeholder: {
-            top: "-9.5rem",
+            top: "-11.5rem",
             left: "17.8rem",
             width: "6%",
           },
@@ -1176,7 +1176,7 @@ const ConfiguratorUnisex = () => {
                             display: "flex",
                             alignItems: "center",
                             justifyContent: "center",
-                            maxHeight: "4rem",
+                            maxHeight: "5rem",
                           }}
                         >
                           <img
@@ -1219,7 +1219,7 @@ const ConfiguratorUnisex = () => {
                             display: "flex",
                             alignItems: "center",
                             justifyContent: "center",
-                            maxHeight: "4rem",
+                            maxHeight: "5rem",
                           }}
                         >
                           <img
