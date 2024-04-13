@@ -162,7 +162,7 @@ const ConfiguratorUnisex = () => {
 
   const [isRotating, setIsRotating] = useState(false);
 
-  const canvasRef = useRef();
+  const canvasRef = useRef(null);
   // toast
   const toastRef = useRef(null);
   const currencySymbol = useSelector((state) => state.currencySymbol.symbol);
@@ -264,6 +264,9 @@ const ConfiguratorUnisex = () => {
   const [uploadedImageLeft, setUploadedImageLeft] = useState(null);
   const [uploadedImageRight, setUploadedImageRight] = useState(null);
 
+  const [firebaseImageLeft, setFirebaseImageLeft] = useState(null);
+  const [firebaseImageRight, setFirebaseImageRight] = useState(null);
+
   const imageLeftRef = useRef();
   const imageRightRef = useRef();
 
@@ -273,7 +276,7 @@ const ConfiguratorUnisex = () => {
     try {
       const dataURL = await readFileAsDataURL(file);
       const downloadURL = await uploadToStorage(dataURL, "sash");
-      setUploadedImageLeft(downloadURL);
+      setFirebaseImageLeft(downloadURL);
     } catch (error) {
       console.error("Image upload failed:", error);
     }
@@ -285,7 +288,7 @@ const ConfiguratorUnisex = () => {
     try {
       const dataURL = await readFileAsDataURL(file);
       const downloadURL = await uploadToStorage(dataURL, "sash");
-      setUploadedImageRight(downloadURL);
+      setFirebaseImageLeft(downloadURL);
     } catch (error) {
       console.error("Image upload failed:", error);
     }
@@ -669,26 +672,25 @@ const ConfiguratorUnisex = () => {
       return;
     }
 
-    const canvasImage = await html2canvas(canvasRef.current);
-    const dataUrl = canvasImage.toDataURL();
+    // const canvasImage = await html2canvas(canvasRef.current);
+    // const dataUrl = canvasImage.toDataURL();
 
-    setStateImage(dataUrl);
+    // setStateImage(dataUrl);
 
-    setShowConfirmation(true);
+    // setShowConfirmation(true);
 
-    // try {
-    //   const dataUrl = await domtoimage.toPng(canvasRef.current);
-
-    //   // Set the state image and show confirmation after conversion is complete
-    //   setStateImage(dataUrl);
-    //   setShowConfirmation(true);
-    // } catch (error) {
-    //   toastRef.current.show({
-    //     severity: "error",
-    //     summary: "Image no capture",
-    //     detail: error,
-    //   });
-    // }
+    try {
+      await domtoimage.toPng(canvasRef.current).then((dataUrl) => {
+        setStateImage(dataUrl);
+        setShowConfirmation(true);
+      });
+    } catch (error) {
+      toastRef.current.show({
+        severity: "error",
+        summary: "Error capturing image",
+        detail: `Unable to capture image: ${error.toString()}`,
+      });
+    }
   };
 
   //size guide popup
@@ -823,8 +825,8 @@ const ConfiguratorUnisex = () => {
             isColor: state.texture[selectedPart] === null,
             item: selectedPrintOn,
           }}
-          uploadedImageLeft={uploadedImageLeft}
-          uploadedImageRight={uploadedImageRight}
+          uploadedImageLeft={firebaseImageLeft}
+          uploadedImageRight={firebaseImageRight}
           setShowConfirmation={setShowConfirmation}
           selectedSize={
             selectedClothing.sizeOptions.find(
