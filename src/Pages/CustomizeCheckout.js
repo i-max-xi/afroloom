@@ -36,7 +36,6 @@ const CustomizeCheckout = () => {
 
   const count = cartItems[0].quantity;
 
-
   const [totalToPay] = useState(
     cartItems.reduce((total, item) => total + item.price * count, 0).toFixed(2)
   );
@@ -73,7 +72,6 @@ const CustomizeCheckout = () => {
   const onSuccess = (reference) => {
     handlePrint();
 
-
     const userInfo = {
       firstName: firstName,
       lastName: lastName,
@@ -83,7 +81,10 @@ const CustomizeCheckout = () => {
       tel: tel,
       customizedItemDataSheet: customizedItemDataSheet,
       quantity: count,
-      readyBy: cartItems[0].readyBy + 'days',
+      readyBy: cartItems[0].readyBy + "days",
+      SashImageLeft: cartItems[0].uploadedImageLeft,
+      SashImageRight: cartItems[0].uploadedImageRight,
+      specialRequest: cartItems[0].specialRequests,
       subject: `New 3D Product Order`,
     };
     // Submit to formspree
@@ -124,21 +125,21 @@ const CustomizeCheckout = () => {
       <Toast ref={toast} />
 
       <div style={{ display: "none" }}>
-      <OrderDetail
-        total={totalToPayNumeric}
-        actualTotal={totalToPay}
-        currencySymbol={currencySymbol}
-        readyBy={cartItems[0].readyBy}
-        selectedParts={cartItems[0].selectedParts}
-        selectedSize={cartItems[0].selectedSize}
-        ref={componentRef}
-        modelImage={cartItems[0].modelImage}
-        customSizeValues={cartItems[0].customSizeValues}
-        height={cartItems[0].height}
-        name={cartItems[0].name}
-        count={cartItems[0].quantity}
-        specialRequest={cartItems[0].specialRequests}
-      />
+        <OrderDetail
+          total={totalToPayNumeric}
+          actualTotal={totalToPay}
+          currencySymbol={currencySymbol}
+          readyBy={cartItems[0].readyBy}
+          selectedParts={cartItems[0].selectedParts}
+          selectedSize={cartItems[0].selectedSize}
+          ref={componentRef}
+          modelImage={cartItems[0].modelImage}
+          customSizeValues={cartItems[0].customSizeValues}
+          height={cartItems[0].height}
+          name={cartItems[0].name}
+          count={cartItems[0].quantity}
+          specialRequest={cartItems[0].specialRequests}
+        />
       </div>
 
       <div className="container mb-5">
@@ -194,7 +195,9 @@ const CustomizeCheckout = () => {
               <h3 className="text-center mt-3">
                 Price To Pay: {currencySymbol}
                 {totalToPayNumeric}
-                <p className="fs-6">We will contact you when your product is ready</p>
+                <p className="fs-6">
+                  We will contact you when your product is ready
+                </p>
               </h3>
             </div>
           </div>
@@ -360,11 +363,13 @@ export const OrderDetail = React.forwardRef(
                 <span className="fw-bold">Amount Left: </span>
                 {currencySymbol} {actualTotal - total}
                 <br />
-
-                <span className="fw-bold">Estimated time to make this order: {readyBy} days</span>
+                <span className="fw-bold">
+                  Estimated time to make this order: {readyBy} days
+                </span>
                 <br />
-
-                <span span className="fw-bold">{specialRequest}</span>
+                <span span className="fw-bold">
+                  {specialRequest}
+                </span>
               </div>
             </div>
           </div>

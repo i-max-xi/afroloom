@@ -98,6 +98,8 @@ const Confirmation = ({
           height: height,
           gender: gender,
           specialRequests: special,
+          uploadedImageLeft: uploadedImageLeft,
+          uploadedImageRight: uploadedImageRight,
           // Other properties specific to your object
         },
       ];
