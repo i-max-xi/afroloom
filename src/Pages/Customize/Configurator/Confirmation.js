@@ -31,6 +31,8 @@ const Confirmation = ({
   customSizeValues,
   height,
   gender,
+  uploadedImageLeft,
+  uploadedImageRight,
 }) => {
   const toast = useRef(null);
   const [isLoading, setIsLoading] = useState(false); // Initialize loading state
@@ -349,6 +351,64 @@ export const OrderDetail = React.forwardRef(
             </span>
           </p>
         </div>
+
+        {selectedParts && (
+          <div className="col-md-6">
+            <div className="mt-4">
+              <h2>Information On Parts</h2>
+              {selectedParts.map(
+                (part, index) =>
+                  (part.color || part.texture) && (
+                    <div key={index} className="mb-4">
+                      <h4 className="text-capitalize">
+                        {parseTitle(part.name)}
+                      </h4>
+                      <p>
+                        {part.color && (
+                          <>
+                            Color
+                            <div
+                              className="color-display"
+                              style={{
+                                backgroundColor: part.color,
+                                width: "20px",
+                                height: "20px",
+                                border: "1px solid black",
+                                borderRadius: "4rem",
+                                display: "inline-block",
+                                marginLeft: "1rem",
+                              }}
+                            ></div>
+                          </>
+                        )}
+                      </p>
+
+                      <p>
+                        {part.texture && (
+                          <>
+                            Texture:
+                            <p>
+                              <img
+                                src={part.texture}
+                                alt="Selected Texture"
+                                style={{
+                                  maxWidth: "70px",
+                                  maxHeight: "70px",
+                                  display: "inline-block",
+                                }}
+                              />
+                            </p>
+                          </>
+                        )}
+                      </p>
+
+                      {index !== selectedParts.length - 1 && <Divider />}
+                    </div>
+                  )
+              )}
+            </div>
+          </div>
+        )}
       </div>
     );
   }

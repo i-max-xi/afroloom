@@ -47,6 +47,7 @@ import HtmlComponent from "./HtmlComponent";
 import { genderOptions, isMobile } from "../../../utils/constants";
 import uuid from "react-uuid";
 import { OverlayPanel } from "primereact/overlaypanel";
+import { readFileAsDataURL, uploadToStorage } from "../../../utils/functions";
 
 const Shirt = ({
   isRotating,
@@ -260,17 +261,34 @@ const ConfiguratorUnisex = () => {
   const textEditRef = useRef(null);
 
   // Image imprint
-  const [uploadedImageLeft, setUploadedImageLeft] = useState(null); // State to store the uploaded image
-  const [uploadedImageRight, setUploadedImageRight] = useState(null); // State to store the uploaded image
+  const [uploadedImageLeft, setUploadedImageLeft] = useState(null);
+  const [uploadedImageRight, setUploadedImageRight] = useState(null);
+
   const imageLeftRef = useRef();
   const imageRightRef = useRef();
 
-  const handleImageUploadLeft = (file) => {
-    setUploadedImageLeft(URL.createObjectURL(file)); // Set the uploaded image
+  const handleImageUploadLeft = async (file) => {
+    setUploadedImageLeft(URL.createObjectURL(file));
+
+    try {
+      const dataURL = await readFileAsDataURL(file);
+      const downloadURL = await uploadToStorage(dataURL, "sash");
+      setUploadedImageLeft(downloadURL);
+    } catch (error) {
+      console.error("Image upload failed:", error);
+    }
   };
 
-  const handleImageUploadRight = (file) => {
-    setUploadedImageRight(URL.createObjectURL(file)); // Set the uploaded image
+  const handleImageUploadRight = async (file) => {
+    setUploadedImageRight(URL.createObjectURL(file));
+
+    try {
+      const dataURL = await readFileAsDataURL(file);
+      const downloadURL = await uploadToStorage(dataURL, "sash");
+      setUploadedImageRight(downloadURL);
+    } catch (error) {
+      console.error("Image upload failed:", error);
+    }
   };
 
   const ImprintTextPosition = useMemo(() => {
@@ -306,12 +324,12 @@ const ConfiguratorUnisex = () => {
           lineHeight: "",
           image: {
             top: "-22rem",
-            left: "7.1rem",
+            left: "6rem",
             width: "8%",
           },
           placeholder: {
             top: "-22rem",
-            left: "7.3rem",
+            left: "6.9rem",
             width: "8%",
           },
         },
@@ -800,11 +818,13 @@ const ConfiguratorUnisex = () => {
           readyBy={selectedClothing.readyIn}
           weight={selectedClothing.weight}
           name={selectedClothing.name}
-          // selectedParts={selectedClothing.myNode[0]}
+          selectedParts={selectedParts}
           selectedPrintOn={{
             isColor: state.texture[selectedPart] === null,
             item: selectedPrintOn,
           }}
+          uploadedImageLeft={uploadedImageLeft}
+          uploadedImageRight={uploadedImageRight}
           setShowConfirmation={setShowConfirmation}
           selectedSize={
             selectedClothing.sizeOptions.find(
