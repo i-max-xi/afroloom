@@ -688,32 +688,41 @@ const ConfiguratorUnisex = () => {
       return;
     }
 
+    window.scrollTo(0, 0);
+
     try {
-      // Wait for all images and other resources to load
-      const images = canvasRef.current.querySelectorAll("img");
-      const loadPromises = Array.from(images).map((image) => {
-        return new Promise((resolve, reject) => {
-          image.onload = resolve;
-          image.onerror = reject;
-          // If image is already loaded, resolve immediately
-          if (image.complete) {
-            resolve();
-          }
-        });
+      // Capture the screen of the current tab
+      const stream = await navigator.mediaDevices.getDisplayMedia({
+        preferCurrentTab: true,
       });
 
-      // Wait for all resources to load
-      await Promise.all(loadPromises);
+      // Create a video element to handle the stream
+      const video = document.createElement("video");
 
-      // Once all images and resources have loaded, capture the entire contents of the div
-      const dataUrl = await domtoimage.toPng(canvasRef.current);
+      video.addEventListener("loadedmetadata", () => {
+        const canvas = document.createElement("canvas");
+        const ctx = canvas.getContext("2d");
 
-      // Set the state image with the captured data URL
-      setStateImage(dataUrl);
+        canvas.width = video.videoWidth;
+        canvas.height = video.videoHeight;
 
-      // Show confirmation after capturing the image
-      setShowConfirmation(true);
+        video.play();
+
+        ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+        stream.getVideoTracks()[0].stop();
+
+        const dataUrl = canvas.toDataURL();
+
+        setStateImage(dataUrl);
+
+        setShowConfirmation(true);
+      });
+
+      // Set the video source object to the stream
+      video.srcObject = stream;
     } catch (error) {
+      // Handle errors gracefully
       toastRef.current.show({
         severity: "error",
         summary: "Error capturing image",
