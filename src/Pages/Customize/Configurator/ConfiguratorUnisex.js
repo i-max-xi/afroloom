@@ -341,7 +341,7 @@ const ConfiguratorUnisex = () => {
           width: "3.6rem",
           lineHeight: "",
           image: {
-            top: "-23rem",
+            top: "-24rem",
             left: "17.5rem",
             width: "8%",
           },
