@@ -405,12 +405,12 @@ const ConfiguratorUnisex = () => {
           size: 6,
           image: {
             top: "-18rem",
-            left: "7.35rem",
+            left: "7rem",
             width: "6%",
           },
           placeholder: {
             top: "-18rem",
-            left: "7.6rem",
+            left: "7.3rem",
             width: "8%",
           },
         },
@@ -424,12 +424,12 @@ const ConfiguratorUnisex = () => {
           size: 6,
           image: {
             top: "-9rem",
-            left: "17.5rem",
+            left: "17rem",
             width: "6%",
           },
           placeholder: {
             top: "-9rem",
-            left: "17.8rem",
+            left: "17.2rem",
             width: "8%",
           },
         },
