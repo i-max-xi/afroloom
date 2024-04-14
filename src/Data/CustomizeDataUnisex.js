@@ -113,7 +113,7 @@ export const mainUnisex = [
       { name: "bikini_top", yardNeeded: 1 },
     ],
     otherYards: { small: 2, large: 3, extraLarge: 3, extraExtraLarge: 4 },
-    myZoom: 1.3,
+    myZoom: 0.8,
     price: 80 + 20,
     // parts: bikiniParts.keys().map(bikiniParts),
     // sizeModels: tshirt_model,
