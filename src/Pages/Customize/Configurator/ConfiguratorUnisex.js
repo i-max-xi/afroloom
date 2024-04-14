@@ -8,7 +8,6 @@ import { state } from "./store";
 import { Carousel } from "primereact/carousel";
 import Confirmation from "./Confirmation";
 import html2canvas from "html2canvas";
-import domtoimage from "dom-to-image";
 
 import { TextureLoader } from "three/src/loaders/TextureLoader";
 import LoadingAnimation from "./LoadingAnimation";
@@ -672,69 +671,21 @@ const ConfiguratorUnisex = () => {
       return;
     }
 
-    // const canvasImage = await html2canvas(canvasRef.current);
-    // const dataUrl = canvasImage.toDataURL();
-
-    // setStateImage(dataUrl);
-
-    // setShowConfirmation(true);
-
     if (!canvasRef.current) {
       toastRef.current.show({
         severity: "error",
         summary: "Error",
-        detail: "Canvas reference is not available",
+        detail: "Complete action failed, please try again",
       });
       return;
     }
 
-    window.scrollTo(0, 0);
+    const canvasImage = await html2canvas(canvasRef.current);
+    const dataUrl = canvasImage.toDataURL();
 
-    try {
-      // Capture the screen of the current tab
-      // const stream = await navigator.mediaDevices.getDisplayMedia({
-      //   preferCurrentTab: true,
-      // });
+    setStateImage(dataUrl);
 
-      const stream = await navigator.mediaDevices.getDisplayMedia({
-        video: {
-          mediaSource: "screen",
-        },
-      });
-
-      // Create a video element to handle the stream
-      const video = document.createElement("video");
-
-      video.addEventListener("loadedmetadata", () => {
-        const canvas = document.createElement("canvas");
-        const ctx = canvas.getContext("2d");
-
-        canvas.width = video.videoWidth;
-        canvas.height = video.videoHeight;
-
-        video.play();
-
-        ctx.drawImage(video, 0, -300, canvas.width, canvas.height);
-
-        stream.getVideoTracks()[0].stop();
-
-        const dataUrl = canvas.toDataURL();
-
-        setStateImage(dataUrl);
-
-        setShowConfirmation(true);
-      });
-
-      // Set the video source object to the stream
-      video.srcObject = stream;
-    } catch (error) {
-      // Handle errors gracefully
-      toastRef.current.show({
-        severity: "error",
-        summary: "Error capturing image",
-        detail: `Unable to capture image: ${error.toString()}`,
-      });
-    }
+    setShowConfirmation(true);
   };
 
   //size guide popup
