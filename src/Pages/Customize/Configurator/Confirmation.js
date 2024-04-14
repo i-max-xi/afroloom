@@ -33,6 +33,8 @@ const Confirmation = ({
   gender,
   uploadedImageLeft,
   uploadedImageRight,
+  textLeft,
+  textRight,
 }) => {
   const toast = useRef(null);
   const [isLoading, setIsLoading] = useState(false); // Initialize loading state
@@ -161,6 +163,8 @@ const Confirmation = ({
         setSpecial={setSpecial}
         uploadedImageLeft={uploadedImageLeft}
         uploadedImageRight={uploadedImageLeft}
+        textLeft={textLeft}
+        textRight={textRight}
       />
       <div className="container justify-content-center">
         <div className="d-flex">
@@ -222,6 +226,8 @@ export const OrderDetail = React.forwardRef(
       setSpecial,
       uploadedImageLeft,
       uploadedImageRight,
+      textLeft,
+      textRight,
     },
     ref
   ) => {
@@ -304,8 +310,8 @@ export const OrderDetail = React.forwardRef(
             )}
 
             {selectedParts && (
-              <li className="list-group-item d-flex flex-column justify-content-between mt-3">
-                <h6>Details</h6>
+              <li className="list-group-item d-flex flex-column justify-content-between mt-3 rounded">
+                <h5 className="text-center">Details</h5>
                 <div className="d-flex flex-column gap-3">
                   <div className="d-flex flex-column">
                     {uploadedImageLeft && (
@@ -313,8 +319,8 @@ export const OrderDetail = React.forwardRef(
                         <p className="d-flex align-items-center justify-content-between">
                           <span>Logo/Image (Left):</span>
                           <img
-                            width="40%"
-                            height="40%"
+                            width="20%"
+                            height="20%"
                             src={uploadedImageLeft}
                             alt="left logo/img"
                           />
@@ -333,6 +339,27 @@ export const OrderDetail = React.forwardRef(
                             src={uploadedImageRight}
                             alt="right logo/img"
                           />
+                        </p>
+                        <Divider />
+                      </>
+                    )}
+                  </div>
+                  <div className="d-flex flex-column">
+                    {textLeft && (
+                      <>
+                        <p className="d-flex align-items-center justify-content-between">
+                          <span>Text Overlay (Left):</span>
+                          <p>{textLeft}</p>
+                        </p>
+                        <Divider />
+                      </>
+                    )}
+
+                    {textRight && (
+                      <>
+                        <p className="d-flex align-items-center justify-content-between">
+                          <span>Text Overlay (Right):</span>
+                          <p>{textRight}</p>
                         </p>
                         <Divider />
                       </>

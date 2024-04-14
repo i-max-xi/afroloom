@@ -680,9 +680,6 @@ const ConfiguratorUnisex = () => {
       return;
     }
 
-    setUploadedImageLeft(null);
-    setUploadedImageRight(null);
-
     const canvasImage = await html2canvas(canvasRef.current);
     const dataUrl = canvasImage.toDataURL();
 
@@ -825,6 +822,8 @@ const ConfiguratorUnisex = () => {
           }}
           uploadedImageLeft={firebaseImageLeft}
           uploadedImageRight={firebaseImageRight}
+          textLeft={enteredTextLeft}
+          textRight={enteredTextRight}
           setShowConfirmation={setShowConfirmation}
           selectedSize={
             selectedClothing.sizeOptions.find(
