@@ -502,4 +502,4 @@ export const onlySashes = [
 
 export const notAll = ["Earring", "Bikini"];
 
-export const hideNotAllNodes = ["bikini_all", "balls"];
+export const hideNotAllNodes = ["bikini_all", "balls", "bikini_top"];
