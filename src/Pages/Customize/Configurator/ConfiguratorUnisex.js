@@ -158,7 +158,9 @@ const ConfiguratorUnisex = () => {
   const [selectedSize, setSelectedSize] = useState(1);
   const [selectedPrintOn, setSelectedPrintOn] = useState(null);
 
-  const [selectedPart, setSelectedPart] = useState(null);
+  const [selectedPart, setSelectedPart] = useState(
+    selectedClothing.name === "Earring" ? 0 : null
+  );
 
   const [isRotating, setIsRotating] = useState(false);
 
@@ -173,7 +175,10 @@ const ConfiguratorUnisex = () => {
 
   //total price
   const total = useMemo(() => {
-    if (noSpinFor.includes(selectedClothing.name)) {
+    if (
+      noSpinFor.includes(selectedClothing.name) ||
+      selectedClothing.name === "Earring"
+    ) {
       return ((partPrices + selectedClothing.price) * currencyFactor).toFixed(
         2
       );
@@ -769,12 +774,6 @@ const ConfiguratorUnisex = () => {
     setShowGlow(true);
   };
 
-  // const masterSelectionPartOptions = useMemo(() => {
-  //   return (
-
-  //   );
-  // }, [selectedClothing]);
-
   return (
     <>
       <Nav />
@@ -874,7 +873,7 @@ const ConfiguratorUnisex = () => {
             </div>
             <div className="configurator-container container">
               <div className="left-panel rounded shadow">
-                <h5>Select Part</h5>
+                {selectedClothing.name !== "Earring" && <h5>Select Part</h5>}
                 <div className="select-part-container">
                   <>
                     {!notAll.includes(selectedClothing.name) && (
@@ -889,7 +888,10 @@ const ConfiguratorUnisex = () => {
                     )}
 
                     {selectedClothing.myNode.map((nodeName, index) => {
-                      if (specialNodeNames.includes(nodeName.name)) {
+                      if (
+                        specialNodeNames.includes(nodeName.name) ||
+                        nodeName.name === "balls"
+                      ) {
                         return null; // Skip rendering this node
                       } else {
                         return (
