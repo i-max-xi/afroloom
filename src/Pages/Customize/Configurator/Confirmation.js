@@ -159,6 +159,8 @@ const Confirmation = ({
         handleIncrement={handleIncrement}
         special={special}
         setSpecial={setSpecial}
+        uploadedImageLeft={uploadedImageLeft}
+        uploadedImageRight={uploadedImageLeft}
       />
       <div className="container justify-content-center">
         <div className="d-flex">
@@ -218,6 +220,8 @@ export const OrderDetail = React.forwardRef(
       handleIncrement,
       special,
       setSpecial,
+      uploadedImageLeft,
+      uploadedImageRight,
     },
     ref
   ) => {
@@ -297,6 +301,102 @@ export const OrderDetail = React.forwardRef(
                 </div>
               </li>
             )}
+
+            {selectedParts && (
+              <li className="list-group-item d-flex flex-column justify-content-between mt-3">
+                <h6>Summary</h6>
+                <div className="d-flex flex-column gap-3">
+                  <div className="d-flex flex-column">
+                    {uploadedImageLeft && (
+                      <>
+                        <p className="d-flex align-items-center justify-content-between">
+                          <span>Logo/Image (Left):</span>
+                          <img
+                            width="40%"
+                            height="40%"
+                            src={uploadedImageLeft}
+                            alt="left logo/img"
+                          />
+                        </p>
+                        <Divider />
+                      </>
+                    )}
+
+                    {uploadedImageRight && (
+                      <>
+                        <p className="d-flex align-items-center justify-content-between">
+                          <span>Logo/Image (Right):</span>
+                          <img
+                            width="40%"
+                            height="40%"
+                            src={uploadedImageRight}
+                            alt="right logo/img"
+                          />
+                        </p>
+                        <Divider />
+                      </>
+                    )}
+                  </div>
+                  <div>
+                    <div className="mt-1">
+                      {/* <h6>Information on Parts</h6> */}
+                      {selectedParts.map(
+                        (part, index) =>
+                          (part.color || part.texture) && (
+                            <div key={index} className="mb-4">
+                              <span className="text-capitalize">
+                                {parseTitle(part.name)}
+                              </span>
+                              <p>
+                                {part.color && (
+                                  <>
+                                    Color
+                                    <div
+                                      className="color-display"
+                                      style={{
+                                        backgroundColor: part.color,
+                                        width: "20px",
+                                        height: "20px",
+                                        border: "1px solid black",
+                                        borderRadius: "4rem",
+                                        display: "inline-block",
+                                        marginLeft: "1rem",
+                                      }}
+                                    ></div>
+                                  </>
+                                )}
+                              </p>
+
+                              <p>
+                                {part.texture && (
+                                  <>
+                                    Texture:
+                                    <p>
+                                      <img
+                                        src={part.texture}
+                                        alt="Selected Texture"
+                                        style={{
+                                          maxWidth: "70px",
+                                          maxHeight: "70px",
+                                          display: "inline-block",
+                                        }}
+                                      />
+                                    </p>
+                                  </>
+                                )}
+                              </p>
+
+                              {index !== selectedParts.length - 1 && (
+                                <Divider />
+                              )}
+                            </div>
+                          )
+                      )}
+                    </div>
+                  </div>
+                </div>
+              </li>
+            )}
           </ul>
 
           <div>
@@ -356,7 +456,7 @@ export const OrderDetail = React.forwardRef(
           </p>
         </div>
 
-        {selectedParts && (
+        {/* {selectedParts && (
           <div className="col-md-6">
             <div className="mt-4">
               <h2>Information On Parts</h2>
@@ -412,7 +512,7 @@ export const OrderDetail = React.forwardRef(
               )}
             </div>
           </div>
-        )}
+        )} */}
       </div>
     );
   }
