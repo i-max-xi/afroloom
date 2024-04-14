@@ -109,7 +109,7 @@ export const mainUnisex = [
     image: image_bikini,
     model: bikini,
     myNode: [
-      { name: "top", yardNeeded: 2 },
+      { name: "top", yardNeeded: 3 },
       { name: "bottom", yardNeeded: 1 },
     ],
     otherYards: { small: 2, large: 3, extraLarge: 3, extraExtraLarge: 4 },

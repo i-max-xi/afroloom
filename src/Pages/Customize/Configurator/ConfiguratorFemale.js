@@ -158,8 +158,9 @@ const ConfiguratorFemale = () => {
   const currencyFactor = useSelector((state) => state.currencySymbol.factor);
 
   const [partPrices, setPartPrices] = useState(0);
-  const [colorPrice, setColorPrice] = useState(colorBasePrice);
-
+  const [colorPrice, setColorPrice] = useState(
+    colorBasePrice * selectedClothing.myNode[0].yardNeeded
+  );
   //total price
   const total = (
     (partPrices + selectedClothing.price + colorPrice) *
