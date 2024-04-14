@@ -492,4 +492,12 @@ export const noSpinFor = [
   "One-Sided Logo, Two-Sided Text Sash",
 ];
 
+export const onlySashes = [
+  "Logo Up, Text Down Sash",
+  "Text Up, Logo Down Sash",
+  "Contrasting Logo and Text Sash",
+  "Text Up, Image Down Sash",
+  "One-Sided Logo, Two-Sided Text Sash",
+];
+
 export const notAll = ["Earring"];

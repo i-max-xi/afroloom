@@ -34,6 +34,7 @@ import {
   noSpinFor,
   notAll,
   colorBasePrice,
+  onlySashes,
 } from "./arrays/neededArrays";
 import TextureItem from "./TextureItem";
 import PartImages from "./PartImages";
@@ -680,10 +681,14 @@ const ConfiguratorUnisex = () => {
       return;
     }
 
-    const canvasImage = await html2canvas(canvasRef.current);
-    const dataUrl = canvasImage.toDataURL();
+    if (onlySashes.includes(selectedClothing.name)) {
+      setStateImage(selectedClothing.confirm_image);
+    } else {
+      const canvasImage = await html2canvas(canvasRef.current);
+      const dataUrl = canvasImage.toDataURL();
 
-    setStateImage(dataUrl);
+      setStateImage(dataUrl);
+    }
 
     setShowConfirmation(true);
   };

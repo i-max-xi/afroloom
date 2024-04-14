@@ -37,6 +37,12 @@ const image_sash_logos_one_up_one_down = require("../Assets/welcome_3ds/others/s
 const image_sash_with_images = require("../Assets/welcome_3ds/others/sash_with_image.jpg");
 const image_sash_striped_edge = require("../Assets/welcome_3ds/others/sash_with_edges.png");
 
+const image_confirm_1 = require("../Assets/raw3ds/sash1.png");
+const image_confirm_2 = require("../Assets/raw3ds/sash2.png");
+const image_confirm_3 = require("../Assets/raw3ds/sash3.png");
+const image_confirm_4 = require("../Assets/raw3ds/sash4.png");
+const image_confirm_5 = require("../Assets/raw3ds/sash5.png");
+
 export const mainUnisex = [
   {
     id: uuid(),
@@ -240,6 +246,7 @@ export const mainUnisex = [
     name: "Logo Up, Text Down Sash",
     image: image_sash,
     model: sash_model,
+    confirm_image: image_confirm_1,
     myNode: [
       { name: "plain_sections", yardNeeded: 1 },
       { name: "Stripe_1", yardNeeded: 1 },
@@ -273,6 +280,7 @@ export const mainUnisex = [
     name: "Text Up, Logo Down Sash",
     image: image_sash_logos_both_down,
     model: sash_both_down,
+    confirm_image: image_confirm_2,
     myNode: [
       { name: "plain_section", yardNeeded: 1 },
       { name: "stripe_1", yardNeeded: 1 },
@@ -304,6 +312,7 @@ export const mainUnisex = [
     name: "Contrasting Logo and Text Sash",
     image: image_sash_logos_one_up_one_down,
     model: sash_striped_edge,
+    confirm_image: image_confirm_3,
     myNode: [
       { name: "mid_section", yardNeeded: 1 },
       { name: "stripe_1", yardNeeded: 1 },
@@ -334,6 +343,7 @@ export const mainUnisex = [
     name: "Text Up, Image Down Sash",
     image: image_sash_with_images,
     model: sash_with_image,
+    confirm_image: image_confirm_4,
     myNode: [
       { name: "plain_section", yardNeeded: 1 },
       { name: "stripe_1", yardNeeded: 1 },
@@ -367,6 +377,7 @@ export const mainUnisex = [
     name: "One-Sided Logo, Two-Sided Text Sash",
     image: image_sash_striped_edge,
     model: sash_striped_edge,
+    confirm_image: image_confirm_5,
     myNode: [
       { name: "mid_section", yardNeeded: 1 },
       { name: "stripe_1", yardNeeded: 1 },
