@@ -271,6 +271,7 @@ export const OrderDetail = React.forwardRef(
             </li>
             {!selectedParts && (
               <li className="list-group-item d-flex justify-content-between align-items-center mt-3">
+                <h6>Details</h6>
                 <div className="d-flex align-items-centers gap-3">
                   <h5>{selectedPrintOn.isColor ? "Color" : "Textile"}</h5>
 
@@ -304,7 +305,7 @@ export const OrderDetail = React.forwardRef(
 
             {selectedParts && (
               <li className="list-group-item d-flex flex-column justify-content-between mt-3">
-                <h6>Summary</h6>
+                <h6>Details</h6>
                 <div className="d-flex flex-column gap-3">
                   <div className="d-flex flex-column">
                     {uploadedImageLeft && (
