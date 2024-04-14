@@ -17,6 +17,7 @@ import { set3DItemDetails, setItemDataSheet } from "../../../Redux/store";
 import { useDispatch, useSelector } from "react-redux";
 import { parseTitle } from "../../../utils/functions";
 import { Divider } from "primereact/divider";
+import { onlySashes } from "./arrays/neededArrays";
 
 const Confirmation = ({
   total,
@@ -317,7 +318,10 @@ export const OrderDetail = React.forwardRef(
                     {uploadedImageLeft && (
                       <>
                         <p className="d-flex align-items-center justify-content-between">
-                          <span>Logo/Image (Left):</span>
+                          <span>
+                            {name === onlySashes[3] ? "Image " : "Logo "}{" "}
+                            (Left):
+                          </span>
                           <img
                             width="20%"
                             height="20%"
@@ -332,7 +336,10 @@ export const OrderDetail = React.forwardRef(
                     {uploadedImageRight && (
                       <>
                         <p className="d-flex align-items-center justify-content-between">
-                          <span>Logo/Image (Right):</span>
+                          <span>
+                            {name === onlySashes[3] ? "Image " : "Logo "}{" "}
+                            (Right):
+                          </span>
                           <img
                             width="20%"
                             height="20%"
