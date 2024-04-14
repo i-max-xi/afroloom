@@ -334,8 +334,8 @@ export const OrderDetail = React.forwardRef(
                         <p className="d-flex align-items-center justify-content-between">
                           <span>Logo/Image (Right):</span>
                           <img
-                            width="40%"
-                            height="40%"
+                            width="20%"
+                            height="20%"
                             src={uploadedImageRight}
                             alt="right logo/img"
                           />
