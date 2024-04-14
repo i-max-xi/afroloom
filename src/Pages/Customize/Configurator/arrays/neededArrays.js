@@ -500,4 +500,6 @@ export const onlySashes = [
   "One-Sided Logo, Two-Sided Text Sash",
 ];
 
-export const notAll = ["Earring"];
+export const notAll = ["Earring", "Bikini"];
+
+export const hideNotAllNodes = ["bikini_all", "balls"];

@@ -35,6 +35,7 @@ import {
   notAll,
   colorBasePrice,
   onlySashes,
+  hideNotAllNodes,
 } from "./arrays/neededArrays";
 import TextureItem from "./TextureItem";
 import PartImages from "./PartImages";
@@ -159,7 +160,7 @@ const ConfiguratorUnisex = () => {
   const [selectedPrintOn, setSelectedPrintOn] = useState(null);
 
   const [selectedPart, setSelectedPart] = useState(
-    selectedClothing.name === "Earring" ? 0 : null
+    notAll.includes(selectedClothing.name) ? 0 : null
   );
 
   const [isRotating, setIsRotating] = useState(false);
@@ -171,7 +172,9 @@ const ConfiguratorUnisex = () => {
   const currencyFactor = useSelector((state) => state.currencySymbol.factor);
 
   const [partPrices, setPartPrices] = useState(0);
-  const [colorPrice, setColorPrice] = useState(colorBasePrice);
+  const [colorPrice, setColorPrice] = useState(
+    colorBasePrice * selectedClothing.myNode[0].yardNeeded
+  );
 
   //total price
   const total = useMemo(() => {
@@ -875,7 +878,9 @@ const ConfiguratorUnisex = () => {
             </div>
             <div className="configurator-container container">
               <div className="left-panel rounded shadow">
-                {selectedClothing.name !== "Earring" && <h5>Select Part</h5>}
+                {!notAll.includes(selectedClothing.name) && (
+                  <h5>Select Part</h5>
+                )}
                 <div className="select-part-container">
                   <>
                     {!notAll.includes(selectedClothing.name) && (
@@ -892,7 +897,7 @@ const ConfiguratorUnisex = () => {
                     {selectedClothing.myNode.map((nodeName, index) => {
                       if (
                         specialNodeNames.includes(nodeName.name) ||
-                        nodeName.name === "balls"
+                        hideNotAllNodes.includes(nodeName.name)
                       ) {
                         return null; // Skip rendering this node
                       } else {
