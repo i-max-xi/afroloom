@@ -66,11 +66,11 @@
     flex-direction: row !important;
     justify-content: space-around;
     /* gap: 1.5rem; */
-    flex: 1;
+    /* flex: 1; */
   }
 
   .text-image-imprint-wrapper > .inputs > input {
-    flex: 1;
+    /* flex: 1; */
     margin-top: 0.2rem !important;
   }
 
