@@ -824,7 +824,9 @@ const ConfiguratorUnisex = () => {
           readyBy={selectedClothing.readyIn}
           weight={selectedClothing.weight}
           name={selectedClothing.name}
-          selectedParts={selectedParts}
+          selectedParts={
+            notAll.includes(selectedClothing.name) ? null : selectedParts
+          }
           selectedPrintOn={{
             isColor: state.texture[selectedPart] === null,
             item: selectedPrintOn,
