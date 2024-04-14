@@ -1289,7 +1289,7 @@ const ConfiguratorUnisex = () => {
                           showCloseIcon
                           ref={textEditRef}
                           style={{
-                            transform: `translateX(-4rem)`,
+                            transform: `translateX(-2rem)`,
                             minWidth: "15rem",
                           }}
                         >

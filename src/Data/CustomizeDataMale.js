@@ -274,7 +274,7 @@ export const mainMaleCustomize = [
       // { name: "trousers", yardNeeded: 2 },
     ],
     otherYards: { small: 3, large: 3, extraLarge: 4, extraExtraLarge: 4 },
-    myZoom: 0.6,
+    myZoom: 0.7,
     price: 130 + 70,
     sizeGuide: top_down_guide,
     // sizeModels: tshirt_model,

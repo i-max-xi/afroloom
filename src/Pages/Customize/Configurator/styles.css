@@ -64,7 +64,9 @@
     display: flex;
     align-items: center;
     flex-direction: row !important;
-    gap: 1.5rem;
+    justify-content: space-around;
+    /* gap: 1.5rem; */
+    flex: 1;
   }
 
   .text-image-imprint-wrapper > .inputs > input {
@@ -353,8 +355,9 @@ h1 {
 
 .text-image-imprint-wrapper > .inputs {
   display: flex;
-  flex: 1;
+  /* flex: 1; */
   flex-direction: column;
+  justify-content: space-between;
   gap: 0.2rem;
 }
 
