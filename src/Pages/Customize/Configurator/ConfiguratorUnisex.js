@@ -456,6 +456,7 @@ const ConfiguratorUnisex = () => {
             top: "-10.5rem",
             left: "5.3rem",
             width: "15.8%",
+            maxHeight: "3rem",
           },
           placeholder: {
             top: "-9.5rem",
@@ -474,6 +475,7 @@ const ConfiguratorUnisex = () => {
             top: "-11.5rem",
             left: "16.3rem",
             width: "15.8%",
+            maxHeight: "3rem",
           },
           placeholder: {
             top: "-11.5rem",
@@ -1182,7 +1184,9 @@ const ConfiguratorUnisex = () => {
                             display: "flex",
                             alignItems: "center",
                             justifyContent: "center",
-                            maxHeight: "3rem",
+                            maxHeight:
+                              ImprintTextPosition.left?.image?.maxHeight ||
+                              "1.5rem",
                           }}
                         >
                           <img
@@ -1225,7 +1229,9 @@ const ConfiguratorUnisex = () => {
                             display: "flex",
                             alignItems: "center",
                             justifyContent: "center",
-                            maxHeight: "3rem",
+                            maxHeight:
+                              ImprintTextPosition.right?.image.maxHeight ||
+                              "1.5rem",
                           }}
                         >
                           <img
