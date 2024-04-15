@@ -32,9 +32,9 @@ import ConfiguratorFemaleAccessories from "./Pages/Customize/Configurator/Config
 import ConfiguratorFemale from "./Pages/Customize/Configurator/ConfiguratorFemale";
 import ConfiguratorUnisex from "./Pages/Customize/Configurator/ConfiguratorUnisex";
 import CustomizeCheckout from "./Pages/CustomizeCheckout";
+import HomePage from "./Pages/HomePage";
 
 function App() {
-
   useEffect(() => {
     AOS.init();
   }, []);
@@ -44,7 +44,8 @@ function App() {
       <BrowserRouter future={{ v7_startTransition: true }}>
         <Routes>
           <Route path="/" element={<Layout />}>
-            <Route index element={<CustomizePage />} />
+            <Route index element={<HomePage />} />
+            <Route path="start-customize" element={<CustomizePage />} />
             <Route path="about" element={<About />} />
             <Route path="customize-checkout" element={<CustomizeCheckout />} />
 

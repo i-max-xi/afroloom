@@ -24,6 +24,13 @@ const MobileNav = ({ visible, setVisible }) => {
           </li>
           <Divider className="custom-divider" />
 
+          <li className="nav-item mobile-nav-item">
+            <Link className="nav-link" to="/start-customize">
+              Customize
+            </Link>
+          </li>
+          <Divider className="custom-divider" />
+
           <li className="nav-item adjust-nav mobile-nav-item">
             <Link className="about" to="/about">
               About

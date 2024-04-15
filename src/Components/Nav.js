@@ -7,7 +7,6 @@ import "primeicons/primeicons.css";
 import MobileNav from "./MobileNav";
 import { isMobile } from "../utils/constants";
 
-
 const Nav = ({ noCurrency }) => {
   const [visible, setVisible] = useState(false);
 
@@ -36,6 +35,12 @@ const Nav = ({ noCurrency }) => {
           <li className="nav-item">
             <Link className="nav-link" to="/">
               Home
+            </Link>
+          </li>
+
+          <li className="nav-item adjust-nav">
+            <Link className="about" to="/start-customize">
+              Customize
             </Link>
           </li>
 
