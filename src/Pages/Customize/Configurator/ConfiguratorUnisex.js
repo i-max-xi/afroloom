@@ -783,7 +783,7 @@ const ConfiguratorUnisex = () => {
     <>
       <Nav />
       <Toast ref={toastRef} />
-      <>
+      {/* <>
         {showTourPopup && (
           <Dialog
             // header="Welcome to the 3D Customization!"
@@ -815,7 +815,7 @@ const ConfiguratorUnisex = () => {
             steps={tourSteps}
           />
         )}
-      </>
+      </> */}
 
       {showConfirmation ? (
         <Confirmation

@@ -400,7 +400,7 @@ const ConfiguratorFemaleAccessories = () => {
     <>
       <Nav />
       <Toast ref={toastRef} />
-      <>
+      {/* <>
         {showTourPopup && (
           <Dialog
             // header="Welcome to the 3D Customization!"
@@ -432,7 +432,7 @@ const ConfiguratorFemaleAccessories = () => {
             steps={tourSteps}
           />
         )}
-      </>
+      </> */}
 
       {showConfirmation ? (
         <Confirmation

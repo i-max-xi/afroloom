@@ -400,7 +400,7 @@ const ConfiguratorFootwear = () => {
     <>
       <Nav />
       <Toast ref={toastRef} />
-      <>
+      {/* <>
         {showTourPopup && (
           <Dialog
             // header="Welcome to the 3D Customization!"
@@ -432,7 +432,7 @@ const ConfiguratorFootwear = () => {
             steps={tourSteps}
           />
         )}
-      </>
+      </> */}
 
       {showConfirmation ? (
         <Confirmation
