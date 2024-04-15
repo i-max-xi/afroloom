@@ -355,7 +355,9 @@ export const OrderDetail = React.forwardRef(
                     {textLeft && (
                       <>
                         <p className="d-flex align-items-center justify-content-between">
-                          <span>Text Overlay (Left):</span>
+                          <span>
+                            Text Overlay {textRight ? "(Left):" : ":"}
+                          </span>
                           <p>{textLeft}</p>
                         </p>
                         <Divider />
