@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Nav from "../../Components/Nav";
 import { mainMaleCustomize } from "../../Data/CustomizeDataMale";
 import { Link } from "react-router-dom";
@@ -11,6 +11,10 @@ import { mainUnisex } from "../../Data/CustomizeDataUnisex";
 import { mainFootwear } from "../../Data/CustomizeDataFootwear";
 
 const CustomizePage = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <>
       <Nav />
