@@ -13,9 +13,9 @@ const HomePage = () => {
         <img src={image1} alt="hero" />
 
         <div className="hero-bottom">
-          <h3>Hi There</h3>
+          <h3>Hi There!</h3>
           <p>Looking to personalize your fashion sense?</p>
-          <p>Afroloom has you covered</p>
+          <p>Afroloom has you covered.</p>
         </div>
       </section>
 
