@@ -351,7 +351,7 @@ export const mainFemaleCustomize = [
   },
   {
     id: uuid(),
-    name: "Loose Short Sleeve Top",
+    name: "Flare Top",
     image: normal_top,
     model: normal_top_model,
     myNode: [{ name: "all", yardNeeded: 2 }],
