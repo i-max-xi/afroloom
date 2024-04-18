@@ -459,7 +459,9 @@ const ConfiguratorFemaleAccessories = () => {
       ) : (
         <>
           <div className="main-space">
-            <h3 className="text-center">Customizing {selectedClothing.name}</h3>
+            <h3 className="text-center mt-3">
+              Customizing {selectedClothing.name}
+            </h3>
             <div className="d-flex justify-content-center">
               <button
                 className={`btn rotation-button text-white  ${
