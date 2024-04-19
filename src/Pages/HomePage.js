@@ -75,7 +75,7 @@ const HomePage = () => {
                     style={{ width: 50, height: 50 }}
                   />
                   <div>
-                    <strong>Abeiku Egypt</strong>
+                    <strong>Abeiku Egyir</strong>
                     <p>Designer</p>
                   </div>
                 </div>
