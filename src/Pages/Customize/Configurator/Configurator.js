@@ -439,7 +439,7 @@ const Configurator = () => {
       ) : (
         <>
           <div className="main-space">
-            <h3 className="text-center mt-3">
+            <h3 className="text-center pt-3">
               Customizing {selectedClothing.name}
             </h3>
             <div className="d-flex justify-content-center">

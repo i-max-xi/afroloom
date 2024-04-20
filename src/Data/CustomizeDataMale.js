@@ -153,7 +153,7 @@ export const mainMaleCustomize = [
     model: tshirtModel2,
     myNode: [{ name: "all", yardNeeded: 3 }],
     otherYards: { small: 3, large: 4, extraLarge: 4, extraExtraLarge: 4 },
-    myZoom: 0.7,
+    myZoom: 0.8,
     price: 60 + 40,
     // sizeModels: tshirt_model,
     readyIn: 7,

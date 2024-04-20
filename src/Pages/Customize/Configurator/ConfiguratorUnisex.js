@@ -36,6 +36,7 @@ import {
   colorBasePrice,
   onlySashes,
   hideNotAllNodes,
+  shiny3Ds,
 } from "./arrays/neededArrays";
 import TextureItem from "./TextureItem";
 import PartImages from "./PartImages";
@@ -128,7 +129,7 @@ const Shirt = ({
                 attach="material"
                 color={color}
                 map={texture && new TextureLoader().load(texture)}
-                roughness={1}
+                roughness={shiny3Ds.includes(selectedClothing.name) ? 0.2 : 1}
                 emissive={selectedPart === index ? "#FF8C00" : null} // Apply golden glow if part is selected
                 emissiveIntensity={showGlow && selectedPart === index ? 5 : 0} // Adjust glow intensity
               />
@@ -849,7 +850,7 @@ const ConfiguratorUnisex = () => {
       ) : (
         <>
           <div className="main-space">
-            <h3 className="text-center mt-3">
+            <h3 className="text-center pt-3">
               Customizing {selectedClothing.name}
             </h3>
             <div className="d-flex justify-content-center">

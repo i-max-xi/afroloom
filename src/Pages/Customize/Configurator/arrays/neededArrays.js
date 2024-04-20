@@ -503,3 +503,5 @@ export const onlySashes = [
 export const notAll = ["Earring", "Bikini"];
 
 export const hideNotAllNodes = ["bikini_all", "balls", "bikini_top"];
+
+export const shiny3Ds = ["Beads Bracelet", "Earring"];
