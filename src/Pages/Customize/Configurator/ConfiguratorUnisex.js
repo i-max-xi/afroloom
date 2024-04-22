@@ -130,6 +130,8 @@ const Shirt = ({
                 color={color}
                 map={texture && new TextureLoader().load(texture)}
                 roughness={shiny3Ds.includes(selectedClothing.name) ? 0.2 : 1}
+                metalness={node === "Brass" && 1}
+                // metalnessMap={}
                 emissive={selectedPart === index ? "#FF8C00" : null} // Apply golden glow if part is selected
                 emissiveIntensity={showGlow && selectedPart === index ? 5 : 0} // Adjust glow intensity
               />

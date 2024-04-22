@@ -666,7 +666,7 @@ export const mainFemaleCustomize = [
     ],
     otherYards: { small: 3, large: 3, extraLarge: 4, extraExtraLarge: 4 },
     myZoom: 1,
-    price: 130 + 50,
+    price: 500 + 50,
     sizeGuide: blazer_guide,
     // sizeModels: tshirt_model,
     readyIn: 7,

@@ -386,7 +386,7 @@ export const textureDescriptions = {
 
 export const textureValues = {
   batik: {
-    price: 35,
+    price: 25,
     yardStart: 1,
   },
   dashiki: {
