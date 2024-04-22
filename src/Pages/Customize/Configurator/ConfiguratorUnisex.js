@@ -283,6 +283,12 @@ const ConfiguratorUnisex = () => {
 
   const handleImageUploadLeft = async (file) => {
     setUploadedImageLeft(URL.createObjectURL(file));
+    toastRef.current.show({
+      severity: "success",
+      summary: "Please Note",
+      detail:
+        "Focus would be on the pattern in your image, hence background may be removed where applicable",
+    });
 
     try {
       const dataURL = await readFileAsDataURL(file);
@@ -295,6 +301,13 @@ const ConfiguratorUnisex = () => {
 
   const handleImageUploadRight = async (file) => {
     setUploadedImageRight(URL.createObjectURL(file));
+
+    toastRef.current.show({
+      severity: "success",
+      summary: "Please Note",
+      detail:
+        "Focus would be on the pattern in your image, hence background may be removed where applicable",
+    });
 
     try {
       const dataURL = await readFileAsDataURL(file);
