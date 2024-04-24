@@ -17,13 +17,13 @@ import kente3 from "../textures/kente3.jpg";
 import kente4 from "../textures/kente4.jpg";
 import kente5 from "../textures/kente5.jpg";
 
-// import waxPrint1 from "../textures/waxPrint1.jpg";
-// import waxPrint2 from "../textures/waxPrint2.jpg";
-// import waxPrint3 from "../textures/waxPrint3.jpg";
-// import waxPrint4 from "../textures/waxPrint4.jpg";
-// import waxPrint5 from "../textures/waxPrint5.jpg";
+import waxPrint1 from "../textures/waxPrint/new/1 dade3 mpadua.jpg";
+import waxPrint2 from "../textures/waxPrint/new/2. ayeyi wura.jpg";
+import waxPrint3 from "../textures/waxPrint/new/3. 8 8.jpg";
+import waxPrint4 from "../textures/waxPrint/new/4. A B C.jpg";
+import waxPrint5 from "../textures/waxPrint/new/5. Apaawa.jpg";
+import waxPrint6 from "../textures/waxPrint/new/6. Sika nto nkwa.jpg";
 
-// import waxPrint6 from "../textures/waxPrint/10 woni sika a wontwa block.jpg";
 // import waxPrint7 from "../textures/waxPrint/15 ring.jpg";
 // import waxPrint8 from "../textures/waxPrint/16 kyempr3.jpg";
 // import waxPrint10 from "../textures/waxPrint/2 owuo akyi ahere ho).jpg";
@@ -134,28 +134,7 @@ export const specialNodeNames = [
 export const textureArrays = {
   batik: [batik1, batik2, batik3, batik4, batik5],
 
-  waxPrint: [
-    // waxPrint1,
-    // waxPrint3,
-    // waxPrint6,
-    // waxPrint7,
-    // waxPrint8,
-    // waxPrint10,
-    waxPrint11,
-    // waxPrint12,
-    waxPrint13,
-    waxPrint14,
-    waxPrint15,
-    // waxPrint16,
-    // waxPrint17,
-    waxPrint18,
-    // waxPrint19,
-    // waxPrint20,
-    // waxPrint21,
-    waxPrint22,
-    // waxPrint23,
-    waxPrint24,
-  ],
+  waxPrint: [waxPrint1, waxPrint2, waxPrint3, waxPrint4, waxPrint5, waxPrint6],
 };
 
 export const textureDescriptions = {
@@ -189,7 +168,7 @@ export const textureDescriptions = {
       which translates to &quot;my love&quot; in English. Embrace the rich history and tradition woven into each thread,
       and proudly make a statement with your unique style. Let medofo be a symbol of appreciation for
       African artistry and a celebration of unity through fashion. So why wait? Let your wardrobe reflect love
-      and diversity by wearing medofo today!`,
+      and diversity by wearing medofo today!`,
     },
     {
       textureName: "Gye Nyame",
@@ -197,7 +176,7 @@ export const textureDescriptions = {
       Embrace the rich history and cultural significance of this beautiful fabric by incorporating it into
       your wardrobe. Let its powerful message remind you to always put your faith in something
       greater. Wear gye nyame proudly and experience the unique and vibrant energy it
-      brings to your style.`,
+      brings to your style.`,
     },
   ],
   // dashiki: [
@@ -245,97 +224,92 @@ export const textureDescriptions = {
   //   },
   // ],
   waxPrint: [
+    {
+      textureName: "DADE3 MPADUA",
+      textureDescription: `Experience the vibrancy and elegance of African culture with the stunning dade3 mpadua fabric.
+      Embodying the rich heritage and craftsmanship of African textiles, this fabric will make you
+      stand out in style. So why not elevate your wardrobe and celebrate the beauty of African
+      fashion by wearing dade3 mpadua?`,
+    },
+    {
+      textureName: "Ayeyi Wura",
+      textureDescription: `Wear the vibrant Ayeyi Wura fabric and praise the living God with every step you take. This
+      African fabric is a symbol of gratitude and celebration, making it perfect for brightening up any
+      outfit. Embrace the rich cultural heritage and unique beauty of Ayeyi Wura, and let your style
+      speak volumes. Join the movement and showcase the essence of African fashion with this fabric
+      that exudes positivity and faith.`,
+    },
+    {
+      textureName: "8 8",
+      textureDescription: `Embrace the vibrant and cultural essence of the African fabric known as 8 8, symbolizing the
+      interconnectedness of life. Let your style speak volumes as you don this unique and colorful
+      fabric, encouraging a celebration of diversity and heritage. Stand out from the crowd and make
+      a statement by incorporating this beautiful fabric into your wardrobe today. Experience the
+      beauty of Africa and express yourself through the art of fabric. Wear 8 8 and bring a touch of
+      culture and tradition into your everyday life.`,
+    },
+    {
+      textureName: "A B C",
+      textureDescription: `Wrap yourself in the vibrant colors and rich history of African fabric, known as ‘A B C’. Embrace
+      the cultural significance and beauty of this unique textile as you make a statement with your
+      wardrobe. Stand out from the crowd and show your appreciation for African craftsmanship by
+      incorporating this stunning fabric into your everyday style. Wear the name of fabric is called a b
+      c proudly and celebrate the beauty of African culture.`,
+    },
+    {
+      textureName: "APAAWA",
+      textureDescription: `Wrap yourself in the vibrant and rich history of African culture with the exquisite APAAWA
+      fabric. This iconic textile encapsulates the craftsmanship and artistry of African artisans, telling a
+      story of tradition and heritage with every thread. Embrace your individuality and make a bold
+      statement by adorning yourself in the stunning patterns and colors of the APAAWA fabric.
+      Celebrate diversity and creativity by incorporating this unique fabric into your wardrobe, and let
+      your style speak volumes about your appreciation for the beauty of African craftsmanship. Try
+      on the APAAWA fabric today and experience the magic of African fashion firsthand.`,
+    },
+    {
+      textureName: "Sika Nto Nkwa",
+      textureDescription: `Introducing the vibrant and meaningful African fabric called Soja Nto Nkwa, which translates to
+      &quot;money can&#39;t buy life.&quot; This beautiful fabric not only adds a touch of culture to your wardrobe,
+      but also reminds you to cherish the moments that truly matter. So, why not embrace the rich
+      heritage and unique design of African fabrics by incorporating Soja Nto Nkwa into your everyday
+      style? Stand out from the crowd and wear a piece of tradition with pride!`,
+    },
     // {
-    //   textureName: "SIKA WO NTABAN (Money has wings)",
+    //   textureName: "Sugar Lady",
+    //   textureDescription: `Introducing the stunning African fabric known as "Sugar Lady" - it's not just material, it's a statement of style and culture. Embrace the vibrancy and beauty of Africa by wearing this unique fabric that will make you stand out from the crowd. Don't just wear a garment, wear a piece of art that tells a story and celebrates tradition. Join the movement and show off your individuality with the enchanting "Sugar Lady" fabric.`,
+    // },
+    // {
+    //   textureName: "ɛmo (rice)",
     //   textureDescription:
-    //     '"Sika wo ataban" (Money has wings), a captivating fabric design from the Ashanti people of Ghana, serves as a vibrant reminder to handle money wisely. The design symbolizes the fleeting nature of wealth, emphasizing the importance of careful financial management to prevent its dissipation',
+    //     "Wrap yourself in the beauty and tradition of ɛmo, the African fabric known as rice in English. Just like the staple food, this fabric can be easily tailored to your style and taste. Embrace the vibrant colors and patterns of African culture, and let ɛmo be the ingredient that adds a touch of flair to your wardrobe. Go ahead, wear the fabric that not only looks good but tells a story too.",
     // },
     // {
-    //   textureName: "Ahwene pa nkasa",
-    //   textureDescription: `"Ahwenepa nkasa" fabric exhorts individuals to let their actions and character speak for themselves rather than relying on arrogance or boasting. This intricate design, featuring floral patterns and various elements, symbolizes the notion that a truly good person's virtues are evident through their interactions, making them recognizable without the need for excessive self-promotion.`,
-    // },
-    // {
-    //   textureName: "",
-    //   textureDescription: "",
-    // },
-    // {
-    //   textureName: "Ring",
+    //   textureName: "Aso Bayere Ahaban",
     //   textureDescription:
-    //     "Step up your style game and make a statement with the vibrant African fabric called ring. Don't blend in when you can stand out in these bold and eye-catching prints. Embrace the rich culture and unique designs of African textiles by incorporating ring into your wardrobe. Dare to be different and show off your individuality by wearing this stunning fabric. Join the fashion revolution and let your wardrobe reflect your adventurous spirit with ring fabric",
+    //     "Introducing the Aso Bayere Ahaban fabric, inspired by the sweet yam leaves and versatile like a mother's cooking! Just like there are countless ways to prepare this beloved vegetable, there are infinite ways to style and wear this unique fabric. So why not add a touch of tradition and elegance to your wardrobe by embracing the beauty of Aso Bayere Ahaban. Try it and let your fashion sense bloom like a sweet yam in the sunshine!",
     // },
     // {
-    //   textureName: "",
-    //   textureDescription: "",
-    // },
-    // {
-    //   textureName: "Owuo Akyi  Awereho",
+    //   textureName: "Aso Bayere",
     //   textureDescription:
-    //     "Introducing Owuo Akyi Awereho: the fabric that captures the essence of sadness after death while reminding us to live our best lives. Wear this unique design as a powerful reminder to cherish each moment and strive for greatness. Let Owuo Akyi Awereho inspire you to embrace life to the fullest and make every day count. Wear the fabric, embrace the message, and live your best life",
-    // },
-    {
-      textureName: "Sugar Lady",
-      textureDescription: `Introducing the stunning African fabric known as "Sugar Lady" - it's not just material, it's a statement of style and culture. Embrace the vibrancy and beauty of Africa by wearing this unique fabric that will make you stand out from the crowd. Don't just wear a garment, wear a piece of art that tells a story and celebrates tradition. Join the movement and show off your individuality with the enchanting "Sugar Lady" fabric.`,
-    },
-    // {
-    //   textureName: "",
-    //   textureDescription: "",
-    // },
-    {
-      textureName: "ɛmo (rice)",
-      textureDescription:
-        "Wrap yourself in the beauty and tradition of ɛmo, the African fabric known as rice in English. Just like the staple food, this fabric can be easily tailored to your style and taste. Embrace the vibrant colors and patterns of African culture, and let ɛmo be the ingredient that adds a touch of flair to your wardrobe. Go ahead, wear the fabric that not only looks good but tells a story too.",
-    },
-    {
-      textureName: "Aso Bayere Ahaban",
-      textureDescription:
-        "Introducing the Aso Bayere Ahaban fabric, inspired by the sweet yam leaves and versatile like a mother's cooking! Just like there are countless ways to prepare this beloved vegetable, there are infinite ways to style and wear this unique fabric. So why not add a touch of tradition and elegance to your wardrobe by embracing the beauty of Aso Bayere Ahaban. Try it and let your fashion sense bloom like a sweet yam in the sunshine!",
-    },
-    {
-      textureName: "Aso Bayere",
-      textureDescription:
-        "Introducing Aso Bayere - the sweet yam-inspired fabric that celebrates the beauty and versatility of a mother's touch. Just like the many ways sweet yam can be prepared, this fabric offers endless possibilities for styling and wearing. Embrace the tradition and creativity of African fashion with Aso Bayere, and let your unique style shine through in every outfit. Add this timeless piece to your wardrobe and discover the magic of the mother's touch.",
-    },
-    // {
-    //   textureName: "",
-    //   textureDescription: "",
+    //     "Introducing Aso Bayere - the sweet yam-inspired fabric that celebrates the beauty and versatility of a mother's touch. Just like the many ways sweet yam can be prepared, this fabric offers endless possibilities for styling and wearing. Embrace the tradition and creativity of African fashion with Aso Bayere, and let your unique style shine through in every outfit. Add this timeless piece to your wardrobe and discover the magic of the mother's touch.",
     // },
     // {
-    //   textureName: "",
-    //   textureDescription: "",
-    // },
-    {
-      textureName: "Sankofa",
-      textureDescription:
-        "Wrap yourself in the vibrant patterns and rich history of Sankofa fabric, a symbol of learning from the past to build a better future. Embrace the beauty and culture of Africa by wearing this unique and meaningful fabric, and let it inspire you to reflect on your own journey while honoring the roots of a powerful tradition. Let the colors and designs of Sankofa fabric ignite your sense of style and pride in wearing garments that tell a story of resilience and heritage. Join the movement to celebrate and elevate African fashion with Sankofa fabric today",
-    },
-    // {
-    //   textureName: "Obiara Se 3y3",
-    //   textureDescription: `Step out in style with the vibrant and culturally rich African fabric known as obiara se 3y3, which translates to "everyone approve of it" in English. Embrace the intricate patterns and bold colors of this fabric that not only adds a touch of elegance to your wardrobe, but also celebrates unity and acceptance. So why blend in when you can stand out in the unique beauty of African fabric? Join the movement and wear obiara se 3y3 with pride!`,
-    // },
-    // {
-    //   textureName: "Flower",
-    //   textureDescription: `Wear the vibrant African fabric called "Flower" and add a touch of culture to your wardrobe! Embrace the beautiful patterns and colors of this unique textile and stand out from the crowd. Let your style bloom with Flower fabric and show off your individuality and appreciation for African fashion. Join the fashion revolution and rock this stunning fabric with confidence!`,
-    // },
-    // {
-    //   textureName: "Ab3n Beb) Mu",
+    //   textureName: "Sankofa",
     //   textureDescription:
-    //     "Get ready to blow the horn of fashion with Aben B3bom, the vibrant African fabric that is sure to turn heads wherever you go. In Akan, this fabric embodies the spirit of celebration and unity, making it the perfect choice for those who want to stand out and make a statement. Embrace your roots and add a pop of color to your wardrobe by incorporating Aben B3bom into your style. Join the movement and wear the beauty of African fabric with pride!",
+    //     "Wrap yourself in the vibrant patterns and rich history of Sankofa fabric, a symbol of learning from the past to build a better future. Embrace the beauty and culture of Africa by wearing this unique and meaningful fabric, and let it inspire you to reflect on your own journey while honoring the roots of a powerful tradition. Let the colors and designs of Sankofa fabric ignite your sense of style and pride in wearing garments that tell a story of resilience and heritage. Join the movement to celebrate and elevate African fashion with Sankofa fabric today",
     // },
-    {
-      textureName: "Nkitinkiti",
-      textureDescription:
-        "Embrace the vibrant and rich culture of Africa by wearing Nkitinkiti fabric! Make a bold statement and stand out in the crowd with these unique and eye-catching patterns. Whether you're attending a special event or just want to add some flair to your everyday wardrobe, Nkitinkiti is the perfect choice. Show off your individuality and support African artisans by rocking this beautiful fabric. Join the fashion revolution and make a statement with Nkitinkiti!",
-    },
+
     // {
-    //   textureName: "Cha cha cha / Senchi Bridge",
+    //   textureName: "Nkitinkiti",
     //   textureDescription:
-    //     "Embrace the lively rhythm of cha cha cha and the daring spirit of the Senchi bridge with this unique fabric pattern. Feel the energy of the dance and the thrill of crossing a turbulent river as you wear it with style. Let the names and meanings behind this design inspire you to embrace adventure and movement in every step you take. Don't just wear the fabric, embody the essence of cha cha cha / senchi bridge and make a statement.",
+    //     "Embrace the vibrant and rich culture of Africa by wearing Nkitinkiti fabric! Make a bold statement and stand out in the crowd with these unique and eye-catching patterns. Whether you're attending a special event or just want to add some flair to your everyday wardrobe, Nkitinkiti is the perfect choice. Show off your individuality and support African artisans by rocking this beautiful fabric. Join the fashion revolution and make a statement with Nkitinkiti!",
     // },
-    {
-      textureName: "Town Hall",
-      textureDescription:
-        "Dress to impress with the vibrant and eye-catching African fabric, Town Hall! Embrace your individuality and show off your unique style by incorporating this bold and beautiful fabric into your wardrobe. Stand out from the crowd and rock the Town Hall fabric with confidence, celebrating the rich cultural heritage and artistry it represents. Don't just follow the trends, set them by showcasing the beauty of African fashion with Town Hall!",
-    },
+
+    // {
+    //   textureName: "Town Hall",
+    //   textureDescription:
+    //     "Dress to impress with the vibrant and eye-catching African fabric, Town Hall! Embrace your individuality and show off your unique style by incorporating this bold and beautiful fabric into your wardrobe. Stand out from the crowd and rock the Town Hall fabric with confidence, celebrating the rich cultural heritage and artistry it represents. Don't just follow the trends, set them by showcasing the beauty of African fashion with Town Hall!",
+    // },
   ],
   // smock: [
   //   {
