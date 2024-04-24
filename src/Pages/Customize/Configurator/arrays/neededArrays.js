@@ -1,4 +1,4 @@
-import batik1 from "../textures/tie_and_dye/21 tie and dye.jpg";
+import from "../textures/tie_and_dye/21 tie and dye.jpg";
 
 import batik2 from "../textures/tie_and_dye/7. bubu.jpg";
 import batik3 from "../textures/tie_and_dye/8. tomogyi.jpg";
@@ -132,17 +132,17 @@ export const specialNodeNames = [
 ]; // Add your special node names here
 
 export const textureArrays = {
-  batik: [batik1, batik2, batik3, batik4, batik5],
+  batik: [ batik2, batik3, batik4, batik5],
 
   waxPrint: [waxPrint1, waxPrint2, waxPrint3, waxPrint4, waxPrint5, waxPrint6],
 };
 
 export const textureDescriptions = {
   batik: [
-    {
-      textureName: "",
-      textureDescription: "",
-    },
+    // {
+    //   textureName: "",
+    //   textureDescription: "",
+    // },
     {
       textureName: "Bubu",
       textureDescription: `Step out in style and embrace the vibrant culture of Africa with the stunning bubu fabric! Known
