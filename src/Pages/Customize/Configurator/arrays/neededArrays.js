@@ -162,6 +162,15 @@ export const textureDescriptions = {
       make a statement wherever you go. Dare to stand out and be proud to wear the African
       fabric, tomogyi.`,
     },
+
+    {
+      textureName: "Gye Nyame",
+      textureDescription: `Have you heard of the ancient African fabric called Gye Nyame, which means except God.
+      Embrace the rich history and cultural significance of this beautiful fabric by incorporating it into
+      your wardrobe. Let its powerful message remind you to always put your faith in something
+      greater. Wear gye nyame proudly and experience the unique and vibrant energy it
+      brings to your style.`,
+    },
     {
       textureName: "Medofo",
       textureDescription: `Wrap yourself in a piece of culture and love with the beautifully vibrant African fabric known as medofo,
@@ -169,14 +178,6 @@ export const textureDescriptions = {
       and proudly make a statement with your unique style. Let medofo be a symbol of appreciation for
       African artistry and a celebration of unity through fashion. So why wait? Let your wardrobe reflect love
       and diversity by wearing medofo today!`,
-    },
-    {
-      textureName: "Gye Nyame",
-      textureDescription: `Have you heard of the ancient African fabric called gye nyame, which means &quot;except God&quot;?
-      Embrace the rich history and cultural significance of this beautiful fabric by incorporating it into
-      your wardrobe. Let its powerful message remind you to always put your faith in something
-      greater. Wear gye nyame proudly and experience the unique and vibrant energy it
-      brings to your style.`,
     },
   ],
   // dashiki: [
