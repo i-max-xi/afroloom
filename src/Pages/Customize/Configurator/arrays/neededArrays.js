@@ -1,9 +1,9 @@
 import batik1 from "../textures/tie_and_dye/21 tie and dye.jpg";
 
-import batik2 from "../textures/batik2.jpg";
-import batik3 from "../textures/batik3.jpg";
-import batik4 from "../textures/batik4.jpg";
-import batik5 from "../textures/batik5.jpg";
+import batik2 from "../textures/tie_and_dye/7. bubu.jpg";
+import batik3 from "../textures/tie_and_dye/8. tomogyi.jpg";
+import batik4 from "../textures/tie_and_dye/9. gye nyame.jpg";
+import batik5 from "../textures/tie_and_dye/10 medofo.jpg";
 
 import dashiki1 from "../textures/dashiki1.jpg";
 import dashiki2 from "../textures/dashiki2.jpg";
@@ -132,7 +132,7 @@ export const specialNodeNames = [
 ]; // Add your special node names here
 
 export const textureArrays = {
-  batik: [batik1],
+  batik: [batik1, batik2, batik3, batik4, batik5],
 
   waxPrint: [
     // waxPrint1,
@@ -163,6 +163,41 @@ export const textureDescriptions = {
     {
       textureName: "",
       textureDescription: "",
+    },
+    {
+      textureName: "Bubu",
+      textureDescription: `Step out in style and embrace the vibrant culture of Africa with the stunning bubu fabric! Known
+      for its intricate patterns and rich history, bubu fabric is a true representation of African heritage
+      and creativity. So why not add a touch of vibrant flair to your wardrobe and inspire others to do
+      the same by proudly wearing bubu fabric? Join the movement and let your fashion do the
+      talking with bubu!`,
+    },
+
+    {
+      textureName: "Tomogyi",
+      textureDescription: `Wrap yourself in the vibrant colors and rich cultural history of Africa with the eye-catching
+      tomogyi fabric. This fabric is not just a piece of cloth- it is a work of art that tells a story about
+      the beauty and diversity of the African continent. Embrace the sense of empowerment and
+      connection that comes with wearing tomogyi, and celebrate the uniqueness of African heritage
+      in style. Let the bold patterns and exquisite craftsmanship of tomogyi be your signature look and
+      make a statement wherever you go. Dare to stand out and be proud to wear the African
+      fabric, tomogyi.`,
+    },
+    {
+      textureName: "Medofo",
+      textureDescription: `Wrap yourself in a piece of culture and love with the beautifully vibrant African fabric known as medofo,
+      which translates to &quot;my love&quot; in English. Embrace the rich history and tradition woven into each thread,
+      and proudly make a statement with your unique style. Let medofo be a symbol of appreciation for
+      African artistry and a celebration of unity through fashion. So why wait? Let your wardrobe reflect love
+      and diversity by wearing medofo today!`,
+    },
+    {
+      textureName: "Gye Nyame",
+      textureDescription: `Have you heard of the ancient African fabric called gye nyame, which means &quot;except God&quot;?
+      Embrace the rich history and cultural significance of this beautiful fabric by incorporating it into
+      your wardrobe. Let its powerful message remind you to always put your faith in something
+      greater. Wear gye nyame proudly and experience the unique and vibrant energy it
+      brings to your style.`,
     },
   ],
   // dashiki: [
