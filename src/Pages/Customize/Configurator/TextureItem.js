@@ -23,7 +23,6 @@ function TextureItem({
 
   // console.log({selectedTexture, texture})
 
-
   return (
     <div className="texture-item">
       <img
@@ -33,6 +32,7 @@ function TextureItem({
           selectedTexture === texture ? "selected-border" : ""
         }`}
         onClick={() => handleTextureChange(texture)}
+        onContextMenu={(e) => e.preventDefault()}
       />
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -50,7 +50,11 @@ function TextureItem({
       </svg>
 
       <Dialog
-        header={subTextureDescriptions[textureIndex]?.textureName !== "" ? subTextureDescriptions[textureIndex]?.textureName : "Title N/A"}
+        header={
+          subTextureDescriptions[textureIndex]?.textureName !== ""
+            ? subTextureDescriptions[textureIndex]?.textureName
+            : "Title N/A"
+        }
         visible={displayDialog}
         onHide={handleCloseDialog}
         className="col-12 col-sm-4"
@@ -64,8 +68,10 @@ function TextureItem({
             width="250px"
             style={{ alignSelf: "center" }}
           />
-          <p style={{paddingTop: "1rem" }}>
-            {subTextureDescriptions[textureIndex]?.textureDescription !== "" ? subTextureDescriptions[textureIndex]?.textureDescription : "Description N/A"}
+          <p style={{ paddingTop: "1rem" }}>
+            {subTextureDescriptions[textureIndex]?.textureDescription !== ""
+              ? subTextureDescriptions[textureIndex]?.textureDescription
+              : "Description N/A"}
           </p>
         </div>
       </Dialog>
