@@ -24,24 +24,6 @@ import waxPrint4 from "../textures/waxPrint/new/4. A B C.jpg";
 import waxPrint5 from "../textures/waxPrint/new/5. Apaawa.jpg";
 import waxPrint6 from "../textures/waxPrint/new/6. Sika nto nkwa.jpg";
 
-// import waxPrint7 from "../textures/waxPrint/15 ring.jpg";
-// import waxPrint8 from "../textures/waxPrint/16 kyempr3.jpg";
-// import waxPrint10 from "../textures/waxPrint/2 owuo akyi ahere ho).jpg";
-import waxPrint11 from "../textures/waxPrint/27 sugar lady.jpg";
-// import waxPrint12 from "../textures/waxPrint/28.jpg";
-import waxPrint13 from "../textures/waxPrint/26 3moo.jpg";
-import waxPrint14 from "../textures/waxPrint/29 aso bayere ahaban.jpg";
-import waxPrint15 from "../textures/waxPrint/3 aso bayere.jpg";
-// import waxPrint16 from "../textures/waxPrint/31.jpg";
-// import waxPrint17 from "../textures/waxPrint/32.jpg";
-import waxPrint18 from "../textures/waxPrint/35 sankofa.jpg";
-// import waxPrint19 from "../textures/waxPrint/37 obiara se 3y3.jpg";
-// import waxPrint20 from "../textures/waxPrint/38 flower.jpg";
-// import waxPrint21 from "../textures/waxPrint/40 ab3n beb) mu.jpg";
-import waxPrint22 from "../textures/waxPrint/5 nkitinkiti.jpg";
-// import waxPrint23 from "../textures/waxPrint/6 sekyi bridge.jpg";
-import waxPrint24 from "../textures/waxPrint/8 town hall.jpg";
-
 import smock1 from "../textures/smock1.jpg";
 import smock2 from "../textures/smock2.jpg";
 import smock3 from "../textures/smock3.jpg";
@@ -149,7 +131,7 @@ export const textureDescriptions = {
       for its intricate patterns and rich history, bubu fabric is a true representation of African heritage
       and creativity. So why not add a touch of vibrant flair to your wardrobe and inspire others to do
       the same by proudly wearing bubu fabric? Join the movement and let your fashion do the
-      talking with bubu!`,
+      talking with bubu!`,
     },
 
     {
@@ -160,7 +142,7 @@ export const textureDescriptions = {
       connection that comes with wearing tomogyi, and celebrate the uniqueness of African heritage
       in style. Let the bold patterns and exquisite craftsmanship of tomogyi be your signature look and
       make a statement wherever you go. Dare to stand out and be proud to wear the African
-      fabric, tomogyi.`,
+      fabric, tomogyi.`,
     },
 
     {
@@ -174,7 +156,7 @@ export const textureDescriptions = {
     {
       textureName: "Medofo",
       textureDescription: `Wrap yourself in a piece of culture and love with the beautifully vibrant African fabric known as medofo,
-      which translates to &quot;my love&quot; in English. Embrace the rich history and tradition woven into each thread,
+      which translates to "my love" in English. Embrace the rich history and tradition woven into each thread,
       and proudly make a statement with your unique style. Let medofo be a symbol of appreciation for
       African artistry and a celebration of unity through fashion. So why wait? Let your wardrobe reflect love
       and diversity by wearing medofo today!`,
@@ -230,7 +212,7 @@ export const textureDescriptions = {
       textureDescription: `Experience the vibrancy and elegance of African culture with the stunning dade3 mpadua fabric.
       Embodying the rich heritage and craftsmanship of African textiles, this fabric will make you
       stand out in style. So why not elevate your wardrobe and celebrate the beauty of African
-      fashion by wearing dade3 mpadua?`,
+      fashion by wearing dade3 mpadua?`,
     },
     {
       textureName: "Ayeyi Wura",
@@ -238,7 +220,7 @@ export const textureDescriptions = {
       African fabric is a symbol of gratitude and celebration, making it perfect for brightening up any
       outfit. Embrace the rich cultural heritage and unique beauty of Ayeyi Wura, and let your style
       speak volumes. Join the movement and showcase the essence of African fashion with this fabric
-      that exudes positivity and faith.`,
+      that exudes positivity and faith.`,
     },
     {
       textureName: "8 8",
@@ -247,7 +229,7 @@ export const textureDescriptions = {
       fabric, encouraging a celebration of diversity and heritage. Stand out from the crowd and make
       a statement by incorporating this beautiful fabric into your wardrobe today. Experience the
       beauty of Africa and express yourself through the art of fabric. Wear 8 8 and bring a touch of
-      culture and tradition into your everyday life.`,
+      culture and tradition into your everyday life.`,
     },
     {
       textureName: "A B C",
@@ -255,7 +237,7 @@ export const textureDescriptions = {
       the cultural significance and beauty of this unique textile as you make a statement with your
       wardrobe. Stand out from the crowd and show your appreciation for African craftsmanship by
       incorporating this stunning fabric into your everyday style. Wear the name of fabric is called a b
-      c proudly and celebrate the beauty of African culture.`,
+      c proudly and celebrate the beauty of African culture.`,
     },
     {
       textureName: "APAAWA",
@@ -265,15 +247,15 @@ export const textureDescriptions = {
       statement by adorning yourself in the stunning patterns and colors of the APAAWA fabric.
       Celebrate diversity and creativity by incorporating this unique fabric into your wardrobe, and let
       your style speak volumes about your appreciation for the beauty of African craftsmanship. Try
-      on the APAAWA fabric today and experience the magic of African fashion firsthand.`,
+      on the APAAWA fabric today and experience the magic of African fashion firsthand.`,
     },
     {
       textureName: "Sika Nto Nkwa",
       textureDescription: `Introducing the vibrant and meaningful African fabric called Soja Nto Nkwa, which translates to
-      &quot;money can&#39;t buy life.&quot; This beautiful fabric not only adds a touch of culture to your wardrobe,
+     "money can't buy life". This beautiful fabric not only adds a touch of culture to your wardrobe,
       but also reminds you to cherish the moments that truly matter. So, why not embrace the rich
       heritage and unique design of African fabrics by incorporating Soja Nto Nkwa into your everyday
-      style? Stand out from the crowd and wear a piece of tradition with pride!`,
+      style? Stand out from the crowd and wear a piece of tradition with pride!`,
     },
     // {
     //   textureName: "Sugar Lady",
