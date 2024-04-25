@@ -236,8 +236,8 @@ export const textureDescriptions = {
       textureDescription: `Wrap yourself in the vibrant colors and rich history of African fabric, known as ‘A B C’. Embrace
       the cultural significance and beauty of this unique textile as you make a statement with your
       wardrobe. Stand out from the crowd and show your appreciation for African craftsmanship by
-      incorporating this stunning fabric into your everyday style. Wear the name of fabric is called a b
-      c proudly and celebrate the beauty of African culture.`,
+      incorporating this stunning fabric into your everyday style. Wear the name of fabric is called A B C
+      proudly and celebrate the beauty of African culture.`,
     },
     {
       textureName: "APAAWA",
@@ -251,10 +251,10 @@ export const textureDescriptions = {
     },
     {
       textureName: "Sika Nto Nkwa",
-      textureDescription: `Introducing the vibrant and meaningful African fabric called Soja Nto Nkwa, which translates to
+      textureDescription: `Introducing the vibrant and meaningful African fabric called Sika Nto Nkwa, which translates to
      "money can't buy life". This beautiful fabric not only adds a touch of culture to your wardrobe,
       but also reminds you to cherish the moments that truly matter. So, why not embrace the rich
-      heritage and unique design of African fabrics by incorporating Soja Nto Nkwa into your everyday
+      heritage and unique design of African fabrics by incorporating Sika Nto Nkwa into your everyday
       style? Stand out from the crowd and wear a piece of tradition with pride!`,
     },
     // {
