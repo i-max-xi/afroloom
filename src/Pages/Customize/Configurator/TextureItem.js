@@ -2,6 +2,8 @@ import { Dialog } from "primereact/dialog";
 import React, { useState } from "react";
 import { textureValues } from "./arrays/neededArrays";
 
+import alternateTexture from "./textures/tie_and_dye/10 medofo - Copy.jpg";
+
 function TextureItem({
   texture,
   selectedTexture,
@@ -21,7 +23,10 @@ function TextureItem({
     // setHideText(false)
   };
 
-  // console.log({selectedTexture, texture})
+  // console.log({ texture });
+
+  const needsAlternate =
+    texture === "/static/media/10 medofo.84aa9ed3bbc49733e1bd.jpg";
 
   return (
     <div className="texture-item">
@@ -64,7 +69,7 @@ function TextureItem({
           <div className="d-flex flex-column" style={{ position: "relative" }}>
             <img
               alt={`Texture`}
-              src={texture}
+              src={needsAlternate ? alternateTexture : texture}
               height="150px"
               width="250px"
               style={{ alignSelf: "center", WebkitTouchCallout: "none" }}
