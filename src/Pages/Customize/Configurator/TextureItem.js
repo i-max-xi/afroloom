@@ -67,6 +67,7 @@ function TextureItem({
             height="150px"
             width="250px"
             style={{ alignSelf: "center" }}
+            onContextMenu={(e) => e.preventDefault()}
           />
           <p style={{ paddingTop: "1rem" }}>
             {subTextureDescriptions[textureIndex]?.textureDescription !== ""
