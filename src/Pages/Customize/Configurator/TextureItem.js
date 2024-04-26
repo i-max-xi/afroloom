@@ -61,14 +61,23 @@ function TextureItem({
         dismissableMask={true}
       >
         <div className="d-flex flex-column">
-          <img
-            alt={`Texture`}
-            src={texture}
-            height="150px"
-            width="250px"
-            style={{ alignSelf: "center" }}
-            onContextMenu={(e) => e.preventDefault()}
-          />
+          <div className="d-flex flex-column" style={{ position: "relative" }}>
+            <img
+              alt={`Texture`}
+              src={texture}
+              height="150px"
+              width="250px"
+              style={{ alignSelf: "center" }}
+              onContextMenu={(e) => e.preventDefault()}
+            />
+
+            <div class="text-block-container">
+              <div class="text-block">
+                <p>Afroloom</p>
+              </div>
+            </div>
+          </div>
+
           <p style={{ paddingTop: "1rem" }}>
             {subTextureDescriptions[textureIndex]?.textureDescription !== ""
               ? subTextureDescriptions[textureIndex]?.textureDescription

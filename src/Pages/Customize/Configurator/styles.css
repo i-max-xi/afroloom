@@ -379,3 +379,21 @@ h1 {
 /* .resize-right-panel > div > div {
   z-index: 1 !important;
 } */
+
+.text-block-container {
+  position: absolute;
+  bottom: 0;
+  right: 15%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.text-block {
+  background: rgb(0, 0, 0); /* Fallback color */
+  background: rgba(0, 0, 0, 0.5); /* Black background with 0.5 opacity */
+  color: #f1f1f199; /* Grey text */
+  font-weight: 600;
+  /* color: white; */
+  /* padding: 2px 5px; */
+}
