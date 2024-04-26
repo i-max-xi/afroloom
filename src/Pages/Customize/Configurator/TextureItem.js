@@ -67,7 +67,7 @@ function TextureItem({
               src={texture}
               height="150px"
               width="250px"
-              style={{ alignSelf: "center" }}
+              style={{ alignSelf: "center", WebkitTouchCallout: "none" }}
               onContextMenu={(e) => e.preventDefault()}
             />
 
