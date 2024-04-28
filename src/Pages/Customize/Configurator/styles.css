@@ -9,6 +9,12 @@
     border-top-right-radius: 3rem !important;
   }
 
+  .wig-left-panel {
+    width: 100% !important;
+    border-top-left-radius: 3rem !important;
+    border-top-right-radius: 3rem !important;
+  }
+
   .text-image-imprint h5 {
     font-size: 1rem !important;
   }
@@ -27,11 +33,13 @@
     margin: 0.2rem;
   }
 
-  .left-panel h3 {
+  .left-panel h3,
+  .wig-left-panel h3 {
     font-size: 0.9rem !important;
   }
 
-  .left-panel h5 {
+  .left-panel h5,
+  .wig-left-panel h5 {
     margin-top: 1rem;
   }
 
@@ -162,11 +170,19 @@ h1 {
   width: 50%;
 }
 
-.left-panel > h5 {
+.left-panel > h5,
+.wig-left-panel > h5 {
   font-size: 1rem;
 }
 
-.left-panel button:hover {
+.wig-left-panel {
+  flex-direction: column;
+  padding: 0.3rem 1rem;
+  width: 50%;
+}
+
+.left-panel button:hover,
+.wig-left-panel button:hover {
   background-color: none !important;
 }
 
@@ -242,10 +258,6 @@ h1 {
   width: 2.4rem;
   cursor: pointer;
   align-self: center;
-}
-
-.p-carousel-items-container {
-  /* width: 100% !important; */
 }
 
 .bi-info-circle {
@@ -396,4 +408,14 @@ h1 {
   font-weight: 600;
   /* color: white; */
   /* padding: 2px 5px; */
+}
+
+.specifications {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.wig-dropdown {
+  width: 100%;
 }

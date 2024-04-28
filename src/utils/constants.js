@@ -21,4 +21,10 @@ export const braidOptions = {
     // "Black to blond",
     // "Light brown",
   ],
+
+  length: ["Waist-length", "Shoulder-length", "Mid-back length"],
+
+  curlEnd: ["Tight Curls", "Loose Curls", "Spiral Curls", "S-wave Curls"],
+
+  capSize: ["Small", "Medium", "Large"],
 };

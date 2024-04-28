@@ -53,12 +53,12 @@ const box_braid_wine = require("../Assets/welcome_3ds/others/Wig/box_braid/wine.
 export const mainUnisex = [
   {
     id: uuid(),
-    name: "Box Braids",
+    name: "Box Braids With Curly End",
     image: box_braid,
     model: bangles_model,
     price: 50,
     readyIn: 7,
-    link: "/configurator-wig/Box Braids",
+    link: "/configurator-wig/Box Braids With Curly End",
     colorVariants: [
       box_braid_black,
       box_braid_grey,

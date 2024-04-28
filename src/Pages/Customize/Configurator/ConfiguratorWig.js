@@ -23,11 +23,11 @@ const ConfiguratorWig = () => {
   );
 
   //questions
-  const [colorPreference, setColorPreference] = useState("Natural black");
-  const [tensionPreference, setTensionPreference] = useState(null);
-  const [closureFrontal, setClosureFrontal] = useState(null);
+  const [colorPreference, setColorPreference] = useState(
+    braidOptions.colors[0]
+  );
+  const [curlyendstyle, setCurlyEndStyle] = useState(null);
   const [capSize, setCapSize] = useState(null);
-  const [scalpSensitivity, setScalpSensitivity] = useState(null);
   const [braidLength, setBraidLength] = useState(null);
 
   const handleColorPreference = (selectedColor) => {
@@ -171,24 +171,54 @@ const ConfiguratorWig = () => {
             </div>
 
             <div className="configurator-container container">
-              <div className="left-panel rounded border shadow">
+              <div className="wig-left-panel rounded border shadow">
                 <h5>Color Preference</h5>
                 <Dropdown
                   value={colorPreference}
                   onChange={(e) => handleColorPreference(e.value)}
                   options={braidOptions.colors}
                   placeholder="Select a color preference"
+                  className="wig-dropdown"
                 />
 
-                <h5>Prefered Tension Level</h5>
+                <h5>Specifications</h5>
 
-                <h5>Closure/ Frontal</h5>
+                <div className="specifications">
+                  <span className="p-float-label mt-2">
+                    <Dropdown
+                      value={braidLength}
+                      onChange={(e) => setBraidLength(e.value)}
+                      options={braidOptions.length}
+                      placeholder="Type or select a preference"
+                      className="wig-dropdown"
+                      editable
+                    />
+                    <label htmlFor="inputtext">Braid Length</label>
+                  </span>
 
-                <h5>Cap Size</h5>
+                  <span className="p-float-label">
+                    <Dropdown
+                      value={capSize}
+                      onChange={(e) => setCapSize(e.value)}
+                      options={braidOptions.capSize}
+                      placeholder="Select a preference"
+                      className="wig-dropdown"
+                    />
+                    <label htmlFor="inputtext">Cap Size</label>
+                  </span>
 
-                <h5>Scalp Sensitivity</h5>
-
-                <h5>Briad Length</h5>
+                  <span className="p-float-label">
+                    <Dropdown
+                      value={curlyendstyle}
+                      onChange={(e) => setCurlyEndStyle(e.value)}
+                      options={braidOptions.curlEnd}
+                      placeholder="Type or select a preference"
+                      className="wig-dropdown"
+                      editable
+                    />
+                    <label htmlFor="inputtext">Curly End Style</label>
+                  </span>
+                </div>
               </div>
               <div className="right-panel">
                 <div
