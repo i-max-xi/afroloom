@@ -18,7 +18,9 @@ const ConfiguratorWig = () => {
   const { Id } = useParams();
   const selectedClothing = mainUnisex.find((item) => item.name === Id);
 
-  const [displayImage, setDisplayImage] = useState(selectedClothing.image);
+  const [displayImage, setDisplayImage] = useState(
+    selectedClothing.colorVariants[0]
+  );
 
   //questions
   const [colorPreference, setColorPreference] = useState("Natural black");
@@ -27,6 +29,14 @@ const ConfiguratorWig = () => {
   const [capSize, setCapSize] = useState(null);
   const [scalpSensitivity, setScalpSensitivity] = useState(null);
   const [braidLength, setBraidLength] = useState(null);
+
+  const handleColorPreference = (selectedColor) => {
+    const index = braidOptions.colors.findIndex(
+      (option) => option === selectedColor
+    );
+    setColorPreference(selectedColor);
+    setDisplayImage(selectedClothing.colorVariants[index]);
+  };
 
   const canvasRef = useRef();
   // toast
@@ -165,9 +175,8 @@ const ConfiguratorWig = () => {
                 <h5>Color Preference</h5>
                 <Dropdown
                   value={colorPreference}
-                  onChange={(e) => setColorPreference(e.value)}
+                  onChange={(e) => handleColorPreference(e.value)}
                   options={braidOptions.colors}
-                  // optionLabel="label"
                   placeholder="Select a color preference"
                 />
 
@@ -182,8 +191,11 @@ const ConfiguratorWig = () => {
                 <h5>Briad Length</h5>
               </div>
               <div className="right-panel">
-                <div ref={canvasRef} className="resize-right-panel">
-                  <img src={displayImage} alt="display" />
+                <div
+                  ref={canvasRef}
+                  className="resize-right-panel d-flex align-items-center justify-content-center"
+                >
+                  <img width="80%" src={displayImage} alt="display" />
                 </div>
               </div>
             </div>

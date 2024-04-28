@@ -11,13 +11,14 @@ export const genderOptions = [
 export const braidOptions = {
   colors: [
     "Natural black",
-    "Black to blond",
-    "Chocolate brown",
-    // "Light brown",
     "Platinum blonde",
-    "Honey blonde",
+    "Chocolate brown",
     "Wine",
-    "Black to brown ombre",
-    "Brown to caramel ombre",
+
+    // "Honey blonde",
+    // "Black to brown ombre",
+    // "Brown to caramel ombre",
+    // "Black to blond",
+    // "Light brown",
   ],
 };

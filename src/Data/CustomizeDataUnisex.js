@@ -36,13 +36,19 @@ const image_sash_logos_both_down = require("../Assets/welcome_3ds/others/sash_bo
 const image_sash_logos_one_up_one_down = require("../Assets/welcome_3ds/others/sash_one_up_one_down.jpg");
 const image_sash_with_images = require("../Assets/welcome_3ds/others/sash_with_image.jpg");
 const image_sash_striped_edge = require("../Assets/welcome_3ds/others/sash_with_edges.png");
-const box_braid = require("../Assets/welcome_3ds/others/Wig/1._boxx_natural_blakk__.png");
 
 const image_confirm_1 = require("../Assets/raw3ds/sash1.png");
 const image_confirm_2 = require("../Assets/raw3ds/sash2.png");
 const image_confirm_3 = require("../Assets/raw3ds/sash3.png");
 const image_confirm_4 = require("../Assets/raw3ds/sash4.png");
 const image_confirm_5 = require("../Assets/raw3ds/sash5.png");
+
+//box braid
+const box_braid = require("../Assets/welcome_3ds/others/Wig/box_braid/profile pic_  Box Braid Wig with Curly End.png");
+const box_braid_black = require("../Assets/welcome_3ds/others/Wig/box_braid/black.png");
+const box_braid_grey = require("../Assets/welcome_3ds/others/Wig/box_braid/grey.png");
+const box_braid_brown = require("../Assets/welcome_3ds/others/Wig/box_braid/brown.png");
+const box_braid_wine = require("../Assets/welcome_3ds/others/Wig/box_braid/wine.png");
 
 export const mainUnisex = [
   {
@@ -53,6 +59,12 @@ export const mainUnisex = [
     price: 50,
     readyIn: 7,
     link: "/configurator-wig/Box Braids",
+    colorVariants: [
+      box_braid_black,
+      box_braid_grey,
+      box_braid_brown,
+      box_braid_wine,
+    ],
   },
   {
     id: uuid(),
