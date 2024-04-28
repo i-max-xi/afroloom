@@ -33,6 +33,7 @@ import ConfiguratorFemale from "./Pages/Customize/Configurator/ConfiguratorFemal
 import ConfiguratorUnisex from "./Pages/Customize/Configurator/ConfiguratorUnisex";
 import CustomizeCheckout from "./Pages/CustomizeCheckout";
 import HomePage from "./Pages/HomePage";
+import ConfiguratorWig from "./Pages/Customize/Configurator/ConfiguratorWig";
 
 function App() {
   useEffect(() => {
@@ -70,6 +71,8 @@ function App() {
               path="/configurator-unisex/:Id"
               element={<ConfiguratorUnisex />}
             />
+
+            <Route path="/configurator-wig/:Id" element={<ConfiguratorWig />} />
 
             <Route path="tnc" element={<Tnc />} />
             <Route path="shippingPolicy" element={<ShippingPolicy />} />

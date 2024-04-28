@@ -36,6 +36,7 @@ const image_sash_logos_both_down = require("../Assets/welcome_3ds/others/sash_bo
 const image_sash_logos_one_up_one_down = require("../Assets/welcome_3ds/others/sash_one_up_one_down.jpg");
 const image_sash_with_images = require("../Assets/welcome_3ds/others/sash_with_image.jpg");
 const image_sash_striped_edge = require("../Assets/welcome_3ds/others/sash_with_edges.png");
+const box_braid = require("../Assets/welcome_3ds/others/Wig/1._boxx_natural_blakk__.png");
 
 const image_confirm_1 = require("../Assets/raw3ds/sash1.png");
 const image_confirm_2 = require("../Assets/raw3ds/sash2.png");
@@ -44,6 +45,15 @@ const image_confirm_4 = require("../Assets/raw3ds/sash4.png");
 const image_confirm_5 = require("../Assets/raw3ds/sash5.png");
 
 export const mainUnisex = [
+  {
+    id: uuid(),
+    name: "Box Braids",
+    image: box_braid,
+    model: bangles_model,
+    price: 50,
+    readyIn: 7,
+    link: "/configurator-wig/Box Braids",
+  },
   {
     id: uuid(),
     name: "Beads Bracelet",

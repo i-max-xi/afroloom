@@ -23,10 +23,10 @@ const CustomizePage = () => {
         <div className="row">
           {/* Accessories */}
           <h5 className="mt-4 footer-header">Accessories</h5>
-          {mainUnisex.map(({ name, image }) => (
+          {mainUnisex.map(({ name, image, link }) => (
             <Link
               // to={`/customize-unisex/${name}`}
-              to={`/configurator-unisex/${name}`}
+              to={link ? link : `/configurator-unisex/${name}`}
               className="col-6 col-md-3 customise-front text-decoration-none"
               key={name}
             >
