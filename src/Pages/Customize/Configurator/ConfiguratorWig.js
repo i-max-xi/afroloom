@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 // import { Link } from "react-router-dom";
 import Confirmation from "./Confirmation";
 import html2canvas from "html2canvas";
+import { Dropdown } from "primereact/dropdown";
 
 import Nav from "../../../Components/Nav";
 import "./styles.css";
@@ -11,6 +12,7 @@ import { useSelector } from "react-redux";
 
 import { Toast } from "primereact/toast";
 import { mainUnisex } from "../../../Data/CustomizeDataUnisex";
+import { braidOptions } from "../../../utils/constants";
 
 const ConfiguratorWig = () => {
   const { Id } = useParams();
@@ -19,7 +21,7 @@ const ConfiguratorWig = () => {
   const [displayImage, setDisplayImage] = useState(selectedClothing.image);
 
   //questions
-  const [colorPreference, setColorPreference] = useState(null);
+  const [colorPreference, setColorPreference] = useState("Natural black");
   const [tensionPreference, setTensionPreference] = useState(null);
   const [closureFrontal, setClosureFrontal] = useState(null);
   const [capSize, setCapSize] = useState(null);
@@ -161,6 +163,13 @@ const ConfiguratorWig = () => {
             <div className="configurator-container container">
               <div className="left-panel rounded border shadow">
                 <h5>Color Preference</h5>
+                <Dropdown
+                  value={colorPreference}
+                  onChange={(e) => setColorPreference(e.value)}
+                  options={braidOptions.colors}
+                  // optionLabel="label"
+                  placeholder="Select a color preference"
+                />
 
                 <h5>Prefered Tension Level</h5>
 
