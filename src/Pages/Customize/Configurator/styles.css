@@ -413,7 +413,8 @@ h1 {
 .specifications {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 2rem;
+  margin-top: 1rem;
 }
 
 .wig-dropdown {

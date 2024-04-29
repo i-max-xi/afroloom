@@ -60,12 +60,7 @@ const ConfiguratorWig = () => {
   const [stateImage, setStateImage] = useState("");
 
   const captureCanvasAsImage = async () => {
-    const canvas = canvasRef.current;
-
-    const canvasImage = await html2canvas(canvas);
-    const dataUrl = canvasImage.toDataURL();
-
-    setStateImage(dataUrl); // Save the data URL to state
+    setStateImage(displayImage); // Save the data URL to state
 
     setShowConfirmation(true); // Show confirmation
   };
