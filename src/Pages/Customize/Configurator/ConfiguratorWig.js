@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef, useEffect, useMemo } from "react";
 // import { Link } from "react-router-dom";
 import Confirmation from "./Confirmation";
 import html2canvas from "html2canvas";
@@ -12,7 +12,11 @@ import { useSelector } from "react-redux";
 
 import { Toast } from "primereact/toast";
 import { mainUnisex } from "../../../Data/CustomizeDataUnisex";
-import { braidOptions } from "../../../utils/constants";
+import {
+  boxWaveOptions,
+  boxWigOptions,
+  braidOptions,
+} from "../../../utils/constants";
 import WigConfirmation from "./WigConfirmation";
 
 const ConfiguratorWig = () => {
@@ -23,16 +27,28 @@ const ConfiguratorWig = () => {
     selectedClothing.colorVariants[0]
   );
 
+  const hairColorOptions = useMemo(() => {
+    if (selectedClothing.name === "Box Braids With Curly End") {
+      return braidOptions;
+    }
+    if (selectedClothing.name === "Body Wave Wig") {
+      return boxWaveOptions;
+    }
+    if (selectedClothing.name === "Bob Wig") {
+      return boxWigOptions;
+    }
+  }, [selectedClothing.name]);
+
   //questions
   const [colorPreference, setColorPreference] = useState(
-    braidOptions.colors[0]
+    hairColorOptions.colors[0]
   );
   const [curlyendstyle, setCurlyEndStyle] = useState(null);
   const [capSize, setCapSize] = useState(null);
   const [braidLength, setBraidLength] = useState(null);
 
   const handleColorPreference = (selectedColor) => {
-    const index = braidOptions.colors.findIndex(
+    const index = hairColorOptions.colors.findIndex(
       (option) => option === selectedColor
     );
     setColorPreference(selectedColor);
@@ -191,7 +207,7 @@ const ConfiguratorWig = () => {
                 <Dropdown
                   value={colorPreference}
                   onChange={(e) => handleColorPreference(e.value)}
-                  options={braidOptions.colors}
+                  options={hairColorOptions.colors}
                   placeholder="Select a color preference"
                   className="wig-dropdown"
                 />
@@ -203,7 +219,7 @@ const ConfiguratorWig = () => {
                     <Dropdown
                       value={braidLength}
                       onChange={(e) => setBraidLength(e.value)}
-                      options={braidOptions.length}
+                      options={hairColorOptions.length}
                       placeholder="Type or select a preference"
                       className="wig-dropdown"
                       editable
@@ -215,7 +231,7 @@ const ConfiguratorWig = () => {
                     <Dropdown
                       value={capSize}
                       onChange={(e) => setCapSize(e.value)}
-                      options={braidOptions.capSize}
+                      options={hairColorOptions.capSize}
                       placeholder="Select a preference"
                       className="wig-dropdown"
                     />
@@ -226,7 +242,7 @@ const ConfiguratorWig = () => {
                     <Dropdown
                       value={curlyendstyle}
                       onChange={(e) => setCurlyEndStyle(e.value)}
-                      options={braidOptions.curlEnd}
+                      options={hairColorOptions.curlEnd}
                       placeholder="Type or select a preference"
                       className="wig-dropdown"
                       editable

@@ -50,12 +50,32 @@ const box_braid_grey = require("../Assets/welcome_3ds/others/Wig/box_braid/grey.
 const box_braid_brown = require("../Assets/welcome_3ds/others/Wig/box_braid/brown.png");
 const box_braid_wine = require("../Assets/welcome_3ds/others/Wig/box_braid/wine.png");
 
+// body wave
+const body_wave = require("../Assets/welcome_3ds/others/Wig/body_wave/body wave wig profile pic.jpg");
+const BL_66040_1 = require("../Assets/welcome_3ds/others/Wig/body_wave/BL_66040-1-.png");
+const BL_11017_1 = require("../Assets/welcome_3ds/others/Wig/body_wave/BL11017-1-.png");
+const BL_11018_1 = require("../Assets/welcome_3ds/others/Wig/body_wave/BL11018-1-.png");
+const BL_11026_1 = require("../Assets/welcome_3ds/others/Wig/body_wave/BL11026-1.png");
+const BL_11036_1 = require("../Assets/welcome_3ds/others/Wig/body_wave/BL11036-1-.png");
+const BL_66010_1 = require("../Assets/welcome_3ds/others/Wig/body_wave/BL66010-1.png");
+const BL_66060_1 = require("../Assets/welcome_3ds/others/Wig/body_wave/BL66060-1-.png");
+const BL_66069_1 = require("../Assets/welcome_3ds/others/Wig/body_wave/BL66069-1-.png");
+const BL_66084_1 = require("../Assets/welcome_3ds/others/Wig/body_wave/BL66084-1.png");
+const BL_66110_1 = require("../Assets/welcome_3ds/others/Wig/body_wave/BL66110-1-.png");
+const BL_66111_1 = require("../Assets/welcome_3ds/others/Wig/body_wave/BL66111-1-.png");
+const BL_66122_1 = require("../Assets/welcome_3ds/others/Wig/body_wave/BL66122-1-.png");
+
+//bob wig
+const bob_wig = require("../Assets/welcome_3ds/others/Wig/bob_wig/bob wig profile pic.jpg");
+const light_auburn = require("../Assets/welcome_3ds/others/Wig/bob_wig/OT30-.png");
+const burgundy = require("../Assets/welcome_3ds/others/Wig/bob_wig/530-.png");
+const wine_red = require("../Assets/welcome_3ds/others/Wig/bob_wig/99J-.png");
+
 export const mainUnisex = [
   {
     id: uuid(),
     name: "Box Braids With Curly End",
     image: box_braid,
-    model: bangles_model,
     price: 50,
     readyIn: 7,
     link: "/configurator-wig/Box Braids With Curly End",
@@ -65,6 +85,38 @@ export const mainUnisex = [
       box_braid_brown,
       box_braid_wine,
     ],
+  },
+  {
+    id: uuid(),
+    name: "Body Wave Wig",
+    image: body_wave,
+    price: 50,
+    readyIn: 7,
+    link: "/configurator-wig/Body Wave Wig",
+    colorVariants: [
+      BL_66040_1,
+      BL_11017_1,
+      BL_11018_1,
+      BL_11026_1,
+      BL_11036_1,
+      BL_66010_1,
+      BL_66060_1,
+      BL_66069_1,
+      BL_66084_1,
+      BL_66110_1,
+      BL_66111_1,
+      BL_66122_1,
+    ],
+  },
+  {
+    id: uuid(),
+    name: "Bob Wig",
+    image: bob_wig,
+    model: bangles_model,
+    price: 50,
+    readyIn: 7,
+    link: "/configurator-wig/Bob Wig",
+    colorVariants: [light_auburn, burgundy, wine_red],
   },
   {
     id: uuid(),
