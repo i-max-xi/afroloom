@@ -69,6 +69,27 @@ const CustomizeCheckout = () => {
     content: () => componentRef.current,
   });
 
+  const sashImages = useMemo(() => {
+    if (cartItems[0].uploadedImageLeft) {
+      return [
+        {
+          SashImageLeft: cartItems[0].uploadedImageLeft,
+        },
+      ];
+    }
+    if (cartItems[0].uploadedImageLeft && cartItems[0].uploadedImageRight) {
+      return [
+        {
+          SashImageLeft: cartItems[0].uploadedImageLeft,
+          SashImageRight: cartItems[0].uploadedImageRight,
+        },
+      ];
+    }
+    if (!cartItems[0].uploadedImageLeft && !cartItems[0].uploadedImageRight) {
+      return [null];
+    }
+  }, [cartItems]);
+
   const onSuccess = (reference) => {
     handlePrint();
 
@@ -82,8 +103,7 @@ const CustomizeCheckout = () => {
       customizedItemDataSheet: customizedItemDataSheet,
       quantity: count,
       readyBy: cartItems[0].readyBy + "days",
-      SashImageLeft: cartItems[0].uploadedImageLeft,
-      SashImageRight: cartItems[0].uploadedImageRight,
+      ...sashImages,
       specialRequest: cartItems[0].specialRequests,
       subject: `New 3D Product Order`,
     };

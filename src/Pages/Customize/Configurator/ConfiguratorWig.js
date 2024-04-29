@@ -13,6 +13,7 @@ import { useSelector } from "react-redux";
 import { Toast } from "primereact/toast";
 import { mainUnisex } from "../../../Data/CustomizeDataUnisex";
 import { braidOptions } from "../../../utils/constants";
+import WigConfirmation from "./WigConfirmation";
 
 const ConfiguratorWig = () => {
   const { Id } = useParams();
@@ -145,14 +146,33 @@ const ConfiguratorWig = () => {
       </> */}
 
       {showConfirmation ? (
-        <Confirmation
+        <WigConfirmation
           currencySymbol={currencySymbol}
           total={total}
           readyBy={selectedClothing.readyIn}
-          weight={selectedClothing.weight}
+          // weight={selectedClothing.weight}
           name={selectedClothing.name}
           setShowConfirmation={setShowConfirmation}
           modelImage={stateImage}
+          allSpecifications={[
+            {
+              title: "Braid Length",
+              value: braidLength,
+            },
+            {
+              title: "Cap Size",
+              value: capSize,
+            },
+
+            {
+              title: "Curly End Style",
+              value: curlyendstyle,
+            },
+            // {
+            //   title: "Braid Length",
+            //   value: braidLength,
+            // },
+          ]}
         />
       ) : (
         <>
@@ -160,7 +180,7 @@ const ConfiguratorWig = () => {
             <h3 className="text-center pt-3">
               Customizing {selectedClothing.name}
             </h3>
-            <div className="d-flex justify-content-center">
+            {/* <div className="d-flex justify-content-center">
               <button
                 className="btn btn-info text-white mx-3"
                 // style={{ float: "right" }}
@@ -168,7 +188,7 @@ const ConfiguratorWig = () => {
               >
                 Take Tour
               </button>
-            </div>
+            </div> */}
 
             <div className="configurator-container container">
               <div className="wig-left-panel rounded border shadow">
@@ -223,7 +243,7 @@ const ConfiguratorWig = () => {
               <div className="right-panel">
                 <div
                   ref={canvasRef}
-                  className="resize-right-panel d-flex align-items-center justify-content-center"
+                  className="resize-right-panel d-flex align-items-center justify-content-center mt-2 mb-2"
                 >
                   <img width="80%" src={displayImage} alt="display" />
                 </div>
