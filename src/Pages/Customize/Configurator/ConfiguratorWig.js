@@ -46,6 +46,10 @@ const ConfiguratorWig = () => {
   const [curlyendstyle, setCurlyEndStyle] = useState(null);
   const [capSize, setCapSize] = useState(null);
   const [braidLength, setBraidLength] = useState(null);
+  const [densityPreference, setDensityPreference] = useState(null);
+  const [laceType, setLaceType] = useState(null);
+  const [texture, setTexture] = useState(null);
+  const [capConstruction, setCapConstruction] = useState(null);
 
   const handleColorPreference = (selectedColor) => {
     const index = hairColorOptions.colors.findIndex(
@@ -179,10 +183,22 @@ const ConfiguratorWig = () => {
               title: "Curly End Style",
               value: curlyendstyle,
             },
-            // {
-            //   title: "Braid Length",
-            //   value: braidLength,
-            // },
+            {
+              title: "Density Preference",
+              value: densityPreference,
+            },
+            {
+              title: "Lace Type",
+              value: laceType,
+            },
+            {
+              title: "Texture",
+              value: texture,
+            },
+            {
+              title: "Cap Construction",
+              value: capConstruction,
+            },
           ]}
         />
       ) : (
@@ -215,40 +231,111 @@ const ConfiguratorWig = () => {
                 <h5>Specifications</h5>
 
                 <div className="specifications">
-                  <span className="p-float-label mt-2">
-                    <Dropdown
-                      value={braidLength}
-                      onChange={(e) => setBraidLength(e.value)}
-                      options={hairColorOptions.length}
-                      placeholder="Type or select a preference"
-                      className="wig-dropdown"
-                      editable
-                    />
-                    <label htmlFor="inputtext">Braid Length</label>
-                  </span>
+                  {hairColorOptions.length && (
+                    <>
+                      <span className="p-float-label mt-2">
+                        <Dropdown
+                          value={braidLength}
+                          onChange={(e) => setBraidLength(e.value)}
+                          options={hairColorOptions.length}
+                          placeholder="Type or select a preference"
+                          className="wig-dropdown"
+                          editable
+                        />
+                        <label htmlFor="inputtext">Braid Length</label>
+                      </span>
+                    </>
+                  )}
 
-                  <span className="p-float-label">
-                    <Dropdown
-                      value={capSize}
-                      onChange={(e) => setCapSize(e.value)}
-                      options={hairColorOptions.capSize}
-                      placeholder="Select a preference"
-                      className="wig-dropdown"
-                    />
-                    <label htmlFor="inputtext">Cap Size</label>
-                  </span>
+                  {hairColorOptions.capSize && (
+                    <>
+                      <span className="p-float-label">
+                        <Dropdown
+                          value={capSize}
+                          onChange={(e) => setCapSize(e.value)}
+                          options={hairColorOptions.capSize}
+                          placeholder="Select a preference"
+                          className="wig-dropdown"
+                        />
+                        <label htmlFor="inputtext">Cap Size</label>
+                      </span>
+                    </>
+                  )}
 
-                  <span className="p-float-label">
-                    <Dropdown
-                      value={curlyendstyle}
-                      onChange={(e) => setCurlyEndStyle(e.value)}
-                      options={hairColorOptions.curlEnd}
-                      placeholder="Type or select a preference"
-                      className="wig-dropdown"
-                      editable
-                    />
-                    <label htmlFor="inputtext">Curly End Style</label>
-                  </span>
+                  {hairColorOptions.curlEnd && (
+                    <>
+                      <span className="p-float-label">
+                        <Dropdown
+                          value={curlyendstyle}
+                          onChange={(e) => setCurlyEndStyle(e.value)}
+                          options={hairColorOptions.curlEnd}
+                          placeholder="Type or select a preference"
+                          className="wig-dropdown"
+                          editable
+                        />
+                        <label htmlFor="inputtext">Curly End Style</label>
+                      </span>
+                    </>
+                  )}
+
+                  {hairColorOptions.densityPreference && (
+                    <>
+                      <span className="p-float-label">
+                        <Dropdown
+                          value={densityPreference}
+                          onChange={(e) => setDensityPreference(e.value)}
+                          options={hairColorOptions.densityPreference}
+                          placeholder="Select a preference"
+                          className="wig-dropdown"
+                        />
+                        <label htmlFor="inputtext">Density Preference</label>
+                      </span>
+                    </>
+                  )}
+
+                  {hairColorOptions.texture && (
+                    <>
+                      <span className="p-float-label">
+                        <Dropdown
+                          value={texture}
+                          onChange={(e) => setTexture(e.value)}
+                          options={hairColorOptions.texture}
+                          placeholder="Type or select a preference"
+                          className="wig-dropdown"
+                          editable
+                        />
+                        <label htmlFor="inputtext">Texture Preference</label>
+                      </span>
+                    </>
+                  )}
+                  {hairColorOptions.capConstruction && (
+                    <>
+                      <span className="p-float-label">
+                        <Dropdown
+                          value={capConstruction}
+                          onChange={(e) => setCapConstruction(e.value)}
+                          options={hairColorOptions.capConstruction}
+                          placeholder="Select a preference"
+                          className="wig-dropdown"
+                        />
+                        <label htmlFor="inputtext">Cap Construction</label>
+                      </span>
+                    </>
+                  )}
+                  {hairColorOptions.laceType && (
+                    <>
+                      <span className="p-float-label">
+                        <Dropdown
+                          value={laceType}
+                          onChange={(e) => setLaceType(e.value)}
+                          options={hairColorOptions.laceType}
+                          placeholder="Select a preference"
+                          className="wig-dropdown"
+                        />
+                        <label htmlFor="inputtext">Lace Type</label>
+                      </span>
+                    </>
+                  )}
                 </div>
               </div>
               <div className="right-panel">

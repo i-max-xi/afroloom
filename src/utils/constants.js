@@ -47,7 +47,12 @@ export const boxWaveOptions = {
     "Medium (standard density)",
     "Heavy (extra fullness)",
   ],
-  laceType: ["Swiss lace", "HD lace", "Transparent lace"],
+  laceType: [
+    "Swiss lace",
+    "HD lace",
+    "Transparent lace",
+    "None (for those who prefer a non-lace wig)",
+  ],
 
   capSize: ["Small", "Medium", "Large"],
 };
@@ -63,5 +68,10 @@ export const boxWigOptions = {
 
   texture: ["Straight", "Wavy", "Curly"],
   capSize: ["Small", "Medium", "Large"],
-  capConstruction: ["Full lace wig", "Lace front wig", "U-part wig"],
+  capConstruction: [
+    "Full lace wig",
+    "Lace front wig",
+    "U-part wig",
+    "None (for those who prefer a non-lace wig)",
+  ],
 };
