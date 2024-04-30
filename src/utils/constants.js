@@ -22,19 +22,19 @@ export const braidOptions = {
 
 export const boxWaveOptions = {
   colors: [
-    "BL-66040-1",
-    "BL11017-1",
-    "BL11018-1",
-    "BL11026-1",
-    "BL11036-1",
-    "BL66010-1",
-    "BL66060-1",
-    "BL66069-1",
-    "BL66084-1",
-    "BL66110-1",
-    "BL66111-1",
-    "BL66122-1",
-    // "BL66098-1",
+    "Natural Black",
+    "Dark Brown",
+    "Light Brown",
+    "Blonde",
+    "Red",
+    "Ombre Black to Blonde",
+    "Ombre Brown to Caramel",
+    "Ombre Blonde to Platinum Blonde",
+    "Ombre Dark Brown to Light Brown",
+    "Ombre Burgundy to Pink",
+    "Ombre Purple to Lavender",
+    "Ombre Blue to Teal",
+    // "Ombre Red to Orange",
   ],
 
   length: [

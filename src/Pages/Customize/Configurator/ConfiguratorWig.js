@@ -254,8 +254,9 @@ const ConfiguratorWig = () => {
                           value={capSize}
                           onChange={(e) => setCapSize(e.value)}
                           options={hairColorOptions.capSize}
-                          placeholder="Select a preference"
+                          placeholder="Type or select a preference"
                           className="wig-dropdown"
+                          editable
                         />
                         <label htmlFor="inputtext">Cap Size</label>
                       </span>
