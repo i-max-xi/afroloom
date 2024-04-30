@@ -11,7 +11,12 @@ export const genderOptions = [
 ];
 
 export const braidOptions = {
-  colors: ["Natural black", "Platinum blonde", "Chocolate brown", "Wine"],
+  colors: [
+    "Natural black",
+    "Natural Black with Grey Highlights",
+    "Natural Black with Honey Blonde Highlights",
+    "Natural Black with Light Auburn Highlights",
+  ],
 
   length: ["Waist-length", "Shoulder-length", "Mid-back length"],
 
