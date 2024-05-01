@@ -83,7 +83,7 @@ export const mainUnisex = [
       { name: "brass", yardNeeded: 1 },
     ],
     otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
-    myZoom: 0.6,
+    myZoom: 0.8,
     price: 10,
     readyIn: 7,
     sizeGuide: "",
@@ -92,11 +92,11 @@ export const mainUnisex = [
       { label: "M", value: 1 },
       { label: "L", value: 2 },
     ],
-    sizeForms: [
-      {
-        label: "Earlobe (mm)",
-      },
-    ],
+    // sizeForms: [
+    //   {
+    //     label: "Earlobe (mm)",
+    //   },
+    // ],
   },
   {
     id: uuid(),
