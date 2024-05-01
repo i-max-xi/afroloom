@@ -15,6 +15,7 @@ import jacket from "../Pages/Customize/Configurator/models/Accessories/Unisex/ja
 import bangles_model from "../Pages/Customize/Configurator/models/Accessories/Unisex/bangles.glb";
 import earring_model from "../Pages/Customize/Configurator/models/Accessories/Unisex/earring.glb";
 import bikini from "../Pages/Customize/Configurator/models/Accessories/bikini.glb";
+import nails_model from "../Pages/Customize/Configurator/models/Accessories/nails.glb";
 
 // Importing size guides
 import sash_guide from "../Assets/size_guide/Unisex/the_sash.jpg";
@@ -72,6 +73,31 @@ const burgundy = require("../Assets/welcome_3ds/others/Wig/bob_wig/530-.png");
 const wine_red = require("../Assets/welcome_3ds/others/Wig/bob_wig/99J-.png");
 
 export const mainUnisex = [
+  {
+    id: uuid(),
+    name: "Nails",
+    image: "",
+    model: nails_model,
+    myNode: [
+      { name: "nails", yardNeeded: 1 },
+      { name: "brass", yardNeeded: 1 },
+    ],
+    otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
+    myZoom: 0.6,
+    price: 10,
+    readyIn: 7,
+    sizeGuide: "",
+    sizeOptions: [
+      { label: "S", value: 0.5 },
+      { label: "M", value: 1 },
+      { label: "L", value: 2 },
+    ],
+    sizeForms: [
+      {
+        label: "Earlobe (mm)",
+      },
+    ],
+  },
   {
     id: uuid(),
     name: "Box Braids With Curly End",
@@ -160,16 +186,12 @@ export const mainUnisex = [
     otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
     myZoom: 0.8,
     price: 10,
-    // parts: sashParts.keys().map(sashParts),
-    // sizeModels: tshirt_model,
     readyIn: 7,
     sizeGuide: earring_guide,
     sizeOptions: [
       { label: "S", value: 0.5 },
       { label: "M", value: 1 },
       { label: "L", value: 2 },
-      // { label: "XL", value: 3 },
-      // { label: "2XL", value: 4 },
     ],
     sizeForms: [
       {
