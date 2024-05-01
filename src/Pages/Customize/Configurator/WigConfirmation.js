@@ -288,7 +288,7 @@ export const OrderDetail = React.forwardRef(
                 cols={50}
               />
               <label htmlFor="special-request">
-                Any scalp sensitivity issues we should know about?
+                Any scalp sensitivity and/or other issues we should know about?
               </label>
             </span>
           </p>

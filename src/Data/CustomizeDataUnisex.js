@@ -76,14 +76,15 @@ export const mainUnisex = [
   {
     id: uuid(),
     name: "Nails",
-    image: "",
+    image:
+      "https://hips.hearstapps.com/hmg-prod/images/273912377-372031824314185-6626888513630609174-n-1676653877.jpg",
     model: nails_model,
     myNode: [
       { name: "nails", yardNeeded: 1 },
       { name: "brass", yardNeeded: 1 },
     ],
     otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
-    myZoom: 0.8,
+    myZoom: 0.5,
     price: 10,
     readyIn: 7,
     sizeGuide: "",
