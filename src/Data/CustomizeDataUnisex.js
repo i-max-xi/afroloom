@@ -82,7 +82,7 @@ export const mainUnisex = [
     model: nails_model,
     myNode: [
       { name: "nails", yardNeeded: 1 },
-      { name: "brass", yardNeeded: 1 },
+      { name: "nailHands", yardNeeded: 1 },
     ],
     otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
     myZoom: 0.5,
@@ -97,7 +97,7 @@ export const mainUnisex = [
     model: nails_model,
     myNode: [
       { name: "nails", yardNeeded: 1 },
-      { name: "brass", yardNeeded: 1 },
+      { name: "nailHands", yardNeeded: 1 },
     ],
     otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
     myZoom: 0.5,
@@ -113,7 +113,7 @@ export const mainUnisex = [
     model: nails_model,
     myNode: [
       { name: "nails", yardNeeded: 1 },
-      { name: "brass", yardNeeded: 1 },
+      { name: "nailHands", yardNeeded: 1 },
     ],
     otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
     myZoom: 0.5,
@@ -128,7 +128,7 @@ export const mainUnisex = [
     model: nails_model,
     myNode: [
       { name: "nails", yardNeeded: 1 },
-      { name: "brass", yardNeeded: 1 },
+      { name: "nailHands", yardNeeded: 1 },
     ],
     otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
     myZoom: 0.5,
@@ -143,7 +143,7 @@ export const mainUnisex = [
     model: nails_model,
     myNode: [
       { name: "nails", yardNeeded: 1 },
-      { name: "brass", yardNeeded: 1 },
+      { name: "nailHands", yardNeeded: 1 },
     ],
     otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
     myZoom: 0.5,

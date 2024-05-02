@@ -96,9 +96,9 @@ const Shirt = ({
         selectedClothing.myNode?.map((node, index) => {
           const nodeName = node?.name; // Access the name property of the node object
           const color =
-            specialNodeNames.includes(nodeName) && nodeName === "brass"
-              ? "#cd7f32"
-              : specialNodeNames.includes(nodeName) && nodeName !== "brass"
+            specialNodeNames.includes(nodeName) && nodeName === "nailHands"
+              ? "#6e4b35"
+              : specialNodeNames.includes(nodeName) && nodeName !== "nailHands"
               ? snap.color[index] || "#333333"
               : snap.color[index] || "#ffffff";
 

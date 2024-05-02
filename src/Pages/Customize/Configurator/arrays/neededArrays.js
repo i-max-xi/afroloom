@@ -111,7 +111,8 @@ export const specialNodeNames = [
   "zippers",
   "brass",
   "cuttings",
-  "nails",
+  // "nails",
+  "nailHands",
 ]; // Add your special node names here
 
 export const textureArrays = {
