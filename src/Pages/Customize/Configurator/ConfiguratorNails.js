@@ -387,14 +387,11 @@ const ConfiguratorUnisex = () => {
                     numVisible={4}
                     numScroll={2}
                     showIndicators={false}
-                    // responsiveOptions={responsiveNess}
                     itemTemplate={(texture, index) => (
                       <PrintItem
                         key={texture}
                         texture={texture}
-                        Title="batik"
                         selectedTexture={selectedPrintOn}
-                        // Pass setSelectedTexture as a prop
                         handleTextureChange={handlePrintsChange}
                       />
                     )}
