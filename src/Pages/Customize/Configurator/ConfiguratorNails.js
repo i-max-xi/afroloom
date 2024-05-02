@@ -35,6 +35,7 @@ import { Dropdown } from "primereact/dropdown";
 import { Toast } from "primereact/toast";
 import { allNailOptions, isMobile } from "../../../utils/constants";
 import uuid from "react-uuid";
+import PrintItem from "./PrintItem";
 
 const Shirt = ({
   isRotating,
@@ -363,7 +364,7 @@ const ConfiguratorUnisex = () => {
 
                 <h5>Apply Prints</h5>
                 <div className="color-buttons-container">
-                  <Carousel
+                  {/* <Carousel
                     value={colorOptions}
                     numVisible={isMobile ? 4 : 7}
                     numScroll={isMobile ? 2 : 5}
@@ -379,6 +380,23 @@ const ConfiguratorUnisex = () => {
                           onClick={() => handlePrintsChange(printsOption)}
                         ></button>
                       </div>
+                    )}
+                  /> */}
+                  <Carousel
+                    value={textureArrays.batik}
+                    numVisible={4}
+                    numScroll={2}
+                    showIndicators={false}
+                    // responsiveOptions={responsiveNess}
+                    itemTemplate={(texture, index) => (
+                      <PrintItem
+                        key={texture}
+                        texture={texture}
+                        Title="batik"
+                        selectedTexture={selectedPrintOn}
+                        // Pass setSelectedTexture as a prop
+                        handleTextureChange={handlePrintsChange}
+                      />
                     )}
                   />
                 </div>
