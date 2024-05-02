@@ -36,6 +36,7 @@ import { Toast } from "primereact/toast";
 import { allNailOptions, isMobile, skinTone } from "../../../utils/constants";
 import uuid from "react-uuid";
 import PrintItem from "./PrintItem";
+import { Dialog } from "primereact/dialog";
 
 const Shirt = ({
   isRotating,
@@ -164,6 +165,7 @@ const ConfiguratorUnisex = () => {
   );
 
   const [selectedTone, setSelectedTone] = useState("Dark");
+  const [guideVisible, setGuideVisible] = useState(false);
 
   //total price
   const total = useMemo(() => {
@@ -400,15 +402,58 @@ const ConfiguratorUnisex = () => {
                   />
                 </div>
 
-                <span
-                  style={{
-                    fontSize: "0.8rem",
-                    display: "block",
-                    fontWeight: "500",
-                  }}
+                <div className="d-flex justify-content-between w-100">
+                  <span
+                    style={{
+                      fontSize: "0.8rem",
+                      display: "block",
+                      fontWeight: "500",
+                    }}
+                  >
+                    Specifications
+                  </span>
+                  <span
+                    style={{
+                      fontSize: "0.8rem",
+                      display: "block",
+                      fontWeight: "400",
+                    }}
+                  >
+                    Guide
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="14"
+                      height="14"
+                      fill="currentColor"
+                      className="bi bi-info-circle d-inline m-1"
+                      viewBox="0 0 16 16"
+                      onClick={() => {
+                        setGuideVisible(true);
+                      }}
+                    >
+                      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                      <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />{" "}
+                    </svg>
+                  </span>
+                </div>
+
+                <Dialog
+                  header="Sizing Guide"
+                  visible={guideVisible}
+                  className="col-12 col-sm-6"
+                  onHide={() => setGuideVisible(false)}
+                  dismissableMask={true}
                 >
-                  Specifications
-                </span>
+                  <div className="d-flex flex-column align-items-center">
+                    <p className="mb-1">
+                      <img
+                        src={selectedClothing.sizeGuide}
+                        width="100%"
+                        alt="size-guide"
+                      />
+                    </p>
+                  </div>
+                </Dialog>
 
                 <div className="specifications">
                   {nailOptions.length && (

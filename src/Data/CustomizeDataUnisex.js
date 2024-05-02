@@ -25,6 +25,8 @@ import jacket_guide from "../Assets/size_guide/Unisex/35.jpg";
 import bikini_guide from "../Assets/size_guide/Accessories/Female/31.jpg";
 import earring_guide from "../Assets/size_guide/Unisex/earring size chart.jpg";
 import bangle_guide from "../Assets/size_guide/Unisex/bracelet size chart.jpg";
+import hair_guide from "../Assets/size_guide/Unisex/hair length.png";
+import nail_guide from "../Assets/size_guide/Unisex/nail length guide.jpg";
 
 const image_waist_bag = require("../Assets/welcome_3ds/others/waist bag.jpg");
 const image_jacket = require("../Assets/welcome_3ds/others/jacket.png");
@@ -86,6 +88,7 @@ export const mainUnisex = [
     ],
     otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
     myZoom: 0.5,
+    sizeGuide: nail_guide,
     price: 10,
     readyIn: 7,
   },
@@ -104,6 +107,7 @@ export const mainUnisex = [
     myZoom: 0.5,
     price: 10,
     readyIn: 7,
+    sizeGuide: nail_guide,
   },
 
   {
@@ -121,22 +125,8 @@ export const mainUnisex = [
     myZoom: 0.5,
     price: 10,
     readyIn: 7,
+    sizeGuide: nail_guide,
   },
-  // {
-  //   id: uuid(),
-  //   name: "Oval",
-  //   link: "/configurator-nails/Oval",
-  //   image: "",
-  //   model: nails_model,
-  //   myNode: [
-  //     { name: "nails", yardNeeded: 1 },
-  //     { name: "nailHands", yardNeeded: 1 },
-  //   ],
-  //   otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
-  //   myZoom: 0.5,
-  //   price: 10,
-  //   readyIn: 7,
-  // },
   {
     id: uuid(),
     name: "Stiletto",
@@ -152,6 +142,7 @@ export const mainUnisex = [
     myZoom: 0.5,
     price: 10,
     readyIn: 7,
+    sizeGuide: nail_guide,
   },
   {
     id: uuid(),
@@ -166,6 +157,7 @@ export const mainUnisex = [
       box_braid_brown,
       box_braid_wine,
     ],
+    sizeGuide: hair_guide,
   },
   {
     id: uuid(),
@@ -188,6 +180,7 @@ export const mainUnisex = [
       BL_66111_1,
       BL_66122_1,
     ],
+    sizeGuide: hair_guide,
   },
   {
     id: uuid(),
@@ -198,6 +191,7 @@ export const mainUnisex = [
     readyIn: 7,
     link: "/configurator-wig/Bob Wig",
     colorVariants: [light_auburn, burgundy, wine_red],
+    sizeGuide: hair_guide,
   },
   {
     id: uuid(),
@@ -212,16 +206,12 @@ export const mainUnisex = [
     otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
     myZoom: 0.8,
     price: 50,
-    // parts: sashParts.keys().map(sashParts),
-    // sizeModels: tshirt_model,
     readyIn: 7,
     sizeGuide: bangle_guide,
     sizeOptions: [
       { label: "S", value: 0.5 },
       { label: "M", value: 1 },
       { label: "L", value: 2 },
-      // { label: "XL", value: 3 },
-      // { label: "2XL", value: 4 },
     ],
     sizeForms: [
       {

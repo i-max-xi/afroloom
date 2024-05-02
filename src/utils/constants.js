@@ -82,13 +82,7 @@ export const boxWigOptions = {
 };
 
 export const allNailOptions = {
-  length: [
-    "Very Short (less than 1 cm)",
-    "Short (1-2 cm)",
-    "Medium (2-3 cm)",
-    "Long (3-4 cm)",
-    " Extra Long (more than 4 cm)",
-  ],
+  length: ["S", "M", "L", "XL", "XXL", "XXXL"],
   // size: [
   //   "Size 0 (XS)",
   //   "Size 1 (S)",
