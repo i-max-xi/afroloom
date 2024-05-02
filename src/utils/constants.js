@@ -80,3 +80,33 @@ export const boxWigOptions = {
     "None (for those who prefer a non-lace wig)",
   ],
 };
+
+export const allNailOptions = {
+  length: [
+    "Very Short (less than 1 cm)",
+    "Short (1-2 cm)",
+    "Medium (2-3 cm)",
+    "Long (3-4 cm)",
+    " Extra Long (more than 4 cm)",
+  ],
+  size: [
+    "Size 0 (XS)",
+    "Size 1 (S)",
+    "Size 2 (M)",
+    "Size 3 (L)",
+    "Size 4 (XL)",
+    "Size 5 (XXL)",
+    "Size 6 (XXXL)",
+    "Size 7",
+    "Size 8",
+    "Size 9",
+  ],
+  width: ["Narrow", "Medium", "Wide", "Extra-wide"],
+  material: [
+    "Acrylic",
+    "Gel",
+    "Press-on nails",
+    "Dip powder",
+    "Silk or fiberglass wraps",
+  ],
+};

@@ -75,7 +75,8 @@ const wine_red = require("../Assets/welcome_3ds/others/Wig/bob_wig/99J-.png");
 export const mainUnisex = [
   {
     id: uuid(),
-    name: "Nails",
+    name: "Square Nails",
+    link: "/configurator-nails/Square Nails",
     image:
       "https://hips.hearstapps.com/hmg-prod/images/273912377-372031824314185-6626888513630609174-n-1676653877.jpg",
     model: nails_model,
@@ -87,17 +88,6 @@ export const mainUnisex = [
     myZoom: 0.5,
     price: 10,
     readyIn: 7,
-    sizeGuide: "",
-    sizeOptions: [
-      { label: "S", value: 0.5 },
-      { label: "M", value: 1 },
-      { label: "L", value: 2 },
-    ],
-    // sizeForms: [
-    //   {
-    //     label: "Earlobe (mm)",
-    //   },
-    // ],
   },
   {
     id: uuid(),

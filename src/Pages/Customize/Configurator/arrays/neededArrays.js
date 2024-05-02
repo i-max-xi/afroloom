@@ -111,6 +111,7 @@ export const specialNodeNames = [
   "zippers",
   "brass",
   "cuttings",
+  "nails",
 ]; // Add your special node names here
 
 export const textureArrays = {
@@ -492,7 +493,7 @@ export const onlySashes = [
   "One-Sided Logo, Two-Sided Text Sash",
 ];
 
-export const notAll = ["Earring", "Bikini"];
+export const notAll = ["Earring", "Bikini", "Square Nails"];
 
 export const hideNotAllNodes = ["bikini_all", "balls", "bikini_top"];
 

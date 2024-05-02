@@ -34,6 +34,7 @@ import ConfiguratorUnisex from "./Pages/Customize/Configurator/ConfiguratorUnise
 import CustomizeCheckout from "./Pages/CustomizeCheckout";
 import HomePage from "./Pages/HomePage";
 import ConfiguratorWig from "./Pages/Customize/Configurator/ConfiguratorWig";
+import ConfiguratorNails from "./Pages/Customize/Configurator/ConfiguratorNails";
 
 function App() {
   useEffect(() => {
@@ -73,6 +74,10 @@ function App() {
             />
 
             <Route path="/configurator-wig/:Id" element={<ConfiguratorWig />} />
+            <Route
+              path="/configurator-nails/:Id"
+              element={<ConfiguratorNails />}
+            />
 
             <Route path="tnc" element={<Tnc />} />
             <Route path="shippingPolicy" element={<ShippingPolicy />} />
