@@ -362,7 +362,7 @@ const ConfiguratorUnisex = () => {
                   />
                 </div>
 
-                <h5>Apply Prints</h5>
+                <h5>Apply Designs</h5>
                 <div className="color-buttons-container">
                   {/* <Carousel
                     value={colorOptions}

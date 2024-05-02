@@ -93,7 +93,8 @@ export const mainUnisex = [
     id: uuid(),
     name: "Round",
     link: "/configurator-nails/Round",
-    image: "",
+    image:
+      "https://i.pinimg.com/736x/01/c5/88/01c5884b689bee91e0b4725a72b58b28.jpg",
     model: nails_model,
     myNode: [
       { name: "nails", yardNeeded: 1 },
@@ -109,7 +110,8 @@ export const mainUnisex = [
     id: uuid(),
     name: "Almond",
     link: "/configurator-nails/Almond",
-    image: "",
+    image:
+      "https://www.popsugar.com.au/wp-content/uploads/sites/2/2021/06/Untitled-design-2021-06-28T111231.451-1024x1024.jpg",
     model: nails_model,
     myNode: [
       { name: "nails", yardNeeded: 1 },
@@ -120,26 +122,27 @@ export const mainUnisex = [
     price: 10,
     readyIn: 7,
   },
-  {
-    id: uuid(),
-    name: "Oval",
-    link: "/configurator-nails/Oval",
-    image: "",
-    model: nails_model,
-    myNode: [
-      { name: "nails", yardNeeded: 1 },
-      { name: "nailHands", yardNeeded: 1 },
-    ],
-    otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
-    myZoom: 0.5,
-    price: 10,
-    readyIn: 7,
-  },
+  // {
+  //   id: uuid(),
+  //   name: "Oval",
+  //   link: "/configurator-nails/Oval",
+  //   image: "",
+  //   model: nails_model,
+  //   myNode: [
+  //     { name: "nails", yardNeeded: 1 },
+  //     { name: "nailHands", yardNeeded: 1 },
+  //   ],
+  //   otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
+  //   myZoom: 0.5,
+  //   price: 10,
+  //   readyIn: 7,
+  // },
   {
     id: uuid(),
     name: "Stiletto",
     link: "/configurator-nails/Stiletto",
-    image: "",
+    image:
+      "https://naildesignsjournal.com/wp-content/uploads/2022/03/nude-stiletto-nails-trends-super-long.jpg",
     model: nails_model,
     myNode: [
       { name: "nails", yardNeeded: 1 },
