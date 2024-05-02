@@ -91,10 +91,10 @@ export const mainUnisex = [
   },
   {
     id: uuid(),
-    name: "Round",
+    name: "Coffin",
     link: "/configurator-nails/Round",
     image:
-      "https://i.pinimg.com/736x/01/c5/88/01c5884b689bee91e0b4725a72b58b28.jpg",
+      "https://www.byrdie.com/thmb/nm8BSffq7U2t9kXFFOvjmgnjxRo=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/91571257_1539518826223868_2434414556032171702_n-8f4c117bc3a640d8b3e3b4988b3aeaf5.jpg",
     model: nails_model,
     myNode: [
       { name: "nails", yardNeeded: 1 },
