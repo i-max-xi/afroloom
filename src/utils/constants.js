@@ -18,7 +18,20 @@ export const braidOptions = {
     "Natural Black with Light Auburn Highlights",
   ],
 
-  length: ["Waist-length", "Shoulder-length", "Mid-back length"],
+  length: [
+    // "Waist-length", "Shoulder-length", "Mid-back length"
+    "12 inches",
+    "14 inches",
+    "16 inches",
+    "18 inches",
+    "20 inches",
+    "22 inches",
+    "24 inches",
+    "26 inches",
+    "28 inches",
+    "30 inches",
+    "32 inches",
+  ],
 
   curlEnd: ["Tight Curls", "Loose Curls", "Spiral Curls", "S-wave Curls"],
 
@@ -43,9 +56,20 @@ export const boxWaveOptions = {
   ],
 
   length: [
-    "Short (8-12 inches)",
-    "Medium (14-18 inches)",
-    "Long (20-24 inches)",
+    // "Short (8-12 inches)",
+    // "Medium (14-18 inches)",
+    // "Long (20-24 inches)",
+    "12 inches",
+    "14 inches",
+    "16 inches",
+    "18 inches",
+    "20 inches",
+    "22 inches",
+    "24 inches",
+    "26 inches",
+    "28 inches",
+    "30 inches",
+    "32 inches",
   ],
   densityPreference: [
     "Light (natural-looking)",
@@ -66,9 +90,20 @@ export const boxWigOptions = {
   colors: ["Light Auburn", "Burgundy", "Wine Red"],
 
   length: [
-    "Short (8-10 inches)",
-    "Medium (10-12 inches)",
-    "Long (12-14 inches)",
+    // "Short (8-10 inches)",
+    // "Medium (10-12 inches)",
+    // "Long (12-14 inches)",
+    "12 inches",
+    "14 inches",
+    "16 inches",
+    "18 inches",
+    "20 inches",
+    "22 inches",
+    "24 inches",
+    "26 inches",
+    "28 inches",
+    "30 inches",
+    "32 inches",
   ],
 
   texture: ["Straight", "Wavy", "Curly"],

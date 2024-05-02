@@ -18,6 +18,7 @@ import {
   braidOptions,
 } from "../../../utils/constants";
 import WigConfirmation from "./WigConfirmation";
+import { Dialog } from "primereact/dialog";
 
 const ConfiguratorWig = () => {
   const { Id } = useParams();
@@ -50,6 +51,8 @@ const ConfiguratorWig = () => {
   const [laceType, setLaceType] = useState(null);
   const [texture, setTexture] = useState(null);
   const [capConstruction, setCapConstruction] = useState(null);
+
+  const [guideVisible, setGuideVisible] = useState(false);
 
   const handleColorPreference = (selectedColor) => {
     const index = hairColorOptions.colors.findIndex(
@@ -207,15 +210,6 @@ const ConfiguratorWig = () => {
             <h3 className="text-center pt-3">
               Customizing {selectedClothing.name}
             </h3>
-            {/* <div className="d-flex justify-content-center">
-              <button
-                className="btn btn-info text-white mx-3"
-                // style={{ float: "right" }}
-                onClick={handleRetakeTour}
-              >
-                Take Tour
-              </button>
-            </div> */}
 
             <div className="configurator-container container">
               <div className="wig-left-panel rounded border shadow">
@@ -228,7 +222,58 @@ const ConfiguratorWig = () => {
                   className="wig-dropdown"
                 />
 
-                <h5>Specifications</h5>
+                <div className="d-flex justify-content-between w-100 mt-3">
+                  <span
+                    style={{
+                      fontSize: "1rem",
+                      display: "block",
+                      fontWeight: "500",
+                    }}
+                  >
+                    Specifications
+                  </span>
+                  <span
+                    style={{
+                      fontSize: "0.8rem",
+                      display: "block",
+                      fontWeight: "400",
+                    }}
+                  >
+                    Guide
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="14"
+                      height="14"
+                      fill="currentColor"
+                      className="bi bi-info-circle d-inline m-1"
+                      viewBox="0 0 16 16"
+                      onClick={() => {
+                        setGuideVisible(true);
+                      }}
+                    >
+                      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                      <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z" />{" "}
+                    </svg>
+                  </span>
+                </div>
+
+                <Dialog
+                  header="Sizing Guide"
+                  visible={guideVisible}
+                  className="col-12 col-sm-6"
+                  onHide={() => setGuideVisible(false)}
+                  dismissableMask={true}
+                >
+                  <div className="d-flex flex-column align-items-center">
+                    <p className="mb-1">
+                      <img
+                        src={selectedClothing.sizeGuide}
+                        width="100%"
+                        alt="size-guide"
+                      />
+                    </p>
+                  </div>
+                </Dialog>
 
                 <div className="specifications">
                   {hairColorOptions.length && (
