@@ -166,69 +166,11 @@ const ConfiguratorUnisex = () => {
 
   //total price
   const total = useMemo(() => {
-    if (
-      noSpinFor.includes(selectedClothing.name) ||
-      selectedClothing.name === "Earring"
-    ) {
-      return ((partPrices + selectedClothing.price) * currencyFactor).toFixed(
-        2
-      );
-    } else {
-      return (
-        (partPrices + selectedClothing.price + colorPrice) *
-        currencyFactor
-      ).toFixed(2);
-    }
+    return (
+      (partPrices + selectedClothing.price + colorPrice) *
+      currencyFactor
+    ).toFixed(2);
   }, [selectedClothing.name]);
-
-  const handleSizeChange = (factor) => {
-    let yardNeeded;
-    setSelectedSize(factor);
-
-    switch (factor) {
-      case 0.5:
-        yardNeeded = selectedClothing.otherYards.small;
-        break;
-
-      case 1:
-        yardNeeded = selectedClothing.myNode[0].yardNeeded;
-        break;
-
-      case 2:
-        yardNeeded = selectedClothing.otherYards.large;
-        break;
-
-      case 3:
-        yardNeeded = selectedClothing.otherYards.extraLarge;
-        break;
-
-      case 4:
-        yardNeeded = selectedClothing.otherYards.extraExtraLarge;
-        break;
-
-      default:
-        break;
-    }
-
-    const textureCategory = Object.keys(textureArrays).find((category) =>
-      textureArrays[category].includes(selectedTexture)
-    );
-
-    const yardPrice = textureValues[textureCategory]?.price;
-    const yardStart = textureValues[textureCategory]?.yardStart;
-
-    let newPartPrice;
-
-    if (!yardPrice || !yardStart) {
-      setColorPrice(yardNeeded * colorBasePrice);
-      return;
-    } else {
-      newPartPrice =
-        yardStart === 2 ? yardNeeded * (yardPrice / 2) : yardNeeded * yardPrice;
-    }
-
-    setPartPrices(newPartPrice);
-  };
 
   const [showGlow, setShowGlow] = useState(false);
 
@@ -243,13 +185,6 @@ const ConfiguratorUnisex = () => {
   }, []);
 
   const handleColorChange = (newColor) => {
-    if (selectedPart === "all") {
-      state.texture = Array(selectedClothing.myNode.length).fill(null);
-      state.color = Array(selectedClothing.myNode.length).fill(newColor);
-      setSelectedPrintOn(newColor);
-      return;
-    }
-
     state.color[selectedPart] = newColor;
     state.texture[selectedPart] = null;
     setSelectedPrintOn(newColor);
