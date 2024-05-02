@@ -33,7 +33,7 @@ import {
 import { Dropdown } from "primereact/dropdown";
 
 import { Toast } from "primereact/toast";
-import { allNailOptions, isMobile } from "../../../utils/constants";
+import { allNailOptions, isMobile, skinTone } from "../../../utils/constants";
 import uuid from "react-uuid";
 import PrintItem from "./PrintItem";
 
@@ -83,6 +83,8 @@ const Shirt = ({
       state.texture[i] = null;
     }
 
+    state.color[1] = "#6e4b35";
+
     return () => clearTimeout(loadingTimeout); // Cleanup the timeout if component unmounts
   }, [selectedClothing.name]);
 
@@ -97,7 +99,7 @@ const Shirt = ({
           const nodeName = node?.name; // Access the name property of the node object
           const color =
             specialNodeNames.includes(nodeName) && nodeName === "nailHands"
-              ? "#6e4b35"
+              ? snap.color[1]
               : specialNodeNames.includes(nodeName) && nodeName !== "nailHands"
               ? snap.color[index] || "#333333"
               : snap.color[index] || "#ffffff";
@@ -115,11 +117,7 @@ const Shirt = ({
                 attach="material"
                 color={color}
                 map={texture && new TextureLoader().load(texture)}
-                roughness={shiny3Ds.includes(selectedClothing.name) ? 0.2 : 1}
-                metalness={node === "Brass" && 1}
-                // metalnessMap={}
-                emissive={selectedPart === index ? "#FF8C00" : null} // Apply golden glow if part is selected
-                emissiveIntensity={showGlow && selectedPart === index ? 5 : 0} // Adjust glow intensity
+                roughness={node === "nails" ? 0 : 1}
               />
             </mesh>
           );
@@ -165,6 +163,8 @@ const ConfiguratorUnisex = () => {
     colorBasePrice * selectedClothing.myNode[0].yardNeeded
   );
 
+  const [selectedTone, setSelectedTone] = useState("Dark");
+
   //total price
   const total = useMemo(() => {
     return (
@@ -198,29 +198,20 @@ const ConfiguratorUnisex = () => {
     if (selectedPart !== null) {
       state.texture[selectedPart] = newTexture;
       state.color[selectedPart] = null;
-      setSelectedPrintOn(newTexture);
-      setSelectedTexture(newTexture); // needed to transfer to size
-
-      // const textureCategory = Object.keys(textureArrays).find((category) =>
-      //   textureArrays[category].includes(newTexture)
-      // );
-
-      // const yardNeeded = selectedClothing.myNode[selectedPart].yardNeeded;
-      // const yardPrice = textureValues[textureCategory].price;
-      // const yardStart = textureValues[textureCategory].yardStart;
-
-      // const newPartPrice =
-      //   yardStart === 2 ? yardNeeded * (yardPrice / 2) : yardNeeded * yardPrice;
-
-      // setPartPrices(newPartPrice);
+      // setSelectedPrintOn(newTexture);
+      // setSelectedTexture(newTexture); // needed to transfer to size
     }
 
     setShowGlow(false);
   };
 
+  const handleSkinToneChange = (title, color) => {
+    state.color[1] = color;
+    setSelectedTone(title);
+  };
+
   const handleRotation = () => {
     setIsRotating((prev) => !prev);
-    // setSelectedPart(null);
   };
 
   // Create an array to store selected parts with their color and texture information
@@ -251,11 +242,6 @@ const ConfiguratorUnisex = () => {
 
     setShowConfirmation(true);
   };
-
-  // Handle changes in the size form fields
-
-  // description dialogs
-  const [selectedTexture, setSelectedTexture] = useState({});
 
   const nailOptions = useMemo(() => {
     if (selectedClothing.name === "Box Braids With Curly End") {
@@ -327,19 +313,45 @@ const ConfiguratorUnisex = () => {
                   )}
                 </button>
               )}
-
-              {/* <button
-                className="btn btn-info text-white mx-3"
-                // style={{ float: "right" }}
-                onClick={handleRetakeTour}
-              >
-                Take Tour
-              </button> */}
             </div>
             <div className="configurator-container container">
               <div className="left-panel rounded shadow">
-                <h5>Apply Color</h5>
-                <div className="color-buttons-container">
+                <h5>Skin</h5>
+                <span
+                  style={{
+                    fontSize: "0.8rem",
+                    display: "block",
+                    fontWeight: "500",
+                  }}
+                >
+                  Apply Skin Tone
+                </span>
+
+                {skinTone.map(({ title, color }) => {
+                  return (
+                    <button
+                      key={title}
+                      className={`size-button btn btn-outline-dark ${
+                        selectedTone === title ? "selected" : ""
+                      }`}
+                      onClick={() => handleSkinToneChange(title, color)}
+                    >
+                      {title}
+                    </button>
+                  );
+                })}
+
+                <h5 className="mt-3">Nails</h5>
+                <span
+                  style={{
+                    fontSize: "0.8rem",
+                    display: "block",
+                    fontWeight: "500",
+                  }}
+                >
+                  Apply Color
+                </span>
+                <div className="color-buttons-container mt-3">
                   <Carousel
                     value={colorOptions}
                     numVisible={isMobile ? 4 : 7}
@@ -362,26 +374,16 @@ const ConfiguratorUnisex = () => {
                   />
                 </div>
 
-                <h5>Apply Designs</h5>
-                <div className="color-buttons-container">
-                  {/* <Carousel
-                    value={colorOptions}
-                    numVisible={isMobile ? 4 : 7}
-                    numScroll={isMobile ? 2 : 5}
-                    showIndicators={false}
-                    itemTemplate={(printsOption, index) => (
-                      <div key={index} className="color-item">
-                        <button
-                          className={`color-button ${
-                            selectedPrintOn === printsOption
-                              ? "selected-border"
-                              : ""
-                          }`}
-                          onClick={() => handlePrintsChange(printsOption)}
-                        ></button>
-                      </div>
-                    )}
-                  /> */}
+                <span
+                  style={{
+                    fontSize: "0.8rem",
+                    display: "block",
+                    fontWeight: "500",
+                  }}
+                >
+                  Apply Designs
+                </span>
+                <div className="color-buttons-container mt-3">
                   <Carousel
                     value={textureArrays.batik}
                     numVisible={4}
@@ -398,7 +400,15 @@ const ConfiguratorUnisex = () => {
                   />
                 </div>
 
-                <h5>Specifications</h5>
+                <span
+                  style={{
+                    fontSize: "0.8rem",
+                    display: "block",
+                    fontWeight: "500",
+                  }}
+                >
+                  Specifications
+                </span>
 
                 <div className="specifications">
                   {nailOptions.length && (
