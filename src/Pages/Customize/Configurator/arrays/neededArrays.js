@@ -494,7 +494,7 @@ export const onlySashes = [
   "One-Sided Logo, Two-Sided Text Sash",
 ];
 
-export const notAll = ["Earring", "Bikini", "Square Nails"];
+export const notAll = ["Earring", "Bikini", "Square Nails", "Coffin Nails"];
 
 export const hideNotAllNodes = ["bikini_all", "balls", "bikini_top"];
 

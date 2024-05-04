@@ -16,6 +16,10 @@ import bangles_model from "../Pages/Customize/Configurator/models/Accessories/Un
 import earring_model from "../Pages/Customize/Configurator/models/Accessories/Unisex/earring.glb";
 import bikini from "../Pages/Customize/Configurator/models/Accessories/bikini.glb";
 import nails_model from "../Pages/Customize/Configurator/models/Accessories/nails.glb";
+import coffin_nails_model from "../Pages/Customize/Configurator/models/Accessories/coffin_nails.glb";
+import round_nails_model from "../Pages/Customize/Configurator/models/Accessories/round_nails.glb";
+import stilletto_nails_model from "../Pages/Customize/Configurator/models/Accessories/stilletto_nails.glb";
+import almond_nails_model from "../Pages/Customize/Configurator/models/Accessories/almond_nails.glb";
 
 // Importing size guides
 import sash_guide from "../Assets/size_guide/Unisex/the_sash.jpg";
@@ -94,8 +98,8 @@ export const mainUnisex = [
   },
   {
     id: uuid(),
-    name: "Coffin",
-    link: "/configurator-nails/Round",
+    name: "Coffin Nails",
+    link: "/configurator-nails/Coffin Nails",
     image:
       "https://www.byrdie.com/thmb/nm8BSffq7U2t9kXFFOvjmgnjxRo=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/91571257_1539518826223868_2434414556032171702_n-8f4c117bc3a640d8b3e3b4988b3aeaf5.jpg",
     model: nails_model,
@@ -112,11 +116,11 @@ export const mainUnisex = [
 
   {
     id: uuid(),
-    name: "Almond",
-    link: "/configurator-nails/Almond",
+    name: "Almond Nails",
+    link: "/configurator-nails/Almond Nails",
     image:
       "https://www.popsugar.com.au/wp-content/uploads/sites/2/2021/06/Untitled-design-2021-06-28T111231.451-1024x1024.jpg",
-    model: nails_model,
+    model: almond_nails_model,
     myNode: [
       { name: "nails", yardNeeded: 1 },
       { name: "nailHands", yardNeeded: 1 },
@@ -129,11 +133,11 @@ export const mainUnisex = [
   },
   {
     id: uuid(),
-    name: "Stiletto",
-    link: "/configurator-nails/Stiletto",
+    name: "Stiletto Nails",
+    link: "/configurator-nails/Stiletto Nails",
     image:
       "https://naildesignsjournal.com/wp-content/uploads/2022/03/nude-stiletto-nails-trends-super-long.jpg",
-    model: nails_model,
+    model: stilletto_nails_model,
     myNode: [
       { name: "nails", yardNeeded: 1 },
       { name: "nailHands", yardNeeded: 1 },
@@ -146,11 +150,11 @@ export const mainUnisex = [
   },
   {
     id: uuid(),
-    name: "Box Braids With Curly End",
+    name: "Spiral Curls Braid Wig",
     image: box_braid,
     price: 50,
     readyIn: 7,
-    link: "/configurator-wig/Box Braids With Curly End",
+    link: "/configurator-wig/Spiral Curls Braid Wig",
     colorVariants: [
       box_braid_black,
       box_braid_grey,

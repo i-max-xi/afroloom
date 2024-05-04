@@ -36,6 +36,7 @@ export const braidOptions = {
   curlEnd: ["Tight Curls", "Loose Curls", "Spiral Curls", "S-wave Curls"],
 
   capSize: ["Small", "Medium", "Large"],
+  additionalOption: ["Closure", "Frontal", "Seal Out"],
 };
 
 export const boxWaveOptions = {
@@ -84,6 +85,7 @@ export const boxWaveOptions = {
   ],
 
   capSize: ["Small", "Medium", "Large"],
+  additionalOption: ["Closure", "Frontal", "Seal Out"],
 };
 
 export const boxWigOptions = {
@@ -108,12 +110,14 @@ export const boxWigOptions = {
 
   texture: ["Straight", "Wavy", "Curly"],
   capSize: ["Small", "Medium", "Large"],
-  capConstruction: [
-    "Full lace wig",
-    "Lace front wig",
-    "U-part wig",
-    "None (for those who prefer a non-lace wig)",
-  ],
+  additionalOption: ["Closure", "Frontal", "Seal Out"],
+
+  // capConstruction: [
+  //   "Full lace wig",
+  //   "Lace front wig",
+  //   "U-part wig",
+  //   "None (for those who prefer a non-lace wig)",
+  // ],
 };
 
 export const allNailOptions = {
@@ -133,8 +137,8 @@ export const allNailOptions = {
   // width: ["Narrow", "Medium", "Wide", "Extra-wide"],
   material: [
     "Acrylic",
-    "Gel",
-    "Press-on nails",
+    "Gel Ploish",
+    "Normal Polish",
     // "Dip powder",
     // "Silk or fiberglass wraps",
   ],
