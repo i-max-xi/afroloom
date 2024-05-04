@@ -29,7 +29,7 @@ const ConfiguratorWig = () => {
   );
 
   const hairColorOptions = useMemo(() => {
-    if (selectedClothing.name === "Spiral Curls Braid Wig") {
+    if (selectedClothing.name === "Spiral Curls Braids Wig") {
       return braidOptions;
     }
     if (selectedClothing.name === "Body Wave Wig") {

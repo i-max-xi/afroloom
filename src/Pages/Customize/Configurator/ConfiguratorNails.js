@@ -244,7 +244,7 @@ const ConfiguratorUnisex = () => {
   };
 
   const nailOptions = useMemo(() => {
-    if (selectedClothing.name === "Spiral Curls Braid Wig") {
+    if (selectedClothing.name === "Spiral Curls Braids Wig") {
       return;
     }
     if (selectedClothing.name === "Body Wave Wig") {
