@@ -137,7 +137,7 @@ export const allNailOptions = {
   // width: ["Narrow", "Medium", "Wide", "Extra-wide"],
   material: [
     "Acrylic",
-    "Gel Ploish",
+    "Gel Polish",
     "Normal Polish",
     // "Dip powder",
     // "Silk or fiberglass wraps",

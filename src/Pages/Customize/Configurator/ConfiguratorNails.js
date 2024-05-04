@@ -463,7 +463,7 @@ const ConfiguratorUnisex = () => {
                           value={nailLength}
                           onChange={(e) => setNailLength(e.value)}
                           options={nailOptions.length}
-                          placeholder="Type or select a preference, eg. xl-25cm"
+                          placeholder="Type or select a preference, eg. XL-25cm"
                           className="wig-dropdown"
                           editable
                         />
