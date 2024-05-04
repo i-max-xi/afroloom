@@ -20,6 +20,7 @@ import coffin_nails_model from "../Pages/Customize/Configurator/models/Accessori
 import round_nails_model from "../Pages/Customize/Configurator/models/Accessories/round_nails.glb";
 import stilletto_nails_model from "../Pages/Customize/Configurator/models/Accessories/stilletto_nails.glb";
 import almond_nails_model from "../Pages/Customize/Configurator/models/Accessories/almond_nails.glb";
+import square_nails_model from "../Pages/Customize/Configurator/models/Accessories/square_nails.glb";
 
 // Importing size guides
 import sash_guide from "../Assets/size_guide/Unisex/the_sash.jpg";
@@ -85,13 +86,13 @@ export const mainUnisex = [
     link: "/configurator-nails/Square Nails",
     image:
       "https://hips.hearstapps.com/hmg-prod/images/273912377-372031824314185-6626888513630609174-n-1676653877.jpg",
-    model: nails_model,
+    model: square_nails_model,
     myNode: [
       { name: "nails", yardNeeded: 1 },
       { name: "nailHands", yardNeeded: 1 },
     ],
     otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
-    myZoom: 0.5,
+    myZoom: 0.7,
     sizeGuide: nail_guide,
     price: 10,
     readyIn: 7,
@@ -143,7 +144,7 @@ export const mainUnisex = [
       { name: "nailHands", yardNeeded: 1 },
     ],
     otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
-    myZoom: 0.5,
+    myZoom: 0.7,
     price: 10,
     readyIn: 7,
     sizeGuide: nail_guide,
