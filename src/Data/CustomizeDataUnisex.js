@@ -97,30 +97,30 @@ export const mainUnisex = [
     price: 10,
     readyIn: 7,
   },
-  {
-    id: uuid(),
-    name: "Coffin Nails",
-    link: "/configurator-nails/Coffin Nails",
-    image:
-      "https://www.byrdie.com/thmb/nm8BSffq7U2t9kXFFOvjmgnjxRo=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/91571257_1539518826223868_2434414556032171702_n-8f4c117bc3a640d8b3e3b4988b3aeaf5.jpg",
-    model: nails_model,
-    myNode: [
-      { name: "nails", yardNeeded: 1 },
-      { name: "nailHands", yardNeeded: 1 },
-    ],
-    otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
-    myZoom: 0.5,
-    price: 10,
-    readyIn: 7,
-    sizeGuide: nail_guide,
-  },
+  // {
+  //   id: uuid(),
+  //   name: "Coffin Nails",
+  //   link: "/configurator-nails/Coffin Nails",
+  //   image:
+  //     "https://www.byrdie.com/thmb/nm8BSffq7U2t9kXFFOvjmgnjxRo=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/91571257_1539518826223868_2434414556032171702_n-8f4c117bc3a640d8b3e3b4988b3aeaf5.jpg",
+  //   model: nails_model,
+  //   myNode: [
+  //     { name: "nails", yardNeeded: 1 },
+  //     { name: "nailHands", yardNeeded: 1 },
+  //   ],
+  //   otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
+  //   myZoom: 0.5,
+  //   price: 10,
+  //   readyIn: 7,
+  //   sizeGuide: nail_guide,
+  // },
 
   {
     id: uuid(),
-    name: "Almond Nails",
-    link: "/configurator-nails/Almond Nails",
+    name: "Round Nails",
+    link: "/configurator-nails/Round Nails",
     image:
-      "https://www.popsugar.com.au/wp-content/uploads/sites/2/2021/06/Untitled-design-2021-06-28T111231.451-1024x1024.jpg",
+      "https://stylemissus.com/cdn/shop/products/product-image-1295848768.jpg?v=1584041580",
     model: round_nails_model,
     myNode: [
       { name: "nails", yardNeeded: 1 },
@@ -167,7 +167,9 @@ export const mainUnisex = [
   {
     id: uuid(),
     name: "Body Wave Wig",
-    image: body_wave,
+    // image: body_wave,
+    image:
+      "https://www.sheshappyhair.com/cdn/shop/products/bodywavewig_sheshappyhair_realhumanhair_da9c25e5-56b9-4364-ad50-8c14a88d249d_835x.png?v=1664464064",
     price: 50,
     readyIn: 7,
     link: "/configurator-wig/Body Wave Wig",
@@ -190,7 +192,9 @@ export const mainUnisex = [
   {
     id: uuid(),
     name: "Bob Wig",
-    image: bob_wig,
+    // image: bob_wig,
+    image:
+      "https://www.josephs-wigs.com/media/wysiwyg/Josephs-Wigs-Bob-Wigs-Dark-Bob-Style-Wig.jpg",
     model: bangles_model,
     price: 50,
     readyIn: 7,
