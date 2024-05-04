@@ -151,11 +151,11 @@ export const mainUnisex = [
   },
   {
     id: uuid(),
-    name: "Spiral Curls Braid Wig",
+    name: "Spiral Curls Braids Wig",
     image: box_braid,
     price: 50,
     readyIn: 7,
-    link: "/configurator-wig/Spiral Curls Braid Wig",
+    link: "/configurator-wig/Spiral Curls Braids Wig",
     colorVariants: [
       box_braid_black,
       box_braid_grey,
