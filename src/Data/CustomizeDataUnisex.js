@@ -120,13 +120,13 @@ export const mainUnisex = [
     link: "/configurator-nails/Almond Nails",
     image:
       "https://www.popsugar.com.au/wp-content/uploads/sites/2/2021/06/Untitled-design-2021-06-28T111231.451-1024x1024.jpg",
-    model: almond_nails_model,
+    model: round_nails_model,
     myNode: [
       { name: "nails", yardNeeded: 1 },
       { name: "nailHands", yardNeeded: 1 },
     ],
     otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
-    myZoom: 0.5,
+    myZoom: 0.7,
     price: 10,
     readyIn: 7,
     sizeGuide: nail_guide,
