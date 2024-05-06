@@ -33,7 +33,12 @@ import {
 import { Dropdown } from "primereact/dropdown";
 
 import { Toast } from "primereact/toast";
-import { allNailOptions, isMobile, skinTone } from "../../../utils/constants";
+import {
+  allNailOptions,
+  isMobile,
+  nailGuidesType,
+  skinTone,
+} from "../../../utils/constants";
 import uuid from "react-uuid";
 import PrintItem from "./PrintItem";
 import { Dialog } from "primereact/dialog";
@@ -261,6 +266,10 @@ const ConfiguratorUnisex = () => {
   const [nailWidth, setNailWidth] = useState(null);
   const [nailMaterial, setNailMaterial] = useState(null);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [selectedClothing.name]);
+
   return (
     <>
       <Nav />
@@ -438,19 +447,28 @@ const ConfiguratorUnisex = () => {
                 </div>
 
                 <Dialog
-                  header="Sizing Guide"
+                  header="Guide"
                   visible={guideVisible}
                   className="col-12 col-sm-6"
                   onHide={() => setGuideVisible(false)}
                   dismissableMask={true}
                 >
                   <div className="d-flex flex-column align-items-center">
-                    <p className="mb-1">
+                    <p className="mb-3">
+                      <span className="fw-bold">Nail Length</span>
+
                       <img
                         src={selectedClothing.sizeGuide}
                         width="100%"
                         alt="size-guide"
                       />
+                    </p>
+
+                    <p className="mb-3">
+                      <span className="fw-bold">Nail Type</span>
+                      {nailGuidesType.map((guide) => (
+                        <img src={guide} width="100%" alt="size-guide" />
+                      ))}
                     </p>
                   </div>
                 </Dialog>

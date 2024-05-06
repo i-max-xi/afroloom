@@ -1,4 +1,16 @@
 import { texture } from "three/examples/jsm/nodes/Nodes.js";
+import {
+  hair_guide_braziian,
+  hair_guide_cambodia,
+  hair_guide_capSize,
+  hair_guide_frontal,
+  hair_guide_indian,
+  hair_guide_malasian,
+  hair_guide_mongoloian,
+  hair_guide_peruvian,
+  hair_guide_synthethic,
+  nail_guide_type,
+} from "../Data/CustomizeDataUnisex";
 
 export const isMobile = window.innerWidth <= 767;
 export const titleLimit = 50;
@@ -137,8 +149,8 @@ export const allNailOptions = {
   // width: ["Narrow", "Medium", "Wide", "Extra-wide"],
   material: [
     "Acrylic",
-    "Gel Polish",
-    "Normal Polish",
+    "Press on",
+    // "Normal Polish",
     // "Dip powder",
     // "Silk or fiberglass wraps",
   ],
@@ -150,3 +162,24 @@ export const skinTone = [
   { title: "Medium Light", color: "#c19a6b" },
   { title: "Light", color: "#e0b291" },
 ];
+
+export const hairGuidesHuman = [
+  hair_guide_braziian,
+  hair_guide_cambodia,
+  hair_guide_indian,
+  hair_guide_malasian,
+  hair_guide_peruvian,
+  hair_guide_mongoloian,
+];
+
+export const hairGuidesFrontal = [hair_guide_frontal];
+
+export const hairGuidesTexture = [];
+
+export const hairGuidesDensity = [];
+
+export const hairGuidesSynthethic = [hair_guide_synthethic];
+
+export const hairGuidesCapSize = [hair_guide_capSize];
+
+export const nailGuidesType = [nail_guide_type];

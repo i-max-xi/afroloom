@@ -33,6 +33,22 @@ import bangle_guide from "../Assets/size_guide/Unisex/bracelet size chart.jpg";
 import hair_guide from "../Assets/size_guide/Unisex/hair length.png";
 import nail_guide from "../Assets/size_guide/Unisex/nail length guide.jpg";
 
+// other hair guides
+export const hair_guide_braziian = require("../Assets/size_guide/Unisex/hair/brazilian_page-0001 (1).jpg");
+export const hair_guide_cambodia = require("../Assets/size_guide/Unisex/hair/cambodia_page-0001 (1).jpg");
+export const hair_guide_indian = require("../Assets/size_guide/Unisex/hair/indian_page-0001 (1).jpg");
+export const hair_guide_malasian = require("../Assets/size_guide/Unisex/hair/malasian_page-0001 (1) (1).jpg");
+export const hair_guide_peruvian = require("../Assets/size_guide/Unisex/hair/peruvian_page-0001 (1) (1).jpg");
+export const hair_guide_mongoloian = require("../Assets/size_guide/Unisex/hair/mongolian_page-0001 (1).jpg");
+export const hair_guide_synthethic = require("../Assets/size_guide/Unisex/hair/synthetic_page-0001 (1).jpg");
+export const hair_guide_capSize = require("../Assets/size_guide/Unisex/hair/cap size.jpg");
+export const hair_guide_frontal = require("../Assets/size_guide/Unisex/hair/fwrite_page-0002 (1)-imageonline.co-merged.png");
+// export const hair_guide_density = require("../Assets/size_guide/Unisex/hair/density.jpg");
+// export const hair_guide_texture = require("../Assets/size_guide/Unisex/hair/texture_prefence.jpg");
+
+// other nail guides
+export const nail_guide_type = require("../Assets/size_guide/Unisex/nail/type of nails.png");
+
 const image_waist_bag = require("../Assets/welcome_3ds/others/waist bag.jpg");
 const image_jacket = require("../Assets/welcome_3ds/others/jacket.png");
 const image_backpack = require("../Assets/welcome_3ds/others/backpack.png");

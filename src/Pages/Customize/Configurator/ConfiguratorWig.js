@@ -11,11 +11,21 @@ import { useParams } from "react-router";
 import { useSelector } from "react-redux";
 
 import { Toast } from "primereact/toast";
-import { mainUnisex } from "../../../Data/CustomizeDataUnisex";
+import {
+  hair_guide_braziian,
+  mainUnisex,
+} from "../../../Data/CustomizeDataUnisex";
 import {
   boxWaveOptions,
   boxWigOptions,
   braidOptions,
+  hairGuides,
+  hairGuidesCapSize,
+  hairGuidesDensity,
+  hairGuidesFrontal,
+  hairGuidesHuman,
+  hairGuidesSynthethic,
+  hairGuidesTexture,
 } from "../../../utils/constants";
 import WigConfirmation from "./WigConfirmation";
 import { Dialog } from "primereact/dialog";
@@ -125,6 +135,10 @@ const ConfiguratorWig = () => {
     setShowTour(true);
   };
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [selectedClothing.name]);
+
   return (
     <>
       <Nav />
@@ -174,7 +188,7 @@ const ConfiguratorWig = () => {
           modelImage={stateImage}
           allSpecifications={[
             {
-              title: "Braid Length",
+              title: "Hair Length",
               value: braidLength,
             },
             {
@@ -259,19 +273,57 @@ const ConfiguratorWig = () => {
                 </div>
 
                 <Dialog
-                  header="Sizing Guide"
+                  header="Guide"
                   visible={guideVisible}
                   className="col-12 col-sm-6"
                   onHide={() => setGuideVisible(false)}
                   dismissableMask={true}
                 >
                   <div className="d-flex flex-column align-items-center">
-                    <p className="mb-1">
+                    <p className="mb-3">
+                      <span className="fw-bold">Hair Length</span>
                       <img
                         src={selectedClothing.sizeGuide}
                         width="100%"
                         alt="size-guide"
                       />
+                    </p>
+                    <p className="mb-3">
+                      <span className="fw-bold">Cap Size</span>
+                      {hairGuidesCapSize.map((guide) => (
+                        <img src={guide} width="100%" alt="size-guide" />
+                      ))}
+                    </p>
+                    <p className="mb-3">
+                      <span className="fw-bold">Human Hair</span>
+                      {hairGuidesHuman.map((guide) => (
+                        <img src={guide} width="100%" alt="size-guide" />
+                      ))}
+                    </p>
+                    <p className="mb-3">
+                      <span className="fw-bold">Synthetic Hair</span>
+                      {hairGuidesSynthethic.map((guide) => (
+                        <img src={guide} width="100%" alt="size-guide" />
+                      ))}
+                    </p>
+                    <p className="mb-3">
+                      <span className="fw-bold">Frontal</span>
+                      {hairGuidesFrontal.map((guide) => (
+                        <img src={guide} width="100%" alt="size-guide" />
+                      ))}
+                    </p>
+                    <p className="mb-3">
+                      <span className="fw-bold">Density</span>
+                      {hairGuidesDensity.map((guide) => (
+                        <img src={guide} width="100%" alt="size-guide" />
+                      ))}
+                    </p>
+
+                    <p className="mb-3">
+                      <span className="fw-bold">Texture</span>
+                      {hairGuidesTexture.map((guide) => (
+                        <img src={guide} width="100%" alt="size-guide" />
+                      ))}
                     </p>
                   </div>
                 </Dialog>
@@ -288,7 +340,7 @@ const ConfiguratorWig = () => {
                           className="wig-dropdown"
                           editable
                         />
-                        <label htmlFor="inputtext">Braid Length</label>
+                        <label htmlFor="inputtext">Hair Length</label>
                       </span>
                     </>
                   )}
