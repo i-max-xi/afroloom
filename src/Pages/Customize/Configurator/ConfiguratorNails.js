@@ -54,6 +54,8 @@ const Shirt = ({
   const snap = useSnapshot(state);
   const { nodes } = useGLTF(selectedClothing.model);
 
+  const skinTexture = require("./textures/human/AdobeStock_503842814_Preview.jpeg");
+
   const groupRef = useRef();
 
   useFrame(({ clock }) => {
@@ -89,6 +91,8 @@ const Shirt = ({
       state.texture[i] = null;
     }
 
+    state.texture[1] = skinTexture;
+
     state.color[1] = "#6e4b35";
 
     return () => clearTimeout(loadingTimeout); // Cleanup the timeout if component unmounts
@@ -111,6 +115,7 @@ const Shirt = ({
               : snap.color[index] || "#ffffff";
 
           const texture = snap.texture[index] || null;
+          // const texture = skinTexture;
 
           return (
             <mesh

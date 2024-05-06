@@ -51,6 +51,22 @@ export const braidOptions = {
 
   capSize: ["Small", "Medium", "Large"],
   additionalOption: ["Closure", "Frontal", "Seal Out"],
+  laceType: [
+    "Swiss lace",
+    "HD lace",
+    "Transparent lace",
+    "None (for those who prefer a non-lace wig)",
+  ],
+  typeOfHair: ["Human", "Synthetic"],
+  humanHairType: [
+    "Brazilian",
+    "Cambodian",
+    "Indian",
+    "Malaysian",
+    "Mongolian",
+    "Peruvian",
+  ].sort(),
+  hamanHairGrades: [],
 };
 
 export const boxWaveOptions = {
@@ -71,9 +87,6 @@ export const boxWaveOptions = {
   ],
 
   length: [
-    // "Short (8-12 inches)",
-    // "Medium (14-18 inches)",
-    // "Long (20-24 inches)",
     "12 inches",
     "14 inches",
     "16 inches",
@@ -100,15 +113,22 @@ export const boxWaveOptions = {
 
   capSize: ["Small", "Medium", "Large"],
   additionalOption: ["Closure", "Frontal", "Seal Out"],
+  typeOfHair: ["Human", "Synthetic"],
+  humanHairType: [
+    "Brazilian",
+    "Cambodian",
+    "Indian",
+    "Malaysian",
+    "Mongolian",
+    "Peruvian",
+  ].sort(),
+  hamanHairGrades: [],
 };
 
 export const boxWigOptions = {
   colors: ["Light Auburn", "Burgundy", "Wine Red"],
 
   length: [
-    // "Short (8-10 inches)",
-    // "Medium (10-12 inches)",
-    // "Long (12-14 inches)",
     "12 inches",
     "14 inches",
     "16 inches",
@@ -125,30 +145,27 @@ export const boxWigOptions = {
   texture: ["Straight", "Wavy", "Curly"],
   capSize: ["Small", "Medium", "Large"],
   additionalOption: ["Closure", "Frontal", "Seal Out"],
-
-  // capConstruction: [
-  //   "Full lace wig",
-  //   "Lace front wig",
-  //   "U-part wig",
-  //   "None (for those who prefer a non-lace wig)",
-  // ],
+  laceType: [
+    "Swiss lace",
+    "HD lace",
+    "Transparent lace",
+    "None (for those who prefer a non-lace wig)",
+  ],
+  typeOfHair: ["Human", "Synthetic"],
+  humanHairType: [
+    "Brazilian",
+    "Cambodian",
+    "Indian",
+    "Malaysian",
+    "Mongolian",
+    "Peruvian",
+  ].sort(),
+  hamanHairGrades: [],
 };
 
 export const allNailOptions = {
   length: ["S", "M", "L", "XL", "XXL", "XXXL"],
-  // size: [
-  //   "Size 0 (XS)",
-  //   "Size 1 (S)",
-  //   "Size 2 (M)",
-  //   "Size 3 (L)",
-  //   "Size 4 (XL)",
-  //   "Size 5 (XXL)",
-  //   "Size 6 (XXXL)",
-  //   "Size 7",
-  //   "Size 8",
-  //   "Size 9",
-  // ],
-  // width: ["Narrow", "Medium", "Wide", "Extra-wide"],
+
   material: [
     "Standard Press-on Nails",
     "Gel Press-on Nails",

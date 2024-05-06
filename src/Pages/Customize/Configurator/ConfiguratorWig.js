@@ -61,6 +61,34 @@ const ConfiguratorWig = () => {
   const [laceType, setLaceType] = useState(null);
   const [texture, setTexture] = useState(null);
   const [additional, setAdditional] = useState(null);
+  const [type_of_hair, setTypeOfHair] = useState(null);
+  const [specific_hair_type, setSpecific_hair_type] = useState(null);
+  const [hair_grade, set_hair_grade] = useState(null);
+  const [hair_fibre, set_hair_fibre] = useState(null);
+
+  const hairGradeOptions = useMemo(() => {
+    if (specific_hair_type === "Brazilian") {
+      return ["6A", "7A", "8A", "9A", "10A"];
+    }
+    if (specific_hair_type === "Cambodian" || specific_hair_type === "Indian") {
+      return ["6A", "7A", "8A", "9A"];
+    }
+
+    if (
+      specific_hair_type === "Malaysian" ||
+      specific_hair_type === "Peruvian"
+    ) {
+      return ["6A", "7A", "8A", "9A"];
+    }
+    if (specific_hair_type === "Mongolian") {
+      return ["6A"];
+    }
+  }, [specific_hair_type]);
+
+  const hairFibreOptions = [
+    "Regular synthetic Fibre",
+    "Heat-Resistant Synthetic Fibre",
+  ];
 
   const [guideVisible, setGuideVisible] = useState(false);
 
@@ -215,6 +243,22 @@ const ConfiguratorWig = () => {
             {
               title: "Additional Option",
               value: additional,
+            },
+            {
+              title: "Type of Hair",
+              value: type_of_hair,
+            },
+            {
+              title: `Type of ${type_of_hair} hair`,
+              value: specific_hair_type,
+            },
+            {
+              title: "Hair Grade",
+              value: hair_grade,
+            },
+            {
+              title: "Hair Fibre",
+              value: hair_fibre,
             },
           ]}
         />
@@ -393,6 +437,66 @@ const ConfiguratorWig = () => {
                       </span>
                     </>
                   )} */}
+                  {hairColorOptions.typeOfHair && (
+                    <>
+                      <span className="p-float-label">
+                        <Dropdown
+                          value={type_of_hair}
+                          onChange={(e) => setTypeOfHair(e.value)}
+                          options={hairColorOptions.typeOfHair}
+                          placeholder="Select a preference"
+                          className="wig-dropdown"
+                        />
+                        <label htmlFor="inputtext">Type of Hair</label>
+                      </span>
+                    </>
+                  )}
+
+                  {hairColorOptions.humanHairType &&
+                    type_of_hair === "Human" && (
+                      <>
+                        <span className="p-float-label">
+                          <Dropdown
+                            value={specific_hair_type}
+                            onChange={(e) => setSpecific_hair_type(e.value)}
+                            options={hairColorOptions.humanHairType}
+                            placeholder="Select a preference"
+                            className="wig-dropdown"
+                          />
+                          <label htmlFor="inputtext">Type of Human Hair</label>
+                        </span>
+                      </>
+                    )}
+
+                  {type_of_hair === "Human" && (
+                    <>
+                      <span className="p-float-label">
+                        <Dropdown
+                          value={hair_grade}
+                          onChange={(e) => set_hair_grade(e.value)}
+                          options={hairGradeOptions}
+                          placeholder="Type or select a preference"
+                          className="wig-dropdown"
+                        />
+                        <label htmlFor="inputtext">Hair Grade</label>
+                      </span>
+                    </>
+                  )}
+
+                  {type_of_hair === "Synthetic" && (
+                    <>
+                      <span className="p-float-label">
+                        <Dropdown
+                          value={hair_fibre}
+                          onChange={(e) => set_hair_fibre(e.value)}
+                          options={hairFibreOptions}
+                          placeholder="Type or select a preference"
+                          className="wig-dropdown"
+                        />
+                        <label htmlFor="inputtext">Hair Fibre</label>
+                      </span>
+                    </>
+                  )}
 
                   {hairColorOptions.densityPreference && (
                     <>
@@ -424,6 +528,7 @@ const ConfiguratorWig = () => {
                       </span>
                     </>
                   )}
+
                   {hairColorOptions.additionalOption && (
                     <>
                       <span className="p-float-label">
