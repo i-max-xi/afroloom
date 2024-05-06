@@ -43,11 +43,11 @@ export const hair_guide_mongoloian = require("../Assets/size_guide/Unisex/hair/m
 export const hair_guide_synthethic = require("../Assets/size_guide/Unisex/hair/synthetic_page-0001 (1).jpg");
 export const hair_guide_capSize = require("../Assets/size_guide/Unisex/hair/cap size.jpg");
 export const hair_guide_frontal = require("../Assets/size_guide/Unisex/hair/fwrite_page-0002 (1)-imageonline.co-merged.png");
-// export const hair_guide_density = require("../Assets/size_guide/Unisex/hair/density.jpg");
-// export const hair_guide_texture = require("../Assets/size_guide/Unisex/hair/texture_prefence.jpg");
+export const hair_guide_density = require("../Assets/size_guide/Unisex/hair/density.png");
+export const hair_guide_texture = require("../Assets/size_guide/Unisex/hair/texture (2).jpg");
 
 // other nail guides
-export const nail_guide_type = require("../Assets/size_guide/Unisex/nail/type of nails.png");
+export const nail_guide_type = require("../Assets/size_guide/Unisex/nail/type of nails_page-0001 (1).jpg");
 
 const image_waist_bag = require("../Assets/welcome_3ds/others/waist bag.jpg");
 const image_jacket = require("../Assets/welcome_3ds/others/jacket.png");

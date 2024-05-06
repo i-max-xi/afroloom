@@ -530,7 +530,7 @@ const ConfiguratorUnisex = () => {
                           placeholder="Select a preference"
                           className="wig-dropdown"
                         />
-                        <label htmlFor="inputtext">Nail Material</label>
+                        <label htmlFor="inputtext">Nail Type</label>
                       </span>
                     </>
                   )}

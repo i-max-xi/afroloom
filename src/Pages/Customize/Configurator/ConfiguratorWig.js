@@ -307,22 +307,39 @@ const ConfiguratorWig = () => {
                       ))}
                     </p>
                     <p className="mb-3">
-                      <span className="fw-bold">Frontal</span>
+                      <span className="fw-bold">
+                        Frontal | Closure | Seal Out
+                      </span>
                       {hairGuidesFrontal.map((guide) => (
-                        <img src={guide} width="100%" alt="size-guide" />
+                        <img
+                          className="mt-2"
+                          src={guide}
+                          width="100%"
+                          alt="size-guide"
+                        />
                       ))}
                     </p>
                     <p className="mb-3">
-                      <span className="fw-bold">Density</span>
+                      <span className="fw-bold">Density Preference</span>
                       {hairGuidesDensity.map((guide) => (
-                        <img src={guide} width="100%" alt="size-guide" />
+                        <img
+                          className="mt-2"
+                          src={guide}
+                          width="100%"
+                          alt="size-guide"
+                        />
                       ))}
                     </p>
 
                     <p className="mb-3">
-                      <span className="fw-bold">Texture</span>
+                      <span className="fw-bold">Texture Preference</span>
                       {hairGuidesTexture.map((guide) => (
-                        <img src={guide} width="100%" alt="size-guide" />
+                        <img
+                          className="mt-2"
+                          src={guide}
+                          width="100%"
+                          alt="size-guide"
+                        />
                       ))}
                     </p>
                   </div>

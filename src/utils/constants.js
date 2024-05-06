@@ -10,6 +10,8 @@ import {
   hair_guide_peruvian,
   hair_guide_synthethic,
   nail_guide_type,
+  hair_guide_density,
+  hair_guide_texture,
 } from "../Data/CustomizeDataUnisex";
 
 export const isMobile = window.innerWidth <= 767;
@@ -148,11 +150,9 @@ export const allNailOptions = {
   // ],
   // width: ["Narrow", "Medium", "Wide", "Extra-wide"],
   material: [
-    "Acrylic",
-    "Press on",
-    // "Normal Polish",
-    // "Dip powder",
-    // "Silk or fiberglass wraps",
+    "Standard Press-on Nails",
+    "Gel Press-on Nails",
+    "Acrylic Press-on Nails",
   ],
 };
 
@@ -174,9 +174,9 @@ export const hairGuidesHuman = [
 
 export const hairGuidesFrontal = [hair_guide_frontal];
 
-export const hairGuidesTexture = [];
+export const hairGuidesTexture = [hair_guide_texture];
 
-export const hairGuidesDensity = [];
+export const hairGuidesDensity = [hair_guide_density];
 
 export const hairGuidesSynthethic = [hair_guide_synthethic];
 
