@@ -250,8 +250,9 @@ const Configurator = () => {
       const yardPrice = textureValues[textureCategory].price;
       const yardStart = textureValues[textureCategory].yardStart;
 
-      const newPartPrice =
-        yardStart === 2 ? yardNeeded * (yardPrice / 2) : yardNeeded * yardPrice;
+      // const newPartPrice =
+      //   yardStart === 2 ? yardNeeded * (yardPrice / 2) : yardNeeded * yardPrice;
+      const newPartPrice = yardPrice;
 
       setPartPrices(newPartPrice);
     }

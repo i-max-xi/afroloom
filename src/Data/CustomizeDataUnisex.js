@@ -31,6 +31,7 @@ import bikini_guide from "../Assets/size_guide/Accessories/Female/31.jpg";
 import earring_guide from "../Assets/size_guide/Unisex/earring size chart.jpg";
 import bangle_guide from "../Assets/size_guide/Unisex/bracelet size chart.jpg";
 import hair_guide from "../Assets/size_guide/Unisex/hair length.png";
+import bob_wig_length from "../Assets/size_guide/Unisex/bob wig length size guide.jpg";
 import nail_guide from "../Assets/size_guide/Unisex/nail length guide.jpg";
 
 // other hair guides
@@ -216,7 +217,7 @@ export const mainUnisex = [
     readyIn: 7,
     link: "/configurator-wig/Bob Wig",
     colorVariants: [light_auburn, burgundy, wine_red],
-    sizeGuide: hair_guide,
+    sizeGuide: bob_wig_length,
   },
   {
     id: uuid(),
