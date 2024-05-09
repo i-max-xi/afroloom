@@ -380,7 +380,7 @@ export const textureDescriptions = {
 
 export const textureValues = {
   batik: {
-    price: 25,
+    price: 40,
     yardStart: 1,
   },
   dashiki: {
@@ -388,7 +388,7 @@ export const textureValues = {
     yardStart: 1,
   },
   waxPrint: {
-    price: 70,
+    price: 50,
     yardStart: 2,
   },
   Crochet: {

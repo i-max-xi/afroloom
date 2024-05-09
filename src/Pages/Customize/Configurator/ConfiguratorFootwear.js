@@ -163,7 +163,7 @@ const ConfiguratorFootwear = () => {
   );
   //total price
   const total = (
-    (partPrices + selectedClothing.price + colorPrice) *
+    (partPrices + selectedClothing.price) *
     currencyFactor
   ).toFixed(2);
 
@@ -249,8 +249,9 @@ const ConfiguratorFootwear = () => {
       const yardPrice = textureValues[textureCategory].price;
       const yardStart = textureValues[textureCategory].yardStart;
 
-      const newPartPrice =
-        yardStart === 2 ? yardNeeded * (yardPrice / 2) : yardNeeded * yardPrice;
+      // const newPartPrice =
+      //   yardStart === 2 ? yardNeeded * (yardPrice / 2) : yardNeeded * yardPrice;
+      const newPartPrice = yardPrice;
 
       setPartPrices(newPartPrice);
     }

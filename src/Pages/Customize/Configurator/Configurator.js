@@ -159,12 +159,12 @@ const Configurator = () => {
   const currencyFactor = useSelector((state) => state.currencySymbol.factor);
 
   const [partPrices, setPartPrices] = useState(0);
-  const [colorPrice, setColorPrice] = useState(
-    colorBasePrice * selectedClothing.myNode[0].yardNeeded
-  );
+  // const [colorPrice, setColorPrice] = useState(
+  //   colorBasePrice * selectedClothing.myNode[0].yardNeeded
+  // );
   //total price
   const total = (
-    (partPrices + selectedClothing.price + colorPrice) *
+    (partPrices + selectedClothing.price) *
     currencyFactor
   ).toFixed(2);
 
@@ -206,13 +206,13 @@ const Configurator = () => {
 
     let newPartPrice;
 
-    if (!yardPrice || !yardStart) {
-      setColorPrice(yardNeeded * colorBasePrice);
-      return;
-    } else {
-      newPartPrice =
-        yardStart === 2 ? yardNeeded * (yardPrice / 2) : yardNeeded * yardPrice;
-    }
+    // if (!yardPrice || !yardStart) {
+    //   setColorPrice(yardNeeded * colorBasePrice);
+    //   return;
+    // } else {
+    //   newPartPrice =
+    //     yardStart === 2 ? yardNeeded * (yardPrice / 2) : yardNeeded * yardPrice;
+    // }
 
     setPartPrices(newPartPrice);
   };
