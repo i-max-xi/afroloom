@@ -175,7 +175,7 @@ const ConfiguratorMaleAccessories = () => {
       textureArrays[category].includes(selectedTexture)
     );
 
-    if (textureCategory === "waxPrint") {
+    if (textureCategory === "waxPrint" || !textureCategory) {
       return;
     }
 

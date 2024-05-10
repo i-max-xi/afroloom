@@ -160,11 +160,11 @@ export const mainMaleCustomize = [
     sizeGuide: tshirtlong_guide,
     parts: tshirtLongParts.keys().map(tshirtLongParts),
     sizeOptions: [
-      { label: "S", value: 0.5 },
-      { label: "M", value: 1 },
-      { label: "L", value: 2 },
-      { label: "XL", value: 3 },
-      { label: "2XL", value: 4 },
+      { label: "S", value: 0.5, priceValue: 5 },
+      { label: "M", value: 1, priceValue: 5 },
+      { label: "L", value: 2, priceValue: 5 },
+      { label: "XL", value: 3, priceValue: 40 },
+      { label: "2XL", value: 4, priceValue: 40 },
     ],
     sizeForms: [
       {
