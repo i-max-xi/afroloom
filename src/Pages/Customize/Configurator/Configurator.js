@@ -168,51 +168,21 @@ const Configurator = () => {
     currencyFactor
   ).toFixed(2);
 
-  const handleSizeChange = (factor) => {
-    let yardNeeded;
+  const handleSizeChange = (factor, priceValue) => {
+    // let newPartPrice;
     setSelectedSize(factor);
-
-    switch (factor) {
-      case 0.5:
-        yardNeeded = selectedClothing.otherYards.small;
-        break;
-
-      case 1:
-        yardNeeded = selectedClothing.myNode[0].yardNeeded;
-        break;
-
-      case 2:
-        yardNeeded = selectedClothing.otherYards.large;
-        break;
-
-      case 3:
-        yardNeeded = selectedClothing.otherYards.extraLarge;
-        break;
-
-      case 4:
-        yardNeeded = selectedClothing.otherYards.extraExtraLarge;
-        break;
-
-      default:
-        break;
-    }
 
     const textureCategory = Object.keys(textureArrays).find((category) =>
       textureArrays[category].includes(selectedTexture)
     );
 
-    const yardPrice = textureValues[textureCategory]?.price;
-    const yardStart = textureValues[textureCategory]?.yardStart;
+    if (textureCategory === "waxPrint") {
+      return;
+    }
 
-    let newPartPrice;
+    const yardPrice = textureValues[textureCategory].price;
 
-    // if (!yardPrice || !yardStart) {
-    //   setColorPrice(yardNeeded * colorBasePrice);
-    //   return;
-    // } else {
-    //   newPartPrice =
-    //     yardStart === 2 ? yardNeeded * (yardPrice / 2) : yardNeeded * yardPrice;
-    // }
+    const newPartPrice = yardPrice + priceValue;
 
     setPartPrices(newPartPrice);
   };
@@ -246,13 +216,23 @@ const Configurator = () => {
         textureArrays[category].includes(newTexture)
       );
 
-      const yardNeeded = selectedClothing.myNode[selectedPart].yardNeeded;
+      const sizeValue = selectedClothing.sizeOptions.find(
+        (size) => size.value === selectedSize
+      );
+
+      console.log({ sizeValue });
+
       const yardPrice = textureValues[textureCategory].price;
-      const yardStart = textureValues[textureCategory].yardStart;
 
       // const newPartPrice =
       //   yardStart === 2 ? yardNeeded * (yardPrice / 2) : yardNeeded * yardPrice;
-      const newPartPrice = yardPrice;
+
+      let newPartPrice;
+      if (textureCategory === "waxPrint") {
+        newPartPrice = yardPrice;
+      } else {
+        newPartPrice = yardPrice + sizeValue.priceValue;
+      }
 
       setPartPrices(newPartPrice);
     }
@@ -485,7 +465,9 @@ const Configurator = () => {
                         className={`size-button btn btn-outline-dark ${
                           selectedSize === option.value ? "selected" : ""
                         }`}
-                        onClick={() => handleSizeChange(option.value)}
+                        onClick={() =>
+                          handleSizeChange(option.value, option.priceValue)
+                        }
                       >
                         {option.label}
                       </button>
