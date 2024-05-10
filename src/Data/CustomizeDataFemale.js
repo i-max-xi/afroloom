@@ -724,7 +724,7 @@ export const mainFemaleCustomize = [
     image: skirt,
     myNode: [{ name: "all", yardNeeded: 2 }],
     otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
-    myZoom: 0.8,
+    myZoom: 0.9,
     price: 100,
     sizeGuide: skirt_guide,
     // sizeModels: tshirt_model,
