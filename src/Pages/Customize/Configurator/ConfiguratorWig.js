@@ -482,6 +482,23 @@ const ConfiguratorWig = () => {
                     </>
                   )}
 
+                  {hairColorOptions.densityPreference &&
+                    type_of_hair === "Human" && (
+                      <>
+                        <span className="p-float-label">
+                          <Dropdown
+                            value={densityPreference}
+                            onChange={(e) => setDensityPreference(e.value)}
+                            options={hairColorOptions.densityPreference}
+                            placeholder="Type or Select a preference"
+                            className="wig-dropdown"
+                            editable
+                          />
+                          <label htmlFor="inputtext">Density Preference</label>
+                        </span>
+                      </>
+                    )}
+
                   {hairColorOptions.hairClosure && type_of_hair === "Human" && (
                     <>
                       <span className="p-float-label">
@@ -541,22 +558,6 @@ const ConfiguratorWig = () => {
                       </span>
                     </>
                   )} */}
-
-                  {hairColorOptions.densityPreference &&
-                    type_of_hair === "Human" && (
-                      <>
-                        <span className="p-float-label">
-                          <Dropdown
-                            value={densityPreference}
-                            onChange={(e) => setDensityPreference(e.value)}
-                            options={hairColorOptions.densityPreference}
-                            placeholder="Select a preference"
-                            className="wig-dropdown"
-                          />
-                          <label htmlFor="inputtext">Density Preference</label>
-                        </span>
-                      </>
-                    )}
 
                   {/* {hairColorOptions.texture && (
                     <>

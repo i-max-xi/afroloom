@@ -105,9 +105,9 @@ export const boxWaveOptions = {
     "30 inches",
   ],
   densityPreference: [
-    "Light (natural-looking)",
-    "Medium (standard density)",
-    "Heavy (extra fullness)",
+    // "Light (natural-looking)",
+    "Standard (200grams)",
+    "Heavy (300grams)",
   ],
   laceType: [
     "Swiss lace",
