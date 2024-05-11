@@ -34,6 +34,8 @@ export const braidOptions = {
 
   length: [
     // "Waist-length", "Shoulder-length", "Mid-back length"
+    "8 inches",
+    "10 inches",
     "12 inches",
     "14 inches",
     "16 inches",
@@ -44,13 +46,12 @@ export const braidOptions = {
     "26 inches",
     "28 inches",
     "30 inches",
-    "32 inches",
   ],
 
   curlEnd: ["Tight Curls", "Loose Curls", "Spiral Curls", "S-wave Curls"],
 
   capSize: ["Small", "Medium", "Large"],
-  additionalOption: ["Closure", "Frontal", "Seal Out"],
+  additionalOption: ["Fringe", "Curtain Bangs", "Side Bangs"],
   laceType: [
     "Swiss lace",
     "HD lace",
@@ -66,6 +67,9 @@ export const braidOptions = {
     "Mongolian",
     "Peruvian",
   ].sort(),
+  hairQuality: ["Single Drawn", "Double Drawn", "Super Double Drawn"],
+  hairStyling: ["Middle Part", "Side Part"],
+  hairClosure: ["Closure (4x4)", "Frontal (13 x 4)"],
   hamanHairGrades: [],
 };
 
@@ -87,6 +91,8 @@ export const boxWaveOptions = {
   ],
 
   length: [
+    "8 inches",
+    "10 inches",
     "12 inches",
     "14 inches",
     "16 inches",
@@ -97,7 +103,6 @@ export const boxWaveOptions = {
     "26 inches",
     "28 inches",
     "30 inches",
-    "32 inches",
   ],
   densityPreference: [
     "Light (natural-looking)",
@@ -112,7 +117,7 @@ export const boxWaveOptions = {
   ],
 
   capSize: ["Small", "Medium", "Large"],
-  additionalOption: ["Closure", "Frontal", "Seal Out"],
+  additionalOption: ["Fringe", "Curtain Bangs", "Side Bangs"],
   typeOfHair: ["Human", "Synthetic"],
   humanHairType: [
     "Brazilian",
@@ -122,6 +127,9 @@ export const boxWaveOptions = {
     "Mongolian",
     "Peruvian",
   ].sort(),
+  hairQuality: ["Single Drawn", "Double Drawn", "Super Double Drawn"],
+  hairStyling: ["Middle Part", "Side Part"],
+  hairClosure: ["Closure (4x4)", "Frontal (13 x 4)"],
   hamanHairGrades: [],
 };
 
@@ -133,18 +141,19 @@ export const boxWigOptions = {
     "10 inches",
     "12 inches",
     "14 inches",
-    // "20 inches",
-    // "22 inches",
-    // "24 inches",
-    // "26 inches",
-    // "28 inches",
-    // "30 inches",
-    // "32 inches",
+    "16 inches",
+    "18 inches",
+    "20 inches",
+    "22 inches",
+    "24 inches",
+    "26 inches",
+    "28 inches",
+    "30 inches",
   ],
 
   texture: ["Straight", "Wavy", "Curly"],
   capSize: ["Small", "Medium", "Large"],
-  additionalOption: ["Closure", "Frontal", "Seal Out"],
+  additionalOption: ["Fringe", "Curtain Bangs", "Side Bangs"],
   laceType: [
     "Swiss lace",
     "HD lace",
@@ -160,6 +169,9 @@ export const boxWigOptions = {
     "Mongolian",
     "Peruvian",
   ].sort(),
+  hairQuality: ["Single Drawn", "Double Drawn", "Super Double Drawn"],
+  hairStyling: ["Middle Part", "Side Part"],
+  hairClosure: ["Closure (4x4)", "Frontal (13 x 4)"],
   hamanHairGrades: [],
 };
 

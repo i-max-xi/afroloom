@@ -65,6 +65,9 @@ const ConfiguratorWig = () => {
   const [specific_hair_type, setSpecific_hair_type] = useState(null);
   const [hair_grade, set_hair_grade] = useState(null);
   const [hair_fibre, set_hair_fibre] = useState(null);
+  const [hair_quality, set_hair_quality] = useState(null);
+  const [hair_styling, set_hair_styling] = useState(null);
+  const [hair_closure, set_hair_closure] = useState(null);
 
   const hairGradeOptions = useMemo(() => {
     if (specific_hair_type === "Brazilian") {
@@ -247,6 +250,18 @@ const ConfiguratorWig = () => {
             {
               title: "Type of Hair",
               value: type_of_hair,
+            },
+            {
+              title: "Hair Quality",
+              value: hair_quality,
+            },
+            {
+              title: "Closure Type",
+              value: hair_closure,
+            },
+            {
+              title: "Styling Option",
+              value: hair_styling,
             },
             {
               title: `Type of ${type_of_hair} hair`,
@@ -452,23 +467,52 @@ const ConfiguratorWig = () => {
                     </>
                   )}
 
-                  {hairColorOptions.humanHairType &&
-                    type_of_hair === "Human" && (
-                      <>
-                        <span className="p-float-label">
-                          <Dropdown
-                            value={specific_hair_type}
-                            onChange={(e) => setSpecific_hair_type(e.value)}
-                            options={hairColorOptions.humanHairType}
-                            placeholder="Select a preference"
-                            className="wig-dropdown"
-                          />
-                          <label htmlFor="inputtext">Type of Human Hair</label>
-                        </span>
-                      </>
-                    )}
+                  {hairColorOptions.hairQuality && type_of_hair === "Human" && (
+                    <>
+                      <span className="p-float-label">
+                        <Dropdown
+                          value={hair_quality}
+                          onChange={(e) => set_hair_quality(e.value)}
+                          options={hairColorOptions.hairQuality}
+                          placeholder="Select a preference"
+                          className="wig-dropdown"
+                        />
+                        <label htmlFor="inputtext">Hair Quality</label>
+                      </span>
+                    </>
+                  )}
 
-                  {type_of_hair === "Human" && (
+                  {hairColorOptions.hairClosure && type_of_hair === "Human" && (
+                    <>
+                      <span className="p-float-label">
+                        <Dropdown
+                          value={hair_closure}
+                          onChange={(e) => set_hair_closure(e.value)}
+                          options={hairColorOptions.hairClosure}
+                          placeholder="Select a preference"
+                          className="wig-dropdown"
+                        />
+                        <label htmlFor="inputtext">Closure Type</label>
+                      </span>
+                    </>
+                  )}
+
+                  {hairColorOptions.hairStyling && type_of_hair === "Human" && (
+                    <>
+                      <span className="p-float-label">
+                        <Dropdown
+                          value={hair_styling}
+                          onChange={(e) => set_hair_styling(e.value)}
+                          options={hairColorOptions.hairStyling}
+                          placeholder="Select a preference"
+                          className="wig-dropdown"
+                        />
+                        <label htmlFor="inputtext">Styling Option</label>
+                      </span>
+                    </>
+                  )}
+
+                  {/* {type_of_hair === "Human" && (
                     <>
                       <span className="p-float-label">
                         <Dropdown
@@ -481,9 +525,9 @@ const ConfiguratorWig = () => {
                         <label htmlFor="inputtext">Hair Grade</label>
                       </span>
                     </>
-                  )}
+                  )} */}
 
-                  {type_of_hair === "Synthetic" && (
+                  {/* {type_of_hair === "Synthetic" && (
                     <>
                       <span className="p-float-label">
                         <Dropdown
@@ -496,24 +540,25 @@ const ConfiguratorWig = () => {
                         <label htmlFor="inputtext">Hair Fibre</label>
                       </span>
                     </>
-                  )}
+                  )} */}
 
-                  {hairColorOptions.densityPreference && (
-                    <>
-                      <span className="p-float-label">
-                        <Dropdown
-                          value={densityPreference}
-                          onChange={(e) => setDensityPreference(e.value)}
-                          options={hairColorOptions.densityPreference}
-                          placeholder="Select a preference"
-                          className="wig-dropdown"
-                        />
-                        <label htmlFor="inputtext">Density Preference</label>
-                      </span>
-                    </>
-                  )}
+                  {hairColorOptions.densityPreference &&
+                    type_of_hair === "Human" && (
+                      <>
+                        <span className="p-float-label">
+                          <Dropdown
+                            value={densityPreference}
+                            onChange={(e) => setDensityPreference(e.value)}
+                            options={hairColorOptions.densityPreference}
+                            placeholder="Select a preference"
+                            className="wig-dropdown"
+                          />
+                          <label htmlFor="inputtext">Density Preference</label>
+                        </span>
+                      </>
+                    )}
 
-                  {hairColorOptions.texture && (
+                  {/* {hairColorOptions.texture && (
                     <>
                       <span className="p-float-label">
                         <Dropdown
@@ -527,22 +572,23 @@ const ConfiguratorWig = () => {
                         <label htmlFor="inputtext">Texture Preference</label>
                       </span>
                     </>
-                  )}
+                  )} */}
 
-                  {hairColorOptions.additionalOption && (
-                    <>
-                      <span className="p-float-label">
-                        <Dropdown
-                          value={additional}
-                          onChange={(e) => setAdditional(e.value)}
-                          options={hairColorOptions.additionalOption}
-                          placeholder="Select a preference"
-                          className="wig-dropdown"
-                        />
-                        <label htmlFor="inputtext">Additional Option</label>
-                      </span>
-                    </>
-                  )}
+                  {hairColorOptions.additionalOption &&
+                    type_of_hair === "Human" && (
+                      <>
+                        <span className="p-float-label">
+                          <Dropdown
+                            value={additional}
+                            onChange={(e) => setAdditional(e.value)}
+                            options={hairColorOptions.additionalOption}
+                            placeholder="Select a preference"
+                            className="wig-dropdown"
+                          />
+                          <label htmlFor="inputtext">Additional Option</label>
+                        </span>
+                      </>
+                    )}
                   {hairColorOptions.laceType && additional === "Frontal" && (
                     <>
                       <span className="p-float-label">
