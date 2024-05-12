@@ -33,19 +33,33 @@ export const braidOptions = {
   ],
 
   length: [
-    // "Waist-length", "Shoulder-length", "Mid-back length"
-    "8 inches",
-    "10 inches",
-    "12 inches",
-    "14 inches",
-    "16 inches",
-    "18 inches",
-    "20 inches",
-    "22 inches",
-    "24 inches",
-    "26 inches",
-    "28 inches",
-    "30 inches",
+    { title: "8 inches", SDamount: 700, DDamount: 1000, SDDamount: 1200 },
+    { title: "10 inches", SDamount: 900, DDamount: 1250, SDDamount: 1200 },
+    { title: "12 inches", SDamount: 950, DDamount: 1400, SDDamount: 1350 },
+    { title: "14 inches", SDamount: 1100, DDamount: 1600, SDDamount: 1750 },
+    { title: "16 inches", SDamount: 1200, DDamount: 1750, SDDamount: 1950 },
+    { title: "18 inches", SDamount: 1300, DDamount: 1900, SDDamount: 2100 },
+    { title: "20 inches", SDamount: 1400, DDamount: 2350, SDDamount: 2450 },
+    { title: "22 inches", SDamount: 1650, DDamount: 2450, SDDamount: 2550 },
+    { title: "24 inches", SDamount: 1800, DDamount: 2550, SDDamount: 2750 },
+    {
+      title: "26 inches",
+      SDamount: { standard: 1950, heavy: 2500 },
+      DDamount: { standard: 2650, heavy: 3550 },
+      SDDamount: { standard: 2850, heavy: 3750 },
+    },
+    {
+      title: "28 inches",
+      SDamount: { standard: 2250, heavy: 2950 },
+      DDamount: { standard: 2750, heavy: 3700 },
+      SDDamount: { standard: 2950, heavy: 3800 },
+    },
+    {
+      title: "30 inches",
+      SDamount: { standard: 2450, heavy: 3250 },
+      DDamount: { standard: 2850, heavy: 3850 },
+      SDDamount: { standard: 3050, heavy: 4000 },
+    },
   ],
 
   curlEnd: ["Tight Curls", "Loose Curls", "Spiral Curls", "S-wave Curls"],
@@ -91,19 +105,35 @@ export const boxWaveOptions = {
   ],
 
   length: [
-    "8 inches",
-    "10 inches",
-    "12 inches",
-    "14 inches",
-    "16 inches",
-    "18 inches",
-    "20 inches",
-    "22 inches",
-    "24 inches",
-    "26 inches",
-    "28 inches",
-    "30 inches",
+    { title: "8 inches", SDamount: 700, DDamount: 1000, SDDamount: 1200 },
+    { title: "10 inches", SDamount: 900, DDamount: 1250, SDDamount: 1200 },
+    { title: "12 inches", SDamount: 950, DDamount: 1400, SDDamount: 1350 },
+    { title: "14 inches", SDamount: 1100, DDamount: 1600, SDDamount: 1750 },
+    { title: "16 inches", SDamount: 1200, DDamount: 1750, SDDamount: 1950 },
+    { title: "18 inches", SDamount: 1300, DDamount: 1900, SDDamount: 2100 },
+    { title: "20 inches", SDamount: 1400, DDamount: 2350, SDDamount: 2450 },
+    { title: "22 inches", SDamount: 1650, DDamount: 2450, SDDamount: 2550 },
+    { title: "24 inches", SDamount: 1800, DDamount: 2550, SDDamount: 2750 },
+    {
+      title: "26 inches",
+      SDamount: { standard: 1950, heavy: 2500 },
+      DDamount: { standard: 2650, heavy: 3550 },
+      SDDamount: { standard: 2850, heavy: 3750 },
+    },
+    {
+      title: "28 inches",
+      SDamount: { standard: 2250, heavy: 2950 },
+      DDamount: { standard: 2750, heavy: 3700 },
+      SDDamount: { standard: 2950, heavy: 3800 },
+    },
+    {
+      title: "30 inches",
+      SDamount: { standard: 2450, heavy: 3250 },
+      DDamount: { standard: 2850, heavy: 3850 },
+      SDDamount: { standard: 3050, heavy: 4000 },
+    },
   ],
+
   densityPreference: [
     // "Light (natural-looking)",
     "Standard (200grams)",
@@ -137,18 +167,33 @@ export const boxWigOptions = {
   colors: ["Light Auburn", "Burgundy", "Wine Red"],
 
   length: [
-    "8 inches",
-    "10 inches",
-    "12 inches",
-    "14 inches",
-    "16 inches",
-    "18 inches",
-    "20 inches",
-    "22 inches",
-    "24 inches",
-    "26 inches",
-    "28 inches",
-    "30 inches",
+    { title: "8 inches", SDamount: 700, DDamount: 1000, SDDamount: 1200 },
+    { title: "10 inches", SDamount: 900, DDamount: 1250, SDDamount: 1200 },
+    { title: "12 inches", SDamount: 950, DDamount: 1400, SDDamount: 1350 },
+    { title: "14 inches", SDamount: 1100, DDamount: 1600, SDDamount: 1750 },
+    { title: "16 inches", SDamount: 1200, DDamount: 1750, SDDamount: 1950 },
+    { title: "18 inches", SDamount: 1300, DDamount: 1900, SDDamount: 2100 },
+    { title: "20 inches", SDamount: 1400, DDamount: 2350, SDDamount: 2450 },
+    { title: "22 inches", SDamount: 1650, DDamount: 2450, SDDamount: 2550 },
+    { title: "24 inches", SDamount: 1800, DDamount: 2550, SDDamount: 2750 },
+    {
+      title: "26 inches",
+      SDamount: { standard: 1950, heavy: 2500 },
+      DDamount: { standard: 2650, heavy: 3550 },
+      SDDamount: { standard: 2850, heavy: 3750 },
+    },
+    {
+      title: "28 inches",
+      SDamount: { standard: 2250, heavy: 2950 },
+      DDamount: { standard: 2750, heavy: 3700 },
+      SDDamount: { standard: 2950, heavy: 3800 },
+    },
+    {
+      title: "30 inches",
+      SDamount: { standard: 2450, heavy: 3250 },
+      DDamount: { standard: 2850, heavy: 3850 },
+      SDDamount: { standard: 3050, heavy: 4000 },
+    },
   ],
 
   texture: ["Straight", "Wavy", "Curly"],
@@ -212,3 +257,5 @@ export const hairGuidesSynthethic = [hair_guide_synthethic];
 export const hairGuidesCapSize = [hair_guide_capSize];
 
 export const nailGuidesType = [nail_guide_type];
+
+export const allowedDensityPrefences = ["26 inches", "28 inches", "30 inches"];

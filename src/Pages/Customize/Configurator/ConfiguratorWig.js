@@ -16,6 +16,7 @@ import {
   mainUnisex,
 } from "../../../Data/CustomizeDataUnisex";
 import {
+  allowedDensityPrefences,
   boxWaveOptions,
   boxWigOptions,
   braidOptions,
@@ -29,6 +30,7 @@ import {
 } from "../../../utils/constants";
 import WigConfirmation from "./WigConfirmation";
 import { Dialog } from "primereact/dialog";
+import { colorOptions } from "./arrays/neededArrays";
 
 const ConfiguratorWig = () => {
   const { Id } = useParams();
@@ -56,7 +58,7 @@ const ConfiguratorWig = () => {
   );
   const [curlyendstyle, setCurlyEndStyle] = useState(null);
   const [capSize, setCapSize] = useState(null);
-  const [braidLength, setBraidLength] = useState(null);
+  const [braidLength, setBraidLength] = useState(hairColorOptions.length[0]);
   const [densityPreference, setDensityPreference] = useState(null);
   const [laceType, setLaceType] = useState(null);
   const [texture, setTexture] = useState(null);
@@ -69,29 +71,29 @@ const ConfiguratorWig = () => {
   const [hair_styling, set_hair_styling] = useState(null);
   const [hair_closure, set_hair_closure] = useState(null);
 
-  const hairGradeOptions = useMemo(() => {
-    if (specific_hair_type === "Brazilian") {
-      return ["6A", "7A", "8A", "9A", "10A"];
-    }
-    if (specific_hair_type === "Cambodian" || specific_hair_type === "Indian") {
-      return ["6A", "7A", "8A", "9A"];
-    }
+  // const hairGradeOptions = useMemo(() => {
+  //   if (specific_hair_type === "Brazilian") {
+  //     return ["6A", "7A", "8A", "9A", "10A"];
+  //   }
+  //   if (specific_hair_type === "Cambodian" || specific_hair_type === "Indian") {
+  //     return ["6A", "7A", "8A", "9A"];
+  //   }
 
-    if (
-      specific_hair_type === "Malaysian" ||
-      specific_hair_type === "Peruvian"
-    ) {
-      return ["6A", "7A", "8A", "9A"];
-    }
-    if (specific_hair_type === "Mongolian") {
-      return ["6A"];
-    }
-  }, [specific_hair_type]);
+  //   if (
+  //     specific_hair_type === "Malaysian" ||
+  //     specific_hair_type === "Peruvian"
+  //   ) {
+  //     return ["6A", "7A", "8A", "9A"];
+  //   }
+  //   if (specific_hair_type === "Mongolian") {
+  //     return ["6A"];
+  //   }
+  // }, [specific_hair_type]);
 
-  const hairFibreOptions = [
-    "Regular synthetic Fibre",
-    "Heat-Resistant Synthetic Fibre",
-  ];
+  // const hairFibreOptions = [
+  //   "Regular synthetic Fibre",
+  //   "Heat-Resistant Synthetic Fibre",
+  // ];
 
   const [guideVisible, setGuideVisible] = useState(false);
 
@@ -111,13 +113,69 @@ const ConfiguratorWig = () => {
   const currencySymbol = useSelector((state) => state.currencySymbol.symbol);
   const currencyFactor = useSelector((state) => state.currencySymbol.factor);
 
-  const [partPrices, setPartPrices] = useState(0);
+  const [lengthPrice, setLengthPrice] = useState(0);
+
+  const additionalOptionPrice = useMemo(() => {
+    if (additional !== null) {
+      return 50;
+    } else {
+      return 0;
+    }
+  }, [additional]);
 
   //total price
   const total = (
-    (partPrices + selectedClothing.price) *
+    (lengthPrice + selectedClothing.price + additionalOptionPrice) *
     currencyFactor
   ).toFixed(2);
+
+  useEffect(() => {
+    const selectedLength = hairColorOptions.length.find(
+      (item) => item.title === braidLength.title
+    );
+
+    if (allowedDensityPrefences.includes(braidLength.title)) {
+      if (hair_quality === hairColorOptions.hairQuality[0]) {
+        densityPreference === "Standard (200grams)"
+          ? setLengthPrice(selectedLength.SDamount.standard)
+          : setLengthPrice(selectedLength.SDamount.heavy);
+      }
+
+      if (hair_quality === hairColorOptions.hairQuality[1]) {
+        densityPreference === "Standard (200grams)"
+          ? setLengthPrice(selectedLength.DDamount.standard)
+          : setLengthPrice(selectedLength.DDamount.heavy);
+      }
+
+      if (hair_quality === hairColorOptions.hairQuality[2]) {
+        densityPreference === "Standard (200grams)"
+          ? setLengthPrice(selectedLength.SDDamount.standard)
+          : setLengthPrice(selectedLength.SDDamount.heavy);
+      }
+    } else {
+      if (hair_quality === hairColorOptions.hairQuality[0]) {
+        setLengthPrice(selectedLength.SDamount);
+      }
+
+      if (hair_quality === hairColorOptions.hairQuality[1]) {
+        setLengthPrice(selectedLength.DDamount);
+      }
+
+      if (hair_quality === hairColorOptions.hairQuality[2]) {
+        setLengthPrice(selectedLength.SDDamount);
+      }
+    }
+  }, [braidLength, hair_quality, densityPreference]);
+
+  const handleLengthChange = (selectedLength) => {
+    const selectedOption = hairColorOptions.length.find(
+      (item) => item.title === selectedLength
+    );
+    if (selectedOption) {
+      setBraidLength(selectedOption); // Set the title in state
+      // setLengthPrice(selectedOption.amount); // Access the amount
+    }
+  };
 
   // Confrimation or not
   const [showConfirmation, setShowConfirmation] = useState(false);
@@ -220,7 +278,7 @@ const ConfiguratorWig = () => {
           allSpecifications={[
             {
               title: "Hair Length",
-              value: braidLength,
+              value: braidLength.title,
             },
             {
               title: "Cap Size",
@@ -409,30 +467,16 @@ const ConfiguratorWig = () => {
                     <>
                       <span className="p-float-label mt-2">
                         <Dropdown
-                          value={braidLength}
-                          onChange={(e) => setBraidLength(e.value)}
-                          options={hairColorOptions.length}
+                          value={braidLength.title} // Set value to the title
+                          onChange={(e) => handleLengthChange(e.value)}
+                          options={hairColorOptions.length.map(
+                            (item) => item.title
+                          )}
                           placeholder="Type or select a preference"
                           className="wig-dropdown"
                           editable
                         />
                         <label htmlFor="inputtext">Hair Length</label>
-                      </span>
-                    </>
-                  )}
-
-                  {hairColorOptions.capSize && (
-                    <>
-                      <span className="p-float-label">
-                        <Dropdown
-                          value={capSize}
-                          onChange={(e) => setCapSize(e.value)}
-                          options={hairColorOptions.capSize}
-                          placeholder="Type or select a preference"
-                          className="wig-dropdown"
-                          editable
-                        />
-                        <label htmlFor="inputtext">Cap Size</label>
                       </span>
                     </>
                   )}
@@ -493,8 +537,24 @@ const ConfiguratorWig = () => {
                             placeholder="Type or Select a preference"
                             className="wig-dropdown"
                             editable
+                            disabled={
+                              !allowedDensityPrefences.includes(
+                                braidLength.title
+                              )
+                            }
                           />
-                          <label htmlFor="inputtext">Density Preference</label>
+                          <label
+                            style={{
+                              color: !allowedDensityPrefences.includes(
+                                braidLength.title
+                              )
+                                ? 0.3
+                                : 1,
+                            }}
+                            htmlFor="inputtext"
+                          >
+                            Density Preference
+                          </label>
                         </span>
                       </>
                     )}
@@ -525,6 +585,22 @@ const ConfiguratorWig = () => {
                           className="wig-dropdown"
                         />
                         <label htmlFor="inputtext">Styling Option</label>
+                      </span>
+                    </>
+                  )}
+
+                  {hairColorOptions.capSize && (
+                    <>
+                      <span className="p-float-label">
+                        <Dropdown
+                          value={capSize}
+                          onChange={(e) => setCapSize(e.value)}
+                          options={hairColorOptions.capSize}
+                          placeholder="Type or select a preference"
+                          className="wig-dropdown"
+                          editable
+                        />
+                        <label htmlFor="inputtext">Cap Size</label>
                       </span>
                     </>
                   )}

@@ -170,7 +170,7 @@ export const mainUnisex = [
     id: uuid(),
     name: "Spiral Curls Braids Wig",
     image: box_braid,
-    price: 50,
+    price: 100,
     readyIn: 7,
     link: "/configurator-wig/Spiral Curls Braids Wig",
     colorVariants: [
@@ -187,7 +187,7 @@ export const mainUnisex = [
     // image: body_wave,
     image:
       "https://www.sheshappyhair.com/cdn/shop/products/bodywavewig_sheshappyhair_realhumanhair_da9c25e5-56b9-4364-ad50-8c14a88d249d_835x.png?v=1664464064",
-    price: 50,
+    price: 100,
     readyIn: 7,
     link: "/configurator-wig/Body Wave Wig",
     colorVariants: [
@@ -213,7 +213,7 @@ export const mainUnisex = [
     image:
       "https://www.josephs-wigs.com/media/wysiwyg/Josephs-Wigs-Bob-Wigs-Dark-Bob-Style-Wig.jpg",
     model: bangles_model,
-    price: 50,
+    price: 100,
     readyIn: 7,
     link: "/configurator-wig/Bob Wig",
     colorVariants: [light_auburn, burgundy, wine_red],
