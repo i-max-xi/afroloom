@@ -632,9 +632,6 @@ const ConfiguratorUnisex = () => {
                         selectedTexture={state.texture[selectedPart]}
                         showGlow={showGlow}
                       />
-                      {!noSpinFor.includes(selectedClothing.name) && (
-                        <CameraControls />
-                      )}
                     </Canvas>
                   </div>
 

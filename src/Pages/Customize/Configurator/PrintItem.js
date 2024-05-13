@@ -51,7 +51,7 @@ function PrintItem({ texture, selectedTexture, handleTextureChange }) {
             <img
               alt={`Texture`}
               src={texture}
-              height="150px"
+              height="250px"
               width="250px"
               style={{ alignSelf: "center", WebkitTouchCallout: "none" }}
               onContextMenu={(e) => e.preventDefault()}
