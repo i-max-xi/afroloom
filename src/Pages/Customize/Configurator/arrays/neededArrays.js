@@ -5,6 +5,13 @@ import batik3 from "../textures/tie_and_dye/8. tomogyi.jpg";
 import batik4 from "../textures/tie_and_dye/9. gye nyame.jpg";
 import batik5 from "../textures/tie_and_dye/10 medofo.jpg";
 
+import nailDesign1 from "../textures/nail designs/IMG-20240512-WA0018.jpg";
+import nailDesign2 from "../textures/nail designs/IMG-20240512-WA0019.jpg";
+import nailDesign3 from "../textures/nail designs/IMG-20240512-WA0020.jpg";
+import nailDesign4 from "../textures/nail designs/IMG-20240512-WA0021.jpg";
+import nailDesign5 from "../textures/nail designs/3-removebg-preview.png";
+import nailDesign6 from "../textures/nail designs/3.png";
+
 import dashiki1 from "../textures/dashiki1.jpg";
 import dashiki2 from "../textures/dashiki2.jpg";
 import dashiki3 from "../textures/dashiki3.jpg";
@@ -119,6 +126,14 @@ export const textureArrays = {
   batik: [batik2, batik3, batik4, batik5],
 
   waxPrint: [waxPrint1, waxPrint2, waxPrint3, waxPrint4, waxPrint5, waxPrint6],
+  nailDesigns: [
+    nailDesign5,
+    nailDesign6,
+    nailDesign1,
+    nailDesign2,
+    nailDesign3,
+    nailDesign4,
+  ],
 };
 
 export const textureDescriptions = {

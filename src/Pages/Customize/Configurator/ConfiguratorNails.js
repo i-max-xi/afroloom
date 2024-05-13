@@ -197,7 +197,7 @@ const ConfiguratorUnisex = () => {
 
   const handleColorChange = (newColor) => {
     state.color[selectedPart] = newColor;
-    state.texture[selectedPart] = null;
+    // state.texture[selectedPart] = null;
     setSelectedPrintOn(newColor);
 
     setPartPrices(0);
@@ -207,7 +207,7 @@ const ConfiguratorUnisex = () => {
   const handlePrintsChange = (newTexture) => {
     if (selectedPart !== null) {
       state.texture[selectedPart] = newTexture;
-      state.color[selectedPart] = null;
+      // state.color[selectedPart] = null;
       // setSelectedPrintOn(newTexture);
       // setSelectedTexture(newTexture); // needed to transfer to size
     }
@@ -274,6 +274,14 @@ const ConfiguratorUnisex = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [selectedClothing.name]);
+
+  const handleClearDesign = () => {
+    state.texture[selectedPart] = null;
+  };
+
+  const handleClearColor = () => {
+    state.color[selectedPart] = null;
+  };
 
   return (
     <>
@@ -356,7 +364,7 @@ const ConfiguratorUnisex = () => {
                 })}
 
                 <h5 className="mt-3">Nails</h5>
-                <span
+                {/* <span
                   style={{
                     fontSize: "0.8rem",
                     display: "block",
@@ -364,7 +372,41 @@ const ConfiguratorUnisex = () => {
                   }}
                 >
                   Apply Color
-                </span>
+                </span> */}
+                <div className="d-flex justify-content-between w-100">
+                  <span
+                    style={{
+                      fontSize: "0.8rem",
+                      display: "block",
+                      fontWeight: "500",
+                    }}
+                  >
+                    Apply Color
+                  </span>
+                  <span
+                    style={{
+                      fontSize: "0.8rem",
+                      display: "block",
+                      fontWeight: "600",
+                      color: "orangered",
+                      textTransform: "capitalize",
+                    }}
+                    onClick={handleClearColor}
+                  >
+                    Clear
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      class="bi bi-x-circle d-inline m-1"
+                      viewBox="0 0 16 16"
+                    >
+                      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                      <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
+                    </svg>
+                  </span>
+                </div>
                 <div className="color-buttons-container mt-3">
                   <Carousel
                     value={colorOptions}
@@ -388,18 +430,52 @@ const ConfiguratorUnisex = () => {
                   />
                 </div>
 
-                <span
+                {/* <span
                   style={{
                     fontSize: "0.8rem",
                     display: "block",
                     fontWeight: "500",
                   }}
                 >
-                  Apply Designs
-                </span>
+                  
+                </span> */}
+                <div className="d-flex justify-content-between w-100">
+                  <span
+                    style={{
+                      fontSize: "0.8rem",
+                      display: "block",
+                      fontWeight: "500",
+                    }}
+                  >
+                    Apply Designs
+                  </span>
+                  <span
+                    style={{
+                      fontSize: "0.8rem",
+                      display: "block",
+                      fontWeight: "600",
+                      color: "orangered",
+                      textTransform: "capitalize",
+                    }}
+                    onClick={handleClearDesign}
+                  >
+                    Clear
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="16"
+                      height="16"
+                      fill="currentColor"
+                      class="bi bi-x-circle d-inline m-1"
+                      viewBox="0 0 16 16"
+                    >
+                      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                      <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
+                    </svg>
+                  </span>
+                </div>
                 <div className="color-buttons-container mt-3">
                   <Carousel
-                    value={textureArrays.batik}
+                    value={textureArrays.nailDesigns}
                     numVisible={4}
                     numScroll={2}
                     showIndicators={false}
@@ -420,9 +496,6 @@ const ConfiguratorUnisex = () => {
                       fontSize: "0.8rem",
                       display: "block",
                       fontWeight: "500",
-                    }}
-                    onClick={() => {
-                      setGuideVisible(true);
                     }}
                   >
                     Specifications
