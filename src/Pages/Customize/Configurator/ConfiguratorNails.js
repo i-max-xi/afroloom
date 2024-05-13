@@ -260,7 +260,7 @@ const ConfiguratorUnisex = () => {
     if (selectedClothing.name === "Body Wave Wig") {
       return;
     }
-    if (selectedClothing.name === "Bob Wig") {
+    if (selectedClothing.name === "Bone Straight Wig") {
       return;
     }
     return allNailOptions;

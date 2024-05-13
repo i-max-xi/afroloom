@@ -163,8 +163,65 @@ export const boxWaveOptions = {
   hamanHairGrades: [],
 };
 
-export const boxWigOptions = {
-  colors: ["Light Auburn", "Burgundy", "Wine Red"],
+export const boneStrightWigOptions = {
+  colors: ["Burgary", "Natural", "Blonde"],
+
+  length: [
+    { title: "8 inches", SDamount: 700, DDamount: 1000, SDDamount: 1200 },
+    { title: "10 inches", SDamount: 900, DDamount: 1250, SDDamount: 1200 },
+    { title: "12 inches", SDamount: 950, DDamount: 1400, SDDamount: 1350 },
+    { title: "14 inches", SDamount: 1100, DDamount: 1600, SDDamount: 1750 },
+    { title: "16 inches", SDamount: 1200, DDamount: 1750, SDDamount: 1950 },
+    { title: "18 inches", SDamount: 1300, DDamount: 1900, SDDamount: 2100 },
+    { title: "20 inches", SDamount: 1400, DDamount: 2350, SDDamount: 2450 },
+    { title: "22 inches", SDamount: 1650, DDamount: 2450, SDDamount: 2550 },
+    { title: "24 inches", SDamount: 1800, DDamount: 2550, SDDamount: 2750 },
+    {
+      title: "26 inches",
+      SDamount: { standard: 1950, heavy: 2500 },
+      DDamount: { standard: 2650, heavy: 3550 },
+      SDDamount: { standard: 2850, heavy: 3750 },
+    },
+    {
+      title: "28 inches",
+      SDamount: { standard: 2250, heavy: 2950 },
+      DDamount: { standard: 2750, heavy: 3700 },
+      SDDamount: { standard: 2950, heavy: 3800 },
+    },
+    {
+      title: "30 inches",
+      SDamount: { standard: 2450, heavy: 3250 },
+      DDamount: { standard: 2850, heavy: 3850 },
+      SDDamount: { standard: 3050, heavy: 4000 },
+    },
+  ],
+
+  texture: ["Straight", "Wavy", "Curly"],
+  capSize: ["Small", "Medium", "Large"],
+  additionalOption: ["Fringe", "Curtain Bangs", "Side Bangs"],
+  laceType: [
+    "Swiss lace",
+    "HD lace",
+    "Transparent lace",
+    "None (for those who prefer a non-lace wig)",
+  ],
+  typeOfHair: ["Human", "Synthetic"],
+  humanHairType: [
+    "Brazilian",
+    "Cambodian",
+    "Indian",
+    "Malaysian",
+    "Mongolian",
+    "Peruvian",
+  ].sort(),
+  hairQuality: ["Single Drawn", "Double Drawn", "Super Double Drawn"],
+  hairStyling: ["Middle Part", "Side Part"],
+  hairClosure: ["Closure (4x4)", "Frontal (13 x 4)"],
+  hamanHairGrades: [],
+};
+
+export const deepWaveWigOptions = {
+  colors: ["Burgary", "Natural", "Blonde"],
 
   length: [
     { title: "8 inches", SDamount: 700, DDamount: 1000, SDDamount: 1200 },

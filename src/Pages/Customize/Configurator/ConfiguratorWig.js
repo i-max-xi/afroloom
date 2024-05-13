@@ -18,7 +18,7 @@ import {
 import {
   allowedDensityPrefences,
   boxWaveOptions,
-  boxWigOptions,
+  boneStrightWigOptions,
   braidOptions,
   hairGuides,
   hairGuidesCapSize,
@@ -27,6 +27,7 @@ import {
   hairGuidesHuman,
   hairGuidesSynthethic,
   hairGuidesTexture,
+  deepWaveWigOptions,
 } from "../../../utils/constants";
 import WigConfirmation from "./WigConfirmation";
 import { Dialog } from "primereact/dialog";
@@ -47,8 +48,12 @@ const ConfiguratorWig = () => {
     if (selectedClothing.name === "Body Wave Wig") {
       return boxWaveOptions;
     }
-    if (selectedClothing.name === "Bob Wig") {
-      return boxWigOptions;
+    if (selectedClothing.name === "Bone Straight Wig") {
+      return boneStrightWigOptions;
+    }
+
+    if (selectedClothing.name === "Deep Wave Wig") {
+      return deepWaveWigOptions;
     }
   }, [selectedClothing.name]);
 

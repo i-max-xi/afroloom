@@ -31,7 +31,7 @@ import bikini_guide from "../Assets/size_guide/Accessories/Female/31.jpg";
 import earring_guide from "../Assets/size_guide/Unisex/earring size chart.jpg";
 import bangle_guide from "../Assets/size_guide/Unisex/bracelet size chart.jpg";
 import hair_guide from "../Assets/size_guide/Unisex/hair length.png";
-import bob_wig_length from "../Assets/size_guide/Unisex/bob wig length size guide.jpg";
+// import bob_wig_length from "../Assets/size_guide/Unisex/bob wig length size guide.jpg";
 import nail_guide from "../Assets/size_guide/Unisex/nail length guide.jpg";
 
 // other hair guides
@@ -90,11 +90,17 @@ const BL_66110_1 = require("../Assets/welcome_3ds/others/Wig/body_wave/BL66110-1
 const BL_66111_1 = require("../Assets/welcome_3ds/others/Wig/body_wave/BL66111-1-.png");
 const BL_66122_1 = require("../Assets/welcome_3ds/others/Wig/body_wave/BL66122-1-.png");
 
-//bob wig
-const bob_wig = require("../Assets/welcome_3ds/others/Wig/bob_wig/bob wig profile pic.jpg");
-const light_auburn = require("../Assets/welcome_3ds/others/Wig/bob_wig/OT30-.png");
-const burgundy = require("../Assets/welcome_3ds/others/Wig/bob_wig/530-.png");
-const wine_red = require("../Assets/welcome_3ds/others/Wig/bob_wig/99J-.png");
+//bone straight
+const burgary = require("../Assets/welcome_3ds/others/Wig/bone straight/burgary bonne straight-imageonline.co-merged.png");
+const blonde = require("../Assets/welcome_3ds/others/Wig/bone straight/blonde bone straigt.png");
+const natural = require("../Assets/welcome_3ds/others/Wig/bone straight/natural bone straight-imageonline.co-merged.png");
+// const wine_red = require("../Assets/welcome_3ds/others/Wig/bob_wig/99J-.png");
+
+//deep wave
+const deepWaveburgundy = require("../Assets/welcome_3ds/others/Wig/deep_wave/burgundy_deep_wave.png");
+const deepWaveblonde = require("../Assets/welcome_3ds/others/Wig/deep_wave/blode deep wave.jpg");
+const deepWaveNatural = require("../Assets/welcome_3ds/others/Wig/deep_wave/IMG_0589-removebg-preview (1)-imageonline.co-merged.png");
+// const wine_red = require("../Assets/welcome_3ds/others/Wig/bob_wig/99J-.png");
 
 export const mainUnisex = [
   {
@@ -208,16 +214,24 @@ export const mainUnisex = [
   },
   {
     id: uuid(),
-    name: "Bob Wig",
+    name: "Bone Straight Wig",
     // image: bob_wig,
-    image:
-      "https://www.josephs-wigs.com/media/wysiwyg/Josephs-Wigs-Bob-Wigs-Dark-Bob-Style-Wig.jpg",
-    model: bangles_model,
+    image: burgary,
     price: 100,
     readyIn: 7,
-    link: "/configurator-wig/Bob Wig",
-    colorVariants: [light_auburn, burgundy, wine_red],
-    sizeGuide: bob_wig_length,
+    link: "/configurator-wig/Bone Straight Wig",
+    colorVariants: [burgary, natural, blonde],
+    sizeGuide: "",
+  },
+  {
+    id: uuid(),
+    name: "Deep Wave Wig",
+    image: deepWaveburgundy,
+    price: 100,
+    readyIn: 7,
+    link: "/configurator-wig/Deep Wave Wig",
+    colorVariants: [deepWaveburgundy, deepWaveNatural, deepWaveblonde],
+    sizeGuide: "",
   },
   {
     id: uuid(),
