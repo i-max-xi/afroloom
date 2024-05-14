@@ -254,15 +254,15 @@ const ConfiguratorUnisex = () => {
   };
 
   const nailOptions = useMemo(() => {
-    if (selectedClothing.name === "Spiral Curls Braids Wig") {
+    if (selectedClothing.name.contains("Wig")) {
       return;
     }
-    if (selectedClothing.name === "Body Wave Wig") {
-      return;
-    }
-    if (selectedClothing.name === "Bone Straight Wig") {
-      return;
-    }
+    // if (selectedClothing.name === "Body Wave Wig") {
+    //   return;
+    // }
+    // if (selectedClothing.name === "Bone Straight Wig") {
+    //   return;
+    // }
     return allNailOptions;
   }, [selectedClothing.name]);
 
