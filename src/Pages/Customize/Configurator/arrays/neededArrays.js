@@ -9,8 +9,19 @@ import nailDesign1 from "../textures/nail designs/IMG-20240512-WA0018.jpg";
 import nailDesign2 from "../textures/nail designs/IMG-20240512-WA0019.jpg";
 import nailDesign3 from "../textures/nail designs/IMG-20240512-WA0020.jpg";
 import nailDesign4 from "../textures/nail designs/IMG-20240512-WA0021.jpg";
-// import nailDesign5 from "../textures/nail designs/3-removebg-preview.png";
-// import nailDesign6 from "../textures/nail designs/3.png";
+import nailDesign5 from "../textures/nail designs/crimson-football-stitching-nail-art-designs.jpg";
+import nailDesign6 from "../textures/nail designs/crimson-white-checkered-nail-art.jpg";
+import nailDesign7 from "../textures/nail designs/dark-orange-white-dark-brown-triple-vertical-stripes-nail-art-designs.jpg";
+import nailDesign8 from "../textures/nail designs/forest-green-gold-white-triple-vertical-stripes-nail-art-designs.jpg";
+import nailDesign9 from "../textures/nail designs/navy-blue-dark-orange-white-diagonal-stripe-fingernail-decals.jpg";
+import nailDesign10 from "../textures/nail designs/red-white-small-polka-dot-nail-stickers.jpg";
+import nailDesign11 from "../textures/nail designs/white-background-red-gold-bubbles-nail-art-designs.jpg";
+import nailDesign12 from "../textures/nail designs/white-background-royal-blue-powder-blue-bubbles-nail-art-designs.jpg";
+import nailDesign13 from "../textures/nail designs/white-black-skinny-horizontal-striped-fingernail-stickers.jpg";
+import nailDesign14 from "../textures/nail designs/white-crimson-herringbone.jpg";
+import nailDesign15 from "../textures/nail designs/white-grape-fuchsia-chevron-nail-art.jpg";
+import nailDesign16 from "../textures/nail designs/white-red-chevron-nail-wrap.jpg";
+import nailDesign17 from "../textures/nail designs/white-red-skinny-horizontal-striped-fingernail-stickers.jpg";
 
 import dashiki1 from "../textures/dashiki1.jpg";
 import dashiki2 from "../textures/dashiki2.jpg";
@@ -127,12 +138,23 @@ export const textureArrays = {
 
   waxPrint: [waxPrint1, waxPrint2, waxPrint3, waxPrint4, waxPrint5, waxPrint6],
   nailDesigns: [
-    // nailDesign5,
-    // nailDesign6,
     nailDesign1,
     nailDesign2,
     nailDesign3,
     nailDesign4,
+    nailDesign5,
+    nailDesign6,
+    nailDesign7,
+    nailDesign8,
+    nailDesign9,
+    nailDesign10,
+    nailDesign11,
+    nailDesign12,
+    nailDesign13,
+    nailDesign14,
+    nailDesign15,
+    nailDesign16,
+    nailDesign17,
   ],
 };
 
