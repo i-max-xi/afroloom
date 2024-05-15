@@ -75,13 +75,13 @@ const ConfiguratorWig = () => {
   const [braidLength, setBraidLength] = useState(
     hairColorOptions.length[0] || null
   );
-  const [densityPreference, setDensityPreference] = useState(null);
+  const [densityPreference, setDensityPreference] = useState(
+    "Standard (200grams)"
+  );
   const [laceType, setLaceType] = useState(null);
   const [texture, setTexture] = useState(null);
   const [additional, setAdditional] = useState(null);
-  const [type_of_hair, setTypeOfHair] = useState(
-    hairColorOptions.typeOfHair[0] || null
-  );
+  const [type_of_hair, setTypeOfHair] = useState(null);
   const [specific_hair_type, setSpecific_hair_type] = useState(null);
   const [hair_grade, set_hair_grade] = useState(null);
   const [hair_fibre, set_hair_fibre] = useState(null);
@@ -521,11 +521,13 @@ const ConfiguratorWig = () => {
                       </span>
                     </>
                   )} */}
-                  {hairColorOptions.typeOfHair && (
+                  {hairColorOptions?.typeOfHair && (
                     <>
                       <span className="p-float-label">
                         <Dropdown
-                          value={type_of_hair}
+                          value={
+                            hairColorOptions?.typeOfHair[0] || type_of_hair
+                          }
                           onChange={(e) => setTypeOfHair(e.value)}
                           options={hairColorOptions.typeOfHair}
                           placeholder="Select a preference"

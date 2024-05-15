@@ -68,6 +68,20 @@ export const braidOptions = {
   ],
 
   capSize: ["Small", "Medium", "Large"],
+  // texture: ["Straight", "Wavy", "Curly"],
+  // additionalOption: ["Fringe", "Curtain Bangs", "Side Bangs"],
+  // laceType: [
+  //   "Swiss lace",
+  //   "HD lace",
+  //   "Transparent lace",
+  //   "None (for those who prefer a non-lace wig)",
+  // ],
+  // typeOfHair: ["Human"],
+
+  hairQuality: ["Single Drawn", "Double Drawn", "Super Double Drawn"],
+  hairStyling: ["Middle Part", "Side Part"],
+  hairClosure: ["Closure (4x4)", "Frontal (13 x 4)"],
+  hamanHairGrades: [],
 };
 
 export const boxWaveOptions = {
