@@ -91,11 +91,11 @@ const BL_66111_1 = require("../Assets/welcome_3ds/others/Wig/body_wave/BL66111-1
 const BL_66122_1 = require("../Assets/welcome_3ds/others/Wig/body_wave/BL66122-1-.png");
 
 //bone straight
-const burgary = require("../Assets/welcome_3ds/others/Wig/bone straight/burgandy_bone_straight-.png");
+const burgary = require("../Assets/welcome_3ds/others/Wig/bone straight/burgandy_bone_straight-.jpg");
 const blonde = require("../Assets/welcome_3ds/others/Wig/bone straight/blonde_bone_straight-.png");
 const natural = require("../Assets/welcome_3ds/others/Wig/bone straight/natural_black_bone_straight-.png");
 const bone_straight_profile = require("../Assets/welcome_3ds/others/Wig/bone straight/bone straight profile pic.png");
-const brown = require("../Assets/welcome_3ds/others/Wig/bone straight/brown_bone_straight-.png");
+const brown = require("../Assets/welcome_3ds/others/Wig/bone straight/brown_bone_straight-.jpg");
 
 //deep wave
 const deepWaveburgundy = require("../Assets/welcome_3ds/others/Wig/deep_wave/burgandy deeo wave.png");
@@ -105,9 +105,9 @@ const deep_wave_profile = require("../Assets/welcome_3ds/others/Wig/deep_wave/de
 
 //straight hair
 const straight_profile = require("../Assets/welcome_3ds/others/Wig/straight_hair/straight hair profile pic.png");
-const straight_blonde = require("../Assets/welcome_3ds/others/Wig/straight_hair/blonde straight hair.png");
+const straight_blonde = require("../Assets/welcome_3ds/others/Wig/straight_hair/blonde straight hair.jpg");
 const straight_black = require("../Assets/welcome_3ds/others/Wig/straight_hair/natural black staight hair.png");
-const straight_red = require("../Assets/welcome_3ds/others/Wig/straight_hair/red straight hair.png");
+const straight_red = require("../Assets/welcome_3ds/others/Wig/straight_hair/burgundy straight hair.jpg");
 
 //jerry curl
 const jerry_burgundy = require("../Assets/welcome_3ds/others/Wig/jerry_curl/burgandy-jerry curly.png");
@@ -152,8 +152,8 @@ export const mainUnisex = [
 
   {
     id: uuid(),
-    name: "Round Nails",
-    link: "/configurator-nails/Round Nails",
+    name: "Oval Nails",
+    link: "/configurator-nails/Oval Nails",
     image:
       "https://stylemissus.com/cdn/shop/products/product-image-1295848768.jpg?v=1584041580",
     model: round_nails_model,
@@ -187,7 +187,9 @@ export const mainUnisex = [
   {
     id: uuid(),
     name: "Spiral Curls Braids Wig",
-    image: box_braid,
+    // image: box_braid,
+    image:
+      "https://i.etsystatic.com/23022969/r/il/d63d4a/2662177642/il_570xN.2662177642_cn66.jpg",
     price: 100,
     readyIn: 7,
     link: "/configurator-wig/Spiral Curls Braids Wig",
@@ -202,7 +204,9 @@ export const mainUnisex = [
   {
     id: uuid(),
     name: "Straight Hair Wig",
-    image: straight_profile,
+    // image: straight_profile,
+    image:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-RVAUN2TVBo7_neZczkqVgdgtlxJqA-gXFLXBqPBshRu1tHGKAzmfwAoJSuITiRDxwl8&usqp=CAU",
     price: 100,
     readyIn: 7,
     link: "/configurator-wig/Straight Hair Wig",
@@ -212,7 +216,9 @@ export const mainUnisex = [
   {
     id: uuid(),
     name: "Jerry Curl Wig",
-    image: jerry_profile,
+    // image: jerry_profile,
+    image:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqVJFwrGbe43Vdrdby0VydLSMoLUr0DZUCpZQqtTowbg&s",
     price: 100,
     readyIn: 7,
     link: "/configurator-wig/Jerry Curl Wig",
@@ -231,23 +237,25 @@ export const mainUnisex = [
     colorVariants: [
       BL_66040_1,
       BL_11017_1,
-      BL_11018_1,
+      // BL_11018_1,
       BL_11026_1,
       BL_11036_1,
-      BL_66010_1,
-      BL_66060_1,
-      BL_66069_1,
-      BL_66084_1,
-      BL_66110_1,
-      BL_66111_1,
-      BL_66122_1,
+      // BL_66010_1,
+      // BL_66060_1,
+      // BL_66069_1,
+      // BL_66084_1,
+      // BL_66110_1,
+      // BL_66111_1,
+      // BL_66122_1,
     ],
     sizeGuide: hair_guide,
   },
   {
     id: uuid(),
     name: "Bone Straight Wig",
-    image: bone_straight_profile,
+    // image: bone_straight_profile,
+    image:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRmEBHD84d3M3COWPXyRggLB1UToNpBRTwCjLmPjvSTA&s",
     price: 100,
     readyIn: 7,
     link: "/configurator-wig/Bone Straight Wig",
@@ -257,7 +265,8 @@ export const mainUnisex = [
   {
     id: uuid(),
     name: "Deep Wave Wig",
-    image: deep_wave_profile,
+    // image: deep_wave_profile,
+    image: "https://miro.medium.com/v2/resize:fit:500/0*LmS__0WK8h4ngcXd.jpg",
     price: 100,
     readyIn: 7,
     link: "/configurator-wig/Deep Wave Wig",

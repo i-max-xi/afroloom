@@ -254,9 +254,9 @@ const ConfiguratorUnisex = () => {
   };
 
   const nailOptions = useMemo(() => {
-    if (selectedClothing.name.contains("Wig")) {
-      return;
-    }
+    // if (selectedClothing.name.contains("Wig")) {
+    //   return;
+    // }
     // if (selectedClothing.name === "Body Wave Wig") {
     //   return;
     // }

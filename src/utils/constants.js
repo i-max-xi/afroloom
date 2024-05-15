@@ -67,45 +67,23 @@ export const braidOptions = {
     { title: "40 inches", SDamount: 1800, DDamount: 2550, SDDamount: 2750 },
   ],
 
-  curlEnd: ["Tight Curls", "Loose Curls", "Spiral Curls", "S-wave Curls"],
-
   capSize: ["Small", "Medium", "Large"],
-  additionalOption: ["Fringe", "Curtain Bangs", "Side Bangs"],
-  laceType: [
-    "Swiss lace",
-    "HD lace",
-    "Transparent lace",
-    "None (for those who prefer a non-lace wig)",
-  ],
-  typeOfHair: ["Human", "Synthetic"],
-  humanHairType: [
-    "Brazilian",
-    "Cambodian",
-    "Indian",
-    "Malaysian",
-    "Mongolian",
-    "Peruvian",
-  ].sort(),
-  hairQuality: ["Single Drawn", "Double Drawn", "Super Double Drawn"],
-  hairStyling: ["Middle Part", "Side Part"],
-  hairClosure: ["Closure (4x4)", "Frontal (13 x 4)"],
-  hamanHairGrades: [],
 };
 
 export const boxWaveOptions = {
   colors: [
     "Natural Black",
     "Dark Brown",
-    "Light Brown",
+    // "Light Brown",
     "Blonde",
-    "Red",
-    "Ombre Black to Blonde",
-    "Ombre Brown to Caramel",
-    "Ombre Blonde to Platinum Blonde",
-    "Ombre Dark Brown to Light Brown",
-    "Ombre Burgundy to Pink",
-    "Ombre Purple to Lavender",
-    "Ombre Blue to Teal",
+    "Burgundy",
+    // "Ombre Black to Blonde",
+    // "Ombre Brown to Caramel",
+    // "Ombre Blonde to Platinum Blonde",
+    // "Ombre Dark Brown to Light Brown",
+    // "Ombre Burgundy to Pink",
+    // "Ombre Purple to Lavender",
+    // "Ombre Blue to Teal",
     // "Ombre Red to Orange",
   ],
 
@@ -169,7 +147,7 @@ export const boxWaveOptions = {
 };
 
 export const boneStrightWigOptions = {
-  colors: ["Burgundy", "Natural", "Blonde", "Brown"],
+  colors: ["Burgundy", "Natural Black", "Blonde", "Brown"],
 
   length: [
     { title: "8 inches", SDamount: 1450, DDamount: 1560, SDDamount: 1800 },
@@ -231,7 +209,7 @@ export const boneStrightWigOptions = {
 };
 
 export const deepWaveWigOptions = {
-  colors: ["Burgary", "Natural", "Blonde"],
+  colors: ["Burgundy", "Natural Black", "Blonde"],
 
   length: [
     { title: "8 inches", SDamount: 700, DDamount: 1000, SDDamount: 1200 },
@@ -288,7 +266,7 @@ export const deepWaveWigOptions = {
 };
 
 export const straightHairWigOptions = {
-  colors: ["Black", "Blonde", "Red"],
+  colors: ["Natural Black", "Blonde", "Burgundy"],
 
   length: [
     { title: "8 inches", SDamount: 700, DDamount: 1000, SDDamount: 1200 },
