@@ -69,22 +69,29 @@ const ConfiguratorWig = () => {
 
   //questions
   const [colorPreference, setColorPreference] = useState(
-    hairColorOptions.colors[0]
+    hairColorOptions?.colors[0] || null
   );
-  const [curlyendstyle, setCurlyEndStyle] = useState(null);
   const [capSize, setCapSize] = useState(null);
-  const [braidLength, setBraidLength] = useState(hairColorOptions.length[0]);
+  const [braidLength, setBraidLength] = useState(
+    hairColorOptions.length[0] || null
+  );
   const [densityPreference, setDensityPreference] = useState(null);
   const [laceType, setLaceType] = useState(null);
   const [texture, setTexture] = useState(null);
   const [additional, setAdditional] = useState(null);
-  const [type_of_hair, setTypeOfHair] = useState(null);
+  const [type_of_hair, setTypeOfHair] = useState(
+    hairColorOptions.typeOfHair[0] || null
+  );
   const [specific_hair_type, setSpecific_hair_type] = useState(null);
   const [hair_grade, set_hair_grade] = useState(null);
   const [hair_fibre, set_hair_fibre] = useState(null);
-  const [hair_quality, set_hair_quality] = useState(null);
+  const [hair_quality, set_hair_quality] = useState(
+    hairColorOptions.hairQuality[0] || null
+  );
   const [hair_styling, set_hair_styling] = useState(null);
-  const [hair_closure, set_hair_closure] = useState(null);
+  const [hair_closure, set_hair_closure] = useState(
+    hairColorOptions.hairClosure[0] || null
+  );
 
   // const hairGradeOptions = useMemo(() => {
   //   if (specific_hair_type === "Brazilian") {
@@ -149,7 +156,10 @@ const ConfiguratorWig = () => {
       (item) => item.title === braidLength.title
     );
 
-    if (allowedDensityPrefences.includes(braidLength.title)) {
+    if (
+      allowedDensityPrefences.includes(braidLength.title) &&
+      selectedClothing.name !== "Spiral Curls Braids Wig"
+    ) {
       if (hair_quality === hairColorOptions.hairQuality[0]) {
         densityPreference === "Standard (200grams)"
           ? setLengthPrice(selectedLength.SDamount.standard)

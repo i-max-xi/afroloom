@@ -131,7 +131,7 @@ export const boxWaveOptions = {
 
   capSize: ["Small", "Medium", "Large"],
   additionalOption: ["Fringe", "Curtain Bangs", "Side Bangs"],
-  typeOfHair: ["Human", "Synthetic"],
+  typeOfHair: ["Human"],
   humanHairType: [
     "Brazilian",
     "Cambodian",
@@ -193,7 +193,7 @@ export const boneStrightWigOptions = {
     "Transparent lace",
     "None (for those who prefer a non-lace wig)",
   ],
-  typeOfHair: ["Human", "Synthetic"],
+  typeOfHair: ["Human"],
   humanHairType: [
     "Brazilian",
     "Cambodian",
@@ -250,15 +250,8 @@ export const deepWaveWigOptions = {
     "Transparent lace",
     "None (for those who prefer a non-lace wig)",
   ],
-  typeOfHair: ["Human", "Synthetic"],
-  humanHairType: [
-    "Brazilian",
-    "Cambodian",
-    "Indian",
-    "Malaysian",
-    "Mongolian",
-    "Peruvian",
-  ].sort(),
+  typeOfHair: ["Human"],
+
   hairQuality: ["Single Drawn", "Double Drawn", "Super Double Drawn"],
   hairStyling: ["Middle Part", "Side Part"],
   hairClosure: ["Closure (4x4)", "Frontal (13 x 4)"],
@@ -307,7 +300,7 @@ export const straightHairWigOptions = {
     "Transparent lace",
     "None (for those who prefer a non-lace wig)",
   ],
-  typeOfHair: ["Human", "Synthetic"],
+  typeOfHair: ["Human"],
   humanHairType: [
     "Brazilian",
     "Cambodian",
@@ -364,7 +357,7 @@ export const JerryCurlWigOptions = {
     "Transparent lace",
     "None (for those who prefer a non-lace wig)",
   ],
-  typeOfHair: ["Human", "Synthetic"],
+  typeOfHair: ["Human"],
   humanHairType: [
     "Brazilian",
     "Cambodian",
