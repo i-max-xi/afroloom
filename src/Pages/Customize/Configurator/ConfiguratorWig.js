@@ -85,37 +85,11 @@ const ConfiguratorWig = () => {
   const [specific_hair_type, setSpecific_hair_type] = useState(null);
   const [hair_grade, set_hair_grade] = useState(null);
   const [hair_fibre, set_hair_fibre] = useState(null);
-  const [hair_quality, set_hair_quality] = useState(
-    hairColorOptions.hairQuality[0] || null
-  );
+  const [hair_quality, set_hair_quality] = useState(null);
   const [hair_styling, set_hair_styling] = useState(null);
   const [hair_closure, set_hair_closure] = useState(
     hairColorOptions.hairClosure[0] || null
   );
-
-  // const hairGradeOptions = useMemo(() => {
-  //   if (specific_hair_type === "Brazilian") {
-  //     return ["6A", "7A", "8A", "9A", "10A"];
-  //   }
-  //   if (specific_hair_type === "Cambodian" || specific_hair_type === "Indian") {
-  //     return ["6A", "7A", "8A", "9A"];
-  //   }
-
-  //   if (
-  //     specific_hair_type === "Malaysian" ||
-  //     specific_hair_type === "Peruvian"
-  //   ) {
-  //     return ["6A", "7A", "8A", "9A"];
-  //   }
-  //   if (specific_hair_type === "Mongolian") {
-  //     return ["6A"];
-  //   }
-  // }, [specific_hair_type]);
-
-  // const hairFibreOptions = [
-  //   "Regular synthetic Fibre",
-  //   "Heat-Resistant Synthetic Fibre",
-  // ];
 
   const [guideVisible, setGuideVisible] = useState(false);
 
@@ -506,21 +480,6 @@ const ConfiguratorWig = () => {
                     </>
                   )}
 
-                  {/* {hairColorOptions.curlEnd && (
-                    <>
-                      <span className="p-float-label">
-                        <Dropdown
-                          value={curlyendstyle}
-                          onChange={(e) => setCurlyEndStyle(e.value)}
-                          options={hairColorOptions.curlEnd}
-                          placeholder="Type or select a preference"
-                          className="wig-dropdown"
-                          editable
-                        />
-                        <label htmlFor="inputtext">Curly End Style</label>
-                      </span>
-                    </>
-                  )} */}
                   {hairColorOptions?.typeOfHair && (
                     <>
                       <span className="p-float-label">
@@ -538,23 +497,24 @@ const ConfiguratorWig = () => {
                     </>
                   )}
 
-                  {hairColorOptions.hairQuality && type_of_hair === "Human" && (
-                    <>
-                      <span className="p-float-label">
-                        <Dropdown
-                          value={hair_quality}
-                          onChange={(e) => set_hair_quality(e.value)}
-                          options={hairColorOptions.hairQuality}
-                          placeholder="Select a preference"
-                          className="wig-dropdown"
-                        />
-                        <label htmlFor="inputtext">Hair Quality</label>
-                      </span>
-                    </>
-                  )}
+                  {hairColorOptions.hairQuality &&
+                    hairColorOptions?.typeOfHair && (
+                      <>
+                        <span className="p-float-label">
+                          <Dropdown
+                            value={hair_quality}
+                            onChange={(e) => set_hair_quality(e.value)}
+                            options={hairColorOptions.hairQuality}
+                            placeholder="Select a preference"
+                            className="wig-dropdown"
+                          />
+                          <label htmlFor="inputtext">Hair Quality</label>
+                        </span>
+                      </>
+                    )}
 
                   {hairColorOptions.densityPreference &&
-                    type_of_hair === "Human" && (
+                    hairColorOptions?.typeOfHair && (
                       <>
                         <span className="p-float-label">
                           <Dropdown
@@ -586,35 +546,37 @@ const ConfiguratorWig = () => {
                       </>
                     )}
 
-                  {hairColorOptions.hairClosure && type_of_hair === "Human" && (
-                    <>
-                      <span className="p-float-label">
-                        <Dropdown
-                          value={hair_closure}
-                          onChange={(e) => set_hair_closure(e.value)}
-                          options={hairColorOptions.hairClosure}
-                          placeholder="Select a preference"
-                          className="wig-dropdown"
-                        />
-                        <label htmlFor="inputtext">Closure Type</label>
-                      </span>
-                    </>
-                  )}
+                  {hairColorOptions.hairClosure &&
+                    hairColorOptions?.typeOfHair && (
+                      <>
+                        <span className="p-float-label">
+                          <Dropdown
+                            value={hair_closure}
+                            onChange={(e) => set_hair_closure(e.value)}
+                            options={hairColorOptions.hairClosure}
+                            placeholder="Select a preference"
+                            className="wig-dropdown"
+                          />
+                          <label htmlFor="inputtext">Closure Type</label>
+                        </span>
+                      </>
+                    )}
 
-                  {hairColorOptions.hairStyling && type_of_hair === "Human" && (
-                    <>
-                      <span className="p-float-label">
-                        <Dropdown
-                          value={hair_styling}
-                          onChange={(e) => set_hair_styling(e.value)}
-                          options={hairColorOptions.hairStyling}
-                          placeholder="Select a preference"
-                          className="wig-dropdown"
-                        />
-                        <label htmlFor="inputtext">Styling Option</label>
-                      </span>
-                    </>
-                  )}
+                  {hairColorOptions.hairStyling &&
+                    hairColorOptions?.typeOfHair && (
+                      <>
+                        <span className="p-float-label">
+                          <Dropdown
+                            value={hair_styling}
+                            onChange={(e) => set_hair_styling(e.value)}
+                            options={hairColorOptions.hairStyling}
+                            placeholder="Select a preference"
+                            className="wig-dropdown"
+                          />
+                          <label htmlFor="inputtext">Styling Option</label>
+                        </span>
+                      </>
+                    )}
 
                   {hairColorOptions.capSize && (
                     <>
@@ -662,24 +624,8 @@ const ConfiguratorWig = () => {
                     </>
                   )} */}
 
-                  {/* {hairColorOptions.texture && (
-                    <>
-                      <span className="p-float-label">
-                        <Dropdown
-                          value={texture}
-                          onChange={(e) => setTexture(e.value)}
-                          options={hairColorOptions.texture}
-                          placeholder="Type or select a preference"
-                          className="wig-dropdown"
-                          editable
-                        />
-                        <label htmlFor="inputtext">Texture Preference</label>
-                      </span>
-                    </>
-                  )} */}
-
                   {hairColorOptions.additionalOption &&
-                    type_of_hair === "Human" && (
+                    hairColorOptions?.typeOfHair && (
                       <>
                         <span className="p-float-label">
                           <Dropdown
