@@ -451,12 +451,12 @@ const ConfiguratorUnisex = () => {
           size: 6,
           image: {
             top: "-9rem",
-            left: "16.15rem",
+            left: "16.4rem",
             width: "6%",
           },
           placeholder: {
             top: "-9rem",
-            left: "16.2rem",
+            left: "16.6rem",
             width: "8%",
           },
         },
