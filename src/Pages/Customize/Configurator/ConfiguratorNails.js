@@ -54,7 +54,7 @@ const Shirt = ({
   const snap = useSnapshot(state);
   const { nodes } = useGLTF(selectedClothing.model);
 
-  const skinTexture = require("./textures/human/AdobeStock_503842814_Preview.jpeg");
+  const skinTexture = require("./textures/human/WhatsApp_Image_2024-05-04_at_19.37.42_b0d876b2-removebg-preview.png");
 
   const groupRef = useRef();
 
