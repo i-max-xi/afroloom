@@ -128,7 +128,7 @@ const Shirt = ({
                 attach="material"
                 color={color}
                 map={texture && new TextureLoader().load(texture)}
-                roughness={node === "nails" ? 0 : 1}
+                // roughness={node === "nails" ? 0 : 1}
               />
             </mesh>
           );
