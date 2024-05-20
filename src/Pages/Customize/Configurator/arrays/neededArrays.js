@@ -5,23 +5,48 @@ import batik3 from "../textures/tie_and_dye/8. tomogyi.jpg";
 import batik4 from "../textures/tie_and_dye/9. gye nyame.jpg";
 import batik5 from "../textures/tie_and_dye/10 medofo.jpg";
 
-import nailDesign1 from "../textures/nail designs/IMG-20240512-WA0018.jpg";
-import nailDesign2 from "../textures/nail designs/IMG-20240512-WA0019.jpg";
-import nailDesign3 from "../textures/nail designs/IMG-20240512-WA0020.jpg";
-import nailDesign4 from "../textures/nail designs/IMG-20240512-WA0021.jpg";
-import nailDesign5 from "../textures/nail designs/crimson-football-stitching-nail-art-designs.jpg";
-import nailDesign6 from "../textures/nail designs/crimson-white-checkered-nail-art.jpg";
-import nailDesign7 from "../textures/nail designs/dark-orange-white-dark-brown-triple-vertical-stripes-nail-art-designs.jpg";
-import nailDesign8 from "../textures/nail designs/forest-green-gold-white-triple-vertical-stripes-nail-art-designs.jpg";
-import nailDesign9 from "../textures/nail designs/navy-blue-dark-orange-white-diagonal-stripe-fingernail-decals.jpg";
-import nailDesign10 from "../textures/nail designs/red-white-small-polka-dot-nail-stickers.jpg";
-import nailDesign11 from "../textures/nail designs/white-background-red-gold-bubbles-nail-art-designs.jpg";
-import nailDesign12 from "../textures/nail designs/white-background-royal-blue-powder-blue-bubbles-nail-art-designs.jpg";
-import nailDesign13 from "../textures/nail designs/white-black-skinny-horizontal-striped-fingernail-stickers.jpg";
-import nailDesign14 from "../textures/nail designs/white-crimson-herringbone.jpg";
-import nailDesign15 from "../textures/nail designs/white-grape-fuchsia-chevron-nail-art.jpg";
-import nailDesign16 from "../textures/nail designs/white-red-chevron-nail-wrap.jpg";
-import nailDesign17 from "../textures/nail designs/white-red-skinny-horizontal-striped-fingernail-stickers.jpg";
+import nailDesign1 from "../textures/nail designs/1.jpg";
+import nailDesign2 from "../textures/nail designs/10.jpg";
+import nailDesign3 from "../textures/nail designs/22.jpg";
+import nailDesign4 from "../textures/nail designs/23.jpg";
+import nailDesign5 from "../textures/nail designs/24.jpg";
+import nailDesign6 from "../textures/nail designs/11.jpg";
+import nailDesign7 from "../textures/nail designs/12.jpg";
+import nailDesign8 from "../textures/nail designs/13.jpg";
+import nailDesign9 from "../textures/nail designs/14.jpg";
+import nailDesign10 from "../textures/nail designs/15.jpg";
+import nailDesign11 from "../textures/nail designs/16.jpg";
+import nailDesign12 from "../textures/nail designs/17.jpg";
+// import nailDesign13 from "../textures/nail designs/18.jpg";
+import nailDesign14 from "../textures/nail designs/19.jpg";
+import nailDesign15 from "../textures/nail designs/20.jpg";
+import nailDesign16 from "../textures/nail designs/21.jpg";
+// import nailDesign17 from "../textures/nail designs/25.jpg";
+// import nailDesign18 from "../textures/nail designs/26.jpg";
+// import nailDesign19 from "../textures/nail designs/27.jpg";
+// import nailDesign20 from "../textures/nail designs/28.jpg";
+// import nailDesign21 from "../textures/nail designs/29.jpg";
+// import nailDesign22 from "../textures/nail designs/30.jpg";
+// import nailDesign23 from "../textures/nail designs/31.jpg";
+// import nailDesign24 from "../textures/nail designs/32.jpg";
+// import nailDesign25 from "../textures/nail designs/33.jpg";
+// import nailDesign26 from "../textures/nail designs/34.jpg";
+// import nailDesign27 from "../textures/nail designs/";
+import nailDesign28 from "../textures/nail designs/A.jpg";
+import nailDesign29 from "../textures/nail designs/e2dw.jpg";
+import nailDesign30 from "../textures/nail designs/edwed.jpg";
+import nailDesign31 from "../textures/nail designs/ef.jpg";
+import nailDesign32 from "../textures/nail designs/egag.jpg";
+import nailDesign33 from "../textures/nail designs/egege.jpg";
+import nailDesign34 from "../textures/nail designs/egge.jpg";
+import nailDesign35 from "../textures/nail designs/erge.jpg";
+import nailDesign36 from "../textures/nail designs/ergeg.jpg";
+import nailDesign37 from "../textures/nail designs/fwef.jpg";
+import nailDesign38 from "../textures/nail designs/geg.jpg";
+import nailDesign39 from "../textures/nail designs/gege.jpg";
+import nailDesign40 from "../textures/nail designs/gege.jpg";
+import nailDesign41 from "../textures/nail designs/rege.jpg";
+import nailDesign42 from "../textures/nail designs/rgeg.jpg";
 
 import dashiki1 from "../textures/dashiki1.jpg";
 import dashiki2 from "../textures/dashiki2.jpg";
@@ -150,11 +175,36 @@ export const textureArrays = {
     nailDesign10,
     nailDesign11,
     nailDesign12,
-    nailDesign13,
+    // nailDesign13,
     nailDesign14,
     nailDesign15,
     nailDesign16,
-    nailDesign17,
+    // nailDesign17,
+    // nailDesign18,
+    // nailDesign19,
+    // nailDesign20,
+    // nailDesign21,
+    // nailDesign22,
+    // nailDesign23,
+    // nailDesign24,
+    // nailDesign25,
+    // nailDesign26,
+    // nailDesign27,
+    nailDesign28,
+    nailDesign29,
+    nailDesign30,
+    nailDesign31,
+    nailDesign32,
+    nailDesign33,
+    nailDesign34,
+    nailDesign35,
+    nailDesign36,
+    nailDesign37,
+    nailDesign38,
+    nailDesign39,
+    nailDesign40,
+    nailDesign41,
+    nailDesign42,
   ],
 };
 
