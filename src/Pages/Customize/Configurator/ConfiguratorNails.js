@@ -280,6 +280,8 @@ const ConfiguratorUnisex = () => {
     state.color[selectedPart] = null;
   };
 
+  const nailBg = require("./textures/human/dark_skin.jpg");
+
   return (
     <>
       <Nav />
@@ -315,22 +317,23 @@ const ConfiguratorUnisex = () => {
             </h3>
             <div className="d-flex justify-content-center">
               {noSpinFor.includes(selectedClothing.name) ? null : (
-                <button
-                  className={`btn rotation-button text-white  ${
-                    isRotating === true ? "btn-danger" : "btn-warning"
-                  }`}
-                  onClick={handleRotation}
-                >
-                  {isRotating ? (
-                    <span>
-                      Stop <i className="pi pi-ban"></i>
-                    </span>
-                  ) : (
-                    <span>
-                      Take a Spin <i className="pi pi-sync"></i>
-                    </span>
-                  )}
-                </button>
+                <></>
+                // <button
+                //   className={`btn rotation-button text-white  ${
+                //     isRotating === true ? "btn-danger" : "btn-warning"
+                //   }`}
+                //   onClick={handleRotation}
+                // >
+                //   {isRotating ? (
+                //     <span>
+                //       Stop <i className="pi pi-ban"></i>
+                //     </span>
+                //   ) : (
+                //     <span>
+                //       Take a Spin <i className="pi pi-sync"></i>
+                //     </span>
+                //   )}
+                // </button>
               )}
             </div>
             <div className="configurator-container container">
@@ -605,7 +608,11 @@ const ConfiguratorUnisex = () => {
               </div>
               <div className="right-panel">
                 <div className="resize-right-panel">
-                  <div ref={canvasRef}>
+                  <div
+                    style={{ backgroundImage: `url(${nailBg})` }}
+                    className="nail-bg"
+                    ref={canvasRef}
+                  >
                     <Canvas
                       camera={{ position: [0, 0, selectedClothing.myZoom] }}
                       gl={{ preserveDrawingBuffer: true }}

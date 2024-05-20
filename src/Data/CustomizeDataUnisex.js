@@ -124,7 +124,7 @@ export const mainUnisex = [
     model: square_nails_model,
     myNode: [
       { name: "nails", yardNeeded: 1 },
-      { name: "nailHands", yardNeeded: 1 },
+      // { name: "nailHands", yardNeeded: 1 },
     ],
     otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
     myZoom: 0.45,
@@ -159,7 +159,7 @@ export const mainUnisex = [
     model: round_nails_model,
     myNode: [
       { name: "nails", yardNeeded: 1 },
-      { name: "nailHands", yardNeeded: 1 },
+      // { name: "nailHands", yardNeeded: 1 },
     ],
     otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
     myZoom: 0.7,
@@ -176,7 +176,7 @@ export const mainUnisex = [
     model: stilletto_nails_model,
     myNode: [
       { name: "nails", yardNeeded: 1 },
-      { name: "nailHands", yardNeeded: 1 },
+      // { name: "nailHands", yardNeeded: 1 },
     ],
     otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
     myZoom: 0.7,
