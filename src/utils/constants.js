@@ -1,4 +1,3 @@
-import { texture } from "three/examples/jsm/nodes/Nodes.js";
 import {
   hair_guide_braziian,
   hair_guide_cambodia,
@@ -13,6 +12,11 @@ import {
   hair_guide_density,
   hair_guide_texture,
 } from "../Data/CustomizeDataUnisex";
+
+import darkTone from "../Assets/human/dark.jpg";
+import mediumDarkTone from "../Assets/human/medium_dark.jpg";
+import mediumLightTone from "../Assets/human/medum_light.jpg";
+import lightTone from "../Assets/human/light.jpg";
 
 export const isMobile = window.innerWidth <= 767;
 export const titleLimit = 50;
@@ -397,10 +401,10 @@ export const allNailOptions = {
 };
 
 export const skinTone = [
-  { title: "Dark", color: "#6e4b35" },
-  { title: "Medium Dark", color: "#9b7653" },
-  { title: "Medium Light", color: "#c19a6b" },
-  { title: "Light", color: "#e0b291" },
+  { title: "Dark", image: darkTone },
+  { title: "Medium Dark", image: mediumDarkTone },
+  { title: "Medium Light", image: mediumLightTone },
+  { title: "Light", image: lightTone },
 ];
 
 export const hairGuidesHuman = [

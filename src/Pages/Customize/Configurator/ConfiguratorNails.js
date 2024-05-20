@@ -54,8 +54,6 @@ const Shirt = ({
   const snap = useSnapshot(state);
   const { nodes } = useGLTF(selectedClothing.model);
 
-  const skinTexture = require("./textures/human/WhatsApp_Image_2024-05-04_at_19.37.42_b0d876b2-removebg-preview.png");
-
   const groupRef = useRef();
 
   useFrame(({ clock }) => {
@@ -91,7 +89,7 @@ const Shirt = ({
       state.texture[i] = null;
     }
 
-    state.texture[1] = skinTexture;
+    // state.texture[1] = skinTexture;
 
     state.color[1] = "#6e4b35";
 
@@ -216,7 +214,7 @@ const ConfiguratorUnisex = () => {
   };
 
   const handleSkinToneChange = (title, color) => {
-    state.color[1] = color;
+    // state.color[1] = color;
     setSelectedTone(title);
   };
 
@@ -280,7 +278,12 @@ const ConfiguratorUnisex = () => {
     state.color[selectedPart] = null;
   };
 
-  const nailBg = require("./textures/human/dark_skin.jpg");
+  const nailBg = useMemo(() => {
+    const selectedSkinTone = skinTone.find(
+      (tone) => tone.title === selectedTone
+    );
+    return selectedSkinTone ? selectedSkinTone.image : null;
+  }, [selectedTone]);
 
   return (
     <>
