@@ -40,6 +40,7 @@ import { InputNumber } from "primereact/inputnumber";
 import { Toast } from "primereact/toast";
 import { isMobile } from "../../../utils/constants";
 import uuid from "react-uuid";
+import TakeTour from "./TakeTour";
 const Shirt = ({
   isRotating,
   selectedClothing,
@@ -389,7 +390,7 @@ const ConfiguratorFemale = () => {
     <>
       <Nav />
       <Toast ref={toastRef} />
-      {/* <>
+      <>
         {showTourPopup && (
           <Dialog
             // header="Welcome to the 3D Customization!"
@@ -415,13 +416,9 @@ const ConfiguratorFemale = () => {
         )}
 
         {showTour && (
-          <WelcomeTour
-            isOpen={showTour}
-            onRequestClose={handleTourClose}
-            steps={tourSteps}
-          />
+          <TakeTour isOpen={showTour} onClose={handleTourClose} type="female" />
         )}
-      </> */}
+      </>
       {showConfirmation ? (
         <Confirmation
           currencySymbol={currencySymbol}

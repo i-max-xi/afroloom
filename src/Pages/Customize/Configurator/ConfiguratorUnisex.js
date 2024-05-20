@@ -50,6 +50,7 @@ import { genderOptions, isMobile } from "../../../utils/constants";
 import uuid from "react-uuid";
 import { OverlayPanel } from "primereact/overlaypanel";
 import { readFileAsDataURL, uploadToStorage } from "../../../utils/functions";
+import TakeTour from "./TakeTour";
 
 const Shirt = ({
   isRotating,
@@ -795,11 +796,29 @@ const ConfiguratorUnisex = () => {
     setShowGlow(true);
   };
 
+  const demoType = useMemo(() => {
+    if (selectedClothing.name === "Earring") {
+      return "earring";
+    }
+
+    if (selectedClothing.name === "Bikini") {
+      return "bikini";
+    }
+
+    if (selectedClothing.name === "Beads Bracelet") {
+      return "bangle";
+    }
+
+    if (onlySashes.includes(selectedClothing.name)) {
+      return "sash";
+    }
+  }, [selectedClothing.name]);
+
   return (
     <>
       <Nav />
       <Toast ref={toastRef} />
-      {/* <>
+      <>
         {showTourPopup && (
           <Dialog
             // header="Welcome to the 3D Customization!"
@@ -825,13 +844,13 @@ const ConfiguratorUnisex = () => {
         )}
 
         {showTour && (
-          <WelcomeTour
+          <TakeTour
             isOpen={showTour}
-            onRequestClose={handleTourClose}
-            steps={tourSteps}
+            onClose={handleTourClose}
+            type={demoType}
           />
         )}
-      </> */}
+      </>
 
       {showConfirmation ? (
         <Confirmation

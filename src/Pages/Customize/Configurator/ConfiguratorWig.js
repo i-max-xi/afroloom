@@ -34,6 +34,7 @@ import {
 import WigConfirmation from "./WigConfirmation";
 import { Dialog } from "primereact/dialog";
 import { colorOptions } from "./arrays/neededArrays";
+import TakeTour from "./TakeTour";
 
 const ConfiguratorWig = () => {
   const { Id } = useParams();
@@ -231,7 +232,7 @@ const ConfiguratorWig = () => {
     <>
       <Nav />
       <Toast ref={toastRef} />
-      {/* {/* <>
+      <>
         {showTourPopup && (
           <Dialog
             // header="Welcome to the 3D Customization!"
@@ -257,13 +258,9 @@ const ConfiguratorWig = () => {
         )}
 
         {showTour && (
-          <WelcomeTour
-            isOpen={showTour}
-            onRequestClose={handleTourClose}
-            steps={tourSteps}
-          />
+          <TakeTour isOpen={showTour} onClose={handleTourClose} type="hair" />
         )}
-      </> */}
+      </>
 
       {showConfirmation ? (
         <WigConfirmation
@@ -340,6 +337,16 @@ const ConfiguratorWig = () => {
             <h3 className="text-center pt-3">
               Customizing {selectedClothing.name}
             </h3>
+
+            <div className="d-flex justify-content-center">
+              <button
+                className="btn btn-info text-white mx-3"
+                // style={{ float: "right" }}
+                onClick={handleRetakeTour}
+              >
+                Take Tour
+              </button>
+            </div>
 
             <div className="configurator-container container">
               <div className="wig-left-panel rounded border shadow">
