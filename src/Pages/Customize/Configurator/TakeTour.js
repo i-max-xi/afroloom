@@ -1,50 +1,49 @@
 import { Dialog } from "primereact/dialog";
 import React, { useMemo } from "react";
+import { IconError } from "../../../Components/Icons";
 
-// import maleVid from "../../../Assets/Tutorials/male.mp4";
-// import femaleVid from "../../../Assets/Tutorials/female.mp4";
-// import hairVid from "../../../Assets/Tutorials/hair.mp4";
-// import bikiniVid from "../../../Assets/Tutorials/bikini.mp4";
-// import bangleVid from "../../../Assets/Tutorials/bangles.mp4";
-// import sashVid from "../../../Assets/Tutorials/sash.mp4";
-// import earringVid from "../../../Assets/Tutorials/earring.mp4";
+const maleVid = "https://www.youtube.com/embed/p0zTzvXzd3Q?si=G8WGqYwNDQg6jg4R";
+const femaleVid = "";
+const hairVid = "";
+const bikiniVid = "";
+const bangleVid = "";
+const sashVid = "";
+const earringVid = "";
 
 const TakeTour = ({ isOpen, onClose, type }) => {
-  // const videoUrl = useMemo(() => {
-  //   if (type === "male") {
-  //     return maleVid;
-  //   }
+  const videoUrl = useMemo(() => {
+    if (type === "male") {
+      return maleVid;
+    }
 
-  //   if (type === "female") {
-  //     return femaleVid;
-  //   }
+    if (type === "female") {
+      return femaleVid;
+    }
 
-  //   if (type === "bikini") {
-  //     return bikiniVid;
-  //   }
+    if (type === "bikini") {
+      return bikiniVid;
+    }
 
-  //   if (type === "hair") {
-  //     return hairVid;
-  //   }
+    if (type === "hair") {
+      return hairVid;
+    }
 
-  //   if (type === "nails") {
-  //     return;
-  //   }
+    if (type === "nails") {
+      return;
+    }
 
-  //   if (type === "bangle") {
-  //     return bangleVid;
-  //   }
+    if (type === "bangle") {
+      return bangleVid;
+    }
 
-  //   if (type === "earring") {
-  //     return earringVid;
-  //   }
+    if (type === "earring") {
+      return earringVid;
+    }
 
-  //   if (type === "sash") {
-  //     return sashVid;
-  //   }
-  // }, [type]);
-
-  const videoUrl = "";
+    if (type === "sash") {
+      return sashVid;
+    }
+  }, [type]);
 
   return (
     <Dialog
@@ -54,16 +53,22 @@ const TakeTour = ({ isOpen, onClose, type }) => {
       onHide={onClose}
       dismissableMask={true}
     >
-      <div>
-        <video
-          src={videoUrl}
-          alt="tutorial"
-          className="item-video"
-          autoPlay
-          playsInline
-          loop
-          muted
-        />
+      <div className="video-container">
+        {videoUrl ? (
+          <iframe
+            src={videoUrl}
+            title="tutorial"
+            className="item-video"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          />
+        ) : (
+          <p className="d-flex align-items-center justify-content-center flex-column">
+            <p>{IconError}</p>
+            <p>Sorry, no video available for this item.</p>
+          </p>
+        )}
       </div>
     </Dialog>
   );
