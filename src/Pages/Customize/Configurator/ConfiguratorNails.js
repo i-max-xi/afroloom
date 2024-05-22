@@ -79,7 +79,7 @@ const Shirt = ({
     // Simulate loading for 2 seconds (you can replace this with your actual loading code)
     const loadingTimeout = setTimeout(() => {
       setIsLoading(false); // Set loading state to false once model is loaded (replace with your actual model loading logic)
-    }, 2000);
+    }, 2500);
 
     for (let i = 0; i < state.color.length; i++) {
       state.color[i] = "#ffffff";
