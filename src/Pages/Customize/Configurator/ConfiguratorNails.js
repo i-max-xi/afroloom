@@ -50,6 +50,8 @@ const Shirt = ({
   setSelectedPart,
   selectedTexture,
   showGlow,
+  isLoading,
+  setIsLoading,
 }) => {
   const snap = useSnapshot(state);
   const { nodes } = useGLTF(selectedClothing.model);
@@ -70,8 +72,6 @@ const Shirt = ({
       setSelectedPart(index);
     }
   };
-
-  const [isLoading, setIsLoading] = useState(true); // Add loading state
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -152,6 +152,8 @@ const ConfiguratorUnisex = () => {
   const { Id } = useParams();
   const selectedClothing = mainUnisex.find((item) => item.name === Id);
 
+  const [isLoading, setIsLoading] = useState(true); // Add loading state
+
   // const [Price, setPrice] = useState(selectedClothing.price);
 
   const [selectedSize, setSelectedSize] = useState(1);
@@ -185,15 +187,15 @@ const ConfiguratorUnisex = () => {
 
   const [showGlow, setShowGlow] = useState(false);
 
-  const [isLoading, setIsLoading] = useState(true); // Add loading state
+  // const [isLoading, setIsLoading] = useState(true); // Add loading state
 
-  useEffect(() => {
-    const loadingTimeout = setTimeout(() => {
-      setIsLoading(false);
-    }, 3000);
+  // useEffect(() => {
+  //   const loadingTimeout = setTimeout(() => {
+  //     setIsLoading(false);
+  //   }, 3000);
 
-    return () => clearTimeout(loadingTimeout);
-  }, []);
+  //   return () => clearTimeout(loadingTimeout);
+  // }, []);
 
   const handleColorChange = (newColor) => {
     state.color[selectedPart] = newColor;
@@ -614,7 +616,9 @@ const ConfiguratorUnisex = () => {
               <div className="right-panel">
                 <div className="resize-right-panel">
                   <div
-                    style={{ backgroundImage: `url(${nailBg})` }}
+                    style={{
+                      backgroundImage: !isLoading ? `url(${nailBg})` : null,
+                    }}
                     className="nail-bg"
                     ref={canvasRef}
                   >
@@ -632,6 +636,8 @@ const ConfiguratorUnisex = () => {
                         selectedPart={selectedPart}
                         selectedTexture={state.texture[selectedPart]}
                         showGlow={showGlow}
+                        isLoading={isLoading}
+                        setIsLoading={setIsLoading}
                       />
                     </Canvas>
                   </div>
