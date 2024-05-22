@@ -218,8 +218,15 @@ const ConfiguratorUnisex = () => {
   };
 
   const handleSkinToneChange = (title, color) => {
-    // state.color[1] = color;
     setSelectedTone(title);
+    setIsLoading(true);
+
+    const loadingTimeout = setTimeout(() => {
+      setIsLoading(false);
+    }, 500);
+
+    // Cleanup the timeout if the component unmounts
+    return () => clearTimeout(loadingTimeout);
   };
 
   const handleRotation = () => {
