@@ -223,7 +223,7 @@ const ConfiguratorUnisex = () => {
 
     const loadingTimeout = setTimeout(() => {
       setIsLoading(false);
-    }, 500);
+    }, 1000);
 
     // Cleanup the timeout if the component unmounts
     return () => clearTimeout(loadingTimeout);
