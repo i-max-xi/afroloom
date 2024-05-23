@@ -170,32 +170,16 @@ const ConfiguratorUnisex = () => {
   const currencyFactor = useSelector((state) => state.currencySymbol.factor);
 
   const [partPrices, setPartPrices] = useState(0);
-  const [colorPrice, setColorPrice] = useState(
-    colorBasePrice * selectedClothing.myNode[0].yardNeeded
-  );
 
   const [selectedTone, setSelectedTone] = useState("Dark");
   const [guideVisible, setGuideVisible] = useState(false);
 
   //total price
   const total = useMemo(() => {
-    return (
-      (partPrices + selectedClothing.price + colorPrice) *
-      currencyFactor
-    ).toFixed(2);
-  }, [selectedClothing.name]);
+    return ((partPrices + selectedClothing.price) * currencyFactor).toFixed(2);
+  }, [selectedClothing.name, partPrices]);
 
   const [showGlow, setShowGlow] = useState(false);
-
-  // const [isLoading, setIsLoading] = useState(true); // Add loading state
-
-  // useEffect(() => {
-  //   const loadingTimeout = setTimeout(() => {
-  //     setIsLoading(false);
-  //   }, 3000);
-
-  //   return () => clearTimeout(loadingTimeout);
-  // }, []);
 
   const handleColorChange = (newColor) => {
     state.color[selectedPart] = newColor;
@@ -276,12 +260,62 @@ const ConfiguratorUnisex = () => {
   }, [selectedClothing.name]);
 
   const [nailLength, setNailLength] = useState(null);
-  const [nailSize, setNailSize] = useState(null);
-  const [nailWidth, setNailWidth] = useState(null);
+
+  // const [nailSize, setNailSize] = useState(null);
+  // const [nailWidth, setNailWidth] = useState(null);
   const [nailMaterial, setNailMaterial] = useState(null);
 
   useEffect(() => {
+    console.log({ nailLength, nailMaterial });
+
+    if (nailMaterial === "Standard Press-on Nails") {
+      if (nailLength === "S") {
+        setPartPrices(25);
+      }
+      if (nailLength === "M") {
+        setPartPrices(25);
+      }
+      if (nailLength === "L") {
+        setPartPrices(30);
+      }
+      if (nailLength === "XL") {
+        setPartPrices(35);
+      }
+    }
+    if (nailMaterial === "Gel Press-on Nails") {
+      if (nailLength === "S") {
+        setPartPrices(30);
+      }
+      if (nailLength === "M") {
+        setPartPrices(40);
+      }
+      if (nailLength === "L") {
+        setPartPrices(60);
+      }
+      if (nailLength === "XL") {
+        setPartPrices(80);
+      }
+    }
+    if (nailMaterial === "Acrylic Press-on Nails") {
+      if (nailLength === "S") {
+        setPartPrices(70);
+      }
+      if (nailLength === "M") {
+        setPartPrices(80);
+      }
+      if (nailLength === "L") {
+        setPartPrices(110);
+      }
+      if (nailLength === "XL") {
+        setPartPrices(140);
+      }
+    }
+  }, [nailLength, nailMaterial]);
+
+  useEffect(() => {
     window.scrollTo(0, 0);
+    setNailMaterial("Standard Press-on Nails");
+    setNailLength("S");
   }, [selectedClothing.name]);
 
   const handleClear = () => {
@@ -565,16 +599,15 @@ const ConfiguratorUnisex = () => {
                           value={nailLength}
                           onChange={(e) => setNailLength(e.value)}
                           options={nailOptions.length}
-                          placeholder="Type or select a preference, eg. XL-25cm"
+                          placeholder="Select a preference"
                           className="wig-dropdown"
-                          editable
                         />
                         <label htmlFor="inputtext">Nail Length</label>
                       </span>
                     </>
                   )}
 
-                  {nailOptions.size && (
+                  {/* {nailOptions.size && (
                     <>
                       <span className="p-float-label">
                         <Dropdown
@@ -587,9 +620,9 @@ const ConfiguratorUnisex = () => {
                         <label htmlFor="inputtext">Nail Size</label>
                       </span>
                     </>
-                  )}
+                  )} */}
 
-                  {nailOptions.width && (
+                  {/* {nailOptions.width && (
                     <>
                       <span className="p-float-label">
                         <Dropdown
@@ -602,7 +635,7 @@ const ConfiguratorUnisex = () => {
                         <label htmlFor="inputtext">Nail Width</label>
                       </span>
                     </>
-                  )}
+                  )} */}
 
                   {nailOptions.material && (
                     <>
