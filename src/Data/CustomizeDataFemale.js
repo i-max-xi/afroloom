@@ -188,11 +188,11 @@ export const mainFemaleCustomize = [
     readyIn: 7,
     parts: tShirtShortParts.keys().map(tShirtShortParts),
     sizeOptions: [
-      { label: "S", value: 0.5, priceValue: 0 },
-      { label: "M", value: 1, priceValue: 0 },
-      { label: "L", value: 2, priceValue: 25 },
-      { label: "XL", value: 3, priceValue: 25 },
-      { label: "2XL", value: 4, priceValue: 50 },
+      { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 50 },
+      { label: "M", value: 1, priceValue: 0, colorPriceValue: 50 },
+      { label: "L", value: 2, priceValue: 25, colorPriceValue: 85 },
+      { label: "XL", value: 3, priceValue: 25, colorPriceValue: 85 },
+      { label: "2XL", value: 4, priceValue: 50, colorPriceValue: 120 },
     ],
     sizeForms: [
       {
@@ -226,11 +226,11 @@ export const mainFemaleCustomize = [
     readyIn: 7,
     parts: tShirtLongParts.keys().map(tShirtLongParts),
     sizeOptions: [
-      { label: "S", value: 0.5, priceValue: 5 },
-      { label: "M", value: 1, priceValue: 5 },
-      { label: "L", value: 2, priceValue: 5 },
-      { label: "XL", value: 3, priceValue: 40 },
-      { label: "2XL", value: 4, priceValue: 40 },
+      { label: "S", value: 0.5, priceValue: 15, colorPriceValue: 85 },
+      { label: "M", value: 1, priceValue: 15, colorPriceValue: 85 },
+      { label: "L", value: 2, priceValue: 15, colorPriceValue: 85 },
+      { label: "XL", value: 3, priceValue: 40, colorPriceValue: 120 },
+      { label: "2XL", value: 4, priceValue: 40, colorPriceValue: 120 },
     ],
     sizeForms: [
       {
@@ -268,11 +268,11 @@ export const mainFemaleCustomize = [
     readyIn: 7,
     parts: extraShortShirtParts.keys().map(extraShortShirtParts),
     sizeOptions: [
-      { label: "S", value: 0.5, priceValue: 0 },
-      { label: "M", value: 1, priceValue: 0 },
-      { label: "L", value: 2, priceValue: 25 },
-      { label: "XL", value: 3, priceValue: 25 },
-      { label: "2XL", value: 4, priceValue: 50 },
+      { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 50 },
+      { label: "M", value: 1, priceValue: 0, colorPriceValue: 50 },
+      { label: "L", value: 2, priceValue: 25, colorPriceValue: 85 },
+      { label: "XL", value: 3, priceValue: 25, colorPriceValue: 85 },
+      { label: "2XL", value: 4, priceValue: 50, colorPriceValue: 120 },
     ],
     sizeForms: [
       {
@@ -309,11 +309,11 @@ export const mainFemaleCustomize = [
     readyIn: 7,
     parts: extraLongShirtParts.keys().map(extraLongShirtParts),
     sizeOptions: [
-      { label: "S", value: 0.5, priceValue: 15 },
-      { label: "M", value: 1, priceValue: 15 },
-      { label: "L", value: 2, priceValue: 15 },
-      { label: "XL", value: 3, priceValue: 40 },
-      { label: "2XL", value: 4, priceValue: 40 },
+      { label: "S", value: 0.5, priceValue: 15, colorPriceValue: 85 },
+      { label: "M", value: 1, priceValue: 15, colorPriceValue: 85 },
+      { label: "L", value: 2, priceValue: 15, colorPriceValue: 85 },
+      { label: "XL", value: 3, priceValue: 40, colorPriceValue: 120 },
+      { label: "2XL", value: 4, priceValue: 40, colorPriceValue: 120 },
     ],
     sizeForms: [
       {
@@ -347,11 +347,11 @@ export const mainFemaleCustomize = [
     readyIn: 7,
     parts: normalTopParts.keys().map(normalTopParts),
     sizeOptions: [
-      { label: "S", value: 0.5, priceValue: 0 },
-      { label: "M", value: 1, priceValue: 0 },
-      { label: "L", value: 2, priceValue: 25 },
-      { label: "XL", value: 3, priceValue: 25 },
-      { label: "2XL", value: 4, priceValue: 50 },
+      { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 50 },
+      { label: "M", value: 1, priceValue: 0, colorPriceValue: 50 },
+      { label: "L", value: 2, priceValue: 25, colorPriceValue: 85 },
+      { label: "XL", value: 3, priceValue: 25, colorPriceValue: 85 },
+      { label: "2XL", value: 4, priceValue: 50, colorPriceValue: 120 },
     ],
     sizeForms: [
       {
@@ -511,11 +511,11 @@ export const mainFemaleCustomize = [
     readyIn: 7,
     // parts: topndownParts.keys().map(topndownParts),
     sizeOptions: [
-      { label: "S", value: 0.5, priceValue: -45 },
-      { label: "M", value: 1, priceValue: -45 },
-      { label: "L", value: 2, priceValue: -20 },
-      { label: "XL", value: 3, priceValue: -20 },
-      { label: "2XL", value: 4, priceValue: -20 },
+      { label: "S", value: 0.5, priceValue: -45, colorPriceValue: 85 },
+      { label: "M", value: 1, priceValue: -45, colorPriceValue: 85 },
+      { label: "L", value: 2, priceValue: -20, colorPriceValue: 120 },
+      { label: "XL", value: 3, priceValue: -20, colorPriceValue: 120 },
+      { label: "2XL", value: 4, priceValue: -20, colorPriceValue: 120 },
     ],
     sizeForms: [
       {
@@ -575,11 +575,11 @@ export const mainFemaleCustomize = [
     readyIn: 7,
     parts: cropTopParts.keys().map(cropTopParts),
     sizeOptions: [
-      { label: "S", value: 0.5, priceValue: 0 },
-      { label: "M", value: 1, priceValue: 0 },
-      { label: "L", value: 2, priceValue: 0 },
-      { label: "XL", value: 3, priceValue: 0 },
-      { label: "2XL", value: 4, priceValue: 0 },
+      { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 50 },
+      { label: "M", value: 1, priceValue: 0, colorPriceValue: 50 },
+      { label: "L", value: 2, priceValue: 0, colorPriceValue: 50 },
+      { label: "XL", value: 3, priceValue: 0, colorPriceValue: 50 },
+      { label: "2XL", value: 4, priceValue: 0, colorPriceValue: 50 },
     ],
     sizeForms: [
       {
@@ -616,11 +616,11 @@ export const mainFemaleCustomize = [
     readyIn: 7,
     sizeGuide: jacket_guide,
     sizeOptions: [
-      { label: "S", value: 0.5, priceValue: 25 },
-      { label: "M", value: 1, priceValue: 25 },
-      { label: "L", value: 2, priceValue: 25 },
-      { label: "XL", value: 3, priceValue: 50 },
-      { label: "2XL", value: 4, priceValue: 50 },
+      { label: "S", value: 0.5, priceValue: 25, colorPriceValue: 85 },
+      { label: "M", value: 1, priceValue: 25, colorPriceValue: 85 },
+      { label: "L", value: 2, priceValue: 25, colorPriceValue: 85 },
+      { label: "XL", value: 3, priceValue: 50, colorPriceValue: 120 },
+      { label: "2XL", value: 4, priceValue: 50, colorPriceValue: 120 },
     ],
     sizeForms: [
       {
@@ -655,11 +655,11 @@ export const mainFemaleCustomize = [
     readyIn: 7,
     parts: blazerParts.keys().map(blazerParts),
     sizeOptions: [
-      { label: "S", value: 0.5, priceValue: 25 },
-      { label: "M", value: 1, priceValue: 25 },
-      { label: "L", value: 2, priceValue: 25 },
-      { label: "XL", value: 3, priceValue: 50 },
-      { label: "2XL", value: 4, priceValue: 50 },
+      { label: "S", value: 0.5, priceValue: 25, colorPriceValue: 85 },
+      { label: "M", value: 1, priceValue: 25, colorPriceValue: 85 },
+      { label: "L", value: 2, priceValue: 25, colorPriceValue: 120 },
+      { label: "XL", value: 3, priceValue: 50, colorPriceValue: 120 },
+      { label: "2XL", value: 4, priceValue: 50, colorPriceValue: 120 },
     ],
     sizeForms: [
       {
@@ -702,11 +702,11 @@ export const mainFemaleCustomize = [
     readyIn: 7,
     parts: cloakParts.keys().map(cloakParts),
     sizeOptions: [
-      { label: "S", value: 0.5, priceValue: 55 },
-      { label: "M", value: 1, priceValue: 55 },
-      { label: "L", value: 2, priceValue: 55 },
-      { label: "XL", value: 3, priceValue: 70 },
-      { label: "2XL", value: 4, priceValue: 70 },
+      { label: "S", value: 0.5, priceValue: 55, colorPriceValue: 85 },
+      { label: "M", value: 1, priceValue: 55, colorPriceValue: 85 },
+      { label: "L", value: 2, priceValue: 55, colorPriceValue: 120 },
+      { label: "XL", value: 3, priceValue: 70, colorPriceValue: 120 },
+      { label: "2XL", value: 4, priceValue: 70, colorPriceValue: 120 },
     ],
     sizeForms: [
       {
@@ -731,11 +731,11 @@ export const mainFemaleCustomize = [
     readyIn: 7,
     parts: skirtParts.keys().map(skirtParts),
     sizeOptions: [
-      { label: "S", value: 0.5, priceValue: 0 },
-      { label: "M", value: 1, priceValue: 0 },
-      { label: "L", value: 2, priceValue: 50 },
-      { label: "XL", value: 3, priceValue: 50 },
-      { label: "2XL", value: 4, priceValue: 50 },
+      { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 50 },
+      { label: "M", value: 1, priceValue: 0, colorPriceValue: 50 },
+      { label: "L", value: 2, priceValue: 50, colorPriceValue: 85 },
+      { label: "XL", value: 3, priceValue: 50, colorPriceValue: 120 },
+      { label: "2XL", value: 4, priceValue: 50, colorPriceValue: 120 },
     ],
     sizeForms: [
       {
@@ -763,11 +763,11 @@ export const mainFemaleCustomize = [
     readyIn: 7,
     parts: miniSkirtParts.keys().map(miniSkirtParts),
     sizeOptions: [
-      { label: "S", value: 0.5, priceValue: 0 },
-      { label: "M", value: 1, priceValue: 0 },
-      { label: "L", value: 2, priceValue: 0 },
-      { label: "XL", value: 3, priceValue: 0 },
-      { label: "2XL", value: 4, priceValue: 0 },
+      { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 50 },
+      { label: "M", value: 1, priceValue: 0, colorPriceValue: 50 },
+      { label: "L", value: 2, priceValue: 0, colorPriceValue: 50 },
+      { label: "XL", value: 3, priceValue: 0, colorPriceValue: 50 },
+      { label: "2XL", value: 4, priceValue: 0, colorPriceValue: 50 },
     ],
     sizeForms: [
       {
@@ -795,11 +795,11 @@ export const mainFemaleCustomize = [
     readyIn: 7,
     parts: bootyShortsParts.keys().map(bootyShortsParts),
     sizeOptions: [
-      { label: "S", value: 0.5, priceValue: 0 },
-      { label: "M", value: 1, priceValue: 0 },
-      { label: "L", value: 2, priceValue: 0 },
-      { label: "XL", value: 3, priceValue: 0 },
-      { label: "2XL", value: 4, priceValue: 0 },
+      { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 50 },
+      { label: "M", value: 1, priceValue: 0, colorPriceValue: 50 },
+      { label: "L", value: 2, priceValue: 0, colorPriceValue: 50 },
+      { label: "XL", value: 3, priceValue: 0, colorPriceValue: 50 },
+      { label: "2XL", value: 4, priceValue: 0, colorPriceValue: 50 },
     ],
     sizeForms: [
       {
@@ -867,11 +867,11 @@ export const mainFemaleCustomize = [
     readyIn: 7,
     // parts: materialShortsParts.keys().map(materialShortsParts),
     sizeOptions: [
-      { label: "S", value: 0.5, priceValue: 0 },
-      { label: "M", value: 1, priceValue: 0 },
-      { label: "L", value: 2, priceValue: 0 },
-      { label: "XL", value: 3, priceValue: 0 },
-      { label: "2XL", value: 4, priceValue: 0 },
+      { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 50 },
+      { label: "M", value: 1, priceValue: 0, colorPriceValue: 50 },
+      { label: "L", value: 2, priceValue: 0, colorPriceValue: 50 },
+      { label: "XL", value: 3, priceValue: 0, colorPriceValue: 50 },
+      { label: "2XL", value: 4, priceValue: 0, colorPriceValue: 50 },
     ],
     sizeForms: [
       {
@@ -909,11 +909,11 @@ export const mainFemaleCustomize = [
     readyIn: 7,
     parts: trousersParts.keys().map(trousersParts),
     sizeOptions: [
-      { label: "S", value: 0.5, priceValue: 25 },
-      { label: "M", value: 1, priceValue: 25 },
-      { label: "L", value: 2, priceValue: 50 },
-      { label: "XL", value: 3, priceValue: 50 },
-      { label: "2XL", value: 4, priceValue: 50 },
+      { label: "S", value: 0.5, priceValue: 25, colorPriceValue: 80 },
+      { label: "M", value: 1, priceValue: 25, colorPriceValue: 80 },
+      { label: "L", value: 2, priceValue: 50, colorPriceValue: 120 },
+      { label: "XL", value: 3, priceValue: 50, colorPriceValue: 120 },
+      { label: "2XL", value: 4, priceValue: 50, colorPriceValue: 120 },
     ],
     sizeForms: [
       {

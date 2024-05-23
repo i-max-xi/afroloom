@@ -168,21 +168,33 @@ const ConfiguratorFemale = () => {
     currencyFactor
   ).toFixed(2);
 
-  const handleSizeChange = (factor, priceValue) => {
-    // let newPartPrice;
+  useEffect(() => {
+    setPartPrices(selectedClothing.sizeOptions[1].colorPriceValue);
+  }, []);
+
+  const handleSizeChange = (factor, priceValue, colorPriceValue) => {
+    let newPartPrice;
     setSelectedSize(factor);
 
     const textureCategory = Object.keys(textureArrays).find((category) =>
       textureArrays[category].includes(selectedTexture)
     );
 
-    if (textureCategory === "waxPrint" || !textureCategory) {
-      return;
+    if (!textureCategory) {
+      newPartPrice = colorPriceValue;
     }
 
-    const yardPrice = textureValues[textureCategory].price;
+    if (textureCategory && textureCategory === "waxPrint") {
+      const yardPrice = textureValues[textureCategory].price;
 
-    const newPartPrice = yardPrice + priceValue;
+      newPartPrice = yardPrice;
+    }
+
+    if (textureCategory && textureCategory !== "waxPrint") {
+      const yardPrice = textureValues[textureCategory].price;
+
+      newPartPrice = yardPrice + priceValue;
+    }
 
     setPartPrices(newPartPrice);
   };
@@ -201,7 +213,11 @@ const ConfiguratorFemale = () => {
     state.texture[selectedPart] = null;
     setSelectedPrintOn(newColor);
 
-    setPartPrices(0);
+    const currentSize = selectedClothing.sizeOptions.find(
+      (size) => size.value === selectedSize
+    );
+
+    setPartPrices(currentSize.colorPriceValue);
     setShowGlow(false);
   };
 
