@@ -593,7 +593,7 @@ const ConfiguratorMaleAccessories = () => {
                   <Carousel
                     value={colorOptions}
                     numVisible={isMobile ? 4 : 7}
-                    numScroll={isMobile ? 2 : 5}
+                    numScroll={isMobile ? 3 : 5}
                     showIndicators={false}
                     // responsiveOptions={responsiveColor}
                     itemTemplate={(colorOption) => (
@@ -626,7 +626,7 @@ const ConfiguratorMaleAccessories = () => {
                       <Carousel
                         value={textureArrays.batik}
                         numVisible={4}
-                        numScroll={2}
+                        numScroll={3}
                         showIndicators={false}
                         itemTemplate={(texture, index) => (
                           <TextureItem
@@ -654,7 +654,7 @@ const ConfiguratorMaleAccessories = () => {
                     <Carousel
                       value={textureArrays.Crochet}
                       numVisible={2}
-                      numScroll={2}
+                      numScroll={3}
                       showIndicators={false}
                       itemTemplate={(texture) => (
                         <TextureItem
@@ -685,7 +685,7 @@ const ConfiguratorMaleAccessories = () => {
                       <Carousel
                         value={textureArrays.waxPrint}
                         numVisible={4}
-                        numScroll={2}
+                        numScroll={3}
                         showIndicators={false}
                         itemTemplate={(texture) => (
                           <TextureItem

@@ -451,7 +451,7 @@ const ConfiguratorUnisex = () => {
                   <Carousel
                     value={colorOptions}
                     numVisible={isMobile ? 4 : 7}
-                    numScroll={isMobile ? 2 : 5}
+                    numScroll={isMobile ? 3 : 5}
                     showIndicators={false}
                     // // responsiveOptions={responsiveColor}
                     itemTemplate={(colorOption) => (
@@ -517,7 +517,7 @@ const ConfiguratorUnisex = () => {
                   <Carousel
                     value={textureArrays.nailDesigns}
                     numVisible={4}
-                    numScroll={2}
+                    numScroll={3}
                     showIndicators={false}
                     itemTemplate={(texture, index) => (
                       <PrintItem

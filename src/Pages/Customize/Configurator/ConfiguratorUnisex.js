@@ -130,7 +130,10 @@ const Shirt = ({
                 attach="material"
                 color={color}
                 map={texture && new TextureLoader().load(texture)}
-                roughness={shiny3Ds.includes(selectedClothing.name) ? 0.2 : 1}
+                roughness={shiny3Ds.includes(selectedClothing.name) ? 0.1 : 1}
+                transparent={
+                  shiny3Ds.includes(selectedClothing.name) ? true : false
+                }
                 metalness={node === "Brass" && 1}
                 // metalnessMap={}
                 emissive={selectedPart === index ? "#FF8C00" : null} // Apply golden glow if part is selected
@@ -1066,7 +1069,7 @@ const ConfiguratorUnisex = () => {
                   <Carousel
                     value={colorOptions}
                     numVisible={isMobile ? 4 : 7}
-                    numScroll={isMobile ? 2 : 5}
+                    numScroll={isMobile ? 3 : 5}
                     showIndicators={false}
                     // // responsiveOptions={responsiveColor}
                     itemTemplate={(colorOption) => (
@@ -1104,7 +1107,7 @@ const ConfiguratorUnisex = () => {
                           <Carousel
                             value={textureArrays.batik}
                             numVisible={4}
-                            numScroll={2}
+                            numScroll={3}
                             showIndicators={false}
                             // responsiveOptions={responsiveNess}
                             itemTemplate={(texture, index) => (
@@ -1141,7 +1144,7 @@ const ConfiguratorUnisex = () => {
                           <Carousel
                             value={textureArrays.waxPrint}
                             numVisible={4}
-                            numScroll={2}
+                            numScroll={3}
                             showIndicators={false}
                             itemTemplate={(texture) => (
                               <TextureItem
@@ -1352,7 +1355,7 @@ const ConfiguratorUnisex = () => {
                                 <Carousel
                                   value={colorOptions.slice(0, 6)}
                                   numVisible={isMobile ? 4 : 7}
-                                  numScroll={isMobile ? 2 : 5}
+                                  numScroll={isMobile ? 3 : 5}
                                   showIndicators={false}
                                   itemTemplate={(colorOption) => (
                                     <button
