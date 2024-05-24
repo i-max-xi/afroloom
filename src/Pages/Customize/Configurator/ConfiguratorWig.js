@@ -182,9 +182,19 @@ const ConfiguratorWig = () => {
   const [stateImage, setStateImage] = useState("");
 
   const captureCanvasAsImage = async () => {
-    setStateImage(displayImage); // Save the data URL to state
+    if (!capSize) {
+      toastRef.current.show({
+        severity: "error",
+        summary: "Error",
+        detail: "Please select a cap size",
+        life: 3000,
+      });
+      return;
+    }
 
-    setShowConfirmation(true); // Show confirmation
+    setStateImage(displayImage);
+
+    setShowConfirmation(true);
   };
 
   //size guide popup
@@ -593,7 +603,6 @@ const ConfiguratorWig = () => {
                           options={hairColorOptions.capSize}
                           placeholder="Type or select a preference"
                           className="wig-dropdown"
-                          editable
                           showClear={true}
                         />
                         <label htmlFor="inputtext">Cap Size</label>

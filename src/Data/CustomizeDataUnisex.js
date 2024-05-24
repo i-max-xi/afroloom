@@ -299,31 +299,31 @@ export const mainUnisex = [
       },
     ],
   },
-  {
-    id: uuid(),
-    name: "Earring",
-    image: earring,
-    model: earring_model,
-    myNode: [
-      { name: "balls", yardNeeded: 1 },
-      { name: "brass", yardNeeded: 1 },
-    ],
-    otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
-    myZoom: 0.8,
-    price: 5,
-    readyIn: 7,
-    sizeGuide: earring_guide,
-    sizeOptions: [
-      { label: "S", value: 0.5 },
-      { label: "M", value: 1 },
-      { label: "L", value: 2 },
-    ],
-    sizeForms: [
-      {
-        label: "Earlobe (mm)",
-      },
-    ],
-  },
+  // {
+  //   id: uuid(),
+  //   name: "Earring",
+  //   image: earring,
+  //   model: earring_model,
+  //   myNode: [
+  //     { name: "balls", yardNeeded: 1 },
+  //     { name: "brass", yardNeeded: 1 },
+  //   ],
+  //   otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
+  //   myZoom: 0.8,
+  //   price: 5,
+  //   readyIn: 7,
+  //   sizeGuide: earring_guide,
+  //   sizeOptions: [
+  //     { label: "S", value: 0.5 },
+  //     { label: "M", value: 1 },
+  //     { label: "L", value: 2 },
+  //   ],
+  //   sizeForms: [
+  //     {
+  //       label: "Earlobe (mm)",
+  //     },
+  //   ],
+  // },
   {
     id: uuid(),
     name: "Bikini",

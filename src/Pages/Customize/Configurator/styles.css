@@ -427,7 +427,7 @@ h1 {
 }
 
 .nail-bg {
-  background-size: cover;
+  background-size: 24.5rem 42rem; /* Set the fixed size of the background */
   background-repeat: no-repeat;
   background-position: center;
 }

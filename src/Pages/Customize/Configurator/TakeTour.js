@@ -3,11 +3,14 @@ import React, { useMemo } from "react";
 import { IconError } from "../../../Components/Icons";
 
 const maleVid = "https://www.youtube.com/embed/p0zTzvXzd3Q?si=G8WGqYwNDQg6jg4R";
-const femaleVid = "";
-const hairVid = "";
-const bikiniVid = "";
-const bangleVid = "";
-const sashVid = "";
+const femaleVid =
+  "https://www.youtube.com/embed/o5Cx3K20gUk?si=r8zkISqEWuLo_Shu";
+const hairVid = "https://www.youtube.com/embed/NTqZH6DfQBI?si=qehVE9wMWo9eJPVk";
+const bikiniVid =
+  "https://www.youtube.com/embed/1OdqOwFrA2U?si=R84KYrKmol0sYO9e";
+const bangleVid =
+  "https://www.youtube.com/embed/tojo9DBPwng?si=h7Q7blH0V9P1QyQX";
+const sashVid = "https://www.youtube.com/embed/oCvH9I3a3lA?si=6iz5mVHGpTkTH4t3";
 const earringVid = "";
 
 const TakeTour = ({ isOpen, onClose, type }) => {
