@@ -48,6 +48,15 @@ import nailDesign40 from "../textures/nail designs/gege.jpg";
 import nailDesign41 from "../textures/nail designs/rege.jpg";
 import nailDesign42 from "../textures/nail designs/rgeg.jpg";
 
+//news
+import nailDesign43 from "../textures/nail designs/new/2.jpg";
+import nailDesign44 from "../textures/nail designs/new/2ed2d.jpg";
+import nailDesign45 from "../textures/nail designs/new/4.jpg";
+import nailDesign46 from "../textures/nail designs/new/5.jpg";
+import nailDesign47 from "../textures/nail designs/new/fwef.jpg";
+import nailDesign48 from "../textures/nail designs/new/geg.jpg";
+import nailDesign49 from "../textures/nail designs/new/rege.jpg";
+
 import dashiki1 from "../textures/dashiki1.jpg";
 import dashiki2 from "../textures/dashiki2.jpg";
 import dashiki3 from "../textures/dashiki3.jpg";
@@ -163,22 +172,22 @@ export const textureArrays = {
 
   waxPrint: [waxPrint1, waxPrint2, waxPrint3, waxPrint4, waxPrint5, waxPrint6],
   nailDesigns: [
-    nailDesign1,
-    nailDesign2,
+    // nailDesign1,
+    // nailDesign2,
     nailDesign3,
     nailDesign4,
-    nailDesign5,
-    nailDesign6,
-    nailDesign7,
-    nailDesign8,
-    nailDesign9,
-    nailDesign10,
-    nailDesign11,
-    nailDesign12,
+    // nailDesign5,
+    // nailDesign6,
+    // nailDesign7,
+    // nailDesign8,
+    // nailDesign9,
+    // nailDesign10,
+    // nailDesign11,
+    // nailDesign12,
     // nailDesign13,
-    nailDesign14,
-    nailDesign15,
-    nailDesign16,
+    // nailDesign14,
+    // nailDesign15,
+    // nailDesign16,
     // nailDesign17,
     // nailDesign18,
     // nailDesign19,
@@ -190,21 +199,27 @@ export const textureArrays = {
     // nailDesign25,
     // nailDesign26,
     // nailDesign27,
-    nailDesign28,
-    nailDesign29,
+    // nailDesign28,
+    // nailDesign29,
     nailDesign30,
     nailDesign31,
-    nailDesign32,
-    nailDesign33,
-    nailDesign34,
-    nailDesign35,
-    nailDesign36,
+    // nailDesign32,
+    // nailDesign33,
+    // nailDesign34,
+    // nailDesign35,
+    // nailDesign36,
     nailDesign37,
     nailDesign38,
-    nailDesign39,
-    nailDesign40,
+    // nailDesign39,
+    // nailDesign40,
     nailDesign41,
-    nailDesign42,
+    // nailDesign42,
+    nailDesign43,
+    nailDesign44,
+    nailDesign45,
+    // nailDesign46,
+    nailDesign47,
+    // nailDesign48,
   ],
 };
 

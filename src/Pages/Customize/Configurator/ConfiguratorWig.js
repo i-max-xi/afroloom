@@ -427,18 +427,18 @@ const ConfiguratorWig = () => {
                         <img src={guide} width="100%" alt="size-guide" />
                       ))}
                     </p>
-                    <p className="mb-3">
+                    {/* <p className="mb-3">
                       <span className="fw-bold">Human Hair</span>
                       {hairGuidesHuman.map((guide) => (
                         <img src={guide} width="100%" alt="size-guide" />
                       ))}
-                    </p>
-                    <p className="mb-3">
+                    </p> */}
+                    {/* <p className="mb-3">
                       <span className="fw-bold">Synthetic Hair</span>
                       {hairGuidesSynthethic.map((guide) => (
                         <img src={guide} width="100%" alt="size-guide" />
                       ))}
-                    </p>
+                    </p> */}
                     <p className="mb-3">
                       <span className="fw-bold">
                         Frontal | Closure | Seal Out
