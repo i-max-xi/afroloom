@@ -83,7 +83,7 @@ export const braidOptions = {
   // typeOfHair: ["Human"],
 
   hairQuality: ["Single Drawn", "Double Drawn", "Super Double Drawn"],
-  hairStyling: ["Middle Part", "Side Part"],
+  hairStyling: ["Middle Part", "Left Part", "Right Part"],
   hairClosure: ["Closure (4x4)", "Frontal (13 x 4)"],
   hamanHairGrades: [],
 };
@@ -159,7 +159,7 @@ export const boxWaveOptions = {
     "Peruvian",
   ].sort(),
   hairQuality: ["Single Drawn", "Double Drawn", "Super Double Drawn"],
-  hairStyling: ["Middle Part", "Side Part"],
+  hairStyling: ["Middle Part", "Left Part", "Right Part"],
   hairClosure: ["Closure (4x4)", "Frontal (13 x 4)"],
   hamanHairGrades: [],
 };
@@ -221,7 +221,7 @@ export const boneStrightWigOptions = {
     "Peruvian",
   ].sort(),
   hairQuality: ["Single Drawn", "Double Drawn", "Super Double Drawn"],
-  hairStyling: ["Middle Part", "Side Part"],
+  hairStyling: ["Middle Part", "Left Part", "Right Part"],
   hairClosure: ["Closure (4x4)", "Frontal (13 x 4)"],
   hamanHairGrades: [],
 };
@@ -271,7 +271,7 @@ export const deepWaveWigOptions = {
   typeOfHair: ["Human"],
 
   hairQuality: ["Single Drawn", "Double Drawn", "Super Double Drawn"],
-  hairStyling: ["Middle Part", "Side Part"],
+  hairStyling: ["Middle Part", "Left Part", "Right Part"],
   hairClosure: ["Closure (4x4)", "Frontal (13 x 4)"],
   hamanHairGrades: [],
 };
@@ -328,7 +328,7 @@ export const straightHairWigOptions = {
     "Peruvian",
   ].sort(),
   hairQuality: ["Single Drawn", "Double Drawn", "Super Double Drawn"],
-  hairStyling: ["Middle Part", "Side Part"],
+  hairStyling: ["Middle Part", "Left Part", "Right Part"],
   hairClosure: ["Closure (4x4)", "Frontal (13 x 4)"],
   hamanHairGrades: [],
 };
@@ -385,7 +385,7 @@ export const JerryCurlWigOptions = {
     "Peruvian",
   ].sort(),
   hairQuality: ["Single Drawn", "Double Drawn", "Super Double Drawn"],
-  hairStyling: ["Middle Part", "Side Part"],
+  hairStyling: ["Middle Part", "Left Part", "Right Part"],
   hairClosure: ["Closure (4x4)", "Frontal (13 x 4)"],
   hamanHairGrades: [],
 };

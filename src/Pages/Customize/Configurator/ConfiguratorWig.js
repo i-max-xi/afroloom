@@ -478,9 +478,8 @@ const ConfiguratorWig = () => {
                           options={hairColorOptions.length.map(
                             (item) => item.title
                           )}
-                          placeholder="Type or select a preference"
+                          placeholder="Select a preference"
                           className="wig-dropdown"
-                          editable
                         />
                         <label htmlFor="inputtext">Hair Length</label>
                       </span>
@@ -528,9 +527,8 @@ const ConfiguratorWig = () => {
                             value={densityPreference}
                             onChange={(e) => setDensityPreference(e.value)}
                             options={hairColorOptions.densityPreference}
-                            placeholder="Type or Select a preference"
+                            placeholder="Select a preference"
                             className="wig-dropdown"
-                            editable
                             disabled={
                               !allowedDensityPrefences.includes(
                                 braidLength.title
@@ -579,6 +577,7 @@ const ConfiguratorWig = () => {
                             options={hairColorOptions.hairStyling}
                             placeholder="Select a preference"
                             className="wig-dropdown"
+                            showClear={true}
                           />
                           <label htmlFor="inputtext">Styling Option</label>
                         </span>
@@ -595,6 +594,7 @@ const ConfiguratorWig = () => {
                           placeholder="Type or select a preference"
                           className="wig-dropdown"
                           editable
+                          showClear={true}
                         />
                         <label htmlFor="inputtext">Cap Size</label>
                       </span>
@@ -641,8 +641,13 @@ const ConfiguratorWig = () => {
                             options={hairColorOptions.additionalOption}
                             placeholder="Select a preference"
                             className="wig-dropdown"
+                            // clearIcon
+                            showClear={true}
                           />
-                          <label htmlFor="inputtext">Additional Option</label>
+                          <label htmlFor="inputtext">
+                            Additional Option (+{currencySymbol}
+                            {(50 * currencyFactor).toFixed(0)})
+                          </label>
                         </span>
                       </>
                     )}

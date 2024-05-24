@@ -592,6 +592,21 @@ const ConfiguratorUnisex = () => {
                 </Dialog>
 
                 <div className="specifications">
+                  {nailOptions.material && (
+                    <>
+                      <span className="p-float-label">
+                        <Dropdown
+                          value={nailMaterial}
+                          onChange={(e) => setNailMaterial(e.value)}
+                          options={nailOptions.material}
+                          placeholder="Select a preference"
+                          className="wig-dropdown"
+                        />
+                        <label htmlFor="inputtext">Nail Type</label>
+                      </span>
+                    </>
+                  )}
+
                   {nailOptions.length && (
                     <>
                       <span className="p-float-label mt-2">
@@ -636,21 +651,6 @@ const ConfiguratorUnisex = () => {
                       </span>
                     </>
                   )} */}
-
-                  {nailOptions.material && (
-                    <>
-                      <span className="p-float-label">
-                        <Dropdown
-                          value={nailMaterial}
-                          onChange={(e) => setNailMaterial(e.value)}
-                          options={nailOptions.material}
-                          placeholder="Select a preference"
-                          className="wig-dropdown"
-                        />
-                        <label htmlFor="inputtext">Nail Type</label>
-                      </span>
-                    </>
-                  )}
                 </div>
               </div>
               <div className="right-panel">
