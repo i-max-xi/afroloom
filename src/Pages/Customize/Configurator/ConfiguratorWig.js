@@ -17,7 +17,7 @@ import {
 } from "../../../Data/CustomizeDataUnisex";
 import {
   allowedDensityPrefences,
-  boxWaveOptions,
+  bodyWaveOptions,
   boneStrightWigOptions,
   braidOptions,
   hairGuides,
@@ -49,7 +49,7 @@ const ConfiguratorWig = () => {
       return braidOptions;
     }
     if (selectedClothing.name === "Body Wave Wig") {
-      return boxWaveOptions;
+      return bodyWaveOptions;
     }
     if (selectedClothing.name === "Bone Straight Wig") {
       return boneStrightWigOptions;
@@ -127,9 +127,31 @@ const ConfiguratorWig = () => {
   ).toFixed(2);
 
   useEffect(() => {
-    const selectedLength = hairColorOptions.length.find(
+    setBraidLength(hairColorOptions.length[0]);
+
+    if (hairColorOptions.hairQuality) {
+      set_hair_quality(hairColorOptions.hairQuality[0]);
+    }
+  }, []);
+
+  const truelengthOptions = useMemo(() => {
+    if (hair_closure === "Closure (4x4)") {
+      return hairColorOptions.length;
+    }
+
+    if (hair_closure === "Frontal (13 x 4)") {
+      return hairColorOptions.frontalLength;
+    }
+  }, [hairColorOptions.frontalLength, hairColorOptions.length, hair_closure]);
+
+  useEffect(() => {
+    const selectedLength = truelengthOptions.find(
       (item) => item.title === braidLength.title
     );
+
+    if (selectedClothing.name === "Spiral Curls Braids Wig") {
+      return setLengthPrice(selectedLength.amount);
+    }
 
     if (
       allowedDensityPrefences.includes(braidLength.title) &&
@@ -165,7 +187,15 @@ const ConfiguratorWig = () => {
         setLengthPrice(selectedLength.SDDamount);
       }
     }
-  }, [braidLength, hair_quality, densityPreference]);
+  }, [
+    braidLength,
+    hair_quality,
+    densityPreference,
+    hairColorOptions.length,
+    hairColorOptions.hairQuality,
+    selectedClothing.name,
+    truelengthOptions,
+  ]);
 
   const handleLengthChange = (selectedLength) => {
     const selectedOption = hairColorOptions.length.find(
