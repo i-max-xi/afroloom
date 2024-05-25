@@ -1,4 +1,5 @@
 import { Html } from "@react-three/drei";
+import { separateWordsWithLineBreak } from "../../../utils/functions";
 
 const HtmlComponent = ({
   textLeft,
@@ -12,14 +13,6 @@ const HtmlComponent = ({
   ImprintTextPosition,
   hideRightText,
 }) => {
-  const separateWordsWithLineBreak = (text) => {
-    // Split the text into an array of words
-    const wordsArray = text?.split(" ");
-    // Insert <br> after each word and join them back into a string
-    const textWithLineBreak = wordsArray?.join("<br>");
-    return textWithLineBreak;
-  };
-
   return (
     <Html style={{ zIndex: 1 }}>
       <div

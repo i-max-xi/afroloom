@@ -43,3 +43,11 @@ export const uploadToStorage = async (dataURL, bucket) => {
     throw error; // Re-throw the error to handle it where uploadToStorage is called.
   }
 };
+
+export const separateWordsWithLineBreak = (text) => {
+  // Split the text into an array of words
+  const wordsArray = text?.split(" ");
+  // Insert <br> after each word and join them back into a string
+  const textWithLineBreak = wordsArray?.join("<br>");
+  return textWithLineBreak;
+};

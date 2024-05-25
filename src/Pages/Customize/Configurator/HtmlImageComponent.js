@@ -1,4 +1,5 @@
 import { Html } from "@react-three/drei";
+import { separateWordsWithLineBreak } from "../../../utils/functions";
 
 const HtmlImageComponent = ({
   ImprintTextPosition,
@@ -13,9 +14,16 @@ const HtmlImageComponent = ({
         style={{
           position: "absolute",
           transform: `translate(${ImprintTextPosition.left?.image?.left}, ${ImprintTextPosition.left?.image.top})`,
-          fontSize: "0.6rem",
-          width: ImprintTextPosition?.left?.image?.width,
-          height: ImprintTextPosition?.left.image?.height,
+          fontSize: "0.5rem",
+          lineHeight: "0.7rem",
+          width:
+            imageLeft !== null
+              ? ImprintTextPosition?.left?.image?.width
+              : "2rem",
+          height:
+            imageLeft !== null
+              ? ImprintTextPosition?.left.image?.height
+              : "2rem",
           wordWrap: "break-word", // Enable word wrapping for long words
           overflow: "hidden", // Ensure text doesn't overflow its container
           textTransform: "uppercase",
@@ -26,7 +34,8 @@ const HtmlImageComponent = ({
           opacity: imageLeft !== null ? 1 : 0.3,
         }}
         dangerouslySetInnerHTML={{
-          __html: imageLeft !== null ? "" : "LOGO HERE",
+          __html:
+            imageLeft !== null ? "" : separateWordsWithLineBreak("LOGO HERE"),
         }}
       />
 
@@ -36,9 +45,16 @@ const HtmlImageComponent = ({
           style={{
             position: "absolute",
             transform: `translate(${ImprintTextPosition.right?.image?.left}, ${ImprintTextPosition.right?.image.top})`,
-            fontSize: "0.6rem",
-            width: ImprintTextPosition?.right?.image?.width,
-            height: ImprintTextPosition?.right?.image?.height,
+            fontSize: "0.5rem",
+            lineHeight: "0.7rem",
+            width:
+              imageRight !== null
+                ? ImprintTextPosition?.right?.image?.width
+                : "2rem",
+            height:
+              imageRight !== null
+                ? ImprintTextPosition?.right?.image?.height
+                : "2rem",
             wordWrap: "break-word", // Enable word wrapping for long words
             overflow: "hidden", // Ensure text doesn't overflow its container
             textTransform: "uppercase",
@@ -50,7 +66,10 @@ const HtmlImageComponent = ({
             opacity: imageRight !== null ? 1 : 0.3,
           }}
           dangerouslySetInnerHTML={{
-            __html: imageRight !== null ? "" : "LOGO HERE",
+            __html:
+              imageRight !== null
+                ? ""
+                : separateWordsWithLineBreak("LOGO HERE"),
           }}
         />
       )}
