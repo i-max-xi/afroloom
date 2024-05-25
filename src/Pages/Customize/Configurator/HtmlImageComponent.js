@@ -6,14 +6,13 @@ const HtmlImageComponent = ({
   imageLeft,
   imageRight,
 }) => {
-  console.log(ImprintTextPosition?.left?.image?.width);
   return (
     <Html style={{ zIndex: 1 }}>
       <div
         className="overlay"
         style={{
           position: "absolute",
-          transform: `translate(${ImprintTextPosition.left.left}, ${ImprintTextPosition.left?.image.top})`,
+          transform: `translate(${ImprintTextPosition.left?.image?.left}, ${ImprintTextPosition.left?.image.top})`,
           fontSize: "0.6rem",
           width: ImprintTextPosition?.left?.image?.width,
           height: ImprintTextPosition?.left.image?.height,
@@ -36,7 +35,7 @@ const HtmlImageComponent = ({
           className="overlay"
           style={{
             position: "absolute",
-            transform: `translate(${ImprintTextPosition.right.left}, ${ImprintTextPosition.right?.image.top})`,
+            transform: `translate(${ImprintTextPosition.right?.image?.left}, ${ImprintTextPosition.right?.image.top})`,
             fontSize: "0.6rem",
             width: ImprintTextPosition?.right?.image?.width,
             height: ImprintTextPosition?.right?.image?.height,
