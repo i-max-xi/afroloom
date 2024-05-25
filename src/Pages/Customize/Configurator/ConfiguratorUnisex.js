@@ -51,6 +51,7 @@ import uuid from "react-uuid";
 import { OverlayPanel } from "primereact/overlaypanel";
 import { readFileAsDataURL, uploadToStorage } from "../../../utils/functions";
 import TakeTour from "./TakeTour";
+import HtmlImageComponent from "./HtmlImageComponent";
 
 const Shirt = ({
   isRotating,
@@ -356,12 +357,8 @@ const ConfiguratorUnisex = () => {
           image: {
             top: "-22rem",
             left: "6.3rem",
-            width: "8%",
-          },
-          placeholder: {
-            top: "-22rem",
-            left: "6.9rem",
-            width: "8%",
+            height: "2rem",
+            width: "2rem",
           },
         },
         right: {
@@ -374,12 +371,8 @@ const ConfiguratorUnisex = () => {
           image: {
             top: "-23.9rem",
             left: "17.5rem",
-            width: "8%",
-          },
-          placeholder: {
-            top: "-23.5rem",
-            left: "18rem",
-            width: "8%",
+            height: "2rem",
+            width: "2rem",
           },
         },
       };
@@ -394,14 +387,10 @@ const ConfiguratorUnisex = () => {
           width: "3.6rem",
           lineHeight: "",
           image: {
-            top: "-10rem",
+            top: "5rem",
             left: "6.35rem",
-            width: "8%",
-          },
-          placeholder: {
-            top: "-10rem",
-            left: "6.9rem",
-            width: "8%",
+            height: "2rem",
+            width: "2rem",
           },
         },
         right: {
@@ -414,12 +403,8 @@ const ConfiguratorUnisex = () => {
           image: {
             top: "-11.6rem",
             left: "17.5rem",
-            width: "8%",
-          },
-          placeholder: {
-            top: "-11.4rem",
-            left: "18rem",
-            width: "8%",
+            height: "2rem",
+            width: "2rem",
           },
         },
       };
@@ -437,12 +422,8 @@ const ConfiguratorUnisex = () => {
           image: {
             top: "-18rem",
             left: "6rem",
-            width: "6%",
-          },
-          placeholder: {
-            top: "-18rem",
-            left: "6.5rem",
-            width: "8%",
+            height: "2rem",
+            width: "2rem",
           },
         },
         right: {
@@ -456,12 +437,8 @@ const ConfiguratorUnisex = () => {
           image: {
             top: "-9rem",
             left: "16.4rem",
-            width: "6%",
-          },
-          placeholder: {
-            top: "-9rem",
-            left: "16.6rem",
-            width: "8%",
+            height: "2rem",
+            width: "2rem",
           },
         },
       };
@@ -478,13 +455,8 @@ const ConfiguratorUnisex = () => {
           image: {
             top: "-10.5rem",
             left: "5.8rem",
-            width: "15.8%",
-            maxHeight: "3rem",
-          },
-          placeholder: {
-            top: "-9.5rem",
-            left: "6.78rem",
-            width: "6%",
+            height: "2rem",
+            width: "2rem",
           },
         },
         right: {
@@ -497,13 +469,8 @@ const ConfiguratorUnisex = () => {
           image: {
             top: "-11.5rem",
             left: "16.3rem",
-            width: "15.8%",
-            maxHeight: "3rem",
-          },
-          placeholder: {
-            top: "-11.5rem",
-            left: "17.8rem",
-            width: "6%",
+            height: "2rem",
+            width: "2rem",
           },
         },
       };
@@ -521,12 +488,8 @@ const ConfiguratorUnisex = () => {
           image: {
             top: "-18rem",
             left: "6.9rem",
-            width: "6%",
-          },
-          placeholder: {
-            top: "-18rem",
-            left: "7.1rem",
-            width: "6%",
+            height: "2rem",
+            width: "2rem",
           },
         },
         right: {
@@ -539,12 +502,8 @@ const ConfiguratorUnisex = () => {
           image: {
             top: "-8rem",
             left: "16rem",
-            width: "6%",
-          },
-          placeholder: {
-            top: "-8rem",
-            left: "16rem",
-            width: "6%",
+            height: "2rem",
+            width: "2rem",
           },
         },
       };
@@ -1191,20 +1150,30 @@ const ConfiguratorUnisex = () => {
                       <pointLight position={[10, 10, 10]} />
                       {noSpinFor.includes(selectedClothing.name) &&
                         isLoading === false && (
-                          <HtmlComponent
-                            textLeft={enteredTextLeft}
-                            textRight={enteredTextRight}
-                            textColor={textColor}
-                            textSizeleft={fontSizeLeft}
-                            textSizeRight={fontSizeRight}
-                            fontFamily={fontFamily}
-                            textLeftOrientation={textLeftOrientation}
-                            textRightOrientation={textRightOrientation}
-                            ImprintTextPosition={ImprintTextPosition}
-                            hideRightText={
-                              selectedClothing.name === "Beads Bracelet"
-                            }
-                          />
+                          <>
+                            <HtmlComponent
+                              textLeft={enteredTextLeft}
+                              textRight={enteredTextRight}
+                              textColor={textColor}
+                              textSizeleft={fontSizeLeft}
+                              textSizeRight={fontSizeRight}
+                              fontFamily={fontFamily}
+                              textLeftOrientation={textLeftOrientation}
+                              textRightOrientation={textRightOrientation}
+                              ImprintTextPosition={ImprintTextPosition}
+                              hideRightText={
+                                selectedClothing.name === "Beads Bracelet"
+                              }
+                            />
+                            <HtmlImageComponent
+                              ImprintTextPosition={ImprintTextPosition}
+                              imageLeft={uploadedImageLeft}
+                              imageRight={uploadedImageRight}
+                              hideRightText={
+                                selectedClothing.name === "Beads Bracelet"
+                              }
+                            />
+                          </>
                         )}
                       <Shirt
                         isRotating={isRotating}
@@ -1217,7 +1186,7 @@ const ConfiguratorUnisex = () => {
                         <CameraControls />
                       )}
                     </Canvas>
-                    {isLoading === false &&
+                    {/* {isLoading === false &&
                       noSpinFor.includes(selectedClothing.name) &&
                       selectedClothing.name !== "Beads Bracelet" &&
                       (uploadedImageLeft ? (
@@ -1303,7 +1272,7 @@ const ConfiguratorUnisex = () => {
                             ? "Image here"
                             : "Logo here"}
                         </div>
-                      ))}
+                      ))} */}
                   </div>
 
                   {noSpinFor.includes(selectedClothing.name) && (
