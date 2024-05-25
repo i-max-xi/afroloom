@@ -27,7 +27,7 @@ const Header2 = ({ bgColor, Color, Padding, Icon1, Icon2, Icon3, Icon4 }) => {
             <span className="fw-bolder">Quality assured, payment secured!</span>
           </p>
         </li>
-        
+
         <li className="d-flex more-info border-right">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -52,7 +52,7 @@ const Header2 = ({ bgColor, Color, Padding, Icon1, Icon2, Icon3, Icon4 }) => {
             </span>
           </p>
         </li>
-        
+
         <li className="d-flex more-info border-right">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -73,7 +73,8 @@ const Header2 = ({ bgColor, Color, Padding, Icon1, Icon2, Icon3, Icon4 }) => {
           <p className="d-flex flex-column justify-content-center">
             <span className="fw-bolder">45% Down Payment</span>
             <span className="text-left" style={{ fontSize: "0.8rem" }}>
-              Pay 45% deposit now and settle the remaining balance upon delivery
+              With wigs as an exception, customers may pay 45% deposit now and
+              settle balances upon delivery
             </span>
           </p>
         </li>
@@ -94,7 +95,8 @@ const Header2 = ({ bgColor, Color, Padding, Icon1, Icon2, Icon3, Icon4 }) => {
           <p className="d-flex flex-column justify-content-center">
             <span className="fw-bolder text-left">Retouch Policy</span>
             <span className="text-left" style={{ fontSize: "0.8rem" }}>
-              Products can be retouched within 48 hours if expectations are not met
+              Products can be retouched within 48 hours if expectations are not
+              met
             </span>
           </p>
         </li>

@@ -196,10 +196,14 @@ const CustomizeCheckout = () => {
             <div className="mt-5 mb-5 text-center"></div>
             <h5>Down Payment</h5>
             <div className="d-flex flex-column gap-1">
-              <div className="d-flex aligh-items-center">
+              <div
+                style={{ opacity: cartItems[0].name.includes("Wig") ? 0.5 : 1 }}
+                className="d-flex aligh-items-center"
+              >
                 <RadioButton
                   onChange={(e) => setPayPercentage(!payPercenTage)}
                   checked={payPercenTage === true}
+                  disabled={cartItems[0].name.includes("Wig")}
                 />
                 <label className="ml-2">Pay 45% of amount</label>
               </div>
