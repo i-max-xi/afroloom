@@ -203,13 +203,6 @@ const Configurator = () => {
   const [showGlow, setShowGlow] = useState(false);
 
   const handleColorChange = (newColor) => {
-    // if (selectedPart === "all") {
-    //   state.texture = Array(selectedClothing.myNode.length).fill(null);
-    //   state.color = Array(selectedClothing.myNode.length).fill(newColor);
-    //   setSelectedPrintOn(newColor);
-    //   return;
-    // }
-
     state.color[selectedPart] = newColor;
     state.texture[selectedPart] = null;
     setSelectedPrintOn(newColor);
@@ -237,12 +230,7 @@ const Configurator = () => {
         (size) => size.value === selectedSize
       );
 
-      console.log({ sizeValue });
-
       const yardPrice = textureValues[textureCategory].price;
-
-      // const newPartPrice =
-      //   yardStart === 2 ? yardNeeded * (yardPrice / 2) : yardNeeded * yardPrice;
 
       let newPartPrice;
       if (textureCategory === "waxPrint") {

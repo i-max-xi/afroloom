@@ -13,7 +13,7 @@ const HtmlImageComponent = ({
         className="overlay"
         style={{
           position: "absolute",
-          transform: `translate(${ImprintTextPosition.left?.image?.left}, ${ImprintTextPosition.left?.image.top})`,
+          transform: `translate(${ImprintTextPosition.left?.image?.left}, ${ImprintTextPosition.left?.image?.top})`,
           fontSize: "0.5rem",
           lineHeight: "0.7rem",
           width:
@@ -44,7 +44,7 @@ const HtmlImageComponent = ({
           className="overlay"
           style={{
             position: "absolute",
-            transform: `translate(${ImprintTextPosition.right?.image?.left}, ${ImprintTextPosition.right?.image.top})`,
+            transform: `translate(${ImprintTextPosition.right?.image?.left}, ${ImprintTextPosition.right?.image?.top})`,
             fontSize: "0.5rem",
             lineHeight: "0.7rem",
             width:

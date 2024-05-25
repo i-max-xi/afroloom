@@ -180,11 +180,18 @@ const ConfiguratorUnisex = () => {
   const currencyFactor = useSelector((state) => state.currencySymbol.factor);
 
   const [partPrices, setPartPrices] = useState(0);
-  const [colorPrice, setColorPrice] = useState(
-    colorBasePrice * selectedClothing.myNode[0].yardNeeded
-  );
 
   //total price
+  useEffect(() => {
+    setPartPrices(selectedClothing?.sizeOptions[1]?.colorPriceValue || 0);
+  }, []);
+
+  //total price
+  const bikiniTotal = (
+    (partPrices + selectedClothing.price) *
+    currencyFactor
+  ).toFixed(2);
+
   const total = useMemo(() => {
     if (
       noSpinFor.includes(selectedClothing.name) ||
@@ -194,61 +201,92 @@ const ConfiguratorUnisex = () => {
         2
       );
     } else {
-      return (
-        (partPrices + selectedClothing.price + colorPrice) *
-        currencyFactor
-      ).toFixed(2);
+      return ((partPrices + selectedClothing.price) * currencyFactor).toFixed(
+        2
+      );
     }
-  }, [selectedClothing.name]);
+  }, [
+    currencyFactor,
+    partPrices,
+    selectedClothing.name,
+    selectedClothing.price,
+  ]);
 
-  const handleSizeChange = (factor) => {
-    let yardNeeded;
+  const handleSizeChange = (factor, priceValue, colorPriceValue) => {
+    let newPartPrice;
     setSelectedSize(factor);
-
-    switch (factor) {
-      case 0.5:
-        yardNeeded = selectedClothing.otherYards.small;
-        break;
-
-      case 1:
-        yardNeeded = selectedClothing.myNode[0].yardNeeded;
-        break;
-
-      case 2:
-        yardNeeded = selectedClothing.otherYards.large;
-        break;
-
-      case 3:
-        yardNeeded = selectedClothing.otherYards.extraLarge;
-        break;
-
-      case 4:
-        yardNeeded = selectedClothing.otherYards.extraExtraLarge;
-        break;
-
-      default:
-        break;
-    }
 
     const textureCategory = Object.keys(textureArrays).find((category) =>
       textureArrays[category].includes(selectedTexture)
     );
 
-    const yardPrice = textureValues[textureCategory]?.price;
-    const yardStart = textureValues[textureCategory]?.yardStart;
+    if (!textureCategory) {
+      newPartPrice = colorPriceValue;
+    }
 
-    let newPartPrice;
+    if (textureCategory && textureCategory === "waxPrint") {
+      const yardPrice = textureValues[textureCategory].price;
 
-    if (!yardPrice || !yardStart) {
-      setColorPrice(yardNeeded * colorBasePrice);
-      return;
-    } else {
-      newPartPrice =
-        yardStart === 2 ? yardNeeded * (yardPrice / 2) : yardNeeded * yardPrice;
+      newPartPrice = yardPrice;
+    }
+
+    if (textureCategory && textureCategory !== "waxPrint") {
+      const yardPrice = textureValues[textureCategory].price;
+
+      newPartPrice = yardPrice + priceValue;
     }
 
     setPartPrices(newPartPrice);
   };
+
+  // const handleSizeChange = (factor) => {
+  //   let yardNeeded;
+  //   setSelectedSize(factor);
+
+  //   switch (factor) {
+  //     case 0.5:
+  //       yardNeeded = selectedClothing.otherYards.small;
+  //       break;
+
+  //     case 1:
+  //       yardNeeded = selectedClothing.myNode[0].yardNeeded;
+  //       break;
+
+  //     case 2:
+  //       yardNeeded = selectedClothing.otherYards.large;
+  //       break;
+
+  //     case 3:
+  //       yardNeeded = selectedClothing.otherYards.extraLarge;
+  //       break;
+
+  //     case 4:
+  //       yardNeeded = selectedClothing.otherYards.extraExtraLarge;
+  //       break;
+
+  //     default:
+  //       break;
+  //   }
+
+  //   const textureCategory = Object.keys(textureArrays).find((category) =>
+  //     textureArrays[category].includes(selectedTexture)
+  //   );
+
+  //   const yardPrice = textureValues[textureCategory]?.price;
+  //   const yardStart = textureValues[textureCategory]?.yardStart;
+
+  //   let newPartPrice;
+
+  //   if (!yardPrice || !yardStart) {
+  //     setColorPrice(yardNeeded * colorBasePrice);
+  //     return;
+  //   } else {
+  //     newPartPrice =
+  //       yardStart === 2 ? yardNeeded * (yardPrice / 2) : yardNeeded * yardPrice;
+  //   }
+
+  //   setPartPrices(newPartPrice);
+  // };
 
   const [showGlow, setShowGlow] = useState(false);
 
@@ -333,6 +371,12 @@ const ConfiguratorUnisex = () => {
           height: "2rem",
           width: "5.4rem",
           lineHeight: "",
+          image: {
+            top: "-1rem",
+            left: "16rem",
+            height: "2rem",
+            width: "2rem",
+          },
         },
         right: {
           text: " ",
@@ -576,37 +620,35 @@ const ConfiguratorUnisex = () => {
   };
 
   const handleColorChange = (newColor) => {
-    if (selectedPart === "all") {
-      state.texture = Array(selectedClothing.myNode.length).fill(null);
-      state.color = Array(selectedClothing.myNode.length).fill(newColor);
-      setSelectedPrintOn(newColor);
-      return;
-    }
-
     state.color[selectedPart] = newColor;
     state.texture[selectedPart] = null;
     setSelectedPrintOn(newColor);
 
-    setPartPrices(0);
+    const currentSize = selectedClothing.sizeOptions.find(
+      (size) => size.value === selectedSize
+    );
+
+    setPartPrices(currentSize.colorPriceValue);
     setShowGlow(false);
   };
 
+  // const handleColorChange = (newColor) => {
+  //   if (selectedPart === "all") {
+  //     state.texture = Array(selectedClothing.myNode.length).fill(null);
+  //     state.color = Array(selectedClothing.myNode.length).fill(newColor);
+  //     setSelectedPrintOn(newColor);
+  //     return;
+  //   }
+
+  //   state.color[selectedPart] = newColor;
+  //   state.texture[selectedPart] = null;
+  //   setSelectedPrintOn(newColor);
+
+  //   setPartPrices(0);
+  //   setShowGlow(false);
+  // };
+
   const handleTextureChange = (newTexture) => {
-    if (selectedPart === "all") {
-      state.texture = Array(selectedClothing.myNode.length).fill(newTexture);
-      state.color = Array(selectedClothing.myNode.length).fill(null);
-      setSelectedPrintOn(newTexture);
-
-      const textureCategory = Object.keys(textureArrays).find((category) =>
-        textureArrays[category].includes(newTexture)
-      );
-
-      const newPartPrice = textureValues[textureCategory];
-
-      setPartPrices(Array(selectedClothing.myNode.length).fill(newPartPrice));
-      return;
-    }
-
     if (selectedPart !== null) {
       state.texture[selectedPart] = newTexture;
       state.color[selectedPart] = null;
@@ -617,18 +659,63 @@ const ConfiguratorUnisex = () => {
         textureArrays[category].includes(newTexture)
       );
 
-      const yardNeeded = selectedClothing.myNode[selectedPart].yardNeeded;
-      const yardPrice = textureValues[textureCategory].price;
-      const yardStart = textureValues[textureCategory].yardStart;
+      const sizeValue = selectedClothing.sizeOptions.find(
+        (size) => size.value === selectedSize
+      );
 
-      const newPartPrice =
-        yardStart === 2 ? yardNeeded * (yardPrice / 2) : yardNeeded * yardPrice;
+      const yardPrice = textureValues[textureCategory].price;
+
+      let newPartPrice;
+      if (textureCategory === "waxPrint") {
+        newPartPrice = yardPrice;
+      } else {
+        newPartPrice = yardPrice + sizeValue.priceValue;
+      }
 
       setPartPrices(newPartPrice);
     }
 
     setShowGlow(false);
   };
+
+  // const handleTextureChange = (newTexture) => {
+  //   if (selectedPart === "all") {
+  //     state.texture = Array(selectedClothing.myNode.length).fill(newTexture);
+  //     state.color = Array(selectedClothing.myNode.length).fill(null);
+  //     setSelectedPrintOn(newTexture);
+
+  //     const textureCategory = Object.keys(textureArrays).find((category) =>
+  //       textureArrays[category].includes(newTexture)
+  //     );
+
+  //     const newPartPrice = textureValues[textureCategory];
+
+  //     setPartPrices(Array(selectedClothing.myNode.length).fill(newPartPrice));
+  //     return;
+  //   }
+
+  //   if (selectedPart !== null) {
+  //     state.texture[selectedPart] = newTexture;
+  //     state.color[selectedPart] = null;
+  //     setSelectedPrintOn(newTexture);
+  //     setSelectedTexture(newTexture); // needed to transfer to size
+
+  //     const textureCategory = Object.keys(textureArrays).find((category) =>
+  //       textureArrays[category].includes(newTexture)
+  //     );
+
+  //     const yardNeeded = selectedClothing.myNode[selectedPart].yardNeeded;
+  //     const yardPrice = textureValues[textureCategory].price;
+  //     const yardStart = textureValues[textureCategory].yardStart;
+
+  //     const newPartPrice =
+  //       yardStart === 2 ? yardNeeded * (yardPrice / 2) : yardNeeded * yardPrice;
+
+  //     setPartPrices(newPartPrice);
+  //   }
+
+  //   setShowGlow(false);
+  // };
 
   const handleRotation = () => {
     setIsRotating((prev) => !prev);
@@ -816,7 +903,13 @@ const ConfiguratorUnisex = () => {
       {showConfirmation ? (
         <Confirmation
           currencySymbol={currencySymbol}
-          total={total}
+          total={
+            selectedClothing.name === "Bikini"
+              ? bikiniTotal
+              : selectedClothing.name === "Bikini"
+              ? bikiniTotal
+              : total
+          }
           readyBy={selectedClothing.readyIn}
           weight={selectedClothing.weight}
           name={selectedClothing.name}
@@ -927,7 +1020,13 @@ const ConfiguratorUnisex = () => {
                         className={`size-button btn btn-outline-dark ${
                           selectedSize === option.value ? "selected" : ""
                         }`}
-                        onClick={() => handleSizeChange(option.value)}
+                        onClick={() =>
+                          handleSizeChange(
+                            option.value,
+                            option.priceValue,
+                            option.colorPriceValue
+                          )
+                        }
                       >
                         {option.label}
                       </button>
@@ -1463,7 +1562,7 @@ const ConfiguratorUnisex = () => {
               <span className="expect-to-be-ready">Price:</span>{" "}
               <span className="customize-focus">
                 {currencySymbol}
-                {total}
+                {selectedClothing.name === "Bikini" ? bikiniTotal : total}
               </span>
             </p>
 
