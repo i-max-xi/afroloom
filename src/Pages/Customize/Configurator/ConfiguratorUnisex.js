@@ -353,10 +353,9 @@ const ConfiguratorUnisex = () => {
           left: "-7.4rem",
           height: "8rem",
           width: "3.6rem",
-          lineHeight: "",
           image: {
-            top: "-22rem",
-            left: "6.3rem",
+            top: "-7rem",
+            left: "-6.5rem",
             height: "2rem",
             width: "2rem",
           },
@@ -369,8 +368,8 @@ const ConfiguratorUnisex = () => {
           width: "3.6rem",
           lineHeight: "",
           image: {
-            top: "-23.9rem",
-            left: "17.5rem",
+            top: "-7rem",
+            left: "4.5rem",
             height: "2rem",
             width: "2rem",
           },
@@ -420,10 +419,10 @@ const ConfiguratorUnisex = () => {
           lineHeight: "",
           size: 6,
           image: {
-            top: "-18rem",
-            left: "6rem",
-            height: "2rem",
-            width: "2rem",
+            top: "-3rem",
+            left: "-6rem",
+            height: "1.5rem",
+            width: "1.5rem",
           },
         },
         right: {
@@ -435,10 +434,10 @@ const ConfiguratorUnisex = () => {
           lineHeight: "",
           size: 6,
           image: {
-            top: "-9rem",
-            left: "16.4rem",
-            height: "2rem",
-            width: "2rem",
+            top: "7rem",
+            left: "4.2rem",
+            height: "1.5rem",
+            width: "1.5rem",
           },
         },
       };
