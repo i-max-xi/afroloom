@@ -222,6 +222,7 @@ const ConfiguratorUnisex = () => {
 
     if (!textureCategory) {
       newPartPrice = colorPriceValue;
+      return setPartPrices(newPartPrice);
     }
 
     if (textureCategory && textureCategory === "waxPrint") {
@@ -235,7 +236,6 @@ const ConfiguratorUnisex = () => {
 
       newPartPrice = yardPrice + priceValue;
     }
-
     setPartPrices(newPartPrice);
   };
 
