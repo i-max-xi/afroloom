@@ -432,7 +432,7 @@ const ConfiguratorUnisex = () => {
           image: {
             top: "4.6rem",
             left: "-7.2rem",
-            height: "2.4rem",
+            height: "2rem",
             width: "3rem",
           },
         },
