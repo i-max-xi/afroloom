@@ -186,7 +186,7 @@ const ConfiguratorUnisex = () => {
     state.texture[selectedPart] = null;
     setSelectedPrintOn(newColor);
 
-    setPartPrices(0);
+    // setPartPrices(0);
     setShowGlow(false);
   };
 
