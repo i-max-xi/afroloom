@@ -1,25 +1,14 @@
 import { v4 as uuid } from "uuid";
 
-// import dress from "../Assets/Customize/dress.jpg";
 import cloak from "../Assets/Customize/cloak.jpg";
 import skirt from "../Assets/welcome_3ds/female/skirt.png";
-// import femaleTshirt from "../Assets/Customize/femaleTshirt.jpg";
-import topndown from "../Assets/Customize/female_topndown.png";
-import dress from "../Assets/Customize/dress.png";
 import normal_top from "../Assets/Customize/normal_top.png";
-// import extra_short_img from "../Assets/Customize/female_short_shirt.jpg";
-// import extra_long_img from "../Assets/Customize/femlae_long_shirt.jpg";
-// import booty_shorts_img from "../Assets/Customize/booty_shorts.jpg";
-// import female_suit_img from "../Assets/Customize/femlae_suit.jpg";
-import kabanslit from "../Assets/Customize/kabanslit.JPG";
 
 //models
 import t_shirt_short from "../Pages/Customize/Configurator/models/FemaleClothing/tshirt_short_two.glb";
 import t_shirt_long from "../Pages/Customize/Configurator/models/FemaleClothing/tshirt_long_two.glb";
 import skirt_model from "../Pages/Customize/Configurator/models/FemaleClothing/skirt_main.glb";
 import trousers from "../Pages/Customize/Configurator/models/FemaleClothing/female_actual_trousers.glb";
-import leggings from "../Pages/Customize/Configurator/models/FemaleClothing/trousers_main.glb";
-import dress_model from "../Pages/Customize/Configurator/models/FemaleClothing/shoulder_dress.glb";
 import top_model from "../Pages/Customize/Configurator/models/FemaleClothing/shoulders_top.glb";
 import normal_top_model from "../Pages/Customize/Configurator/models/FemaleClothing/ladies_normal_top.glb";
 import mini_skirt_model from "../Pages/Customize/Configurator/models/FemaleClothing/mini_skirt_main.glb";
@@ -29,10 +18,8 @@ import blazer from "../Pages/Customize/Configurator/models/FemaleClothing/female
 import extra_long from "../Pages/Customize/Configurator/models/FemaleClothing/female_shirt_extra_long_two.glb";
 import extra_short from "../Pages/Customize/Configurator/models/FemaleClothing/female_shirt_extra_short.glb";
 import booty_shorts from "../Pages/Customize/Configurator/models/FemaleClothing/booty_shorts.glb";
-import kaba_slit from "../Pages/Customize/Configurator/models/FemaleClothing/gown.glb";
 import material_shorts from "../Pages/Customize/Configurator/models/FemaleClothing/material_shorts.glb";
 import jacket from "../Pages/Customize/Configurator/models/Accessories/Unisex/jacket_main.glb";
-import summer_shorts from "../Pages/Customize/Configurator/models/MaleClothing/summer_shorts.glb";
 
 // size guides
 import tshirt_guide from "../Assets/size_guide/FemaleClothing/short_sleeves_tshirt.png";
@@ -51,7 +38,6 @@ import miniSkirt_guide from "../Assets/size_guide/FemaleClothing/women mini skir
 import bootyShorts_guide from "../Assets/size_guide/FemaleClothing/booty shorts.jpg";
 import trousers_guide from "../Assets/size_guide/FemaleClothing/women trousers.jpg";
 import jacket_guide from "../Assets/size_guide/FemaleClothing/ladies bomber.png";
-import summer_shorts_guide from "../Assets/size_guide/FemaleClothing/women summer shorts.jpg";
 
 // models
 
@@ -92,24 +78,6 @@ const normalTopParts = require.context(
   /\.(png|jpg|jpeg|gif)$/
 );
 
-const topAndDownParts = require.context(
-  "../Assets/model_parts/FemaleClothing/female_topndown",
-  false,
-  /\.(png|jpg|jpeg|gif)$/
-);
-
-const dressParts = require.context(
-  "../Assets/model_parts/FemaleClothing/shoulder_dress",
-  false,
-  /\.(png|jpg|jpeg|gif)$/
-);
-
-const kabaSlitParts = require.context(
-  "../Assets/model_parts/FemaleClothing/gown",
-  false,
-  /\.(png|jpg|jpeg|gif)$/
-);
-
 const blazerParts = require.context(
   "../Assets/model_parts/FemaleClothing/blazer",
   false,
@@ -146,15 +114,7 @@ const trousersParts = require.context(
   /\.(png|jpg|jpeg|gif)$/
 );
 
-const leggingsParts = require.context(
-  "../Assets/model_parts/FemaleClothing/leggings",
-  false,
-  /\.(png|jpg|jpeg|gif)$/
-);
-
-const image_tshirt_short = require("../Assets/welcome_3ds/female/short slleev t shirt.png");
 const image_tshirt_long = require("../Assets/welcome_3ds/female/long sleev t shirt.png");
-const image_shirt_short = require("../Assets/welcome_3ds/female/women short sleev shirt.png");
 const image_shirt_long = require("../Assets/welcome_3ds/female/women long sleev shirt.png");
 const image_crop_top = require("../Assets/welcome_3ds/female/crop top.png");
 // const image_top = require("../Assets/welcome_3ds/female/");
@@ -166,12 +126,10 @@ const image_blazer = require("../Assets/welcome_3ds/female/women blazer.png");
 // const image_long_skirt = require("../Assets/welcome_3ds/female/long skirt.jpg");
 const image_mini_skirt = require("../Assets/welcome_3ds/female/mini skirt.png");
 const image_booty_shorts = require("../Assets/welcome_3ds/female/booty 2.png");
-const image_trousers = require("../Assets/welcome_3ds/female/women trousers.png");
 const image_leggings = require("../Assets/welcome_3ds/female/leggings.png");
 const image_jacket = require("../Assets/welcome_3ds/female/bomber_jacket.png");
 const image_topndown_image = require("../Assets/welcome_3ds/female/kaftan.png");
 const image_material_shorts_image = require("../Assets/welcome_3ds/female/material_shorts.png");
-const image_summer_image = require("../Assets/welcome_3ds/female/summer_shorts.png");
 
 export const mainFemaleCustomize = [
   {
