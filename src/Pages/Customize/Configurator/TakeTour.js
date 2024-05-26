@@ -2,16 +2,16 @@ import { Dialog } from "primereact/dialog";
 import React, { useMemo } from "react";
 import { IconError } from "../../../Components/Icons";
 
-const maleVid = "https://www.youtube.com/embed/p0zTzvXzd3Q?si=G8WGqYwNDQg6jg4R";
+const maleVid = "https://www.youtube.com/embed/I8vAfmGWaP8?si=0udacOCSjGZ7pIN9";
 const femaleVid =
-  "https://www.youtube.com/embed/o5Cx3K20gUk?si=r8zkISqEWuLo_Shu";
-const hairVid = "https://www.youtube.com/embed/NTqZH6DfQBI?si=qehVE9wMWo9eJPVk";
+  "https://www.youtube.com/embed/DJaaOOyfvm0?si=5MOyLeuWZqmlBLNf";
+const hairVid = "https://www.youtube.com/embed/2-oFVmNZp6o?si=w1C8qTwAktJpVrMu";
 const bikiniVid =
-  "https://www.youtube.com/embed/1OdqOwFrA2U?si=R84KYrKmol0sYO9e";
+  "https://www.youtube.com/embed/8W_oMkqAKtA?si=wFAZLJyuznc4TMOr";
 const bangleVid =
-  "https://www.youtube.com/embed/tojo9DBPwng?si=h7Q7blH0V9P1QyQX";
-const sashVid = "https://www.youtube.com/embed/oCvH9I3a3lA?si=6iz5mVHGpTkTH4t3";
-const earringVid = "";
+  "https://www.youtube.com/embed/BCXxVOr4Xxc?si=jxtNZrvAUfE4U5MG";
+const sashVid = "https://www.youtube.com/embed/XiGbNICsN-U?si=RBuE_lMA7IJytCsT";
+const nailVid = "https://www.youtube.com/embed/FOxsD3DoylA?si=n7XBJMmB4_JfWeEP";
 
 const TakeTour = ({ isOpen, onClose, type }) => {
   const videoUrl = useMemo(() => {
@@ -31,16 +31,12 @@ const TakeTour = ({ isOpen, onClose, type }) => {
       return hairVid;
     }
 
-    if (type === "nails") {
-      return;
-    }
-
     if (type === "bangle") {
       return bangleVid;
     }
 
-    if (type === "earring") {
-      return earringVid;
+    if (type === "nails") {
+      return nailVid;
     }
 
     if (type === "sash") {

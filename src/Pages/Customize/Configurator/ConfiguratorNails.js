@@ -42,6 +42,7 @@ import {
 import uuid from "react-uuid";
 import PrintItem from "./PrintItem";
 import { Dialog } from "primereact/dialog";
+import TakeTour from "./TakeTour";
 
 const Shirt = ({
   isRotating,
@@ -330,10 +331,72 @@ const ConfiguratorUnisex = () => {
     return selectedSkinTone ? selectedSkinTone.image : null;
   }, [selectedTone]);
 
+  // Welcome
+  const [showTourPopup, setShowTourPopup] = useState(true);
+  const [showTour, setShowTour] = useState(false);
+  const [, setHideText] = useState(false);
+
+  const handleTourStart = () => {
+    setShowTourPopup(false);
+    setShowTour(true);
+  };
+
+  const handleTourLater = () => {
+    setShowTourPopup(false);
+  };
+
+  const handleTourClose = () => {
+    setShowTour(false);
+    localStorage.setItem("tourCompleted", "true"); // Save tour completion status
+  };
+
+  useEffect(() => {
+    const tourCompleted = localStorage.getItem("tourCompleted");
+    if (tourCompleted === "true") {
+      setShowTourPopup(false); // If tour completed, don't show it
+    } else {
+      setShowTourPopup(true); // Show the tour for new users
+    }
+  }, []);
+
+  const handleRetakeTour = () => {
+    setShowTour(true);
+  };
+
   return (
     <>
       <Nav />
       <Toast ref={toastRef} />
+
+      <>
+        {showTourPopup && (
+          <Dialog
+            // header="Welcome to the 3D Customization!"
+            visible={showTourPopup}
+            className="col-12 col-sm-6"
+            onHide={handleTourLater}
+            dismissableMask={true}
+          >
+            <div className="tour-popup">
+              <h2>Welcome to the 3D customization!</h2>
+              <p>Would you like to take a quick tour?</p>
+              <button className="btn btn-success m-3" onClick={handleTourStart}>
+                Take Tour
+              </button>
+              <button
+                className="btn btn-secondary m-3"
+                onClick={handleTourLater}
+              >
+                Maybe Later
+              </button>
+            </div>
+          </Dialog>
+        )}
+
+        {showTour && (
+          <TakeTour isOpen={showTour} onClose={handleTourClose} type="nails" />
+        )}
+      </>
 
       {showConfirmation ? (
         <Confirmation
@@ -364,25 +427,12 @@ const ConfiguratorUnisex = () => {
               Customizing {selectedClothing.name}
             </h3>
             <div className="d-flex justify-content-center">
-              {noSpinFor.includes(selectedClothing.name) ? null : (
-                <></>
-                // <button
-                //   className={`btn rotation-button text-white  ${
-                //     isRotating === true ? "btn-danger" : "btn-warning"
-                //   }`}
-                //   onClick={handleRotation}
-                // >
-                //   {isRotating ? (
-                //     <span>
-                //       Stop <i className="pi pi-ban"></i>
-                //     </span>
-                //   ) : (
-                //     <span>
-                //       Take a Spin <i className="pi pi-sync"></i>
-                //     </span>
-                //   )}
-                // </button>
-              )}
+              <button
+                className="btn btn-info text-white mx-3"
+                onClick={handleRetakeTour}
+              >
+                Take Tour
+              </button>
             </div>
             <div className="configurator-container container">
               <div className="left-panel rounded shadow">
