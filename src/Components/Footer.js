@@ -64,7 +64,13 @@ const Footer = () => {
                 <Link to="/" className="navbar-brand">
                   <h3>
                     {" "}
-                    <img src={Logo} alt="africa-logo" className="logo w-100" />
+                    <img
+                      height="auto"
+                      width="auto"
+                      src={Logo}
+                      alt="africa-logo"
+                      className="logo w-100"
+                    />
                   </h3>
                 </Link>
                 <h5 className="mx-3">Follow Us</h5>

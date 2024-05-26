@@ -23,7 +23,13 @@ const Nav = ({ noCurrency }) => {
         <MobileNav visible={visible} setVisible={setVisible} />
         <Link to="/" className="navbar-brand">
           <h3>
-            <img src={Logo} alt="africa-logo" className="logo" />
+            <img
+              height="auto"
+              width="auto"
+              src={Logo}
+              alt="africa-logo"
+              className="logo"
+            />
           </h3>
         </Link>
       </div>
