@@ -10,6 +10,8 @@ import contactInfo from "../Data/contactList";
 import { isMobile } from "../utils/constants";
 
 const Footer = () => {
+  const currentYear = new Date().getFullYear();
+
   return (
     <div className="bg-black text-center text-white footer">
       <Header2 color="black" bgColor="orange" />
@@ -114,7 +116,9 @@ const Footer = () => {
         </section>
       </div>
 
-      <div className="text-center p-3 bg-dark">© 2023 Copyright: AfroLoom</div>
+      <div className="text-center p-3 bg-dark">
+        &copy; {currentYear} AfroLoom
+      </div>
     </div>
   );
 };
