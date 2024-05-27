@@ -177,7 +177,7 @@ const ConfiguratorUnisex = () => {
 
   //total price
   const total = useMemo(() => {
-    return ((partPrices + selectedClothing.price) * currencyFactor).toFixed(2);
+    return ((partPrices + selectedClothing.price) * currencyFactor).toFixed();
   }, [selectedClothing.name, partPrices]);
 
   const [showGlow, setShowGlow] = useState(false);
@@ -753,7 +753,7 @@ const ConfiguratorUnisex = () => {
               <span className="expect-to-be-ready">Price:</span>{" "}
               <span className="customize-focus">
                 {currencySymbol}
-                {total}
+                {total}.00
               </span>
             </p>
 

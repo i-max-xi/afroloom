@@ -190,7 +190,7 @@ const ConfiguratorUnisex = () => {
   const bikiniTotal = (
     (partPrices + selectedClothing.price) *
     currencyFactor
-  ).toFixed(2);
+  ).toFixed();
 
   const total = useMemo(() => {
     if (
@@ -1158,7 +1158,7 @@ const ConfiguratorUnisex = () => {
                             Batik (+{currencySymbol}
                             {(
                               currencyFactor * textureValues.batik.price
-                            ).toFixed(2)}
+                            ).toFixed()}
                             )
                           </h3>
                           <Carousel
@@ -1195,7 +1195,7 @@ const ConfiguratorUnisex = () => {
                             waxPrint (+{currencySymbol}
                             {(
                               currencyFactor * textureValues.waxPrint.price
-                            ).toFixed(2)}
+                            ).toFixed()}
                             )
                           </h3>
                           <Carousel

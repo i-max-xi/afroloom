@@ -254,7 +254,7 @@ export const OrderDetail = React.forwardRef(
                   </span> */}
                   <br />
                   <span className="fw-bold">Price: </span>
-                  {currencySymbol + (currencyFactor * total * count).toFixed(2)}
+                  {currencySymbol + (currencyFactor * total * count).toFixed()}
                 </div>
               </div>
               <div>

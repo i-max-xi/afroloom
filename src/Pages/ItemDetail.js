@@ -135,12 +135,12 @@ const ItemDetail = ({ match }) => {
             {relatedProduct.discount ? (
               <div>
                 <h6>
-                  <del>{currencySymbol + relatedPrice.toFixed(2)}</del>
+                  <del>{currencySymbol + relatedPrice.toFixed()}</del>
                 </h6>
-                <h5>{currencySymbol + relatedDiscountedPrice.toFixed(2)}</h5>
+                <h5>{currencySymbol + relatedDiscountedPrice.toFixed()}</h5>
               </div>
             ) : (
-              <h5>{currencySymbol + relatedPrice.toFixed(2)} </h5>
+              <h5>{currencySymbol + relatedPrice.toFixed()} </h5>
             )}
           </p>
         </div>
@@ -169,8 +169,7 @@ const ItemDetail = ({ match }) => {
                     key={index}
                     alt={extra + " " + index}
                     onClick={() => handleExtraClick(extra)}
-                    style={{objectFit: "cover"}}
-
+                    style={{ objectFit: "cover" }}
                   />
                 ))}
               </div>
@@ -184,13 +183,18 @@ const ItemDetail = ({ match }) => {
                 alt={product.title}
                 width="100%"
                 height="400rem"
-                style={{objectFit: isMobile ? "cover": "scale-down"}}
+                style={{ objectFit: isMobile ? "cover" : "scale-down" }}
                 className="main-product-image"
               />
             </div>
           </div>
           <div className="col-md-6 product-info">
-            <h3 className="mb-3 product-title" style={{textTransform: "capitalize"}}>{product.title}</h3>
+            <h3
+              className="mb-3 product-title"
+              style={{ textTransform: "capitalize" }}
+            >
+              {product.title}
+            </h3>
             <hr />
             <div className="d-flex mb-3">{stars}</div>
 
@@ -198,14 +202,14 @@ const ItemDetail = ({ match }) => {
               {product.discount ? (
                 <div>
                   <span className="original-price">
-                    {currencySymbol + augmentedPrice.toFixed(2)}
+                    {currencySymbol + augmentedPrice.toFixed()}
                   </span>
                   <span className="discounted-price mx-3">
-                    {currencySymbol + discountedPrice.toFixed(2)}
+                    {currencySymbol + discountedPrice.toFixed()}
                   </span>
                 </div>
               ) : (
-                <span>{currencySymbol + augmentedPrice.toFixed(2)} </span>
+                <span>{currencySymbol + augmentedPrice.toFixed()} </span>
               )}
             </p>
             <button

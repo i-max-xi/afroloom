@@ -124,7 +124,7 @@ const ConfiguratorWig = () => {
   const total = (
     (lengthPrice + selectedClothing.price + additionalOptionPrice) *
     currencyFactor
-  ).toFixed(2);
+  ).toFixed();
 
   useEffect(() => {
     setBraidLength(hairColorOptions.length[0]);
@@ -728,7 +728,7 @@ const ConfiguratorWig = () => {
               <span className="expect-to-be-ready">Price:</span>{" "}
               <span className="customize-focus">
                 {currencySymbol}
-                {total}
+                {total}.00
               </span>
             </p>
 
