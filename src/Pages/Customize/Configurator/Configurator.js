@@ -167,7 +167,7 @@ const Configurator = () => {
   const total = (
     (partPrices + selectedClothing.price) *
     currencyFactor
-  ).toFixed(2);
+  ).toFixed(0);
 
   useEffect(() => {
     setPartPrices(selectedClothing.sizeOptions[1].colorPriceValue);
@@ -589,7 +589,7 @@ const Configurator = () => {
                   <div className="texture-category">
                     <h3>
                       Batik (+{currencySymbol}
-                      {(currencyFactor * textureValues.batik.price).toFixed(2)})
+                      {(currencyFactor * textureValues.batik.price).toFixed()})
                     </h3>
                     <Carousel
                       value={textureArrays.batik}
@@ -614,7 +614,7 @@ const Configurator = () => {
                   {/* <div className="texture-category">
                     <h3>
                       Crochet (+{currencySymbol}
-                      {(currencyFactor * textureValues.Crochet.price).toFixed(2)})
+                      {(currencyFactor * textureValues.Crochet.price).toFixed()})
                     </h3>
                     <Carousel
                       value={textureArrays.Crochet}
@@ -643,7 +643,7 @@ const Configurator = () => {
                         waxPrint (+{currencySymbol}
                         {(
                           currencyFactor * textureValues.waxPrint.price
-                        ).toFixed(2)}
+                        ).toFixed()}
                         )
                       </h3>
                       <Carousel

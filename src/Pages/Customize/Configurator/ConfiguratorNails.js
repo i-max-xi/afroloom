@@ -177,7 +177,7 @@ const ConfiguratorUnisex = () => {
 
   //total price
   const total = useMemo(() => {
-    return ((partPrices + selectedClothing.price) * currencyFactor).toFixed(2);
+    return ((partPrices + selectedClothing.price) * currencyFactor).toFixed();
   }, [selectedClothing.name, partPrices]);
 
   const [showGlow, setShowGlow] = useState(false);

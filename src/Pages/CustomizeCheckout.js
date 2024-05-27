@@ -37,7 +37,7 @@ const CustomizeCheckout = () => {
   const count = cartItems[0].quantity;
 
   const [totalToPay] = useState(
-    cartItems.reduce((total, item) => total + item.price * count, 0).toFixed(2)
+    cartItems.reduce((total, item) => total + item.price * count, 0).toFixed()
   );
 
   const publicKey = process.env.REACT_APP_paystack_publicKey;
@@ -186,7 +186,7 @@ const CustomizeCheckout = () => {
                       <span className="fw-bold">Quantity: </span> {count}
                       <br />
                       <span className="fw-bold">Total Price:</span>
-                      {(totalToPay * currencyFactor).toFixed(2)}
+                      {(totalToPay * currencyFactor).toFixed()}
                     </div>
                   </div>
                 </li>

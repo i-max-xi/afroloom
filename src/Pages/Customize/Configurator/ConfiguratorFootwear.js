@@ -165,7 +165,7 @@ const ConfiguratorFootwear = () => {
   const total = (
     (partPrices + selectedClothing.price) *
     currencyFactor
-  ).toFixed(2);
+  ).toFixed();
 
   useEffect(() => {
     setPartPrices(selectedClothing.sizeOptions[1].colorPriceValue);
@@ -648,7 +648,7 @@ const ConfiguratorFootwear = () => {
                     {/* <div className="texture-category">
                       <h3>
                         Dashiki (+{currencySymbol}
-                        {(currencyFactor * textureValues.dashiki).toFixed(2)})
+                        {(currencyFactor * textureValues.dashiki).toFixed()})
                       </h3>
                       <Carousel
                         value={textureArrays.dashiki}
@@ -678,7 +678,7 @@ const ConfiguratorFootwear = () => {
                     {/* <div className="texture-category">
                     <h3>
                       Crochet (+{currencySymbol}
-                      {(currencyFactor * textureValues.Crochet.price).toFixed(2)})
+                      {(currencyFactor * textureValues.Crochet.price).toFixed()})
                     </h3>
                     <Carousel
                       value={textureArrays.Crochet}
@@ -708,7 +708,7 @@ const ConfiguratorFootwear = () => {
                         waxPrint (+{currencySymbol}
                         {(
                           currencyFactor * textureValues.waxPrint.price
-                        ).toFixed(2)}
+                        ).toFixed()}
                         )
                       </h3>
                       <Carousel
@@ -742,7 +742,7 @@ const ConfiguratorFootwear = () => {
                     {/* <div className="texture-category">
                     <h3>
                       Crochet (+{currencySymbol}
-                      {(currencyFactor * textureValues.Crochet.price).toFixed(2)})
+                      {(currencyFactor * textureValues.Crochet.price).toFixed()})
                     </h3>
                     <Carousel
                       value={textureArrays.Crochet}
@@ -805,7 +805,7 @@ const ConfiguratorFootwear = () => {
                     <div className="texture-category">
                       <h3>
                         Funerals (+{currencySymbol}
-                        {(currencyFactor * textureValues.Funerals).toFixed(2)})
+                        {(currencyFactor * textureValues.Funerals).toFixed()})
                       </h3>
                       <Carousel
                         value={textureArrays.Funerals}

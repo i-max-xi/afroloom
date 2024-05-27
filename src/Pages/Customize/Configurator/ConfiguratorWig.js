@@ -124,7 +124,7 @@ const ConfiguratorWig = () => {
   const total = (
     (lengthPrice + selectedClothing.price + additionalOptionPrice) *
     currencyFactor
-  ).toFixed(2);
+  ).toFixed();
 
   useEffect(() => {
     setBraidLength(hairColorOptions.length[0]);

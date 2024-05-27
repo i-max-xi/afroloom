@@ -166,7 +166,7 @@ const ConfiguratorFemale = () => {
   const total = (
     (partPrices + selectedClothing.price) *
     currencyFactor
-  ).toFixed(2);
+  ).toFixed();
 
   useEffect(() => {
     setPartPrices(selectedClothing.sizeOptions[1].colorPriceValue);
@@ -655,7 +655,7 @@ const ConfiguratorFemale = () => {
                         waxPrint (+{currencySymbol}
                         {(
                           currencyFactor * textureValues.waxPrint.price
-                        ).toFixed(2)}
+                        ).toFixed()}
                         )
                       </h3>
                       <Carousel
