@@ -619,13 +619,7 @@ const ConfiguratorFemale = () => {
                 <div className="texture-buttons-container">
                   <div className="texture-row">
                     <div className="texture-category">
-                      <h3>
-                        Batik (+{currencySymbol}
-                        {(currencyFactor * textureValues.batik.price).toFixed(
-                          2
-                        )}
-                        )
-                      </h3>
+                      <h3>Batik</h3>
                       <Carousel
                         value={textureArrays.batik}
                         numVisible={4}
@@ -651,13 +645,7 @@ const ConfiguratorFemale = () => {
                   </div>
                   <div className="texture-row">
                     <div className="texture-category">
-                      <h3>
-                        waxPrint (+{currencySymbol}
-                        {(
-                          currencyFactor * textureValues.waxPrint.price
-                        ).toFixed()}
-                        )
-                      </h3>
+                      <h3>waxPrint</h3>
                       <Carousel
                         value={textureArrays.waxPrint}
                         numVisible={4}
@@ -722,7 +710,7 @@ const ConfiguratorFemale = () => {
               <span className="expect-to-be-ready">Price:</span>{" "}
               <span className="customize-focus">
                 {currencySymbol}
-                {total}
+                {total}.00
               </span>
             </p>
 
