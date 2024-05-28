@@ -511,7 +511,7 @@ export const JerryCurlWigOptions = {
 };
 
 export const allNailOptions = {
-  length: ["S", "M", "L", "XL", "XXL", "XXXL"],
+  length: ["S", "M", "L", "XL"],
 
   material: [
     "Standard Press-on Nails",
