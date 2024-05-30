@@ -43,6 +43,7 @@ import uuid from "react-uuid";
 import PrintItem from "./PrintItem";
 import { Dialog } from "primereact/dialog";
 import TakeTour from "./TakeTour";
+import WigConfirmation from "./WigConfirmation";
 
 const Shirt = ({
   isRotating,
@@ -157,7 +158,6 @@ const ConfiguratorUnisex = () => {
 
   // const [Price, setPrice] = useState(selectedClothing.price);
 
-  const [selectedSize, setSelectedSize] = useState(1);
   const [selectedPrintOn, setSelectedPrintOn] = useState(null);
 
   const [selectedPart, setSelectedPart] = useState(0);
@@ -399,28 +399,44 @@ const ConfiguratorUnisex = () => {
       </>
 
       {showConfirmation ? (
-        <Confirmation
+        <WigConfirmation
           currencySymbol={currencySymbol}
           total={total}
           readyBy={selectedClothing.readyIn}
-          weight={selectedClothing.weight}
+          // weight={selectedClothing.weight}
           name={selectedClothing.name}
-          selectedParts={
-            notAll.includes(selectedClothing.name) ? null : selectedParts
-          }
-          selectedPrintOn={{
-            isColor: state.texture[selectedPart] === null,
-            item: selectedPrintOn,
-          }}
           setShowConfirmation={setShowConfirmation}
-          selectedSize={
-            selectedClothing.sizeOptions.find(
-              (option) => option.value === selectedSize
-            )?.label
-          }
           modelImage={stateImage}
+          allSpecifications={[
+            {
+              title: "Nail Length",
+              value: nailLength,
+            },
+
+            {
+              title: "Nail Type",
+              value: nailMaterial,
+            },
+          ]}
         />
       ) : (
+        // <Confirmation
+        //   currencySymbol={currencySymbol}
+        //   total={total}
+        //   readyBy={selectedClothing.readyIn}
+        //   weight={selectedClothing.weight}
+        //   name={selectedClothing.name}
+        //   selectedParts={
+        //     notAll.includes(selectedClothing.name) ? null : selectedParts
+        //   }
+        //   selectedPrintOn={{
+        //     isColor: state.texture[selectedPart] === null,
+        //     item: selectedPrintOn,
+        //   }}
+        //   setShowConfirmation={setShowConfirmation}
+        //   selectedSize={nailLength}
+        //   modelImage={stateImage}
+        // />
         <>
           <div className="main-space">
             <h3 className="text-center pt-3">
