@@ -21,9 +21,43 @@ const CustomizePage = () => {
       <div className="container">
         <h1 className="text-center mt-3 mb-2">Design your own product</h1>
         <div className="row">
+          {/* Nails */}
+          <h5 className="mt-4 footer-header">Nails</h5>
+          {mainUnisex.slice(0, 3).map(({ name, image, link }) => (
+            <Link
+              // to={`/customize-unisex/${name}`}
+              to={link ? link : `/configurator-unisex/${name}`}
+              className="col-6 col-md-3 customise-front text-decoration-none"
+              key={name}
+            >
+              <div className="card" data-aos="fade-in" data-aos-duration="1500">
+                <img className="card-img-top" src={image} alt={name} />
+                <div className="card-body m-0 d-flex justify-content-center flex-column">
+                  <h5 className="text-center">{name}</h5>
+                </div>
+              </div>
+            </Link>
+          ))}
+          {/* hair */}
+          <h5 className="mt-4 footer-header">Hair</h5>
+          {mainUnisex.slice(3, 8).map(({ name, image, link }) => (
+            <Link
+              // to={`/customize-unisex/${name}`}
+              to={link ? link : `/configurator-unisex/${name}`}
+              className="col-6 col-md-3 customise-front text-decoration-none"
+              key={name}
+            >
+              <div className="card" data-aos="fade-in" data-aos-duration="1500">
+                <img className="card-img-top" src={image} alt={name} />
+                <div className="card-body m-0 d-flex justify-content-center flex-column">
+                  <h5 className="text-center">{name}</h5>
+                </div>
+              </div>
+            </Link>
+          ))}
           {/* Accessories */}
           <h5 className="mt-4 footer-header">Accessories</h5>
-          {mainUnisex.map(({ name, image, link }) => (
+          {mainUnisex.slice(9, 14).map(({ name, image, link }) => (
             <Link
               // to={`/customize-unisex/${name}`}
               to={link ? link : `/configurator-unisex/${name}`}
