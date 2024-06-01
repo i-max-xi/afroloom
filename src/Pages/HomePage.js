@@ -6,8 +6,8 @@ import { Card } from "primereact/card"; // Import the Card component from PrimeR
 const HomePage = () => {
   const image1 = require("../Assets/hero/3d-casual-life-black-girl-holding-box-and-bags.png");
 
-  const randomImage1 = require("../Assets/femlae.jpg");
-  const randomImage2 = require("../Assets/male.jpg");
+  const randomImage1 = require("../Assets/femlae.png");
+  const randomImage2 = require("../Assets/male.png");
 
   return (
     <div>
