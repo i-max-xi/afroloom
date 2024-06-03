@@ -27,6 +27,7 @@ const CustomizeCheckout = () => {
   const [lastName, setLastName] = useState("");
   const [city, setCity] = useState("");
   const [tel, setTel] = useState("");
+  const [referral, setReferral] = useState("");
   // const [Country, setCountry] = useState(""); // State for shipping country input
 
   const currencySymbol = useSelector((state) => state.currencySymbol.symbol);
@@ -105,6 +106,7 @@ const CustomizeCheckout = () => {
       readyBy: cartItems[0].readyBy + "days",
       ...sashImages,
       specialRequest: cartItems[0].specialRequests,
+      ReferedPerson: referral,
       subject: `New 3D Product Order`,
     };
     // Submit to formspree
@@ -230,6 +232,23 @@ const CustomizeCheckout = () => {
         )}
 
         {/* Shipping Information */}
+
+        <div className="mt-5">
+          <p>
+            Did you find AfroLoom through a friend?, enter their identity code
+            to appreciate them
+          </p>
+          <div className="form-group">
+            <input
+              type="text"
+              className="form-control"
+              id="referral"
+              value={referral}
+              onChange={(e) => setReferral(e.target.value)}
+              placeholder="7 - digit ID code"
+            />
+          </div>
+        </div>
 
         <div className="container bg-white rounded col-12 col-sm-6 p-5 shadow">
           <h4 className="mb-4 text-center">
