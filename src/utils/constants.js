@@ -155,7 +155,7 @@ export const bodyWaveOptions = {
 };
 
 export const boneStrightWigOptions = {
-  colors: ["Burgundy", "Natural Black", "Blonde", "Brown"],
+  colors: ["Natural Black", "Burgundy", "Blonde", "Brown"],
 
   length: [
     { title: "8 inches", SDamount: 1450, DDamount: 1560, SDDamount: 1800 },
@@ -424,7 +424,7 @@ export const straightHairWigOptions = {
 };
 
 export const JerryCurlWigOptions = {
-  colors: ["Burgundy", "Blonde"],
+  colors: ["Black", "Burgundy", "Blonde", "Highlights"],
 
   length: [
     { title: "8 inches", SDamount: 650, DDamount: 850, SDDamount: 950 },

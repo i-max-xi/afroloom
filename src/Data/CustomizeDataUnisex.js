@@ -91,9 +91,9 @@ const BL_66111_1 = require("../Assets/welcome_3ds/others/Wig/body_wave/BL66111-1
 const BL_66122_1 = require("../Assets/welcome_3ds/others/Wig/body_wave/BL66122-1-.png");
 
 //bone straight
-const burgary = require("../Assets/welcome_3ds/others/Wig/bone straight/burgandy_bone_straight-.jpg");
-const blonde = require("../Assets/welcome_3ds/others/Wig/bone straight/blonde_bone_straight-.png");
-const natural = require("../Assets/welcome_3ds/others/Wig/bone straight/natural_black_bone_straight-.png");
+const burgary = require("../Assets/welcome_3ds/others/Wig/bone straight/burgandy_bone_straight-.png");
+const blonde = require("../Assets/welcome_3ds/others/Wig/bone straight/blonde_bone_straight.png");
+const natural = require("../Assets/welcome_3ds/others/Wig/bone straight/natural_black_bone_straight-.jpg");
 const bone_straight_profile = require("../Assets/welcome_3ds/others/Wig/bone straight/bone straight profile pic.png");
 const brown = require("../Assets/welcome_3ds/others/Wig/bone straight/brown_bone_straight-.jpg");
 
@@ -107,11 +107,14 @@ const deep_wave_profile = require("../Assets/welcome_3ds/others/Wig/deep_wave/de
 const straight_profile = require("../Assets/welcome_3ds/others/Wig/straight_hair/straight hair profile pic.png");
 const straight_blonde = require("../Assets/welcome_3ds/others/Wig/straight_hair/blonde straight hair.jpg");
 const straight_black = require("../Assets/welcome_3ds/others/Wig/straight_hair/natural black staight hair.png");
-const straight_red = require("../Assets/welcome_3ds/others/Wig/straight_hair/burgundy straight hair.jpg");
+const straight_red = require("../Assets/welcome_3ds/others/Wig/straight_hair/burgundy straight hair.png");
 
 //jerry curl
+const jerry_black = require("../Assets/welcome_3ds/others/Wig/jerry_curl/jerry_curls-black.png");
 const jerry_burgundy = require("../Assets/welcome_3ds/others/Wig/jerry_curl/burgandy-jerry curly.png");
 const jerry_blonde = require("../Assets/welcome_3ds/others/Wig/jerry_curl/blond jerry curl.png");
+const jerry_highlights = require("../Assets/welcome_3ds/others/Wig/jerry_curl/jerry-curls-highlights-.png");
+
 const jerry_profile = require("../Assets/welcome_3ds/others/Wig/jerry_curl/jerry curls profile pic.png");
 
 export const mainUnisex = [
@@ -217,12 +220,19 @@ export const mainUnisex = [
     id: uuid(),
     name: "Jerry Curl Wig",
     // image: jerry_profile,
+    // image:
+    //   "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqVJFwrGbe43Vdrdby0VydLSMoLUr0DZUCpZQqtTowbg&s",
     image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqVJFwrGbe43Vdrdby0VydLSMoLUr0DZUCpZQqtTowbg&s",
+      "https://hairsa.co.za/cdn/shop/products/15-01_1000x.jpg?v=1675716349",
     price: 100,
     readyIn: 7,
     link: "/configurator-wig/Jerry Curl Wig",
-    colorVariants: [jerry_burgundy, jerry_blonde],
+    colorVariants: [
+      jerry_black,
+      jerry_burgundy,
+      jerry_blonde,
+      jerry_highlights,
+    ],
     sizeGuide: hair_guide,
   },
   {
@@ -259,7 +269,7 @@ export const mainUnisex = [
     price: 100,
     readyIn: 7,
     link: "/configurator-wig/Bone Straight Wig",
-    colorVariants: [burgary, natural, blonde, brown],
+    colorVariants: [natural, burgary, blonde, brown],
     sizeGuide: "",
   },
   {
