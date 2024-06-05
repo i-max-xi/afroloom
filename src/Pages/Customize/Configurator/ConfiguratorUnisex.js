@@ -624,11 +624,11 @@ const ConfiguratorUnisex = () => {
     state.texture[selectedPart] = null;
     setSelectedPrintOn(newColor);
 
-    const currentSize = selectedClothing.sizeOptions.find(
-      (size) => size.value === selectedSize
-    );
+    // const currentSize = selectedClothing.sizeOptions.find(
+    //   (size) => size.value === selectedSize
+    // );
 
-    setPartPrices(currentSize.colorPriceValue);
+    // setPartPrices(currentSize.colorPriceValue);
     setShowGlow(false);
   };
 

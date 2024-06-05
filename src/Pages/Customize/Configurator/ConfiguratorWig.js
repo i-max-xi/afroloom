@@ -111,6 +111,45 @@ const ConfiguratorWig = () => {
   const currencyFactor = useSelector((state) => state.currencySymbol.factor);
 
   const [lengthPrice, setLengthPrice] = useState(0);
+  const [coloredHairPrice, setcoloredHairPrice] = useState(0);
+
+  const firstLengths = [
+    "8 inches",
+    "10 inches",
+    "12 inches",
+    "14 inches",
+    "16 inches",
+    "18inches",
+    "20 inches",
+  ];
+  const secondLengths = [
+    "22 inches",
+    "22 inches",
+    "24 inches",
+    "26 inches",
+    "28 inches",
+    "30 inches",
+  ];
+
+  useEffect(() => {
+    if (
+      selectedClothing.name !== "Spiral Curls Braids Wig" &&
+      colorPreference &&
+      colorPreference !== hairColorOptions?.colors[0] &&
+      firstLengths.includes(braidLength.title)
+    ) {
+      setcoloredHairPrice(200);
+    } else if (
+      selectedClothing.name !== "Spiral Curls Braids Wig" &&
+      colorPreference &&
+      colorPreference !== hairColorOptions?.colors[0] &&
+      secondLengths.includes(braidLength.title)
+    ) {
+      setcoloredHairPrice(250);
+    } else {
+      setcoloredHairPrice(0);
+    }
+  }, [braidLength.title, colorPreference, selectedClothing.name]);
 
   const additionalOptionPrice = useMemo(() => {
     if (additional !== null) {
@@ -122,7 +161,10 @@ const ConfiguratorWig = () => {
 
   //total price
   const total = (
-    (lengthPrice + selectedClothing.price + additionalOptionPrice) *
+    (lengthPrice +
+      selectedClothing.price +
+      additionalOptionPrice +
+      coloredHairPrice) *
     currencyFactor
   ).toFixed();
 
