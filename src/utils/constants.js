@@ -251,8 +251,88 @@ export const boneStrightWigOptions = {
   hamanHairGrades: [],
 };
 
+export const pixieCurlWigOptions = {
+  colors: ["Natural Black", "Ombre"],
+
+  length: [
+    { title: "8 inches", SDamount: 700, DDamount: 850, SDDamount: 950 },
+    { title: "10 inches", SDamount: 800, DDamount: 1050, SDDamount: 1150 },
+    { title: "12 inches", SDamount: 930, DDamount: 1150, SDDamount: 1250 },
+    { title: "14 inches", SDamount: 1000, DDamount: 1200, SDDamount: 1400 },
+    { title: "16 inches", SDamount: 1100, DDamount: 1400, SDDamount: 1600 },
+    { title: "18 inches", SDamount: 1200, DDamount: 1500, SDDamount: 1600 },
+    { title: "20 inches", SDamount: 1400, DDamount: 1650, SDDamount: 1900 },
+    { title: "22 inches", SDamount: 1530, DDamount: 1850, SDDamount: 2050 },
+    { title: "24 inches", SDamount: 1660, DDamount: 1950, SDDamount: 2150 },
+    {
+      title: "26 inches",
+      SDamount: { standard: 1880, heavy: 2450 },
+      DDamount: { standard: 2050, heavy: 2850 },
+      SDDamount: { standard: 2250, heavy: 3050 },
+    },
+    {
+      title: "28 inches",
+      SDamount: { standard: 2050, heavy: 2750 },
+      DDamount: { standard: 2150, heavy: 3000 },
+      SDDamount: { standard: 2350, heavy: 3200 },
+    },
+    {
+      title: "30 inches",
+      SDamount: { standard: 2150, heavy: 2900 },
+      DDamount: { standard: 2250, heavy: 3150 },
+      SDDamount: { standard: 2450, heavy: 3350 },
+    },
+  ],
+
+  frontalLength: [
+    { title: "8 inches", SDamount: 1000, DDamount: 1200, SDDamount: 1350 },
+    { title: "10 inches", SDamount: 1050, DDamount: 1250, SDDamount: 1550 },
+    { title: "12 inches", SDamount: 1200, DDamount: 1400, SDDamount: 1750 },
+    { title: "14 inches", SDamount: 1300, DDamount: 1500, SDDamount: 2000 },
+    { title: "16 inches", SDamount: 1450, DDamount: 1700, SDDamount: 2250 },
+    { title: "18 inches", SDamount: 1550, DDamount: 1850, SDDamount: 2350 },
+    { title: "20 inches", SDamount: 1750, DDamount: 1950, SDDamount: 2600 },
+    { title: "22 inches", SDamount: 1900, DDamount: 2050, SDDamount: 2800 },
+    { title: "24 inches", SDamount: 2000, DDamount: 2250, SDDamount: 2900 },
+    {
+      title: "26 inches",
+      SDamount: { standard: 2200, heavy: 2800 },
+      DDamount: { standard: 2400, heavy: 3000 },
+      SDDamount: { standard: 3000, heavy: 3800 },
+    },
+    {
+      title: "28 inches",
+      SDamount: { standard: 2400, heavy: 3100 },
+      DDamount: { standard: 2500, heavy: 3300 },
+      SDDamount: { standard: 3100, heavy: 3950 },
+    },
+    {
+      title: "30 inches",
+      SDamount: { standard: 2500, heavy: 3250 },
+      DDamount: { standard: 2700, heavy: 3500 },
+      SDDamount: { standard: 3200, heavy: 4150 },
+    },
+  ],
+
+  texture: ["Straight", "Wavy", "Curly"],
+  capSize: ["Small", "Medium", "Large"],
+  additionalOption: ["Fringe", "Curtain Bangs", "Side Bangs"],
+  laceType: [
+    "Swiss lace",
+    "HD lace",
+    "Transparent lace",
+    "None (for those who prefer a non-lace wig)",
+  ],
+  typeOfHair: ["Human"],
+
+  hairQuality: ["Single Drawn", "Double Drawn", "Super Double Drawn"],
+  hairStyling: ["Middle Part", "Left Part", "Right Part"],
+  hairClosure: ["Closure (4x4)", "Frontal (13 x 4)"],
+  hamanHairGrades: [],
+};
+
 export const deepWaveWigOptions = {
-  colors: ["Burgundy", "Natural Black", "Blonde"],
+  colors: ["Natural Black", "Brown", "Blonde Ombre", "Honey Blonde Ombre"],
 
   length: [
     { title: "8 inches", SDamount: 700, DDamount: 850, SDDamount: 950 },
@@ -332,7 +412,7 @@ export const deepWaveWigOptions = {
 };
 
 export const straightHairWigOptions = {
-  colors: ["Natural Black", "Blonde", "Burgundy"],
+  colors: ["Natural Black", "Blonde", "Highlights"],
 
   frontalLength: [
     { title: "8 inches", SDamount: 700, DDamount: 1000, SDDamount: 1200 },
@@ -424,7 +504,7 @@ export const straightHairWigOptions = {
 };
 
 export const JerryCurlWigOptions = {
-  colors: ["Black", "Burgundy", "Blonde", "Highlights"],
+  colors: ["Black", "Burgundy", "Ombre"],
 
   length: [
     { title: "8 inches", SDamount: 650, DDamount: 850, SDDamount: 950 },

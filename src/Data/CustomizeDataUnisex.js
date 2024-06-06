@@ -76,46 +76,50 @@ const box_braid_brown = require("../Assets/welcome_3ds/others/Wig/box_braid/brow
 const box_braid_wine = require("../Assets/welcome_3ds/others/Wig/box_braid/wine.png");
 
 // body wave
-const body_wave = require("../Assets/welcome_3ds/others/Wig/body_wave/body wave wig profile pic.jpg");
+const body_wave_profile = require("../Assets/welcome_3ds/others/Wig/body_wave/body wavee.jpg");
 const BL_66040_1 = require("../Assets/welcome_3ds/others/Wig/body_wave/BL_66040-1-.png");
 const BL_11017_1 = require("../Assets/welcome_3ds/others/Wig/body_wave/BL11017-1-.png");
-const BL_11018_1 = require("../Assets/welcome_3ds/others/Wig/body_wave/BL11018-1-.png");
+// const BL_11018_1 = require("../Assets/welcome_3ds/others/Wig/body_wave/BL11018-1-.png");
 const BL_11026_1 = require("../Assets/welcome_3ds/others/Wig/body_wave/BL11026-1.png");
 const BL_11036_1 = require("../Assets/welcome_3ds/others/Wig/body_wave/BL11036-1-.png");
-const BL_66010_1 = require("../Assets/welcome_3ds/others/Wig/body_wave/BL66010-1.png");
-const BL_66060_1 = require("../Assets/welcome_3ds/others/Wig/body_wave/BL66060-1-.png");
-const BL_66069_1 = require("../Assets/welcome_3ds/others/Wig/body_wave/BL66069-1-.png");
-const BL_66084_1 = require("../Assets/welcome_3ds/others/Wig/body_wave/BL66084-1.png");
-const BL_66110_1 = require("../Assets/welcome_3ds/others/Wig/body_wave/BL66110-1-.png");
-const BL_66111_1 = require("../Assets/welcome_3ds/others/Wig/body_wave/BL66111-1-.png");
-const BL_66122_1 = require("../Assets/welcome_3ds/others/Wig/body_wave/BL66122-1-.png");
+// const BL_66010_1 = require("../Assets/welcome_3ds/others/Wig/body_wave/BL66010-1.png");
+// const BL_66060_1 = require("../Assets/welcome_3ds/others/Wig/body_wave/BL66060-1-.png");
+// const BL_66069_1 = require("../Assets/welcome_3ds/others/Wig/body_wave/BL66069-1-.png");
+// const BL_66084_1 = require("../Assets/welcome_3ds/others/Wig/body_wave/BL66084-1.png");
+// const BL_66110_1 = require("../Assets/welcome_3ds/others/Wig/body_wave/BL66110-1-.png");
+// const BL_66111_1 = require("../Assets/welcome_3ds/others/Wig/body_wave/BL66111-1-.png");
+// const BL_66122_1 = require("../Assets/welcome_3ds/others/Wig/body_wave/BL66122-1-.png");
 
 //bone straight
-const burgary = require("../Assets/welcome_3ds/others/Wig/bone straight/burgandy_bone_straight-.png");
-const blonde = require("../Assets/welcome_3ds/others/Wig/bone straight/blonde_bone_straight.png");
-const natural = require("../Assets/welcome_3ds/others/Wig/bone straight/natural_black_bone_straight-.jpg");
-const bone_straight_profile = require("../Assets/welcome_3ds/others/Wig/bone straight/bone straight profile pic.png");
-const brown = require("../Assets/welcome_3ds/others/Wig/bone straight/brown_bone_straight-.jpg");
+const bone_staright_profile = require("../Assets/welcome_3ds/others/Wig/bone straight/bone straigt.jpg");
+const burgary = require("../Assets/welcome_3ds/others/Wig/bone straight/burgandy_bone_straight-removebg-preview.png");
+const blonde = require("../Assets/welcome_3ds/others/Wig/bone straight/blonde_bone__straight-removebg-preview.png");
+const natural = require("../Assets/welcome_3ds/others/Wig/bone straight/natural_black_bone_straight-removebg-preview.png");
+const brown = require("../Assets/welcome_3ds/others/Wig/bone straight/brown_bone__straight-removebg-preview.png");
 
 //deep wave
-const deepWaveburgundy = require("../Assets/welcome_3ds/others/Wig/deep_wave/burgandy deeo wave.png");
-const deepWaveblonde = require("../Assets/welcome_3ds/others/Wig/deep_wave/blode deep wave.jpg");
-const deepWaveNatural = require("../Assets/welcome_3ds/others/Wig/deep_wave/natural black deep wave.jpg");
-const deep_wave_profile = require("../Assets/welcome_3ds/others/Wig/deep_wave/deep wave profile pic.png");
+const deepWavebrown = require("../Assets/welcome_3ds/others/Wig/deep_wave/brown_deep_wave-removebg-preview.png");
+const deepWaveblonde_ombre = require("../Assets/welcome_3ds/others/Wig/deep_wave/blond_ombre_deep_wave-removebg-preview.png");
+const deepWaveNatural = require("../Assets/welcome_3ds/others/Wig/deep_wave/natural_black_deep_wave-removebg-preview.png");
+const deepWaveHoneyBlondeOmbre = require("../Assets/welcome_3ds/others/Wig/deep_wave/honey_blonde_ombre_deepp_wave-removebg-preview.png");
+const deep_wave_profile = require("../Assets/welcome_3ds/others/Wig/deep_wave/deep wavee.jpg");
 
 //straight hair
-const straight_profile = require("../Assets/welcome_3ds/others/Wig/straight_hair/straight hair profile pic.png");
-const straight_blonde = require("../Assets/welcome_3ds/others/Wig/straight_hair/blonde straight hair.jpg");
-const straight_black = require("../Assets/welcome_3ds/others/Wig/straight_hair/natural black staight hair.png");
-const straight_red = require("../Assets/welcome_3ds/others/Wig/straight_hair/burgundy straight hair.png");
+const straight_profile = require("../Assets/welcome_3ds/others/Wig/straight_hair/straigt.jpg");
+const straight_blonde = require("../Assets/welcome_3ds/others/Wig/straight_hair/blonde straight.png");
+const straight_black = require("../Assets/welcome_3ds/others/Wig/straight_hair/natural black straight.png");
+const straight_highlights = require("../Assets/welcome_3ds/others/Wig/straight_hair/Honey Blonde Highlight straight.png");
 
 //jerry curl
-const jerry_black = require("../Assets/welcome_3ds/others/Wig/jerry_curl/jerry_curls-black.png");
-const jerry_burgundy = require("../Assets/welcome_3ds/others/Wig/jerry_curl/burgandy-jerry curly.png");
-const jerry_blonde = require("../Assets/welcome_3ds/others/Wig/jerry_curl/blond jerry curl.png");
-const jerry_highlights = require("../Assets/welcome_3ds/others/Wig/jerry_curl/jerry-curls-highlights-.png");
+const jerry_black = require("../Assets/welcome_3ds/others/Wig/jerry_curl/black-jerry-curl-removebg-preview.png");
+const jerry_burgundy = require("../Assets/welcome_3ds/others/Wig/jerry_curl/burgandy-jerry-curl-webp-removebg-preview.png");
+const jerry_ombre = require("../Assets/welcome_3ds/others/Wig/jerry_curl/ombre_jerry-curl-removebg-preview.png");
+const jerry_profile = require("../Assets/welcome_3ds/others/Wig/jerry_curl/jerry curll.jpg");
 
-const jerry_profile = require("../Assets/welcome_3ds/others/Wig/jerry_curl/jerry curls profile pic.png");
+//pixie curl
+const pixie_profile = require("../Assets/welcome_3ds/others/Wig/pixie_curl/pixie.jpg");
+const pixie_black = require("../Assets/welcome_3ds/others/Wig/pixie_curl/natural_black_pixie_curl-removebg-preview.png");
+const pixie_ombre = require("../Assets/welcome_3ds/others/Wig/pixie_curl/ombre_pixie_curl-removebg-preview.png");
 
 export const mainUnisex = [
   {
@@ -207,40 +211,29 @@ export const mainUnisex = [
   {
     id: uuid(),
     name: "Straight Hair Wig",
-    // image: straight_profile,
-    image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-RVAUN2TVBo7_neZczkqVgdgtlxJqA-gXFLXBqPBshRu1tHGKAzmfwAoJSuITiRDxwl8&usqp=CAU",
+    image: straight_profile,
+
     price: 100,
     readyIn: 7,
     link: "/configurator-wig/Straight Hair Wig",
-    colorVariants: [straight_black, straight_blonde, straight_red],
+    colorVariants: [straight_black, straight_blonde, straight_highlights],
     sizeGuide: hair_guide,
   },
   {
     id: uuid(),
     name: "Jerry Curl Wig",
-    // image: jerry_profile,
-    // image:
-    //   "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqVJFwrGbe43Vdrdby0VydLSMoLUr0DZUCpZQqtTowbg&s",
-    image:
-      "https://hairsa.co.za/cdn/shop/products/15-01_1000x.jpg?v=1675716349",
+    image: jerry_profile,
+
     price: 100,
     readyIn: 7,
     link: "/configurator-wig/Jerry Curl Wig",
-    colorVariants: [
-      jerry_black,
-      jerry_burgundy,
-      jerry_blonde,
-      jerry_highlights,
-    ],
+    colorVariants: [jerry_black, jerry_burgundy, jerry_ombre],
     sizeGuide: hair_guide,
   },
   {
     id: uuid(),
     name: "Body Wave Wig",
-    // image: body_wave,
-    image:
-      "https://www.sheshappyhair.com/cdn/shop/products/bodywavewig_sheshappyhair_realhumanhair_da9c25e5-56b9-4364-ad50-8c14a88d249d_835x.png?v=1664464064",
+    image: body_wave_profile,
     price: 100,
     readyIn: 7,
     link: "/configurator-wig/Body Wave Wig",
@@ -263,9 +256,8 @@ export const mainUnisex = [
   {
     id: uuid(),
     name: "Bone Straight Wig",
-    // image: bone_straight_profile,
-    image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRmEBHD84d3M3COWPXyRggLB1UToNpBRTwCjLmPjvSTA&s",
+    image: bone_staright_profile,
+
     price: 100,
     readyIn: 7,
     link: "/configurator-wig/Bone Straight Wig",
@@ -275,12 +267,41 @@ export const mainUnisex = [
   {
     id: uuid(),
     name: "Deep Wave Wig",
-    // image: deep_wave_profile,
-    image: "https://miro.medium.com/v2/resize:fit:500/0*LmS__0WK8h4ngcXd.jpg",
+    image: deep_wave_profile,
     price: 100,
     readyIn: 7,
     link: "/configurator-wig/Deep Wave Wig",
-    colorVariants: [deepWaveburgundy, deepWaveNatural, deepWaveblonde],
+    colorVariants: [
+      deepWaveNatural,
+      deepWavebrown,
+      deepWaveblonde_ombre,
+      deepWaveHoneyBlondeOmbre,
+    ],
+    sizeGuide: "",
+  },
+  // {
+  //   id: uuid(),
+  //   name: "Deep Wave Wig",
+  //   image: deep_wave_profile,
+  //   price: 100,
+  //   readyIn: 7,
+  //   link: "/configurator-wig/Deep Wave Wig",
+  //   colorVariants: [
+  //     deepWaveNatural,
+  //     deepWavebrown,
+  //     deepWaveblonde_ombre,
+  //     deepWaveHoneyBlondeOmbre,
+  //   ],
+  //   sizeGuide: "",
+  // },
+  {
+    id: uuid(),
+    name: "Pixie Curl Wig",
+    image: pixie_profile,
+    price: 100,
+    readyIn: 7,
+    link: "/configurator-wig/Pixie Curl Wig",
+    colorVariants: [pixie_black, pixie_ombre],
     sizeGuide: "",
   },
   {

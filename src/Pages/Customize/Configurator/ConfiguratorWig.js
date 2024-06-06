@@ -30,6 +30,7 @@ import {
   deepWaveWigOptions,
   straightHairWigOptions,
   JerryCurlWigOptions,
+  pixieCurlWigOptions,
 } from "../../../utils/constants";
 import WigConfirmation from "./WigConfirmation";
 import { Dialog } from "primereact/dialog";
@@ -57,6 +58,10 @@ const ConfiguratorWig = () => {
 
     if (selectedClothing.name === "Deep Wave Wig") {
       return deepWaveWigOptions;
+    }
+
+    if (selectedClothing.name === "Pixie Curl Wig") {
+      return pixieCurlWigOptions;
     }
 
     if (selectedClothing.name === "Straight Hair Wig") {

@@ -40,7 +40,7 @@ const CustomizePage = () => {
           ))}
           {/* hair */}
           <h5 className="mt-4 footer-header">Hair</h5>
-          {mainUnisex.slice(3, 8).map(({ name, image, link }) => (
+          {mainUnisex.slice(3, 10).map(({ name, image, link }) => (
             <Link
               // to={`/customize-unisex/${name}`}
               to={link ? link : `/configurator-unisex/${name}`}
@@ -57,7 +57,7 @@ const CustomizePage = () => {
           ))}
           {/* Accessories */}
           <h5 className="mt-4 footer-header">Accessories</h5>
-          {mainUnisex.slice(9, 14).map(({ name, image, link }) => (
+          {mainUnisex.slice(11, 14).map(({ name, image, link }) => (
             <Link
               // to={`/customize-unisex/${name}`}
               to={link ? link : `/configurator-unisex/${name}`}
