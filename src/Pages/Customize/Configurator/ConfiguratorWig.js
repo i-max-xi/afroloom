@@ -752,6 +752,17 @@ const ConfiguratorWig = () => {
                     </>
                   )}
                 </div>
+
+                <p className="mt-3" style={{ color: "orangered" }}>
+                  <i
+                    className="pi pi-exclamation-triangle mx-2"
+                    style={{ color: "orangered" }}
+                  ></i>
+                  The wig images displayed are for illustrative purposes only.
+                  The actual wig you receive will be customized according to
+                  your specified preferences. Please ensure your order
+                  accurately reflects the style and specifications you desire.
+                </p>
               </div>
               <div className="right-panel">
                 <div
