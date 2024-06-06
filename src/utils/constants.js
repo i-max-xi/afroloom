@@ -251,8 +251,88 @@ export const boneStrightWigOptions = {
   hamanHairGrades: [],
 };
 
+export const pixieCurlWigOptions = {
+  colors: ["Natural Black", "Ombre"],
+
+  length: [
+    { title: "8 inches", SDamount: 750, DDamount: 950, SDDamount: 1050 },
+    { title: "10 inches", SDamount: 850, DDamount: 1050, SDDamount: 1250 },
+    { title: "12 inches", SDamount: 1000, DDamount: 1150, SDDamount: 1500 },
+    { title: "14 inches", SDamount: 1050, DDamount: 1250, SDDamount: 1700 },
+    { title: "16 inches", SDamount: 1150, DDamount: 1350, SDDamount: 1800 },
+    { title: "18 inches", SDamount: 1250, DDamount: 1450, SDDamount: 2050 },
+    { title: "20 inches", SDamount: 1450, DDamount: 1550, SDDamount: 2250 },
+    { title: "22 inches", SDamount: 1550, DDamount: 1700, SDDamount: 2350 },
+    { title: "24 inches", SDamount: 1750, DDamount: 1850, SDDamount: 2450 },
+    {
+      title: "26 inches",
+      SDamount: { standard: 2000, heavy: 2550 },
+      DDamount: { standard: 2150, heavy: 3000 },
+      SDDamount: { standard: 2550, heavy: 2950 },
+    },
+    {
+      title: "28 inches",
+      SDamount: { standard: 2150, heavy: 2900 },
+      DDamount: { standard: 2250, heavy: 3100 },
+      SDDamount: { standard: 2650, heavy: 3050 },
+    },
+    {
+      title: "30 inches",
+      SDamount: { standard: 2250, heavy: 3000 },
+      DDamount: { standard: 2350, heavy: 3150 },
+      SDDamount: { standard: 2750, heavy: 3250 },
+    },
+  ],
+
+  frontalLength: [
+    { title: "8 inches", SDamount: 1050, DDamount: 1200, SDDamount: 1400 },
+    { title: "10 inches", SDamount: 1150, DDamount: 1300, SDDamount: 1500 },
+    { title: "12 inches", SDamount: 1350, DDamount: 1600, SDDamount: 1800 },
+    { title: "14 inches", SDamount: 1500, DDamount: 1800, SDDamount: 2000 },
+    { title: "16 inches", SDamount: 1650, DDamount: 1900, SDDamount: 2150 },
+    { title: "18 inches", SDamount: 1850, DDamount: 2200, SDDamount: 2400 },
+    { title: "20 inches", SDamount: 2250, DDamount: 2450, SDDamount: 2650 },
+    { title: "22 inches", SDamount: 2400, DDamount: 2600, SDDamount: 2850 },
+    { title: "24 inches", SDamount: 2600, DDamount: 2700, SDDamount: 2950 },
+    {
+      title: "26 inches",
+      SDamount: { standard: 2750, heavy: 3150 },
+      DDamount: { standard: 2850, heavy: 3350 },
+      SDDamount: { standard: 3050, heavy: 3550 },
+    },
+    {
+      title: "28 inches",
+      SDamount: { standard: 2850, heavy: 3250 },
+      DDamount: { standard: 3000, heavy: 3550 },
+      SDDamount: { standard: 3100, heavy: 3650 },
+    },
+    {
+      title: "30 inches",
+      SDamount: { standard: 2950, heavy: 3500 },
+      DDamount: { standard: 3100, heavy: 3750 },
+      SDDamount: { standard: 3250, heavy: 3850 },
+    },
+  ],
+
+  texture: ["Straight", "Wavy", "Curly"],
+  capSize: ["Small", "Medium", "Large"],
+  additionalOption: ["Fringe", "Curtain Bangs", "Side Bangs"],
+  laceType: [
+    "Swiss lace",
+    "HD lace",
+    "Transparent lace",
+    "None (for those who prefer a non-lace wig)",
+  ],
+  typeOfHair: ["Human"],
+
+  hairQuality: ["Single Drawn", "Double Drawn", "Super Double Drawn"],
+  hairStyling: ["Middle Part", "Left Part", "Right Part"],
+  hairClosure: ["Closure (4x4)", "Frontal (13 x 4)"],
+  hamanHairGrades: [],
+};
+
 export const deepWaveWigOptions = {
-  colors: ["Burgundy", "Natural Black", "Blonde"],
+  colors: ["Natural Black", "Brown", "Blonde Ombre", "Honey Blonde Ombre"],
 
   length: [
     { title: "8 inches", SDamount: 700, DDamount: 850, SDDamount: 950 },
@@ -260,7 +340,7 @@ export const deepWaveWigOptions = {
     { title: "12 inches", SDamount: 930, DDamount: 1150, SDDamount: 1250 },
     { title: "14 inches", SDamount: 1000, DDamount: 1200, SDDamount: 1400 },
     { title: "16 inches", SDamount: 1100, DDamount: 1400, SDDamount: 1600 },
-    { title: "18 inches", SDamount: 1200, DDamount: 1500, SDDamount: 1600 },
+    { title: "18 inches", SDamount: 1200, DDamount: 1500, SDDamount: 1750 },
     { title: "20 inches", SDamount: 1400, DDamount: 1650, SDDamount: 1900 },
     { title: "22 inches", SDamount: 1530, DDamount: 1850, SDDamount: 2050 },
     { title: "24 inches", SDamount: 1660, DDamount: 1950, SDDamount: 2150 },
@@ -332,7 +412,7 @@ export const deepWaveWigOptions = {
 };
 
 export const straightHairWigOptions = {
-  colors: ["Natural Black", "Blonde", "Burgundy"],
+  colors: ["Natural Black", "Blonde", "Highlights"],
 
   frontalLength: [
     { title: "8 inches", SDamount: 700, DDamount: 1000, SDDamount: 1200 },
@@ -424,7 +504,7 @@ export const straightHairWigOptions = {
 };
 
 export const JerryCurlWigOptions = {
-  colors: ["Black", "Burgundy", "Blonde", "Highlights"],
+  colors: ["Black", "Burgundy", "Ombre"],
 
   length: [
     { title: "8 inches", SDamount: 650, DDamount: 850, SDDamount: 950 },
