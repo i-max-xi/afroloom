@@ -39,7 +39,7 @@ const CustomizePage = () => {
             </Link>
           ))}
           {/* hair */}
-          <h5 className="mt-4 footer-header">Hair</h5>
+          <h5 className="mt-4 footer-header">Wigs</h5>
           {mainUnisex.slice(3, 10).map(({ name, image, link }) => (
             <Link
               // to={`/customize-unisex/${name}`}

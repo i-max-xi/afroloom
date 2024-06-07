@@ -602,9 +602,9 @@ export const allNailOptions = {
 
 export const skinTone = [
   { title: "Dark", image: darkTone },
-  { title: "Medium Dark", image: mediumDarkTone },
-  { title: "Medium Light", image: mediumLightTone },
-  { title: "Light", image: lightTone },
+  { title: "Olive", image: mediumDarkTone },
+  { title: "Medium", image: mediumLightTone },
+  { title: "Fair", image: lightTone },
 ];
 
 export const hairGuidesHuman = [
