@@ -22,7 +22,7 @@ const CustomizePage = () => {
         <h1 className="text-center mt-3 mb-2">Design your own product</h1>
         <div className="row">
           {/* Nails */}
-          <h5 className="mt-4 footer-header">Nails</h5>
+          {/* <h5 className="mt-4 footer-header">Nails</h5>
           {mainUnisex.slice(0, 3).map(({ name, image, link }) => (
             <Link
               // to={`/customize-unisex/${name}`}
@@ -37,9 +37,9 @@ const CustomizePage = () => {
                 </div>
               </div>
             </Link>
-          ))}
+          ))} */}
           {/* hair */}
-          <h5 className="mt-4 footer-header">Wigs</h5>
+          {/* <h5 className="mt-4 footer-header">Wigs</h5>
           {mainUnisex.slice(3, 10).map(({ name, image, link }) => (
             <Link
               // to={`/customize-unisex/${name}`}
@@ -54,7 +54,7 @@ const CustomizePage = () => {
                 </div>
               </div>
             </Link>
-          ))}
+          ))} */}
           {/* Accessories */}
           <h5 className="mt-4 footer-header">Accessories</h5>
           {mainUnisex.slice(10, 17).map(({ name, image, link }) => (
