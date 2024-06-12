@@ -304,97 +304,7 @@ export const mainUnisex = [
     colorVariants: [pixie_black, pixie_ombre],
     sizeGuide: "",
   },
-  {
-    id: uuid(),
-    name: "Beads Bracelet",
-    image: bangles,
-    model: bangles_model,
-    myNode: [
-      { name: "large_beads", yardNeeded: 1 },
-      { name: "small_beads", yardNeeded: 1 },
-      { name: "brass", yardNeeded: 1 },
-    ],
-    otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
-    myZoom: 0.8,
-    price: 35,
-    readyIn: 7,
-    sizeGuide: bangle_guide,
-    sizeOptions: [
-      { label: "S", value: 0.5 },
-      { label: "M", value: 1 },
-      { label: "L", value: 2 },
-    ],
-    sizeForms: [
-      {
-        label: "Wrist size (cm)",
-      },
-    ],
-  },
-  // {
-  //   id: uuid(),
-  //   name: "Earring",
-  //   image: earring,
-  //   model: earring_model,
-  //   myNode: [
-  //     { name: "balls", yardNeeded: 1 },
-  //     { name: "brass", yardNeeded: 1 },
-  //   ],
-  //   otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
-  //   myZoom: 0.8,
-  //   price: 5,
-  //   readyIn: 7,
-  //   sizeGuide: earring_guide,
-  //   sizeOptions: [
-  //     { label: "S", value: 0.5 },
-  //     { label: "M", value: 1 },
-  //     { label: "L", value: 2 },
-  //   ],
-  //   sizeForms: [
-  //     {
-  //       label: "Earlobe (mm)",
-  //     },
-  //   ],
-  // },
-  {
-    id: uuid(),
-    name: "Bikini",
-    image: image_bikini,
-    model: bikini,
-    myNode: [
-      { name: "bikini_all", yardNeeded: 3 },
-      { name: "bikini_top", yardNeeded: 1 },
-    ],
-    otherYards: { small: 1, large: 3, extraLarge: 3, extraExtraLarge: 4 },
-    myZoom: 0.8,
-    price: 100,
-    // parts: bikiniParts.keys().map(bikiniParts),
-    // sizeModels: tshirt_model,
-    readyIn: 7,
-    sizeGuide: bikini_guide,
-    sizeOptions: [
-      // { label: "XS", value: 0.5 },
-      { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 60 },
-      { label: "M", value: 1, priceValue: 0, colorPriceValue: 60 },
-      { label: "L", value: 2, priceValue: 0, colorPriceValue: 60 },
-      { label: "XL", value: 3, priceValue: 0, colorPriceValue: 60 },
-      { label: "2XL", value: 4, priceValue: 0, colorPriceValue: 60 },
-    ],
-    sizeForms: [
-      {
-        label: "Upper Bust (cm)",
-      },
-      {
-        label: "Under Bust (cm)",
-      },
-      {
-        label: "Waist (cm)",
-      },
-      {
-        label: "Bottom Length (cm)",
-      },
-      // Add more form fields as needed
-    ],
-  },
+
   // {
   //   id: uuid(),
   //   name: "Waist Bag",
@@ -655,6 +565,97 @@ export const mainUnisex = [
       {
         label: "Width (cm)",
       },
+    ],
+  },
+  {
+    id: uuid(),
+    name: "Beads Bracelet",
+    image: bangles,
+    model: bangles_model,
+    myNode: [
+      { name: "large_beads", yardNeeded: 1 },
+      { name: "small_beads", yardNeeded: 1 },
+      { name: "brass", yardNeeded: 1 },
+    ],
+    otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
+    myZoom: 0.8,
+    price: 35,
+    readyIn: 7,
+    sizeGuide: bangle_guide,
+    sizeOptions: [
+      { label: "S", value: 0.5 },
+      { label: "M", value: 1 },
+      { label: "L", value: 2 },
+    ],
+    sizeForms: [
+      {
+        label: "Wrist size (cm)",
+      },
+    ],
+  },
+  // {
+  //   id: uuid(),
+  //   name: "Earring",
+  //   image: earring,
+  //   model: earring_model,
+  //   myNode: [
+  //     { name: "balls", yardNeeded: 1 },
+  //     { name: "brass", yardNeeded: 1 },
+  //   ],
+  //   otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
+  //   myZoom: 0.8,
+  //   price: 5,
+  //   readyIn: 7,
+  //   sizeGuide: earring_guide,
+  //   sizeOptions: [
+  //     { label: "S", value: 0.5 },
+  //     { label: "M", value: 1 },
+  //     { label: "L", value: 2 },
+  //   ],
+  //   sizeForms: [
+  //     {
+  //       label: "Earlobe (mm)",
+  //     },
+  //   ],
+  // },
+  {
+    id: uuid(),
+    name: "Bikini",
+    image: image_bikini,
+    model: bikini,
+    myNode: [
+      { name: "bikini_all", yardNeeded: 3 },
+      { name: "bikini_top", yardNeeded: 1 },
+    ],
+    otherYards: { small: 1, large: 3, extraLarge: 3, extraExtraLarge: 4 },
+    myZoom: 0.8,
+    price: 100,
+    // parts: bikiniParts.keys().map(bikiniParts),
+    // sizeModels: tshirt_model,
+    readyIn: 7,
+    sizeGuide: bikini_guide,
+    sizeOptions: [
+      // { label: "XS", value: 0.5 },
+      { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 60 },
+      { label: "M", value: 1, priceValue: 0, colorPriceValue: 60 },
+      { label: "L", value: 2, priceValue: 0, colorPriceValue: 60 },
+      { label: "XL", value: 3, priceValue: 0, colorPriceValue: 60 },
+      { label: "2XL", value: 4, priceValue: 0, colorPriceValue: 60 },
+    ],
+    sizeForms: [
+      {
+        label: "Upper Bust (cm)",
+      },
+      {
+        label: "Under Bust (cm)",
+      },
+      {
+        label: "Waist (cm)",
+      },
+      {
+        label: "Bottom Length (cm)",
+      },
+      // Add more form fields as needed
     ],
   },
 ];

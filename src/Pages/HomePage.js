@@ -24,7 +24,7 @@ const HomePage = () => {
 
       <section className="down-section">
         <Link to="/start-customize">
-          <button className="btn btn-warning text-white">Get Started</button>
+          <button className="btn btn-warning text-white">Customize Now</button>
         </Link>
       </section>
       {/* Review section */}
