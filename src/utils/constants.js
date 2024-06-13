@@ -28,6 +28,8 @@ export const genderOptions = [
   // { label: "Unisex", value: "Unisex" },
 ];
 
+export const beadTypeOptions = [{ label: "Glass", value: "Glass" }];
+
 export const braidOptions = {
   colors: [
     "Natural black",

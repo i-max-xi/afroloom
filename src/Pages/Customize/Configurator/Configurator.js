@@ -559,7 +559,7 @@ const Configurator = () => {
                     </div>
                   </Dialog>
                 </div>
-                <h5>Choose Color</h5>
+                <h5>Choose Color (Cotton Materail)</h5>
 
                 <div className="color-buttons-container">
                   <Carousel

@@ -46,7 +46,11 @@ import { Dropdown } from "primereact/dropdown";
 import { Toast } from "primereact/toast";
 import ImageUpload from "./ImageUpload";
 import HtmlComponent from "./HtmlComponent";
-import { genderOptions, isMobile } from "../../../utils/constants";
+import {
+  beadTypeOptions,
+  genderOptions,
+  isMobile,
+} from "../../../utils/constants";
 import uuid from "react-uuid";
 import { OverlayPanel } from "primereact/overlaypanel";
 import { readFileAsDataURL, uploadToStorage } from "../../../utils/functions";
@@ -829,6 +833,7 @@ const ConfiguratorUnisex = () => {
 
   // customer height
   const [gender, setGender] = useState("");
+  const [beadType, setBeadType] = useState("Glass");
 
   const handleAllPartsClick = () => {
     setSelectedPart("all");
@@ -934,6 +939,7 @@ const ConfiguratorUnisex = () => {
           customSizeValues={sizeFormValues}
           // height={height}
           gender={gender}
+          beadType={beadType}
         />
       ) : (
         <>
@@ -1011,8 +1017,23 @@ const ConfiguratorUnisex = () => {
                     })}
                   </>{" "}
                 </div>
+
+                <div className="select-part-container mt-3">
+                  <h6>Bead Type</h6>
+
+                  <p>
+                    <Dropdown
+                      value={beadType}
+                      onChange={(e) => setBeadType(e.value)}
+                      options={beadTypeOptions}
+                      optionLabel="label"
+                      placeholder="Select bead type"
+                      style={{ width: "66.5%" }}
+                    />
+                  </p>
+                </div>
                 <h5>Choose Size</h5>
-                <div className="size w-75">
+                <div className="size">
                   <p className="size-button-container">
                     {selectedClothing.sizeOptions.map((option) => (
                       <button
@@ -1046,7 +1067,7 @@ const ConfiguratorUnisex = () => {
                               textTransform: "capitalize",
                             }}
                           >
-                            {gender || "Tap to input your gender"}
+                            {gender || "Tap to input gender"}
                           </span>
                         </InplaceDisplay>
                         <InplaceContent>
@@ -1061,7 +1082,7 @@ const ConfiguratorUnisex = () => {
                             onChange={(e) => setGender(e.value)}
                             options={genderOptions}
                             optionLabel="label"
-                            placeholder="Select a Gender"
+                            placeholder="Select your Gender"
                           />
                         </InplaceContent>
                       </Inplace>
@@ -1381,7 +1402,11 @@ const ConfiguratorUnisex = () => {
                         <div className="inputs">
                           <input
                             type="text"
-                            placeholder="imprint on left side..."
+                            placeholder={
+                              selectedClothing.name === "Beads Bracelet"
+                                ? "Text Here"
+                                : "imprint on left side..."
+                            }
                             value={enteredTextLeft}
                             onChange={(e) => setEnteredTextLeft(e.target.value)}
                           />
