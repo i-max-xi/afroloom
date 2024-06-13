@@ -5,6 +5,8 @@ import { useSnapshot } from "valtio";
 import { state } from "./store";
 
 // import { Link } from "react-router-dom";
+import { InputText } from "primereact/inputtext";
+
 import { Carousel } from "primereact/carousel";
 import Confirmation from "./Confirmation";
 import html2canvas from "html2canvas";
@@ -1018,20 +1020,23 @@ const ConfiguratorUnisex = () => {
                   </>{" "}
                 </div>
 
-                <div className="select-part-container mt-3">
-                  <h6>Bead Type</h6>
+                {selectedClothing.name === "Beads Bracelet" && (
+                  <div className="select-part-container mt-3">
+                    <h6>Bead Type</h6>
 
-                  <p>
-                    <Dropdown
-                      value={beadType}
-                      onChange={(e) => setBeadType(e.value)}
-                      options={beadTypeOptions}
-                      optionLabel="label"
-                      placeholder="Select bead type"
-                      style={{ width: "66.5%" }}
-                    />
-                  </p>
-                </div>
+                    <p>
+                      <Dropdown
+                        value={beadType}
+                        onChange={(e) => setBeadType(e.value)}
+                        options={beadTypeOptions}
+                        optionLabel="label"
+                        placeholder="Select bead type"
+                        style={{ width: "66.5%" }}
+                      />
+                    </p>
+                  </div>
+                )}
+
                 <h5>Choose Size</h5>
                 <div className="size">
                   <p className="size-button-container">
@@ -1400,8 +1405,9 @@ const ConfiguratorUnisex = () => {
                       <h5>Imprint text on model</h5>
                       <div className="d-flex text-image-imprint-wrapper">
                         <div className="inputs">
-                          <input
+                          <InputText
                             type="text"
+                            className="p-inputtext-sm"
                             placeholder={
                               selectedClothing.name === "Beads Bracelet"
                                 ? "Text Here"
@@ -1409,15 +1415,28 @@ const ConfiguratorUnisex = () => {
                             }
                             value={enteredTextLeft}
                             onChange={(e) => setEnteredTextLeft(e.target.value)}
+                            style={{
+                              width:
+                                selectedClothing.name === "Beads Bracelet"
+                                  ? "66.5%"
+                                  : "50%",
+                            }}
                           />
                           {selectedClothing.name === noSpinFor[0] ? null : (
-                            <input
+                            <InputText
                               type="text"
                               placeholder="imprint on right side..."
+                              className="p-inputtext-sm"
                               value={enteredTextRight}
                               onChange={(e) =>
                                 setEnteredTextRight(e.target.value)
                               }
+                              style={{
+                                width:
+                                  selectedClothing.name === "Beads Bracelet"
+                                    ? "66.5%"
+                                    : "50%",
+                              }}
                             />
                           )}
                         </div>
