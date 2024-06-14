@@ -19,7 +19,7 @@ const CustomizePage = () => {
     <>
       <Nav />
       <div className="container">
-        <h1 className="text-center mt-3 mb-2">Customize Your Perfect Look</h1>
+        <h1 className="text-center mt-3 mb-2">Customize your perfect look</h1>
         <div className="row">
           {/* Nails */}
           {/* <h5 className="mt-4 footer-header">Nails</h5>
