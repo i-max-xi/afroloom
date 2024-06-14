@@ -506,7 +506,6 @@ export const mainMaleCustomize = [
       { label: "XL", value: 3, priceValue: 50, colorPriceValue: 85 },
       { label: "2XL", value: 4, priceValue: 50, colorPriceValue: 120 },
     ],
-    parts: trouserParts.keys().map(trouserParts),
     sizeForms: [
       {
         label: "Full Height (cm)",
@@ -589,7 +588,6 @@ export const mainMaleCustomize = [
     sizeGuide: material_shorts_guide,
     // sizeModels: tshirt_model,
     readyIn: 7,
-    parts: materialShortsParts.keys().map(materialShortsParts),
     sizeOptions: [
       { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 50 },
       { label: "M", value: 1, priceValue: 0, colorPriceValue: 50 },
