@@ -20,6 +20,7 @@ import extra_short from "../Pages/Customize/Configurator/models/FemaleClothing/f
 import booty_shorts from "../Pages/Customize/Configurator/models/FemaleClothing/booty_shorts.glb";
 import material_shorts from "../Pages/Customize/Configurator/models/FemaleClothing/material_shorts.glb";
 import jacket from "../Pages/Customize/Configurator/models/Accessories/Unisex/jacket_main.glb";
+import bikini from "../Pages/Customize/Configurator/models/Accessories/bikini.glb";
 
 // size guides
 import tshirt_guide from "../Assets/size_guide/FemaleClothing/short_sleeves_tshirt.png";
@@ -38,6 +39,7 @@ import miniSkirt_guide from "../Assets/size_guide/FemaleClothing/women mini skir
 import bootyShorts_guide from "../Assets/size_guide/FemaleClothing/booty shorts.jpg";
 import trousers_guide from "../Assets/size_guide/FemaleClothing/women trousers.jpg";
 import jacket_guide from "../Assets/size_guide/FemaleClothing/ladies bomber.png";
+import bikini_guide from "../Assets/size_guide/Accessories/Female/31.jpg";
 
 // models
 
@@ -117,6 +119,7 @@ const trousersParts = require.context(
 const image_tshirt_long = require("../Assets/welcome_3ds/female/long sleev t shirt.png");
 const image_shirt_long = require("../Assets/welcome_3ds/female/women long sleev shirt.png");
 const image_crop_top = require("../Assets/welcome_3ds/female/crop top.png");
+const image_bikini = require("../Assets/welcome_3ds/female/bikini.png");
 // const image_top = require("../Assets/welcome_3ds/female/");
 // const image_topndown = require("../Assets/welcome_3ds/female/");
 // const image_dress = require("../Assets/welcome_3ds/female/");
@@ -455,6 +458,46 @@ export const mainFemaleCustomize = [
   //     // Add more form fields as needed
   //   ],
   // },
+  {
+    id: uuid(),
+    name: "Bikini",
+    image: image_bikini,
+    model: bikini,
+    myNode: [
+      { name: "bikini_all", yardNeeded: 3 },
+      { name: "bikini_top", yardNeeded: 1 },
+    ],
+    otherYards: { small: 1, large: 3, extraLarge: 3, extraExtraLarge: 4 },
+    myZoom: 0.8,
+    price: 100,
+    // parts: bikiniParts.keys().map(bikiniParts),
+    // sizeModels: tshirt_model,
+    readyIn: 7,
+    sizeGuide: bikini_guide,
+    sizeOptions: [
+      // { label: "XS", value: 0.5 },
+      { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 60 },
+      { label: "M", value: 1, priceValue: 0, colorPriceValue: 60 },
+      { label: "L", value: 2, priceValue: 0, colorPriceValue: 60 },
+      { label: "XL", value: 3, priceValue: 0, colorPriceValue: 60 },
+      { label: "2XL", value: 4, priceValue: 0, colorPriceValue: 60 },
+    ],
+    sizeForms: [
+      {
+        label: "Upper Bust (cm)",
+      },
+      {
+        label: "Under Bust (cm)",
+      },
+      {
+        label: "Waist (cm)",
+      },
+      {
+        label: "Bottom Length (cm)",
+      },
+      // Add more form fields as needed
+    ],
+  },
   {
     id: uuid(),
     name: "Long Sleeve Top And Down Kaftan",
