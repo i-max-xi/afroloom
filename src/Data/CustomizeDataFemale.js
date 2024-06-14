@@ -43,79 +43,6 @@ import bikini_guide from "../Assets/size_guide/Accessories/Female/31.jpg";
 
 // models
 
-//part images
-const tShirtShortParts = require.context(
-  "../Assets/model_parts/FemaleClothing/tshirt_short",
-  false,
-  /\.(png|jpg|jpeg|gif)$/
-);
-
-const tShirtLongParts = require.context(
-  "../Assets/model_parts/FemaleClothing/tshirt_long",
-  false,
-  /\.(png|jpg|jpeg|gif)$/
-);
-
-const extraShortShirtParts = require.context(
-  "../Assets/model_parts/FemaleClothing/female_shirt_extra_short",
-  false,
-  /\.(png|jpg|jpeg|gif)$/
-);
-
-const extraLongShirtParts = require.context(
-  "../Assets/model_parts/FemaleClothing/female_shirt_extra_long_two",
-  false,
-  /\.(png|jpg|jpeg|gif)$/
-);
-
-const cropTopParts = require.context(
-  "../Assets/model_parts/FemaleClothing/shoulders_top",
-  false,
-  /\.(png|jpg|jpeg|gif)$/
-);
-
-const normalTopParts = require.context(
-  "../Assets/model_parts/FemaleClothing/ladies_normal_top",
-  false,
-  /\.(png|jpg|jpeg|gif)$/
-);
-
-const blazerParts = require.context(
-  "../Assets/model_parts/FemaleClothing/blazer",
-  false,
-  /\.(png|jpg|jpeg|gif)$/
-);
-
-const cloakParts = require.context(
-  "../Assets/model_parts/FemaleClothing/cloak",
-  false,
-  /\.(png|jpg|jpeg|gif)$/
-);
-
-const skirtParts = require.context(
-  "../Assets/model_parts/FemaleClothing/skirt",
-  false,
-  /\.(png|jpg|jpeg|gif)$/
-);
-
-const miniSkirtParts = require.context(
-  "../Assets/model_parts/FemaleClothing/mini_skirt",
-  false,
-  /\.(png|jpg|jpeg|gif)$/
-);
-
-const bootyShortsParts = require.context(
-  "../Assets/model_parts/FemaleClothing/booty_shorts",
-  false,
-  /\.(png|jpg|jpeg|gif)$/
-);
-
-const trousersParts = require.context(
-  "../Assets/model_parts/FemaleClothing/trouser",
-  false,
-  /\.(png|jpg|jpeg|gif)$/
-);
-
 const image_tshirt_long = require("../Assets/welcome_3ds/female/long sleev t shirt.png");
 const image_shirt_long = require("../Assets/welcome_3ds/female/women long sleev shirt.png");
 const image_crop_top = require("../Assets/welcome_3ds/female/crop top.png");
@@ -149,7 +76,6 @@ export const mainFemaleCustomize = [
     sizeGuide: tshirt_guide,
     // sizeModels: tshirt_model,
     readyIn: 7,
-    parts: tShirtShortParts.keys().map(tShirtShortParts),
     sizeOptions: [
       { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 50 },
       { label: "M", value: 1, priceValue: 0, colorPriceValue: 50 },
@@ -187,7 +113,6 @@ export const mainFemaleCustomize = [
     sizeGuide: tshirtlong_guide,
     // sizeModels: tshirt_model,
     readyIn: 7,
-    parts: tShirtLongParts.keys().map(tShirtLongParts),
     sizeOptions: [
       { label: "S", value: 0.5, priceValue: 15, colorPriceValue: 85 },
       { label: "M", value: 1, priceValue: 15, colorPriceValue: 85 },
@@ -230,7 +155,6 @@ export const mainFemaleCustomize = [
     sizeGuide: extraShortShirt_guide,
     // sizeModels: tshirt_model,
     readyIn: 7,
-    parts: extraShortShirtParts.keys().map(extraShortShirtParts),
     sizeOptions: [
       { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 50 },
       { label: "M", value: 1, priceValue: 0, colorPriceValue: 50 },
@@ -271,7 +195,6 @@ export const mainFemaleCustomize = [
     sizeGuide: extraLongShirt_guide,
     // sizeModels: tshirt_model,
     readyIn: 7,
-    parts: extraLongShirtParts.keys().map(extraLongShirtParts),
     sizeOptions: [
       { label: "S", value: 0.5, priceValue: 15, colorPriceValue: 85 },
       { label: "M", value: 1, priceValue: 15, colorPriceValue: 85 },
@@ -309,7 +232,6 @@ export const mainFemaleCustomize = [
     sizeGuide: normalTop_guide,
     // sizeModels: tshirt_model,
     readyIn: 7,
-    parts: normalTopParts.keys().map(normalTopParts),
     sizeOptions: [
       { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 50 },
       { label: "M", value: 1, priceValue: 0, colorPriceValue: 50 },
@@ -349,7 +271,6 @@ export const mainFemaleCustomize = [
   //   sizeGuide: topAndDown_guide,
   //   sizeModels: tshirt_model,
   //   readyIn: 7,
-  //   parts: topAndDownParts.keys().map(topAndDownParts),
   //   sizeOptions: [
   //     // { label: "XS", value: 0.5 },
   //     { label: "S", value: 0.5 },
@@ -401,7 +322,6 @@ export const mainFemaleCustomize = [
   //   sizeGuide: dress_guide,
   //   sizeModels: tshirt_model,
   //   readyIn: 7,
-  //   parts: dressParts.keys().map(dressParts),
   //   sizeOptions: [
   //     { label: "S", value: 0.5 },
   //     { label: "M", value: 1 },
@@ -443,7 +363,6 @@ export const mainFemaleCustomize = [
   //   price: 20,
   //   sizeModels: tshirt_model,
   //   readyIn: 7,
-  //   parts: kabaSlitParts.keys().map(kabaSlitParts),
   //   sizeOptions: [
   //     { label: "S", value: 0.5 },
   //     { label: "M", value: 1 },
@@ -470,8 +389,6 @@ export const mainFemaleCustomize = [
     otherYards: { small: 1, large: 3, extraLarge: 3, extraExtraLarge: 4 },
     myZoom: 0.8,
     price: 100,
-    // parts: bikiniParts.keys().map(bikiniParts),
-    // sizeModels: tshirt_model,
     readyIn: 7,
     sizeGuide: bikini_guide,
     sizeOptions: [
@@ -513,7 +430,6 @@ export const mainFemaleCustomize = [
     sizeGuide: top_down_guide,
     // sizeModels: tshirt_model,
     readyIn: 7,
-    // parts: topndownParts.keys().map(topndownParts),
     sizeOptions: [
       { label: "S", value: 0.5, priceValue: -45, colorPriceValue: 85 },
       { label: "M", value: 1, priceValue: -45, colorPriceValue: 85 },
@@ -577,7 +493,6 @@ export const mainFemaleCustomize = [
     sizeGuide: cropTop_guide,
     // sizeModels: tshirt_model,
     readyIn: 7,
-    parts: cropTopParts.keys().map(cropTopParts),
     sizeOptions: [
       { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 50 },
       { label: "M", value: 1, priceValue: 0, colorPriceValue: 50 },
@@ -615,8 +530,6 @@ export const mainFemaleCustomize = [
     otherYards: { small: 3, large: 4, extraLarge: 4, extraExtraLarge: 4 },
     myZoom: 0.9,
     price: 140,
-    // parts: jacketParts.keys().map(jacketParts),
-    // sizeModels: tshirt_model,
     readyIn: 7,
     sizeGuide: jacket_guide,
     sizeOptions: [
@@ -657,7 +570,6 @@ export const mainFemaleCustomize = [
     sizeGuide: blazer_guide,
     // sizeModels: tshirt_model,
     readyIn: 7,
-    parts: blazerParts.keys().map(blazerParts),
     sizeOptions: [
       { label: "S", value: 0.5, priceValue: 25, colorPriceValue: 85 },
       { label: "M", value: 1, priceValue: 25, colorPriceValue: 85 },
@@ -704,7 +616,6 @@ export const mainFemaleCustomize = [
     sizeGuide: cloak_guide,
     // sizeModels: tshirt_model,
     readyIn: 7,
-    parts: cloakParts.keys().map(cloakParts),
     sizeOptions: [
       { label: "S", value: 0.5, priceValue: 55, colorPriceValue: 85 },
       { label: "M", value: 1, priceValue: 55, colorPriceValue: 85 },
@@ -733,7 +644,6 @@ export const mainFemaleCustomize = [
     sizeGuide: skirt_guide,
     // sizeModels: tshirt_model,
     readyIn: 7,
-    parts: skirtParts.keys().map(skirtParts),
     sizeOptions: [
       { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 50 },
       { label: "M", value: 1, priceValue: 0, colorPriceValue: 50 },
@@ -765,7 +675,6 @@ export const mainFemaleCustomize = [
     sizeGuide: miniSkirt_guide,
     // sizeModels: tshirt_model,
     readyIn: 7,
-    parts: miniSkirtParts.keys().map(miniSkirtParts),
     sizeOptions: [
       { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 50 },
       { label: "M", value: 1, priceValue: 0, colorPriceValue: 50 },
@@ -797,7 +706,6 @@ export const mainFemaleCustomize = [
     sizeGuide: bootyShorts_guide,
     // sizeModels: tshirt_model,
     readyIn: 7,
-    parts: bootyShortsParts.keys().map(bootyShortsParts),
     sizeOptions: [
       { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 50 },
       { label: "M", value: 1, priceValue: 0, colorPriceValue: 50 },
@@ -911,7 +819,6 @@ export const mainFemaleCustomize = [
     sizeGuide: trousers_guide,
     // sizeModels: tshirt_model,
     readyIn: 7,
-    parts: trousersParts.keys().map(trousersParts),
     sizeOptions: [
       { label: "S", value: 0.5, priceValue: 25, colorPriceValue: 80 },
       { label: "M", value: 1, priceValue: 25, colorPriceValue: 80 },

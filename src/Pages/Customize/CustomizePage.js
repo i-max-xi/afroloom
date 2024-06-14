@@ -19,7 +19,7 @@ const CustomizePage = () => {
     <>
       <Nav />
       <div className="container">
-        <h1 className="text-center mt-3 mb-2">Design your own product</h1>
+        <h1 className="text-center mt-3 mb-2">Customize Your Perfect Look</h1>
         <div className="row">
           {/* Nails */}
           {/* <h5 className="mt-4 footer-header">Nails</h5>
@@ -56,7 +56,8 @@ const CustomizePage = () => {
             </Link>
           ))} */}
           {/* Accessories */}
-          <h5 className="mt-4 footer-header">Accessories</h5>
+          <h5 className="mt-4 footer-header">Sash and Beads
+          </h5>
           {mainUnisex.slice(10, 17).map(({ name, image, link }) => (
             <Link
               // to={`/customize-unisex/${name}`}
@@ -73,7 +74,8 @@ const CustomizePage = () => {
             </Link>
           ))}
           {/* Female clothing */}
-          <h5 className="mt-4 footer-header">Female Clothing</h5>
+          <h5 className="mt-4 footer-header">Women's Clothing
+          </h5>
           {mainFemaleCustomize.map(({ name, image }) => (
             <Link
               to={`/configurator-female/${name}`}
@@ -90,7 +92,7 @@ const CustomizePage = () => {
           ))}
 
           {/* Male clothing */}
-          <h5 className="mt-4 footer-header">Male Clothing</h5>
+          <h5 className="mt-4 footer-header">Men's Clothing</h5>
           {mainMaleCustomize.map(({ name, image }) => (
             <Link
               to={`/configurator/${name}`}
