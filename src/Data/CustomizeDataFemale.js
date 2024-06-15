@@ -43,7 +43,8 @@ import bikini_guide from "../Assets/size_guide/Accessories/Female/31.jpg";
 
 // models
 
-const image_tshirt_long = require("../Assets/welcome_3ds/female/long sleev t shirt.png");
+const image_tshirt_long = require("../Assets/welcome_3ds/female/long_sleeve_new.png");
+const image_tshirt_short = require("../Assets/welcome_3ds/female/short_sleeve_new.png");
 const image_shirt_long = require("../Assets/welcome_3ds/female/women long sleev shirt.png");
 const image_crop_top = require("../Assets/welcome_3ds/female/crop top.png");
 const image_bikini = require("../Assets/welcome_3ds/female/bikini.png");
@@ -65,9 +66,9 @@ export const mainFemaleCustomize = [
   {
     id: uuid(),
     name: "Short Sleeve T-Shirt",
-    // image: image_tshirt_short,
-    image:
-      "https://5.imimg.com/data5/SELLER/Default/2021/7/ZF/KX/CN/32220664/women-s-tie-dye-t-shirt-500x500.jpg",
+    image: image_tshirt_short,
+    // image:
+    //   "https://5.imimg.com/data5/SELLER/Default/2021/7/ZF/KX/CN/32220664/women-s-tie-dye-t-shirt-500x500.jpg",
     model: t_shirt_short,
     myNode: [{ name: "all", yardNeeded: 2 }],
     otherYards: { small: 2, large: 3, extraLarge: 3, extraExtraLarge: 4 },
@@ -141,7 +142,6 @@ export const mainFemaleCustomize = [
   {
     id: uuid(),
     name: "Short Sleeve Shirt",
-    // image: image_shirt_short,
     image:
       "https://rukminim2.flixcart.com/image/850/1000/xif0q/shirt/9/m/s/m-224086901-vero-moda-original-imaghcyybzxrqmn8.jpeg?q=90&crop=false",
     model: extra_short,
