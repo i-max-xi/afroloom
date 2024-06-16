@@ -29,7 +29,24 @@ class AllServices {
     getPartnerByField = async (fieldName, value) => {
         const q = query(partnersCollectionRef, where(fieldName, "==", value));
         const querySnapshot = await getDocs(q);
-        return querySnapshot.docs[0]; // Assuming there's at most one document with the given "id"
+        return querySnapshot.docs[0];
+      };
+
+      updatePartner = async (id, updatedPartner) => {
+        try {
+          const PartnerDoc = await this.getPartnerByField("id", id);
+          console.log(updatedPartner)
+          
+          if (PartnerDoc) {
+            await updateDoc(PartnerDoc.ref, updatedPartner);
+            return "Partner updated successfully."
+          } else {
+            return `Partner with id ${id} not found.`;
+          }
+        } catch (error) {
+          console.error(`Error updating Partner: ${error}`);
+          return error;
+        }
       };
 
 }

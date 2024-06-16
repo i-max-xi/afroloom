@@ -34,6 +34,7 @@ const SignUp = () => {
                   lastName: last_name,
                   email: email,
                   partner_code: partnerCode,
+                  count:0
                 };
 
                 AllServices.addPartner({...userInfo, id: user.uid});
@@ -48,25 +49,18 @@ const SignUp = () => {
                 });
             });
 
-            const userCredential = await signInWithEmailAndPassword(
+            await signInWithEmailAndPassword(
               auth,
               email,
               password
-            )
-            const user = userCredential.user;
-            
-            const partnerInfo = await AllServices.getPartnerByField(
-              "id",
-              user.uid
-            );
+            ).then((userCredential) => {
+              dispatch(setSignedIn(true));
+              const user = userCredential.user;
 
-            const userInfo = partnerInfo.data();
+              dispatch(setSignedIn(true));    
+              navigate(`/dashboard/${user.uid}`); // Navigate to dashboard with userID
 
-            dispatch(setSignedIn(true));
-            dispatch(setcurrentUser(userInfo)); 
-
-            navigate(`/dashboard/${user.uid}`); // Navigate to dashboard with userID
-
+            }); 
 
             reset();
             toastRef.current.show({ severity: 'success', summary: 'Account created successfully!' });

@@ -12,6 +12,9 @@ import { RadioButton } from "primereact/radiobutton";
 import { useReactToPrint } from "react-to-print";
 import { parseTitle } from "../utils/functions";
 import { Divider } from "primereact/divider";
+import AllServices from "../Services/usersService";
+import { set } from "date-fns";
+import { ProgressSpinner } from "primereact/progressspinner";
 
 const CustomizeCheckout = () => {
   const cartItems = useSelector((state) => state.customizedProduct.itemDetails);
@@ -28,12 +31,13 @@ const CustomizeCheckout = () => {
   const [city, setCity] = useState("");
   const [tel, setTel] = useState("");
   const [referral, setReferral] = useState("");
-  // const [Country, setCountry] = useState(""); // State for shipping country input
+  const [partnerInfo, setPartnerinfo] = useState(null);
 
   const currencySymbol = useSelector((state) => state.currencySymbol.symbol);
   const currencyFactor = useSelector((state) => state.currencySymbol.factor);
 
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
 
   const count = cartItems[0].quantity;
 
@@ -91,8 +95,42 @@ const CustomizeCheckout = () => {
     }
   }, [cartItems]);
 
+
+  const verifyPartner = async () => {
+    setIsLoading(true)
+    const partnerInfo = await AllServices.getPartnerByField(
+      "partner_code",
+      referral
+    );
+
+    if(partnerInfo.data()){
+      setPartnerinfo(partnerInfo.data());
+      toast.current.show({
+        severity: "success",
+        summary: "Verification successful",
+        // detail: "You ",
+      });
+    }
+    else{
+      toast.current.show({
+        severity: "error",
+        summary: "Verification failed",
+        detail: "Invalid identity code",
+      });
+    }
+
+    setIsLoading(false)
+    
+  }
+
   const onSuccess = (reference) => {
     handlePrint();
+
+      AllServices.updatePartner(
+      partnerInfo.id,
+      {...partnerInfo, count: partnerInfo.count + 1}
+    );
+
 
     const userInfo = {
       firstName: firstName,
@@ -238,15 +276,30 @@ const CustomizeCheckout = () => {
             Did you find AfroLoom through a friend?, enter their identity code
             to appreciate them
           </p>
-          <div className="form-group">
+          <div className=" d-flex gap-2">
             <input
               type="text"
               className="form-control"
               id="referral"
               value={referral}
               onChange={(e) => setReferral(e.target.value)}
-              placeholder="7 - digit ID code"
+              placeholder="6 - digit ID code"
             />
+            <div>
+            <button disabled={referral.length <6} onClick={verifyPartner} className="btn btn-warning text-white mt-4 shadow-sm position-relative"
+                        > <span className="spinner-container">
+                        {isLoading && (
+                          <ProgressSpinner
+                            style={{ width: "1.5rem", height: "1.5rem" }}
+                            strokeWidth="8"
+                            fill="var(--surface-ground)"
+                            className="position-absolute top-50 start-50 translate-middle"
+                          />
+                        )}
+                      </span>
+                      Verify</button>
+            </div>
+            
           </div>
         </div>
 
