@@ -3,9 +3,6 @@ import { v4 as uuid } from "uuid";
 // import handbag from "../Assets/Customize/hand_bag.png";
 // import bikini_img from "../Assets/Customize/bikini.png";
 
-// hats
-import h1 from "../Assets/Customize/maleAccessories/hat/1.jpg";
-import h2 from "../Assets/Customize/maleAccessories/hat/2.jpg";
 
 // uncat
 // import un2 from "../Assets/Customize/maleAccessories/Uncat/2.jpg";
@@ -26,45 +23,7 @@ import flyingTie_guide from "../Assets/size_guide/Accessories/Male/26.jpg";
 import handbag_guide from "../Assets/size_guide/Accessories/Female/33.jpg";
 import bikini_guide from "../Assets/size_guide/Accessories/Female/31.jpg";
 
-// Markeying Models
-const tshirt_model = "";
 
-// parts
-const roundCapParts = require.context(
-  "../Assets/model_parts/Accessories/roundCap_main",
-  false,
-  /\.(png|jpg|jpeg|gif)$/
-);
-
-const knittedCapParts = require.context(
-  "../Assets/model_parts/Accessories/knittedHat_main_two",
-  false,
-  /\.(png|jpg|jpeg|gif)$/
-);
-
-const bowTieParts = require.context(
-  "../Assets/model_parts/Accessories/bow_tie_main",
-  false,
-  /\.(png|jpg|jpeg|gif)$/
-);
-
-const flyingTieParts = require.context(
-  "../Assets/model_parts/Accessories/tie_fixed",
-  false,
-  /\.(png|jpg|jpeg|gif)$/
-);
-
-const handbagParts = require.context(
-  "../Assets/model_parts/Accessories/handbag",
-  false,
-  /\.(png|jpg|jpeg|gif)$/
-);
-
-const bikiniParts = require.context(
-  "../Assets/model_parts/Accessories/bikini",
-  false,
-  /\.(png|jpg|jpeg|gif)$/
-);
 
 const image_bikini = require("../Assets/welcome_3ds/female/bikini.png");
 const image_totebag = require("../Assets/welcome_3ds/others/tote bag.png");

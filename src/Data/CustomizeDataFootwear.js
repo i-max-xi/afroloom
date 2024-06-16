@@ -18,30 +18,7 @@ import heels_guide from "../Assets/size_guide/Footwear/34.jpg";
 // models
 const tshirt_model = "";
 
-// parts
-const flexShoeParts = require.context(
-  "../Assets/model_parts/Shoes/flexible_shoe_main_two",
-  false,
-  /\.(png|jpg|jpeg|gif)$/
-);
 
-const sneakerParts = require.context(
-  "../Assets/model_parts/Shoes/sneaker_best",
-  false,
-  /\.(png|jpg|jpeg|gif)$/
-);
-
-const slippersParts = require.context(
-  "../Assets/model_parts/Shoes/slippers_main",
-  false,
-  /\.(png|jpg|jpeg|gif)$/
-);
-
-const heelsParts = require.context(
-  "../Assets/model_parts/Shoes/heels_main",
-  false,
-  /\.(png|jpg|jpeg|gif)$/
-);
 
 const image_flat_shoe = require("../Assets/welcome_3ds/others/flat shoe.png");
 const image_slippers = require("../Assets/welcome_3ds/others/silipers.png");
@@ -57,7 +34,6 @@ export const mainFootwear = [
     otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
     myZoom: 0.9,
     price: 20,
-    parts: flexShoeParts.keys().map(flexShoeParts),
     sizeGuide: flatShoe_guide,
     sizeModels: tshirt_model,
     readyIn: 7,
@@ -93,7 +69,6 @@ export const mainFootwear = [
     otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
     myZoom: 0.9,
     price: 20,
-    parts: sneakerParts.keys().map(sneakerParts),
     sizeGuide: sneaker_guide,
     sizeModels: tshirt_model,
     readyIn: 7,
@@ -132,7 +107,6 @@ export const mainFootwear = [
     sizeModels: tshirt_model,
     readyIn: 7,
     weight: 0.25,
-    parts: slippersParts.keys().map(slippersParts),
     sizeGuide: slipper_guide,
     sizeOptions: [
       { label: "35", value: 0.5 },
@@ -168,7 +142,6 @@ export const mainFootwear = [
     otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
     myZoom: 0.6,
     price: 20,
-    parts: heelsParts.keys().map(heelsParts),
     sizeGuide: heels_guide,
     sizeModels: tshirt_model,
     readyIn: 7,

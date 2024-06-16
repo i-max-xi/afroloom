@@ -35,6 +35,9 @@ import CustomizeCheckout from "./Pages/CustomizeCheckout";
 import HomePage from "./Pages/HomePage";
 import ConfiguratorWig from "./Pages/Customize/Configurator/ConfiguratorWig";
 import ConfiguratorNails from "./Pages/Customize/Configurator/ConfiguratorNails";
+import SignUp from "./Pages/SignUp";
+import SignIn from "./Pages/SignIn";
+import Dashboard from "./Pages/Dashboard/Dashboard";
 
 function App() {
   useEffect(() => {
@@ -50,6 +53,12 @@ function App() {
             <Route path="start-customize" element={<CustomizePage />} />
             <Route path="about" element={<About />} />
             <Route path="customize-checkout" element={<CustomizeCheckout />} />
+            <Route path="signup" element={<SignUp />} />
+            <Route path="signin" element={<SignIn />} />
+            <Route path="dashboard/:userID" element={<Dashboard />} />
+
+
+
 
             <Route path="/configurator/:Id" element={<Configurator />} />
             <Route

@@ -62,6 +62,12 @@ const Nav = ({ noCurrency }) => {
             </Link>
           </li>
 
+          <li className="nav-item adjust-nav">
+            <Link className="about" to="/partner-signup">
+              Become a Partner
+            </Link>
+          </li>
+
           {noCurrency ? null : <CurrencyConverter />}
 
           <div className="d-flex justify-content-around align-items-center"></div>
