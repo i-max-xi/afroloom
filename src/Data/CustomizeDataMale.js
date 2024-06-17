@@ -36,63 +36,7 @@ import summer_shorts_guide from "../Assets/size_guide/MaleClothing/men summer sh
 import material_shorts_guide from "../Assets/size_guide/MaleClothing/men material shorts.png";
 import jacket_guide from "../Assets/size_guide/MaleClothing/men Bomber_Jacket.jpg";
 
-// parts
-const tshirtParts = require.context(
-  "../Assets/model_parts/MaleClothing/tshirt",
-  false,
-  /\.(png|jpg|jpeg|gif)$/
-);
-const tshirtLongParts = require.context(
-  "../Assets/model_parts/MaleClothing/tshirt_long_best",
-  false,
-  /\.(png|jpg|jpeg|gif)$/
-);
-const shirtParts = require.context(
-  "../Assets/model_parts/MaleClothing/shirt",
-  false,
-  /\.(png|jpg|jpeg|gif)$/
-);
-const shirtLongParts = require.context(
-  "../Assets/model_parts/MaleClothing/shirt_long",
-  false,
-  /\.(png|jpg|jpeg|gif)$/
-);
-const topndownParts = require.context(
-  "../Assets/model_parts/MaleClothing/male_topndown",
-  false,
-  /\.(png|jpg|jpeg|gif)$/
-);
-const topParts = require.context(
-  "../Assets/model_parts/MaleClothing/cloak",
-  false,
-  /\.(png|jpg|jpeg|gif)$/
-);
-const blazerParts = require.context(
-  "../Assets/model_parts/MaleClothing/blazer",
-  false,
-  /\.(png|jpg|jpeg|gif)$/
-);
-const trouserParts = require.context(
-  "../Assets/model_parts/MaleClothing/trouser",
-  false,
-  /\.(png|jpg|jpeg|gif)$/
-);
-const summerShortsParts = require.context(
-  "../Assets/model_parts/MaleClothing/summer_shorts",
-  false,
-  /\.(png|jpg|jpeg|gif)$/
-);
-const materialShortsParts = require.context(
-  "../Assets/model_parts/MaleClothing/material_shorts",
-  false,
-  /\.(png|jpg|jpeg|gif)$/
-);
 
-const jacketParts = require.context(
-  "../Assets/model_parts/Accessories/Unisex/jacket_main",
-  false,
-  /\.(png|jpg|jpeg|gif)$/
-);
 
 // const tshirt_image = "https://a5e8126a499f8a963166-f72e9078d72b8c998606fd6e0319b679.ssl.cf5.rackcdn.com/images/variant/large/next-level_3600_black.jpg";
 const image_tshirt_short = require("../Assets/welcome_3ds/male/male short sleev ankara.png");
@@ -123,7 +67,6 @@ export const mainMaleCustomize = [
     // sizeModels: tshirt_model,
     readyIn: 7,
     sizeGuide: tshirt_guide,
-    parts: tshirtParts.keys().map(tshirtParts),
     sizeOptions: [
       { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 50 },
       { label: "M", value: 1, priceValue: 0, colorPriceValue: 85 },
@@ -158,7 +101,6 @@ export const mainMaleCustomize = [
     // sizeModels: tshirt_model,
     readyIn: 7,
     sizeGuide: tshirtlong_guide,
-    parts: tshirtLongParts.keys().map(tshirtLongParts),
     sizeOptions: [
       { label: "S", value: 0.5, priceValue: 5, colorPriceValue: 85 },
       { label: "M", value: 1, priceValue: 5, colorPriceValue: 85 },
@@ -198,7 +140,6 @@ export const mainMaleCustomize = [
     // sizeModels: tshirt_model,
     readyIn: 7,
     sizeGuide: shirt_guide,
-    parts: shirtParts.keys().map(shirtParts),
     sizeOptions: [
       { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 50 },
       { label: "M", value: 1, priceValue: 0, colorPriceValue: 85 },
@@ -238,7 +179,6 @@ export const mainMaleCustomize = [
     sizeGuide: shirtlong_guide,
     // sizeModels: tshirt_model,
     readyIn: 7,
-    parts: shirtLongParts.keys().map(shirtLongParts),
     sizeOptions: [
       { label: "S", value: 0.5, priceValue: 15, colorPriceValue: 85 },
       { label: "M", value: 1, priceValue: 15, colorPriceValue: 85 },
@@ -279,7 +219,6 @@ export const mainMaleCustomize = [
     sizeGuide: top_down_guide,
     // sizeModels: tshirt_model,
     readyIn: 7,
-    parts: topndownParts.keys().map(topndownParts),
     sizeOptions: [
       { label: "S", value: 0.5, priceValue: -45, colorPriceValue: 85 },
       { label: "M", value: 1, priceValue: -45, colorPriceValue: 85 },
@@ -344,7 +283,6 @@ export const mainMaleCustomize = [
     sizeGuide: loose_top_guide,
     // sizeModels: tshirt_model,
     readyIn: 7,
-    parts: topParts.keys().map(topParts),
     sizeOptions: [
       { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 85 },
       { label: "M", value: 1, priceValue: 0, colorPriceValue: 85 },
@@ -380,7 +318,6 @@ export const mainMaleCustomize = [
     otherYards: { small: 3, large: 3, extraLarge: 4, extraExtraLarge: 4 },
     myZoom: 0.9,
     price: 140,
-    parts: jacketParts.keys().map(jacketParts),
     // sizeModels: tshirt_model,
     readyIn: 7,
     sizeGuide: jacket_guide,
@@ -422,7 +359,6 @@ export const mainMaleCustomize = [
     sizeGuide: blazer_guide,
     // sizeModels: tshirt_model,
     readyIn: 7,
-    parts: blazerParts.keys().map(blazerParts),
     sizeOptions: [
       { label: "S", value: 0.5, priceValue: 25, colorPriceValue: 85 },
       { label: "M", value: 1, priceValue: 25, colorPriceValue: 85 },
@@ -558,7 +494,6 @@ export const mainMaleCustomize = [
       { label: "XL", value: 3, priceValue: 0, colorPriceValue: 85 },
       { label: "2XL", value: 4, priceValue: 0, colorPriceValue: 85 },
     ],
-    parts: summerShortsParts.keys().map(summerShortsParts),
     sizeForms: [
       {
         label: "Shorts Length (cm)",

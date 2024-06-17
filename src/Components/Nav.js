@@ -6,13 +6,20 @@ import CurrencyConverter from "./CurrencyConverter";
 import "primeicons/primeicons.css";
 import MobileNav from "./MobileNav";
 import { isMobile } from "../utils/constants";
+import { Avatar } from "primereact/avatar";
+import { useSelector } from "react-redux";
+
 
 const Nav = ({ noCurrency }) => {
   const [visible, setVisible] = useState(false);
 
+  const signedin = useSelector((state) => state.user.signedIn);
+  const dashboardPath = useSelector((state) => state.user.dashboardPath);
+
   return (
     <nav className="navbar navbar-expand-lg text-black d-flex px-3 bg-white border-bottom">
-      <div>
+      <div className="d-flex justify-content-between align-items-center w-100">
+        <div>
         <i
           className="pi pi-align-justify"
           id="mobileNavToggler"
@@ -32,6 +39,27 @@ const Nav = ({ noCurrency }) => {
             />
           </h3>
         </Link>
+        </div>
+
+        <div>
+
+          {!signedin ? ( <button className="btn btn-outline-warning ">
+            <Link to="/signin" className="text-decoration-none text-reset">
+                Login
+            </Link>
+        
+        </button>) : (<>
+            <Link to={dashboardPath}>
+              <Avatar
+                icon="pi pi-user"
+                className="mx-1 bg-secondary text-white"
+                size="large"
+                shape="circle"
+              />
+            </Link>
+          </>)}
+
+        </div>
       </div>
 
       {/* actual navs */}
@@ -59,6 +87,12 @@ const Nav = ({ noCurrency }) => {
           <li className="nav-item adjust-nav">
             <Link className="about" to="/contact">
               Contact Us
+            </Link>
+          </li>
+
+          <li className="nav-item adjust-nav">
+            <Link className="about" to="/partner-signup">
+              Become a Partner
             </Link>
           </li>
 
