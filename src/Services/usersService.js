@@ -27,9 +27,16 @@ class AllServices {
     };
 
     getPartnerByField = async (fieldName, value) => {
-        const q = query(partnersCollectionRef, where(fieldName, "==", value));
-        const querySnapshot = await getDocs(q);
-        return querySnapshot.docs[0];
+        try {
+          const q = query(partnersCollectionRef, where(fieldName, "==", value));
+          const querySnapshot = await getDocs(q);
+          return querySnapshot.docs[0];
+        }
+        catch (error) {
+          console.error(`Error fetching Partner: ${error}`);
+          return error;
+        }
+        
       };
 
       updatePartner = async (id, updatedPartner) => {

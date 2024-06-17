@@ -131,7 +131,7 @@ const CurrencyConverter = () => {
     };
   
     fetchExchangeRates();
-  }, [currencyOptions]);
+  }, []);
   
 
   const handleCurrencyChange = (selectedOption) => {

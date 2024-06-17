@@ -123,13 +123,46 @@ const CustomizeCheckout = () => {
     
   }
 
+  const currentMonth = new Date().toLocaleString('default', { month: 'long' });
+  const matchedMonth = partnerInfo?.salesData.find((data) => data.month === currentMonth);
+
+
+
   const onSuccess = (reference) => {
     handlePrint();
 
-      AllServices.updatePartner(
-      partnerInfo.id,
-      {...partnerInfo, count: partnerInfo.count + 1}
-    );
+    const updatedSalesData = {
+      month: currentMonth,
+      count: matchedMonth ? matchedMonth.count + 1 : 1, // Increment count if matchedMonth exists, otherwise start from 1
+    };
+
+    let updatedSalesDataArray;
+
+    if (matchedMonth) {
+      // Update existing salesData for the matched month
+      updatedSalesDataArray = partnerInfo.salesData.map((data) =>
+        data.month === currentMonth ? { ...data, count: data.count + 1 } : data
+      );
+    } else {
+      // Append new salesData if no matching month is found
+      updatedSalesDataArray = [...partnerInfo.salesData, updatedSalesData];
+    }
+
+    const updatedPartnerInfo = {
+      ...partnerInfo,
+      count: (partnerInfo.count || 0) + 1, // Increment count
+      salesData: updatedSalesDataArray,
+    };
+  
+    // Update partner document in Firestore
+    AllServices.updatePartner(partnerInfo.id, updatedPartnerInfo);
+
+
+
+    //   AllServices.updatePartner(
+    //   partnerInfo.id,
+    //   {...partnerInfo, count: partnerInfo.count + 1, salesData: [...partnerInfo.salesData, updatedSalesData]}
+    // );
 
 
     const userInfo = {
@@ -276,7 +309,7 @@ const CustomizeCheckout = () => {
             Did you find AfroLoom through a friend?, enter their identity code
             to appreciate them
           </p>
-          <div className=" d-flex gap-2">
+          <div className=" d-flex gap-2 align-items-center mb-3">
             <input
               type="text"
               className="form-control"
@@ -286,7 +319,7 @@ const CustomizeCheckout = () => {
               placeholder="6 - digit ID code"
             />
             <div>
-            <button disabled={referral.length <6} onClick={verifyPartner} className="btn btn-warning text-white mt-4 shadow-sm position-relative"
+            <button disabled={referral.length <6} onClick={verifyPartner} className="btn btn-warning text-white shadow-sm position-relative d-flex align-items-center justify-content-center align-self-center"
                         > <span className="spinner-container">
                         {isLoading && (
                           <ProgressSpinner

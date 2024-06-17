@@ -9,6 +9,17 @@
   overflow-x: hidden;
 }
 
+/* .Sidebar .p-sidebar-content {
+  height: 20vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+} */
+
+.p-tabview .p-tabview-nav {
+  display: none !important;
+}
+
 .hero-section {
   /* margin-top: 0; */
   border-bottom-left-radius: 25% 45px;

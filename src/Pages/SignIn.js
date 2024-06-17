@@ -8,7 +8,7 @@ import Nav from '../Components/Nav';
 import { Link, useNavigate } from 'react-router-dom';
 import { ProgressSpinner } from "primereact/progressspinner";
 import { useDispatch } from 'react-redux';
-import { setSignedIn } from '../Redux/store';
+import { setDashBoardPath, setSignedIn } from '../Redux/store';
 
 
 const SignIn = () => {
@@ -34,7 +34,12 @@ const SignIn = () => {
                 dispatch(setSignedIn(true));
                 const user = userCredential.user;
 
-                dispatch(setSignedIn(true));    
+                dispatch(setSignedIn(true));
+                dispatch(
+                    setDashBoardPath(
+                        `/dashboard/${user.uid}`
+                    )
+                  );  
                 navigate(`/dashboard/${user.uid}`); // Navigate to dashboard with userID
 
               });

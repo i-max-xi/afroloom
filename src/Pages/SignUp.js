@@ -9,7 +9,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { ProgressSpinner } from "primereact/progressspinner";
 import AllServices from '../Services/usersService';
 import { generatePartnerCode } from '../utils/functions';
-import { setSignedIn, setcurrentUser } from '../Redux/store';
+import { setDashBoardPath, setSignedIn, setcurrentUser } from '../Redux/store';
 import { useDispatch } from 'react-redux';
 
 
@@ -37,7 +37,11 @@ const SignUp = () => {
                   count:0
                 };
 
-                AllServices.addPartner({...userInfo, id: user.uid});
+                const currentMonth = new Date().toLocaleString('default', { month: 'long' });
+
+                const salesData = [{month: currentMonth, count: 0}]
+
+                AllServices.addPartner({...userInfo, id: user.uid, salesData: salesData});
                 
                 // Submit to formspree
                 fetch(process.env.REACT_APP_formSpree, {
@@ -57,7 +61,12 @@ const SignUp = () => {
               dispatch(setSignedIn(true));
               const user = userCredential.user;
 
-              dispatch(setSignedIn(true));    
+              dispatch(setSignedIn(true));   
+              dispatch(
+                setDashBoardPath(
+                    `/dashboard/${user.uid}`
+                )
+              );  
               navigate(`/dashboard/${user.uid}`); // Navigate to dashboard with userID
 
             }); 
