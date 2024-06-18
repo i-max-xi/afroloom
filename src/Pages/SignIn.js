@@ -9,7 +9,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { ProgressSpinner } from "primereact/progressspinner";
 import { useDispatch } from 'react-redux';
 import { setDashBoardPath, setSignedIn } from '../Redux/store';
-import { Steps } from 'primereact/steps';
+import { TbCircleNumber1, TbCircleNumber2, TbCircleNumber3 } from "react-icons/tb";
 
 
 
@@ -65,11 +65,24 @@ const SignIn = () => {
                 <h4 className="mb-4 mt-3 text-center">
                     <span className="text-warning">Log In</span> & Cash Out
                 </h4>
-                {/* <p className='text-center'>
-                  <h6 className='text-grey'>How It works</h6>
-                  <Steps activeIndex={null} model={items} />
-
-                </p> */}
+                <div className=" mb-4 px-4">
+          <h6 className="">Three Easy Steps</h6>
+          <div className='mt-2' style={{color: "var(--light-text)"}}>
+          <div className=" my-2 d-flex gap-2 align-items-start">
+            <TbCircleNumber1 size={20} className="mt-1 " />
+            <p>Access partner ID code from your dashboard</p>
+          </div>
+          <div className="  my-2 d-flex gap-2 align-items-start">
+            <TbCircleNumber2 size={20} className="mt-1 " />
+            <p>Share your code with friends and family</p>
+          </div>
+          <div className=" my-2 d-flex gap-2 align-items-start">
+            <TbCircleNumber3 size={25} className="mt-1 " />
+            <p>Earn 5 cedis (or equivalent) for every purchase they make!</p>
+          </div>
+            </div>
+          
+        </div>
                 <div className="container mb-5 mt-2 d-flex justify-content-center rounded">
                     <form className="col-12 col-sm-6" onSubmit={handleSubmit(onSubmit)}>
                       
