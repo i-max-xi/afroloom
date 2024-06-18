@@ -9,8 +9,11 @@ import { Link, useNavigate } from 'react-router-dom';
 import { ProgressSpinner } from "primereact/progressspinner";
 import AllServices from '../Services/usersService';
 import { generatePartnerCode } from '../utils/functions';
-import { setDashBoardPath, setSignedIn, setcurrentUser } from '../Redux/store';
+import { setDashBoardPath, setSignedIn,  } from '../Redux/store';
 import { useDispatch } from 'react-redux';
+import { TbCircleNumber1, TbCircleNumber2, TbCircleNumber3 } from "react-icons/tb";
+
+
 
 
 const SignUp = () => {
@@ -87,33 +90,41 @@ const SignUp = () => {
             <Toast ref={toastRef} />
             <Nav />
             <div className="container">
-                <h4 className="mb-4 mt-3 text-center">
-                    <span className="text-warning">Request</span> To Become A Partner
+                <h4 className="mb-5 mt-3 text-center">
+                    <span className="text-warning">Sign Up</span> & Earn Today
                 </h4>
-                <div className="container mb-5 mt-5 d-flex justify-content-center rounded">
+          <div className=" mb-4 px-4">
+          <h6 className="">Three Easy Steps</h6>
+          <div className=" my-2 d-flex gap-2 align-items-start">
+            <TbCircleNumber1 size={20} className="mt-1 " />
+            <p>Sign Up to receive a partner ID code</p>
+          </div>
+          <div className="  my-2 d-flex gap-2 align-items-start">
+            <TbCircleNumber2 size={20} className="mt-1 " />
+            <p>Share your code with friends and family</p>
+          </div>
+          <div className=" my-2 d-flex gap-2 align-items-start">
+            <TbCircleNumber3 size={25} className="mt-1 " />
+            <p>Earn 5 cedis (or equivalent) for every purchase they make!</p>
+          </div>
+        </div>
+                <div className="container mb-5 mt-2 d-flex justify-content-center rounded">
                     <form className="col-12 col-sm-6" onSubmit={handleSubmit(onSubmit)}>
-                      <div className='row col-12'>
-                        <p className='col-6'>
                           <CustomInput
                             label="First Name"
                             // placeholder="First Name"
                             {...register("first_name", { required: true })}
                           />
                           {errors.firstName && <p className="text-danger">First Name is required</p>}
-                        </p>
-                        <p className='col-6'>
                           <CustomInput
                             label="Last Name"
                             // placeholder="Last Name"
                             {...register("last_name", { required: true })}
                           />
                           {errors.lastName && <p className="text-danger">Last Name is required</p>}
-                        </p>
 
-                      </div>
                       <CustomInput
                             label="Email"
-                            placeholder="Email"
                             {...register("email", { 
                                 required: "Email is required", 
                                 pattern: {
@@ -150,7 +161,7 @@ const SignUp = () => {
                        
                     </form>
                 </div>
-                <p className="mt-3 text-center">
+                <p className="mt-3 text-center auth-alternative">
               Already have an account? <Link to="/signin">Sign In</Link>
             </p>
             </div>

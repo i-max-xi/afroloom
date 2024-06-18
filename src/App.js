@@ -38,6 +38,7 @@ import ConfiguratorNails from "./Pages/Customize/Configurator/ConfiguratorNails"
 import SignUp from "./Pages/SignUp";
 import SignIn from "./Pages/SignIn";
 import Dashboard from "./Pages/Dashboard/Dashboard";
+import ForgotPassword from "./Pages/ForgotPassword";
 
 function App() {
   useEffect(() => {
@@ -55,6 +56,8 @@ function App() {
             <Route path="customize-checkout" element={<CustomizeCheckout />} />
             <Route path="signup" element={<SignUp />} />
             <Route path="signin" element={<SignIn />} />
+            <Route path="forgot-password" element={<ForgotPassword />} />
+
             <Route path="dashboard/:userID" element={<Dashboard />} />
 
 

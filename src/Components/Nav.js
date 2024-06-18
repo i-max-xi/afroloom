@@ -45,7 +45,7 @@ const Nav = ({ noCurrency }) => {
 
           {!signedin ? ( <button className="btn btn-outline-warning ">
             <Link to="/signin" className="text-decoration-none text-reset">
-                Login
+                Login & Cash Out
             </Link>
         
         </button>) : (<>

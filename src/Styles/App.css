@@ -9,12 +9,20 @@
   overflow-x: hidden;
 }
 
+.auth-alternative > a {
+  color: var(--orange);
+}
+
 /* .Sidebar .p-sidebar-content {
   height: 20vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 } */
+
+.password > .p-input-icon-right > i {
+  margin-top: -1.2rem !important;
+}
 
 .p-tabview .p-tabview-nav {
   display: none !important;
