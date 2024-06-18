@@ -9,6 +9,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import { ProgressSpinner } from "primereact/progressspinner";
 import { useDispatch } from 'react-redux';
 import { setDashBoardPath, setSignedIn } from '../Redux/store';
+import { Steps } from 'primereact/steps';
+
 
 
 const SignIn = () => {
@@ -53,20 +55,26 @@ const SignIn = () => {
         }
     };
 
+  
+
     return (
         <>
             <Toast ref={toastRef} />
             <Nav />
             <div className="container">
                 <h4 className="mb-4 mt-3 text-center">
-                    <span className="text-warning">Sign</span> In To Your Account
+                    <span className="text-warning">Log In</span> & Cash Out
                 </h4>
-                <div className="container mb-5 mt-5 d-flex justify-content-center rounded">
+                {/* <p className='text-center'>
+                  <h6 className='text-grey'>How It works</h6>
+                  <Steps activeIndex={null} model={items} />
+
+                </p> */}
+                <div className="container mb-5 mt-2 d-flex justify-content-center rounded">
                     <form className="col-12 col-sm-6" onSubmit={handleSubmit(onSubmit)}>
                       
                       <CustomInput
                             label="Email"
-                            placeholder="Email"
                             {...register("email", { 
                                 required: "Email is required", 
                                 pattern: {
@@ -99,11 +107,15 @@ const SignIn = () => {
                         )}
                       </span>
                       Sign In</button>
+                      <p className='auth-alternative'>
+                      <Link to="/forgot-password">Forgot Password?</Link>
+
+                      </p>
 
                        
                     </form>
                 </div>
-                <p className="mt-3 text-center">
+                <p className="mt-3 text-center auth-alternative">
               Don't have an account? <Link to="/signup">Sign Up</Link>
             </p>
             </div>
