@@ -32,13 +32,13 @@ import ConfiguratorFemaleAccessories from "./Pages/Customize/Configurator/Config
 import ConfiguratorFemale from "./Pages/Customize/Configurator/ConfiguratorFemale";
 import ConfiguratorUnisex from "./Pages/Customize/Configurator/ConfiguratorUnisex";
 import CustomizeCheckout from "./Pages/CustomizeCheckout";
-import HomePage from "./Pages/HomePage";
 import ConfiguratorWig from "./Pages/Customize/Configurator/ConfiguratorWig";
 import ConfiguratorNails from "./Pages/Customize/Configurator/ConfiguratorNails";
 import SignUp from "./Pages/SignUp";
 import SignIn from "./Pages/SignIn";
 import Dashboard from "./Pages/Dashboard/Dashboard";
 import ForgotPassword from "./Pages/ForgotPassword";
+import HomePage from "./Pages/HomePageTwo";
 
 function App() {
   useEffect(() => {
