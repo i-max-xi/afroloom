@@ -120,7 +120,7 @@ const HomePage = () => {
             <Nav />
             <section className="hero-section">
                 <Carousel value={carousel} itemTemplate={renderCarouselItem} numVisible={1} numScroll={1} responsiveOptions={responsiveOptions} className="custom-carousel" circular
-                autoplayInterval={5000} />
+                 />
                 <div className="hero-body">
                     <h2>Customize Your Style, Your Way!</h2>
                     <p>At Afroloom, we bring your fashion dreams to life with our easy-to-use online tailoring services. Whether you're looking to create the perfect outfit, design a unique graduation sash, or personalize a bead bracelet, we've got you covered. Experience the joy of custom-made fashion without leaving your home.</p>
