@@ -8,6 +8,7 @@
 .allBg {
   background-color: rgba(197, 195, 195, 0.165);
   overflow-x: hidden;
+  font-family: roboto;
 }
 
 .auth-alternative > a {
@@ -33,16 +34,20 @@
   /* margin-top: 0; */
   border-bottom-left-radius: 25% 45px;
   background-color: white;
-  padding: 70px 30px;
   display: flex;
+  padding: 70px 1px;
   flex-direction: column;
   justify-content: center;
 }
 
-.hero-section > img {
+.hero-body {
+  padding: 1px 30px;
+}
+
+/* .hero-section > img {
   width: 50%;
   align-self: center;
-}
+} */
 
 .hero-bottom {
   display: flex;
