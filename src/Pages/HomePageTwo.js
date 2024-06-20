@@ -1,15 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Nav from "../Components/Nav";
-import { Carousel } from 'primereact/carousel';
+import { Carousel } from 'react-bootstrap';
 import { Timeline } from 'primereact/timeline';
 import ListItem from "../Components/List/ListItem";
 
 const HomePage = () => {
-    const carousel1 = require("../Assets/HomePage/carousel1.jpg");
-    const carousel2 = require("../Assets/HomePage/carousel2.jpg");
-    const carousel3 = require("../Assets/HomePage/carousel3.jpg");
-    const carousel4 = require("../Assets/HomePage/carousel4.jpg");
+    const carousel1 = require("../Assets/HomePage/landing-page-re-1.jpg");
+    const carousel2 = require("../Assets/HomePage/landing-page-re-2.jpg");
+    const carousel3 = require("../Assets/HomePage/landing-page-re-3.jpg");
+    const carousel4 = require("../Assets/HomePage/landing-page-re-4.jpg");
 
     const perfectFit = require("../Assets/HomePage/Perfect Fit Guarantee .jpg");
     const qualityFabric = require("../Assets/HomePage/Bulk African wax print fabrics - Flowery African Wax Print - 6 yards.jpg");
@@ -69,33 +69,6 @@ const HomePage = () => {
         { title: 'Convenient Online Process', description: 'From selecting fabrics to receiving your finished product, everything is done online for your convenience.', image: convenientOnlineProcess },
     ];
 
-    const responsiveOptions = [
-        {
-            breakpoint: '1024px',
-            numVisible: 3,
-            numScroll: 3
-        },
-        {
-            breakpoint: '768px',
-            numVisible: 2,
-            numScroll: 2
-        },
-        {
-            breakpoint: '560px',
-            numVisible: 1,
-            numScroll: 1
-        }
-    ];
-
-    const renderCarouselItem = ({image, alt}) => {
-        return (
-            <div className=""  >
-                <img src={image} alt={alt} width="100%" height="100%"
-                />
-                {/* <p>{alt}</p> */}
-            </div>
-        );
-    };
 
     const customizedMarker = (item) => {
         return (
@@ -119,8 +92,17 @@ const HomePage = () => {
         <div>
             <Nav />
             <section className="hero-section">
-                <Carousel value={carousel} itemTemplate={renderCarouselItem} numVisible={1} numScroll={1} responsiveOptions={responsiveOptions} className="custom-carousel" circular
-                 />
+                <Carousel>
+                    {carousel.map((item, index) => (
+                        <Carousel.Item key={index}>
+                            <img
+                                className="d-block w-100"
+                                src={item.image}
+                                alt={item.alt}
+                            />
+                        </Carousel.Item>
+                    ))}
+                </Carousel>
                 <div className="hero-body">
                     <h2>Customize Your Style, Your Way!</h2>
                     <p>At Afroloom, we bring your fashion dreams to life with our easy-to-use online tailoring services. Whether you're looking to create the perfect outfit, design a unique graduation sash, or personalize a bead bracelet, we've got you covered. Experience the joy of custom-made fashion without leaving your home.</p>
