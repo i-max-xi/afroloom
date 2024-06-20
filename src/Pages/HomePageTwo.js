@@ -113,7 +113,7 @@ const HomePage = () => {
                
             </section>
 
-            <section className="how-it-works my-5 mx-4">
+            <section className="how-it-works my-5 mx-2">
                 <h2 className="footer-header">How It Works</h2>
                  <Timeline value={stepContents} align="alternate" marker={customizedMarker} content={customizedContent} />
                
