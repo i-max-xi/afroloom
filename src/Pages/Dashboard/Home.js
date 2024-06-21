@@ -52,7 +52,7 @@ const Home = ({userData, calcluatedEarning, baseAmount, calculatedPaid}) => {
       </p>
       <p><strong>Email:</strong> {userData.email}</p>
       <p><strong>Earnings:</strong> {currencySymbol}{(calcluatedEarning * currencyFactor).toFixed(2)}</p>
-      <p><strong>Paid:</strong> {currencySymbol}{(calculatedPaid * currencyFactor).toFixed(2)}</p>
+      <p><strong>Paid:</strong> {currencySymbol}{((calculatedPaid || 0) * currencyFactor).toFixed(2)}</p>
 
     </Card>
   </div>

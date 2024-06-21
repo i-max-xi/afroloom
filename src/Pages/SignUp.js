@@ -21,12 +21,15 @@ const SignUp = () => {
   const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(false); // Initialize loading state
 
-    const { register, reset, handleSubmit, formState: { errors } } = useForm();
+    const { register, reset, handleSubmit, formState: { errors, isValid } } = useForm({
+      mode: 'onChange'
+    });
     const toastRef = useRef(null);
 
     const onSubmit = async (data) => {
       setIsLoading(true); 
         const { email, password, first_name, last_name } = data;
+        console.log({data})
         try {
             await createUserWithEmailAndPassword(auth, email, password).then((userCredential) => {
                 const user = userCredential.user;
@@ -70,13 +73,14 @@ const SignUp = () => {
                     `/dashboard/${user.uid}`
                 )
               );  
+              toastRef.current.show({ severity: 'success', summary: 'Account created successfully!' });
+
               navigate(`/dashboard/${user.uid}`); // Navigate to dashboard with userID
 
             }); 
 
             reset();
-            toastRef.current.show({ severity: 'success', summary: 'Account created successfully!' });
-            navigate('/signin');
+            // navigate('/signin');
         } catch (error) {
             toastRef.current.show({ severity: 'error', summary: 'Error creating account', detail: error.message });
         }
@@ -149,7 +153,7 @@ const SignUp = () => {
                         />
                         {errors.password && <p className="text-danger">{errors.password.message}</p>}
                         
-                        <button type="submit" className="btn btn-warning text-white w-100 mt-4 shadow-sm position-relative"
+                        <button disabled={!isValid} type="submit" className="btn btn-warning text-white w-100 mt-4 shadow-sm position-relative"
                         > <span className="spinner-container">
                         {isLoading && (
                           <ProgressSpinner
