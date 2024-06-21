@@ -46,7 +46,7 @@ const MobileNav = ({ visible, setVisible }) => {
           <Divider className="custom-divider" />
 
           <li className="nav-item adjust-nav">
-            <Link className="about" to="/partner-signup">
+            <Link className="about" to="/signup">
               Become a Partner
             </Link>
           </li>

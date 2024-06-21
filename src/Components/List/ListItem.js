@@ -7,6 +7,7 @@ const ListItem = ({
   title,
   description,
   Icon,
+  centerText = false
 }) => {
   return (
     <div
@@ -24,12 +25,12 @@ const ListItem = ({
         <img
           src={image}
           alt={title}
-          style={{ width: "100%", borderRadius: "1rem", height: "auto"}}
+          style={{ width: "100%", borderRadius: "1rem", aspectRatio: 1/1, objectFit: "contain"}}
         />
       )}
 
       <h5 className="mt-2">{title}</h5>
-      <p className="description-text">{description}</p>
+      <p className={`description-text ${centerText && "text-center"}`}>{description}</p>
     </div>
   );
 };
