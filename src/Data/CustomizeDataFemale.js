@@ -1,6 +1,6 @@
 import { v4 as uuid } from "uuid";
 
-import cloak from "../Assets/Customize/cloak.jpg";
+import cloak from "../Assets/Customize/cloak.png";
 import skirt from "../Assets/welcome_3ds/female/skirt.png";
 import normal_top from "../Assets/Customize/normal_top.png";
 
