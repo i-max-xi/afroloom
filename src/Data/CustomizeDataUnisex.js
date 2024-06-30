@@ -58,7 +58,7 @@ const bangles = require("../Assets/welcome_3ds/others/bangles.jpg");
 const earring = require("../Assets/welcome_3ds/others/earring.jpg");
 const image_bikini = require("../Assets/welcome_3ds/female/bikini.png");
 const image_sash_logos_both_down = require("../Assets/welcome_3ds/others/sash_both_logos_down.jpg");
-const image_sash_logos_one_up_one_down = require("../Assets/welcome_3ds/others/sash_one_up_one_down.jpg");
+const image_sash_logos_one_up_one_down = require("../Assets/welcome_3ds/others/sash_one_up_one_down.png");
 const image_sash_with_images = require("../Assets/welcome_3ds/others/sash_with_image.jpg");
 const image_sash_striped_edge = require("../Assets/welcome_3ds/others/sash_with_edges.png");
 
@@ -403,6 +403,8 @@ export const mainUnisex = [
   {
     id: uuid(),
     name: "Logo Up, Text Down Sash",
+    title: "Sash Variant 1",
+    description: "This sash allows logos/designs at the top and text at the bottom on either side",
     image: image_sash,
     model: sash_model,
     confirm_image: image_confirm_1,
@@ -436,6 +438,8 @@ export const mainUnisex = [
   {
     id: uuid(),
     name: "Text Up, Logo Down Sash",
+    title: "Sash Variant 2",
+    description: "This sash allows logos/designs at the bottom and text at the top on either side",
     image: image_sash_logos_both_down,
     model: sash_both_down,
     confirm_image: image_confirm_2,
@@ -468,6 +472,8 @@ export const mainUnisex = [
   {
     id: uuid(),
     name: "Contrasting Logo and Text Sash",
+    title: "Sash Variant 3",
+    description: "This sash has logos/design positions contrasting with text on either side",
     image: image_sash_logos_one_up_one_down,
     model: sash_striped_edge,
     confirm_image: image_confirm_3,
@@ -532,6 +538,8 @@ export const mainUnisex = [
   {
     id: uuid(),
     name: "One-Sided Logo, Two-Sided Text Sash",
+    title: "Sash Variant 3",
+    description: "This sash allows logos/designs on one side and text on both sides",
     image: image_sash_striped_edge,
     model: sash_striped_edge,
     confirm_image: image_confirm_5,

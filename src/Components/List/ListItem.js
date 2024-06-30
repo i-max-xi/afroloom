@@ -6,6 +6,7 @@ const ListItem = ({
   image,
   title,
   description,
+  extraDescription,
   Icon,
   centerText = false
 }) => {
@@ -14,9 +15,7 @@ const ListItem = ({
       className=""
       style={{
         textAlign: "left",
-        // backgroundColor: "white",
         borderRadius: "1rem",
-        // flex: 1,
       }}
     >
       {Icon && Icon}
@@ -28,8 +27,9 @@ const ListItem = ({
         />
       )}
 
-      <h5 className="mt-2">{title}</h5>
-      <p className={`text-decoration-none text-black ${centerText && "text-center"}`}>{description}</p>
+      <h5 className="mt-2 text-decoration-none text-black">{title}</h5>
+      <p className={`text-decoration-none text-black m-0 ${centerText && "text-center"}`}>{description}</p>
+      <p style={{fontSize: "0.8rem",}} className={`mt-1 text-decoration-none text-black ${centerText && "text-center"}`}>{extraDescription}</p>
     </div>
   );
 };

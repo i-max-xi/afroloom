@@ -59,7 +59,7 @@ const CustomizePage = () => {
           {/* Accessories */}
           <h5 className="mt-4 footer-header">Sash and Beads
           </h5>
-          {mainUnisex.slice(10, 17).map(({ name, image, link }) => (
+          {mainUnisex.slice(10, 17).map(({ name, image, link, description, title }) => (
             <Link
               // to={`/customize-unisex/${name}`}
               to={link ? link : `/configurator-unisex/${name}`}
@@ -74,7 +74,7 @@ const CustomizePage = () => {
                   <h5 className="text-center">{name}</h5>
                 </div>
               </div> */}
-            <ListItem image={image} description={name} />
+            <ListItem image={image} description={title || name} extraDescription={description} />
 
             </Link>
           ))}
