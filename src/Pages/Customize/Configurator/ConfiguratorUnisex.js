@@ -762,14 +762,11 @@ const ConfiguratorUnisex = () => {
       return;
     }
 
-    if (onlySashes.includes(selectedClothing.name)) {
-      setStateImage(selectedClothing.confirm_image);
-    } else {
+   
       const canvasImage = await html2canvas(canvasRef.current);
       const dataUrl = canvasImage.toDataURL();
 
       setStateImage(dataUrl);
-    }
 
     setShowConfirmation(true);
   };
