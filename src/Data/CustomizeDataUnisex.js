@@ -538,7 +538,7 @@ export const mainUnisex = [
   {
     id: uuid(),
     name: "One-Sided Logo, Two-Sided Text Sash",
-    title: "Sash Variant 3",
+    title: "Sash Variant 4",
     description: "This sash allows logos/designs on one side and text on both sides",
     image: image_sash_striped_edge,
     model: sash_striped_edge,
