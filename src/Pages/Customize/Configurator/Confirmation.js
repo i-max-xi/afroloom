@@ -13,7 +13,7 @@ import {
 } from "firebase/storage";
 import { Toast } from "primereact/toast";
 import { ProgressSpinner } from "primereact/progressspinner";
-import { set3DItemDetails, setItemDataSheet } from "../../../Redux/store";
+import { addToCart } from "../../../Redux/store";
 import { useDispatch, useSelector } from "react-redux";
 import { parseTitle } from "../../../utils/functions";
 import { Divider } from "primereact/divider";
@@ -103,12 +103,13 @@ const Confirmation = ({
           specialRequests: special,
           uploadedImageLeft: uploadedImageLeft,
           uploadedImageRight: uploadedImageRight,
+          dataSheet: downloadURL
           // Other properties specific to your object
         },
       ];
 
-      dispatch(set3DItemDetails(formData));
-      dispatch(setItemDataSheet(downloadURL));
+      dispatch(addToCart(...formData));
+      // dispatch(setItemDataSheet(downloadURL));
 
       setIsLoading(false);
       toast.current.show({
@@ -121,7 +122,7 @@ const Confirmation = ({
               Proceed to{" "}
               <Link to="/customize-checkout" className="btn btn-success">
                 Checkout
-              </Link>
+              </Link> when ready
             </p>
           </div>
         ),
@@ -169,9 +170,14 @@ const Confirmation = ({
       />
       <div className="container justify-content-center">
         <div className="d-flex">
+          <p>
           <button className="btn btn-outline-success" onClick={handlePrint}>
             Download Copy
           </button>
+          <p style={{fontSize: "0.7rem"}}>For effective transparency</p>
+          </p>
+          
+          <p>
           <button
             disabled={isLoading}
             className="btn btn-success mx-3 position-relative"
@@ -187,8 +193,10 @@ const Confirmation = ({
                 />
               )}
             </span>
-            Confirm Order
+            Add To Cart
           </button>
+          </p>
+          
         </div>
 
         <p className="h5 mt-4">Thank you for your order!</p>
@@ -493,63 +501,7 @@ export const OrderDetail = React.forwardRef(
           </p>
         </div>
 
-        {/* {selectedParts && (
-          <div className="col-md-6">
-            <div className="mt-4">
-              <h2>Information On Parts</h2>
-              {selectedParts.map(
-                (part, index) =>
-                  (part.color || part.texture) && (
-                    <div key={index} className="mb-4">
-                      <h4 className="text-capitalize">
-                        {parseTitle(part.name)}
-                      </h4>
-                      <p>
-                        {part.color && (
-                          <>
-                            Color
-                            <div
-                              className="color-display"
-                              style={{
-                                backgroundColor: part.color,
-                                width: "20px",
-                                height: "20px",
-                                border: "1px solid black",
-                                borderRadius: "4rem",
-                                display: "inline-block",
-                                marginLeft: "1rem",
-                              }}
-                            ></div>
-                          </>
-                        )}
-                      </p>
-
-                      <p>
-                        {part.texture && (
-                          <>
-                            Texture:
-                            <p>
-                              <img
-                                src={part.texture}
-                                alt="Selected Texture"
-                                style={{
-                                  maxWidth: "70px",
-                                  maxHeight: "70px",
-                                  display: "inline-block",
-                                }}
-                              />
-                            </p>
-                          </>
-                        )}
-                      </p>
-
-                      {index !== selectedParts.length - 1 && <Divider />}
-                    </div>
-                  )
-              )}
-            </div>
-          </div>
-        )} */}
+       
       </div>
     );
   }

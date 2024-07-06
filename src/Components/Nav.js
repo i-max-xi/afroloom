@@ -8,10 +8,13 @@ import MobileNav from "./MobileNav";
 import { isMobile } from "../utils/constants";
 import { Avatar } from "primereact/avatar";
 import { useSelector } from "react-redux";
+import { Badge } from "primereact/badge";
+
 
 
 const Nav = ({ noCurrency }) => {
   const [visible, setVisible] = useState(false);
+  const cartItems = useSelector((state) => state.customizedProduct.itemDetails);
 
   const signedin = useSelector((state) => state.user.signedIn);
   const dashboardPath = useSelector((state) => state.user.dashboardPath);
@@ -19,13 +22,15 @@ const Nav = ({ noCurrency }) => {
   return (
     <nav className="navbar navbar-expand-lg text-black d-flex px-3 bg-white border-bottom">
       <div className="d-flex justify-content-between align-items-center w-100">
-        <div>
-        <i
-          className="pi pi-align-justify"
+        <div className="d-flex gap-2 justify-items-center align-items-center">
+          
+          <i
+          className="pi pi-align-justify p-overlay-badge mb-3"
           id="mobileNavToggler"
           style={{ fontSize: "2rem" }}
           onClick={() => setVisible(true)}
-        ></i>
+        >{cartItems.length > 0 && (<Badge severity="warning" style={{scale: "0.5"}}  value={cartItems.length}></Badge>)}</i>
+        
 
         <MobileNav visible={visible} setVisible={setVisible} />
         <Link to="/" className="navbar-brand">
@@ -41,7 +46,7 @@ const Nav = ({ noCurrency }) => {
         </Link>
         </div>
 
-        <div>
+        <div className="d-flex align-items-center justify-content-center gap-2">
 
           {!signedin ? ( <button className="btn btn-outline-warning ">
             <Link to="/signin" className="text-decoration-none text-reset">
@@ -67,7 +72,9 @@ const Nav = ({ noCurrency }) => {
         <ul className="navbar-nav">
           <li className="bg-warning fw-bold nav-category"></li>
           <li className="nav-item">
+
             <Link className="nav-link" to="/">
+
               Home
             </Link>
           </li>
