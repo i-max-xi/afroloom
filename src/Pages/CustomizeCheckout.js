@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-import { clear3DInfo } from "../Redux/store";
+import { clearCart } from "../Redux/store";
 
 import Top from "../Assets/Headers/Check_Out.jpg";
 import LayoutHeaders from "../Components/LayoutHeaders";
@@ -13,14 +13,13 @@ import { useReactToPrint } from "react-to-print";
 import { parseTitle } from "../utils/functions";
 import { Divider } from "primereact/divider";
 import AllServices from "../Services/usersService";
-import { set } from "date-fns";
 import { ProgressSpinner } from "primereact/progressspinner";
-
+ 
 const CustomizeCheckout = () => {
   const cartItems = useSelector((state) => state.customizedProduct.itemDetails);
-  const customizedItemDataSheet = useSelector(
-    (state) => state.customizedProduct.itemDataSheet
-  );
+  // const customizedItemDataSheet = useSelector(
+  //   (state) => state.customizedProduct.itemDataSheet
+  // );
 
   const dispatch = useDispatch();
   const toast = useRef(null);
@@ -39,10 +38,12 @@ const CustomizeCheckout = () => {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
 
-  const count = cartItems[0].quantity;
+
+  const totalCount = cartItems?.reduce((total, item) => total + item?.quantity, 0)
+
 
   const [totalToPay] = useState(
-    cartItems.reduce((total, item) => total + item.price * count, 0).toFixed()
+    cartItems?.reduce((total, item) => total + item?.price * item?.quantity, 0).toFixed()
   );
 
   const publicKey = process.env.REACT_APP_paystack_publicKey;
@@ -74,26 +75,26 @@ const CustomizeCheckout = () => {
     content: () => componentRef.current,
   });
 
-  const sashImages = useMemo(() => {
-    if (cartItems[0].uploadedImageLeft) {
-      return [
-        {
-          SashImageLeft: cartItems[0].uploadedImageLeft,
-        },
-      ];
-    }
-    if (cartItems[0].uploadedImageLeft && cartItems[0].uploadedImageRight) {
-      return [
-        {
-          SashImageLeft: cartItems[0].uploadedImageLeft,
-          SashImageRight: cartItems[0].uploadedImageRight,
-        },
-      ];
-    }
-    if (!cartItems[0].uploadedImageLeft && !cartItems[0].uploadedImageRight) {
-      return [null];
-    }
-  }, [cartItems]);
+  // const sashImages = useMemo(() => {
+  //   if (cartItems[0]?.uploadedImageLeft) {
+  //     return [
+  //       {
+  //         SashImageLeft: cartItems[0]?.uploadedImageLeft || "",
+  //       },
+  //     ];
+  //   }
+  //   if (cartItems[0].uploadedImageLeft && cartItems[0]?.uploadedImageRight) {
+  //     return [
+  //       {
+  //         SashImageLeft: cartItems[0]?.uploadedImageLeft || "",
+  //         SashImageRight: cartItems[0]?.uploadedImageRight || "",
+  //       },
+  //     ];
+  //   }
+  //   if (!cartItems[0].uploadedImageLeft && !cartItems[0]?.uploadedImageRight) {
+  //     return [null];
+  //   }
+  // }, [cartItems]);
 
 
   const verifyPartner = async () => {
@@ -126,14 +127,24 @@ const CustomizeCheckout = () => {
   const currentMonth = new Date().toLocaleString('default', { month: 'long' });
   const matchedMonth = partnerInfo?.salesData.find((data) => data.month === currentMonth);
 
+  const cartItemsData = cartItems.map((item) => ({
+    name: item.name,
+    quantity: item.quantity,
+    price: item.price,
+    specialRequests: item.specialRequests,
+    readyBy: item.readyBy + " days",
+    dataSheet: item.dataSheet,
+  }));
+
 
 
   const onSuccess = (reference) => {
     handlePrint();
 
+
     const updatedSalesData = {
       month: currentMonth,
-      count: matchedMonth ? matchedMonth.count + 1 : 1, // Increment count if matchedMonth exists, otherwise start from 1
+      count: matchedMonth ? matchedMonth.count + totalCount : totalCount, 
     };
 
     let updatedSalesDataArray;
@@ -141,7 +152,7 @@ const CustomizeCheckout = () => {
     if (matchedMonth) {
       // Update existing salesData for the matched month
       updatedSalesDataArray = partnerInfo.salesData.map((data) =>
-        data.month === currentMonth ? { ...data, count: data.count + 1 } : data
+        data.month === currentMonth ? { ...data, count: data.count + totalCount } : data
       );
     } else {
       // Append new salesData if no matching month is found
@@ -150,7 +161,7 @@ const CustomizeCheckout = () => {
 
     const updatedPartnerInfo = {
       ...partnerInfo,
-      count: (partnerInfo.count || 0) + 1, // Increment count
+      count: (partnerInfo.count || 0) + totalCount, // Increment count
       salesData: updatedSalesDataArray,
     };
   
@@ -158,38 +169,30 @@ const CustomizeCheckout = () => {
     AllServices.updatePartner(partnerInfo.id, updatedPartnerInfo);
 
 
-
-    //   AllServices.updatePartner(
-    //   partnerInfo.id,
-    //   {...partnerInfo, count: partnerInfo.count + 1, salesData: [...partnerInfo.salesData, updatedSalesData]}
-    // );
-
-
-    const userInfo = {
-      firstName: firstName,
-      lastName: lastName,
-      email: email,
-      // Country: Country,
-      city: city,
-      tel: tel,
-      customizedItemDataSheet: customizedItemDataSheet,
-      quantity: count,
-      readyBy: cartItems[0].readyBy + "days",
-      ...sashImages,
-      specialRequest: cartItems[0].specialRequests,
-      ReferedPerson: referral,
-      subject: `New 3D Product Order`,
-    };
+  // Include the structured cart items data in the userInfo object
+  const userInfo = {
+    firstName,
+    lastName,
+    email,
+    city,
+    tel,
+    cartItems: cartItemsData,
+    ReferedPerson: referral,
+  };
     // Submit to formspree
+
+
+    AllServices.addOrder({...userInfo});
+
     fetch(process.env.REACT_APP_formSpree, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(userInfo),
+      body: JSON.stringify({...userInfo, Subject: "New Product Order"}),
     });
 
-    // Clear the cart after successful payment
+    dispatch(clearCart())
   };
 
   const onClose = () => {
@@ -217,66 +220,65 @@ const CustomizeCheckout = () => {
       <LayoutHeaders selectedBg={Top} />
       <Toast ref={toast} />
 
-      <div style={{ display: "none" }}>
-        <OrderDetail
-          total={totalToPayNumeric}
-          actualTotal={totalToPay}
-          currencySymbol={currencySymbol}
-          readyBy={cartItems[0].readyBy}
-          selectedParts={cartItems[0].selectedParts}
-          selectedSize={cartItems[0].selectedSize}
-          ref={componentRef}
-          modelImage={cartItems[0].modelImage}
-          customSizeValues={cartItems[0].customSizeValues}
-          height={cartItems[0].height}
-          name={cartItems[0].name}
-          count={cartItems[0].quantity}
-          specialRequest={cartItems[0].specialRequests}
-        />
-      </div>
+     
 
       <div className="container mb-5">
         {cartItems.length !== 0 ? (
           <div className="mt-5 mb-5">
-            <h2>Customized Item</h2>
+            <h2>Customized Item(s)</h2>
             <ul className="list-group">
               {cartItems.map((selectedItem) => (
                 <li
-                  className="list-group-item d-flex justify-content-between align-items-center mt-3"
+                  className=" d-flex justify-content-between align-items-center mt-3"
                   key={selectedItem.id}
                   data-aos="fade-up"
                 >
-                  <div className="d-flex">
+                  <div className="d-flex gap-3 align-items-center list-group-item col">
                     <img
                       src={selectedItem.modelImage}
                       alt=""
                       width="100rem"
                       height="100rem"
                     />
-                    <div className="mt-2 mx-5">
+                    <div className="">
                       <span className="fw-bold">Name: </span>{" "}
                       {selectedItem.name} <br />
-                      <span className="fw-bold">Quantity: </span> {count}
+                      <span className="fw-bold">Quantity: </span> {selectedItem.quantity}
                       <br />
-                      <span className="fw-bold">Total Price:</span>
-                      {(totalToPay * currencyFactor).toFixed()}
+                      <span className="fw-bold">Subtotal:</span>
+                      {" "}{currencySymbol}{(selectedItem?.price * selectedItem?.quantity * currencyFactor).toFixed()}
                     </div>
                   </div>
+                  <p className="col-1">
+                  <i
+                    className="pi pi-trash "
+                    
+                    style={{ color: "red" }}
+                    onClick={() => {}}
+                  ></i>
+                  </p>
+                  
                 </li>
               ))}
             </ul>
+
+            <p className="d-flex justify-content-center align-items-center w-100 pt-4 pb-1">
+              <button className="btn btn-danger" onClick={() => {dispatch(clearCart())}}>Clear Cart</button>
+
+            </p>
+
 
             <div className="mt-5 mb-5 text-center"></div>
             <h5>Down Payment</h5>
             <div className="d-flex flex-column gap-1">
               <div
-                style={{ opacity: cartItems[0].name.includes("Wig") ? 0.5 : 1 }}
+                // style={{ opacity: cartItems[0].name.includes("Wig") ? 0.5 : 1 }}
                 className="d-flex aligh-items-center"
               >
                 <RadioButton
                   onChange={(e) => setPayPercentage(!payPercenTage)}
                   checked={payPercenTage === true}
-                  disabled={cartItems[0].name.includes("Wig")}
+                  // disabled={cartItems[0].name.includes("Wig")}
                 />
                 <label className="ml-2">Pay 45% of amount</label>
               </div>
@@ -297,12 +299,8 @@ const CustomizeCheckout = () => {
                 </p>
               </h3>
             </div>
-          </div>
-        ) : (
-          <div className="text-center m-5">No items Added Yet </div>
-        )}
 
-        {/* Shipping Information */}
+            {/* Shipping Information */}
 
         <div className="mt-5">
           <p>
@@ -443,152 +441,20 @@ const CustomizeCheckout = () => {
             make future shopping experiences better for you
           </p>
         </div>
+          </div>
+        ) : (
+          <div className="text-center my-5 d-flex flex-column w-100 justify-content-center align-items-center">
+            <p>No items in cart </p>
+            <button onClick={() => navigate("/start-customize")} className="btn btn-warning text-white">Buy Now</button>
+          </div>
+        )}
+
+        
       </div>
     </>
   );
 };
 
-export const OrderDetail = React.forwardRef(
-  (
-    {
-      total,
-      actualTotal,
-      // currencySymbol,
-      readyBy,
-      selectedParts,
-      selectedSize,
-      modelImage,
-      customSizeValues,
-      height,
-      name,
-      count,
-      specialRequest,
-    },
-    ref
-  ) => {
-    const currencySymbol = useSelector((state) => state.currencySymbol.symbol);
 
-    return (
-      <div ref={ref} className="row all-confirmation-info">
-        <div className="col-md-6">
-          <p className="h5 mt-3 mb-5 model-confirm-image">
-            <img src={modelImage} alt="model img" width="80%" />
-          </p>
-          <div className=" d-flex justify-content-center align-items-center mt-3">
-            <div className="d-flex">
-              <div className="m-1">
-                <span className="fw-bold">Name: </span> {name} <br />
-                <span className="fw-bold">Quantity: </span> {count} <br />
-                <span className="fw-bold">Selected Size: </span>
-                {selectedSize || "None Selected"}
-                {/* <span className="fw-bold">
-                    Price: {currencySymbol}
-                    {total}
-                  </span> */}
-                <br />
-                <span className="fw-bold">Amount Paid: </span>
-                {currencySymbol} {total}
-                <br />
-                <span className="fw-bold">Amount Left: </span>
-                {currencySymbol} {actualTotal - total}
-                <br />
-                <span className="fw-bold">
-                  Estimated time to make this order: {readyBy} days
-                </span>
-                <br />
-                <span span className="fw-bold">
-                  {specialRequest}
-                </span>
-              </div>
-            </div>
-          </div>
-
-          {/* <div>
-            <div className="custom-size-values">
-              <p className="h5 mt-4">Client's custom size values:</p>
-              {!height && Object.entries(customSizeValues)?.length === 0 ? (
-                <span>N/A</span>
-              ) : (
-                <>
-                  {height && (
-                    <div>
-                      <strong className="text-warning">Your Height:</strong>
-                      {height + ""} cm
-                    </div>
-                  )}
-
-                  <ul>
-                    {Object.entries(customSizeValues)?.map(([label, value]) => (
-                      <li key={label}>
-                        <strong>{label}:</strong> {value}
-                      </li>
-                    ))}
-                  </ul>
-                </>
-              )}
-            </div>
-          </div> */}
-        </div>
-        <div className="col-md-6 px-5">
-          <div className="mt-4">
-            <h2>Information On Parts</h2>
-            {selectedParts?.map(
-              (part, index) =>
-                // Check if the part has color or texture before rendering
-                (part.color || part.texture) && (
-                  <div key={index} className="mb-4">
-                    <h4 className="text-capitalize">{parseTitle(part.name)}</h4>
-                    <p>
-                      {part.color && (
-                        <>
-                          Color
-                          <div
-                            className="color-display"
-                            style={{
-                              backgroundColor: part.color,
-                              width: "20px",
-                              height: "20px",
-                              border: "1px solid black",
-                              borderRadius: "4rem",
-                              display: "inline-block",
-                              marginLeft: "1rem",
-                            }}
-                          ></div>
-                        </>
-                      )}
-                    </p>
-
-                    <p>
-                      {part.texture && (
-                        <>
-                          Texture:
-                          <p>
-                            <img
-                              src={part.texture}
-                              alt="Selected Texture"
-                              style={{
-                                maxWidth: "70px",
-                                maxHeight: "70px",
-                                display: "inline-block",
-                              }}
-                            />
-                          </p>
-                        </>
-                      )}
-                    </p>
-
-                    {index !== selectedParts.length - 1 && <Divider />}
-                  </div>
-                )
-            )}
-          </div>
-        </div>
-      </div>
-      // <div ref={ref}>
-      //   <h1>Hi</h1>
-      // </div>
-    );
-  }
-);
 
 export default CustomizeCheckout;

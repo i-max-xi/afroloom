@@ -15,10 +15,21 @@ import {
 } from "firebase/firestore";
 
 const partnersCollectionRef = collection(db, "partners");
+const ordersCollectionRef = collection(db, "afroloomOrders");
 
 
 class AllServices {
-   
+
+  //orders
+  getAllOrders = () => {
+    return getDocs(ordersCollectionRef);
+  };
+  addOrder = (newOrder) => {
+    return addDoc(ordersCollectionRef, newOrder);
+  };
+
+
+  // partner 
     getAllPartners = () => {
       return getDocs(partnersCollectionRef);
     };

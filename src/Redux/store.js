@@ -78,19 +78,22 @@ const customized3DSlice = createSlice({
   name: "customizedProduct",
   initialState: {
     itemDetails: [],
-    itemDataSheet: "",
   },
   reducers: {
-    set3DItemDetails: (state, action) => {
-      state.itemDetails = action.payload;
+    addToCart: (state, action) => {
+      state.itemDetails.push(action.payload);
     },
-    setItemDataSheet: (state, action) => {
-      state.itemDataSheet = action.payload;
-    },
-    clear3DInfo: (state) => {
+ 
+    clearCart: (state) => {
       state.itemDetails = [];
-      state.itemDataSheet = "";
     },
+
+    removeFromCart: (state, action) => {
+      state.itemDetails = state.itemDetails.filter(
+        (item) => item.id !== action.payload
+      );
+    },
+    
   },
 });
 
@@ -108,7 +111,6 @@ const store = configureStore({
 });
 
 export const { setCurrencySymbol } = currencySymbolSlice.actions;
-// export const { addItem, removeItem, clearCart } = cartSlice.actions;
 export const {
   setSignedIn,
   setcurrentUser,
@@ -116,7 +118,7 @@ export const {
   updateOrders,
   updateCurrentUser,
 } = userSlice.actions;
-export const { set3DItemDetails, setItemDataSheet, clear3DInfo } =
+export const { addToCart,  clearCart, removeFromCart } =
   customized3DSlice.actions;
 
 export const persistor = persistStore(store);

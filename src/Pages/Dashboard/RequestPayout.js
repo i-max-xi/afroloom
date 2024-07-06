@@ -4,11 +4,16 @@ import { Toast } from "primereact/toast";
 import { ProgressSpinner } from "primereact/progressspinner";
 import { Dropdown } from 'primereact/dropdown';
 import CustomInput from '../../Components/Input/CustomInput';
+import { useSelector } from 'react-redux';
 
 const RequestPayout = ({userData, calcluatedEarning, calculatedPaid}) => {
   const { register, handleSubmit, reset, formState: { errors }, watch } = useForm();
   const toastRef = useRef(null);
   const [isLoading, setIsLoading] = useState(false);
+
+  const currencySymbol = useSelector((state) => state.currencySymbol.symbol);
+  const currencyFactor = useSelector((state) => state.currencySymbol.factor);
+
 
   const serviceProviders = [
     { label: 'MTN', value: 'MTN' },
@@ -17,7 +22,15 @@ const RequestPayout = ({userData, calcluatedEarning, calculatedPaid}) => {
   ];
 
   const onSubmit = async (data) => {
+    if(calcluatedEarning < 5){
+      toastRef.current.show({ severity: 'error', summary: 'Error sending request', detail: `Minimum payout amount is ${currencySymbol}${currencyFactor * 10}` });
+      setIsLoading(false);
+      return;
+    }
+    
     setIsLoading(true);
+
+   
     const userInfo = {
       mobile_money_Number: data.mobileMoneyNumber,
       service_provider: data.serviceProvider,
@@ -25,6 +38,7 @@ const RequestPayout = ({userData, calcluatedEarning, calculatedPaid}) => {
         // number_of_sales: userData.count,
         // total_earning: calcluatedEarning,
         // already_paid: calculatedPaid,
+        email: userData.email,
         to_pay: calcluatedEarning - calculatedPaid,
     };
     try {
@@ -43,6 +57,7 @@ const RequestPayout = ({userData, calcluatedEarning, calculatedPaid}) => {
       setIsLoading(false);
     }
   };
+
 
   return (
     <>

@@ -13,9 +13,8 @@ import {
 } from "firebase/storage";
 import { Toast } from "primereact/toast";
 import { ProgressSpinner } from "primereact/progressspinner";
-import { set3DItemDetails, setItemDataSheet } from "../../../Redux/store";
+import { addToCart } from "../../../Redux/store";
 import { useDispatch, useSelector } from "react-redux";
-import { parseTitle } from "../../../utils/functions";
 import { Divider } from "primereact/divider";
 
 const WigConfirmation = ({
@@ -91,13 +90,14 @@ const WigConfirmation = ({
           selectedColor: selectedColor,
           specialRequests: special,
           allSpecifications,
+          dataSheet: downloadURL
+
 
           // Other properties specific to your object
         },
       ];
 
-      dispatch(set3DItemDetails(formData));
-      dispatch(setItemDataSheet(downloadURL));
+      dispatch(addToCart(formData));
 
       setIsLoading(false);
       toast.current.show({
@@ -110,7 +110,7 @@ const WigConfirmation = ({
               Proceed to{" "}
               <Link to="/customize-checkout" className="btn btn-success">
                 Checkout
-              </Link>
+              </Link> when ready
             </p>
           </div>
         ),
@@ -150,10 +150,15 @@ const WigConfirmation = ({
         selectedColor={selectedColor}
       />
       <div className="container justify-content-center">
-        <div className="d-flex">
+      <div className="d-flex">
+          <p>
           <button className="btn btn-outline-success" onClick={handlePrint}>
             Download Copy
           </button>
+          <p style={{fontSize: "0.7rem"}}>For effective transparency</p>
+          </p>
+          
+          <p>
           <button
             disabled={isLoading}
             className="btn btn-success mx-3 position-relative"
@@ -169,8 +174,10 @@ const WigConfirmation = ({
                 />
               )}
             </span>
-            Confirm Order
+            Add To Cart
           </button>
+          </p>
+          
         </div>
 
         <p className="h5 mt-4">Thank you for your order!</p>
