@@ -28,7 +28,7 @@ const SignUp = () => {
 
     const onSubmit = async (data) => {
       setIsLoading(true); 
-        const { email, password, first_name, last_name } = data;
+        const { email, password, first_name, last_name, phone } = data;
         console.log({data})
         try {
             await createUserWithEmailAndPassword(auth, email, password).then((userCredential) => {
@@ -39,6 +39,7 @@ const SignUp = () => {
                   firstName: first_name,
                   lastName: last_name,
                   email: email,
+                  phone: phone,
                   partner_code: partnerCode,
                   count:0
                 };
@@ -142,6 +143,19 @@ const SignUp = () => {
                             })}
                         />
                         {errors.email && <p className="text-danger">{errors.email.message}</p>}
+
+                        <CustomInput
+                          label="Phone Number"
+                          {...register("phone", { 
+                              required: "Phone number is required", 
+                              pattern: {
+                                  value: /^[0-9]{10}$/,
+                                  message: "Enter a valid phone number"
+                              } 
+                          })}
+                      />
+
+                        {errors.phone && <p className="text-danger">{errors.phone.message}</p>}
 
                         <CustomInput
                             label="Password"
