@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-import { clearCart } from "../Redux/store";
+import { clearCart, removeFromCart } from "../Redux/store";
 
 import Top from "../Assets/Headers/Check_Out.jpg";
 import LayoutHeaders from "../Components/LayoutHeaders";
@@ -215,6 +215,11 @@ const CustomizeCheckout = () => {
     }
   }, [firstName, lastName, emailAddress, tel, city]);
 
+  const handleRemoveItem = (name) => {
+    dispatch(removeFromCart(name));
+  };
+  
+
   return (
     <>
       <LayoutHeaders selectedBg={Top} />
@@ -230,7 +235,7 @@ const CustomizeCheckout = () => {
               {cartItems.map((selectedItem) => (
                 <li
                   className=" d-flex justify-content-between align-items-center mt-3"
-                  key={selectedItem.id}
+                  key={selectedItem.name}
                   data-aos="fade-up"
                 >
                   <div className="d-flex gap-3 align-items-center list-group-item col">
@@ -254,7 +259,7 @@ const CustomizeCheckout = () => {
                     className="pi pi-trash "
                     
                     style={{ color: "red" }}
-                    onClick={() => {}}
+                    onClick={() => handleRemoveItem(selectedItem.name)}
                   ></i>
                   </p>
                   
@@ -318,17 +323,17 @@ const CustomizeCheckout = () => {
             />
             <div>
             <button disabled={referral.length <6} onClick={verifyPartner} className="btn btn-warning text-white shadow-sm position-relative d-flex align-items-center justify-content-center align-self-center"
-                        > <span className="spinner-container">
-                        {isLoading && (
-                          <ProgressSpinner
-                            style={{ width: "1.5rem", height: "1.5rem" }}
-                            strokeWidth="8"
-                            fill="var(--surface-ground)"
-                            className="position-absolute top-50 start-50 translate-middle"
-                          />
-                        )}
-                      </span>
-                      Verify</button>
+                > <span className="spinner-container">
+                {isLoading && (
+                  <ProgressSpinner
+                    style={{ width: "1.5rem", height: "1.5rem" }}
+                    strokeWidth="8"
+                    fill="var(--surface-ground)"
+                    className="position-absolute top-50 start-50 translate-middle"
+                  />
+                )}
+              </span>
+              Verify</button>
             </div>
             
           </div>
