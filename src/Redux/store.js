@@ -90,7 +90,7 @@ const customized3DSlice = createSlice({
 
     removeFromCart: (state, action) => {
       state.itemDetails = state.itemDetails.filter(
-        (item) => item.id !== action.payload
+        (item) => item.name !== action.payload
       );
     },
     
