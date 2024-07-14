@@ -463,12 +463,12 @@ const ConfiguratorFemaleAccessories = () => {
                 onClick={handleRotation}
               >
                 {isRotating ? (
-                  <span>
-                    Stop <i className="pi pi-ban"></i>
+                  <span className="d-flex align-items-center gap-1">
+                    Stop Spin<i className="pi pi-ban" style={{ fontSize: '0.8rem' }}></i>
                   </span>
                 ) : (
-                  <span>
-                    Take a Spin <i className="pi pi-sync"></i>
+                  <span className="d-flex align-items-center gap-1">
+                    Take a Spin <i className="pi pi-sync" style={{ fontSize: '0.8rem' }}></i>
                   </span>
                 )}
               </button>
@@ -724,12 +724,12 @@ const ConfiguratorFemaleAccessories = () => {
                     onClick={handleRotation}
                   >
                     {isRotating ? (
-                  <span>
-                    Stop <i className="pi pi-ban"></i>
+                  <span className="d-flex align-items-center gap-1">
+                    Stop Spin<i className="pi pi-ban" style={{ fontSize: '0.8rem' }}></i>
                   </span>
                 ) : (
-                  <span>
-                    Take a Spin <i className="pi pi-sync"></i>
+                  <span className="d-flex align-items-center gap-1">
+                    Take a Spin <i className="pi pi-sync" style={{ fontSize: '0.8rem' }}></i>
                   </span>
                 )}
                   </button>
