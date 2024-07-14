@@ -137,7 +137,7 @@ const CameraControls = () => {
     controlsRef.current.update();
   });
 
-  return <OrbitControls ref={controlsRef} />;
+  return <OrbitControls enableRotate={true} enablePan={false} enableZoom={false} ref={controlsRef} />;
 };
 
 const Configurator = () => {
