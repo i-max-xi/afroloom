@@ -63,6 +63,12 @@ const Shirt = ({
     }
   });
 
+  useEffect(() => {
+    if (!isRotating) {
+      groupRef.current.rotation.y = 0;
+    }
+  }, [isRotating]);
+
   const handlePartClick = (index) => {
     if (index === selectedPart) {
       setSelectedPart(null); // Deselect the part if it is clicked again
@@ -261,7 +267,8 @@ const Configurator = () => {
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [stateImage, setStateImage] = useState("");
 
-  const captureCanvasAsImage = async () => {
+   const captureCanvasAsImage = async () => {
+    setIsRotating(false)
     const requiresHeight = displayInplaceFor.includes(selectedClothing.name);
     const heightProvided = height !== "";
 
@@ -275,14 +282,14 @@ const Configurator = () => {
       return;
     }
 
-    const canvas = canvasRef.current;
-
-    const canvasImage = await html2canvas(canvas);
-    const dataUrl = canvasImage.toDataURL();
-
-    setStateImage(dataUrl); // Save the data URL to state
-
-    setShowConfirmation(true); // Show confirmation
+    setTimeout(async () => {
+      const canvas = canvasRef.current;
+      const canvasImage = await html2canvas(canvas);
+      const dataUrl = canvasImage.toDataURL();
+      setStateImage(dataUrl);
+      setShowConfirmation(true);
+      setIsRotating(true);
+    }, 100);
   };
 
   //size guide popup

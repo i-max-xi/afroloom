@@ -7,6 +7,7 @@ import CustomSideBar from './CustomSidebar';
 import Home from './Home';
 import RequestPayout from './RequestPayout';
 import { TabPanel, TabView } from "primereact/tabview";
+import AdminDashboard from './admin/AdminHome';
 
 
 
@@ -105,6 +106,8 @@ const Dashboard = () => {
             </TabPanel>
           </TabView>
         </div>
+
+        {/* <AdminDashboard /> */}
     
 
     

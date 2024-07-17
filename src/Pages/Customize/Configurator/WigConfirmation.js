@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useReactToPrint } from "react-to-print";
 import html2canvas from "html2canvas";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { InputTextarea } from "primereact/inputtextarea";
 
 import { app } from "../../../firebase"; // Import your firebase app object
@@ -30,7 +30,9 @@ const WigConfirmation = ({
 }) => {
   const toast = useRef(null);
   const [isLoading, setIsLoading] = useState(false); // Initialize loading state
+  const [addedToCart, setAddedToCart] = useState(false);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [count, setCount] = useState(1);
   const [special, setSpecial] = useState("");
@@ -100,6 +102,7 @@ const WigConfirmation = ({
       dispatch(addToCart(formData));
 
       setIsLoading(false);
+      setAddedToCart(true);
       toast.current.show({
         severity: "info",
         summary: "Order Confirmed",
@@ -161,8 +164,8 @@ const WigConfirmation = ({
           <p>
           <button
             disabled={isLoading}
-            className="btn btn-success mx-3 position-relative"
-            onClick={handleFormSubmit}
+            className={`btn ${addedToCart? "btn-warning text-white" : "btn-success"} mx-3 position-relative`}
+            onClick={addedToCart? navigate("/start-customize"): handleFormSubmit}
           >
             <span className="spinner-container">
               {isLoading && (
@@ -174,7 +177,7 @@ const WigConfirmation = ({
                 />
               )}
             </span>
-            Add To Cart
+             {addedToCart? "Order Again" : "Add To Cart"}
           </button>
           </p>
           

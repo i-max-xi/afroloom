@@ -36,7 +36,7 @@ const MobileNav = ({ visible, setVisible }) => {
           <li className="nav-item mobile-nav-item">
           <i className="pi pi-shopping-cart p-overlay-badge"><Badge severity="warning" style={{scale: "0.5"}}  value={cartItems.length}></Badge></i>
           <Link className="nav-link" to="/customize-checkout">
-              Cart
+              Checkout
             </Link>
           </li>
           <Divider className="custom-divider" />

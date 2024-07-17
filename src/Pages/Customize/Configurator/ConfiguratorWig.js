@@ -258,7 +258,7 @@ const ConfiguratorWig = () => {
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [stateImage, setStateImage] = useState("");
 
-  const captureCanvasAsImage = async () => {
+   const captureCanvasAsImage = async () => {
     if (!capSize) {
       toastRef.current.show({
         severity: "error",
