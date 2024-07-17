@@ -10,10 +10,9 @@ import { PaystackButton } from "react-paystack";
 import { Toast } from "primereact/toast";
 import { RadioButton } from "primereact/radiobutton";
 import { useReactToPrint } from "react-to-print";
-import { parseTitle } from "../utils/functions";
-import { Divider } from "primereact/divider";
 import AllServices from "../Services/usersService";
 import { ProgressSpinner } from "primereact/progressspinner";
+import { set } from "date-fns";
  
 const CustomizeCheckout = () => {
   const cartItems = useSelector((state) => state.customizedProduct.itemDetails);
@@ -23,6 +22,7 @@ const CustomizeCheckout = () => {
 
   const dispatch = useDispatch();
   const toast = useRef(null);
+
 
   const [emailAddress, setEmailAddress] = useState("");
   const [firstName, setFirstName] = useState("");
@@ -74,6 +74,16 @@ const CustomizeCheckout = () => {
   const handlePrint = useReactToPrint({
     content: () => componentRef.current,
   });
+
+  const resetInfos = () => {
+    setEmailAddress("");
+    setFirstName("");
+    setLastName("");
+    setCity("");
+    setTel("");
+    setReferral("");
+    setPartnerinfo(null);
+  }
 
   // const sashImages = useMemo(() => {
   //   if (cartItems[0]?.uploadedImageLeft) {
@@ -136,19 +146,13 @@ const CustomizeCheckout = () => {
     dataSheet: item.dataSheet,
   }));
 
+  const updatedSalesData = {
+    month: currentMonth,
+    count: matchedMonth ? matchedMonth.count + totalCount : totalCount, 
+  };
 
-
-  const onSuccess = (reference) => {
-    handlePrint();
-
-
-    const updatedSalesData = {
-      month: currentMonth,
-      count: matchedMonth ? matchedMonth.count + totalCount : totalCount, 
-    };
-
+  const updatePartnerInfo = () => {
     let updatedSalesDataArray;
-
     if (matchedMonth) {
       // Update existing salesData for the matched month
       updatedSalesDataArray = partnerInfo.salesData.map((data) =>
@@ -164,10 +168,18 @@ const CustomizeCheckout = () => {
       count: (partnerInfo.count || 0) + totalCount, // Increment count
       salesData: updatedSalesDataArray,
     };
-  
-    // Update partner document in Firestore
+
     AllServices.updatePartner(partnerInfo.id, updatedPartnerInfo);
 
+  }
+
+
+
+  const onSuccess = (reference) => {
+    // handlePrint();
+    console.log("start", reference);
+
+    
 
   // Include the structured cart items data in the userInfo object
   const userInfo = {
@@ -178,21 +190,30 @@ const CustomizeCheckout = () => {
     tel,
     cartItems: cartItemsData,
     ReferedPerson: referral,
+    subject: "New Product Order",
+    timestamp: new Date().toISOString(), // Adding timestamp
+    balanceToPay: parseFloat(totalToPay) - totalToPayNumeric,
   };
-    // Submit to formspree
-
-
-    AllServices.addOrder({...userInfo});
 
     fetch(process.env.REACT_APP_formSpree, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({...userInfo, Subject: "New Product Order"}),
+      body: JSON.stringify(userInfo),
     });
 
-    dispatch(clearCart())
+   
+    AllServices.addOrder(userInfo);
+
+    if(partnerInfo !== null){
+      updatePartnerInfo();
+    }
+
+    resetInfos();
+    dispatch(clearCart());
+
+    console.log("Payment successful", reference);
   };
 
   const onClose = () => {
@@ -200,7 +221,6 @@ const CustomizeCheckout = () => {
     toast.current.show({
       severity: "info",
       summary: "Payment Cancelled",
-      // detail: "Click on cart to checkout item",
     });
   };
 
@@ -322,7 +342,7 @@ const CustomizeCheckout = () => {
               placeholder="6 - digit ID code"
             />
             <div>
-            <button disabled={referral.length <6} onClick={verifyPartner} className="btn btn-warning text-white shadow-sm position-relative d-flex align-items-center justify-content-center align-self-center"
+            <button disabled={referral.length <6} onClick={partnerInfo !== null ? "" : verifyPartner} className={partnerInfo !== null ? "btn btn-success" : "btn btn-warning text-white shadow-sm position-relative d-flex align-items-center justify-content-center align-self-center"}
                 > <span className="spinner-container">
                 {isLoading && (
                   <ProgressSpinner
@@ -333,7 +353,7 @@ const CustomizeCheckout = () => {
                   />
                 )}
               </span>
-              Verify</button>
+              {partnerInfo !== null ? (<i className="pi pi-check"></i>): "Verify"}</button>
             </div>
             
           </div>

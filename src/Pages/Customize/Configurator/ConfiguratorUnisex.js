@@ -79,6 +79,12 @@ const Shirt = ({
     }
   });
 
+  useEffect(() => {
+    if (!isRotating) {
+      groupRef.current.rotation.y = 0;
+    }
+  }, [isRotating]);
+
   const handlePartClick = (index) => {
     if (index === selectedPart) {
       setSelectedPart(null); // Deselect the part if it is clicked again
@@ -739,7 +745,8 @@ const ConfiguratorUnisex = () => {
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [stateImage, setStateImage] = useState("");
 
-  const captureCanvasAsImage = async () => {
+   const captureCanvasAsImage = async () => {
+    setIsRotating(false)
     const requiresGender = displayInplaceFor.includes(selectedClothing.name);
     const genderProvided = gender !== "";
 
