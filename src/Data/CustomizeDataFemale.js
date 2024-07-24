@@ -46,7 +46,7 @@ import bikini_guide from "../Assets/size_guide/Accessories/Female/31.jpg";
 const image_tshirt_long = require("../Assets/welcome_3ds/female/long_sleeve_new.png");
 const image_short_sleeves = require("../Assets/welcome_3ds/female/short_sleeves_shirt.png");
 const image_tshirt_short = require("../Assets/welcome_3ds/female/short_sleeve_new.png");
-const image_shirt_long = require("../Assets/welcome_3ds/female/fem_shirt.webp");
+const image_shirt_long = require("../Assets/welcome_3ds/female/long_sleeve_soc.png");
 const image_crop_top = require("../Assets/welcome_3ds/female/crop top.png");
 const image_bikini = require("../Assets/welcome_3ds/female/bikini.png");
 // const image_top = require("../Assets/welcome_3ds/female/");
