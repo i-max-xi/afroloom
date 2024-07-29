@@ -21,6 +21,13 @@
   align-items: center;
 }
 
+.footer-icon-sub-title {
+  display: flex;
+  flex-direction: column;
+  gap: 1;
+  line-height: 0.2rem;
+}
+
 /* .Sidebar .p-sidebar-content {
   height: 20vh;
   display: flex;
