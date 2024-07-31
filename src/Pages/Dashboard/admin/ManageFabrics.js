@@ -63,7 +63,7 @@ const ManageFabrics = () => {
   };
 
   const fabricTypes = (rowData) => {
-    return Object.keys(rowData).filter(key => key !== 'id' && key !== 'price');
+    return Object.keys(rowData).filter(key => key !== 'id' && key !== 'price' && key !== 'items');
   };
 
   const itemTemplate = (rowData) => {
@@ -84,49 +84,110 @@ const ManageFabrics = () => {
     );
   };
 
+  const onRowExpand = (event) => {
+    setExpandedRows(event.data);
+  };
+
+  const onRowCollapse = (event) => {
+    setExpandedRows([]);
+  };
+
+  const editItemTemplate = (type) => {
+    const items = updatedFabric[type]?.items || [];
+    return (
+      <div>
+        {items.map((item, index) => (
+          <div key={index} className="p-d-flex p-ai-center p-mb-2">
+            <div className="p-field p-mr-2">
+              <label htmlFor={`image-${index}`}>Image URL</label>
+              <InputText id={`image-${index}`} value={item.image || ''} onChange={(e) => {
+                const newItems = [...updatedFabric[type].items];
+                newItems[index] = { ...newItems[index], image: e.target.value };
+                setUpdatedFabric({
+                  ...updatedFabric,
+                  [type]: { ...updatedFabric[type], items: newItems }
+                });
+              }} />
+            </div>
+            <div className="p-field p-mr-2">
+              <label htmlFor={`textureName-${index}`}>Texture Name</label>
+              <InputText id={`textureName-${index}`} value={item.textureName || ''} onChange={(e) => {
+                const newItems = [...updatedFabric[type].items];
+                newItems[index] = { ...newItems[index], textureName: e.target.value };
+                setUpdatedFabric({
+                  ...updatedFabric,
+                  [type]: { ...updatedFabric[type], items: newItems }
+                });
+              }} />
+            </div>
+            <div className="p-field">
+              <label htmlFor={`textureDescription-${index}`}>Texture Description</label>
+              <InputText id={`textureDescription-${index}`} value={item.textureDescription || ''} onChange={(e) => {
+                const newItems = [...updatedFabric[type].items];
+                newItems[index] = { ...newItems[index], textureDescription: e.target.value };
+                setUpdatedFabric({
+                  ...updatedFabric,
+                  [type]: { ...updatedFabric[type], items: newItems }
+                });
+              }} />
+            </div>
+          </div>
+        ))}
+      </div>
+    );
+  };
+
   return (
     <div className="p-m-3">
       <Toast ref={toast} />
       <h5 style={{ fontWeight: 'normal' }}>Manage Fabrics</h5>
       <DataTable 
-  value={fabrics} 
-  paginator 
-  rows={10} 
-  rowsPerPageOptions={[5, 10, 25]} 
-  className="p-datatable-gridlines" 
-  expandedRows={expandedRows} 
-  onRowToggle={(e) => setExpandedRows(e.data)}
-  rowExpansionTemplate={itemTemplate}
->
-  <Column field="fabricType" header="Fabric Type" body={(rowData) => fabricTypes(rowData).join(', ')} />
-  <Column field="price" header="Price" body={(rowData) => {
-    const type = fabricTypes(rowData)[0];
-    return type ? rowData[type].price : 'N/A';
-  }} />
-  <Column
-    body={(rowData) => (
-      <>
-        <Button
-          icon="pi pi-pencil"
-          className="p-button-rounded p-button-info p-mr-2"
-          onClick={() => {
-            setSelectedFabric(rowData);
-            setUpdatedFabric(rowData);
-            setEditDialogVisible(true);
-          }}
+        value={fabrics} 
+        paginator 
+        rows={10} 
+        rowsPerPageOptions={[5, 10, 25]} 
+        className="p-datatable-gridlines" 
+        expandedRows={expandedRows} 
+        onRowToggle={(e) => e.data ? onRowExpand(e) : onRowCollapse(e)}
+        rowExpansionTemplate={itemTemplate}
+      >
+        <Column expander style={{ width: '3rem' }} />
+        <Column 
+          field="fabricType" 
+          header="Fabric Type" 
+          body={(rowData) => (
+            <span>
+              {fabricTypes(rowData).join(', ')}
+              <Tooltip target=".p-datatable-tbody .p-row-expander-button" content="Expand" />
+            </span>
+          )}
         />
-        <Button
-          icon="pi pi-trash"
-          className="p-button-rounded p-button-danger"
-          onClick={() => confirmDeleteFabric(rowData.id)}
+        <Column field="price" header="Price" body={(rowData) => {
+          const type = fabricTypes(rowData)[0];
+          return type ? rowData[type].price : 'N/A';
+        }} />
+        <Column
+          body={(rowData) => (
+            <>
+              <Button
+                icon="pi pi-pencil"
+                className="p-button-rounded p-button-info p-mr-2"
+                onClick={() => {
+                  setSelectedFabric(rowData);
+                  setUpdatedFabric(rowData);
+                  setEditDialogVisible(true);
+                }}
+              />
+              <Button
+                icon="pi pi-trash"
+                className="p-button-rounded p-button-danger"
+                onClick={() => confirmDeleteFabric(rowData.id)}
+              />
+            </>
+          )}
+          header="Actions"
         />
-      </>
-    )}
-    header="Actions"
-  />
-  <Column expander style={{ width: '3rem' }} />
-</DataTable>
-
+      </DataTable>
 
       <Dialog header="Edit Fabric" visible={editDialogVisible} onHide={() => setEditDialogVisible(false)}>
         <div className="p-fluid">
@@ -153,6 +214,7 @@ const ManageFabrics = () => {
                   setUpdatedFabric(newFabric);
                 }} />
               </div>
+              {editItemTemplate(type)}
             </React.Fragment>
           ))}
           <Button label="Save" icon="pi pi-check" onClick={updateFabric} />

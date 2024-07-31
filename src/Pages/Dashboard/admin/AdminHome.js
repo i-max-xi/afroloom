@@ -44,7 +44,7 @@ const AdminDashboard = () => {
           onTabChange={(e) => setActiveIndex(e.index)}
         >
           <TabPanel  header="Manage Sales Partners">
-          <ManageFabrics />
+          <ManageUsers />
           </TabPanel>
           <TabPanel header="Manage Prices">
             <ManagePrices />
