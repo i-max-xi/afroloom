@@ -16,6 +16,8 @@ import {
 
 const partnersCollectionRef = collection(db, "partners");
 const ordersCollectionRef = collection(db, "afroloomOrders");
+const userCollectionRef = collection(db, "users");
+
 
 
 class AllServices {
@@ -26,6 +28,13 @@ class AllServices {
   };
   addOrder = (newOrder) => {
     return addDoc(ordersCollectionRef, newOrder);
+  };
+
+  // user
+  getuserByField = async (fieldName, value) => {
+    const q = query(userCollectionRef, where(fieldName, "==", value));
+    const querySnapshot = await getDocs(q);
+    return querySnapshot.docs[0]; // Assuming there's at most one document with the given "id"
   };
 
 

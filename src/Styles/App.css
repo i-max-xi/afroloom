@@ -15,6 +15,13 @@
   color: var(--orange);
 }
 
+/* src/styles/DataTable.css */
+
+.p-column-header-content {
+  /* padding: 0 5rem !important; */
+  width: 10rem !important;
+}
+
 .nav-item {
   display: flex;
   gap: 0.4rem;

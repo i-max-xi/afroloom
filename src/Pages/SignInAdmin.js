@@ -12,6 +12,7 @@ import { useForm } from "react-hook-form";
 import CustomInput from "../Components/Input/CustomInput";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import Nav from "../Components/Nav";
+import ProductsDataService from "../Services/usersService";
 
 const SignInAdmin = () => {
   const dispatch = useDispatch();
@@ -34,20 +35,34 @@ const SignInAdmin = () => {
             auth,
             email,
             password
-          ).then((userCredential) => {
-            dispatch(setSignedIn(true));
+          ).then(async (userCredential) => {
+            const user = userCredential.user;
 
-            dispatch(setSignedIn(true));
-            dispatch(
+            let userInfo = null;
+
+            const buyerInfo = await ProductsDataService.getuserByField(
+              "id",
+              user.uid
+            );
+
+            userInfo = buyerInfo.data();
+
+            if(userInfo.isAdmin){
+              dispatch(setSignedIn(true));
+              dispatch(
                 setDashBoardPath(
-                    `/admin-signin`
+                    `/admin-dashboard`
                 )
               );  
-            navigate(`/admin-signin`); // Navigate to dashboard with userID
+              reset();
+              toastRef.current.show({ severity: 'success', summary: 'Sign in successful!' });
+              navigate(`/admin-dashboard`); // Navigate to dashboard with userID
+            }
+            else {
+              toastRef.current.show({ severity: 'error', summary: 'Error signing in', detail: 'User is not an admin' });
+            }
 
           });
-        reset();
-        toastRef.current.show({ severity: 'success', summary: 'Sign in successful!' });
     } catch (error) {
         toastRef.current.show({ severity: 'error', summary: 'Error signing in', detail: error.message });
     }
