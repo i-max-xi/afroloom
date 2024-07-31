@@ -8,10 +8,13 @@ import { InputText } from 'primereact/inputtext';
 import { Toast } from 'primereact/toast';
 import { confirmDialog } from 'primereact/confirmdialog';
 import { Tooltip } from 'primereact/tooltip';
+import CustomInput from '../../../Components/Input/CustomInput';
+import { ProgressSpinner } from 'primereact/progressspinner';
 
 const ManageFabrics = () => {
   const [fabrics, setFabrics] = useState([]);
   const [selectedFabric, setSelectedFabric] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
   const [editDialogVisible, setEditDialogVisible] = useState(false);
   const [updatedFabric, setUpdatedFabric] = useState({});
   const [expandedRows, setExpandedRows] = useState([]);
@@ -206,7 +209,7 @@ const ManageFabrics = () => {
             <React.Fragment key={type}>
               <div className="p-field">
                 <label htmlFor="price">Price</label>
-                <InputText id="price" value={updatedFabric[type]?.price || ''} onChange={(e) => {
+                <CustomInput id="price" value={updatedFabric[type]?.price || ''} onChange={(e) => {
                   const newFabric = {
                     ...updatedFabric,
                     [type]: { ...updatedFabric[type], price: e.target.value }
@@ -217,7 +220,19 @@ const ManageFabrics = () => {
               {editItemTemplate(type)}
             </React.Fragment>
           ))}
-          <Button label="Save" icon="pi pi-check" onClick={updateFabric} />
+          {/* <Button label="Save"  onClick={updateFabric} /> */}
+          <button onClick={updateFabric} type="submit" className="btn btn-warning text-white w-100 mt-4 shadow-sm position-relative"
+            > <span className="spinner-container">
+            {isLoading && (
+                <ProgressSpinner
+                style={{ width: "1.5rem", height: "1.5rem" }}
+                strokeWidth="8"
+                fill="var(--surface-ground)"
+                className="position-absolute top-50 start-50 translate-middle"
+                />
+            )}
+            </span>
+            Save</button>
         </div>
       </Dialog>
     </div>
