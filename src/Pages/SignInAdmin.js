@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useDispatch } from "react-redux";
 import {
   setDashBoardPath,
@@ -22,6 +22,10 @@ const SignInAdmin = () => {
   const { register, reset, handleSubmit, formState: { errors } } = useForm();
 
   const toastRef = useRef(null);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
 
 

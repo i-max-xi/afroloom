@@ -57,9 +57,10 @@ const Nav = ({ noCurrency }) => {
             <Link to={dashboardPath}>
               <Avatar
                 icon="pi pi-user"
-                className="mx-1 bg-secondary text-white"
+                className="mx-1 bg-secondary text-white "
                 size="large"
                 shape="circle"
+                
               />
             </Link>
           </>)}

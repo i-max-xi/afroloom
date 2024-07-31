@@ -7,10 +7,12 @@ import ManageUsers from './ManageUsers';
 import ManagePrices from './ManagePrices';
 import Nav from '../../../Components/Nav';
 import { Button } from 'primereact/button';
+import ManageFabrics from './ManageFabrics';
 
 const adminSidebarItems = [
   { label: 'Manage Users' },
-  { label: 'Set Prices' }
+  { label: 'Manage Prices' },
+  { label: 'Manage Fabrics' }
 ];
 
 const AdminDashboard = () => {
@@ -42,11 +44,16 @@ const AdminDashboard = () => {
           onTabChange={(e) => setActiveIndex(e.index)}
         >
           <TabPanel  header="Manage Sales Partners">
-            <ManageUsers />
+          <ManageFabrics />
           </TabPanel>
           <TabPanel header="Manage Prices">
             <ManagePrices />
           </TabPanel>
+          <TabPanel header="Manage Fabrics">
+            <ManageFabrics />
+          </TabPanel>
+
+          
         </TabView>
       </div>
     </>

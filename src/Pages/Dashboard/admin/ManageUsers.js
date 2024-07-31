@@ -5,8 +5,6 @@ import AllServices from '../../../Services/usersService';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import { Button } from 'primereact/button';
-import { Card } from 'primereact/card';
-import { Toolbar } from 'primereact/toolbar';
 import { Toast } from 'primereact/toast';
 import { confirmDialog } from 'primereact/confirmdialog';
 import 'primereact/resources/themes/saga-blue/theme.css';

@@ -15,11 +15,16 @@
   color: var(--orange);
 }
 
-/* src/styles/DataTable.css */
-
 .p-column-header-content {
   /* padding: 0 5rem !important; */
   width: 10rem !important;
+}
+
+/* Avatar.css */
+.p-avatar.p-avatar-circle {
+  border-radius: 50% !important;
+  width: auto;
+  height: auto;
 }
 
 .nav-item {
