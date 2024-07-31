@@ -174,63 +174,22 @@ export const textureArrays = {
 
   waxPrint: [waxPrint1, waxPrint2, waxPrint3, waxPrint4, waxPrint5, waxPrint6],
   nailDesigns: [
-    // nailDesign1,
-    // nailDesign2,
     nailDesign3,
     nailDesign4,
-    // nailDesign5,
-    // nailDesign6,
-    // nailDesign7,
-    // nailDesign8,
-    // nailDesign9,
-    // nailDesign10,
-    // nailDesign11,
-    // nailDesign12,
-    // nailDesign13,
-    // nailDesign14,
-    // nailDesign15,
-    // nailDesign16,
-    // nailDesign17,
-    // nailDesign18,
-    // nailDesign19,
-    // nailDesign20,
-    // nailDesign21,
-    // nailDesign22,
-    // nailDesign23,
-    // nailDesign24,
-    // nailDesign25,
-    // nailDesign26,
-    // nailDesign27,
-    // nailDesign28,
-    // nailDesign29,
     nailDesign30,
     nailDesign31,
-    // nailDesign32,
-    // nailDesign33,
-    // nailDesign34,
-    // nailDesign35,
-    // nailDesign36,
     nailDesign37,
     nailDesign38,
-    // nailDesign39,
-    // nailDesign40,
     nailDesign41,
-    // nailDesign42,
     nailDesign43,
     nailDesign44,
     nailDesign45,
-    // nailDesign46,
     nailDesign47,
-    // nailDesign48,
   ],
 };
 
 export const textureDescriptions = {
   batik: [
-    // {
-    //   textureName: "",
-    //   textureDescription: "",
-    // },
     {
       textureName: "Bubu",
       textureDescription: `Step out in style and embrace the vibrant culture of Africa with the stunning bubu fabric! Known
@@ -268,50 +227,7 @@ export const textureDescriptions = {
       and diversity by wearing medofo today!`,
     },
   ],
-  // dashiki: [
-  //   {
-  //     textureName: "Texture name",
-  //     textureDescription: "Description for dashiki1",
-  //   },
-  //   {
-  //     textureName: "Texture name",
-  //     textureDescription: "Description for dashiki2",
-  //   },
-  //   {
-  //     textureName: "Texture name",
-  //     textureDescription: "Description for dashiki3",
-  //   },
-  //   {
-  //     textureName: "Texture name",
-  //     textureDescription: "Description for dashiki4",
-  //   },
-  //   {
-  //     textureName: "Texture name",
-  //     textureDescription: "Description for dashiki5",
-  //   },
-  // ],
-  // kente: [
-  //   {
-  //     textureName: "Texture name",
-  //     textureDescription: "Description for kente1",
-  //   },
-  //   {
-  //     textureName: "Texture name",
-  //     textureDescription: "Description for kente2",
-  //   },
-  //   {
-  //     textureName: "Texture name",
-  //     textureDescription: "Description for kente3",
-  //   },
-  //   {
-  //     textureName: "Texture name",
-  //     textureDescription: "Description for kente4",
-  //   },
-  //   {
-  //     textureName: "Texture name",
-  //     textureDescription: "Description for kente5",
-  //   },
-  // ],
+  
   waxPrint: [
     {
       textureName: "DADE3 MPADUA",
@@ -363,123 +279,7 @@ export const textureDescriptions = {
       heritage and unique design of African fabrics by incorporating Sika Nto Nkwa into your everyday
       style? Stand out from the crowd and wear a piece of tradition with pride!`,
     },
-    // {
-    //   textureName: "Sugar Lady",
-    //   textureDescription: `Introducing the stunning African fabric known as "Sugar Lady" - it's not just material, it's a statement of style and culture. Embrace the vibrancy and beauty of Africa by wearing this unique fabric that will make you stand out from the crowd. Don't just wear a garment, wear a piece of art that tells a story and celebrates tradition. Join the movement and show off your individuality with the enchanting "Sugar Lady" fabric.`,
-    // },
-    // {
-    //   textureName: "ɛmo (rice)",
-    //   textureDescription:
-    //     "Wrap yourself in the beauty and tradition of ɛmo, the African fabric known as rice in English. Just like the staple food, this fabric can be easily tailored to your style and taste. Embrace the vibrant colors and patterns of African culture, and let ɛmo be the ingredient that adds a touch of flair to your wardrobe. Go ahead, wear the fabric that not only looks good but tells a story too.",
-    // },
-    // {
-    //   textureName: "Aso Bayere Ahaban",
-    //   textureDescription:
-    //     "Introducing the Aso Bayere Ahaban fabric, inspired by the sweet yam leaves and versatile like a mother's cooking! Just like there are countless ways to prepare this beloved vegetable, there are infinite ways to style and wear this unique fabric. So why not add a touch of tradition and elegance to your wardrobe by embracing the beauty of Aso Bayere Ahaban. Try it and let your fashion sense bloom like a sweet yam in the sunshine!",
-    // },
-    // {
-    //   textureName: "Aso Bayere",
-    //   textureDescription:
-    //     "Introducing Aso Bayere - the sweet yam-inspired fabric that celebrates the beauty and versatility of a mother's touch. Just like the many ways sweet yam can be prepared, this fabric offers endless possibilities for styling and wearing. Embrace the tradition and creativity of African fashion with Aso Bayere, and let your unique style shine through in every outfit. Add this timeless piece to your wardrobe and discover the magic of the mother's touch.",
-    // },
-    // {
-    //   textureName: "Sankofa",
-    //   textureDescription:
-    //     "Wrap yourself in the vibrant patterns and rich history of Sankofa fabric, a symbol of learning from the past to build a better future. Embrace the beauty and culture of Africa by wearing this unique and meaningful fabric, and let it inspire you to reflect on your own journey while honoring the roots of a powerful tradition. Let the colors and designs of Sankofa fabric ignite your sense of style and pride in wearing garments that tell a story of resilience and heritage. Join the movement to celebrate and elevate African fashion with Sankofa fabric today",
-    // },
-
-    // {
-    //   textureName: "Nkitinkiti",
-    //   textureDescription:
-    //     "Embrace the vibrant and rich culture of Africa by wearing Nkitinkiti fabric! Make a bold statement and stand out in the crowd with these unique and eye-catching patterns. Whether you're attending a special event or just want to add some flair to your everyday wardrobe, Nkitinkiti is the perfect choice. Show off your individuality and support African artisans by rocking this beautiful fabric. Join the fashion revolution and make a statement with Nkitinkiti!",
-    // },
-
-    // {
-    //   textureName: "Town Hall",
-    //   textureDescription:
-    //     "Dress to impress with the vibrant and eye-catching African fabric, Town Hall! Embrace your individuality and show off your unique style by incorporating this bold and beautiful fabric into your wardrobe. Stand out from the crowd and rock the Town Hall fabric with confidence, celebrating the rich cultural heritage and artistry it represents. Don't just follow the trends, set them by showcasing the beauty of African fashion with Town Hall!",
-    // },
-  ],
-  // smock: [
-  //   {
-  //     textureName: "Texture name",
-  //     textureDescription: "Description for smock1",
-  //   },
-  //   {
-  //     textureName: "Texture name",
-  //     textureDescription: "Description for smock2",
-  //   },
-  //   {
-  //     textureName: "Texture name",
-  //     textureDescription: "Description for smock3",
-  //   },
-  //   {
-  //     textureName: "Texture name",
-  //     textureDescription: "Description for smock4",
-  //   },
-  // ],
-  // Crochet: [
-  //   {
-  //     textureName: "Texture name",
-  //     textureDescription: "Description for Crochet1",
-  //   },
-  //   {
-  //     textureName: "Texture name",
-  //     textureDescription: "Description for Crochet2",
-  //   },
-  //   {
-  //     textureName: "Texture name",
-  //     textureDescription: "Description for Crochet3",
-  //   },
-  //   {
-  //     textureName: "Texture name",
-  //     textureDescription: "Description for Crochet4",
-  //   },
-  //   {
-  //     textureName: "Texture name",
-  //     textureDescription: "Description for Crochet5",
-  //   },
-  // ],
-  // printed_kente: [
-  //   {
-  //     textureName: "Texture name",
-  //     textureDescription: "Description for p_kente1",
-  //   },
-  //   {
-  //     textureName: "Texture name",
-  //     textureDescription: "Description for p_kente2",
-  //   },
-  //   {
-  //     textureName: "Texture name",
-  //     textureDescription: "Description for p_kente3",
-  //   },
-  //   {
-  //     textureName: "Texture name",
-  //     textureDescription: "Description for p_kente4",
-  //   },
-  // ],
-  // Funerals: [
-  //   {
-  //     textureName: "Texture name",
-  //     textureDescription: "Description for Funerals1",
-  //   },
-  //   {
-  //     textureName: "Texture name",
-  //     textureDescription: "Description for Funerals2",
-  //   },
-  //   {
-  //     textureName: "Texture name",
-  //     textureDescription: "Description for Funerals3",
-  //   },
-  //   {
-  //     textureName: "Texture name",
-  //     textureDescription: "Description for Funerals4",
-  //   },
-  //   {
-  //     textureName: "Texture name",
-  //     textureDescription: "Description for Funerals5",
-  //   },
-  // ],
+  ]
 };
 
 export const textureValues = {
@@ -487,17 +287,9 @@ export const textureValues = {
     price: 40,
     yardStart: 1,
   },
-  dashiki: {
-    price: 10,
-    yardStart: 1,
-  },
   waxPrint: {
     price: 50,
     yardStart: 2,
-  },
-  Crochet: {
-    price: 30,
-    yardStart: 1,
   },
 };
 
@@ -507,11 +299,6 @@ export const sizeOptions = [
   { label: "L", value: 2 },
   { label: "XL", value: 3 },
   { label: "2XL", value: 4 },
-  // { label: "3XL", value: 5 },
-  // { label: "4XL", value: 6 },
-  // { label: "5XL", value: 7 },
-  // { label: "6XL", value: 8 },
-  // { label: "7XL", value: 9 },
 ];
 
 export const europeanShoeSizes = [
