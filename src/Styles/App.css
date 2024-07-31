@@ -15,6 +15,18 @@
   color: var(--orange);
 }
 
+.p-column-header-content {
+  /* padding: 0 5rem !important; */
+  width: 10rem !important;
+}
+
+/* Avatar.css */
+.p-avatar.p-avatar-circle {
+  border-radius: 50% !important;
+  width: auto;
+  height: auto;
+}
+
 .nav-item {
   display: flex;
   gap: 0.4rem;

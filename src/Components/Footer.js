@@ -98,6 +98,15 @@ const Footer = () => {
                         <br />
                       </Link>
                     </p>
+
+                    <p>
+                      <Link to="/admin-signin" className="text-reset">
+                        Admin
+                        <br />
+                      </Link>
+                    </p>
+
+                    
                   </div>
                   <div>
                     <p>

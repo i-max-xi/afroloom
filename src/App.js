@@ -39,6 +39,8 @@ import SignIn from "./Pages/SignIn";
 import Dashboard from "./Pages/Dashboard/Dashboard";
 import ForgotPassword from "./Pages/ForgotPassword";
 import HomePage from "./Pages/HomePageTwo";
+import AdminDashboard from "./Pages/Dashboard/admin/AdminHome";
+import SignInAdmin from "./Pages/SignInAdmin";
 
 function App() {
   useEffect(() => {
@@ -56,9 +58,11 @@ function App() {
             <Route path="customize-checkout" element={<CustomizeCheckout />} />
             <Route path="signup" element={<SignUp />} />
             <Route path="signin" element={<SignIn />} />
+            <Route path="admin-signin" element={<SignInAdmin />} />
             <Route path="forgot-password" element={<ForgotPassword />} />
 
             <Route path="dashboard/:userID" element={<Dashboard />} />
+            <Route path="admin-dashboard" element={<AdminDashboard />} />
 
 
 

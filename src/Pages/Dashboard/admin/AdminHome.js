@@ -1,50 +1,62 @@
-import React, { useEffect, useState } from 'react';
-import { DataTable } from 'primereact/datatable';
-import { Column } from 'primereact/column';
-import AllServices from '../../../Services/usersService';
+// src/components/admin/AdminDashboard.js
+
+import React, { useState } from 'react';
+import { TabPanel, TabView } from 'primereact/tabview';
+import CustomSideBar from '../CustomSidebar';
+import ManageUsers from './ManageUsers';
+import ManagePrices from './ManagePrices';
+import Nav from '../../../Components/Nav';
+import { Button } from 'primereact/button';
+import ManageFabrics from './ManageFabrics';
+
+const adminSidebarItems = [
+  { label: 'Manage Users' },
+  { label: 'Manage Prices' },
+  { label: 'Manage Fabrics' }
+];
 
 const AdminDashboard = () => {
-  const [orders, setOrders] = useState([]);
-
-  useEffect(() => {
-    const fetchOrders = async () => {
-      try {
-        const snapshot = await AllServices.getAllOrders();
-        const ordersData = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-        setOrders(ordersData);
-      } catch (error) {
-        console.error('Error fetching orders:', error);
-      }
-    };
-
-    fetchOrders();
-  }, []);
-
-  const columns = [
-    { field: 'id', header: 'Order ID' },
-    { field: 'firstName', header: 'First Name' },
-    { field: 'lastName', header: 'Last Name' },
-    { field: 'email', header: 'Email' },
-    { field: 'city', header: 'City' },
-    { field: 'tel', header: 'Phone' },
-    { field: 'timestamp', header: 'Timestamp' },
-    { field: 'totalToPay', header: 'Total Amount' },
-    // Add more fields as needed
-  ];
+  const [visible, setVisible] = useState(true);
+  const [activeIndex, setActiveIndex] = useState(0);
 
   return (
-    <div className="p-grid">
-      <div className="p-col-12">
-        <div className="card">
-          <h1>Admin Dashboard - Orders</h1>
-          <DataTable value={orders}>
-            {columns.map(col => (
-              <Column key={col.field} field={col.field} header={col.header} />
-            ))}
-          </DataTable>
+    <>
+      <Nav />
+
+      <div className="side-bar-closed-container bg-white">
+        <div className="fs-3 p-3 text-bold">
+          Welcome <span className='text-warning'>Admin!</span>
         </div>
+        <Button icon="pi pi-arrow-right" className='mb-3' onClick={() => setVisible(true)} />
+
       </div>
-    </div>
+
+      <CustomSideBar
+        items={adminSidebarItems}
+        setActiveIndex={setActiveIndex}
+        visible={visible}
+        setVisible={setVisible}
+      />
+
+      <div className="">
+        <TabView
+          activeIndex={activeIndex}
+          onTabChange={(e) => setActiveIndex(e.index)}
+        >
+          <TabPanel  header="Manage Sales Partners">
+          <ManageUsers />
+          </TabPanel>
+          <TabPanel header="Manage Prices">
+            <ManagePrices />
+          </TabPanel>
+          <TabPanel header="Manage Fabrics">
+            <ManageFabrics />
+          </TabPanel>
+
+          
+        </TabView>
+      </div>
+    </>
   );
 };
 
