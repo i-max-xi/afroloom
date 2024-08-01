@@ -62,6 +62,20 @@ const CustomSideBar = ({ items, setActiveIndex, visible, setVisible }) => {
             <Divider />
           </>
         ))}
+         <Button
+          label="Anaytics and visits"
+          icon="pi pi-external-link"
+          className="p-button-link"
+          onClick={() => window.open('https://console.firebase.google.com/u/1/project/shopinafrica-c84cf/analytics/app/web:ZWQ1ODAyNTMtNDY4NC00Y2NjLWFlZGItODI4ZTkyMDYyNmJk/overview', '_blank')}
+        />
+        <Divider />
+        <Button
+          label="Paystack Dashboard"
+          icon="pi pi-external-link"
+          className="p-button-link"
+          onClick={() => window.open('https://dashboard.paystack.com/#/login', '_blank')}
+        />
+        <Divider />
         
       </div>
       <button

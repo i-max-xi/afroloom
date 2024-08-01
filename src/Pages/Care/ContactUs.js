@@ -21,7 +21,6 @@ const ContactUs = () => {
             <FooterContact2
               key={contact.id}
               infoDetail={contact.detail}
-              infoDetail2={contact.detail2}
               infoImage={contact.img}
               infoTitle={contact.title}
             />
