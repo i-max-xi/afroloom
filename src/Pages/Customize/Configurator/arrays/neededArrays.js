@@ -1,73 +1,27 @@
 // import from "../textures/tie_and_dye/21 tie and dye.jpg";
+import AllServices from "../../../../Services/usersService"
 
 import batik2 from "../textures/tie_and_dye/7. bubu.jpg";
 import batik3 from "../textures/tie_and_dye/8. tomogyi.jpg";
 import batik4 from "../textures/tie_and_dye/9. gye nyame.jpg";
 import batik5 from "../textures/tie_and_dye/10 medofo.jpg";
 
-import nailDesign1 from "../textures/nail designs/1.jpg";
-import nailDesign2 from "../textures/nail designs/10.jpg";
 import nailDesign3 from "../textures/nail designs/22.jpg";
 import nailDesign4 from "../textures/nail designs/23.jpg";
-import nailDesign5 from "../textures/nail designs/24.jpg";
-import nailDesign6 from "../textures/nail designs/11.jpg";
-import nailDesign7 from "../textures/nail designs/12.jpg";
-import nailDesign8 from "../textures/nail designs/13.jpg";
-import nailDesign9 from "../textures/nail designs/14.jpg";
-import nailDesign10 from "../textures/nail designs/15.jpg";
-import nailDesign11 from "../textures/nail designs/16.jpg";
-import nailDesign12 from "../textures/nail designs/17.jpg";
 // import nailDesign13 from "../textures/nail designs/18.jpg";
-import nailDesign14 from "../textures/nail designs/19.jpg";
-import nailDesign15 from "../textures/nail designs/20.jpg";
-import nailDesign16 from "../textures/nail designs/21.jpg";
-// import nailDesign17 from "../textures/nail designs/25.jpg";
-// import nailDesign18 from "../textures/nail designs/26.jpg";
-// import nailDesign19 from "../textures/nail designs/27.jpg";
-// import nailDesign20 from "../textures/nail designs/28.jpg";
-// import nailDesign21 from "../textures/nail designs/29.jpg";
-// import nailDesign22 from "../textures/nail designs/30.jpg";
-// import nailDesign23 from "../textures/nail designs/31.jpg";
-// import nailDesign24 from "../textures/nail designs/32.jpg";
-// import nailDesign25 from "../textures/nail designs/33.jpg";
-// import nailDesign26 from "../textures/nail designs/34.jpg";
-// import nailDesign27 from "../textures/nail designs/";
-import nailDesign28 from "../textures/nail designs/A.jpg";
-import nailDesign29 from "../textures/nail designs/e2dw.jpg";
 import nailDesign30 from "../textures/nail designs/edwed.jpg";
 import nailDesign31 from "../textures/nail designs/ef.jpg";
-import nailDesign32 from "../textures/nail designs/egag.jpg";
-import nailDesign33 from "../textures/nail designs/egege.jpg";
-import nailDesign34 from "../textures/nail designs/egge.jpg";
-import nailDesign35 from "../textures/nail designs/erge.jpg";
-import nailDesign36 from "../textures/nail designs/ergeg.jpg";
 import nailDesign37 from "../textures/nail designs/fwef.jpg";
 import nailDesign38 from "../textures/nail designs/geg.jpg";
-import nailDesign39 from "../textures/nail designs/gege.jpg";
-import nailDesign40 from "../textures/nail designs/gege.jpg";
 import nailDesign41 from "../textures/nail designs/rege.jpg";
-import nailDesign42 from "../textures/nail designs/rgeg.jpg";
 
 //news
 import nailDesign43 from "../textures/nail designs/new/2.jpg";
 import nailDesign44 from "../textures/nail designs/new/2ed2d.jpg";
 import nailDesign45 from "../textures/nail designs/new/4.jpg";
-import nailDesign46 from "../textures/nail designs/new/5.jpg";
 import nailDesign47 from "../textures/nail designs/new/fwef.jpg";
-import nailDesign48 from "../textures/nail designs/new/geg.jpg";
-import nailDesign49 from "../textures/nail designs/new/rege.jpg";
 
-import dashiki1 from "../textures/dashiki1.jpg";
-import dashiki2 from "../textures/dashiki2.jpg";
-import dashiki3 from "../textures/dashiki3.jpg";
-import dashiki4 from "../textures/dashiki4.jpg";
-import dashiki5 from "../textures/dashiki5.jpg";
 
-import kente1 from "../textures/kente1.jpg";
-import kente2 from "../textures/kente2.jpg";
-import kente3 from "../textures/kente3.jpg";
-import kente4 from "../textures/kente4.jpg";
-import kente5 from "../textures/kente5.jpg";
 
 import waxPrint1 from "../textures/waxPrint/new/1 dade3 mpadua.jpg";
 import waxPrint2 from "../textures/waxPrint/new/2. ayeyi wura.jpg";
@@ -76,28 +30,10 @@ import waxPrint4 from "../textures/waxPrint/new/4. A B C.jpg";
 import waxPrint5 from "../textures/waxPrint/new/5. Apaawa.jpg";
 import waxPrint6 from "../textures/waxPrint/new/6. Sika nto nkwa.jpg";
 
-import smock1 from "../textures/smock1.jpg";
-import smock2 from "../textures/smock2.jpg";
-import smock3 from "../textures/smock3.jpg";
-import smock4 from "../textures/smock4.jpeg";
 // import smock5 from "../textures/smock5.jpg";
 
-import lace1 from "../textures/lace1.jpg";
-import lace2 from "../textures/lace2.jpg";
-import lace3 from "../textures/lace3.jpg";
-import lace4 from "../textures/lace4.jpg";
-import lace5 from "../textures/lace5.jpg";
 
-import Funerals1 from "../textures/suit_fabric1.jpeg";
-import Funerals2 from "../textures/suit_fabric2.jpg";
-import Funerals3 from "../textures/suit_fabric3.jpg";
-import Funerals4 from "../textures/suit_fabric4.jpg";
-import Funerals5 from "../textures/suit_fabric5.jpg";
 
-import p_kente1 from "../textures/p_kente1.jpg";
-import p_kente2 from "../textures/p_kente2.jpg";
-import p_kente3 from "../textures/p_kente3.jpg";
-import p_kente4 from "../textures/p_kente4.jpg";
 
 export const colorBasePrice = 35;
 
@@ -169,68 +105,50 @@ export const specialNodeNames = [
   "nailHands",
 ]; // Add your special node names here
 
+
+let returnedDecsriptions = [];
+
+const initializeData = async () => {
+  try {
+    const response = await AllServices.getAllFabrics();
+    const allFabrics = (response.docs.map(doc => ({ ...doc.data(), id: doc.id })));
+    returnedDecsriptions = allFabrics.reduce((acc, fabric) => {
+      const { id, items } = fabric;
+      acc[id] = items.map(item => ({
+        textureName: item.textureName || "",
+        textureDescription: item.textureDescription || "",
+      }));
+      return acc;
+    }, {});
+  } catch (error) {
+    console.error("Failed to fetch fabrics", error);
+  }
+};
+
+initializeData()
+
+
 export const textureArrays = {
   batik: [batik2, batik3, batik4, batik5],
 
   waxPrint: [waxPrint1, waxPrint2, waxPrint3, waxPrint4, waxPrint5, waxPrint6],
   nailDesigns: [
-    // nailDesign1,
-    // nailDesign2,
     nailDesign3,
     nailDesign4,
-    // nailDesign5,
-    // nailDesign6,
-    // nailDesign7,
-    // nailDesign8,
-    // nailDesign9,
-    // nailDesign10,
-    // nailDesign11,
-    // nailDesign12,
-    // nailDesign13,
-    // nailDesign14,
-    // nailDesign15,
-    // nailDesign16,
-    // nailDesign17,
-    // nailDesign18,
-    // nailDesign19,
-    // nailDesign20,
-    // nailDesign21,
-    // nailDesign22,
-    // nailDesign23,
-    // nailDesign24,
-    // nailDesign25,
-    // nailDesign26,
-    // nailDesign27,
-    // nailDesign28,
-    // nailDesign29,
     nailDesign30,
     nailDesign31,
-    // nailDesign32,
-    // nailDesign33,
-    // nailDesign34,
-    // nailDesign35,
-    // nailDesign36,
     nailDesign37,
     nailDesign38,
-    // nailDesign39,
-    // nailDesign40,
     nailDesign41,
-    // nailDesign42,
     nailDesign43,
     nailDesign44,
     nailDesign45,
-    // nailDesign46,
     nailDesign47,
-    // nailDesign48,
   ],
 };
 
 export const textureDescriptions = {
   batik: [
-    // {
-    //   textureName: "",
-    //   textureDescription: "",
-    // },
     {
       textureName: "Bubu",
       textureDescription: `Step out in style and embrace the vibrant culture of Africa with the stunning bubu fabric! Known
@@ -268,50 +186,7 @@ export const textureDescriptions = {
       and diversity by wearing medofo today!`,
     },
   ],
-  // dashiki: [
-  //   {
-  //     textureName: "Texture name",
-  //     textureDescription: "Description for dashiki1",
-  //   },
-  //   {
-  //     textureName: "Texture name",
-  //     textureDescription: "Description for dashiki2",
-  //   },
-  //   {
-  //     textureName: "Texture name",
-  //     textureDescription: "Description for dashiki3",
-  //   },
-  //   {
-  //     textureName: "Texture name",
-  //     textureDescription: "Description for dashiki4",
-  //   },
-  //   {
-  //     textureName: "Texture name",
-  //     textureDescription: "Description for dashiki5",
-  //   },
-  // ],
-  // kente: [
-  //   {
-  //     textureName: "Texture name",
-  //     textureDescription: "Description for kente1",
-  //   },
-  //   {
-  //     textureName: "Texture name",
-  //     textureDescription: "Description for kente2",
-  //   },
-  //   {
-  //     textureName: "Texture name",
-  //     textureDescription: "Description for kente3",
-  //   },
-  //   {
-  //     textureName: "Texture name",
-  //     textureDescription: "Description for kente4",
-  //   },
-  //   {
-  //     textureName: "Texture name",
-  //     textureDescription: "Description for kente5",
-  //   },
-  // ],
+  
   waxPrint: [
     {
       textureName: "DADE3 MPADUA",
@@ -363,123 +238,7 @@ export const textureDescriptions = {
       heritage and unique design of African fabrics by incorporating Sika Nto Nkwa into your everyday
       style? Stand out from the crowd and wear a piece of tradition with pride!`,
     },
-    // {
-    //   textureName: "Sugar Lady",
-    //   textureDescription: `Introducing the stunning African fabric known as "Sugar Lady" - it's not just material, it's a statement of style and culture. Embrace the vibrancy and beauty of Africa by wearing this unique fabric that will make you stand out from the crowd. Don't just wear a garment, wear a piece of art that tells a story and celebrates tradition. Join the movement and show off your individuality with the enchanting "Sugar Lady" fabric.`,
-    // },
-    // {
-    //   textureName: "ɛmo (rice)",
-    //   textureDescription:
-    //     "Wrap yourself in the beauty and tradition of ɛmo, the African fabric known as rice in English. Just like the staple food, this fabric can be easily tailored to your style and taste. Embrace the vibrant colors and patterns of African culture, and let ɛmo be the ingredient that adds a touch of flair to your wardrobe. Go ahead, wear the fabric that not only looks good but tells a story too.",
-    // },
-    // {
-    //   textureName: "Aso Bayere Ahaban",
-    //   textureDescription:
-    //     "Introducing the Aso Bayere Ahaban fabric, inspired by the sweet yam leaves and versatile like a mother's cooking! Just like there are countless ways to prepare this beloved vegetable, there are infinite ways to style and wear this unique fabric. So why not add a touch of tradition and elegance to your wardrobe by embracing the beauty of Aso Bayere Ahaban. Try it and let your fashion sense bloom like a sweet yam in the sunshine!",
-    // },
-    // {
-    //   textureName: "Aso Bayere",
-    //   textureDescription:
-    //     "Introducing Aso Bayere - the sweet yam-inspired fabric that celebrates the beauty and versatility of a mother's touch. Just like the many ways sweet yam can be prepared, this fabric offers endless possibilities for styling and wearing. Embrace the tradition and creativity of African fashion with Aso Bayere, and let your unique style shine through in every outfit. Add this timeless piece to your wardrobe and discover the magic of the mother's touch.",
-    // },
-    // {
-    //   textureName: "Sankofa",
-    //   textureDescription:
-    //     "Wrap yourself in the vibrant patterns and rich history of Sankofa fabric, a symbol of learning from the past to build a better future. Embrace the beauty and culture of Africa by wearing this unique and meaningful fabric, and let it inspire you to reflect on your own journey while honoring the roots of a powerful tradition. Let the colors and designs of Sankofa fabric ignite your sense of style and pride in wearing garments that tell a story of resilience and heritage. Join the movement to celebrate and elevate African fashion with Sankofa fabric today",
-    // },
-
-    // {
-    //   textureName: "Nkitinkiti",
-    //   textureDescription:
-    //     "Embrace the vibrant and rich culture of Africa by wearing Nkitinkiti fabric! Make a bold statement and stand out in the crowd with these unique and eye-catching patterns. Whether you're attending a special event or just want to add some flair to your everyday wardrobe, Nkitinkiti is the perfect choice. Show off your individuality and support African artisans by rocking this beautiful fabric. Join the fashion revolution and make a statement with Nkitinkiti!",
-    // },
-
-    // {
-    //   textureName: "Town Hall",
-    //   textureDescription:
-    //     "Dress to impress with the vibrant and eye-catching African fabric, Town Hall! Embrace your individuality and show off your unique style by incorporating this bold and beautiful fabric into your wardrobe. Stand out from the crowd and rock the Town Hall fabric with confidence, celebrating the rich cultural heritage and artistry it represents. Don't just follow the trends, set them by showcasing the beauty of African fashion with Town Hall!",
-    // },
-  ],
-  // smock: [
-  //   {
-  //     textureName: "Texture name",
-  //     textureDescription: "Description for smock1",
-  //   },
-  //   {
-  //     textureName: "Texture name",
-  //     textureDescription: "Description for smock2",
-  //   },
-  //   {
-  //     textureName: "Texture name",
-  //     textureDescription: "Description for smock3",
-  //   },
-  //   {
-  //     textureName: "Texture name",
-  //     textureDescription: "Description for smock4",
-  //   },
-  // ],
-  // Crochet: [
-  //   {
-  //     textureName: "Texture name",
-  //     textureDescription: "Description for Crochet1",
-  //   },
-  //   {
-  //     textureName: "Texture name",
-  //     textureDescription: "Description for Crochet2",
-  //   },
-  //   {
-  //     textureName: "Texture name",
-  //     textureDescription: "Description for Crochet3",
-  //   },
-  //   {
-  //     textureName: "Texture name",
-  //     textureDescription: "Description for Crochet4",
-  //   },
-  //   {
-  //     textureName: "Texture name",
-  //     textureDescription: "Description for Crochet5",
-  //   },
-  // ],
-  // printed_kente: [
-  //   {
-  //     textureName: "Texture name",
-  //     textureDescription: "Description for p_kente1",
-  //   },
-  //   {
-  //     textureName: "Texture name",
-  //     textureDescription: "Description for p_kente2",
-  //   },
-  //   {
-  //     textureName: "Texture name",
-  //     textureDescription: "Description for p_kente3",
-  //   },
-  //   {
-  //     textureName: "Texture name",
-  //     textureDescription: "Description for p_kente4",
-  //   },
-  // ],
-  // Funerals: [
-  //   {
-  //     textureName: "Texture name",
-  //     textureDescription: "Description for Funerals1",
-  //   },
-  //   {
-  //     textureName: "Texture name",
-  //     textureDescription: "Description for Funerals2",
-  //   },
-  //   {
-  //     textureName: "Texture name",
-  //     textureDescription: "Description for Funerals3",
-  //   },
-  //   {
-  //     textureName: "Texture name",
-  //     textureDescription: "Description for Funerals4",
-  //   },
-  //   {
-  //     textureName: "Texture name",
-  //     textureDescription: "Description for Funerals5",
-  //   },
-  // ],
+  ]
 };
 
 export const textureValues = {
@@ -487,17 +246,9 @@ export const textureValues = {
     price: 40,
     yardStart: 1,
   },
-  dashiki: {
-    price: 10,
-    yardStart: 1,
-  },
   waxPrint: {
     price: 50,
     yardStart: 2,
-  },
-  Crochet: {
-    price: 30,
-    yardStart: 1,
   },
 };
 
@@ -507,11 +258,6 @@ export const sizeOptions = [
   { label: "L", value: 2 },
   { label: "XL", value: 3 },
   { label: "2XL", value: 4 },
-  // { label: "3XL", value: 5 },
-  // { label: "4XL", value: 6 },
-  // { label: "5XL", value: 7 },
-  // { label: "6XL", value: 8 },
-  // { label: "7XL", value: 9 },
 ];
 
 export const europeanShoeSizes = [
@@ -531,23 +277,7 @@ export const europeanShoeSizes = [
   { label: "47", value: 47 },
 ];
 
-export const responsiveNess = [
-  {
-    breakpoint: "1024px",
-    numVisible: 4,
-    numScroll: 4,
-  },
-  {
-    breakpoint: "768px",
-    numVisible: 2,
-    numScroll: 1,
-  },
-  {
-    breakpoint: "576px",
-    numVisible: 1,
-    numScroll: 1,
-  },
-];
+
 
 export const responsiveColor = [
   {
