@@ -55,11 +55,12 @@ const ManageUsers = () => {
       <Toast ref={toast} />
       <h5 style={{ fontWeight: 'normal' }}>Manage Sales Partners</h5>
         <DataTable value={users} paginator rows={10} rowsPerPageOptions={[5, 10, 25]} className="p-datatable-gridlines" >
-          <Column field="firstName" header="First Name" sortable />
-          <Column field="lastName" header="Last Name" sortable />
-          <Column field="email" header="Email" sortable />
-          <Column field="partner_code" header="Partner Code" sortable />
-            <Column field="count" header="No. of Sales" sortable />
+          <Column field="firstName" header="First Name"  />
+          <Column field="lastName" header="Last Name"  />
+          <Column field="email" header="Email"  />
+          <Column field="phone" header="Phone"  />
+          <Column field="partner_code" header="Partner Code"  />
+            <Column field="count" header="No. of Sales"  />
           <Column
             body={(rowData) => (
               <Button
