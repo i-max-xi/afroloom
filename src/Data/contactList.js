@@ -3,7 +3,7 @@ const contactInfo = [
     {
       id: 1,
       title: "Find Us",
-      detail: "Accra, Ghana",
+      detail: ["Accra, Ghana"],
       img: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -20,8 +20,7 @@ const contactInfo = [
     {
       id : 2,
       title: "Call Us",
-      detail: "(+233) 55 666 5072",
-      detail2: "(+233) 20 865 2248",
+      detail: ["(+233) 55 666 5072", "(+233) 20 865 2248"],
       img: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -41,7 +40,7 @@ const contactInfo = [
     {
       id: 3,
       title: "Email Us",
-      detail: "info@afroloom.com",
+      detail: ["info@afroloom.com"],
       img: (
         <svg
           xmlns="http://www.w3.org/2000/svg"

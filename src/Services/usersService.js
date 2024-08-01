@@ -18,6 +18,7 @@ const partnersCollectionRef = collection(db, "partners");
 const ordersCollectionRef = collection(db, "afroloomOrders");
 const userCollectionRef = collection(db, "users");
 const fabricsCollectionRef = collection(db, "fabrics");
+const contactDetailsCollectionRef = collection(db, "contactDetails");
 
 
 
@@ -107,6 +108,40 @@ class AllServices {
         return "Fabric updated successfully.";
       } catch (error) {
         console.error(`Error updating Fabric: ${error}`);
+        return error;
+      }
+    };
+
+     // contact details 
+  getAllcontactDetails = async() => {
+    const contactDetails = await getDocs(contactDetailsCollectionRef);
+    return contactDetails;
+  };
+  addcontactDetail = (newcontactDetail) => {
+    return addDoc(contactDetailsCollectionRef, newcontactDetail);
+  };
+
+
+  getcontactDetailByField = async (fieldName, value) => {
+      try {
+        const q = query(contactDetailsCollectionRef, where(fieldName, "==", value));
+        const querySnapshot = await getDocs(q);
+        return querySnapshot.docs[0];
+      }
+      catch (error) {
+        console.error(`Error fetching contactDetail: ${error}`);
+        return error;
+      }
+      
+    };
+
+    updatecontactDetail = async (id, updatedcontactDetail) => {
+      try {
+        const contactDetailDoc = doc(db, "contactDetails", id);
+        await updateDoc(contactDetailDoc, updatedcontactDetail);
+        return "contactDetail updated successfully.";
+      } catch (error) {
+        console.error(`Error updating contactDetail: ${error}`);
         return error;
       }
     };

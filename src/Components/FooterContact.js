@@ -6,9 +6,8 @@ export const FooterContact = ({ infoDetail, infoDetail2, infoImage, infoTitle })
       <div className="mx-1 footer-icon">{infoImage}</div>
       <div className="mx-auto">
         <h5 className="footer-icon-title">{infoTitle}</h5>
-        <div className="footer-icon-sub-title ">
-          <p>{infoDetail}</p>
-          <p>{infoDetail2}</p> </div>
+        <div className="footer-icon-sub-title ">{infoDetail.map((info) => (<p>{info}</p>))}</div>
+
       </div>
     </li>
   );
@@ -21,9 +20,8 @@ export const FooterContact2 = ({ infoDetail, infoDetail2, infoImage, infoTitle, 
         <div className="mx-1 info-icon" style={{width: Width}}>{infoImage}</div>
         <div className="mx-auto info-content">
           <h5>{infoTitle}</h5>
-          <div className="footer-icon-sub-title ">
-          <p>{infoDetail}</p>
-          <p>{infoDetail2}</p> </div>
+          <div className="footer-icon-sub-title ">{infoDetail.map((info) => (<p>{info}</p>))}</div>
+          {/* <p>{infoDetail2}</p>  */}
         </div>
       </div>
     </div>

@@ -40,6 +40,10 @@
   line-height: 0.2rem;
 }
 
+.footer-icon-sub-title > p {
+  display: block;
+}
+
 /* .Sidebar .p-sidebar-content {
   height: 20vh;
   display: flex;
