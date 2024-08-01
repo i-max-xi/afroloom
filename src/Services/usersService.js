@@ -101,15 +101,9 @@ class AllServices {
 
     updateFabric = async (id, updatedFabric) => {
       try {
-        const FabricDoc = await this.getFabricByField("id", id);
-        console.log(updatedFabric)
-        
-        if (FabricDoc) {
-          await updateDoc(FabricDoc.ref, updatedFabric);
-          return "Fabric updated successfully."
-        } else {
-          return `Fabric with id ${id} not found.`;
-        }
+        const FabricDoc = doc(db, "fabrics", id);
+        await updateDoc(FabricDoc, updatedFabric);
+        return "Fabric updated successfully.";
       } catch (error) {
         console.error(`Error updating Fabric: ${error}`);
         return error;

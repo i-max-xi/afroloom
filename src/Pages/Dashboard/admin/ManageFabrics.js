@@ -7,7 +7,6 @@ import { Dialog } from 'primereact/dialog';
 import { InputText } from 'primereact/inputtext';
 import { Toast } from 'primereact/toast';
 import { confirmDialog } from 'primereact/confirmdialog';
-import { Tooltip } from 'primereact/tooltip';
 import CustomInput from '../../../Components/Input/CustomInput';
 import { ProgressSpinner } from 'primereact/progressspinner';
 
@@ -43,10 +42,10 @@ const ManageFabrics = () => {
   const updateFabric = async () => {
     try {
       setIsLoading(true);
-      await AllServices.updateFabric(selectedFabric.id, updatedFabric);
+      const response = await AllServices.updateFabric(selectedFabric.id, updatedFabric);
       setFabrics(fabrics.map(fabric => fabric.id === selectedFabric.id ? { ...fabric, ...updatedFabric } : fabric));
       setEditDialogVisible(false);
-      toast.current.show({ severity: 'success', summary: 'Success', detail: 'Fabric updated', life: 3000 });
+      toast.current.show({ severity: 'success', summary: 'Success', detail: response, life: 3000 });
     } catch (error) {
       console.error('Error updating fabric:', error);
       toast.current.show({ severity: 'error', summary: 'Error', detail: 'Failed to update fabric', life: 3000 });
@@ -95,13 +94,6 @@ const ManageFabrics = () => {
     );
   };
 
-  const onRowExpand = (event) => {
-    setExpandedRows(event.data);
-  };
-
-  const onRowCollapse = (event) => {
-    setExpandedRows([]);
-  };
 
   const editItemTemplate = (items) => {
     const itemArray = Array.isArray(items) ? items : [items];
