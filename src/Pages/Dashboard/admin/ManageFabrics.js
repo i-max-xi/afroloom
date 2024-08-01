@@ -33,11 +33,7 @@ const ManageFabrics = () => {
     fetchFabrics();
   }, []);
 
-  useEffect(() => {
-    if (fabrics) {
-      console.log("fabrics", fabrics);
-    }
-  }, [fabrics]);
+ 
 
   const updateFabric = async () => {
     try {
@@ -98,9 +94,9 @@ const ManageFabrics = () => {
   const editItemTemplate = (items) => {
     const itemArray = Array.isArray(items) ? items : [items];
     return (
-      <div>
+      <ol>
         {itemArray.map((item, index) => (
-          <div key={index} className="p-d-flex p-ai-center p-mb-2">
+          <li key={index} className="p-d-flex p-ai-center my-4">
             <div className="p-field p-mr-2">
               <label htmlFor={`image-${index}`}>Image URL</label>
               <InputText id={`image-${index}`} value={item.image || ''} onChange={(e) => {
@@ -134,9 +130,9 @@ const ManageFabrics = () => {
                 });
               }} />
             </div>
-          </div>
+          </li>
         ))}
-      </div>
+      </ol>
     );
   };
 
