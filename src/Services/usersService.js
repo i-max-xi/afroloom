@@ -86,6 +86,7 @@ class AllServices {
     return addDoc(fabricsCollectionRef, newFabric);
   };
 
+
   getFabricByField = async (fieldName, value) => {
       try {
         const q = query(fabricsCollectionRef, where(fieldName, "==", value));

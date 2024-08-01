@@ -27,10 +27,10 @@ import {
   textureArrays,
   textureDescriptions,
   textureValues,
-  responsiveNess,
+  
   specialNodeNames,
   displayInplaceFor,
-  responsiveColor,
+  
   colorBasePrice,
 } from "./arrays/neededArrays";
 import TextureItem from "./TextureItem";

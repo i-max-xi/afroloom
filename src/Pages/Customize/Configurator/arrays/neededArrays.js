@@ -1,73 +1,27 @@
 // import from "../textures/tie_and_dye/21 tie and dye.jpg";
+import AllServices from "../../../../Services/usersService"
 
 import batik2 from "../textures/tie_and_dye/7. bubu.jpg";
 import batik3 from "../textures/tie_and_dye/8. tomogyi.jpg";
 import batik4 from "../textures/tie_and_dye/9. gye nyame.jpg";
 import batik5 from "../textures/tie_and_dye/10 medofo.jpg";
 
-import nailDesign1 from "../textures/nail designs/1.jpg";
-import nailDesign2 from "../textures/nail designs/10.jpg";
 import nailDesign3 from "../textures/nail designs/22.jpg";
 import nailDesign4 from "../textures/nail designs/23.jpg";
-import nailDesign5 from "../textures/nail designs/24.jpg";
-import nailDesign6 from "../textures/nail designs/11.jpg";
-import nailDesign7 from "../textures/nail designs/12.jpg";
-import nailDesign8 from "../textures/nail designs/13.jpg";
-import nailDesign9 from "../textures/nail designs/14.jpg";
-import nailDesign10 from "../textures/nail designs/15.jpg";
-import nailDesign11 from "../textures/nail designs/16.jpg";
-import nailDesign12 from "../textures/nail designs/17.jpg";
 // import nailDesign13 from "../textures/nail designs/18.jpg";
-import nailDesign14 from "../textures/nail designs/19.jpg";
-import nailDesign15 from "../textures/nail designs/20.jpg";
-import nailDesign16 from "../textures/nail designs/21.jpg";
-// import nailDesign17 from "../textures/nail designs/25.jpg";
-// import nailDesign18 from "../textures/nail designs/26.jpg";
-// import nailDesign19 from "../textures/nail designs/27.jpg";
-// import nailDesign20 from "../textures/nail designs/28.jpg";
-// import nailDesign21 from "../textures/nail designs/29.jpg";
-// import nailDesign22 from "../textures/nail designs/30.jpg";
-// import nailDesign23 from "../textures/nail designs/31.jpg";
-// import nailDesign24 from "../textures/nail designs/32.jpg";
-// import nailDesign25 from "../textures/nail designs/33.jpg";
-// import nailDesign26 from "../textures/nail designs/34.jpg";
-// import nailDesign27 from "../textures/nail designs/";
-import nailDesign28 from "../textures/nail designs/A.jpg";
-import nailDesign29 from "../textures/nail designs/e2dw.jpg";
 import nailDesign30 from "../textures/nail designs/edwed.jpg";
 import nailDesign31 from "../textures/nail designs/ef.jpg";
-import nailDesign32 from "../textures/nail designs/egag.jpg";
-import nailDesign33 from "../textures/nail designs/egege.jpg";
-import nailDesign34 from "../textures/nail designs/egge.jpg";
-import nailDesign35 from "../textures/nail designs/erge.jpg";
-import nailDesign36 from "../textures/nail designs/ergeg.jpg";
 import nailDesign37 from "../textures/nail designs/fwef.jpg";
 import nailDesign38 from "../textures/nail designs/geg.jpg";
-import nailDesign39 from "../textures/nail designs/gege.jpg";
-import nailDesign40 from "../textures/nail designs/gege.jpg";
 import nailDesign41 from "../textures/nail designs/rege.jpg";
-import nailDesign42 from "../textures/nail designs/rgeg.jpg";
 
 //news
 import nailDesign43 from "../textures/nail designs/new/2.jpg";
 import nailDesign44 from "../textures/nail designs/new/2ed2d.jpg";
 import nailDesign45 from "../textures/nail designs/new/4.jpg";
-import nailDesign46 from "../textures/nail designs/new/5.jpg";
 import nailDesign47 from "../textures/nail designs/new/fwef.jpg";
-import nailDesign48 from "../textures/nail designs/new/geg.jpg";
-import nailDesign49 from "../textures/nail designs/new/rege.jpg";
 
-import dashiki1 from "../textures/dashiki1.jpg";
-import dashiki2 from "../textures/dashiki2.jpg";
-import dashiki3 from "../textures/dashiki3.jpg";
-import dashiki4 from "../textures/dashiki4.jpg";
-import dashiki5 from "../textures/dashiki5.jpg";
 
-import kente1 from "../textures/kente1.jpg";
-import kente2 from "../textures/kente2.jpg";
-import kente3 from "../textures/kente3.jpg";
-import kente4 from "../textures/kente4.jpg";
-import kente5 from "../textures/kente5.jpg";
 
 import waxPrint1 from "../textures/waxPrint/new/1 dade3 mpadua.jpg";
 import waxPrint2 from "../textures/waxPrint/new/2. ayeyi wura.jpg";
@@ -76,28 +30,10 @@ import waxPrint4 from "../textures/waxPrint/new/4. A B C.jpg";
 import waxPrint5 from "../textures/waxPrint/new/5. Apaawa.jpg";
 import waxPrint6 from "../textures/waxPrint/new/6. Sika nto nkwa.jpg";
 
-import smock1 from "../textures/smock1.jpg";
-import smock2 from "../textures/smock2.jpg";
-import smock3 from "../textures/smock3.jpg";
-import smock4 from "../textures/smock4.jpeg";
 // import smock5 from "../textures/smock5.jpg";
 
-import lace1 from "../textures/lace1.jpg";
-import lace2 from "../textures/lace2.jpg";
-import lace3 from "../textures/lace3.jpg";
-import lace4 from "../textures/lace4.jpg";
-import lace5 from "../textures/lace5.jpg";
 
-import Funerals1 from "../textures/suit_fabric1.jpeg";
-import Funerals2 from "../textures/suit_fabric2.jpg";
-import Funerals3 from "../textures/suit_fabric3.jpg";
-import Funerals4 from "../textures/suit_fabric4.jpg";
-import Funerals5 from "../textures/suit_fabric5.jpg";
 
-import p_kente1 from "../textures/p_kente1.jpg";
-import p_kente2 from "../textures/p_kente2.jpg";
-import p_kente3 from "../textures/p_kente3.jpg";
-import p_kente4 from "../textures/p_kente4.jpg";
 
 export const colorBasePrice = 35;
 
@@ -168,6 +104,29 @@ export const specialNodeNames = [
   // "nails",
   "nailHands",
 ]; // Add your special node names here
+
+
+let returnedDecsriptions = [];
+
+const initializeData = async () => {
+  try {
+    const response = await AllServices.getAllFabrics();
+    const allFabrics = (response.docs.map(doc => ({ ...doc.data(), id: doc.id })));
+    returnedDecsriptions = allFabrics.reduce((acc, fabric) => {
+      const { id, items } = fabric;
+      acc[id] = items.map(item => ({
+        textureName: item.textureName || "",
+        textureDescription: item.textureDescription || "",
+      }));
+      return acc;
+    }, {});
+  } catch (error) {
+    console.error("Failed to fetch fabrics", error);
+  }
+};
+
+initializeData()
+
 
 export const textureArrays = {
   batik: [batik2, batik3, batik4, batik5],
@@ -318,23 +277,7 @@ export const europeanShoeSizes = [
   { label: "47", value: 47 },
 ];
 
-export const responsiveNess = [
-  {
-    breakpoint: "1024px",
-    numVisible: 4,
-    numScroll: 4,
-  },
-  {
-    breakpoint: "768px",
-    numVisible: 2,
-    numScroll: 1,
-  },
-  {
-    breakpoint: "576px",
-    numVisible: 1,
-    numScroll: 1,
-  },
-];
+
 
 export const responsiveColor = [
   {

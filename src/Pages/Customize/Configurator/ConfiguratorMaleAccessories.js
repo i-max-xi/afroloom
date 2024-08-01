@@ -27,7 +27,7 @@ import {
   textureArrays,
   textureDescriptions,
   textureValues,
-  responsiveNess,
+  
   specialNodeNames,
   displayInplaceFor,
   colorBasePrice,
