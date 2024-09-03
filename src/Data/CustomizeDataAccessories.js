@@ -150,72 +150,77 @@ export const mainMaleAccessories = [
 ];
 
 export const mainFemaleAccessories = [
-  // {
-  //   id: uuid(),
-  //   name: "Tote Bag",
-  //   image: image_totebag,
-  //   model: hand_bag_model,
-  //   myNode: [{ name: "all", yardNeeded: 1 }],
-  //   myZoom: 1.2,
-  //   price: 55,
-  //   sizeGuide: handbag_guide,
-  //   sizeModels: tshirt_model,
-  //   readyIn: 7,
-  //   sizeOptions: [
-  //     { label: "S", value: 0.5 },
-  //     { label: "M", value: 1 },
-  //     { label: "L", value: 2 },
-  //     { label: "2XL", value: 4 },
-  //   ],
-  //   sizeForms: [
-  //     {
-  //       label: "Length (cm)",
-  //     },
-  //     {
-  //       label: "Width (cm)",
-  //     },
-  //     {
-  //       label: "Height (cm)",
-  //     },
-  //   ],
-  // },
   {
     id: uuid(),
-    name: "Bikini",
-    image: image_bikini,
-    model: bikini,
-    myNode: [
-      { name: "top", yardNeeded: 1 },
-      { name: "bottom", yardNeeded: 1 },
+    name: "Tote Bag",
+    image: image_totebag,
+    model: hand_bag_model,
+    myNode: [{ name: "handle", yardNeeded: 1 },
+      { name: "left_section", yardNeeded: 1 },
+      { name: "mid_section", yardNeeded: 1 },
+      { name: "right_section", yardNeeded: 1 },
+      { name: "zippers_and_locks", yardNeeded: 1 },
     ],
-    otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
-    myZoom: 1.3,
-    price: 55,
+    myZoom: 1.2,
+    price: 150,
+    sizeGuide: handbag_guide,
     // sizeModels: tshirt_model,
     readyIn: 7,
-    sizeGuide: bikini_guide,
     sizeOptions: [
-      // // { label: "XS", value: 0.5 },
       { label: "S", value: 0.5 },
       { label: "M", value: 1 },
       { label: "L", value: 2 },
-      { label: "XL", value: 3 },
       { label: "2XL", value: 4 },
     ],
     sizeForms: [
       {
-        label: "Upper Bust (cm)",
+        label: "Length (cm)",
       },
       {
-        label: "Under Bust (cm)",
+        label: "Width (cm)",
       },
       {
-        label: "Waist (cm)",
+        label: "Height (cm)",
       },
-      {
-        label: "Bottom Length (cm)",
-      },
-      // Add more form fields as needed
     ],
   },
+  // {
+  //   id: uuid(),
+  //   name: "Bikini",
+  //   image: image_bikini,
+  //   model: bikini,
+  //   myNode: [
+  //     { name: "top", yardNeeded: 1 },
+  //     { name: "bottom", yardNeeded: 1 },
+  //   ],
+  //   otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
+  //   myZoom: 1.3,
+  //   price: 55,
+  //   // sizeModels: tshirt_model,
+  //   readyIn: 7,
+  //   sizeGuide: bikini_guide,
+  //   sizeOptions: [
+  //     // // { label: "XS", value: 0.5 },
+  //     { label: "S", value: 0.5 },
+  //     { label: "M", value: 1 },
+  //     { label: "L", value: 2 },
+  //     { label: "XL", value: 3 },
+  //     { label: "2XL", value: 4 },
+  //   ],
+  //   sizeForms: [
+  //     {
+  //       label: "Upper Bust (cm)",
+  //     },
+  //     {
+  //       label: "Under Bust (cm)",
+  //     },
+  //     {
+  //       label: "Waist (cm)",
+  //     },
+  //     {
+  //       label: "Bottom Length (cm)",
+  //     },
+  //     // Add more form fields as needed
+  //   ],
+  // },
 ];

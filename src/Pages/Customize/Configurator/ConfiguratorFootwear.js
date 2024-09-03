@@ -51,6 +51,7 @@ const Shirt = ({
   const snap = useSnapshot(state);
   const { nodes } = useGLTF(selectedClothing.model);
 
+
   const groupRef = useRef();
 
   useFrame(({ clock }) => {
@@ -173,9 +174,9 @@ const ConfiguratorFootwear = () => {
     currencyFactor
   ).toFixed();
 
-  useEffect(() => {
-    setPartPrices(selectedClothing.sizeOptions[1].colorPriceValue);
-  }, []);
+  // useEffect(() => {
+  //   setPartPrices(selectedClothing.sizeOptions[1].colorPriceValue);
+  // }, []);
 
   const handleSizeChange = (factor, priceValue, colorPriceValue) => {
     let newPartPrice;
@@ -380,25 +381,25 @@ const ConfiguratorFootwear = () => {
     setShowGlow(true);
   };
 
-  // const masterSelectionPartOptions = useMemo(() => {
-  //   return (
-  //     <>
-  //       {selectedClothing.myNode.map((nodeName, index) => (
-  //         <button
-  //           key={index}
-  //           className={`size-button btn btn-outline-dark ${
-  //             selectedPart === index ? "selected" : ""
-  //           }`}
-  //           onClick={() => handleSelectPart(index)}
-  //         >
-  //           {nodeName.name === "hands"
-  //             ? parseTitle("sleeves")
-  //             : parseTitle(nodeName.name)}
-  //         </button>
-  //       ))}
-  //     </>
-  //   );
-  // }, [selectedClothing]);
+  const masterSelectionPartOptions = useMemo(() => {
+    return (
+      <>
+        {selectedClothing.myNode.map((nodeName, index) => (
+          <button
+            key={index}
+            className={`size-button btn btn-outline-dark ${
+              selectedPart === index ? "selected" : ""
+            }`}
+            onClick={() => handleSelectPart(index)}
+          >
+            {nodeName.name === "hands"
+              ? parseTitle("sleeves")
+              : parseTitle(nodeName?.name)}
+          </button>
+        ))}
+      </>
+    );
+  }, [selectedClothing]);
 
   return (
     <>
@@ -494,10 +495,10 @@ const ConfiguratorFootwear = () => {
             </div>
             <div className="configurator-container container">
               <div className="left-panel rounded shadow">
-                {/* <h5>Select Part</h5>
+                <h5>Select Part</h5>
                 <div className="select-part-container">
                   {masterSelectionPartOptions}
-                </div> */}
+                </div>
                 <h5>Choose Size</h5>
                 <div className="size w-75">
                   <p className="size-button-container">
@@ -887,7 +888,7 @@ const ConfiguratorFootwear = () => {
               <span className="expect-to-be-ready">Price:</span>{" "}
               <span className="customize-focus">
                 {currencySymbol}
-                {total}.00
+                {total}
               </span>
             </p>
 
