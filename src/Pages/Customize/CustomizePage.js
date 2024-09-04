@@ -130,14 +130,14 @@ const CustomizePage = () => {
           ))}
 
           {/* Male accessories */}
-          {/* <h5 className="mt-4 footer-header">Male Accessories</h5>
+          <h5 className="mt-4 footer-header">Male Accessories</h5>
           {mainMaleAccessories.map(({ name, image }) => (
             <Link
               to={`/configurator-male-accessories/${name}`}
               className="col-6 col-md-3 customise-front text-decoration-none"
               key={name}
             >
-              <div className="card" data-aos="fade-in" data-aos-duration="1500">
+              {/* <div className="card" data-aos="fade-in" data-aos-duration="1500">
                 <img
                   className="card-img-top"
                   src={image}
@@ -147,9 +147,11 @@ const CustomizePage = () => {
                 <div className="card-body m-0 d-flex justify-content-center flex-column">
                   <h5 className="text-center">{name}</h5>
                 </div>
-              </div>
+              </div> */}
+                 <ListItem image={image} description={name} />
+
             </Link>
-          ))} */}
+          ))}
 
           {/* Female accessories */}
           <h5 className="mt-4 footer-header">Female Accessories</h5>
@@ -159,12 +161,14 @@ const CustomizePage = () => {
               className="col-6 col-md-3 customise-front text-decoration-none"
               key={name}
             >
-              <div className="card" data-aos="fade-in" data-aos-duration="1500">
+              {/* <div className="card" data-aos="fade-in" data-aos-duration="1500">
                 <img className="card-img-top" src={image} alt={name} />
                 <div className="card-body m-0 d-flex justify-content-center flex-column">
                   <h5 className="text-center">{name}</h5>
                 </div>
-              </div>
+              </div> */}
+                           <ListItem image={image} description={name} />
+
             </Link>
           ))}
 
