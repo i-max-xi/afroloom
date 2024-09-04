@@ -173,9 +173,9 @@ const ConfiguratorMaleAccessories = () => {
     currencyFactor
   ).toFixed();
 
-  useEffect(() => {
-    setPartPrices(selectedClothing.sizeOptions[1].colorPriceValue);
-  }, []);
+  // useEffect(() => {
+  //   setPartPrices(selectedClothing.sizeOptions[1].colorPriceValue);
+  // }, []);
 
   const handleSizeChange = (factor, priceValue, colorPriceValue) => {
     let newPartPrice;

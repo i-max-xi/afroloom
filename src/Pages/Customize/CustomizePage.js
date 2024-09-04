@@ -59,7 +59,7 @@ const CustomizePage = () => {
           {/* Accessories */}
           <h5 className="mt-4 footer-header">Accessories
           </h5>
-          {mainUnisex.slice(10, 17).map(({ name, image, link, description, title }) => (
+          {mainUnisex.slice(9, 17).map(({ name, image, link, description, title }) => (
             <Link
               // to={`/customize-unisex/${name}`}
               to={link ? link : `/configurator-unisex/${name}`}

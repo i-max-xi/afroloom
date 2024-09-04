@@ -135,39 +135,39 @@ export const mainFootwear = [
       },
     ],
   },
-  {
-    id: uuid(),
-    name: "High Heel",
-    image:
-      "https://th.bing.com/th/id/OIP.UMGJguReHwKJtDNEdf5-NQHaHa?pid=ImgDet&rs=1",
-    model: heels,
-    // myNode: ["sole", "top"],
-    myNode: [{ name: "sole", yardNeeded: 1 }, { name: "top", yardNeeded: 1 }],
-    otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
-    myZoom: 0.6,
-    price: 150,
-    sizeGuide: heels_guide,
-    sizeModels: tshirt_model,
-    readyIn: 7,
-    weight: 0.25,
-    sizeOptions: [
-      { label: "35", value: 0.5 },
-      { label: "36", value: 1 },
-      { label: "37", value: 2 },
-      { label: "38", value: 3 },
-      { label: "39", value: 4 },
-      { label: "40", value: 5 },
-      { label: "41", value: 6 },
-      { label: "42", value: 7 },
-    ],
-    sizeForms: [
-      {
-        label: "Heel-to-Toe Length (cm)",
-      },
-      {
-        label: "Heel Height (cm)",
-      },
-      // Add more form fields as needed
-    ],
-  },
+  // {
+  //   id: uuid(),
+  //   name: "High Heel",
+  //   image:
+  //     "https://th.bing.com/th/id/OIP.UMGJguReHwKJtDNEdf5-NQHaHa?pid=ImgDet&rs=1",
+  //   model: heels,
+  //   // myNode: ["sole", "top"],
+  //   myNode: [{ name: "sole", yardNeeded: 1 }, { name: "top", yardNeeded: 1 }],
+  //   otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
+  //   myZoom: 0.6,
+  //   price: 150,
+  //   sizeGuide: heels_guide,
+  //   sizeModels: tshirt_model,
+  //   readyIn: 7,
+  //   weight: 0.25,
+  //   sizeOptions: [
+  //     { label: "35", value: 0.5 },
+  //     { label: "36", value: 1 },
+  //     { label: "37", value: 2 },
+  //     { label: "38", value: 3 },
+  //     { label: "39", value: 4 },
+  //     { label: "40", value: 5 },
+  //     { label: "41", value: 6 },
+  //     { label: "42", value: 7 },
+  //   ],
+  //   sizeForms: [
+  //     {
+  //       label: "Heel-to-Toe Length (cm)",
+  //     },
+  //     {
+  //       label: "Heel Height (cm)",
+  //     },
+  //     // Add more form fields as needed
+  //   ],
+  // },
 ];
