@@ -30,7 +30,12 @@ import waxPrint4 from "../textures/waxPrint/new/4. A B C.jpg";
 import waxPrint5 from "../textures/waxPrint/new/5. Apaawa.jpg";
 import waxPrint6 from "../textures/waxPrint/new/6. Sika nto nkwa.jpg";
 
-// import smock5 from "../textures/smock5.jpg";
+// disapora
+import conti from "../textures/diaspora/conti_LE_auto_x2.jpg";
+import katanga from "../textures/diaspora/kat_LE_auto_x2.jpg";
+import republic from "../textures/diaspora/repo_LE_auto_x2.jpg";
+import queens from "../textures/diaspora/queens_LE_auto_x2.jpg";
+import africa from "../textures/diaspora/africa_LE_auto_x2.jpg";
 
 
 
@@ -132,6 +137,7 @@ export const textureArrays = {
   batik: [batik2, batik3, batik4, batik5],
 
   waxPrint: [waxPrint1, waxPrint2, waxPrint3, waxPrint4, waxPrint5, waxPrint6],
+  Diaspora: [conti, katanga, republic, queens, africa],
   nailDesigns: [
     nailDesign3,
     nailDesign4,
@@ -238,6 +244,29 @@ export const textureDescriptions = {
       heritage and unique design of African fabrics by incorporating Sika Nto Nkwa into your everyday
       style? Stand out from the crowd and wear a piece of tradition with pride!`,
     },
+  ],
+  diaspora: [
+    {
+      textureName: "Unity Hall Fabric (Conti)",
+      textureDescription: `Established in 1968, Unity Hall, also known as Conti, is one of the largest halls at KNUST and a pillar of leadership, unity, and strength. The first hall master was Dr. J.E. Arkorful. The bold and vibrant Unity Hall fabric reflects these long-standing traditions. Please note that Afroloom only sources this fabric directly from Unity Hall, and we do not produce it. If the school runs out of stock, we will issue a full refund`,
+    },
+    {
+      textureName: "Katanga Hall Fabric (University Hall)",
+      textureDescription: `Built in 1963, Katanga Hall, officially known as University Hall, has long been a symbol of bravery, camaraderie, and resilience. The first hall master was Mr. J.B. Furlong, whose legacy still echoes in the hall's bold traditions. Now a mixed hall, Katanga continues to stand tall in KNUST’s history. Afroloom sources this fabric exclusively from Katanga Hall and does not engage in the production of any fabrics. If the hall runs out of stock, your payment will be fully refunded.`,
+    },
+    {
+      textureName: "Republic Hall Fabric",
+      textureDescription: `Established in 1961, Republic Hall represents diversity, inclusivity, and academic excellence. Known for fostering a vibrant community, Republic Hall has made a lasting impact on the KNUST campus. The first hall master was Dr. R.P. Baffour, a visionary leader. Afroloom sources the Republic Hall fabric directly from the hall and does not produce the fabric. If the hall is out of stock, a full refund will be provided.`,
+    },
+    {
+      textureName: "Queen Elizabeth Hall Fabric (Queens)",
+      textureDescription: `Built in 1959 and originally an all-female hall, Queen Elizabeth Hall is now a mixed hall known for its legacy of nurturing leadership and academic prowess. The first hall master was Mr. R.C. Rattray, who oversaw the hall’s initial development. The Queen’s Hall fabric captures this proud heritage. Afroloom sources this fabric directly from Queen Elizabeth Hall and does not manufacture any fabrics. If the fabric is unavailable, a full refund will be issued.`,
+    },
+    {
+      textureName: "Africa Hall Fabric",
+      textureDescription: `Opened in 1967, Africa Hall, famously known as the Ladies Hall, has been a pillar of female empowerment and academic excellence at KNUST. The first hall master was Mrs. A. Gaisie, who guided the hall in its early days of building a legacy of leadership. The Africa Hall fabric celebrates this tradition of excellence. Afroloom only sources this fabric directly from Africa Hall and does not produce it. If the fabric is out of stock, your money will be refunded.`,
+    },
+    
   ]
 };
 
@@ -248,6 +277,10 @@ export const textureValues = {
   },
   waxPrint: {
     price: 50,
+    yardStart: 2,
+  },
+  Diaspora: {
+    price: 60,
     yardStart: 2,
   },
 };

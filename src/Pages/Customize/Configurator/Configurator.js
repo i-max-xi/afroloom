@@ -671,6 +671,36 @@ const Configurator = () => {
                       />
                     </div>
                   </div>
+                  <div className="texture-row">
+                    <div className="texture-category">
+                      <h3>Diaspora</h3>
+                      <Carousel
+                        value={textureArrays.Diaspora}
+                        numVisible={4}
+                        numScroll={1}
+                        showIndicators={false}
+                        itemTemplate={(texture) => (
+                          <TextureItem
+                            key={texture}
+                            texture={texture}
+                            setHideText={setHideText}
+                            Title="Diaspora"
+                            selectedTexture={selectedPrintOn}
+                            // Pass setSelectedTexture as a prop
+                            handleTextureChange={handleTextureChange}
+                            currencySymbol={currencySymbol}
+                            currencyFactor={currencyFactor}
+                            subTextureDescriptions={
+                              textureDescriptions.diaspora
+                            }
+                            textureIndex={textureArrays.Diaspora.indexOf(
+                              texture
+                            )}
+                          />
+                        )}
+                      />
+                    </div>
+                  </div>
                 </div>
               </div>
               <div className="right-panel">

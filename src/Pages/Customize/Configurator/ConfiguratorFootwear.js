@@ -647,62 +647,6 @@ const ConfiguratorFootwear = () => {
                         )}
                       />
                     </div>
-                    {/* <div className="texture-category">
-                      <h3>
-                        Dashiki (+{currencySymbol}
-                        {(currencyFactor * textureValues.dashiki).toFixed()})
-                      </h3>
-                      <Carousel
-                        value={textureArrays.dashiki}
-                        numVisible={isMobile ? 1 : 4}
-                        numScroll={isMobile ? 1 : 4}
-                        showIndicators={false}
-                        responsiveOptions={responsiveNess}
-                        itemTemplate={(texture) => (
-                          <TextureItem
-                            key={texture}
-                            texture={texture}
-                            setHideText={setHideText}
-                            Title="dashiki"
-                            selectedTexture={selectedPrintOn}
-                             // Pass setSelectedTexture as a prop
-                            handleTextureChange={handleTextureChange}
-                            currencySymbol={currencySymbol}
-                            currencyFactor={currencyFactor}
-                            subTextureDescriptions={textureDescriptions.dashiki}
-                            textureIndex={textureArrays.dashiki.indexOf(
-                              texture
-                            )}
-                          />
-                        )}
-                      />
-                    </div> */}
-                    {/* <div className="texture-category">
-                    <h3>
-                      Crochet (+{currencySymbol}
-                      {(currencyFactor * textureValues.Crochet.price).toFixed()})
-                    </h3>
-                    <Carousel
-                      value={textureArrays.Crochet}
-                      numVisible={2}
-                      numScroll={3}
-                      showIndicators={false}
-                      itemTemplate={(texture) => (
-                        <TextureItem
-                          key={texture}
-                          texture={texture}
-                          setHideText={setHideText}
-                          Title="Crochet"
-                          selectedTexture={selectedPrintOn}
-                           // Pass setSelectedTexture as a prop
-                          handleTextureChange={handleTextureChange}
-                          
-                          subTextureDescriptions={textureDescriptions.Crochet}
-                          textureIndex={textureArrays.Crochet.indexOf(texture)}
-                        />
-                      )}
-                    />
-                  </div> */}
                   </div>
                   <div className="texture-row">
                     <div className="texture-category">
@@ -727,6 +671,36 @@ const ConfiguratorFootwear = () => {
                               textureDescriptions.waxPrint
                             }
                             textureIndex={textureArrays.waxPrint.indexOf(
+                              texture
+                            )}
+                          />
+                        )}
+                      />
+                    </div>
+                  </div>
+                  <div className="texture-row">
+                    <div className="texture-category">
+                      <h3>Diaspora</h3>
+                      <Carousel
+                        value={textureArrays.Diaspora}
+                        numVisible={4}
+                        numScroll={1}
+                        showIndicators={false}
+                        itemTemplate={(texture) => (
+                          <TextureItem
+                            key={texture}
+                            texture={texture}
+                            setHideText={setHideText}
+                            Title="Diaspora"
+                            selectedTexture={selectedPrintOn}
+                            // Pass setSelectedTexture as a prop
+                            handleTextureChange={handleTextureChange}
+                            currencySymbol={currencySymbol}
+                            currencyFactor={currencyFactor}
+                            subTextureDescriptions={
+                              textureDescriptions.diaspora
+                            }
+                            textureIndex={textureArrays.Diaspora.indexOf(
                               texture
                             )}
                           />
