@@ -294,73 +294,18 @@ export const mainUnisex = [
   //   ],
   //   sizeGuide: "",
   // },
-  {
-    id: uuid(),
-    name: "Pixie Curl Wig",
-    image: pixie_profile,
-    price: 100,
-    readyIn: 7,
-    link: "/configurator-wig/Pixie Curl Wig",
-    colorVariants: [pixie_black, pixie_ombre],
-    sizeGuide: "",
-  },
+  // {
+  //   id: uuid(),
+  //   name: "Pixie Curl Wig",
+  //   image: pixie_profile,
+  //   price: 100,
+  //   readyIn: 7,
+  //   link: "/configurator-wig/Pixie Curl Wig",
+  //   colorVariants: [pixie_black, pixie_ombre],
+  //   sizeGuide: "",
+  // },
 
-  // {
-  //   id: uuid(),
-  //   name: "Waist Bag",
-  //   image: image_waist_bag,
-  //   model: mini_bag_model,
-  //   myNode: [{ name: "all", yardNeeded: 1 }],
-  //   myZoom: 0.6,
-  //   price: 55,
-  //   sizeModels: tshirt_model,
-  //   readyIn: 7,
-  //   sizeGuide: miniBag_guide,
-  //   sizeOptions: [
-  //     { label: "S", value: 0.5 },
-  //     { label: "M", value: 1 },
-  //     { label: "L", value: 2 },
-  //     { label: "XL", value: 3 },
-  //     { label: "2XL", value: 4 },
-  //   ],
-  //   sizeForms: [
-  //     {
-  //       label: "Min-Max circumference (cm)",
-  //     },
-  //     {
-  //       label: "Width (cm)",
-  //     },
-  //     // Add more form fields as needed
-  //   ],
-  // },
-  // {
-  //   id: uuid(),
-  //   name: "Backpack",
-  //   image: image_backpack,
-  //   model: backpack_model,
-  //   myNode: [{ name: "all", yardNeeded: 2 }],
-  //   myZoom: 0.75,
-  //   price: 55,
-  //   sizeModels: tshirt_model,
-  //   readyIn: 7,
-  //   sizeGuide: backpack_guide,
-  //   sizeOptions: [
-  //     { label: "S", value: 0.5 },
-  //     { label: "M", value: 1 },
-  //     { label: "L", value: 2 },
-  //   ],
-  //   sizeForms: [
-  //     {
-  //       label: "Height (cm)",
-  //     },
-  //     {
-  //       label: "Depth (cm)",
-  //     },
-  //     {
-  //       label: "Width (cm)",
-  //     },
-  //   ],
-  // },
+ 
   // {
   //   id: uuid(),
   //   name: "Jacket",
@@ -590,6 +535,66 @@ export const mainUnisex = [
     sizeForms: [
       {
         label: "Wrist size (cm)",
+      },
+    ],
+  },
+
+  {
+    id: uuid(),
+    name: "Waist Bag",
+    image: image_waist_bag,
+    model: mini_bag_model,
+    myNode: [{ name: "handle", yardNeeded: 1 },
+      { name: "main_body", yardNeeded: 1 },
+      { name: "zippers", yardNeeded: 1 }
+    ],
+    myZoom: 0.6,
+    price: 150,
+    // sizeModels: tshirt_model,
+    readyIn: 7,
+    sizeGuide: miniBag_guide,
+    sizeOptions: [
+      { label: "S", value: 0.5 },
+      { label: "M", value: 1 },
+      { label: "L", value: 2 },
+      { label: "XL", value: 3 },
+      { label: "2XL", value: 4 },
+    ],
+    sizeForms: [
+      {
+        label: "Min-Max circumference (cm)",
+      },
+      {
+        label: "Width (cm)",
+      },
+      // Add more form fields as needed
+    ],
+  },
+  {
+    id: uuid(),
+    name: "Backpack",
+    image: image_backpack,
+    model: backpack_model,
+    myNode: [{ name: "body", yardNeeded: 1 }, { name: "handles", yardNeeded: 1 }, { name: "zippers", yardNeeded: 1 }],
+    myZoom: 0.75,
+    price: 150,
+    // sizeModels: tshirt_model,
+    readyIn: 7,
+    sizeGuide: backpack_guide,
+    sizeOptions: [
+      { label: "S", value: 0.5 },
+      { label: "M", value: 1 },
+      { label: "L", value: 2 },
+    ],
+    sizeForms: [
+      {
+        label: "Height (cm)",
+      },
+      {
+        label: "Depth (cm)",
+      },
+      {
+        label: "Width (cm)",
       },
     ],
   },
