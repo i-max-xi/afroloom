@@ -633,7 +633,7 @@ const ConfiguratorFootwear = () => {
                 {/* ... */}
                 <div className="texture-buttons-container">
                   <div className="texture-row">
-                    <div className="texture-category">
+                    <div className="texture-category mt-3">
                       <h3>Batik</h3>
                       <Carousel
                         value={textureArrays.batik}
@@ -659,7 +659,7 @@ const ConfiguratorFootwear = () => {
                     </div>
                   </div>
                   <div className="texture-row">
-                    <div className="texture-category">
+                    <div className="texture-category mt-3">
                       <h3>waxPrint</h3>
                       <Carousel
                         value={textureArrays.waxPrint}
@@ -689,7 +689,7 @@ const ConfiguratorFootwear = () => {
                     </div>
                   </div>
                   <div className="texture-row">
-                    <div className="texture-category">
+                    <div className="texture-category mt-3">
                       <h3>School Fabrics</h3>
                       <Carousel
                         value={textureArrays.Diaspora}
@@ -719,7 +719,7 @@ const ConfiguratorFootwear = () => {
                     </div>
                   </div>
                   <div className="texture-row">
-                    {/* <div className="texture-category">
+                    {/* <div className="texture-category mt-3">
                     <h3>
                       Crochet (+{currencySymbol}
                       {(currencyFactor * textureValues.Crochet.price).toFixed()})
@@ -747,7 +747,7 @@ const ConfiguratorFootwear = () => {
                   </div> */}
                   </div>
                   {/*<div className="texture-row">
-                    <div className="texture-category">
+                    <div className="texture-category mt-3">
                       <h3>
                         Printed Kente (+{currencySymbol}
                         {(currencyFactor * textureValues.printed_kente).toFixed(
@@ -782,7 +782,7 @@ const ConfiguratorFootwear = () => {
                         )}
                       />
                     </div>
-                    <div className="texture-category">
+                    <div className="texture-category mt-3">
                       <h3>
                         Funerals (+{currencySymbol}
                         {(currencyFactor * textureValues.Funerals).toFixed()})

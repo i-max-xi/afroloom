@@ -603,7 +603,7 @@ const Configurator = () => {
 
                 <h5>Choose Textile</h5>
                 <div className="texture-buttons-container">
-                  <div className="texture-category">
+                  <div className="texture-category mt-3">
                     <h3>Batik</h3>
                     <Carousel
                       value={textureArrays.batik}
@@ -625,7 +625,7 @@ const Configurator = () => {
                     />
                   </div>
 
-                  {/* <div className="texture-category">
+                  {/* <div className="texture-category mt-3">
                     <h3>
                       Crochet (+{currencySymbol}
                       {(currencyFactor * textureValues.Crochet.price).toFixed()})
@@ -652,7 +652,7 @@ const Configurator = () => {
                     />
                   </div> */}
                   <div className="texture-row">
-                    <div className="texture-category">
+                    <div className="texture-category mt-3">
                       <h3>waxPrint</h3>
                       <Carousel
                         value={textureArrays.waxPrint}
@@ -682,7 +682,7 @@ const Configurator = () => {
                     </div>
                   </div>
                   <div className="texture-row">
-                    <div className="texture-category">
+                    <div className="texture-category mt-3">
                       <h3>School Fabrics</h3>
                       <Carousel
                         value={textureArrays.Diaspora}

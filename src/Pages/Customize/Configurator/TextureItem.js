@@ -1,8 +1,11 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Dialog } from "primereact/dialog";
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import { textureValues } from "./arrays/neededArrays";
 
 import alternateTexture from "./textures/tie_and_dye/10 medofo - Copy.jpg";
+import queensAlternate from "./textures/diaspora/queens_LE_auto_x2 - Copy.jpg"
+import repuAlternate from "./textures/diaspora/repo_LE_auto_x2 - Copy.jpg"
 
 function TextureItem({
   texture,
@@ -27,6 +30,25 @@ function TextureItem({
 
   const needsAlternate =
     texture === "/static/media/10 medofo.84aa9ed3bbc49733e1bd.jpg";
+
+  const isRepu = texture === "/static/media/repo_LE_auto_x2.9ac0c7e948df11f85dc5.jpg";
+  const isQueens = texture === "/static/media/queens_LE_auto_x2.52fd721b9a48eab6b0a6.jpg";
+
+  console.log({ isQueens, isRepu, needsAlternate });
+
+
+  const masterTexture = useMemo(() => {
+    if (isRepu) {
+      return repuAlternate;
+    } else if (isQueens) {
+      return queensAlternate;
+    } else if (needsAlternate) {
+      return alternateTexture;
+    } 
+    else {
+      return texture;
+    }
+  }, [texture])
 
   return (
     <div className="texture-item">
@@ -69,7 +91,7 @@ function TextureItem({
           <div className="d-flex flex-column" style={{ position: "relative" }}>
             <img
               alt={`Texture`}
-              src={needsAlternate ? alternateTexture : texture}
+              src={masterTexture}
               height="150px"
               width="250px"
               style={{ alignSelf: "center", WebkitTouchCallout: "none" }}

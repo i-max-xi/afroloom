@@ -1188,7 +1188,7 @@ const ConfiguratorUnisex = () => {
                     </h1>
                     <div className="texture-buttons-container">
                       <div className="texture-row">
-                        <div className="texture-category">
+                        <div className="texture-category mt-3">
                           <h3>
                             Batik (+{currencySymbol}
                             {(
@@ -1225,7 +1225,7 @@ const ConfiguratorUnisex = () => {
                         </div>
                       </div>
                       <div className="texture-row">
-                        <div className="texture-category">
+                        <div className="texture-category mt-3">
                           <h3>
                             waxPrint (+{currencySymbol}
                             {(
@@ -1261,7 +1261,7 @@ const ConfiguratorUnisex = () => {
                         </div>
                       </div>
                       <div className="texture-row">
-                        <div className="texture-category">
+                        <div className="texture-category mt-3">
                           <h3>School Fabrics</h3>
                           <Carousel
                             value={textureArrays.Diaspora}

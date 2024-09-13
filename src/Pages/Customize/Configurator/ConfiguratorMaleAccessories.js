@@ -633,7 +633,7 @@ const ConfiguratorMaleAccessories = () => {
                 {/* ... */}
                 <div className="texture-buttons-container">
                   <div className="texture-row">
-                    <div className="texture-category">
+                    <div className="texture-category mt-3">
                       <h3>Batik</h3>
                       <Carousel
                         value={textureArrays.batik}
@@ -658,7 +658,7 @@ const ConfiguratorMaleAccessories = () => {
                       />
                     </div>
 
-                    {/* <div className="texture-category">
+                    {/* <div className="texture-category mt-3">
                     <h3>
                       Crochet (+{currencySymbol}
                       {(currencyFactor * textureValues.Crochet.price).toFixed()})
@@ -686,7 +686,7 @@ const ConfiguratorMaleAccessories = () => {
                   </div> */}
                   </div>
                   <div className="texture-row">
-                    <div className="texture-category">
+                    <div className="texture-category mt-3">
                       <h3>waxPrint</h3>
                       <Carousel
                         value={textureArrays.waxPrint}
@@ -716,7 +716,7 @@ const ConfiguratorMaleAccessories = () => {
                     </div>
                   </div>
                   <div className="texture-row">
-                    <div className="texture-category">
+                    <div className="texture-category mt-3">
                       <h3>School Fabrics</h3>
                       <Carousel
                         value={textureArrays.Diaspora}
