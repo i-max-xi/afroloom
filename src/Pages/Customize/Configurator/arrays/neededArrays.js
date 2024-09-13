@@ -243,23 +243,23 @@ export const textureDescriptions = {
   ],
   diaspora: [
     {
-      textureName: "Unity Hall Fabric (Conti)",
+      textureName: "Unity Hall Fabric (KNUST)",
       textureDescription: `Established in 1968, Unity Hall, also known as Conti, is one of the largest halls at KNUST and a pillar of leadership, unity, and strength. The first hall master was Dr. J.E. Arkorful. The bold and vibrant Unity Hall fabric reflects these long-standing traditions.`,
       disclaimer:
         "Please note that Afroloom only sources this fabric directly from Unity Hall, and we do not produce it. If the school runs out of stock, we will issue a full refund",
     },
     {
-      textureName: "Katanga Hall Fabric (University Hall)",
+      textureName: "Katanga Hall Fabric (KNUST)",
       textureDescription: `Built in 1963, Katanga Hall, officially known as University Hall, has long been a symbol of bravery, camaraderie, and resilience. The first hall master was Mr. J.B. Furlong, whose legacy still echoes in the hall's bold traditions. Now a mixed hall, Katanga continues to stand tall in KNUST’s history.`,
       disclaimer: "Please note that Afroloom only sources this fabric directly from Katanga Hall, and we do not produce it. If the school runs out of stock, we will issue a full refund",
     },
     {
-      textureName: "Republic Hall Fabric",
+      textureName: "Republic Hall Fabric (KNUST)",
       textureDescription: `Established in 1961, Republic Hall represents diversity, inclusivity, and academic excellence. Known for fostering a vibrant community, Republic Hall has made a lasting impact on the KNUST campus. The first hall master was Dr. R.P. Baffour, a visionary leader.`,
       disclaimer: "Please note that Afroloom only sources this fabric directly from Republic Hall, and we do not produce it. If the school runs out of stock, we will issue a full refund",
     },
     {
-      textureName: "Queen Elizabeth Hall Fabric (Queens)",
+      textureName: "Queen Elizabeth Hall Fabric (KNUST)",
       textureDescription: `Built in 1959 and originally an all-female hall, Queen Elizabeth Hall is now a mixed hall known for its legacy of nurturing leadership and academic prowess. The first hall master was Mr. R.C. Rattray, who oversaw the hall’s initial development. The Queen’s Hall fabric captures this proud heritage.`,
       disclaimer: "Please note that Afroloom only sources this fabric directly from Queen Elizabeth Hall, and we do not produce it. If the school runs out of stock, we will issue a full refund",
     },
