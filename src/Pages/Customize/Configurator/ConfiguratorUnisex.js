@@ -1262,7 +1262,7 @@ const ConfiguratorUnisex = () => {
                       </div>
                       <div className="texture-row">
                         <div className="texture-category">
-                          <h3>Diaspora</h3>
+                          <h3>School Fabrics</h3>
                           <Carousel
                             value={textureArrays.Diaspora}
                             numVisible={4}
