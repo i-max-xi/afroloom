@@ -30,7 +30,6 @@ import {
   textureArrays,
   textureDescriptions,
   textureValues,
-  
   specialNodeNames,
   displayInplaceFor,
   noSpinFor,
@@ -127,8 +126,8 @@ const Shirt = ({
             specialNodeNames.includes(nodeName) && nodeName === "brass"
               ? "#cd7f32"
               : specialNodeNames.includes(nodeName) && nodeName !== "brass"
-              ? snap.color[index] || "#333333"
-              : snap.color[index] || "#ffffff";
+                ? snap.color[index] || "#333333"
+                : snap.color[index] || "#ffffff";
 
           const texture = snap.texture[index] || null;
 
@@ -167,7 +166,14 @@ const CameraControls = () => {
     controlsRef.current.update();
   });
 
-  return <OrbitControls enableRotate={true} enablePan={false} enableZoom={false} ref={controlsRef} />;
+  return (
+    <OrbitControls
+      enableRotate={true}
+      enablePan={false}
+      enableZoom={false}
+      ref={controlsRef}
+    />
+  );
 };
 
 const ConfiguratorUnisex = () => {
@@ -180,7 +186,7 @@ const ConfiguratorUnisex = () => {
   const [selectedPrintOn, setSelectedPrintOn] = useState(null);
 
   const [selectedPart, setSelectedPart] = useState(
-    notAll.includes(selectedClothing.name) ? 0 : null
+    notAll.includes(selectedClothing.name) ? 0 : null,
   );
 
   const [isRotating, setIsRotating] = useState(false);
@@ -210,11 +216,11 @@ const ConfiguratorUnisex = () => {
       selectedClothing.name === "Earring"
     ) {
       return ((partPrices + selectedClothing.price) * currencyFactor).toFixed(
-        2
+        2,
       );
     } else {
       return ((partPrices + selectedClothing.price) * currencyFactor).toFixed(
-        2
+        2,
       );
     }
   }, [
@@ -229,7 +235,7 @@ const ConfiguratorUnisex = () => {
     setSelectedSize(factor);
 
     const textureCategory = Object.keys(textureArrays).find((category) =>
-      textureArrays[category].includes(selectedTexture)
+      textureArrays[category].includes(selectedTexture),
     );
 
     if (!textureCategory) {
@@ -566,10 +572,10 @@ const ConfiguratorUnisex = () => {
   }, [selectedClothing.name]);
 
   const [fontSizeLeft, setFontSizeLeft] = useState(
-    ImprintTextPosition?.left?.size || 11
+    ImprintTextPosition?.left?.size || 11,
   );
   const [fontSizeRight, setFontSizeRight] = useState(
-    ImprintTextPosition?.right?.size || 11
+    ImprintTextPosition?.right?.size || 11,
   );
 
   const [isLoading, setIsLoading] = useState(true); // Add loading state
@@ -668,11 +674,11 @@ const ConfiguratorUnisex = () => {
       setSelectedTexture(newTexture); // needed to transfer to size
 
       const textureCategory = Object.keys(textureArrays).find((category) =>
-        textureArrays[category].includes(newTexture)
+        textureArrays[category].includes(newTexture),
       );
 
       const sizeValue = selectedClothing.sizeOptions.find(
-        (size) => size.value === selectedSize
+        (size) => size.value === selectedSize,
       );
 
       const yardPrice = textureValues[textureCategory].price;
@@ -745,8 +751,8 @@ const ConfiguratorUnisex = () => {
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [stateImage, setStateImage] = useState("");
 
-   const captureCanvasAsImage = async () => {
-    setIsRotating(false)
+  const captureCanvasAsImage = async () => {
+    setIsRotating(false);
     const requiresGender = displayInplaceFor.includes(selectedClothing.name);
     const genderProvided = gender !== "";
 
@@ -769,11 +775,10 @@ const ConfiguratorUnisex = () => {
       return;
     }
 
-   
-      const canvasImage = await html2canvas(canvasRef.current);
-      const dataUrl = canvasImage.toDataURL();
+    const canvasImage = await html2canvas(canvasRef.current);
+    const dataUrl = canvasImage.toDataURL();
 
-      setStateImage(dataUrl);
+    setStateImage(dataUrl);
 
     setShowConfirmation(true);
   };
@@ -786,7 +791,7 @@ const ConfiguratorUnisex = () => {
     selectedClothing.sizeForms?.reduce((acc, formField) => {
       acc[formField.label] = formField.value;
       return acc;
-    }, {})
+    }, {}),
   );
 
   // Handle changes in the size form fields
@@ -918,8 +923,8 @@ const ConfiguratorUnisex = () => {
             selectedClothing.name === "Bikini"
               ? bikiniTotal
               : selectedClothing.name === "Bikini"
-              ? bikiniTotal
-              : total
+                ? bikiniTotal
+                : total
           }
           readyBy={selectedClothing.readyIn}
           weight={selectedClothing.weight}
@@ -938,7 +943,7 @@ const ConfiguratorUnisex = () => {
           setShowConfirmation={setShowConfirmation}
           selectedSize={
             selectedClothing.sizeOptions.find(
-              (option) => option.value === selectedSize
+              (option) => option.value === selectedSize,
             )?.label
           }
           modelImage={stateImage}
@@ -1054,7 +1059,7 @@ const ConfiguratorUnisex = () => {
                           handleSizeChange(
                             option.value,
                             option.priceValue,
-                            option.colorPriceValue
+                            option.colorPriceValue,
                           )
                         }
                       >
@@ -1140,7 +1145,7 @@ const ConfiguratorUnisex = () => {
                                   onChange={(e) =>
                                     handleSizeFormChange(
                                       formField.label,
-                                      e.target.value
+                                      e.target.value,
                                     )
                                   }
                                 />
@@ -1212,7 +1217,7 @@ const ConfiguratorUnisex = () => {
                                   textureDescriptions.batik
                                 }
                                 textureIndex={textureArrays.batik.indexOf(
-                                  texture
+                                  texture,
                                 )}
                               />
                             )}
@@ -1248,7 +1253,7 @@ const ConfiguratorUnisex = () => {
                                   textureDescriptions.waxPrint
                                 }
                                 textureIndex={textureArrays.waxPrint.indexOf(
-                                  texture
+                                  texture,
                                 )}
                               />
                             )}
@@ -1256,35 +1261,35 @@ const ConfiguratorUnisex = () => {
                         </div>
                       </div>
                       <div className="texture-row">
-                    <div className="texture-category">
-                      <h3>Diaspora</h3>
-                      <Carousel
-                        value={textureArrays.Diaspora}
-                        numVisible={4}
-                        numScroll={1}
-                        showIndicators={false}
-                        itemTemplate={(texture) => (
-                          <TextureItem
-                            key={texture}
-                            texture={texture}
-                            setHideText={setHideText}
-                            Title="Diaspora"
-                            selectedTexture={selectedPrintOn}
-                            // Pass setSelectedTexture as a prop
-                            handleTextureChange={handleTextureChange}
-                            currencySymbol={currencySymbol}
-                            currencyFactor={currencyFactor}
-                            subTextureDescriptions={
-                              textureDescriptions.diaspora
-                            }
-                            textureIndex={textureArrays.Diaspora.indexOf(
-                              texture
+                        <div className="texture-category">
+                          <h3>Diaspora</h3>
+                          <Carousel
+                            value={textureArrays.Diaspora}
+                            numVisible={4}
+                            numScroll={1}
+                            showIndicators={false}
+                            itemTemplate={(texture) => (
+                              <TextureItem
+                                key={texture}
+                                texture={texture}
+                                setHideText={setHideText}
+                                Title="Diaspora"
+                                selectedTexture={selectedPrintOn}
+                                // Pass setSelectedTexture as a prop
+                                handleTextureChange={handleTextureChange}
+                                currencySymbol={currencySymbol}
+                                currencyFactor={currencyFactor}
+                                subTextureDescriptions={
+                                  textureDescriptions.diaspora
+                                }
+                                textureIndex={textureArrays.Diaspora.indexOf(
+                                  texture,
+                                )}
+                              />
                             )}
                           />
-                        )}
-                      />
-                    </div>
-                  </div>
+                        </div>
+                      </div>
                     </div>
                   </>
                 )}

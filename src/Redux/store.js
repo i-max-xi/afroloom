@@ -13,8 +13,6 @@ const persistConfig = {
   storage,
 };
 
-
-
 const currencySymbolSlice = createSlice({
   name: "currencySymbol",
   initialState: { symbol: "₵", factor: 1 }, // Default currency symbol and factor
@@ -83,17 +81,16 @@ const customized3DSlice = createSlice({
     addToCart: (state, action) => {
       state.itemDetails.push(action.payload);
     },
- 
+
     clearCart: (state) => {
       state.itemDetails = [];
     },
 
     removeFromCart: (state, action) => {
       state.itemDetails = state.itemDetails.filter(
-        (item) => item.name !== action.payload
+        (item) => item.name !== action.payload,
       );
     },
-    
   },
 });
 
@@ -118,7 +115,7 @@ export const {
   updateOrders,
   updateCurrentUser,
 } = userSlice.actions;
-export const { addToCart,  clearCart, removeFromCart } =
+export const { addToCart, clearCart, removeFromCart } =
   customized3DSlice.actions;
 
 export const persistor = persistStore(store);

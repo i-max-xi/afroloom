@@ -18,8 +18,6 @@ import heels_guide from "../Assets/size_guide/Footwear/34.jpg";
 // models
 const tshirt_model = "";
 
-
-
 const image_flat_shoe = require("../Assets/welcome_3ds/others/flat shoe.png");
 const image_slippers = require("../Assets/welcome_3ds/others/silipers.png");
 
@@ -31,7 +29,11 @@ export const mainFootwear = [
     image: image_flat_shoe,
     model: flex_shoe,
     // myNode: ["sole", "front", "back"],
-    myNode: [{ name: "sole", yardNeeded: 1 }, { name: "front", yardNeeded: 1 }, { name: "back", yardNeeded: 1 }],
+    myNode: [
+      { name: "sole", yardNeeded: 1 },
+      { name: "front", yardNeeded: 1 },
+      { name: "back", yardNeeded: 1 },
+    ],
     otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
     myZoom: 0.9,
     price: 150,
@@ -67,7 +69,12 @@ export const mainFootwear = [
       "https://cdn.myshoptet.com/usr/www.footic.com/user/shop/big/41126-9_vegan-sneakers.jpg?65f85889",
     model: sneaker_model,
     // myNode: ["front", "lace", "sole", "back"],
-    myNode: [{ name: "front", yardNeeded: 1 }, { name: "lace", yardNeeded: 1 }, { name: "sole", yardNeeded: 1 }, { name: "back", yardNeeded: 1 }],
+    myNode: [
+      { name: "front", yardNeeded: 1 },
+      { name: "lace", yardNeeded: 1 },
+      { name: "sole", yardNeeded: 1 },
+      { name: "back", yardNeeded: 1 },
+    ],
     otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
     myZoom: 0.9,
     price: 150,
@@ -103,7 +110,11 @@ export const mainFootwear = [
     image: image_slippers,
     model: slippers,
     // myNode: ["padding", "top", "sole"],
-    myNode: [{ name: "padding", yardNeeded: 1 }, { name: "top", yardNeeded: 1 }, { name: "sole", yardNeeded: 1 }],
+    myNode: [
+      { name: "padding", yardNeeded: 1 },
+      { name: "top", yardNeeded: 1 },
+      { name: "sole", yardNeeded: 1 },
+    ],
     otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
     myZoom: 1.2,
     price: 150,

@@ -4,8 +4,6 @@
 
 // const TextComponent = ({ textContent, maxWidth, maxLines, textPosition, textColor, fontSize }) => {
 //   const textRef = useRef();
-  
-
 
 //   // Function to adjust font size and line breaks to fit within boundaries
 // console.log()

@@ -105,8 +105,6 @@ const Footer = () => {
                         <br />
                       </Link>
                     </p>
-
-                    
                   </div>
                   <div>
                     <p>

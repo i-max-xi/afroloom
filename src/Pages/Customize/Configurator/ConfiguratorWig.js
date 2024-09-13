@@ -42,7 +42,7 @@ const ConfiguratorWig = () => {
   const selectedClothing = mainUnisex.find((item) => item.name === Id);
 
   const [displayImage, setDisplayImage] = useState(
-    selectedClothing.colorVariants[0]
+    selectedClothing.colorVariants[0],
   );
 
   const hairColorOptions = useMemo(() => {
@@ -75,14 +75,14 @@ const ConfiguratorWig = () => {
 
   //questions
   const [colorPreference, setColorPreference] = useState(
-    hairColorOptions?.colors[0] || null
+    hairColorOptions?.colors[0] || null,
   );
   const [capSize, setCapSize] = useState(null);
   const [braidLength, setBraidLength] = useState(
-    hairColorOptions.length[0] || null
+    hairColorOptions.length[0] || null,
   );
   const [densityPreference, setDensityPreference] = useState(
-    "Standard (200grams)"
+    "Standard (200grams)",
   );
   const [laceType, setLaceType] = useState(null);
   const [texture, setTexture] = useState(null);
@@ -94,14 +94,14 @@ const ConfiguratorWig = () => {
   const [hair_quality, set_hair_quality] = useState(null);
   const [hair_styling, set_hair_styling] = useState(null);
   const [hair_closure, set_hair_closure] = useState(
-    hairColorOptions.hairClosure[0] || null
+    hairColorOptions.hairClosure[0] || null,
   );
 
   const [guideVisible, setGuideVisible] = useState(false);
 
   const handleColorPreference = (selectedColor) => {
     const index = hairColorOptions.colors.findIndex(
-      (option) => option === selectedColor
+      (option) => option === selectedColor,
     );
     setColorPreference(selectedColor);
     setDisplayImage(selectedClothing.colorVariants[index]);
@@ -193,7 +193,7 @@ const ConfiguratorWig = () => {
 
   useEffect(() => {
     const selectedLength = truelengthOptions.find(
-      (item) => item.title === braidLength.title
+      (item) => item.title === braidLength.title,
     );
 
     if (selectedClothing.name === "Spiral Curls Braids Wig") {
@@ -246,7 +246,7 @@ const ConfiguratorWig = () => {
 
   const handleLengthChange = (selectedLength) => {
     const selectedOption = hairColorOptions.length.find(
-      (item) => item.title === selectedLength
+      (item) => item.title === selectedLength,
     );
     if (selectedOption) {
       setBraidLength(selectedOption); // Set the title in state
@@ -258,7 +258,7 @@ const ConfiguratorWig = () => {
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [stateImage, setStateImage] = useState("");
 
-   const captureCanvasAsImage = async () => {
+  const captureCanvasAsImage = async () => {
     if (!capSize) {
       toastRef.current.show({
         severity: "error",
@@ -563,7 +563,7 @@ const ConfiguratorWig = () => {
                           value={braidLength.title} // Set value to the title
                           onChange={(e) => handleLengthChange(e.value)}
                           options={hairColorOptions.length.map(
-                            (item) => item.title
+                            (item) => item.title,
                           )}
                           placeholder="Select a preference"
                           className="wig-dropdown"
@@ -618,14 +618,14 @@ const ConfiguratorWig = () => {
                             className="wig-dropdown"
                             disabled={
                               !allowedDensityPrefences.includes(
-                                braidLength.title
+                                braidLength.title,
                               )
                             }
                           />
                           <label
                             style={{
                               color: !allowedDensityPrefences.includes(
-                                braidLength.title
+                                braidLength.title,
                               )
                                 ? 0.3
                                 : 1,

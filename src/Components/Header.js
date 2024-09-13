@@ -7,7 +7,8 @@ const Header = ({ bgColor, Color, Padding, Icon1, Icon2, Icon3, Icon4 }) => {
       {/* <AfricanFlags /> */}
 
       <ul
-        className="btn-group rounded-top d-flex list-unstyled justify-content-around policy-header" id="header-1"
+        className="btn-group rounded-top d-flex list-unstyled justify-content-around policy-header"
+        id="header-1"
         role="group"
         style={{ backgroundColor: bgColor, color: Color, padding: Padding }}
       >

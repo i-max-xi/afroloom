@@ -2,15 +2,12 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { buttonVariant } from "./types";
 
-
-
 const DropDownButton = ({ options, iconleft, title, variant }) => {
-
   return (
     <>
       <div class="dropdown">
         <button
-          class={`btn ${variant === buttonVariant.primary ? "btn-warning text-white": "" } dropdown-toggle`}
+          class={`btn ${variant === buttonVariant.primary ? "btn-warning text-white" : ""} dropdown-toggle`}
           type="button"
           id="dropdownMenuButton"
           data-toggle="dropdown"

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 
 const GoogleTranslate = () => {
   const [loading, setLoading] = useState(true);
@@ -10,18 +10,19 @@ const GoogleTranslate = () => {
 
       new window.google.translate.TranslateElement(
         {
-          pageLanguage: 'en',
-          includedLanguages: 'en,hi,es,ar,ru,pt,de,bg,hr,cs,da,nl,et,fi,fr,el,hu,ga,it,lv,lt,mt,pl,pt,ro,sk,sl,sv,ja,zh-CN,tr,vi',
+          pageLanguage: "en",
+          includedLanguages:
+            "en,hi,es,ar,ru,pt,de,bg,hr,cs,da,nl,et,fi,fr,el,hu,ga,it,lv,lt,mt,pl,pt,ro,sk,sl,sv,ja,zh-CN,tr,vi",
         },
-        'google_translate_element'
+        "google_translate_element",
       );
     };
 
     // Load Google Translate API
-    const addGoogleTranslateScript = document.createElement('script');
+    const addGoogleTranslateScript = document.createElement("script");
     addGoogleTranslateScript.async = true;
     addGoogleTranslateScript.src =
-      '//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+      "//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit";
     document.body.appendChild(addGoogleTranslateScript);
 
     return () => {
@@ -33,7 +34,7 @@ const GoogleTranslate = () => {
   return (
     <div>
       {loading ? (
-        <p style={{fontSize: '0.6rem'}}>Loading...</p>
+        <p style={{ fontSize: "0.6rem" }}>Loading...</p>
       ) : (
         <div id="google_translate_element"></div>
       )}

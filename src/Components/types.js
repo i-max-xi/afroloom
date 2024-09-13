@@ -1,4 +1,4 @@
 export const buttonVariant = {
-    primary: "primary",
-    link: "link"
-}
+  primary: "primary",
+  link: "link",
+};

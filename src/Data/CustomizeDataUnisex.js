@@ -305,7 +305,6 @@ export const mainUnisex = [
   //   sizeGuide: "",
   // },
 
- 
   // {
   //   id: uuid(),
   //   name: "Jacket",
@@ -349,7 +348,8 @@ export const mainUnisex = [
     id: uuid(),
     name: "Logo Up, Text Down Sash",
     title: "Sash Variant 1",
-    description: "This sash allows logos/designs at the top and text at the bottom on either side",
+    description:
+      "This sash allows logos/designs at the top and text at the bottom on either side",
     image: image_sash,
     model: sash_model,
     confirm_image: image_confirm_1,
@@ -384,7 +384,8 @@ export const mainUnisex = [
     id: uuid(),
     name: "Text Up, Logo Down Sash",
     title: "Sash Variant 2",
-    description: "This sash allows logos/designs at the bottom and text at the top on either side",
+    description:
+      "This sash allows logos/designs at the bottom and text at the top on either side",
     image: image_sash_logos_both_down,
     model: sash_both_down,
     confirm_image: image_confirm_2,
@@ -418,7 +419,8 @@ export const mainUnisex = [
     id: uuid(),
     name: "Contrasting Logo and Text Sash",
     title: "Sash Variant 3",
-    description: "This sash has logos/design positions contrasting with text on either side",
+    description:
+      "This sash has logos/design positions contrasting with text on either side",
     image: image_sash_logos_one_up_one_down,
     model: sash_striped_edge,
     confirm_image: image_confirm_3,
@@ -484,7 +486,8 @@ export const mainUnisex = [
     id: uuid(),
     name: "One-Sided Logo, Two-Sided Text Sash",
     title: "Sash Variant 4",
-    description: "This sash allows logos/designs on one side and text on both sides",
+    description:
+      "This sash allows logos/designs on one side and text on both sides",
     image: image_sash_striped_edge,
     model: sash_striped_edge,
     confirm_image: image_confirm_5,
@@ -544,9 +547,10 @@ export const mainUnisex = [
     name: "Waist Bag",
     image: image_waist_bag,
     model: mini_bag_model,
-    myNode: [{ name: "handle", yardNeeded: 1 },
+    myNode: [
+      { name: "handle", yardNeeded: 1 },
       { name: "main_body", yardNeeded: 1 },
-      { name: "zippers", yardNeeded: 1 }
+      { name: "zippers", yardNeeded: 1 },
     ],
     myZoom: 0.6,
     price: 150,
@@ -575,7 +579,11 @@ export const mainUnisex = [
     name: "Backpack",
     image: image_backpack,
     model: backpack_model,
-    myNode: [{ name: "body", yardNeeded: 1 }, { name: "handles", yardNeeded: 1 }, { name: "zippers", yardNeeded: 1 }],
+    myNode: [
+      { name: "body", yardNeeded: 1 },
+      { name: "handles", yardNeeded: 1 },
+      { name: "zippers", yardNeeded: 1 },
+    ],
     myZoom: 0.75,
     price: 150,
     // sizeModels: tshirt_model,

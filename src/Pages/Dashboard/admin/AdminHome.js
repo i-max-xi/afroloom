@@ -1,20 +1,20 @@
 // src/components/admin/AdminDashboard.js
 
-import React, { useState } from 'react';
-import { TabPanel, TabView } from 'primereact/tabview';
-import CustomSideBar from '../CustomSidebar';
-import ManageUsers from './ManageUsers';
-import ManagePrices from './ManagePrices';
-import Nav from '../../../Components/Nav';
-import { Button } from 'primereact/button';
-import ManageFabrics from './ManageFabrics';
-import ContactDetails from './ContactDetails';
+import React, { useState } from "react";
+import { TabPanel, TabView } from "primereact/tabview";
+import CustomSideBar from "../CustomSidebar";
+import ManageUsers from "./ManageUsers";
+import ManagePrices from "./ManagePrices";
+import Nav from "../../../Components/Nav";
+import { Button } from "primereact/button";
+import ManageFabrics from "./ManageFabrics";
+import ContactDetails from "./ContactDetails";
 
 const adminSidebarItems = [
-  { label: 'Manage Sales Partners' },
-  { label: 'Manage Prices' },
-  { label: 'Manage Fabrics' },
-  { label: 'Contact Details' }
+  { label: "Manage Sales Partners" },
+  { label: "Manage Prices" },
+  { label: "Manage Fabrics" },
+  { label: "Contact Details" },
 ];
 
 const AdminDashboard = () => {
@@ -27,10 +27,13 @@ const AdminDashboard = () => {
 
       <div className="side-bar-closed-container bg-white">
         <div className="fs-3 p-3 text-bold">
-          Welcome <span className='text-warning'>Admin!</span>
+          Welcome <span className="text-warning">Admin!</span>
         </div>
-        <Button icon="pi pi-arrow-right" className='mb-3' onClick={() => setVisible(true)} />
-
+        <Button
+          icon="pi pi-arrow-right"
+          className="mb-3"
+          onClick={() => setVisible(true)}
+        />
       </div>
 
       <CustomSideBar
@@ -45,8 +48,8 @@ const AdminDashboard = () => {
           activeIndex={activeIndex}
           onTabChange={(e) => setActiveIndex(e.index)}
         >
-          <TabPanel  header="Manage Sales Partners">
-          <ManageUsers />
+          <TabPanel header="Manage Sales Partners">
+            <ManageUsers />
           </TabPanel>
           <TabPanel header="Manage Prices">
             <ManagePrices />
@@ -57,8 +60,6 @@ const AdminDashboard = () => {
           <TabPanel header="Contact Details">
             <ContactDetails />
           </TabPanel>
-
-          
         </TabView>
       </div>
     </>

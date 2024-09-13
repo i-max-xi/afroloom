@@ -27,10 +27,8 @@ import {
   textureArrays,
   textureDescriptions,
   textureValues,
-  
   specialNodeNames,
   displayInplaceFor,
-  
   colorBasePrice,
 } from "./arrays/neededArrays";
 import TextureItem from "./TextureItem";
@@ -143,7 +141,14 @@ const CameraControls = () => {
     controlsRef.current.update();
   });
 
-  return <OrbitControls enableRotate={true} enablePan={false} enableZoom={false} ref={controlsRef} />;
+  return (
+    <OrbitControls
+      enableRotate={true}
+      enablePan={false}
+      enableZoom={false}
+      ref={controlsRef}
+    />
+  );
 };
 
 const Configurator = () => {
@@ -173,7 +178,7 @@ const Configurator = () => {
   const total = (
     (partPrices + selectedClothing.price) *
     currencyFactor
-  ).toFixed(0);
+  ).toFixed(2);
 
   useEffect(() => {
     setPartPrices(selectedClothing.sizeOptions[1].colorPriceValue);
@@ -184,7 +189,7 @@ const Configurator = () => {
     setSelectedSize(factor);
 
     const textureCategory = Object.keys(textureArrays).find((category) =>
-      textureArrays[category].includes(selectedTexture)
+      textureArrays[category].includes(selectedTexture),
     );
 
     if (!textureCategory) {
@@ -214,7 +219,7 @@ const Configurator = () => {
     setSelectedPrintOn(newColor);
 
     const currentSize = selectedClothing.sizeOptions.find(
-      (size) => size.value === selectedSize
+      (size) => size.value === selectedSize,
     );
 
     setPartPrices(currentSize.colorPriceValue);
@@ -229,11 +234,11 @@ const Configurator = () => {
       setSelectedTexture(newTexture); // needed to transfer to size
 
       const textureCategory = Object.keys(textureArrays).find((category) =>
-        textureArrays[category].includes(newTexture)
+        textureArrays[category].includes(newTexture),
       );
 
       const sizeValue = selectedClothing.sizeOptions.find(
-        (size) => size.value === selectedSize
+        (size) => size.value === selectedSize,
       );
 
       const yardPrice = textureValues[textureCategory].price;
@@ -267,8 +272,8 @@ const Configurator = () => {
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [stateImage, setStateImage] = useState("");
 
-   const captureCanvasAsImage = async () => {
-    setIsRotating(false)
+  const captureCanvasAsImage = async () => {
+    setIsRotating(false);
     const requiresHeight = displayInplaceFor.includes(selectedClothing.name);
     const heightProvided = height !== "";
 
@@ -300,7 +305,7 @@ const Configurator = () => {
     selectedClothing.sizeForms?.reduce((acc, formField) => {
       acc[formField.label] = formField.value;
       return acc;
-    }, {})
+    }, {}),
   );
 
   // Handle changes in the size form fields
@@ -418,7 +423,7 @@ const Configurator = () => {
           setShowConfirmation={setShowConfirmation}
           selectedSize={
             selectedClothing.sizeOptions.find(
-              (option) => option.value === selectedSize
+              (option) => option.value === selectedSize,
             )?.label
           }
           modelImage={stateImage}
@@ -440,11 +445,16 @@ const Configurator = () => {
               >
                 {isRotating ? (
                   <span className="d-flex align-items-center gap-1">
-                    Stop Spin<i className="pi pi-ban" style={{ fontSize: '0.8rem' }}></i>
+                    Stop Spin
+                    <i className="pi pi-ban" style={{ fontSize: "0.8rem" }}></i>
                   </span>
                 ) : (
                   <span className="d-flex align-items-center gap-1">
-                    Take a Spin <i className="pi pi-sync" style={{ fontSize: '0.8rem' }}></i>
+                    Take a Spin{" "}
+                    <i
+                      className="pi pi-sync"
+                      style={{ fontSize: "0.8rem" }}
+                    ></i>
                   </span>
                 )}
               </button>
@@ -477,7 +487,7 @@ const Configurator = () => {
                           handleSizeChange(
                             option.value,
                             option.priceValue,
-                            option.colorPriceValue
+                            option.colorPriceValue,
                           )
                         }
                       >
@@ -556,7 +566,7 @@ const Configurator = () => {
                               onChange={(e) =>
                                 handleSizeFormChange(
                                   formField.label,
-                                  e.target.value
+                                  e.target.value,
                                 )
                               }
                             />
@@ -664,7 +674,7 @@ const Configurator = () => {
                               textureDescriptions.waxPrint
                             }
                             textureIndex={textureArrays.waxPrint.indexOf(
-                              texture
+                              texture,
                             )}
                           />
                         )}
@@ -694,7 +704,7 @@ const Configurator = () => {
                               textureDescriptions.diaspora
                             }
                             textureIndex={textureArrays.Diaspora.indexOf(
-                              texture
+                              texture,
                             )}
                           />
                         )}
@@ -764,7 +774,7 @@ const Configurator = () => {
               <span className="expect-to-be-ready">Price:</span>{" "}
               <span className="customize-focus">
                 {currencySymbol}
-                {total}.00
+                {total}
               </span>
             </p>
 

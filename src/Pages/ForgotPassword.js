@@ -19,7 +19,7 @@ const ForgotPassword = () => {
 
     try {
       // await auth.sendPasswordResetEmail(email); // Send password reset email
-      await sendPasswordResetEmail(auth, email)
+      await sendPasswordResetEmail(auth, email);
 
       toastRef.current.show({
         severity: "success",
@@ -56,15 +56,11 @@ const ForgotPassword = () => {
           onSubmit={handleForgotPassword}
           className="container bg-white rounded w-100 p-4"
           style={{ marginTop: "2rem", marginBottom: "2rem" }}
-
         >
           <h4>
             <span className="text-warning">Forgot</span> Password ?
           </h4>
-          <p>
-            Enter your email to receive password reset
-            instructions
-          </p>
+          <p>Enter your email to receive password reset instructions</p>
           <div className="form-group mt-2">
             <label htmlFor="email">Email</label>
             <input

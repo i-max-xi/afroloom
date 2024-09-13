@@ -1,5 +1,5 @@
 // import from "../textures/tie_and_dye/21 tie and dye.jpg";
-import AllServices from "../../../../Services/usersService"
+import AllServices from "../../../../Services/usersService";
 
 import batik2 from "../textures/tie_and_dye/7. bubu.jpg";
 import batik3 from "../textures/tie_and_dye/8. tomogyi.jpg";
@@ -21,8 +21,6 @@ import nailDesign44 from "../textures/nail designs/new/2ed2d.jpg";
 import nailDesign45 from "../textures/nail designs/new/4.jpg";
 import nailDesign47 from "../textures/nail designs/new/fwef.jpg";
 
-
-
 import waxPrint1 from "../textures/waxPrint/new/1 dade3 mpadua.jpg";
 import waxPrint2 from "../textures/waxPrint/new/2. ayeyi wura.jpg";
 import waxPrint3 from "../textures/waxPrint/new/3. 8 8.jpg";
@@ -36,9 +34,6 @@ import katanga from "../textures/diaspora/kat_LE_auto_x2.jpg";
 import republic from "../textures/diaspora/repo_LE_auto_x2.jpg";
 import queens from "../textures/diaspora/queens_LE_auto_x2.jpg";
 import africa from "../textures/diaspora/africa_LE_auto_x2.jpg";
-
-
-
 
 export const colorBasePrice = 35;
 
@@ -110,16 +105,18 @@ export const specialNodeNames = [
   "nailHands",
 ]; // Add your special node names here
 
-
 let returnedDecsriptions = [];
 
 const initializeData = async () => {
   try {
     const response = await AllServices.getAllFabrics();
-    const allFabrics = (response.docs.map(doc => ({ ...doc.data(), id: doc.id })));
+    const allFabrics = response.docs.map((doc) => ({
+      ...doc.data(),
+      id: doc.id,
+    }));
     returnedDecsriptions = allFabrics.reduce((acc, fabric) => {
       const { id, items } = fabric;
-      acc[id] = items.map(item => ({
+      acc[id] = items.map((item) => ({
         textureName: item.textureName || "",
         textureDescription: item.textureDescription || "",
       }));
@@ -130,8 +127,7 @@ const initializeData = async () => {
   }
 };
 
-initializeData()
-
+initializeData();
 
 export const textureArrays = {
   batik: [batik2, batik3, batik4, batik5],
@@ -192,7 +188,7 @@ export const textureDescriptions = {
       and diversity by wearing medofo today!`,
     },
   ],
-  
+
   waxPrint: [
     {
       textureName: "DADE3 MPADUA",
@@ -248,26 +244,31 @@ export const textureDescriptions = {
   diaspora: [
     {
       textureName: "Unity Hall Fabric (Conti)",
-      textureDescription: `Established in 1968, Unity Hall, also known as Conti, is one of the largest halls at KNUST and a pillar of leadership, unity, and strength. The first hall master was Dr. J.E. Arkorful. The bold and vibrant Unity Hall fabric reflects these long-standing traditions. Please note that Afroloom only sources this fabric directly from Unity Hall, and we do not produce it. If the school runs out of stock, we will issue a full refund`,
+      textureDescription: `Established in 1968, Unity Hall, also known as Conti, is one of the largest halls at KNUST and a pillar of leadership, unity, and strength. The first hall master was Dr. J.E. Arkorful. The bold and vibrant Unity Hall fabric reflects these long-standing traditions.`,
+      disclaimer:
+        "Please note that Afroloom only sources this fabric directly from Unity Hall, and we do not produce it. If the school runs out of stock, we will issue a full refund",
     },
     {
       textureName: "Katanga Hall Fabric (University Hall)",
-      textureDescription: `Built in 1963, Katanga Hall, officially known as University Hall, has long been a symbol of bravery, camaraderie, and resilience. The first hall master was Mr. J.B. Furlong, whose legacy still echoes in the hall's bold traditions. Now a mixed hall, Katanga continues to stand tall in KNUST’s history. Afroloom sources this fabric exclusively from Katanga Hall and does not engage in the production of any fabrics. If the hall runs out of stock, your payment will be fully refunded.`,
+      textureDescription: `Built in 1963, Katanga Hall, officially known as University Hall, has long been a symbol of bravery, camaraderie, and resilience. The first hall master was Mr. J.B. Furlong, whose legacy still echoes in the hall's bold traditions. Now a mixed hall, Katanga continues to stand tall in KNUST’s history.`,
+      disclaimer: "Please note that Afroloom only sources this fabric directly from Katanga Hall, and we do not produce it. If the school runs out of stock, we will issue a full refund",
     },
     {
       textureName: "Republic Hall Fabric",
-      textureDescription: `Established in 1961, Republic Hall represents diversity, inclusivity, and academic excellence. Known for fostering a vibrant community, Republic Hall has made a lasting impact on the KNUST campus. The first hall master was Dr. R.P. Baffour, a visionary leader. Afroloom sources the Republic Hall fabric directly from the hall and does not produce the fabric. If the hall is out of stock, a full refund will be provided.`,
+      textureDescription: `Established in 1961, Republic Hall represents diversity, inclusivity, and academic excellence. Known for fostering a vibrant community, Republic Hall has made a lasting impact on the KNUST campus. The first hall master was Dr. R.P. Baffour, a visionary leader.`,
+      disclaimer: "Please note that Afroloom only sources this fabric directly from Republic Hall, and we do not produce it. If the school runs out of stock, we will issue a full refund",
     },
     {
       textureName: "Queen Elizabeth Hall Fabric (Queens)",
-      textureDescription: `Built in 1959 and originally an all-female hall, Queen Elizabeth Hall is now a mixed hall known for its legacy of nurturing leadership and academic prowess. The first hall master was Mr. R.C. Rattray, who oversaw the hall’s initial development. The Queen’s Hall fabric captures this proud heritage. Afroloom sources this fabric directly from Queen Elizabeth Hall and does not manufacture any fabrics. If the fabric is unavailable, a full refund will be issued.`,
+      textureDescription: `Built in 1959 and originally an all-female hall, Queen Elizabeth Hall is now a mixed hall known for its legacy of nurturing leadership and academic prowess. The first hall master was Mr. R.C. Rattray, who oversaw the hall’s initial development. The Queen’s Hall fabric captures this proud heritage.`,
+      disclaimer: "Please note that Afroloom only sources this fabric directly from Queen Elizabeth Hall, and we do not produce it. If the school runs out of stock, we will issue a full refund",
     },
     {
       textureName: "Africa Hall Fabric",
-      textureDescription: `Opened in 1967, Africa Hall, famously known as the Ladies Hall, has been a pillar of female empowerment and academic excellence at KNUST. The first hall master was Mrs. A. Gaisie, who guided the hall in its early days of building a legacy of leadership. The Africa Hall fabric celebrates this tradition of excellence. Afroloom only sources this fabric directly from Africa Hall and does not produce it. If the fabric is out of stock, your money will be refunded.`,
+      textureDescription: `Opened in 1967, Africa Hall, famously known as the Ladies Hall, has been a pillar of female empowerment and academic excellence at KNUST. The first hall master was Mrs. A. Gaisie, who guided the hall in its early days of building a legacy of leadership. The Africa Hall fabric celebrates this tradition of excellence.`,
+      disclaimer: "Please note that Afroloom only sources this fabric directly from Africa Hall, and we do not produce it. If the school runs out of stock, we will issue a full refund",
     },
-    
-  ]
+  ],
 };
 
 export const textureValues = {
@@ -280,7 +281,7 @@ export const textureValues = {
     yardStart: 2,
   },
   Diaspora: {
-    price: 60,
+    price: 120,
     yardStart: 2,
   },
 };
@@ -309,8 +310,6 @@ export const europeanShoeSizes = [
   { label: "46", value: 46 },
   { label: "47", value: 47 },
 ];
-
-
 
 export const responsiveColor = [
   {

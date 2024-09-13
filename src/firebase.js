@@ -25,5 +25,4 @@ const auth = getAuth(app);
 const db = getFirestore(app);
 const storage = getStorage(app);
 
-
 export { app, analytics, auth, db, signOut, storage, sendPasswordResetEmail };

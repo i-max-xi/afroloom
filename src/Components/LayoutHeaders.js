@@ -21,7 +21,7 @@ function LayoutHeaders({ selectedBg }) {
         }}
         className="page-banner"
       ></div> */}
-      <img alt="header" src={selectedBg} width="100%"/>
+      <img alt="header" src={selectedBg} width="100%" />
     </>
   );
 }

@@ -88,6 +88,10 @@ function TextureItem({
               ? subTextureDescriptions[textureIndex]?.textureDescription
               : "Description N/A"}
           </p>
+          <p style={{fontWeight: "bold"}}>
+            { subTextureDescriptions[textureIndex]?.disclaimer}
+          </p>
+
         </div>
       </Dialog>
     </div>
