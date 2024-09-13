@@ -43,7 +43,6 @@ const Confirmation = ({
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-
   const [count, setCount] = useState(1);
   const [special, setSpecial] = useState("");
 
@@ -106,7 +105,7 @@ const Confirmation = ({
           specialRequests: special,
           uploadedImageLeft: uploadedImageLeft,
           uploadedImageRight: uploadedImageRight,
-          dataSheet: downloadURL
+          dataSheet: downloadURL,
           // Other properties specific to your object
         },
       ];
@@ -126,7 +125,8 @@ const Confirmation = ({
               Proceed to{" "}
               <Link to="/customize-checkout" className="btn btn-success">
                 Checkout
-              </Link> when ready
+              </Link>{" "}
+              when ready
             </p>
           </div>
         ),
@@ -175,32 +175,35 @@ const Confirmation = ({
       <div className="container justify-content-center">
         <div className="d-flex">
           <p>
-          <button className="btn btn-outline-success" onClick={handlePrint}>
-            Download Copy
-          </button>
-          <p style={{fontSize: "0.7rem"}}>For effective transparency</p>
+            <button className="btn btn-outline-success" onClick={handlePrint}>
+              Download Copy
+            </button>
+            <p style={{ fontSize: "0.7rem" }}>For effective transparency</p>
           </p>
-          
+
           <p>
-          <button
-            disabled={isLoading}
-            className={`btn ${addedToCart? "btn-warning text-white" : "btn-success"} mx-3 position-relative`}
-            onClick={addedToCart? () => navigate("/start-customize"): handleFormSubmit}
-          >
-            <span className="spinner-container">
-              {isLoading && (
-                <ProgressSpinner
-                  style={{ width: "1.5rem", height: "1.5rem" }}
-                  strokeWidth="8"
-                  fill="var(--surface-ground)"
-                  className="position-absolute top-50 start-50 translate-middle"
-                />
-              )}
-            </span>
-             {addedToCart? "Order Again" : "Add To Cart"}
-          </button>
+            <button
+              disabled={isLoading}
+              className={`btn ${addedToCart ? "btn-warning text-white" : "btn-success"} mx-3 position-relative`}
+              onClick={
+                addedToCart
+                  ? () => navigate("/start-customize")
+                  : handleFormSubmit
+              }
+            >
+              <span className="spinner-container">
+                {isLoading && (
+                  <ProgressSpinner
+                    style={{ width: "1.5rem", height: "1.5rem" }}
+                    strokeWidth="8"
+                    fill="var(--surface-ground)"
+                    className="position-absolute top-50 start-50 translate-middle"
+                  />
+                )}
+              </span>
+              {addedToCart ? "Order Again" : "Add To Cart"}
+            </button>
           </p>
-          
         </div>
 
         <p className="h5 mt-4">Thank you for your order!</p>
@@ -242,7 +245,7 @@ export const OrderDetail = React.forwardRef(
       textLeft,
       textRight,
     },
-    ref
+    ref,
   ) => {
     const currencySymbol = useSelector((state) => state.currencySymbol.symbol);
     const currencyFactor = useSelector((state) => state.currencySymbol.factor);
@@ -439,7 +442,7 @@ export const OrderDetail = React.forwardRef(
                                 <Divider />
                               )}
                             </div>
-                          )
+                          ),
                       )}
                     </div>
                   </div>
@@ -478,7 +481,7 @@ export const OrderDetail = React.forwardRef(
                           <li key={label}>
                             <strong>{label}:</strong> {value ? value : "N/A"}
                           </li>
-                        )
+                        ),
                       )}
                   </ul>
                 </>
@@ -504,11 +507,9 @@ export const OrderDetail = React.forwardRef(
             </span>
           </p>
         </div>
-
-       
       </div>
     );
-  }
+  },
 );
 
 export default Confirmation;

@@ -36,8 +36,6 @@ import summer_shorts_guide from "../Assets/size_guide/MaleClothing/men summer sh
 import material_shorts_guide from "../Assets/size_guide/MaleClothing/men material shorts.png";
 import jacket_guide from "../Assets/size_guide/MaleClothing/men Bomber_Jacket.jpg";
 
-
-
 // const tshirt_image = "https://a5e8126a499f8a963166-f72e9078d72b8c998606fd6e0319b679.ssl.cf5.rackcdn.com/images/variant/large/next-level_3600_black.jpg";
 const image_tshirt_short = require("../Assets/welcome_3ds/male/male short sleev ankara.png");
 const image_tshirt_long_image = require("../Assets/welcome_3ds/male/male long sleev ankara.png");

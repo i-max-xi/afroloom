@@ -57,37 +57,40 @@ const CustomizePage = () => {
             </Link>
           ))} */}
           {/* Accessories */}
-          <h5 className="mt-4 footer-header">Accessories
-          </h5>
-          {mainUnisex.slice(9, 17).map(({ name, image, link, description, title }) => (
-            <Link
-              // to={`/customize-unisex/${name}`}
-              to={link ? link : `/configurator-unisex/${name}`}
-              className="col-6 col-md-3 customise-front text-decoration-none"
-              key={name}
-              data-aos="fade-in"
+          <h5 className="mt-4 footer-header">Accessories</h5>
+          {mainUnisex
+            .slice(9, 17)
+            .map(({ name, image, link, description, title }) => (
+              <Link
+                // to={`/customize-unisex/${name}`}
+                to={link ? link : `/configurator-unisex/${name}`}
+                className="col-6 col-md-3 customise-front text-decoration-none"
+                key={name}
+                data-aos="fade-in"
                 data-aos-duration="1500"
-            >
-              {/* <div className="card" data-aos="fade-in" data-aos-duration="1500">
+              >
+                {/* <div className="card" data-aos="fade-in" data-aos-duration="1500">
                 <img className="card-img-top" src={image} alt={name} />
                 <div className="card-body m-0 d-flex justify-content-center flex-column">
                   <h5 className="text-center">{name}</h5>
                 </div>
               </div> */}
-            <ListItem image={image} description={title || name} extraDescription={description} />
-
-            </Link>
-          ))}
+                <ListItem
+                  image={image}
+                  description={title || name}
+                  extraDescription={description}
+                />
+              </Link>
+            ))}
           {/* Female clothing */}
-          <h5 className="mt-4 footer-header">Women's Clothing
-          </h5>
+          <h5 className="mt-4 footer-header">Women's Clothing</h5>
           {mainFemaleCustomize.map(({ name, image }) => (
             <Link
               to={`/configurator-female/${name}`}
               className="col-6 col-md-3 customise-front text-decoration-none"
               key={name}
               data-aos="fade-in"
-                data-aos-duration="1500"
+              data-aos-duration="1500"
             >
               {/* <div className="card" data-aos="fade-in" data-aos-duration="1500">
                 <img className="card-img-top" src={image} alt={name} />
@@ -95,8 +98,7 @@ const CustomizePage = () => {
                   <h5 className="text-center">{name}</h5>
                 </div>
               </div> */}
-                          <ListItem image={image} description={name} />
-
+              <ListItem image={image} description={name} />
             </Link>
           ))}
 
@@ -108,7 +110,7 @@ const CustomizePage = () => {
               className="col-6 col-md-3 customise-front text-decoration-none "
               key={name}
               data-aos="fade-in"
-                data-aos-duration="1500"
+              data-aos-duration="1500"
             >
               {/* <div
                 className="card contained-image-container"
@@ -124,8 +126,7 @@ const CustomizePage = () => {
                   <h5 className="text-center">{name}</h5>
                 </div>
               </div> */}
-            <ListItem image={image} description={name} />
-
+              <ListItem image={image} description={name} />
             </Link>
           ))}
 
@@ -148,8 +149,7 @@ const CustomizePage = () => {
                   <h5 className="text-center">{name}</h5>
                 </div>
               </div> */}
-                 <ListItem image={image} description={name} />
-
+              <ListItem image={image} description={name} />
             </Link>
           ))}
 
@@ -167,8 +167,7 @@ const CustomizePage = () => {
                   <h5 className="text-center">{name}</h5>
                 </div>
               </div> */}
-                           <ListItem image={image} description={name} />
-
+              <ListItem image={image} description={name} />
             </Link>
           ))}
 
@@ -181,8 +180,7 @@ const CustomizePage = () => {
               className="col-6 col-md-3 customise-front text-decoration-none"
               key={name}
             >
-             <ListItem image={image} description={name} />
-
+              <ListItem image={image} description={name} />
             </Link>
           ))}
         </div>

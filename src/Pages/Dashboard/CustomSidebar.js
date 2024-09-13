@@ -40,7 +40,6 @@ const CustomSideBar = ({ items, setActiveIndex, visible, setVisible }) => {
     }
   };
 
-
   return (
     <Sidebar
       visible={visible}
@@ -54,7 +53,7 @@ const CustomSideBar = ({ items, setActiveIndex, visible, setVisible }) => {
               key={index}
               onClick={() => {
                 setActiveIndex(index);
-                setVisible(false)
+                setVisible(false);
               }}
               className="p-button-text text-black"
               label={item.label}
@@ -62,26 +61,29 @@ const CustomSideBar = ({ items, setActiveIndex, visible, setVisible }) => {
             <Divider />
           </>
         ))}
-         <Button
+        <Button
           label="Anaytics and visits"
           icon="pi pi-external-link"
           className="p-button-link"
-          onClick={() => window.open('https://console.firebase.google.com/u/1/project/shopinafrica-c84cf/analytics/app/web:ZWQ1ODAyNTMtNDY4NC00Y2NjLWFlZGItODI4ZTkyMDYyNmJk/overview', '_blank')}
+          onClick={() =>
+            window.open(
+              "https://console.firebase.google.com/u/1/project/shopinafrica-c84cf/analytics/app/web:ZWQ1ODAyNTMtNDY4NC00Y2NjLWFlZGItODI4ZTkyMDYyNmJk/overview",
+              "_blank",
+            )
+          }
         />
         <Divider />
         <Button
           label="Paystack Dashboard"
           icon="pi pi-external-link"
           className="p-button-link"
-          onClick={() => window.open('https://dashboard.paystack.com/#/login', '_blank')}
+          onClick={() =>
+            window.open("https://dashboard.paystack.com/#/login", "_blank")
+          }
         />
         <Divider />
-        
       </div>
-      <button
-        onClick={handleSignOut}
-        className="rounded btn btn-danger m-3"
-      >
+      <button onClick={handleSignOut} className="rounded btn btn-danger m-3">
         Sign Out
       </button>
     </Sidebar>

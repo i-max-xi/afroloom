@@ -39,7 +39,7 @@ const HtmlComponent = ({
               ? textLeft
               : "TEXT HERE"
             : separateWordsWithLineBreak(
-                textLeft !== "" ? textLeft : "TEXT HERE"
+                textLeft !== "" ? textLeft : "TEXT HERE",
               ),
         }}
       />
@@ -69,7 +69,7 @@ const HtmlComponent = ({
           }}
           dangerouslySetInnerHTML={{
             __html: separateWordsWithLineBreak(
-              textRight !== "" ? textRight : "TEXT HERE"
+              textRight !== "" ? textRight : "TEXT HERE",
             ),
           }}
         />

@@ -92,8 +92,7 @@ const WigConfirmation = ({
           selectedColor: selectedColor,
           specialRequests: special,
           allSpecifications,
-          dataSheet: downloadURL
-
+          dataSheet: downloadURL,
 
           // Other properties specific to your object
         },
@@ -113,7 +112,8 @@ const WigConfirmation = ({
               Proceed to{" "}
               <Link to="/customize-checkout" className="btn btn-success">
                 Checkout
-              </Link> when ready
+              </Link>{" "}
+              when ready
             </p>
           </div>
         ),
@@ -153,34 +153,35 @@ const WigConfirmation = ({
         selectedColor={selectedColor}
       />
       <div className="container justify-content-center">
-      <div className="d-flex">
+        <div className="d-flex">
           <p>
-          <button className="btn btn-outline-success" onClick={handlePrint}>
-            Download Copy
-          </button>
-          <p style={{fontSize: "0.7rem"}}>For effective transparency</p>
+            <button className="btn btn-outline-success" onClick={handlePrint}>
+              Download Copy
+            </button>
+            <p style={{ fontSize: "0.7rem" }}>For effective transparency</p>
           </p>
-          
+
           <p>
-          <button
-            disabled={isLoading}
-            className={`btn ${addedToCart? "btn-warning text-white" : "btn-success"} mx-3 position-relative`}
-            onClick={addedToCart? navigate("/start-customize"): handleFormSubmit}
-          >
-            <span className="spinner-container">
-              {isLoading && (
-                <ProgressSpinner
-                  style={{ width: "1.5rem", height: "1.5rem" }}
-                  strokeWidth="8"
-                  fill="var(--surface-ground)"
-                  className="position-absolute top-50 start-50 translate-middle"
-                />
-              )}
-            </span>
-             {addedToCart? "Order Again" : "Add To Cart"}
-          </button>
+            <button
+              disabled={isLoading}
+              className={`btn ${addedToCart ? "btn-warning text-white" : "btn-success"} mx-3 position-relative`}
+              onClick={
+                addedToCart ? navigate("/start-customize") : handleFormSubmit
+              }
+            >
+              <span className="spinner-container">
+                {isLoading && (
+                  <ProgressSpinner
+                    style={{ width: "1.5rem", height: "1.5rem" }}
+                    strokeWidth="8"
+                    fill="var(--surface-ground)"
+                    className="position-absolute top-50 start-50 translate-middle"
+                  />
+                )}
+              </span>
+              {addedToCart ? "Order Again" : "Add To Cart"}
+            </button>
           </p>
-          
         </div>
 
         <p className="h5 mt-4">Thank you for your order!</p>
@@ -215,7 +216,7 @@ export const OrderDetail = React.forwardRef(
 
       selectedColor,
     },
-    ref
+    ref,
   ) => {
     const currencySymbol = useSelector((state) => state.currencySymbol.symbol);
     const currencyFactor = useSelector((state) => state.currencySymbol.factor);
@@ -278,7 +279,7 @@ export const OrderDetail = React.forwardRef(
 
                         {index !== allSpecifications.length - 1 && <Divider />}
                       </div>
-                    )
+                    ),
                 )}
               </div>
             </li>
@@ -305,7 +306,7 @@ export const OrderDetail = React.forwardRef(
         </div>
       </div>
     );
-  }
+  },
 );
 
 export default WigConfirmation;

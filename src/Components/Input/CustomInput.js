@@ -1,18 +1,18 @@
-
-import React from 'react';
-import { InputText } from 'primereact/inputtext';
-import { Password } from 'primereact/password';
+import React from "react";
+import { InputText } from "primereact/inputtext";
+import { Password } from "primereact/password";
 
 const CustomInput = React.forwardRef(({ label, type, ...props }, ref) => {
-  if (type === 'password') {
+  if (type === "password") {
     return (
-      <div className='w-100 password'>
+      <div className="w-100 password">
         <label>{label}</label>
         <Password
           feedback={false}
           toggleMask
-
-          className="d-flex align-items-center" style={{display: "flex", alignItems: "center"}} inputStyle={{width: "100%", height: "2%"}}
+          className="d-flex align-items-center"
+          style={{ display: "flex", alignItems: "center" }}
+          inputStyle={{ width: "100%", height: "2%" }}
           inputRef={ref}
           {...props}
         />
@@ -20,7 +20,7 @@ const CustomInput = React.forwardRef(({ label, type, ...props }, ref) => {
     );
   }
   return (
-    <div className='w-100'>
+    <div className="w-100">
       <label>{label}</label>
       <InputText className="p-inputtext-sm w-100 h-25" ref={ref} {...props} />
     </div>
@@ -28,4 +28,3 @@ const CustomInput = React.forwardRef(({ label, type, ...props }, ref) => {
 });
 
 export default CustomInput;
-

@@ -27,7 +27,6 @@ import {
   textureArrays,
   textureDescriptions,
   textureValues,
-  
   specialNodeNames,
   displayInplaceFor,
   colorBasePrice,
@@ -50,7 +49,6 @@ const Shirt = ({
 }) => {
   const snap = useSnapshot(state);
   const { nodes } = useGLTF(selectedClothing.model);
-
 
   const groupRef = useRef();
 
@@ -141,7 +139,14 @@ const CameraControls = () => {
     controlsRef.current.update();
   });
 
-  return <OrbitControls enableRotate={true} enablePan={false} enableZoom={false} ref={controlsRef} />;
+  return (
+    <OrbitControls
+      enableRotate={true}
+      enablePan={false}
+      enableZoom={false}
+      ref={controlsRef}
+    />
+  );
 };
 
 const ConfiguratorFootwear = () => {
@@ -166,7 +171,7 @@ const ConfiguratorFootwear = () => {
 
   const [partPrices, setPartPrices] = useState(0);
   const [colorPrice, setColorPrice] = useState(
-    colorBasePrice * selectedClothing.myNode[0].yardNeeded
+    colorBasePrice * selectedClothing.myNode[0].yardNeeded,
   );
   //total price
   const total = (
@@ -183,7 +188,7 @@ const ConfiguratorFootwear = () => {
     setSelectedSize(factor);
 
     const textureCategory = Object.keys(textureArrays).find((category) =>
-      textureArrays[category].includes(selectedTexture)
+      textureArrays[category].includes(selectedTexture),
     );
 
     if (!textureCategory) {
@@ -220,7 +225,7 @@ const ConfiguratorFootwear = () => {
     setSelectedPrintOn(newColor);
 
     const currentSize = selectedClothing.sizeOptions.find(
-      (size) => size.value === selectedSize
+      (size) => size.value === selectedSize,
     );
 
     setPartPrices(currentSize.colorPriceValue);
@@ -235,11 +240,11 @@ const ConfiguratorFootwear = () => {
       setSelectedTexture(newTexture); // needed to transfer to size
 
       const textureCategory = Object.keys(textureArrays).find((category) =>
-        textureArrays[category].includes(newTexture)
+        textureArrays[category].includes(newTexture),
       );
 
       const sizeValue = selectedClothing.sizeOptions.find(
-        (size) => size.value === selectedSize
+        (size) => size.value === selectedSize,
       );
 
       console.log({ sizeValue });
@@ -279,8 +284,8 @@ const ConfiguratorFootwear = () => {
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [stateImage, setStateImage] = useState("");
 
-   const captureCanvasAsImage = async () => {
-    setIsRotating(false)
+  const captureCanvasAsImage = async () => {
+    setIsRotating(false);
     const requiresHeight = displayInplaceFor.includes(selectedClothing.name);
     const heightProvided = height !== "";
 
@@ -312,7 +317,7 @@ const ConfiguratorFootwear = () => {
     selectedClothing.sizeForms?.reduce((acc, formField) => {
       acc[formField.label] = formField.value;
       return acc;
-    }, {})
+    }, {}),
   );
 
   // Handle changes in the size form fields
@@ -454,7 +459,7 @@ const ConfiguratorFootwear = () => {
           setShowConfirmation={setShowConfirmation}
           selectedSize={
             selectedClothing.sizeOptions.find(
-              (option) => option.value === selectedSize
+              (option) => option.value === selectedSize,
             )?.label
           }
           modelImage={stateImage}
@@ -476,11 +481,16 @@ const ConfiguratorFootwear = () => {
               >
                 {isRotating ? (
                   <span className="d-flex align-items-center gap-1">
-                    Stop Spin<i className="pi pi-ban" style={{ fontSize: '0.8rem' }}></i>
+                    Stop Spin
+                    <i className="pi pi-ban" style={{ fontSize: "0.8rem" }}></i>
                   </span>
                 ) : (
                   <span className="d-flex align-items-center gap-1">
-                    Take a Spin <i className="pi pi-sync" style={{ fontSize: '0.8rem' }}></i>
+                    Take a Spin{" "}
+                    <i
+                      className="pi pi-sync"
+                      style={{ fontSize: "0.8rem" }}
+                    ></i>
                   </span>
                 )}
               </button>
@@ -586,7 +596,7 @@ const ConfiguratorFootwear = () => {
                               onChange={(e) =>
                                 handleSizeFormChange(
                                   formField.label,
-                                  e.target.value
+                                  e.target.value,
                                 )
                               }
                             />
@@ -671,7 +681,7 @@ const ConfiguratorFootwear = () => {
                               textureDescriptions.waxPrint
                             }
                             textureIndex={textureArrays.waxPrint.indexOf(
-                              texture
+                              texture,
                             )}
                           />
                         )}
@@ -701,7 +711,7 @@ const ConfiguratorFootwear = () => {
                               textureDescriptions.diaspora
                             }
                             textureIndex={textureArrays.Diaspora.indexOf(
-                              texture
+                              texture,
                             )}
                           />
                         )}

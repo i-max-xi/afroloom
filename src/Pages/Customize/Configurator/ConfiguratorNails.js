@@ -117,8 +117,8 @@ const Shirt = ({
             specialNodeNames.includes(nodeName) && nodeName === "nailHands"
               ? snap.color[1]
               : specialNodeNames.includes(nodeName) && nodeName !== "nailHands"
-              ? snap.color[index] || "#333333"
-              : snap.color[index] || "#ffffff";
+                ? snap.color[index] || "#333333"
+                : snap.color[index] || "#ffffff";
 
           const texture = snap.texture[index] || null;
           // const texture = skinTexture;
@@ -235,8 +235,8 @@ const ConfiguratorUnisex = () => {
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [stateImage, setStateImage] = useState("");
 
-   const captureCanvasAsImage = async () => {
-    setIsRotating(false)
+  const captureCanvasAsImage = async () => {
+    setIsRotating(false);
     if (!canvasRef.current) {
       toastRef.current.show({
         severity: "error",
@@ -333,7 +333,7 @@ const ConfiguratorUnisex = () => {
 
   const nailBg = useMemo(() => {
     const selectedSkinTone = skinTone.find(
-      (tone) => tone.title === selectedTone
+      (tone) => tone.title === selectedTone,
     );
     return selectedSkinTone ? selectedSkinTone.image : null;
   }, [selectedTone]);

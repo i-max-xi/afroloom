@@ -50,14 +50,12 @@ export const separateWordsWithLineBreak = (text) => {
   // Insert <br> after each word and join them back into a string
   const textWithLineBreak = wordsArray?.join("<br>");
   return textWithLineBreak;
-  
 };
-
 
 export const generatePartnerCode = (firstName, lastName) => {
   const firstLetterOfFirstName = firstName.charAt(0).toUpperCase();
   const firstLetterOfLastName = lastName.charAt(0).toUpperCase();
-  const creationDay = new Date().getDate();  // Get the day part of the current date
+  const creationDay = new Date().getDate(); // Get the day part of the current date
 
   return `AF-${firstLetterOfFirstName}-${firstLetterOfLastName}-${creationDay}`;
 };

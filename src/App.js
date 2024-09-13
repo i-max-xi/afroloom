@@ -64,9 +64,6 @@ function App() {
             <Route path="dashboard/:userID" element={<Dashboard />} />
             <Route path="admin-dashboard" element={<AdminDashboard />} />
 
-
-
-
             <Route path="/configurator/:Id" element={<Configurator />} />
             <Route
               path="/configurator-female/:Id"

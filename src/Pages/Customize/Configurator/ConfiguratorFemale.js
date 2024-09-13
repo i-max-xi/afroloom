@@ -27,7 +27,6 @@ import {
   textureArrays,
   textureDescriptions,
   textureValues,
-  
   specialNodeNames,
   displayInplaceFor,
   colorBasePrice,
@@ -141,7 +140,14 @@ const CameraControls = () => {
     controlsRef.current.update();
   });
 
-  return <OrbitControls enableRotate={true} enablePan={false} enableZoom={false} ref={controlsRef} />;
+  return (
+    <OrbitControls
+      enableRotate={true}
+      enablePan={false}
+      enableZoom={false}
+      ref={controlsRef}
+    />
+  );
 };
 
 const ConfiguratorFemale = () => {
@@ -166,7 +172,7 @@ const ConfiguratorFemale = () => {
 
   const [partPrices, setPartPrices] = useState(0);
   const [colorPrice, setColorPrice] = useState(
-    colorBasePrice * selectedClothing.myNode[0].yardNeeded
+    colorBasePrice * selectedClothing.myNode[0].yardNeeded,
   );
   //total price
   const total = (
@@ -183,7 +189,7 @@ const ConfiguratorFemale = () => {
     setSelectedSize(factor);
 
     const textureCategory = Object.keys(textureArrays).find((category) =>
-      textureArrays[category].includes(selectedTexture)
+      textureArrays[category].includes(selectedTexture),
     );
 
     if (!textureCategory) {
@@ -220,7 +226,7 @@ const ConfiguratorFemale = () => {
     setSelectedPrintOn(newColor);
 
     const currentSize = selectedClothing.sizeOptions.find(
-      (size) => size.value === selectedSize
+      (size) => size.value === selectedSize,
     );
 
     setPartPrices(currentSize.colorPriceValue);
@@ -235,11 +241,11 @@ const ConfiguratorFemale = () => {
       setSelectedTexture(newTexture); // needed to transfer to size
 
       const textureCategory = Object.keys(textureArrays).find((category) =>
-        textureArrays[category].includes(newTexture)
+        textureArrays[category].includes(newTexture),
       );
 
       const sizeValue = selectedClothing.sizeOptions.find(
-        (size) => size.value === selectedSize
+        (size) => size.value === selectedSize,
       );
 
       console.log({ sizeValue });
@@ -279,7 +285,7 @@ const ConfiguratorFemale = () => {
   const [showConfirmation, setShowConfirmation] = useState(false);
   const [stateImage, setStateImage] = useState("");
 
-   const captureCanvasAsImage = async () => {
+  const captureCanvasAsImage = async () => {
     setIsRotating(false);
     const requiresHeight = displayInplaceFor.includes(selectedClothing.name);
     const heightProvided = height !== "";
@@ -312,7 +318,7 @@ const ConfiguratorFemale = () => {
     selectedClothing.sizeForms?.reduce((acc, formField) => {
       acc[formField.label] = formField.value;
       return acc;
-    }, {})
+    }, {}),
   );
 
   // Handle changes in the size form fields
@@ -457,7 +463,7 @@ const ConfiguratorFemale = () => {
           setShowConfirmation={setShowConfirmation}
           selectedSize={
             selectedClothing.sizeOptions.find(
-              (option) => option.value === selectedSize
+              (option) => option.value === selectedSize,
             )?.label
           }
           modelImage={stateImage}
@@ -479,11 +485,16 @@ const ConfiguratorFemale = () => {
               >
                 {isRotating ? (
                   <span className="d-flex align-items-center gap-1">
-                    Stop Spin<i className="pi pi-ban" style={{ fontSize: '0.8rem' }}></i>
+                    Stop Spin
+                    <i className="pi pi-ban" style={{ fontSize: "0.8rem" }}></i>
                   </span>
                 ) : (
                   <span className="d-flex align-items-center gap-1">
-                    Take a Spin <i className="pi pi-sync" style={{ fontSize: '0.8rem' }}></i>
+                    Take a Spin{" "}
+                    <i
+                      className="pi pi-sync"
+                      style={{ fontSize: "0.8rem" }}
+                    ></i>
                   </span>
                 )}
               </button>
@@ -589,7 +600,7 @@ const ConfiguratorFemale = () => {
                               onChange={(e) =>
                                 handleSizeFormChange(
                                   formField.label,
-                                  e.target.value
+                                  e.target.value,
                                 )
                               }
                             />
@@ -673,7 +684,7 @@ const ConfiguratorFemale = () => {
                               textureDescriptions.waxPrint
                             }
                             textureIndex={textureArrays.waxPrint.indexOf(
-                              texture
+                              texture,
                             )}
                           />
                         )}
@@ -703,7 +714,7 @@ const ConfiguratorFemale = () => {
                               textureDescriptions.diaspora
                             }
                             textureIndex={textureArrays.Diaspora.indexOf(
-                              texture
+                              texture,
                             )}
                           />
                         )}
