@@ -636,7 +636,7 @@ const ConfiguratorFemale = () => {
                 <h5>Choose Textile</h5> {/* Add heading for textures */}
                 <div className="texture-buttons-container">
                   <div className="texture-row">
-                    <div className="texture-category">
+                    <div className="texture-category mt-3">
                       <h3>Batik</h3>
                       <Carousel
                         value={textureArrays.batik}
@@ -662,7 +662,7 @@ const ConfiguratorFemale = () => {
                     </div>
                   </div>
                   <div className="texture-row">
-                    <div className="texture-category">
+                    <div className="texture-category mt-3">
                       <h3>waxPrint</h3>
                       <Carousel
                         value={textureArrays.waxPrint}
@@ -692,7 +692,7 @@ const ConfiguratorFemale = () => {
                     </div>
                   </div>
                   <div className="texture-row">
-                    <div className="texture-category">
+                    <div className="texture-category mt-3">
                       <h3>School Fabrics</h3>
                       <Carousel
                         value={textureArrays.Diaspora}
