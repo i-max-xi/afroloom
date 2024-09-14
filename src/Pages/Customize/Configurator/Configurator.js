@@ -683,7 +683,7 @@ const Configurator = () => {
                   </div>
                   <div className="texture-row">
                     <div className="texture-category mt-3">
-                      <h3>School Fabrics</h3>
+                      <h3>School Prints</h3>
                       <Carousel
                         value={textureArrays.Diaspora}
                         numVisible={4}
