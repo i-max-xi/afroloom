@@ -269,7 +269,7 @@ export const textureDescriptions = {
       disclaimer: "Please note that Afroloom only sources this fabric directly from Queen Elizabeth Hall, and we do not produce it. If the school runs out of stock, we will issue a full refund",
     },
     {
-      textureName: "Africa Hall Fabric",
+      textureName: "Africa Hall Fabric (KNUST)",
       textureDescription: `Opened in 1967, Africa Hall, famously known as the Ladies Hall, has been a pillar of female empowerment and academic excellence at KNUST. The first hall master was Mrs. A. Gaisie, who guided the hall in its early days of building a legacy of leadership. The Africa Hall fabric celebrates this tradition of excellence.`,
       disclaimer: "Please note that Afroloom only sources this fabric directly from Africa Hall, and we do not produce it. If the school runs out of stock, we will issue a full refund",
     },
