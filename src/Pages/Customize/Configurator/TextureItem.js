@@ -7,6 +7,9 @@ import alternateTexture from "./textures/tie_and_dye/10 medofo - Copy.jpg";
 import queensAlternate from "./textures/diaspora/queens_LE_auto_x2 - Copy.jpg"
 import repuAlternate from "./textures/diaspora/repo_LE_auto_x2 - Copy.jpg"
 import otumfuoAlternate from "./textures/commemorative/otumfuo - Copy.jpg"
+import contiAlternate from "./textures/diaspora/conti_LE_auto_x2 - Copy.jpg";
+import africaAlternate from "./textures/diaspora/africa_LE_auto_x2 - Copy.jpg";
+import katangaAlternate from "./textures/diaspora/kat_LE_auto_x2 - Copy.jpg"
 
 function TextureItem({
   texture,
@@ -27,15 +30,24 @@ function TextureItem({
     // setHideText(false)
   };
 
-  // console.log({ texture });
 
   const needsAlternate =
     texture === "/static/media/10 medofo.84aa9ed3bbc49733e1bd.jpg";
 
-  const isRepu = texture === "/static/media/repo_LE_auto_x2.9ac0c7e948df11f85dc5.jpg";
-  const isQueens = texture === "/static/media/queens_LE_auto_x2.52fd721b9a48eab6b0a6.jpg";
+  const isRepu = texture === "/static/media/repo_LE_auto_x2.770e29e82ad95533f42c.jpg";
+  const isQueens = texture === "/static/media/queens_LE_auto_x2.84d204d5d99de62b1fef.jpg";
 
-  const isOtumfuo = texture === "/static/media/otumfuo.ec1adaff1bd333df775c.jpg";
+  const isOtumfuo = texture === "/static/media/otumfuo.22c5e864915e7377240e.jpg";
+  const isConti = texture === "/static/media/conti_LE_auto_x2.0667fc423d7e70a224c6.jpg";
+  const isAfrica = texture === "/static/media/africa_LE_auto_x2.b5dde7d4731a4ab88bf8.jpg";
+  const isKatanga = texture === "/static/media/kat_LE_auto_x2.5dd9282e2e5bbcfe32d7.jpg";
+
+  console.log({
+    isRepu,
+    isQueens,
+    needsAlternate,
+    isOtumfuo
+  })
 
   const masterTexture = useMemo(() => {
     if (isRepu) {
@@ -47,6 +59,15 @@ function TextureItem({
     } 
     else if (isOtumfuo) {
       return otumfuoAlternate;
+    }
+    else if (isConti) {
+      return contiAlternate;
+    }
+    else if (isAfrica) {
+      return africaAlternate;
+    }
+    else if (isKatanga) {
+      return katangaAlternate;
     }
     else {
       return texture;
