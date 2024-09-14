@@ -37,17 +37,12 @@ function TextureItem({
   const isRepu = texture === "/static/media/repo_LE_auto_x2.770e29e82ad95533f42c.jpg";
   const isQueens = texture === "/static/media/queens_LE_auto_x2.84d204d5d99de62b1fef.jpg";
 
-  const isOtumfuo = texture === "/static/media/otumfuo.22c5e864915e7377240e.jpg";
+  const isOtumfuo = texture === "/static/media/otumfuo.46a2fea2de6a31c52a17.jpg";
   const isConti = texture === "/static/media/conti_LE_auto_x2.0667fc423d7e70a224c6.jpg";
   const isAfrica = texture === "/static/media/africa_LE_auto_x2.b5dde7d4731a4ab88bf8.jpg";
   const isKatanga = texture === "/static/media/kat_LE_auto_x2.5dd9282e2e5bbcfe32d7.jpg";
 
-  console.log({
-    isRepu,
-    isQueens,
-    needsAlternate,
-    isOtumfuo
-  })
+  
 
   const masterTexture = useMemo(() => {
     if (isRepu) {
@@ -118,7 +113,7 @@ function TextureItem({
               src={masterTexture}
               height="150px"
               width="250px"
-              style={{ alignSelf: "center", WebkitTouchCallout: "none" }}
+              style={{ alignSelf: "center", WebkitTouchCallout: "none", objectFit: "cover" }}
               onContextMenu={(e) => e.preventDefault()}
             />
 
