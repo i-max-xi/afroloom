@@ -35,6 +35,10 @@ import republic from "../textures/diaspora/repo_LE_auto_x2.jpg";
 import queens from "../textures/diaspora/queens_LE_auto_x2.jpg";
 import africa from "../textures/diaspora/africa_LE_auto_x2.jpg";
 
+
+//commemerative
+import otumfuo from "../textures/commemorative/otumfuo.jpg";
+
 export const colorBasePrice = 35;
 
 export const colorOptions = [
@@ -147,6 +151,7 @@ export const textureArrays = {
     nailDesign45,
     nailDesign47,
   ],
+  commemorative: [otumfuo],
 };
 
 export const textureDescriptions = {
@@ -269,6 +274,14 @@ export const textureDescriptions = {
       disclaimer: "Please note that Afroloom only sources this fabric directly from Africa Hall, and we do not produce it. If the school runs out of stock, we will issue a full refund",
     },
   ],
+  commemorative:[
+    {
+      textureName: "Otumfuo Commemorative Fabric (1999-2019)",
+      textureDescription: `This fabric honors 20 years of Otumfuo Osei Tutu II’s reign (1999-2019) with the theme "Deepening Our Cultural Heritage Through Socio-Economic Development." It symbolizes Otumfuo's dedication to preserving Ashanti culture while promoting progress.`,
+      disclaimer: "Afroloom only sources this fabric from official outlets and does not produce it. In case of unavailability, a full refund will be provided.",
+      footNote: "Wear this fabric to celebrate Otumfuo’s legacy of leadership, cultural pride, and development."
+    }
+  ]
 };
 
 export const textureValues = {
@@ -284,6 +297,10 @@ export const textureValues = {
     price: 120,
     yardStart: 2,
   },
+  commemorative: {
+    price: 120,
+    yardStart: 2,
+  }
 };
 
 export const sizeOptions = [
