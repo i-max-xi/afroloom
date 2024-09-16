@@ -38,6 +38,10 @@ import africa from "../textures/diaspora/africa_LE_auto_x2.jpg";
 
 //commemerative
 import otumfuo from "../textures/commemorative/otumfuo.jpg";
+import asantenhene25thaniversary from "../textures/commemorative/1-imageonline.co-merged.jpeg"
+import asantenhene30thanniversary from "../textures/commemorative/gfsdg-imageonline.co-merged (1).jpeg"
+import ashantiflag from "../textures/commemorative/gh_ashanti-0000.jpg"
+import ghanaflag from "../textures/commemorative/ghana flag.jpg"
 
 export const colorBasePrice = 35;
 
@@ -151,7 +155,7 @@ export const textureArrays = {
     nailDesign45,
     nailDesign47,
   ],
-  commemorative: [otumfuo],
+  commemorative: [otumfuo, asantenhene25thaniversary, asantenhene30thanniversary, ashantiflag, ghanaflag],
 };
 
 export const textureDescriptions = {
@@ -280,6 +284,27 @@ export const textureDescriptions = {
       textureDescription: `This fabric honors 20 years of Otumfuo Osei Tutu II’s reign (1999-2019) with the theme "Deepening Our Cultural Heritage Through Socio-Economic Development." It symbolizes Otumfuo's dedication to preserving Ashanti culture while promoting progress.`,
       disclaimer: "Afroloom only sources this fabric from official outlets and does not produce it. In case of unavailability, a full refund will be provided.",
       footNote: "Wear this fabric to celebrate Otumfuo’s legacy of leadership, cultural pride, and development."
+    },
+    {
+      textureName: "Asantehene’s 25th Anniversary Cloth",
+      textureDescriptions: `Celebrate the 25th anniversary of Otumfuo Osei Tutu II with this commemorative fabric, designed to honor his reign and the rich cultural heritage of the Ashanti Kingdom. The intricate patterns reflect the depth of Ashanti traditions, symbolizing strength, unity, and leadership. Please note, we only source these fabrics from official producers, and Afroloom does not manufacture them. Fabric availability depends on stock from the original producers.`,
+      disclaimer: "Afroloom only sources this fabric from official outlets and does not produce it. In case of unavailability, a full refund will be provided.",
+    },
+    {
+      textureName: "Asantehene’s 25th Anniversary Fabric",
+      textureDescriptions: `Celebrate the 25th anniversary of Otumfuo Osei Tutu II with this commemorative fabric, designed to honor his reign and the rich cultural heritage of the Ashanti Kingdom. The intricate patterns reflect the depth of Ashanti traditions, symbolizing strength, unity, and leadership. Please note, we only source these fabrics from official producers, and Afroloom does not manufacture them. Fabric availability depends on stock from the original producers.`,
+      disclaimer: "Afroloom only sources this fabric from official outlets and does not produce it. In case of unavailability, a full refund will be provided.",
+    },
+    {
+      textureName: "Ashanti Flag Fabric",
+      textureDescriptions: `Celebrate the Ashanti Kingdom with our flag fabric, rich in symbolism. Black signifies strength and unity, Gold represents the kingdom's wealth and prosperity, and Green stands for fertility and the lushness of the land. Designed in the early 20th century, this fabric honors the Ashanti people’s enduring legacy. We source our fabrics from trusted producers to ensure authenticity and quality.`,
+      disclaimer: "Afroloom only sources this fabric from official outlets and does not produce it. In case of unavailability, a full refund will be provided.",
+    },
+    {
+      textureName: "Ghana Flag Fabric",
+      textureDescriptions: `Show your national pride with our Ghana flag fabric. Designed in 1957, the flag’s Red represents the struggle for independence, Yellow symbolizes the country’s wealth, and Green reflects its lush vegetation. The Black Star embodies African freedom and unity. We source our fabrics from reliable producers, focusing on genuine and high-quality representations of Ghanaian heritage.`,
+      disclaimer: "Afroloom only sources this fabric from official outlets and does not produce it. In case of unavailability, a full refund will be provided.",
+
     }
   ]
 };

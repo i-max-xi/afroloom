@@ -10,6 +10,8 @@ import otumfuoAlternate from "./textures/commemorative/otumfuo - Copy.jpg"
 import contiAlternate from "./textures/diaspora/conti_LE_auto_x2 - Copy.jpg";
 import africaAlternate from "./textures/diaspora/africa_LE_auto_x2 - Copy.jpg";
 import katangaAlternate from "./textures/diaspora/kat_LE_auto_x2 - Copy.jpg"
+ import AsanteheneAnniversaryAlternate from "./textures/commemorative/1-imageonline.co-merged - Copy.jpeg"
+import AsanteheneAnniversaryAlternate2 from "./textures/commemorative/gfsdg-imageonline.co-merged (1) - Copy.jpeg"
 
 function TextureItem({
   texture,
@@ -41,6 +43,8 @@ function TextureItem({
   const isConti = texture === "/static/media/conti_LE_auto_x2.0667fc423d7e70a224c6.jpg";
   const isAfrica = texture === "/static/media/africa_LE_auto_x2.b5dde7d4731a4ab88bf8.jpg";
   const isKatanga = texture === "/static/media/kat_LE_auto_x2.5dd9282e2e5bbcfe32d7.jpg";
+  const isAsanteheneAnniversary  = texture  === "/static/media/1-imageonline.co-merged.6daa3b6a171f9f9c0242.jpeg"
+  const isAsanteheneAnniversary2  = texture  === "/static/media/gfsdg-imageonline.co-merged (1).ed8bdf12e1c96c823397.jpeg"
 
   
 
@@ -63,6 +67,12 @@ function TextureItem({
     }
     else if (isKatanga) {
       return katangaAlternate;
+    }
+    else if (isAsanteheneAnniversary) {
+      return AsanteheneAnniversaryAlternate;
+    }
+    else if (isAsanteheneAnniversary2) {
+      return AsanteheneAnniversaryAlternate2;
     }
     else {
       return texture;
