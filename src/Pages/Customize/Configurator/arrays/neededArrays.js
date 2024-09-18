@@ -32,7 +32,7 @@ import waxPrint6 from "../textures/waxPrint/new/6. Sika nto nkwa.jpg";
 import conti from "../textures/diaspora/conti_LE_auto_x2.jpg";
 import katanga from "../textures/diaspora/kat_LE_auto_x2.jpg";
 import republic from "../textures/diaspora/repo_LE_auto_x2.jpg";
-import queens from "../textures/diaspora/queens_LE_auto_x2.jpg";
+import queens from "../textures/diaspora/A.png";
 import africa from "../textures/diaspora/africa_LE_auto_x2.jpg";
 
 
