@@ -36,7 +36,7 @@ function TextureItem({
   const needsAlternate =
     texture === "/static/media/10 medofo.84aa9ed3bbc49733e1bd.jpg";
 
-  const isRepu = texture === "/static/media/repo_LE_auto_x2.f50cd599f567fcdf3d85.jpg";
+  const isRepu = texture === "/static/media/repo_LE_auto_x2.42e321b653537455d23c.jpg";
   const isQueens = texture === "/static/media/A.d9379b965b715f313603.png";
 
   const isOtumfuo = texture === "/static/media/otumfuo.46a2fea2de6a31c52a17.jpg";
