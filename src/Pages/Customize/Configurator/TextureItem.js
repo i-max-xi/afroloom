@@ -36,13 +36,13 @@ function TextureItem({
   const needsAlternate =
     texture === "/static/media/10 medofo.84aa9ed3bbc49733e1bd.jpg";
 
-  const isRepu = texture === "/static/media/repo_LE_auto_x2.770e29e82ad95533f42c.jpg";
-  const isQueens = texture === "/static/media/queens_LE_auto_x2.84d204d5d99de62b1fef.jpg";
+  const isRepu = texture === "/static/media/repo_LE_auto_x2.8b9c6c272d2bde474f91.jpg";
+  const isQueens = texture === "/static/media/A.d9379b965b715f313603.png";
 
   const isOtumfuo = texture === "/static/media/otumfuo.46a2fea2de6a31c52a17.jpg";
-  const isConti = texture === "/static/media/conti_LE_auto_x2.0667fc423d7e70a224c6.jpg";
-  const isAfrica = texture === "/static/media/africa_LE_auto_x2.b5dde7d4731a4ab88bf8.jpg";
-  const isKatanga = texture === "/static/media/kat_LE_auto_x2.5dd9282e2e5bbcfe32d7.jpg";
+  const isConti = texture === "/static/media/conti_LE_auto_x2.2664c890c11e0c2e41f4.jpg";
+  const isAfrica = texture === "/static/media/africa_LE_auto_x2.734250be7396a37eb0e1.jpg";
+  const isKatanga = texture === "/static/media/kat_LE_auto_x2.be56f6fed5ea8f5a6faa.jpg";
   const isAsanteheneAnniversary  = texture  === "/static/media/1-imageonline.co-merged.6daa3b6a171f9f9c0242.jpeg"
   const isAsanteheneAnniversary2  = texture  === "/static/media/gfsdg-imageonline.co-merged (1).ed8bdf12e1c96c823397.jpeg"
 
