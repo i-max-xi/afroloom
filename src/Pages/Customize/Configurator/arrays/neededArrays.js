@@ -154,7 +154,7 @@ export const textureArrays = {
     nailDesign45,
     nailDesign47,
   ],
-  commemorative: [otumfuo, asantenhene25thaniversary, asantenhene30thanniversary],
+  commemorative: [otumfuo, asantenhene30thanniversary],
 };
 
 export const textureDescriptions = {
