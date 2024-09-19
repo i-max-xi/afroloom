@@ -300,19 +300,19 @@ export const textureDescriptions = {
 
 export const textureValues = {
   batik: {
-    price: 40,
+    price: 50,
     yardStart: 1,
   },
   waxPrint: {
-    price: 50,
+    price: 60,
     yardStart: 2,
   },
   Diaspora: {
-    price: 120,
+    price: 130,
     yardStart: 2,
   },
   commemorative: {
-    price: 120,
+    price: 130,
     yardStart: 2,
   }
 };
