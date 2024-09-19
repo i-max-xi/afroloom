@@ -308,11 +308,11 @@ export const textureValues = {
     yardStart: 2,
   },
   Diaspora: {
-    price: 120,
+    price: 130,
     yardStart: 2,
   },
   commemorative: {
-    price: 120,
+    price: 130,
     yardStart: 2,
   }
 };
