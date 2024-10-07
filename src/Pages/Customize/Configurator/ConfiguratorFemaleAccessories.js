@@ -157,7 +157,7 @@ const ConfiguratorFemaleAccessories = () => {
   // const [Price, setPrice] = useState(selectedClothing.price);
 
   const [selectedSize, setSelectedSize] = useState(1);
-  const [selectedPrintOn, setSelectedPrintOn] = useState(null);
+  const [selectedPrintOn, setSelectedPrintOn] = useState("#ffffff");
 
   const [selectedPart, setSelectedPart] = useState(0);
 
@@ -180,11 +180,16 @@ const ConfiguratorFemaleAccessories = () => {
     currencyFactor
   ).toFixed();
 
-  // useEffect(() => {
-  //   setPartPrices(selectedClothing.sizeOptions[1].colorPriceValue);
-  // }, []);
+   useEffect(() => {
+    const currentSize = selectedClothing.sizeOptions.find(
+      (size) => size.value === selectedSize,
+    );
 
-  const handleSizeChange = (factor, priceValue, colorPriceValue) => {
+    return setPartPrices(currentSize.colorPriceValue);
+    }, [selectedClothing.sizeOptions, selectedSize]);
+    
+
+  const handleSizeChange = (factor, priceValue) => {
     let newPartPrice;
     setSelectedSize(factor);
 
@@ -193,7 +198,12 @@ const ConfiguratorFemaleAccessories = () => {
     );
 
     if (!textureCategory) {
-      newPartPrice = colorPriceValue;
+      const currentSize = selectedClothing.sizeOptions.find(
+        (size) => size.value === selectedSize,
+      );
+      setPartPrices(currentSize.colorPriceValue)
+  
+      return setPartPrices(currentSize.colorPriceValue);
     }
 
     if (textureCategory && textureCategory === "waxPrint") {

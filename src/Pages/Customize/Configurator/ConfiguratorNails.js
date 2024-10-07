@@ -164,7 +164,7 @@ const ConfiguratorUnisex = () => {
 
   // const [Price, setPrice] = useState(selectedClothing.price);
 
-  const [selectedPrintOn, setSelectedPrintOn] = useState(null);
+  const [selectedPrintOn, setSelectedPrintOn] = useState("#ffffff");
 
   const [selectedPart, setSelectedPart] = useState(0);
 
