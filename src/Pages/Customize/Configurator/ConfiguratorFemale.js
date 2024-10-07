@@ -157,7 +157,7 @@ const ConfiguratorFemale = () => {
   // const [Price, setPrice] = useState(selectedClothing.price);
 
   const [selectedSize, setSelectedSize] = useState(1);
-  const [selectedPrintOn, setSelectedPrintOn] = useState(null);
+  const [selectedPrintOn, setSelectedPrintOn] = useState("#ffffff");
 
   const [selectedPart, setSelectedPart] = useState(0);
 
@@ -174,17 +174,25 @@ const ConfiguratorFemale = () => {
   const [colorPrice, setColorPrice] = useState(
     colorBasePrice * selectedClothing.myNode[0].yardNeeded,
   );
-  //total price
+  // total price
   const total = (
     (partPrices + selectedClothing.price) *
     currencyFactor
   ).toFixed();
 
-  useEffect(() => {
-    setPartPrices(selectedClothing.sizeOptions[1].colorPriceValue);
-  }, []);
+  
+  
 
-  const handleSizeChange = (factor, priceValue, colorPriceValue) => {
+  useEffect(() => {
+    const currentSize = selectedClothing.sizeOptions.find(
+      (size) => size.value === selectedSize,
+    );
+
+    return setPartPrices(currentSize.colorPriceValue);
+    }, [selectedClothing.sizeOptions, selectedSize]);
+    
+
+  const handleSizeChange = (factor, priceValue) => {
     let newPartPrice;
     setSelectedSize(factor);
 
@@ -193,7 +201,12 @@ const ConfiguratorFemale = () => {
     );
 
     if (!textureCategory) {
-      newPartPrice = colorPriceValue;
+      const currentSize = selectedClothing.sizeOptions.find(
+        (size) => size.value === selectedSize,
+      );
+      setPartPrices(currentSize.colorPriceValue)
+  
+      return setPartPrices(currentSize.colorPriceValue);
     }
 
     if (textureCategory && textureCategory === "waxPrint") {
@@ -210,6 +223,8 @@ const ConfiguratorFemale = () => {
 
     setPartPrices(newPartPrice);
   };
+
+
 
   const [showGlow, setShowGlow] = useState(false);
 

@@ -230,7 +230,18 @@ const ConfiguratorUnisex = () => {
     selectedClothing.price,
   ]);
 
-  const handleSizeChange = (factor, priceValue, colorPriceValue) => {
+
+  useEffect(() => {
+    const currentSize = selectedClothing.sizeOptions.find(
+      (size) => size.value === selectedSize,
+    );
+    
+
+    return setPartPrices(currentSize.colorPriceValue || 0);
+    }, [selectedClothing.sizeOptions, selectedSize]);
+    
+
+  const handleSizeChange = (factor, priceValue) => {
     let newPartPrice;
     setSelectedSize(factor);
 
@@ -239,8 +250,18 @@ const ConfiguratorUnisex = () => {
     );
 
     if (!textureCategory) {
-      newPartPrice = colorPriceValue;
-      return setPartPrices(newPartPrice);
+      const currentSize = selectedClothing.sizeOptions.find(
+        (size) => size.value === selectedSize,
+      );
+
+      if(currentSize.colorPriceValue){
+        return setPartPrices(currentSize.colorPriceValue);
+
+      }
+      else{
+        return setPartPrices(0);
+      }
+  
     }
 
     if (textureCategory && textureCategory === "waxPrint") {
@@ -254,57 +275,11 @@ const ConfiguratorUnisex = () => {
 
       newPartPrice = yardPrice + priceValue;
     }
+
     setPartPrices(newPartPrice);
   };
 
-  // const handleSizeChange = (factor) => {
-  //   let yardNeeded;
-  //   setSelectedSize(factor);
 
-  //   switch (factor) {
-  //     case 0.5:
-  //       yardNeeded = selectedClothing.otherYards.small;
-  //       break;
-
-  //     case 1:
-  //       yardNeeded = selectedClothing.myNode[0].yardNeeded;
-  //       break;
-
-  //     case 2:
-  //       yardNeeded = selectedClothing.otherYards.large;
-  //       break;
-
-  //     case 3:
-  //       yardNeeded = selectedClothing.otherYards.extraLarge;
-  //       break;
-
-  //     case 4:
-  //       yardNeeded = selectedClothing.otherYards.extraExtraLarge;
-  //       break;
-
-  //     default:
-  //       break;
-  //   }
-
-  //   const textureCategory = Object.keys(textureArrays).find((category) =>
-  //     textureArrays[category].includes(selectedTexture)
-  //   );
-
-  //   const yardPrice = textureValues[textureCategory]?.price;
-  //   const yardStart = textureValues[textureCategory]?.yardStart;
-
-  //   let newPartPrice;
-
-  //   if (!yardPrice || !yardStart) {
-  //     setColorPrice(yardNeeded * colorBasePrice);
-  //     return;
-  //   } else {
-  //     newPartPrice =
-  //       yardStart === 2 ? yardNeeded * (yardPrice / 2) : yardNeeded * yardPrice;
-  //   }
-
-  //   setPartPrices(newPartPrice);
-  // };
 
   const [showGlow, setShowGlow] = useState(false);
 
@@ -642,29 +617,11 @@ const ConfiguratorUnisex = () => {
     state.texture[selectedPart] = null;
     setSelectedPrintOn(newColor);
 
-    // const currentSize = selectedClothing.sizeOptions.find(
-    //   (size) => size.value === selectedSize
-    // );
-
-    // setPartPrices(currentSize.colorPriceValue);
+   
     setShowGlow(false);
   };
 
-  // const handleColorChange = (newColor) => {
-  //   if (selectedPart === "all") {
-  //     state.texture = Array(selectedClothing.myNode.length).fill(null);
-  //     state.color = Array(selectedClothing.myNode.length).fill(newColor);
-  //     setSelectedPrintOn(newColor);
-  //     return;
-  //   }
 
-  //   state.color[selectedPart] = newColor;
-  //   state.texture[selectedPart] = null;
-  //   setSelectedPrintOn(newColor);
-
-  //   setPartPrices(0);
-  //   setShowGlow(false);
-  // };
 
   const handleTextureChange = (newTexture) => {
     if (selectedPart !== null) {
@@ -696,44 +653,6 @@ const ConfiguratorUnisex = () => {
     setShowGlow(false);
   };
 
-  // const handleTextureChange = (newTexture) => {
-  //   if (selectedPart === "all") {
-  //     state.texture = Array(selectedClothing.myNode.length).fill(newTexture);
-  //     state.color = Array(selectedClothing.myNode.length).fill(null);
-  //     setSelectedPrintOn(newTexture);
-
-  //     const textureCategory = Object.keys(textureArrays).find((category) =>
-  //       textureArrays[category].includes(newTexture)
-  //     );
-
-  //     const newPartPrice = textureValues[textureCategory];
-
-  //     setPartPrices(Array(selectedClothing.myNode.length).fill(newPartPrice));
-  //     return;
-  //   }
-
-  //   if (selectedPart !== null) {
-  //     state.texture[selectedPart] = newTexture;
-  //     state.color[selectedPart] = null;
-  //     setSelectedPrintOn(newTexture);
-  //     setSelectedTexture(newTexture); // needed to transfer to size
-
-  //     const textureCategory = Object.keys(textureArrays).find((category) =>
-  //       textureArrays[category].includes(newTexture)
-  //     );
-
-  //     const yardNeeded = selectedClothing.myNode[selectedPart].yardNeeded;
-  //     const yardPrice = textureValues[textureCategory].price;
-  //     const yardStart = textureValues[textureCategory].yardStart;
-
-  //     const newPartPrice =
-  //       yardStart === 2 ? yardNeeded * (yardPrice / 2) : yardNeeded * yardPrice;
-
-  //     setPartPrices(newPartPrice);
-  //   }
-
-  //   setShowGlow(false);
-  // };
 
   const handleRotation = () => {
     setIsRotating((prev) => !prev);
