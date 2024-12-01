@@ -21,7 +21,7 @@ const ListItem = ({
         <img
           src={image}
           alt={title}
-          className="object-cover lg:h-72 bg-white aspect-square rounded-xl"
+          className="object-cover lg:h-96 bg-white aspect-square rounded-xl"
           // style={{borderRadius: "2rem"}}
         />
       )}

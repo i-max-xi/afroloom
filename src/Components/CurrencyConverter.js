@@ -156,6 +156,7 @@ const CurrencyConverter = () => {
         style={{ width: "100%" }}
         appendTo={document.body}
         virtualScrollerOptions={{ itemSize: 35 }} // Adjust the itemSize based on your needs
+        className="rounded-lg border "
       />
     </div>
   );

@@ -906,7 +906,7 @@ const ConfiguratorUnisex = () => {
               </button>
             </div>
             <div className="lg:grid grid-cols-1 lg:gap-5 flex flex-col-reverse lg:grid-cols-2 container my-3">
-              <div className="left-panel rounded border ">
+              <div className="left-panel rounded border lg:h-96">
                 {!notAll.includes(selectedClothing.name) && (
                   <h5>Select Part</h5>
                 )}
