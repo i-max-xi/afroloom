@@ -51,7 +51,7 @@ const ImageUpload = ({
 
   return (
     <>
-      <label className="upload-label" htmlFor="upload-logo-left">
+      <label className="cursor-pointer bg-[#3C9FEF] py-2 px-4 text-white rounded-md" htmlFor="upload-logo-left">
         {labelLeft}
       </label>
       <input
@@ -62,7 +62,7 @@ const ImageUpload = ({
       />
       {!hideRightButton && (
         <>
-          <label className="upload-label" htmlFor="upload-logo-right">
+          <label className="cursor-pointer bg-[#3C9FEF] py-2 px-4 text-white rounded-md"  htmlFor="upload-logo-right">
             {labelRight}
           </label>
           <input

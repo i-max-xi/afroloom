@@ -877,7 +877,7 @@ const ConfiguratorUnisex = () => {
             <h3 className="text-center pt-3">
               Customizing {selectedClothing.name}
             </h3>
-            <div className="d-flex justify-content-center">
+            <div className="flex justify-content-center">
               {noSpinFor.includes(selectedClothing.name) ? null : (
                 <button
                   className={`btn rotation-button text-white  ${
@@ -898,15 +898,15 @@ const ConfiguratorUnisex = () => {
               )}
 
               <button
-                className="btn btn-info text-white mx-3"
+                className="cursor-pointer bg-[#3C9FEF] py-2 px-4 text-white rounded-md"
                 // style={{ float: "right" }}
                 onClick={handleRetakeTour}
               >
                 Take Tour
               </button>
             </div>
-            <div className="configurator-container container">
-              <div className="left-panel rounded shadow">
+            <div className="lg:grid grid-cols-1 lg:gap-5 flex flex-col-reverse lg:grid-cols-2 container my-3">
+              <div className="left-panel rounded border ">
                 {!notAll.includes(selectedClothing.name) && (
                   <h5>Select Part</h5>
                 )}
@@ -1268,101 +1268,15 @@ const ConfiguratorUnisex = () => {
                         <CameraControls />
                       )}
                     </Canvas>
-                    {/* {isLoading === false &&
-                      noSpinFor.includes(selectedClothing.name) &&
-                      selectedClothing.name !== "Beads Bracelet" &&
-                      (uploadedImageLeft ? (
-                        <div
-                          ref={imageLeftRef}
-                          style={{
-                            transform: `translate(${ImprintTextPosition.left?.image?.left}, ${ImprintTextPosition?.left?.image?.top})`,
-                            width:
-                              ImprintTextPosition.left?.image?.width || "8%",
-                            overflow: "hidden",
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "center",
-                            maxHeight:
-                              ImprintTextPosition.left?.image?.maxHeight ||
-                              "1.5rem",
-                          }}
-                        >
-                          <img
-                            src={uploadedImageLeft}
-                            alt="Uploaded Texture"
-                            width="100%"
-                            height="100%"
-                          />
-                        </div>
-                      ) : (
-                        <div
-                          style={{
-                            fontSize: "0.5rem",
-                            opacity: 0.5,
-                            transform: `translate(${ImprintTextPosition.left?.placeholder?.left}, ${ImprintTextPosition?.left?.placeholder?.top})`,
-                            width:
-                              ImprintTextPosition.left?.placeholder?.width ||
-                              "8%",
-                            zIndex: 1,
-                          }}
-                        >
-                          {selectedClothing.name === "Text Up, Image Down Sash"
-                            ? "Image here"
-                            : "Logo here"}
-                        </div>
-                      ))}
-                    {isLoading === false &&
-                      noSpinFor.includes(selectedClothing.name) &&
-                      selectedClothing.name !== "Beads Bracelet" &&
-                      selectedClothing.name !==
-                        "One-Sided Logo, Two-Sided Text Sash" &&
-                      (uploadedImageRight ? (
-                        <div
-                          ref={imageRightRef}
-                          style={{
-                            transform: `translate(${ImprintTextPosition.right?.image?.left}, ${ImprintTextPosition.right?.image?.top})`,
-                            width:
-                              ImprintTextPosition.right?.image?.width || "8%",
-                            overflow: "hidden",
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "center",
-                            maxHeight:
-                              ImprintTextPosition.right?.image.maxHeight ||
-                              "1.5rem",
-                          }}
-                        >
-                          <img
-                            src={uploadedImageRight}
-                            alt="Uploaded Texture"
-                            width="100%"
-                            height="100%"
-                          />
-                        </div>
-                      ) : (
-                        <div
-                          style={{
-                            fontSize: "0.5rem",
-                            opacity: 0.5,
-                            transform: `translate(${ImprintTextPosition.right?.placeholder?.left}, ${ImprintTextPosition.right?.placeholder?.top})`,
-                            width:
-                              ImprintTextPosition.right?.placeholder?.width ||
-                              "8%",
-                          }}
-                        >
-                          {selectedClothing.name === "Text Up, Image Down Sash"
-                            ? "Image here"
-                            : "Logo here"}
-                        </div>
-                      ))} */}
+                    
                   </div>
 
                   {noSpinFor.includes(selectedClothing.name) && (
                     <div className="px-2 pt-2 w-100 text-image-imprint">
                       {/* test text inprinting */}
-                      <h5>Imprint text on model</h5>
-                      <div className="d-flex text-image-imprint-wrapper">
-                        <div className="inputs">
+                      <h5 className="text-lg">Imprint text on model</h5>
+                      <div className="flex lg:flex-col text-image-imprint-wrapper">
+                        <div className="flex justify-between gap-2">
                           <InputText
                             type="text"
                             className="p-inputtext-sm"
@@ -1399,12 +1313,12 @@ const ConfiguratorUnisex = () => {
                           )}
                         </div>
                         <h5
-                          className="d-flex edit-text flex-column mt-1"
+                          className="flex  edit-text flex-col mt-1 cursor-pointer"
                           onClick={(e) => textEditRef.current.toggle(e)}
                         >
-                          <span>
+                          <span className="text-lg">
                             Edit Text
-                            <i className={"pi pi-chevron-right mx-2"}></i>
+                            <i className={"pi pi-chevron-right mx-2 text-xs"}></i>
                           </span>
                         </h5>
                         <OverlayPanel
@@ -1415,12 +1329,12 @@ const ConfiguratorUnisex = () => {
                             minWidth: "15rem",
                           }}
                         >
-                          <div className="flex-column imprint-options">
-                            <h6>Color</h6>
+                          <div className="flex flex-col w-full gap-2">
+                            <h6 className="text-base font-medium">Color</h6>
                             {selectedClothing.name === "Beads Bracelet" ? (
                               "N/A"
                             ) : (
-                              <div className="d-flex">
+                              <div className="flex">
                                 <Carousel
                                   value={colorOptions.slice(0, 6)}
                                   numVisible={isMobile ? 4 : 7}
@@ -1445,18 +1359,18 @@ const ConfiguratorUnisex = () => {
                               </div>
                             )}
 
-                            <h6>Style</h6>
-                            <div className="d-flex gap-2 justify-content-center fs-button">
+                            <h6 className="text-sm font-normal">Style</h6>
+                            <div className="flex gap-2  fs-button">
                               <span className="font-size">{fontFamily}</span>
                               <button
-                                className="btn btn-info btn-sm p-2 text-white"
+                                className="p-1 px-2 bg-[#3C9FEF] text-white rounded-full hover:bg-[#3C9FEF]/70 focus:outline-none"
                                 onClick={handleChangeFont}
                               >
                                 <i className="pi pi-sync"></i>
                               </button>
                             </div>
 
-                            <h6 className="mt-3">
+                            <h6 className="text-base font-medium">
                               Size{" "}
                               {selectedClothing.name === "Beads Bracelet"
                                 ? null
@@ -1464,14 +1378,14 @@ const ConfiguratorUnisex = () => {
                             </h6>
                             <div className="d-flex  gap-2 justify-content-center align-items-center fs-button">
                               <button
-                                className="btn btn-info btn-sm p-2 text-white"
+                                className="p-1 px-2 bg-[#3C9FEF] text-white rounded-full hover:bg-[#3C9FEF]/70 focus:outline-none"
                                 onClick={decreaseFontSizeLeft}
                               >
                                 -
                               </button>
                               <span className="font-size">{fontSizeLeft}</span>
                               <button
-                                className="btn btn-info btn-sm p-2 text-white"
+                                className="p-1 px-2 bg-[#3C9FEF] text-white rounded-full hover:bg-[#3C9FEF]/70 focus:outline-none"
                                 onClick={increaseFontSizeLeft}
                               >
                                 +
@@ -1481,10 +1395,10 @@ const ConfiguratorUnisex = () => {
                             {selectedClothing.name ===
                             "Beads Bracelet" ? null : (
                               <>
-                                <h6 className="mt-3">Size (Right)</h6>
+                                <h6 className="text-base font-medium">Size (Right)</h6>
                                 <div className="d-flex  gap-2 justify-content-center align-items-center fs-button">
                                   <button
-                                    className="btn btn-info btn-sm p-2 text-white"
+                                    className="p-1 px-2 bg-[#3C9FEF] text-white rounded-full hover:bg-[#3C9FEF]/70 focus:outline-none"
                                     onClick={decreaseFontSizeRight}
                                   >
                                     -
@@ -1493,7 +1407,7 @@ const ConfiguratorUnisex = () => {
                                     {fontSizeRight}
                                   </span>
                                   <button
-                                    className="btn btn-info btn-sm p-2 text-white"
+                                    className="p-1 px-2 bg-[#3C9FEF] text-white rounded-full hover:bg-[#3C9FEF]/70 focus:outline-none"
                                     onClick={increaseFontSizeRight}
                                   >
                                     +
@@ -1502,35 +1416,13 @@ const ConfiguratorUnisex = () => {
                               </>
                             )}
 
-                            {/* <div>
-                              <h6>Orientation</h6>
-                              <div className="d-flex justify-content-around  gap-4">
-                                <div className="d-flex gap-1 align-items-center justify-content-center">
-                                  Toggle Left
-                                  <button
-                                    className="btn btn-info btn-sm p-2 text-white"
-                                    onClick={handleLeftTextOrientation}
-                                  >
-                                    <i className="pi pi-sync"></i>
-                                  </button>
-                                </div>
-                                <div className="d-flex gap-1 align-items-center justify-content-center">
-                                  Toggle Right
-                                  <button
-                                    className="btn btn-info btn-sm p-2 text-white"
-                                    onClick={handleRightTextOrientation}
-                                  >
-                                    <i className="pi pi-sync"></i>
-                                  </button>
-                                </div>
-                              </div>
-                            </div> */}
+                            
                           </div>
                         </OverlayPanel>
                         {selectedClothing.name === noSpinFor[0] ? null : (
                           <>
-                            <h5>Imprint images or Logos</h5>
-                            <div className="image-uploads">
+                            <h5 className="text-sm lg:text-lg">Imprint images or Logos</h5>
+                            <div className="flex justify-between gap-2">
                               <ImageUpload
                                 labelLeft={"Upload for left"}
                                 labelRight={"Upload for right"}
@@ -1552,7 +1444,7 @@ const ConfiguratorUnisex = () => {
               </div>
             </div>
           </div>
-          <div className="price w-100 d-flex bg-dark text-white justify-content-between">
+          <div className="price w-100 d-flex bg-dark text-white justify-content-between lg:mt-5">
             <span className="m-3 expect-to-be-ready">
               Estimated time to make this order:{" "}
               <span className="customize-focus">

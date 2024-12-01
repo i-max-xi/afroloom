@@ -21,7 +21,7 @@ import nailDesign44 from "../textures/nail designs/new/2ed2d.jpg";
 import nailDesign45 from "../textures/nail designs/new/4.jpg";
 import nailDesign47 from "../textures/nail designs/new/fwef.jpg";
 
-import waxPrint1 from "../textures/waxPrint/new/1 dade3 mpadua.jpg";
+// import waxPrint1 from "../textures/waxPrint/new/1 dade3 mpadua.jpg";
 import waxPrint2 from "../textures/waxPrint/new/2. ayeyi wura.jpg";
 import waxPrint3 from "../textures/waxPrint/new/3. 8 8.jpg";
 import waxPrint4 from "../textures/waxPrint/new/4. A B C.jpg";
@@ -40,6 +40,9 @@ import africa from "../textures/diaspora/africa_LE_auto_x2.jpg";
 import otumfuo from "../textures/commemorative/otumfuo.jpg";
 import asantenhene25thaniversary from "../textures/commemorative/1-imageonline.co-merged.jpeg"
 import asantenhene30thanniversary from "../textures/commemorative/gfsdg-imageonline.co-merged (1).jpeg"
+
+
+const waxPrint1 = "https://firebasestorage.googleapis.com/v0/b/shopinafrica-c84cf.appspot.com/o/texture%2F1%20dade3%20mpadua.jpg?alt=media&token=d7fb314a-7d6a-477a-acce-fabfb2d2cfd5"
 
 
 export const colorBasePrice = 35;

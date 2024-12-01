@@ -32,7 +32,6 @@ import {
   colorBasePrice,
 } from "./arrays/neededArrays";
 import TextureItem from "./TextureItem";
-import PartImages from "./PartImages";
 import WelcomeTour, { tourSteps } from "./WelcomeTour";
 import { InputNumber } from "primereact/inputnumber";
 
@@ -95,6 +94,36 @@ const Shirt = ({
     return () => clearTimeout(loadingTimeout); // Cleanup the timeout if component unmounts
   }, []);
 
+
+  const [loadedTextures, setLoadedTextures] = useState([]);
+
+useEffect(() => {
+  const loader = new TextureLoader();
+
+  loader.setCrossOrigin('anonymous'); // Set cross-origin on the loader
+
+
+
+  const texturePromises = selectedClothing.myNode.map((_, index) => {
+    const textureUrl = snap.texture[index];
+    return textureUrl
+      ? new Promise((resolve, reject) => {
+          loader.load(
+            textureUrl,
+            (texture) => resolve(texture),
+            undefined,
+            (error) => reject(error)
+          );
+        })
+      : Promise.resolve(null);
+  });
+
+  Promise.all(texturePromises)
+    .then((textures) => setLoadedTextures(textures))
+    .catch((error) => console.error("Error loading textures:", error));
+}, [snap.texture, selectedClothing.myNode]);
+
+
   return (
     <group ref={groupRef}>
       {isLoading ? (
@@ -108,7 +137,7 @@ const Shirt = ({
             ? snap.color[index] || "#333333"
             : snap.color[index] || "#ffffff";
 
-          const texture = snap.texture[index] || null;
+          // const texture = snap.texture[index] || null;
 
           return (
             <mesh
@@ -120,7 +149,7 @@ const Shirt = ({
               <meshStandardMaterial
                 attach="material"
                 color={color}
-                map={texture && new TextureLoader().load(texture)}
+                map={loadedTextures[index]}
                 roughness={1}
                 emissive={selectedPart === index ? "#FF8C00" : null} // Apply golden glow if part is selected
                 emissiveIntensity={showGlow && selectedPart === index ? 2 : 0} // Adjust glow intensity
