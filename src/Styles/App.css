@@ -2,27 +2,80 @@
   --light-red: rgb(255, 72, 0);
   --orange: #ffc107;
   --red: red;
+  --light-text: #2b2626;
   font-size: 16px;
 }
 .allBg {
   background-color: rgba(197, 195, 195, 0.165);
   overflow-x: hidden;
+  font-family: roboto;
+}
+
+.auth-alternative > a {
+  color: var(--orange);
+}
+
+.p-column-header-content {
+  /* padding: 0 5rem !important; */
+  width: 10rem !important;
+}
+
+/* Avatar.css */
+.p-avatar.p-avatar-circle {
+  border-radius: 50% !important;
+  width: auto;
+  height: auto;
+}
+
+.nav-item {
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+.footer-icon-sub-title {
+  display: flex;
+  flex-direction: column;
+  gap: 1;
+  line-height: 0.2rem;
+}
+
+.footer-icon-sub-title > p {
+  display: block;
+}
+
+/* .Sidebar .p-sidebar-content {
+  height: 20vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+} */
+
+.password > .p-input-icon-right > i {
+  margin-top: -1.2rem !important;
+}
+
+.p-tabview .p-tabview-nav {
+  display: none !important;
 }
 
 .hero-section {
   /* margin-top: 0; */
   border-bottom-left-radius: 25% 45px;
   background-color: white;
-  padding: 70px 30px;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-.hero-section > img {
+.hero-body {
+  padding: 30px;
+}
+
+/* .hero-section > img {
   width: 50%;
   align-self: center;
-}
+} */
 
 .hero-bottom {
   display: flex;

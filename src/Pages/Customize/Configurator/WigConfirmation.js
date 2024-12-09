@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useReactToPrint } from "react-to-print";
 import html2canvas from "html2canvas";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { InputTextarea } from "primereact/inputtextarea";
 
 import { app } from "../../../firebase"; // Import your firebase app object
@@ -13,9 +13,8 @@ import {
 } from "firebase/storage";
 import { Toast } from "primereact/toast";
 import { ProgressSpinner } from "primereact/progressspinner";
-import { set3DItemDetails, setItemDataSheet } from "../../../Redux/store";
+import { addToCart } from "../../../Redux/store";
 import { useDispatch, useSelector } from "react-redux";
-import { parseTitle } from "../../../utils/functions";
 import { Divider } from "primereact/divider";
 
 const WigConfirmation = ({
@@ -31,7 +30,9 @@ const WigConfirmation = ({
 }) => {
   const toast = useRef(null);
   const [isLoading, setIsLoading] = useState(false); // Initialize loading state
+  const [addedToCart, setAddedToCart] = useState(false);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [count, setCount] = useState(1);
   const [special, setSpecial] = useState("");
@@ -91,15 +92,16 @@ const WigConfirmation = ({
           selectedColor: selectedColor,
           specialRequests: special,
           allSpecifications,
+          dataSheet: downloadURL,
 
           // Other properties specific to your object
         },
       ];
 
-      dispatch(set3DItemDetails(formData));
-      dispatch(setItemDataSheet(downloadURL));
+      dispatch(addToCart(formData));
 
       setIsLoading(false);
+      setAddedToCart(true);
       toast.current.show({
         severity: "info",
         summary: "Order Confirmed",
@@ -110,7 +112,8 @@ const WigConfirmation = ({
               Proceed to{" "}
               <Link to="/customize-checkout" className="btn btn-success">
                 Checkout
-              </Link>
+              </Link>{" "}
+              when ready
             </p>
           </div>
         ),
@@ -151,26 +154,34 @@ const WigConfirmation = ({
       />
       <div className="container justify-content-center">
         <div className="d-flex">
-          <button className="btn btn-outline-success" onClick={handlePrint}>
-            Download Copy
-          </button>
-          <button
-            disabled={isLoading}
-            className="btn btn-success mx-3 position-relative"
-            onClick={handleFormSubmit}
-          >
-            <span className="spinner-container">
-              {isLoading && (
-                <ProgressSpinner
-                  style={{ width: "1.5rem", height: "1.5rem" }}
-                  strokeWidth="8"
-                  fill="var(--surface-ground)"
-                  className="position-absolute top-50 start-50 translate-middle"
-                />
-              )}
-            </span>
-            Confirm Order
-          </button>
+          <p>
+            <button className="btn btn-outline-success" onClick={handlePrint}>
+              Download Copy
+            </button>
+            <p style={{ fontSize: "0.7rem" }}>For effective transparency</p>
+          </p>
+
+          <p>
+            <button
+              disabled={isLoading}
+              className={`btn ${addedToCart ? "btn-warning text-white" : "btn-success"} mx-3 position-relative`}
+              onClick={
+                addedToCart ? navigate("/start-customize") : handleFormSubmit
+              }
+            >
+              <span className="spinner-container">
+                {isLoading && (
+                  <ProgressSpinner
+                    style={{ width: "1.5rem", height: "1.5rem" }}
+                    strokeWidth="8"
+                    fill="var(--surface-ground)"
+                    className="position-absolute top-50 start-50 translate-middle"
+                  />
+                )}
+              </span>
+              {addedToCart ? "Order Again" : "Add To Cart"}
+            </button>
+          </p>
         </div>
 
         <p className="h5 mt-4">Thank you for your order!</p>
@@ -205,7 +216,7 @@ export const OrderDetail = React.forwardRef(
 
       selectedColor,
     },
-    ref
+    ref,
   ) => {
     const currencySymbol = useSelector((state) => state.currencySymbol.symbol);
     const currencyFactor = useSelector((state) => state.currencySymbol.factor);
@@ -229,7 +240,7 @@ export const OrderDetail = React.forwardRef(
                   </span> */}
                   <br />
                   <span className="fw-bold">Price: </span>
-                  {currencySymbol + (currencyFactor * total * count).toFixed(2)}
+                  {currencySymbol + (currencyFactor * total * count).toFixed()}
                 </div>
               </div>
               <div>
@@ -268,7 +279,7 @@ export const OrderDetail = React.forwardRef(
 
                         {index !== allSpecifications.length - 1 && <Divider />}
                       </div>
-                    )
+                    ),
                 )}
               </div>
             </li>
@@ -295,7 +306,7 @@ export const OrderDetail = React.forwardRef(
         </div>
       </div>
     );
-  }
+  },
 );
 
 export default WigConfirmation;

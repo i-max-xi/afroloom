@@ -58,7 +58,7 @@ const bangles = require("../Assets/welcome_3ds/others/bangles.jpg");
 const earring = require("../Assets/welcome_3ds/others/earring.jpg");
 const image_bikini = require("../Assets/welcome_3ds/female/bikini.png");
 const image_sash_logos_both_down = require("../Assets/welcome_3ds/others/sash_both_logos_down.jpg");
-const image_sash_logos_one_up_one_down = require("../Assets/welcome_3ds/others/sash_one_up_one_down.jpg");
+const image_sash_logos_one_up_one_down = require("../Assets/welcome_3ds/others/sash_one_up_one_down.png");
 const image_sash_with_images = require("../Assets/welcome_3ds/others/sash_with_image.jpg");
 const image_sash_striped_edge = require("../Assets/welcome_3ds/others/sash_with_edges.png");
 
@@ -76,43 +76,50 @@ const box_braid_brown = require("../Assets/welcome_3ds/others/Wig/box_braid/brow
 const box_braid_wine = require("../Assets/welcome_3ds/others/Wig/box_braid/wine.png");
 
 // body wave
-const body_wave = require("../Assets/welcome_3ds/others/Wig/body_wave/body wave wig profile pic.jpg");
+const body_wave_profile = require("../Assets/welcome_3ds/others/Wig/body_wave/body wavee.jpg");
 const BL_66040_1 = require("../Assets/welcome_3ds/others/Wig/body_wave/BL_66040-1-.png");
 const BL_11017_1 = require("../Assets/welcome_3ds/others/Wig/body_wave/BL11017-1-.png");
-const BL_11018_1 = require("../Assets/welcome_3ds/others/Wig/body_wave/BL11018-1-.png");
+// const BL_11018_1 = require("../Assets/welcome_3ds/others/Wig/body_wave/BL11018-1-.png");
 const BL_11026_1 = require("../Assets/welcome_3ds/others/Wig/body_wave/BL11026-1.png");
 const BL_11036_1 = require("../Assets/welcome_3ds/others/Wig/body_wave/BL11036-1-.png");
-const BL_66010_1 = require("../Assets/welcome_3ds/others/Wig/body_wave/BL66010-1.png");
-const BL_66060_1 = require("../Assets/welcome_3ds/others/Wig/body_wave/BL66060-1-.png");
-const BL_66069_1 = require("../Assets/welcome_3ds/others/Wig/body_wave/BL66069-1-.png");
-const BL_66084_1 = require("../Assets/welcome_3ds/others/Wig/body_wave/BL66084-1.png");
-const BL_66110_1 = require("../Assets/welcome_3ds/others/Wig/body_wave/BL66110-1-.png");
-const BL_66111_1 = require("../Assets/welcome_3ds/others/Wig/body_wave/BL66111-1-.png");
-const BL_66122_1 = require("../Assets/welcome_3ds/others/Wig/body_wave/BL66122-1-.png");
+// const BL_66010_1 = require("../Assets/welcome_3ds/others/Wig/body_wave/BL66010-1.png");
+// const BL_66060_1 = require("../Assets/welcome_3ds/others/Wig/body_wave/BL66060-1-.png");
+// const BL_66069_1 = require("../Assets/welcome_3ds/others/Wig/body_wave/BL66069-1-.png");
+// const BL_66084_1 = require("../Assets/welcome_3ds/others/Wig/body_wave/BL66084-1.png");
+// const BL_66110_1 = require("../Assets/welcome_3ds/others/Wig/body_wave/BL66110-1-.png");
+// const BL_66111_1 = require("../Assets/welcome_3ds/others/Wig/body_wave/BL66111-1-.png");
+// const BL_66122_1 = require("../Assets/welcome_3ds/others/Wig/body_wave/BL66122-1-.png");
 
 //bone straight
-const burgary = require("../Assets/welcome_3ds/others/Wig/bone straight/burgandy_bone_straight-.jpg");
-const blonde = require("../Assets/welcome_3ds/others/Wig/bone straight/blonde_bone_straight-.png");
-const natural = require("../Assets/welcome_3ds/others/Wig/bone straight/natural_black_bone_straight-.png");
-const bone_straight_profile = require("../Assets/welcome_3ds/others/Wig/bone straight/bone straight profile pic.png");
-const brown = require("../Assets/welcome_3ds/others/Wig/bone straight/brown_bone_straight-.jpg");
+const bone_staright_profile = require("../Assets/welcome_3ds/others/Wig/bone straight/bone straigt.jpg");
+const burgary = require("../Assets/welcome_3ds/others/Wig/bone straight/burgandy_bone_straight-removebg-preview.png");
+const blonde = require("../Assets/welcome_3ds/others/Wig/bone straight/blonde_bone__straight-removebg-preview.png");
+const natural = require("../Assets/welcome_3ds/others/Wig/bone straight/natural_black_bone_straight-removebg-preview.png");
+const brown = require("../Assets/welcome_3ds/others/Wig/bone straight/brown_bone__straight-removebg-preview.png");
 
 //deep wave
-const deepWaveburgundy = require("../Assets/welcome_3ds/others/Wig/deep_wave/burgandy deeo wave.png");
-const deepWaveblonde = require("../Assets/welcome_3ds/others/Wig/deep_wave/blode deep wave.jpg");
-const deepWaveNatural = require("../Assets/welcome_3ds/others/Wig/deep_wave/natural black deep wave.jpg");
-const deep_wave_profile = require("../Assets/welcome_3ds/others/Wig/deep_wave/deep wave profile pic.png");
+const deepWavebrown = require("../Assets/welcome_3ds/others/Wig/deep_wave/brown_deep_wave-removebg-preview.png");
+const deepWaveblonde_ombre = require("../Assets/welcome_3ds/others/Wig/deep_wave/blond_ombre_deep_wave-removebg-preview.png");
+const deepWaveNatural = require("../Assets/welcome_3ds/others/Wig/deep_wave/natural_black_deep_wave-removebg-preview.png");
+const deepWaveHoneyBlondeOmbre = require("../Assets/welcome_3ds/others/Wig/deep_wave/honey_blonde_ombre_deepp_wave-removebg-preview.png");
+const deep_wave_profile = require("../Assets/welcome_3ds/others/Wig/deep_wave/deep wavee.jpg");
 
 //straight hair
-const straight_profile = require("../Assets/welcome_3ds/others/Wig/straight_hair/straight hair profile pic.png");
-const straight_blonde = require("../Assets/welcome_3ds/others/Wig/straight_hair/blonde straight hair.jpg");
-const straight_black = require("../Assets/welcome_3ds/others/Wig/straight_hair/natural black staight hair.png");
-const straight_red = require("../Assets/welcome_3ds/others/Wig/straight_hair/burgundy straight hair.jpg");
+const straight_profile = require("../Assets/welcome_3ds/others/Wig/straight_hair/straigt.jpg");
+const straight_blonde = require("../Assets/welcome_3ds/others/Wig/straight_hair/blonde straight.png");
+const straight_black = require("../Assets/welcome_3ds/others/Wig/straight_hair/natural black straight.png");
+const straight_highlights = require("../Assets/welcome_3ds/others/Wig/straight_hair/Honey Blonde Highlight straight.png");
 
 //jerry curl
-const jerry_burgundy = require("../Assets/welcome_3ds/others/Wig/jerry_curl/burgandy-jerry curly.png");
-const jerry_blonde = require("../Assets/welcome_3ds/others/Wig/jerry_curl/blond jerry curl.png");
-const jerry_profile = require("../Assets/welcome_3ds/others/Wig/jerry_curl/jerry curls profile pic.png");
+const jerry_black = require("../Assets/welcome_3ds/others/Wig/jerry_curl/black-jerry-curl-removebg-preview.png");
+const jerry_burgundy = require("../Assets/welcome_3ds/others/Wig/jerry_curl/burgandy-jerry-curl-webp-removebg-preview.png");
+const jerry_ombre = require("../Assets/welcome_3ds/others/Wig/jerry_curl/ombre_jerry-curl-removebg-preview.png");
+const jerry_profile = require("../Assets/welcome_3ds/others/Wig/jerry_curl/jerry curll.jpg");
+
+//pixie curl
+const pixie_profile = require("../Assets/welcome_3ds/others/Wig/pixie_curl/pixie.jpg");
+const pixie_black = require("../Assets/welcome_3ds/others/Wig/pixie_curl/natural_black_pixie_curl-removebg-preview.png");
+const pixie_ombre = require("../Assets/welcome_3ds/others/Wig/pixie_curl/ombre_pixie_curl-removebg-preview.png");
 
 export const mainUnisex = [
   {
@@ -204,33 +211,29 @@ export const mainUnisex = [
   {
     id: uuid(),
     name: "Straight Hair Wig",
-    // image: straight_profile,
-    image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR-RVAUN2TVBo7_neZczkqVgdgtlxJqA-gXFLXBqPBshRu1tHGKAzmfwAoJSuITiRDxwl8&usqp=CAU",
+    image: straight_profile,
+
     price: 100,
     readyIn: 7,
     link: "/configurator-wig/Straight Hair Wig",
-    colorVariants: [straight_black, straight_blonde, straight_red],
+    colorVariants: [straight_black, straight_blonde, straight_highlights],
     sizeGuide: hair_guide,
   },
   {
     id: uuid(),
     name: "Jerry Curl Wig",
-    // image: jerry_profile,
-    image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQqVJFwrGbe43Vdrdby0VydLSMoLUr0DZUCpZQqtTowbg&s",
+    image: jerry_profile,
+
     price: 100,
     readyIn: 7,
     link: "/configurator-wig/Jerry Curl Wig",
-    colorVariants: [jerry_burgundy, jerry_blonde],
+    colorVariants: [jerry_black, jerry_burgundy, jerry_ombre],
     sizeGuide: hair_guide,
   },
   {
     id: uuid(),
     name: "Body Wave Wig",
-    // image: body_wave,
-    image:
-      "https://www.sheshappyhair.com/cdn/shop/products/bodywavewig_sheshappyhair_realhumanhair_da9c25e5-56b9-4364-ad50-8c14a88d249d_835x.png?v=1664464064",
+    image: body_wave_profile,
     price: 100,
     readyIn: 7,
     link: "/configurator-wig/Body Wave Wig",
@@ -253,175 +256,55 @@ export const mainUnisex = [
   {
     id: uuid(),
     name: "Bone Straight Wig",
-    // image: bone_straight_profile,
-    image:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRmEBHD84d3M3COWPXyRggLB1UToNpBRTwCjLmPjvSTA&s",
+    image: bone_staright_profile,
+
     price: 100,
     readyIn: 7,
     link: "/configurator-wig/Bone Straight Wig",
-    colorVariants: [burgary, natural, blonde, brown],
+    colorVariants: [natural, burgary, blonde, brown],
     sizeGuide: "",
   },
   {
     id: uuid(),
     name: "Deep Wave Wig",
-    // image: deep_wave_profile,
-    image: "https://miro.medium.com/v2/resize:fit:500/0*LmS__0WK8h4ngcXd.jpg",
+    image: deep_wave_profile,
     price: 100,
     readyIn: 7,
     link: "/configurator-wig/Deep Wave Wig",
-    colorVariants: [deepWaveburgundy, deepWaveNatural, deepWaveblonde],
+    colorVariants: [
+      deepWaveNatural,
+      deepWavebrown,
+      deepWaveblonde_ombre,
+      deepWaveHoneyBlondeOmbre,
+    ],
     sizeGuide: "",
   },
-  {
-    id: uuid(),
-    name: "Beads Bracelet",
-    image: bangles,
-    model: bangles_model,
-    myNode: [
-      { name: "large_beads", yardNeeded: 1 },
-      { name: "small_beads", yardNeeded: 1 },
-      { name: "brass", yardNeeded: 1 },
-    ],
-    otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
-    myZoom: 0.8,
-    price: 35,
-    readyIn: 7,
-    sizeGuide: bangle_guide,
-    sizeOptions: [
-      { label: "S", value: 0.5 },
-      { label: "M", value: 1 },
-      { label: "L", value: 2 },
-    ],
-    sizeForms: [
-      {
-        label: "Wrist size (cm)",
-      },
-    ],
-  },
   // {
   //   id: uuid(),
-  //   name: "Earring",
-  //   image: earring,
-  //   model: earring_model,
-  //   myNode: [
-  //     { name: "balls", yardNeeded: 1 },
-  //     { name: "brass", yardNeeded: 1 },
-  //   ],
-  //   otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
-  //   myZoom: 0.8,
-  //   price: 5,
+  //   name: "Deep Wave Wig",
+  //   image: deep_wave_profile,
+  //   price: 100,
   //   readyIn: 7,
-  //   sizeGuide: earring_guide,
-  //   sizeOptions: [
-  //     { label: "S", value: 0.5 },
-  //     { label: "M", value: 1 },
-  //     { label: "L", value: 2 },
+  //   link: "/configurator-wig/Deep Wave Wig",
+  //   colorVariants: [
+  //     deepWaveNatural,
+  //     deepWavebrown,
+  //     deepWaveblonde_ombre,
+  //     deepWaveHoneyBlondeOmbre,
   //   ],
-  //   sizeForms: [
-  //     {
-  //       label: "Earlobe (mm)",
-  //     },
-  //   ],
-  // },
-  {
-    id: uuid(),
-    name: "Bikini",
-    image: image_bikini,
-    model: bikini,
-    myNode: [
-      { name: "bikini_all", yardNeeded: 3 },
-      { name: "bikini_top", yardNeeded: 1 },
-    ],
-    otherYards: { small: 1, large: 3, extraLarge: 3, extraExtraLarge: 4 },
-    myZoom: 0.8,
-    price: 100,
-    // parts: bikiniParts.keys().map(bikiniParts),
-    // sizeModels: tshirt_model,
-    readyIn: 7,
-    sizeGuide: bikini_guide,
-    sizeOptions: [
-      // { label: "XS", value: 0.5 },
-      { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 60 },
-      { label: "M", value: 1, priceValue: 0, colorPriceValue: 60 },
-      { label: "L", value: 2, priceValue: 0, colorPriceValue: 60 },
-      { label: "XL", value: 3, priceValue: 0, colorPriceValue: 60 },
-      { label: "2XL", value: 4, priceValue: 0, colorPriceValue: 60 },
-    ],
-    sizeForms: [
-      {
-        label: "Upper Bust (cm)",
-      },
-      {
-        label: "Under Bust (cm)",
-      },
-      {
-        label: "Waist (cm)",
-      },
-      {
-        label: "Bottom Length (cm)",
-      },
-      // Add more form fields as needed
-    ],
-  },
-  // {
-  //   id: uuid(),
-  //   name: "Waist Bag",
-  //   image: image_waist_bag,
-  //   model: mini_bag_model,
-  //   myNode: [{ name: "all", yardNeeded: 1 }],
-  //   myZoom: 0.6,
-  //   price: 55,
-  //   parts: miniBagParts.keys().map(miniBagParts),
-  //   sizeModels: tshirt_model,
-  //   readyIn: 7,
-  //   sizeGuide: miniBag_guide,
-  //   sizeOptions: [
-  //     { label: "S", value: 0.5 },
-  //     { label: "M", value: 1 },
-  //     { label: "L", value: 2 },
-  //     { label: "XL", value: 3 },
-  //     { label: "2XL", value: 4 },
-  //   ],
-  //   sizeForms: [
-  //     {
-  //       label: "Min-Max circumference (cm)",
-  //     },
-  //     {
-  //       label: "Width (cm)",
-  //     },
-  //     // Add more form fields as needed
-  //   ],
+  //   sizeGuide: "",
   // },
   // {
   //   id: uuid(),
-  //   name: "Backpack",
-  //   image: image_backpack,
-  //   model: backpack_model,
-  //   myNode: [{ name: "all", yardNeeded: 2 }],
-  //   myZoom: 0.75,
-  //   price: 55,
-  //   parts: backpackParts.keys().map(backpackParts),
-  //   sizeModels: tshirt_model,
+  //   name: "Pixie Curl Wig",
+  //   image: pixie_profile,
+  //   price: 100,
   //   readyIn: 7,
-  //   sizeGuide: backpack_guide,
-  //   sizeOptions: [
-  //     { label: "S", value: 0.5 },
-  //     { label: "M", value: 1 },
-  //     { label: "L", value: 2 },
-  //   ],
-  //   sizeForms: [
-  //     {
-  //       label: "Height (cm)",
-  //     },
-  //     {
-  //       label: "Depth (cm)",
-  //     },
-  //     {
-  //       label: "Width (cm)",
-  //     },
-  //   ],
+  //   link: "/configurator-wig/Pixie Curl Wig",
+  //   colorVariants: [pixie_black, pixie_ombre],
+  //   sizeGuide: "",
   // },
+
   // {
   //   id: uuid(),
   //   name: "Jacket",
@@ -434,7 +317,6 @@ export const mainUnisex = [
   //   ],
   //   myZoom: 0.9,
   //   price: 55,
-  //   parts: jacketParts.keys().map(jacketParts),
   //   sizeModels: tshirt_model,
   //   readyIn: 7,
   //   sizeGuide: jacket_guide,
@@ -465,6 +347,9 @@ export const mainUnisex = [
   {
     id: uuid(),
     name: "Logo Up, Text Down Sash",
+    title: "Sash Variant 1",
+    description:
+      "This sash allows logos/designs at the top and text at the bottom on either side",
     image: image_sash,
     model: sash_model,
     confirm_image: image_confirm_1,
@@ -476,8 +361,7 @@ export const mainUnisex = [
     ],
     otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
     myZoom: 2,
-    price: 80,
-    // parts: sashParts.keys().map(sashParts),
+    price: 120,
     // sizeModels: tshirt_model,
     readyIn: 7,
     weight: 0.25,
@@ -499,6 +383,9 @@ export const mainUnisex = [
   {
     id: uuid(),
     name: "Text Up, Logo Down Sash",
+    title: "Sash Variant 2",
+    description:
+      "This sash allows logos/designs at the bottom and text at the top on either side",
     image: image_sash_logos_both_down,
     model: sash_both_down,
     confirm_image: image_confirm_2,
@@ -510,7 +397,7 @@ export const mainUnisex = [
     ],
     otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
     myZoom: 2,
-    price: 80,
+    price: 120,
     readyIn: 7,
     // weight: 0.25,
     sizeGuide: sash_guide,
@@ -531,6 +418,9 @@ export const mainUnisex = [
   {
     id: uuid(),
     name: "Contrasting Logo and Text Sash",
+    title: "Sash Variant 3",
+    description:
+      "This sash has logos/design positions contrasting with text on either side",
     image: image_sash_logos_one_up_one_down,
     model: sash_striped_edge,
     confirm_image: image_confirm_3,
@@ -541,7 +431,7 @@ export const mainUnisex = [
     ],
     otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
     myZoom: 2,
-    price: 80,
+    price: 120,
     readyIn: 7,
     // weight: 0.25,
     sizeGuide: sash_guide,
@@ -574,7 +464,6 @@ export const mainUnisex = [
   //   otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
   //   myZoom: 2,
   //   price: 150,
-  //   // parts: sashParts.keys().map(sashParts),
   //   // sizeModels: tshirt_model,
   //   readyIn: 7,
   //   // weight: 0.25,
@@ -596,6 +485,9 @@ export const mainUnisex = [
   {
     id: uuid(),
     name: "One-Sided Logo, Two-Sided Text Sash",
+    title: "Sash Variant 4",
+    description:
+      "This sash allows logos/designs on one side and text on both sides",
     image: image_sash_striped_edge,
     model: sash_striped_edge,
     confirm_image: image_confirm_5,
@@ -606,11 +498,8 @@ export const mainUnisex = [
     ],
     otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
     myZoom: 2,
-    price: 80,
-    // parts: sashParts.keys().map(sashParts),
-    // sizeModels: tshirt_model,
+    price: 120,
     readyIn: 7,
-    // weight: 0.25,
     sizeGuide: sash_guide,
     sizeOptions: [
       { label: "S", value: 0.5 },
@@ -626,4 +515,159 @@ export const mainUnisex = [
       },
     ],
   },
+  {
+    id: uuid(),
+    name: "Beads Bracelet",
+    image: bangles,
+    model: bangles_model,
+    myNode: [
+      { name: "large_beads", yardNeeded: 1 },
+      { name: "small_beads", yardNeeded: 1 },
+      { name: "brass", yardNeeded: 1 },
+    ],
+    otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
+    myZoom: 0.8,
+    price: 35,
+    readyIn: 7,
+    sizeGuide: bangle_guide,
+    sizeOptions: [
+      { label: "S", value: 0.5 },
+      { label: "M", value: 1 },
+      { label: "L", value: 2 },
+    ],
+    sizeForms: [
+      {
+        label: "Wrist size (cm)",
+      },
+    ],
+  },
+
+  {
+    id: uuid(),
+    name: "Waist Bag",
+    image: image_waist_bag,
+    model: mini_bag_model,
+    myNode: [
+      { name: "handle", yardNeeded: 1 },
+      { name: "main_body", yardNeeded: 1 },
+      { name: "zippers", yardNeeded: 1 },
+    ],
+    myZoom: 0.6,
+    price: 150,
+    // sizeModels: tshirt_model,
+    readyIn: 7,
+    sizeGuide: miniBag_guide,
+    sizeOptions: [
+      { label: "S", value: 0.5 },
+      { label: "M", value: 1 },
+      { label: "L", value: 2 },
+      { label: "XL", value: 3 },
+      { label: "2XL", value: 4 },
+    ],
+    sizeForms: [
+      {
+        label: "Min-Max circumference (cm)",
+      },
+      {
+        label: "Width (cm)",
+      },
+      // Add more form fields as needed
+    ],
+  },
+  {
+    id: uuid(),
+    name: "Backpack",
+    image: image_backpack,
+    model: backpack_model,
+    myNode: [
+      { name: "body", yardNeeded: 1 },
+      { name: "handles", yardNeeded: 1 },
+      { name: "zippers", yardNeeded: 1 },
+    ],
+    myZoom: 0.75,
+    price: 150,
+    // sizeModels: tshirt_model,
+    readyIn: 7,
+    sizeGuide: backpack_guide,
+    sizeOptions: [
+      { label: "S", value: 0.5 },
+      { label: "M", value: 1 },
+      { label: "L", value: 2 },
+    ],
+    sizeForms: [
+      {
+        label: "Height (cm)",
+      },
+      {
+        label: "Depth (cm)",
+      },
+      {
+        label: "Width (cm)",
+      },
+    ],
+  },
+  // {
+  //   id: uuid(),
+  //   name: "Earring",
+  //   image: earring,
+  //   model: earring_model,
+  //   myNode: [
+  //     { name: "balls", yardNeeded: 1 },
+  //     { name: "brass", yardNeeded: 1 },
+  //   ],
+  //   otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
+  //   myZoom: 0.8,
+  //   price: 5,
+  //   readyIn: 7,
+  //   sizeGuide: earring_guide,
+  //   sizeOptions: [
+  //     { label: "S", value: 0.5 },
+  //     { label: "M", value: 1 },
+  //     { label: "L", value: 2 },
+  //   ],
+  //   sizeForms: [
+  //     {
+  //       label: "Earlobe (mm)",
+  //     },
+  //   ],
+  // },
+  // {
+  //   id: uuid(),
+  //   name: "Bikini",
+  //   image: image_bikini,
+  //   model: bikini,
+  //   myNode: [
+  //     { name: "bikini_all", yardNeeded: 3 },
+  //     { name: "bikini_top", yardNeeded: 1 },
+  //   ],
+  //   otherYards: { small: 1, large: 3, extraLarge: 3, extraExtraLarge: 4 },
+  //   myZoom: 0.8,
+  //   price: 100,
+  //   // sizeModels: tshirt_model,
+  //   readyIn: 7,
+  //   sizeGuide: bikini_guide,
+  //   sizeOptions: [
+  //     // { label: "XS", value: 0.5 },
+  //     { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 60 },
+  //     { label: "M", value: 1, priceValue: 0, colorPriceValue: 60 },
+  //     { label: "L", value: 2, priceValue: 0, colorPriceValue: 60 },
+  //     { label: "XL", value: 3, priceValue: 0, colorPriceValue: 60 },
+  //     { label: "2XL", value: 4, priceValue: 0, colorPriceValue: 60 },
+  //   ],
+  //   sizeForms: [
+  //     {
+  //       label: "Upper Bust (cm)",
+  //     },
+  //     {
+  //       label: "Under Bust (cm)",
+  //     },
+  //     {
+  //       label: "Waist (cm)",
+  //     },
+  //     {
+  //       label: "Bottom Length (cm)",
+  //     },
+  //     // Add more form fields as needed
+  //   ],
+  // },
 ];

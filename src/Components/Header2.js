@@ -73,7 +73,7 @@ const Header2 = ({ bgColor, Color, Padding, Icon1, Icon2, Icon3, Icon4 }) => {
           <p className="d-flex flex-column justify-content-center">
             <span className="fw-bolder">45% Down Payment</span>
             <span className="text-left" style={{ fontSize: "0.8rem" }}>
-              With wigs as an exception, customers may pay 45% deposit now and
+              Customers may pay 45% deposit now and
               settle balances upon delivery
             </span>
           </p>

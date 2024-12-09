@@ -5,16 +5,15 @@ import { Card } from "primereact/card"; // Import the Card component from PrimeR
 
 const HomePage = () => {
   const image1 = require("../Assets/hero/3d-casual-life-black-girl-holding-box-and-bags.png");
-  const image2 = require("../Assets/hero/3d-casual-life-joyful-young-woman-jumping-with-shopping-bags.png");
 
-  const randomImage1 = require("../Assets/femlae.jpg");
-  const randomImage2 = require("../Assets/male.jpg");
+  const randomImage1 = require("../Assets/femlae.png");
+  const randomImage2 = require("../Assets/male.png");
 
   return (
     <div>
       <Nav />
       <section className="hero-section">
-        <img src={image1} alt="hero" />
+        <img height="auto" width="auto" src={image1} alt="hero" />
 
         <div className="hero-bottom">
           <h3>Hi There!</h3>
@@ -25,7 +24,7 @@ const HomePage = () => {
 
       <section className="down-section">
         <Link to="/start-customize">
-          <button className="btn btn-warning text-white">Get Started</button>
+          <button className="btn btn-warning text-white">Customize Now</button>
         </Link>
       </section>
       {/* Review section */}
@@ -47,6 +46,8 @@ const HomePage = () => {
                     alt="Naa Ayeley Aryee"
                     className="rounded-circle me-3"
                     style={{ width: 50, height: 50 }}
+                    height="auto"
+                    width="auto"
                   />
                   <div>
                     <strong>Naa Ayeley Aryee</strong>
@@ -73,6 +74,8 @@ const HomePage = () => {
                     alt="Abeiku Egypt"
                     className="rounded-circle me-3"
                     style={{ width: 50, height: 50 }}
+                    height="auto"
+                    width="auto"
                   />
                   <div>
                     <strong>Abeiku Egyir</strong>

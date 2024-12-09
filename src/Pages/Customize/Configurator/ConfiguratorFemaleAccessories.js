@@ -27,7 +27,6 @@ import {
   textureArrays,
   textureDescriptions,
   textureValues,
-  responsiveNess,
   specialNodeNames,
   displayInplaceFor,
   colorBasePrice,
@@ -59,6 +58,12 @@ const Shirt = ({
       groupRef.current.rotation.y += rotationSpeed;
     }
   });
+
+  useEffect(() => {
+    if (!isRotating) {
+      groupRef.current.rotation.y = 0;
+    }
+  }, [isRotating]);
 
   const handlePartClick = (index) => {
     if (index === selectedPart) {
@@ -133,19 +138,26 @@ const CameraControls = () => {
     controlsRef.current.update();
   });
 
-  return <OrbitControls ref={controlsRef} />;
+  return (
+    <OrbitControls
+      enableRotate={true}
+      enablePan={false}
+      enableZoom={false}
+      ref={controlsRef}
+    />
+  );
 };
 
 const ConfiguratorFemaleAccessories = () => {
   const { Id } = useParams();
   const selectedClothing = mainFemaleAccessories.find(
-    (item) => item.name === Id
+    (item) => item.name === Id,
   );
 
   // const [Price, setPrice] = useState(selectedClothing.price);
 
   const [selectedSize, setSelectedSize] = useState(1);
-  const [selectedPrintOn, setSelectedPrintOn] = useState(null);
+  const [selectedPrintOn, setSelectedPrintOn] = useState("#ffffff");
 
   const [selectedPart, setSelectedPart] = useState(0);
 
@@ -160,28 +172,38 @@ const ConfiguratorFemaleAccessories = () => {
 
   const [partPrices, setPartPrices] = useState(0);
   const [colorPrice, setColorPrice] = useState(
-    colorBasePrice * selectedClothing.myNode[0].yardNeeded
+    colorBasePrice * selectedClothing.myNode[0].yardNeeded,
   );
   //total price
   const total = (
     (partPrices + selectedClothing.price) *
     currencyFactor
-  ).toFixed(2);
+  ).toFixed();
 
-  useEffect(() => {
-    setPartPrices(selectedClothing.sizeOptions[1].colorPriceValue);
-  }, []);
+   useEffect(() => {
+    const currentSize = selectedClothing.sizeOptions.find(
+      (size) => size.value === selectedSize,
+    );
 
-  const handleSizeChange = (factor, priceValue, colorPriceValue) => {
+    return setPartPrices(currentSize.colorPriceValue);
+    }, [selectedClothing.sizeOptions, selectedSize]);
+    
+
+  const handleSizeChange = (factor, priceValue) => {
     let newPartPrice;
     setSelectedSize(factor);
 
     const textureCategory = Object.keys(textureArrays).find((category) =>
-      textureArrays[category].includes(selectedTexture)
+      textureArrays[category].includes(selectedTexture),
     );
 
     if (!textureCategory) {
-      newPartPrice = colorPriceValue;
+      const currentSize = selectedClothing.sizeOptions.find(
+        (size) => size.value === selectedSize,
+      );
+      setPartPrices(currentSize.colorPriceValue)
+  
+      return setPartPrices(currentSize.colorPriceValue);
     }
 
     if (textureCategory && textureCategory === "waxPrint") {
@@ -224,11 +246,11 @@ const ConfiguratorFemaleAccessories = () => {
       setSelectedTexture(newTexture); // needed to transfer to size
 
       const textureCategory = Object.keys(textureArrays).find((category) =>
-        textureArrays[category].includes(newTexture)
+        textureArrays[category].includes(newTexture),
       );
 
       const sizeValue = selectedClothing.sizeOptions.find(
-        (size) => size.value === selectedSize
+        (size) => size.value === selectedSize,
       );
 
       console.log({ sizeValue });
@@ -269,6 +291,7 @@ const ConfiguratorFemaleAccessories = () => {
   const [stateImage, setStateImage] = useState("");
 
   const captureCanvasAsImage = async () => {
+    setIsRotating(false);
     const requiresHeight = displayInplaceFor.includes(selectedClothing.name);
     const heightProvided = height !== "";
 
@@ -282,14 +305,14 @@ const ConfiguratorFemaleAccessories = () => {
       return;
     }
 
-    const canvas = canvasRef.current;
-
-    const canvasImage = await html2canvas(canvas);
-    const dataUrl = canvasImage.toDataURL();
-
-    setStateImage(dataUrl); // Save the data URL to state
-
-    setShowConfirmation(true); // Show confirmation
+    setTimeout(async () => {
+      const canvas = canvasRef.current;
+      const canvasImage = await html2canvas(canvas);
+      const dataUrl = canvasImage.toDataURL();
+      setStateImage(dataUrl);
+      setShowConfirmation(true);
+      setIsRotating(true);
+    }, 100);
   };
 
   //size guide popup
@@ -300,7 +323,7 @@ const ConfiguratorFemaleAccessories = () => {
     selectedClothing.sizeForms?.reduce((acc, formField) => {
       acc[formField.label] = formField.value;
       return acc;
-    }, {})
+    }, {}),
   );
 
   // Handle changes in the size form fields
@@ -369,25 +392,25 @@ const ConfiguratorFemaleAccessories = () => {
     setShowGlow(true);
   };
 
-  // const masterSelectionPartOptions = useMemo(() => {
-  //   return (
-  //     <>
-  //       {selectedClothing.myNode.map((nodeName, index) => (
-  //         <button
-  //           key={index}
-  //           className={`size-button btn btn-outline-dark ${
-  //             selectedPart === index ? "selected" : ""
-  //           }`}
-  //           onClick={() => handleSelectPart(index)}
-  //         >
-  //           {nodeName.name === "hands"
-  //             ? parseTitle("sleeves")
-  //             : parseTitle(nodeName.name)}
-  //         </button>
-  //       ))}
-  //     </>
-  //   );
-  // }, [selectedClothing]);
+  const masterSelectionPartOptions = useMemo(() => {
+    return (
+      <>
+        {selectedClothing.myNode.map((nodeName, index) => (
+          <button
+            key={index}
+            className={`size-button btn btn-outline-dark ${
+              selectedPart === index ? "selected" : ""
+            }`}
+            onClick={() => handleSelectPart(index)}
+          >
+            {nodeName.name === "hands"
+              ? parseTitle("sleeves")
+              : parseTitle(nodeName.name)}
+          </button>
+        ))}
+      </>
+    );
+  }, [selectedClothing]);
 
   return (
     <>
@@ -442,7 +465,7 @@ const ConfiguratorFemaleAccessories = () => {
           setShowConfirmation={setShowConfirmation}
           selectedSize={
             selectedClothing.sizeOptions.find(
-              (option) => option.value === selectedSize
+              (option) => option.value === selectedSize,
             )?.label
           }
           modelImage={stateImage}
@@ -463,12 +486,17 @@ const ConfiguratorFemaleAccessories = () => {
                 onClick={handleRotation}
               >
                 {isRotating ? (
-                  <span>
-                    Stop <i className="pi pi-ban"></i>
+                  <span className="d-flex align-items-center gap-1">
+                    Stop Spin
+                    <i className="pi pi-ban" style={{ fontSize: "0.8rem" }}></i>
                   </span>
                 ) : (
-                  <span>
-                    Take a Spin <i className="pi pi-sync"></i>
+                  <span className="d-flex align-items-center gap-1">
+                    Take a Spin{" "}
+                    <i
+                      className="pi pi-sync"
+                      style={{ fontSize: "0.8rem" }}
+                    ></i>
                   </span>
                 )}
               </button>
@@ -483,10 +511,10 @@ const ConfiguratorFemaleAccessories = () => {
             </div>
             <div className="configurator-container container">
               <div className="left-panel rounded shadow">
-                {/* <h5>Select Part</h5>
+                <h5>Select Part</h5>
                 <div className="select-part-container">
                   {masterSelectionPartOptions}
-                </div> */}
+                </div>
                 <h5>Choose Size</h5>
                 <div className="size w-75">
                   <p className="size-button-container">
@@ -574,7 +602,7 @@ const ConfiguratorFemaleAccessories = () => {
                               onChange={(e) =>
                                 handleSizeFormChange(
                                   formField.label,
-                                  e.target.value
+                                  e.target.value,
                                 )
                               }
                             />
@@ -611,14 +639,8 @@ const ConfiguratorFemaleAccessories = () => {
                 {/* ... */}
                 <div className="texture-buttons-container">
                   <div className="texture-row">
-                    <div className="texture-category">
-                      <h3>
-                        Batik (+{currencySymbol}
-                        {(currencyFactor * textureValues.batik.price).toFixed(
-                          2
-                        )}
-                        )
-                      </h3>
+                    <div className="texture-category mt-3">
+                      <h3>Batik</h3>
                       <Carousel
                         value={textureArrays.batik}
                         numVisible={4}
@@ -642,10 +664,10 @@ const ConfiguratorFemaleAccessories = () => {
                       />
                     </div>
 
-                    {/* <div className="texture-category">
+                    {/* <div className="texture-category mt-3">
                     <h3>
                       Crochet (+{currencySymbol}
-                      {(currencyFactor * textureValues.Crochet.price).toFixed(2)})
+                      {(currencyFactor * textureValues.Crochet.price).toFixed()})
                     </h3>
                     <Carousel
                       value={textureArrays.Crochet}
@@ -670,14 +692,8 @@ const ConfiguratorFemaleAccessories = () => {
                   </div> */}
                   </div>
                   <div className="texture-row">
-                    <div className="texture-category">
-                      <h3>
-                        waxPrint (+{currencySymbol}
-                        {(
-                          currencyFactor * textureValues.waxPrint.price
-                        ).toFixed(2)}
-                        )
-                      </h3>
+                    <div className="texture-category mt-3">
+                      <h3>waxPrint</h3>
                       <Carousel
                         value={textureArrays.waxPrint}
                         numVisible={4}
@@ -698,7 +714,67 @@ const ConfiguratorFemaleAccessories = () => {
                               textureDescriptions.waxPrint
                             }
                             textureIndex={textureArrays.waxPrint.indexOf(
-                              texture
+                              texture,
+                            )}
+                          />
+                        )}
+                      />
+                    </div>
+                  </div>
+                  <div className="texture-row">
+                    <div className="texture-category mt-3">
+                      <h3>School Prints</h3>
+                      <Carousel
+                        value={textureArrays.Diaspora}
+                        numVisible={4}
+                        numScroll={1}
+                        showIndicators={false}
+                        itemTemplate={(texture) => (
+                          <TextureItem
+                            key={texture}
+                            texture={texture}
+                            setHideText={setHideText}
+                            Title="Diaspora"
+                            selectedTexture={selectedPrintOn}
+                            // Pass setSelectedTexture as a prop
+                            handleTextureChange={handleTextureChange}
+                            currencySymbol={currencySymbol}
+                            currencyFactor={currencyFactor}
+                            subTextureDescriptions={
+                              textureDescriptions.diaspora
+                            }
+                            textureIndex={textureArrays.Diaspora.indexOf(
+                              texture,
+                            )}
+                          />
+                        )}
+                      />
+                    </div>
+                  </div>
+                  <div className="texture-row">
+                    <div className="texture-category mt-3">
+                      <h3>Commemorative Prints</h3>
+                      <Carousel
+                        value={textureArrays.commemorative}
+                        numVisible={4}
+                        numScroll={1}
+                        showIndicators={false}
+                        itemTemplate={(texture) => (
+                          <TextureItem
+                            key={texture}
+                            texture={texture}
+                            setHideText={setHideText}
+                            Title="Commemorative Prints"
+                            selectedTexture={selectedPrintOn}
+                            // Pass setSelectedTexture as a prop
+                            handleTextureChange={handleTextureChange}
+                            currencySymbol={currencySymbol}
+                            currencyFactor={currencyFactor}
+                            subTextureDescriptions={
+                              textureDescriptions.commemorative
+                            }
+                            textureIndex={textureArrays.commemorative.indexOf(
+                              texture,
                             )}
                           />
                         )}
@@ -736,12 +812,12 @@ const ConfiguratorFemaleAccessories = () => {
                     onClick={handleRotation}
                   >
                     {isRotating ? (
-                  <span>
-                    Stop <i className="pi pi-ban"></i>
+                  <span className="d-flex align-items-center gap-1">
+                    Stop Spin<i className="pi pi-ban" style={{ fontSize: '0.8rem' }}></i>
                   </span>
                 ) : (
-                  <span>
-                    Take a Spin <i className="pi pi-sync"></i>
+                  <span className="d-flex align-items-center gap-1">
+                    Take a Spin <i className="pi pi-sync" style={{ fontSize: '0.8rem' }}></i>
                   </span>
                 )}
                   </button>
@@ -761,7 +837,7 @@ const ConfiguratorFemaleAccessories = () => {
               <span className="expect-to-be-ready">Price:</span>{" "}
               <span className="customize-focus">
                 {currencySymbol}
-                {total}
+                {total}.00
               </span>
             </p>
 

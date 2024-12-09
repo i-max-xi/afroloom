@@ -1,17 +1,14 @@
 import React from "react";
-import { FooterContact2 } from '../../Components/FooterContact'
-import ContactForm from '../../Components/ContactForm'
+import { FooterContact2 } from "../../Components/FooterContact";
+import ContactForm from "../../Components/ContactForm";
 import contactInfo from "../../Data/contactList";
 import Top from "../../Assets/Headers/contactus.jpg";
 import LayoutHeaders from "../../Components/LayoutHeaders";
 
-
 const ContactUs = () => {
   return (
     <div className="bg-white">
-      
-    <LayoutHeaders selectedBg={Top}/>
-
+      <LayoutHeaders selectedBg={Top} />
 
       <ContactForm />
 

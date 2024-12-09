@@ -1,25 +1,14 @@
 import { v4 as uuid } from "uuid";
 
-// import dress from "../Assets/Customize/dress.jpg";
-import cloak from "../Assets/Customize/cloak.jpg";
+import cloak from "../Assets/Customize/cloak.png";
 import skirt from "../Assets/welcome_3ds/female/skirt.png";
-// import femaleTshirt from "../Assets/Customize/femaleTshirt.jpg";
-import topndown from "../Assets/Customize/female_topndown.png";
-import dress from "../Assets/Customize/dress.png";
 import normal_top from "../Assets/Customize/normal_top.png";
-// import extra_short_img from "../Assets/Customize/female_short_shirt.jpg";
-// import extra_long_img from "../Assets/Customize/femlae_long_shirt.jpg";
-// import booty_shorts_img from "../Assets/Customize/booty_shorts.jpg";
-// import female_suit_img from "../Assets/Customize/femlae_suit.jpg";
-import kabanslit from "../Assets/Customize/kabanslit.JPG";
 
 //models
 import t_shirt_short from "../Pages/Customize/Configurator/models/FemaleClothing/tshirt_short_two.glb";
 import t_shirt_long from "../Pages/Customize/Configurator/models/FemaleClothing/tshirt_long_two.glb";
 import skirt_model from "../Pages/Customize/Configurator/models/FemaleClothing/skirt_main.glb";
 import trousers from "../Pages/Customize/Configurator/models/FemaleClothing/female_actual_trousers.glb";
-import leggings from "../Pages/Customize/Configurator/models/FemaleClothing/trousers_main.glb";
-import dress_model from "../Pages/Customize/Configurator/models/FemaleClothing/shoulder_dress.glb";
 import top_model from "../Pages/Customize/Configurator/models/FemaleClothing/shoulders_top.glb";
 import normal_top_model from "../Pages/Customize/Configurator/models/FemaleClothing/ladies_normal_top.glb";
 import mini_skirt_model from "../Pages/Customize/Configurator/models/FemaleClothing/mini_skirt_main.glb";
@@ -29,10 +18,9 @@ import blazer from "../Pages/Customize/Configurator/models/FemaleClothing/female
 import extra_long from "../Pages/Customize/Configurator/models/FemaleClothing/female_shirt_extra_long_two.glb";
 import extra_short from "../Pages/Customize/Configurator/models/FemaleClothing/female_shirt_extra_short.glb";
 import booty_shorts from "../Pages/Customize/Configurator/models/FemaleClothing/booty_shorts.glb";
-import kaba_slit from "../Pages/Customize/Configurator/models/FemaleClothing/gown.glb";
 import material_shorts from "../Pages/Customize/Configurator/models/FemaleClothing/material_shorts.glb";
 import jacket from "../Pages/Customize/Configurator/models/Accessories/Unisex/jacket_main.glb";
-import summer_shorts from "../Pages/Customize/Configurator/models/MaleClothing/summer_shorts.glb";
+import bikini from "../Pages/Customize/Configurator/models/Accessories/bikini.glb";
 
 // size guides
 import tshirt_guide from "../Assets/size_guide/FemaleClothing/short_sleeves_tshirt.png";
@@ -51,112 +39,16 @@ import miniSkirt_guide from "../Assets/size_guide/FemaleClothing/women mini skir
 import bootyShorts_guide from "../Assets/size_guide/FemaleClothing/booty shorts.jpg";
 import trousers_guide from "../Assets/size_guide/FemaleClothing/women trousers.jpg";
 import jacket_guide from "../Assets/size_guide/FemaleClothing/ladies bomber.png";
-import summer_shorts_guide from "../Assets/size_guide/FemaleClothing/women summer shorts.jpg";
+import bikini_guide from "../Assets/size_guide/Accessories/Female/31.jpg";
 
 // models
 
-//part images
-const tShirtShortParts = require.context(
-  "../Assets/model_parts/FemaleClothing/tshirt_short",
-  false,
-  /\.(png|jpg|jpeg|gif)$/
-);
-
-const tShirtLongParts = require.context(
-  "../Assets/model_parts/FemaleClothing/tshirt_long",
-  false,
-  /\.(png|jpg|jpeg|gif)$/
-);
-
-const extraShortShirtParts = require.context(
-  "../Assets/model_parts/FemaleClothing/female_shirt_extra_short",
-  false,
-  /\.(png|jpg|jpeg|gif)$/
-);
-
-const extraLongShirtParts = require.context(
-  "../Assets/model_parts/FemaleClothing/female_shirt_extra_long_two",
-  false,
-  /\.(png|jpg|jpeg|gif)$/
-);
-
-const cropTopParts = require.context(
-  "../Assets/model_parts/FemaleClothing/shoulders_top",
-  false,
-  /\.(png|jpg|jpeg|gif)$/
-);
-
-const normalTopParts = require.context(
-  "../Assets/model_parts/FemaleClothing/ladies_normal_top",
-  false,
-  /\.(png|jpg|jpeg|gif)$/
-);
-
-const topAndDownParts = require.context(
-  "../Assets/model_parts/FemaleClothing/female_topndown",
-  false,
-  /\.(png|jpg|jpeg|gif)$/
-);
-
-const dressParts = require.context(
-  "../Assets/model_parts/FemaleClothing/shoulder_dress",
-  false,
-  /\.(png|jpg|jpeg|gif)$/
-);
-
-const kabaSlitParts = require.context(
-  "../Assets/model_parts/FemaleClothing/gown",
-  false,
-  /\.(png|jpg|jpeg|gif)$/
-);
-
-const blazerParts = require.context(
-  "../Assets/model_parts/FemaleClothing/blazer",
-  false,
-  /\.(png|jpg|jpeg|gif)$/
-);
-
-const cloakParts = require.context(
-  "../Assets/model_parts/FemaleClothing/cloak",
-  false,
-  /\.(png|jpg|jpeg|gif)$/
-);
-
-const skirtParts = require.context(
-  "../Assets/model_parts/FemaleClothing/skirt",
-  false,
-  /\.(png|jpg|jpeg|gif)$/
-);
-
-const miniSkirtParts = require.context(
-  "../Assets/model_parts/FemaleClothing/mini_skirt",
-  false,
-  /\.(png|jpg|jpeg|gif)$/
-);
-
-const bootyShortsParts = require.context(
-  "../Assets/model_parts/FemaleClothing/booty_shorts",
-  false,
-  /\.(png|jpg|jpeg|gif)$/
-);
-
-const trousersParts = require.context(
-  "../Assets/model_parts/FemaleClothing/trouser",
-  false,
-  /\.(png|jpg|jpeg|gif)$/
-);
-
-const leggingsParts = require.context(
-  "../Assets/model_parts/FemaleClothing/leggings",
-  false,
-  /\.(png|jpg|jpeg|gif)$/
-);
-
-const image_tshirt_short = require("../Assets/welcome_3ds/female/short slleev t shirt.png");
-const image_tshirt_long = require("../Assets/welcome_3ds/female/long sleev t shirt.png");
-const image_shirt_short = require("../Assets/welcome_3ds/female/women short sleev shirt.png");
-const image_shirt_long = require("../Assets/welcome_3ds/female/women long sleev shirt.png");
+const image_tshirt_long = require("../Assets/welcome_3ds/female/long_sleeve_new.png");
+const image_short_sleeves = require("../Assets/welcome_3ds/female/short_sleeves_shirt.png");
+const image_tshirt_short = require("../Assets/welcome_3ds/female/short_sleeve_new.png");
+const image_shirt_long = require("../Assets/welcome_3ds/female/long sleeve gal.jpg");
 const image_crop_top = require("../Assets/welcome_3ds/female/crop top.png");
+const image_bikini = require("../Assets/welcome_3ds/female/bikini.png");
 // const image_top = require("../Assets/welcome_3ds/female/");
 // const image_topndown = require("../Assets/welcome_3ds/female/");
 // const image_dress = require("../Assets/welcome_3ds/female/");
@@ -166,20 +58,18 @@ const image_blazer = require("../Assets/welcome_3ds/female/women blazer.png");
 // const image_long_skirt = require("../Assets/welcome_3ds/female/long skirt.jpg");
 const image_mini_skirt = require("../Assets/welcome_3ds/female/mini skirt.png");
 const image_booty_shorts = require("../Assets/welcome_3ds/female/booty 2.png");
-const image_trousers = require("../Assets/welcome_3ds/female/women trousers.png");
 const image_leggings = require("../Assets/welcome_3ds/female/leggings.png");
 const image_jacket = require("../Assets/welcome_3ds/female/bomber_jacket.png");
 const image_topndown_image = require("../Assets/welcome_3ds/female/kaftan.png");
 const image_material_shorts_image = require("../Assets/welcome_3ds/female/material_shorts.png");
-const image_summer_image = require("../Assets/welcome_3ds/female/summer_shorts.png");
 
 export const mainFemaleCustomize = [
   {
     id: uuid(),
     name: "Short Sleeve T-Shirt",
-    // image: image_tshirt_short,
-    image:
-      "https://5.imimg.com/data5/SELLER/Default/2021/7/ZF/KX/CN/32220664/women-s-tie-dye-t-shirt-500x500.jpg",
+    image: image_tshirt_short,
+    // image:
+    //   "https://5.imimg.com/data5/SELLER/Default/2021/7/ZF/KX/CN/32220664/women-s-tie-dye-t-shirt-500x500.jpg",
     model: t_shirt_short,
     myNode: [{ name: "all", yardNeeded: 2 }],
     otherYards: { small: 2, large: 3, extraLarge: 3, extraExtraLarge: 4 },
@@ -188,7 +78,6 @@ export const mainFemaleCustomize = [
     sizeGuide: tshirt_guide,
     // sizeModels: tshirt_model,
     readyIn: 7,
-    parts: tShirtShortParts.keys().map(tShirtShortParts),
     sizeOptions: [
       { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 50 },
       { label: "M", value: 1, priceValue: 0, colorPriceValue: 50 },
@@ -226,7 +115,6 @@ export const mainFemaleCustomize = [
     sizeGuide: tshirtlong_guide,
     // sizeModels: tshirt_model,
     readyIn: 7,
-    parts: tShirtLongParts.keys().map(tShirtLongParts),
     sizeOptions: [
       { label: "S", value: 0.5, priceValue: 15, colorPriceValue: 85 },
       { label: "M", value: 1, priceValue: 15, colorPriceValue: 85 },
@@ -255,9 +143,7 @@ export const mainFemaleCustomize = [
   {
     id: uuid(),
     name: "Short Sleeve Shirt",
-    // image: image_shirt_short,
-    image:
-      "https://rukminim2.flixcart.com/image/850/1000/xif0q/shirt/9/m/s/m-224086901-vero-moda-original-imaghcyybzxrqmn8.jpeg?q=90&crop=false",
+    image: image_short_sleeves,
     model: extra_short,
     myNode: [
       { name: "all", yardNeeded: 2 },
@@ -269,7 +155,6 @@ export const mainFemaleCustomize = [
     sizeGuide: extraShortShirt_guide,
     // sizeModels: tshirt_model,
     readyIn: 7,
-    parts: extraShortShirtParts.keys().map(extraShortShirtParts),
     sizeOptions: [
       { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 50 },
       { label: "M", value: 1, priceValue: 0, colorPriceValue: 50 },
@@ -310,7 +195,6 @@ export const mainFemaleCustomize = [
     sizeGuide: extraLongShirt_guide,
     // sizeModels: tshirt_model,
     readyIn: 7,
-    parts: extraLongShirtParts.keys().map(extraLongShirtParts),
     sizeOptions: [
       { label: "S", value: 0.5, priceValue: 15, colorPriceValue: 85 },
       { label: "M", value: 1, priceValue: 15, colorPriceValue: 85 },
@@ -348,7 +232,6 @@ export const mainFemaleCustomize = [
     sizeGuide: normalTop_guide,
     // sizeModels: tshirt_model,
     readyIn: 7,
-    parts: normalTopParts.keys().map(normalTopParts),
     sizeOptions: [
       { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 50 },
       { label: "M", value: 1, priceValue: 0, colorPriceValue: 50 },
@@ -388,7 +271,6 @@ export const mainFemaleCustomize = [
   //   sizeGuide: topAndDown_guide,
   //   sizeModels: tshirt_model,
   //   readyIn: 7,
-  //   parts: topAndDownParts.keys().map(topAndDownParts),
   //   sizeOptions: [
   //     // { label: "XS", value: 0.5 },
   //     { label: "S", value: 0.5 },
@@ -440,7 +322,6 @@ export const mainFemaleCustomize = [
   //   sizeGuide: dress_guide,
   //   sizeModels: tshirt_model,
   //   readyIn: 7,
-  //   parts: dressParts.keys().map(dressParts),
   //   sizeOptions: [
   //     { label: "S", value: 0.5 },
   //     { label: "M", value: 1 },
@@ -482,7 +363,6 @@ export const mainFemaleCustomize = [
   //   price: 20,
   //   sizeModels: tshirt_model,
   //   readyIn: 7,
-  //   parts: kabaSlitParts.keys().map(kabaSlitParts),
   //   sizeOptions: [
   //     { label: "S", value: 0.5 },
   //     { label: "M", value: 1 },
@@ -499,6 +379,44 @@ export const mainFemaleCustomize = [
   // },
   {
     id: uuid(),
+    name: "Bikini",
+    image: image_bikini,
+    model: bikini,
+    myNode: [
+      { name: "bikini_all", yardNeeded: 3 },
+      { name: "bikini_top", yardNeeded: 1 },
+    ],
+    otherYards: { small: 1, large: 3, extraLarge: 3, extraExtraLarge: 4 },
+    myZoom: 0.8,
+    price: 100,
+    readyIn: 7,
+    sizeGuide: bikini_guide,
+    sizeOptions: [
+      // { label: "XS", value: 0.5 },
+      { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 60 },
+      { label: "M", value: 1, priceValue: 0, colorPriceValue: 60 },
+      { label: "L", value: 2, priceValue: 0, colorPriceValue: 60 },
+      { label: "XL", value: 3, priceValue: 0, colorPriceValue: 60 },
+      { label: "2XL", value: 4, priceValue: 0, colorPriceValue: 60 },
+    ],
+    sizeForms: [
+      {
+        label: "Upper Bust (cm)",
+      },
+      {
+        label: "Under Bust (cm)",
+      },
+      {
+        label: "Waist (cm)",
+      },
+      {
+        label: "Bottom Length (cm)",
+      },
+      // Add more form fields as needed
+    ],
+  },
+  {
+    id: uuid(),
     name: "Long Sleeve Top And Down Kaftan",
     image: image_topndown_image,
     model: topndown_model,
@@ -512,7 +430,6 @@ export const mainFemaleCustomize = [
     sizeGuide: top_down_guide,
     // sizeModels: tshirt_model,
     readyIn: 7,
-    // parts: topndownParts.keys().map(topndownParts),
     sizeOptions: [
       { label: "S", value: 0.5, priceValue: -45, colorPriceValue: 85 },
       { label: "M", value: 1, priceValue: -45, colorPriceValue: 85 },
@@ -576,7 +493,6 @@ export const mainFemaleCustomize = [
     sizeGuide: cropTop_guide,
     // sizeModels: tshirt_model,
     readyIn: 7,
-    parts: cropTopParts.keys().map(cropTopParts),
     sizeOptions: [
       { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 50 },
       { label: "M", value: 1, priceValue: 0, colorPriceValue: 50 },
@@ -614,8 +530,6 @@ export const mainFemaleCustomize = [
     otherYards: { small: 3, large: 4, extraLarge: 4, extraExtraLarge: 4 },
     myZoom: 0.9,
     price: 140,
-    // parts: jacketParts.keys().map(jacketParts),
-    // sizeModels: tshirt_model,
     readyIn: 7,
     sizeGuide: jacket_guide,
     sizeOptions: [
@@ -656,7 +570,6 @@ export const mainFemaleCustomize = [
     sizeGuide: blazer_guide,
     // sizeModels: tshirt_model,
     readyIn: 7,
-    parts: blazerParts.keys().map(blazerParts),
     sizeOptions: [
       { label: "S", value: 0.5, priceValue: 25, colorPriceValue: 85 },
       { label: "M", value: 1, priceValue: 25, colorPriceValue: 85 },
@@ -703,7 +616,6 @@ export const mainFemaleCustomize = [
     sizeGuide: cloak_guide,
     // sizeModels: tshirt_model,
     readyIn: 7,
-    parts: cloakParts.keys().map(cloakParts),
     sizeOptions: [
       { label: "S", value: 0.5, priceValue: 55, colorPriceValue: 85 },
       { label: "M", value: 1, priceValue: 55, colorPriceValue: 85 },
@@ -732,7 +644,6 @@ export const mainFemaleCustomize = [
     sizeGuide: skirt_guide,
     // sizeModels: tshirt_model,
     readyIn: 7,
-    parts: skirtParts.keys().map(skirtParts),
     sizeOptions: [
       { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 50 },
       { label: "M", value: 1, priceValue: 0, colorPriceValue: 50 },
@@ -764,7 +675,6 @@ export const mainFemaleCustomize = [
     sizeGuide: miniSkirt_guide,
     // sizeModels: tshirt_model,
     readyIn: 7,
-    parts: miniSkirtParts.keys().map(miniSkirtParts),
     sizeOptions: [
       { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 50 },
       { label: "M", value: 1, priceValue: 0, colorPriceValue: 50 },
@@ -796,7 +706,6 @@ export const mainFemaleCustomize = [
     sizeGuide: bootyShorts_guide,
     // sizeModels: tshirt_model,
     readyIn: 7,
-    parts: bootyShortsParts.keys().map(bootyShortsParts),
     sizeOptions: [
       { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 50 },
       { label: "M", value: 1, priceValue: 0, colorPriceValue: 50 },
@@ -910,7 +819,6 @@ export const mainFemaleCustomize = [
     sizeGuide: trousers_guide,
     // sizeModels: tshirt_model,
     readyIn: 7,
-    parts: trousersParts.keys().map(trousersParts),
     sizeOptions: [
       { label: "S", value: 0.5, priceValue: 25, colorPriceValue: 80 },
       { label: "M", value: 1, priceValue: 25, colorPriceValue: 80 },

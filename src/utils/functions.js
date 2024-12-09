@@ -51,3 +51,11 @@ export const separateWordsWithLineBreak = (text) => {
   const textWithLineBreak = wordsArray?.join("<br>");
   return textWithLineBreak;
 };
+
+export const generatePartnerCode = (firstName, lastName) => {
+  const firstLetterOfFirstName = firstName.charAt(0).toUpperCase();
+  const firstLetterOfLastName = lastName.charAt(0).toUpperCase();
+  const creationDay = new Date().getDate(); // Get the day part of the current date
+
+  return `AF-${firstLetterOfFirstName}-${firstLetterOfLastName}-${creationDay}`;
+};

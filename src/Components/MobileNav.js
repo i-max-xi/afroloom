@@ -5,8 +5,12 @@ import { Sidebar } from "primereact/sidebar";
 import { Divider } from "primereact/divider";
 import CurrencyConverter from "./CurrencyConverter";
 import GoogleTranslate from "../GoogleTranslate";
+import { useSelector } from "react-redux";
+import { Badge } from "primereact/badge";
 
 const MobileNav = ({ visible, setVisible }) => {
+  const cartItems = useSelector((state) => state.customizedProduct.itemDetails);
+
   return (
     <Sidebar visible={visible} onHide={() => setVisible(false)} className=" ">
       <div className="custom-header bg-warning text-white p-3 mb-4">
@@ -18,6 +22,8 @@ const MobileNav = ({ visible, setVisible }) => {
       <div className="d-flex flex-column align-items-start mt-3">
         <ul className="navbar-nav mobile-nav-item-container">
           <li className="nav-item mobile-nav-item">
+            <i className="pi pi-home"></i>
+
             <Link className="nav-link" to="/">
               Home
             </Link>
@@ -25,6 +31,22 @@ const MobileNav = ({ visible, setVisible }) => {
           <Divider className="custom-divider" />
 
           <li className="nav-item mobile-nav-item">
+            <i className="pi pi-shopping-cart p-overlay-badge">
+              <Badge
+                severity="warning"
+                style={{ scale: "0.5" }}
+                value={cartItems.length}
+              ></Badge>
+            </i>
+            <Link className="nav-link" to="/customize-checkout">
+              Checkout
+            </Link>
+          </li>
+          <Divider className="custom-divider" />
+
+          <li className="nav-item mobile-nav-item">
+            <i className="pi pi-palette"></i>
+
             <Link className="nav-link" to="/start-customize">
               Customize
             </Link>
@@ -32,6 +54,8 @@ const MobileNav = ({ visible, setVisible }) => {
           <Divider className="custom-divider" />
 
           <li className="nav-item adjust-nav mobile-nav-item">
+            <i className="pi pi-info-circle"></i>
+
             <Link className="about" to="/about">
               About
             </Link>
@@ -39,8 +63,19 @@ const MobileNav = ({ visible, setVisible }) => {
           <Divider className="custom-divider" />
 
           <li className="nav-item adjust-nav mobile-nav-item">
+            <i className="pi pi-phone"></i>
+
             <Link className="about" to="/contact">
               Contact Us
+            </Link>
+          </li>
+          <Divider className="custom-divider" />
+
+          <li className="nav-item adjust-nav">
+            <i className="pi pi-money-bill"></i>
+
+            <Link className="about" to="/signup">
+              Become a Partner
             </Link>
           </li>
           <Divider className="custom-divider" />

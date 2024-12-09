@@ -3,10 +3,6 @@ import { v4 as uuid } from "uuid";
 // import handbag from "../Assets/Customize/hand_bag.png";
 // import bikini_img from "../Assets/Customize/bikini.png";
 
-// hats
-import h1 from "../Assets/Customize/maleAccessories/hat/1.jpg";
-import h2 from "../Assets/Customize/maleAccessories/hat/2.jpg";
-
 // uncat
 // import un2 from "../Assets/Customize/maleAccessories/Uncat/2.jpg";
 
@@ -26,223 +22,27 @@ import flyingTie_guide from "../Assets/size_guide/Accessories/Male/26.jpg";
 import handbag_guide from "../Assets/size_guide/Accessories/Female/33.jpg";
 import bikini_guide from "../Assets/size_guide/Accessories/Female/31.jpg";
 
-// Markeying Models
-const tshirt_model = "";
-
-// parts
-const roundCapParts = require.context(
-  "../Assets/model_parts/Accessories/roundCap_main",
-  false,
-  /\.(png|jpg|jpeg|gif)$/
-);
-
-const knittedCapParts = require.context(
-  "../Assets/model_parts/Accessories/knittedHat_main_two",
-  false,
-  /\.(png|jpg|jpeg|gif)$/
-);
-
-const bowTieParts = require.context(
-  "../Assets/model_parts/Accessories/bow_tie_main",
-  false,
-  /\.(png|jpg|jpeg|gif)$/
-);
-
-const flyingTieParts = require.context(
-  "../Assets/model_parts/Accessories/tie_fixed",
-  false,
-  /\.(png|jpg|jpeg|gif)$/
-);
-
-const handbagParts = require.context(
-  "../Assets/model_parts/Accessories/handbag",
-  false,
-  /\.(png|jpg|jpeg|gif)$/
-);
-
-const bikiniParts = require.context(
-  "../Assets/model_parts/Accessories/bikini",
-  false,
-  /\.(png|jpg|jpeg|gif)$/
-);
-
 const image_bikini = require("../Assets/welcome_3ds/female/bikini.png");
 const image_totebag = require("../Assets/welcome_3ds/others/tote bag.png");
 const image_bowtie = require("../Assets/welcome_3ds/others/bow tie.png");
 
 export const mainMaleAccessories = [
-  // {
-  //   id: uuid(),
-  //   name: "Round Cap",
-  //   image: h1,
-  //   model: round_cap,
-  //   myNode: [{ name: "all", yardNeeded: 1 }],
-  //   myZoom: 0.5,
-  //   price: 20,
-  //   parts: roundCapParts.keys().map(roundCapParts),
-  //   sizeGuide: roundCap_guide,
-  //   sizeModels: tshirt_model,
-  //   readyIn: 7,
-  //   sizeOptions: [
-  //     { label: "S", value: 0.5 },
-  //     { label: "M", value: 1 },
-  //     { label: "L", value: 2 },
-  //     { label: "XL", value: 3 },
-  //     { label: "2XL", value: 4 },
-  //   ],
-  //   sizeForms: [
-  //     {
-  //       label: "Length (cm)",
-  //       value: "",
-  //     },
-  //     {
-  //       label: "Width (cm)",
-  //       value: "",
-  //     },
-  //     // Add more form fields as needed
-  //   ],
-  // },
-  // {
-  //   id: uuid(),
-  //   name: "Knitted Cap",
-  //   image: h2,
-  //   model: knitted_cap,
-  //   myNode: [{ name: "all", yardNeeded: 1 }],
-  //   myZoom: 0.5,
-  //   price: 20,
-  //   parts: knittedCapParts.keys().map(knittedCapParts),
-  //   sizeGuide: knittedCap_guide,
-  //   sizeModels: tshirt_model,
-  //   readyIn: 7,
-  //   sizeOptions: [
-  //     { label: "S", value: 0.5 },
-  //     { label: "M", value: 1 },
-  //     { label: "L", value: 2 },
-  //     { label: "XL", value: 3 },
-  //     { label: "2XL", value: 4 },
-  //   ],
-  //   sizeForms: [
-  //     {
-  //       label: "Length (cm)",
-  //       value: "",
-  //     },
-  //     {
-  //       label: "Width (cm)",
-  //       value: "",
-  //     },
-  //     // Add more form fields as needed
-  //   ],
-  // },
-  // {
-  //   name: "Bow Tie",
-  //   image: image_bowtie,
-  //   model: bow_tie,
-  //   myNode: [{ name: "all", yardNeeded: 1 }],
-  //   myZoom: 1.5,
-  //   price: 20,
-  //   parts: bowTieParts.keys().map(bowTieParts),
-  //   sizeModels: tshirt_model,
-  //   readyIn: 7,
-  //   sizeGuide: bowTie_guide,
-  //   sizeOptions: [
-  //     { label: "S", value: 0.5 },
-  //     { label: "M", value: 1 },
-  //     { label: "L", value: 2 },
-  //     { label: "XL", value: 3 },
-  //     { label: "2XL", value: 4 },
-  //   ],
-  //   sizeForms: [
-  //     {
-  //       label: "Length (cm)",
-  //       value: "",
-  //     },
-  //     {
-  //       label: "Height (cm)",
-  //       value: "",
-  //     },
-  //   ],
-  // },
-  // {
-  //   name: "Flying Tie",
-  //   image: image_flying_tie,
-  //   model: tie,
-  //   myNode: [{ name: "all", yardNeeded: 1 }],
-  //   myZoom: 0.75,
-  //   price: 20,
-  //   parts: flyingTieParts.keys().map(flyingTieParts),
-  //   sizeModels: tshirt_model,
-  //   readyIn: 7,
-  //   sizeGuide: flyingTie_guide,
-  //   sizeOptions: [
-  //     { label: "Skinny", value: 0.5 },
-  //     { label: "Standard", value: 1 },
-  //     { label: "Extra Large", value: 2 },
-  //     { label: "2XL", value: 4 },
-  //   ],
-  //   sizeForms: [
-  //     {
-  //       label: "Tie's Head (cm)",
-  //     },
-  //     {
-  //       label: "Tie's End (cm)",
-  //     },
-  //     {
-  //       label: "Length (cm)",
-  //     },
-  //     // Add more form fields as needed
-  //   ],
-  // },
-];
-
-export const mainFemaleAccessories = [
-  // {
-  //   id: uuid(),
-  //   name: "Tote Bag",
-  //   image: image_totebag,
-  //   model: hand_bag_model,
-  //   myNode: [{ name: "all", yardNeeded: 1 }],
-  //   myZoom: 1.2,
-  //   price: 55,
-  //   parts: handbagParts.keys().map(handbagParts),
-  //   sizeGuide: handbag_guide,
-  //   sizeModels: tshirt_model,
-  //   readyIn: 7,
-  //   sizeOptions: [
-  //     { label: "S", value: 0.5 },
-  //     { label: "M", value: 1 },
-  //     { label: "L", value: 2 },
-  //     { label: "2XL", value: 4 },
-  //   ],
-  //   sizeForms: [
-  //     {
-  //       label: "Length (cm)",
-  //     },
-  //     {
-  //       label: "Width (cm)",
-  //     },
-  //     {
-  //       label: "Height (cm)",
-  //     },
-  //   ],
-  // },
   {
     id: uuid(),
-    name: "Bikini",
-    image: image_bikini,
-    model: bikini,
+    name: "Round Cap",
+    image:
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMrekCG26FoYzQlY6mv6Ez-PhApN2QhTEFag&s",
+    model: round_cap,
     myNode: [
-      { name: "top", yardNeeded: 1 },
-      { name: "bottom", yardNeeded: 1 },
+      { name: "bottom_section", yardNeeded: 1 },
+      { name: "top_section", yardNeeded: 1 },
     ],
-    otherYards: {small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
-    myZoom: 1.3,
-    price: 55,
-    parts: bikiniParts.keys().map(bikiniParts),
+    myZoom: 0.5,
+    price: 80,
+    sizeGuide: roundCap_guide,
     // sizeModels: tshirt_model,
     readyIn: 7,
-    sizeGuide: bikini_guide,
     sizeOptions: [
-      // // { label: "XS", value: 0.5 },
       { label: "S", value: 0.5 },
       { label: "M", value: 1 },
       { label: "L", value: 2 },
@@ -251,18 +51,191 @@ export const mainFemaleAccessories = [
     ],
     sizeForms: [
       {
-        label: "Upper Bust (cm)",
+        label: "Length (cm)",
+        value: "",
       },
       {
-        label: "Under Bust (cm)",
-      },
-      {
-        label: "Waist (cm)",
-      },
-      {
-        label: "Bottom Length (cm)",
+        label: "Width (cm)",
+        value: "",
       },
       // Add more form fields as needed
     ],
   },
+  {
+    id: uuid(),
+    name: "Knitted Cap",
+    image:
+      "https://image.made-in-china.com/202f0j00orGqiInWvEzg/Jamaican-Rasta-Hat-Multi-Colour-Striped-Slouchy-Beanie-Gorro-Reggae-Free-Rasta-Hat-Crochet-Pattern-Beanie-Cap.webp",
+    model: knitted_cap,
+    myNode: [
+      { name: "bottom_section", yardNeeded: 1 },
+      { name: "mid_section", yardNeeded: 1 },
+      { name: "top_section", yardNeeded: 1 },
+    ],
+    myZoom: 0.5,
+    price: 80,
+    sizeGuide: knittedCap_guide,
+    // sizeModels: tshirt_model,
+    readyIn: 7,
+    sizeOptions: [
+      { label: "S", value: 0.5 },
+      { label: "M", value: 1 },
+      { label: "L", value: 2 },
+      { label: "XL", value: 3 },
+      { label: "2XL", value: 4 },
+    ],
+    sizeForms: [
+      {
+        label: "Length (cm)",
+        value: "",
+      },
+      {
+        label: "Width (cm)",
+        value: "",
+      },
+      // Add more form fields as needed
+    ],
+  },
+  {
+    name: "Bow Tie",
+    image: image_bowtie,
+    model: bow_tie,
+    myNode: [
+      { name: "binder", yardNeeded: 1 },
+      { name: "bow", yardNeeded: 1 },
+    ],
+
+    myZoom: 1.5,
+    price: 80,
+    // sizeModels: tshirt_model,
+    readyIn: 7,
+    sizeGuide: bowTie_guide,
+    sizeOptions: [
+      { label: "S", value: 0.5 },
+      { label: "M", value: 1 },
+      { label: "L", value: 2 },
+      { label: "XL", value: 3 },
+      { label: "2XL", value: 4 },
+    ],
+    sizeForms: [
+      {
+        label: "Length (cm)",
+        value: "",
+      },
+      {
+        label: "Height (cm)",
+        value: "",
+      },
+    ],
+  },
+  {
+    name: "Flying Tie",
+    image:
+      "https://cdn11.bigcommerce.com/s-tld76p/images/stencil/1440x1440/products/3196/15724/hoggs-of-fife-flying-pheasant-silk-tie-green__69312.1686653195.jpg?c=2",
+    model: tie,
+    myNode: [
+      { name: "lower_section", yardNeeded: 1 },
+      { name: "top_section", yardNeeded: 1 },
+    ],
+    myZoom: 0.75,
+    price: 80,
+    // sizeModels: tshirt_model,
+    readyIn: 7,
+    sizeGuide: flyingTie_guide,
+    sizeOptions: [
+      { label: "Skinny", value: 0.5 },
+      { label: "Standard", value: 1 },
+      { label: "Extra Large", value: 2 },
+      { label: "2XL", value: 4 },
+    ],
+    sizeForms: [
+      {
+        label: "Tie's Head (cm)",
+      },
+      {
+        label: "Tie's End (cm)",
+      },
+      {
+        label: "Length (cm)",
+      },
+      // Add more form fields as needed
+    ],
+  },
+];
+
+export const mainFemaleAccessories = [
+  {
+    id: uuid(),
+    name: "Tote Bag",
+    image: image_totebag,
+    model: hand_bag_model,
+    myNode: [
+      { name: "handle", yardNeeded: 1 },
+      { name: "left_section", yardNeeded: 1 },
+      { name: "mid_section", yardNeeded: 1 },
+      { name: "right_section", yardNeeded: 1 },
+      { name: "zippers_and_locks", yardNeeded: 1 },
+    ],
+    myZoom: 1.2,
+    price: 150,
+    sizeGuide: handbag_guide,
+    // sizeModels: tshirt_model,
+    readyIn: 7,
+    sizeOptions: [
+      { label: "S", value: 0.5 },
+      { label: "M", value: 1 },
+      { label: "L", value: 2 },
+      { label: "2XL", value: 4 },
+    ],
+    sizeForms: [
+      {
+        label: "Length (cm)",
+      },
+      {
+        label: "Width (cm)",
+      },
+      {
+        label: "Height (cm)",
+      },
+    ],
+  },
+  // {
+  //   id: uuid(),
+  //   name: "Bikini",
+  //   image: image_bikini,
+  //   model: bikini,
+  //   myNode: [
+  //     { name: "top", yardNeeded: 1 },
+  //     { name: "bottom", yardNeeded: 1 },
+  //   ],
+  //   otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
+  //   myZoom: 1.3,
+  //   price: 55,
+  //   // sizeModels: tshirt_model,
+  //   readyIn: 7,
+  //   sizeGuide: bikini_guide,
+  //   sizeOptions: [
+  //     // // { label: "XS", value: 0.5 },
+  //     { label: "S", value: 0.5 },
+  //     { label: "M", value: 1 },
+  //     { label: "L", value: 2 },
+  //     { label: "XL", value: 3 },
+  //     { label: "2XL", value: 4 },
+  //   ],
+  //   sizeForms: [
+  //     {
+  //       label: "Upper Bust (cm)",
+  //     },
+  //     {
+  //       label: "Under Bust (cm)",
+  //     },
+  //     {
+  //       label: "Waist (cm)",
+  //     },
+  //     {
+  //       label: "Bottom Length (cm)",
+  //     },
+  //     // Add more form fields as needed
+  //   ],
+  // },
 ];

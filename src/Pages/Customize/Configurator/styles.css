@@ -251,6 +251,7 @@ h1 {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  width: fit-content;
 }
 
 .texture-button {
@@ -288,6 +289,10 @@ h1 {
 
 .p-carousel-items-content {
   transform: translateY(0.4rem);
+}
+
+.p-carousel-content {
+  overflow: hidden !important;
 }
 
 .part-image {
