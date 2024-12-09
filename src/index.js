@@ -20,7 +20,7 @@ root.render(
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
         {isMobileDevice ?  
-        <div className="card flex justify-content-center">
+        <div className=" flex justify-content-center align-items-center">
             <ProgressSpinner />
         </div> 
         : <DesktopDevicePrompt /> }
