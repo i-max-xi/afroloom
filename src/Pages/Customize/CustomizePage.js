@@ -9,6 +9,7 @@ import {
 } from "../../Data/CustomizeDataAccessories";
 import { mainUnisex } from "../../Data/CustomizeDataUnisex";
 import { mainFootwear } from "../../Data/CustomizeDataFootwear";
+import ListItem from "../../Components/List/ListItem";
 
 const CustomizePage = () => {
   useEffect(() => {
@@ -19,11 +20,11 @@ const CustomizePage = () => {
     <>
       <Nav />
       <div className="container">
-        <h1 className="text-center mt-3 mb-2">Design your own product</h1>
+        <h5 className="text-center mt-3 mb-2">Choose any item below to kickstart your customization journey!</h5>
         <div className="row">
-          {/* Accessories */}
-          <h5 className="mt-4 footer-header">Accessories</h5>
-          {mainUnisex.map(({ name, image, link }) => (
+          {/* Nails */}
+          {/* <h5 className="mt-4 footer-header">Nails</h5>
+          {mainUnisex.slice(0, 3).map(({ name, image, link }) => (
             <Link
               // to={`/customize-unisex/${name}`}
               to={link ? link : `/configurator-unisex/${name}`}
@@ -37,12 +38,13 @@ const CustomizePage = () => {
                 </div>
               </div>
             </Link>
-          ))}
-          {/* Female clothing */}
-          <h5 className="mt-4 footer-header">Female Clothing</h5>
-          {mainFemaleCustomize.map(({ name, image }) => (
+          ))} */}
+          {/* hair */}
+          {/* <h5 className="mt-4 footer-header">Wigs</h5>
+          {mainUnisex.slice(3, 10).map(({ name, image, link }) => (
             <Link
-              to={`/configurator-female/${name}`}
+              // to={`/customize-unisex/${name}`}
+              to={link ? link : `/configurator-unisex/${name}`}
               className="col-6 col-md-3 customise-front text-decoration-none"
               key={name}
             >
@@ -53,17 +55,64 @@ const CustomizePage = () => {
                 </div>
               </div>
             </Link>
+          ))} */}
+          {/* Accessories */}
+          <h5 className="mt-4 footer-header">Accessories</h5>
+          {mainUnisex
+            .slice(9, 14)
+            .map(({ name, image, link, description, title }) => (
+              <Link
+                // to={`/customize-unisex/${name}`}
+                to={link ? link : `/configurator-unisex/${name}`}
+                className="col-6 col-md-3 customise-front text-decoration-none"
+                key={name}
+                data-aos="fade-in"
+                data-aos-duration="1500"
+              >
+                {/* <div className="card" data-aos="fade-in" data-aos-duration="1500">
+                <img className="card-img-top" src={image} alt={name} />
+                <div className="card-body m-0 d-flex justify-content-center flex-column">
+                  <h5 className="text-center">{name}</h5>
+                </div>
+              </div> */}
+                <ListItem
+                  image={image}
+                  description={title || name}
+                  extraDescription={description}
+                />
+              </Link>
+            ))}
+          {/* Female clothing */}
+          <h5 className="mt-4 footer-header">Women's Clothing</h5>
+          {mainFemaleCustomize.map(({ name, image }) => (
+            <Link
+              to={`/configurator-female/${name}`}
+              className="col-6 col-md-3 customise-front text-decoration-none"
+              key={name}
+              data-aos="fade-in"
+              data-aos-duration="1500"
+            >
+              {/* <div className="card" data-aos="fade-in" data-aos-duration="1500">
+                <img className="card-img-top" src={image} alt={name} />
+                <div className="card-body m-0 d-flex justify-content-center flex-column">
+                  <h5 className="text-center">{name}</h5>
+                </div>
+              </div> */}
+              <ListItem image={image} description={name} />
+            </Link>
           ))}
 
           {/* Male clothing */}
-          <h5 className="mt-4 footer-header">Male Clothing</h5>
+          <h5 className="mt-4 footer-header">Men's Clothing</h5>
           {mainMaleCustomize.map(({ name, image }) => (
             <Link
               to={`/configurator/${name}`}
               className="col-6 col-md-3 customise-front text-decoration-none "
               key={name}
+              data-aos="fade-in"
+              data-aos-duration="1500"
             >
-              <div
+              {/* <div
                 className="card contained-image-container"
                 data-aos="fade-in"
                 data-aos-duration="1500"
@@ -76,7 +125,8 @@ const CustomizePage = () => {
                 <div className="card-body m-0 d-flex justify-content-center flex-column">
                   <h5 className="text-center">{name}</h5>
                 </div>
-              </div>
+              </div> */}
+              <ListItem image={image} description={name} />
             </Link>
           ))}
 
@@ -88,17 +138,8 @@ const CustomizePage = () => {
               className="col-6 col-md-3 customise-front text-decoration-none"
               key={name}
             >
-              <div className="card" data-aos="fade-in" data-aos-duration="1500">
-                <img
-                  className="card-img-top"
-                  src={image}
-                  alt={name}
-                
-                />
-                <div className="card-body m-0 d-flex justify-content-center flex-column">
-                  <h5 className="text-center">{name}</h5>
-                </div>
-              </div>
+             
+              <ListItem image={image} description={name} />
             </Link>
           ))} */}
 
@@ -110,12 +151,7 @@ const CustomizePage = () => {
               className="col-6 col-md-3 customise-front text-decoration-none"
               key={name}
             >
-              <div className="card" data-aos="fade-in" data-aos-duration="1500">
-                <img className="card-img-top" src={image} alt={name} />
-                <div className="card-body m-0 d-flex justify-content-center flex-column">
-                  <h5 className="text-center">{name}</h5>
-                </div>
-              </div>
+              <ListItem image={image} description={name} />
             </Link>
           ))} */}
 
@@ -123,22 +159,11 @@ const CustomizePage = () => {
           {/* <h5 className="mt-4 footer-header">Footwear</h5>
           {mainFootwear.map(({ name, image }) => (
             <Link
-              // to={`/customize-footwear/${name}`}
               to={`/configurator-footwear/${name}`}
               className="col-6 col-md-3 customise-front text-decoration-none"
               key={name}
             >
-              <div className="card" data-aos="fade-in" data-aos-duration="1500">
-                <img
-                  className="card-img-top"
-                  src={image}
-                  alt={name}
-                 
-                />
-                <div className="card-body m-0 d-flex justify-content-center flex-column">
-                  <h5 className="text-center">{name}</h5>
-                </div>
-              </div>
+              <ListItem image={image} description={name} />
             </Link>
           ))} */}
         </div>

@@ -27,10 +27,8 @@ import {
   textureArrays,
   textureDescriptions,
   textureValues,
-  responsiveNess,
   specialNodeNames,
   displayInplaceFor,
-  responsiveColor,
   colorBasePrice,
 } from "./arrays/neededArrays";
 import TextureItem from "./TextureItem";
@@ -62,6 +60,12 @@ const Shirt = ({
       groupRef.current.rotation.y += rotationSpeed;
     }
   });
+
+  useEffect(() => {
+    if (!isRotating) {
+      groupRef.current.rotation.y = 0;
+    }
+  }, [isRotating]);
 
   const handlePartClick = (index) => {
     if (index === selectedPart) {
@@ -137,7 +141,14 @@ const CameraControls = () => {
     controlsRef.current.update();
   });
 
-  return <OrbitControls ref={controlsRef} />;
+  return (
+    <OrbitControls
+      enableRotate={true}
+      enablePan={false}
+      enableZoom={false}
+      ref={controlsRef}
+    />
+  );
 };
 
 const Configurator = () => {
@@ -145,11 +156,11 @@ const Configurator = () => {
   const selectedClothing = mainMaleCustomize.find((item) => item.name === Id);
 
   const [selectedSize, setSelectedSize] = useState(1);
-  const [selectedPrintOn, setSelectedPrintOn] = useState(null);
+  const [selectedPrintOn, setSelectedPrintOn] = useState("#ffffff");
 
   const [selectedPart, setSelectedPart] = useState(0);
 
-  const [isRotating, setIsRotating] = useState(false);
+  const [isRotating, setIsRotating] = useState(true);
 
   const canvasRef = useRef();
   // toast
@@ -169,20 +180,30 @@ const Configurator = () => {
     currencyFactor
   ).toFixed(2);
 
-  useEffect(() => {
-    setPartPrices(selectedClothing.sizeOptions[1].colorPriceValue);
-  }, []);
+   useEffect(() => {
+    const currentSize = selectedClothing.sizeOptions.find(
+      (size) => size.value === selectedSize,
+    );
 
-  const handleSizeChange = (factor, priceValue, colorPriceValue) => {
+    return setPartPrices(currentSize.colorPriceValue);
+    }, [selectedClothing.sizeOptions, selectedSize]);
+    
+
+  const handleSizeChange = (factor, priceValue) => {
     let newPartPrice;
     setSelectedSize(factor);
 
     const textureCategory = Object.keys(textureArrays).find((category) =>
-      textureArrays[category].includes(selectedTexture)
+      textureArrays[category].includes(selectedTexture),
     );
 
     if (!textureCategory) {
-      newPartPrice = colorPriceValue;
+      const currentSize = selectedClothing.sizeOptions.find(
+        (size) => size.value === selectedSize,
+      );
+      setPartPrices(currentSize.colorPriceValue)
+  
+      return setPartPrices(currentSize.colorPriceValue);
     }
 
     if (textureCategory && textureCategory === "waxPrint") {
@@ -208,7 +229,7 @@ const Configurator = () => {
     setSelectedPrintOn(newColor);
 
     const currentSize = selectedClothing.sizeOptions.find(
-      (size) => size.value === selectedSize
+      (size) => size.value === selectedSize,
     );
 
     setPartPrices(currentSize.colorPriceValue);
@@ -223,11 +244,11 @@ const Configurator = () => {
       setSelectedTexture(newTexture); // needed to transfer to size
 
       const textureCategory = Object.keys(textureArrays).find((category) =>
-        textureArrays[category].includes(newTexture)
+        textureArrays[category].includes(newTexture),
       );
 
       const sizeValue = selectedClothing.sizeOptions.find(
-        (size) => size.value === selectedSize
+        (size) => size.value === selectedSize,
       );
 
       const yardPrice = textureValues[textureCategory].price;
@@ -262,6 +283,7 @@ const Configurator = () => {
   const [stateImage, setStateImage] = useState("");
 
   const captureCanvasAsImage = async () => {
+    setIsRotating(false);
     const requiresHeight = displayInplaceFor.includes(selectedClothing.name);
     const heightProvided = height !== "";
 
@@ -275,14 +297,14 @@ const Configurator = () => {
       return;
     }
 
-    const canvas = canvasRef.current;
-
-    const canvasImage = await html2canvas(canvas);
-    const dataUrl = canvasImage.toDataURL();
-
-    setStateImage(dataUrl); // Save the data URL to state
-
-    setShowConfirmation(true); // Show confirmation
+    setTimeout(async () => {
+      const canvas = canvasRef.current;
+      const canvasImage = await html2canvas(canvas);
+      const dataUrl = canvasImage.toDataURL();
+      setStateImage(dataUrl);
+      setShowConfirmation(true);
+      setIsRotating(true);
+    }, 100);
   };
 
   //size guide popup
@@ -293,7 +315,7 @@ const Configurator = () => {
     selectedClothing.sizeForms?.reduce((acc, formField) => {
       acc[formField.label] = formField.value;
       return acc;
-    }, {})
+    }, {}),
   );
 
   // Handle changes in the size form fields
@@ -411,7 +433,7 @@ const Configurator = () => {
           setShowConfirmation={setShowConfirmation}
           selectedSize={
             selectedClothing.sizeOptions.find(
-              (option) => option.value === selectedSize
+              (option) => option.value === selectedSize,
             )?.label
           }
           modelImage={stateImage}
@@ -432,12 +454,17 @@ const Configurator = () => {
                 onClick={handleRotation}
               >
                 {isRotating ? (
-                  <span>
-                    Stop <i className="pi pi-ban"></i>
+                  <span className="d-flex align-items-center gap-1">
+                    Stop Spin
+                    <i className="pi pi-ban" style={{ fontSize: "0.8rem" }}></i>
                   </span>
                 ) : (
-                  <span>
-                    Take a Spin <i className="pi pi-sync"></i>
+                  <span className="d-flex align-items-center gap-1">
+                    Take a Spin{" "}
+                    <i
+                      className="pi pi-sync"
+                      style={{ fontSize: "0.8rem" }}
+                    ></i>
                   </span>
                 )}
               </button>
@@ -470,7 +497,7 @@ const Configurator = () => {
                           handleSizeChange(
                             option.value,
                             option.priceValue,
-                            option.colorPriceValue
+                            option.colorPriceValue,
                           )
                         }
                       >
@@ -549,7 +576,7 @@ const Configurator = () => {
                               onChange={(e) =>
                                 handleSizeFormChange(
                                   formField.label,
-                                  e.target.value
+                                  e.target.value,
                                 )
                               }
                             />
@@ -559,7 +586,7 @@ const Configurator = () => {
                     </div>
                   </Dialog>
                 </div>
-                <h5>Choose Color</h5>
+                <h5>Choose Color (Cotton Material)</h5>
 
                 <div className="color-buttons-container">
                   <Carousel
@@ -586,11 +613,8 @@ const Configurator = () => {
 
                 <h5>Choose Textile</h5>
                 <div className="texture-buttons-container">
-                  <div className="texture-category">
-                    <h3>
-                      Batik (+{currencySymbol}
-                      {(currencyFactor * textureValues.batik.price).toFixed(2)})
-                    </h3>
+                  <div className="texture-category mt-3">
+                    <h3>Batik</h3>
                     <Carousel
                       value={textureArrays.batik}
                       numVisible={4}
@@ -611,10 +635,10 @@ const Configurator = () => {
                     />
                   </div>
 
-                  {/* <div className="texture-category">
+                  {/* <div className="texture-category mt-3">
                     <h3>
                       Crochet (+{currencySymbol}
-                      {(currencyFactor * textureValues.Crochet.price).toFixed(2)})
+                      {(currencyFactor * textureValues.Crochet.price).toFixed()})
                     </h3>
                     <Carousel
                       value={textureArrays.Crochet}
@@ -638,14 +662,8 @@ const Configurator = () => {
                     />
                   </div> */}
                   <div className="texture-row">
-                    <div className="texture-category">
-                      <h3>
-                        waxPrint (+{currencySymbol}
-                        {(
-                          currencyFactor * textureValues.waxPrint.price
-                        ).toFixed(2)}
-                        )
-                      </h3>
+                    <div className="texture-category mt-3">
+                      <h3>waxPrint</h3>
                       <Carousel
                         value={textureArrays.waxPrint}
                         numVisible={4}
@@ -666,13 +684,74 @@ const Configurator = () => {
                               textureDescriptions.waxPrint
                             }
                             textureIndex={textureArrays.waxPrint.indexOf(
-                              texture
+                              texture,
                             )}
                           />
                         )}
                       />
                     </div>
                   </div>
+                  <div className="texture-row">
+                    <div className="texture-category mt-3">
+                      <h3>School Prints</h3>
+                      <Carousel
+                        value={textureArrays.Diaspora}
+                        numVisible={4}
+                        numScroll={1}
+                        showIndicators={false}
+                        itemTemplate={(texture) => (
+                          <TextureItem
+                            key={texture}
+                            texture={texture}
+                            setHideText={setHideText}
+                            Title="Diaspora"
+                            selectedTexture={selectedPrintOn}
+                            // Pass setSelectedTexture as a prop
+                            handleTextureChange={handleTextureChange}
+                            currencySymbol={currencySymbol}
+                            currencyFactor={currencyFactor}
+                            subTextureDescriptions={
+                              textureDescriptions.diaspora
+                            }
+                            textureIndex={textureArrays.Diaspora.indexOf(
+                              texture,
+                            )}
+                          />
+                        )}
+                      />
+                    </div>
+                  </div>
+                  <div className="texture-row">
+                    <div className="texture-category mt-3">
+                      <h3>Commemorative Prints</h3>
+                      <Carousel
+                        value={textureArrays.commemorative}
+                        numVisible={4}
+                        numScroll={1}
+                        showIndicators={false}
+                        itemTemplate={(texture) => (
+                          <TextureItem
+                            key={texture}
+                            texture={texture}
+                            setHideText={setHideText}
+                            Title="Commemorative Prints"
+                            selectedTexture={selectedPrintOn}
+                            // Pass setSelectedTexture as a prop
+                            handleTextureChange={handleTextureChange}
+                            currencySymbol={currencySymbol}
+                            currencyFactor={currencyFactor}
+                            subTextureDescriptions={
+                              textureDescriptions.commemorative
+                            }
+                            textureIndex={textureArrays.commemorative.indexOf(
+                              texture,
+                            )}
+                          />
+                        )}
+                      />
+                    </div>
+                  </div>
+                 
                 </div>
               </div>
               <div className="right-panel">
@@ -704,12 +783,12 @@ const Configurator = () => {
                     onClick={handleRotation}
                   >
                     {isRotating ? (
-                  <span>
-                    Stop <i className="pi pi-ban"></i>
+                  <span className="d-flex align-items-center gap-1">
+                    Stop Spin<i className="pi pi-ban" style={{ fontSize: '0.8rem' }}></i>
                   </span>
                 ) : (
-                  <span>
-                    Take a Spin <i className="pi pi-sync"></i>
+                  <span className="d-flex align-items-center gap-1">
+                    Take a Spin <i className="pi pi-sync" style={{ fontSize: '0.8rem' }}></i>
                   </span>
                 )}
                   </button>

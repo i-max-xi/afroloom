@@ -7,7 +7,7 @@ const CurrencyConverter = () => {
   const dispatch = useDispatch();
   const currencySymbol = useSelector((state) => state.currencySymbol);
   const [exchangeRates, setExchangeRates] = useState([]);
-  const currencyOptions =  [
+  const currencyOptions = [
     { name: "USD", symbol: "$" },
     { name: "GHS", symbol: "₵" },
     { name: "EUR", symbol: "€" },
@@ -103,15 +103,15 @@ const CurrencyConverter = () => {
     const fetchExchangeRates = async () => {
       try {
         const response = await fetch(
-          `https://api.exchangerate-api.com/v4/latest/GHS?apiKey=${process.env.REACT_APP_currency_apiKey}`
+          `https://api.exchangerate-api.com/v4/latest/GHS?apiKey=${process.env.REACT_APP_currency_apiKey}`,
         );
-  
+
         if (!response.ok) {
           throw new Error("Failed to fetch exchange rates");
         }
-  
+
         const data = await response.json();
-  
+
         if (data && data.rates) {
           const modifiedRates = currencyOptions
             .filter((option) => data.rates.hasOwnProperty(option.name))
@@ -120,7 +120,7 @@ const CurrencyConverter = () => {
               symbol: option.symbol,
               factor: data.rates[option.name],
             }));
-  
+
           setExchangeRates(modifiedRates);
         } else {
           console.error("Invalid response structure from the API");
@@ -129,17 +129,16 @@ const CurrencyConverter = () => {
         console.error("Error fetching exchange rates", error);
       }
     };
-  
+
     fetchExchangeRates();
-  }, [currencyOptions]);
-  
+  }, []);
 
   const handleCurrencyChange = (selectedOption) => {
     dispatch(
       setCurrencySymbol({
         symbol: selectedOption.symbol,
         factor: selectedOption.factor,
-      })
+      }),
     );
   };
 
@@ -147,7 +146,7 @@ const CurrencyConverter = () => {
     <div className="currency-converter" style={{ flex: 1 }}>
       <Dropdown
         value={exchangeRates.find(
-          (option) => option.symbol === currencySymbol.symbol
+          (option) => option.symbol === currencySymbol.symbol,
         )}
         options={exchangeRates}
         optionLabel={(option) => `${option.name} (${option.symbol})`}

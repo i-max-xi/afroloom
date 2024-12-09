@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useReactToPrint } from "react-to-print";
 import html2canvas from "html2canvas";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { InputTextarea } from "primereact/inputtextarea";
 
 import { app } from "../../../firebase"; // Import your firebase app object
@@ -13,7 +13,7 @@ import {
 } from "firebase/storage";
 import { Toast } from "primereact/toast";
 import { ProgressSpinner } from "primereact/progressspinner";
-import { set3DItemDetails, setItemDataSheet } from "../../../Redux/store";
+import { addToCart } from "../../../Redux/store";
 import { useDispatch, useSelector } from "react-redux";
 import { parseTitle } from "../../../utils/functions";
 import { Divider } from "primereact/divider";
@@ -39,7 +39,9 @@ const Confirmation = ({
 }) => {
   const toast = useRef(null);
   const [isLoading, setIsLoading] = useState(false); // Initialize loading state
+  const [addedToCart, setAddedToCart] = useState(false);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const [count, setCount] = useState(1);
   const [special, setSpecial] = useState("");
@@ -103,14 +105,16 @@ const Confirmation = ({
           specialRequests: special,
           uploadedImageLeft: uploadedImageLeft,
           uploadedImageRight: uploadedImageRight,
+          dataSheet: downloadURL,
           // Other properties specific to your object
         },
       ];
 
-      dispatch(set3DItemDetails(formData));
-      dispatch(setItemDataSheet(downloadURL));
+      dispatch(addToCart(...formData));
+      // dispatch(setItemDataSheet(downloadURL));
 
       setIsLoading(false);
+      setAddedToCart(true);
       toast.current.show({
         severity: "info",
         summary: "Order Confirmed",
@@ -121,7 +125,8 @@ const Confirmation = ({
               Proceed to{" "}
               <Link to="/customize-checkout" className="btn btn-success">
                 Checkout
-              </Link>
+              </Link>{" "}
+              when ready
             </p>
           </div>
         ),
@@ -169,26 +174,36 @@ const Confirmation = ({
       />
       <div className="container justify-content-center">
         <div className="d-flex">
-          <button className="btn btn-outline-success" onClick={handlePrint}>
-            Download Copy
-          </button>
-          <button
-            disabled={isLoading}
-            className="btn btn-success mx-3 position-relative"
-            onClick={handleFormSubmit}
-          >
-            <span className="spinner-container">
-              {isLoading && (
-                <ProgressSpinner
-                  style={{ width: "1.5rem", height: "1.5rem" }}
-                  strokeWidth="8"
-                  fill="var(--surface-ground)"
-                  className="position-absolute top-50 start-50 translate-middle"
-                />
-              )}
-            </span>
-            Confirm Order
-          </button>
+          <p>
+            <button className="btn btn-outline-success" onClick={handlePrint}>
+              Download Copy
+            </button>
+            <p style={{ fontSize: "0.7rem" }}>For effective transparency</p>
+          </p>
+
+          <p>
+            <button
+              disabled={isLoading}
+              className={`btn ${addedToCart ? "btn-warning text-white" : "btn-success"} mx-3 position-relative`}
+              onClick={
+                addedToCart
+                  ? () => navigate("/start-customize")
+                  : handleFormSubmit
+              }
+            >
+              <span className="spinner-container">
+                {isLoading && (
+                  <ProgressSpinner
+                    style={{ width: "1.5rem", height: "1.5rem" }}
+                    strokeWidth="8"
+                    fill="var(--surface-ground)"
+                    className="position-absolute top-50 start-50 translate-middle"
+                  />
+                )}
+              </span>
+              {addedToCart ? "Order Again" : "Add To Cart"}
+            </button>
+          </p>
         </div>
 
         <p className="h5 mt-4">Thank you for your order!</p>
@@ -230,7 +245,7 @@ export const OrderDetail = React.forwardRef(
       textLeft,
       textRight,
     },
-    ref
+    ref,
   ) => {
     const currencySymbol = useSelector((state) => state.currencySymbol.symbol);
     const currencyFactor = useSelector((state) => state.currencySymbol.factor);
@@ -254,7 +269,7 @@ export const OrderDetail = React.forwardRef(
                   </span> */}
                   <br />
                   <span className="fw-bold">Price: </span>
-                  {currencySymbol + (currencyFactor * total * count).toFixed(2)}
+                  {currencySymbol + (currencyFactor * total * count).toFixed()}
                 </div>
               </div>
               <div>
@@ -427,7 +442,7 @@ export const OrderDetail = React.forwardRef(
                                 <Divider />
                               )}
                             </div>
-                          )
+                          ),
                       )}
                     </div>
                   </div>
@@ -466,7 +481,7 @@ export const OrderDetail = React.forwardRef(
                           <li key={label}>
                             <strong>{label}:</strong> {value ? value : "N/A"}
                           </li>
-                        )
+                        ),
                       )}
                   </ul>
                 </>
@@ -492,67 +507,9 @@ export const OrderDetail = React.forwardRef(
             </span>
           </p>
         </div>
-
-        {/* {selectedParts && (
-          <div className="col-md-6">
-            <div className="mt-4">
-              <h2>Information On Parts</h2>
-              {selectedParts.map(
-                (part, index) =>
-                  (part.color || part.texture) && (
-                    <div key={index} className="mb-4">
-                      <h4 className="text-capitalize">
-                        {parseTitle(part.name)}
-                      </h4>
-                      <p>
-                        {part.color && (
-                          <>
-                            Color
-                            <div
-                              className="color-display"
-                              style={{
-                                backgroundColor: part.color,
-                                width: "20px",
-                                height: "20px",
-                                border: "1px solid black",
-                                borderRadius: "4rem",
-                                display: "inline-block",
-                                marginLeft: "1rem",
-                              }}
-                            ></div>
-                          </>
-                        )}
-                      </p>
-
-                      <p>
-                        {part.texture && (
-                          <>
-                            Texture:
-                            <p>
-                              <img
-                                src={part.texture}
-                                alt="Selected Texture"
-                                style={{
-                                  maxWidth: "70px",
-                                  maxHeight: "70px",
-                                  display: "inline-block",
-                                }}
-                              />
-                            </p>
-                          </>
-                        )}
-                      </p>
-
-                      {index !== selectedParts.length - 1 && <Divider />}
-                    </div>
-                  )
-              )}
-            </div>
-          </div>
-        )} */}
       </div>
     );
-  }
+  },
 );
 
 export default Confirmation;

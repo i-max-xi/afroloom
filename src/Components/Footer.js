@@ -10,6 +10,8 @@ import contactInfo from "../Data/contactList";
 import { isMobile } from "../utils/constants";
 
 const Footer = () => {
+  const currentYear = new Date().getFullYear();
+
   return (
     <div className="bg-black text-center text-white footer">
       <Header2 color="black" bgColor="orange" />
@@ -29,6 +31,7 @@ const Footer = () => {
               <FooterContact
                 key={contact.id}
                 infoDetail={contact.detail}
+                infoDetail2={contact.detail2}
                 infoImage={contact.img}
                 infoTitle={contact.title}
               />
@@ -62,7 +65,13 @@ const Footer = () => {
                 <Link to="/" className="navbar-brand">
                   <h3>
                     {" "}
-                    <img src={Logo} alt="africa-logo" className="logo w-100" />
+                    <img
+                      height="auto"
+                      width="auto"
+                      src={Logo}
+                      alt="africa-logo"
+                      className="logo w-100"
+                    />
                   </h3>
                 </Link>
                 <h5 className="mx-3">Follow Us</h5>
@@ -86,6 +95,13 @@ const Footer = () => {
                     <p>
                       <Link to="/contact" className="text-reset">
                         Contact Us
+                        <br />
+                      </Link>
+                    </p>
+
+                    <p>
+                      <Link to="/admin-signin" className="text-reset">
+                        Admin
                         <br />
                       </Link>
                     </p>
@@ -114,7 +130,9 @@ const Footer = () => {
         </section>
       </div>
 
-      <div className="text-center p-3 bg-dark">© 2023 Copyright: AfroLoom</div>
+      <div className="text-center p-3 bg-dark">
+        &copy; {currentYear} AfroLoom
+      </div>
     </div>
   );
 };

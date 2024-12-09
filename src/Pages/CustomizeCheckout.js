@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-import { clear3DInfo } from "../Redux/store";
+import { clearCart, removeFromCart } from "../Redux/store";
 
 import Top from "../Assets/Headers/Check_Out.jpg";
 import LayoutHeaders from "../Components/LayoutHeaders";
@@ -10,14 +10,15 @@ import { PaystackButton } from "react-paystack";
 import { Toast } from "primereact/toast";
 import { RadioButton } from "primereact/radiobutton";
 import { useReactToPrint } from "react-to-print";
-import { parseTitle } from "../utils/functions";
-import { Divider } from "primereact/divider";
+import AllServices from "../Services/usersService";
+import { ProgressSpinner } from "primereact/progressspinner";
+import { set } from "date-fns";
 
 const CustomizeCheckout = () => {
   const cartItems = useSelector((state) => state.customizedProduct.itemDetails);
-  const customizedItemDataSheet = useSelector(
-    (state) => state.customizedProduct.itemDataSheet
-  );
+  // const customizedItemDataSheet = useSelector(
+  //   (state) => state.customizedProduct.itemDataSheet
+  // );
 
   const dispatch = useDispatch();
   const toast = useRef(null);
@@ -27,17 +28,24 @@ const CustomizeCheckout = () => {
   const [lastName, setLastName] = useState("");
   const [city, setCity] = useState("");
   const [tel, setTel] = useState("");
-  // const [Country, setCountry] = useState(""); // State for shipping country input
+  const [referral, setReferral] = useState("");
+  const [partnerInfo, setPartnerinfo] = useState(null);
 
   const currencySymbol = useSelector((state) => state.currencySymbol.symbol);
   const currencyFactor = useSelector((state) => state.currencySymbol.factor);
 
   const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
 
-  const count = cartItems[0].quantity;
+  const totalCount = cartItems?.reduce(
+    (total, item) => total + item?.quantity,
+    0,
+  );
 
   const [totalToPay] = useState(
-    cartItems.reduce((total, item) => total + item.price * count, 0).toFixed(2)
+    cartItems
+      ?.reduce((total, item) => total + item?.price * item?.quantity, 0)
+      .toFixed(),
   );
 
   const publicKey = process.env.REACT_APP_paystack_publicKey;
@@ -69,45 +77,122 @@ const CustomizeCheckout = () => {
     content: () => componentRef.current,
   });
 
-  const sashImages = useMemo(() => {
-    if (cartItems[0].uploadedImageLeft) {
-      return [
-        {
-          SashImageLeft: cartItems[0].uploadedImageLeft,
-        },
-      ];
+  const resetInfos = () => {
+    setEmailAddress("");
+    setFirstName("");
+    setLastName("");
+    setCity("");
+    setTel("");
+    setReferral("");
+    setPartnerinfo(null);
+  };
+
+  // const sashImages = useMemo(() => {
+  //   if (cartItems[0]?.uploadedImageLeft) {
+  //     return [
+  //       {
+  //         SashImageLeft: cartItems[0]?.uploadedImageLeft || "",
+  //       },
+  //     ];
+  //   }
+  //   if (cartItems[0].uploadedImageLeft && cartItems[0]?.uploadedImageRight) {
+  //     return [
+  //       {
+  //         SashImageLeft: cartItems[0]?.uploadedImageLeft || "",
+  //         SashImageRight: cartItems[0]?.uploadedImageRight || "",
+  //       },
+  //     ];
+  //   }
+  //   if (!cartItems[0].uploadedImageLeft && !cartItems[0]?.uploadedImageRight) {
+  //     return [null];
+  //   }
+  // }, [cartItems]);
+
+  const verifyPartner = async () => {
+    setIsLoading(true);
+    const partnerInfo = await AllServices.getPartnerByField(
+      "partner_code",
+      referral,
+    );
+
+    if (partnerInfo.data()) {
+      setPartnerinfo(partnerInfo.data());
+      toast.current.show({
+        severity: "success",
+        summary: "Verification successful",
+        // detail: "You ",
+      });
+    } else {
+      toast.current.show({
+        severity: "error",
+        summary: "Verification failed",
+        detail: "Invalid identity code",
+      });
     }
-    if (cartItems[0].uploadedImageLeft && cartItems[0].uploadedImageRight) {
-      return [
-        {
-          SashImageLeft: cartItems[0].uploadedImageLeft,
-          SashImageRight: cartItems[0].uploadedImageRight,
-        },
-      ];
+
+    setIsLoading(false);
+  };
+
+  const currentMonth = new Date().toLocaleString("default", { month: "long" });
+  const matchedMonth = partnerInfo?.salesData.find(
+    (data) => data.month === currentMonth,
+  );
+
+  const cartItemsData = cartItems.map((item) => ({
+    name: item.name,
+    quantity: item.quantity,
+    price: item.price,
+    specialRequests: item.specialRequests,
+    readyBy: item.readyBy + " days",
+    dataSheet: item.dataSheet,
+  }));
+
+  const updatedSalesData = {
+    month: currentMonth,
+    count: matchedMonth ? matchedMonth.count + totalCount : totalCount,
+  };
+
+  const updatePartnerInfo = () => {
+    let updatedSalesDataArray;
+    if (matchedMonth) {
+      // Update existing salesData for the matched month
+      updatedSalesDataArray = partnerInfo.salesData.map((data) =>
+        data.month === currentMonth
+          ? { ...data, count: data.count + totalCount }
+          : data,
+      );
+    } else {
+      // Append new salesData if no matching month is found
+      updatedSalesDataArray = [...partnerInfo.salesData, updatedSalesData];
     }
-    if (!cartItems[0].uploadedImageLeft && !cartItems[0].uploadedImageRight) {
-      return [null];
-    }
-  }, [cartItems]);
+
+    const updatedPartnerInfo = {
+      ...partnerInfo,
+      count: (partnerInfo.count || 0) + totalCount, // Increment count
+      salesData: updatedSalesDataArray,
+    };
+
+    AllServices.updatePartner(partnerInfo.id, updatedPartnerInfo);
+  };
 
   const onSuccess = (reference) => {
-    handlePrint();
+    // handlePrint();
+    console.log("start", reference);
 
+    // Include the structured cart items data in the userInfo object
     const userInfo = {
-      firstName: firstName,
-      lastName: lastName,
-      email: email,
-      // Country: Country,
-      city: city,
-      tel: tel,
-      customizedItemDataSheet: customizedItemDataSheet,
-      quantity: count,
-      readyBy: cartItems[0].readyBy + "days",
-      ...sashImages,
-      specialRequest: cartItems[0].specialRequests,
-      subject: `New 3D Product Order`,
+      firstName,
+      lastName,
+      email,
+      city,
+      tel,
+      cartItems: cartItemsData,
+      ReferedPerson: referral,
+      subject: "New Product Order",
+      timestamp: new Date().toISOString(), // Adding timestamp
+      balanceToPay: parseFloat(totalToPay) - totalToPayNumeric,
     };
-    // Submit to formspree
+
     fetch(process.env.REACT_APP_formSpree, {
       method: "POST",
       headers: {
@@ -116,7 +201,16 @@ const CustomizeCheckout = () => {
       body: JSON.stringify(userInfo),
     });
 
-    // Clear the cart after successful payment
+    AllServices.addOrder(userInfo);
+
+    if (partnerInfo !== null) {
+      updatePartnerInfo();
+    }
+
+    resetInfos();
+    dispatch(clearCart());
+
+    console.log("Payment successful", reference);
   };
 
   const onClose = () => {
@@ -124,7 +218,6 @@ const CustomizeCheckout = () => {
     toast.current.show({
       severity: "info",
       summary: "Payment Cancelled",
-      // detail: "Click on cart to checkout item",
     });
   };
 
@@ -139,71 +232,81 @@ const CustomizeCheckout = () => {
     }
   }, [firstName, lastName, emailAddress, tel, city]);
 
+  const handleRemoveItem = (name) => {
+    dispatch(removeFromCart(name));
+  };
+
   return (
     <>
       <LayoutHeaders selectedBg={Top} />
       <Toast ref={toast} />
 
-      <div style={{ display: "none" }}>
-        <OrderDetail
-          total={totalToPayNumeric}
-          actualTotal={totalToPay}
-          currencySymbol={currencySymbol}
-          readyBy={cartItems[0].readyBy}
-          selectedParts={cartItems[0].selectedParts}
-          selectedSize={cartItems[0].selectedSize}
-          ref={componentRef}
-          modelImage={cartItems[0].modelImage}
-          customSizeValues={cartItems[0].customSizeValues}
-          height={cartItems[0].height}
-          name={cartItems[0].name}
-          count={cartItems[0].quantity}
-          specialRequest={cartItems[0].specialRequests}
-        />
-      </div>
-
       <div className="container mb-5">
         {cartItems.length !== 0 ? (
           <div className="mt-5 mb-5">
-            <h2>Customized Item</h2>
+            <h2>Customized Item(s)</h2>
             <ul className="list-group">
               {cartItems.map((selectedItem) => (
                 <li
-                  className="list-group-item d-flex justify-content-between align-items-center mt-3"
-                  key={selectedItem.id}
+                  className=" d-flex justify-content-between align-items-center mt-3"
+                  key={selectedItem.name}
                   data-aos="fade-up"
                 >
-                  <div className="d-flex">
+                  <div className="d-flex gap-3 align-items-center list-group-item col">
                     <img
                       src={selectedItem.modelImage}
                       alt=""
                       width="100rem"
                       height="100rem"
                     />
-                    <div className="mt-2 mx-5">
+                    <div className="">
                       <span className="fw-bold">Name: </span>{" "}
                       {selectedItem.name} <br />
-                      <span className="fw-bold">Quantity: </span> {count}
+                      <span className="fw-bold">Quantity: </span>{" "}
+                      {selectedItem.quantity}
                       <br />
-                      <span className="fw-bold">Total Price:</span>
-                      {(totalToPay * currencyFactor).toFixed(2)}
+                      <span className="fw-bold">Subtotal:</span>{" "}
+                      {currencySymbol}
+                      {(
+                        selectedItem?.price *
+                        selectedItem?.quantity *
+                        currencyFactor
+                      ).toFixed()}
                     </div>
                   </div>
+                  <p className="col-1">
+                    <i
+                      className="pi pi-trash "
+                      style={{ color: "red" }}
+                      onClick={() => handleRemoveItem(selectedItem.name)}
+                    ></i>
+                  </p>
                 </li>
               ))}
             </ul>
+
+            <p className="d-flex justify-content-center align-items-center w-100 pt-4 pb-1">
+              <button
+                className="btn btn-danger"
+                onClick={() => {
+                  dispatch(clearCart());
+                }}
+              >
+                Clear Cart
+              </button>
+            </p>
 
             <div className="mt-5 mb-5 text-center"></div>
             <h5>Down Payment</h5>
             <div className="d-flex flex-column gap-1">
               <div
-                style={{ opacity: cartItems[0].name.includes("Wig") ? 0.5 : 1 }}
+                // style={{ opacity: cartItems[0].name.includes("Wig") ? 0.5 : 1 }}
                 className="d-flex aligh-items-center"
               >
                 <RadioButton
                   onChange={(e) => setPayPercentage(!payPercenTage)}
                   checked={payPercenTage === true}
-                  disabled={cartItems[0].name.includes("Wig")}
+                  // disabled={cartItems[0].name.includes("Wig")}
                 />
                 <label className="ml-2">Pay 45% of amount</label>
               </div>
@@ -224,70 +327,111 @@ const CustomizeCheckout = () => {
                 </p>
               </h3>
             </div>
-          </div>
-        ) : (
-          <div className="text-center m-5">No items Added Yet </div>
-        )}
 
-        {/* Shipping Information */}
+            {/* Shipping Information */}
 
-        <div className="container bg-white rounded col-12 col-sm-6 p-5 shadow">
-          <h4 className="mb-4 text-center">
-            <span className="text-warning">Your</span> Information
-          </h4>
-
-          <div className="mt-4 mb-4">
-            <div class="row">
-              <div class="form-group col-md-5">
+            <div className="mt-5">
+              <p>
+                Did you find AfroLoom through a friend?, enter their identity
+                code to appreciate them
+              </p>
+              <div className=" d-flex gap-2 align-items-center mb-3">
                 <input
                   type="text"
-                  class="form-control"
-                  id="First Name"
-                  placeholder="First Name"
-                  value={firstName}
-                  onChange={(e) => setFirstName(e.target.value)}
+                  className="form-control"
+                  id="referral"
+                  value={referral}
+                  onChange={(e) => setReferral(e.target.value)}
+                  placeholder="6 - digit ID code"
                 />
+                <div>
+                  <button
+                    disabled={referral.length < 6}
+                    onClick={partnerInfo !== null ? "" : verifyPartner}
+                    className={
+                      partnerInfo !== null
+                        ? "btn btn-success"
+                        : "btn btn-warning text-white shadow-sm position-relative d-flex align-items-center justify-content-center align-self-center"
+                    }
+                  >
+                    {" "}
+                    <span className="spinner-container">
+                      {isLoading && (
+                        <ProgressSpinner
+                          style={{ width: "1.5rem", height: "1.5rem" }}
+                          strokeWidth="8"
+                          fill="var(--surface-ground)"
+                          className="position-absolute top-50 start-50 translate-middle"
+                        />
+                      )}
+                    </span>
+                    {partnerInfo !== null ? (
+                      <i className="pi pi-check"></i>
+                    ) : (
+                      "Verify"
+                    )}
+                  </button>
+                </div>
               </div>
-              <div class="form-group col-md-5">
-                <input
-                  type="text"
-                  class="form-control"
-                  id="last-name"
-                  placeholder="Last Name"
-                  value={lastName}
-                  onChange={(e) => setLastName(e.target.value)}
-                />
+            </div>
+
+            <div className="container bg-white rounded col-12 col-sm-6 p-5 shadow">
+              <h4 className="mb-4 text-center">
+                <span className="text-warning">Your</span> Information
+              </h4>
+
+              <div className="mt-4 mb-4">
+                <div class="row">
+                  <div class="form-group col-md-5">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="First Name"
+                      placeholder="First Name"
+                      value={firstName}
+                      onChange={(e) => setFirstName(e.target.value)}
+                    />
+                  </div>
+                  <div class="form-group col-md-5">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="last-name"
+                      placeholder="Last Name"
+                      value={lastName}
+                      onChange={(e) => setLastName(e.target.value)}
+                    />
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
 
-          <div className="mt-4">
-            <div className="form-group">
-              <input
-                type="email"
-                className="form-control"
-                id="email"
-                value={emailAddress}
-                onChange={(e) => setEmailAddress(e.target.value)}
-                placeholder="Email"
-              />
-            </div>
-          </div>
+              <div className="mt-4">
+                <div className="form-group">
+                  <input
+                    type="email"
+                    className="form-control"
+                    id="email"
+                    value={emailAddress}
+                    onChange={(e) => setEmailAddress(e.target.value)}
+                    placeholder="Email"
+                  />
+                </div>
+              </div>
 
-          <div className="mt-4">
-            <div className="form-group">
-              <input
-                type="tel"
-                className="form-control"
-                id="tel"
-                value={tel}
-                onChange={(e) => setTel(e.target.value)}
-                placeholder="Phone Number"
-              />
-            </div>
-          </div>
+              <div className="mt-4">
+                <div className="form-group">
+                  <input
+                    type="tel"
+                    className="form-control"
+                    id="tel"
+                    value={tel}
+                    onChange={(e) => setTel(e.target.value)}
+                    placeholder="Phone Number"
+                  />
+                </div>
+              </div>
 
-          {/* <div className="mt-2">
+              {/* <div className="mt-2">
             <h6>Location (Country)</h6>
             <div className="form-group">
               <input
@@ -301,189 +445,58 @@ const CustomizeCheckout = () => {
             </div>
           </div> */}
 
-          <div className="mt-3">
-            <div className="form-group">
-              <input
-                type="text"
-                className="form-control"
-                id="city"
-                value={city}
-                onChange={(e) => setCity(e.target.value)}
-                placeholder="City"
-              />
+              <div className="mt-3">
+                <div className="form-group">
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="city"
+                    value={city}
+                    onChange={(e) => setCity(e.target.value)}
+                    placeholder="City"
+                  />
+                </div>
+              </div>
+
+              {isInfoComplete ? (
+                <PaystackButton
+                  onSuccess={onSuccess}
+                  onClose={onClose}
+                  className="btn btn-success w-100 text-center mt-4 "
+                  {...config}
+                />
+              ) : (
+                <button
+                  disabled
+                  className="btn btn-success w-100 text-center mt-4 "
+                >
+                  Fill in all information to place order
+                </button>
+              )}
+
+              <p className="mt-3" style={{ fontSize: "0.8rem" }}>
+                By placing your order you agree to our
+                <Link to="/tnc"> Terms and Conditions</Link> and <br />
+                <Link to="/returnPolicy"> Return Policies</Link>. You also
+                consent to some of your data being stored by AfroLoom, which may
+                be used to make future shopping experiences better for you
+              </p>
             </div>
           </div>
-
-          {isInfoComplete ? (
-            <PaystackButton
-              onSuccess={onSuccess}
-              onClose={onClose}
-              className="btn btn-success w-100 text-center mt-4 "
-              {...config}
-            />
-          ) : (
+        ) : (
+          <div className="text-center my-5 d-flex flex-column w-100 justify-content-center align-items-center">
+            <p>No items in cart </p>
             <button
-              disabled
-              className="btn btn-success w-100 text-center mt-4 "
+              onClick={() => navigate("/start-customize")}
+              className="btn btn-warning text-white"
             >
-              Fill in all information to place order
+              Buy Now
             </button>
-          )}
-
-          <p className="mt-3" style={{ fontSize: "0.8rem" }}>
-            By placing your order you agree to our
-            <Link to="/tnc"> Terms and Conditions</Link> and <br />
-            <Link to="/returnPolicy"> Return Policies</Link>. You also consent
-            to some of your data being stored by AfroLoom, which may be used to
-            make future shopping experiences better for you
-          </p>
-        </div>
+          </div>
+        )}
       </div>
     </>
   );
 };
-
-export const OrderDetail = React.forwardRef(
-  (
-    {
-      total,
-      actualTotal,
-      // currencySymbol,
-      readyBy,
-      selectedParts,
-      selectedSize,
-      modelImage,
-      customSizeValues,
-      height,
-      name,
-      count,
-      specialRequest,
-    },
-    ref
-  ) => {
-    const currencySymbol = useSelector((state) => state.currencySymbol.symbol);
-
-    return (
-      <div ref={ref} className="row all-confirmation-info">
-        <div className="col-md-6">
-          <p className="h5 mt-3 mb-5 model-confirm-image">
-            <img src={modelImage} alt="model img" width="80%" />
-          </p>
-          <div className=" d-flex justify-content-center align-items-center mt-3">
-            <div className="d-flex">
-              <div className="m-1">
-                <span className="fw-bold">Name: </span> {name} <br />
-                <span className="fw-bold">Quantity: </span> {count} <br />
-                <span className="fw-bold">Selected Size: </span>
-                {selectedSize || "None Selected"}
-                {/* <span className="fw-bold">
-                    Price: {currencySymbol}
-                    {total}
-                  </span> */}
-                <br />
-                <span className="fw-bold">Amount Paid: </span>
-                {currencySymbol} {total}
-                <br />
-                <span className="fw-bold">Amount Left: </span>
-                {currencySymbol} {actualTotal - total}
-                <br />
-                <span className="fw-bold">
-                  Estimated time to make this order: {readyBy} days
-                </span>
-                <br />
-                <span span className="fw-bold">
-                  {specialRequest}
-                </span>
-              </div>
-            </div>
-          </div>
-
-          {/* <div>
-            <div className="custom-size-values">
-              <p className="h5 mt-4">Client's custom size values:</p>
-              {!height && Object.entries(customSizeValues)?.length === 0 ? (
-                <span>N/A</span>
-              ) : (
-                <>
-                  {height && (
-                    <div>
-                      <strong className="text-warning">Your Height:</strong>
-                      {height + ""} cm
-                    </div>
-                  )}
-
-                  <ul>
-                    {Object.entries(customSizeValues)?.map(([label, value]) => (
-                      <li key={label}>
-                        <strong>{label}:</strong> {value}
-                      </li>
-                    ))}
-                  </ul>
-                </>
-              )}
-            </div>
-          </div> */}
-        </div>
-        <div className="col-md-6 px-5">
-          <div className="mt-4">
-            <h2>Information On Parts</h2>
-            {selectedParts?.map(
-              (part, index) =>
-                // Check if the part has color or texture before rendering
-                (part.color || part.texture) && (
-                  <div key={index} className="mb-4">
-                    <h4 className="text-capitalize">{parseTitle(part.name)}</h4>
-                    <p>
-                      {part.color && (
-                        <>
-                          Color
-                          <div
-                            className="color-display"
-                            style={{
-                              backgroundColor: part.color,
-                              width: "20px",
-                              height: "20px",
-                              border: "1px solid black",
-                              borderRadius: "4rem",
-                              display: "inline-block",
-                              marginLeft: "1rem",
-                            }}
-                          ></div>
-                        </>
-                      )}
-                    </p>
-
-                    <p>
-                      {part.texture && (
-                        <>
-                          Texture:
-                          <p>
-                            <img
-                              src={part.texture}
-                              alt="Selected Texture"
-                              style={{
-                                maxWidth: "70px",
-                                maxHeight: "70px",
-                                display: "inline-block",
-                              }}
-                            />
-                          </p>
-                        </>
-                      )}
-                    </p>
-
-                    {index !== selectedParts.length - 1 && <Divider />}
-                  </div>
-                )
-            )}
-          </div>
-        </div>
-      </div>
-      // <div ref={ref}>
-      //   <h1>Hi</h1>
-      // </div>
-    );
-  }
-);
 
 export default CustomizeCheckout;

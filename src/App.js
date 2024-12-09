@@ -32,9 +32,15 @@ import ConfiguratorFemaleAccessories from "./Pages/Customize/Configurator/Config
 import ConfiguratorFemale from "./Pages/Customize/Configurator/ConfiguratorFemale";
 import ConfiguratorUnisex from "./Pages/Customize/Configurator/ConfiguratorUnisex";
 import CustomizeCheckout from "./Pages/CustomizeCheckout";
-import HomePage from "./Pages/HomePage";
 import ConfiguratorWig from "./Pages/Customize/Configurator/ConfiguratorWig";
 import ConfiguratorNails from "./Pages/Customize/Configurator/ConfiguratorNails";
+import SignUp from "./Pages/SignUp";
+import SignIn from "./Pages/SignIn";
+import Dashboard from "./Pages/Dashboard/Dashboard";
+import ForgotPassword from "./Pages/ForgotPassword";
+import HomePage from "./Pages/HomePageTwo";
+import AdminDashboard from "./Pages/Dashboard/admin/AdminHome";
+import SignInAdmin from "./Pages/SignInAdmin";
 
 function App() {
   useEffect(() => {
@@ -50,6 +56,13 @@ function App() {
             <Route path="start-customize" element={<CustomizePage />} />
             <Route path="about" element={<About />} />
             <Route path="customize-checkout" element={<CustomizeCheckout />} />
+            <Route path="signup" element={<SignUp />} />
+            <Route path="signin" element={<SignIn />} />
+            <Route path="admin-signin" element={<SignInAdmin />} />
+            <Route path="forgot-password" element={<ForgotPassword />} />
+
+            <Route path="dashboard/:userID" element={<Dashboard />} />
+            <Route path="admin-dashboard" element={<AdminDashboard />} />
 
             <Route path="/configurator/:Id" element={<Configurator />} />
             <Route

@@ -13,7 +13,7 @@ const DesktopDevicePrompt = () => {
     >
       <p>
         To enjoy the optimal experience, we highly recommend accessing this
-        website from a mobile firendly device. Please note that access is
+        website from a mobile friendly device. Please note that access is
         restricted to mobile devices only.
       </p>
     </div>

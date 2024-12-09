@@ -18,31 +18,6 @@ import heels_guide from "../Assets/size_guide/Footwear/34.jpg";
 // models
 const tshirt_model = "";
 
-// parts
-const flexShoeParts = require.context(
-  "../Assets/model_parts/Shoes/flexible_shoe_main_two",
-  false,
-  /\.(png|jpg|jpeg|gif)$/
-);
-
-const sneakerParts = require.context(
-  "../Assets/model_parts/Shoes/sneaker_best",
-  false,
-  /\.(png|jpg|jpeg|gif)$/
-);
-
-const slippersParts = require.context(
-  "../Assets/model_parts/Shoes/slippers_main",
-  false,
-  /\.(png|jpg|jpeg|gif)$/
-);
-
-const heelsParts = require.context(
-  "../Assets/model_parts/Shoes/heels_main",
-  false,
-  /\.(png|jpg|jpeg|gif)$/
-);
-
 const image_flat_shoe = require("../Assets/welcome_3ds/others/flat shoe.png");
 const image_slippers = require("../Assets/welcome_3ds/others/silipers.png");
 
@@ -53,11 +28,15 @@ export const mainFootwear = [
     // image: s2,
     image: image_flat_shoe,
     model: flex_shoe,
-    myNode: ["sole", "front", "back"],
+    // myNode: ["sole", "front", "back"],
+    myNode: [
+      { name: "sole", yardNeeded: 1 },
+      { name: "front", yardNeeded: 1 },
+      { name: "back", yardNeeded: 1 },
+    ],
     otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
     myZoom: 0.9,
-    price: 20,
-    parts: flexShoeParts.keys().map(flexShoeParts),
+    price: 150,
     sizeGuide: flatShoe_guide,
     sizeModels: tshirt_model,
     readyIn: 7,
@@ -87,13 +66,18 @@ export const mainFootwear = [
     id: uuid(),
     name: "Sneaker",
     image:
-      "https://th.bing.com/th/id/R.ed02939b666f5978946b4b104022f5ee?rik=N3Ja0bD%2boLeYgw&pid=ImgRaw&r=0",
+      "https://cdn.myshoptet.com/usr/www.footic.com/user/shop/big/41126-9_vegan-sneakers.jpg?65f85889",
     model: sneaker_model,
-    myNode: ["front", "lace", "sole", "back"],
+    // myNode: ["front", "lace", "sole", "back"],
+    myNode: [
+      { name: "front", yardNeeded: 1 },
+      { name: "lace", yardNeeded: 1 },
+      { name: "sole", yardNeeded: 1 },
+      { name: "back", yardNeeded: 1 },
+    ],
     otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
     myZoom: 0.9,
-    price: 20,
-    parts: sneakerParts.keys().map(sneakerParts),
+    price: 150,
     sizeGuide: sneaker_guide,
     sizeModels: tshirt_model,
     readyIn: 7,
@@ -125,14 +109,18 @@ export const mainFootwear = [
     // image: "https://th.bing.com/th/id/OIP.5gl1niRXNH5qhTxWLH4ybQHaHa?pid=ImgDet&w=1000&h=1000&rs=1",
     image: image_slippers,
     model: slippers,
-    myNode: ["padding", "top", "sole"],
+    // myNode: ["padding", "top", "sole"],
+    myNode: [
+      { name: "padding", yardNeeded: 1 },
+      { name: "top", yardNeeded: 1 },
+      { name: "sole", yardNeeded: 1 },
+    ],
     otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
     myZoom: 1.2,
-    price: 20,
+    price: 150,
     sizeModels: tshirt_model,
     readyIn: 7,
     weight: 0.25,
-    parts: slippersParts.keys().map(slippersParts),
     sizeGuide: slipper_guide,
     sizeOptions: [
       { label: "35", value: 0.5 },
@@ -158,39 +146,39 @@ export const mainFootwear = [
       },
     ],
   },
-  {
-    id: uuid(),
-    name: "High Heel",
-    image:
-      "https://th.bing.com/th/id/OIP.UMGJguReHwKJtDNEdf5-NQHaHa?pid=ImgDet&rs=1",
-    model: heels,
-    myNode: ["sole", "top"],
-    otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
-    myZoom: 0.6,
-    price: 20,
-    parts: heelsParts.keys().map(heelsParts),
-    sizeGuide: heels_guide,
-    sizeModels: tshirt_model,
-    readyIn: 7,
-    weight: 0.25,
-    sizeOptions: [
-      { label: "35", value: 0.5 },
-      { label: "36", value: 1 },
-      { label: "37", value: 2 },
-      { label: "38", value: 3 },
-      { label: "39", value: 4 },
-      { label: "40", value: 5 },
-      { label: "41", value: 6 },
-      { label: "42", value: 7 },
-    ],
-    sizeForms: [
-      {
-        label: "Heel-to-Toe Length (cm)",
-      },
-      {
-        label: "Heel Height (cm)",
-      },
-      // Add more form fields as needed
-    ],
-  },
+  // {
+  //   id: uuid(),
+  //   name: "High Heel",
+  //   image:
+  //     "https://th.bing.com/th/id/OIP.UMGJguReHwKJtDNEdf5-NQHaHa?pid=ImgDet&rs=1",
+  //   model: heels,
+  //   // myNode: ["sole", "top"],
+  //   myNode: [{ name: "sole", yardNeeded: 1 }, { name: "top", yardNeeded: 1 }],
+  //   otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
+  //   myZoom: 0.6,
+  //   price: 150,
+  //   sizeGuide: heels_guide,
+  //   sizeModels: tshirt_model,
+  //   readyIn: 7,
+  //   weight: 0.25,
+  //   sizeOptions: [
+  //     { label: "35", value: 0.5 },
+  //     { label: "36", value: 1 },
+  //     { label: "37", value: 2 },
+  //     { label: "38", value: 3 },
+  //     { label: "39", value: 4 },
+  //     { label: "40", value: 5 },
+  //     { label: "41", value: 6 },
+  //     { label: "42", value: 7 },
+  //   ],
+  //   sizeForms: [
+  //     {
+  //       label: "Heel-to-Toe Length (cm)",
+  //     },
+  //     {
+  //       label: "Heel Height (cm)",
+  //     },
+  //     // Add more form fields as needed
+  //   ],
+  // },
 ];

@@ -43,6 +43,7 @@ import uuid from "react-uuid";
 import PrintItem from "./PrintItem";
 import { Dialog } from "primereact/dialog";
 import TakeTour from "./TakeTour";
+import WigConfirmation from "./WigConfirmation";
 
 const Shirt = ({
   isRotating,
@@ -65,6 +66,12 @@ const Shirt = ({
       groupRef.current.rotation.y += rotationSpeed;
     }
   });
+
+  useEffect(() => {
+    if (!isRotating) {
+      groupRef.current.rotation.y = 0;
+    }
+  }, [isRotating]);
 
   const handlePartClick = (index) => {
     if (index === selectedPart) {
@@ -110,8 +117,8 @@ const Shirt = ({
             specialNodeNames.includes(nodeName) && nodeName === "nailHands"
               ? snap.color[1]
               : specialNodeNames.includes(nodeName) && nodeName !== "nailHands"
-              ? snap.color[index] || "#333333"
-              : snap.color[index] || "#ffffff";
+                ? snap.color[index] || "#333333"
+                : snap.color[index] || "#ffffff";
 
           const texture = snap.texture[index] || null;
           // const texture = skinTexture;
@@ -157,8 +164,7 @@ const ConfiguratorUnisex = () => {
 
   // const [Price, setPrice] = useState(selectedClothing.price);
 
-  const [selectedSize, setSelectedSize] = useState(1);
-  const [selectedPrintOn, setSelectedPrintOn] = useState(null);
+  const [selectedPrintOn, setSelectedPrintOn] = useState("#ffffff");
 
   const [selectedPart, setSelectedPart] = useState(0);
 
@@ -177,7 +183,7 @@ const ConfiguratorUnisex = () => {
 
   //total price
   const total = useMemo(() => {
-    return ((partPrices + selectedClothing.price) * currencyFactor).toFixed(2);
+    return ((partPrices + selectedClothing.price) * currencyFactor).toFixed();
   }, [selectedClothing.name, partPrices]);
 
   const [showGlow, setShowGlow] = useState(false);
@@ -230,6 +236,7 @@ const ConfiguratorUnisex = () => {
   const [stateImage, setStateImage] = useState("");
 
   const captureCanvasAsImage = async () => {
+    setIsRotating(false);
     if (!canvasRef.current) {
       toastRef.current.show({
         severity: "error",
@@ -326,7 +333,7 @@ const ConfiguratorUnisex = () => {
 
   const nailBg = useMemo(() => {
     const selectedSkinTone = skinTone.find(
-      (tone) => tone.title === selectedTone
+      (tone) => tone.title === selectedTone,
     );
     return selectedSkinTone ? selectedSkinTone.image : null;
   }, [selectedTone]);
@@ -399,28 +406,44 @@ const ConfiguratorUnisex = () => {
       </>
 
       {showConfirmation ? (
-        <Confirmation
+        <WigConfirmation
           currencySymbol={currencySymbol}
           total={total}
           readyBy={selectedClothing.readyIn}
-          weight={selectedClothing.weight}
+          // weight={selectedClothing.weight}
           name={selectedClothing.name}
-          selectedParts={
-            notAll.includes(selectedClothing.name) ? null : selectedParts
-          }
-          selectedPrintOn={{
-            isColor: state.texture[selectedPart] === null,
-            item: selectedPrintOn,
-          }}
           setShowConfirmation={setShowConfirmation}
-          selectedSize={
-            selectedClothing.sizeOptions.find(
-              (option) => option.value === selectedSize
-            )?.label
-          }
           modelImage={stateImage}
+          allSpecifications={[
+            {
+              title: "Nail Length",
+              value: nailLength,
+            },
+
+            {
+              title: "Nail Type",
+              value: nailMaterial,
+            },
+          ]}
         />
       ) : (
+        // <Confirmation
+        //   currencySymbol={currencySymbol}
+        //   total={total}
+        //   readyBy={selectedClothing.readyIn}
+        //   weight={selectedClothing.weight}
+        //   name={selectedClothing.name}
+        //   selectedParts={
+        //     notAll.includes(selectedClothing.name) ? null : selectedParts
+        //   }
+        //   selectedPrintOn={{
+        //     isColor: state.texture[selectedPart] === null,
+        //     item: selectedPrintOn,
+        //   }}
+        //   setShowConfirmation={setShowConfirmation}
+        //   selectedSize={nailLength}
+        //   modelImage={stateImage}
+        // />
         <>
           <div className="main-space">
             <h3 className="text-center pt-3">
@@ -753,7 +776,7 @@ const ConfiguratorUnisex = () => {
               <span className="expect-to-be-ready">Price:</span>{" "}
               <span className="customize-focus">
                 {currencySymbol}
-                {total}
+                {total}.00
               </span>
             </p>
 

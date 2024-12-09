@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 const PartImages = ({ selectedClothing, selectedPart }) => {
   const isDivided = selectedClothing.parts.length > 5;
@@ -13,41 +13,46 @@ const PartImages = ({ selectedClothing, selectedPart }) => {
           <>
             {/* Left Column */}
             <div className="d-flex flex-column" style={{ flex: 1 }}>
-              {selectedClothing.parts.slice(0, itemsPerColumn).map((part, index) => (
-                <img
-                  src={part}
-                  key={index}
-                  alt={`Part ${index}`}
-                  width="130%"
-                  style={{ maxHeight: "120px" }}
-                  className={`part-image ${
-                    (selectedPart !== null && selectedPart === index)
-                      ? "selected-part-image-border"
-                      : ""
-                  }`}
-                />
-              ))}
+              {selectedClothing.parts
+                .slice(0, itemsPerColumn)
+                .map((part, index) => (
+                  <img
+                    src={part}
+                    key={index}
+                    alt={`Part ${index}`}
+                    width="130%"
+                    style={{ maxHeight: "120px" }}
+                    className={`part-image ${
+                      selectedPart !== null && selectedPart === index
+                        ? "selected-part-image-border"
+                        : ""
+                    }`}
+                  />
+                ))}
             </div>
-  
+
             {/* Add some space between the columns */}
             <div style={{ width: "1.4rem" }}></div>
-  
+
             {/* Right Column */}
             <div className="d-flex flex-column" style={{ flex: 1 }}>
-              {selectedClothing.parts.slice(itemsPerColumn).map((part, index) => (
-                <img
-                  src={part}
-                  key={index}
-                  alt={`Part ${index + itemsPerColumn}`}
-                  width="130%"
-                  style={{ maxHeight: "120px" }}
-                  className={`part-image ${
-                    (selectedPart !== null && (index + itemsPerColumn) === selectedPart)
-                      ? "selected-border"
-                      : ""
-                  }`}
-                />
-              ))}
+              {selectedClothing.parts
+                .slice(itemsPerColumn)
+                .map((part, index) => (
+                  <img
+                    src={part}
+                    key={index}
+                    alt={`Part ${index + itemsPerColumn}`}
+                    width="130%"
+                    style={{ maxHeight: "120px" }}
+                    className={`part-image ${
+                      selectedPart !== null &&
+                      index + itemsPerColumn === selectedPart
+                        ? "selected-border"
+                        : ""
+                    }`}
+                  />
+                ))}
             </div>
           </>
         ) : (
@@ -60,7 +65,7 @@ const PartImages = ({ selectedClothing, selectedPart }) => {
                 alt={`Part ${index}`}
                 width="100%"
                 className={`part-image ${
-                  (selectedPart !== null && selectedPart === index)
+                  selectedPart !== null && selectedPart === index
                     ? "selected-border"
                     : ""
                 }`}

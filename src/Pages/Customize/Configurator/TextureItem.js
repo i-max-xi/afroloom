@@ -1,8 +1,17 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Dialog } from "primereact/dialog";
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import { textureValues } from "./arrays/neededArrays";
 
 import alternateTexture from "./textures/tie_and_dye/10 medofo - Copy.jpg";
+import queensAlternate from "./textures/diaspora/queens_LE_auto_x2 - Copy.jpg"
+import repuAlternate from "./textures/diaspora/repo_LE_auto_x2 - Copy.jpg"
+import otumfuoAlternate from "./textures/commemorative/otumfuo - Copy.jpg"
+import contiAlternate from "./textures/diaspora/conti_LE_auto_x2 - Copy.jpg";
+import africaAlternate from "./textures/diaspora/africa_LE_auto_x2 - Copy.jpg";
+import katangaAlternate from "./textures/diaspora/kat_LE_auto_x2 - Copy.jpg"
+ import AsanteheneAnniversaryAlternate from "./textures/commemorative/1-imageonline.co-merged - Copy.jpeg"
+import AsanteheneAnniversaryAlternate2 from "./textures/commemorative/gfsdg-imageonline.co-merged (1) - Copy.jpeg"
 
 function TextureItem({
   texture,
@@ -23,13 +32,55 @@ function TextureItem({
     // setHideText(false)
   };
 
-  // console.log({ texture });
 
   const needsAlternate =
     texture === "/static/media/10 medofo.84aa9ed3bbc49733e1bd.jpg";
 
+  const isRepu = texture === "/static/media/repo_LE_auto_x2.42e321b653537455d23c.jpg";
+  const isQueens = texture === "/static/media/A.d9379b965b715f313603.png";
+
+  const isOtumfuo = texture === "/static/media/otumfuo.46a2fea2de6a31c52a17.jpg";
+  const isConti = texture === "/static/media/conti_LE_auto_x2.bdf93a21d9fe17700452.jpg";
+  const isAfrica = texture === "/static/media/africa_LE_auto_x2.e33124ba711b85535cd5.jpg";
+  const isKatanga = texture === "/static/media/kat_LE_auto_x2.027d8f3b120fd32985ad.jpg";
+  const isAsanteheneAnniversary  = texture  === "/static/media/1-imageonline.co-merged.6daa3b6a171f9f9c0242.jpeg"
+  const isAsanteheneAnniversary2  = texture  === "/static/media/gfsdg-imageonline.co-merged (1).ed8bdf12e1c96c823397.jpeg"
+
+  
+
+  const masterTexture = useMemo(() => {
+    if (isRepu) {
+      return repuAlternate;
+    } else if (isQueens) {
+      return queensAlternate;
+    } else if (needsAlternate) {
+      return alternateTexture;
+    } 
+    else if (isOtumfuo) {
+      return otumfuoAlternate;
+    }
+    else if (isConti) {
+      return contiAlternate;
+    }
+    else if (isAfrica) {
+      return africaAlternate;
+    }
+    else if (isKatanga) {
+      return katangaAlternate;
+    }
+    else if (isAsanteheneAnniversary) {
+      return AsanteheneAnniversaryAlternate;
+    }
+    else if (isAsanteheneAnniversary2) {
+      return AsanteheneAnniversaryAlternate2;
+    }
+    else {
+      return texture;
+    }
+  }, [texture])
+
   return (
-    <div className="texture-item">
+    <div className="texture-item" >
       <img
         src={texture}
         alt={`Texture`}
@@ -44,7 +95,7 @@ function TextureItem({
         width="14"
         height="14"
         fill="currentColor"
-        className="bi bi-info-circle"
+        className="bi bi-info-circle texture-item-info"
         viewBox="0 0 16 16"
         onClick={(e) => {
           handleOpenDialog(e);
@@ -69,10 +120,10 @@ function TextureItem({
           <div className="d-flex flex-column" style={{ position: "relative" }}>
             <img
               alt={`Texture`}
-              src={needsAlternate ? alternateTexture : texture}
+              src={masterTexture}
               height="150px"
               width="250px"
-              style={{ alignSelf: "center", WebkitTouchCallout: "none" }}
+              style={{ alignSelf: "center", WebkitTouchCallout: "none", objectFit: "cover" }}
               onContextMenu={(e) => e.preventDefault()}
             />
 
@@ -88,6 +139,14 @@ function TextureItem({
               ? subTextureDescriptions[textureIndex]?.textureDescription
               : "Description N/A"}
           </p>
+          <p style={{fontWeight: "bold"}}>
+            { subTextureDescriptions[textureIndex]?.disclaimer}
+          </p>
+
+          <p >
+            { subTextureDescriptions[textureIndex]?.footNote}
+          </p>
+
         </div>
       </Dialog>
     </div>

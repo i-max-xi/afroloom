@@ -30,6 +30,7 @@ import {
   deepWaveWigOptions,
   straightHairWigOptions,
   JerryCurlWigOptions,
+  pixieCurlWigOptions,
 } from "../../../utils/constants";
 import WigConfirmation from "./WigConfirmation";
 import { Dialog } from "primereact/dialog";
@@ -41,7 +42,7 @@ const ConfiguratorWig = () => {
   const selectedClothing = mainUnisex.find((item) => item.name === Id);
 
   const [displayImage, setDisplayImage] = useState(
-    selectedClothing.colorVariants[0]
+    selectedClothing.colorVariants[0],
   );
 
   const hairColorOptions = useMemo(() => {
@@ -59,6 +60,10 @@ const ConfiguratorWig = () => {
       return deepWaveWigOptions;
     }
 
+    if (selectedClothing.name === "Pixie Curl Wig") {
+      return pixieCurlWigOptions;
+    }
+
     if (selectedClothing.name === "Straight Hair Wig") {
       return straightHairWigOptions;
     }
@@ -70,14 +75,14 @@ const ConfiguratorWig = () => {
 
   //questions
   const [colorPreference, setColorPreference] = useState(
-    hairColorOptions?.colors[0] || null
+    hairColorOptions?.colors[0] || null,
   );
   const [capSize, setCapSize] = useState(null);
   const [braidLength, setBraidLength] = useState(
-    hairColorOptions.length[0] || null
+    hairColorOptions.length[0] || null,
   );
   const [densityPreference, setDensityPreference] = useState(
-    "Standard (200grams)"
+    "Standard (200grams)",
   );
   const [laceType, setLaceType] = useState(null);
   const [texture, setTexture] = useState(null);
@@ -89,14 +94,14 @@ const ConfiguratorWig = () => {
   const [hair_quality, set_hair_quality] = useState(null);
   const [hair_styling, set_hair_styling] = useState(null);
   const [hair_closure, set_hair_closure] = useState(
-    hairColorOptions.hairClosure[0] || null
+    hairColorOptions.hairClosure[0] || null,
   );
 
   const [guideVisible, setGuideVisible] = useState(false);
 
   const handleColorPreference = (selectedColor) => {
     const index = hairColorOptions.colors.findIndex(
-      (option) => option === selectedColor
+      (option) => option === selectedColor,
     );
     setColorPreference(selectedColor);
     setDisplayImage(selectedClothing.colorVariants[index]);
@@ -111,6 +116,45 @@ const ConfiguratorWig = () => {
   const currencyFactor = useSelector((state) => state.currencySymbol.factor);
 
   const [lengthPrice, setLengthPrice] = useState(0);
+  const [coloredHairPrice, setcoloredHairPrice] = useState(0);
+
+  const firstLengths = [
+    "8 inches",
+    "10 inches",
+    "12 inches",
+    "14 inches",
+    "16 inches",
+    "18inches",
+    "20 inches",
+  ];
+  const secondLengths = [
+    "22 inches",
+    "22 inches",
+    "24 inches",
+    "26 inches",
+    "28 inches",
+    "30 inches",
+  ];
+
+  useEffect(() => {
+    if (
+      selectedClothing.name !== "Spiral Curls Braids Wig" &&
+      colorPreference &&
+      colorPreference !== hairColorOptions?.colors[0] &&
+      firstLengths.includes(braidLength.title)
+    ) {
+      setcoloredHairPrice(200);
+    } else if (
+      selectedClothing.name !== "Spiral Curls Braids Wig" &&
+      colorPreference &&
+      colorPreference !== hairColorOptions?.colors[0] &&
+      secondLengths.includes(braidLength.title)
+    ) {
+      setcoloredHairPrice(250);
+    } else {
+      setcoloredHairPrice(0);
+    }
+  }, [braidLength.title, colorPreference, selectedClothing.name]);
 
   const additionalOptionPrice = useMemo(() => {
     if (additional !== null) {
@@ -122,9 +166,12 @@ const ConfiguratorWig = () => {
 
   //total price
   const total = (
-    (lengthPrice + selectedClothing.price + additionalOptionPrice) *
+    (lengthPrice +
+      selectedClothing.price +
+      additionalOptionPrice +
+      coloredHairPrice) *
     currencyFactor
-  ).toFixed(2);
+  ).toFixed();
 
   useEffect(() => {
     setBraidLength(hairColorOptions.length[0]);
@@ -146,7 +193,7 @@ const ConfiguratorWig = () => {
 
   useEffect(() => {
     const selectedLength = truelengthOptions.find(
-      (item) => item.title === braidLength.title
+      (item) => item.title === braidLength.title,
     );
 
     if (selectedClothing.name === "Spiral Curls Braids Wig") {
@@ -199,7 +246,7 @@ const ConfiguratorWig = () => {
 
   const handleLengthChange = (selectedLength) => {
     const selectedOption = hairColorOptions.length.find(
-      (item) => item.title === selectedLength
+      (item) => item.title === selectedLength,
     );
     if (selectedOption) {
       setBraidLength(selectedOption); // Set the title in state
@@ -516,7 +563,7 @@ const ConfiguratorWig = () => {
                           value={braidLength.title} // Set value to the title
                           onChange={(e) => handleLengthChange(e.value)}
                           options={hairColorOptions.length.map(
-                            (item) => item.title
+                            (item) => item.title,
                           )}
                           placeholder="Select a preference"
                           className="wig-dropdown"
@@ -571,14 +618,14 @@ const ConfiguratorWig = () => {
                             className="wig-dropdown"
                             disabled={
                               !allowedDensityPrefences.includes(
-                                braidLength.title
+                                braidLength.title,
                               )
                             }
                           />
                           <label
                             style={{
                               color: !allowedDensityPrefences.includes(
-                                braidLength.title
+                                braidLength.title,
                               )
                                 ? 0.3
                                 : 1,
@@ -705,6 +752,17 @@ const ConfiguratorWig = () => {
                     </>
                   )}
                 </div>
+
+                <p className="mt-3" style={{ color: "orangered" }}>
+                  <i
+                    className="pi pi-exclamation-triangle mx-2"
+                    style={{ color: "orangered" }}
+                  ></i>
+                  The wig images displayed are for illustrative purposes only.
+                  The actual wig you receive will be customized according to
+                  your specified preferences. Please ensure your order
+                  accurately reflects the style and specifications you desire.
+                </p>
               </div>
               <div className="right-panel">
                 <div
@@ -728,7 +786,7 @@ const ConfiguratorWig = () => {
               <span className="expect-to-be-ready">Price:</span>{" "}
               <span className="customize-focus">
                 {currencySymbol}
-                {total}
+                {total}.00
               </span>
             </p>
 

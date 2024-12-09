@@ -5,6 +5,8 @@ import { useSnapshot } from "valtio";
 import { state } from "./store";
 
 // import { Link } from "react-router-dom";
+import { InputText } from "primereact/inputtext";
+
 import { Carousel } from "primereact/carousel";
 import Confirmation from "./Confirmation";
 import html2canvas from "html2canvas";
@@ -28,7 +30,6 @@ import {
   textureArrays,
   textureDescriptions,
   textureValues,
-  responsiveNess,
   specialNodeNames,
   displayInplaceFor,
   noSpinFor,
@@ -46,7 +47,11 @@ import { Dropdown } from "primereact/dropdown";
 import { Toast } from "primereact/toast";
 import ImageUpload from "./ImageUpload";
 import HtmlComponent from "./HtmlComponent";
-import { genderOptions, isMobile } from "../../../utils/constants";
+import {
+  beadTypeOptions,
+  genderOptions,
+  isMobile,
+} from "../../../utils/constants";
 import uuid from "react-uuid";
 import { OverlayPanel } from "primereact/overlaypanel";
 import { readFileAsDataURL, uploadToStorage } from "../../../utils/functions";
@@ -72,6 +77,12 @@ const Shirt = ({
       groupRef.current.rotation.y += rotationSpeed;
     }
   });
+
+  useEffect(() => {
+    if (!isRotating) {
+      groupRef.current.rotation.y = 0;
+    }
+  }, [isRotating]);
 
   const handlePartClick = (index) => {
     if (index === selectedPart) {
@@ -115,8 +126,8 @@ const Shirt = ({
             specialNodeNames.includes(nodeName) && nodeName === "brass"
               ? "#cd7f32"
               : specialNodeNames.includes(nodeName) && nodeName !== "brass"
-              ? snap.color[index] || "#333333"
-              : snap.color[index] || "#ffffff";
+                ? snap.color[index] || "#333333"
+                : snap.color[index] || "#ffffff";
 
           const texture = snap.texture[index] || null;
 
@@ -155,7 +166,14 @@ const CameraControls = () => {
     controlsRef.current.update();
   });
 
-  return <OrbitControls ref={controlsRef} />;
+  return (
+    <OrbitControls
+      enableRotate={true}
+      enablePan={false}
+      enableZoom={false}
+      ref={controlsRef}
+    />
+  );
 };
 
 const ConfiguratorUnisex = () => {
@@ -168,7 +186,7 @@ const ConfiguratorUnisex = () => {
   const [selectedPrintOn, setSelectedPrintOn] = useState(null);
 
   const [selectedPart, setSelectedPart] = useState(
-    notAll.includes(selectedClothing.name) ? 0 : null
+    notAll.includes(selectedClothing.name) ? 0 : null,
   );
 
   const [isRotating, setIsRotating] = useState(false);
@@ -190,7 +208,7 @@ const ConfiguratorUnisex = () => {
   const bikiniTotal = (
     (partPrices + selectedClothing.price) *
     currencyFactor
-  ).toFixed(2);
+  ).toFixed();
 
   const total = useMemo(() => {
     if (
@@ -198,11 +216,11 @@ const ConfiguratorUnisex = () => {
       selectedClothing.name === "Earring"
     ) {
       return ((partPrices + selectedClothing.price) * currencyFactor).toFixed(
-        2
+        2,
       );
     } else {
       return ((partPrices + selectedClothing.price) * currencyFactor).toFixed(
-        2
+        2,
       );
     }
   }, [
@@ -212,17 +230,38 @@ const ConfiguratorUnisex = () => {
     selectedClothing.price,
   ]);
 
-  const handleSizeChange = (factor, priceValue, colorPriceValue) => {
+
+  useEffect(() => {
+    const currentSize = selectedClothing.sizeOptions.find(
+      (size) => size.value === selectedSize,
+    );
+    
+
+    return setPartPrices(currentSize.colorPriceValue || 0);
+    }, [selectedClothing.sizeOptions, selectedSize]);
+    
+
+  const handleSizeChange = (factor, priceValue) => {
     let newPartPrice;
     setSelectedSize(factor);
 
     const textureCategory = Object.keys(textureArrays).find((category) =>
-      textureArrays[category].includes(selectedTexture)
+      textureArrays[category].includes(selectedTexture),
     );
 
     if (!textureCategory) {
-      newPartPrice = colorPriceValue;
-      return setPartPrices(newPartPrice);
+      const currentSize = selectedClothing.sizeOptions.find(
+        (size) => size.value === selectedSize,
+      );
+
+      if(currentSize.colorPriceValue){
+        return setPartPrices(currentSize.colorPriceValue);
+
+      }
+      else{
+        return setPartPrices(0);
+      }
+  
     }
 
     if (textureCategory && textureCategory === "waxPrint") {
@@ -236,57 +275,11 @@ const ConfiguratorUnisex = () => {
 
       newPartPrice = yardPrice + priceValue;
     }
+
     setPartPrices(newPartPrice);
   };
 
-  // const handleSizeChange = (factor) => {
-  //   let yardNeeded;
-  //   setSelectedSize(factor);
 
-  //   switch (factor) {
-  //     case 0.5:
-  //       yardNeeded = selectedClothing.otherYards.small;
-  //       break;
-
-  //     case 1:
-  //       yardNeeded = selectedClothing.myNode[0].yardNeeded;
-  //       break;
-
-  //     case 2:
-  //       yardNeeded = selectedClothing.otherYards.large;
-  //       break;
-
-  //     case 3:
-  //       yardNeeded = selectedClothing.otherYards.extraLarge;
-  //       break;
-
-  //     case 4:
-  //       yardNeeded = selectedClothing.otherYards.extraExtraLarge;
-  //       break;
-
-  //     default:
-  //       break;
-  //   }
-
-  //   const textureCategory = Object.keys(textureArrays).find((category) =>
-  //     textureArrays[category].includes(selectedTexture)
-  //   );
-
-  //   const yardPrice = textureValues[textureCategory]?.price;
-  //   const yardStart = textureValues[textureCategory]?.yardStart;
-
-  //   let newPartPrice;
-
-  //   if (!yardPrice || !yardStart) {
-  //     setColorPrice(yardNeeded * colorBasePrice);
-  //     return;
-  //   } else {
-  //     newPartPrice =
-  //       yardStart === 2 ? yardNeeded * (yardPrice / 2) : yardNeeded * yardPrice;
-  //   }
-
-  //   setPartPrices(newPartPrice);
-  // };
 
   const [showGlow, setShowGlow] = useState(false);
 
@@ -554,10 +547,10 @@ const ConfiguratorUnisex = () => {
   }, [selectedClothing.name]);
 
   const [fontSizeLeft, setFontSizeLeft] = useState(
-    ImprintTextPosition?.left?.size || 11
+    ImprintTextPosition?.left?.size || 11,
   );
   const [fontSizeRight, setFontSizeRight] = useState(
-    ImprintTextPosition?.right?.size || 11
+    ImprintTextPosition?.right?.size || 11,
   );
 
   const [isLoading, setIsLoading] = useState(true); // Add loading state
@@ -624,29 +617,11 @@ const ConfiguratorUnisex = () => {
     state.texture[selectedPart] = null;
     setSelectedPrintOn(newColor);
 
-    const currentSize = selectedClothing.sizeOptions.find(
-      (size) => size.value === selectedSize
-    );
-
-    setPartPrices(currentSize.colorPriceValue);
+   
     setShowGlow(false);
   };
 
-  // const handleColorChange = (newColor) => {
-  //   if (selectedPart === "all") {
-  //     state.texture = Array(selectedClothing.myNode.length).fill(null);
-  //     state.color = Array(selectedClothing.myNode.length).fill(newColor);
-  //     setSelectedPrintOn(newColor);
-  //     return;
-  //   }
 
-  //   state.color[selectedPart] = newColor;
-  //   state.texture[selectedPart] = null;
-  //   setSelectedPrintOn(newColor);
-
-  //   setPartPrices(0);
-  //   setShowGlow(false);
-  // };
 
   const handleTextureChange = (newTexture) => {
     if (selectedPart !== null) {
@@ -656,11 +631,11 @@ const ConfiguratorUnisex = () => {
       setSelectedTexture(newTexture); // needed to transfer to size
 
       const textureCategory = Object.keys(textureArrays).find((category) =>
-        textureArrays[category].includes(newTexture)
+        textureArrays[category].includes(newTexture),
       );
 
       const sizeValue = selectedClothing.sizeOptions.find(
-        (size) => size.value === selectedSize
+        (size) => size.value === selectedSize,
       );
 
       const yardPrice = textureValues[textureCategory].price;
@@ -678,44 +653,6 @@ const ConfiguratorUnisex = () => {
     setShowGlow(false);
   };
 
-  // const handleTextureChange = (newTexture) => {
-  //   if (selectedPart === "all") {
-  //     state.texture = Array(selectedClothing.myNode.length).fill(newTexture);
-  //     state.color = Array(selectedClothing.myNode.length).fill(null);
-  //     setSelectedPrintOn(newTexture);
-
-  //     const textureCategory = Object.keys(textureArrays).find((category) =>
-  //       textureArrays[category].includes(newTexture)
-  //     );
-
-  //     const newPartPrice = textureValues[textureCategory];
-
-  //     setPartPrices(Array(selectedClothing.myNode.length).fill(newPartPrice));
-  //     return;
-  //   }
-
-  //   if (selectedPart !== null) {
-  //     state.texture[selectedPart] = newTexture;
-  //     state.color[selectedPart] = null;
-  //     setSelectedPrintOn(newTexture);
-  //     setSelectedTexture(newTexture); // needed to transfer to size
-
-  //     const textureCategory = Object.keys(textureArrays).find((category) =>
-  //       textureArrays[category].includes(newTexture)
-  //     );
-
-  //     const yardNeeded = selectedClothing.myNode[selectedPart].yardNeeded;
-  //     const yardPrice = textureValues[textureCategory].price;
-  //     const yardStart = textureValues[textureCategory].yardStart;
-
-  //     const newPartPrice =
-  //       yardStart === 2 ? yardNeeded * (yardPrice / 2) : yardNeeded * yardPrice;
-
-  //     setPartPrices(newPartPrice);
-  //   }
-
-  //   setShowGlow(false);
-  // };
 
   const handleRotation = () => {
     setIsRotating((prev) => !prev);
@@ -734,6 +671,7 @@ const ConfiguratorUnisex = () => {
   const [stateImage, setStateImage] = useState("");
 
   const captureCanvasAsImage = async () => {
+    setIsRotating(false);
     const requiresGender = displayInplaceFor.includes(selectedClothing.name);
     const genderProvided = gender !== "";
 
@@ -756,14 +694,10 @@ const ConfiguratorUnisex = () => {
       return;
     }
 
-    if (onlySashes.includes(selectedClothing.name)) {
-      setStateImage(selectedClothing.confirm_image);
-    } else {
-      const canvasImage = await html2canvas(canvasRef.current);
-      const dataUrl = canvasImage.toDataURL();
+    const canvasImage = await html2canvas(canvasRef.current);
+    const dataUrl = canvasImage.toDataURL();
 
-      setStateImage(dataUrl);
-    }
+    setStateImage(dataUrl);
 
     setShowConfirmation(true);
   };
@@ -776,7 +710,7 @@ const ConfiguratorUnisex = () => {
     selectedClothing.sizeForms?.reduce((acc, formField) => {
       acc[formField.label] = formField.value;
       return acc;
-    }, {})
+    }, {}),
   );
 
   // Handle changes in the size form fields
@@ -829,6 +763,7 @@ const ConfiguratorUnisex = () => {
 
   // customer height
   const [gender, setGender] = useState("");
+  const [beadType, setBeadType] = useState("Glass");
 
   const handleAllPartsClick = () => {
     setSelectedPart("all");
@@ -907,8 +842,8 @@ const ConfiguratorUnisex = () => {
             selectedClothing.name === "Bikini"
               ? bikiniTotal
               : selectedClothing.name === "Bikini"
-              ? bikiniTotal
-              : total
+                ? bikiniTotal
+                : total
           }
           readyBy={selectedClothing.readyIn}
           weight={selectedClothing.weight}
@@ -927,13 +862,14 @@ const ConfiguratorUnisex = () => {
           setShowConfirmation={setShowConfirmation}
           selectedSize={
             selectedClothing.sizeOptions.find(
-              (option) => option.value === selectedSize
+              (option) => option.value === selectedSize,
             )?.label
           }
           modelImage={stateImage}
           customSizeValues={sizeFormValues}
           // height={height}
           gender={gender}
+          beadType={beadType}
         />
       ) : (
         <>
@@ -1011,8 +947,26 @@ const ConfiguratorUnisex = () => {
                     })}
                   </>{" "}
                 </div>
+
+                {selectedClothing.name === "Beads Bracelet" && (
+                  <div className="select-part-container mt-3">
+                    <h6>Bead Type</h6>
+
+                    <p>
+                      <Dropdown
+                        value={beadType}
+                        onChange={(e) => setBeadType(e.value)}
+                        options={beadTypeOptions}
+                        optionLabel="label"
+                        placeholder="Select bead type"
+                        style={{ width: "66.5%" }}
+                      />
+                    </p>
+                  </div>
+                )}
+
                 <h5>Choose Size</h5>
-                <div className="size w-75">
+                <div className="size">
                   <p className="size-button-container">
                     {selectedClothing.sizeOptions.map((option) => (
                       <button
@@ -1024,7 +978,7 @@ const ConfiguratorUnisex = () => {
                           handleSizeChange(
                             option.value,
                             option.priceValue,
-                            option.colorPriceValue
+                            option.colorPriceValue,
                           )
                         }
                       >
@@ -1046,7 +1000,7 @@ const ConfiguratorUnisex = () => {
                               textTransform: "capitalize",
                             }}
                           >
-                            {gender || "Tap to input your gender"}
+                            {gender || "Tap to input gender"}
                           </span>
                         </InplaceDisplay>
                         <InplaceContent>
@@ -1061,7 +1015,7 @@ const ConfiguratorUnisex = () => {
                             onChange={(e) => setGender(e.value)}
                             options={genderOptions}
                             optionLabel="label"
-                            placeholder="Select a Gender"
+                            placeholder="Select your Gender"
                           />
                         </InplaceContent>
                       </Inplace>
@@ -1110,7 +1064,7 @@ const ConfiguratorUnisex = () => {
                                   onChange={(e) =>
                                     handleSizeFormChange(
                                       formField.label,
-                                      e.target.value
+                                      e.target.value,
                                     )
                                   }
                                 />
@@ -1153,12 +1107,12 @@ const ConfiguratorUnisex = () => {
                     </h1>
                     <div className="texture-buttons-container">
                       <div className="texture-row">
-                        <div className="texture-category">
+                        <div className="texture-category mt-3">
                           <h3>
                             Batik (+{currencySymbol}
                             {(
                               currencyFactor * textureValues.batik.price
-                            ).toFixed(2)}
+                            ).toFixed()}
                             )
                           </h3>
                           <Carousel
@@ -1182,7 +1136,7 @@ const ConfiguratorUnisex = () => {
                                   textureDescriptions.batik
                                 }
                                 textureIndex={textureArrays.batik.indexOf(
-                                  texture
+                                  texture,
                                 )}
                               />
                             )}
@@ -1190,12 +1144,12 @@ const ConfiguratorUnisex = () => {
                         </div>
                       </div>
                       <div className="texture-row">
-                        <div className="texture-category">
+                        <div className="texture-category mt-3">
                           <h3>
                             waxPrint (+{currencySymbol}
                             {(
                               currencyFactor * textureValues.waxPrint.price
-                            ).toFixed(2)}
+                            ).toFixed()}
                             )
                           </h3>
                           <Carousel
@@ -1218,7 +1172,37 @@ const ConfiguratorUnisex = () => {
                                   textureDescriptions.waxPrint
                                 }
                                 textureIndex={textureArrays.waxPrint.indexOf(
-                                  texture
+                                  texture,
+                                )}
+                              />
+                            )}
+                          />
+                        </div>
+                      </div>
+                      <div className="texture-row">
+                        <div className="texture-category mt-3">
+                          <h3>School Prints</h3>
+                          <Carousel
+                            value={textureArrays.Diaspora}
+                            numVisible={4}
+                            numScroll={1}
+                            showIndicators={false}
+                            itemTemplate={(texture) => (
+                              <TextureItem
+                                key={texture}
+                                texture={texture}
+                                setHideText={setHideText}
+                                Title="Diaspora"
+                                selectedTexture={selectedPrintOn}
+                                // Pass setSelectedTexture as a prop
+                                handleTextureChange={handleTextureChange}
+                                currencySymbol={currencySymbol}
+                                currencyFactor={currencyFactor}
+                                subTextureDescriptions={
+                                  textureDescriptions.diaspora
+                                }
+                                textureIndex={textureArrays.Diaspora.indexOf(
+                                  texture,
                                 )}
                               />
                             )}
@@ -1379,20 +1363,38 @@ const ConfiguratorUnisex = () => {
                       <h5>Imprint text on model</h5>
                       <div className="d-flex text-image-imprint-wrapper">
                         <div className="inputs">
-                          <input
+                          <InputText
                             type="text"
-                            placeholder="imprint on left side..."
+                            className="p-inputtext-sm"
+                            placeholder={
+                              selectedClothing.name === "Beads Bracelet"
+                                ? "Text Here"
+                                : "imprint on left side..."
+                            }
                             value={enteredTextLeft}
                             onChange={(e) => setEnteredTextLeft(e.target.value)}
+                            style={{
+                              width:
+                                selectedClothing.name === "Beads Bracelet"
+                                  ? "66.5%"
+                                  : "50%",
+                            }}
                           />
                           {selectedClothing.name === noSpinFor[0] ? null : (
-                            <input
+                            <InputText
                               type="text"
                               placeholder="imprint on right side..."
+                              className="p-inputtext-sm"
                               value={enteredTextRight}
                               onChange={(e) =>
                                 setEnteredTextRight(e.target.value)
                               }
+                              style={{
+                                width:
+                                  selectedClothing.name === "Beads Bracelet"
+                                    ? "66.5%"
+                                    : "50%",
+                              }}
                             />
                           )}
                         </div>
