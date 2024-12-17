@@ -41,7 +41,6 @@ const Confirmation = ({
   const [isLoading, setIsLoading] = useState(false); // Initialize loading state
   const [addedToCart, setAddedToCart] = useState(false);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const [count, setCount] = useState(1);
   const [special, setSpecial] = useState("");
@@ -145,7 +144,7 @@ const Confirmation = ({
   };
 
   return (
-    <div className="container confirmation-page">
+    <div className="container flex flex-col justify-center items-center ">
       <Toast ref={toast} position="center" />{" "}
       {/* Add the Toast component here */}
       <h1 className="mt-4">Order Confirmation</h1>
@@ -171,52 +170,26 @@ const Confirmation = ({
         uploadedImageRight={uploadedImageLeft}
         textLeft={textLeft}
         textRight={textRight}
+
+        handlePrint={handlePrint}
+        isLoading={isLoading}
+        addedToCart={addedToCart}
+        handleFormSubmit={handleFormSubmit}
+
       />
-      <div className="container justify-content-center">
-        <div className="d-flex">
-          <p>
-            <button className="btn btn-outline-success" onClick={handlePrint}>
-              Download Copy
-            </button>
-            <p style={{ fontSize: "0.7rem" }}>For effective transparency</p>
-          </p>
-
-          <p>
-            <button
-              disabled={isLoading}
-              className={`btn ${addedToCart ? "btn-warning text-white" : "btn-success"} mx-3 position-relative`}
-              onClick={
-                addedToCart
-                  ? () => navigate("/start-customize")
-                  : handleFormSubmit
-              }
-            >
-              <span className="spinner-container">
-                {isLoading && (
-                  <ProgressSpinner
-                    style={{ width: "1.5rem", height: "1.5rem" }}
-                    strokeWidth="8"
-                    fill="var(--surface-ground)"
-                    className="position-absolute top-50 start-50 translate-middle"
-                  />
-                )}
-              </span>
-              {addedToCart ? "Order Again" : "Add To Cart"}
-            </button>
-          </p>
+      
+      {!addedToCart && (
+        <div className="d-flex justify-content-center align-items-center m-5">
+          Not Done ?{" "}
+          <button
+            className="btn btn-info text-white mx-3"
+            onClick={() => setShowConfirmation(false)}
+          >
+            Go Back
+          </button>
         </div>
-
-        <p className="h5 mt-4">Thank you for your order!</p>
-      </div>
-      <div className="d-flex justify-content-center align-items-center m-5">
-        Not Done ?{" "}
-        <button
-          className="btn btn-info text-white mx-3"
-          onClick={() => setShowConfirmation(false)}
-        >
-          Go Back
-        </button>
-      </div>
+    ) }
+      
     </div>
   );
 };
@@ -244,16 +217,24 @@ export const OrderDetail = React.forwardRef(
       uploadedImageRight,
       textLeft,
       textRight,
+
+      handlePrint,
+      isLoading,
+      addedToCart,
+      handleFormSubmit
     },
     ref,
+   
   ) => {
     const currencySymbol = useSelector((state) => state.currencySymbol.symbol);
     const currencyFactor = useSelector((state) => state.currencySymbol.factor);
 
+    const navigate = useNavigate();
+
     return (
       <div ref={ref} className="row all-confirmation-info">
-        <div className="col-md-6">
-          <p className="h5 mt-3 mb-5 model-confirm-image">
+        <div className="">
+          <p className="h5 mt-3 mb-5 model-confirm-image flex justify-center items-center">
             <img src={modelImage} alt="model img" width="80%" />
           </p>
           <ul className="list-group">
@@ -507,6 +488,43 @@ export const OrderDetail = React.forwardRef(
             </span>
           </p>
         </div>
+
+        <div className="container flex flex-col ">
+        <div className="flex gap-5">
+          <p>
+            <button className="btn btn-outline-success" onClick={handlePrint}>
+              Download Copy
+            </button>
+            <p style={{ fontSize: "0.7rem" }}>For effective transparency</p>
+          </p>
+
+          <p>
+            <button
+              disabled={isLoading}
+              className={`btn ${addedToCart ? "btn-warning text-white" : "btn-success"} mx-3 position-relative`}
+              onClick={
+                addedToCart
+                  ? () => navigate("/start-customize")
+                  : handleFormSubmit
+              }
+            >
+              <span className="spinner-container">
+                {isLoading && (
+                  <ProgressSpinner
+                    style={{ width: "1.5rem", height: "1.5rem" }}
+                    strokeWidth="8"
+                    fill="var(--surface-ground)"
+                    className="position-absolute top-50 start-50 translate-middle"
+                  />
+                )}
+              </span>
+              {addedToCart ? "Order Again" : "Add To Cart"}
+            </button>
+          </p>
+        </div>
+
+        <p className="h5 mt-4">Thank you for your order!</p>
+      </div>
       </div>
     );
   },

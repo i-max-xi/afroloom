@@ -513,8 +513,8 @@ const ConfiguratorFootwear = () => {
                 Take Tour
               </button>
             </div>
-            <div className="configurator-container container">
-              <div className="left-panel rounded shadow">
+            <div className="lg:grid grid-cols-1 lg:gap-5 flex flex-col-reverse lg:grid-cols-2 container my-3 lg:h-screen">
+              <div className="left-panel rounded border lg:h-hull">
                 <h5>Select Part</h5>
                 <div className="select-part-container">
                   {masterSelectionPartOptions}
@@ -858,12 +858,23 @@ const ConfiguratorFootwear = () => {
                   {/* Add more rows of texture categories as needed */}
                 </div>
               </div>
-              <div className="right-panel">
-                <div className="resize-right-panel">
-                  <Canvas
+              <div className="right-panel h-full">
+                <div className="resize-right-panel h-full">
+                <div
                     ref={canvasRef}
+                    style={
+                      {
+                        height:  "80%" ,
+                      }
+                    }
+                  >
+
+                  <Canvas
+                    // ref={canvasRef}
                     camera={{ position: [0, 0, selectedClothing.myZoom] }} // Set the initial camera position
                     gl={{ preserveDrawingBuffer: true }}
+                    className="main-canvas h-full "
+
                   >
                     <ambientLight intensity={0.5} />
                     <pointLight position={[10, 10, 10]} />
@@ -877,6 +888,7 @@ const ConfiguratorFootwear = () => {
                     <CameraControls />{" "}
                     {/* Add camera controls for interaction */}
                   </Canvas>
+                </div>
                 </div>
 
                 {/* {/* <div className="m-3">

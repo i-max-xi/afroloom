@@ -435,8 +435,8 @@ const ConfiguratorWig = () => {
               </button>
             </div>
 
-            <div className="configurator-container container">
-              <div className="wig-left-panel rounded border shadow">
+            <div className="lg:grid grid-cols-1 lg:gap-5 flex flex-col-reverse lg:grid-cols-2 container my-3 lg:h-screen">
+              <div className="wig-left-panel rounded border lg:h-hull">
                 <h5>Color Preference</h5>
                 <Dropdown
                   value={colorPreference}
@@ -764,7 +764,7 @@ const ConfiguratorWig = () => {
                   accurately reflects the style and specifications you desire.
                 </p>
               </div>
-              <div className="right-panel">
+              <div className="right-panel h-full">
                 <div
                   ref={canvasRef}
                   className="resize-right-panel d-flex align-items-center justify-content-center mt-2 mb-2"

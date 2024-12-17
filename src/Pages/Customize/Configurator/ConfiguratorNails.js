@@ -457,8 +457,8 @@ const ConfiguratorUnisex = () => {
                 Take Tour
               </button>
             </div>
-            <div className="configurator-container container">
-              <div className="left-panel rounded shadow">
+            <div className="lg:grid grid-cols-1 lg:gap-5 flex flex-col-reverse lg:grid-cols-2 container my-3 lg:h-screen">
+              <div className="left-panel rounded border lg:h-hull">
                 <h5>Skin</h5>
                 <span
                   style={{
@@ -726,11 +726,13 @@ const ConfiguratorUnisex = () => {
                   )} */}
                 </div>
               </div>
-              <div className="right-panel">
-                <div className="resize-right-panel">
+              <div className="right-panel h-full">
+                <div className="resize-right-panel h-full">
                   <div
                     style={{
                       backgroundImage: !isLoading ? `url(${nailBg})` : null,
+                      height:  "80%" ,
+
                     }}
                     className="nail-bg"
                     ref={canvasRef}
