@@ -102,8 +102,8 @@ const HomePage = () => {
   const customizedContent = (item) => {
     return (
       <div style={{ textAlign: "start" }} className="custom-content p-shadow-2">
-        <h3>{item.label}</h3>
-        <p>{item.description}</p>
+        <h3 className="text-lg lg:text-xl">{item.label}</h3>
+        <p className="text-sm lg:text-lg">{item.description}</p>
         {/* <img src={item.image} alt={item.label} className="img-fluid" /> */}
       </div>
     );
@@ -120,9 +120,9 @@ const HomePage = () => {
             </Carousel.Item>
           ))}
         </Carousel>
-        <div className="hero-body">
-          <h2>Customize Your Style, Your Way!</h2>
-          <p>
+        <div className=" p-5 px-4 container ">
+          <h2 className="text-xl lg:text-3xl ">Customize Your Style, Your Way!</h2>
+          <p className="text-sm">
             At Afroloom, we bring your fashion dreams to life with our
             easy-to-use online tailoring services. Whether you're looking to
             create the perfect outfit, design a unique graduation sash, or
@@ -137,24 +137,28 @@ const HomePage = () => {
         </div>
       </section>
 
-      <section className="how-it-works my-5 mx-2">
-        <h2 className="footer-header">How It Works</h2>
-        <Timeline
-          value={stepContents}
-          align="alternate"
-          marker={customizedMarker}
-          content={customizedContent}
-        />
+      <section className="container my-10">
+
+        <section className="lg:px-4">
+          <h2 className="footer-header text-xl lg:text-3xl mt-4">How It Works</h2>
+          <Timeline
+            value={stepContents}
+            align="alternate"
+            marker={customizedMarker}
+            content={customizedContent}
+          />
+        </section>
+
+        <section className="px-4 ">
+          <h2 className="footer-header text-xl lg:text-3xl">Why Choose Afroloom?</h2>
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 justify-center items-center  lg:px-3">
+            {why_choose_afroloom.map((item, index) => (
+              <ListItem {...item} key={index} />
+            ))}
+          </div>
+        </section>
       </section>
 
-      <section className="why-choose-us my-5 mx-4 mt-3">
-        <h2 className="footer-header">Why Choose Afroloom?</h2>
-        <div className="d-flex flex-column gap-4">
-          {why_choose_afroloom.map((item, index) => (
-            <ListItem {...item} key={index} />
-          ))}
-        </div>
-      </section>
     </div>
   );
 };

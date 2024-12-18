@@ -13,42 +13,42 @@ const Tnc = () => {
           using our website, you agree to abide by the following terms and
           conditions:
         </p>
-        <ol>
-          <li>
+        <p>
+          <p>
             Customization Process: Our website allows you to design and
             customize your clothing and accessories to your liking. Once your
             order is placed and confirmed, our talented team will begin the
             process of creating your unique piece. Please note that all
             customization options are final and cannot be altered once
             production begins.
-          </li>
-          <li>
+          </p>
+          <p>
             Returns: We understand that sometimes a product may not meet your
             expectations. If for any reason you are not satisfied with your
             purchase, you may return the product within 48 hours for a full
             refund or exchange. Please note that the product must be returned in
             its original condition and packaging to be eligible for a refund.
-          </li>
-          <li>
+          </p>
+          <p>
             Payment: Clients have the option to pay 40% of the total cost price
             upfront and the remaining balance once the product is ready for
             delivery. Alternatively, clients may choose to pay in full at the
             time of purchase. Payment can be made securely through our website
             using various payment methods.
-          </li>
-          <li>
+          </p>
+          <p>
             Notification: Once your customized product is ready, we will notify
             you via email or phone call to arrange for delivery or pickup.
             Please ensure that your contact information provided is accurate to
             avoid any delays in receiving your order.
-          </li>
-          <li>
+          </p>
+          <p>
             Intellectual Property: All designs, images, and content on our
             website are the property of Afroloom and are protected by copyright
             laws. Any unauthorized use, reproduction, or distribution of our
             intellectual property is strictly prohibited.
-          </li>
-        </ol>
+          </p>
+        </p>
 
         <p>
           By using our website, you agree to comply with these terms and

@@ -32,7 +32,6 @@ import {
   colorBasePrice,
 } from "./arrays/neededArrays";
 import TextureItem from "./TextureItem";
-import PartImages from "./PartImages";
 import WelcomeTour, { tourSteps } from "./WelcomeTour";
 import { InputNumber } from "primereact/inputnumber";
 
@@ -95,6 +94,36 @@ const Shirt = ({
     return () => clearTimeout(loadingTimeout); // Cleanup the timeout if component unmounts
   }, []);
 
+
+  const [loadedTextures, setLoadedTextures] = useState([]);
+
+useEffect(() => {
+  const loader = new TextureLoader();
+
+  loader.setCrossOrigin('anonymous'); // Set cross-origin on the loader
+
+
+
+  const texturePromises = selectedClothing.myNode.map((_, index) => {
+    const textureUrl = snap.texture[index];
+    return textureUrl
+      ? new Promise((resolve, reject) => {
+          loader.load(
+            textureUrl,
+            (texture) => resolve(texture),
+            undefined,
+            (error) => reject(error)
+          );
+        })
+      : Promise.resolve(null);
+  });
+
+  Promise.all(texturePromises)
+    .then((textures) => setLoadedTextures(textures))
+    .catch((error) => console.error("Error loading textures:", error));
+}, [snap.texture, selectedClothing.myNode]);
+
+
   return (
     <group ref={groupRef}>
       {isLoading ? (
@@ -108,7 +137,7 @@ const Shirt = ({
             ? snap.color[index] || "#333333"
             : snap.color[index] || "#ffffff";
 
-          const texture = snap.texture[index] || null;
+          // const texture = snap.texture[index] || null;
 
           return (
             <mesh
@@ -120,7 +149,7 @@ const Shirt = ({
               <meshStandardMaterial
                 attach="material"
                 color={color}
-                map={texture && new TextureLoader().load(texture)}
+                map={loadedTextures[index]}
                 roughness={1}
                 emissive={selectedPart === index ? "#FF8C00" : null} // Apply golden glow if part is selected
                 emissiveIntensity={showGlow && selectedPart === index ? 2 : 0} // Adjust glow intensity
@@ -522,8 +551,8 @@ const ConfiguratorFemale = () => {
                 Take Tour
               </button>
             </div>
-            <div className="configurator-container container">
-              <div className="left-panel rounded shadow">
+            <div className="lg:grid grid-cols-1 lg:gap-5 flex flex-col-reverse lg:grid-cols-2 container my-3 lg:h-screen">
+              <div className="left-panel rounded border lg:h-hull">
                 {/* <h5>Select Part</h5>
                 <div className="select-part-container">
                   {masterSelectionPartOptions}
@@ -768,12 +797,21 @@ const ConfiguratorFemale = () => {
                   </div>
                 </div>
               </div>
-              <div className="right-panel">
-                <div className="resize-right-panel">
-                  <Canvas
+              <div className="right-panel h-full">
+                <div className="resize-right-panel h-full">
+                <div
                     ref={canvasRef}
+                    style={
+                      {
+                        height:  "80%" ,
+                      }
+                    }
+                  >
+                  <Canvas
+                    // ref={canvasRef}
                     camera={{ position: [0, 0, selectedClothing.myZoom] }} // Set the initial camera position
                     gl={{ preserveDrawingBuffer: true }}
+                    className="main-canvas h-full "
                   >
                     <ambientLight intensity={0.5} />
                     <pointLight position={[10, 10, 10]} />
@@ -787,6 +825,7 @@ const ConfiguratorFemale = () => {
                     <CameraControls />{" "}
                     {/* Add camera controls for interaction */}
                   </Canvas>
+                </div>
                 </div>
               </div>
             </div>

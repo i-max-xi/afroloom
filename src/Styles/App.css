@@ -68,10 +68,6 @@
   justify-content: center;
 }
 
-.hero-body {
-  padding: 30px;
-}
-
 /* .hero-section > img {
   width: 50%;
   align-self: center;
@@ -106,6 +102,9 @@
   }
   .nav-category {
     display: none !important;
+  }
+  .adjust-nav {
+    transform: translateY(0.5rem);
   }
 
   #mobileNavToggler {
@@ -208,13 +207,6 @@
   }
 
   /* customize page */
-  .customise-front {
-    margin: 0 !important;
-    margin-bottom: 0.5rem !important;
-  }
-  .customise-front h5 {
-    font-size: 1rem !important;
-  }
 
   /* confirm 3d page */
   .model-confirm-image {
@@ -251,6 +243,7 @@
 
 .navbar-nav {
   gap: 2rem;
+  justify-content: space-around;
 }
 
 #mobileNavToggler {
@@ -275,9 +268,6 @@
 .nav-item a:hover,
 .about:hover {
   color: orange;
-}
-.adjust-nav {
-  transform: translateY(0.5rem);
 }
 
 #mobile-search-header {
@@ -500,9 +490,6 @@ form {
 }
 
 /* 3d customize */
-.customise-front {
-  margin: 1rem;
-}
 
 /* checkout */
 .checkout-container {

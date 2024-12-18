@@ -151,50 +151,25 @@ const WigConfirmation = ({
         special={special}
         setSpecial={setSpecial}
         selectedColor={selectedColor}
+
+        handlePrint={handlePrint}
+        isLoading={isLoading}
+        addedToCart={addedToCart}
+        handleFormSubmit={handleFormSubmit}
+
       />
-      <div className="container justify-content-center">
-        <div className="d-flex">
-          <p>
-            <button className="btn btn-outline-success" onClick={handlePrint}>
-              Download Copy
-            </button>
-            <p style={{ fontSize: "0.7rem" }}>For effective transparency</p>
-          </p>
-
-          <p>
+      
+        {!addedToCart && (
+          <div className="d-flex justify-content-center align-items-center m-5">
+            Not Done ?{" "}
             <button
-              disabled={isLoading}
-              className={`btn ${addedToCart ? "btn-warning text-white" : "btn-success"} mx-3 position-relative`}
-              onClick={
-                addedToCart ? navigate("/start-customize") : handleFormSubmit
-              }
+              className="btn btn-info text-white mx-3"
+              onClick={() => setShowConfirmation(false)}
             >
-              <span className="spinner-container">
-                {isLoading && (
-                  <ProgressSpinner
-                    style={{ width: "1.5rem", height: "1.5rem" }}
-                    strokeWidth="8"
-                    fill="var(--surface-ground)"
-                    className="position-absolute top-50 start-50 translate-middle"
-                  />
-                )}
-              </span>
-              {addedToCart ? "Order Again" : "Add To Cart"}
+              Go Back
             </button>
-          </p>
-        </div>
-
-        <p className="h5 mt-4">Thank you for your order!</p>
-      </div>
-      <div className="d-flex justify-content-center align-items-center m-5">
-        Not Done ?{" "}
-        <button
-          className="btn btn-info text-white mx-3"
-          onClick={() => setShowConfirmation(false)}
-        >
-          Go Back
-        </button>
-      </div>
+          </div>
+      ) }
     </div>
   );
 };
@@ -213,14 +188,20 @@ export const OrderDetail = React.forwardRef(
       handleIncrement,
       special,
       setSpecial,
-
       selectedColor,
+
+      handlePrint,
+      isLoading,
+      addedToCart,
+      handleFormSubmit
     },
     ref,
   ) => {
     const currencySymbol = useSelector((state) => state.currencySymbol.symbol);
     const currencyFactor = useSelector((state) => state.currencySymbol.factor);
 
+    const navigate = useNavigate();
+    
     return (
       <div ref={ref} className="row all-confirmation-info">
         <div className="col-md-6">
@@ -304,6 +285,41 @@ export const OrderDetail = React.forwardRef(
             </span>
           </p>
         </div>
+
+        <div className="container justify-content-center">
+        <div className="d-flex">
+          <p>
+            <button className="btn btn-outline-success" onClick={handlePrint}>
+              Download Copy
+            </button>
+            <p style={{ fontSize: "0.7rem" }}>For effective transparency</p>
+          </p>
+
+          <p>
+            <button
+              disabled={isLoading}
+              className={`btn ${addedToCart ? "btn-warning text-white" : "btn-success"} mx-3 position-relative`}
+              onClick={
+                addedToCart ? navigate("/start-customize") : handleFormSubmit
+              }
+            >
+              <span className="spinner-container">
+                {isLoading && (
+                  <ProgressSpinner
+                    style={{ width: "1.5rem", height: "1.5rem" }}
+                    strokeWidth="8"
+                    fill="var(--surface-ground)"
+                    className="position-absolute top-50 start-50 translate-middle"
+                  />
+                )}
+              </span>
+              {addedToCart ? "Order Again" : "Add To Cart"}
+            </button>
+          </p>
+        </div>
+
+        <p className="h5 mt-4">Thank you for your order!</p>
+      </div>
       </div>
     );
   },

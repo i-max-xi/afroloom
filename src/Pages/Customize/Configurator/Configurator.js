@@ -478,8 +478,8 @@ const Configurator = () => {
               </button>
             </div>
 
-            <div className="configurator-container container">
-              <div className="left-panel rounded border shadow">
+            <div className="lg:grid grid-cols-1 lg:gap-5 flex flex-col-reverse lg:grid-cols-2 container my-3 lg:h-screen">
+              <div className="left-panel rounded border lg:h-hull">
                 {/* <h5>Select Part</h5>
                 <div className="select-part-container">
                   {masterSelectionPartOptions}
@@ -754,12 +754,22 @@ const Configurator = () => {
                  
                 </div>
               </div>
-              <div className="right-panel">
-                <div className="resize-right-panel">
-                  <Canvas
+              <div className="right-panel h-full">
+                <div className="resize-right-panel h-full">
+                <div
                     ref={canvasRef}
+                    style={
+                      {
+                        height:  "80%" ,
+                      }
+                    }
+                  >
+                  <Canvas
+                    // ref={canvasRef}
                     camera={{ position: [0, 0, selectedClothing.myZoom] }} // Set the initial camera position
                     gl={{ preserveDrawingBuffer: true }}
+                    className="main-canvas h-full "
+
                   >
                     <ambientLight intensity={0.5} />
                     <pointLight position={[10, 10, 10]} />
@@ -774,32 +784,9 @@ const Configurator = () => {
                     {/* Add camera controls for interaction */}
                   </Canvas>
                 </div>
+                </div>
 
-                {/* {/* <div className="m-3">
-                  <button
-                    className={`btn rotation-button text-white m-3 ${
-                      isRotating === true ? "btn-danger" : "btn-warning"
-                    }`}
-                    onClick={handleRotation}
-                  >
-                    {isRotating ? (
-                  <span className="d-flex align-items-center gap-1">
-                    Stop Spin<i className="pi pi-ban" style={{ fontSize: '0.8rem' }}></i>
-                  </span>
-                ) : (
-                  <span className="d-flex align-items-center gap-1">
-                    Take a Spin <i className="pi pi-sync" style={{ fontSize: '0.8rem' }}></i>
-                  </span>
-                )}
-                  </button>
-                </div> */}
-
-                {/* parts images start */}
-                {/* <PartImages
-                  selectedClothing={selectedClothing}
-                  selectedPart={selectedPart}
-                /> */}
-                {/* parts images end */}
+               
               </div>
             </div>
           </div>

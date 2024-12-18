@@ -7,12 +7,12 @@ import LayoutHeaders from "../../Components/LayoutHeaders";
 
 const ContactUs = () => {
   return (
-    <div className="bg-white">
+    <div className="bg-white pb-5">
       <LayoutHeaders selectedBg={Top} />
 
       <ContactForm />
 
-      <div className="container mb-5">
+      <div className="container ">
         <div className="row justify-content-center mt-5">
           {contactInfo.map((contact) => (
             <FooterContact2

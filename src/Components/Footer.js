@@ -17,16 +17,11 @@ const Footer = () => {
       <Header2 color="black" bgColor="orange" />
 
       <div
-      // style={{
-      //   backgroundImage: `url(${footerBG})`,
-      //   backgroundRepeat: "no-repeat",
-      //   backgroundSize: "cover",
-      //   opacity: "0.8",
-      // }}
+     
       >
         {/* special contact  */}
         <div className="container p-2 pb-0">
-          <div className="d-flex justify-content-between policy-header">
+          <div className="flex justify-content-between policy-header">
             {contactInfo.map((contact) => (
               <FooterContact
                 key={contact.id}

@@ -244,11 +244,11 @@ const CustomizeCheckout = () => {
       <div className="container mb-5">
         {cartItems.length !== 0 ? (
           <div className="mt-5 mb-5">
-            <h2>Customized Item(s)</h2>
+            <h2 className="text-lg lg:text-xl">Customized Item(s)</h2>
             <ul className="list-group">
               {cartItems.map((selectedItem) => (
                 <li
-                  className=" d-flex justify-content-between align-items-center mt-3"
+                  className=" d-flex rounded-md justify-content-between align-items-center mt-3"
                   key={selectedItem.name}
                   data-aos="fade-up"
                 >
@@ -330,12 +330,12 @@ const CustomizeCheckout = () => {
 
             {/* Shipping Information */}
 
-            <div className="mt-5">
+            <div className="mt-5 ">
               <p>
                 Did you find AfroLoom through a friend?, enter their identity
                 code to appreciate them
               </p>
-              <div className=" d-flex gap-2 align-items-center mb-3">
+              <div className=" d-flex gap-2 align-items-center mb-3 max-w-[40%]">
                 <input
                   type="text"
                   className="form-control"

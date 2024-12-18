@@ -10,7 +10,7 @@ const ListItem = ({
 }) => {
   return (
     <div
-      className=""
+      className="flex flex-col gap-1"
       style={{
         textAlign: "left",
         borderRadius: "1rem",
@@ -21,28 +21,26 @@ const ListItem = ({
         <img
           src={image}
           alt={title}
-          style={{
-            width: "100%",
-            borderRadius: "1rem",
-            aspectRatio: 1 / 1,
-            objectFit: "cover",
-            backgroundColor: "white",
-          }}
+          className="object-cover lg:h-96 bg-white aspect-square rounded-xl"
+          // style={{borderRadius: "2rem"}}
         />
       )}
 
-      <h5 className="mt-2 text-decoration-none text-black">{title}</h5>
-      <p
-        className={`text-decoration-none text-black m-0 ${centerText && "text-center"}`}
-      >
-        {description}
-      </p>
-      <p
-        style={{ fontSize: "0.8rem" }}
-        className={`mt-1 text-decoration-none text-black ${centerText && "text-center"}`}
-      >
-        {extraDescription}
-      </p>
+      <div className="flex flex-col gap-1 mt-1 justify-center">
+        <h5 className="text-decoration-none font-medium text-black text-lg lg:text-xl">{title}</h5>
+        <p
+          className={`text-decoration-none text-sm  text-black m-0 ${centerText && "text-center"}`}
+        >
+          {description}
+        </p>
+        <p
+          style={{ fontSize: "0.8rem" }}
+          className={`mt-1 text-decoration-none text-sm text-black ${centerText && "text-center"}`}
+        >
+          {extraDescription}
+        </p>
+      </div>
+     
     </div>
   );
 };
