@@ -478,7 +478,7 @@ const ConfiguratorFootwear = () => {
         />
       ) : (
         <>
-          <div className="main-space">
+          <div className="main-space pb-10">
             <h3 className="text-center pt-3">
               Customizing {selectedClothing.name}
             </h3>
@@ -728,36 +728,7 @@ const ConfiguratorFootwear = () => {
                       />
                     </div>
                   </div>
-                  <div className="texture-row">
-                    <div className="texture-category mt-3">
-                      <h3>Commemorative Prints</h3>
-                      <Carousel
-                        value={textureArrays.commemorative}
-                        numVisible={4}
-                        numScroll={1}
-                        showIndicators={false}
-                        itemTemplate={(texture) => (
-                          <TextureItem
-                            key={texture}
-                            texture={texture}
-                            setHideText={setHideText}
-                            Title="Commemorative Prints"
-                            selectedTexture={selectedPrintOn}
-                            // Pass setSelectedTexture as a prop
-                            handleTextureChange={handleTextureChange}
-                            currencySymbol={currencySymbol}
-                            currencyFactor={currencyFactor}
-                            subTextureDescriptions={
-                              textureDescriptions.commemorative
-                            }
-                            textureIndex={textureArrays.commemorative.indexOf(
-                              texture,
-                            )}
-                          />
-                        )}
-                      />
-                    </div>
-                  </div>
+                  
                   <div className="texture-row">
                     {/* <div className="texture-category mt-3">
                     <h3>

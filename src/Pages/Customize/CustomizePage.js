@@ -28,7 +28,7 @@ const CustomizePage = () => {
             <Link
               // to={`/customize-unisex/${name}`}
               to={link ? link : `/configurator-unisex/${name}`}
-              className="col-6 col-md-3  text-decoration-none"
+              className="col-6 col-md-3text-decoration-none lg:mx-10 "
               key={name}
             >
               <div className="card" data-aos="fade-in" data-aos-duration="1500">
@@ -45,7 +45,7 @@ const CustomizePage = () => {
             <Link
               // to={`/customize-unisex/${name}`}
               to={link ? link : `/configurator-unisex/${name}`}
-              className="col-6 col-md-3  text-decoration-none"
+              className="col-6 col-md-3text-decoration-none lg:mx-10 "
               key={name}
             >
               <div className="card" data-aos="fade-in" data-aos-duration="1500">
@@ -59,13 +59,13 @@ const CustomizePage = () => {
           {/* Accessories */}
           <div className="flex-flex-col justify-center items-center gap-2">
             <h5 className="mt-4 footer-header text-lg">Accessories</h5>
-            <div className="grid grid-cols-2 lg:grid-cols-3 gap-3  items-center">
+            <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 items-center ">
               {mainUnisex
                 .slice(9, 14)
                 .map(({ name, image, link, description, title }) => (
                   <Link
                     to={link ? link : `/configurator-unisex/${name}`}
-                    className="  text-decoration-none"
+                    className="text-decoration-none lg:mx-10  "
                     key={name}
                     data-aos="fade-in"
                     data-aos-duration="1500"
@@ -85,11 +85,11 @@ const CustomizePage = () => {
 
           <div className="flex-flex-col justify-center items-center gap-2">
             <h5 className="mt-4 footer-header text-lg">Women's Clothing</h5>
-            <div className="grid grid-cols-2 lg:grid-cols-3 gap-3  items-center">
+            <div className="grid grid-cols-2 lg:grid-cols-3 gap-3   items-center">
               {mainFemaleCustomize.map(({ name, image }) => (
               <Link
                 to={`/configurator-female/${name}`}
-                className="  text-decoration-none"
+                className="text-decoration-none lg:mx-10 "
                 key={name}
                 data-aos="fade-in"
                 data-aos-duration="1500"
@@ -106,11 +106,11 @@ const CustomizePage = () => {
           {/* Male clothing */}
           <div className="flex-flex-col justify-center items-center gap-2">
             <h5 className="mt-4 footer-header text-lg">Men's Clothing</h5>
-            <div className="grid grid-cols-2 lg:grid-cols-3 gap-3  items-center">
+            <div className="grid grid-cols-2 lg:grid-cols-3 gap-3   items-center">
               {mainMaleCustomize.map(({ name, image }) => (
               <Link
                 to={`/configurator/${name}`}
-                className="  text-decoration-none "
+                className="text-decoration-none lg:mx-10  "
                 key={name}
                 data-aos="fade-in"
                 data-aos-duration="1500"
@@ -121,17 +121,46 @@ const CustomizePage = () => {
             </div>
           </div>
 
+
+          {/* nails */}
+          <div className="flex-flex-col justify-center items-center gap-2">
+            <h5 className="mt-4 footer-header text-lg">On Display Only
+            <p className="text-xs ">These items are only on display currently and not for sale</p>
+
+            </h5>
+            <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 items-center ">
+              {mainUnisex
+                .slice(0, 3)
+                .map(({ name, image, link, description, title }) => (
+                  <Link
+                    to={link ? link : `/configurator-unisex/${name}`}
+                    className="text-decoration-none lg:mx-10  "
+                    key={name}
+                    data-aos="fade-in"
+                    data-aos-duration="1500"
+                  >
+                    
+                    <ListItem
+                      image={image}
+                      title={title || name}
+                      extraDescription={description}
+                    />
+                  </Link>
+                ))}
+              </div>
+            </div>
+
          
 
           {/* Male accessories */}
 
           {/* <div className="flex-flex-col justify-center items-center gap-2">
             <h5 className="mt-4 footer-header text-lg">Male Accessories</h5>
-            <div className="grid grid-cols-2 lg:grid-cols-3 gap-3  items-center">
+            <div className="grid grid-cols-2 lg:grid-cols-3 gap-3   items-center">
               {mainMaleAccessories.map(({ name, image }) => (
               <Link
                 to={`/configurator-male-accessories/${name}`}
-                className="  text-decoration-none "
+                className="text-decoration-none lg:mx-10  "
                 key={name}
                 data-aos="fade-in"
                 data-aos-duration="1500"
@@ -149,7 +178,7 @@ const CustomizePage = () => {
           {mainFemaleAccessories.map(({ name, image }) => (
             <Link
               to={`/configurator-female-accessories/${name}`}
-              className="col-6 col-md-3  text-decoration-none"
+              className="col-6 col-md-3text-decoration-none lg:mx-10 "
               key={name}
             >
               <ListItem image={image} description={name} />
@@ -161,7 +190,7 @@ const CustomizePage = () => {
           {mainFootwear.map(({ name, image }) => (
             <Link
               to={`/configurator-footwear/${name}`}
-              className="col-6 col-md-3  text-decoration-none"
+              className="col-6 col-md-3text-decoration-none lg:mx-10 "
               key={name}
             >
               <ListItem image={image} description={name} />

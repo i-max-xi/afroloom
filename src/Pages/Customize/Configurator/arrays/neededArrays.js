@@ -142,7 +142,7 @@ initializeData();
 export const textureArrays = {
   batik: [batik2, batik3, batik4, batik5],
 
-  waxPrint: [waxPrint1, waxPrint2, waxPrint3, waxPrint4, waxPrint5, waxPrint6],
+  waxPrint: [waxPrint1, waxPrint2, waxPrint3, waxPrint4, waxPrint5, waxPrint6, otumfuo, asantenhene30thanniversary],
   Diaspora: [conti, katanga, republic, queens, africa],
   nailDesigns: [
     nailDesign3,
@@ -157,7 +157,7 @@ export const textureArrays = {
     nailDesign45,
     nailDesign47,
   ],
-  commemorative: [otumfuo, asantenhene30thanniversary],
+  // commemorative: [otumfuo, asantenhene30thanniversary],
 };
 
 export const textureDescriptions = {
@@ -251,6 +251,23 @@ export const textureDescriptions = {
       heritage and unique design of African fabrics by incorporating Sika Nto Nkwa into your everyday
       style? Stand out from the crowd and wear a piece of tradition with pride!`,
     },
+
+    {
+      textureName: "Otumfuo Commemorative Fabric (1999-2019)",
+      textureDescription: `This fabric honors 20 years of Otumfuo Osei Tutu II’s reign (1999-2019) with the theme "Deepening Our Cultural Heritage Through Socio-Economic Development." It symbolizes Otumfuo's dedication to preserving Ashanti culture while promoting progress.`,
+      disclaimer: "Afroloom only sources this fabric from official outlets and does not produce it. In case of unavailability, a full refund will be provided.",
+      footNote: "Wear this fabric to celebrate Otumfuo’s legacy of leadership, cultural pride, and development."
+    },
+    {
+      textureName: "Asantehene’s 25th Anniversary Cloth",
+      textureDescription: `Celebrate the 25th anniversary of Otumfuo Osei Tutu II with this commemorative fabric, designed to honor his reign and the rich cultural heritage of the Ashanti Kingdom. The intricate patterns reflect the depth of Ashanti traditions, symbolizing strength, unity, and leadership. `,
+      disclaimer: " Please note, we only source these fabrics from official producers, and Afroloom does not manufacture them. Fabric availability depends on stock from the original producers.  ",
+    },
+    {
+      textureName: "Asantehene’s 25th Anniversary Fabric",
+      textureDescription: `Celebrate the 25th anniversary of Otumfuo Osei Tutu II with this commemorative fabric, designed to honor his reign and the rich cultural heritage of the Ashanti Kingdom. The intricate patterns reflect the depth of Ashanti traditions, symbolizing strength, unity, and leadership`,
+      disclaimer: " Please note, we only source these fabrics from official producers, and Afroloom does not manufacture them. Fabric availability depends on stock from the original producers.  ",
+    },
   ],
   diaspora: [
     {
@@ -280,25 +297,25 @@ export const textureDescriptions = {
       disclaimer: "Please note that Afroloom only sources this fabric directly from Africa Hall, and we do not produce it. If the school runs out of stock, we will issue a full refund",
     },
   ],
-  commemorative:[
-    {
-      textureName: "Otumfuo Commemorative Fabric (1999-2019)",
-      textureDescription: `This fabric honors 20 years of Otumfuo Osei Tutu II’s reign (1999-2019) with the theme "Deepening Our Cultural Heritage Through Socio-Economic Development." It symbolizes Otumfuo's dedication to preserving Ashanti culture while promoting progress.`,
-      disclaimer: "Afroloom only sources this fabric from official outlets and does not produce it. In case of unavailability, a full refund will be provided.",
-      footNote: "Wear this fabric to celebrate Otumfuo’s legacy of leadership, cultural pride, and development."
-    },
-    {
-      textureName: "Asantehene’s 25th Anniversary Cloth",
-      textureDescription: `Celebrate the 25th anniversary of Otumfuo Osei Tutu II with this commemorative fabric, designed to honor his reign and the rich cultural heritage of the Ashanti Kingdom. The intricate patterns reflect the depth of Ashanti traditions, symbolizing strength, unity, and leadership. `,
-      disclaimer: " Please note, we only source these fabrics from official producers, and Afroloom does not manufacture them. Fabric availability depends on stock from the original producers.  ",
-    },
-    {
-      textureName: "Asantehene’s 25th Anniversary Fabric",
-      textureDescription: `Celebrate the 25th anniversary of Otumfuo Osei Tutu II with this commemorative fabric, designed to honor his reign and the rich cultural heritage of the Ashanti Kingdom. The intricate patterns reflect the depth of Ashanti traditions, symbolizing strength, unity, and leadership`,
-      disclaimer: " Please note, we only source these fabrics from official producers, and Afroloom does not manufacture them. Fabric availability depends on stock from the original producers.  ",
-    },
+  // commemorative:[
+  //   {
+  //     textureName: "Otumfuo Commemorative Fabric (1999-2019)",
+  //     textureDescription: `This fabric honors 20 years of Otumfuo Osei Tutu II’s reign (1999-2019) with the theme "Deepening Our Cultural Heritage Through Socio-Economic Development." It symbolizes Otumfuo's dedication to preserving Ashanti culture while promoting progress.`,
+  //     disclaimer: "Afroloom only sources this fabric from official outlets and does not produce it. In case of unavailability, a full refund will be provided.",
+  //     footNote: "Wear this fabric to celebrate Otumfuo’s legacy of leadership, cultural pride, and development."
+  //   },
+  //   {
+  //     textureName: "Asantehene’s 25th Anniversary Cloth",
+  //     textureDescription: `Celebrate the 25th anniversary of Otumfuo Osei Tutu II with this commemorative fabric, designed to honor his reign and the rich cultural heritage of the Ashanti Kingdom. The intricate patterns reflect the depth of Ashanti traditions, symbolizing strength, unity, and leadership. `,
+  //     disclaimer: " Please note, we only source these fabrics from official producers, and Afroloom does not manufacture them. Fabric availability depends on stock from the original producers.  ",
+  //   },
+  //   {
+  //     textureName: "Asantehene’s 25th Anniversary Fabric",
+  //     textureDescription: `Celebrate the 25th anniversary of Otumfuo Osei Tutu II with this commemorative fabric, designed to honor his reign and the rich cultural heritage of the Ashanti Kingdom. The intricate patterns reflect the depth of Ashanti traditions, symbolizing strength, unity, and leadership`,
+  //     disclaimer: " Please note, we only source these fabrics from official producers, and Afroloom does not manufacture them. Fabric availability depends on stock from the original producers.  ",
+  //   },
    
-  ]
+  // ]
 };
 
 export const textureValues = {
