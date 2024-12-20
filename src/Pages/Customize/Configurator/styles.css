@@ -441,8 +441,16 @@ h1 {
   height: 100%;
 }
 
+@media (max-width: 700px) {
+  .nail-bg {
+    background-size: 24.5rem 42rem; /* Set the fixed size of the background */
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+}
+
 .nail-bg {
-  background-size: 24.5rem 42rem; /* Set the fixed size of the background */
+  background-size: 29.5rem 52rem; /* Set the fixed size of the background */
   background-repeat: no-repeat;
   background-position: center;
 }

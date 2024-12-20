@@ -121,6 +121,35 @@ const CustomizePage = () => {
             </div>
           </div>
 
+
+          {/* nails */}
+          <div className="flex-flex-col justify-center items-center gap-2">
+            <h5 className="mt-4 footer-header text-lg">On Display Only
+            <p className="text-xs ">These items are only on display currently and not for sale</p>
+
+            </h5>
+            <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 items-center ">
+              {mainUnisex
+                .slice(0, 3)
+                .map(({ name, image, link, description, title }) => (
+                  <Link
+                    to={link ? link : `/configurator-unisex/${name}`}
+                    className="text-decoration-none lg:mx-10  "
+                    key={name}
+                    data-aos="fade-in"
+                    data-aos-duration="1500"
+                  >
+                    
+                    <ListItem
+                      image={image}
+                      title={title || name}
+                      extraDescription={description}
+                    />
+                  </Link>
+                ))}
+              </div>
+            </div>
+
          
 
           {/* Male accessories */}

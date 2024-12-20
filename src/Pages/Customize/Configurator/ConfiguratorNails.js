@@ -254,6 +254,41 @@ const ConfiguratorUnisex = () => {
     setShowConfirmation(true);
   };
 
+  const shareCanvasImage = async () => {
+    setIsRotating(false);
+  
+    if (!canvasRef.current) {
+      toastRef.current.show({
+        severity: "error",
+        summary: "Error",
+        detail: "Complete action failed, please try again",
+      });
+      return;
+    }
+  
+    try {
+      const canvasImage = await html2canvas(canvasRef.current);
+      const dataUrl = canvasImage.toDataURL("image/png");
+  
+      setStateImage(dataUrl);
+  
+      // Trigger download
+      const link = document.createElement("a");
+      link.href = dataUrl;
+      link.download = "canvas-image.png"; // Default filename for the download
+      document.body.appendChild(link); // Append link to the DOM
+      link.click(); // Trigger download
+      document.body.removeChild(link); // Clean up
+    } catch (error) {
+      toastRef.current.show({
+        severity: "error",
+        summary: "Error",
+        detail: "Image generation failed, please try again",
+      });
+    }
+  };
+  
+
   const nailOptions = useMemo(() => {
     // if (selectedClothing.name.contains("Wig")) {
     //   return;
@@ -448,6 +483,8 @@ const ConfiguratorUnisex = () => {
           <div className="main-space pb-10">
             <h3 className="text-center pt-3">
               Customizing {selectedClothing.name}
+              <p className="text-xs ">This item is only on display currently</p>
+
             </h3>
             <div className="d-flex justify-content-center">
               <button
@@ -484,7 +521,7 @@ const ConfiguratorUnisex = () => {
                   );
                 })}
 
-                <div className="d-flex justify-content-between w-100 align-items-center mt-2">
+                <div className="d-flex justify-content-between w-100 align-items-center mt-2 lg:pt-5">
                   <h6 style={{ fontWeight: "500", fontSize: "1rem" }}>Nails</h6>
                   <span
                     style={{
@@ -495,6 +532,7 @@ const ConfiguratorUnisex = () => {
                       textTransform: "capitalize",
                     }}
                     onClick={handleClear}
+                    className="cursor-pointer"
                   >
                     Clear
                     <svg
@@ -603,7 +641,7 @@ const ConfiguratorUnisex = () => {
                   />
                 </div>
 
-                <div className="d-flex justify-content-between w-100">
+                <div className="d-flex justify-content-between w-100 lg:mt-8">
                   <span
                     style={{
                       fontSize: "0.8rem",
@@ -621,6 +659,7 @@ const ConfiguratorUnisex = () => {
                       color: "orangered",
                     }}
                     onClick={() => setGuideVisible(true)}
+                    className="cursor-pointer"
                   >
                     Guide
                     <svg
@@ -664,7 +703,7 @@ const ConfiguratorUnisex = () => {
                   </div>
                 </Dialog>
 
-                <div className="specifications">
+                <div className="specifications lg:pt-4">
                   {nailOptions.material && (
                     <>
                       <span className="p-float-label">
@@ -734,7 +773,8 @@ const ConfiguratorUnisex = () => {
                       height:  "80%" ,
 
                     }}
-                    className="nail-bg"
+                    className="lg:bg-[length:29.5rem_52rem]  bg-[length:24.5rem_42rem] bg-no-repeat bg-center"
+                    // className="nail-bg"
                     ref={canvasRef}
                   >
                     <Canvas
@@ -767,29 +807,38 @@ const ConfiguratorUnisex = () => {
             </div>
           </div>
           <div className="price w-100 d-flex bg-dark text-white justify-content-between">
-            <span className="m-3 expect-to-be-ready">
+            {/* <span className="m-3 expect-to-be-ready">
               Estimated time to make this order:{" "}
               <span className="customize-focus">
                 {selectedClothing.readyIn} days{" "}
               </span>
-            </span>
+            </span> */}
 
             <p className="price-text m-3">
               <span className="expect-to-be-ready">Price:</span>{" "}
-              <span className="customize-focus">
+              <span className="customize-focus line-through">
                 {currencySymbol}
                 {total}.00
               </span>
+              <p className="text-xs ">This item is only on display currently</p>
             </p>
 
             <p className="complete m-2">
+              <button
+                className="btn btn-success text-white"
+                onClick={shareCanvasImage}
+              >
+                Share Your Design
+              </button>
+            </p>
+            {/* <p className="complete m-2">
               <button
                 className="btn btn-success text-white"
                 onClick={captureCanvasAsImage}
               >
                 Complete
               </button>
-            </p>
+            </p> */}
           </div>
         </>
       )}
