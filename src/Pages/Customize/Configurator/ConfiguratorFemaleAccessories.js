@@ -474,7 +474,7 @@ const ConfiguratorFemaleAccessories = () => {
         />
       ) : (
         <>
-          <div className="main-space">
+          <div className="main-space pb-10">
             <h3 className="text-center pt-3">
               Customizing {selectedClothing.name}
             </h3>

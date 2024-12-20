@@ -442,7 +442,7 @@ const Configurator = () => {
         />
       ) : (
         <>
-          <div className="main-space">
+          <div className="main-space pb-10">
             <h3 className="text-center pt-3">
               Customizing {selectedClothing.name}
             </h3>
@@ -790,6 +790,7 @@ const Configurator = () => {
               </div>
             </div>
           </div>
+
           <div className="price w-100 d-flex bg-dark text-white justify-content-between">
             <span className="m-3 expect-to-be-ready">
               Estimated time to make this order:{" "}
