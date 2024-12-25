@@ -21,7 +21,7 @@ import nailDesign44 from "../textures/nail designs/new/2ed2d.jpg";
 import nailDesign45 from "../textures/nail designs/new/4.jpg";
 import nailDesign47 from "../textures/nail designs/new/fwef.jpg";
 
-// import waxPrint1 from "../textures/waxPrint/new/1 dade3 mpadua.jpg";
+import waxPrint1 from "../textures/waxPrint/new/1 dade3 mpadua.jpg";
 import waxPrint2 from "../textures/waxPrint/new/2. ayeyi wura.jpg";
 import waxPrint3 from "../textures/waxPrint/new/3. 8 8.jpg";
 import waxPrint4 from "../textures/waxPrint/new/4. A B C.jpg";
@@ -41,8 +41,46 @@ import otumfuo from "../textures/commemorative/otumfuo.jpg";
 import asantenhene25thaniversary from "../textures/commemorative/1-imageonline.co-merged.jpeg"
 import asantenhene30thanniversary from "../textures/commemorative/gfsdg-imageonline.co-merged (1).jpeg"
 
+//new newTextures
+import n1 from "../textures/new_textures/1. ahwene pa nkasa.jpg";
+import n2 from "../textures/new_textures/2. ahwenepa nkasa.jpg";
+import n3 from "../textures/new_textures/3. akuffo.jpg";
+import n4 from "../textures/new_textures/4. akyemfr3.jpg";
+import n5 from "../textures/new_textures/5. akyikyidie akyi.jpg";
+import n6 from "../textures/new_textures/6. animonyam nka nyame.jpg";
+import n7 from "../textures/new_textures/7. ghana flag.jpg";
+import n8 from "../textures/new_textures/8. kotodwe.jpg";
+import n9 from "../textures/new_textures/9. nkitinkiti.jpg";
+import n10 from "../textures/new_textures/10. nsuanhunu.jpg";
+import n11 from "../textures/new_textures/11. obaa pa.jpg";
+import n12 from "../textures/new_textures/12. obaapa.jpg";
+import n13 from "../textures/new_textures/13. obi de3 aba.jpg";
+import n14 from "../textures/new_textures/14. oya suro oya.jpg";
+import n15 from "../textures/new_textures/15. sakadom.jpg";
+import n16 from "../textures/new_textures/16. samarama k3t3.jpg";
+import n17 from "../textures/new_textures/17. sika wo ntaban.jpg";
+import n18 from "../textures/new_textures/18. subra.jpg";
+import n19 from "../textures/new_textures/19 ab3n.jpg";
+import n20 from "../textures/new_textures/20 abusua mu wo abusua kronkron.jpg";
+import n21 from "../textures/new_textures/21 adeakye 3bia.jpg";
+import n22 from "../textures/new_textures/22 adekye3 mu nsem.jpg";
+import n23 from "../textures/new_textures/23 adom arakwa.jpg";
+import n24 from "../textures/new_textures/24 akoraa bo nwa.jpg";
+import n25 from "../textures/new_textures/25 ankonam moboro.jpg";
+import n26 from "../textures/new_textures/26 aseda wo oyame ho.jpg";
+import n27 from "../textures/new_textures/27 boafo ne awurade.jpg";
+import n28 from "../textures/new_textures/28 boafoo ni bebiara.jpg";
+import n29 from "../textures/new_textures/29 daakye asem nti.jpg";
+import n30 from "../textures/new_textures/30 flower.jpg";
+import n31 from "../textures/new_textures/31 obaapa.jpg";
+import n32 from "../textures/new_textures/32 sape.jpg";
+import n33 from "../textures/new_textures/33 senkyi bridge.jpg";
+import n34 from "../textures/new_textures/34 y3da awurade ase.jpg";
+import n35 from "../textures/new_textures/35 yesu mogya.jpg";
 
-const waxPrint1 = "https://firebasestorage.googleapis.com/v0/b/shopinafrica-c84cf.appspot.com/o/texture%2F1%20dade3%20mpadua.jpg?alt=media&token=d7fb314a-7d6a-477a-acce-fabfb2d2cfd5"
+
+
+// const waxPrint1 = "https://firebasestorage.googleapis.com/v0/b/shopinafrica-c84cf.appspot.com/o/texture%2F1%20dade3%20mpadua.jpg?alt=media&token=d7fb314a-7d6a-477a-acce-fabfb2d2cfd5"
 
 
 export const colorBasePrice = 35;
@@ -158,6 +196,7 @@ export const textureArrays = {
     nailDesign47,
   ],
   // commemorative: [otumfuo, asantenhene30thanniversary],
+  newTextures: [n1, n2, n3, n4, n5, n6, n7, n8, n9, n10, n11, n12, n13, n14, n15, n16, n17, n18, n19, n20, n21, n22, n23, n24, n25, n26, n27, n28, n29, n30, n31, n32, n33, n34, n35],
 };
 
 export const textureDescriptions = {
@@ -316,7 +355,163 @@ export const textureDescriptions = {
   //   },
    
   // ]
-};
+  newTextures: [
+    {
+      "textureName": "Ahwene Pa Nkasa (Good Things Don’t Speak for Themselves)",
+      "textureDescription": "This fabric symbolizes quiet excellence, showing that true value does not boast. Wear it proudly to represent confidence, knowing your worth will shine through your actions.",
+      "disclaimer": "Please note, we only source these fabrics from official producers, and Afroloom does not manufacture them. Fabric availability depends on stock from the original producers."
+    },
+    {
+      "textureName": "Ahwenepa Nkasa (Good Things Don’t Speak for Themselves)",
+      "textureDescription": "This design reflects silent greatness and high standards. Rock this fabric with pride as a reminder that excellence needs no announcement—it simply is.",
+      "disclaimer": "Please note, we only source these fabrics from official producers, and Afroloom does not manufacture them. Fabric availability depends on stock from the original producers."
+    },
+    {
+      "textureName": "Akuffo",
+      "textureDescription": "This fabric embodies boldness and leadership. Wear it to make a statement about courage, determination, and standing tall in every situation.",
+      "disclaimer": "Please note, we only source these fabrics from official producers, and Afroloom does not manufacture them. Fabric availability depends on stock from the original producers."
+    },
+    {
+      "textureName": "Akyemfrɛ (You Can’t Call Me Twice)",
+      "textureDescription": "Representing uniqueness, this pattern tells the world you are one of a kind. Wear it to celebrate your individuality and self-worth.",
+      "disclaimer": "Please note, we only source these fabrics from official producers, and Afroloom does not manufacture them. Fabric availability depends on stock from the original producers."
+    },
+    {
+      "textureName": "Akyikyideɛ Akyi (Back of the Tortoise)",
+      "textureDescription": "A symbol of resilience and hidden strength. Put on this fabric to show that you can overcome life’s challenges with patience and fortitude.",
+      "disclaimer": "Please note, we only source these fabrics from official producers, and Afroloom does not manufacture them. Fabric availability depends on stock from the original producers."
+    },
+    {
+      "textureName": "Animuonyam Nka Nyame (All Glory Belongs to God)",
+      "textureDescription": "Perfect for expressing gratitude and humility. Wear it to celebrate your blessings and acknowledge God’s hand in your life.",
+      "disclaimer": "Please note, we only source these fabrics from official producers, and Afroloom does not manufacture them. Fabric availability depends on stock from the original producers."
+    },
+    {
+      "textureName": "Ghana Flag",
+      "textureDescription": "Celebrate unity, freedom, and patriotism with this design. Wear it with pride to show your love for Ghana at national events or every day.",
+      "disclaimer": "Please note, we only source these fabrics from official producers, and Afroloom does not manufacture them. Fabric availability depends on stock from the original producers."
+    },
+    {
+      "textureName": "Kotodwe (Chicken Leg)",
+      "textureDescription": "Symbolizing unexpected power in small things. Step out in this fabric to express strength, even in the smallest of beginnings.",
+      "disclaimer": "Please note, we only source these fabrics from official producers, and Afroloom does not manufacture them. Fabric availability depends on stock from the original producers."
+    },
+    {
+      "textureName": "Nkitinkiti (Intricate Patterns)",
+      "textureDescription": "Representing creativity and complexity, this fabric is perfect for innovators. Wear it boldly to embrace your ability to think differently.",
+      "disclaimer": "Please note, we only source these fabrics from official producers, and Afroloom does not manufacture them. Fabric availability depends on stock from the original producers."
+    },
+    {
+      "textureName": "Nsuanhunu (Foam on Water)",
+      "textureDescription": "A symbol of elegance and subtle influence. Dress in this fabric to show that even the lightest touch can leave a lasting impact.",
+      "disclaimer": "Please note, we only source these fabrics from official producers, and Afroloom does not manufacture them. Fabric availability depends on stock from the original producers."
+    },
+    {
+      "textureName": "Obaa Pa (Virtuous Woman)",
+      "textureDescription": "Celebrate the strength and grace of women with this design. Wear it to embody integrity, care, and the beauty of womanhood."
+    },
+    {
+      "textureName": "Obi Deɛ Aba (What Someone Brings)",
+      "textureDescription": "This fabric teaches gratitude. Wear it proudly as a reminder to appreciate the gifts and kindness of others."
+    },
+    {
+      "textureName": "Ɔya Suro Ɔya (Pain Fears Pain)",
+      "textureDescription": "A message of resilience, encouraging you to overcome challenges. Rock this fabric to express that you’ve faced hardships and emerged stronger."
+    },
+    {
+      "textureName": "Sakadom (Freedom)",
+      "textureDescription": "Wear this fabric to embrace your freedom and individuality. It’s perfect for breaking boundaries and expressing your true self."
+    },
+    {
+      "textureName": "Samrama Ketɛ (Woven Mat)",
+      "textureDescription": "This pattern celebrates traditional craftsmanship and unity. Wear it with pride to honor cultural heritage and simplicity."
+    },
+    {
+      "textureName": "Sika Wo Ntaban (Money Has Wings)",
+      "textureDescription": "A fabric reminding us to manage wealth wisely. Dress in it to express mindfulness about your financial journey."
+    },
+    {
+      "textureName": "Subra (Morality)",
+      "textureDescription": "Showcase your character and discipline by wearing this fabric. It’s ideal for occasions celebrating responsibility and values."
+    },
+    {
+      "textureName": "Abɛn (Horn)",
+      "textureDescription": "Symbolizing a call to action, wear this fabric to show leadership and inspire others to follow your example."
+    },
+    {
+      "textureName": "Abusua Mu Wo Abusua Kronkron (There’s a Sacred Family Within a Family)",
+      "textureDescription": "This fabric celebrates family unity and legacy. Wear it with pride for family reunions or events honoring heritage."
+    },
+    {
+      "textureName": "Adeakyeɛ Bia (Every Day is a Gift)",
+      "textureDescription": "Celebrate life by wearing this fabric. It’s perfect for brightening your day and spreading joy to others."
+    },
+    {
+      "textureName": "Adeakyeɛ Bia (Every Day is a Gift)",
+      "textureDescription": "Celebrate life by wearing this fabric. It’s perfect for brightening your day and spreading joy to others."
+    },
+    {
+      "textureName": "Adekyeɛ Munsem (Morning’s Secrets)",
+      "textureDescription": "Ideal for fresh starts, this fabric reminds you that every new day brings opportunity. Wear it when embracing change and new beginnings."
+    },
+    {
+      "textureName": "Adom Arakwa (Graceful Robe)",
+      "textureDescription": "Wear this elegant design to express grace, beauty, and poise at any gathering."
+    },
+    {
+      "textureName": "Akoraa Bɔ Nwa (Little One Catches the Big One)",
+      "textureDescription": "A fabric that encourages perseverance. Wear it to remind yourself and others that small efforts can achieve great results."
+    },
+    {
+      "textureName": "Ankonam Mmoboro (The Lonely One Finds Comfort)",
+      "textureDescription": "Perfect for expressing personal strength and inner peace. Wear it as a symbol of resilience in solitude."
+    },
+    {
+      "textureName": "Aseda Wo Nyame Ho (Gratitude to God)",
+      "textureDescription": "A great choice for religious events, this fabric reflects gratitude for life’s blessings. Wear it to express thankfulness."
+    },
+    {
+      "textureName": "Boafoɔ Ne Awurade (God is the Helper)",
+      "textureDescription": "Wear this to show your faith in divine guidance. It’s ideal for spiritual occasions or as a reminder of God’s help in your life."
+    },
+    {
+      "textureName": "Boafoɔ Ni Bebia (Helper in Every Place)",
+      "textureDescription": "This fabric inspires trust in finding help everywhere. Wear it to remind yourself to seek support when needed."
+    },
+    {
+      "textureName": "Daakye Asem Nti (For the Sake of the Future)",
+      "textureDescription": "Perfect for goal-setters, wear this fabric to express ambition and a vision for a brighter future."
+    },
+    {
+      "textureName": "Flower",
+      "textureDescription": "Inspired by nature, this pattern promotes joy and love. Wear it to spread cheer and positivity wherever you go."
+    },
+    {
+      "textureName": "Obaapa (Good Woman)",
+      "textureDescription": "Celebrate impactful women with this design. Wear it to inspire others with your kindness and achievements."
+    },
+    {
+      "textureName": "Sape (Wisdom)",
+      "textureDescription": "A great fabric for scholars and thinkers. Wear it to show your love for learning and wisdom."
+    },
+    {
+      "textureName": "Senkyi Bridge",
+      "textureDescription": "This fabric celebrates connection and unity. Wear it to promote collaboration and building bridges between people."
+    },
+    {
+      "textureName": "Yɛda Awurade Ase (We Thank the Lord)",
+      "textureDescription": "Wear this to express gratitude for life’s blessings. It’s perfect for celebrations and spiritual events."
+    },
+    {
+      "textureName": "Yesu Mogya (Blood of Jesus)",
+      "textureDescription": "A powerful symbol of faith and sacrifice. Wear this fabric proudly to express your Christian beliefs and devotion."
+    }
+   
+  ]
+  
+
+
+}
 
 export const textureValues = {
   batik: {
@@ -333,6 +528,10 @@ export const textureValues = {
   },
   commemorative: {
     price: 130,
+    yardStart: 2,
+  },
+  newTextures: {
+    price: 60,
     yardStart: 2,
   }
 };

@@ -140,7 +140,7 @@ function TextureItem({
               : "Description N/A"}
           </p>
           <p style={{fontWeight: "bold"}}>
-            { subTextureDescriptions[textureIndex]?.disclaimer}
+            { subTextureDescriptions[textureIndex]?.disclaimer || "Please note, we only source these fabrics from official producers, and Afroloom does not manufacture them. Fabric availability depends on stock from the original producers."}
           </p>
 
           <p >
