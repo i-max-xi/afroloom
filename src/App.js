@@ -41,6 +41,7 @@ import ForgotPassword from "./Pages/ForgotPassword";
 import HomePage from "./Pages/HomePageTwo";
 import AdminDashboard from "./Pages/Dashboard/admin/AdminHome";
 import SignInAdmin from "./Pages/SignInAdmin";
+import ConfiguratorSpecial from "./Pages/Customize/Configurator/ConfiguratorSpecial";
 
 function App() {
   useEffect(() => {
@@ -65,6 +66,7 @@ function App() {
             <Route path="admin-dashboard" element={<AdminDashboard />} />
 
             <Route path="/configurator/:Id" element={<Configurator />} />
+            <Route path="/configurator-special/:Id" element={<ConfiguratorSpecial />} />
             <Route
               path="/configurator-female/:Id"
               element={<ConfiguratorFemale />}
