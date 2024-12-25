@@ -151,7 +151,7 @@ const CameraControls = () => {
   );
 };
 
-const Configurator = () => {
+const ConfiguratorSpecial = () => {
   const { Id } = useParams();
   const selectedClothing = mainMaleCustomize.find((item) => item.name === Id);
 
@@ -752,6 +752,38 @@ const Configurator = () => {
                       />
                     </div>
                   </div>
+
+                  <div className="texture-row">
+                    <div className="texture-category mt-3">
+                      <h3>Logos</h3>
+                      <Carousel
+                        value={textureArrays.logos}
+                        numVisible={4}
+                        numScroll={1}
+                        showIndicators={false}
+                        itemTemplate={(texture) => (
+                          <TextureItem
+                            key={texture}
+                            texture={texture}
+                            setHideText={setHideText}
+                            Title="Logos"
+                            noInfo={true}
+                            selectedTexture={selectedPrintOn}
+                            // Pass setSelectedTexture as a prop
+                            handleTextureChange={handleTextureChange}
+                            currencySymbol={currencySymbol}
+                            currencyFactor={currencyFactor}
+                            subTextureDescriptions={
+                              textureDescriptions.logos
+                            }
+                            textureIndex={textureArrays.logos.indexOf(
+                              texture,
+                            )}
+                          />
+                        )}
+                      />
+                    </div>
+                  </div>
                  
                 </div>
               </div>
@@ -823,4 +855,4 @@ const Configurator = () => {
   );
 };
 
-export default Configurator;
+export default ConfiguratorSpecial;

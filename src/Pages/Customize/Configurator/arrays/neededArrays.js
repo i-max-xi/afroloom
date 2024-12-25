@@ -78,6 +78,10 @@ import n33 from "../textures/new_textures/33 senkyi bridge.jpg";
 import n34 from "../textures/new_textures/34 y3da awurade ase.jpg";
 import n35 from "../textures/new_textures/35 yesu mogya.jpg";
 
+// logos
+import logo1 from "../textures/logos/AFRO_LOGO_4_transparent.png";
+import logo2 from "../textures/logos/gye-nyame-medium.png";
+import logo3 from "../textures/logos/NewPatrioticParty_logo.png";
 
 
 // const waxPrint1 = "https://firebasestorage.googleapis.com/v0/b/shopinafrica-c84cf.appspot.com/o/texture%2F1%20dade3%20mpadua.jpg?alt=media&token=d7fb314a-7d6a-477a-acce-fabfb2d2cfd5"
@@ -197,6 +201,7 @@ export const textureArrays = {
   ],
   // commemorative: [otumfuo, asantenhene30thanniversary],
   newTextures: [n1, n2, n3, n4, n5, n6, n7, n8, n9, n10, n11, n12, n13, n14, n15, n16, n17, n18, n19, n20, n21, n22, n23, n24, n25, n26, n27, n28, n29, n30, n31, n32, n33, n34, n35],
+  logos: [logo1, logo2, logo3],
 };
 
 export const textureDescriptions = {
@@ -497,7 +502,8 @@ export const textureDescriptions = {
       "textureDescription": "A powerful symbol of faith and sacrifice. Wear this fabric proudly to express your Christian beliefs and devotion."
     }
    
-  ]
+  ],
+  logos: []
   
 
 
@@ -522,6 +528,10 @@ export const textureValues = {
   },
   newTextures: {
     price: 60,
+    yardStart: 2,
+  },
+  logos: {
+    price: 1,
     yardStart: 2,
   }
 };
