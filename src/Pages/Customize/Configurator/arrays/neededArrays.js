@@ -359,52 +359,42 @@ export const textureDescriptions = {
     {
       "textureName": "Ahwene Pa Nkasa (Good Things Don’t Speak for Themselves)",
       "textureDescription": "This fabric symbolizes quiet excellence, showing that true value does not boast. Wear it proudly to represent confidence, knowing your worth will shine through your actions.",
-      "disclaimer": "Please note, we only source these fabrics from official producers, and Afroloom does not manufacture them. Fabric availability depends on stock from the original producers."
     },
     {
       "textureName": "Ahwenepa Nkasa (Good Things Don’t Speak for Themselves)",
       "textureDescription": "This design reflects silent greatness and high standards. Rock this fabric with pride as a reminder that excellence needs no announcement—it simply is.",
-      "disclaimer": "Please note, we only source these fabrics from official producers, and Afroloom does not manufacture them. Fabric availability depends on stock from the original producers."
     },
     {
       "textureName": "Akuffo",
       "textureDescription": "This fabric embodies boldness and leadership. Wear it to make a statement about courage, determination, and standing tall in every situation.",
-      "disclaimer": "Please note, we only source these fabrics from official producers, and Afroloom does not manufacture them. Fabric availability depends on stock from the original producers."
     },
     {
       "textureName": "Akyemfrɛ (You Can’t Call Me Twice)",
       "textureDescription": "Representing uniqueness, this pattern tells the world you are one of a kind. Wear it to celebrate your individuality and self-worth.",
-      "disclaimer": "Please note, we only source these fabrics from official producers, and Afroloom does not manufacture them. Fabric availability depends on stock from the original producers."
     },
     {
       "textureName": "Akyikyideɛ Akyi (Back of the Tortoise)",
       "textureDescription": "A symbol of resilience and hidden strength. Put on this fabric to show that you can overcome life’s challenges with patience and fortitude.",
-      "disclaimer": "Please note, we only source these fabrics from official producers, and Afroloom does not manufacture them. Fabric availability depends on stock from the original producers."
     },
     {
       "textureName": "Animuonyam Nka Nyame (All Glory Belongs to God)",
       "textureDescription": "Perfect for expressing gratitude and humility. Wear it to celebrate your blessings and acknowledge God’s hand in your life.",
-      "disclaimer": "Please note, we only source these fabrics from official producers, and Afroloom does not manufacture them. Fabric availability depends on stock from the original producers."
     },
     {
       "textureName": "Ghana Flag",
       "textureDescription": "Celebrate unity, freedom, and patriotism with this design. Wear it with pride to show your love for Ghana at national events or every day.",
-      "disclaimer": "Please note, we only source these fabrics from official producers, and Afroloom does not manufacture them. Fabric availability depends on stock from the original producers."
     },
     {
       "textureName": "Kotodwe (Chicken Leg)",
       "textureDescription": "Symbolizing unexpected power in small things. Step out in this fabric to express strength, even in the smallest of beginnings.",
-      "disclaimer": "Please note, we only source these fabrics from official producers, and Afroloom does not manufacture them. Fabric availability depends on stock from the original producers."
     },
     {
       "textureName": "Nkitinkiti (Intricate Patterns)",
       "textureDescription": "Representing creativity and complexity, this fabric is perfect for innovators. Wear it boldly to embrace your ability to think differently.",
-      "disclaimer": "Please note, we only source these fabrics from official producers, and Afroloom does not manufacture them. Fabric availability depends on stock from the original producers."
     },
     {
       "textureName": "Nsuanhunu (Foam on Water)",
       "textureDescription": "A symbol of elegance and subtle influence. Dress in this fabric to show that even the lightest touch can leave a lasting impact.",
-      "disclaimer": "Please note, we only source these fabrics from official producers, and Afroloom does not manufacture them. Fabric availability depends on stock from the original producers."
     },
     {
       "textureName": "Obaa Pa (Virtuous Woman)",

@@ -83,6 +83,7 @@ function TextureItem({
     <div className="texture-item" >
       <img
         src={texture}
+        loading="lazy"
         alt={`Texture`}
         className={`texture-button ${
           selectedTexture === texture ? "selected-border" : ""
@@ -125,6 +126,7 @@ function TextureItem({
               width="250px"
               style={{ alignSelf: "center", WebkitTouchCallout: "none", objectFit: "cover" }}
               onContextMenu={(e) => e.preventDefault()}
+              
             />
 
             <div class="text-block-container">
