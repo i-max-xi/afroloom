@@ -123,7 +123,7 @@ const CustomizePage = () => {
 
 
           {/* nails */}
-          <div className="flex-flex-col justify-center items-center gap-2">
+          {/* <div className="flex-flex-col justify-center items-center gap-2">
             <h5 className="mt-4 footer-header text-lg">On Display Only
             <p className="text-xs ">These items are only on display currently and not for sale</p>
 
@@ -148,7 +148,7 @@ const CustomizePage = () => {
                   </Link>
                 ))}
               </div>
-            </div>
+          </div> */}
 
          
 

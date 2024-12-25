@@ -755,6 +755,37 @@ const ConfiguratorMaleAccessories = () => {
                       />
                     </div>
                   </div>
+
+                  <div className="texture-row">
+                    <div className="texture-category mt-3">
+                      <h3>New Textures</h3>
+                      <Carousel
+                        value={textureArrays.newTextures}
+                        numVisible={4}
+                        numScroll={1}
+                        showIndicators={false}
+                        itemTemplate={(texture) => (
+                          <TextureItem
+                            key={texture}
+                            texture={texture}
+                            setHideText={setHideText}
+                            Title="New Textures"
+                            selectedTexture={selectedPrintOn}
+                            // Pass setSelectedTexture as a prop
+                            handleTextureChange={handleTextureChange}
+                            currencySymbol={currencySymbol}
+                            currencyFactor={currencyFactor}
+                            subTextureDescriptions={
+                              textureDescriptions.newTextures
+                            }
+                            textureIndex={textureArrays.newTextures.indexOf(
+                              texture,
+                            )}
+                          />
+                        )}
+                      />
+                    </div>
+                  </div>
                   
                 </div>
               </div>
