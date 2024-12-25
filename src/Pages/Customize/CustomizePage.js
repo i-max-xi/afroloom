@@ -10,6 +10,7 @@ import {
 import { mainUnisex } from "../../Data/CustomizeDataUnisex";
 import { mainFootwear } from "../../Data/CustomizeDataFootwear";
 import ListItem from "../../Components/List/ListItem";
+import { specialsCustomize } from "../../Data/specials";
 
 const CustomizePage = () => {
   useEffect(() => {
@@ -79,7 +80,7 @@ const CustomizePage = () => {
                   </Link>
                 ))}
               </div>
-            </div>
+          </div>
 
           {/* Female clothing */}
 
@@ -149,6 +150,30 @@ const CustomizePage = () => {
                 ))}
               </div>
           </div> */}
+
+           {/* specials */}
+           <div className="flex-flex-col justify-center items-center gap-2">
+            <h5 className="mt-4 footer-header text-lg">Specials</h5>
+            <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 items-center ">
+              {specialsCustomize
+                .map(({ name, image, link, description, title }) => (
+                  <Link
+                    to={link ? link : `/configurator-special/${name}`}
+                    className="text-decoration-none lg:mx-10  "
+                    key={name}
+                    data-aos="fade-in"
+                    data-aos-duration="1500"
+                  >
+                    
+                    <ListItem
+                      image={image}
+                      title={title || name}
+                      extraDescription={description}
+                    />
+                  </Link>
+                ))}
+              </div>
+          </div>
 
          
 
