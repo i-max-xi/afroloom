@@ -23,6 +23,7 @@ const ListItem = ({
           alt={title}
           className="object-cover lg:h-96 bg-white aspect-square rounded-xl"
           // style={{borderRadius: "2rem"}}
+          loading="lazy"
         />
       )}
 

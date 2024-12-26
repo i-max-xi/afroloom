@@ -116,7 +116,7 @@ const HomePage = () => {
         <Carousel>
           {carousel.map((item, index) => (
             <Carousel.Item key={index}>
-              <img className="d-block w-100" src={item.image} alt={item.alt} />
+              <img loading="lazy" className="d-block w-100" src={item.image} alt={item.alt} />
             </Carousel.Item>
           ))}
         </Carousel>
