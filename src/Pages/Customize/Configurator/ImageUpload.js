@@ -50,7 +50,7 @@ const ImageUpload = ({
   };
 
   return (
-    <>
+    <div className="flex justify-center items-center gap-4  w-full">
       <label className="cursor-pointer bg-[#3C9FEF] py-2 px-4 text-white rounded-md" htmlFor="upload-logo-left">
         {labelLeft}
       </label>
@@ -73,7 +73,7 @@ const ImageUpload = ({
           />
         </>
       )}
-    </>
+    </div>
   );
 };
 
