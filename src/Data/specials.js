@@ -32,6 +32,16 @@ export const specialsCustomize = [
     myX: 0,
     myY: 10,
     price: 110,
+    logo: {
+      translate: {
+        x: "-45%",
+        y: "-10%",
+      },
+      size: {
+        width: "5rem",
+        height: "5rem",
+      }
+    },
     // sizeModels: tshirt_model,
     readyIn: 7,
     sizeGuide: tshirt_guide,

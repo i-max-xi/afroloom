@@ -40,6 +40,9 @@ import { Toast } from "primereact/toast";
 import { isMobile } from "../../../utils/constants";
 import uuid from "react-uuid";
 import TakeTour from "./TakeTour";
+import { readFileAsDataURL, uploadToStorage } from "../../../utils/functions";
+import ImageUpload from "./ImageUpload";
+import HtmlLogoComponent from "./HtmlLogoComponent";
 
 const Shirt = ({
   isRotating,
@@ -146,12 +149,25 @@ const CameraControls = () => {
       enableRotate={true}
       enablePan={false}
       enableZoom={false}
+      rotation={false}
       ref={controlsRef}
     />
   );
 };
 
 const ConfiguratorSpecial = () => {
+    const [isLoading, setIsLoading] = useState(true); // Add loading state
+
+
+      useEffect(() => {
+        const loadingTimeout = setTimeout(() => {
+          setIsLoading(false);
+        }, 3000);
+    
+        return () => clearTimeout(loadingTimeout);
+      }, []);
+    
+  
   const { Id } = useParams();
   const selectedClothing = mainMaleCustomize.find((item) => item.name === Id);
 
@@ -160,7 +176,7 @@ const ConfiguratorSpecial = () => {
 
   const [selectedPart, setSelectedPart] = useState(0);
 
-  const [isRotating, setIsRotating] = useState(true);
+  const [isRotating, setIsRotating] = useState(false);
 
   const canvasRef = useRef();
   // toast
@@ -374,15 +390,40 @@ const ConfiguratorSpecial = () => {
     setSelectedPart("all");
   };
 
-  const handleSelectPart = (index) => {
-    if (selectedPart === index) {
-      setShowGlow(false);
-      setSelectedPart(null);
-      return;
-    }
-    setSelectedPart(index);
-    setShowGlow(true);
-  };
+
+
+
+  const [uploadedImageLeft, setUploadedImageLeft] = useState(null);
+  const [uploadedImageRight, setUploadedImageRight] = useState(null);
+
+  const [firebaseImageLeft, setFirebaseImageLeft] = useState(null);
+  const [firebaseImageRight, setFirebaseImageRight] = useState(null);
+
+    const handleImageUpload = async (file) => {
+      setUploadedImageLeft(URL.createObjectURL(file));
+      toastRef.current.show({
+        severity: "success",
+        summary: "Please Note",
+        detail:
+          "Focus would be on the pattern in your image, hence background may be removed where applicable",
+      });
+  
+      try {
+        const dataURL = await readFileAsDataURL(file);
+        const downloadURL = await uploadToStorage(dataURL, "clothes_with_logo");
+        setFirebaseImageLeft(downloadURL);
+      } catch (error) {
+        console.error("Image upload failed:", error);
+      }
+    };
+
+    const handleSampleLogo = async (texture) => {
+      setUploadedImageLeft(texture);
+     
+      setFirebaseImageLeft(texture);
+    };
+  
+  
 
   return (
     <>
@@ -447,7 +488,7 @@ const ConfiguratorSpecial = () => {
               Customizing {selectedClothing.name}
             </h3>
             <div className="d-flex justify-content-center">
-              <button
+              {/* <button
                 className={`btn rotation-button text-white  ${
                   isRotating === true ? "btn-danger" : "btn-warning"
                 }`}
@@ -467,7 +508,7 @@ const ConfiguratorSpecial = () => {
                     ></i>
                   </span>
                 )}
-              </button>
+              </button> */}
 
               <button
                 className="btn btn-info text-white mx-3"
@@ -611,147 +652,8 @@ const ConfiguratorSpecial = () => {
                   />
                 </div>
 
-                <h5>Choose Textile</h5>
-                <div className="texture-buttons-container">
-                  <div className="texture-category mt-3">
-                    <h3>Batik</h3>
-                    <Carousel
-                      value={textureArrays.batik}
-                      numVisible={4}
-                      numScroll={3}
-                      showIndicators={false}
-                      itemTemplate={(texture) => (
-                        <TextureItem
-                          key={texture}
-                          texture={texture}
-                          setHideText={setHideText}
-                          Title="batik"
-                          selectedTexture={selectedPrintOn}
-                          handleTextureChange={handleTextureChange}
-                          subTextureDescriptions={textureDescriptions.batik}
-                          textureIndex={textureArrays.batik.indexOf(texture)}
-                        />
-                      )}
-                    />
-                  </div>
-
-                  {/* <div className="texture-category mt-3">
-                    <h3>
-                      Crochet (+{currencySymbol}
-                      {(currencyFactor * textureValues.Crochet.price).toFixed()})
-                    </h3>
-                    <Carousel
-                      value={textureArrays.Crochet}
-                      numVisible={2}
-                      numScroll={3}
-                      showIndicators={false}
-                      itemTemplate={(texture) => (
-                        <TextureItem
-                          key={texture}
-                          texture={texture}
-                          setHideText={setHideText}
-                          Title="Crochet"
-                          selectedTexture={selectedPrintOn}
-                           // Pass setSelectedTexture as a prop
-                          handleTextureChange={handleTextureChange}
-                          
-                          subTextureDescriptions={textureDescriptions.Crochet}
-                          textureIndex={textureArrays.Crochet.indexOf(texture)}
-                        />
-                      )}
-                    />
-                  </div> */}
-                  <div className="texture-row">
-                    <div className="texture-category mt-3">
-                      <h3>waxPrint</h3>
-                      <Carousel
-                        value={textureArrays.waxPrint}
-                        numVisible={4}
-                        numScroll={1}
-                        showIndicators={false}
-                        itemTemplate={(texture) => (
-                          <TextureItem
-                            key={texture}
-                            texture={texture}
-                            setHideText={setHideText}
-                            Title="waxPrint"
-                            selectedTexture={selectedPrintOn}
-                            // Pass setSelectedTexture as a prop
-                            handleTextureChange={handleTextureChange}
-                            currencySymbol={currencySymbol}
-                            currencyFactor={currencyFactor}
-                            subTextureDescriptions={
-                              textureDescriptions.waxPrint
-                            }
-                            textureIndex={textureArrays.waxPrint.indexOf(
-                              texture,
-                            )}
-                          />
-                        )}
-                      />
-                    </div>
-                  </div>
-                  <div className="texture-row">
-                    <div className="texture-category mt-3">
-                      <h3>School Prints</h3>
-                      <Carousel
-                        value={textureArrays.Diaspora}
-                        numVisible={4}
-                        numScroll={1}
-                        showIndicators={false}
-                        itemTemplate={(texture) => (
-                          <TextureItem
-                            key={texture}
-                            texture={texture}
-                            setHideText={setHideText}
-                            Title="Diaspora"
-                            selectedTexture={selectedPrintOn}
-                            // Pass setSelectedTexture as a prop
-                            handleTextureChange={handleTextureChange}
-                            currencySymbol={currencySymbol}
-                            currencyFactor={currencyFactor}
-                            subTextureDescriptions={
-                              textureDescriptions.diaspora
-                            }
-                            textureIndex={textureArrays.Diaspora.indexOf(
-                              texture,
-                            )}
-                          />
-                        )}
-                      />
-                    </div>
-                  </div>
-                  
-                  <div className="texture-row">
-                    <div className="texture-category mt-3">
-                      <h3>New Textures</h3>
-                      <Carousel
-                        value={textureArrays.newTextures}
-                        numVisible={4}
-                        numScroll={1}
-                        showIndicators={false}
-                        itemTemplate={(texture) => (
-                          <TextureItem
-                            key={texture}
-                            texture={texture}
-                            setHideText={setHideText}
-                            Title="New Textures"
-                            selectedTexture={selectedPrintOn}
-                            // Pass setSelectedTexture as a prop
-                            handleTextureChange={handleTextureChange}
-                            currencySymbol={currencySymbol}
-                            currencyFactor={currencyFactor}
-                            subTextureDescriptions={
-                              textureDescriptions.newTextures
-                            }
-                            textureIndex={textureArrays.newTextures.indexOf(
-                              texture,
-                            )}
-                          />
-                        )}
-                      />
-                    </div>
-                  </div>
+                <h5 className="mt-5">Imprint Logo</h5>
+                <div className="texture-buttons-container ">
 
                   <div className="texture-row">
                     <div className="texture-category mt-3">
@@ -770,7 +672,7 @@ const ConfiguratorSpecial = () => {
                             noInfo={true}
                             selectedTexture={selectedPrintOn}
                             // Pass setSelectedTexture as a prop
-                            handleTextureChange={handleTextureChange}
+                            handleTextureChange={() => handleSampleLogo(texture)}
                             currencySymbol={currencySymbol}
                             currencyFactor={currencyFactor}
                             subTextureDescriptions={
@@ -789,37 +691,76 @@ const ConfiguratorSpecial = () => {
               </div>
               <div className="right-panel h-full">
                 <div className="resize-right-panel h-full">
-                <div
+                  <div
                     ref={canvasRef}
                     style={
                       {
-                        height:  "80%" ,
+                        height:  "70%" ,
                       }
                     }
                   >
-                  <Canvas
-                    // ref={canvasRef}
-                    camera={{ position: [0, 0, selectedClothing.myZoom] }} // Set the initial camera position
-                    gl={{ preserveDrawingBuffer: true }}
-                    className="main-canvas h-full "
+                    <Canvas
+                      camera={{ position: [0, 0, selectedClothing.myZoom] }}
+                      gl={{ preserveDrawingBuffer: true }}
+                      className="main-canvas h-full "
+                    >
+                      <ambientLight intensity={0.5} />
+                      <pointLight position={[10, 10, 10]} />
+                      {
+                        isLoading === false && (
+                          <>
+                            
+                            <HtmlLogoComponent
+                              imageLeft={uploadedImageLeft}
+                              imageRight={uploadedImageRight}
+                              width={selectedClothing?.logo?.size?.width || "5rem"}
+                              height={selectedClothing?.logo?.size?.height || "5rem"}
+                              translateX={
+                                selectedClothing?.logo?.translate?.x || "-45%"
+                              }
+                              translateY={selectedClothing?.logo?.translate?.y || "-10%"}
+                            />
+                          </>
+                        )}
+                      <Shirt
+                        isRotating={isRotating}
+                        selectedClothing={selectedClothing}
+                        selectedPart={selectedPart}
+                        selectedTexture={state.texture[selectedPart]}
+                        showGlow={showGlow}
+                      />
+                      {/* {!noSpinFor.includes(selectedClothing.name) && (
+                        <CameraControls />
+                      )} */}
+                    </Canvas>
+                    
+                  </div>
 
-                  >
-                    <ambientLight intensity={0.5} />
-                    <pointLight position={[10, 10, 10]} />
-                    <Shirt
-                      isRotating={isRotating}
-                      selectedClothing={selectedClothing}
-                      selectedPart={selectedPart}
-                      selectedTexture={state.texture[selectedPart]}
-                      showGlow={showGlow}
-                    />
-                    <CameraControls />
-                    {/* Add camera controls for interaction */}
-                  </Canvas>
+                    <div className="px-2 pt-2 w-100 text-image-imprint">
+                      {/* test text inprinting */}
+                      <div className="flex lg:flex-col text-image-imprint-wrapper">
+                        <div className="flex justify-between gap-2">
+                          
+                            
+                        </div>
+                          <>
+                            {/* <h5 className="text-sm lg:text-lg">Imprint  Logos</h5> */}
+                            <div className="flex justify-between gap-2">
+                              <ImageUpload
+                                labelLeft={"Upload Logo"}
+                                // labelRight={"Upload for right"}
+                                hideRightButton={
+                                  true
+                                }
+                                onImageUploadLeft={handleImageUpload}
+                                // onImageUploadRight={handleImageUploadRight}
+                                toastRef={toastRef}
+                              />
+                            </div>
+                          </>
+                      </div>
+                    </div>
                 </div>
-                </div>
-
-               
               </div>
             </div>
           </div>
