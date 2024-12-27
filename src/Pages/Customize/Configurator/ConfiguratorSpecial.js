@@ -396,10 +396,19 @@ const ConfiguratorSpecial = () => {
   const [uploadedImageLeft, setUploadedImageLeft] = useState(null);
   const [uploadedImageRight, setUploadedImageRight] = useState(null);
 
-  const [firebaseImageLeft, setFirebaseImageLeft] = useState(null);
-  const [firebaseImageRight, setFirebaseImageRight] = useState(null);
+  // const [firebaseImageLeft, setFirebaseImageLeft] = useState(null);
+  // const [firebaseImageRight, setFirebaseImageRight] = useState(null);
 
     const handleImageUpload = async (file) => {
+      if (file.type !== "image/png") {
+        toastRef.current.show({
+          severity: "error",
+          summary: "Upload Failed",
+          detail: "Only PNG files are allowed. Please upload a valid PNG image.",
+        });
+        return; // Exit function early if the file is not a PNG
+      }
+      
       setUploadedImageLeft(URL.createObjectURL(file));
       toastRef.current.show({
         severity: "success",
@@ -411,7 +420,7 @@ const ConfiguratorSpecial = () => {
       try {
         const dataURL = await readFileAsDataURL(file);
         const downloadURL = await uploadToStorage(dataURL, "clothes_with_logo");
-        setFirebaseImageLeft(downloadURL);
+        // setFirebaseImageLeft(downloadURL);
       } catch (error) {
         console.error("Image upload failed:", error);
       }
@@ -420,7 +429,7 @@ const ConfiguratorSpecial = () => {
     const handleSampleLogo = async (texture) => {
       setUploadedImageLeft(texture);
      
-      setFirebaseImageLeft(texture);
+      // setFirebaseImageLeft(texture);
     };
   
   
