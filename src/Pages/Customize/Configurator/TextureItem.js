@@ -12,6 +12,7 @@ import africaAlternate from "./textures/diaspora/africa_LE_auto_x2 - Copy.jpg";
 import katangaAlternate from "./textures/diaspora/kat_LE_auto_x2 - Copy.jpg"
  import AsanteheneAnniversaryAlternate from "./textures/commemorative/1-imageonline.co-merged - Copy.jpeg"
 import AsanteheneAnniversaryAlternate2 from "./textures/commemorative/gfsdg-imageonline.co-merged (1) - Copy.jpeg"
+import GhanaMapAlternate from "./textures/new_textures/7. ghana flag.jpg"
 
 function TextureItem({
   texture,
@@ -46,6 +47,8 @@ function TextureItem({
   const isKatanga = texture === "/static/media/kat_LE_auto_x2.027d8f3b120fd32985ad.jpg";
   const isAsanteheneAnniversary  = texture  === "/static/media/1-imageonline.co-merged.6daa3b6a171f9f9c0242.jpeg"
   const isAsanteheneAnniversary2  = texture  === "/static/media/gfsdg-imageonline.co-merged (1).ed8bdf12e1c96c823397.jpeg"
+  const isGhanaMap  = texture  === "/static/media/7. ghana flag - Copy.ec91924585d1ba65c097.jpg"
+
 
   
 
@@ -74,6 +77,9 @@ function TextureItem({
     }
     else if (isAsanteheneAnniversary2) {
       return AsanteheneAnniversaryAlternate2;
+    }
+    else if (isGhanaMap) {
+      return GhanaMapAlternate;
     }
     else {
       return texture;
