@@ -18,6 +18,7 @@ import { useParams } from "react-router";
 import { mainMaleCustomize } from "../../../Data/CustomizeDataMale";
 
 import { useSelector } from "react-redux";
+import { motion } from 'framer-motion';
 
 import { Inplace, InplaceDisplay, InplaceContent } from "primereact/inplace";
 
@@ -41,6 +42,7 @@ import { isMobile } from "../../../utils/constants";
 import uuid from "react-uuid";
 import TakeTour from "./TakeTour";
 import { SeeAll } from "./SeeAll";
+import { AnimatePresence } from "framer-motion";
 
 const Shirt = ({
   isRotating,
@@ -398,6 +400,12 @@ const Configurator = () => {
     setSelectedSeeAll({ title: '', titleDisplay: '', array: [] });
   };
 
+  const animationVariants = {
+    hidden: { opacity: 0, x: 50 },
+    visible: { opacity: 1, x: 0 },
+    exit: { opacity: 0, x: 50 },
+  };
+
   return (
     <>
       <Nav />
@@ -493,7 +501,11 @@ const Configurator = () => {
             </div>
 
             <div className="lg:grid grid-cols-1 lg:gap-5 flex flex-col-reverse lg:grid-cols-2 container my-3 lg:h-screen">
-              <div className="left-panel rounded border lg:h-full">
+              <motion.div initial="hidden"
+      animate="visible"
+      exit="exit"
+      variants={animationVariants}
+      transition={{ duration: 0.3, ease: 'easeInOut' }} className="left-panel rounded border lg:h-full">
                 {/* <h5>Select Part</h5>
                 <div className="select-part-container">
                   {masterSelectionPartOptions}
@@ -629,7 +641,9 @@ const Configurator = () => {
                 
                 
                   <div className="texture-buttons-container ">
-                    {openSeeAll ? ( <SeeAll
+                    {openSeeAll ? ( 
+                      <AnimatePresence>
+                      <SeeAll
                           array={selectedSeeAll.array}
                           title={selectedSeeAll.title}
                           titleDisplay={selectedSeeAll.titleDisplay}
@@ -640,7 +654,10 @@ const Configurator = () => {
                             currencySymbol: currencySymbol,
                             currencyFactor: currencyFactor,
                           }}
-                        />) : (<>
+                        />
+                        </AnimatePresence>
+                      ) : (
+                      <>
                     <div className="texture-row">
                       <div className="texture-category mt-1">
                         
@@ -738,7 +755,7 @@ const Configurator = () => {
                     <div className="texture-category mt-1">
                       <div className="w-full flex justify-between capitalize">
                           <p className="text-sm font-medium text-[#4C5B5C]">School Prints</p>
-                          <p  onClick={() => handleOpenSeeAll('Diaspora', "School Prints",  textureArrays?.Diaspora)} className="cursor-pointer text-sm text-[#ffc107] hover:font-semibold"> See all &#8594;</p>
+                          <p  onClick={() => handleOpenSeeAll('diaspora', "School Prints",  textureArrays?.Diaspora)} className="cursor-pointer text-sm text-[#ffc107] hover:font-semibold"> See all &#8594;</p>
                       </div>
                       <Carousel
                         value={textureArrays.Diaspora}
@@ -773,7 +790,7 @@ const Configurator = () => {
                  
                 </div>
                 
-              </div>
+              </motion.div>
               <div className="right-panel h-full">
                 <div className="resize-right-panel h-full">
                 <div
