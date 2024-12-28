@@ -18,6 +18,7 @@ import { useParams } from "react-router";
 import { mainMaleCustomize } from "../../../Data/CustomizeDataMale";
 
 import { useSelector } from "react-redux";
+import { motion } from 'framer-motion';
 
 import { Inplace, InplaceDisplay, InplaceContent } from "primereact/inplace";
 
@@ -40,6 +41,8 @@ import { Toast } from "primereact/toast";
 import { isMobile } from "../../../utils/constants";
 import uuid from "react-uuid";
 import TakeTour from "./TakeTour";
+import { SeeAll } from "./SeeAll";
+import { AnimatePresence } from "framer-motion";
 
 const Shirt = ({
   isRotating,
@@ -384,6 +387,25 @@ const Configurator = () => {
     setShowGlow(true);
   };
 
+  const [openSeeAll, setOpenSeeAll] = useState(false);
+  const [selectedSeeAll, setSelectedSeeAll] = useState({ title: '', titleDisplay:'', array: [] });
+
+  const handleOpenSeeAll = (title, titleDisplay, array) => {
+    setSelectedSeeAll({ title, titleDisplay, array });
+    setOpenSeeAll(true);
+  };
+
+  const handleCloseSeeAll = () => {
+    setOpenSeeAll(false);
+    setSelectedSeeAll({ title: '', titleDisplay: '', array: [] });
+  };
+
+  const animationVariants = {
+    hidden: { opacity: 0, x: 50 },
+    visible: { opacity: 1, x: 0 },
+    exit: { opacity: 0, x: 50 },
+  };
+
   return (
     <>
       <Nav />
@@ -479,7 +501,11 @@ const Configurator = () => {
             </div>
 
             <div className="lg:grid grid-cols-1 lg:gap-5 flex flex-col-reverse lg:grid-cols-2 container my-3 lg:h-screen">
-              <div className="left-panel rounded border lg:h-hull">
+              <motion.div initial="hidden"
+      animate="visible"
+      exit="exit"
+      variants={animationVariants}
+      transition={{ duration: 0.3, ease: 'easeInOut' }} className="left-panel rounded border lg:h-full">
                 {/* <h5>Select Part</h5>
                 <div className="select-part-container">
                   {masterSelectionPartOptions}
@@ -611,40 +637,67 @@ const Configurator = () => {
                   />
                 </div>
 
-                <h5>Choose Textile</h5>
-                <div className="texture-buttons-container">
-                <div className="texture-row">
-                    <div className="texture-category mt-3">
-                      <h3>Trending Now</h3>
-                      <Carousel
-                        value={textureArrays.newTextures}
-                        numVisible={4}
-                        numScroll={1}
-                        showIndicators={false}
-                        itemTemplate={(texture) => (
-                          <TextureItem
-                            key={texture}
-                            texture={texture}
-                            setHideText={setHideText}
-                            Title="Trending Now"
-                            selectedTexture={selectedPrintOn}
-                            // Pass setSelectedTexture as a prop
-                            handleTextureChange={handleTextureChange}
-                            currencySymbol={currencySymbol}
-                            currencyFactor={currencyFactor}
-                            subTextureDescriptions={
-                              textureDescriptions.newTextures
-                            }
-                            textureIndex={textureArrays.newTextures.indexOf(
-                              texture,
-                            )}
-                          />
-                        )}
-                      />
+                <h5 className="mt-4">Choose Textile</h5>
+                
+                
+                  <div className="texture-buttons-container ">
+                    {openSeeAll ? ( 
+                      <AnimatePresence>
+                      <SeeAll
+                          array={selectedSeeAll.array}
+                          title={selectedSeeAll.title}
+                          titleDisplay={selectedSeeAll.titleDisplay}
+                          onClose={handleCloseSeeAll}
+                          others={{
+                            selectedPrintOn:selectedPrintOn ,
+                            handleTextureChange: handleTextureChange,
+                            currencySymbol: currencySymbol,
+                            currencyFactor: currencyFactor,
+                          }}
+                        />
+                        </AnimatePresence>
+                      ) : (
+                      <>
+                    <div className="texture-row">
+                      <div className="texture-category mt-1">
+                        
+                        <div className="w-full flex justify-between capitalize">
+                        <p className="text-sm font-medium text-[#4C5B5C]">Trending Now</p>
+                        <p  onClick={() => handleOpenSeeAll('newTextures', "Trending Now",  textureArrays?.newTextures)} className="cursor-pointer text-sm text-[#ffc107] hover:font-semibold"> See all &#8594;</p>
+                        </div>
+                        <Carousel
+                          value={textureArrays.newTextures}
+                          numVisible={4}
+                          numScroll={1}
+                          showIndicators={false}
+                          itemTemplate={(texture) => (
+                            <TextureItem
+                              key={texture}
+                              texture={texture}
+                              setHideText={setHideText}
+                              Title="Trending Now"
+                              selectedTexture={selectedPrintOn}
+                              // Pass setSelectedTexture as a prop
+                              handleTextureChange={handleTextureChange}
+                              currencySymbol={currencySymbol}
+                              currencyFactor={currencyFactor}
+                              subTextureDescriptions={
+                                textureDescriptions.newTextures
+                              }
+                              textureIndex={textureArrays.newTextures.indexOf(
+                                texture,
+                              )}
+                            />
+                          )}
+                        />
+                      
+                      </div>
                     </div>
-                  </div>
-                  <div className="texture-category mt-3">
-                    <h3>Batik</h3>
+                  <div className="texture-category mt-1">
+                    <div className="w-full flex justify-between capitalize">
+                      <p className="text-sm font-medium text-[#4C5B5C]">Batik</p>
+                      <p  onClick={() => handleOpenSeeAll('batik', "Batik",  textureArrays?.batik)} className="cursor-pointer text-sm text-[#ffc107] hover:font-semibold"> See all &#8594;</p>
+                    </div>
                     <Carousel
                       value={textureArrays.batik}
                       numVisible={4}
@@ -665,35 +718,12 @@ const Configurator = () => {
                     />
                   </div>
 
-                  {/* <div className="texture-category mt-3">
-                    <h3>
-                      Crochet (+{currencySymbol}
-                      {(currencyFactor * textureValues.Crochet.price).toFixed()})
-                    </h3>
-                    <Carousel
-                      value={textureArrays.Crochet}
-                      numVisible={2}
-                      numScroll={3}
-                      showIndicators={false}
-                      itemTemplate={(texture) => (
-                        <TextureItem
-                          key={texture}
-                          texture={texture}
-                          setHideText={setHideText}
-                          Title="Crochet"
-                          selectedTexture={selectedPrintOn}
-                           // Pass setSelectedTexture as a prop
-                          handleTextureChange={handleTextureChange}
-                          
-                          subTextureDescriptions={textureDescriptions.Crochet}
-                          textureIndex={textureArrays.Crochet.indexOf(texture)}
-                        />
-                      )}
-                    />
-                  </div> */}
                   <div className="texture-row">
-                    <div className="texture-category mt-3">
-                      <h3>waxPrint</h3>
+                    <div className="texture-category mt-1">
+                      <div className="w-full flex justify-between capitalize">
+                        <p className="text-sm font-medium text-[#4C5B5C]">WaxPrint</p>
+                        <p  onClick={() => handleOpenSeeAll('waxPrint', "waxPrint",  textureArrays?.waxPrint)} className="cursor-pointer text-sm text-[#ffc107] hover:font-semibold"> See all &#8594;</p>
+                      </div>
                       <Carousel
                         value={textureArrays.waxPrint}
                         numVisible={4}
@@ -722,8 +752,11 @@ const Configurator = () => {
                     </div>
                   </div>
                   <div className="texture-row">
-                    <div className="texture-category mt-3">
-                      <h3>School Prints</h3>
+                    <div className="texture-category mt-1">
+                      <div className="w-full flex justify-between capitalize">
+                          <p className="text-sm font-medium text-[#4C5B5C]">School Prints</p>
+                          <p  onClick={() => handleOpenSeeAll('diaspora', "School Prints",  textureArrays?.Diaspora)} className="cursor-pointer text-sm text-[#ffc107] hover:font-semibold"> See all &#8594;</p>
+                      </div>
                       <Carousel
                         value={textureArrays.Diaspora}
                         numVisible={4}
@@ -751,11 +784,13 @@ const Configurator = () => {
                       />
                     </div>
                   </div>
+                    </>)}
+                    
                   
                  
-                 
                 </div>
-              </div>
+                
+              </motion.div>
               <div className="right-panel h-full">
                 <div className="resize-right-panel h-full">
                 <div
