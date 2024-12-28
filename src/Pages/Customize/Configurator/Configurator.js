@@ -40,6 +40,7 @@ import { Toast } from "primereact/toast";
 import { isMobile } from "../../../utils/constants";
 import uuid from "react-uuid";
 import TakeTour from "./TakeTour";
+import { SeeAll } from "./SeeAll";
 
 const Shirt = ({
   isRotating,
@@ -384,6 +385,19 @@ const Configurator = () => {
     setShowGlow(true);
   };
 
+  const [openSeeAll, setOpenSeeAll] = useState(false);
+  const [selectedSeeAll, setSelectedSeeAll] = useState({ title: '', titleDisplay:'', array: [] });
+
+  const handleOpenSeeAll = (title, titleDisplay, array) => {
+    setSelectedSeeAll({ title, titleDisplay, array });
+    setOpenSeeAll(true);
+  };
+
+  const handleCloseSeeAll = () => {
+    setOpenSeeAll(false);
+    setSelectedSeeAll({ title: '', titleDisplay: '', array: [] });
+  };
+
   return (
     <>
       <Nav />
@@ -479,7 +493,7 @@ const Configurator = () => {
             </div>
 
             <div className="lg:grid grid-cols-1 lg:gap-5 flex flex-col-reverse lg:grid-cols-2 container my-3 lg:h-screen">
-              <div className="left-panel rounded border lg:h-hull">
+              <div className="left-panel rounded border lg:h-full">
                 {/* <h5>Select Part</h5>
                 <div className="select-part-container">
                   {masterSelectionPartOptions}
@@ -611,40 +625,62 @@ const Configurator = () => {
                   />
                 </div>
 
-                <h5>Choose Textile</h5>
-                <div className="texture-buttons-container">
-                <div className="texture-row">
-                    <div className="texture-category mt-3">
-                      <h3>Trending Now</h3>
-                      <Carousel
-                        value={textureArrays.newTextures}
-                        numVisible={4}
-                        numScroll={1}
-                        showIndicators={false}
-                        itemTemplate={(texture) => (
-                          <TextureItem
-                            key={texture}
-                            texture={texture}
-                            setHideText={setHideText}
-                            Title="Trending Now"
-                            selectedTexture={selectedPrintOn}
-                            // Pass setSelectedTexture as a prop
-                            handleTextureChange={handleTextureChange}
-                            currencySymbol={currencySymbol}
-                            currencyFactor={currencyFactor}
-                            subTextureDescriptions={
-                              textureDescriptions.newTextures
-                            }
-                            textureIndex={textureArrays.newTextures.indexOf(
-                              texture,
-                            )}
-                          />
-                        )}
-                      />
+                <h5 className="mt-4">Choose Textile</h5>
+                
+                
+                  <div className="texture-buttons-container ">
+                    {openSeeAll ? ( <SeeAll
+                          array={selectedSeeAll.array}
+                          title={selectedSeeAll.title}
+                          titleDisplay={selectedSeeAll.titleDisplay}
+                          onClose={handleCloseSeeAll}
+                          others={{
+                            selectedPrintOn:selectedPrintOn ,
+                            handleTextureChange: handleTextureChange,
+                            currencySymbol: currencySymbol,
+                            currencyFactor: currencyFactor,
+                          }}
+                        />) : (<>
+                    <div className="texture-row">
+                      <div className="texture-category mt-1">
+                        
+                        <div className="w-full flex justify-between capitalize">
+                        <p className="text-sm font-medium text-[#4C5B5C]">Trending Now</p>
+                        <p  onClick={() => handleOpenSeeAll('newTextures', "Trending Now",  textureArrays?.newTextures)} className="cursor-pointer text-sm text-[#ffc107] hover:font-semibold"> See all &#8594;</p>
+                        </div>
+                        <Carousel
+                          value={textureArrays.newTextures}
+                          numVisible={4}
+                          numScroll={1}
+                          showIndicators={false}
+                          itemTemplate={(texture) => (
+                            <TextureItem
+                              key={texture}
+                              texture={texture}
+                              setHideText={setHideText}
+                              Title="Trending Now"
+                              selectedTexture={selectedPrintOn}
+                              // Pass setSelectedTexture as a prop
+                              handleTextureChange={handleTextureChange}
+                              currencySymbol={currencySymbol}
+                              currencyFactor={currencyFactor}
+                              subTextureDescriptions={
+                                textureDescriptions.newTextures
+                              }
+                              textureIndex={textureArrays.newTextures.indexOf(
+                                texture,
+                              )}
+                            />
+                          )}
+                        />
+                      
+                      </div>
                     </div>
-                  </div>
-                  <div className="texture-category mt-3">
-                    <h3>Batik</h3>
+                  <div className="texture-category mt-1">
+                    <div className="w-full flex justify-between capitalize">
+                      <p className="text-sm font-medium text-[#4C5B5C]">Batik</p>
+                      <p  onClick={() => handleOpenSeeAll('batik', "Batik",  textureArrays?.batik)} className="cursor-pointer text-sm text-[#ffc107] hover:font-semibold"> See all &#8594;</p>
+                    </div>
                     <Carousel
                       value={textureArrays.batik}
                       numVisible={4}
@@ -665,35 +701,12 @@ const Configurator = () => {
                     />
                   </div>
 
-                  {/* <div className="texture-category mt-3">
-                    <h3>
-                      Crochet (+{currencySymbol}
-                      {(currencyFactor * textureValues.Crochet.price).toFixed()})
-                    </h3>
-                    <Carousel
-                      value={textureArrays.Crochet}
-                      numVisible={2}
-                      numScroll={3}
-                      showIndicators={false}
-                      itemTemplate={(texture) => (
-                        <TextureItem
-                          key={texture}
-                          texture={texture}
-                          setHideText={setHideText}
-                          Title="Crochet"
-                          selectedTexture={selectedPrintOn}
-                           // Pass setSelectedTexture as a prop
-                          handleTextureChange={handleTextureChange}
-                          
-                          subTextureDescriptions={textureDescriptions.Crochet}
-                          textureIndex={textureArrays.Crochet.indexOf(texture)}
-                        />
-                      )}
-                    />
-                  </div> */}
                   <div className="texture-row">
-                    <div className="texture-category mt-3">
-                      <h3>waxPrint</h3>
+                    <div className="texture-category mt-1">
+                      <div className="w-full flex justify-between capitalize">
+                        <p className="text-sm font-medium text-[#4C5B5C]">WaxPrint</p>
+                        <p  onClick={() => handleOpenSeeAll('waxPrint', "waxPrint",  textureArrays?.waxPrint)} className="cursor-pointer text-sm text-[#ffc107] hover:font-semibold"> See all &#8594;</p>
+                      </div>
                       <Carousel
                         value={textureArrays.waxPrint}
                         numVisible={4}
@@ -722,8 +735,11 @@ const Configurator = () => {
                     </div>
                   </div>
                   <div className="texture-row">
-                    <div className="texture-category mt-3">
-                      <h3>School Prints</h3>
+                    <div className="texture-category mt-1">
+                      <div className="w-full flex justify-between capitalize">
+                          <p className="text-sm font-medium text-[#4C5B5C]">School Prints</p>
+                          <p  onClick={() => handleOpenSeeAll('Diaspora', "School Prints",  textureArrays?.Diaspora)} className="cursor-pointer text-sm text-[#ffc107] hover:font-semibold"> See all &#8594;</p>
+                      </div>
                       <Carousel
                         value={textureArrays.Diaspora}
                         numVisible={4}
@@ -751,10 +767,12 @@ const Configurator = () => {
                       />
                     </div>
                   </div>
+                    </>)}
+                    
                   
                  
-                 
                 </div>
+                
               </div>
               <div className="right-panel h-full">
                 <div className="resize-right-panel h-full">
