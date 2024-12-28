@@ -678,7 +678,7 @@ const ConfiguratorSpecial = () => {
                             texture={texture}
                             setHideText={setHideText}
                             Title="Logos"
-                            noInfo={true}
+                            // noInfo={true}
                             selectedTexture={selectedPrintOn}
                             // Pass setSelectedTexture as a prop
                             handleTextureChange={() => handleSampleLogo(texture)}

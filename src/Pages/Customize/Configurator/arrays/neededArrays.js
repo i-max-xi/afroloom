@@ -504,9 +504,16 @@ export const textureDescriptions = {
     }
    
   ],
-  logos: []
-  
-
+  logos: [
+    {
+      "textureName": "Afroloom Logo",
+      "textureDescription": "The official logo of the Afroloom company, representing the brand's dedication to celebrating African heritage and craftsmanship. The design symbolizes creativity, tradition, and a modern approach to showcasing textiles and culture."
+    },
+    {
+      "textureName": "Gye Nyame Symbol",
+      "textureDescription": "A revered traditional Adinkra symbol from Ghana, representing the omnipotence and supremacy of God. This logo features a bold and timeless design, symbolizing faith, spirituality, and cultural identity."
+    },
+  ]
 
 }
 

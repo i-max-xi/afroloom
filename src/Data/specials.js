@@ -31,7 +31,7 @@ export const specialsCustomize = [
     myZoom: 0.7,
     myX: 0,
     myY: 10,
-    price: 110,
+    price: 50,
     logo: {
       translate: {
         x: "-45%",
@@ -75,7 +75,7 @@ export const specialsCustomize = [
     myNode: [{ name: "all", yardNeeded: 3 }],
     otherYards: { small: 3, large: 4, extraLarge: 4, extraExtraLarge: 4 },
     myZoom: 0.8,
-    price: 120,
+    price: 50,
     // sizeModels: tshirt_model,
     readyIn: 7,
     sizeGuide: tshirtlong_guide,
