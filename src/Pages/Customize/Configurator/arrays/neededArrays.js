@@ -48,7 +48,8 @@ import n3 from "../textures/new_textures/3. akuffo.jpg";
 import n4 from "../textures/new_textures/4. akyemfr3.jpg";
 import n5 from "../textures/new_textures/5. akyikyidie akyi.jpg";
 import n6 from "../textures/new_textures/6. animonyam nka nyame.jpg";
-import n7 from "../textures/new_textures/7. ghana flag.jpg";
+import n7 from "../textures/new_textures/7. ghana flag - Copy.jpg";
+// import n7 from "../textures/new_textures/7. ghana flag.jpg";
 import n8 from "../textures/new_textures/8. kotodwe.jpg";
 import n9 from "../textures/new_textures/9. nkitinkiti.jpg";
 import n10 from "../textures/new_textures/10. nsuanhunu.jpg";
@@ -503,9 +504,16 @@ export const textureDescriptions = {
     }
    
   ],
-  logos: []
-  
-
+  logos: [
+    {
+      "textureName": "Afroloom Logo",
+      "textureDescription": "The official logo of the Afroloom company, representing the brand's dedication to celebrating African heritage and craftsmanship. The design symbolizes creativity, tradition, and a modern approach to showcasing textiles and culture."
+    },
+    {
+      "textureName": "Gye Nyame Symbol",
+      "textureDescription": "A revered traditional Adinkra symbol from Ghana, representing the omnipotence and supremacy of God. This logo features a bold and timeless design, symbolizing faith, spirituality, and cultural identity."
+    },
+  ]
 
 }
 

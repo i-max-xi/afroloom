@@ -43,6 +43,7 @@ import TakeTour from "./TakeTour";
 import { readFileAsDataURL, uploadToStorage } from "../../../utils/functions";
 import ImageUpload from "./ImageUpload";
 import HtmlLogoComponent from "./HtmlLogoComponent";
+import { specialsCustomize } from "../../../Data/specials";
 
 const Shirt = ({
   isRotating,
@@ -169,7 +170,7 @@ const ConfiguratorSpecial = () => {
     
   
   const { Id } = useParams();
-  const selectedClothing = mainMaleCustomize.find((item) => item.name === Id);
+  const selectedClothing = specialsCustomize.find((item) => item.name === Id);
 
   const [selectedSize, setSelectedSize] = useState(1);
   const [selectedPrintOn, setSelectedPrintOn] = useState("#ffffff");
@@ -187,19 +188,21 @@ const ConfiguratorSpecial = () => {
   const currencyFactor = useSelector((state) => state.currencySymbol.factor);
 
   const [partPrices, setPartPrices] = useState(0);
-  // const [colorPrice, setColorPrice] = useState(
-  //   colorBasePrice * selectedClothing.myNode[0].yardNeeded
-  // );
-  //total price
+
   const total = (
     (partPrices + selectedClothing.price) *
     currencyFactor
   ).toFixed(2);
 
+// without part and color prices
+
+
+
    useEffect(() => {
     const currentSize = selectedClothing.sizeOptions.find(
       (size) => size.value === selectedSize,
     );
+
 
     return setPartPrices(currentSize.colorPriceValue);
     }, [selectedClothing.sizeOptions, selectedSize]);
@@ -678,7 +681,7 @@ const ConfiguratorSpecial = () => {
                             texture={texture}
                             setHideText={setHideText}
                             Title="Logos"
-                            noInfo={true}
+                            // noInfo={true}
                             selectedTexture={selectedPrintOn}
                             // Pass setSelectedTexture as a prop
                             handleTextureChange={() => handleSampleLogo(texture)}
