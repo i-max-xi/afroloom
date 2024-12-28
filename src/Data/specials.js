@@ -34,8 +34,8 @@ export const specialsCustomize = [
     price: 50,
     logo: {
       translate: {
-        x: "-45%",
-        y: "-10%",
+        x: "-47%",
+        y: "-45%",
       },
       size: {
         width: "5rem",
@@ -46,11 +46,11 @@ export const specialsCustomize = [
     readyIn: 7,
     sizeGuide: tshirt_guide,
     sizeOptions: [
-      { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 50 },
-      { label: "M", value: 1, priceValue: 0, colorPriceValue: 85 },
-      { label: "L", value: 2, priceValue: 25, colorPriceValue: 85 },
-      { label: "XL", value: 3, priceValue: 25, colorPriceValue: 120 },
-      { label: "2XL", value: 4, priceValue: 50, colorPriceValue: 120 },
+      { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 0 },
+      { label: "M", value: 1, priceValue: 0, colorPriceValue: 0 },
+      { label: "L", value: 2, priceValue: 25, colorPriceValue: 20 },
+      { label: "XL", value: 3, priceValue: 25, colorPriceValue: 40 },
+      { label: "2XL", value: 4, priceValue: 50, colorPriceValue: 60 },
     ],
     sizeForms: [
       {
