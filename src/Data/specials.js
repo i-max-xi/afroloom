@@ -38,8 +38,8 @@ export const specialsCustomize = [
         y: "-45%",
       },
       size: {
-        width: "5rem",
-        height: "5rem",
+        width: "6rem",
+        height: "6rem",
       }
     },
     // sizeModels: tshirt_model,

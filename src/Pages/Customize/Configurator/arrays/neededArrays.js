@@ -82,7 +82,56 @@ import n35 from "../textures/new_textures/35 yesu mogya.jpg";
 // logos
 import logo1 from "../textures/logos/AFRO_LOGO_4_transparent.png";
 import logo2 from "../textures/logos/gye-nyame-medium.png";
-import logo3 from "../textures/logos/NewPatrioticParty_logo.png";
+import logo3 from "../textures/logos/1 gye nyame.-removebg-preview.png";
+import logo4 from "../textures/logos/2_eban_-removebg-preview.png";
+import logo5 from "../textures/logos/3._duafe-removebg-preview.png";
+import logo6 from "../textures/logos/4._Nelson-Mandela-Silhouette-edit-online-removebg-preview.png";
+import logo7 from "../textures/logos/5._Heart_with_Vibrant_Flames-removebg-preview.png";
+import logo8 from "../textures/logos/6._Shooting_Star-removebg-preview.png";
+import logo9 from "../textures/logos/7._Dove_with_Olive_Branch-removebg-preview.png";
+import logo10 from "../textures/logos/8 infinity_loop_with_floral_twist-removebg-preview.png";
+import logo11 from "../textures/logos/9. baobab_tree-removebg-preview.png";
+import logo12 from "../textures/logos/10._Lion_Crowned-removebg-preview.png";
+import logo13 from "../textures/logos/11_Sun_Over_Mountains-removebg-preview.png";
+import logo14 from "../textures/logos/12_Mandala_Sunburst-removebg-preview.png";
+import logo15 from "../textures/logos/13._Palm_Tree_with_Sunset_Silhouette-removebg-preview.png";
+import logo16 from "../textures/logos/14_Music_Notes_with_Vibrant_Splash-removebg-preview.png";
+import logo17 from "../textures/logos/15_African_Continent_with_Compass-removebg-preview.png";
+import logo18 from "../textures/logos/16._It_always_seems_impossible_until_it_s_done.-removebg-preview.png";
+import logo19 from "../textures/logos/17._The_power_of_the_people_is_stronger_than_the_people_in_power-removebg-preview.png";
+import logo20 from "../textures/logos/18_We_can_change_the_world_and_make_it_a_better_place._It_is_in_your_hands_to_make_a_difference.-removebg-preview.png";
+import logo21 from "../textures/logos/19_No_condition_is_permanent._-removebg-preview.png";
+import logo22 from "../textures/logos/20_Blessings_on_blessings-removebg-preview.png";
+import logo23 from "../textures/logos/21_Dream_big__start_small__but_most_of_all__start.-removebg-preview.png";
+import logo24 from "../textures/logos/22_Until_the_lion_learns_to_write__every_story_will_glorify_the_hunter.-removebg-preview.png";
+import logo25 from "../textures/logos/23_Education_is_the_most_powerful_weapon_which_you_can_use_to_change_the_world.-removebg-preview.png";
+import logo26 from "../textures/logos/24_If_you_educate_a_man__you_educate_an_individual._But_if_you_educate_a_woman__you_educate_a_nation-removebg-preview.png";
+import logo27 from "../textures/logos/25_My_culture__my_pride-removebg-preview.png";
+import logo28 from "../textures/logos/26 good_vibe__great_tribe-removebg-preview.png";
+import logo29 from "../textures/logos/27_I_will_plant_a_tree.-removebg-preview.png";
+import logo30 from "../textures/logos/28..unstoppable-removebg-preview.png";
+import logo31 from "../textures/logos/29 my_environment__my_responsibility-removebg-preview.png";
+import logo32 from "../textures/logos/30_I_am_because_we_are-removebg-preview.png";
+import logo33 from "../textures/logos/31_nelson-removebg-preview.png";
+import logo34 from "../textures/logos/32_kwame_nkrumah-removebg-preview.png";
+import logo35 from "../textures/logos/33_Wangari_Maathai-removebg-preview.png";
+import logo36 from "../textures/logos/34_Desmond_Tutu-removebg-preview.png";
+import logo37 from "../textures/logos/35_Chinua_Achebe-removebg-preview.png";
+import logo38 from "../textures/logos/36_Thomas_Sankara-removebg-preview.png";
+import logo39 from "../textures/logos/37_Miriam_Makeba-removebg-preview.png";
+import logo40 from "../textures/logos/39_Fela_Kuti-removebg-preview.png";
+import logo41 from "../textures/logos/40_Haile_Selassie-removebg-preview.png";
+import logo42 from "../textures/logos/41_Dr._James_Kwegyir_Aggrey-removebg-preview.png";
+import logo43 from "../textures/logos/42_Yaa_Asantewaa-removebg-preview.png";
+import logo44 from "../textures/logos/43_Aliko_Dangote-removebg-preview.png";
+import logo45 from "../textures/logos/44_Patrice-Lumumba-removebg-preview.png";
+import logo46 from "../textures/logos/45_kofi_annan-removebg-preview.png";
+
+
+
+
+
+
 
 
 // const waxPrint1 = "https://firebasestorage.googleapis.com/v0/b/shopinafrica-c84cf.appspot.com/o/texture%2F1%20dade3%20mpadua.jpg?alt=media&token=d7fb314a-7d6a-477a-acce-fabfb2d2cfd5"
@@ -202,7 +251,7 @@ export const textureArrays = {
   ],
   // commemorative: [otumfuo, asantenhene30thanniversary],
   newTextures: [n1, n2, n3, n4, n5, n6, n7, n8, n9, n10, n11, n12, n13, n14, n15, n16, n17, n18, n19, n20, n21, n22, n23, n24, n25, n26, n27, n28, n29, n30, n31, n32, n33, n34, n35],
-  logos: [logo1, logo2],
+  logos : [logo1, logo2, logo4, logo5, logo6, logo7, logo8, logo9, logo10, logo11, logo12, logo13, logo14, logo15, logo16, logo17, logo18, logo19, logo20, logo21, logo22, logo23, logo24, logo25, logo26, logo27, logo28, logo29, logo30, logo31, logo32, logo33, logo34, logo35, logo36, logo37, logo38, logo39, logo40, logo41, logo42, logo43, logo44, logo45, logo46]
 };
 
 export const textureDescriptions = {
@@ -510,9 +559,191 @@ export const textureDescriptions = {
       "textureDescription": "The official logo of the Afroloom company, representing the brand's dedication to celebrating African heritage and craftsmanship. The design symbolizes creativity, tradition, and a modern approach to showcasing textiles and culture."
     },
     {
-      "textureName": "Gye Nyame Symbol",
-      "textureDescription": "A revered traditional Adinkra symbol from Ghana, representing the omnipotence and supremacy of God. This logo features a bold and timeless design, symbolizing faith, spirituality, and cultural identity."
+      "textureName": "Gye Nyame (Adinkra Symbol)",
+      "textureDescription": `&quot;Except God.&quot; This powerful Ghanaian symbol represents the supremacy of God, making
+      it perfect for those who find strength in their faith.`    },
+    // {
+    //   "textureName": "Gye Nyame (Adinkra Symbol)",
+    //   "textureDescription": `&quot;Except God.&quot; This powerful Ghanaian symbol represents the supremacy of God, making
+    //     it perfect for those who find strength in their faith.`
+    // },
+    {
+      "textureName": "Eban (Fence)",
+      "textureDescription": `Symbol of safety and security. This Adinkra symbol resonates with love and the feeling of
+        being protected, ideal for family-themed designs.`
     },
+    {
+      "textureName": "Duafe (Wooden Comb)",
+      "textureDescription": "Feminine virtues and self-care. This Adinkra symbol embodies cleanliness, love, and care, celebrating African women’s resilience and beauty."
+    },
+    {
+      "textureName": "Nelson Mandela’s Silhouette",
+      "textureDescription": "The silhouette of the global icon symbolizes peace, justice, and perseverance, inspiring individuals to embrace leadership and change."
+    },
+    {
+      "textureName": "Heart with Vibrant Flames",
+      "textureDescription": "A bold design representing passion and energy, it’s perfect for lovers, dreamers, and those who wear their hearts on their sleeves."
+    },
+    {
+      "textureName": "Shooting Star",
+      "textureDescription": "Signifying limitless potential, this symbol is for dreamers and achievers striving to make their mark on the world."
+    },
+    {
+      "textureName": "Dove with Olive Branch",
+      "textureDescription": "A universal emblem of peace, paired with the legacy of Desmond Tutu, this symbol encourages harmony and forgiveness."
+    },
+    {
+      "textureName": "Infinity Loop with Floral Twist",
+      "textureDescription": "Representing eternal love and growth, this design embodies hope and progress, inspired by Africa’s vibrant natural beauty."
+    },
+    {
+      "textureName": "Baobab Tree (African Tree of Life)",
+      "textureDescription": "A majestic symbol of strength, heritage, and community, deeply rooted in African traditions and values."
+    },
+    {
+      "textureName": "Lion Crowned",
+      "textureDescription": "Representing courage and leadership, this design draws inspiration from the fearless Shaka Zulu, embodying strength and pride."
+    },
+    {
+      "textureName": "Sun Over Mountains",
+      "textureDescription": "A symbol of hope and new beginnings, honoring the environmental legacy of Wangari Maathai."
+    },
+    {
+      "textureName": "Mandala Sunburst",
+      "textureDescription": "Spiritual awakening and harmony come alive in this intricate design, perfect for deep thinkers and artistic souls."
+    },
+    {
+      "textureName": "Palm Tree with Sunset Silhouette",
+      "textureDescription": "Representing relaxation and the tropical African lifestyle, this design inspires serenity and peace."
+    },
+    {
+      "textureName": "Music Notes with Vibrant Splash",
+      "textureDescription": "Celebrating the legacy of Fela Kuti, this design symbolizes creativity, rhythm, and the soul of African music."
+    },
+    {
+      "textureName": "African Continent with Compass",
+      "textureDescription": "A symbol of exploration and pride, this design celebrates the richness of African identity, inspired by Chinua Achebe’s literary impact."
+    },
+    {
+      "textureName": "Nelson Mandela Quote",
+      "textureDescription": "It always seems impossible until it’s done. A call to perseverance, this quote motivates individuals to overcome challenges and achieve greatness."
+    },
+    {
+      "textureName": "Thomas Sankara Quote",
+      "textureDescription": "The power of the people is stronger than the people in power. For the bold and revolutionary, this quote inspires collective action and empowerment."
+    },
+    {
+      "textureName": "Nelson Mandela Quote",
+      "textureDescription": "We can change the world and make it a better place. It is in your hands to make a difference. A timeless reminder to take responsibility for creating a better future."
+    },
+    {
+      "textureName": "African Proverb",
+      "textureDescription": "No condition is permanent. An African proverb that instills hope and resilience, reminding us that change is always possible."
+    },
+    {
+      "textureName": "Blessings on Blessings",
+      "textureDescription": "A simple yet powerful affirmation of gratitude and abundance."
+    },
+    {
+      "textureName": "Aliko Dangote Quote",
+      "textureDescription": "Dream big, start small, but most of all, start. Inspired by Africa’s leading entrepreneur, this quote motivates individuals to turn ideas into reality."
+    },
+    {
+      "textureName": "Chinua Achebe Quote",
+      "textureDescription": "Until the lion learns to write, every story will glorify the hunter. A call for self-representation, celebrating African storytelling and authenticity."
+    },
+    {
+      "textureName": "Nelson Mandela Quote",
+      "textureDescription": "Education is the most powerful weapon which you can use to change the world. For students and lifelong learners, this quote underscores the transformative power of knowledge."
+    },
+    {
+      "textureName": "Dr. James Kwegyir Aggrey Quote",
+      "textureDescription": "If you educate a man, you educate an individual. But if you educate a woman, you educate a nation. Highlighting the importance of women’s education for societal progress."
+    },
+    {
+      "textureName": "My Culture, My Pride",
+      "textureDescription": "A celebration of African identity and heritage, inspiring individuals to embrace their roots."
+    },
+    {
+      "textureName": "Good Vibes, Great Tribe",
+      "textureDescription": "A cheerful reminder of positivity and the power of community."
+    },
+    {
+      "textureName": "Wangari Maathai Quote",
+      "textureDescription": "I will plant a tree. Emphasizing sustainability and growth, this quote inspires environmental action."
+    },
+    {
+      "textureName": "Unstoppable, Undeniable",
+      "textureDescription": "A mantra for resilience and determination, perfect for go-getters."
+    },
+    {
+      "textureName": "Wangari Maathai Quote",
+      "textureDescription": "The environment is my responsibility. Encouraging individuals to take ownership of their ecological impact."
+    },
+    {
+      "textureName": "Ubuntu Philosophy",
+      "textureDescription": "I am because we are. Celebrating the interconnectedness of humanity and the essence of community."
+    },
+    {
+      "textureName": "Nelson Mandela",
+      "textureDescription": "A global symbol of leadership, resilience, and justice, inspiring individuals to strive for equality."
+    },
+    {
+      "textureName": "Kwame Nkrumah",
+      "textureDescription": "Advocate of African unity and independence, representing visionary leadership."
+    },
+    {
+      "textureName": "Wangari Maathai",
+      "textureDescription": "Nobel laureate and environmental activist, inspiring sustainability and growth."
+    },
+    {
+      "textureName": "Desmond Tutu",
+      "textureDescription": "Champion of peace and equality, advocating for forgiveness and reconciliation."
+    },
+    {
+      "textureName": "Chinua Achebe",
+      "textureDescription": "Renowned novelist, embodying the power of storytelling and African heritage."
+    },
+    {
+      "textureName": "Thomas Sankara",
+      "textureDescription": "Revolutionary leader and icon of social justice, inspiring bold change."
+    },
+    {
+      "textureName": "Miriam Makeba",
+      "textureDescription": "Mama Africa, celebrated for her music and activism."
+    },
+    {
+      "textureName": "Shaka Zulu",
+      "textureDescription": "Legendary warrior and king, symbolizing strength and leadership."
+    },
+    {
+      "textureName": "Fela Kuti",
+      "textureDescription": "Afrobeat pioneer and social activist, representing creativity and resistance."
+    },
+    {
+      "textureName": "Haile Selassie",
+      "textureDescription": "Ethiopian emperor and symbol of African pride and sovereignty."
+    },
+    {
+      "textureName": "Dr. James Kwegyir Aggrey",
+      "textureDescription": "Advocate of education, emphasizing progress through learning."
+    },
+    {
+      "textureName": "Yaa Asantewaa",
+      "textureDescription": "A fearless leader and symbol of courage and resistance."
+    },
+    {
+      "textureName": "Aliko Dangote",
+      "textureDescription": "Africa’s leading entrepreneur, inspiring innovation and hard work."
+    },
+    {
+      "textureName": "Patrice Lumumba",
+      "textureDescription": "Fighter for African independence and a symbol of liberation."
+    },
+    {
+      "textureName": "Kofi Annan",
+      "textureDescription": "Diplomat and former UN Secretary-General, embodying diplomacy and global leadership."
+    }
   ]
 
 }
