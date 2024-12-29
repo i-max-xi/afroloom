@@ -1251,6 +1251,7 @@ const ConfiguratorUnisex = () => {
                               ImprintTextPosition={ImprintTextPosition}
                               imageLeft={uploadedImageLeft}
                               imageRight={uploadedImageRight}
+                              hideLogo={selectedClothing.name === "Beads Bracelet"}
                               hideRightText={
                                 selectedClothing.name === "Beads Bracelet"
                               }

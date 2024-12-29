@@ -6,10 +6,12 @@ const HtmlImageComponent = ({
   hideRightText,
   imageLeft,
   imageRight,
+  hideLogo = false,
 }) => {
   return (
     <Html style={{ zIndex: 1 }}>
-      <div
+      {!hideLogo && (
+        <div
         className="overlay"
         style={{
           position: "absolute",
@@ -38,6 +40,8 @@ const HtmlImageComponent = ({
             imageLeft !== null ? "" : separateWordsWithLineBreak("LOGO HERE"),
         }}
       />
+      )}
+      
 
       {!hideRightText && (
         <div

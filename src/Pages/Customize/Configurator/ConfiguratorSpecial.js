@@ -44,6 +44,8 @@ import { readFileAsDataURL, uploadToStorage } from "../../../utils/functions";
 import ImageUpload from "./ImageUpload";
 import HtmlLogoComponent from "./HtmlLogoComponent";
 import { specialsCustomize } from "../../../Data/specials";
+import { SeeAll } from "./SeeAll";
+import { AnimatePresence } from "framer-motion";
 
 const Shirt = ({
   isRotating,
@@ -434,9 +436,20 @@ const ConfiguratorSpecial = () => {
      
       // setFirebaseImageLeft(texture);
     };
-  
-  
 
+     const [openSeeAll, setOpenSeeAll] = useState(false);
+      const [selectedSeeAll, setSelectedSeeAll] = useState({ title: '', titleDisplay:'', array: [] });
+    
+      const handleOpenSeeAll = (title, titleDisplay, array) => {
+        setSelectedSeeAll({ title, titleDisplay, array });
+        setOpenSeeAll(true);
+      };
+    
+      const handleCloseSeeAll = () => {
+        setOpenSeeAll(false);
+        setSelectedSeeAll({ title: '', titleDisplay: '', array: [] });
+      };
+  
   return (
     <>
       <Nav />
@@ -666,25 +679,41 @@ const ConfiguratorSpecial = () => {
 
                 <h5 className="mt-5">Imprint Logo</h5>
                 <div className="texture-buttons-container ">
+                    {openSeeAll ? ( 
+                      <AnimatePresence>
+                      <SeeAll
+                          array={selectedSeeAll.array}
+                          title={selectedSeeAll.title}
+                          titleDisplay={selectedSeeAll.titleDisplay}
+                          onClose={handleCloseSeeAll}
+                          others={{
+                            selectedPrintOn:selectedPrintOn ,
+                            handleTextureChange: handleTextureChange,
+                            currencySymbol: currencySymbol,
+                            currencyFactor: currencyFactor,
+                          }}
+                        />
+                        </AnimatePresence>
+                      ) : (
+                      <>
+                    <div className="texture-row">
+                      <div className="texture-category mt-1">
+                        
+                        <div className="w-full flex justify-between capitalize">
+                        <p className="text-sm font-medium uppercase">LOGOS</p>
+                        <p  onClick={() => handleOpenSeeAll('logos', "Logos",  textureArrays?.logos)} className="cursor-pointer text-sm text-[#ffc107] hover:font-semibold"> See all &#8594;</p>
+                        </div>
 
-                  <div className="texture-row">
-                    <div className="texture-category mt-3">
-                      <h3>Logos</h3>
-                      <Carousel
-                        value={textureArrays.logos}
-                        numVisible={4}
-                        numScroll={1}
-                        showIndicators={false}
-                        itemTemplate={(texture) => (
-                          <TextureItem
+                        <div className="grid grid-cols-4 gap-3 px-4">
+                          {textureArrays.logos.slice(0,16).map((texture) => (
+                            <TextureItem
                             key={texture}
                             texture={texture}
                             setHideText={setHideText}
                             Title="Logos"
-                            // noInfo={true}
                             selectedTexture={selectedPrintOn}
                             // Pass setSelectedTexture as a prop
-                            handleTextureChange={() => handleSampleLogo(texture)}
+                            handleTextureChange={handleTextureChange}
                             currencySymbol={currencySymbol}
                             currencyFactor={currencyFactor}
                             subTextureDescriptions={
@@ -694,11 +723,12 @@ const ConfiguratorSpecial = () => {
                               texture,
                             )}
                           />
-                        )}
-                      />
+                          ) )}
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                 
+                </>
+              )}
                 </div>
               </div>
               <div className="right-panel h-full">
