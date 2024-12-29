@@ -400,11 +400,7 @@ const Configurator = () => {
     setSelectedSeeAll({ title: '', titleDisplay: '', array: [] });
   };
 
-  const animationVariants = {
-    hidden: { opacity: 0, x: 50 },
-    visible: { opacity: 1, x: 0 },
-    exit: { opacity: 0, x: 50 },
-  };
+
 
   return (
     <>
@@ -501,11 +497,7 @@ const Configurator = () => {
             </div>
 
             <div className="lg:grid grid-cols-1 lg:gap-5 flex flex-col-reverse lg:grid-cols-2 container my-3 lg:h-screen">
-              <motion.div initial="hidden"
-      animate="visible"
-      exit="exit"
-      variants={animationVariants}
-      transition={{ duration: 0.3, ease: 'easeInOut' }} className="left-panel rounded border lg:h-full">
+              <div className="left-panel rounded border lg:h-full">
                 {/* <h5>Select Part</h5>
                 <div className="select-part-container">
                   {masterSelectionPartOptions}
@@ -637,10 +629,8 @@ const Configurator = () => {
                   />
                 </div>
 
-                <h5 className="mt-4">Choose Textile</h5>
-                
-                
-                  <div className="texture-buttons-container ">
+                <h5 className="mt-4">Choose Textile</h5> 
+                <div className="texture-buttons-container ">
                     {openSeeAll ? ( 
                       <AnimatePresence>
                       <SeeAll
@@ -778,7 +768,7 @@ const Configurator = () => {
 
                 </div>
                 
-              </motion.div>
+              </div>
               <div className="right-panel h-full">
                 <div className="resize-right-panel h-full">
                 <div

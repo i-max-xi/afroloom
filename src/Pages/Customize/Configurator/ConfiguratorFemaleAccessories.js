@@ -39,6 +39,8 @@ import { InputNumber } from "primereact/inputnumber";
 import { Toast } from "primereact/toast";
 import { isMobile } from "../../../utils/constants";
 import uuid from "react-uuid";
+import { SeeAll } from "./SeeAll";
+import { AnimatePresence } from "framer-motion";
 const Shirt = ({
   isRotating,
   selectedClothing,
@@ -412,6 +414,19 @@ const ConfiguratorFemaleAccessories = () => {
     );
   }, [selectedClothing]);
 
+   const [openSeeAll, setOpenSeeAll] = useState(false);
+    const [selectedSeeAll, setSelectedSeeAll] = useState({ title: '', titleDisplay:'', array: [] });
+  
+    const handleOpenSeeAll = (title, titleDisplay, array) => {
+      setSelectedSeeAll({ title, titleDisplay, array });
+      setOpenSeeAll(true);
+    };
+  
+    const handleCloseSeeAll = () => {
+      setOpenSeeAll(false);
+      setSelectedSeeAll({ title: '', titleDisplay: '', array: [] });
+    };
+
   return (
     <>
       <Nav />
@@ -635,19 +650,36 @@ const ConfiguratorFemaleAccessories = () => {
                     )}
                   />
                 </div>
-                <h5>Choose Textile</h5> {/* Add heading for textures */}
-                {/* ... */}
-                <div className="texture-buttons-container">
-                <div className="texture-row">
-                    <div className="texture-category mt-3">
-                      <h3>Trending Now</h3>
-                      <Carousel
-                        value={textureArrays.newTextures}
-                        numVisible={4}
-                        numScroll={1}
-                        showIndicators={false}
-                        itemTemplate={(texture) => (
-                          <TextureItem
+                <h5 className="mt-4">Choose Textile</h5> 
+                <div className="texture-buttons-container ">
+                    {openSeeAll ? ( 
+                      <AnimatePresence>
+                      <SeeAll
+                          array={selectedSeeAll.array}
+                          title={selectedSeeAll.title}
+                          titleDisplay={selectedSeeAll.titleDisplay}
+                          onClose={handleCloseSeeAll}
+                          others={{
+                            selectedPrintOn:selectedPrintOn ,
+                            handleTextureChange: handleTextureChange,
+                            currencySymbol: currencySymbol,
+                            currencyFactor: currencyFactor,
+                          }}
+                        />
+                        </AnimatePresence>
+                      ) : (
+                      <>
+                    <div className="texture-row">
+                      <div className="texture-category mt-1">
+                        
+                        <div className="w-full flex justify-between capitalize">
+                        <p className="text-sm font-medium text-[#4C5B5C]">Trending Now</p>
+                        <p  onClick={() => handleOpenSeeAll('newTextures', "Trending Now",  textureArrays?.newTextures)} className="cursor-pointer text-sm text-[#ffc107] hover:font-semibold"> See all &#8594;</p>
+                        </div>
+
+                        <div className="grid grid-cols-4 gap-3 px-4">
+                          {textureArrays.newTextures.slice(0,4).map((texture) => (
+                            <TextureItem
                             key={texture}
                             texture={texture}
                             setHideText={setHideText}
@@ -664,73 +696,43 @@ const ConfiguratorFemaleAccessories = () => {
                               texture,
                             )}
                           />
-                        )}
-                      />
+                          ) )}
+                        </div>
+                      
+                      </div>
                     </div>
-                  </div>
-                  <div className="texture-row">
-                    <div className="texture-category mt-3">
-                      <h3>Batik</h3>
-                      <Carousel
-                        value={textureArrays.batik}
-                        numVisible={4}
-                        numScroll={3}
-                        showIndicators={false}
-                        itemTemplate={(texture, index) => (
-                          <TextureItem
-                            key={texture}
-                            texture={texture}
-                            setHideText={setHideText}
-                            Title="batik"
-                            selectedTexture={selectedPrintOn}
-                            // Pass setSelectedTexture as a prop
-                            handleTextureChange={handleTextureChange}
-                            currencySymbol={currencySymbol}
-                            currencyFactor={currencyFactor}
-                            subTextureDescriptions={textureDescriptions.batik}
-                            textureIndex={textureArrays.batik.indexOf(texture)}
-                          />
-                        )}
-                      />
+                  <div className="texture-category mt-1">
+                    <div className="w-full flex justify-between capitalize">
+                      <p className="text-sm font-medium text-[#4C5B5C]">Batik</p>
+                      <p  onClick={() => handleOpenSeeAll('batik', "Batik",  textureArrays?.batik)} className="cursor-pointer text-sm text-[#ffc107] hover:font-semibold"> See all &#8594;</p>
                     </div>
 
-                    {/* <div className="texture-category mt-3">
-                    <h3>
-                      Crochet (+{currencySymbol}
-                      {(currencyFactor * textureValues.Crochet.price).toFixed()})
-                    </h3>
-                    <Carousel
-                      value={textureArrays.Crochet}
-                      numVisible={2}
-                      numScroll={3}
-                      showIndicators={false}
-                      itemTemplate={(texture) => (
+                  <div className="grid grid-cols-4 gap-3 px-4">
+                      {textureArrays.batik.slice(0, 4).map((texture) => (
                         <TextureItem
-                          key={texture}
-                          texture={texture}
-                          setHideText={setHideText}
-                          Title="Crochet"
-                          selectedTexture={selectedPrintOn}
-                           // Pass setSelectedTexture as a prop
-                          handleTextureChange={handleTextureChange}
-                          
-                          subTextureDescriptions={textureDescriptions.Crochet}
-                          textureIndex={textureArrays.Crochet.indexOf(texture)}
-                        />
-                      )}
-                    />
-                  </div> */}
+                        key={texture}
+                        texture={texture}
+                        setHideText={setHideText}
+                        Title="batik"
+                        selectedTexture={selectedPrintOn}
+                        handleTextureChange={handleTextureChange}
+                        subTextureDescriptions={textureDescriptions.batik}
+                        textureIndex={textureArrays.batik.indexOf(texture)}
+                      />
+                      ))}
                   </div>
+
+                  </div>
+
                   <div className="texture-row">
-                    <div className="texture-category mt-3">
-                      <h3>waxPrint</h3>
-                      <Carousel
-                        value={textureArrays.waxPrint}
-                        numVisible={4}
-                        numScroll={3}
-                        showIndicators={false}
-                        itemTemplate={(texture) => (
-                          <TextureItem
+                    <div className="texture-category mt-1">
+                      <div className="w-full flex justify-between capitalize">
+                        <p className="text-sm font-medium text-[#4C5B5C]">WaxPrint</p>
+                        <p  onClick={() => handleOpenSeeAll('waxPrint', "waxPrint",  textureArrays?.waxPrint)} className="cursor-pointer text-sm text-[#ffc107] hover:font-semibold"> See all &#8594;</p>
+                      </div>
+                      <div className="grid grid-cols-4 gap-3 px-4">
+                          {textureArrays.waxPrint.slice(0, 4).map((texture) => (
+                            <TextureItem
                             key={texture}
                             texture={texture}
                             setHideText={setHideText}
@@ -747,43 +749,44 @@ const ConfiguratorFemaleAccessories = () => {
                               texture,
                             )}
                           />
-                        )}
-                      />
+                          ))}
+                      </div>
                     </div>
                   </div>
                   <div className="texture-row">
-                    <div className="texture-category mt-3">
-                      <h3>School Prints</h3>
-                      <Carousel
-                        value={textureArrays.Diaspora}
-                        numVisible={4}
-                        numScroll={1}
-                        showIndicators={false}
-                        itemTemplate={(texture) => (
-                          <TextureItem
-                            key={texture}
-                            texture={texture}
-                            setHideText={setHideText}
-                            Title="Diaspora"
-                            selectedTexture={selectedPrintOn}
-                            // Pass setSelectedTexture as a prop
-                            handleTextureChange={handleTextureChange}
-                            currencySymbol={currencySymbol}
-                            currencyFactor={currencyFactor}
-                            subTextureDescriptions={
-                              textureDescriptions.diaspora
-                            }
-                            textureIndex={textureArrays.Diaspora.indexOf(
-                              texture,
-                            )}
+                    <div className="texture-category mt-1">
+                      <div className="w-full flex justify-between capitalize">
+                          <p className="text-sm font-medium text-[#4C5B5C]">School Prints</p>
+                          <p  onClick={() => handleOpenSeeAll('diaspora', "School Prints",  textureArrays?.Diaspora)} className="cursor-pointer text-sm text-[#ffc107] hover:font-semibold"> See all &#8594;</p>
+                      </div>
+                     
+
+                        <div className="grid grid-cols-4 gap-3 px-4">
+                          {textureArrays.Diaspora.slice(0, 4).map((texture) => (
+                            <TextureItem
+                              key={texture}
+                              texture={texture}
+                              setHideText={setHideText}
+                              Title="Diaspora"
+                              selectedTexture={selectedPrintOn}
+                              // Pass setSelectedTexture as a prop
+                              handleTextureChange={handleTextureChange}
+                              currencySymbol={currencySymbol}
+                              currencyFactor={currencyFactor}
+                              subTextureDescriptions={
+                                textureDescriptions.diaspora
+                              }
+                              textureIndex={textureArrays.Diaspora.indexOf(
+                                texture,
+                              )}
                           />
-                        )}
-                      />
+                          ))}
+                      </div>
+
                     </div>
                   </div>
+                </>)}
 
-                
-                  
                 </div>
               </div>
               <div className="right-panel h-full">
