@@ -665,31 +665,28 @@ const Configurator = () => {
                         <p className="text-sm font-medium text-[#4C5B5C]">Trending Now</p>
                         <p  onClick={() => handleOpenSeeAll('newTextures', "Trending Now",  textureArrays?.newTextures)} className="cursor-pointer text-sm text-[#ffc107] hover:font-semibold"> See all &#8594;</p>
                         </div>
-                        <Carousel
-                          value={textureArrays.newTextures}
-                          numVisible={4}
-                          numScroll={1}
-                          showIndicators={false}
-                          itemTemplate={(texture) => (
+
+                        <div className="grid grid-cols-4 gap-3 px-4">
+                          {textureArrays.newTextures.slice(0,4).map((texture) => (
                             <TextureItem
-                              key={texture}
-                              texture={texture}
-                              setHideText={setHideText}
-                              Title="Trending Now"
-                              selectedTexture={selectedPrintOn}
-                              // Pass setSelectedTexture as a prop
-                              handleTextureChange={handleTextureChange}
-                              currencySymbol={currencySymbol}
-                              currencyFactor={currencyFactor}
-                              subTextureDescriptions={
-                                textureDescriptions.newTextures
-                              }
-                              textureIndex={textureArrays.newTextures.indexOf(
-                                texture,
-                              )}
-                            />
-                          )}
-                        />
+                            key={texture}
+                            texture={texture}
+                            setHideText={setHideText}
+                            Title="Trending Now"
+                            selectedTexture={selectedPrintOn}
+                            // Pass setSelectedTexture as a prop
+                            handleTextureChange={handleTextureChange}
+                            currencySymbol={currencySymbol}
+                            currencyFactor={currencyFactor}
+                            subTextureDescriptions={
+                              textureDescriptions.newTextures
+                            }
+                            textureIndex={textureArrays.newTextures.indexOf(
+                              texture,
+                            )}
+                          />
+                          ) )}
+                        </div>
                       
                       </div>
                     </div>
@@ -698,24 +695,22 @@ const Configurator = () => {
                       <p className="text-sm font-medium text-[#4C5B5C]">Batik</p>
                       <p  onClick={() => handleOpenSeeAll('batik', "Batik",  textureArrays?.batik)} className="cursor-pointer text-sm text-[#ffc107] hover:font-semibold"> See all &#8594;</p>
                     </div>
-                    <Carousel
-                      value={textureArrays.batik}
-                      numVisible={4}
-                      numScroll={3}
-                      showIndicators={false}
-                      itemTemplate={(texture) => (
+
+                  <div className="grid grid-cols-4 gap-3 px-4">
+                      {textureArrays.batik.slice(0, 4).map((texture) => (
                         <TextureItem
-                          key={texture}
-                          texture={texture}
-                          setHideText={setHideText}
-                          Title="batik"
-                          selectedTexture={selectedPrintOn}
-                          handleTextureChange={handleTextureChange}
-                          subTextureDescriptions={textureDescriptions.batik}
-                          textureIndex={textureArrays.batik.indexOf(texture)}
-                        />
-                      )}
-                    />
+                        key={texture}
+                        texture={texture}
+                        setHideText={setHideText}
+                        Title="batik"
+                        selectedTexture={selectedPrintOn}
+                        handleTextureChange={handleTextureChange}
+                        subTextureDescriptions={textureDescriptions.batik}
+                        textureIndex={textureArrays.batik.indexOf(texture)}
+                      />
+                      ))}
+                  </div>
+
                   </div>
 
                   <div className="texture-row">
@@ -724,13 +719,9 @@ const Configurator = () => {
                         <p className="text-sm font-medium text-[#4C5B5C]">WaxPrint</p>
                         <p  onClick={() => handleOpenSeeAll('waxPrint', "waxPrint",  textureArrays?.waxPrint)} className="cursor-pointer text-sm text-[#ffc107] hover:font-semibold"> See all &#8594;</p>
                       </div>
-                      <Carousel
-                        value={textureArrays.waxPrint}
-                        numVisible={4}
-                        numScroll={1}
-                        showIndicators={false}
-                        itemTemplate={(texture) => (
-                          <TextureItem
+                      <div className="grid grid-cols-4 gap-3 px-4">
+                          {textureArrays.waxPrint.slice(0, 4).map((texture) => (
+                            <TextureItem
                             key={texture}
                             texture={texture}
                             setHideText={setHideText}
@@ -747,8 +738,8 @@ const Configurator = () => {
                               texture,
                             )}
                           />
-                        )}
-                      />
+                          ))}
+                      </div>
                     </div>
                   </div>
                   <div className="texture-row">
@@ -757,37 +748,34 @@ const Configurator = () => {
                           <p className="text-sm font-medium text-[#4C5B5C]">School Prints</p>
                           <p  onClick={() => handleOpenSeeAll('diaspora', "School Prints",  textureArrays?.Diaspora)} className="cursor-pointer text-sm text-[#ffc107] hover:font-semibold"> See all &#8594;</p>
                       </div>
-                      <Carousel
-                        value={textureArrays.Diaspora}
-                        numVisible={4}
-                        numScroll={1}
-                        showIndicators={false}
-                        itemTemplate={(texture) => (
-                          <TextureItem
-                            key={texture}
-                            texture={texture}
-                            setHideText={setHideText}
-                            Title="Diaspora"
-                            selectedTexture={selectedPrintOn}
-                            // Pass setSelectedTexture as a prop
-                            handleTextureChange={handleTextureChange}
-                            currencySymbol={currencySymbol}
-                            currencyFactor={currencyFactor}
-                            subTextureDescriptions={
-                              textureDescriptions.diaspora
-                            }
-                            textureIndex={textureArrays.Diaspora.indexOf(
-                              texture,
-                            )}
+                     
+
+                        <div className="grid grid-cols-4 gap-3 px-4">
+                          {textureArrays.Diaspora.slice(0, 4).map((texture) => (
+                            <TextureItem
+                              key={texture}
+                              texture={texture}
+                              setHideText={setHideText}
+                              Title="Diaspora"
+                              selectedTexture={selectedPrintOn}
+                              // Pass setSelectedTexture as a prop
+                              handleTextureChange={handleTextureChange}
+                              currencySymbol={currencySymbol}
+                              currencyFactor={currencyFactor}
+                              subTextureDescriptions={
+                                textureDescriptions.diaspora
+                              }
+                              textureIndex={textureArrays.Diaspora.indexOf(
+                                texture,
+                              )}
                           />
-                        )}
-                      />
+                          ))}
+                      </div>
+
                     </div>
                   </div>
-                    </>)}
-                    
-                  
-                 
+                </>)}
+
                 </div>
                 
               </motion.div>
