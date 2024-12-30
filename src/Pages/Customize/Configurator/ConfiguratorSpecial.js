@@ -688,7 +688,7 @@ const ConfiguratorSpecial = () => {
                           onClose={handleCloseSeeAll}
                           others={{
                             selectedPrintOn:selectedPrintOn ,
-                            handleTextureChange: handleTextureChange,
+                            handleTextureChange: (texture) => handleSampleLogo(texture),
                             currencySymbol: currencySymbol,
                             currencyFactor: currencyFactor,
                           }}
@@ -713,7 +713,7 @@ const ConfiguratorSpecial = () => {
                             Title="Logos"
                             selectedTexture={selectedPrintOn}
                             // Pass setSelectedTexture as a prop
-                            handleTextureChange={handleTextureChange}
+                            handleTextureChange={() => handleSampleLogo(texture)}
                             currencySymbol={currencySymbol}
                             currencyFactor={currencyFactor}
                             subTextureDescriptions={
@@ -722,6 +722,7 @@ const ConfiguratorSpecial = () => {
                             textureIndex={textureArrays.logos.indexOf(
                               texture,
                             )}
+                            noPleaseNote={true}
                           />
                           ) )}
                         </div>
