@@ -20,7 +20,8 @@ function TextureItem({
   handleTextureChange,
   subTextureDescriptions,
   textureIndex,
-  noInfo=false
+  noInfo=false,
+  noPleaseNote = false
 }) {
   const [displayDialog, setDisplayDialog] = useState(false);
 
@@ -150,9 +151,12 @@ function TextureItem({
               ? subTextureDescriptions[textureIndex]?.textureDescription
               : "Description N/A"}
           </p>
+          {!noPleaseNote && (
           <p style={{fontWeight: "bold"}}>
             { subTextureDescriptions[textureIndex]?.disclaimer || "Please note, we only source these fabrics from official producers, and Afroloom does not manufacture them. Fabric availability depends on stock from the original producers."}
           </p>
+           )}
+          
 
           <p >
             { subTextureDescriptions[textureIndex]?.footNote}

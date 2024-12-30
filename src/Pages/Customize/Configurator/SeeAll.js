@@ -10,6 +10,7 @@ export const SeeAll = ({ array, title, onClose, others, titleDisplay }) => {
     exit: { opacity: 0, y: 50 },
   };
 
+
   return (
     <motion.div
       className="flex flex-col gap-2 w-full h-[25rem] p-0 m-0"
@@ -33,8 +34,8 @@ export const SeeAll = ({ array, title, onClose, others, titleDisplay }) => {
       </div>
 
       <div className="grid grid-cols-4 gap-2 overflow-y-scroll h-[80%] scrollbar-hidden grid-auto-rows-[minmax(0, 1fr)] place-content-start">
-        {array.length > 0 ? (
-          array.map((texture, index) => (
+        {array?.length > 0 ? (
+          array?.map((texture, index) => (
             <TextureItem
               key={index}
               texture={texture}
@@ -43,8 +44,14 @@ export const SeeAll = ({ array, title, onClose, others, titleDisplay }) => {
               handleTextureChange={others.handleTextureChange}
               currencySymbol={others.currencySymbol}
               currencyFactor={others.currencyFactor}
-              subTextureDescriptions={textureDescriptions[title]}
-              textureIndex={array[title]?.indexOf(texture)}
+              // subTextureDescriptions={textureDescriptions[title]}
+              // textureIndex={textureDescriptions[title]?.indexOf(texture)}
+
+              subTextureDescriptions={
+                textureDescriptions[title]
+              }
+              textureIndex={index}
+              noPleaseNote={titleDisplay === "Logos"}
             />
           ))
         ) : (
