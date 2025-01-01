@@ -26,7 +26,7 @@ import {
   colorOptions,
   textureArrays,
   textureDescriptions,
-  textureValues,
+  // textureValues,
   specialNodeNames,
   displayInplaceFor,
   colorBasePrice,
@@ -41,6 +41,7 @@ import { isMobile } from "../../../utils/constants";
 import uuid from "react-uuid";
 import { AnimatePresence } from "framer-motion";
 import { SeeAll } from "./SeeAll";
+import FabricPrices from "../../../Data/fabricprices";
 const Shirt = ({
   isRotating,
   selectedClothing,
@@ -155,7 +156,7 @@ const ConfiguratorMaleAccessories = () => {
   const { Id } = useParams();
   const selectedClothing = mainMaleAccessories.find((item) => item.name === Id);
 
-  // const [Price, setPrice] = useState(selectedClothing.price);
+  const textureValues = FabricPrices()
 
   const [selectedSize, setSelectedSize] = useState(1);
   const [selectedPrintOn, setSelectedPrintOn] = useState("#ffffff");

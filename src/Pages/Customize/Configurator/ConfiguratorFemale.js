@@ -26,7 +26,7 @@ import {
   colorOptions,
   textureArrays,
   textureDescriptions,
-  textureValues,
+  // textureValues,
   specialNodeNames,
   displayInplaceFor,
   colorBasePrice,
@@ -41,6 +41,7 @@ import uuid from "react-uuid";
 import TakeTour from "./TakeTour";
 import { AnimatePresence } from "framer-motion";
 import { SeeAll } from "./SeeAll";
+import FabricPrices from "../../../Data/fabricprices";
 const Shirt = ({
   isRotating,
   selectedClothing,
@@ -185,7 +186,7 @@ const ConfiguratorFemale = () => {
   const { Id } = useParams();
   const selectedClothing = mainFemaleCustomize.find((item) => item.name === Id);
 
-  // const [Price, setPrice] = useState(selectedClothing.price);
+  const textureValues = FabricPrices()
 
   const [selectedSize, setSelectedSize] = useState(1);
   const [selectedPrintOn, setSelectedPrintOn] = useState("#ffffff");
@@ -294,7 +295,6 @@ const ConfiguratorFemale = () => {
         (size) => size.value === selectedSize,
       );
 
-      console.log({ sizeValue });
 
       const yardPrice = textureValues[textureCategory].price;
 

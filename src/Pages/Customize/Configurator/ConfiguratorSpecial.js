@@ -26,7 +26,7 @@ import {
   colorOptions,
   textureArrays,
   textureDescriptions,
-  textureValues,
+  // textureValues,
   specialNodeNames,
   displayInplaceFor,
   colorBasePrice,
@@ -46,6 +46,7 @@ import HtmlLogoComponent from "./HtmlLogoComponent";
 import { specialsCustomize } from "../../../Data/specials";
 import { SeeAll } from "./SeeAll";
 import { AnimatePresence } from "framer-motion";
+import FabricPrices from "../../../Data/fabricprices";
 
 const Shirt = ({
   isRotating,
@@ -160,16 +161,16 @@ const CameraControls = () => {
 
 const ConfiguratorSpecial = () => {
     const [isLoading, setIsLoading] = useState(true); // Add loading state
+    const textureValues = FabricPrices()
 
-
-      useEffect(() => {
-        const loadingTimeout = setTimeout(() => {
-          setIsLoading(false);
-        }, 3000);
-    
-        return () => clearTimeout(loadingTimeout);
-      }, []);
-    
+    useEffect(() => {
+      const loadingTimeout = setTimeout(() => {
+        setIsLoading(false);
+      }, 3000);
+  
+      return () => clearTimeout(loadingTimeout);
+    }, []);
+  
   
   const { Id } = useParams();
   const selectedClothing = specialsCustomize.find((item) => item.name === Id);

@@ -27,7 +27,7 @@ import {
   colorOptions,
   textureArrays,
   textureDescriptions,
-  textureValues,
+  // textureValues,
   specialNodeNames,
   displayInplaceFor,
   colorBasePrice,
@@ -43,6 +43,7 @@ import uuid from "react-uuid";
 import TakeTour from "./TakeTour";
 import { SeeAll } from "./SeeAll";
 import { AnimatePresence } from "framer-motion";
+import FabricPrices from "../../../Data/fabricprices";
 
 const Shirt = ({
   isRotating,
@@ -157,6 +158,8 @@ const CameraControls = () => {
 const Configurator = () => {
   const { Id } = useParams();
   const selectedClothing = mainMaleCustomize.find((item) => item.name === Id);
+
+  const textureValues = FabricPrices()
 
   const [selectedSize, setSelectedSize] = useState(1);
   const [selectedPrintOn, setSelectedPrintOn] = useState("#ffffff");
