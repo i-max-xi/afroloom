@@ -168,7 +168,7 @@ const CameraControls = () => {
 
   return (
     <OrbitControls
-      enableRotate={true}
+      enableRotate={false}
       enablePan={false}
       enableZoom={false}
       ref={controlsRef}
@@ -1076,27 +1076,20 @@ const ConfiguratorUnisex = () => {
                   </Dialog>
                 </div>
                 <h5>Choose Color</h5>
-                <div className="color-buttons-container">
-                  <Carousel
-                    value={colorOptions}
-                    numVisible={isMobile ? 4 : 7}
-                    numScroll={isMobile ? 3 : 5}
-                    showIndicators={false}
-                    // // responsiveOptions={responsiveColor}
-                    itemTemplate={(colorOption) => (
+                <div className="flex gap-5 overflow-x-scroll flex-nowrap no-scrollbar w-[90%] ">
+                  {colorOptions.map((colorOption) => (
                       <div key={colorOption.color} className="color-item">
-                        <button
-                          className={`color-button ${
-                            selectedPrintOn === colorOption.color
-                              ? "selected-border"
-                              : ""
-                          }`}
-                          onClick={() => handleColorChange(colorOption.color)}
-                          style={{ backgroundColor: colorOption.color }}
-                        ></button>
-                      </div>
-                    )}
-                  />
+                      <button
+                        className={`color-button ${
+                          selectedPrintOn === colorOption.color
+                            ? "selected-border"
+                            : ""
+                        }`}
+                        onClick={() => handleColorChange(colorOption.color)}
+                        style={{ backgroundColor: colorOption.color }}
+                      ></button>
+                    </div>
+                  ))}
                 </div>
                 {noSpinFor.includes(selectedClothing.name) ||
                 selectedClothing.name === "Earring" ? null : (
