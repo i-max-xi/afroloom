@@ -19,7 +19,7 @@ const ContactDetails = () => {
   const [isLoading, setIsLoading] = useState(false);
   const toast = React.useRef(null);
 
-  useEffect(() => {
+  useEffect(() => { 
     const fetchContacts = async () => {
       try {
         const response = await AllServices.getAllcontactDetails();
