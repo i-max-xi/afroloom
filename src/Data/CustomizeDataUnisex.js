@@ -121,6 +121,78 @@ const pixie_profile = require("../Assets/welcome_3ds/others/Wig/pixie_curl/pixie
 const pixie_black = require("../Assets/welcome_3ds/others/Wig/pixie_curl/natural_black_pixie_curl-removebg-preview.png");
 const pixie_ombre = require("../Assets/welcome_3ds/others/Wig/pixie_curl/ombre_pixie_curl-removebg-preview.png");
 
+
+//specila sashes
+const sash1_front = require("../Assets/special_sashes/1.1.jpg");
+const sash1_actual = require("../Assets/special_sashes/1.2.jpg");
+
+
+
+export const specialSash = [
+  {
+    id: uuid(),
+    name: "Sash One",
+    title: "Sash One",
+    description:"",
+    image: sash1_front,
+    model: sash1_actual,
+    confirm_image: sash1_actual,
+    positioningLeft: {
+      text: {
+        top: "2rem",
+        left: "-6rem",
+        height: "12rem",
+        width: "5.4rem",
+        lineHeight: "",
+      },
+      image: {
+        top: "-5.5rem",
+        left: "-4.5rem",
+        height: "3rem",
+        width: "3rem",
+      }
+    },
+    positioningRight: {
+      text: {
+        top: "2rem",
+        left: "1rem",
+        height: "12rem",
+        width: "5.4rem",
+        lineHeight: "",
+      },
+      image: {
+        top: "-5.5rem",
+        left: "2.5rem",
+        height: "3rem",
+        width: "3rem",
+      }
+    },
+    myNode: [
+      { name: "mid_section", yardNeeded: 1 },
+      { name: "stripe_1", yardNeeded: 1 },
+      { name: "stripe_2", yardNeeded: 1 },
+    ],
+    otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
+    myZoom: 0.6,
+    price: 120,
+    readyIn: 7,
+    sizeGuide: sash_guide,
+    sizeOptions: [
+      { label: "S", value: 0.5 },
+      { label: "M", value: 1 },
+      { label: "L", value: 2 },
+    ],
+    sizeForms: [
+      {
+        label: "Length (cm)",
+      },
+      {
+        label: "Width (cm)",
+      },
+    ],
+  },
+]
+
 export const mainUnisex = [
   {
     id: uuid(),
@@ -670,4 +742,8 @@ export const mainUnisex = [
   //     // Add more form fields as needed
   //   ],
   // },
+  
+  
+  
+
 ];
