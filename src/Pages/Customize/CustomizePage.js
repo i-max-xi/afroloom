@@ -7,7 +7,7 @@ import {
   mainFemaleAccessories,
   mainMaleAccessories,
 } from "../../Data/CustomizeDataAccessories";
-import { mainUnisex } from "../../Data/CustomizeDataUnisex";
+import { mainUnisex, specialSash } from "../../Data/CustomizeDataUnisex";
 import { mainFootwear } from "../../Data/CustomizeDataFootwear";
 import ListItem from "../../Components/List/ListItem";
 import { specialsCustomize } from "../../Data/specials";
@@ -66,6 +66,23 @@ const CustomizePage = () => {
                 .map(({ name, image, link, description, title }) => (
                   <Link
                     to={link ? link : `/configurator-unisex/${name}`}
+                    className="text-decoration-none lg:mx-10  "
+                    key={name}
+                    data-aos="fade-in"
+                    data-aos-duration="1500"
+                  >
+                    
+                    <ListItem
+                      image={image}
+                      title={title || name}
+                      extraDescription={description}
+                    />
+                  </Link>
+                ))}
+                {specialSash
+                .map(({ name, image, link, description, title }) => (
+                  <Link
+                    to={link ? link : `/configurator-sash-special/${name}`}
                     className="text-decoration-none lg:mx-10  "
                     key={name}
                     data-aos="fade-in"

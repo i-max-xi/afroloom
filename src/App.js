@@ -42,6 +42,7 @@ import HomePage from "./Pages/HomePageTwo";
 import AdminDashboard from "./Pages/Dashboard/admin/AdminHome";
 import SignInAdmin from "./Pages/SignInAdmin";
 import ConfiguratorSpecial from "./Pages/Customize/Configurator/ConfiguratorSpecial";
+import ConfiguratorUnisexSpecial from "./Pages/Customize/Configurator/ConfiguratorUnisexSpecials";
 
 function App() {
   useEffect(() => {
@@ -67,6 +68,7 @@ function App() {
 
             <Route path="/configurator/:Id" element={<Configurator />} />
             <Route path="/configurator-special/:Id" element={<ConfiguratorSpecial />} />
+            <Route path="/configurator-sash-special/:Id" element={<ConfiguratorUnisexSpecial />} />
             <Route
               path="/configurator-female/:Id"
               element={<ConfiguratorFemale />}

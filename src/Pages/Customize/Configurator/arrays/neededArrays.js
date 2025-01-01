@@ -126,6 +126,7 @@ import logo43 from "../textures/logos/42_Yaa_Asantewaa-removebg-preview.png";
 import logo44 from "../textures/logos/43_Aliko_Dangote-removebg-preview.png";
 import logo45 from "../textures/logos/44_Patrice-Lumumba-removebg-preview.png";
 import logo46 from "../textures/logos/45_kofi_annan-removebg-preview.png";
+import FabricPrices from "../../../../Data/fabricprices";
 
 
 
@@ -747,6 +748,8 @@ export const textureDescriptions = {
   ]
 
 }
+
+
 
 export const textureValues = {
   batik: {

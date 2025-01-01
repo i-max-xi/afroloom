@@ -22,7 +22,7 @@ const Footer = () => {
         {/* special contact  */}
         <div className="container p-2 pb-0">
           <div className="flex justify-content-between policy-header">
-            {contactInfo.map((contact) => (
+            {contactInfo().map((contact) => (
               <FooterContact
                 key={contact.id}
                 infoDetail={contact.detail}

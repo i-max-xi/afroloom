@@ -26,7 +26,7 @@ import {
   colorOptions,
   textureArrays,
   textureDescriptions,
-  textureValues,
+  // textureValues,
   specialNodeNames,
   displayInplaceFor,
   colorBasePrice,
@@ -41,6 +41,7 @@ import { isMobile } from "../../../utils/constants";
 import uuid from "react-uuid";
 import { SeeAll } from "./SeeAll";
 import { AnimatePresence } from "framer-motion";
+import FabricPrices from "../../../Data/fabricprices";
 const Shirt = ({
   isRotating,
   selectedClothing,
@@ -142,7 +143,7 @@ const CameraControls = () => {
 
   return (
     <OrbitControls
-      enableRotate={false}
+      enableRotate={true}
       enablePan={false}
       enableZoom={false}
       ref={controlsRef}
@@ -156,7 +157,7 @@ const ConfiguratorFemaleAccessories = () => {
     (item) => item.name === Id,
   );
 
-  // const [Price, setPrice] = useState(selectedClothing.price);
+  const textureValues = FabricPrices()
 
   const [selectedSize, setSelectedSize] = useState(1);
   const [selectedPrintOn, setSelectedPrintOn] = useState("#ffffff");
