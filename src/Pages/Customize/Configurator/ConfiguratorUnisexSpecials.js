@@ -657,7 +657,7 @@ const ConfiguratorUnisexSpecial = () => {
             </div>
             <div className=" flex flex-col container my-3 ">
              
-              <div className="right-panel h-full">
+              <div className="right-panel h-full lg:h-[80vh]">
                  <Canvas
                   camera={{ position: [0, 0, selectedClothing.myZoom] }}
                   ref={canvasRef}

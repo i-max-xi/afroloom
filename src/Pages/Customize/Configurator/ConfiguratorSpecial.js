@@ -47,6 +47,7 @@ import { specialsCustomize } from "../../../Data/specials";
 import { SeeAll } from "./SeeAll";
 import { AnimatePresence } from "framer-motion";
 import FabricPrices from "../../../Data/fabricprices";
+import ImageUploadForLogo from "./ImageUploadForLogo";
 
 const Shirt = ({
   isRotating,
@@ -803,7 +804,7 @@ const ConfiguratorSpecial = () => {
                           <>
                             {/* <h5 className="text-sm lg:text-lg">Imprint  Logos</h5> */}
                             <div className="flex justify-between gap-2">
-                              <ImageUpload
+                              <ImageUploadForLogo
                                 labelLeft={"Upload Logo For Front"}
                                 labelRight={"Upload Logo For Back"}
                                 hideRightButton={
