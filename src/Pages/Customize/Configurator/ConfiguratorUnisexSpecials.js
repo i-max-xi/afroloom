@@ -293,7 +293,6 @@ const ConfiguratorUnisexSpecial = () => {
   // const [textPosition] = useState([-0.65, -0.15, 0.05]); // Initialize text position
   const [textColor, setTextColor] = useState("black");
   const [fontFamily, setFontFamily] = useState("Arial");
-  const [hideText, setHideText] = useState(false);
 
   const fonts = [
     "Arial",
@@ -455,52 +454,7 @@ const ConfiguratorUnisexSpecial = () => {
     setFontSizeRight((prevSize) => prevSize - 1);
   };
 
-  const handleColorChange = (newColor) => {
-    state.color[selectedPart] = newColor;
-    state.texture[selectedPart] = null;
-    setSelectedPrintOn(newColor);
 
-   
-    setShowGlow(false);
-  };
-
-
-
-  const handleTextureChange = (newTexture) => {
-    if (selectedPart !== null) {
-      state.texture[selectedPart] = newTexture;
-      state.color[selectedPart] = null;
-      setSelectedPrintOn(newTexture);
-      setSelectedTexture(newTexture); // needed to transfer to size
-
-      const textureCategory = Object.keys(textureArrays).find((category) =>
-        textureArrays[category].includes(newTexture),
-      );
-
-      const sizeValue = selectedClothing.sizeOptions.find(
-        (size) => size.value === selectedSize,
-      );
-
-      const yardPrice = textureValues[textureCategory].price;
-
-      let newPartPrice;
-      if (textureCategory === "waxPrint") {
-        newPartPrice = yardPrice;
-      } else {
-        newPartPrice = yardPrice + sizeValue.priceValue;
-      }
-
-      setPartPrices(newPartPrice);
-    }
-
-    setShowGlow(false);
-  };
-
-
-  const handleRotation = () => {
-    setIsRotating((prev) => !prev);
-    // setSelectedPart(null);
-  };
 
   // Create an array to store selected parts with their color and texture information
   const selectedParts = selectedClothing.myNode?.map((nodeName, index) => ({
@@ -530,20 +484,10 @@ const ConfiguratorUnisexSpecial = () => {
 
 
   // Create a state object to store the form field values
-  const [sizeFormValues, setSizeFormValues] = useState(
-    selectedClothing.sizeForms?.reduce((acc, formField) => {
-      acc[formField.label] = formField.value;
-      return acc;
-    }, {}),
-  );
+
 
   // Handle changes in the size form fields
-  const handleSizeFormChange = (label, value) => {
-    setSizeFormValues((prevValues) => ({
-      ...prevValues,
-      [label]: value,
-    }));
-  };
+ 
 
   // description dialogs
   const [selectedTexture, setSelectedTexture] = useState({});
@@ -690,7 +634,7 @@ const ConfiguratorUnisexSpecial = () => {
             )?.label
           }
           modelImage={stateImage}
-          customSizeValues={sizeFormValues}
+          customSizeValues={{}}
           // height={height}
           gender={gender}
           beadType={beadType}

@@ -126,6 +126,72 @@ const pixie_ombre = require("../Assets/welcome_3ds/others/Wig/pixie_curl/ombre_p
 const sash1_front = require("../Assets/special_sashes/1.1.jpg");
 const sash1_actual = require("../Assets/special_sashes/1.2.jpg");
 
+const sash2_front = require("../Assets/special_sashes/2.1.jpg");
+const sash2_actual = require("../Assets/special_sashes/2.2.jpg");
+
+const sash3_front = require("../Assets/special_sashes/3.1.jpg");
+const sash3_actual = require("../Assets/special_sashes/3.2.jpg");
+
+const sash4_front = require("../Assets/special_sashes/4.1.jpg");
+const sash4_actual = require("../Assets/special_sashes/4.2.jpg");
+
+const sash5_front = require("../Assets/special_sashes/5.1.jpg");
+const sash5_actual = require("../Assets/special_sashes/5.2.jpg");
+
+const sash6_front = require("../Assets/special_sashes/6.1.jpg");
+const sash6_actual = require("../Assets/special_sashes/6.2.jpg");
+
+const sash7_front = require("../Assets/special_sashes/7.1.jpg");
+const sash7_actual = require("../Assets/special_sashes/7.2.jpg");
+
+const sash8_front = require("../Assets/special_sashes/8.1.jpg");
+const sash8_actual = require("../Assets/special_sashes/8.2.jpg");
+
+const sash9_front = require("../Assets/special_sashes/9.1.jpg");
+const sash9_actual = require("../Assets/special_sashes/9.2.jpg");
+
+// const sash10_front = require("../Assets/special_sashes/10.1.jpg");
+// const sash10_actual = require("../Assets/special_sashes/10.2.jpg");
+
+const sash11_front = require("../Assets/special_sashes/11.1.jpg");
+const sash11_actual = require("../Assets/special_sashes/11.2.jpg");
+
+const sash12_front = require("../Assets/special_sashes/12.1.jpg");
+const sash12_actual = require("../Assets/special_sashes/12.2.jpg");
+
+const sash13_front = require("../Assets/special_sashes/13.1.jpg");
+const sash13_actual = require("../Assets/special_sashes/13.2.jpg");
+
+const sash14_front = require("../Assets/special_sashes/14.1.jpg");
+const sash14_actual = require("../Assets/special_sashes/14.2.jpg");
+
+const sash15_front = require("../Assets/special_sashes/15.1.jpg");
+const sash15_actual = require("../Assets/special_sashes/15.2.jpg");
+
+const sash16_front = require("../Assets/special_sashes/16.1.jpg");
+const sash16_actual = require("../Assets/special_sashes/16.2.jpg");
+
+const sash17_front = require("../Assets/special_sashes/17.1.jpg");
+const sash17_actual = require("../Assets/special_sashes/17.2.jpg");
+
+const sash18_front = require("../Assets/special_sashes/18.1.jpg");
+const sash18_actual = require("../Assets/special_sashes/18.2.jpg");
+
+const sash19_front = require("../Assets/special_sashes/19.1.jpg");
+const sash19_actual = require("../Assets/special_sashes/19.2.jpg");
+
+const sash20_front = require("../Assets/special_sashes/20.1.jpg");
+const sash20_actual = require("../Assets/special_sashes/20.2.jpg");
+
+const sash21_front = require("../Assets/special_sashes/21.1.jpg");
+const sash21_actual = require("../Assets/special_sashes/21.2.jpg");
+
+const sash22_front = require("../Assets/special_sashes/22.1.jpg");
+const sash22_actual = require("../Assets/special_sashes/22.2.jpg");
+
+const sash23_front = require("../Assets/special_sashes/23.1.jpg");
+const sash23_actual = require("../Assets/special_sashes/23.2.jpg");
+
 
 
 export const specialSash = [
@@ -167,11 +233,6 @@ export const specialSash = [
         width: "3rem",
       }
     },
-    myNode: [
-      { name: "mid_section", yardNeeded: 1 },
-      { name: "stripe_1", yardNeeded: 1 },
-      { name: "stripe_2", yardNeeded: 1 },
-    ],
     otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
     myZoom: 0.6,
     price: 120,
@@ -182,15 +243,1089 @@ export const specialSash = [
       { label: "M", value: 1 },
       { label: "L", value: 2 },
     ],
-    sizeForms: [
-      {
-        label: "Length (cm)",
+    
+  },
+   {
+    id: uuid(),
+    name: "Sash Two",
+    title: "Sash Two",
+    description:"",
+    image: sash2_front,
+    model: sash2_actual,
+    confirm_image: sash2_actual,
+    positioningLeft: {
+      text: {
+        top: "2rem",
+        left: "-2rem",
+        height: "12rem",
+        width: "4.4rem",
+        lineHeight: "",
       },
-      {
-        label: "Width (cm)",
+      image: {
+        top: "-4.1rem",
+        left: "-1.5rem",
+        height: "3rem",
+        width: "3rem",
+      }
+    },
+    positioningRight: {
+      text: {
+        top: "1rem",
+        left: "2.8rem",
+        height: "12rem",
+        width: "4.2rem",
+        lineHeight: "",
       },
+      image: {
+        top: "-4.7rem",
+        left: "3.3rem",
+        height: "3rem",
+        width: "3rem",
+      }
+    },
+    otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
+    myZoom: 0.6,
+    price: 120,
+    readyIn: 7,
+    sizeGuide: sash_guide,
+    sizeOptions: [
+      { label: "S", value: 0.5 },
+      { label: "M", value: 1 },
+      { label: "L", value: 2 },
+    ],
+    
+  },
+
+  {
+    id: uuid(),
+    name: "Sash Three",
+    title: "Sash Three",
+    description: "",
+    image: sash3_front,
+    model: sash3_actual,
+    confirm_image: sash3_actual,
+    positioningLeft: {
+      text: {
+        top: "0.3rem",
+        left: "-5.4rem",
+        height: "13rem",
+        width: "3.8rem",
+        lineHeight: "",
+      },
+      image: {
+        top: "-5rem",
+        left: "-4.5rem",
+        height: "3.2rem",
+        width: "3.2rem",
+      }
+    },
+    positioningRight: {
+      text: {
+        top: "0.3rem",
+        left: "-0.5rem",
+        height: "12rem",
+        width: "3.5rem",
+        lineHeight: "",
+      },
+      image: {
+        top: "-4.9rem",
+        left: "0.3rem",
+        height: "3rem",
+        width: "3rem",
+      }
+    },
+    otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
+    myZoom: 0.6,
+    price: 120,
+    readyIn: 7,
+    sizeGuide: sash_guide,
+    sizeOptions: [
+      { label: "S", value: 0.5 },
+      { label: "M", value: 1 },
+      { label: "L", value: 2 },
     ],
   },
+  // Repeat similar blocks for sash4 through sash23
+  {
+    id: uuid(),
+    name: "Sash Four",
+    title: "Sash Four",
+    description: "",
+    image: sash4_front,
+    model: sash4_actual,
+    confirm_image: sash4_actual,
+    positioningLeft: {
+      text: {
+        top: "1.5rem",
+        left: "-4.2rem",
+        height: "9rem",
+        width: "3.5rem",
+        lineHeight: "",
+      },
+      image: {
+        top: "-4.5rem",
+        left: "-4rem",
+        height: "2.8rem",
+        width: "2.8rem",
+      }
+    },
+    positioningRight: {
+      text: {
+        top: "1.5rem",
+        left: "0.1rem",
+        height: "9rem",
+        width: "3.5rem",
+        lineHeight: "",
+      },
+      image: {
+        top: "-4rem",
+        left: "0.5rem",
+        height: "2.5rem",
+        width: "2.5rem",
+      }
+    },
+    otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
+    myZoom: 0.6,
+    price: 120,
+    readyIn: 7,
+    sizeGuide: sash_guide,
+    sizeOptions: [
+      { label: "S", value: 0.5 },
+      { label: "M", value: 1 },
+      { label: "L", value: 2 },
+    ],
+  },
+  {
+    id: uuid(),
+    name: "Sash Five",
+    title: "Sash Five",
+    description: "",
+    image: sash5_front,
+    model: sash5_actual,
+    confirm_image: sash5_actual,
+    positioningLeft: {
+      text: {
+        top: "4rem",
+        left: "-6rem",
+        height: "14rem",
+        width: "5rem",
+        lineHeight: "",
+      },
+      image: {
+        top: "-5rem",
+        left: "-5rem",
+        height: "3rem",
+        width: "3rem",
+      }
+    },
+    positioningRight: {
+      text: {
+        top: "3rem",
+        left: "2rem",
+        height: "13rem",
+        width: "5rem",
+        lineHeight: "",
+      },
+      image: {
+        top: "-6rem",
+        left: "3rem",
+        height: "3rem",
+        width: "3rem",
+      }
+    },
+    otherYards: { small: 3, large: 4, extraLarge: 5, extraExtraLarge: 5 },
+    myZoom: 0.7,
+    price: 140,
+    readyIn: 8,
+    sizeGuide: sash_guide,
+    sizeOptions: [
+      { label: "S", value: 0.5 },
+      { label: "M", value: 1 },
+      { label: "L", value: 2 },
+    ],
+  },
+  {
+    id: uuid(),
+    name: "Sash Six",
+    title: "Sash Six",
+    description: "",
+    image: sash6_front,
+    model: sash6_actual,
+    confirm_image: sash6_actual,
+    positioningLeft: {
+      text: {
+        top: "2rem",
+        left: "-4rem",
+        height: "12rem",
+        width: "4.8rem",
+        lineHeight: "",
+      },
+      image: {
+        top: "-6rem",
+        left: "-3.8rem",
+        height: "3.2rem",
+        width: "3.2rem",
+      }
+    },
+    positioningRight: {
+      text: {
+        top: "2rem",
+        left: "1rem",
+        height: "12rem",
+        width: "4.8rem",
+        lineHeight: "",
+      },
+      image: {
+        top: "-6.5rem",
+        left: "2rem",
+        height: "3.2rem",
+        width: "3.2rem",
+      }
+    },
+    otherYards: { small: 2, large: 4, extraLarge: 5, extraExtraLarge: 5 },
+    myZoom: 0.65,
+    price: 130,
+    readyIn: 7,
+    sizeGuide: sash_guide,
+    sizeOptions: [
+      { label: "S", value: 0.5 },
+      { label: "M", value: 1 },
+      { label: "L", value: 2 },
+    ],
+  },
+  {
+    id: uuid(),
+    name: "Sash Seven",
+    title: "Sash Seven",
+    description: "",
+    image: sash7_front,
+    model: sash7_actual,
+    confirm_image: sash7_actual,
+    positioningLeft: {
+      text: {
+        top: "2.5rem",
+        left: "-6rem",
+        height: "14rem",
+        width: "5.5rem",
+        lineHeight: "",
+      },
+      image: {
+        top: "-6rem",
+        left: "-4rem",
+        height: "3.5rem",
+        width: "3.5rem",
+      }
+    },
+    positioningRight: {
+      text: {
+        top: "2.5rem",
+        left: "0.5rem",
+        height: "14rem",
+        width: "5.5rem",
+        lineHeight: "",
+      },
+      image: {
+        top: "-6rem",
+        left: "3.5rem",
+        height: "3.5rem",
+        width: "3.5rem",
+      }
+    },
+    otherYards: { small: 3, large: 4, extraLarge: 5, extraExtraLarge: 5 },
+    myZoom: 0.7,
+    price: 140,
+    readyIn: 8,
+    sizeGuide: sash_guide,
+    sizeOptions: [
+      { label: "S", value: 0.5 },
+      { label: "M", value: 1 },
+      { label: "L", value: 2 },
+    ],
+  },
+  {
+    id: uuid(),
+    name: "Sash Eight",
+    title: "Sash Eight",
+    description: "",
+    image: sash8_front,
+    model: sash8_actual,
+    confirm_image: sash8_actual,
+    positioningLeft: {
+      text: {
+        top: "3rem",
+        left: "-5.5rem",
+        height: "13rem",
+        width: "5rem",
+        lineHeight: "",
+      },
+      image: {
+        top: "-5rem",
+        left: "-5rem",
+        height: "3rem",
+        width: "3rem",
+      }
+    },
+    positioningRight: {
+      text: {
+        top: "3rem",
+        left: "0.5rem",
+        height: "13rem",
+        width: "5rem",
+        lineHeight: "",
+      },
+      image: {
+        top: "-5rem",
+        left: "2.5rem",
+        height: "3rem",
+        width: "3rem",
+      }
+    },
+    otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
+    myZoom: 0.65,
+    price: 130,
+    readyIn: 7,
+    sizeGuide: sash_guide,
+    sizeOptions: [
+      { label: "S", value: 0.5 },
+      { label: "M", value: 1 },
+      { label: "L", value: 2 },
+    ],
+  },
+  {
+    id: uuid(),
+    name: "Sash Nine",
+    title: "Sash Nine",
+    description: "",
+    image: sash9_front,
+    model: sash9_actual,
+    confirm_image: sash9_actual,
+    positioningLeft: {
+      text: {
+        top: "3rem",
+        left: "-5rem",
+        height: "14rem",
+        width: "5rem",
+        lineHeight: "",
+      },
+      image: {
+        top: "-5.5rem",
+        left: "-4rem",
+        height: "3rem",
+        width: "3rem",
+      }
+    },
+    positioningRight: {
+      text: {
+        top: "3rem",
+        left: "1rem",
+        height: "14rem",
+        width: "5rem",
+        lineHeight: "",
+      },
+      image: {
+        top: "-5.5rem",
+        left: "3rem",
+        height: "3rem",
+        width: "3rem",
+      }
+    },
+    otherYards: { small: 3, large: 4, extraLarge: 5, extraExtraLarge: 5 },
+    myZoom: 0.65,
+    price: 145,
+    readyIn: 8,
+    sizeGuide: sash_guide,
+    sizeOptions: [
+      { label: "S", value: 0.5 },
+      { label: "M", value: 1 },
+      { label: "L", value: 2 },
+    ],
+  },
+  // {
+  //   id: uuid(),
+  //   name: "Sash Ten",
+  //   title: "Sash Ten",
+  //   description: "",
+  //   image: sash10_front,
+  //   model: sash10_actual,
+  //   confirm_image: sash10_actual,
+  //   positioningLeft: {
+  //     text: {
+  //       top: "2rem",
+  //       left: "-6.5rem",
+  //       height: "13rem",
+  //       width: "5.2rem",
+  //       lineHeight: "",
+  //     },
+  //     image: {
+  //       top: "-5rem",
+  //       left: "-3.5rem",
+  //       height: "3rem",
+  //       width: "3rem",
+  //     }
+  //   },
+  //   positioningRight: {
+  //     text: {
+  //       top: "2rem",
+  //       left: "1.5rem",
+  //       height: "13rem",
+  //       width: "5.2rem",
+  //       lineHeight: "",
+  //     },
+  //     image: {
+  //       top: "-5rem",
+  //       left: "3.5rem",
+  //       height: "3rem",
+  //       width: "3rem",
+  //     }
+  //   },
+  //   otherYards: { small: 3, large: 4, extraLarge: 5, extraExtraLarge: 5 },
+  //   myZoom: 0.7,
+  //   price: 150,
+  //   readyIn: 9,
+  //   sizeGuide: sash_guide,
+  //   sizeOptions: [
+  //     { label: "S", value: 0.5 },
+  //     { label: "M", value: 1 },
+  //     { label: "L", value: 2 },
+  //   ],
+  // },
+  {
+    id: uuid(),
+    name: "Sash Eleven",
+    title: "Sash Eleven",
+    description: "",
+    image: sash11_front,
+    model: sash11_actual,
+    confirm_image: sash11_actual,
+    positioningLeft: {
+      text: {
+        top: "2.5rem",
+        left: "-6rem",
+        height: "14rem",
+        width: "5.5rem",
+        lineHeight: "",
+      },
+      image: {
+        top: "-6rem",
+        left: "-3.5rem",
+        height: "3.5rem",
+        width: "3.5rem",
+      }
+    },
+    positioningRight: {
+      text: {
+        top: "2.5rem",
+        left: "1rem",
+        height: "14rem",
+        width: "5.5rem",
+        lineHeight: "",
+      },
+      image: {
+        top: "-6rem",
+        left: "3.5rem",
+        height: "3.5rem",
+        width: "3.5rem",
+      }
+    },
+    otherYards: { small: 3, large: 4, extraLarge: 5, extraExtraLarge: 5 },
+    myZoom: 0.7,
+    price: 155,
+    readyIn: 10,
+    sizeGuide: sash_guide,
+    sizeOptions: [
+      { label: "S", value: 0.5 },
+      { label: "M", value: 1 },
+      { label: "L", value: 2 },
+    ],
+  }, {
+    id: uuid(),
+    name: "Sash Twelve",
+    title: "Sash Twelve",
+    description: "",
+    image: sash12_front,
+    model: sash12_actual,
+    confirm_image: sash12_actual,
+    positioningLeft: {
+      text: {
+        top: "3rem",
+        left: "-6rem",
+        height: "13rem",
+        width: "5.6rem",
+        lineHeight: "",
+      },
+      image: {
+        top: "-5.5rem",
+        left: "-3rem",
+        height: "3rem",
+        width: "3.5rem",
+      }
+    },
+    positioningRight: {
+      text: {
+        top: "3rem",
+        left: "2rem",
+        height: "13rem",
+        width: "5.6rem",
+        lineHeight: "",
+      },
+      image: {
+        top: "-5.5rem",
+        left: "3.5rem",
+        height: "3rem",
+        width: "3.5rem",
+      }
+    },
+    otherYards: { small: 3, large: 4, extraLarge: 5, extraExtraLarge: 5 },
+    myZoom: 0.7,
+    price: 160,
+    readyIn: 10,
+    sizeGuide: sash_guide,
+    sizeOptions: [
+      { label: "S", value: 0.5 },
+      { label: "M", value: 1 },
+      { label: "L", value: 2 },
+    ],
+  },
+  {
+    id: uuid(),
+    name: "Sash Thirteen",
+    title: "Sash Thirteen",
+    description: "",
+    image: sash13_front,
+    model: sash13_actual,
+    confirm_image: sash13_actual,
+    positioningLeft: {
+      text: {
+        top: "3rem",
+        left: "-7rem",
+        height: "13.5rem",
+        width: "6rem",
+        lineHeight: "",
+      },
+      image: {
+        top: "-6rem",
+        left: "-3.5rem",
+        height: "3.2rem",
+        width: "3.2rem",
+      }
+    },
+    positioningRight: {
+      text: {
+        top: "3rem",
+        left: "2.5rem",
+        height: "13.5rem",
+        width: "6rem",
+        lineHeight: "",
+      },
+      image: {
+        top: "-6rem",
+        left: "4rem",
+        height: "3.2rem",
+        width: "3.2rem",
+      }
+    },
+    otherYards: { small: 3, large: 4, extraLarge: 5, extraExtraLarge: 5 },
+    myZoom: 0.75,
+    price: 165,
+    readyIn: 10,
+    sizeGuide: sash_guide,
+    sizeOptions: [
+      { label: "S", value: 0.5 },
+      { label: "M", value: 1 },
+      { label: "L", value: 2 },
+    ],
+  },
+  {
+    id: uuid(),
+    name: "Sash Fourteen",
+    title: "Sash Fourteen",
+    description: "",
+    image: sash14_front,
+    model: sash14_actual,
+    confirm_image: sash14_actual,
+    positioningLeft: {
+      text: {
+        top: "3.5rem",
+        left: "-6.5rem",
+        height: "14rem",
+        width: "6.2rem",
+        lineHeight: "",
+      },
+      image: {
+        top: "-6.2rem",
+        left: "-4rem",
+        height: "3.5rem",
+        width: "3.5rem",
+      }
+    },
+    positioningRight: {
+      text: {
+        top: "3.5rem",
+        left: "3rem",
+        height: "14rem",
+        width: "6.2rem",
+        lineHeight: "",
+      },
+      image: {
+        top: "-6.2rem",
+        left: "4.5rem",
+        height: "3.5rem",
+        width: "3.5rem",
+      }
+    },
+    otherYards: { small: 3, large: 4, extraLarge: 5, extraExtraLarge: 5 },
+    myZoom: 0.75,
+    price: 170,
+    readyIn: 11,
+    sizeGuide: sash_guide,
+    sizeOptions: [
+      { label: "S", value: 0.5 },
+      { label: "M", value: 1 },
+      { label: "L", value: 2 },
+    ],
+  },
+  {
+    id: uuid(),
+    name: "Sash Fifteen",
+    title: "Sash Fifteen",
+    description: "",
+    image: sash15_front,
+    model: sash15_actual,
+    confirm_image: sash15_actual,
+    positioningLeft: {
+      text: {
+        top: "4rem",
+        left: "-7rem",
+        height: "14.5rem",
+        width: "6.5rem",
+        lineHeight: "",
+      },
+      image: {
+        top: "-6.5rem",
+        left: "-4.5rem",
+        height: "3.5rem",
+        width: "3.5rem",
+      }
+    },
+    positioningRight: {
+      text: {
+        top: "4rem",
+        left: "3.5rem",
+        height: "14.5rem",
+        width: "6.5rem",
+        lineHeight: "",
+      },
+      image: {
+        top: "-6.5rem",
+        left: "5rem",
+        height: "3.5rem",
+        width: "3.5rem",
+      }
+    },
+    otherYards: { small: 3, large: 4, extraLarge: 5, extraExtraLarge: 5 },
+    myZoom: 0.8,
+    price: 180,
+    readyIn: 12,
+    sizeGuide: sash_guide,
+    sizeOptions: [
+      { label: "S", value: 0.5 },
+      { label: "M", value: 1 },
+      { label: "L", value: 2 },
+    ],
+  },
+  {
+    id: uuid(),
+    name: "Sash Sixteen",
+    title: "Sash Sixteen",
+    description: "",
+    image: sash16_front,
+    model: sash16_actual,
+    confirm_image: sash16_actual,
+    positioningLeft: {
+      text: {
+        top: "4.5rem",
+        left: "-8rem",
+        height: "15rem",
+        width: "7rem",
+        lineHeight: "",
+      },
+      image: {
+        top: "-7rem",
+        left: "-5rem",
+        height: "4rem",
+        width: "4rem",
+      }
+    },
+    positioningRight: {
+      text: {
+        top: "4.5rem",
+        left: "4rem",
+        height: "15rem",
+        width: "7rem",
+        lineHeight: "",
+      },
+      image: {
+        top: "-7rem",
+        left: "5.5rem",
+        height: "4rem",
+        width: "4rem",
+      }
+    },
+    otherYards: { small: 3, large: 4, extraLarge: 5, extraExtraLarge: 6 },
+    myZoom: 0.85,
+    price: 190,
+    readyIn: 13,
+    sizeGuide: sash_guide,
+    sizeOptions: [
+      { label: "S", value: 0.5 },
+      { label: "M", value: 1 },
+      { label: "L", value: 2 },
+    ],
+  },
+  {
+    id: uuid(),
+    name: "Sash Seventeen",
+    title: "Sash Seventeen",
+    description: "",
+    image: sash17_front,
+    model: sash17_actual,
+    confirm_image: sash17_actual,
+    positioningLeft: {
+      text: {
+        top: "5rem",
+        left: "-8.5rem",
+        height: "15.5rem",
+        width: "7.2rem",
+        lineHeight: "",
+      },
+      image: {
+        top: "-7.5rem",
+        left: "-5.5rem",
+        height: "4rem",
+        width: "4.2rem",
+      }
+    },
+    positioningRight: {
+      text: {
+        top: "5rem",
+        left: "4.5rem",
+        height: "15.5rem",
+        width: "7.2rem",
+        lineHeight: "",
+      },
+      image: {
+        top: "-7.5rem",
+        left: "6rem",
+        height: "4rem",
+        width: "4.2rem",
+      }
+    },
+    otherYards: { small: 3, large: 4, extraLarge: 5, extraExtraLarge: 6 },
+    myZoom: 0.9,
+    price: 200,
+    readyIn: 14,
+    sizeGuide: sash_guide,
+    sizeOptions: [
+      { label: "S", value: 0.5 },
+      { label: "M", value: 1 },
+      { label: "L", value: 2 },
+    ],
+  },
+  {
+    id: uuid(),
+    name: "Sash Eighteen",
+    title: "Sash Eighteen",
+    description: "",
+    image: sash18_front,
+    model: sash18_actual,
+    confirm_image: sash18_actual,
+    positioningLeft: {
+      text: {
+        top: "5.5rem",
+        left: "-9rem",
+        height: "16rem",
+        width: "7.5rem",
+        lineHeight: "",
+      },
+      image: {
+        top: "-8rem",
+        left: "-6rem",
+        height: "4.5rem",
+        width: "4.5rem",
+      }
+    },
+    positioningRight: {
+      text: {
+        top: "5.5rem",
+        left: "5rem",
+        height: "16rem",
+        width: "7.5rem",
+        lineHeight: "",
+      },
+      image: {
+        top: "-8rem",
+        left: "6.5rem",
+        height: "4.5rem",
+        width: "4.5rem",
+      }
+    },
+    otherYards: { small: 3, large: 4, extraLarge: 6, extraExtraLarge: 7 },
+    myZoom: 0.95,
+    price: 210,
+    readyIn: 15,
+    sizeGuide: sash_guide,
+    sizeOptions: [
+      { label: "S", value: 0.5 },
+      { label: "M", value: 1 },
+      { label: "L", value: 2 },
+    ],
+  },
+  {
+    id: uuid(),
+    name: "Sash Nineteen",
+    title: "Sash Nineteen",
+    description: "",
+    image: sash19_front,
+    model: sash19_actual,
+    confirm_image: sash19_actual,
+    positioningLeft: {
+      text: {
+        top: "6rem",
+        left: "-9.5rem",
+        height: "16.5rem",
+        width: "8rem",
+        lineHeight: "",
+      },
+      image: {
+        top: "-8.5rem",
+        left: "-6.5rem",
+        height: "5rem",
+        width: "5rem",
+      }
+    },
+    positioningRight: {
+      text: {
+        top: "6rem",
+        left: "5.5rem",
+        height: "16.5rem",
+        width: "8rem",
+        lineHeight: "",
+      },
+      image: {
+        top: "-8.5rem",
+        left: "7rem",
+        height: "5rem",
+        width: "5rem",
+      }
+    },
+    otherYards: { small: 3, large: 4, extraLarge: 6, extraExtraLarge: 7 },
+    myZoom: 1,
+    price: 220,
+    readyIn: 16,
+    sizeGuide: sash_guide,
+    sizeOptions: [
+      { label: "S", value: 0.5 },
+      { label: "M", value: 1 },
+      { label: "L", value: 2 },
+    ],
+  },
+  {
+    id: uuid(),
+    name: "Sash Twenty",
+    title: "Sash Twenty",
+    description: "",
+    image: sash20_front,
+    model: sash20_actual,
+    confirm_image: sash20_actual,
+    positioningLeft: {
+      text: {
+        top: "6.5rem",
+        left: "-10rem",
+        height: "17rem",
+        width: "8.5rem",
+        lineHeight: "",
+      },
+      image: {
+        top: "-9rem",
+        left: "-7rem",
+        height: "5.5rem",
+        width: "5.5rem",
+      }
+    },
+    positioningRight: {
+      text: {
+        top: "6.5rem",
+        left: "6rem",
+        height: "17rem",
+        width: "8.5rem",
+        lineHeight: "",
+      },
+      image: {
+        top: "-9rem",
+        left: "7.5rem",
+        height: "5.5rem",
+        width: "5.5rem",
+      }
+    },
+    otherYards: { small: 3, large: 4, extraLarge: 6, extraExtraLarge: 7 },
+    myZoom: 1.05,
+    price: 230,
+    readyIn: 17,
+    sizeGuide: sash_guide,
+    sizeOptions: [
+      { label: "S", value: 0.5 },
+      { label: "M", value: 1 },
+      { label: "L", value: 2 },
+    ],
+  },
+  {
+    id: uuid(),
+    name: "Sash Twenty-One",
+    title: "Sash Twenty-One",
+    description: "",
+    image: sash21_front,
+    model: sash21_actual,
+    confirm_image: sash21_actual,
+    positioningLeft: {
+      text: {
+        top: "7rem",
+        left: "-10.5rem",
+        height: "18rem",
+        width: "9rem",
+        lineHeight: "",
+      },
+      image: {
+        top: "-9.5rem",
+        left: "-7.5rem",
+        height: "6rem",
+        width: "6rem",
+      }
+    },
+    positioningRight: {
+      text: {
+        top: "7rem",
+        left: "6.5rem",
+        height: "18rem",
+        width: "9rem",
+        lineHeight: "",
+      },
+      image: {
+        top: "-9.5rem",
+        left: "8rem",
+        height: "6rem",
+        width: "6rem",
+      }
+    },
+    otherYards: { small: 3, large: 4, extraLarge: 6, extraExtraLarge: 7 },
+    myZoom: 1.1,
+    price: 240,
+    readyIn: 18,
+    sizeGuide: sash_guide,
+    sizeOptions: [
+      { label: "S", value: 0.5 },
+      { label: "M", value: 1 },
+      { label: "L", value: 2 },
+    ],
+  },
+  {
+    id: uuid(),
+    name: "Sash Twenty-Two",
+    title: "Sash Twenty-Two",
+    description: "",
+    image: sash22_front,
+    model: sash22_actual,
+    confirm_image: sash22_actual,
+    positioningLeft: {
+      text: {
+        top: "7.5rem",
+        left: "-11rem",
+        height: "18.5rem",
+        width: "9.5rem",
+        lineHeight: "",
+      },
+      image: {
+        top: "-10rem",
+        left: "-8rem",
+        height: "6.5rem",
+        width: "6.5rem",
+      }
+    },
+    positioningRight: {
+      text: {
+        top: "7.5rem",
+        left: "7rem",
+        height: "18.5rem",
+        width: "9.5rem",
+        lineHeight: "",
+      },
+      image: {
+        top: "-10rem",
+        left: "8.5rem",
+        height: "6.5rem",
+        width: "6.5rem",
+      }
+    },
+    otherYards: { small: 3, large: 4, extraLarge: 6, extraExtraLarge: 7 },
+    myZoom: 1.15,
+    price: 250,
+    readyIn: 19,
+    sizeGuide: sash_guide,
+    sizeOptions: [
+      { label: "S", value: 0.5 },
+      { label: "M", value: 1 },
+      { label: "L", value: 2 },
+    ],
+  },
+  {
+    id: uuid(),
+    name: "Sash Twenty-Three",
+    title: "Sash Twenty-Three",
+    description: "",
+    image: sash23_front,
+    model: sash23_actual,
+    confirm_image: sash23_actual,
+    positioningLeft: {
+      text: {
+        top: "8rem",
+        left: "-11.5rem",
+        height: "19rem",
+        width: "10rem",
+        lineHeight: "",
+      },
+      image: {
+        top: "-10.5rem",
+        left: "-8.5rem",
+        height: "7rem",
+        width: "7rem",
+      }
+    },
+    positioningRight: {
+      text: {
+        top: "8rem",
+        left: "7.5rem",
+        height: "19rem",
+        width: "10rem",
+        lineHeight: "",
+      },
+      image: {
+        top: "-10.5rem",
+        left: "9rem",
+        height: "7rem",
+        width: "7rem",
+      }
+    },
+    otherYards: { small: 3, large: 4, extraLarge: 6, extraExtraLarge: 7 },
+    myZoom: 1.2,
+    price: 260,
+    readyIn: 20,
+    sizeGuide: sash_guide,
+    sizeOptions: [
+      { label: "S", value: 0.5 },
+      { label: "M", value: 1 },
+      { label: "L", value: 2 },
+    ],
+  }
+  
 ]
 
 export const mainUnisex = [
