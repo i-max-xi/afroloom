@@ -47,6 +47,7 @@ import { specialsCustomize } from "../../../Data/specials";
 import { SeeAll } from "./SeeAll";
 import { AnimatePresence } from "framer-motion";
 import FabricPrices from "../../../Data/fabricprices";
+import ImageUploadForLogo from "./ImageUploadForLogo";
 
 const Shirt = ({
   isRotating,
@@ -54,6 +55,7 @@ const Shirt = ({
   selectedPart,
   setSelectedPart,
   selectedTexture,
+  turn_to_back,
   showGlow,
 }) => {
   const snap = useSnapshot(state);
@@ -66,6 +68,20 @@ const Shirt = ({
       const rotationSpeed = 0.01;
       groupRef.current.rotation.y += rotationSpeed;
     }
+  if (turn_to_back) {
+    if (groupRef.current.rotation.y < Math.PI) {
+      groupRef.current.rotation.y += 0.05; // Adjust speed as needed
+    } else {
+      groupRef.current.rotation.y = Math.PI; // Ensure rotation does not exceed 180 degrees
+    }
+  } else {
+    // Reset to front position (0 degrees)
+    if (groupRef.current.rotation.y > 0) {
+      groupRef.current.rotation.y -= 0.05; // Slowly return to front position
+    } else {
+      groupRef.current.rotation.y = 0; // Ensure it does not go below 0
+    }
+  }
   });
 
   useEffect(() => {
@@ -103,7 +119,7 @@ const Shirt = ({
   }, []);
 
   return (
-    <group ref={groupRef}>
+    <group  ref={groupRef}>
       {isLoading ? (
         <>
           <LoadingAnimation />
@@ -415,7 +431,7 @@ const ConfiguratorSpecial = () => {
         return; // Exit function early if the file is not a PNG
       }
       
-      setUploadedImageLeft(URL.createObjectURL(file));
+      !turn_to_back ? setUploadedImageLeft(URL.createObjectURL(file)) : setUploadedImageRight(URL.createObjectURL(file));
       toastRef.current.show({
         severity: "success",
         summary: "Please Note",
@@ -433,7 +449,8 @@ const ConfiguratorSpecial = () => {
     };
 
     const handleSampleLogo = async (texture) => {
-      setUploadedImageLeft(texture);
+      
+      !turn_to_back ? setUploadedImageLeft(texture): setUploadedImageRight(texture);
      
       // setFirebaseImageLeft(texture);
     };
@@ -450,6 +467,8 @@ const ConfiguratorSpecial = () => {
         setOpenSeeAll(false);
         setSelectedSeeAll({ title: '', titleDisplay: '', array: [] });
       };
+
+  const[turn_to_back, set_turn_to_back] = useState(false)
   
   return (
     <>
@@ -748,6 +767,7 @@ const ConfiguratorSpecial = () => {
                           <>
                             
                             <HtmlLogoComponent
+                              turn_to_back={turn_to_back}   
                               imageLeft={uploadedImageLeft}
                               imageRight={uploadedImageRight}
                               width={selectedClothing?.logo?.size?.width || "5rem"}
@@ -765,6 +785,7 @@ const ConfiguratorSpecial = () => {
                         selectedPart={selectedPart}
                         selectedTexture={state.texture[selectedPart]}
                         showGlow={showGlow}
+                        turn_to_back={turn_to_back}
                       />
                       {/* {!noSpinFor.includes(selectedClothing.name) && (
                         <CameraControls />
@@ -783,16 +804,20 @@ const ConfiguratorSpecial = () => {
                           <>
                             {/* <h5 className="text-sm lg:text-lg">Imprint  Logos</h5> */}
                             <div className="flex justify-between gap-2">
-                              <ImageUpload
-                                labelLeft={"Upload Logo"}
-                                // labelRight={"Upload for right"}
+                              <ImageUploadForLogo
+                                labelLeft={"Upload Logo For Front"}
+                                labelRight={"Upload Logo For Back"}
                                 hideRightButton={
                                   true
                                 }
-                                onImageUploadLeft={handleImageUpload}
-                                // onImageUploadRight={handleImageUploadRight}
+                                onImageUpload={handleImageUpload}
                                 toastRef={toastRef}
                               />
+                            </div>
+                            <div className="flex justify-center items-center gap-2 justify-self-center">
+                                <input className="h-5 w-5 rounded-lg border-gray-300 bg-gray-200 focus:ring-2 focus:ring-blue-500"
+                                 type="checkbox" id="turn_to_back" name="turn_to_back" value={turn_to_back} onChange={() => set_turn_to_back(!turn_to_back)} />
+                                <label className="mt-2" htmlFor="turn_to_back">Turn to back</label>
                             </div>
                           </>
                       </div>

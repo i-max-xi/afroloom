@@ -192,6 +192,8 @@ const sash22_actual = require("../Assets/special_sashes/22.2.jpg");
 const sash23_front = require("../Assets/special_sashes/23.1.jpg");
 const sash23_actual = require("../Assets/special_sashes/23.2.jpg");
 
+const isMobile = window.innerWidth < 768;
+
 
 
 export const specialSash = [
@@ -234,7 +236,7 @@ export const specialSash = [
       }
     },
     otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
-    myZoom: 0.6,
+    myZoom:  0.6,
     price: 120,
     readyIn: 7,
     sizeGuide: sash_guide,

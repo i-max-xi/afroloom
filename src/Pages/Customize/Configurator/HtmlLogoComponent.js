@@ -1,16 +1,51 @@
 import { Html } from "@react-three/drei";
 import { separateWordsWithLineBreak } from "../../../utils/functions";
+import { useEffect, useState } from "react";
 
 const HtmlLogoComponent = ({
   ImprintTextPosition,
   hideRightText,
   imageLeft,
+  turn_to_back,
   imageRight,
   width,
   height,
   translateY,
   translateX,
 }) => {
+
+
+  useEffect(() => {
+    setStableImageLeft(null);
+
+    /// timetout 5 secons and set the image
+     setTimeout(() => {
+      if(turn_to_back){
+        setStableImageLeft(imageRight);
+
+      }
+      else{
+        setStableImageLeft(imageLeft);
+      }
+     }, 1000);
+
+  }
+  , [ turn_to_back]);
+
+  useEffect(() => {
+    if(turn_to_back){
+      setStableImageLeft(imageRight);
+
+    }
+    else{
+      setStableImageLeft(imageLeft);
+    }
+
+  }
+  , [ imageLeft, imageRight]);
+
+  const [stableImageLeft, setStableImageLeft] = useState(null);
+
   return (
     <Html style={{ zIndex: 1 }}>
       <div
@@ -25,15 +60,15 @@ const HtmlLogoComponent = ({
           wordWrap: "break-word", // Enable word wrapping for long words
           overflow: "hidden", // Ensure text doesn't overflow its container
           textTransform: "uppercase",
-          backgroundImage: `url(${imageLeft})`,
+          backgroundImage: `url(${stableImageLeft})`,
           backgroundSize: "contain",
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center",
-          opacity: imageLeft !== null ? 1 : 0.3,
+          opacity: stableImageLeft !== null ? 1 : 0.3,
         }}
         dangerouslySetInnerHTML={{
           __html:
-            imageLeft !== null ? "" : separateWordsWithLineBreak("LOGO HERE"),
+            stableImageLeft !== null ? "" : separateWordsWithLineBreak("LOGO HERE"),
         }}
       />
 

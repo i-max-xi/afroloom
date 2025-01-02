@@ -8,6 +8,9 @@ const HtmlImageComponent = ({
   imageRight,
   hideLogo = false,
 }) => {
+
+  const isMobile = window.innerWidth < 768;
+
   return (
     <Html style={{ zIndex: 1 }}>
       {!hideLogo && (
@@ -18,6 +21,7 @@ const HtmlImageComponent = ({
           transform: `translate(${ImprintTextPosition.left?.image?.left}, ${ImprintTextPosition.left?.image?.top})`,
           fontSize: "0.5rem",
           lineHeight: "0.7rem",
+          scale: isMobile ? 1 : 2,
           width:
             imageLeft !== null
               ? ImprintTextPosition?.left?.image?.width
@@ -51,6 +55,7 @@ const HtmlImageComponent = ({
             transform: `translate(${ImprintTextPosition.right?.image?.left}, ${ImprintTextPosition.right?.image?.top})`,
             fontSize: "0.5rem",
             lineHeight: "0.7rem",
+            scale: isMobile ? 1 : 5,
             width:
               imageRight !== null
                 ? ImprintTextPosition?.right?.image?.width
