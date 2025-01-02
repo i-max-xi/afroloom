@@ -45,7 +45,7 @@ const ForgotPassword = () => {
       <Toast ref={toastRef} />
 
       <div
-        className="w-100 p-4"
+        className="lg:w-[60%] mx-auto"
         style={{
           // backgroundImage: `url(${signInBg})`,
           backgroundSize: "cover",

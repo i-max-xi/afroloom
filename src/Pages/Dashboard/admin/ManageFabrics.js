@@ -246,6 +246,7 @@ const ManageFabrics = () => {
             <label htmlFor="fabricType">Fabric Type</label>
             <InputText
               id="fabricType"
+              disabled={true}
               value={updatedFabric.id || ""}
               readOnly
             />
@@ -264,7 +265,7 @@ const ManageFabrics = () => {
               }}
             />
           </div>
-          {editItemTemplate(updatedFabric.items || [])}
+          {/* {editItemTemplate(updatedFabric.items || [])} */}
           <button
             onClick={updateFabric}
             type="submit"
