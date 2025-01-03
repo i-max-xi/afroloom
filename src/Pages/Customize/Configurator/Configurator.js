@@ -155,11 +155,30 @@ const CameraControls = () => {
   );
 };
 
+
+
 const Configurator = () => {
   const { Id } = useParams();
   const selectedClothing = mainMaleCustomize.find((item) => item.name === Id);
 
-  const textureValues = FabricPrices()
+  const textureValues = FabricPrices();
+
+  // ar capabilties
+  const [isARMode, setARMode] = useState(false);
+
+  const startCamera = async () => {
+    const video = document.getElementById("camera-feed");
+  
+    try {
+      const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+      video.srcObject = stream;
+      video.play();
+    } catch (error) {
+      console.error("Camera access denied:", error);
+    }
+  };
+  
+
 
   const [selectedSize, setSelectedSize] = useState(1);
   const [selectedPrintOn, setSelectedPrintOn] = useState("#ffffff");
@@ -375,6 +394,7 @@ const Configurator = () => {
 
   // customer height
   const [height, setHeight] = useState("");
+
 
   const handleAllPartsClick = () => {
     setSelectedPart("all");
