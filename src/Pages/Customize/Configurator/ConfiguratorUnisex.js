@@ -877,7 +877,7 @@ const ConfiguratorUnisex = () => {
             <h3 className="text-center pt-3">
               Customizing {selectedClothing.name}
             </h3>
-            <div className="flex justify-content-center">
+            <div className="flex gap-4 justify-content-center">
               {noSpinFor.includes(selectedClothing.name) ? null : (
                 <button
                   className={`btn rotation-button text-white  ${

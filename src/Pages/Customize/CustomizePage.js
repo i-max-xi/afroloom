@@ -59,10 +59,10 @@ const CustomizePage = () => {
           ))} */}
           {/* Accessories */}
           <div className="flex-flex-col justify-center items-center gap-2">
-            <h5 className="mt-4 footer-header text-lg">Accessories</h5>
+            <h5 className="mt-4 footer-header text-lg">Design Your Beaded Bracelets & Accessories</h5>
             <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 items-center ">
               {mainUnisex
-                .slice(9, 14)
+                .slice(13, 16)
                 .map(({ name, image, link, description, title }) => (
                   <Link
                     to={link ? link : `/configurator-unisex/${name}`}
@@ -79,10 +79,78 @@ const CustomizePage = () => {
                     />
                   </Link>
                 ))}
-                {specialSash
+              {mainFemaleAccessories
                 .map(({ name, image, link, description, title }) => (
                   <Link
-                    to={link ? link : `/configurator-sash-special/${name}`}
+                  to={`/configurator-female-accessories/${name}`}
+                  className="text-decoration-none lg:mx-10  "
+                    key={name}
+                    data-aos="fade-in"
+                    data-aos-duration="1500"
+                  >
+                    
+                    <ListItem
+                      image={image}
+                      title={title || name}
+                      extraDescription={description}
+                    />
+                  </Link>
+                ))}
+              {mainMaleAccessories
+                .map(({ name, image, link, description, title }) => (
+                  <Link
+                  to={`/configurator-male-accessories/${name}`}
+                  className="text-decoration-none lg:mx-10  "
+                    key={name}
+                    data-aos="fade-in"
+                    data-aos-duration="1500"
+                  >
+                    
+                    <ListItem
+                      image={image}
+                      title={title || name}
+                      extraDescription={description}
+                    />
+                  </Link>
+                ))}
+               
+              </div>
+          </div>
+
+           {/* Sash */}
+           <div className="flex-flex-col justify-center items-center gap-2">
+            <h5 className="mt-4 footer-header text-lg">Customize Your Perfect Sash</h5>
+            <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 items-center ">
+              {mainUnisex
+                .slice(9, 13)
+                .map(({ name, image, link, description, title }) => (
+                  <Link
+                    to={link ? link : `/configurator-unisex/${name}`}
+                    className="text-decoration-none lg:mx-10  "
+                    key={name}
+                    data-aos="fade-in"
+                    data-aos-duration="1500"
+                  >
+                    
+                    <ListItem
+                      image={image}
+                      title={title || name}
+                      extraDescription={description}
+                    />
+                  </Link>
+                ))}
+             
+              </div>
+          </div>
+
+           {/* specials */}
+           <div className="flex-flex-col justify-center items-center gap-2">
+            <h5 className="mt-4 footer-header text-lg">Craft Your Logo Tees for Men & Women</h5>
+            <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 items-center ">
+              {specialsCustomize
+                .map(({ name, image, link, description, title }) => (
+                  <Link
+                    to={link ? link : `/configurator-special/${name}`}
                     className="text-decoration-none lg:mx-10  "
                     key={name}
                     data-aos="fade-in"
@@ -99,10 +167,36 @@ const CustomizePage = () => {
               </div>
           </div>
 
+           {/* Sash Templates */}
+           <div className="flex-flex-col justify-center items-center gap-2">
+            <h5 className="mt-4 footer-header text-lg">Personalize Sash Templates</h5>
+            <div className="flex items-center justify-center">
+              {specialSash
+                .slice(0, 1)
+                .map(({ name, image, link, description, title }) => (
+                  <Link
+                    to={"sash-templates"}
+                    className="text-decoration-none lg:mx-10  "
+                    key={name}
+                    data-aos="fade-in"
+                    data-aos-duration="1500"
+                  >
+                    
+                    <ListItem
+                      image={image}
+                      // title={title || name}
+                      extraDescription={description}
+                    />
+                  </Link>
+                ))}
+               
+              </div>
+          </div>
+
           {/* Female clothing */}
 
           <div className="flex-flex-col justify-center items-center gap-2">
-            <h5 className="mt-4 footer-header text-lg">Women's Clothing</h5>
+            <h5 className="mt-4 footer-header text-lg">Tailor Stylish Women's Clothing</h5>
             <div className="grid grid-cols-2 lg:grid-cols-3 gap-3   items-center">
               {mainFemaleCustomize.map(({ name, image }) => (
               <Link
@@ -123,7 +217,7 @@ const CustomizePage = () => {
 
           {/* Male clothing */}
           <div className="flex-flex-col justify-center items-center gap-2">
-            <h5 className="mt-4 footer-header text-lg">Men's Clothing</h5>
+            <h5 className="mt-4 footer-header text-lg">Upgrade Men's Clothing Your Way</h5>
             <div className="grid grid-cols-2 lg:grid-cols-3 gap-3   items-center">
               {mainMaleCustomize.map(({ name, image }) => (
               <Link
@@ -168,29 +262,7 @@ const CustomizePage = () => {
               </div>
           </div> */}
 
-           {/* specials */}
-           <div className="flex-flex-col justify-center items-center gap-2">
-            <h5 className="mt-4 footer-header text-lg">Specials</h5>
-            <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 items-center ">
-              {specialsCustomize
-                .map(({ name, image, link, description, title }) => (
-                  <Link
-                    to={link ? link : `/configurator-special/${name}`}
-                    className="text-decoration-none lg:mx-10  "
-                    key={name}
-                    data-aos="fade-in"
-                    data-aos-duration="1500"
-                  >
-                    
-                    <ListItem
-                      image={image}
-                      title={title || name}
-                      extraDescription={description}
-                    />
-                  </Link>
-                ))}
-              </div>
-          </div>
+          
 
          
 
@@ -238,6 +310,31 @@ const CustomizePage = () => {
               <ListItem image={image} description={name} />
             </Link>
           ))} */}
+
+          {/* Footwear */}
+          <div className="flex-flex-col justify-center items-center gap-2">
+            <h5 className="mt-4 footer-header text-lg">Step Up with Custom Footwear</h5>
+            <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 items-center ">
+              {mainFootwear
+                .map(({ name, image, link, description, title }) => (
+                  <Link
+                  to={`/configurator-footwear/${name}`}
+                  className="text-decoration-none lg:mx-10  "
+                    key={name}
+                    data-aos="fade-in"
+                    data-aos-duration="1500"
+                  >
+                    
+                    <ListItem
+                      image={image}
+                      title={title || name}
+                      extraDescription={description}
+                    />
+                  </Link>
+                ))}
+             
+              </div>
+          </div>
         </div>
       </div>
     </>

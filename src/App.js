@@ -43,6 +43,7 @@ import AdminDashboard from "./Pages/Dashboard/admin/AdminHome";
 import SignInAdmin from "./Pages/SignInAdmin";
 import ConfiguratorSpecial from "./Pages/Customize/Configurator/ConfiguratorSpecial";
 import ConfiguratorUnisexSpecial from "./Pages/Customize/Configurator/ConfiguratorUnisexSpecials";
+import SashTemplatePage from "./Pages/Customize/extra-step-before-configurator/SashTemplate";
 
 function App() {
   useEffect(() => {
@@ -56,6 +57,7 @@ function App() {
           <Route path="/" element={<Layout />}>
             <Route index element={<HomePage />} />
             <Route path="start-customize" element={<CustomizePage />} />
+            <Route path="start-customize/sash-templates" element={<SashTemplatePage />} />
             <Route path="about" element={<About />} />
             <Route path="customize-checkout" element={<CustomizeCheckout />} />
             <Route path="signup" element={<SignUp />} />
