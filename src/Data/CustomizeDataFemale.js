@@ -169,7 +169,7 @@ export const mainFemaleCustomize = [
     id: uuid(),
     name: "Sleeveless Shirt",
         image: "https://greatoutdoorprovision.com/wp-content/uploads/2020/03/500x500.png",
-
+        isVariant: true,
     model: sleeve_less_tshirt,
     myNode: [{ name: "all", yardNeeded: 2 }],
     otherYards: { small: 2, large: 3, extraLarge: 3, extraExtraLarge: 4 },
@@ -519,7 +519,7 @@ export const mainFemaleCustomize = [
     id: uuid(),
     name: "Bra With Mini Skirt",
         image: "https://greatoutdoorprovision.com/wp-content/uploads/2020/03/500x500.png",
-
+        isVariant: true,
     model: bra_mini_skirt,
     myNode: [{ name: "all", yardNeeded: 2 }],
     otherYards: { small: 2, large: 3, extraLarge: 3, extraExtraLarge: 4 },
@@ -543,7 +543,7 @@ export const mainFemaleCustomize = [
     id: uuid(),
     name: "Bra With Booty Shorts",
         image: "https://greatoutdoorprovision.com/wp-content/uploads/2020/03/500x500.png",
-
+        isVariant: true,
     model: bra_booty_short,
     myNode: [{ name: "all", yardNeeded: 2 }],
     otherYards: { small: 2, large: 3, extraLarge: 3, extraExtraLarge: 4 },
@@ -632,7 +632,7 @@ export const mainFemaleCustomize = [
     id: uuid(),
     name: "T-Shirt With Booty Shorts",
         image: "https://greatoutdoorprovision.com/wp-content/uploads/2020/03/500x500.png",
-
+        isVariant: true,
     model: tshirt_and_booty_shorts,
     myNode: [{ name: "all", yardNeeded: 2 }],
     otherYards: { small: 2, large: 3, extraLarge: 3, extraExtraLarge: 4 },
@@ -656,7 +656,7 @@ export const mainFemaleCustomize = [
     id: uuid(),
     name: "T-Shirt With Material Shorts",
         image: "https://greatoutdoorprovision.com/wp-content/uploads/2020/03/500x500.png",
-
+        isVariant: true,
     model: tshirt_and_material_shorts,
     myNode: [{ name: "all", yardNeeded: 2 }],
     otherYards: { small: 2, large: 3, extraLarge: 3, extraExtraLarge: 4 },
@@ -680,7 +680,7 @@ export const mainFemaleCustomize = [
     id: uuid(),
     name: "T-Shirt With Skirt",
         image: "https://greatoutdoorprovision.com/wp-content/uploads/2020/03/500x500.png",
-
+        isVariant: true,
     model: tshirt_and_skirt,
     myNode: [{ name: "all", yardNeeded: 2 }],
     otherYards: { small: 2, large: 3, extraLarge: 3, extraExtraLarge: 4 },
@@ -704,7 +704,7 @@ export const mainFemaleCustomize = [
     id: uuid(),
     name: "T-Shirt With Trousers",
         image: "https://greatoutdoorprovision.com/wp-content/uploads/2020/03/500x500.png",
-
+        isVariant: true,
     model: tshirt_and_trousers,
     myNode: [{ name: "all", yardNeeded: 2 }],
     otherYards: { small: 2, large: 3, extraLarge: 3, extraExtraLarge: 4 },
@@ -729,7 +729,7 @@ export const mainFemaleCustomize = [
     id: uuid(),
     name: "Shirt With Booty Shorts",
         image: "https://greatoutdoorprovision.com/wp-content/uploads/2020/03/500x500.png",
-
+        isVariant: true,
     model: short_shirt_and_booty_shorts,
     myNode: [{ name: "all", yardNeeded: 2 }],
     otherYards: { small: 2, large: 3, extraLarge: 3, extraExtraLarge: 4 },
@@ -753,7 +753,7 @@ export const mainFemaleCustomize = [
     id: uuid(),
     name: "Shirt With Material Shorts",
         image: "https://greatoutdoorprovision.com/wp-content/uploads/2020/03/500x500.png",
-
+        isVariant: true,
     model: short_shirt_and_material_shorts,
     myNode: [{ name: "all", yardNeeded: 2 }],
     otherYards: { small: 2, large: 3, extraLarge: 3, extraExtraLarge: 4 },
@@ -777,7 +777,7 @@ export const mainFemaleCustomize = [
     id: uuid(),
     name: "Shirt With Trousers",
         image: "https://greatoutdoorprovision.com/wp-content/uploads/2020/03/500x500.png",
-
+        isVariant: true,
     model: short_shirt_and_trousers,
     myNode: [{ name: "all", yardNeeded: 2 }],
     otherYards: { small: 2, large: 3, extraLarge: 3, extraExtraLarge: 4 },
@@ -839,7 +839,7 @@ export const mainFemaleCustomize = [
     id: uuid(),
     name: "Crop Top With Mini Skirt",
         image: "https://greatoutdoorprovision.com/wp-content/uploads/2020/03/500x500.png",
-
+        isVariant: true,
     model: crop_top_mini_skirt,
     myNode: [{ name: "all", yardNeeded: 2 }],
     otherYards: { small: 2, large: 3, extraLarge: 3, extraExtraLarge: 4 },
@@ -863,7 +863,7 @@ export const mainFemaleCustomize = [
     id: uuid(),
     name: "Crop Top With Long Skirt",
         image: "https://greatoutdoorprovision.com/wp-content/uploads/2020/03/500x500.png",
-
+        isVariant: true,
     model: crop_top_long_skirt,
     myNode: [{ name: "all", yardNeeded: 2 }],
     otherYards: { small: 2, large: 3, extraLarge: 3, extraExtraLarge: 4 },
@@ -887,7 +887,7 @@ export const mainFemaleCustomize = [
     id: uuid(),
     name: "Crop Top With Booty Shorts",
         image: "https://greatoutdoorprovision.com/wp-content/uploads/2020/03/500x500.png",
-
+        isVariant: true,
     model: crop_top_booty_shorts,
     myNode: [{ name: "all", yardNeeded: 2 }],
     otherYards: { small: 2, large: 3, extraLarge: 3, extraExtraLarge: 4 },
@@ -912,7 +912,7 @@ export const mainFemaleCustomize = [
     id: uuid(),
     name: "Crop Top With Material Shorts",
         image: "https://greatoutdoorprovision.com/wp-content/uploads/2020/03/500x500.png",
-
+        isVariant: true,
     model: crop_top_material_shorts,
     myNode: [{ name: "all", yardNeeded: 2 }],
     otherYards: { small: 2, large: 3, extraLarge: 3, extraExtraLarge: 4 },
@@ -1022,7 +1022,7 @@ export const mainFemaleCustomize = [
     id: uuid(),
     name: "Blazer With Material Shorts",
         image: "https://greatoutdoorprovision.com/wp-content/uploads/2020/03/500x500.png",
-
+        isVariant: true,
     model: blazer_shorts,
     myNode: [{ name: "all", yardNeeded: 2 }],
     otherYards: { small: 2, large: 3, extraLarge: 3, extraExtraLarge: 4 },
@@ -1046,7 +1046,7 @@ export const mainFemaleCustomize = [
     id: uuid(),
     name: "Blazer With Trousers",
         image: "https://greatoutdoorprovision.com/wp-content/uploads/2020/03/500x500.png",
-
+        isVariant: true,
     model: blazer_trousers,
     myNode: [{ name: "all", yardNeeded: 2 }],
     otherYards: { small: 2, large: 3, extraLarge: 3, extraExtraLarge: 4 },
