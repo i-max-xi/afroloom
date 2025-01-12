@@ -27,6 +27,7 @@ const HtmlComponent = ({
           wordWrap: "break-word", // Enable word wrapping for long words
           overflow: "hidden", // Ensure text doesn't overflow its container
           textTransform: "uppercase",
+          lineHeight: `${ImprintTextPosition?.left?.lineHeight || "2.8rem"}  `,
           fontFamily: fontFamily,
           writingMode: `${
             textLeftOrientation === "vertical" ? "vertical-rl" : "horizontal-tb"
@@ -54,6 +55,7 @@ const HtmlComponent = ({
             fontSize: textSizeRight,
             width: ImprintTextPosition?.right.width,
             height: ImprintTextPosition?.right.height,
+            lineHeight: `${ImprintTextPosition?.right?.lineHeight || "2.8rem"}  `,
             wordWrap: "break-word", // Enable word wrapping for long words
             overflow: "hidden", // Ensure text doesn't overflow its container
             textTransform: "uppercase",

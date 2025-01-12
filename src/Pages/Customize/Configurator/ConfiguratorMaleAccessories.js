@@ -163,7 +163,7 @@ const ConfiguratorMaleAccessories = () => {
 
   const [selectedPart, setSelectedPart] = useState(0);
 
-  const [isRotating, setIsRotating] = useState(false);
+  const [isRotating, setIsRotating] = useState(true);
 
   const canvasRef = useRef();
   // toast
@@ -529,14 +529,15 @@ const ConfiguratorMaleAccessories = () => {
                 Take Tour
               </button>
             </div>
+
             <div className="lg:grid grid-cols-1 lg:gap-5 flex flex-col-reverse lg:grid-cols-2 container my-3 lg:h-screen">
-              <div className="left-panel rounded border lg:h-hull">
-                <h5>Select Part</h5>
+              <div className="left-panel rounded border lg:h-full">
+                {/* <h5>Select Part</h5>
                 <div className="select-part-container">
                   {masterSelectionPartOptions}
-                </div>
+                </div> */}
                 <h5>Choose Size</h5>
-                <div className="size w-75">
+                <div className="size ">
                   <p className="size-button-container">
                     {selectedClothing.sizeOptions.map((option) => (
                       <button
@@ -545,13 +546,18 @@ const ConfiguratorMaleAccessories = () => {
                           selectedSize === option.value ? "selected" : ""
                         }`}
                         onClick={() =>
-                          handleSizeChange(option.value, option.priceValue)
+                          handleSizeChange(
+                            option.value,
+                            option.priceValue,
+                            option.colorPriceValue,
+                          )
                         }
                       >
                         {option.label}
                       </button>
                     ))}
                   </p>
+
                   <p className="fit">
                     <span onClick={() => setVisible(true)}>
                       Customize Your Size &#8594;
@@ -632,7 +638,8 @@ const ConfiguratorMaleAccessories = () => {
                     </div>
                   </Dialog>
                 </div>
-                <h5>Choose Color</h5>
+                <h5>Choose Color (Cotton Material)</h5>
+
                 <div className="flex gap-5 overflow-x-scroll flex-nowrap no-scrollbar w-[90%] ">
                   {colorOptions.map((colorOption) => (
                      <div key={colorOption.color} className="color-item">
@@ -648,6 +655,7 @@ const ConfiguratorMaleAccessories = () => {
                    </div>
                   ))}
                 </div>
+
                 <h5 className="mt-4">Choose Textile</h5> 
                 <div className="texture-buttons-container ">
                     {openSeeAll ? ( 
@@ -786,6 +794,7 @@ const ConfiguratorMaleAccessories = () => {
                 </>)}
 
                 </div>
+                
               </div>
               <div className="right-panel h-full">
                 <div className="resize-right-panel h-full">
@@ -797,12 +806,12 @@ const ConfiguratorMaleAccessories = () => {
                       }
                     }
                   >
-
                   <Canvas
                     // ref={canvasRef}
                     camera={{ position: [0, 0, selectedClothing.myZoom] }} // Set the initial camera position
                     gl={{ preserveDrawingBuffer: true }}
                     className="main-canvas h-full "
+
                   >
                     <ambientLight intensity={0.5} />
                     <pointLight position={[10, 10, 10]} />
@@ -813,33 +822,17 @@ const ConfiguratorMaleAccessories = () => {
                       selectedTexture={state.texture[selectedPart]}
                       showGlow={showGlow}
                     />
-                    <CameraControls />{" "}
+                    <CameraControls />
                     {/* Add camera controls for interaction */}
                   </Canvas>
                 </div>
                 </div>
 
-                {/* {/* <div className="m-3">
-                  <button
-                    className={`btn rotation-button text-white m-3 ${
-                      isRotating === true ? "btn-danger" : "btn-warning"
-                    }`}
-                    onClick={handleRotation}
-                  >
-                    {isRotating ? (
-                  <span>
-                    Stop <i className="pi pi-ban"></i>
-                  </span>
-                ) : (
-                  <span className="d-flex align-items-center gap-1">
-                    Take a Spin <i className="pi pi-sync" style={{ fontSize: '0.8rem' }}></i>
-                  </span>
-                )}
-                  </button>
-                </div> */}
+               
               </div>
             </div>
           </div>
+
           <div className="price w-100 d-flex bg-dark text-white justify-content-between">
             <span className="m-3 expect-to-be-ready">
               Estimated time to make this order:{" "}
@@ -852,7 +845,7 @@ const ConfiguratorMaleAccessories = () => {
               <span className="expect-to-be-ready">Price:</span>{" "}
               <span className="customize-focus">
                 {currencySymbol}
-                {total}.00
+                {total}
               </span>
             </p>
 
