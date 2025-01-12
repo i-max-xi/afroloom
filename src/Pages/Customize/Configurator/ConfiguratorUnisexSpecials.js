@@ -665,7 +665,7 @@ const ConfiguratorUnisexSpecial = () => {
                   className="main-canvas h-full resize-right-panel"
                 >
                
-                  <Image url={displayImage} />
+                  <Image scale={selectedClothing.scale || 1} url={displayImage} />
                   {
                         isLoading === false && (
                           <>
