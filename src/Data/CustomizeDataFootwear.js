@@ -78,7 +78,7 @@ export const mainFootwear = [
     ],
     otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
     myZoom: 0.9,
-    price: 150 + 200,
+    price: 100 + 200,
     sizeGuide: sneaker_guide,
     sizeModels: tshirt_model,
     readyIn: 7,
