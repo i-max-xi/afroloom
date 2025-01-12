@@ -178,7 +178,7 @@ export const mainFemaleAccessories = [
       { name: "zippers_and_locks", yardNeeded: 1 },
     ],
     myZoom: 0.9,
-    price: 150,
+    price: 150 + 200,
     sizeGuide: handbag_guide,
     // sizeModels: tshirt_model,
     readyIn: 7,

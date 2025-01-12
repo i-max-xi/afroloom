@@ -89,6 +89,78 @@ export const mainMaleCustomize = [
   },
   {
     id: uuid(),
+    name: "Short Sleeve V-Shirt",
+    image: "",
+    model: "",
+    myNode: [{ name: "all", yardNeeded: 3 }],
+    otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
+    myZoom: 0.7,
+    myX: 0,
+    myY: 10,
+    price: 110,
+    // sizeModels: tshirt_model,
+    readyIn: 7,
+    sizeGuide: tshirt_guide,
+    sizeOptions: [
+      { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 50 },
+      { label: "M", value: 1, priceValue: 0, colorPriceValue: 85 },
+      { label: "L", value: 2, priceValue: 25, colorPriceValue: 85 },
+      { label: "XL", value: 3, priceValue: 25, colorPriceValue: 120 },
+      { label: "2XL", value: 4, priceValue: 50, colorPriceValue: 120 },
+    ],
+    sizeForms: [
+      {
+        label: "Neck Size (cm)",
+      },
+      {
+        label: "Half Across Back (cm)",
+      },
+      {
+        label: "Chest (cm)",
+      },
+      {
+        label: "Sleeve Length (cm)",
+      },
+    ],
+  },
+  {
+    id: uuid(),
+    name: "Sleeveless T-shirt",
+    image: "",
+    model: tshirtModel1,
+    myNode: [{ name: "all", yardNeeded: 3 }],
+    otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
+    myZoom: 0.7,
+    myX: 0,
+    myY: 10,
+    price: 110,
+    // sizeModels: tshirt_model,
+    readyIn: 7,
+    sizeGuide: "",
+    sizeOptions: [
+      { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 50 },
+      { label: "M", value: 1, priceValue: 0, colorPriceValue: 85 },
+      { label: "L", value: 2, priceValue: 25, colorPriceValue: 85 },
+      { label: "XL", value: 3, priceValue: 25, colorPriceValue: 120 },
+      { label: "2XL", value: 4, priceValue: 50, colorPriceValue: 120 },
+    ],
+    sizeForms: [
+      {
+        label: "Neck Size (cm)",
+      },
+      {
+        label: "Half Across Back (cm)",
+      },
+      {
+        label: "Chest (cm)",
+      },
+      {
+        label: "Sleeve Length (cm)",
+      },
+    ],
+  },
+  {
+    id: uuid(),
     name: "Long Sleeve T-Shirt",
     image: image_tshirt_long_image,
     model: tshirtModel2,
@@ -160,6 +232,7 @@ export const mainMaleCustomize = [
       },
     ],
   },
+
   {
     id: uuid(),
     name: "Long Sleeve Shirt",
@@ -199,6 +272,45 @@ export const mainMaleCustomize = [
       },
       {
         label: "Cuff (cm)",
+      },
+    ],
+  },
+  {
+    id: uuid(),
+    name: "Shirt With Material Shorts",
+    image: "",
+    model: "",
+    myNode: [
+      { name: "all", yardNeeded: 3 },
+      { name: "buttons", yardNeeded: 0 },
+    ],
+    otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
+    myZoom: 0.7,
+    myX: 0,
+    myY: 10,
+    price: 110,
+    // sizeModels: tshirt_model,
+    readyIn: 7,
+    sizeGuide: shirt_guide,
+    sizeOptions: [
+      { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 50 },
+      { label: "M", value: 1, priceValue: 0, colorPriceValue: 85 },
+      { label: "L", value: 2, priceValue: 25, colorPriceValue: 85 },
+      { label: "XL", value: 3, priceValue: 25, colorPriceValue: 120 },
+      { label: "2XL", value: 4, priceValue: 50, colorPriceValue: 120 },
+    ],
+    sizeForms: [
+      {
+        label: "Neck Size (cm)",
+      },
+      {
+        label: "Half Across Back (cm)",
+      },
+      {
+        label: "Chest (cm)",
+      },
+      {
+        label: "Sleeve Length (cm)",
       },
     ],
   },
