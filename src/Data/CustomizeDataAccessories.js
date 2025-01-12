@@ -61,41 +61,41 @@ export const mainMaleAccessories = [
       // Add more form fields as needed
     ],
   },
-  {
-    id: uuid(),
-    name: "Knitted Cap",
-    image:
-      "https://image.made-in-china.com/202f0j00orGqiInWvEzg/Jamaican-Rasta-Hat-Multi-Colour-Striped-Slouchy-Beanie-Gorro-Reggae-Free-Rasta-Hat-Crochet-Pattern-Beanie-Cap.webp",
-    model: knitted_cap,
-    myNode: [
-      { name: "bottom_section", yardNeeded: 1 },
-      { name: "mid_section", yardNeeded: 1 },
-      { name: "top_section", yardNeeded: 1 },
-    ],
-    myZoom: 0.5,
-    price: 80,
-    sizeGuide: knittedCap_guide,
-    // sizeModels: tshirt_model,
-    readyIn: 7,
-    sizeOptions: [
-      { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 0 },
-      { label: "M", value: 1, priceValue: 0, colorPriceValue: 0 },
-      { label: "L", value: 2, priceValue: 0, colorPriceValue: 0 },
-      { label: "XL", value: 3, priceValue: 0, colorPriceValue: 0 },
-      { label: "2XL", value: 4, priceValue: 0, colorPriceValue: 0 },
-    ],
-    sizeForms: [
-      {
-        label: "Length (cm)",
-        value: "",
-      },
-      {
-        label: "Width (cm)",
-        value: "",
-      },
-      // Add more form fields as needed
-    ],
-  },
+  // {
+  //   id: uuid(),
+  //   name: "Knitted Cap",
+  //   image:
+  //     "https://image.made-in-china.com/202f0j00orGqiInWvEzg/Jamaican-Rasta-Hat-Multi-Colour-Striped-Slouchy-Beanie-Gorro-Reggae-Free-Rasta-Hat-Crochet-Pattern-Beanie-Cap.webp",
+  //   model: knitted_cap,
+  //   myNode: [
+  //     { name: "bottom_section", yardNeeded: 1 },
+  //     { name: "mid_section", yardNeeded: 1 },
+  //     { name: "top_section", yardNeeded: 1 },
+  //   ],
+  //   myZoom: 0.5,
+  //   price: 80,
+  //   sizeGuide: knittedCap_guide,
+  //   // sizeModels: tshirt_model,
+  //   readyIn: 7,
+  //   sizeOptions: [
+  //     { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 0 },
+  //     { label: "M", value: 1, priceValue: 0, colorPriceValue: 0 },
+  //     { label: "L", value: 2, priceValue: 0, colorPriceValue: 0 },
+  //     { label: "XL", value: 3, priceValue: 0, colorPriceValue: 0 },
+  //     { label: "2XL", value: 4, priceValue: 0, colorPriceValue: 0 },
+  //   ],
+  //   sizeForms: [
+  //     {
+  //       label: "Length (cm)",
+  //       value: "",
+  //     },
+  //     {
+  //       label: "Width (cm)",
+  //       value: "",
+  //     },
+  //     // Add more form fields as needed
+  //   ],
+  // },
   {
     name: "Bow Tie",
     image: image_bowtie,

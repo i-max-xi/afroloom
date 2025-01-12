@@ -23,6 +23,7 @@ import jacket from "../Pages/Customize/Configurator/models/Accessories/Unisex/ja
 import bikini from "../Pages/Customize/Configurator/models/Accessories/bikini.glb";
 
 
+
 // variations
 import vneck from "../Pages/Customize/Configurator/models/FemaleClothing/variations/v_neck.glb";
 import tshirt_and_trousers from "../Pages/Customize/Configurator/models/FemaleClothing/variations/tshirt_and_trousers.glb";
@@ -39,6 +40,7 @@ import crop_top_long_skirt from "../Pages/Customize/Configurator/models/FemaleCl
 import crop_top_booty_shorts from "../Pages/Customize/Configurator/models/FemaleClothing/variations/crop_top_booty_shorts.glb";
 import bra_mini_skirt from "../Pages/Customize/Configurator/models/FemaleClothing/variations/bra_mini_skirt.glb";
 import bra_booty_short from "../Pages/Customize/Configurator/models/FemaleClothing/variations/bra_booty_short.glb";
+import bra_material_short from "../Pages/Customize/Configurator/models/FemaleClothing/variations/bra_material_short.glb";
 import blazer_trousers from "../Pages/Customize/Configurator/models/FemaleClothing/variations/blazer_trousers.glb";
 import blazer_shorts from "../Pages/Customize/Configurator/models/FemaleClothing/variations/blazer_shorts.glb";
 
@@ -87,6 +89,8 @@ const image_leggings = require("../Assets/welcome_3ds/female/leggings.png");
 const image_jacket = require("../Assets/welcome_3ds/female/bomber_jacket.png");
 const image_topndown_image = require("../Assets/welcome_3ds/female/kaftan.png");
 const image_material_shorts_image = require("../Assets/welcome_3ds/female/material_shorts.png");
+const image_bra_booty_shorts = require("../Assets/welcome_3ds/female/bra_booty_shorts.jpg");
+const image_bra_material_shorts = require("../Assets/welcome_3ds/female/bra_shorts.jpg");
 
 export const mainFemaleCustomize = [
   {
@@ -128,81 +132,80 @@ export const mainFemaleCustomize = [
       },
     ],
   },
-  {
-    id: uuid(),
-    name: "V-Shirt Shirt",
-    image: "https://cdnp.sanmar.com/medias/sys_master/images/images/hdb/hd1/11531770658846/4532-Black-1-LST700BlackModelFront2-1200W.jpg",
-    model: vneck,
-    myNode: [{ name: "all", yardNeeded: 2 }],
-    otherYards: { small: 2, large: 3, extraLarge: 3, extraExtraLarge: 4 },
-    myZoom: 0.7,
-    price: 110,
-    sizeGuide: tshirt_guide,
-    // sizeModels: tshirt_model,
-    readyIn: 7,
-    sizeOptions: [
-      { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 50 },
-      { label: "M", value: 1, priceValue: 0, colorPriceValue: 50 },
-      { label: "L", value: 2, priceValue: 25, colorPriceValue: 85 },
-      { label: "XL", value: 3, priceValue: 25, colorPriceValue: 85 },
-      { label: "2XL", value: 4, priceValue: 50, colorPriceValue: 120 },
-    ],
-    sizeForms: [
-      {
-        label: "Bust (cm)",
-      },
-      {
-        label: "Waist (cm)",
-      },
-      {
-        label: "Hip (cm)",
-      },
-      {
-        label: "Top Length (cm)",
-      },
-      {
-        label: "Sleeve Length (cm)",
-      },
-    ],
-  },
-  {
-    id: uuid(),
-    name: "Sleeveless Shirt",
-        image: "https://greatoutdoorprovision.com/wp-content/uploads/2020/03/500x500.png",
-        isVariant: true,
-    model: sleeve_less_tshirt,
-    myNode: [{ name: "all", yardNeeded: 2 }],
-    otherYards: { small: 2, large: 3, extraLarge: 3, extraExtraLarge: 4 },
-    myZoom: 0.7,
-    price: 110 + 200,
-    sizeGuide: tshirt_guide,
-    // sizeModels: tshirt_model,
-    readyIn: 7,
-    sizeOptions: [
-      { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 50 },
-      { label: "M", value: 1, priceValue: 0, colorPriceValue: 50 },
-      { label: "L", value: 2, priceValue: 25, colorPriceValue: 85 },
-      { label: "XL", value: 3, priceValue: 25, colorPriceValue: 85 },
-      { label: "2XL", value: 4, priceValue: 50, colorPriceValue: 120 },
-    ],
-    sizeForms: [
-      {
-        label: "Bust (cm)",
-      },
-      {
-        label: "Waist (cm)",
-      },
-      {
-        label: "Hip (cm)",
-      },
-      {
-        label: "Top Length (cm)",
-      },
-      {
-        label: "Sleeve Length (cm)",
-      },
-    ],
-  },
+  // {
+  //   id: uuid(),
+  //   name: "V-Shirt Shirt",
+  //   image: "https://cdnp.sanmar.com/medias/sys_master/images/images/hdb/hd1/11531770658846/4532-Black-1-LST700BlackModelFront2-1200W.jpg",
+  //   model: vneck,
+  //   myNode: [{ name: "all", yardNeeded: 2 }],
+  //   otherYards: { small: 2, large: 3, extraLarge: 3, extraExtraLarge: 4 },
+  //   myZoom: 0.7,
+  //   price: 110,
+  //   sizeGuide: tshirt_guide,
+  //   // sizeModels: tshirt_model,
+  //   readyIn: 7,
+  //   sizeOptions: [
+  //     { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 50 },
+  //     { label: "M", value: 1, priceValue: 0, colorPriceValue: 50 },
+  //     { label: "L", value: 2, priceValue: 25, colorPriceValue: 85 },
+  //     { label: "XL", value: 3, priceValue: 25, colorPriceValue: 85 },
+  //     { label: "2XL", value: 4, priceValue: 50, colorPriceValue: 120 },
+  //   ],
+  //   sizeForms: [
+  //     {
+  //       label: "Bust (cm)",
+  //     },
+  //     {
+  //       label: "Waist (cm)",
+  //     },
+  //     {
+  //       label: "Hip (cm)",
+  //     },
+  //     {
+  //       label: "Top Length (cm)",
+  //     },
+  //     {
+  //       label: "Sleeve Length (cm)",
+  //     },
+  //   ],
+  // },
+  // {
+  //   id: uuid(),
+  //   name: "Sleeveless Shirt",
+  //       image: "https://montivo.pk/cdn/shop/products/5314-1_1024x1024.jpg?v=1674659920",
+  //   model: sleeve_less_tshirt,
+  //   myNode: [{ name: "all", yardNeeded: 2 }],
+  //   otherYards: { small: 2, large: 3, extraLarge: 3, extraExtraLarge: 4 },
+  //   myZoom: 0.7,
+  //   price: 110 + 200,
+  //   sizeGuide: tshirt_guide,
+  //   // sizeModels: tshirt_model,
+  //   readyIn: 7,
+  //   sizeOptions: [
+  //     { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 50 },
+  //     { label: "M", value: 1, priceValue: 0, colorPriceValue: 50 },
+  //     { label: "L", value: 2, priceValue: 25, colorPriceValue: 85 },
+  //     { label: "XL", value: 3, priceValue: 25, colorPriceValue: 85 },
+  //     { label: "2XL", value: 4, priceValue: 50, colorPriceValue: 120 },
+  //   ],
+  //   sizeForms: [
+  //     {
+  //       label: "Bust (cm)",
+  //     },
+  //     {
+  //       label: "Waist (cm)",
+  //     },
+  //     {
+  //       label: "Hip (cm)",
+  //     },
+  //     {
+  //       label: "Top Length (cm)",
+  //     },
+  //     {
+  //       label: "Sleeve Length (cm)",
+  //     },
+  //   ],
+  // },
   {
     id: uuid(),
     name: "Long Sleeve T-Shirt",
@@ -518,8 +521,8 @@ export const mainFemaleCustomize = [
   {
     id: uuid(),
     name: "Bra With Mini Skirt",
-        image: "https://greatoutdoorprovision.com/wp-content/uploads/2020/03/500x500.png",
-        isVariant: true,
+    image: "https://greatoutdoorprovision.com/wp-content/uploads/2020/03/500x500.png",
+    isVariant: true,
     model: bra_mini_skirt,
     myNode: [{ name: "all", yardNeeded: 2 }],
     otherYards: { small: 2, large: 3, extraLarge: 3, extraExtraLarge: 4 },
@@ -542,9 +545,33 @@ export const mainFemaleCustomize = [
   {
     id: uuid(),
     name: "Bra With Booty Shorts",
-        image: "https://greatoutdoorprovision.com/wp-content/uploads/2020/03/500x500.png",
+        image: image_bra_booty_shorts,
         isVariant: true,
     model: bra_booty_short,
+    myNode: [{ name: "all", yardNeeded: 2 }],
+    otherYards: { small: 2, large: 3, extraLarge: 3, extraExtraLarge: 4 },
+    myZoom: 0.7,
+    price: 110 + 200,
+    sizeGuide: tshirt_guide,
+    // sizeModels: tshirt_model,
+    readyIn: 7,
+    sizeOptions: [
+      { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 50 },
+      { label: "M", value: 1, priceValue: 0, colorPriceValue: 50 },
+      { label: "L", value: 2, priceValue: 25, colorPriceValue: 85 },
+      { label: "XL", value: 3, priceValue: 25, colorPriceValue: 85 },
+      { label: "2XL", value: 4, priceValue: 50, colorPriceValue: 120 },
+    ],
+    sizeForms: [
+      
+    ],
+  },
+  {
+    id: uuid(),
+    name: "Bra With Material Shorts",
+        image: image_bra_material_shorts,
+        isVariant: true,
+    model: bra_material_short,
     myNode: [{ name: "all", yardNeeded: 2 }],
     otherYards: { small: 2, large: 3, extraLarge: 3, extraExtraLarge: 4 },
     myZoom: 0.7,
@@ -708,7 +735,7 @@ export const mainFemaleCustomize = [
     model: tshirt_and_trousers,
     myNode: [{ name: "all", yardNeeded: 2 }],
     otherYards: { small: 2, large: 3, extraLarge: 3, extraExtraLarge: 4 },
-    myZoom: 0.7,
+    myZoom: 1.1,
     price: 110 + 200,
     sizeGuide: tshirt_guide,
     // sizeModels: tshirt_model,

@@ -13,16 +13,15 @@ import tshirtlong_guide from "../Assets/size_guide/MaleClothing/Men-long-sleeve 
 import tshirt_female_guide from "../Assets/size_guide/FemaleClothing/short_sleeves_tshirt.png";
 import tshirtlong_female_guide from "../Assets/size_guide/FemaleClothing/women long t shirt.jpg";
 
-const image_tshirt_short = require("../Assets/welcome_3ds/male/male short sleev ankara.png");
-const image_tshirt_long_image = require("../Assets/welcome_3ds/male/male long sleev ankara.png");
-const image_female_tshirt_short = require("../Assets/welcome_3ds/female/short_sleeve_new.png");
+const image_tshirt_long = require("../Assets/welcome_3ds/male/male_longsleeves_with_logo.webp");
+const image_female_tshirt_long = require("../Assets/welcome_3ds/female/female_longsleeves_with_logo.webp");
 const image_female_tshirt_long_image = require("../Assets/welcome_3ds/female/long_sleeve_new.png");
 
 export const specialsCustomize = [
   {
     id: uuid(),
     name: "Short Sleeve T-Shirt",
-    image: image_tshirt_short,
+    image: "https://ih1.redbubble.net/image.641582551.3228/ssrco,classic_tee,mens,0d162e:9880ee6111,front_alt,square_product,600x600.u1.jpg",
     model: tshirtModel1,
     myNode: [{ name: "all", yardNeeded: 3 }],
     otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
@@ -68,7 +67,7 @@ export const specialsCustomize = [
   {
     id: uuid(),
     name: "Long Sleeve T-Shirt",
-    image: image_tshirt_long_image,
+    image: image_tshirt_long,
     model: tshirtModel2,
     myNode: [{ name: "all", yardNeeded: 3 }],
     otherYards: { small: 3, large: 4, extraLarge: 4, extraExtraLarge: 4 },
@@ -113,7 +112,7 @@ export const specialsCustomize = [
   {
     id: uuid(),
     name: "Female Short Sleeve T-Shirt",
-    image: image_female_tshirt_short,
+    image: "https://image.spreadshirtmedia.com/image-server/v1/products/T347A2PA4306PT17X28Y26D1028774765W19472H19472/views/1,width=550,height=550,appearanceId=2,backgroundColor=F2F2F2,modelId=2564,crop=list/pan-africanism-adinkra-symbol-of-gods-tree-womens-t-shirt.jpg",
     model: tshirt_female_Model1,
     myNode: [{ name: "all", yardNeeded: 3 }],
     otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
@@ -159,8 +158,8 @@ export const specialsCustomize = [
 
   {
     id: uuid(),
-    name: "Female Short Sleeve T-Shirt",
-    image: image_female_tshirt_long_image,
+    name: "Female Long Sleeve T-Shirt",
+    image: image_female_tshirt_long,
     model: tshirt_female_Model2,
     myNode: [{ name: "all", yardNeeded: 3 }],
     otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
