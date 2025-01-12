@@ -347,7 +347,7 @@ export const specialSash = [
       { label: "L", value: 2 },
     ],
   },
-  // Repeat similar blocks for sash4 through sash23
+
   {
     id: uuid(),
     name: "Sash Four",
@@ -381,7 +381,7 @@ export const specialSash = [
       },
       image: {
         top: "-4rem",
-        left: "0.5rem",
+        left: "0.7rem",
         height: "2.5rem",
         width: "2.5rem",
       }
@@ -397,6 +397,7 @@ export const specialSash = [
       { label: "L", value: 2 },
     ],
   },
+
   {
     id: uuid(),
     name: "Sash Five",
@@ -407,32 +408,32 @@ export const specialSash = [
     confirm_image: sash5_actual,
     positioningLeft: {
       text: {
-        top: "4rem",
-        left: "-6rem",
+        top: "-1rem",
+        left: "-4.8rem",
         height: "14rem",
         width: "5rem",
         lineHeight: "",
       },
       image: {
-        top: "-5rem",
-        left: "-5rem",
-        height: "3rem",
-        width: "3rem",
+        top: "-7.4rem",
+        left: "-3.7rem",
+        height: "2.5rem",
+        width: "2.5rem",
       }
     },
     positioningRight: {
       text: {
-        top: "3rem",
-        left: "2rem",
+        top: "-1rem",
+        left: "1.4rem",
         height: "13rem",
         width: "5rem",
         lineHeight: "",
       },
       image: {
-        top: "-6rem",
+        top: "-7rem",
         left: "3rem",
-        height: "3rem",
-        width: "3rem",
+        height: "2.4rem",
+        width: "2.4rem",
       }
     },
     otherYards: { small: 3, large: 4, extraLarge: 5, extraExtraLarge: 5 },
@@ -446,6 +447,7 @@ export const specialSash = [
       { label: "L", value: 2 },
     ],
   },
+
   {
     id: uuid(),
     name: "Sash Six",
@@ -463,8 +465,8 @@ export const specialSash = [
         lineHeight: "",
       },
       image: {
-        top: "-6rem",
-        left: "-3.8rem",
+        top: "-13rem",
+        left: "-6.5rem",
         height: "3.2rem",
         width: "3.2rem",
       }
@@ -1762,7 +1764,7 @@ export const mainUnisex = [
       { name: "zippers", yardNeeded: 1 },
     ],
     myZoom: 0.6,
-    price: 150,
+    price: 150 + 200,
     // sizeModels: tshirt_model,
     readyIn: 7,
     sizeGuide: miniBag_guide,
@@ -1794,7 +1796,7 @@ export const mainUnisex = [
       { name: "zippers", yardNeeded: 1 },
     ],
     myZoom: 0.75,
-    price: 150,
+    price: 150 + 200,
     // sizeModels: tshirt_model,
     readyIn: 7,
     sizeGuide: backpack_guide,

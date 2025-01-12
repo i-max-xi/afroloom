@@ -20,6 +20,18 @@ import blazer from "../Pages/Customize/Configurator/models/MaleClothing/male_sui
 import jacket from "../Pages/Customize/Configurator/models/Accessories/Unisex/jacket_main.glb";
 import cloak_model from "../Pages/Customize/Configurator/models/MaleClothing/kimono.glb";
 
+// ..variations
+import v_neck from "../Pages/Customize/Configurator/models/MaleClothing/variations/v_neck.glb";
+import tshirt_trousers from "../Pages/Customize/Configurator/models/MaleClothing/variations/tshirt_trousers.glb";
+import tshirt_summer_shorts from "../Pages/Customize/Configurator/models/MaleClothing/variations/tshirt_summer_shorts.glb";
+import tshirt_material_shorts from "../Pages/Customize/Configurator/models/MaleClothing/variations/tshirt_material_shorts.glb";
+import sleeve_less_tshirt from "../Pages/Customize/Configurator/models/MaleClothing/variations/sleeve_less_tshirt.glb";
+import short_shirt_trousers from "../Pages/Customize/Configurator/models/MaleClothing/variations/short_shirt_trousers.glb";
+import short_shirt_material_shorts from "../Pages/Customize/Configurator/models/MaleClothing/variations/short_shirt_material_shorts.glb";
+import blazer_trousers from "../Pages/Customize/Configurator/models/MaleClothing/variations/blazer_trousers.glb";
+import blazer_material_shorts from "../Pages/Customize/Configurator/models/MaleClothing/variations/blazer_material_shorts.glb";
+
+
 //size-guides
 // import tshirt_model from "../Pages/Customize/Configurator/size_guide/male/men.JPG";
 
@@ -85,6 +97,79 @@ export const mainMaleCustomize = [
       {
         label: "Sleeve Length (cm)",
       },
+    ],
+  },
+  {
+    id: uuid(),
+    name: "Short Sleeve V-Shirt",
+    image: "https://i.etsystatic.com/45328719/c/2400/2400/0/0/il/66fc66/5174621510/il_300x300.5174621510_n7oa.jpg",
+    model: v_neck,
+    myNode: [{ name: "all", yardNeeded: 3 }],
+    otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
+    myZoom: 0.7,
+    isVariant: true,
+    myX: 0,
+    myY: 10,
+    price: 110 + 200,
+    // sizeModels: tshirt_model,
+    readyIn: 7,
+    sizeGuide: tshirt_guide,
+    sizeOptions: [
+      { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 50 },
+      { label: "M", value: 1, priceValue: 0, colorPriceValue: 85 },
+      { label: "L", value: 2, priceValue: 25, colorPriceValue: 85 },
+      { label: "XL", value: 3, priceValue: 25, colorPriceValue: 120 },
+      { label: "2XL", value: 4, priceValue: 50, colorPriceValue: 120 },
+    ],
+    sizeForms: [
+      {
+        label: "Neck Size (cm)",
+      },
+      {
+        label: "Half Across Back (cm)",
+      },
+      {
+        label: "Chest (cm)",
+      },
+      {
+        label: "Sleeve Length (cm)",
+      },
+     
+    ],
+  },
+  {
+    id: uuid(),
+    name: "Sleeveless T-shirt",
+    image: "https://greatoutdoorprovision.com/wp-content/uploads/2020/03/500x500.png",
+    model: sleeve_less_tshirt,
+    isVariant: true,
+    myNode: [{ name: "all", yardNeeded: 3 }],
+    otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
+    myZoom: 0.7,
+    myX: 0,
+    myY: 10,
+    price: 110 + 200,
+    // sizeModels: tshirt_model,
+    readyIn: 7,
+    sizeGuide: "",
+    sizeOptions: [
+      { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 50 },
+      { label: "M", value: 1, priceValue: 0, colorPriceValue: 85 },
+      { label: "L", value: 2, priceValue: 25, colorPriceValue: 85 },
+      { label: "XL", value: 3, priceValue: 25, colorPriceValue: 120 },
+      { label: "2XL", value: 4, priceValue: 50, colorPriceValue: 120 },
+    ],
+    sizeForms: [
+      {
+        label: "Neck Size (cm)",
+      },
+      {
+        label: "Half Across Back (cm)",
+      },
+      {
+        label: "Chest (cm)",
+      },
+     
     ],
   },
   {
@@ -202,6 +287,212 @@ export const mainMaleCustomize = [
       },
     ],
   },
+
+  {
+    id: uuid(),
+    name: "T-Shirt With Material Shorts",
+    image: "https://greatoutdoorprovision.com/wp-content/uploads/2020/03/500x500.png",
+    model: tshirt_material_shorts,
+    isVariant: true,
+    myNode: [
+      { name: "all", yardNeeded: 3 },
+    ],
+    otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
+    myZoom: 0.7,
+    myX: 0,
+    myY: 10,
+    price: 110 + 200,
+    // sizeModels: tshirt_model,
+    readyIn: 7,
+    sizeGuide: tshirt_guide,
+    sizeOptions: [
+      { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 50 },
+      { label: "M", value: 1, priceValue: 0, colorPriceValue: 85 },
+      { label: "L", value: 2, priceValue: 25, colorPriceValue: 85 },
+      { label: "XL", value: 3, priceValue: 25, colorPriceValue: 120 },
+      { label: "2XL", value: 4, priceValue: 50, colorPriceValue: 120 },
+    ],
+    sizeForms: [
+
+    ],
+  },
+
+  {
+    id: uuid(),
+    name: "T-Shirt With Summer Shorts",
+    image: "https://greatoutdoorprovision.com/wp-content/uploads/2020/03/500x500.png",
+    model: tshirt_summer_shorts,
+    isVariant: true,
+    myNode: [
+      { name: "all", yardNeeded: 3 },
+    ],
+    otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
+    myZoom: 0.7,
+    myX: 0,
+    myY: 10,
+    price: 110+200,
+    // sizeModels: tshirt_model,
+    readyIn: 7,
+    sizeGuide: tshirt_guide,
+    sizeOptions: [
+      { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 50 },
+      { label: "M", value: 1, priceValue: 0, colorPriceValue: 85 },
+      { label: "L", value: 2, priceValue: 25, colorPriceValue: 85 },
+      { label: "XL", value: 3, priceValue: 25, colorPriceValue: 120 },
+      { label: "2XL", value: 4, priceValue: 50, colorPriceValue: 120 },
+    ],
+    sizeForms: [
+     
+    ],
+  },
+
+  {
+    id: uuid(),
+    name: "Tshirt With Trousers",
+    image: "https://greatoutdoorprovision.com/wp-content/uploads/2020/03/500x500.png",
+    model: tshirt_trousers,
+    isVariant: true,
+    myNode: [
+      { name: "all", yardNeeded: 3 },
+    ],
+    otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
+    myZoom: 0.7,
+    myX: 0,
+    myY: 10,
+    price: 110 + 200,
+    // sizeModels: tshirt_model,
+    readyIn: 7,
+    sizeGuide: shirt_guide,
+    sizeOptions: [
+      { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 50 },
+      { label: "M", value: 1, priceValue: 0, colorPriceValue: 85 },
+      { label: "L", value: 2, priceValue: 25, colorPriceValue: 85 },
+      { label: "XL", value: 3, priceValue: 25, colorPriceValue: 120 },
+      { label: "2XL", value: 4, priceValue: 50, colorPriceValue: 120 },
+    ],
+    sizeForms: [
+      
+    ],
+  },
+
+  {
+    id: uuid(),
+    name: "Shirt With Material Shorts",
+    image: "https://greatoutdoorprovision.com/wp-content/uploads/2020/03/500x500.png",
+    model: short_shirt_material_shorts,
+    isVariant: true,
+
+    myNode: [
+      { name: "all", yardNeeded: 3 },
+      { name: "buttons", yardNeeded: 0 },
+    ],
+    otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
+    myZoom: 0.7,
+    myX: 0,
+    myY: 10,
+    price: 110 + 200,
+    // sizeModels: tshirt_model,
+    readyIn: 7,
+    sizeGuide: shirt_guide,
+    sizeOptions: [
+      { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 50 },
+      { label: "M", value: 1, priceValue: 0, colorPriceValue: 85 },
+      { label: "L", value: 2, priceValue: 25, colorPriceValue: 85 },
+      { label: "XL", value: 3, priceValue: 25, colorPriceValue: 120 },
+      { label: "2XL", value: 4, priceValue: 50, colorPriceValue: 120 },
+    ],
+    sizeForms: [
+      
+    ],
+  },
+  {
+    id: uuid(),
+    name: "Shirt With Trousers",
+    image: "https://greatoutdoorprovision.com/wp-content/uploads/2020/03/500x500.png",
+    model: short_shirt_trousers,
+    isVariant: true,
+
+    myNode: [
+      { name: "all", yardNeeded: 3 },
+      { name: "buttons", yardNeeded: 0 },
+    ],
+    otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
+    myZoom: 0.7,
+    myX: 0,
+    myY: 10,
+    price: 110 + 200,
+    // sizeModels: tshirt_model,
+    readyIn: 7,
+    sizeGuide: shirt_guide,
+    sizeOptions: [
+      { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 50 },
+      { label: "M", value: 1, priceValue: 0, colorPriceValue: 85 },
+      { label: "L", value: 2, priceValue: 25, colorPriceValue: 85 },
+      { label: "XL", value: 3, priceValue: 25, colorPriceValue: 120 },
+      { label: "2XL", value: 4, priceValue: 50, colorPriceValue: 120 },
+    ],
+    sizeForms: [
+    ],
+  },
+  {
+    id: uuid(),
+    name: "Blazer With Material Shorts",
+    image: "https://greatoutdoorprovision.com/wp-content/uploads/2020/03/500x500.png",
+    model: blazer_material_shorts,
+    isVariant: true,
+    myNode: [
+      { name: "all", yardNeeded: 3 },
+      { name: "buttons", yardNeeded: 0 },
+    ],
+    otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
+    myZoom: 0.7,
+    myX: 0,
+    myY: 10,
+    price: 110 + 200,
+    // sizeModels: tshirt_model,
+    readyIn: 7,
+    sizeGuide: shirt_guide,
+    sizeOptions: [
+      { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 50 },
+      { label: "M", value: 1, priceValue: 0, colorPriceValue: 85 },
+      { label: "L", value: 2, priceValue: 25, colorPriceValue: 85 },
+      { label: "XL", value: 3, priceValue: 25, colorPriceValue: 120 },
+      { label: "2XL", value: 4, priceValue: 50, colorPriceValue: 120 },
+    ],
+    sizeForms: [
+     
+    ],
+  },
+  {
+    id: uuid(),
+    name: "Blazer With Trousers",
+    image: "https://greatoutdoorprovision.com/wp-content/uploads/2020/03/500x500.png",
+    model: blazer_trousers,
+    isVariant: true,
+    myNode: [
+      { name: "all", yardNeeded: 3 },
+      { name: "buttons", yardNeeded: 0 },
+    ],
+    otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
+    myZoom: 0.7,
+    myX: 0,
+    myY: 10,
+    price: 110 + 200,
+    // sizeModels: tshirt_model,
+    readyIn: 7,
+    sizeGuide: shirt_guide,
+    sizeOptions: [
+      { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 50 },
+      { label: "M", value: 1, priceValue: 0, colorPriceValue: 85 },
+      { label: "L", value: 2, priceValue: 25, colorPriceValue: 85 },
+      { label: "XL", value: 3, priceValue: 25, colorPriceValue: 120 },
+      { label: "2XL", value: 4, priceValue: 50, colorPriceValue: 120 },
+    ],
+    sizeForms: [
+     
+    ],
+  },
+  
   {
     id: uuid(),
     name: "Long Sleeve Top And Down Kaftan",

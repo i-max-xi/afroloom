@@ -13,15 +13,15 @@ import ListItem from "../../Components/List/ListItem";
 import { specialsCustomize } from "../../Data/specials";
 
 const CustomizePage = () => {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  // useEffect(() => {
+  //   window.scrollTo(0, 0);
+  // }, []);
 
   return (
     <>
       <Nav />
       <div className="container flex flex-col justify-center items-center">
-        <h5 className="text-center text-xl lg:text-2xl mt-3 mb-2">Choose any item below to kickstart your customization journey!</h5>
+        <h5 className="text-center text-sm lg:text-2xl mt-3 mb-2 capitalize font-normal text-gray-600">Choose any item below to kickstart your customization journey!</h5>
         <div className="row container my-10">
           {/* Nails */}
           {/* <h5 className="mt-4 footer-header">Nails</h5>
@@ -58,8 +58,8 @@ const CustomizePage = () => {
             </Link>
           ))} */}
           {/* Accessories */}
-          <div className="flex-flex-col justify-center items-center gap-2">
-            <h5 className="mt-4 footer-header text-lg">Design Your Beaded Bracelets & Accessories</h5>
+          <div className="border-b  border-b-[#656464]  flex-flex-col justify-center items-center gap-2">
+            <h5 className="mt-4 footer-header text-sm text-center">Design Your Beaded Bracelets & Accessories</h5>
             <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 items-center ">
               {mainUnisex
                 .slice(13, 16)
@@ -117,9 +117,10 @@ const CustomizePage = () => {
               </div>
           </div>
 
+
            {/* Sash */}
-           <div className="flex-flex-col justify-center items-center gap-2">
-            <h5 className="mt-4 footer-header text-lg">Customize Your Perfect Sash</h5>
+           <div className="border-b  border-b-[#656464]  flex-flex-col justify-center items-center gap-2 pb-4">
+            <h5 className="mt-4 footer-header text-sm text-center">Customize Your Perfect Sash</h5>
             <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 items-center ">
               {mainUnisex
                 .slice(9, 13)
@@ -143,33 +144,9 @@ const CustomizePage = () => {
               </div>
           </div>
 
-           {/* specials */}
-           <div className="flex-flex-col justify-center items-center gap-2">
-            <h5 className="mt-4 footer-header text-lg">Craft Your Logo Tees for Men & Women</h5>
-            <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 items-center ">
-              {specialsCustomize
-                .map(({ name, image, link, description, title }) => (
-                  <Link
-                    to={link ? link : `/configurator-special/${name}`}
-                    className="text-decoration-none lg:mx-10  "
-                    key={name}
-                    data-aos="fade-in"
-                    data-aos-duration="1500"
-                  >
-                    
-                    <ListItem
-                      image={image}
-                      title={title || name}
-                      extraDescription={description}
-                    />
-                  </Link>
-                ))}
-              </div>
-          </div>
-
-           {/* Sash Templates */}
-           <div className="flex-flex-col justify-center items-center gap-2">
-            <h5 className="mt-4 footer-header text-lg">Personalize Sash Templates</h5>
+             {/* Sash Templates */}
+             <div className="border-b  border-b-[#656464]  flex-flex-col justify-center items-center gap-2">
+            <h5 className="mt-4 footer-header text-sm text-center">Personalize Sash Templates</h5>
             <div className="flex items-center justify-center">
               {specialSash
                 .slice(0, 1)
@@ -193,10 +170,36 @@ const CustomizePage = () => {
               </div>
           </div>
 
+           {/* specials */}
+           <div className="border-b  border-b-[#656464]  flex-flex-col justify-center items-center gap-2 pt-2">
+            <h5 className="mt-4 footer-header text-sm text-center">Craft Your Logo Tees for Men & Women</h5>
+            <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 items-center ">
+              {specialsCustomize
+                .map(({ name, image, link, description, title }) => (
+                  <Link
+                    to={link ? link : `/configurator-special/${name}`}
+                    className="text-decoration-none lg:mx-10  "
+                    key={name}
+                    data-aos="fade-in"
+                    data-aos-duration="1500"
+                  >
+                    
+                    <ListItem
+                      image={image}
+                      title={title || name}
+                      extraDescription={description}
+                    />
+                  </Link>
+                ))}
+              </div>
+          </div>
+
+        
+
           {/* Female clothing */}
 
-          <div className="flex-flex-col justify-center items-center gap-2">
-            <h5 className="mt-4 footer-header text-lg">Tailor Stylish Women's Clothing</h5>
+          <div className="border-b  border-b-[#656464]  flex-flex-col justify-center items-center gap-2">
+            <h5 className="mt-4 footer-header text-sm text-center">Tailor Stylish Women's Clothing</h5>
             <div className="grid grid-cols-2 lg:grid-cols-3 gap-3   items-center">
               {mainFemaleCustomize.map(({ name, image }) => (
               <Link
@@ -216,8 +219,8 @@ const CustomizePage = () => {
          
 
           {/* Male clothing */}
-          <div className="flex-flex-col justify-center items-center gap-2">
-            <h5 className="mt-4 footer-header text-lg">Upgrade Men's Clothing Your Way</h5>
+          <div className="border-b  border-b-[#656464]  flex-flex-col justify-center items-center gap-2">
+            <h5 className="mt-4 footer-header text-sm text-center">Upgrade Men's Clothing Your Way</h5>
             <div className="grid grid-cols-2 lg:grid-cols-3 gap-3   items-center">
               {mainMaleCustomize.map(({ name, image }) => (
               <Link
@@ -235,8 +238,8 @@ const CustomizePage = () => {
 
 
           {/* nails */}
-          {/* <div className="flex-flex-col justify-center items-center gap-2">
-            <h5 className="mt-4 footer-header text-lg">On Display Only
+          {/* <div className="border-b  border-b-[#656464]  flex-flex-col justify-center items-center gap-2">
+            <h5 className="mt-4 footer-header text-sm text-center">On Display Only
             <p className="text-xs ">These items are only on display currently and not for sale</p>
 
             </h5>
@@ -268,8 +271,8 @@ const CustomizePage = () => {
 
           {/* Male accessories */}
 
-          {/* <div className="flex-flex-col justify-center items-center gap-2">
-            <h5 className="mt-4 footer-header text-lg">Male Accessories</h5>
+          {/* <div className="border-b  border-b-[#656464]  flex-flex-col justify-center items-center gap-2">
+            <h5 className="mt-4 footer-header text-sm text-center">Male Accessories</h5>
             <div className="grid grid-cols-2 lg:grid-cols-3 gap-3   items-center">
               {mainMaleAccessories.map(({ name, image }) => (
               <Link
@@ -312,8 +315,8 @@ const CustomizePage = () => {
           ))} */}
 
           {/* Footwear */}
-          <div className="flex-flex-col justify-center items-center gap-2">
-            <h5 className="mt-4 footer-header text-lg">Step Up with Custom Footwear</h5>
+          <div className="  flex-flex-col justify-center items-center gap-2">
+            <h5 className="mt-4 footer-header text-sm text-center">Step Up with Custom Footwear</h5>
             <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 items-center ">
               {mainFootwear
                 .map(({ name, image, link, description, title }) => (

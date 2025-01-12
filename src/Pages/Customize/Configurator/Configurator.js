@@ -643,6 +643,40 @@ const Configurator = () => {
                         />
                         </AnimatePresence>
                       ) : (
+
+                        selectedClothing?.isVariant ? (
+
+                          <div className="texture-row">
+                    <div className="texture-category mt-1">
+                      <div className="w-full flex justify-between capitalize">
+                        <p className="text-sm font-medium text-[#4C5B5C]">WaxPrint</p>
+                        <p  onClick={() => handleOpenSeeAll('waxPrint', "waxPrint",  textureArrays?.waxPrint)} className="cursor-pointer text-sm text-[#ffc107] hover:font-semibold"> See all &#8594;</p>
+                      </div>
+                      <div className="grid grid-cols-4 gap-3 px-4">
+                          {textureArrays.waxPrint.slice(0, 4).map((texture) => (
+                            <TextureItem
+                            key={texture}
+                            texture={texture}
+                            setHideText={setHideText}
+                            Title="waxPrint"
+                            selectedTexture={selectedPrintOn}
+                            // Pass setSelectedTexture as a prop
+                            handleTextureChange={handleTextureChange}
+                            currencySymbol={currencySymbol}
+                            currencyFactor={currencyFactor}
+                            subTextureDescriptions={
+                              textureDescriptions.waxPrint
+                            }
+                            textureIndex={textureArrays.waxPrint.indexOf(
+                              texture,
+                            )}
+                          />
+                          ))}
+                      </div>
+                    </div>
+                  </div>
+                      ) :(
+
                       <>
                     <div className="texture-row">
                       <div className="texture-category mt-1">
@@ -676,6 +710,7 @@ const Configurator = () => {
                       
                       </div>
                     </div>
+                  
                   <div className="texture-category mt-1">
                     <div className="w-full flex justify-between capitalize">
                       <p className="text-sm font-medium text-[#4C5B5C]">Batik</p>
@@ -760,7 +795,11 @@ const Configurator = () => {
 
                     </div>
                   </div>
-                </>)}
+                       </>
+                      )
+                    
+                    
+                    )}
 
                 </div>
                 
