@@ -6,9 +6,9 @@ import ListItem from "../../../Components/List/ListItem";
 import Nav from "../../../Components/Nav";
 
 const SashTemplatePage = () => {
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+  // useEffect(() => {
+  //   window.scrollTo(0, 0);
+  // }, []);
 
   return (
     <>

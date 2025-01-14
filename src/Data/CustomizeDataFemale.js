@@ -91,6 +91,10 @@ const image_topndown_image = require("../Assets/welcome_3ds/female/kaftan.png");
 const image_material_shorts_image = require("../Assets/welcome_3ds/female/material_shorts.png");
 const image_bra_booty_shorts = require("../Assets/welcome_3ds/female/bra_booty_shorts.jpg");
 const image_bra_material_shorts = require("../Assets/welcome_3ds/female/bra_shorts.jpg");
+const image_shirt_material_shorts = require("../Assets/welcome_3ds/female/female_shirt_material_shorts.jpg");
+const image_blazer_material_shorts = require("../Assets/welcome_3ds/female/blazer_material_shorts.jpg");
+const image_blazer_trousers = require("../Assets/welcome_3ds/female/blazer_trousers.jpg");
+const image_blazer_skirt = require("../Assets/welcome_3ds/female/blazer_skirt.jpg");
 
 export const mainFemaleCustomize = [
   {
@@ -682,8 +686,8 @@ export const mainFemaleCustomize = [
   {
     id: uuid(),
     name: "T-Shirt With Material Shorts",
-        image: "https://greatoutdoorprovision.com/wp-content/uploads/2020/03/500x500.png",
-        isVariant: true,
+    image: "https://greatoutdoorprovision.com/wp-content/uploads/2020/03/500x500.png",
+    isVariant: true,
     model: tshirt_and_material_shorts,
     myNode: [{ name: "all", yardNeeded: 2 }],
     otherYards: { small: 2, large: 3, extraLarge: 3, extraExtraLarge: 4 },
@@ -779,8 +783,8 @@ export const mainFemaleCustomize = [
   {
     id: uuid(),
     name: "Shirt With Material Shorts",
-        image: "https://greatoutdoorprovision.com/wp-content/uploads/2020/03/500x500.png",
-        isVariant: true,
+    image: image_shirt_material_shorts,
+    isVariant: true,
     model: short_shirt_and_material_shorts,
     myNode: [{ name: "all", yardNeeded: 2 }],
     otherYards: { small: 2, large: 3, extraLarge: 3, extraExtraLarge: 4 },
@@ -1048,7 +1052,31 @@ export const mainFemaleCustomize = [
   {
     id: uuid(),
     name: "Blazer With Material Shorts",
-        image: "https://greatoutdoorprovision.com/wp-content/uploads/2020/03/500x500.png",
+        image: image_blazer_material_shorts,
+        isVariant: true,
+    model: blazer_shorts,
+    myNode: [{ name: "all", yardNeeded: 2 }],
+    otherYards: { small: 2, large: 3, extraLarge: 3, extraExtraLarge: 4 },
+    myZoom: 0.7,
+    price: 110 + 200,
+    sizeGuide: tshirt_guide,
+    // sizeModels: tshirt_model,
+    readyIn: 7,
+    sizeOptions: [
+      { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 50 },
+      { label: "M", value: 1, priceValue: 0, colorPriceValue: 50 },
+      { label: "L", value: 2, priceValue: 25, colorPriceValue: 85 },
+      { label: "XL", value: 3, priceValue: 25, colorPriceValue: 85 },
+      { label: "2XL", value: 4, priceValue: 50, colorPriceValue: 120 },
+    ],
+    sizeForms: [
+      
+    ],
+  },
+  {
+    id: uuid(),
+    name: "Blazer With Skirt",
+        image: image_blazer_skirt,
         isVariant: true,
     model: blazer_shorts,
     myNode: [{ name: "all", yardNeeded: 2 }],
@@ -1072,7 +1100,7 @@ export const mainFemaleCustomize = [
   {
     id: uuid(),
     name: "Blazer With Trousers",
-        image: "https://greatoutdoorprovision.com/wp-content/uploads/2020/03/500x500.png",
+        image: image_blazer_trousers,
         isVariant: true,
     model: blazer_trousers,
     myNode: [{ name: "all", yardNeeded: 2 }],

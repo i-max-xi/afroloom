@@ -945,6 +945,7 @@ export const specialSash = [
     image: sash16_front,
     model: sash16_actual,
     confirm_image: sash16_actual,
+    scale: 1.2,
     positioningLeft: {
       text: {
         top: "4.5rem",
@@ -994,6 +995,7 @@ export const specialSash = [
     image: sash17_front,
     model: sash17_actual,
     confirm_image: sash17_actual,
+    scale: 1.2,
     positioningLeft: {
       text: {
         top: "5rem",
@@ -1043,6 +1045,7 @@ export const specialSash = [
     image: sash18_front,
     model: sash18_actual,
     confirm_image: sash18_actual,
+    scale: 1.5,
     positioningLeft: {
       text: {
         top: "5.5rem",
@@ -1092,6 +1095,7 @@ export const specialSash = [
     image: sash19_front,
     model: sash19_actual,
     confirm_image: sash19_actual,
+    scale: 1.5,
     positioningLeft: {
       text: {
         top: "6rem",
@@ -1141,6 +1145,7 @@ export const specialSash = [
     image: sash20_front,
     model: sash20_actual,
     confirm_image: sash20_actual,
+    scale: 1.5,
     positioningLeft: {
       text: {
         top: "6.5rem",
@@ -1190,6 +1195,7 @@ export const specialSash = [
     image: sash21_front,
     model: sash21_actual,
     confirm_image: sash21_actual,
+    scale: 1.5,
     positioningLeft: {
       text: {
         top: "7rem",
@@ -1239,6 +1245,7 @@ export const specialSash = [
     image: sash22_front,
     model: sash22_actual,
     confirm_image: sash22_actual,
+    scale: 2,
     positioningLeft: {
       text: {
         top: "7.5rem",
@@ -1288,6 +1295,7 @@ export const specialSash = [
     image: sash23_front,
     model: sash23_actual,
     confirm_image: sash23_actual,
+    scale: 2,
     positioningLeft: {
       text: {
         top: "8rem",

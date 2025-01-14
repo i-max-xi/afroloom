@@ -106,7 +106,7 @@ export const mainMaleAccessories = [
     ],
 
     myZoom: 1.5,
-    price: 80,
+    price: 100,
     // sizeModels: tshirt_model,
     readyIn: 7,
     sizeGuide: bowTie_guide,
@@ -138,7 +138,7 @@ export const mainMaleAccessories = [
       { name: "top_section", yardNeeded: 1 },
     ],
     myZoom: 0.75,
-    price: 80,
+    price: 180,
     // sizeModels: tshirt_model,
     readyIn: 7,
     sizeGuide: flyingTie_guide,
