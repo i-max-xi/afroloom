@@ -107,7 +107,7 @@ export const mainMaleCustomize = [
     myNode: [{ name: "all", yardNeeded: 3 }],
     otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
     myZoom: 0.7,
-    isVariant: true,
+    isVariant: false,
     myX: 0,
     myY: 10,
     price: 110 + 200,
@@ -140,9 +140,9 @@ export const mainMaleCustomize = [
   {
     id: uuid(),
     name: "Sleeveless T-shirt",
-    image: "https://greatoutdoorprovision.com/wp-content/uploads/2020/03/500x500.png",
+    image: "https://i.pinimg.com/564x/92/98/68/9298681d3aba2f70a100bd1fa8cf37fc.jpg",
     model: sleeve_less_tshirt,
-    isVariant: true,
+    isVariant: false,
     myNode: [{ name: "all", yardNeeded: 3 }],
     otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
     myZoom: 0.7,
@@ -295,7 +295,7 @@ export const mainMaleCustomize = [
     model: tshirt_material_shorts,
     isVariant: true,
     myNode: [
-      { name: "all", yardNeeded: 3 },
+      { name: "all", yardNeeded: 2 },
     ],
     otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
     myZoom: 0.7,
@@ -378,7 +378,7 @@ export const mainMaleCustomize = [
   {
     id: uuid(),
     name: "Shirt With Material Shorts",
-    image: "https://greatoutdoorprovision.com/wp-content/uploads/2020/03/500x500.png",
+    image: "https://i.pinimg.com/564x/52/c4/49/52c449bac6e9aeb89a13afb99ba8b476.jpg",
     model: short_shirt_material_shorts,
     isVariant: true,
 
@@ -408,7 +408,7 @@ export const mainMaleCustomize = [
   {
     id: uuid(),
     name: "Shirt With Trousers",
-    image: "https://greatoutdoorprovision.com/wp-content/uploads/2020/03/500x500.png",
+    image: "https://www.cumolondon.com/cdn/shop/products/IMG_4265.jpg?v=1677343359&width=1233",
     model: short_shirt_trousers,
     isVariant: true,
 
@@ -437,7 +437,7 @@ export const mainMaleCustomize = [
   {
     id: uuid(),
     name: "Blazer With Material Shorts",
-    image: "https://greatoutdoorprovision.com/wp-content/uploads/2020/03/500x500.png",
+    image: "https://stylerave.com/wp-content/uploads/2020/08/F80EBD06-DE49-4FCF-8C48-15B86893B434.jpeg",
     model: blazer_material_shorts,
     isVariant: true,
     myNode: [
@@ -466,7 +466,7 @@ export const mainMaleCustomize = [
   {
     id: uuid(),
     name: "Blazer With Trousers",
-    image: "https://greatoutdoorprovision.com/wp-content/uploads/2020/03/500x500.png",
+    image: "https://i0.wp.com/naborhi.com/wp-content/uploads/2022/08/Nabil_Mens_African_Print_Blazer_Trousers_Suit_Matching_Set_IMG_8856.jpg",
     model: blazer_trousers,
     isVariant: true,
     myNode: [
