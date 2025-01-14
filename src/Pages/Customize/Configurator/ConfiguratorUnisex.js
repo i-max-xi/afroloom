@@ -1275,7 +1275,7 @@ const ConfiguratorUnisex = () => {
                       ) :(
 
                       <>
-                    <div className="texture-row">
+                    {/* <div className="texture-row">
                       <div className="texture-category mt-1">
                         
                         <div className="w-full flex justify-between capitalize">
@@ -1306,7 +1306,7 @@ const ConfiguratorUnisex = () => {
                         </div>
                       
                       </div>
-                    </div>
+                    </div> */}
                   
                   <div className="texture-category mt-1">
                     <div className="w-full flex justify-between capitalize">

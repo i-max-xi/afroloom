@@ -667,7 +667,7 @@ const ConfiguratorFootwear = () => {
                         </AnimatePresence>
                       ) : (
                       <>
-                    <div className="texture-row">
+                    {/* <div className="texture-row">
                       <div className="texture-category mt-1">
                         
                         <div className="w-full flex justify-between capitalize">
@@ -698,7 +698,7 @@ const ConfiguratorFootwear = () => {
                         </div>
                       
                       </div>
-                    </div>
+                    </div> */}
                   <div className="texture-category mt-1">
                     <div className="w-full flex justify-between capitalize">
                       <p className="text-sm font-medium text-[#4C5B5C]">Batik</p>
