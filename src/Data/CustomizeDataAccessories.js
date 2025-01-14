@@ -172,9 +172,9 @@ export const mainFemaleAccessories = [
     model: hand_bag_model,
     myNode: [
       { name: "handle", yardNeeded: 1 },
-      { name: "left_section", yardNeeded: 1 },
-      { name: "mid_section", yardNeeded: 1 },
-      { name: "right_section", yardNeeded: 1 },
+      // { name: "left_section", yardNeeded: 1 },
+      // { name: "mid_section", yardNeeded: 1 },
+      // { name: "right_section", yardNeeded: 1 },
       { name: "zippers_and_locks", yardNeeded: 1 },
     ],
     myZoom: 0.9,
