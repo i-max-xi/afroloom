@@ -805,7 +805,7 @@ const ConfiguratorSpecial = () => {
                             {/* <h5 className="text-sm lg:text-lg">Imprint  Logos</h5> */}
                             <div className="flex justify-between gap-2">
                               <ImageUploadForLogo
-                                labelLeft={"Upload Logo For Front"}
+                                labelLeft={!turn_to_back ?  "Upload Logo For Front" : "Upload Logo For Back"}
                                 labelRight={"Upload Logo For Back"}
                                 hideRightButton={
                                   true

@@ -290,7 +290,7 @@ export const mainMaleCustomize = [
 
   {
     id: uuid(),
-    name: "T-Shirt With Material Shorts",
+    name: "Short Sleeves T-Shirt With Shorts",
     image: "https://greatoutdoorprovision.com/wp-content/uploads/2020/03/500x500.png",
     model: tshirt_material_shorts,
     isVariant: true,
@@ -319,7 +319,7 @@ export const mainMaleCustomize = [
 
   {
     id: uuid(),
-    name: "T-Shirt With Summer Shorts",
+    name: "Short Sleeves T-Shirt With Summer Shorts",
     image: "https://greatoutdoorprovision.com/wp-content/uploads/2020/03/500x500.png",
     model: tshirt_summer_shorts,
     isVariant: true,
@@ -348,7 +348,7 @@ export const mainMaleCustomize = [
 
   {
     id: uuid(),
-    name: "Tshirt With Trousers",
+    name: "Short Sleeves T-shirt With Trousers",
     image: "https://greatoutdoorprovision.com/wp-content/uploads/2020/03/500x500.png",
     model: tshirt_trousers,
     isVariant: true,
@@ -377,7 +377,7 @@ export const mainMaleCustomize = [
 
   {
     id: uuid(),
-    name: "Shirt With Material Shorts",
+    name: "Short Sleeves Shirt With Shorts",
     image: "https://i.pinimg.com/564x/52/c4/49/52c449bac6e9aeb89a13afb99ba8b476.jpg",
     model: short_shirt_material_shorts,
     isVariant: true,
@@ -407,7 +407,7 @@ export const mainMaleCustomize = [
   },
   {
     id: uuid(),
-    name: "Shirt With Trousers",
+    name: "Short Sleeves Shirt With Trousers",
     image: "https://www.cumolondon.com/cdn/shop/products/IMG_4265.jpg?v=1677343359&width=1233",
     model: short_shirt_trousers,
     isVariant: true,
@@ -436,7 +436,7 @@ export const mainMaleCustomize = [
   },
   {
     id: uuid(),
-    name: "Blazer With Material Shorts",
+    name: "Blazer With Shorts",
     image: "https://stylerave.com/wp-content/uploads/2020/08/F80EBD06-DE49-4FCF-8C48-15B86893B434.jpeg",
     model: blazer_material_shorts,
     isVariant: true,

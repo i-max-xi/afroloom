@@ -531,10 +531,10 @@ const ConfiguratorFootwear = () => {
             </div>
             <div className="lg:grid grid-cols-1 lg:gap-5 flex flex-col-reverse lg:grid-cols-2 container my-3 lg:min-h-screen">
               <div className="left-panel rounded border lg:h-hull">
-                <h5>Select Part</h5>
+                {/* <h5>Select Part</h5>
                 <div className="select-part-container">
                   {masterSelectionPartOptions}
-                </div>
+                </div> */}
                 <h5>Choose Size</h5>
                 <div className="size w-75">
                   <p className="size-button-container">

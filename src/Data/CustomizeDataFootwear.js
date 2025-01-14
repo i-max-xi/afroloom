@@ -30,9 +30,8 @@ export const mainFootwear = [
     model: flex_shoe,
     // myNode: ["sole", "front", "back"],
     myNode: [
-      { name: "sole", yardNeeded: 1 },
       { name: "front", yardNeeded: 1 },
-      { name: "back", yardNeeded: 1 },
+      { name: "sole", yardNeeded: 1 },
     ],
     otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
     myZoom: 0.9,
@@ -74,7 +73,7 @@ export const mainFootwear = [
       { name: "front", yardNeeded: 1 },
       { name: "lace", yardNeeded: 1 },
       { name: "sole", yardNeeded: 1 },
-      { name: "back", yardNeeded: 1 },
+      // { name: "back", yardNeeded: 1 },
     ],
     otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
     myZoom: 0.9,
@@ -112,7 +111,6 @@ export const mainFootwear = [
     model: slippers,
     // myNode: ["padding", "top", "sole"],
     myNode: [
-      { name: "padding", yardNeeded: 1 },
       { name: "top", yardNeeded: 1 },
       { name: "sole", yardNeeded: 1 },
     ],

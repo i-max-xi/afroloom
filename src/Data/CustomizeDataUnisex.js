@@ -1767,8 +1767,8 @@ export const mainUnisex = [
     image: image_waist_bag,
     model: mini_bag_model,
     myNode: [
-      { name: "handle", yardNeeded: 1 },
       { name: "main_body", yardNeeded: 1 },
+      // { name: "handle", yardNeeded: 1 },
       { name: "zippers", yardNeeded: 1 },
     ],
     myZoom: 0.6,
@@ -1800,7 +1800,7 @@ export const mainUnisex = [
     model: backpack_model,
     myNode: [
       { name: "body", yardNeeded: 1 },
-      { name: "handles", yardNeeded: 1 },
+      // { name: "handles", yardNeeded: 1 },
       { name: "zippers", yardNeeded: 1 },
     ],
     myZoom: 0.75,

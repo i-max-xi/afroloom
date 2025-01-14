@@ -58,7 +58,7 @@ const CustomizePage = () => {
             </Link>
           ))} */}
           {/* Accessories */}
-          <div className="border-b  border-b-[#656464]  flex-flex-col justify-center items-center gap-2">
+          <div className="border-b  border-b-[#b6b6b6af]  flex-flex-col justify-center items-center gap-2">
             <h5 className="mt-4 footer-header text-sm text-center">Design Your Beaded Bracelets & Accessories</h5>
             <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 items-center ">
               {mainUnisex
@@ -119,7 +119,7 @@ const CustomizePage = () => {
 
 
            {/* Sash */}
-           <div className="border-b  border-b-[#656464]  flex-flex-col justify-center items-center gap-2 pb-4">
+           <div className="border-b  border-b-[#b6b6b6af]  flex-flex-col justify-center items-center gap-2 pb-4">
             <h5 className="mt-4 footer-header text-sm text-center">Customize Your Perfect Sash</h5>
             <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 items-center ">
               {mainUnisex
@@ -145,11 +145,11 @@ const CustomizePage = () => {
           </div>
 
              {/* Sash Templates */}
-             <div className="border-b  border-b-[#656464]  flex-flex-col justify-center items-center gap-2">
+             <div className="border-b  border-b-[#b6b6b6af]  flex-flex-col justify-center items-center gap-2">
             <h5 className="mt-4 footer-header text-sm text-center">Personalize Sash Templates</h5>
             <div className="flex items-center justify-center">
               {specialSash
-                .slice(0, 1)
+                .slice(12, 13)
                 .map(({ name, image, link, description, title }) => (
                   <Link
                     to={"sash-templates"}
@@ -171,7 +171,7 @@ const CustomizePage = () => {
           </div>
 
            {/* specials */}
-           <div className="border-b  border-b-[#656464]  flex-flex-col justify-center items-center gap-2 pt-2">
+           <div className="border-b  border-b-[#b6b6b6af]  flex-flex-col justify-center items-center gap-2 pt-2">
             <h5 className="mt-4 footer-header text-sm text-center">Craft Your Logo Tees for Men & Women</h5>
             <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 items-center ">
               {specialsCustomize
@@ -198,7 +198,7 @@ const CustomizePage = () => {
 
           {/* Female clothing */}
 
-          <div className="border-b  border-b-[#656464]  flex-flex-col justify-center items-center gap-2">
+          <div className="border-b  border-b-[#b6b6b6af]  flex-flex-col justify-center items-center gap-2">
             <h5 className="mt-4 footer-header text-sm text-center">Tailor Stylish Women's Clothing</h5>
             <div className="grid grid-cols-2 lg:grid-cols-3 gap-3   items-center">
               {mainFemaleCustomize.map(({ name, image }) => (
@@ -219,7 +219,7 @@ const CustomizePage = () => {
          
 
           {/* Male clothing */}
-          <div className="border-b  border-b-[#656464]  flex-flex-col justify-center items-center gap-2">
+          <div className="border-b  border-b-[#b6b6b6af]  flex-flex-col justify-center items-center gap-2">
             <h5 className="mt-4 footer-header text-sm text-center">Upgrade Men's Clothing Your Way</h5>
             <div className="grid grid-cols-2 lg:grid-cols-3 gap-3   items-center">
               {mainMaleCustomize.map(({ name, image }) => (
@@ -238,7 +238,7 @@ const CustomizePage = () => {
 
 
           {/* nails */}
-          {/* <div className="border-b  border-b-[#656464]  flex-flex-col justify-center items-center gap-2">
+          {/* <div className="border-b  border-b-[#b6b6b6af]  flex-flex-col justify-center items-center gap-2">
             <h5 className="mt-4 footer-header text-sm text-center">On Display Only
             <p className="text-xs ">These items are only on display currently and not for sale</p>
 
@@ -271,7 +271,7 @@ const CustomizePage = () => {
 
           {/* Male accessories */}
 
-          {/* <div className="border-b  border-b-[#656464]  flex-flex-col justify-center items-center gap-2">
+          {/* <div className="border-b  border-b-[#b6b6b6af]  flex-flex-col justify-center items-center gap-2">
             <h5 className="mt-4 footer-header text-sm text-center">Male Accessories</h5>
             <div className="grid grid-cols-2 lg:grid-cols-3 gap-3   items-center">
               {mainMaleAccessories.map(({ name, image }) => (

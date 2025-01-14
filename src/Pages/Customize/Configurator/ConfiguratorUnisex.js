@@ -57,6 +57,8 @@ import { OverlayPanel } from "primereact/overlaypanel";
 import { readFileAsDataURL, uploadToStorage } from "../../../utils/functions";
 import TakeTour from "./TakeTour";
 import HtmlImageComponent from "./HtmlImageComponent";
+import { SeeAll } from "./SeeAll";
+import { AnimatePresence } from "framer-motion";
 
 const Shirt = ({
   isRotating,
@@ -183,11 +185,13 @@ const ConfiguratorUnisex = () => {
   // const [Price, setPrice] = useState(selectedClothing.price);
 
   const [selectedSize, setSelectedSize] = useState(1);
-  const [selectedPrintOn, setSelectedPrintOn] = useState(null);
+  const [selectedPrintOn, setSelectedPrintOn] = useState("#ffffff");
 
-  const [selectedPart, setSelectedPart] = useState(
-    notAll.includes(selectedClothing.name) ? 0 : null,
-  );
+  const [selectedPart, setSelectedPart] = useState(0);
+
+  // const [selectedPart, setSelectedPart] = useState(
+  //   notAll.includes(selectedClothing.name) ? 0 : null,
+  // );
 
   const [isRotating, setIsRotating] = useState(false);
 
@@ -797,6 +801,21 @@ const ConfiguratorUnisex = () => {
     }
   }, [selectedClothing.name]);
 
+  const [openSeeAll, setOpenSeeAll] = useState(false);
+    const [selectedSeeAll, setSelectedSeeAll] = useState({ title: '', titleDisplay:'', array: [] });
+  
+    const handleOpenSeeAll = (title, titleDisplay, array) => {
+      setSelectedSeeAll({ title, titleDisplay, array });
+      setOpenSeeAll(true);
+    };
+  
+    const handleCloseSeeAll = () => {
+      setOpenSeeAll(false);
+      setSelectedSeeAll({ title: '', titleDisplay: '', array: [] });
+    };
+  
+  
+
   return (
     <>
       <Nav />
@@ -907,11 +926,11 @@ const ConfiguratorUnisex = () => {
             </div>
             <div className="lg:grid grid-cols-1 lg:gap-5 flex flex-col-reverse lg:grid-cols-2 container my-3 lg:h-screen">
               <div className="left-panel rounded border lg:h-hull">
-                {!notAll.includes(selectedClothing.name) && (
+                {/* {!notAll.includes(selectedClothing.name) && (
                   <h5>Select Part</h5>
-                )}
+                )} */}
                 <div className="select-part-container">
-                  <>
+                  {/* <>
                     {!notAll.includes(selectedClothing.name) && (
                       <button
                         className={`size-button btn btn-outline-dark ${
@@ -945,7 +964,7 @@ const ConfiguratorUnisex = () => {
                         );
                       }
                     })}
-                  </>{" "}
+                  </> */}
                 </div>
 
                 {selectedClothing.name === "Beads Bracelet" && (
@@ -1098,7 +1117,7 @@ const ConfiguratorUnisex = () => {
                     <h1>
                       {"this is" + selectedClothing.name !== "Beads Bracelet"}
                     </h1>
-                    <div className="texture-buttons-container">
+                    {/* <div className="texture-buttons-container">
                       <div className="texture-row">
                         <div className="texture-category mt-3">
                           <h3>
@@ -1202,7 +1221,184 @@ const ConfiguratorUnisex = () => {
                           />
                         </div>
                       </div>
+                    </div> */}
+
+                <div className="texture-buttons-container ">
+                    {openSeeAll ? ( 
+                      <AnimatePresence>
+                      <SeeAll
+                          array={selectedSeeAll.array}
+                          title={selectedSeeAll.title}
+                          titleDisplay={selectedSeeAll.titleDisplay}
+                          onClose={handleCloseSeeAll}
+                          others={{
+                            selectedPrintOn:selectedPrintOn ,
+                            handleTextureChange: handleTextureChange,
+                            currencySymbol: currencySymbol,
+                            currencyFactor: currencyFactor,
+                          }}
+                        />
+                        </AnimatePresence>
+                      ) : (
+
+                        selectedClothing?.isVariant ? (
+
+                          <div className="texture-row">
+                    <div className="texture-category mt-1">
+                      <div className="w-full flex justify-between capitalize">
+                        <p className="text-sm font-medium text-[#4C5B5C]">WaxPrint</p>
+                        <p  onClick={() => handleOpenSeeAll('waxPrint', "waxPrint",  textureArrays?.waxPrint)} className="cursor-pointer text-sm text-[#ffc107] hover:font-semibold"> See all &#8594;</p>
+                      </div>
+                      <div className="grid grid-cols-4 gap-3 px-4">
+                          {textureArrays.waxPrint.slice(0, 4).map((texture) => (
+                            <TextureItem
+                            key={texture}
+                            texture={texture}
+                            setHideText={setHideText}
+                            Title="waxPrint"
+                            selectedTexture={selectedPrintOn}
+                            // Pass setSelectedTexture as a prop
+                            handleTextureChange={handleTextureChange}
+                            currencySymbol={currencySymbol}
+                            currencyFactor={currencyFactor}
+                            subTextureDescriptions={
+                              textureDescriptions.waxPrint
+                            }
+                            textureIndex={textureArrays.waxPrint.indexOf(
+                              texture,
+                            )}
+                          />
+                          ))}
+                      </div>
                     </div>
+                  </div>
+                      ) :(
+
+                      <>
+                    <div className="texture-row">
+                      <div className="texture-category mt-1">
+                        
+                        <div className="w-full flex justify-between capitalize">
+                        <p className="text-sm font-medium text-[#4C5B5C]">Trending Now</p>
+                        <p  onClick={() => handleOpenSeeAll('newTextures', "Trending Now",  textureArrays?.newTextures)} className="cursor-pointer text-sm text-[#ffc107] hover:font-semibold"> See all &#8594;</p>
+                        </div>
+
+                        <div className="grid grid-cols-4 gap-3 px-4">
+                          {textureArrays.newTextures.slice(0,4).map((texture) => (
+                            <TextureItem
+                            key={texture}
+                            texture={texture}
+                            setHideText={setHideText}
+                            Title="Trending Now"
+                            selectedTexture={selectedPrintOn}
+                            // Pass setSelectedTexture as a prop
+                            handleTextureChange={handleTextureChange}
+                            currencySymbol={currencySymbol}
+                            currencyFactor={currencyFactor}
+                            subTextureDescriptions={
+                              textureDescriptions.newTextures
+                            }
+                            textureIndex={textureArrays.newTextures.indexOf(
+                              texture,
+                            )}
+                          />
+                          ) )}
+                        </div>
+                      
+                      </div>
+                    </div>
+                  
+                  <div className="texture-category mt-1">
+                    <div className="w-full flex justify-between capitalize">
+                      <p className="text-sm font-medium text-[#4C5B5C]">Batik</p>
+                      <p  onClick={() => handleOpenSeeAll('batik', "Batik",  textureArrays?.batik)} className="cursor-pointer text-sm text-[#ffc107] hover:font-semibold"> See all &#8594;</p>
+                    </div>
+
+                  <div className="grid grid-cols-4 gap-3 px-4">
+                      {textureArrays.batik.slice(0, 4).map((texture) => (
+                        <TextureItem
+                        key={texture}
+                        texture={texture}
+                        setHideText={setHideText}
+                        Title="batik"
+                        selectedTexture={selectedPrintOn}
+                        handleTextureChange={handleTextureChange}
+                        subTextureDescriptions={textureDescriptions.batik}
+                        textureIndex={textureArrays.batik.indexOf(texture)}
+                      />
+                      ))}
+                  </div>
+
+                  </div>
+
+                  <div className="texture-row">
+                    <div className="texture-category mt-1">
+                      <div className="w-full flex justify-between capitalize">
+                        <p className="text-sm font-medium text-[#4C5B5C]">WaxPrint</p>
+                        <p  onClick={() => handleOpenSeeAll('waxPrint', "waxPrint",  textureArrays?.waxPrint)} className="cursor-pointer text-sm text-[#ffc107] hover:font-semibold"> See all &#8594;</p>
+                      </div>
+                      <div className="grid grid-cols-4 gap-3 px-4">
+                          {textureArrays.waxPrint.slice(0, 4).map((texture) => (
+                            <TextureItem
+                            key={texture}
+                            texture={texture}
+                            setHideText={setHideText}
+                            Title="waxPrint"
+                            selectedTexture={selectedPrintOn}
+                            // Pass setSelectedTexture as a prop
+                            handleTextureChange={handleTextureChange}
+                            currencySymbol={currencySymbol}
+                            currencyFactor={currencyFactor}
+                            subTextureDescriptions={
+                              textureDescriptions.waxPrint
+                            }
+                            textureIndex={textureArrays.waxPrint.indexOf(
+                              texture,
+                            )}
+                          />
+                          ))}
+                      </div>
+                    </div>
+                  </div>
+                  <div className="texture-row">
+                    <div className="texture-category mt-1">
+                      <div className="w-full flex justify-between capitalize">
+                          <p className="text-sm font-medium text-[#4C5B5C]">School Prints</p>
+                          <p  onClick={() => handleOpenSeeAll('diaspora', "School Prints",  textureArrays?.Diaspora)} className="cursor-pointer text-sm text-[#ffc107] hover:font-semibold"> See all &#8594;</p>
+                      </div>
+                     
+
+                        <div className="grid grid-cols-4 gap-3 px-4">
+                          {textureArrays.Diaspora.slice(0, 4).map((texture) => (
+                            <TextureItem
+                              key={texture}
+                              texture={texture}
+                              setHideText={setHideText}
+                              Title="Diaspora"
+                              selectedTexture={selectedPrintOn}
+                              // Pass setSelectedTexture as a prop
+                              handleTextureChange={handleTextureChange}
+                              currencySymbol={currencySymbol}
+                              currencyFactor={currencyFactor}
+                              subTextureDescriptions={
+                                textureDescriptions.diaspora
+                              }
+                              textureIndex={textureArrays.Diaspora.indexOf(
+                                texture,
+                              )}
+                          />
+                          ))}
+                      </div>
+
+                    </div>
+                  </div>
+                       </>
+                      )
+                    
+                    
+                    )}
+
+                </div>
                   </>
                 )}
               </div>
