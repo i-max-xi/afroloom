@@ -572,7 +572,7 @@ export const mainFemaleCustomize = [
   },
   {
     id: uuid(),
-    name: "Bra With Material Shorts",
+    name: "Bra With Shorts",
         image: image_bra_material_shorts,
         isVariant: true,
     model: bra_material_short,
@@ -661,7 +661,7 @@ export const mainFemaleCustomize = [
   },
   {
     id: uuid(),
-    name: "T-Shirt With Booty Shorts",
+    name: "Short Sleeves T-Shirt With Booty Shorts",
         image: "https://greatoutdoorprovision.com/wp-content/uploads/2020/03/500x500.png",
         isVariant: true,
     model: tshirt_and_booty_shorts,
@@ -685,7 +685,7 @@ export const mainFemaleCustomize = [
   },
   {
     id: uuid(),
-    name: "T-Shirt With Material Shorts",
+    name: "Short Sleeves T-Shirt With Shorts",
     image: "https://greatoutdoorprovision.com/wp-content/uploads/2020/03/500x500.png",
     isVariant: true,
     model: tshirt_and_material_shorts,
@@ -709,7 +709,7 @@ export const mainFemaleCustomize = [
   },
   {
     id: uuid(),
-    name: "T-Shirt With Skirt",
+    name: "Short Sleeves T-Shirt With Skirt",
         image: "https://greatoutdoorprovision.com/wp-content/uploads/2020/03/500x500.png",
         isVariant: true,
     model: tshirt_and_skirt,
@@ -733,7 +733,7 @@ export const mainFemaleCustomize = [
   },
   {
     id: uuid(),
-    name: "T-Shirt With Trousers",
+    name: "Short Sleeves T-Shirt With Trousers",
         image: "https://greatoutdoorprovision.com/wp-content/uploads/2020/03/500x500.png",
         isVariant: true,
     model: tshirt_and_trousers,
@@ -758,7 +758,7 @@ export const mainFemaleCustomize = [
  
   {
     id: uuid(),
-    name: "Shirt With Booty Shorts",
+    name: "Short Sleeves Shirt With Booty Shorts",
         image: "https://greatoutdoorprovision.com/wp-content/uploads/2020/03/500x500.png",
         isVariant: true,
     model: short_shirt_and_booty_shorts,
@@ -782,7 +782,7 @@ export const mainFemaleCustomize = [
   },
   {
     id: uuid(),
-    name: "Shirt With Material Shorts",
+    name: "Short Sleeves Shirt With Shorts",
     image: image_shirt_material_shorts,
     isVariant: true,
     model: short_shirt_and_material_shorts,
@@ -806,7 +806,7 @@ export const mainFemaleCustomize = [
   },
   {
     id: uuid(),
-    name: "Shirt With Trousers",
+    name: "Short Sleeves Shirt With Trousers",
         image: "https://greatoutdoorprovision.com/wp-content/uploads/2020/03/500x500.png",
         isVariant: true,
     model: short_shirt_and_trousers,
@@ -941,7 +941,7 @@ export const mainFemaleCustomize = [
   
   {
     id: uuid(),
-    name: "Crop Top With Material Shorts",
+    name: "Crop Top With Shorts",
         image: "https://greatoutdoorprovision.com/wp-content/uploads/2020/03/500x500.png",
         isVariant: true,
     model: crop_top_material_shorts,
@@ -1051,7 +1051,7 @@ export const mainFemaleCustomize = [
   },
   {
     id: uuid(),
-    name: "Blazer With Material Shorts",
+    name: "Blazer With Shorts",
         image: image_blazer_material_shorts,
         isVariant: true,
     model: blazer_shorts,

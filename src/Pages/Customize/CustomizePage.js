@@ -149,7 +149,7 @@ const CustomizePage = () => {
             <h5 className="mt-4 footer-header text-sm text-center">Personalize Sash Templates</h5>
             <div className="flex items-center justify-center">
               {specialSash
-                .slice(0, 1)
+                .slice(12, 13)
                 .map(({ name, image, link, description, title }) => (
                   <Link
                     to={"sash-templates"}
