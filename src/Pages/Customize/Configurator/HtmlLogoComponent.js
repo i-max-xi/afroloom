@@ -16,7 +16,7 @@ const HtmlLogoComponent = ({
 
 
   useEffect(() => {
-    setStableImageLeft(null);
+    setStableImageLeft("");
 
     /// timetout 5 secons and set the image
      setTimeout(() => {
