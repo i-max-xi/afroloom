@@ -61,6 +61,9 @@ const image_summer_image = require("../Assets/welcome_3ds/male/male summer short
 const image_shorts_image = require("../Assets/welcome_3ds/male/male shorts.png");
 const image_jacket = require("../Assets/welcome_3ds/male/bomber_jacket.png");
 const image_kimono = require("../Assets/welcome_3ds/male/kimono.png");
+const image_tshirt_trousers = require("../Assets/welcome_3ds/male/tshirt_trouser.jpg");
+const image_tshirt_shorts = require("../Assets/welcome_3ds/male/tshirt_material_shorts.jpg");
+const image_tshirt_summer_shorts = require("../Assets/welcome_3ds/male/tshirt_summer_shorts.jpg");
 
 export const mainMaleCustomize = [
   {
@@ -291,7 +294,7 @@ export const mainMaleCustomize = [
   {
     id: uuid(),
     name: "Short Sleeves T-Shirt With Shorts",
-    image: "https://greatoutdoorprovision.com/wp-content/uploads/2020/03/500x500.png",
+    image: image_tshirt_shorts,
     model: tshirt_material_shorts,
     isVariant: true,
     myNode: [
@@ -320,7 +323,7 @@ export const mainMaleCustomize = [
   {
     id: uuid(),
     name: "Short Sleeves T-Shirt With Summer Shorts",
-    image: "https://greatoutdoorprovision.com/wp-content/uploads/2020/03/500x500.png",
+    image: image_tshirt_summer_shorts,
     model: tshirt_summer_shorts,
     isVariant: true,
     myNode: [
@@ -349,7 +352,7 @@ export const mainMaleCustomize = [
   {
     id: uuid(),
     name: "Short Sleeves T-shirt With Trousers",
-    image: "https://greatoutdoorprovision.com/wp-content/uploads/2020/03/500x500.png",
+    image: image_tshirt_trousers,
     model: tshirt_trousers,
     isVariant: true,
     myNode: [

@@ -235,7 +235,7 @@ initializeData();
 export const textureArrays = {
   batik: [batik2, batik3, batik4, batik5],
 
-  waxPrint: [waxPrint1, waxPrint2, waxPrint3, waxPrint4, waxPrint5, waxPrint6, otumfuo, asantenhene30thanniversary],
+  waxPrint: [n1, n2, n3, n4, n5, n6, n7, n8, n9, n10, n11, n12, n13, n14, n15, n16, n17, n18, n19, n20, n21, n22, n23, n24, n25, n26, n27, n28, n29, n30, n31, n32, n33, n34, n35,waxPrint1, waxPrint2, waxPrint3, waxPrint4, waxPrint5, waxPrint6, otumfuo, asantenhene30thanniversary],
   Diaspora: [conti, katanga, republic, queens, africa],
   nailDesigns: [
     nailDesign3,
@@ -251,7 +251,8 @@ export const textureArrays = {
     nailDesign47,
   ],
   // commemorative: [otumfuo, asantenhene30thanniversary],
-  newTextures: [n1, n2, n3, n4, n5, n6, n7, n8, n9, n10, n11, n12, n13, n14, n15, n16, n17, n18, n19, n20, n21, n22, n23, n24, n25, n26, n27, n28, n29, n30, n31, n32, n33, n34, n35],
+  newTextures: [],
+  // newTextures: [n1, n2, n3, n4, n5, n6, n7, n8, n9, n10, n11, n12, n13, n14, n15, n16, n17, n18, n19, n20, n21, n22, n23, n24, n25, n26, n27, n28, n29, n30, n31, n32, n33, n34, n35],
   logos : [logo1, logo2, logo4, logo5, logo6, logo7, logo8, logo9, logo10, logo11, logo12, logo13, logo14, logo15, logo16, logo17, logo18, logo19, logo20, logo21, logo22, logo23, logo24, logo25, logo26, logo27, logo28, logo29, logo30, logo31, logo32, logo33, logo34, logo35, logo36, logo37, logo38, logo39, logo40, logo41, logo42, logo43, logo44, logo45, logo46]
 };
 
@@ -296,6 +297,146 @@ export const textureDescriptions = {
   ],
 
   waxPrint: [
+    {
+      "textureName": "Ahwene Pa Nkasa (Good Things Don’t Speak for Themselves)",
+      "textureDescription": "This fabric symbolizes quiet excellence, showing that true value does not boast. Wear it proudly to represent confidence, knowing your worth will shine through your actions.",
+    },
+    {
+      "textureName": "Ahwenepa Nkasa (Good Things Don’t Speak for Themselves)",
+      "textureDescription": "This design reflects silent greatness and high standards. Rock this fabric with pride as a reminder that excellence needs no announcement—it simply is.",
+    },
+    {
+      "textureName": "Akuffo",
+      "textureDescription": "This fabric embodies boldness and leadership. Wear it to make a statement about courage, determination, and standing tall in every situation.",
+    },
+    {
+      "textureName": "Akyemfrɛ (You Can’t Call Me Twice)",
+      "textureDescription": "Representing uniqueness, this pattern tells the world you are one of a kind. Wear it to celebrate your individuality and self-worth.",
+    },
+    {
+      "textureName": "Akyikyideɛ Akyi (Back of the Tortoise)",
+      "textureDescription": "A symbol of resilience and hidden strength. Put on this fabric to show that you can overcome life’s challenges with patience and fortitude.",
+    },
+    {
+      "textureName": "Animuonyam Nka Nyame (All Glory Belongs to God)",
+      "textureDescription": "Perfect for expressing gratitude and humility. Wear it to celebrate your blessings and acknowledge God’s hand in your life.",
+    },
+    {
+      "textureName": "Ghana Flag",
+      "textureDescription": "Celebrate unity, freedom, and patriotism with this design. Wear it with pride to show your love for Ghana at national events or every day.",
+    },
+    {
+      "textureName": "Kotodwe (Chicken Leg)",
+      "textureDescription": "Symbolizing unexpected power in small things. Step out in this fabric to express strength, even in the smallest of beginnings.",
+    },
+    {
+      "textureName": "Nkitinkiti (Intricate Patterns)",
+      "textureDescription": "Representing creativity and complexity, this fabric is perfect for innovators. Wear it boldly to embrace your ability to think differently.",
+    },
+    {
+      "textureName": "Nsuanhunu (Foam on Water)",
+      "textureDescription": "A symbol of elegance and subtle influence. Dress in this fabric to show that even the lightest touch can leave a lasting impact.",
+    },
+    {
+      "textureName": "Obaa Pa (Virtuous Woman)",
+      "textureDescription": "Celebrate the strength and grace of women with this design. Wear it to embody integrity, care, and the beauty of womanhood."
+    },
+    {
+      "textureName": "Obi Deɛ Aba (What Someone Brings)",
+      "textureDescription": "This fabric teaches gratitude. Wear it proudly as a reminder to appreciate the gifts and kindness of others."
+    },
+    {
+      "textureName": "Ɔya Suro Ɔya (Pain Fears Pain)",
+      "textureDescription": "A message of resilience, encouraging you to overcome challenges. Rock this fabric to express that you’ve faced hardships and emerged stronger."
+    },
+    {
+      "textureName": "Sakadom (Freedom)",
+      "textureDescription": "Wear this fabric to embrace your freedom and individuality. It’s perfect for breaking boundaries and expressing your true self."
+    },
+    {
+      "textureName": "Samrama Ketɛ (Woven Mat)",
+      "textureDescription": "This pattern celebrates traditional craftsmanship and unity. Wear it with pride to honor cultural heritage and simplicity."
+    },
+    {
+      "textureName": "Sika Wo Ntaban (Money Has Wings)",
+      "textureDescription": "A fabric reminding us to manage wealth wisely. Dress in it to express mindfulness about your financial journey."
+    },
+    {
+      "textureName": "Subra (Morality)",
+      "textureDescription": "Showcase your character and discipline by wearing this fabric. It’s ideal for occasions celebrating responsibility and values."
+    },
+    {
+      "textureName": "Abɛn (Horn)",
+      "textureDescription": "Symbolizing a call to action, wear this fabric to show leadership and inspire others to follow your example."
+    },
+    {
+      "textureName": "Abusua Mu Wo Abusua Kronkron (There’s a Sacred Family Within a Family)",
+      "textureDescription": "This fabric celebrates family unity and legacy. Wear it with pride for family reunions or events honoring heritage."
+    },
+    {
+      "textureName": "Adeakyeɛ Bia (Every Day is a Gift)",
+      "textureDescription": "Celebrate life by wearing this fabric. It’s perfect for brightening your day and spreading joy to others."
+    },
+    {
+      "textureName": "Adeakyeɛ Bia (Every Day is a Gift)",
+      "textureDescription": "Celebrate life by wearing this fabric. It’s perfect for brightening your day and spreading joy to others."
+    },
+    {
+      "textureName": "Adekyeɛ Munsem (Morning’s Secrets)",
+      "textureDescription": "Ideal for fresh starts, this fabric reminds you that every new day brings opportunity. Wear it when embracing change and new beginnings."
+    },
+    {
+      "textureName": "Adom Arakwa (Graceful Robe)",
+      "textureDescription": "Wear this elegant design to express grace, beauty, and poise at any gathering."
+    },
+    {
+      "textureName": "Akoraa Bɔ Nwa (Little One Catches the Big One)",
+      "textureDescription": "A fabric that encourages perseverance. Wear it to remind yourself and others that small efforts can achieve great results."
+    },
+    {
+      "textureName": "Ankonam Mmoboro (The Lonely One Finds Comfort)",
+      "textureDescription": "Perfect for expressing personal strength and inner peace. Wear it as a symbol of resilience in solitude."
+    },
+    {
+      "textureName": "Aseda Wo Nyame Ho (Gratitude to God)",
+      "textureDescription": "A great choice for religious events, this fabric reflects gratitude for life’s blessings. Wear it to express thankfulness."
+    },
+    {
+      "textureName": "Boafoɔ Ne Awurade (God is the Helper)",
+      "textureDescription": "Wear this to show your faith in divine guidance. It’s ideal for spiritual occasions or as a reminder of God’s help in your life."
+    },
+    {
+      "textureName": "Boafoɔ Ni Bebia (Helper in Every Place)",
+      "textureDescription": "This fabric inspires trust in finding help everywhere. Wear it to remind yourself to seek support when needed."
+    },
+    {
+      "textureName": "Daakye Asem Nti (For the Sake of the Future)",
+      "textureDescription": "Perfect for goal-setters, wear this fabric to express ambition and a vision for a brighter future."
+    },
+    {
+      "textureName": "Flower",
+      "textureDescription": "Inspired by nature, this pattern promotes joy and love. Wear it to spread cheer and positivity wherever you go."
+    },
+    {
+      "textureName": "Obaapa (Good Woman)",
+      "textureDescription": "Celebrate impactful women with this design. Wear it to inspire others with your kindness and achievements."
+    },
+    {
+      "textureName": "Sape (Wisdom)",
+      "textureDescription": "A great fabric for scholars and thinkers. Wear it to show your love for learning and wisdom."
+    },
+    {
+      "textureName": "Senkyi Bridge",
+      "textureDescription": "This fabric celebrates connection and unity. Wear it to promote collaboration and building bridges between people."
+    },
+    {
+      "textureName": "Yɛda Awurade Ase (We Thank the Lord)",
+      "textureDescription": "Wear this to express gratitude for life’s blessings. It’s perfect for celebrations and spiritual events."
+    },
+    {
+      "textureName": "Yesu Mogya (Blood of Jesus)",
+      "textureDescription": "A powerful symbol of faith and sacrifice. Wear this fabric proudly to express your Christian beliefs and devotion."
+    },
     {
       textureName: "DADE3 MPADUA",
       textureDescription: `Experience the vibrancy and elegance of African culture with the stunning dade3 mpadua fabric.
