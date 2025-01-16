@@ -193,7 +193,7 @@ const ConfiguratorUnisex = () => {
   //   notAll.includes(selectedClothing.name) ? 0 : null,
   // );
 
-  const [isRotating, setIsRotating] = useState(false);
+  const [isRotating, setIsRotating] = useState(noSpinFor.includes(selectedClothing.name) ? false : true);
 
   const canvasRef = useRef(null);
   // toast
@@ -926,12 +926,12 @@ const ConfiguratorUnisex = () => {
             </div>
             <div className="lg:grid grid-cols-1 lg:gap-5 flex flex-col-reverse lg:grid-cols-2 container my-3 lg:h-screen">
               <div className="left-panel rounded border lg:h-hull">
-                {/* {!notAll.includes(selectedClothing.name) && (
+                {!notAll.includes(selectedClothing.name) && (
                   <h5>Select Part</h5>
-                )} */}
+                )}
                 <div className="select-part-container">
-                  {/* <>
-                    {!notAll.includes(selectedClothing.name) && (
+                  <>
+                    {/* {!notAll.includes(selectedClothing.name) && (
                       <button
                         className={`size-button btn btn-outline-dark ${
                           selectedPart === "all" ? "selected" : ""
@@ -940,9 +940,9 @@ const ConfiguratorUnisex = () => {
                       >
                         All
                       </button>
-                    )}
+                    )} */}
 
-                    {selectedClothing.myNode.map((nodeName, index) => {
+                    {noSpinFor.includes(selectedClothing.name) && selectedClothing.myNode.map((nodeName, index) => {
                       if (
                         specialNodeNames.includes(nodeName.name) ||
                         hideNotAllNodes.includes(nodeName.name)
@@ -964,7 +964,7 @@ const ConfiguratorUnisex = () => {
                         );
                       }
                     })}
-                  </> */}
+                  </>
                 </div>
 
                 {selectedClothing.name === "Beads Bracelet" && (

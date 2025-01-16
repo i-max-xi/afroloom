@@ -7,6 +7,7 @@ const HtmlImageComponent = ({
   imageLeft,
   imageRight,
   hideLogo = false,
+  textColor,
 }) => {
 
   const isMobile = window.innerWidth < 768;
@@ -38,6 +39,7 @@ const HtmlImageComponent = ({
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center",
           opacity: imageLeft !== null ? 1 : 0.3,
+          color: textColor
         }}
         dangerouslySetInnerHTML={{
           __html:
@@ -73,6 +75,7 @@ const HtmlImageComponent = ({
             backgroundRepeat: "no-repeat",
             backgroundPosition: "center",
             opacity: imageRight !== null ? 1 : 0.3,
+            color: textColor
           }}
           dangerouslySetInnerHTML={{
             __html:
