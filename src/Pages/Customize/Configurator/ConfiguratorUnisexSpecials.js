@@ -189,7 +189,7 @@ const ConfiguratorUnisexSpecial = () => {
     notAll.includes(selectedClothing.name) ? 0 : null,
   );
 
-  const [isRotating, setIsRotating] = useState(false);
+  const [isRotating, setIsRotating] = useState(true);
 
   const canvasRef = useRef(null);
   // toast
@@ -291,8 +291,9 @@ const ConfiguratorUnisexSpecial = () => {
     useState("horizontal");
 
   // const [textPosition] = useState([-0.65, -0.15, 0.05]); // Initialize text position
-  const [textColor, setTextColor] = useState("black");
+  const [textColor, setTextColor] = useState(selectedClothing.textColor || "black");
   const [fontFamily, setFontFamily] = useState("Arial");
+
 
   const fonts = [
     "Arial",
@@ -691,6 +692,7 @@ const ConfiguratorUnisexSpecial = () => {
                               hideRightText={
                                 selectedClothing.name === "Beads Bracelet"
                               }
+                              textColor={textColor}
                             />
                           </>
                   )}

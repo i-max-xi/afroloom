@@ -163,7 +163,7 @@ const ConfiguratorFootwear = () => {
 
   const [selectedPart, setSelectedPart] = useState(0);
 
-  const [isRotating, setIsRotating] = useState(false);
+  const [isRotating, setIsRotating] = useState(true);
 
   const canvasRef = useRef();
   // toast
