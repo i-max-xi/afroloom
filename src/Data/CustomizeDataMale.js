@@ -64,6 +64,7 @@ const image_kimono = require("../Assets/welcome_3ds/male/kimono.png");
 const image_tshirt_trousers = require("../Assets/welcome_3ds/male/tshirt_trouser.jpg");
 const image_tshirt_shorts = require("../Assets/welcome_3ds/male/tshirt_material_shorts.jpg");
 const image_tshirt_summer_shorts = require("../Assets/welcome_3ds/male/tshirt_summer_shorts.jpg");
+const image_v_neck = require("../Assets/welcome_3ds/male/v_neck.jpg");
 
 export const mainMaleCustomize = [
   {
@@ -104,8 +105,8 @@ export const mainMaleCustomize = [
   },
   {
     id: uuid(),
-    name: "Short Sleeve V-Shirt",
-    image: "https://i.etsystatic.com/45328719/c/2400/2400/0/0/il/66fc66/5174621510/il_300x300.5174621510_n7oa.jpg",
+    name: "Short Sleeve V-Neck T-Shirt",
+    image: image_v_neck,
     model: v_neck,
     myNode: [{ name: "all", yardNeeded: 3 }],
     otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
