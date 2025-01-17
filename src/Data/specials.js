@@ -6,6 +6,7 @@ import tshirtModel1 from "../Pages/Customize/Configurator/models/MaleClothing/ts
 import tshirtModel2 from "../Pages/Customize/Configurator/models/MaleClothing/tshirt_long_best.glb";
 import tshirt_female_Model1 from "../Pages/Customize/Configurator/models/FemaleClothing/tshirt_short_two.glb";
 import tshirt_female_Model2 from "../Pages/Customize/Configurator/models/FemaleClothing/tshirt_long_two.glb";
+import v_neck from "../Pages/Customize/Configurator/models/MaleClothing/variations/v_neck.glb";
 
 
 import tshirt_guide from "../Assets/size_guide/MaleClothing/men short sleeve  t-shirt_.jpg";
@@ -15,7 +16,7 @@ import tshirtlong_female_guide from "../Assets/size_guide/FemaleClothing/women l
 
 const image_tshirt_long = require("../Assets/welcome_3ds/male/male_longsleeves_with_logo.webp");
 const image_female_tshirt_long = require("../Assets/welcome_3ds/female/female_longsleeves_with_logo.webp");
-const image_female_tshirt_long_image = require("../Assets/welcome_3ds/female/long_sleeve_new.png");
+const image_v_neck = require("../Assets/welcome_3ds/male/v_neck.jpg");
 
 export const specialsCustomize = [
   {
@@ -69,6 +70,51 @@ export const specialsCustomize = [
     name: "Long Sleeve T-Shirt",
     image: image_tshirt_long,
     model: tshirtModel2,
+    myNode: [{ name: "all", yardNeeded: 3 }],
+    otherYards: { small: 3, large: 4, extraLarge: 4, extraExtraLarge: 4 },
+    myZoom: 0.8,
+    price: 50,
+    logo: {
+      translate: {
+        x: "-50%",
+        y: "-45%",
+      },
+      size: {
+        width: "5.5rem",
+        height: "5.5rem",
+      }
+    },
+    // sizeModels: tshirt_model,
+    readyIn: 7,
+    sizeGuide: tshirtlong_guide,
+    sizeOptions: [
+      { label: "S", value: 0.5, priceValue: 5, colorPriceValue: 85 },
+      { label: "M", value: 1, priceValue: 5, colorPriceValue: 85 },
+      { label: "L", value: 2, priceValue: 5, colorPriceValue: 125 },
+      { label: "XL", value: 3, priceValue: 40, colorPriceValue: 125 },
+      { label: "2XL", value: 4, priceValue: 40, colorPriceValue: 125 },
+    ],
+    sizeForms: [
+      {
+        label: "Neck Size (cm)",
+      },
+      {
+        label: "Half Across Back (cm)",
+      },
+      {
+        label: "Chest (cm)",
+      },
+      {
+        label: "Sleeve Length (cm)",
+      },
+    ],
+  },
+
+  {
+    id: uuid(),
+    name: "Short Sleeve V-Neck T-Shirt",
+    image: image_v_neck,
+    model: v_neck,
     myNode: [{ name: "all", yardNeeded: 3 }],
     otherYards: { small: 3, large: 4, extraLarge: 4, extraExtraLarge: 4 },
     myZoom: 0.8,

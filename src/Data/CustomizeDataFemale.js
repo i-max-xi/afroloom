@@ -149,7 +149,7 @@ export const mainFemaleCustomize = [
   },
   // {
   //   id: uuid(),
-  //   name: "V-Shirt Shirt",
+  //   name: "V-Neck  T-Shirt",
   //   image: "https://cdnp.sanmar.com/medias/sys_master/images/images/hdb/hd1/11531770658846/4532-Black-1-LST700BlackModelFront2-1200W.jpg",
   //   model: vneck,
   //   myNode: [{ name: "all", yardNeeded: 2 }],
