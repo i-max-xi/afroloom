@@ -548,6 +548,32 @@ const ConfiguratorUnisex = () => {
         },
       };
     }
+    if (selectedClothing.name === noSpinFor[6]) {
+      return {
+        left: {
+          text: enteredTextLeft,
+          top: "3.5rem",
+          left: "-3rem",
+          height: "2rem",
+          width: "5.4rem",
+          lineHeight: "",
+          image: {
+            top: "-1rem",
+            left: "16rem",
+            height: "2rem",
+            width: "2rem",
+          },
+        },
+        right: {
+          text: " ",
+          top: "-1rem",
+          left: "4rem",
+          height: "12rem",
+          width: "5.4rem",
+          lineHeight: "",
+        },
+      };
+    }
   }, [selectedClothing.name]);
 
   const [fontSizeLeft, setFontSizeLeft] = useState(
@@ -792,7 +818,7 @@ const ConfiguratorUnisex = () => {
       return "bikini";
     }
 
-    if (selectedClothing.name === "Beads Bracelet") {
+    if (selectedClothing.name.includes("Beads Bracelet")) {
       return "bangle";
     }
 
@@ -967,7 +993,7 @@ const ConfiguratorUnisex = () => {
                   </>
                 </div>
 
-                {selectedClothing.name === "Beads Bracelet" && (
+                {selectedClothing.name.includes("Beads Bracelet") && (
                   <div className="select-part-container mt-3">
                     <h6>Bead Type</h6>
 
@@ -1115,7 +1141,7 @@ const ConfiguratorUnisex = () => {
                   <>
                     <h5>Choose Textile</h5>
                     <h1>
-                      {"this is" + selectedClothing.name !== "Beads Bracelet"}
+                      {"this is" + !selectedClothing.name("Beads Bracelet")}
                     </h1>
                     {/* <div className="texture-buttons-container">
                       <div className="texture-row">
@@ -1433,16 +1459,16 @@ const ConfiguratorUnisex = () => {
                               textRightOrientation={textRightOrientation}
                               ImprintTextPosition={ImprintTextPosition}
                               hideRightText={
-                                selectedClothing.name === "Beads Bracelet"
+                                selectedClothing.name.includes("Beads Bracelet")
                               }
                             />
                             <HtmlImageComponent
                               ImprintTextPosition={ImprintTextPosition}
                               imageLeft={uploadedImageLeft}
                               imageRight={uploadedImageRight}
-                              hideLogo={selectedClothing.name === "Beads Bracelet"}
+                              hideLogo={selectedClothing.name.includes("Beads Bracelet")}
                               hideRightText={
-                                selectedClothing.name === "Beads Bracelet"
+                                selectedClothing.name.includes("Beads Bracelet")
                               }
                             />
                           </>
@@ -1471,7 +1497,7 @@ const ConfiguratorUnisex = () => {
                             type="text"
                             className="p-inputtext-sm"
                             placeholder={
-                              selectedClothing.name === "Beads Bracelet"
+                              selectedClothing.name.includes("Beads Bracelet")
                                 ? "Text Here"
                                 : "imprint on left side..."
                             }
@@ -1479,12 +1505,12 @@ const ConfiguratorUnisex = () => {
                             onChange={(e) => setEnteredTextLeft(e.target.value)}
                             style={{
                               width:
-                                selectedClothing.name === "Beads Bracelet"
+                                selectedClothing.name.includes("Beads Bracelet")
                                   ? "66.5%"
                                   : "50%",
                             }}
                           />
-                          {selectedClothing.name === noSpinFor[0] ? null : (
+                          {selectedClothing.name.includes("Beads Bracelet") ? null : (
                             <InputText
                               type="text"
                               placeholder="imprint on right side..."
@@ -1495,7 +1521,7 @@ const ConfiguratorUnisex = () => {
                               }
                               style={{
                                 width:
-                                  selectedClothing.name === "Beads Bracelet"
+                                  selectedClothing.name.includes("Beads Bracelet")
                                     ? "66.5%"
                                     : "50%",
                               }}
@@ -1521,7 +1547,7 @@ const ConfiguratorUnisex = () => {
                         >
                           <div className="flex flex-col w-full gap-2">
                             <h6 className="text-base font-medium">Color</h6>
-                            {selectedClothing.name === "Beads Bracelet" ? (
+                            {selectedClothing.name.includes("Beads Bracelet") ? (
                               "N/A"
                             ) : (
                               <div className="flex">
@@ -1562,7 +1588,7 @@ const ConfiguratorUnisex = () => {
 
                             <h6 className="text-base font-medium">
                               Size{" "}
-                              {selectedClothing.name === "Beads Bracelet"
+                              {selectedClothing.name.includes("Beads Bracelet")
                                 ? null
                                 : "(Left)"}
                             </h6>
@@ -1582,8 +1608,8 @@ const ConfiguratorUnisex = () => {
                               </button>
                             </div>
 
-                            {selectedClothing.name ===
-                            "Beads Bracelet" ? null : (
+                            {selectedClothing.name.includes("Beads Bracelet")
+                             ? null : (
                               <>
                                 <h6 className="text-base font-medium">Size (Right)</h6>
                                 <div className="d-flex  gap-2 justify-content-center align-items-center fs-button">

@@ -62,7 +62,7 @@ const CustomizePage = () => {
             <h5 className="mt-4 footer-header text-sm text-center">Design Your Beaded Bracelets & Accessories</h5>
             <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 items-center ">
               {mainUnisex
-                .slice(13, 16)
+                .slice(13, 18)
                 .map(({ name, image, link, description, title }) => (
                   <Link
                     to={link ? link : `/configurator-unisex/${name}`}

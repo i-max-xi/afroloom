@@ -13,6 +13,8 @@ import sash_striped_edge from "../Pages/Customize/Configurator/models/Accessorie
 
 import jacket from "../Pages/Customize/Configurator/models/Accessories/Unisex/jacket_main.glb";
 import bangles_model from "../Pages/Customize/Configurator/models/Accessories/Unisex/bangles.glb";
+import bangles_model_no_name_board from "../Pages/Customize/Configurator/models/Accessories/Unisex/bangles_no_name_board.glb";
+import bangles_variant_three from "../Pages/Customize/Configurator/models/Accessories/Unisex/bangles_variant_three.glb";
 import earring_model from "../Pages/Customize/Configurator/models/Accessories/Unisex/earring.glb";
 import bikini from "../Pages/Customize/Configurator/models/Accessories/bikini.glb";
 import nails_model from "../Pages/Customize/Configurator/models/Accessories/nails.glb";
@@ -1755,6 +1757,56 @@ export const mainUnisex = [
       { name: "small_beads", yardNeeded: 1 },
       { name: "brass", yardNeeded: 1 },
     ],
+    otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
+    myZoom: 0.8,
+    price: 35,
+    readyIn: 7,
+    sizeGuide: bangle_guide,
+    sizeOptions: [
+      { label: "S", value: 0.5 },
+      { label: "M", value: 1 },
+      { label: "L", value: 2 },
+    ],
+    sizeForms: [
+      {
+        label: "Wrist size (cm)",
+      },
+    ],
+  },
+  {
+    id: uuid(),
+    name: "Beads No Name Board",
+    image: bangles,
+    model: bangles_model_no_name_board,
+    myNode: [
+      { name: "all", yardNeeded: 1 },
+    ],
+    otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
+    myZoom: 0.8,
+    price: 35,
+    readyIn: 7,
+    sizeGuide: bangle_guide,
+    sizeOptions: [
+      { label: "S", value: 0.5 },
+      { label: "M", value: 1 },
+      { label: "L", value: 2 },
+    ],
+    sizeForms: [
+      {
+        label: "Wrist size (cm)",
+      },
+    ],
+  },
+  {
+    id: uuid(),
+    name: "Beads Bracelet Variant",
+    image: bangles,
+    model: bangles_variant_three,
+    myNode: [
+      { name: "large_beads", yardNeeded: 1 },
+      { name: "small_beads", yardNeeded: 1 },
+      { name: "brass", yardNeeded: 1 },
+        ],
     otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
     myZoom: 0.8,
     price: 35,
