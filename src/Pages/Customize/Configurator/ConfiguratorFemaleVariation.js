@@ -44,6 +44,7 @@ import TakeTour from "./TakeTour";
 import { SeeAll } from "./SeeAll";
 import { AnimatePresence } from "framer-motion";
 import FabricPrices from "../../../Data/fabricprices";
+import { mainFemaleCustomize } from "../../../Data/CustomizeDataFemale";
 
 const Shirt = ({
   isRotating,
@@ -157,7 +158,7 @@ const CameraControls = () => {
 
 const ConfiguratorFeMaleVariation = () => {
   const { Id } = useParams();
-  const selectedClothing = mainMaleCustomize.find((item) => item.name === Id);
+  const selectedClothing = mainFemaleCustomize.find((item) => item.name === Id);
 
   const textureValues = FabricPrices()
 

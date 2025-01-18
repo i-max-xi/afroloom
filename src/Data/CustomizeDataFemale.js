@@ -43,6 +43,7 @@ import bra_booty_short from "../Pages/Customize/Configurator/models/FemaleClothi
 import bra_material_short from "../Pages/Customize/Configurator/models/FemaleClothing/variations/bra_material_short.glb";
 import blazer_trousers from "../Pages/Customize/Configurator/models/FemaleClothing/variations/blazer_trousers.glb";
 import blazer_shorts from "../Pages/Customize/Configurator/models/FemaleClothing/variations/blazer_shorts.glb";
+import blazer_skirt from "../Pages/Customize/Configurator/models/FemaleClothing/variations/blazer_skirt.glb";
 
 
 
@@ -1134,7 +1135,7 @@ export const mainFemaleCustomize = [
     name: "Blazer With Skirt",
     image: image_blazer_skirt,
     isVariant: true,
-    model: blazer_shorts,
+    model: blazer_skirt,
     myNode: [
       { name: "all", yardNeeded: 2 },
       { name: "all_two", yardNeeded: 2 },
