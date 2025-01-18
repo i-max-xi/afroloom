@@ -300,6 +300,7 @@ export const mainMaleCustomize = [
     isVariant: true,
     myNode: [
       { name: "all", yardNeeded: 2 },
+      { name: "all_two", yardNeeded: 2 },
     ],
     otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
     myZoom: 0.7,
@@ -329,6 +330,7 @@ export const mainMaleCustomize = [
     isVariant: true,
     myNode: [
       { name: "all", yardNeeded: 3 },
+      { name: "all_two", yardNeeded: 2 },
     ],
     otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
     myZoom: 0.7,
@@ -358,6 +360,7 @@ export const mainMaleCustomize = [
     isVariant: true,
     myNode: [
       { name: "all", yardNeeded: 3 },
+      { name: "all_two", yardNeeded: 2 },
     ],
     otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
     myZoom: 0.7,
@@ -388,6 +391,7 @@ export const mainMaleCustomize = [
 
     myNode: [
       { name: "all", yardNeeded: 3 },
+      { name: "all_two", yardNeeded: 2 },
       { name: "buttons", yardNeeded: 0 },
     ],
     otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
@@ -418,6 +422,7 @@ export const mainMaleCustomize = [
 
     myNode: [
       { name: "all", yardNeeded: 3 },
+      { name: "all_two", yardNeeded: 2 },
       { name: "buttons", yardNeeded: 0 },
     ],
     otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
@@ -446,6 +451,7 @@ export const mainMaleCustomize = [
     isVariant: true,
     myNode: [
       { name: "all", yardNeeded: 3 },
+      { name: "all_two", yardNeeded: 2 },
       { name: "buttons", yardNeeded: 0 },
     ],
     otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
@@ -474,7 +480,8 @@ export const mainMaleCustomize = [
     model: blazer_trousers,
     isVariant: true,
     myNode: [
-      { name: "all", yardNeeded: 3 },
+      { name: "all", yardNeeded: 2 },
+      { name: "all_two", yardNeeded: 2 },
       { name: "buttons", yardNeeded: 0 },
     ],
     otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
@@ -487,7 +494,7 @@ export const mainMaleCustomize = [
     sizeGuide: shirt_guide,
     sizeOptions: [
       { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 50 },
-      { label: "M", value: 1, priceValue: 0, colorPriceValue: 85 },
+      { label: "M", value: 1, priceValue: 25, colorPriceValue: 85 },
       { label: "L", value: 2, priceValue: 25, colorPriceValue: 85 },
       { label: "XL", value: 3, priceValue: 25, colorPriceValue: 120 },
       { label: "2XL", value: 4, priceValue: 50, colorPriceValue: 120 },

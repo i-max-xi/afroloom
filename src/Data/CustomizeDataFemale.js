@@ -43,6 +43,7 @@ import bra_booty_short from "../Pages/Customize/Configurator/models/FemaleClothi
 import bra_material_short from "../Pages/Customize/Configurator/models/FemaleClothing/variations/bra_material_short.glb";
 import blazer_trousers from "../Pages/Customize/Configurator/models/FemaleClothing/variations/blazer_trousers.glb";
 import blazer_shorts from "../Pages/Customize/Configurator/models/FemaleClothing/variations/blazer_shorts.glb";
+import blazer_skirt from "../Pages/Customize/Configurator/models/FemaleClothing/variations/blazer_skirt.glb";
 
 
 
@@ -539,7 +540,10 @@ export const mainFemaleCustomize = [
     image: image_bra_min_skirt,
     isVariant: true,
     model: bra_mini_skirt,
-    myNode: [{ name: "all", yardNeeded: 2 }],
+    myNode: [
+      { name: "all", yardNeeded: 2 },
+      { name: "all_two", yardNeeded: 2 },
+    ],
     otherYards: { small: 2, large: 3, extraLarge: 3, extraExtraLarge: 4 },
     myZoom: 0.7,
     price: 110 + 200,
@@ -560,10 +564,13 @@ export const mainFemaleCustomize = [
   {
     id: uuid(),
     name: "Bra With Booty Shorts",
-        image: image_bra_booty_shorts,
-        isVariant: true,
+    image: image_bra_booty_shorts,
+    isVariant: true,
     model: bra_booty_short,
-    myNode: [{ name: "all", yardNeeded: 2 }],
+    myNode: [
+      { name: "all", yardNeeded: 2 },
+      { name: "all_two", yardNeeded: 2 },
+    ],
     otherYards: { small: 2, large: 3, extraLarge: 3, extraExtraLarge: 4 },
     myZoom: 0.7,
     price: 110 + 200,
@@ -584,10 +591,14 @@ export const mainFemaleCustomize = [
   {
     id: uuid(),
     name: "Bra With Shorts",
-        image: image_bra_material_shorts,
-        isVariant: true,
+    image: image_bra_material_shorts,
+    isVariant: true,
     model: bra_material_short,
-    myNode: [{ name: "all", yardNeeded: 2 }],
+    myNode: [
+      { name: "all", yardNeeded: 2 },
+      { name: "all_two", yardNeeded: 2 },
+
+    ],
     otherYards: { small: 2, large: 3, extraLarge: 3, extraExtraLarge: 4 },
     myZoom: 0.7,
     price: 110 + 200,
@@ -676,7 +687,10 @@ export const mainFemaleCustomize = [
     image: image_tshirt_booty_shorts,
     isVariant: true,
     model: tshirt_and_booty_shorts,
-    myNode: [{ name: "all", yardNeeded: 2 }],
+    myNode: [
+      { name: "all", yardNeeded: 2 },
+      { name: "all_two", yardNeeded: 2 },
+    ],
     otherYards: { small: 2, large: 3, extraLarge: 3, extraExtraLarge: 4 },
     myZoom: 0.7,
     price: 110 + 200,
@@ -700,7 +714,10 @@ export const mainFemaleCustomize = [
     image: image_tshirt_material_shorts,
     isVariant: true,
     model: tshirt_and_material_shorts,
-    myNode: [{ name: "all", yardNeeded: 2 }],
+    myNode: [
+      { name: "all", yardNeeded: 2 },
+      { name: "all_two", yardNeeded: 2 },
+    ],
     otherYards: { small: 2, large: 3, extraLarge: 3, extraExtraLarge: 4 },
     myZoom: 0.7,
     price: 110 + 200,
@@ -724,7 +741,10 @@ export const mainFemaleCustomize = [
     image: image_tshirt_mini_skirt,
     isVariant: true,
     model: tshirt_and_skirt,
-    myNode: [{ name: "all", yardNeeded: 2 }],
+    myNode: [
+      { name: "all", yardNeeded: 2 },
+      { name: "all_two", yardNeeded: 2 },
+    ],
     otherYards: { small: 2, large: 3, extraLarge: 3, extraExtraLarge: 4 },
     myZoom: 0.7,
     price: 110 + 200,
@@ -748,7 +768,10 @@ export const mainFemaleCustomize = [
     image: image_tshirt_trousers,
     isVariant: true,
     model: tshirt_and_trousers,
-    myNode: [{ name: "all", yardNeeded: 2 }],
+    myNode: [
+      { name: "all", yardNeeded: 2 },
+      { name: "all_two", yardNeeded: 2 },
+    ],
     otherYards: { small: 2, large: 3, extraLarge: 3, extraExtraLarge: 4 },
     myZoom: 1.1,
     price: 110 + 200,
@@ -771,9 +794,12 @@ export const mainFemaleCustomize = [
     id: uuid(),
     name: "Short Sleeves Shirt With Booty Shorts",
     image: image_short_shirt_booty_shorts,
-        isVariant: true,
+    isVariant: true,
     model: short_shirt_and_booty_shorts,
-    myNode: [{ name: "all", yardNeeded: 2 }],
+    myNode: [
+      { name: "all", yardNeeded: 2 },
+      { name: "all_two", yardNeeded: 2 },
+    ],
     otherYards: { small: 2, large: 3, extraLarge: 3, extraExtraLarge: 4 },
     myZoom: 0.7,
     price: 110 + 200,
@@ -797,7 +823,10 @@ export const mainFemaleCustomize = [
     image: image_shirt_material_shorts,
     isVariant: true,
     model: short_shirt_and_material_shorts,
-    myNode: [{ name: "all", yardNeeded: 2 }],
+    myNode: [
+      { name: "all", yardNeeded: 2 },
+      { name: "all_two", yardNeeded: 2 },
+    ],
     otherYards: { small: 2, large: 3, extraLarge: 3, extraExtraLarge: 4 },
     myZoom: 0.7,
     price: 110 + 200,
@@ -820,7 +849,10 @@ export const mainFemaleCustomize = [
     name: "Short Sleeves Shirt With Trousers",
     image: image_short_shirt_trousers,
     model: short_shirt_and_trousers,
-    myNode: [{ name: "all", yardNeeded: 2 }],
+    myNode: [
+      { name: "all", yardNeeded: 2 },
+      { name: "all_two", yardNeeded: 2 },
+    ],
     otherYards: { small: 2, large: 3, extraLarge: 3, extraExtraLarge: 4 },
     myZoom: 0.7,
     price: 110 + 200,
@@ -882,7 +914,10 @@ export const mainFemaleCustomize = [
     image: image_crop_top_mini_skirt,
     isVariant: true,
     model: crop_top_mini_skirt,
-    myNode: [{ name: "all", yardNeeded: 2 }],
+    myNode: [
+      { name: "all", yardNeeded: 2 },
+      { name: "all_two", yardNeeded: 2 },
+    ],
     otherYards: { small: 2, large: 3, extraLarge: 3, extraExtraLarge: 4 },
     myZoom: 0.7,
     price: 110 + 200,
@@ -906,7 +941,10 @@ export const mainFemaleCustomize = [
     image: image_crop_top_skirt,
     isVariant: true,
     model: crop_top_long_skirt,
-    myNode: [{ name: "all", yardNeeded: 2 }],
+    myNode: [
+      { name: "all", yardNeeded: 2 },
+      { name: "all_two", yardNeeded: 2 },
+    ],
     otherYards: { small: 2, large: 3, extraLarge: 3, extraExtraLarge: 4 },
     myZoom: 0.7,
     price: 110 + 200,
@@ -930,7 +968,10 @@ export const mainFemaleCustomize = [
     image: image_crop_top_booty_short,
     isVariant: true,
     model: crop_top_booty_shorts,
-    myNode: [{ name: "all", yardNeeded: 2 }],
+    myNode: [
+      { name: "all", yardNeeded: 2 },
+      { name: "all_two", yardNeeded: 2 },
+    ],
     otherYards: { small: 2, large: 3, extraLarge: 3, extraExtraLarge: 4 },
     myZoom: 0.7,
     price: 110 + 200,
@@ -955,7 +996,10 @@ export const mainFemaleCustomize = [
     image: image_crop_top_material_short,
     isVariant: true,
     model: crop_top_material_shorts,
-    myNode: [{ name: "all", yardNeeded: 2 }],
+    myNode: [
+      { name: "all", yardNeeded: 2 },
+      { name: "all_two", yardNeeded: 2 },
+    ],
     otherYards: { small: 2, large: 3, extraLarge: 3, extraExtraLarge: 4 },
     myZoom: 0.7,
     price: 110 + 200,
@@ -1062,10 +1106,13 @@ export const mainFemaleCustomize = [
   {
     id: uuid(),
     name: "Blazer With Shorts",
-        image: image_blazer_material_shorts,
-        isVariant: true,
+    image: image_blazer_material_shorts,
+    isVariant: true,
     model: blazer_shorts,
-    myNode: [{ name: "all", yardNeeded: 2 }],
+    myNode: [
+      { name: "all", yardNeeded: 2 },
+      { name: "all_two", yardNeeded: 2 },
+    ],
     otherYards: { small: 2, large: 3, extraLarge: 3, extraExtraLarge: 4 },
     myZoom: 0.7,
     price: 110 + 200,
@@ -1086,10 +1133,13 @@ export const mainFemaleCustomize = [
   {
     id: uuid(),
     name: "Blazer With Skirt",
-        image: image_blazer_skirt,
-        isVariant: true,
-    model: blazer_shorts,
-    myNode: [{ name: "all", yardNeeded: 2 }],
+    image: image_blazer_skirt,
+    isVariant: true,
+    model: blazer_skirt,
+    myNode: [
+      { name: "all", yardNeeded: 2 },
+      { name: "all_two", yardNeeded: 2 },
+    ],
     otherYards: { small: 2, large: 3, extraLarge: 3, extraExtraLarge: 4 },
     myZoom: 0.7,
     price: 110 + 200,
@@ -1110,10 +1160,13 @@ export const mainFemaleCustomize = [
   {
     id: uuid(),
     name: "Blazer With Trousers",
-        image: image_blazer_trousers,
-        isVariant: true,
+    image: image_blazer_trousers,
+    isVariant: true,
     model: blazer_trousers,
-    myNode: [{ name: "all", yardNeeded: 2 }],
+    myNode: [
+      { name: "all", yardNeeded: 2 },
+      { name: "all_two", yardNeeded: 2 },
+    ],
     otherYards: { small: 2, large: 3, extraLarge: 3, extraExtraLarge: 4 },
     myZoom: 0.7,
     price: 110 + 200,

@@ -983,6 +983,7 @@ export const noSpinFor = [
   "Contrasting Logo and Text Sash",
   "Text Up, Image Down Sash",
   "One-Sided Logo, Two-Sided Text Sash",
+  "Beads Bracelet Variant"
 ];
 
 export const onlySashes = [
