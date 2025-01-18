@@ -201,9 +201,9 @@ const CustomizePage = () => {
           <div className="border-b  border-b-[#b6b6b6af]  flex-flex-col justify-center items-center gap-2">
             <h5 className="mt-4 footer-header text-sm text-center">Tailor Stylish Women's Clothing</h5>
             <div className="grid grid-cols-2 lg:grid-cols-3 gap-3   items-center">
-              {mainFemaleCustomize.map(({ name, image }) => (
+              {mainFemaleCustomize.map(({ name, image, isVariant }) => (
               <Link
-                to={`/configurator-female/${name}`}
+                to={isVariant ? `/configurator-female-variant/${name}`: `/configurator-female/${name}`}
                 className="text-decoration-none lg:mx-10 "
                 key={name}
                 data-aos="fade-in"
@@ -222,9 +222,9 @@ const CustomizePage = () => {
           <div className="border-b  border-b-[#b6b6b6af]  flex-flex-col justify-center items-center gap-2">
             <h5 className="mt-4 footer-header text-sm text-center">Upgrade Men's Clothing Your Way</h5>
             <div className="grid grid-cols-2 lg:grid-cols-3 gap-3   items-center">
-              {mainMaleCustomize.map(({ name, image }) => (
+              {mainMaleCustomize.map(({ name, image, isVariant }) => (
               <Link
-                to={`/configurator/${name}`}
+                to={isVariant ? `/configurator-male-variant/${name}` : `/configurator/${name}`}
                 className="text-decoration-none lg:mx-10  "
                 key={name}
                 data-aos="fade-in"

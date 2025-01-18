@@ -44,6 +44,8 @@ import SignInAdmin from "./Pages/SignInAdmin";
 import ConfiguratorSpecial from "./Pages/Customize/Configurator/ConfiguratorSpecial";
 import ConfiguratorUnisexSpecial from "./Pages/Customize/Configurator/ConfiguratorUnisexSpecials";
 import SashTemplatePage from "./Pages/Customize/extra-step-before-configurator/SashTemplate";
+import ConfiguratorFeMaleVariation from "./Pages/Customize/Configurator/ConfiguratorFemaleVariation";
+import ConfiguratorMaleVariation from "./Pages/Customize/Configurator/ConfiguratorMaleVariation";
 
 function App() {
   useEffect(() => {
@@ -69,6 +71,8 @@ function App() {
             <Route path="admin-dashboard" element={<AdminDashboard />} />
 
             <Route path="/configurator/:Id" element={<Configurator />} />
+            <Route path="/configurator-male-variant/:Id" element={<ConfiguratorMaleVariation />} />
+            <Route path="/configurator-female-variant/:Id" element={<ConfiguratorFeMaleVariation />} />
             <Route path="/configurator-special/:Id" element={<ConfiguratorSpecial />} />
             <Route path="/configurator-sash-special/:Id" element={<ConfiguratorUnisexSpecial />} />
             <Route
