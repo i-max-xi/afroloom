@@ -547,8 +547,8 @@ export const mainFemaleCustomize = [
     otherYards: { small: 2, large: 3, extraLarge: 3, extraExtraLarge: 4 },
     myZoom: 0.7,
     price: 110 + 200,
-    sizeGuide: tshirt_guide,
-    // sizeModels: tshirt_model,
+    sizeGuide: miniSkirt_guide,
+    sizeModels:  bikini_guide,
     readyIn: 7,
     sizeOptions: [
       { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 50 },
@@ -558,7 +558,28 @@ export const mainFemaleCustomize = [
       { label: "2XL", value: 4, priceValue: 50, colorPriceValue: 120 },
     ],
     sizeForms: [
-      
+      {
+        label: "Upper Bust (cm)",
+      },
+      {
+        label: "Under Bust (cm)",
+      },
+      // {
+      //   label: "Waist (cm)",
+      // },
+      // {
+      //   label: "Bottom Length (cm)",
+      // },
+      {
+        label: "Skirt Length (cm)",
+      },
+      {
+        label: "Waist (cm)",
+      },
+      {
+        label: "Hip (cm)",
+      },
+
     ],
   },
   {
@@ -574,8 +595,8 @@ export const mainFemaleCustomize = [
     otherYards: { small: 2, large: 3, extraLarge: 3, extraExtraLarge: 4 },
     myZoom: 0.7,
     price: 110 + 200,
-    sizeGuide: tshirt_guide,
-    // sizeModels: tshirt_model,
+    sizeGuide: bootyShorts_guide,
+    sizeModels: bikini_guide,
     readyIn: 7,
     sizeOptions: [
       { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 50 },
@@ -585,7 +606,22 @@ export const mainFemaleCustomize = [
       { label: "2XL", value: 4, priceValue: 50, colorPriceValue: 120 },
     ],
     sizeForms: [
-      
+      {
+        label: "Upper Bust (cm)",
+      },
+      {
+        label: "Under Bust (cm)",
+      },
+      {
+        label: "Waist (cm)",
+      },
+      {
+        label: "Hip (cm)",
+      },
+      {
+        label: "Length (cm)",
+      },
+
     ],
   },
   {
@@ -602,8 +638,8 @@ export const mainFemaleCustomize = [
     otherYards: { small: 2, large: 3, extraLarge: 3, extraExtraLarge: 4 },
     myZoom: 0.7,
     price: 110 + 200,
-    sizeGuide: tshirt_guide,
-    // sizeModels: tshirt_model,
+    sizeGuide: material_shorts_guide,
+    sizeModels: bikini_guide,
     readyIn: 7,
     sizeOptions: [
       { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 50 },
@@ -613,7 +649,31 @@ export const mainFemaleCustomize = [
       { label: "2XL", value: 4, priceValue: 50, colorPriceValue: 120 },
     ],
     sizeForms: [
-      
+      {
+        label: "Upper Bust (cm)",
+      },
+      {
+        label: "Under Bust (cm)",
+      },
+      {
+        label: "Natural Waist (cm)",
+      },
+      {
+        label: "Shorts Waist (cm)",
+      },
+      {
+        label: "Shorts Length (cm)",
+      },
+      {
+        label: "Seat (cm)",
+      },
+      {
+        label: "Thigh (cm)",
+      },
+      {
+        label: "Knee (cm)",
+      },
+
     ],
   },
   {
@@ -694,8 +754,8 @@ export const mainFemaleCustomize = [
     otherYards: { small: 2, large: 3, extraLarge: 3, extraExtraLarge: 4 },
     myZoom: 0.7,
     price: 110 + 200,
-    sizeGuide: tshirt_guide,
-    // sizeModels: tshirt_model,
+    sizeGuide: bootyShorts_guide,
+    sizeModels: tshirt_guide,
     readyIn: 7,
     sizeOptions: [
       { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 50 },
@@ -705,6 +765,31 @@ export const mainFemaleCustomize = [
       { label: "2XL", value: 4, priceValue: 50, colorPriceValue: 120 },
     ],
     sizeForms: [
+      {
+        label: "Bust (cm)",
+      },
+      {
+        label: "Waist (cm)",
+      },
+      {
+        label: "Hip (cm)",
+      },
+      {
+        label: "Top Length (cm)",
+      },
+      {
+        label: "Sleeve Length (cm)",
+      },
+
+      {
+        label: "Waist (cm)",
+      },
+      {
+        label: "Hip (cm)",
+      },
+      {
+        label: "Length (cm)",
+      },
       
     ],
   },
@@ -721,8 +806,8 @@ export const mainFemaleCustomize = [
     otherYards: { small: 2, large: 3, extraLarge: 3, extraExtraLarge: 4 },
     myZoom: 0.7,
     price: 110 + 200,
-    sizeGuide: tshirt_guide,
-    // sizeModels: tshirt_model,
+    sizeGuide: material_shorts_guide,
+    sizeModels: tshirt_guide,
     readyIn: 7,
     sizeOptions: [
       { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 50 },
@@ -732,6 +817,40 @@ export const mainFemaleCustomize = [
       { label: "2XL", value: 4, priceValue: 50, colorPriceValue: 120 },
     ],
     sizeForms: [
+      {
+        label: "Bust (cm)",
+      },
+      {
+        label: "Waist (cm)",
+      },
+      {
+        label: "Hip (cm)",
+      },
+      {
+        label: "Top Length (cm)",
+      },
+      {
+        label: "Sleeve Length (cm)",
+      },
+
+      {
+        label: "Natural Waist (cm)",
+      },
+      {
+        label: "Shorts Waist (cm)",
+      },
+      {
+        label: "Shorts Length (cm)",
+      },
+      {
+        label: "Seat (cm)",
+      },
+      {
+        label: "Thigh (cm)",
+      },
+      {
+        label: "Knee (cm)",
+      },
       
     ],
   },
@@ -748,8 +867,8 @@ export const mainFemaleCustomize = [
     otherYards: { small: 2, large: 3, extraLarge: 3, extraExtraLarge: 4 },
     myZoom: 0.7,
     price: 110 + 200,
-    sizeGuide: tshirt_guide,
-    // sizeModels: tshirt_model,
+    sizeGuide: miniSkirt_guide,
+    sizeModels: tshirt_guide,
     readyIn: 7,
     sizeOptions: [
       { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 50 },
@@ -759,6 +878,31 @@ export const mainFemaleCustomize = [
       { label: "2XL", value: 4, priceValue: 50, colorPriceValue: 120 },
     ],
     sizeForms: [
+      {
+        label: "Bust (cm)",
+      },
+      {
+        label: "Waist (cm)",
+      },
+      {
+        label: "Hip (cm)",
+      },
+      {
+        label: "Top Length (cm)",
+      },
+      {
+        label: "Sleeve Length (cm)",
+      },
+
+      {
+        label: "Skirt Length (cm)",
+      },
+      {
+        label: "Waist (cm)",
+      },
+      {
+        label: "Hip (cm)",
+      },
       
     ],
   },
@@ -775,8 +919,8 @@ export const mainFemaleCustomize = [
     otherYards: { small: 2, large: 3, extraLarge: 3, extraExtraLarge: 4 },
     myZoom: 1.1,
     price: 110 + 200,
-    sizeGuide: tshirt_guide,
-    // sizeModels: tshirt_model,
+    sizeGuide: trousers_guide,
+    sizeModels: tshirt_guide,
     readyIn: 7,
     sizeOptions: [
       { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 50 },
@@ -786,6 +930,31 @@ export const mainFemaleCustomize = [
       { label: "2XL", value: 4, priceValue: 50, colorPriceValue: 120 },
     ],
     sizeForms: [
+      {
+        label: "Bust (cm)",
+      },
+      {
+        label: "Waist (cm)",
+      },
+      {
+        label: "Hip (cm)",
+      },
+      {
+        label: "Top Length (cm)",
+      },
+      {
+        label: "Sleeve Length (cm)",
+      },
+
+      {
+        label: "Trouser Length (cm)",
+      },
+      {
+        label: "Waist (cm)",
+      },
+      {
+        label: "Hip (cm)",
+      },
       
     ],
   },
@@ -803,8 +972,8 @@ export const mainFemaleCustomize = [
     otherYards: { small: 2, large: 3, extraLarge: 3, extraExtraLarge: 4 },
     myZoom: 0.7,
     price: 110 + 200,
-    sizeGuide: tshirt_guide,
-    // sizeModels: tshirt_model,
+    sizeGuide: bootyShorts_guide,
+    sizeModels: extraShortShirt_guide,
     readyIn: 7,
     sizeOptions: [
       { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 50 },
@@ -814,6 +983,33 @@ export const mainFemaleCustomize = [
       { label: "2XL", value: 4, priceValue: 50, colorPriceValue: 120 },
     ],
     sizeForms: [
+      {
+        label: "Bust (cm)",
+      },
+      {
+        label: "Waist (cm)",
+      },
+      {
+        label: "Hip (cm)",
+      },
+      {
+        label: "Top Length (cm)",
+      },
+      {
+        label: "Sleeve Length (cm)",
+      },
+
+      {
+        label: "Waist (cm)",
+      },
+      {
+        label: "Hip (cm)",
+      },
+      {
+        label: "Length (cm)",
+      },
+
+
       
     ],
   },
@@ -830,8 +1026,8 @@ export const mainFemaleCustomize = [
     otherYards: { small: 2, large: 3, extraLarge: 3, extraExtraLarge: 4 },
     myZoom: 0.7,
     price: 110 + 200,
-    sizeGuide: tshirt_guide,
-    // sizeModels: tshirt_model,
+    sizeGuide: material_shorts_guide,
+    sizeModels: extraShortShirt_guide,
     readyIn: 7,
     sizeOptions: [
       { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 50 },
@@ -841,6 +1037,40 @@ export const mainFemaleCustomize = [
       { label: "2XL", value: 4, priceValue: 50, colorPriceValue: 120 },
     ],
     sizeForms: [
+      {
+        label: "Bust (cm)",
+      },
+      {
+        label: "Waist (cm)",
+      },
+      {
+        label: "Hip (cm)",
+      },
+      {
+        label: "Top Length (cm)",
+      },
+      {
+        label: "Sleeve Length (cm)",
+      },
+
+      {
+        label: "Natural Waist (cm)",
+      },
+      {
+        label: "Shorts Waist (cm)",
+      },
+      {
+        label: "Shorts Length (cm)",
+      },
+      {
+        label: "Seat (cm)",
+      },
+      {
+        label: "Thigh (cm)",
+      },
+      {
+        label: "Knee (cm)",
+      },
       
     ],
   },
@@ -856,8 +1086,8 @@ export const mainFemaleCustomize = [
     otherYards: { small: 2, large: 3, extraLarge: 3, extraExtraLarge: 4 },
     myZoom: 0.7,
     price: 110 + 200,
-    sizeGuide: tshirt_guide,
-    // sizeModels: tshirt_model,
+    sizeGuide: trousers_guide,
+    sizeModels: extraShortShirt_guide,
     readyIn: 7,
     sizeOptions: [
       { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 50 },
@@ -867,6 +1097,32 @@ export const mainFemaleCustomize = [
       { label: "2XL", value: 4, priceValue: 50, colorPriceValue: 120 },
     ],
     sizeForms: [
+      {
+        label: "Bust (cm)",
+      },
+      {
+        label: "Waist (cm)",
+      },
+      {
+        label: "Hip (cm)",
+      },
+      {
+        label: "Top Length (cm)",
+      },
+      {
+        label: "Sleeve Length (cm)",
+      },
+
+
+      {
+        label: "Trouser Length (cm)",
+      },
+      {
+        label: "Waist (cm)",
+      },
+      {
+        label: "Hip (cm)",
+      },
       
     ],
   },
@@ -921,8 +1177,8 @@ export const mainFemaleCustomize = [
     otherYards: { small: 2, large: 3, extraLarge: 3, extraExtraLarge: 4 },
     myZoom: 0.7,
     price: 110 + 200,
-    sizeGuide: tshirt_guide,
-    // sizeModels: tshirt_model,
+    sizeGuide: miniSkirt_guide,
+    sizeModels: cropTop_guide,
     readyIn: 7,
     sizeOptions: [
       { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 50 },
@@ -932,6 +1188,32 @@ export const mainFemaleCustomize = [
       { label: "2XL", value: 4, priceValue: 50, colorPriceValue: 120 },
     ],
     sizeForms: [
+      {
+        label: "Bust (cm)",
+      },
+      {
+        label: "Waist (cm)",
+      },
+      {
+        label: "Hip (cm)",
+      },
+      {
+        label: "Top Length (cm)",
+      },
+      {
+        label: "Sleeve Length (cm)",
+      },
+
+
+      {
+        label: "Skirt Length (cm)",
+      },
+      {
+        label: "Waist (cm)",
+      },
+      {
+        label: "Hip (cm)",
+      },
       
     ],
   },
@@ -948,8 +1230,8 @@ export const mainFemaleCustomize = [
     otherYards: { small: 2, large: 3, extraLarge: 3, extraExtraLarge: 4 },
     myZoom: 0.7,
     price: 110 + 200,
-    sizeGuide: tshirt_guide,
-    // sizeModels: tshirt_model,
+    sizeGuide: skirt_guide,
+    sizeModels: cropTop_guide,
     readyIn: 7,
     sizeOptions: [
       { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 50 },
@@ -959,7 +1241,33 @@ export const mainFemaleCustomize = [
       { label: "2XL", value: 4, priceValue: 50, colorPriceValue: 120 },
     ],
     sizeForms: [
-      
+      {
+        label: "Bust (cm)",
+      },
+      {
+        label: "Waist (cm)",
+      },
+      {
+        label: "Hip (cm)",
+      },
+      {
+        label: "Top Length (cm)",
+      },
+      {
+        label: "Sleeve Length (cm)",
+      },
+
+
+      {
+        label: "Skirt Length (cm)",
+      },
+      {
+        label: "Waist (cm)",
+      },
+      {
+        label: "Hip (cm)",
+      },
+
     ],
   },
   {
@@ -975,8 +1283,8 @@ export const mainFemaleCustomize = [
     otherYards: { small: 2, large: 3, extraLarge: 3, extraExtraLarge: 4 },
     myZoom: 0.7,
     price: 110 + 200,
-    sizeGuide: tshirt_guide,
-    // sizeModels: tshirt_model,
+    sizeGuide: bootyShorts_guide,
+    sizeModels: cropTop_guide,
     readyIn: 7,
     sizeOptions: [
       { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 50 },
@@ -986,7 +1294,32 @@ export const mainFemaleCustomize = [
       { label: "2XL", value: 4, priceValue: 50, colorPriceValue: 120 },
     ],
     sizeForms: [
-      
+      {
+        label: "Bust (cm)",
+      },
+      {
+        label: "Waist (cm)",
+      },
+      {
+        label: "Hip (cm)",
+      },
+      {
+        label: "Top Length (cm)",
+      },
+      {
+        label: "Sleeve Length (cm)",
+      },
+
+
+      {
+        label: "Waist (cm)",
+      },
+      {
+        label: "Hip (cm)",
+      },
+      {
+        label: "Length (cm)",
+      },
     ],
   },
   
@@ -1003,8 +1336,8 @@ export const mainFemaleCustomize = [
     otherYards: { small: 2, large: 3, extraLarge: 3, extraExtraLarge: 4 },
     myZoom: 0.7,
     price: 110 + 200,
-    sizeGuide: tshirt_guide,
-    // sizeModels: tshirt_model,
+    sizeGuide: material_shorts_guide,
+    sizeModels: cropTop_guide,
     readyIn: 7,
     sizeOptions: [
       { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 50 },
@@ -1014,6 +1347,41 @@ export const mainFemaleCustomize = [
       { label: "2XL", value: 4, priceValue: 50, colorPriceValue: 120 },
     ],
     sizeForms: [
+      {
+        label: "Bust (cm)",
+      },
+      {
+        label: "Waist (cm)",
+      },
+      {
+        label: "Hip (cm)",
+      },
+      {
+        label: "Top Length (cm)",
+      },
+      {
+        label: "Sleeve Length (cm)",
+      },
+
+
+      {
+        label: "Natural Waist (cm)",
+      },
+      {
+        label: "Shorts Waist (cm)",
+      },
+      {
+        label: "Shorts Length (cm)",
+      },
+      {
+        label: "Seat (cm)",
+      },
+      {
+        label: "Thigh (cm)",
+      },
+      {
+        label: "Knee (cm)",
+      },
       
     ],
   },
@@ -1116,8 +1484,8 @@ export const mainFemaleCustomize = [
     otherYards: { small: 2, large: 3, extraLarge: 3, extraExtraLarge: 4 },
     myZoom: 0.7,
     price: 110 + 200,
-    sizeGuide: tshirt_guide,
-    // sizeModels: tshirt_model,
+    sizeGuide: material_shorts_guide,
+    sizeModels: blazer_guide,
     readyIn: 7,
     sizeOptions: [
       { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 50 },
@@ -1127,7 +1495,50 @@ export const mainFemaleCustomize = [
       { label: "2XL", value: 4, priceValue: 50, colorPriceValue: 120 },
     ],
     sizeForms: [
-      
+      {
+        label: "Chest (cm)",
+      },
+      {
+        label: "Coat Waist (cm)",
+      },
+      {
+        label: "Seat (cm)",
+      },
+      {
+        label: "Natural Waist Length (cm)",
+      },
+      {
+        label: "Half Across Back (cm)",
+      },
+      {
+        label: "Elbow (cm)",
+      },
+      {
+        label: "Sleeve Length (cm)",
+      },
+      {
+        label: "Scye Depth (cm)",
+      },
+
+
+      {
+        label: "Natural Waist (cm)",
+      },
+      {
+        label: "Shorts Waist (cm)",
+      },
+      {
+        label: "Shorts Length (cm)",
+      },
+      {
+        label: "Seat (cm)",
+      },
+      {
+        label: "Thigh (cm)",
+      },
+      {
+        label: "Knee (cm)",
+      },   
     ],
   },
   {
@@ -1143,8 +1554,8 @@ export const mainFemaleCustomize = [
     otherYards: { small: 2, large: 3, extraLarge: 3, extraExtraLarge: 4 },
     myZoom: 0.7,
     price: 110 + 200,
-    sizeGuide: tshirt_guide,
-    // sizeModels: tshirt_model,
+    sizeGuide: miniSkirt_guide,
+    sizeModels: blazer_guide,
     readyIn: 7,
     sizeOptions: [
       { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 50 },
@@ -1154,6 +1565,41 @@ export const mainFemaleCustomize = [
       { label: "2XL", value: 4, priceValue: 50, colorPriceValue: 120 },
     ],
     sizeForms: [
+      {
+        label: "Chest (cm)",
+      },
+      {
+        label: "Coat Waist (cm)",
+      },
+      {
+        label: "Seat (cm)",
+      },
+      {
+        label: "Natural Waist Length (cm)",
+      },
+      {
+        label: "Half Across Back (cm)",
+      },
+      {
+        label: "Elbow (cm)",
+      },
+      {
+        label: "Sleeve Length (cm)",
+      },
+      {
+        label: "Scye Depth (cm)",
+      },
+
+
+      {
+        label: "Skirt Length (cm)",
+      },
+      {
+        label: "Waist (cm)",
+      },
+      {
+        label: "Hip (cm)",
+      },
       
     ],
   },
@@ -1170,8 +1616,8 @@ export const mainFemaleCustomize = [
     otherYards: { small: 2, large: 3, extraLarge: 3, extraExtraLarge: 4 },
     myZoom: 0.7,
     price: 110 + 200,
-    sizeGuide: tshirt_guide,
-    // sizeModels: tshirt_model,
+    sizeGuide: trousers_guide,
+    sizeModels: blazer_guide,
     readyIn: 7,
     sizeOptions: [
       { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 50 },
@@ -1181,6 +1627,41 @@ export const mainFemaleCustomize = [
       { label: "2XL", value: 4, priceValue: 50, colorPriceValue: 120 },
     ],
     sizeForms: [
+      {
+        label: "Chest (cm)",
+      },
+      {
+        label: "Coat Waist (cm)",
+      },
+      {
+        label: "Seat (cm)",
+      },
+      {
+        label: "Natural Waist Length (cm)",
+      },
+      {
+        label: "Half Across Back (cm)",
+      },
+      {
+        label: "Elbow (cm)",
+      },
+      {
+        label: "Sleeve Length (cm)",
+      },
+      {
+        label: "Scye Depth (cm)",
+      },
+
+
+      {
+        label: "Trouser Length (cm)",
+      },
+      {
+        label: "Waist (cm)",
+      },
+      {
+        label: "Hip (cm)",
+      },
       
     ],
   },
