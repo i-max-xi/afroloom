@@ -1750,6 +1750,30 @@ export const mainUnisex = [
   },
   {
     id: uuid(),
+    name: "Bead Bangles Only",
+    image: "https://shoptarahco.com/cdn/shop/products/tiger-eye-bead-bracelet-998994_800x.jpg?v=1652819990",
+    model: bangles_model_no_name_board,
+    myNode: [
+      { name: "all", yardNeeded: 1 },
+    ],
+    otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
+    myZoom: 0.8,
+    price: 35,
+    readyIn: 7,
+    sizeGuide: bangle_guide,
+    sizeOptions: [
+      { label: "S", value: 0.5 },
+      { label: "M", value: 1 },
+      { label: "L", value: 2 },
+    ],
+    sizeForms: [
+      {
+        label: "Wrist size (cm)",
+      },
+    ],
+  },
+  {
+    id: uuid(),
     name: "Beads Bracelet",
     image: bangles,
     model: bangles_model,
@@ -1774,30 +1798,7 @@ export const mainUnisex = [
       },
     ],
   },
-  {
-    id: uuid(),
-    name: "Bead Bangles Only",
-    image: "https://shoptarahco.com/cdn/shop/products/tiger-eye-bead-bracelet-998994_800x.jpg?v=1652819990",
-    model: bangles_model_no_name_board,
-    myNode: [
-      { name: "all", yardNeeded: 1 },
-    ],
-    otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
-    myZoom: 0.8,
-    price: 35,
-    readyIn: 7,
-    sizeGuide: bangle_guide,
-    sizeOptions: [
-      { label: "S", value: 0.5 },
-      { label: "M", value: 1 },
-      { label: "L", value: 2 },
-    ],
-    sizeForms: [
-      {
-        label: "Wrist size (cm)",
-      },
-    ],
-  },
+ 
   {
     id: uuid(),
     name: "Beads Bracelet Variant",
