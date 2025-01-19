@@ -1140,9 +1140,9 @@ const ConfiguratorUnisex = () => {
                 selectedClothing.name === "Earring" ? null : (
                   <>
                     <h5>Choose Textile</h5>
-                    <h1>
+                    {/* <h1>
                       {"this is" + !selectedClothing.name("Beads Bracelet")}
-                    </h1>
+                    </h1> */}
                     {/* <div className="texture-buttons-container">
                       <div className="texture-row">
                         <div className="texture-category mt-3">
@@ -1635,7 +1635,7 @@ const ConfiguratorUnisex = () => {
                             
                           </div>
                         </OverlayPanel>
-                        {selectedClothing.name === noSpinFor[0] ? null : (
+                        {selectedClothing.name === noSpinFor[0] || selectedClothing.name === noSpinFor[6] ? null : (
                           <>
                             <h5 className="text-sm lg:text-lg">Imprint images or Logos</h5>
                             <div className="flex justify-between gap-2">
