@@ -107,14 +107,14 @@ import logo24 from "../textures/logos/22_Until_the_lion_learns_to_write__every_s
 import logo25 from "../textures/logos/23_Education_is_the_most_powerful_weapon_which_you_can_use_to_change_the_world.-removebg-preview.png";
 import logo26 from "../textures/logos/24_If_you_educate_a_man__you_educate_an_individual._But_if_you_educate_a_woman__you_educate_a_nation-removebg-preview.png";
 import logo27 from "../textures/logos/25_My_culture__my_pride-removebg-preview.png";
-import logo28 from "../textures/logos/26 good_vibe__great_tribe-removebg-preview.png";
+// import logo28 from "../textures/logos/26 good_vibe__great_tribe-removebg-preview.png";
 import logo29 from "../textures/logos/27_I_will_plant_a_tree.-removebg-preview.png";
-import logo30 from "../textures/logos/28..unstoppable-removebg-preview.png";
-import logo31 from "../textures/logos/29 my_environment__my_responsibility-removebg-preview.png";
+// import logo30 from "../textures/logos/28..unstoppable-removebg-preview.png";
+// import logo31 from "../textures/logos/29 my_environment__my_responsibility-removebg-preview.png";
 import logo32 from "../textures/logos/30_I_am_because_we_are-removebg-preview.png";
 import logo33 from "../textures/logos/31_nelson-removebg-preview.png";
 import logo34 from "../textures/logos/32_kwame_nkrumah-removebg-preview.png";
-import logo35 from "../textures/logos/33_Wangari_Maathai-removebg-preview.png";
+// import logo35 from "../textures/logos/33_Wangari_Maathai-removebg-preview.png";
 import logo36 from "../textures/logos/34_Desmond_Tutu-removebg-preview.png";
 import logo37 from "../textures/logos/35_Chinua_Achebe-removebg-preview.png";
 import logo38 from "../textures/logos/36_Thomas_Sankara-removebg-preview.png";
@@ -253,7 +253,7 @@ export const textureArrays = {
   // commemorative: [otumfuo, asantenhene30thanniversary],
   newTextures: [],
   // newTextures: [n1, n2, n3, n4, n5, n6, n7, n8, n9, n10, n11, n12, n13, n14, n15, n16, n17, n18, n19, n20, n21, n22, n23, n24, n25, n26, n27, n28, n29, n30, n31, n32, n33, n34, n35],
-  logos : [logo1, logo2, logo4, logo6, logo8, logo9, logo12, logo13, logo14, logo15, logo16, logo17, logo18, logo20, logo21, logo22, logo23, logo24, logo25, logo26, logo27, logo28, logo29, logo30, logo31, logo32, logo33, logo34, logo35, logo36, logo37, logo38, logo39, logo40, logo41, logo42, logo44, logo45, logo46]
+  logos : [logo1, logo2, logo4, logo6, logo8, logo9, logo12, logo13, logo14, logo15, logo17, logo18, logo20, logo21, logo22, logo23, logo24, logo26, logo27, logo29, logo32]
 };
 
 export const textureDescriptions = {
@@ -758,10 +758,10 @@ export const textureDescriptions = {
       "textureName": "Palm Tree with Sunset Silhouette",
       "textureDescription": "Representing relaxation and the tropical African lifestyle, this design inspires serenity and peace."
     },
-    {
-      "textureName": "Music Notes with Vibrant Splash",
-      "textureDescription": "Celebrating the legacy of Fela Kuti, this design symbolizes creativity, rhythm, and the soul of African music."
-    },
+    // {
+    //   "textureName": "Music Notes with Vibrant Splash",
+    //   "textureDescription": "Celebrating the legacy of Fela Kuti, this design symbolizes creativity, rhythm, and the soul of African music."
+    // },
     {
       "textureName": "African Continent with Compass",
       "textureDescription": "A symbol of exploration and pride, this design celebrates the richness of African identity, inspired by Chinua Achebe’s literary impact."
@@ -794,10 +794,10 @@ export const textureDescriptions = {
       "textureName": "Chinua Achebe Quote",
       "textureDescription": "Until the lion learns to write, every story will glorify the hunter. A call for self-representation, celebrating African storytelling and authenticity."
     },
-    {
-      "textureName": "Nelson Mandela Quote",
-      "textureDescription": "Education is the most powerful weapon which you can use to change the world. For students and lifelong learners, this quote underscores the transformative power of knowledge."
-    },
+    // {
+    //   "textureName": "Nelson Mandela Quote",
+    //   "textureDescription": "Education is the most powerful weapon which you can use to change the world. For students and lifelong learners, this quote underscores the transformative power of knowledge."
+    // },
     {
       "textureName": "Dr. James Kwegyir Aggrey Quote",
       "textureDescription": "If you educate a man, you educate an individual. But if you educate a woman, you educate a nation. Highlighting the importance of women’s education for societal progress."
@@ -806,86 +806,86 @@ export const textureDescriptions = {
       "textureName": "My Culture, My Pride",
       "textureDescription": "A celebration of African identity and heritage, inspiring individuals to embrace their roots."
     },
-    {
-      "textureName": "Good Vibes, Great Tribe",
-      "textureDescription": "A cheerful reminder of positivity and the power of community."
-    },
+    // {
+    //   "textureName": "Good Vibes, Great Tribe",
+    //   "textureDescription": "A cheerful reminder of positivity and the power of community."
+    // },
     {
       "textureName": "Wangari Maathai Quote",
       "textureDescription": "I will plant a tree. Emphasizing sustainability and growth, this quote inspires environmental action."
     },
-    {
-      "textureName": "Unstoppable, Undeniable",
-      "textureDescription": "A mantra for resilience and determination, perfect for go-getters."
-    },
-    {
-      "textureName": "Wangari Maathai Quote",
-      "textureDescription": "The environment is my responsibility. Encouraging individuals to take ownership of their ecological impact."
-    },
+    // {
+    //   "textureName": "Unstoppable, Undeniable",
+    //   "textureDescription": "A mantra for resilience and determination, perfect for go-getters."
+    // },
+    // {
+    //   "textureName": "Wangari Maathai Quote",
+    //   "textureDescription": "The environment is my responsibility. Encouraging individuals to take ownership of their ecological impact."
+    // },
     {
       "textureName": "Ubuntu Philosophy",
       "textureDescription": "I am because we are. Celebrating the interconnectedness of humanity and the essence of community."
     },
-    {
-      "textureName": "Nelson Mandela",
-      "textureDescription": "A global symbol of leadership, resilience, and justice, inspiring individuals to strive for equality."
-    },
-    {
-      "textureName": "Kwame Nkrumah",
-      "textureDescription": "Advocate of African unity and independence, representing visionary leadership."
-    },
-    {
-      "textureName": "Wangari Maathai",
-      "textureDescription": "Nobel laureate and environmental activist, inspiring sustainability and growth."
-    },
-    {
-      "textureName": "Desmond Tutu",
-      "textureDescription": "Champion of peace and equality, advocating for forgiveness and reconciliation."
-    },
-    {
-      "textureName": "Chinua Achebe",
-      "textureDescription": "Renowned novelist, embodying the power of storytelling and African heritage."
-    },
-    {
-      "textureName": "Thomas Sankara",
-      "textureDescription": "Revolutionary leader and icon of social justice, inspiring bold change."
-    },
-    {
-      "textureName": "Miriam Makeba",
-      "textureDescription": "Mama Africa, celebrated for her music and activism."
-    },
-    {
-      "textureName": "Shaka Zulu",
-      "textureDescription": "Legendary warrior and king, symbolizing strength and leadership."
-    },
-    {
-      "textureName": "Fela Kuti",
-      "textureDescription": "Afrobeat pioneer and social activist, representing creativity and resistance."
-    },
-    {
-      "textureName": "Haile Selassie",
-      "textureDescription": "Ethiopian emperor and symbol of African pride and sovereignty."
-    },
-    {
-      "textureName": "Dr. James Kwegyir Aggrey",
-      "textureDescription": "Advocate of education, emphasizing progress through learning."
-    },
+    // {
+    //   "textureName": "Nelson Mandela",
+    //   "textureDescription": "A global symbol of leadership, resilience, and justice, inspiring individuals to strive for equality."
+    // },
+    // {
+    //   "textureName": "Kwame Nkrumah",
+    //   "textureDescription": "Advocate of African unity and independence, representing visionary leadership."
+    // },
+    // {
+    //   "textureName": "Wangari Maathai",
+    //   "textureDescription": "Nobel laureate and environmental activist, inspiring sustainability and growth."
+    // },
+    // {
+    //   "textureName": "Desmond Tutu",
+    //   "textureDescription": "Champion of peace and equality, advocating for forgiveness and reconciliation."
+    // },
+    // {
+    //   "textureName": "Chinua Achebe",
+    //   "textureDescription": "Renowned novelist, embodying the power of storytelling and African heritage."
+    // },
+    // {
+    //   "textureName": "Thomas Sankara",
+    //   "textureDescription": "Revolutionary leader and icon of social justice, inspiring bold change."
+    // },
+    // {
+    //   "textureName": "Miriam Makeba",
+    //   "textureDescription": "Mama Africa, celebrated for her music and activism."
+    // },
+    // {
+    //   "textureName": "Shaka Zulu",
+    //   "textureDescription": "Legendary warrior and king, symbolizing strength and leadership."
+    // },
+    // {
+    //   "textureName": "Fela Kuti",
+    //   "textureDescription": "Afrobeat pioneer and social activist, representing creativity and resistance."
+    // },
+    // {
+    //   "textureName": "Haile Selassie",
+    //   "textureDescription": "Ethiopian emperor and symbol of African pride and sovereignty."
+    // },
+    // {
+    //   "textureName": "Dr. James Kwegyir Aggrey",
+    //   "textureDescription": "Advocate of education, emphasizing progress through learning."
+    // },
     // {
     //   "textureName": "Yaa Asantewaa",
     //   "textureDescription": "A fearless leader and symbol of courage and resistance."
     // },
-    {
-      "textureName": "Aliko Dangote",
-      "textureDescription": "Africa’s leading entrepreneur, inspiring innovation and hard work."
-    },
-    {
-      "textureName": "Patrice Lumumba",
-      "textureDescription": "Fighter for African independence and a symbol of liberation."
-    },
-    {
-      "textureName": "Kofi Annan",
-      "textureDescription": "Diplomat and former UN Secretary-General, embodying diplomacy and global leadership."
-    }
+    // {
+    //   "textureName": "Aliko Dangote",
+    //   "textureDescription": "Africa’s leading entrepreneur, inspiring innovation and hard work."
+    // },
+    // {
+    //   "textureName": "Patrice Lumumba",
+    //   "textureDescription": "Fighter for African independence and a symbol of liberation."
+    // },
+    // {
+    //   "textureName": "Kofi Annan",
+    //   "textureDescription": "Diplomat and former UN Secretary-General, embodying diplomacy and global leadership."
+    // }
   ]
 
 }
@@ -977,13 +977,13 @@ export const displayInplaceFor = [
 ];
 
 export const noSpinFor = [
-  "Beads Bracelet",
+  "Named Beads Bracelet Variant One",
   "Logo Up, Text Down Sash",
   "Text Up, Logo Down Sash",
   "Contrasting Logo and Text Sash",
   "Text Up, Image Down Sash",
   "One-Sided Logo, Two-Sided Text Sash",
-  "Beads Bracelet Variant"
+  "Named Beads Bracelet Variant Two",
 ];
 
 export const onlySashes = [
