@@ -253,7 +253,7 @@ export const textureArrays = {
   // commemorative: [otumfuo, asantenhene30thanniversary],
   newTextures: [],
   // newTextures: [n1, n2, n3, n4, n5, n6, n7, n8, n9, n10, n11, n12, n13, n14, n15, n16, n17, n18, n19, n20, n21, n22, n23, n24, n25, n26, n27, n28, n29, n30, n31, n32, n33, n34, n35],
-  logos : [logo1, logo2, logo4, logo5, logo6, logo7, logo8, logo9, logo10, logo11, logo12, logo13, logo14, logo15, logo16, logo17, logo18, logo19, logo20, logo21, logo22, logo23, logo24, logo25, logo26, logo27, logo28, logo29, logo30, logo31, logo32, logo33, logo34, logo35, logo36, logo37, logo38, logo39, logo40, logo41, logo42, logo43, logo44, logo45, logo46]
+  logos : [logo1, logo2, logo4, logo6, logo8, logo9, logo12, logo13, logo14, logo15, logo16, logo17, logo18, logo20, logo21, logo22, logo23, logo24, logo25, logo26, logo27, logo28, logo29, logo30, logo31, logo32, logo33, logo34, logo35, logo36, logo37, logo38, logo39, logo40, logo41, logo42, logo44, logo45, logo46]
 };
 
 export const textureDescriptions = {
@@ -714,18 +714,18 @@ export const textureDescriptions = {
       "textureDescription": `Symbol of safety and security. This Adinkra symbol resonates with love and the feeling of
         being protected, ideal for family-themed designs.`
     },
-    {
-      "textureName": "Duafe (Wooden Comb)",
-      "textureDescription": "Feminine virtues and self-care. This Adinkra symbol embodies cleanliness, love, and care, celebrating African women’s resilience and beauty."
-    },
+    // {
+    //   "textureName": "Duafe (Wooden Comb)",
+    //   "textureDescription": "Feminine virtues and self-care. This Adinkra symbol embodies cleanliness, love, and care, celebrating African women’s resilience and beauty."
+    // },
     {
       "textureName": "Nelson Mandela’s Silhouette",
       "textureDescription": "The silhouette of the global icon symbolizes peace, justice, and perseverance, inspiring individuals to embrace leadership and change."
     },
-    {
-      "textureName": "Heart with Vibrant Flames",
-      "textureDescription": "A bold design representing passion and energy, it’s perfect for lovers, dreamers, and those who wear their hearts on their sleeves."
-    },
+    // {
+    //   "textureName": "Heart with Vibrant Flames",
+    //   "textureDescription": "A bold design representing passion and energy, it’s perfect for lovers, dreamers, and those who wear their hearts on their sleeves."
+    // },
     {
       "textureName": "Shooting Star",
       "textureDescription": "Signifying limitless potential, this symbol is for dreamers and achievers striving to make their mark on the world."
@@ -734,14 +734,14 @@ export const textureDescriptions = {
       "textureName": "Dove with Olive Branch",
       "textureDescription": "A universal emblem of peace, paired with the legacy of Desmond Tutu, this symbol encourages harmony and forgiveness."
     },
-    {
-      "textureName": "Infinity Loop with Floral Twist",
-      "textureDescription": "Representing eternal love and growth, this design embodies hope and progress, inspired by Africa’s vibrant natural beauty."
-    },
-    {
-      "textureName": "Baobab Tree (African Tree of Life)",
-      "textureDescription": "A majestic symbol of strength, heritage, and community, deeply rooted in African traditions and values."
-    },
+    // {
+    //   "textureName": "Infinity Loop with Floral Twist",
+    //   "textureDescription": "Representing eternal love and growth, this design embodies hope and progress, inspired by Africa’s vibrant natural beauty."
+    // },
+    // {
+    //   "textureName": "Baobab Tree (African Tree of Life)",
+    //   "textureDescription": "A majestic symbol of strength, heritage, and community, deeply rooted in African traditions and values."
+    // },
     {
       "textureName": "Lion Crowned",
       "textureDescription": "Representing courage and leadership, this design draws inspiration from the fearless Shaka Zulu, embodying strength and pride."
@@ -770,10 +770,10 @@ export const textureDescriptions = {
       "textureName": "Nelson Mandela Quote",
       "textureDescription": "It always seems impossible until it’s done. A call to perseverance, this quote motivates individuals to overcome challenges and achieve greatness."
     },
-    {
-      "textureName": "Thomas Sankara Quote",
-      "textureDescription": "The power of the people is stronger than the people in power. For the bold and revolutionary, this quote inspires collective action and empowerment."
-    },
+    // {
+    //   "textureName": "Thomas Sankara Quote",
+    //   "textureDescription": "The power of the people is stronger than the people in power. For the bold and revolutionary, this quote inspires collective action and empowerment."
+    // },
     {
       "textureName": "Nelson Mandela Quote",
       "textureDescription": "We can change the world and make it a better place. It is in your hands to make a difference. A timeless reminder to take responsibility for creating a better future."
@@ -870,10 +870,10 @@ export const textureDescriptions = {
       "textureName": "Dr. James Kwegyir Aggrey",
       "textureDescription": "Advocate of education, emphasizing progress through learning."
     },
-    {
-      "textureName": "Yaa Asantewaa",
-      "textureDescription": "A fearless leader and symbol of courage and resistance."
-    },
+    // {
+    //   "textureName": "Yaa Asantewaa",
+    //   "textureDescription": "A fearless leader and symbol of courage and resistance."
+    // },
     {
       "textureName": "Aliko Dangote",
       "textureDescription": "Africa’s leading entrepreneur, inspiring innovation and hard work."

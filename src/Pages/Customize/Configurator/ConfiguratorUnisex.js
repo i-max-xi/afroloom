@@ -363,10 +363,11 @@ const ConfiguratorUnisex = () => {
       return {
         left: {
           text: enteredTextLeft,
-          top: "2.5rem",
-          left: "-3rem",
+          top: "2.8rem",
+          left: "-2.85rem",
           height: "2rem",
-          width: "5.4rem",
+          size: 15,
+          width: "5rem",
           lineHeight: "",
           image: {
             top: "-1rem",
@@ -1137,7 +1138,7 @@ const ConfiguratorUnisex = () => {
                   ))}
                 </div>
                 {noSpinFor.includes(selectedClothing.name) ||
-                selectedClothing.name === "Earring" ? null : (
+                selectedClothing.name === "Earring" || selectedClothing.name === "Bead Bangles Only" ? null : (
                   <>
                     <h5>Choose Textile</h5>
                     {/* <h1>
