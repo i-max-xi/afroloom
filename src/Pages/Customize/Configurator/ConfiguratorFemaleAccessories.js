@@ -491,7 +491,7 @@ const ConfiguratorFemaleAccessories = () => {
       ) : (
         <>
           <div className="main-space pb-10">
-            <h3 className="text-center pt-3">
+            <h3 className="text-center text-sm lg:text-2xl mt-3 mb-2 capitalize font-normal text-gray-600 pt-3">
               Customizing {selectedClothing.name}
             </h3>
             <div className="d-flex justify-content-center">

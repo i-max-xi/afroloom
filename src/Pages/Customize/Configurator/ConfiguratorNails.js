@@ -481,7 +481,7 @@ const ConfiguratorUnisex = () => {
         // />
         <>
           <div className="main-space pb-10">
-            <h3 className="text-center pt-3">
+            <h3 className="text-center text-sm lg:text-2xl mt-3 mb-2 capitalize font-normal text-gray-600 pt-3">
               Customizing {selectedClothing.name}
               <p className="text-xs ">This item is only on display currently</p>
 

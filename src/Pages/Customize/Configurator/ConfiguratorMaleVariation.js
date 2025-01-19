@@ -164,8 +164,10 @@ const ConfiguratorMaleVariation = () => {
   const [selectedSize, setSelectedSize] = useState(1);
   const [selectedPrintOn, setSelectedPrintOn] = useState("#ffffff");
 
-  const [selectedPart, setSelectedPart] = useState(0);
-
+  const [selectedPart, setSelectedPart] = useState(
+    selectedClothing.myNode.some((item) => item.name === "all_two") ? null : 0
+  );
+  
   const [isRotating, setIsRotating] = useState(true);
 
   const canvasRef = useRef();
@@ -230,17 +232,38 @@ const ConfiguratorMaleVariation = () => {
   const [showGlow, setShowGlow] = useState(false);
 
   const handleColorChange = (newColor) => {
-    state.color[selectedPart] = newColor;
-    state.texture[selectedPart] = null;
-    setSelectedPrintOn(newColor);
+    if(selectedPart !== null){
+      state.color[selectedPart] = newColor;
+      state.texture[selectedPart] = null;
+      setSelectedPrintOn(newColor);
+  
+      const currentSize = selectedClothing.sizeOptions.find(
+        (size) => size.value === selectedSize,
+      );
+  
+      setPartPrices(currentSize.colorPriceValue);
+  
+    }
 
-    const currentSize = selectedClothing.sizeOptions.find(
-      (size) => size.value === selectedSize,
-    );
+    else {
+      // apply to all
+      for (let i = 0; i < selectedClothing.myNode.length; i++) {
+        state.color[i] = newColor;
+        state.texture[i] = null;
+      }
 
-    setPartPrices(currentSize.colorPriceValue);
+      setSelectedPrintOn(newColor);
+  
+      const currentSize = selectedClothing.sizeOptions.find(
+        (size) => size.value === selectedSize,
+      );
+  
+      setPartPrices(currentSize.colorPriceValue);
+    }
+
     setShowGlow(false);
   };
+
 
   const handleTextureChange = (newTexture) => {
     if (selectedPart !== null) {
@@ -248,6 +271,35 @@ const ConfiguratorMaleVariation = () => {
       state.color[selectedPart] = null;
       setSelectedPrintOn(newTexture);
       setSelectedTexture(newTexture); // needed to transfer to size
+
+      const textureCategory = Object.keys(textureArrays).find((category) =>
+        textureArrays[category].includes(newTexture),
+      );
+
+      const sizeValue = selectedClothing.sizeOptions.find(
+        (size) => size.value === selectedSize,
+      );
+
+      const yardPrice = textureValues[textureCategory].price;
+
+      let newPartPrice;
+      if (textureCategory === "waxPrint") {
+        newPartPrice = yardPrice;
+      } else {
+        newPartPrice = yardPrice + sizeValue.priceValue;
+      }
+
+      setPartPrices(newPartPrice);
+    }
+    else {
+      // apply to all
+      for (let i = 0; i < selectedClothing.myNode.length; i++) {
+        state.texture[i] = newTexture;
+        state.color[i] = null;
+      }
+      
+      setSelectedPrintOn(newTexture);
+      setSelectedTexture(newTexture);
 
       const textureCategory = Object.keys(textureArrays).find((category) =>
         textureArrays[category].includes(newTexture),
@@ -464,7 +516,7 @@ const ConfiguratorMaleVariation = () => {
       ) : (
         <>
           <div className="main-space pb-10">
-            <h3 className="text-center pt-3">
+            <h3 className="text-center text-sm lg:text-2xl mt-3 mb-2 capitalize font-normal text-gray-600 pt-3">
               Customizing {selectedClothing.name}
             </h3>
             <div className="d-flex justify-content-center">
