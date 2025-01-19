@@ -57,6 +57,7 @@ const image_jacket = require("../Assets/welcome_3ds/others/jacket.png");
 const image_backpack = require("../Assets/welcome_3ds/others/backpack.png");
 const image_sash = require("../Assets/welcome_3ds/others/sash.jpg");
 const bangles = require("../Assets/welcome_3ds/others/bangles.jpg");
+const bangles_two = require("../Assets/welcome_3ds/others/bangles_two.png");
 const earring = require("../Assets/welcome_3ds/others/earring.jpg");
 const image_bikini = require("../Assets/welcome_3ds/female/bikini.png");
 const image_sash_logos_both_down = require("../Assets/welcome_3ds/others/sash_both_logos_down.jpg");
@@ -1776,7 +1777,7 @@ export const mainUnisex = [
   {
     id: uuid(),
     name: "Beads No Name Board",
-    image: bangles,
+    image: "https://shoptarahco.com/cdn/shop/products/tiger-eye-bead-bracelet-998994_800x.jpg?v=1652819990",
     model: bangles_model_no_name_board,
     myNode: [
       { name: "all", yardNeeded: 1 },
@@ -1800,7 +1801,7 @@ export const mainUnisex = [
   {
     id: uuid(),
     name: "Beads Bracelet Variant",
-    image: bangles,
+    image: bangles_two,
     model: bangles_variant_three,
     myNode: [
       { name: "large_beads", yardNeeded: 1 },

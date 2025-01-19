@@ -14,12 +14,12 @@ const SashTemplatePage = () => {
     <>
       <Nav />
       <div className="container flex flex-col justify-center items-center">
-        <h5 className="text-center text-xl lg:text-2xl mt-3 mb-2">Choose any item below to kickstart your customization journey!</h5>
-        <div className="row container my-10">
+      <h5 className="text-center text-sm lg:text-2xl mt-3 mb-2 capitalize font-normal text-gray-600">Choose any item below to kickstart your customization journey!</h5>
+      <div className="row container my-10">
           
            {/* Sash Templates */}
            <div className="flex-flex-col justify-center items-center gap-2">
-            <h5 className="mt-4 footer-header text-lg">Personalize Sash Templates</h5>
+           <h5 className="mt-4 footer-header text-sm text-center">Personalize Sash Templates</h5>
             <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 items-center ">
                 {specialSash
                     .map(({ name, image, link, description, title }) => (
