@@ -307,9 +307,9 @@ export const mainMaleCustomize = [
     myX: 0,
     myY: 10,
     price: 110 + 200,
-    // sizeModels: tshirt_model,
+    sizeModels: tshirt_guide,
     readyIn: 7,
-    sizeGuide: tshirt_guide,
+    sizeGuide:material_shorts_guide ,
     sizeOptions: [
       { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 50 },
       { label: "M", value: 1, priceValue: 0, colorPriceValue: 85 },
@@ -318,6 +318,38 @@ export const mainMaleCustomize = [
       { label: "2XL", value: 4, priceValue: 50, colorPriceValue: 120 },
     ],
     sizeForms: [
+      {
+        label: "Neck Size (cm)",
+      },
+      {
+        label: "Half Across Back (cm)",
+      },
+      {
+        label: "Chest (cm)",
+      },
+      {
+        label: "Sleeve Length (cm)",
+      },
+
+
+      {
+        label: "Natural Waist (cm)",
+      },
+      {
+        label: "Shorts Waist (cm)",
+      },
+      {
+        label: "Shorts Length (cm)",
+      },
+      {
+        label: "Seat (cm)",
+      },
+      {
+        label: "Thigh (cm)",
+      },
+      {
+        label: "Knee (cm)",
+      },
 
     ],
   },
@@ -337,9 +369,9 @@ export const mainMaleCustomize = [
     myX: 0,
     myY: 10,
     price: 110+200,
-    // sizeModels: tshirt_model,
+    sizeModels: tshirt_guide,
     readyIn: 7,
-    sizeGuide: tshirt_guide,
+    sizeGuide: summer_shorts_guide,
     sizeOptions: [
       { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 50 },
       { label: "M", value: 1, priceValue: 0, colorPriceValue: 85 },
@@ -348,6 +380,31 @@ export const mainMaleCustomize = [
       { label: "2XL", value: 4, priceValue: 50, colorPriceValue: 120 },
     ],
     sizeForms: [
+      {
+        label: "Neck Size (cm)",
+      },
+      {
+        label: "Half Across Back (cm)",
+      },
+      {
+        label: "Chest (cm)",
+      },
+      {
+        label: "Sleeve Length (cm)",
+      },
+
+      {
+        label: "Shorts Length (cm)",
+      },
+      {
+        label: "Seat (cm)",
+      },
+      {
+        label: "Thigh (cm)",
+      },
+      {
+        label: "Knee (cm)",
+      },
      
     ],
   },
@@ -367,9 +424,9 @@ export const mainMaleCustomize = [
     myX: 0,
     myY: 10,
     price: 110 + 200,
-    // sizeModels: tshirt_model,
+    sizeModels: tshirt_guide,
     readyIn: 7,
-    sizeGuide: shirt_guide,
+    sizeGuide: trouser_guide,
     sizeOptions: [
       { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 50 },
       { label: "M", value: 1, priceValue: 0, colorPriceValue: 85 },
@@ -378,6 +435,49 @@ export const mainMaleCustomize = [
       { label: "2XL", value: 4, priceValue: 50, colorPriceValue: 120 },
     ],
     sizeForms: [
+
+      {
+        label: "Neck Size (cm)",
+      },
+      {
+        label: "Half Across Back (cm)",
+      },
+      {
+        label: "Chest (cm)",
+      },
+      {
+        label: "Sleeve Length (cm)",
+      },
+
+
+      {
+        label: "Full Height (cm)",
+      },
+      {
+        label: "Natural waist (cm)",
+      },
+      {
+        label: "Trouser Waist (cm)",
+      },
+      {
+        label: "Inside Leg (cm)",
+      },
+      {
+        label: "Trouser Bottom (cm)",
+      },
+      {
+        label: "Trouser Length (cm)",
+      },
+      {
+        label: "Seat (cm)",
+      },
+
+      {
+        label: "Thigh (cm)",
+      },
+      {
+        label: "Knee (cm)",
+      },
       
     ],
   },
@@ -399,9 +499,9 @@ export const mainMaleCustomize = [
     myX: 0,
     myY: 10,
     price: 110 + 200,
-    // sizeModels: tshirt_model,
+    sizeModels: shirt_guide,
     readyIn: 7,
-    sizeGuide: shirt_guide,
+    sizeGuide: material_shorts_guide,
     sizeOptions: [
       { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 50 },
       { label: "M", value: 1, priceValue: 0, colorPriceValue: 85 },
@@ -410,6 +510,38 @@ export const mainMaleCustomize = [
       { label: "2XL", value: 4, priceValue: 50, colorPriceValue: 120 },
     ],
     sizeForms: [
+      {
+        label: "Neck Size (cm)",
+      },
+      {
+        label: "Half Across Back (cm)",
+      },
+      {
+        label: "Chest (cm)",
+      },
+      {
+        label: "Sleeve Length (cm)",
+      },
+
+
+      {
+        label: "Natural Waist (cm)",
+      },
+      {
+        label: "Shorts Waist (cm)",
+      },
+      {
+        label: "Shorts Length (cm)",
+      },
+      {
+        label: "Seat (cm)",
+      },
+      {
+        label: "Thigh (cm)",
+      },
+      {
+        label: "Knee (cm)",
+      },
       
     ],
   },
@@ -430,9 +562,9 @@ export const mainMaleCustomize = [
     myX: 0,
     myY: 10,
     price: 110 + 200,
-    // sizeModels: tshirt_model,
+    sizeModels: shirt_guide,
     readyIn: 7,
-    sizeGuide: shirt_guide,
+    sizeGuide: trouser_guide,
     sizeOptions: [
       { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 50 },
       { label: "M", value: 1, priceValue: 0, colorPriceValue: 85 },
@@ -441,6 +573,49 @@ export const mainMaleCustomize = [
       { label: "2XL", value: 4, priceValue: 50, colorPriceValue: 120 },
     ],
     sizeForms: [
+      {
+        label: "Neck Size (cm)",
+      },
+      {
+        label: "Half Across Back (cm)",
+      },
+      {
+        label: "Chest (cm)",
+      },
+      {
+        label: "Sleeve Length (cm)",
+      },
+
+
+
+      {
+        label: "Full Height (cm)",
+      },
+      {
+        label: "Natural waist (cm)",
+      },
+      {
+        label: "Trouser Waist (cm)",
+      },
+      {
+        label: "Inside Leg (cm)",
+      },
+      {
+        label: "Trouser Bottom (cm)",
+      },
+      {
+        label: "Trouser Length (cm)",
+      },
+      {
+        label: "Seat (cm)",
+      },
+
+      {
+        label: "Thigh (cm)",
+      },
+      {
+        label: "Knee (cm)",
+      },
     ],
   },
   {
@@ -459,9 +634,9 @@ export const mainMaleCustomize = [
     myX: 0,
     myY: 10,
     price: 110 + 200,
-    // sizeModels: tshirt_model,
+    sizeModels: blazer_guide,
     readyIn: 7,
-    sizeGuide: shirt_guide,
+    sizeGuide: material_shorts_guide,
     sizeOptions: [
       { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 50 },
       { label: "M", value: 1, priceValue: 0, colorPriceValue: 85 },
@@ -470,6 +645,50 @@ export const mainMaleCustomize = [
       { label: "2XL", value: 4, priceValue: 50, colorPriceValue: 120 },
     ],
     sizeForms: [
+      {
+        label: "Chest (cm)",
+      },
+      {
+        label: "Coat Waist (cm)",
+      },
+      {
+        label: "Seat (cm)",
+      },
+      {
+        label: "Natural Waist Length (cm)",
+      },
+      {
+        label: "Half Across Back (cm)",
+      },
+      {
+        label: "Elbow (cm)",
+      },
+      {
+        label: "Sleeve Length (cm)",
+      },
+      {
+        label: "Scye Depth (cm)",
+      },
+
+
+      {
+        label: "Natural Waist (cm)",
+      },
+      {
+        label: "Shorts Waist (cm)",
+      },
+      {
+        label: "Shorts Length (cm)",
+      },
+      {
+        label: "Seat (cm)",
+      },
+      {
+        label: "Thigh (cm)",
+      },
+      {
+        label: "Knee (cm)",
+      },
      
     ],
   },
@@ -489,9 +708,9 @@ export const mainMaleCustomize = [
     myX: 0,
     myY: 10,
     price: 110 + 200,
-    // sizeModels: tshirt_model,
+    sizeModels: blazer_guide,
     readyIn: 7,
-    sizeGuide: shirt_guide,
+    sizeGuide: trouser_guide,
     sizeOptions: [
       { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 50 },
       { label: "M", value: 1, priceValue: 25, colorPriceValue: 85 },
@@ -500,6 +719,60 @@ export const mainMaleCustomize = [
       { label: "2XL", value: 4, priceValue: 50, colorPriceValue: 120 },
     ],
     sizeForms: [
+      {
+        label: "Chest (cm)",
+      },
+      {
+        label: "Coat Waist (cm)",
+      },
+      {
+        label: "Seat (cm)",
+      },
+      {
+        label: "Natural Waist Length (cm)",
+      },
+      {
+        label: "Half Across Back (cm)",
+      },
+      {
+        label: "Elbow (cm)",
+      },
+      {
+        label: "Sleeve Length (cm)",
+      },
+      {
+        label: "Scye Depth (cm)",
+      },
+
+
+      {
+        label: "Full Height (cm)",
+      },
+      {
+        label: "Natural waist (cm)",
+      },
+      {
+        label: "Trouser Waist (cm)",
+      },
+      {
+        label: "Inside Leg (cm)",
+      },
+      {
+        label: "Trouser Bottom (cm)",
+      },
+      {
+        label: "Trouser Length (cm)",
+      },
+      {
+        label: "Seat (cm)",
+      },
+
+      {
+        label: "Thigh (cm)",
+      },
+      {
+        label: "Knee (cm)",
+      },
      
     ],
   },
