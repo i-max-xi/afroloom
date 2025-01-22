@@ -28,7 +28,7 @@ const ListItem = ({
       )}
 
       <div className="flex flex-col gap-1 mt-1 justify-center">
-        <h5 className="text-decoration-none font-medium text-black text-sm lg:text-xl">{title}</h5>
+        <h5 className="text-decoration-none font-medium text-black text-sm lg:text-xl min-h-[2rem]">{title}</h5>
         <p
           className={`text-decoration-none text-xs  text-black m-0 ${centerText && "text-center"}`}
         >
