@@ -29,7 +29,7 @@ const image_bowtie = require("../Assets/welcome_3ds/others/bow tie.png");
 export const mainMaleAccessories = [
   {
     id: uuid(),
-    name: "Round Cap",
+    name: "Kufi Hat",
     image:
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMrekCG26FoYzQlY6mv6Ez-PhApN2QhTEFag&s",
     model: round_cap,
@@ -38,7 +38,7 @@ export const mainMaleAccessories = [
       { name: "top_section", yardNeeded: 1 },
     ],
     myZoom: 0.5,
-    price: 80,
+    price: 150,
     sizeGuide: roundCap_guide,
     // sizeModels: tshirt_model,
     readyIn: 7,
@@ -106,7 +106,7 @@ export const mainMaleAccessories = [
     ],
 
     myZoom: 1.5,
-    price: 100,
+    price: 150,
     // sizeModels: tshirt_model,
     readyIn: 7,
     sizeGuide: bowTie_guide,
@@ -138,7 +138,7 @@ export const mainMaleAccessories = [
       { name: "top_section", yardNeeded: 1 },
     ],
     myZoom: 0.75,
-    price: 180,
+    price: 150,
     // sizeModels: tshirt_model,
     readyIn: 7,
     sizeGuide: flyingTie_guide,
@@ -178,7 +178,7 @@ export const mainFemaleAccessories = [
       { name: "zippers_and_locks", yardNeeded: 1 },
     ],
     myZoom: 0.9,
-    price: 150 + 200,
+    price: 150,
     sizeGuide: handbag_guide,
     // sizeModels: tshirt_model,
     readyIn: 7,

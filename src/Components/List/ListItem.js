@@ -10,7 +10,7 @@ const ListItem = ({
 }) => {
   return (
     <div
-      className="flex flex-col gap-1"
+      className="flex flex-col gap-1 lg:w-full"
       style={{
         textAlign: "left",
         borderRadius: "1rem",

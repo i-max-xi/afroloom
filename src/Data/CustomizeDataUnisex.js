@@ -1758,7 +1758,7 @@ export const mainUnisex = [
     ],
     otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
     myZoom: 0.8,
-    price: 35,
+    price: 45,
     readyIn: 7,
     sizeGuide: bangle_guide,
     sizeOptions: [
@@ -1784,7 +1784,7 @@ export const mainUnisex = [
     ],
     otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
     myZoom: 0.8,
-    price: 35,
+    price: 45,
     readyIn: 7,
     sizeGuide: bangle_guide,
     sizeOptions: [
@@ -1811,7 +1811,7 @@ export const mainUnisex = [
         ],
     otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
     myZoom: 0.8,
-    price: 35,
+    price: 45,
     readyIn: 7,
     sizeGuide: bangle_guide,
     sizeOptions: [
@@ -1837,7 +1837,7 @@ export const mainUnisex = [
       { name: "zippers", yardNeeded: 1 },
     ],
     myZoom: 0.6,
-    price: 150 + 200,
+    price: 200,
     // sizeModels: tshirt_model,
     readyIn: 7,
     sizeGuide: miniBag_guide,
