@@ -977,13 +977,13 @@ export const displayInplaceFor = [
 ];
 
 export const noSpinFor = [
-  "Named Beads Bracelet Variant One",
+  "Brass Name Beads Bracelet Variant One",
   "Logo Up, Text Down Sash",
   "Text Up, Logo Down Sash",
   "Contrasting Logo and Text Sash",
   "Text Up, Image Down Sash",
   "One-Sided Logo, Two-Sided Text Sash",
-  "Named Beads Bracelet Variant Two",
+  "Brass Name Beads Bracelet Variant Two",
 ];
 
 export const onlySashes = [

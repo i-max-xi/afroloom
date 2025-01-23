@@ -1750,7 +1750,7 @@ export const mainUnisex = [
   },
   {
     id: uuid(),
-    name: "Beads Bangles",
+    name: "Beads Bracelet",
     image: "https://shoptarahco.com/cdn/shop/products/tiger-eye-bead-bracelet-998994_800x.jpg?v=1652819990",
     model: bangles_model_no_name_board,
     myNode: [
@@ -1774,7 +1774,7 @@ export const mainUnisex = [
   },
   {
     id: uuid(),
-    name: "Named Beads Bracelet Variant One",
+    name: "Brass Name Beads Bracelet Variant One",
     image: bangles,
     model: bangles_model,
     myNode: [
@@ -1801,7 +1801,7 @@ export const mainUnisex = [
  
   {
     id: uuid(),
-    name: "Named Beads Bracelet Variant Two",
+    name: "Brass Name Beads Bracelet Variant Two",
     image: bangles_two,
     model: bangles_variant_three,
     myNode: [
