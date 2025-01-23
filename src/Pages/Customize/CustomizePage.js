@@ -29,7 +29,7 @@ const CustomizePage = () => {
             <Link
               // to={`/customize-unisex/${name}`}
               to={link ? link : `/configurator-unisex/${name}`}
-              className="col-6 col-md-3text-decoration-none lg:mx-10 "
+              className="col-6 col-md-3text-decoration-none  "
               key={name}
             >
               <div className="card" data-aos="fade-in" data-aos-duration="1500">
@@ -46,7 +46,7 @@ const CustomizePage = () => {
             <Link
               // to={`/customize-unisex/${name}`}
               to={link ? link : `/configurator-unisex/${name}`}
-              className="col-6 col-md-3text-decoration-none lg:mx-10 "
+              className="col-6 col-md-3text-decoration-none  "
               key={name}
             >
               <div className="card" data-aos="fade-in" data-aos-duration="1500">
@@ -66,7 +66,7 @@ const CustomizePage = () => {
                 .map(({ name, image, link, description, title }) => (
                   <Link
                     to={link ? link : `/configurator-unisex/${name}`}
-                    className="text-decoration-none lg:mx-10  "
+                    className="text-decoration-none"
                     key={name}
                     data-aos="fade-in"
                     data-aos-duration="1500"
@@ -83,7 +83,7 @@ const CustomizePage = () => {
                 .map(({ name, image, link, description, title }) => (
                   <Link
                   to={`/configurator-female-accessories/${name}`}
-                  className="text-decoration-none lg:mx-10  "
+                  className="text-decoration-none   "
                     key={name}
                     data-aos="fade-in"
                     data-aos-duration="1500"
@@ -100,7 +100,7 @@ const CustomizePage = () => {
                 .map(({ name, image, link, description, title }) => (
                   <Link
                   to={`/configurator-male-accessories/${name}`}
-                  className="text-decoration-none lg:mx-10  "
+                  className="text-decoration-none   "
                     key={name}
                     data-aos="fade-in"
                     data-aos-duration="1500"
@@ -127,7 +127,7 @@ const CustomizePage = () => {
                 .map(({ name, image, link, description, title }) => (
                   <Link
                     to={link ? link : `/configurator-unisex/${name}`}
-                    className="text-decoration-none lg:mx-10  "
+                    className="text-decoration-none   "
                     key={name}
                     data-aos="fade-in"
                     data-aos-duration="1500"
@@ -153,7 +153,7 @@ const CustomizePage = () => {
                 .map(({ name, image, link, description, title }) => (
                   <Link
                     to={"sash-templates"}
-                    className="text-decoration-none lg:mx-10  "
+                    className="text-decoration-none   "
                     key={name}
                     data-aos="fade-in"
                     data-aos-duration="1500"
@@ -178,7 +178,7 @@ const CustomizePage = () => {
                 .map(({ name, image, link, description, title }) => (
                   <Link
                     to={link ? link : `/configurator-special/${name}`}
-                    className="text-decoration-none lg:mx-10  "
+                    className="text-decoration-none   "
                     key={name}
                     data-aos="fade-in"
                     data-aos-duration="1500"
@@ -204,7 +204,7 @@ const CustomizePage = () => {
               {mainFemaleCustomize.map(({ name, image, isVariant }) => (
               <Link
                 to={isVariant ? `/configurator-female-variant/${name}`: `/configurator-female/${name}`}
-                className="text-decoration-none lg:mx-10 "
+                className="text-decoration-none  "
                 key={name}
                 data-aos="fade-in"
                 data-aos-duration="1500"
@@ -225,7 +225,7 @@ const CustomizePage = () => {
               {mainMaleCustomize.map(({ name, image, isVariant }) => (
               <Link
                 to={isVariant ? `/configurator-male-variant/${name}` : `/configurator/${name}`}
-                className="text-decoration-none lg:mx-10  "
+                className="text-decoration-none   "
                 key={name}
                 data-aos="fade-in"
                 data-aos-duration="1500"
@@ -249,7 +249,7 @@ const CustomizePage = () => {
                 .map(({ name, image, link, description, title }) => (
                   <Link
                     to={link ? link : `/configurator-unisex/${name}`}
-                    className="text-decoration-none lg:mx-10  "
+                    className="text-decoration-none   "
                     key={name}
                     data-aos="fade-in"
                     data-aos-duration="1500"
@@ -277,7 +277,7 @@ const CustomizePage = () => {
               {mainMaleAccessories.map(({ name, image }) => (
               <Link
                 to={`/configurator-male-accessories/${name}`}
-                className="text-decoration-none lg:mx-10  "
+                className="text-decoration-none   "
                 key={name}
                 data-aos="fade-in"
                 data-aos-duration="1500"
@@ -295,7 +295,7 @@ const CustomizePage = () => {
           {mainFemaleAccessories.map(({ name, image }) => (
             <Link
               to={`/configurator-female-accessories/${name}`}
-              className="col-6 col-md-3text-decoration-none lg:mx-10 "
+              className="col-6 col-md-3text-decoration-none  "
               key={name}
             >
               <ListItem image={image} description={name} />
@@ -307,7 +307,7 @@ const CustomizePage = () => {
           {mainFootwear.map(({ name, image }) => (
             <Link
               to={`/configurator-footwear/${name}`}
-              className="col-6 col-md-3text-decoration-none lg:mx-10 "
+              className="col-6 col-md-3text-decoration-none  "
               key={name}
             >
               <ListItem image={image} description={name} />
@@ -322,7 +322,7 @@ const CustomizePage = () => {
                 .map(({ name, image, link, description, title }) => (
                   <Link
                   to={`/configurator-footwear/${name}`}
-                  className="text-decoration-none lg:mx-10  "
+                  className="text-decoration-none   "
                     key={name}
                     data-aos="fade-in"
                     data-aos-duration="1500"
