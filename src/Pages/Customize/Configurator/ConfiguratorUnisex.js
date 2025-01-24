@@ -366,7 +366,7 @@ const ConfiguratorUnisex = () => {
           top: "2.8rem",
           left: "-2.85rem",
           height: "2rem",
-          size: 15,
+          size: 14,
           width: "5rem",
           lineHeight: "",
           image: {
@@ -554,6 +554,7 @@ const ConfiguratorUnisex = () => {
         left: {
           text: enteredTextLeft,
           top: "3.5rem",
+          size: 14,
           left: "-3rem",
           height: "2rem",
           width: "5.4rem",
@@ -1503,7 +1504,20 @@ const ConfiguratorUnisex = () => {
                                 : "imprint on left side..."
                             }
                             value={enteredTextLeft}
-                            onChange={(e) => setEnteredTextLeft(e.target.value)}
+                            onChange={(e) => {
+
+                              if(selectedClothing.name.includes("Beads Bracelet") && e.target.value.length > 7){
+                                toastRef.current.show({
+                                  severity: "error",
+                                  summary: "Text must not exceed 7 characters",
+                                });
+                               return
+                              }
+                              else {
+                                setEnteredTextLeft(e.target.value)
+                              }
+                              
+                            }}
                             style={{
                               width:
                                 selectedClothing.name.includes("Beads Bracelet")
@@ -1587,6 +1601,12 @@ const ConfiguratorUnisex = () => {
                               </button>
                             </div>
 
+                            
+
+                            {selectedClothing.name.includes("Beads Bracelet")
+                             ? null : (
+                              <>
+
                             <h6 className="text-base font-medium">
                               Size{" "}
                               {selectedClothing.name.includes("Beads Bracelet")
@@ -1609,9 +1629,6 @@ const ConfiguratorUnisex = () => {
                               </button>
                             </div>
 
-                            {selectedClothing.name.includes("Beads Bracelet")
-                             ? null : (
-                              <>
                                 <h6 className="text-base font-medium">Size (Right)</h6>
                                 <div className="d-flex  gap-2 justify-content-center align-items-center fs-button">
                                   <button
