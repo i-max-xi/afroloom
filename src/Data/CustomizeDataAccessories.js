@@ -34,8 +34,8 @@ export const mainMaleAccessories = [
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMrekCG26FoYzQlY6mv6Ez-PhApN2QhTEFag&s",
     model: round_cap,
     myNode: [
-      { name: "bottom_section", yardNeeded: 1 },
-      { name: "top_section", yardNeeded: 1 },
+      { name: "all", yardNeeded: 1 },
+      // { name: "top_section", yardNeeded: 1 },
     ],
     myZoom: 0.5,
     price: 150,
@@ -101,8 +101,8 @@ export const mainMaleAccessories = [
     image: image_bowtie,
     model: bow_tie,
     myNode: [
-      { name: "binder", yardNeeded: 1 },
-      { name: "bow", yardNeeded: 1 },
+      { name: "all", yardNeeded: 1 },
+      // { name: "bow", yardNeeded: 1 },
     ],
 
     myZoom: 1.5,
@@ -134,8 +134,8 @@ export const mainMaleAccessories = [
       "https://cdn11.bigcommerce.com/s-tld76p/images/stencil/1440x1440/products/3196/15724/hoggs-of-fife-flying-pheasant-silk-tie-green__69312.1686653195.jpg?c=2",
     model: tie,
     myNode: [
-      { name: "lower_section", yardNeeded: 1 },
-      { name: "top_section", yardNeeded: 1 },
+      { name: "all", yardNeeded: 1 },
+      // { name: "top_section", yardNeeded: 1 },
     ],
     myZoom: 0.75,
     price: 150,
