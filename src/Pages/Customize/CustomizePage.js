@@ -79,6 +79,7 @@ const CustomizePage = () => {
                     />
                   </Link>
                 ))}
+                
               {mainFemaleAccessories
                 .map(({ name, image, link, description, title }) => (
                   <Link

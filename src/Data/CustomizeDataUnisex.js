@@ -1831,6 +1831,7 @@ export const mainUnisex = [
     name: "Waist Bag",
     image: image_waist_bag,
     model: mini_bag_model,
+    isAccessory: true,
     myNode: [
       { name: "main_body", yardNeeded: 1 },
       // { name: "handle", yardNeeded: 1 },
@@ -1863,6 +1864,7 @@ export const mainUnisex = [
     name: "Backpack",
     image: image_backpack,
     model: backpack_model,
+    isAccessory: true,
     myNode: [
       { name: "body", yardNeeded: 1 },
       // { name: "handles", yardNeeded: 1 },
