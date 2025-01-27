@@ -662,24 +662,26 @@ const ConfiguratorUnisex = () => {
       setSelectedPrintOn(newTexture);
       setSelectedTexture(newTexture); // needed to transfer to size
 
-      const textureCategory = Object.keys(textureArrays).find((category) =>
-        textureArrays[category].includes(newTexture),
-      );
-
-      const sizeValue = selectedClothing.sizeOptions.find(
-        (size) => size.value === selectedSize,
-      );
-
-      const yardPrice = textureValues[textureCategory].price;
-
-      let newPartPrice;
-      if (textureCategory === "waxPrint") {
-        newPartPrice = yardPrice;
-      } else {
-        newPartPrice = yardPrice + sizeValue.priceValue;
-      }
-
-      setPartPrices(newPartPrice);
+      if(!selectedClothing.isAccessory){
+        const textureCategory = Object.keys(textureArrays).find((category) =>
+          textureArrays[category].includes(newTexture),
+        );
+  
+        const sizeValue = selectedClothing.sizeOptions.find(
+          (size) => size.value === selectedSize,
+        );
+  
+        const yardPrice = textureValues[textureCategory].price;
+  
+        let newPartPrice;
+        if (textureCategory === "waxPrint") {
+          newPartPrice = yardPrice;
+        } else {
+          newPartPrice = yardPrice + sizeValue.priceValue;
+        }
+  
+        setPartPrices(newPartPrice);
+      } 
     }
 
     setShowGlow(false);

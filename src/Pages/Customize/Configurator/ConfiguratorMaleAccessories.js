@@ -252,29 +252,26 @@ const ConfiguratorMaleAccessories = () => {
       setSelectedPrintOn(newTexture);
       setSelectedTexture(newTexture); // needed to transfer to size
 
-      const textureCategory = Object.keys(textureArrays).find((category) =>
-        textureArrays[category].includes(newTexture),
-      );
+      // const textureCategory = Object.keys(textureArrays).find((category) =>
+      //   textureArrays[category].includes(newTexture),
+      // );
 
-      const sizeValue = selectedClothing.sizeOptions.find(
-        (size) => size.value === selectedSize,
-      );
+      // const sizeValue = selectedClothing.sizeOptions.find(
+      //   (size) => size.value === selectedSize,
+      // );
 
-      console.log({ sizeValue });
+      // const yardPrice = textureValues[textureCategory].price;
 
-      const yardPrice = textureValues[textureCategory].price;
+     
 
-      // const newPartPrice =
-      //   yardStart === 2 ? yardNeeded * (yardPrice / 2) : yardNeeded * yardPrice;
+      // let newPartPrice;
+      // if (textureCategory === "waxPrint") {
+      //   newPartPrice = yardPrice;
+      // } else {
+      //   newPartPrice = yardPrice + sizeValue.priceValue;
+      // }
 
-      let newPartPrice;
-      if (textureCategory === "waxPrint") {
-        newPartPrice = yardPrice;
-      } else {
-        newPartPrice = yardPrice + sizeValue.priceValue;
-      }
-
-      setPartPrices(newPartPrice);
+      // setPartPrices(newPartPrice);
     }
 
     setShowGlow(false);
