@@ -77,6 +77,14 @@ const customized3DSlice = createSlice({
         (item) => item.name !== action.payload,
       );
     },
+
+    updateCustomzedItemQuantity: (state, action) => {
+      // const { id, selectedSize, quantity } = action.payload;
+      // const item = state.find((item) => item.id === id && item.selectedSize === selectedSize);
+      // if (item) {
+      //   item.quantity = quantity;
+      // }
+    },
   },
 });
 
@@ -103,7 +111,7 @@ const shopCartSlice = createSlice({
       );
     },
 
-    updateQuantity: (state, action) => {
+    updateShopItemQuantity: (state, action) => {
       const { id, selectedSize, quantity } = action.payload;
       const item = state.find((item) => item.id === id && item.selectedSize === selectedSize);
       if (item) {
@@ -111,7 +119,10 @@ const shopCartSlice = createSlice({
       }
     },
 
-    clearShopCart: () => [],
+    // clearShopCart: () => [],
+    clearShopCart: (state) => {
+      state = [];
+    },
   },
 });
 
@@ -141,10 +152,10 @@ export const {
   updateCurrentUser,
 } = userSlice.actions;
 
-export const { addToCart, clearCart, removeFromCart } =
+export const { addToCart, clearCart, removeFromCart, updateCustomzedItemQuantity } =
   customized3DSlice.actions;
 
-export const { addToShopCart, removeFromShopCart, updateQuantity, clearShopCart } = shopCartSlice.actions;
+export const { addToShopCart, removeFromShopCart, updateShopItemQuantity, clearShopCart } = shopCartSlice.actions;
 
 
 export const persistor = persistStore(store);

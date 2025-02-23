@@ -1,7 +1,7 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-import { clearCart, clearShopCart, removeFromCart, removeFromShopCart } from "../Redux/store";
+import { clearCart, clearShopCart, removeFromCart, removeFromShopCart, updateCustomzedItemQuantity, updateShopItemQuantity } from "../Redux/store";
 
 import Top from "../Assets/Headers/Check_Out.jpg";
 import LayoutHeaders from "../Components/LayoutHeaders";
@@ -12,11 +12,10 @@ import { RadioButton } from "primereact/radiobutton";
 import { useReactToPrint } from "react-to-print";
 import AllServices from "../Services/usersService";
 import { ProgressSpinner } from "primereact/progressspinner";
-import { set } from "date-fns";
 
 const CustomizeCheckout = () => {
   const cartItems = useSelector((state) => state.customizedProduct.itemDetails);
-  const shopCartItem = useSelector((state) => state.shopCart);
+  const shopCart = useSelector((state) => state.shopCart);
   
   // const customizedItemDataSheet = useSelector(
   //   (state) => state.customizedProduct.itemDataSheet
@@ -48,13 +47,12 @@ const CustomizeCheckout = () => {
   ?.reduce((total, item) => total + item?.price * item?.quantity, 0)
   .toFixed()
 
-  const shopTotal = shopCartItem
+  const shopTotal = shopCart
   ?.reduce((total, item) => total + item?.price * item?.quantity, 0)
   .toFixed()
 
-  const [totalToPay] = useState(
+  const totalToPay =
     parseFloat(customizedTotal) + parseFloat(shopTotal)
-  );
 
   const publicKey = process.env.REACT_APP_paystack_publicKey;
   const [payPercenTage, setPayPercentage] = useState(false);
@@ -62,7 +60,7 @@ const CustomizeCheckout = () => {
   const totalToPayNumeric = useMemo(() => {
     if (payPercenTage) return parseFloat(0.45 * totalToPay);
     if (!payPercenTage) return parseFloat(totalToPay);
-  }, [totalToPay, payPercenTage]);
+  }, [totalToPay, payPercenTage,]);
 
   const amount = totalToPayNumeric * 100;
   const email = emailAddress;
@@ -248,13 +246,51 @@ const CustomizeCheckout = () => {
     dispatch(removeFromShopCart(name));
   };
 
+  const handleshopItemQuantityChange = (id, selectedSize, type) => {
+    const existingItem = shopCart.find(
+      (item) => item.id === id && item.selectedSize === selectedSize
+    );
+  
+    if (!existingItem) return;
+  
+    let newQuantity = existingItem.quantity;
+  
+    if (type === "plus") {
+      newQuantity += 1;
+    } else if (type === "minus" && newQuantity > 1) {
+      newQuantity -= 1;
+    }
+  
+    dispatch(updateShopItemQuantity({ id, selectedSize, quantity: newQuantity }));
+  };
+
+  const handlecustomizedItemQuantityChange = (id, selectedSize, type) => {
+    const existingItem = cartItems.find(
+      (item) => item.id === id && item.selectedSize === selectedSize
+    );
+  
+    if (!existingItem) return;
+  
+    let newQuantity = existingItem.quantity;
+  
+    if (type === "plus") {
+      newQuantity += 1;
+    } else if (type === "minus" && newQuantity > 1) {
+      newQuantity -= 1;
+    }
+  
+    dispatch(updateCustomzedItemQuantity({ id, selectedSize, quantity: newQuantity }));
+  };
+  
+  
+
   return (
     <>
       <LayoutHeaders selectedBg={Top} />
       <Toast ref={toast} />
 
       <div className="container mb-5">
-        {cartItems.length === 0 && shopCartItem.length === 0 ? (
+        {cartItems.length === 0 && shopCart.length === 0 ? (
           <div className="text-center my-5 d-flex flex-column w-100 justify-content-center align-items-center">
             <p>No items in cart </p>
             <button
@@ -273,30 +309,47 @@ const CustomizeCheckout = () => {
                 <ul className="list-group">
                   {cartItems.map((selectedItem) => (
                     <li
-                      className=" d-flex rounded-md justify-content-between align-items-center mt-3"
+                      className=" flex rounded-md justify-content-between items-center mt-3"
                       key={selectedItem.name}
                       data-aos="fade-up"
                     >
-                      <div className="d-flex gap-3 align-items-center list-group-item col">
-                        <img
-                          src={selectedItem.modelImage}
-                          alt=""
-                          width="100rem"
-                          height="100rem"
-                        />
-                        <div className="">
-                          <span className="fw-bold">Name: </span>{" "}
-                          {selectedItem.name} <br />
-                          <span className="fw-bold">Quantity: </span>{" "}
-                          {selectedItem.quantity}
-                          <br />
-                          <span className="fw-bold">Subtotal:</span>{" "}
-                          {currencySymbol}
-                          {(
-                            selectedItem?.price *
-                            selectedItem?.quantity *
-                            currencyFactor
-                          ).toFixed()}
+                      <div className="flex gap-3 justify-between items-center w-full bg-white p-4">
+                        <div className="flex gap-1 items-center justify-center">
+                          <img
+                            src={selectedItem.modelImage}
+                            alt=""
+                            width="100rem"
+                            height="100rem"
+                          />
+                          <p className="">
+                            <span className="fw-bold">Name: </span>{" "}
+                            {selectedItem.name} <br />
+                            <span className="fw-bold">Quantity: </span>{" "}
+                            {selectedItem.quantity}
+                            <br />
+                            <span className="fw-bold">Subtotal:</span>{" "}
+                            {currencySymbol}
+                            {(
+                              selectedItem?.price *
+                              selectedItem?.quantity *
+                              currencyFactor
+                            ).toFixed()}
+                          </p>
+                        </div>
+                        <div className="  flex-col items-center gap-4 p-2 hidden">
+                          <button
+                            onClick={() => handlecustomizedItemQuantityChange(selectedItem.id, selectedItem.selectedSize, "minus")}
+                            className="bg-gray-200 px-3 py-1 rounded-lg text-sm"
+                          >
+                            -
+                          </button>
+                          <span className="text-sm font-bold">{selectedItem?.quantity}</span>
+                          <button
+                            onClick={() => handlecustomizedItemQuantityChange(selectedItem.id, selectedItem.selectedSize, "plus")}
+                            className="bg-gray-200 px-3 py-1 rounded-lg text-sm"
+                          >
+                            +
+                          </button>
                         </div>
                       </div>
                       <p className="col-1">
@@ -322,50 +375,66 @@ const CustomizeCheckout = () => {
                 </p>
               </>
               )}
-              {shopCartItem.length > 0 && (
+              {shopCart.length > 0 && (
                 <>
                   <h2 className="text-lg lg:text-xl">Cart Item(s)</h2>
                   <ul className="list-group">
-                    {shopCartItem.map((selectedItem) => (
-                      <li
-                        className=" d-flex rounded-md justify-content-between align-items-center mt-3"
-                        key={selectedItem.name}
-                        data-aos="fade-up"
-                      >
-                        <div className="d-flex gap-3 align-items-center list-group-item col">
-                          <img
-                            src={selectedItem.image}
-                            alt=""
-                            width="100rem"
-                            height="100rem"
-                            className="rounded-lg"
-                          />
-                          <div className="">
-                            <span className="fw-bold">Name: </span>{" "}
-                            {selectedItem.name} <br />
-                            <span className="fw-bold">Quantity: </span>{" "}
-                            {selectedItem.quantity}
-                            <br />
-                            <span className="fw-bold">Size: </span>{" "}
-                            {selectedItem.selectedSize}
-                            <br />
-                            <span className="fw-bold">Subtotal:</span>{" "}
-                            {currencySymbol}
-                            {(
-                              selectedItem?.price *
-                              selectedItem?.quantity *
-                              currencyFactor
-                            ).toFixed()} 
-                          </div>
+                    {shopCart.map((selectedItem) => (
+                       <li
+                       className=" flex rounded-md justify-content-between align-items-center mt-3"
+                       key={selectedItem.name}
+                       data-aos="fade-up"
+                     >
+                       <div className="flex gap-3 justify-between items-center w-full bg-white p-4">
+                         <div className="flex gap-3 justify-center items-center">
+                           <img
+                             src={selectedItem.image}
+                             alt=""
+                             width="100rem"
+                             height="100rem"
+                           />
+                           <p className="">
+                             <span className="fw-bold">Name: </span>{" "}
+                             {selectedItem.name} <br />
+                             <span className="fw-bold">Quantity: </span>{" "}
+                             {selectedItem.quantity}
+                             <br />
+                             <span className="fw-bold">Size: </span>{" "}
+                             {selectedItem.selectedSize}
+                             <br />
+                             <span className="fw-bold">Subtotal:</span>{" "}
+                             {currencySymbol}
+                             {(
+                               selectedItem?.price *
+                               selectedItem?.quantity *
+                               currencyFactor
+                             ).toFixed()}
+                           </p>
+                         </div>
+                         <div className=" flex flex-col items-center gap-4 p-2">
+                          <button
+                            onClick={() => handleshopItemQuantityChange(selectedItem.id, selectedItem.selectedSize, "minus")}
+                            className="bg-gray-200 px-3 py-1 rounded-lg text-sm"
+                          >
+                            -
+                          </button>
+                          <span className="text-sm font-bold">{selectedItem?.quantity}</span>
+                          <button
+                            onClick={() => handleshopItemQuantityChange(selectedItem.id, selectedItem.selectedSize, "plus")}
+                            className="bg-gray-200 px-3 py-1 rounded-lg text-sm"
+                          >
+                            +
+                          </button>
                         </div>
-                        <p className="col-1">
-                          <i
-                            className="pi pi-trash "
-                            style={{ color: "red" }}
-                            onClick={() => handleShopRemoveItem(selectedItem.name)}
-                          ></i>
-                        </p>
-                      </li>
+                       </div>
+                       <p className="col-1">
+                         <i
+                           className="pi pi-trash "
+                           style={{ color: "red" }}
+                           onClick={() => handleRemoveItem(selectedItem.name)}
+                         ></i>
+                       </p>
+                     </li>
                     ))}
                   </ul>
 
