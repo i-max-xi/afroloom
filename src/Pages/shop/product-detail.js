@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router";
 import { products } from "./Data/products";
@@ -11,6 +11,9 @@ const ProductDetail = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const currencySymbol = useSelector((state) => state.currencySymbol.symbol);
+  const currencyFactor = useSelector((state) => state.currencySymbol.factor);
 
   const [selectedSize, setSelectedSize] = useState("");
 
@@ -74,7 +77,7 @@ const ProductDetail = () => {
         <div className="flex-1">
           <h2 className="text-3xl font-bold">{product.name}</h2>
           <p className="text-gray-500 mt-2">{product.description || "No description available."}</p>
-          <p className="text-sm text-gray-400 mt-2">Category: {product.child_category}</p>
+          <p className="text-sm text-gray-400 mt-2">Category: {product.parent_category} : { product.child_category}</p>
 
           {/* Price Section */}
           <div className="flex items-center gap-4 mt-4">
@@ -84,14 +87,13 @@ const ProductDetail = () => {
                 <span className="text-yellow-500 text-2xl font-bold">${discountedPrice}</span>
               </>
             ) : (
-              <span className="text-yellow-500 text-2xl font-bold">${product.price.toFixed(2)}</span>
+              <span className="text-yellow-500 text-2xl font-bold">{currencySymbol}{(product.price * currencyFactor).toFixed(2)}</span>
             )}
           </div>
 
           <p className="text-sm text-gray-600 mt-2">Ready in: {product.ready_in}</p>
 
          <p>
-
            {product.sizes && product.sizes.length > 0 && (
               <div className="mt-6">
                 <h3 className="text-lg font-semibold mb-2">Select Size:</h3>
@@ -114,6 +116,7 @@ const ProductDetail = () => {
             )}
          </p>
 
+       
           {/* Add to Cart Button */}
           <button disabled={selectedSize === ""} onClick={() => dispatch()} className="mt-6 bg-yellow-500 text-white px-6 py-3 rounded-lg hover:bg-yellow-600 transition disabled:opacity-50 disabled:hover:bg-yellow-500">
             Add to Cart

@@ -1,20 +1,25 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { useDispatch } from "react-redux";
+import {  useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 
 const ProductCard = ({ product }) => {
-  const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const currencySymbol = useSelector((state) => state.currencySymbol.symbol);
+  const currencyFactor = useSelector((state) => state.currencySymbol.factor);
 
   // Calculate discounted price
   const discountedPrice = product.discount
-    ? (product.price - (product.price * product.discount) / 100).toFixed(2)
-    : product.price.toFixed(2);
+    ? ((product.price - (product.price * product.discount) / 100) * currencyFactor).toFixed(2)
+    : (product.price * currencyFactor).toFixed(2);
 
   return (
     <motion.div
-      className="bg-white rounded-lg shadow-md overflow-hidden cursor-pointer transition-all duration-300"
+      initial={{  scale: 1 }}
+      whileHover={{ scale: 1.05 }}
+      // transition={{ type: "spring", stiffness: 300 }}
+      className="bg-white border hover:border-yellow-500 rounded-lg shadow-md overflow-hidden cursor-pointer transition-all duration-300"
     
       onClick={() => navigate(`/product/${product.id}`)}
     >
@@ -36,9 +41,9 @@ const ProductCard = ({ product }) => {
           {product.discount > 0 ? (
             <div className="flex items-center gap-2">
               <p className="text-gray-400 line-through text-sm">
-                ${product.price.toFixed(2)}
+                {currencySymbol}{(product.price * currencyFactor ).toFixed(2)}
               </p>
-              <p className="text-yellow-500 font-bold">${discountedPrice}</p>
+              <p className="text-yellow-500 font-bold">{currencySymbol}{discountedPrice}</p>
             </div>
           ) : (
             <p className="text-yellow-500 font-bold">${product.price.toFixed(2)}</p>
