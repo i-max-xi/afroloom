@@ -42,6 +42,7 @@ const Nav = ({ noCurrency }) => {
   const navLinks = [
     { to: "/", label: "Home" },
     { to: "/start-customize", label: "Customize" },
+    { to: "/shop", label: "Loom Store" },
     { to: "/about", label: "About" },
     { to: "/contact", label: "Contact Us" },
     { to: "/customize-checkout", label: "Checkout", badge: cartItems.length },
@@ -83,7 +84,7 @@ const Nav = ({ noCurrency }) => {
             to={to}
             label={
               <>
-                {label}
+                { <span className={`${to === "/shop" && "text-[#FFC107]"}`}>{label}</span> }
                 {badge ? (
                   <Badge
                     severity="warning"
