@@ -14,7 +14,13 @@ export const products = [
       parent_category: "Women's Clothing",
       child_category: "Formal Wear",
       discount: 10,
-      sizes: ["XS", "S", "M", "L", "XL"],
+      sizes: [
+        { name: "XS", value: 0 }, 
+        { name: "S", value: 5 },
+        { name: "M", value: 10 },
+        { name: "L", value: 15 },
+        { name: "XL", value: 20 }
+      ],
     },
     {
       id: 2,
@@ -26,7 +32,13 @@ export const products = [
       parent_category: "Women's Clothing",
       child_category: "African Print Dresses",
       discount: 10,
-      sizes: ["S", "M", "L", "XL", "XXL"],
+      sizes: [
+        { name: "XS", value: 0 }, 
+        { name: "S", value: 5 },
+        { name: "M", value: 10 },
+        { name: "L", value: 15 },
+        { name: "XL", value: 20 }
+      ],
     },
     {
       id: 3,
@@ -38,7 +50,13 @@ export const products = [
       parent_category: "Women's Clothing",
       child_category: "Casual Wear",
       discount: 10,
-      sizes: ["XS", "S", "M", "L"],
+      sizes: [
+        { name: "XS", value: 0 }, 
+        { name: "S", value: 5 },
+        { name: "M", value: 10 },
+        { name: "L", value: 15 },
+        { name: "XL", value: 20 }
+      ]
     },
   
     // Men's Clothing
@@ -52,7 +70,13 @@ export const products = [
       parent_category: "Men's Clothing",
       child_category: "African Print Shirts",
       discount: 10,
-      sizes: ["S", "M", "L", "XL", "XXL"],
+      sizes: [
+        { name: "XS", value: 0 }, 
+        { name: "S", value: 5 },
+        { name: "M", value: 10 },
+        { name: "L", value: 15 },
+        { name: "XL", value: 20 }
+      ],
     },
     {
       id: 5,
@@ -64,7 +88,13 @@ export const products = [
       parent_category: "Men's Clothing",
       child_category: "Casual Wear",
       discount: 0,
-      sizes: ["M", "L", "XL", "XXL"],
+      sizes: [
+        { name: "XS", value: 0 }, 
+        { name: "S", value: 5 },
+        { name: "M", value: 10 },
+        { name: "L", value: 15 },
+        { name: "XL", value: 20 }
+      ],
     },
     {
       id: 6,
@@ -76,7 +106,13 @@ export const products = [
       parent_category: "Men's Clothing",
       child_category: "Formal Wear",
       discount: 0,
-      sizes: ["S", "M", "L", "XL", "XXL", "XXXL"],
+      sizes: [
+        { name: "XS", value: 0 }, 
+        { name: "S", value: 5 },
+        { name: "M", value: 10 },
+        { name: "L", value: 15 },
+        { name: "XL", value: 20 }
+      ],
     },
   
     // Children's Clothing
@@ -90,7 +126,13 @@ export const products = [
       parent_category: "Children's Clothing",
       child_category: "Boys’ Outfits (Traditional and Casual)",
       discount: 0,
-      sizes: ["2T", "4T", "6", "8", "10", "12"],
+      sizes: [
+      { name: "XS", value: 0 }, 
+      { name: "S", value: 5 },
+      { name: "M", value: 10 },
+      { name: "L", value: 15 },
+      { name: "XL", value: 20 }
+    ],
     },
     {
       id: 8,
@@ -102,7 +144,13 @@ export const products = [
       parent_category: "Children's Clothing",
       child_category: "Girls’ Outfits (Traditional and Casual)",
       discount: 0,
-      sizes: ["2T", "4T", "6", "8", "10", "12"],
+      sizes: [
+      { name: "XS", value: 0 }, 
+      { name: "S", value: 5 },
+      { name: "M", value: 10 },
+      { name: "L", value: 15 },
+      { name: "XL", value: 20 }
+    ],
     },
     {
       id: 9,
@@ -114,7 +162,13 @@ export const products = [
       parent_category: "Children's Clothing",
       child_category: "Matching Family Sets",
       discount: 0,
-      sizes: ["Kids S", "Kids M", "Kids L", "Adults S", "Adults M", "Adults L"],
+      sizes: [
+        { name: "XS", value: 0 }, 
+        { name: "S", value: 5 },
+        { name: "M", value: 10 },
+        { name: "L", value: 15 },
+        { name: "XL", value: 20 }
+      ],
     },
     {
       id: 10,
@@ -126,7 +180,13 @@ export const products = [
       parent_category: "Children's Clothing",
       child_category: "School Uniforms",
       discount: 0,
-      sizes: ["4", "6", "8", "10", "12", "14"],
+      sizes: [
+        { name: "XS", value: 0 }, 
+        { name: "S", value: 5 },
+        { name: "M", value: 10 },
+        { name: "L", value: 15 },
+        { name: "XL", value: 20 }
+      ],
     },
   ];
   

@@ -10,6 +10,8 @@ import { Badge } from "primereact/badge";
 
 const MobileNav = ({ visible, setVisible }) => {
   const cartItems = useSelector((state) => state.customizedProduct.itemDetails);
+    const shopCartItem = useSelector((state) => state.shopCart);
+  
 
   return (
     <Sidebar visible={visible} onHide={() => setVisible(false)} className=" ">
@@ -44,7 +46,7 @@ const MobileNav = ({ visible, setVisible }) => {
               <Badge
                 severity="warning"
                 style={{ scale: "0.5" }}
-                value={cartItems.length}
+                value={cartItems.length + shopCartItem.length}
               ></Badge>
             </i>
             <Link className="nav-link" to="/customize-checkout">

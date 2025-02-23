@@ -80,25 +80,42 @@ const customized3DSlice = createSlice({
   },
 });
 
+
+
 const shopCartSlice = createSlice({
   name: "shopCart",
   initialState: [],
   reducers: {
     addToShopCart: (state, action) => {
-      state.push(action.payload);
-    },
-
-    clearShopCart: (state) => {
-      state = [];
+      const existingItem = state.find(
+        (item) => item.id === action.payload.id && item.selectedSize === action.payload.selectedSize
+      );
+      if (existingItem) {
+        existingItem.quantity += action.payload.quantity;
+      } else {
+        state.push({ ...action.payload, quantity: action.payload.quantity });
+      }
     },
 
     removeFromShopCart: (state, action) => {
-      state = state.filter(
-        (item) => item.name !== action.payload,
+      return state.filter(
+        (item) => !(item.id === action.payload.id && item.selectedSize === action.payload.selectedSize)
       );
     },
+
+    updateQuantity: (state, action) => {
+      const { id, selectedSize, quantity } = action.payload;
+      const item = state.find((item) => item.id === id && item.selectedSize === selectedSize);
+      if (item) {
+        item.quantity = quantity;
+      }
+    },
+
+    clearShopCart: () => [],
   },
 });
+
+
 
 const rootReducer = combineReducers({
   user: userSlice.reducer,
@@ -127,8 +144,8 @@ export const {
 export const { addToCart, clearCart, removeFromCart } =
   customized3DSlice.actions;
 
-export const { addToShopCart, clearShopCart, removeFromShopCart } =
-  shopCartSlice.actions;
+export const { addToShopCart, removeFromShopCart, updateQuantity, clearShopCart } = shopCartSlice.actions;
+
 
 export const persistor = persistStore(store);
 export default store;
