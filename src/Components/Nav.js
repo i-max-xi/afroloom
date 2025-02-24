@@ -32,6 +32,7 @@ const NavLink = ({ to, label, isActive }) => (
 const Nav = ({ noCurrency }) => {
   const [visible, setVisible] = useState(false);
   const cartItems = useSelector((state) => state.customizedProduct.itemDetails);
+  const shopCartItem = useSelector((state) => state.shopCart);
   const signedin = useSelector((state) => state.user.signedIn);
   const dashboardPath = useSelector((state) => state.user.dashboardPath);
 
@@ -42,9 +43,10 @@ const Nav = ({ noCurrency }) => {
   const navLinks = [
     { to: "/", label: "Home" },
     { to: "/start-customize", label: "Customize" },
+    { to: "/shop", label: "Loom Store" },
     { to: "/about", label: "About" },
     { to: "/contact", label: "Contact Us" },
-    { to: "/customize-checkout", label: "Checkout", badge: cartItems.length },
+    { to: "/customize-checkout", label: "Checkout", badge: cartItems?.length + shopCartItem?.length },
     { to: "/signup", label: "Become a Partner" },
   ];
 
@@ -83,7 +85,7 @@ const Nav = ({ noCurrency }) => {
             to={to}
             label={
               <>
-                {label}
+                { <span className={`${to === "/shop" && "text-[#FFC107]"}`}>{label}</span> }
                 {badge ? (
                   <Badge
                     severity="warning"

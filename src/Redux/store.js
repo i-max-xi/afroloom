@@ -24,21 +24,7 @@ const currencySymbolSlice = createSlice({
   },
 });
 
-// const cartSlice = createSlice({
-//   name: "cart",
-//   initialState: [],
-//   reducers: {
-//     addItem: (state, action) => {
-//       state.push(action.payload);
-//     },
-//     removeItem: (state, action) => {
-//       return state.filter((item) => item.id !== action.payload.id);
-//     },
-//     clearCart: (state) => {
-//       return [];
-//     },
-//   },
-// });
+
 
 const userSlice = createSlice({
   name: "user",
@@ -91,13 +77,62 @@ const customized3DSlice = createSlice({
         (item) => item.name !== action.payload,
       );
     },
+
+    updateCustomzedItemQuantity: (state, action) => {
+      // const { id, selectedSize, quantity } = action.payload;
+      // const item = state.find((item) => item.id === id && item.selectedSize === selectedSize);
+      // if (item) {
+      //   item.quantity = quantity;
+      // }
+    },
   },
 });
+
+
+
+const shopCartSlice = createSlice({
+  name: "shopCart",
+  initialState: [],
+  reducers: {
+    addToShopCart: (state, action) => {
+      const existingItem = state.find(
+        (item) => item.id === action.payload.id && item.selectedSize === action.payload.selectedSize
+      );
+      if (existingItem) {
+        existingItem.quantity += action.payload.quantity;
+      } else {
+        state.push({ ...action.payload, quantity: action.payload.quantity });
+      }
+    },
+
+    removeFromShopCart: (state, action) => {
+      return state.filter(
+        (item) => !(item.id === action.payload.id && item.selectedSize === action.payload.selectedSize)
+      );
+    },
+
+    updateShopItemQuantity: (state, action) => {
+      const { id, selectedSize, quantity } = action.payload;
+      const item = state.find((item) => item.id === id && item.selectedSize === selectedSize);
+      if (item) {
+        item.quantity = quantity;
+      }
+    },
+
+    // clearShopCart: () => [],
+    clearShopCart: (state) => {
+      state = [];
+    },
+  },
+});
+
+
 
 const rootReducer = combineReducers({
   user: userSlice.reducer,
   currencySymbol: currencySymbolSlice.reducer,
   customizedProduct: customized3DSlice.reducer,
+  shopCart: shopCartSlice.reducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
@@ -108,6 +143,7 @@ const store = configureStore({
 });
 
 export const { setCurrencySymbol } = currencySymbolSlice.actions;
+
 export const {
   setSignedIn,
   setcurrentUser,
@@ -115,8 +151,12 @@ export const {
   updateOrders,
   updateCurrentUser,
 } = userSlice.actions;
-export const { addToCart, clearCart, removeFromCart } =
+
+export const { addToCart, clearCart, removeFromCart, updateCustomzedItemQuantity } =
   customized3DSlice.actions;
+
+export const { addToShopCart, removeFromShopCart, updateShopItemQuantity, clearShopCart } = shopCartSlice.actions;
+
 
 export const persistor = persistStore(store);
 export default store;

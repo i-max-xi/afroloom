@@ -1,0 +1,150 @@
+import { useRef, useState } from "react";
+import { motion } from "framer-motion";
+import { InputText } from "primereact/inputtext";
+import { InputNumber } from "primereact/inputnumber";
+import { Dropdown } from "primereact/dropdown";
+import { InputTextarea } from "primereact/inputtextarea";
+import { FileUpload } from "primereact/fileupload";
+import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { app } from "../../../firebase";
+import AllServices from "../../../Services/usersService";
+import { ProgressSpinner } from "primereact/progressspinner";
+import { Toast } from "primereact/toast";
+import { v4 as uuidv4 } from "uuid";
+
+
+const categories = {
+  "Women's Clothing": ["Formal Wear", "African Print Dresses", "Casual Wear"],
+  "Men's Clothing": ["African Print Shirts", "Casual Wear", "Formal Wear"],
+  "Children's Clothing": [
+    "Boys’ Outfits (Traditional and Casual)",
+    "Girls’ Outfits (Traditional and Casual)",
+    "Matching Family Sets",
+    "School Uniforms",
+  ],
+};
+
+export default function AddProduct() {
+  const [product, setProduct] = useState({
+    id: uuidv4(),
+    name: "",
+    price: 0,
+    ready_in: "",
+    images: [],
+    description: "",
+    parent_category: null,
+    child_category: null,
+    discount: 0,
+    sizes: [],
+  });
+
+  const toastRef = useRef(null);
+  const [newSize, setNewSize] = useState({ name: "", value: 0 });
+  const [uploading, setUploading] = useState(false);
+  const [loading, setLoading] = useState(false);
+
+  const handleChange = (e, field) => {
+    setProduct({ ...product, [field]: e.value || e.target.value });
+  };
+
+  const addSize = () => {
+    if (newSize.name && newSize.value >= 0) {
+      setProduct({ ...product, sizes: [...product.sizes, newSize] });
+      setNewSize({ name: "", value: 0 });
+    }
+  };
+
+  const removeSize = (index) => {
+    setProduct({
+      ...product,
+      sizes: product.sizes.filter((_, i) => i !== index),
+    });
+  };
+
+  const uploadImages = async (event) => {
+    const files = event.files;
+    if (!files || files.length === 0) return;
+
+    setUploading(true);
+    const storage = getStorage(app);
+    const uploadPromises = files.map((file) => {
+      return new Promise((resolve, reject) => {
+        const storageRef = ref(storage, `loomstore/${file.name}`);
+        const uploadTask = uploadBytesResumable(storageRef, file);
+
+        uploadTask.on(
+          "state_changed",
+          null,
+          (error) => reject(error),
+          async () => {
+            const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
+            resolve(downloadURL);
+          }
+        );
+      });
+    });
+
+    try {
+      const urls = await Promise.all(uploadPromises);
+      setProduct((prev) => ({ ...prev, images: [...prev.images, ...urls] }));
+    } catch (error) {
+      console.error("Upload failed:", error);
+    }
+    setUploading(false);
+  };
+
+  const addProduct = async () => {
+    setLoading(true);
+    try {
+      await AllServices.addProduct(product);
+      toastRef.current.show({ severity: "success", summary: "Product added successfully!" });
+    } catch (error) {
+      setLoading(false);
+      console.error("Error adding product:", error);
+      toastRef.current.show({ severity: "error", summary: "Failed to add product." });
+    }
+    setLoading(false);
+  };
+
+  return (
+    <motion.div className="max-w-3xl mx-auto bg-white p-6 rounded-2xl shadow-md">
+      <Toast ref={toastRef} />
+      
+      <h2 className="text-2xl font-bold mb-4 text-black">Add New Product</h2>
+      <InputText value={product.name} onChange={(e) => handleChange(e, "name")} placeholder="Product Name" className="p-inputtext w-full" />
+      <p className="mt-1">
+        <label>Price</label>
+        <InputNumber value={product.price} onValueChange={(e) => handleChange(e, "price")} placeholder="Price" className="w-full" prefix="GH₵ " />
+      </p>
+      <p className="mt-1">
+        <label>Discount</label>
+        <InputNumber value={product.discount} onValueChange={(e) => handleChange(e, "discount")} placeholder="eg. 10" className="w-full" suffix="%" />
+      </p>
+      <InputTextarea value={product.description} onChange={(e) => handleChange(e, "description")} placeholder="Product Description" className="p-inputtext w-full" rows={3} />
+      
+      <Dropdown value={product.parent_category} options={Object.keys(categories)} onChange={(e) => handleChange(e, "parent_category")} placeholder="Select Parent Category" className="w-full" />
+      <Dropdown value={product.child_category} options={product.parent_category ? categories[product.parent_category] : []} onChange={(e) => handleChange(e, "child_category")} placeholder="Select Child Category" className="w-full" disabled={!product.parent_category} />
+      
+      <h3 className="text-lg font-semibold text-black mt-1">Sizes</h3>
+      <p className="text-xs">Add sizes and how much it should ass on prices</p>
+      <div className="flex space-x-2">
+        <InputText value={newSize.name} onChange={(e) => setNewSize({ ...newSize, name: e.target.value })} placeholder="Size Name" />
+        <InputNumber value={newSize.value} onValueChange={(e) => setNewSize({ ...newSize, value: e.value })} placeholder="Size Value" />
+        <button onClick={addSize} className="bg-blue-500 text-white p-2 rounded">Add</button>
+      </div>
+      <ul>
+        {product.sizes.map((size, index) => (
+          <li key={index} className="flex justify-between">
+            {size.name}: {size.value}
+            <button onClick={() => removeSize(index)} className="text-red-500">Remove</button>
+          </li>
+        ))}
+      </ul>
+      
+      <FileUpload mode="basic" accept="image/*" customUpload uploadHandler={uploadImages} chooseLabel={uploading ? "Uploading..." : "Upload Images"} disabled={uploading} multiple className="mt-2" />
+      <button onClick={addProduct} className="mt-6 w-full p-2 rounded-lg bg-yellow-500 hover:bg-yellow-600 text-white " disabled={loading}>
+        {loading ? <ProgressSpinner style={{ width: '20px', height: '20px' }} strokeWidth="4" animationDuration=".5s" /> : "Add Product"}
+      </button>
+    </motion.div>
+  );
+}

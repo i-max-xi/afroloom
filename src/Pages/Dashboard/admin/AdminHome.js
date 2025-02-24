@@ -9,12 +9,16 @@ import Nav from "../../../Components/Nav";
 import { Button } from "primereact/button";
 import ManageFabrics from "./ManageFabrics";
 import ContactDetails from "./ContactDetails";
+import LoomStore from "./loomStore";
+import AddProduct from "./AddToStore";
 
 const adminSidebarItems = [
   { label: "Manage Sales Partners" },
   { label: "Manage Prices" },
   { label: "Manage Fabrics" },
   { label: "Contact Details" },
+  { label: "Loom Store" },
+  { label: "Add To Loom Store" },
 ];
 
 const AdminDashboard = () => {
@@ -59,6 +63,12 @@ const AdminDashboard = () => {
           </TabPanel>
           <TabPanel header="Contact Details">
             <ContactDetails />
+          </TabPanel>
+          <TabPanel header="Loom Store">
+            <LoomStore />
+          </TabPanel>
+          <TabPanel header="Add To Loom Store">
+            <AddProduct />
           </TabPanel>
         </TabView>
       </div>

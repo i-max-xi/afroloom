@@ -10,6 +10,8 @@ import { Badge } from "primereact/badge";
 
 const MobileNav = ({ visible, setVisible }) => {
   const cartItems = useSelector((state) => state.customizedProduct.itemDetails);
+    const shopCartItem = useSelector((state) => state.shopCart);
+  
 
   return (
     <Sidebar visible={visible} onHide={() => setVisible(false)} className=" ">
@@ -31,11 +33,20 @@ const MobileNav = ({ visible, setVisible }) => {
           <Divider className="custom-divider" />
 
           <li className="nav-item mobile-nav-item">
+            <i className="pi pi-shopping-bag"></i>
+
+            <Link className="nav-link" to="/shop">
+              <span className="text-[#FFC107]">Loom Store</span>
+            </Link>
+          </li>
+          
+          <Divider className="custom-divider" />
+          <li className="nav-item mobile-nav-item">
             <i className="pi pi-shopping-cart p-overlay-badge">
               <Badge
                 severity="warning"
                 style={{ scale: "0.5" }}
-                value={cartItems.length}
+                value={cartItems.length + shopCartItem.length}
               ></Badge>
             </i>
             <Link className="nav-link" to="/customize-checkout">

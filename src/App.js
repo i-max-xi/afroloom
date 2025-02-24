@@ -46,6 +46,9 @@ import ConfiguratorUnisexSpecial from "./Pages/Customize/Configurator/Configurat
 import SashTemplatePage from "./Pages/Customize/extra-step-before-configurator/SashTemplate";
 import ConfiguratorFeMaleVariation from "./Pages/Customize/Configurator/ConfiguratorFemaleVariation";
 import ConfiguratorMaleVariation from "./Pages/Customize/Configurator/ConfiguratorMaleVariation";
+import ShopPage from "./Pages/shop";
+import ProductDetail from "./Pages/shop/product-detail";
+import CategoryPage from "./Pages/shop/category-page";
 
 function App() {
   useEffect(() => {
@@ -107,6 +110,16 @@ function App() {
             <Route path="returnPolicy" element={<Returnpolicy />} />
             <Route path="privacyPolicy" element={<PrivacyPolicy />} />
             <Route path="contact" element={<ContactUs />} />
+
+             {/* shop */}
+            <Route path="shop" element={<ShopPage />} />
+            <Route path="product/:id" element={<ProductDetail />} />
+            <Route path="category/:id" element={<CategoryPage />} />
+            {/* <Route path="/category/:id" element={<ProductDetail />} />
+              <Route path="/product/:id" element={<ProductDetail />} />
+              <Route path="/confirm" element={<Reviews />} />
+              <Route path="/checkout" element={<Checkout />} /> */}
+       
 
             <Route path="*" element={<NoPage />} />
           </Route>
