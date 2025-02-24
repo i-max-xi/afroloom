@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 import ProductCard from "./components/product-card";
 import Nav from "../../Components/Nav";
-import { products } from "./Data/products";
 import { CategorySection } from "./components/category-section";
 import IntroSection from "./components/intro-section";
+import { LoomStoreProducts } from "./Data/products";
 
 const ShopPage = () => {
   const [searchQuery, setSearchQuery] = useState("");
 
   // Filter products based on search query
-  const filteredProducts = products.filter((product) =>
-    product.name.toLowerCase().includes(searchQuery.toLowerCase())
+  const filteredProducts = LoomStoreProducts()?.filter((product) =>
+    product?.name?.toLowerCase().includes(searchQuery?.toLowerCase())
   );
 
   return (

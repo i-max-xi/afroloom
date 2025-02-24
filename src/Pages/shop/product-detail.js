@@ -3,10 +3,10 @@ import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { motion } from "framer-motion";
-import { products } from "./Data/products";
 import ProductCard from "./components/product-card";
 import Nav from "../../Components/Nav";
 import { addToShopCart } from "../../Redux/store";
+import { LoomStoreProducts } from "./Data/products";
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -17,7 +17,7 @@ const ProductDetail = () => {
 
   const [quantity, setQuantity] = useState(1);
 
-  const product = products.find((item) => item.id === parseInt(id));
+  const product = LoomStoreProducts().find((item) => item.id === parseInt(id));
   const [selectedImage, setSelectedImage] = useState(product?.images[0] || "");
   const [selectedSize, setSelectedSize] = useState(product?.sizes[0] || null);
 
@@ -27,7 +27,7 @@ const ProductDetail = () => {
   }
 
     // Find related products
-const relatedProducts = products?.filter(
+const relatedProducts = LoomStoreProducts()?.filter(
   (item) =>
     item.parent_category === product.parent_category &&
     item.id !== product.id

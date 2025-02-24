@@ -19,6 +19,8 @@ const ordersCollectionRef = collection(db, "afroloomOrders");
 const userCollectionRef = collection(db, "users");
 const fabricsCollectionRef = collection(db, "fabrics");
 const contactDetailsCollectionRef = collection(db, "contactDetails");
+const shopCollectionRef = collection(db, "loomStore");
+
 
 class AllServices {
   //orders
@@ -136,6 +138,42 @@ class AllServices {
       return error;
     }
   };
+
+
+   // shop items
+   getAllProducts = async () => {
+    const products = await getDocs(shopCollectionRef);
+    return products;
+  };
+  addProduct = (newProduct) => {
+    return addDoc(shopCollectionRef, newProduct);
+  };
+
+  getProductByField = async (fieldName, value) => {
+    try {
+      const q = query(shopCollectionRef, where(fieldName, "==", value));
+      const querySnapshot = await getDocs(q);
+      return querySnapshot.docs[0];
+    } catch (error) {
+      console.error(`Error fetching Product: ${error}`);
+      return error;
+    }
+  };
+
+  updateProduct = async (id, updatedProduct) => {
+    try {
+      const ProductDoc = doc(db, "loomStore", id);
+      await updateDoc(ProductDoc, updatedProduct);
+      return "Product updated successfully.";
+    } catch (error) {
+      console.error(`Error updating Product: ${error}`);
+      return error;
+    }
+  };
+
 }
+
+
+ 
 
 export default new AllServices();

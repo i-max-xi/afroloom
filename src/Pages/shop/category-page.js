@@ -1,8 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { motion } from "framer-motion";
-import { categories, products } from "./Data/products";
+import { categories, LoomStoreProducts } from "./Data/products";
 import ProductCard from "./components/product-card";
 import Nav from "../../Components/Nav";
 
@@ -34,7 +33,7 @@ const CategoryPage = () => {
 
         {/* Subcategories */}
         {category.children.map((sub, index) => {
-          const subcategoryProducts = products.filter(
+          const subcategoryProducts = LoomStoreProducts().filter(
             (product) => product.child_category === sub
           );
 
