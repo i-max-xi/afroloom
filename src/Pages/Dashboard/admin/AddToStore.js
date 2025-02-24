@@ -112,14 +112,21 @@ export default function AddProduct() {
       
       <h2 className="text-2xl font-bold mb-4 text-black">Add New Product</h2>
       <InputText value={product.name} onChange={(e) => handleChange(e, "name")} placeholder="Product Name" className="p-inputtext w-full" />
-      <InputNumber value={product.price} onValueChange={(e) => handleChange(e, "price")} placeholder="Price" className="w-full" prefix="GH₵ " />
-      <InputNumber value={product.discount} onValueChange={(e) => handleChange(e, "discount")} placeholder="eg. 10" className="w-full" suffix="%" />
+      <p className="mt-1">
+        <label>Price</label>
+        <InputNumber value={product.price} onValueChange={(e) => handleChange(e, "price")} placeholder="Price" className="w-full" prefix="GH₵ " />
+      </p>
+      <p className="mt-1">
+        <label>Discount</label>
+        <InputNumber value={product.discount} onValueChange={(e) => handleChange(e, "discount")} placeholder="eg. 10" className="w-full" suffix="%" />
+      </p>
       <InputTextarea value={product.description} onChange={(e) => handleChange(e, "description")} placeholder="Product Description" className="p-inputtext w-full" rows={3} />
       
       <Dropdown value={product.parent_category} options={Object.keys(categories)} onChange={(e) => handleChange(e, "parent_category")} placeholder="Select Parent Category" className="w-full" />
       <Dropdown value={product.child_category} options={product.parent_category ? categories[product.parent_category] : []} onChange={(e) => handleChange(e, "child_category")} placeholder="Select Child Category" className="w-full" disabled={!product.parent_category} />
       
-      <h3 className="text-lg font-semibold text-black">Sizes</h3>
+      <h3 className="text-lg font-semibold text-black mt-1">Sizes</h3>
+      <p className="text-xs">Add sizes and how much it should ass on prices</p>
       <div className="flex space-x-2">
         <InputText value={newSize.name} onChange={(e) => setNewSize({ ...newSize, name: e.target.value })} placeholder="Size Name" />
         <InputNumber value={newSize.value} onValueChange={(e) => setNewSize({ ...newSize, value: e.value })} placeholder="Size Value" />
