@@ -111,12 +111,14 @@ export default function AddProduct() {
       <Toast ref={toastRef} />
       
       <h2 className="text-2xl font-bold mb-4 text-black">Add New Product</h2>
+      <div className="flex flex-col gap-3">
       <InputText value={product.name} onChange={(e) => handleChange(e, "name")} placeholder="Product Name" className="p-inputtext w-full" />
-      <p className="mt-1">
+      <InputText value={product.ready_in} onChange={(e) => handleChange(e, "ready_in")} placeholder="Ready in... (e.g.7 days)" className="p-inputtext w-full"  />
+      <p className="">
         <label>Price</label>
         <InputNumber value={product.price} onValueChange={(e) => handleChange(e, "price")} placeholder="Price" className="w-full" prefix="GH₵ " />
       </p>
-      <p className="mt-1">
+      <p className="">
         <label>Discount</label>
         <InputNumber value={product.discount} onValueChange={(e) => handleChange(e, "discount")} placeholder="eg. 10" className="w-full" suffix="%" />
       </p>
@@ -142,6 +144,7 @@ export default function AddProduct() {
       </ul>
       
       <FileUpload mode="basic" accept="image/*" customUpload uploadHandler={uploadImages} chooseLabel={uploading ? "Uploading..." : "Upload Images"} disabled={uploading} multiple className="mt-2" />
+      </div>
       <button onClick={addProduct} className="mt-6 w-full p-2 rounded-lg bg-yellow-500 hover:bg-yellow-600 text-white " disabled={loading}>
         {loading ? <ProgressSpinner style={{ width: '20px', height: '20px' }} strokeWidth="4" animationDuration=".5s" /> : "Add Product"}
       </button>
