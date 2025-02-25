@@ -46,7 +46,7 @@ const ProductCard = ({ product }) => {
               <p className="text-yellow-500 font-bold">{currencySymbol}{discountedPrice}</p>
             </div>
           ) : (
-            <p className="text-yellow-500 font-bold">${product.price.toFixed(2)}</p>
+            <p className="text-yellow-500 font-bold">{currencySymbol}{(product.price * currencyFactor).toFixed(2)}</p>
           )}
         </div>
 
