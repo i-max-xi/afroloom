@@ -49,82 +49,90 @@ import ConfiguratorMaleVariation from "./Pages/Customize/Configurator/Configurat
 import ShopPage from "./Pages/shop";
 import ProductDetail from "./Pages/shop/product-detail";
 import CategoryPage from "./Pages/shop/category-page";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 function App() {
   useEffect(() => {
     AOS.init();
   }, []);
 
+
+  const queryClient = new QueryClient();
+
+
   return (
     <div className="allBg">
-      <BrowserRouter future={{ v7_startTransition: true }}>
-        <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route index element={<HomePage />} />
-            <Route path="start-customize" element={<CustomizePage />} />
-            <Route path="start-customize/sash-templates" element={<SashTemplatePage />} />
-            <Route path="about" element={<About />} />
-            <Route path="customize-checkout" element={<CustomizeCheckout />} />
-            <Route path="signup" element={<SignUp />} />
-            <Route path="signin" element={<SignIn />} />
-            <Route path="admin-signin" element={<SignInAdmin />} />
-            <Route path="forgot-password" element={<ForgotPassword />} />
+      <QueryClientProvider client={queryClient}>
 
-            <Route path="dashboard/:userID" element={<Dashboard />} />
-            <Route path="admin-dashboard" element={<AdminDashboard />} />
+        <BrowserRouter future={{ v7_startTransition: true }}>
+          <Routes>
+            <Route path="/" element={<Layout />}>
+              <Route index element={<HomePage />} />
+              <Route path="start-customize" element={<CustomizePage />} />
+              <Route path="start-customize/sash-templates" element={<SashTemplatePage />} />
+              <Route path="about" element={<About />} />
+              <Route path="customize-checkout" element={<CustomizeCheckout />} />
+              <Route path="signup" element={<SignUp />} />
+              <Route path="signin" element={<SignIn />} />
+              <Route path="admin-signin" element={<SignInAdmin />} />
+              <Route path="forgot-password" element={<ForgotPassword />} />
 
-            <Route path="/configurator/:Id" element={<Configurator />} />
-            <Route path="/configurator-male-variant/:Id" element={<ConfiguratorMaleVariation />} />
-            <Route path="/configurator-female-variant/:Id" element={<ConfiguratorFeMaleVariation />} />
-            <Route path="/configurator-special/:Id" element={<ConfiguratorSpecial />} />
-            <Route path="/configurator-sash-special/:Id" element={<ConfiguratorUnisexSpecial />} />
-            <Route
-              path="/configurator-female/:Id"
-              element={<ConfiguratorFemale />}
-            />
-            <Route
-              path="/configurator-footwear/:Id"
-              element={<ConfiguratorFootwear />}
-            />
-            <Route
-              path="/configurator-male-accessories/:Id"
-              element={<ConfiguratorMaleAccessories />}
-            />
-            <Route
-              path="/configurator-female-accessories/:Id"
-              element={<ConfiguratorFemaleAccessories />}
-            />
-            <Route
-              path="/configurator-unisex/:Id"
-              element={<ConfiguratorUnisex />}
-            />
+              <Route path="dashboard/:userID" element={<Dashboard />} />
+              <Route path="admin-dashboard" element={<AdminDashboard />} />
 
-            <Route path="/configurator-wig/:Id" element={<ConfiguratorWig />} />
-            <Route
-              path="/configurator-nails/:Id"
-              element={<ConfiguratorNails />}
-            />
+              <Route path="/configurator/:Id" element={<Configurator />} />
+              <Route path="/configurator-male-variant/:Id" element={<ConfiguratorMaleVariation />} />
+              <Route path="/configurator-female-variant/:Id" element={<ConfiguratorFeMaleVariation />} />
+              <Route path="/configurator-special/:Id" element={<ConfiguratorSpecial />} />
+              <Route path="/configurator-sash-special/:Id" element={<ConfiguratorUnisexSpecial />} />
+              <Route
+                path="/configurator-female/:Id"
+                element={<ConfiguratorFemale />}
+              />
+              <Route
+                path="/configurator-footwear/:Id"
+                element={<ConfiguratorFootwear />}
+              />
+              <Route
+                path="/configurator-male-accessories/:Id"
+                element={<ConfiguratorMaleAccessories />}
+              />
+              <Route
+                path="/configurator-female-accessories/:Id"
+                element={<ConfiguratorFemaleAccessories />}
+              />
+              <Route
+                path="/configurator-unisex/:Id"
+                element={<ConfiguratorUnisex />}
+              />
 
-            <Route path="tnc" element={<Tnc />} />
-            <Route path="shippingPolicy" element={<ShippingPolicy />} />
-            <Route path="returnPolicy" element={<Returnpolicy />} />
-            <Route path="privacyPolicy" element={<PrivacyPolicy />} />
-            <Route path="contact" element={<ContactUs />} />
+              <Route path="/configurator-wig/:Id" element={<ConfiguratorWig />} />
+              <Route
+                path="/configurator-nails/:Id"
+                element={<ConfiguratorNails />}
+              />
 
-             {/* shop */}
-            <Route path="shop" element={<ShopPage />} />
-            <Route path="product/:id" element={<ProductDetail />} />
-            <Route path="category/:id" element={<CategoryPage />} />
-            {/* <Route path="/category/:id" element={<ProductDetail />} />
-              <Route path="/product/:id" element={<ProductDetail />} />
-              <Route path="/confirm" element={<Reviews />} />
-              <Route path="/checkout" element={<Checkout />} /> */}
-       
+              <Route path="tnc" element={<Tnc />} />
+              <Route path="shippingPolicy" element={<ShippingPolicy />} />
+              <Route path="returnPolicy" element={<Returnpolicy />} />
+              <Route path="privacyPolicy" element={<PrivacyPolicy />} />
+              <Route path="contact" element={<ContactUs />} />
 
-            <Route path="*" element={<NoPage />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
+              {/* shop */}
+              <Route path="shop" element={<ShopPage />} />
+              <Route path="product/:id" element={<ProductDetail />} />
+              <Route path="category/:id" element={<CategoryPage />} />
+              {/* <Route path="/category/:id" element={<ProductDetail />} />
+                <Route path="/product/:id" element={<ProductDetail />} />
+                <Route path="/confirm" element={<Reviews />} />
+                <Route path="/checkout" element={<Checkout />} /> */}
+        
+
+              <Route path="*" element={<NoPage />} />
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </QueryClientProvider>
     </div>
   );
 }

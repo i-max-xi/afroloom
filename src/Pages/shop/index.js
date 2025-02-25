@@ -4,15 +4,33 @@ import Nav from "../../Components/Nav";
 import { CategorySection } from "./components/category-section";
 import IntroSection from "./components/intro-section";
 import { LoomStoreProducts } from "./Data/products";
+import { useProducts } from "./hooks/useProducts";
+import { Spinner } from "./components/spinner";
 
 const ShopPage = () => {
   const [searchQuery, setSearchQuery] = useState("");
 
+    const { data: allProducts, isLoading, error } = useProducts();
+  
+
   // Filter products based on search query
-  const filteredProducts = LoomStoreProducts()?.filter((product) =>
+  const filteredProducts = allProducts?.filter((product) =>
     product?.name?.toLowerCase().includes(searchQuery?.toLowerCase())
   );
 
+
+   if (isLoading) {
+      return (
+        <div className="flex justify-center items-center h-screen">
+          <Spinner />
+        </div>
+      );
+    }
+  
+    if (error) {
+      return <div className="text-center text-red-500">Error loading products</div>;
+    }
+    
   return (
     <>
       <Nav />
