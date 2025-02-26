@@ -226,6 +226,7 @@ export const LoomStoreProducts = () => {
         "African Print Dresses",
         "Casual Wear",
         "Shirt",
+        "T-Shirt",
         "Trousers",
         "Shorts"
       ]
@@ -238,6 +239,7 @@ export const LoomStoreProducts = () => {
         "Casual Wear",
         "Formal Wear",
         "Shirt",
+        "T-Shirt",
         "Trousers",
         "Shorts"
       ]
@@ -251,8 +253,10 @@ export const LoomStoreProducts = () => {
         "Matching Family Sets",
         "School Uniforms",
         "Shirt",
+        "T-Shirt",
         "Trousers",
         "Shorts"
+        
       ]
     },
     {
@@ -263,6 +267,7 @@ export const LoomStoreProducts = () => {
         "Casual Wear",
         "Formal Wear",
         "Shirt",
+        "T-Shirt",
         "Trousers",
         "Shorts"
       ]
@@ -271,14 +276,15 @@ export const LoomStoreProducts = () => {
 
 
   export const categoriesBreakdown = {
-    "Women's Clothing": ["Formal Wear", "African Print Dresses", "Casual Wear", "Shirt", "Trousers"],
-    "Men's Clothing": ["African Print Shirts", "Casual Wear", "Formal Wear", "Shirt", "Trousers"],
+    "Women's Clothing": ["Formal Wear", "African Print Dresses", "Casual Wear", "Shirt",  "T-Shirt", "Trousers", "Shorts"],
+    "Men's Clothing": ["African Print Shirts", "Casual Wear", "Formal Wear", "Shirt",  "T-Shirt", "Shorts", "Trousers"],
     "Children's Clothing": [
       "Boys’ Outfits (Traditional and Casual)",
       "Girls’ Outfits (Traditional and Casual)",
       "Matching Family Sets",
       "School Uniforms",
+      "T-Shirt", "Shorts",
     ],
-   "Unisex": ["Formal Wear", "African Print Dresses", "Casual Wear", "Shirt", "Trousers"],
+   "Unisex": ["Formal Wear", "African Print Dresses", "Casual Wear", "Shirt", "T-Shirt", "Shorts", "Trousers"],
   };
   
