@@ -11,18 +11,11 @@ import { getStorage, ref, uploadBytesResumable, getDownloadURL, deleteObject } f
 import { app } from "../../../../firebase";
 import { Dialog } from "primereact/dialog";
 import { Spinner } from "../../../shop/components/spinner";
+import { categoriesBreakdown } from "../../../shop/Data/products";
 
-const categories = {
-  "Women's Clothing": ["Formal Wear", "African Print Dresses", "Casual Wear", "Unisex"],
-  "Men's Clothing": ["African Print Shirts", "Casual Wear", "Formal Wear", "Unisex"],
-  "Children's Clothing": [
-    "Boys’ Outfits (Traditional and Casual)",
-    "Girls’ Outfits (Traditional and Casual)",
-    "Matching Family Sets",
-    "School Uniforms",
-    "Unisex"
-  ],
-};
+
+
+const categories = categoriesBreakdown
 
 export default function EditProductDialog({ isLoading, onHide, saveProduct, selectedProduct, updateItem }) {
   const toastRef = useRef(null);
