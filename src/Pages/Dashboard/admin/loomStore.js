@@ -9,31 +9,36 @@ import { ProgressSpinner } from "primereact/progressspinner";
 import AllServices from "../../../Services/usersService";
 import { collection, addDoc, deleteDoc, doc } from "firebase/firestore";
 import { db } from "../../../firebase";
-
-const shopCollectionRef = collection(db, "loomStore");
+import { useProducts } from "../../shop/hooks/useProducts";
+import { Spinner } from "react-bootstrap";
+import { useSelector } from "react-redux";
+import { Image } from 'primereact/image';
+import EditProductDialog from "./components/EditComponent";
+        
 
 const LoomStore = () => {
-  const [products, setProducts] = useState([]);
+  const { data: allProducts, isLoading: allProductsLoading, error, refetch } = useProducts();
+  const [searchQuery, setSearchQuery] = useState("");
+
+  const currencySymbol = useSelector((state) => state.currencySymbol.symbol);
+    const currencyFactor = useSelector((state) => state.currencySymbol.factor);
+
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [deleteDialog, setDeleteDialog] = useState(false);
+  const [editDialog, setEditDialog] = useState(false);
   const toast = useRef(null);
 
-  useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const response = await AllServices.getAllProducts();
-        setProducts(
-          response.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
-        );
-      } catch (error) {
-        console.error("Error fetching products:", error);
-      }
-    };
-    fetchProducts();
-  }, []);
+   // Filter products based on search query
+    const filteredProducts = allProducts?.filter((product) =>
+      product?.name?.toLowerCase().includes(searchQuery?.toLowerCase())
+    );
+  
+
+ 
 
   const openEditDialog = (product) => {
+    setEditDialog(true)
     setSelectedProduct(product);
   };
 
@@ -45,11 +50,12 @@ const LoomStore = () => {
     setIsLoading(true);
     try {
       await AllServices.updateProduct(selectedProduct.id, selectedProduct);
-      setProducts(
-        products.map((product) =>
-          product.id === selectedProduct.id ? selectedProduct : product
-        )
-      );
+      // setProducts(
+      //   products.map((product) =>
+      //     product.id === selectedProduct.id ? selectedProduct : product
+      //   )
+      // );
+      refetch()
       setSelectedProduct(null);
       toast.current.show({ severity: "success", summary: "Success", detail: "Product updated" });
     } catch (error) {
@@ -68,7 +74,8 @@ const LoomStore = () => {
     setIsLoading(true);
     try {
       await deleteDoc(doc(db, "loomStore", selectedProduct.id));
-      setProducts(products.filter((product) => product.id !== selectedProduct.id));
+      // setProducts(products.filter((product) => product.id !== selectedProduct.id));
+      refetch()
       toast.current.show({ severity: "success", summary: "Success", detail: "Product deleted" });
     } catch (error) {
       console.error("Error deleting product:", error);
@@ -78,14 +85,50 @@ const LoomStore = () => {
     setDeleteDialog(false);
   };
 
+    
+  if (allProductsLoading) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <Spinner />
+      </div>
+    );
+  }
+
+  if (error) {
+    return <div className="text-center text-red-500">Error loading products</div>;
+  }
+
   return (
     <div className="p-m-3">
       <Toast ref={toast} />
       <h5>Manage Products</h5>
-      <DataTable value={products} paginator rows={10} rowsPerPageOptions={[5, 10, 25]}>
+      <div id="products" className="my-6 flex justify-center">
+          <input
+            type="text"
+            placeholder="Search for products..."
+            className="w-full max-w-md p-3 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-yellow-500"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
+        </div>
+      <DataTable value={filteredProducts} paginator rows={10} rowsPerPageOptions={[5, 10, 25]}>
+      <Column  header="Images" body={(rowData) => <p className="flex flex-col gap-1">{rowData?.images.map((image, index) => (
+          <Image preview key={index} src={image} alt={` ${index}`} className="w-8 h-8 rounded-lg object-cover shadow-md" />))}</p>}  />
         <Column field="name" header="Name" />
-        <Column field="price" header="Price" />
+        <Column  header="Price" body={(rowData) => <span>{currencySymbol}{(rowData?.price * currencyFactor).toFixed(0)}</span>}  />
+        <Column  header="Discount" body={(rowData) => <span>{currencySymbol}{(rowData?.discount * currencyFactor).toFixed(0)}</span>}  />
         <Column field="parent_category" header="Category" />
+        <Column field="child_category" header="Child Category" />
+        <Column field="ready_in" header="Ready In" />
+        <Column header="Description" body={(rowData) => (<textarea>{rowData?.description}</textarea>)} />
+        <Column  header="Sizes" body={(rowData) => <div className="flex  gap-1">{rowData?.sizes?.map((item, index) => (
+          <p key={index} className="text-sm">
+            {item?.name}: {currencySymbol}{(item?.value * currencyFactor).toFixed(0)}
+          </p>
+          ))}
+          </div>}
+        />
+
         <Column
           header="Actions"
           body={(rowData) => (
@@ -97,20 +140,6 @@ const LoomStore = () => {
         />
       </DataTable>
 
-      {selectedProduct && (
-        <Dialog header="Edit Product" visible={!!selectedProduct} modal onHide={() => setSelectedProduct(null)}>
-          <div className="p-field">
-            <label>Name</label>
-            <InputText value={selectedProduct.name} onChange={(e) => updateItem(e, "name")} />
-          </div>
-          <div className="p-field">
-            <label>Price</label>
-            <InputText value={selectedProduct.price} onChange={(e) => updateItem(e, "price")} />
-          </div>
-          <Button label="Save" onClick={saveProduct} loading={isLoading} className="p-button-warning" />
-        </Dialog>
-      )}
-
       <Dialog visible={deleteDialog} header="Confirm Deletion" modal footer={
         <div>
           <Button label="No" icon="pi pi-times" onClick={() => setDeleteDialog(false)} className="p-button-text" />
@@ -119,6 +148,21 @@ const LoomStore = () => {
       } onHide={() => setDeleteDialog(false)}>
         <p>Are you sure you want to delete this product?</p>
       </Dialog>
+
+      {editDialog && (
+        <EditProductDialog 
+          isLoading={isLoading} 
+          onHide={() => {
+            setSelectedProduct(null)
+            setEditDialog(false)
+          }} 
+          saveProduct={saveProduct} 
+          selectedProduct={selectedProduct} 
+          updateItem={updateItem} 
+        />
+      )}
+
+     
     </div>
   );
 };
