@@ -11,6 +11,7 @@ import AllServices from "../../../Services/usersService";
 import { ProgressSpinner } from "primereact/progressspinner";
 import { Toast } from "primereact/toast";
 import { v4 as uuidv4 } from "uuid";
+import { Spinner } from "../../shop/components/spinner";
 
 
 const categories = {
@@ -71,48 +72,50 @@ export default function AddProduct() {
     setUploading(true);
     const storage = getStorage(app);
     const uploadPromises = files.map((file) => {
-      return new Promise((resolve, reject) => {
-        const storageRef = ref(storage, `loomstore/${file.name}`);
-        const uploadTask = uploadBytesResumable(storageRef, file);
+        return new Promise((resolve, reject) => {
+            const storageRef = ref(storage, `loomstore/${uuidv4()}-${file.name}`); // Unique filename
+            const uploadTask = uploadBytesResumable(storageRef, file);
 
-        uploadTask.on(
-          "state_changed",
-          null,
-          (error) => reject(error),
-          async () => {
-            const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
-            resolve(downloadURL);
-          }
-        );
-      });
+            uploadTask.on(
+                "state_changed",
+                null,
+                (error) => reject(error),
+                async () => {
+                    const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
+                    resolve(downloadURL);
+                }
+            );
+        });
     });
 
     try {
-      const urls = await Promise.all(uploadPromises);
-      setProduct((prev) => ({ ...prev, images: [...prev.images, ...urls] }));
+        const urls = await Promise.all(uploadPromises);
+        setProduct((prev) => ({ ...prev, images: [...prev.images, ...urls] }));
     } catch (error) {
-      console.error("Upload failed:", error);
+        console.error("Upload failed:", error);
+        toastRef.current?.show({ severity: "error", summary: "Image upload failed!" });
     }
     setUploading(false);
-  };
+};
+
 
   const addProduct = async () => {
     setLoading(true);
     try {
       await AllServices.addProduct(product);
       toastRef.current.show({ severity: "success", summary: "Product added successfully!" });
-      // setProduct({
-      //   id: uuidv4(),
-      //   name: "",
-      //   price: 0,
-      //   ready_in: "",
-      //   images: [],
-      //   description: "",
-      //   parent_category: null,
-      //   child_category: null,
-      //   discount: 0,
-      //   sizes: [],
-      // })
+      setProduct({
+        id: uuidv4(),
+        name: "",
+        price: 0,
+        ready_in: "",
+        images: [],
+        description: "",
+        parent_category: null,
+        child_category: null,
+        discount: 0,
+        sizes: [],
+      })
     } catch (error) {
       setLoading(false);
       console.error("Error adding product:", error);
@@ -158,7 +161,29 @@ export default function AddProduct() {
         ))}
       </ul>
       
-      <FileUpload mode="basic" accept="image/*" customUpload uploadHandler={uploadImages} chooseLabel={uploading ? "Uploading..." : "Upload Images"} disabled={uploading} multiple className="mt-2" />
+      <FileUpload
+        mode="advanced"
+        accept="image/*"
+        customUpload
+        uploadHandler={uploadImages}
+        chooseLabel="Select Images" // Changes "Upload Images" button text
+        uploadLabel="Confirm Upload" // Renames "Upload" button
+        cancelLabel="Discard All" // Optional: Rename "Cancel" button
+        disabled={uploading}
+        
+        multiple
+        
+        className="mt-2 w-full"
+        uploadOptions={{ style: { backgroundColor: "#16a34a", color: "white" } }} // Green button
+        cancelOptions={{ style: { backgroundColor: "#dc2626", color: "white" } }}
+      />
+     
+        <div className="flex flex-wrap gap-2 mt-2">
+        {product.images.map((image, index) => (
+          <img key={index} src={image} alt={`Uploaded ${index}`} className="w-24 h-24 rounded-lg object-cover shadow-md" />
+        ))}
+      </div>
+
       </div>
       <button onClick={addProduct} className="mt-6 w-full p-2 rounded-lg bg-yellow-500 hover:bg-yellow-600 text-white " disabled={loading}>
         {loading ? <ProgressSpinner style={{ width: '20px', height: '20px' }} strokeWidth="4" animationDuration=".5s" /> : "Add Product"}
