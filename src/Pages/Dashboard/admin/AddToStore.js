@@ -11,19 +11,12 @@ import AllServices from "../../../Services/usersService";
 import { ProgressSpinner } from "primereact/progressspinner";
 import { Toast } from "primereact/toast";
 import { v4 as uuidv4 } from "uuid";
+import { categoriesBreakdown } from "../../shop/Data/products";
 
 
-const categories = {
-  "Women's Clothing": ["Formal Wear", "African Print Dresses", "Casual Wear", "Unisex"],
-  "Men's Clothing": ["African Print Shirts", "Casual Wear", "Formal Wear", "Unisex"],
-  "Children's Clothing": [
-    "Boys’ Outfits (Traditional and Casual)",
-    "Girls’ Outfits (Traditional and Casual)",
-    "Matching Family Sets",
-    "School Uniforms",
-    "Unisex"
-  ],
-};
+const categories = categoriesBreakdown
+
+
 
 export default function AddProduct() {
   const [product, setProduct] = useState({
