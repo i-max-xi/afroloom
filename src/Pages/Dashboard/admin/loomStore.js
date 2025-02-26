@@ -9,29 +9,26 @@ import { ProgressSpinner } from "primereact/progressspinner";
 import AllServices from "../../../Services/usersService";
 import { collection, addDoc, deleteDoc, doc } from "firebase/firestore";
 import { db } from "../../../firebase";
+import { useProducts } from "../../shop/hooks/useProducts";
+import { Spinner } from "react-bootstrap";
 
-const shopCollectionRef = collection(db, "loomStore");
 
 const LoomStore = () => {
-  const [products, setProducts] = useState([]);
+  const { data: allProducts, isLoading: allProductsLoading, error, refetch } = useProducts();
+  const [searchQuery, setSearchQuery] = useState("");
+
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [deleteDialog, setDeleteDialog] = useState(false);
   const toast = useRef(null);
 
-  useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const response = await AllServices.getAllProducts();
-        setProducts(
-          response.docs.map((doc) => ({ ...doc.data(), id: doc.id }))
-        );
-      } catch (error) {
-        console.error("Error fetching products:", error);
-      }
-    };
-    fetchProducts();
-  }, []);
+   // Filter products based on search query
+    const filteredProducts = allProducts?.filter((product) =>
+      product?.name?.toLowerCase().includes(searchQuery?.toLowerCase())
+    );
+  
+
+ 
 
   const openEditDialog = (product) => {
     setSelectedProduct(product);
@@ -45,11 +42,12 @@ const LoomStore = () => {
     setIsLoading(true);
     try {
       await AllServices.updateProduct(selectedProduct.id, selectedProduct);
-      setProducts(
-        products.map((product) =>
-          product.id === selectedProduct.id ? selectedProduct : product
-        )
-      );
+      // setProducts(
+      //   products.map((product) =>
+      //     product.id === selectedProduct.id ? selectedProduct : product
+      //   )
+      // );
+      refetch()
       setSelectedProduct(null);
       toast.current.show({ severity: "success", summary: "Success", detail: "Product updated" });
     } catch (error) {
@@ -68,7 +66,8 @@ const LoomStore = () => {
     setIsLoading(true);
     try {
       await deleteDoc(doc(db, "loomStore", selectedProduct.id));
-      setProducts(products.filter((product) => product.id !== selectedProduct.id));
+      // setProducts(products.filter((product) => product.id !== selectedProduct.id));
+      refetch()
       toast.current.show({ severity: "success", summary: "Success", detail: "Product deleted" });
     } catch (error) {
       console.error("Error deleting product:", error);
@@ -78,11 +77,33 @@ const LoomStore = () => {
     setDeleteDialog(false);
   };
 
+    
+  if (allProductsLoading) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <Spinner />
+      </div>
+    );
+  }
+
+  if (error) {
+    return <div className="text-center text-red-500">Error loading products</div>;
+  }
+
   return (
     <div className="p-m-3">
       <Toast ref={toast} />
       <h5>Manage Products</h5>
-      <DataTable value={products} paginator rows={10} rowsPerPageOptions={[5, 10, 25]}>
+      <div id="products" className="my-6 flex justify-center">
+          <input
+            type="text"
+            placeholder="Search for products..."
+            className="w-full max-w-md p-3 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-yellow-500"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
+        </div>
+      <DataTable value={filteredProducts} paginator rows={10} rowsPerPageOptions={[5, 10, 25]}>
         <Column field="name" header="Name" />
         <Column field="price" header="Price" />
         <Column field="parent_category" header="Category" />

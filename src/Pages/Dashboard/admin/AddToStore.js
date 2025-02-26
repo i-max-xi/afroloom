@@ -35,7 +35,10 @@ export default function AddProduct() {
     parent_category: null,
     child_category: null,
     discount: 0,
-    sizes: [],
+    sizes: [{
+      name: "M",
+      value: 0
+    }],
   });
 
   const toastRef = useRef(null);
@@ -98,6 +101,18 @@ export default function AddProduct() {
     try {
       await AllServices.addProduct(product);
       toastRef.current.show({ severity: "success", summary: "Product added successfully!" });
+      // setProduct({
+      //   id: uuidv4(),
+      //   name: "",
+      //   price: 0,
+      //   ready_in: "",
+      //   images: [],
+      //   description: "",
+      //   parent_category: null,
+      //   child_category: null,
+      //   discount: 0,
+      //   sizes: [],
+      // })
     } catch (error) {
       setLoading(false);
       console.error("Error adding product:", error);
@@ -128,7 +143,7 @@ export default function AddProduct() {
       <Dropdown value={product.child_category} options={product.parent_category ? categories[product.parent_category] : []} onChange={(e) => handleChange(e, "child_category")} placeholder="Select Child Category" className="w-full" disabled={!product.parent_category} />
       
       <h3 className="text-lg font-semibold text-black mt-1">Sizes</h3>
-      <p className="text-xs">Add sizes and how much it should ass on prices</p>
+      <p className="text-xs">Add sizes and how much it should add on prices</p>
       <div className="flex space-x-2">
         <InputText value={newSize.name} onChange={(e) => setNewSize({ ...newSize, name: e.target.value })} placeholder="Size Name" />
         <InputNumber value={newSize.value} onValueChange={(e) => setNewSize({ ...newSize, value: e.value })} placeholder="Size Value" />
