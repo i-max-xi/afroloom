@@ -19,10 +19,12 @@ const ShopPage = () => {
   );
 
 
-   if (isLoading) {
+   if (!isLoading) {
       return (
         <div className="flex justify-center items-center h-screen">
+          <div className="">
           <Spinner />
+          </div>
         </div>
       );
     }
