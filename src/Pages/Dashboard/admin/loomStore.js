@@ -50,13 +50,14 @@ const LoomStore = () => {
     setIsLoading(true);
     try {
       await AllServices.updateProduct(selectedProduct.id, selectedProduct);
+      setEditDialog(false)
       // setProducts(
       //   products.map((product) =>
       //     product.id === selectedProduct.id ? selectedProduct : product
       //   )
       // );
       refetch()
-      setSelectedProduct(null);
+      // setSelectedProduct(null);
       toast.current.show({ severity: "success", summary: "Success", detail: "Product updated" });
     } catch (error) {
       console.error("Error updating product:", error);
@@ -112,6 +113,15 @@ const LoomStore = () => {
           />
         </div>
       <DataTable value={filteredProducts} paginator rows={10} rowsPerPageOptions={[5, 10, 25]}>
+      <Column
+          header="Actions"
+          body={(rowData) => (
+            <div className="flex gap-2">
+              <Button icon="pi pi-pencil" className="p-button-rounded p-button-success" onClick={() => openEditDialog(rowData)} />
+              <Button icon="pi pi-trash" className="p-button-rounded p-button-danger" onClick={() => confirmDeleteProduct(rowData)} />
+            </div>
+          )}
+        />
       <Column  header="Images" body={(rowData) => <p className="flex flex-col gap-1">{rowData?.images.map((image, index) => (
           <Image preview key={index} src={image} alt={` ${index}`} className="w-8 h-8 rounded-lg object-cover shadow-md" />))}</p>}  />
         <Column field="name" header="Name" />
@@ -129,15 +139,7 @@ const LoomStore = () => {
           </div>}
         />
 
-        <Column
-          header="Actions"
-          body={(rowData) => (
-            <div>
-              <Button icon="pi pi-pencil" className="p-button-rounded p-button-success" onClick={() => openEditDialog(rowData)} />
-              <Button icon="pi pi-trash" className="p-button-rounded p-button-danger" onClick={() => confirmDeleteProduct(rowData)} />
-            </div>
-          )}
-        />
+        
       </DataTable>
 
       <Dialog visible={deleteDialog} header="Confirm Deletion" modal footer={
