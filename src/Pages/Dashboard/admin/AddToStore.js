@@ -124,6 +124,36 @@ export default function AddProduct() {
     setLoading(false);
   };
 
+  const deleteImage = async (imageUrl) => {
+    try {
+      if (!imageUrl) {
+        console.error("Invalid image URL");
+        return;
+      }
+  
+    //   const storage = getStorage(app);
+    //   const decodedUrl = decodeURIComponent(imageUrl.split("/o/")[1].split("?")[0]); // Extract correct path
+    //   const storageRef = ref(storage, decodedUrl);
+  
+    //   await deleteObject(storageRef);
+  
+      // Remove the image from state after successful deletion
+      const newImageArr = product?.images?.filter((img) => img !== imageUrl)
+      setProduct({ target: { name: "images", value: newImageArr } });
+
+      setProduct({
+        ...product,
+        images: newImageArr,
+      });
+
+  
+      toastRef.current?.show({ severity: "success", summary: "Image deleted successfully!" });
+    } catch (error) {
+      console.error("Error deleting image:", error);
+      toastRef.current?.show({ severity: "error", summary: "Failed to delete image." });
+    }
+  };
+
   return (
     <motion.div className="max-w-3xl mx-auto bg-white p-6 rounded-2xl shadow-md">
       <Toast ref={toastRef} />
@@ -180,7 +210,15 @@ export default function AddProduct() {
      
         <div className="flex flex-wrap gap-2 mt-2">
         {product.images.map((image, index) => (
+          <div key={index} className="relative">
           <img key={index} src={image} alt={`Uploaded ${index}`} className="w-24 h-24 rounded-lg object-cover shadow-md" />
+          <button
+                onClick={() => deleteImage(image)}
+                className="absolute top-1 right-1 bg-red-500 text-white rounded-full p-1 text-xs"
+            >
+                ✕
+            </button>
+        </div>
         ))}
       </div>
 

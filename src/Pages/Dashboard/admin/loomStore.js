@@ -26,6 +26,7 @@ const LoomStore = () => {
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [deleteDialog, setDeleteDialog] = useState(false);
+  const [editDialog, setEditDialog] = useState(false);
   const toast = useRef(null);
 
    // Filter products based on search query
@@ -37,6 +38,7 @@ const LoomStore = () => {
  
 
   const openEditDialog = (product) => {
+    setEditDialog(true)
     setSelectedProduct(product);
   };
 
@@ -119,8 +121,10 @@ const LoomStore = () => {
         <Column field="child_category" header="Child Category" />
         <Column field="ready_in" header="Ready In" />
         <Column header="Description" body={(rowData) => (<textarea>{rowData?.description}</textarea>)} />
-        <Column  header="Sizes" body={(rowData) => <div className="flex flex-col gap-1">{rowData?.sizes?.map((item, index) => (
-          <p key={index}>{item?.name}: {currencySymbol}{(item?.value * currencyFactor).toFixed(0)}</p>
+        <Column  header="Sizes" body={(rowData) => <div className="flex  gap-1">{rowData?.sizes?.map((item, index) => (
+          <p key={index} className="text-sm">
+            {item?.name}: {currencySymbol}{(item?.value * currencyFactor).toFixed(0)}
+          </p>
           ))}
           </div>}
         />
@@ -136,16 +140,6 @@ const LoomStore = () => {
         />
       </DataTable>
 
-      {selectedProduct && (
-        <EditProductDialog 
-          isLoading={isLoading} 
-          onHide={() => setSelectedProduct(null)} 
-          saveProduct={saveProduct} 
-          selectedProduct={selectedProduct} 
-          updateItem={updateItem} 
-        />
-      )}
-
       <Dialog visible={deleteDialog} header="Confirm Deletion" modal footer={
         <div>
           <Button label="No" icon="pi pi-times" onClick={() => setDeleteDialog(false)} className="p-button-text" />
@@ -154,6 +148,21 @@ const LoomStore = () => {
       } onHide={() => setDeleteDialog(false)}>
         <p>Are you sure you want to delete this product?</p>
       </Dialog>
+
+      {editDialog && (
+        <EditProductDialog 
+          isLoading={isLoading} 
+          onHide={() => {
+            setSelectedProduct(null)
+            setEditDialog(false)
+          }} 
+          saveProduct={saveProduct} 
+          selectedProduct={selectedProduct} 
+          updateItem={updateItem} 
+        />
+      )}
+
+     
     </div>
   );
 };
