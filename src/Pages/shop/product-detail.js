@@ -1,12 +1,13 @@
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { motion } from "framer-motion";
 import ProductCard from "./components/product-card";
 import Nav from "../../Components/Nav";
 import { addToShopCart } from "../../Redux/store";
-import { LoomStoreProducts } from "./Data/products";
+import { useProducts } from "./hooks/useProducts";
+import { Spinner } from "./components/spinner";
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -14,12 +15,38 @@ const ProductDetail = () => {
 
   const currencySymbol = useSelector((state) => state.currencySymbol.symbol);
   const currencyFactor = useSelector((state) => state.currencySymbol.factor);
-
   const [quantity, setQuantity] = useState(1);
 
-  const product = LoomStoreProducts().find((item) => item.id === parseInt(id));
+  const { data: allProducts, isLoading, error } = useProducts();
+
+  const product = allProducts?.find((item) => item.id === String(id));
   const [selectedImage, setSelectedImage] = useState(product?.images[0] || "");
-  const [selectedSize, setSelectedSize] = useState(product?.sizes[0] || null);
+  const [selectedSize, setSelectedSize] = useState(product?.sizes[0] || {
+    name: "",
+    value: 0
+  });
+
+  useEffect(() => {
+    window.scrollTo(0,0) 
+  
+    // return () => {
+    //   second
+    // }
+  }, [id])
+  
+
+
+  if (isLoading) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <Spinner />
+      </div>
+    );
+  }
+
+  if (error) {
+    return <div className="text-center text-red-500">Error loading products</div>;
+  }
 
 
   if (!product) {
@@ -27,7 +54,7 @@ const ProductDetail = () => {
   }
 
     // Find related products
-const relatedProducts = LoomStoreProducts()?.filter(
+const relatedProducts = allProducts?.filter(
   (item) =>
     item.parent_category === product.parent_category &&
     item.id !== product.id
@@ -44,7 +71,7 @@ const relatedProducts = LoomStoreProducts()?.filter(
 
   // Adjusted price based on selected size
   const finalPrice = selectedSize
-    ? (basePrice + selectedSize.value) * currencyFactor
+    ? (basePrice + selectedSize?.value) * currencyFactor
     : basePrice * currencyFactor;
 
   // Handle Add to Cart
@@ -72,15 +99,19 @@ const relatedProducts = LoomStoreProducts()?.filter(
         <div className="flex flex-col md:flex-row gap-10">
           {/* Image Gallery */}
           <div className="w-full md:w-1/2">
-            <motion.img
-              key={selectedImage}
-              src={selectedImage}
-              alt={product.name}
-              className="w-full h-96 object-cover rounded-lg"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.3 }}
+            {selectedImage && selectedImage !== "" ? (
+              <motion.img
+                key={selectedImage}
+                src={selectedImage}
+                alt={product.name}
+                className="w-full h-96 object-cover rounded-lg"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.3 }}
             />
+            ) : (
+                <div className="w-full h-96 object-cover rounded-lg bg-gray-200"></div>
+            )}
 
             {/* Thumbnail Images */}
             <div className="flex gap-2 mt-4">
