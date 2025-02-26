@@ -61,7 +61,7 @@ const relatedProducts = allProducts?.filter(
 );
 
   // Base price with no discount
-  const originalPrice = (((product.price * quantity) + selectedSize.value) * currencyFactor).toFixed(2);
+  const originalPrice = (((product.price * quantity) + selectedSize.value) * currencyFactor).toFixed(0);
 
   // Base price with discount applied
   const basePrice = product.discount
@@ -142,7 +142,7 @@ const relatedProducts = allProducts?.filter(
                 </span>
               )}
               <span className="text-yellow-500 text-2xl font-bold">
-                {currencySymbol}{(finalPrice * quantity).toFixed(2)}
+                {currencySymbol}{(finalPrice * quantity).toFixed(0)}
               </span>
             </div>
 

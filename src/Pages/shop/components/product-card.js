@@ -11,8 +11,8 @@ const ProductCard = ({ product }) => {
 
   // Calculate discounted price
   const discountedPrice = product.discount
-    ? ((product.price - (product.price * product.discount) / 100) * currencyFactor).toFixed(2)
-    : (product.price * currencyFactor).toFixed(2);
+    ? ((product.price - (product.price * product.discount) / 100) * currencyFactor).toFixed(0)
+    : (product.price * currencyFactor).toFixed(0);
 
   return (
     <motion.div
@@ -41,12 +41,12 @@ const ProductCard = ({ product }) => {
           {product.discount > 0 ? (
             <div className="flex items-center gap-2">
               <p className="text-gray-400 line-through text-sm">
-                {currencySymbol}{(product.price * currencyFactor ).toFixed(2)}
+                {currencySymbol}{(product.price * currencyFactor ).toFixed(0)}
               </p>
               <p className="text-yellow-500 font-bold">{currencySymbol}{discountedPrice}</p>
             </div>
           ) : (
-            <p className="text-yellow-500 font-bold">{currencySymbol}{(product.price * currencyFactor).toFixed(2)}</p>
+            <p className="text-yellow-500 font-bold">{currencySymbol}{(product.price * currencyFactor).toFixed(0)}</p>
           )}
         </div>
 

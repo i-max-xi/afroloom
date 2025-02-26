@@ -224,7 +224,8 @@ export const LoomStoreProducts = () => {
       children: [
         "Formal Wear",
         "African Print Dresses",
-        "Casual Wear"
+        "Casual Wear",
+        "Unisex"
       ]
     },
     {
@@ -233,7 +234,8 @@ export const LoomStoreProducts = () => {
       children: [
         "African Print Shirts",
         "Casual Wear",
-        "Formal Wear"
+        "Formal Wear",
+        "Unisex"
       ]
     },
     {
@@ -243,7 +245,8 @@ export const LoomStoreProducts = () => {
         "Boys’ Outfits (Traditional and Casual)",
         "Girls’ Outfits (Traditional and Casual)",
         "Matching Family Sets",
-        "School Uniforms"
+        "School Uniforms",
+        "Unisex"
       ]
     }
   ];

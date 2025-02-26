@@ -11,11 +11,17 @@ import { collection, addDoc, deleteDoc, doc } from "firebase/firestore";
 import { db } from "../../../firebase";
 import { useProducts } from "../../shop/hooks/useProducts";
 import { Spinner } from "react-bootstrap";
-
+import { useSelector } from "react-redux";
+import { Image } from 'primereact/image';
+import EditProductDialog from "./components/EditComponent";
+        
 
 const LoomStore = () => {
   const { data: allProducts, isLoading: allProductsLoading, error, refetch } = useProducts();
   const [searchQuery, setSearchQuery] = useState("");
+
+  const currencySymbol = useSelector((state) => state.currencySymbol.symbol);
+    const currencyFactor = useSelector((state) => state.currencySymbol.factor);
 
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -104,9 +110,21 @@ const LoomStore = () => {
           />
         </div>
       <DataTable value={filteredProducts} paginator rows={10} rowsPerPageOptions={[5, 10, 25]}>
+      <Column  header="Images" body={(rowData) => <p className="flex flex-col gap-1">{rowData?.images.map((image, index) => (
+          <Image preview key={index} src={image} alt={` ${index}`} className="w-8 h-8 rounded-lg object-cover shadow-md" />))}</p>}  />
         <Column field="name" header="Name" />
-        <Column field="price" header="Price" />
+        <Column  header="Price" body={(rowData) => <span>{currencySymbol}{(rowData?.price * currencyFactor).toFixed(0)}</span>}  />
+        <Column  header="Discount" body={(rowData) => <span>{currencySymbol}{(rowData?.discount * currencyFactor).toFixed(0)}</span>}  />
         <Column field="parent_category" header="Category" />
+        <Column field="child_category" header="Child Category" />
+        <Column field="ready_in" header="Ready In" />
+        <Column header="Description" body={(rowData) => (<textarea>{rowData?.description}</textarea>)} />
+        <Column  header="Sizes" body={(rowData) => <div className="flex flex-col gap-1">{rowData?.sizes?.map((item, index) => (
+          <p key={index}>{item?.name}: {currencySymbol}{(item?.value * currencyFactor).toFixed(0)}</p>
+          ))}
+          </div>}
+        />
+
         <Column
           header="Actions"
           body={(rowData) => (
@@ -119,17 +137,13 @@ const LoomStore = () => {
       </DataTable>
 
       {selectedProduct && (
-        <Dialog header="Edit Product" visible={!!selectedProduct} modal onHide={() => setSelectedProduct(null)}>
-          <div className="p-field">
-            <label>Name</label>
-            <InputText value={selectedProduct.name} onChange={(e) => updateItem(e, "name")} />
-          </div>
-          <div className="p-field">
-            <label>Price</label>
-            <InputText value={selectedProduct.price} onChange={(e) => updateItem(e, "price")} />
-          </div>
-          <Button label="Save" onClick={saveProduct} loading={isLoading} className="p-button-warning" />
-        </Dialog>
+        <EditProductDialog 
+          isLoading={isLoading} 
+          onHide={() => setSelectedProduct(null)} 
+          saveProduct={saveProduct} 
+          selectedProduct={selectedProduct} 
+          updateItem={updateItem} 
+        />
       )}
 
       <Dialog visible={deleteDialog} header="Confirm Deletion" modal footer={
