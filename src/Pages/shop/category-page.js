@@ -62,7 +62,7 @@ const CategoryPage = () => {
         {/* Subcategory Buttons */}
         <div className="flex flex-wrap gap-2 mt-6 ">
           <motion.button
-            className={`px-4 py-2 text-sm rounded-full border-2 ${
+            className={`px-4 py-2 text-xs md:text-sm rounded-full border-2 ${
               selectedSubcategory === "" ? "bg-yellow-500 text-white" : "border-gray-300"
             } hover:border-yellow-500 transition`}
             onClick={() => setSelectedSubcategory("")}
@@ -74,7 +74,7 @@ const CategoryPage = () => {
           {category?.children.map((sub, index) => (
             <motion.button
               key={index}
-              className={`px-4 py-2 rounded-full text-sm border-2 ${
+              className={`px-4 py-2 rounded-full text-xs md:text-sm border-2 ${
                 selectedSubcategory === sub ? "bg-yellow-500 text-white" : "border-gray-300"
               } hover:border-yellow-500 transition`}
               onClick={() => setSelectedSubcategory(sub)}
@@ -89,7 +89,7 @@ const CategoryPage = () => {
         {/* Product List */}
         <div className="mt-10">
           {filteredProducts.length > 0 ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
               {filteredProducts.map((product) => (
                 <ProductCard key={product.id} product={product} />
               ))}

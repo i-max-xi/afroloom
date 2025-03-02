@@ -67,7 +67,7 @@ const ProductDetail = () => {
   
 
   // Base price with no discount
-  const originalPrice = (((product.price * quantity) + selectedSize.value) * currencyFactor).toFixed(0);
+  const originalPrice = (((product.price * quantity) + selectedSize.value) * currencyFactor).toFixed(2);
 
   // Base price with discount applied
   const basePrice = product.discount
@@ -150,7 +150,7 @@ const ProductDetail = () => {
                 </span>
               )}
               <span className="text-yellow-500 text-2xl font-bold">
-                {currencySymbol}{(finalPrice * quantity).toFixed(0)}
+                {currencySymbol}{(finalPrice * quantity).toFixed(2)}
               </span>
             </div>
 
