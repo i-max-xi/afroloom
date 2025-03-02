@@ -104,7 +104,7 @@ const relatedProducts = allProducts?.filter(
                 key={selectedImage}
                 src={selectedImage}
                 alt={product.name}
-                className="w-full h-96 object-cover rounded-lg"
+                className="w-full h-96 object-contain rounded-lg"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.3 }}
@@ -120,7 +120,7 @@ const relatedProducts = allProducts?.filter(
                   key={index}
                   src={img}
                   alt={`Thumbnail ${index + 1}`}
-                  className={`w-16 h-16 object-cover rounded cursor-pointer border-2 ${
+                  className={`w-16 h-16 object-contain rounded cursor-pointer border-2 ${
                     selectedImage === img ? "border-yellow-500" : "border-gray-300"
                   }`}
                   onClick={() => setSelectedImage(img)}

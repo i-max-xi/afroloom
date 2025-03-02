@@ -129,11 +129,18 @@ const HomePage = () => {
             personalize a bead bracelet, we've got you covered. Experience the
             joy of custom-made fashion without leaving your home.
           </p>
+          <div className="flex gap-2 items-center">
           <Link to="/start-customize">
             <button className="btn btn-warning text-white">
               Customize Now
             </button>
           </Link>
+          <Link to="/shop">
+            <button className="btn border-warning text-black">
+              Loom Store
+            </button>
+          </Link>
+          </div>
         </div>
       </section>
 

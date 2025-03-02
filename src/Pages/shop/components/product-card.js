@@ -29,12 +29,13 @@ const ProductCard = ({ product }) => {
           src={product.images[0]}
           alt={product.name}
           className="w-full h-full object-contain"
+          loading="lazy"
         />
       </div>
 
       {/* Product Details */}
-      <div className="flex flex-col items-center py-4 px-4">
-        <h3 className="text-lg font-semibold text-center">{product.name}</h3>
+      <div className="flex flex-col items-center pt-2 lg:py-4 lg-4">
+        <h3 className="text-sm lg:text-lg font-semibold text-center">{product.name}</h3>
 
         {/* Pricing Section */}
         <div className="flex flex-col items-center ">

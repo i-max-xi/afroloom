@@ -3,7 +3,7 @@ import ProductCard from "./components/product-card";
 import Nav from "../../Components/Nav";
 import { CategorySection } from "./components/category-section";
 import IntroSection from "./components/intro-section";
-import { LoomStoreProducts } from "./Data/products";
+import Logo from "../../Assets/AFRO_LOGO_4_transparent.png"
 import { useProducts } from "./hooks/useProducts";
 import { Spinner } from "./components/spinner";
 
@@ -22,9 +22,16 @@ const ShopPage = () => {
    if (isLoading) {
       return (
         <div className="flex justify-center items-center h-screen">
+          <div className="flex flex-col gap-1 items-center justify-center">
+          <p className="animate-pulse flex w-full items-center justify-center">
+           <img src={Logo} alt="logo" width="15%" height="15%"/>
+          </p>
           <div className="">
           <Spinner />
+         
           </div>
+          </div>
+       
         </div>
       );
     }
@@ -57,7 +64,7 @@ const ShopPage = () => {
         {/* Product Grid */}
         <div
           
-          className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6"
+          className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6"
         >
           {filteredProducts.length > 0 ? (
             filteredProducts.map((product) => (
