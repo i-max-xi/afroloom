@@ -1,58 +1,103 @@
-import React from "react";
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { categories, LoomStoreProducts } from "./Data/products";
+import { motion } from "framer-motion";
+import { categories } from "./Data/products";
 import ProductCard from "./components/product-card";
 import Nav from "../../Components/Nav";
+import { useProducts } from "./hooks/useProducts";
+import { LazyScreen } from "./components/lazy-screen";
 
 const CategoryPage = () => {
   const { id } = useParams();
-  const dispatch = useDispatch();
+  const { data: allProducts, isLoading, error } = useProducts();
 
   // Find the selected category by name
-  const category = categories.find((cat) => cat.name.toLowerCase().replace(/\s+/g, "-") === id);
+  const category = categories.find((cat) => 
+    cat.name.toLowerCase().replace(/\s+/g, "-") === id
+  );
 
-  if (!category) {
-    return (
-      <div className="text-center text-gray-500 mt-10">
-        <h2 className="text-2xl font-bold">Category Not Found</h2>
-        <p>Please check the category name.</p>
-      </div>
-    );
-  }
+  // State for selected subcategory
+  const [selectedSubcategory, setSelectedSubcategory] = useState("");
+
+ 
+
+  // Get filtered products based on the selected subcategory
+  const filteredProducts = selectedSubcategory
+    ? allProducts?.filter((product) => product?.child_category === selectedSubcategory)
+    : allProducts?.filter((product) => product?.parent_category === category?.name);
+
+
+    if (isLoading) {
+      return (
+        <LazyScreen />
+      );
+    }
+
+    if (!category) {
+      return (
+        <div className="text-center text-gray-500 mt-10">
+          <h2 className="text-2xl font-bold">Category Not Found</h2>
+          <p>Please check the category name.</p>
+        </div>
+      );
+    }
+
+   
+  
+    if (error) {
+      return <div className="text-center text-red-500">Error loading products</div>;
+    }
 
   return (
     <>
       <Nav />
 
       <div className="max-w-6xl mx-auto p-6 md:p-10">
-        {/* Category Name */}
+        {/* Main Category Name */}
         <div className="h-[20vh] flex items-center justify-center">
           <h2 className="text-3xl font-bold">{category.name}</h2>
         </div>
 
-        {/* Subcategories */}
-        {category.children.map((sub, index) => {
-          const subcategoryProducts = LoomStoreProducts().filter(
-            (product) => product.child_category === sub
-          );
+        {/* Subcategory Buttons */}
+        <div className="flex flex-wrap gap-2 mt-6 ">
+          <motion.button
+            className={`px-4 py-2 text-sm rounded-full border-2 ${
+              selectedSubcategory === "" ? "bg-yellow-500 text-white" : "border-gray-300"
+            } hover:border-yellow-500 transition`}
+            onClick={() => setSelectedSubcategory("")}
+            whileHover={{ scale: 1.1 }}
+          >
+            All
+          </motion.button>
 
-          return (
-            <div key={index} className="mt-10">
-              <h3 className="text-2xl font-bold mb-6">{sub}</h3>
+          {category?.children.map((sub, index) => (
+            <motion.button
+              key={index}
+              className={`px-4 py-2 rounded-full text-sm border-2 ${
+                selectedSubcategory === sub ? "bg-yellow-500 text-white" : "border-gray-300"
+              } hover:border-yellow-500 transition`}
+              onClick={() => setSelectedSubcategory(sub)}
+              // whileHover={{ scale: 1.1 }}
+            >
+              {sub}
+            </motion.button>
+          ))}
+          
+        </div>
 
-              {subcategoryProducts.length > 0 ? (
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                  {subcategoryProducts.map((product) => (
-                    <ProductCard key={product.id} product={product} />
-                  ))}
-                </div>
-              ) : (
-                <p className="text-gray-500">No products available in this subcategory.</p>
-              )}
+        {/* Product List */}
+        <div className="mt-10">
+          {filteredProducts.length > 0 ? (
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+              {filteredProducts.map((product) => (
+                <ProductCard key={product.id} product={product} />
+              ))}
             </div>
-          );
-        })}
+          ) : (
+            <p className="text-gray-500 text-center mt-10">No products available.</p>
+          )}
+        </div>
       </div>
     </>
   );
