@@ -7,7 +7,7 @@ import ProductCard from "./components/product-card";
 import Nav from "../../Components/Nav";
 import { addToShopCart } from "../../Redux/store";
 import { useProducts } from "./hooks/useProducts";
-import { Spinner } from "./components/spinner";
+import { LazyScreen } from "./components/lazy-screen";
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -27,19 +27,21 @@ const ProductDetail = () => {
   });
 
   useEffect(() => {
-    window.scrollTo(0,0) 
+    window.scrollTo(0, 0); 
   
-    // return () => {
-    //   second
-    // }
-  }, [id])
+    if (product) {
+      setSelectedImage(product.images[0] || "");
+      setSelectedSize(product.sizes[0] || { name: "", value: 0 });
+    }
+  }, [id, product]); // Depend on `id` and `product`
+  
   
 
 
   if (isLoading) {
     return (
       <div className="flex justify-center items-center h-screen">
-        <Spinner />
+        <LazyScreen />
       </div>
     );
   }
@@ -54,11 +56,15 @@ const ProductDetail = () => {
   }
 
     // Find related products
-const relatedProducts = allProducts?.filter(
-  (item) =>
-    item.parent_category === product.parent_category &&
-    item.id !== product.id
-);
+    const relatedProducts = product
+    ? allProducts?.filter(
+        (item) =>
+          item.parent_category === product.parent_category &&
+          item.child_category === product.child_category &&
+          item.id !== product.id
+      ).slice(0, 6)
+    : [];
+  
 
   // Base price with no discount
   const originalPrice = (((product.price * quantity) + selectedSize.value) * currencyFactor).toFixed(0);
@@ -89,6 +95,8 @@ const relatedProducts = allProducts?.filter(
       })
     );
   };
+
+  
 
   return (
     <>
@@ -131,8 +139,8 @@ const relatedProducts = allProducts?.filter(
           </div>
 
           {/* Product Info */}
-          <div className="flex-1 flex flex-col gap-4">
-            <h2 className="text-3xl font-bold">{product.name}</h2>
+          <div className="flex-1 flex flex-col  gap-2 md:gap-4">
+            <h2 className="text-lg lg:text-3xl font-bold">{product.name}</h2>
 
             {/* Price Section */}
             <div className="flex items-center gap-4">
@@ -206,20 +214,31 @@ const relatedProducts = allProducts?.filter(
           <p className="text-sm text-gray-400 mt-2">
             Category: {product.parent_category} : {product.child_category}
           </p>
-          <p className="text-gray-500 mt-2">
+          <p className="text-gray-500 mt-2 break-words whitespace-pre-line">
             {product.description || "No description available."}
           </p>
         </div>
 
         {/* Related Products */}
         {relatedProducts.length > 0 && (
-          <div className="mt-16">
-            <h3 className="text-2xl font-bold mb-6">Related Products</h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-              {relatedProducts.map((related) => (
-                <ProductCard key={related.id} product={related} />
-              ))}
-            </div>
+          <div className="mt-16 relative">
+            <h3 className="text-lg md:text-2xl font-bold mb-6">Related Products</h3>
+            <motion.div 
+              className="overflow-hidden cursor-grab"
+              whileTap={{ cursor: "grabbing" }}
+            >
+              <motion.div 
+                className="flex gap-6"
+                drag="x"
+                dragConstraints={{ right: 0, left: -300 * (relatedProducts.length - 1) }}
+              >
+                {relatedProducts.map((product) => (
+                  <motion.div key={product.id} className="min-w-[300px]">
+                    <ProductCard product={product} />
+                  </motion.div>
+                ))}
+              </motion.div>
+            </motion.div>
           </div>
         )}
       </div>
