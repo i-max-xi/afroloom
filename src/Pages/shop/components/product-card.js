@@ -35,7 +35,7 @@ const ProductCard = ({ product }) => {
 
       {/* Product Details */}
       <div className="flex flex-col items-center pt-2 lg:py-4 lg-4">
-        <h3 className="text-xs md:text-base lg:text-lg font-semibold text-center">{product.name}</h3>
+        <h3 className="text-xs md:text-base lg:text-base font-semibold text-center">{product.name}</h3>
 
         {/* Pricing Section */}
         <div className="flex flex-col items-center ">
