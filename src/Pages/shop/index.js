@@ -6,6 +6,8 @@ import IntroSection from "./components/intro-section";
 import Logo from "../../Assets/AFRO_LOGO_4_transparent.png"
 import { useProducts } from "./hooks/useProducts";
 import { Spinner } from "./components/spinner";
+import { motion } from "framer-motion";
+
 
 const ShopPage = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -62,20 +64,33 @@ const ShopPage = () => {
         </div>
 
         {/* Product Grid */}
-        <div
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          variants={{
+            hidden: { opacity: 0 },
+            visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
+          }}
           
           className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6"
         >
           {filteredProducts.length > 0 ? (
             filteredProducts.map((product) => (
+              <motion.div 
+               variants={{
+                hidden: { opacity: 0, y: 50 },
+                visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+              }}>
+              
               <ProductCard key={product.id} product={product} />
+              </motion.div>
             ))
           ) : (
             <p className="col-span-full text-center text-gray-500">
               No products found.
             </p>
           )}
-        </div>
+        </motion.div>
       </div>
     </>
   );
