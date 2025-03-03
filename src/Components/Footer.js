@@ -43,13 +43,7 @@ const Footer = () => {
             style={{ textAlign: isMobile ? "justify" : "center" }}
             // style={{textAlign: "justify"}}
           >
-            At Afroloom, our mission is to help you bring your unique style to
-            life through personalized clothing and accessories. With our
-            easy-to-use customization tools, you can design a wardrobe that
-            truly reflects your individuality. And with our flexible payment
-            options and satisfaction guarantee, you can shop with complete peace
-            of mind. Join the Afroloom family today and start creating your
-            perfect look!
+           At Afroloom, we bring your unique style to life with personalized clothing, accessories, and ready-to-wear pieces from our Loom Store. Design your dream look or shop exclusive Afro-inspired fashion with ease, backed by flexible payments and a satisfaction guarantee. Join the Afroloom family and wear your style, your way!
           </p>
         </div>
 
