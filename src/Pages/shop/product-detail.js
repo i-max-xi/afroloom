@@ -2,12 +2,15 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import ProductCard from "./components/product-card";
 import Nav from "../../Components/Nav";
 import { addToShopCart } from "../../Redux/store";
 import { useProducts } from "./hooks/useProducts";
 import { LazyScreen } from "./components/lazy-screen";
+import { SeeAll } from "../Customize/Configurator/SeeAll";
+import { textureArrays, textureDescriptions } from "../Customize/Configurator/arrays/neededArrays";
+import TextureItem from "../Customize/Configurator/LoomstoreTextureItem";
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -35,7 +38,26 @@ const ProductDetail = () => {
     }
   }, [id, product]); // Depend on `id` and `product`
   
+   const [openSeeAll, setOpenSeeAll] = useState(false);
+    const [selectedSeeAll, setSelectedSeeAll] = useState({ title: '', titleDisplay:'', array: [] });
   
+    const handleOpenSeeAll = (title, titleDisplay, array) => {
+      setSelectedSeeAll({ title, titleDisplay, array });
+      setOpenSeeAll(true);
+    };
+  
+    const handleCloseSeeAll = () => {
+      setOpenSeeAll(false);
+      setSelectedSeeAll({ title: '', titleDisplay: '', array: [] });
+    };
+
+    const [selectedPrintOn, setSelectedPrintOn] = useState("#ffffff");
+  
+
+    const handleTextureChange = (newTexture) => {
+      setSelectedPrintOn(newTexture);
+   
+     };
 
 
   if (isLoading) {
@@ -67,7 +89,7 @@ const ProductDetail = () => {
   
 
   // Base price with no discount
-  const originalPrice = (((product.price * quantity) + selectedSize.value) * currencyFactor).toFixed(2);
+  const originalPrice = (((product.price * quantity) + selectedSize.value) * currencyFactor).toLocaleString();
 
   // Base price with discount applied
   const basePrice = product.discount
@@ -88,15 +110,17 @@ const ProductDetail = () => {
       addToShopCart({
         id: product.id,
         name: product.name,
-        price: finalPrice * quantity,
+        // base_price: product?.price,
+        price: finalPrice,
         selectedSize: selectedSize.name,
         quantity,
         image: product.images[0],
+        selectedTextile: selectedPrintOn
       })
     );
   };
 
-  
+
 
   return (
     <>
@@ -150,7 +174,7 @@ const ProductDetail = () => {
                 </span>
               )}
               <span className="text-yellow-500 text-2xl font-bold">
-                {currencySymbol}{(finalPrice * quantity).toFixed(2)}
+                {currencySymbol}{(finalPrice * quantity).toLocaleString()}
               </span>
             </div>
 
@@ -175,6 +199,61 @@ const ProductDetail = () => {
                 </div>
               </div>
             )}
+
+           {/* textiltes */}
+           {["Formal Wear", "African Print"].includes(product?.child_category) && (
+            <div>
+              <h5 className="text-base font-semibold mt-4">Choose Textile</h5> 
+              <div className="texture-buttons-container">
+                <AnimatePresence>
+                  {openSeeAll ? (
+                    <SeeAll
+                      array={selectedSeeAll.array}
+                      title={selectedSeeAll.title}
+                      titleDisplay={selectedSeeAll.titleDisplay}
+                      onClose={handleCloseSeeAll}
+                      others={{
+                        selectedPrintOn,
+                        handleTextureChange,
+                        currencySymbol,
+                        currencyFactor,
+                      }}
+                    />
+                  ) : (
+                    <div className="texture-row">
+                      <div className="texture-category mt-1">
+                        <div className="w-full flex justify-between capitalize">
+                          <p className="text-sm font-medium text-[#4C5B5C]">WaxPrint</p>
+                          <p
+                            onClick={() => handleOpenSeeAll('waxPrint', "waxPrint", textureArrays?.waxPrint)}
+                            className="cursor-pointer text-sm text-[#ffc107] hover:font-semibold"
+                          >
+                            See all &#8594;
+                          </p>
+                        </div>
+                        <div className="grid grid-cols-4 gap-3 px-4">
+                          {textureArrays?.waxPrint?.slice(0, 4).map((texture, index) => (
+                            <TextureItem
+                              key={texture}
+                              texture={texture}
+                              // setHideText={setHideText}
+                              Title="waxPrint"
+                              selectedTexture={selectedPrintOn}
+                              handleTextureChange={handleTextureChange}
+                              currencySymbol={currencySymbol}
+                              currencyFactor={currencyFactor}
+                              subTextureDescriptions={textureDescriptions?.waxPrint}
+                              textureIndex={index}
+                            />
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </AnimatePresence>
+              </div>
+            </div>
+          )}
 
             {/* Quantity Selection */}
             <div className="">

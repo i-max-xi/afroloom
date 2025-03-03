@@ -390,12 +390,14 @@ const CustomizeCheckout = () => {
                            <img
                              src={selectedItem.image}
                              alt=""
-                             width="100rem"
-                             height="100rem"
+                             width="50rem"
+                             height="50rem"
                            />
                            <p className="">
                              <span className="fw-bold">Name: </span>{" "}
                              {selectedItem.name} <br />
+                             <span className="fw-bold">Price: </span>{" "}
+                             {selectedItem.price} <br />
                              <span className="fw-bold">Quantity: </span>{" "}
                              {selectedItem.quantity}
                              <br />
@@ -408,7 +410,18 @@ const CustomizeCheckout = () => {
                                selectedItem?.price *
                                selectedItem?.quantity *
                                currencyFactor
-                             ).toFixed()}
+                             ).toLocaleString()}
+                             {selectedItem?.selectedTextile && 
+                              <p className="flex items-center gap-2">
+                                <span className="fw-bold">Textile:</span>{" "}
+                                  <img
+                                    src={selectedItem?.selectedTextile}
+                                    alt=""
+                                    className="texture-button-checkout"
+                                   
+                                />
+                              </p>
+                              }
                            </p>
                          </div>
                          <div className=" flex flex-col items-center gap-4 p-2">
@@ -427,11 +440,11 @@ const CustomizeCheckout = () => {
                           </button>
                         </div>
                        </div>
-                       <p className="col-1">
+                       <p className="col-1  cursor-pointer">
                          <i
                            className="pi pi-trash "
                            style={{ color: "red" }}
-                           onClick={() => handleRemoveItem(selectedItem.name)}
+                           onClick={() => handleShopRemoveItem(selectedItem.name)}
                          ></i>
                        </p>
                      </li>

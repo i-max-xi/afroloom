@@ -69,7 +69,7 @@ const ShopPage = () => {
           />
 
           {/* Category Filter Dropdown */}
-          <div className="absolute right-3 top-1/2 transform -translate-y-1/2">
+          <div className="absolute text-xs right-3 top-1/2 transform -translate-y-1/2">
             <select
               className="bg-transparent border-none outline-none text-gray-700 cursor-pointer"
               value={selectedCategory}
