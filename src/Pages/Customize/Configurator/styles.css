@@ -51,6 +51,13 @@
     align-self: center;
   }
 
+  .texture-button-checkout {
+    height: 2.5rem;
+    width: 3rem;
+    /* cursor: pointer; */
+    align-self: center;
+  }
+
   /* .texture-category {
     width: 50% !important;
   } */
@@ -269,6 +276,13 @@ h1 {
   height: 2.5rem;
   width: 3.4rem;
   cursor: pointer;
+  align-self: center;
+}
+
+.texture-button-checkout {
+  height: 1.5rem;
+  width: 2.4rem;
+  /* cursor: pointer; */
   align-self: center;
 }
 

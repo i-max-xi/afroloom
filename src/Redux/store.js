@@ -119,10 +119,10 @@ const shopCartSlice = createSlice({
       }
     },
 
-    // clearShopCart: () => [],
-    clearShopCart: (state) => {
-      state = [];
-    },
+    clearShopCart: () => [],
+    // clearShopCart: (state) => {
+    //   state = [];
+    // },
   },
 });
 

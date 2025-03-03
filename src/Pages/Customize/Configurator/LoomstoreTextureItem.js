@@ -89,17 +89,22 @@ function TextureItem({
   
 
   return (
-    <div className="texture-item" >
-      <img
-        src={texture}
-        loading="lazy"
-        alt={`Texture`}
-        className={`texture-button ${
-          selectedTexture === texture ? "border-2 border-yellow-500" : ""
-        }`}
-        onClick={() => handleTextureChange(texture)}
-        onContextMenu={(e) => e.preventDefault()}
-      />
+    <div className="texture-item " >
+      <div className={`texture-button ${
+            selectedTexture === texture ? "border-3 border-[#ffc107]" : ""
+          }`}>
+        <img
+          src={texture}
+          loading="lazy"
+          alt={`Texture`}
+          className="h-full w-full"
+          // className={`texture-button ${
+          //   isSelected ? "border-2 border-yellow-500" : "border-2 border-red-500"
+          // }`}
+          onClick={() => handleTextureChange(texture)}
+          onContextMenu={(e) => e.preventDefault()}
+        />
+      </div>
 
       {noInfo ? null : ( <svg
         xmlns="http://www.w3.org/2000/svg"
