@@ -4,7 +4,7 @@ import { FaShoppingCart, FaGift } from "react-icons/fa";
 
 const IntroSection = () => {
   return (
-    <div className="relative flex flex-col items-center justify-center h-[80vh] text-center overflow-hidden">
+    <div className="relative flex flex-col items-center justify-center pt-10 pb-16 md:pt-0 md:pb-0 md:h-[80vh] text-center overflow-hidden">
       {/* Heading */}
       <motion.h1
         className="text-3xl md:text-5xl font-bold"
