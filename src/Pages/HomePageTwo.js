@@ -121,13 +121,9 @@ const HomePage = () => {
           ))}
         </Carousel>
         <div className=" p-5 px-4 container ">
-          <h2 className="text-xl lg:text-3xl ">Customize Your Style, Your Way!</h2>
+          <h2 className="text-xl lg:text-3xl ">Create It. Shop It. Wear It Your Way!</h2>
           <p className="text-sm">
-            At Afroloom, we bring your fashion dreams to life with our
-            easy-to-use online tailoring services. Whether you're looking to
-            create the perfect outfit, design a unique graduation sash, or
-            personalize a bead bracelet, we've got you covered. Experience the
-            joy of custom-made fashion without leaving your home.
+          At Afroloom, we bring your fashion dreams to life with easy online tailoring and our Loom Store, where you can shop stunning ready-to-wear Afrocentric pieces or create your own. From custom outfits and graduation sashes to unique bead bracelets, enjoy personalized fashion made just for you — all from the comfort of your home.
           </p>
           <div className="flex gap-2 items-center">
           <Link to="/start-customize">
