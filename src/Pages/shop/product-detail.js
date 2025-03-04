@@ -11,6 +11,7 @@ import { LazyScreen } from "./components/lazy-screen";
 import { SeeAll } from "../Customize/Configurator/SeeAll";
 import { textureArrays, textureDescriptions } from "../Customize/Configurator/arrays/neededArrays";
 import TextureItem from "../Customize/Configurator/LoomstoreTextureItem";
+import { Disclaimer } from "./components/disclaimer";
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -60,32 +61,34 @@ const ProductDetail = () => {
      };
 
 
-  if (isLoading) {
-    return (
-      <div className="flex justify-center items-center h-screen">
-        <LazyScreen />
-      </div>
-    );
-  }
-
-  if (error) {
-    return <div className="text-center text-red-500">Error loading products</div>;
-  }
 
 
-  if (!product) {
-    return <div className="text-center text-xl mt-10">Product not found</div>;
-  }
+  // Find related products
+  const relatedProducts = product
+  ? allProducts?.filter(
+      (item) =>
+        item.parent_category === product.parent_category &&
+        item.child_category === product.child_category &&
+        item.id !== product.id
+    ).slice(0, 6)
+  : [];
 
-    // Find related products
-    const relatedProducts = product
-    ? allProducts?.filter(
-        (item) =>
-          item.parent_category === product.parent_category &&
-          item.child_category === product.child_category &&
-          item.id !== product.id
-      ).slice(0, 6)
-    : [];
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % relatedProducts.length);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, [relatedProducts.length]);
+
+  const handlePrev = () => {
+    setCurrentIndex((prev) => (prev === 0 ? relatedProducts.length - 1 : prev - 1));
+  };
+
+  const handleNext = () => {
+    setCurrentIndex((prev) => (prev + 1) % relatedProducts.length);
+  };
   
 
   // Base price with no discount
@@ -120,12 +123,31 @@ const ProductDetail = () => {
     );
   };
 
+  if (isLoading) {
+    return (
+      <div className="flex justify-center items-center h-screen">
+        <LazyScreen />
+      </div>
+    );
+  }
+
+  if (error) {
+    return <div className="text-center text-red-500">Error loading products</div>;
+  }
+
+
+  if (!product) {
+    return <div className="text-center text-xl mt-10">Product not found</div>;
+  }
+
+  
 
 
   return (
     <>
       <Nav />
-
+      
+      { ["Formal Wear", "African Print", "African Print Dresses", "African Print Shirts"].includes(product?.child_category) && <Disclaimer />}
       <div className="max-w-6xl mx-auto p-6 md:p-10">
         {/* Product Details */}
         <div className="flex flex-col md:flex-row gap-10">
@@ -201,7 +223,7 @@ const ProductDetail = () => {
             )}
 
            {/* textiltes */}
-           {["Formal Wear", "African Print"].includes(product?.child_category) && (
+           {["Formal Wear", "African Print", "African Print Dresses", "African Print Shirts"].includes(product?.child_category) && (
             <div>
               <h5 className="text-base font-semibold mt-4">Choose Textile</h5> 
               <div className="texture-buttons-container">
@@ -302,22 +324,21 @@ const ProductDetail = () => {
         {relatedProducts.length > 0 && (
           <div className="mt-16 relative">
             <h3 className="text-lg md:text-2xl font-bold mb-6">Related Products</h3>
-            <motion.div 
-              className="overflow-hidden cursor-grab"
-              whileTap={{ cursor: "grabbing" }}
-            >
-              <motion.div 
-                className="flex gap-6"
-                drag="x"
-                dragConstraints={{ right: 0, left: -300 * (relatedProducts.length - 1) }}
+            <div className="relative overflow-hidden grid grid-cols-2 lg:grid-cols-3">
+              <motion.div
+                className="flex"
+                animate={{ x: `-${currentIndex * 100}%` }}
+                transition={{ ease: "easeInOut", duration: 0.5 }}
               >
-                {relatedProducts.map((product) => (
-                  <motion.div key={product.id} className="min-w-[300px]">
+                {relatedProducts.map((product, index) => (
+                  <div key={product.id} className="min-w-full flex-shrink-0 mx-4">
                     <ProductCard product={product} />
-                  </motion.div>
+                  </div>
                 ))}
               </motion.div>
-            </motion.div>
+              <button onClick={handlePrev} className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full shadow-lg">❮</button>
+              <button onClick={handleNext} className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full shadow-lg">❯</button>
+            </div>
           </div>
         )}
       </div>
