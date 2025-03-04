@@ -30,9 +30,9 @@ const ShopPage = () => {
   });
 
 
-  useEffect(() => {
-    window.scrollTo(0,0)
-  }, [])
+  // useEffect(() => {
+  //   window.scrollTo(0,0)
+  // }, [])
 
 
 
@@ -53,7 +53,7 @@ const ShopPage = () => {
       <div className="p-8">
         {/* Intro Section */}
         <IntroSection />
-        <div className="mx-auto flex flex-col items-center justify-center w-full">
+        <div id="shopp" className="mx-auto flex flex-col items-center justify-center w-full">
           <CategorySection />
         </div>
 

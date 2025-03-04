@@ -22,7 +22,7 @@ const IntroSection = () => {
       <div className="flex items-center gap-4 justify-center relative mt-6">
         {/* Start Shopping Button */}
         <a
-          href="#products"
+          href="#shopp"
           className="bg-yellow-500 text-white px-6 py-2 rounded-lg hover:bg-yellow-600 transition-all relative"
         >
           Start Shopping
