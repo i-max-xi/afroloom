@@ -11,6 +11,7 @@ import { LazyScreen } from "./components/lazy-screen";
 import { SeeAll } from "../Customize/Configurator/SeeAll";
 import { textureArrays, textureDescriptions } from "../Customize/Configurator/arrays/neededArrays";
 import TextureItem from "../Customize/Configurator/LoomstoreTextureItem";
+import { Disclaimer } from "./components/disclaimer";
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -139,11 +140,14 @@ const ProductDetail = () => {
     return <div className="text-center text-xl mt-10">Product not found</div>;
   }
 
+  
+
 
   return (
     <>
       <Nav />
-
+      
+      { ["Formal Wear", "African Print", "African Print Dresses", "African Print Shirts"].includes(product?.child_category) && <Disclaimer />}
       <div className="max-w-6xl mx-auto p-6 md:p-10">
         {/* Product Details */}
         <div className="flex flex-col md:flex-row gap-10">
