@@ -331,7 +331,7 @@ const ProductDetail = () => {
                 transition={{ ease: "easeInOut", duration: 0.5 }}
               >
                 {relatedProducts.map((product, index) => (
-                  <div key={product.id} className="min-w-full flex-shrink-0 mx-4">
+                  <div key={product.id} className="w-[80vw]  mx-auto">
                     <ProductCard product={product} />
                   </div>
                 ))}
