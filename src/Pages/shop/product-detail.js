@@ -324,14 +324,14 @@ const ProductDetail = () => {
         {relatedProducts.length > 0 && (
           <div className="mt-16 relative">
             <h3 className="text-lg md:text-2xl font-bold mb-6">Related Products</h3>
-            <div className="relative overflow-hidden grid grid-cols-2 lg:grid-cols-3">
+            <div className="relative overflow-hidden grid grid-cols-1 lg:grid-cols-3">
               <motion.div
                 className="flex"
                 animate={{ x: `-${currentIndex * 100}%` }}
                 transition={{ ease: "easeInOut", duration: 0.5 }}
               >
                 {relatedProducts.map((product, index) => (
-                  <div key={product.id} className="w-[80vw]  mx-auto">
+                  <div key={product.id} className="w-[80vw] flex-shrink-0 mx-4">
                     <ProductCard product={product} />
                   </div>
                 ))}
