@@ -34,7 +34,6 @@ const LoomStore = () => {
       product?.name?.toLowerCase().includes(searchQuery?.toLowerCase())
     );
   
-
  
 
   const openEditDialog = (product) => {
@@ -43,21 +42,22 @@ const LoomStore = () => {
   };
 
   const updateItem = (e, field) => {
-    setSelectedProduct({ ...selectedProduct, [field]: e.target.value });
+    if (!selectedProduct) {
+      console.error("Error: selectedProduct is undefined");
+      return;
+    }
+  
+    const value = e?.target?.value ?? e; // Ensure correct event handling
+    setSelectedProduct((prev) => ({ ...prev, [field]: value }));
   };
+  
 
-  const saveProduct = async () => {
+  const saveProduct = async (updatedProduct) => {
     setIsLoading(true);
     try {
-      await AllServices.updateProduct(selectedProduct.id, selectedProduct);
-      setEditDialog(false)
-      // setProducts(
-      //   products.map((product) =>
-      //     product.id === selectedProduct.id ? selectedProduct : product
-      //   )
-      // );
-      refetch()
-      // setSelectedProduct(null);
+      await AllServices.updateProduct(updatedProduct.id, updatedProduct);
+      setEditDialog(false);
+      refetch(); // Refresh products list
       toast.current.show({ severity: "success", summary: "Success", detail: "Product updated" });
     } catch (error) {
       console.error("Error updating product:", error);
@@ -65,6 +65,7 @@ const LoomStore = () => {
     }
     setIsLoading(false);
   };
+  
 
   const confirmDeleteProduct = (product) => {
     setSelectedProduct(product);
