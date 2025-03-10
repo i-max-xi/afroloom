@@ -278,6 +278,7 @@ export const LoomStoreProducts = () => {
       children: [
         "Necklace",
         "Bangles",
+        "Necklace & Bangles"
         
       ]
     },
@@ -295,6 +296,6 @@ export const LoomStoreProducts = () => {
       "T-Shirt", "Shorts",
     ],
    "Unisex": ["Formal Wear", "African Print Dresses", "Casual Wear", "Shirt", "T-Shirt", "Shorts", "Trousers"],
-   "Accessories": ["Necklace ", "Bangles"],
+   "Accessories": ["Necklace ", "Bangles", "Necklace & Bangles"],
   };
   
