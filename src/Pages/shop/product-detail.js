@@ -22,8 +22,11 @@ const ProductDetail = () => {
   const [quantity, setQuantity] = useState(1);
 
   const { data: allProducts, isLoading, error } = useProducts();
+  const products = allProducts?.pages?.flatMap(page => page.products) || [];
 
-  const product = allProducts?.find((item) => item.id === String(id));
+
+  const product = products?.find((item) => item.id === String(id));
+
   const [selectedImage, setSelectedImage] = useState(product?.images[0] || "");
   const [selectedSize, setSelectedSize] = useState(product?.sizes[0] || {
     name: "",
@@ -65,7 +68,7 @@ const ProductDetail = () => {
 
   // Find related products
   const relatedProducts = product
-  ? allProducts?.filter(
+  ? products?.filter(
       (item) =>
         item.parent_category === product.parent_category &&
         item.child_category === product.child_category &&
