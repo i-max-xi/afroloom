@@ -13,7 +13,7 @@ const Layout = () => {
     <>
       {/* <Nav /> */}
 
-      <Outlet />
+      <div className="min-h-[100vh]"><Outlet /></div>
       <ScrollTop className="bg-warning" />
       <Footer />
     </>

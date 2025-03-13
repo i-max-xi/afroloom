@@ -13,26 +13,17 @@ import { LazyScreen } from "./components/lazy-screen";
 const ShopPage = () => {
   const [searchQuery, setSearchQuery] = useState("");
 
-    const { data: allProducts, isLoading, error } = useProducts();
-    const [selectedCategory, setSelectedCategory] = useState(""); // Category filter state
-
-  
-
-  // Filter products based on search query
-  // const filteredProducts = allProducts?.filter((product) =>
-  //   product?.name?.toLowerCase().includes(searchQuery?.toLowerCase())
-  // );
-
-  const filteredProducts = allProducts?.filter((product) => {
-    const matchesSearch = product?.name?.toLowerCase().includes(searchQuery?.toLowerCase());
-    const matchesCategory = selectedCategory ? product?.parent_category === selectedCategory : true;
-    return matchesSearch && matchesCategory;
-  });
+  const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading, error } = useProducts();
+  const [selectedCategory, setSelectedCategory] = useState(""); // Category filter state
 
 
-  // useEffect(() => {
-  //   window.scrollTo(0,0)
-  // }, [])
+  const products = data
+    ? data.pages.flatMap((page) => page.products)
+        .filter((product) =>
+          product.name.toLowerCase().includes(searchQuery.toLowerCase()) &&
+          (selectedCategory ? product.parent_category === selectedCategory : true)
+        )
+    : [];
 
 
 
@@ -43,7 +34,8 @@ const ShopPage = () => {
     }
   
     if (error) {
-      return <div className="text-center text-red-500">Error loading products</div>;
+      console.log(error)
+      return <div className="text-center text-red-500 flex justify-center items-center">Error loading products</div>;
     }
     
     
@@ -91,8 +83,8 @@ const ShopPage = () => {
           
           className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6"
         >
-          {filteredProducts.length > 0 ? (
-            filteredProducts.map((product) => (
+          {products.length > 0 ? (
+            products.map((product) => (
              
               
               <ProductCard key={product.id} product={product} />
@@ -101,6 +93,18 @@ const ShopPage = () => {
             <p className="col-span-full text-center text-gray-500">
               No products found.
             </p>
+          )}
+        </div>
+          {/* Load More Button */}
+          <div className="text-center my-6">
+          {hasNextPage && !isLoading && (
+            <button
+              onClick={() => fetchNextPage()}
+              disabled={isFetchingNextPage}
+              className=" border-1 border-yellow-500 text-black py-2 px-6 rounded-md "
+            >
+              {isFetchingNextPage ? "Loading..." : "Load More"}
+            </button>
           )}
         </div>
       </div>
