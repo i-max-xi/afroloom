@@ -12,6 +12,8 @@ import { SeeAll } from "../Customize/Configurator/SeeAll";
 import { textureArrays, textureDescriptions } from "../Customize/Configurator/arrays/neededArrays";
 import TextureItem from "../Customize/Configurator/LoomstoreTextureItem";
 import { Disclaimer } from "./components/disclaimer";
+import { Carousel } from 'primereact/carousel';
+        
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -95,12 +97,12 @@ const ProductDetail = () => {
   
 
   // Base price with no discount
-  const originalPrice = (((product.price * quantity) + selectedSize.value) * currencyFactor).toLocaleString();
+  const originalPrice = (((product?.price * quantity) + selectedSize?.value) * currencyFactor).toLocaleString();
 
   // Base price with discount applied
-  const basePrice = product.discount
-    ? (product.price - (product.price * product.discount) / 100)
-    : product.price;
+  const basePrice = product?.discount
+    ? (product?.price - (product?.price * product?.discount) / 100)
+    : product?.price;
 
 
   // Adjusted price based on selected size
@@ -142,6 +144,29 @@ const ProductDetail = () => {
   if (!product) {
     return <div className="text-center text-xl mt-10">Product not found</div>;
   }
+
+     const responsiveOptions = [
+        {
+            breakpoint: '1400px',
+            numVisible: 2,
+            numScroll: 1
+        },
+        {
+            breakpoint: '1199px',
+            numVisible: 3,
+            numScroll: 1
+        },
+        {
+            breakpoint: '767px',
+            numVisible: 2,
+            numScroll: 1
+        },
+        {
+            breakpoint: '575px',
+            numVisible: 1,
+            numScroll: 1
+        }
+    ];
 
   
 
@@ -327,7 +352,25 @@ const ProductDetail = () => {
         {relatedProducts.length > 0 && (
           <div className="mt-16 relative">
             <h3 className="text-lg md:text-2xl font-bold mb-6">Related Products</h3>
-            <div className="relative overflow-hidden grid grid-cols-1 lg:grid-cols-3">
+            <Carousel 
+              value={relatedProducts} 
+              numVisible={3}  // Ensure 3 items are visible on desktop
+              numScroll={1}
+              responsiveOptions={responsiveOptions} 
+              itemTemplate={(item) => {
+                console.log(item)
+                return (
+                  <div className="px-2">
+                    <ProductCard product={item} />
+                  </div>
+                )
+              }} 
+              showIndicators={false}  // Hide default dots
+              showNavigators={true}   // Show navigation arrows
+              circular  // Infinite loop
+              autoplayInterval={3000} // Auto-scroll every 3 seconds
+            />
+            {/* <div className="relative overflow-hidden grid grid-cols-1 lg:grid-cols-3">
               <motion.div
                 className="flex"
                 animate={{ x: `-${currentIndex * 100}%` }}
@@ -341,7 +384,7 @@ const ProductDetail = () => {
               </motion.div>
               <button onClick={handlePrev} className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full shadow-lg">❮</button>
               <button onClick={handleNext} className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full shadow-lg">❯</button>
-            </div>
+            </div> */}
           </div>
         )}
       </div>
