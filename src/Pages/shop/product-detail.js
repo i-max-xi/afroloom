@@ -358,7 +358,6 @@ const ProductDetail = () => {
               numScroll={1}
               responsiveOptions={responsiveOptions} 
               itemTemplate={(item) => {
-                console.log(item)
                 return (
                   <div className="px-2">
                     <ProductCard product={item} />
