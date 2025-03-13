@@ -10,9 +10,8 @@ import { LazyScreen } from "./components/lazy-screen";
 
 const CategoryPage = () => {
   const { id } = useParams();
-  const { data: allProducts, isLoading, error } = useProducts();
-
-  // Find the selected category by name
+  
+    // Find the selected category by name
   const category = categories.find((cat) => 
     cat.name.toLowerCase().replace(/\s+/g, "-") === id
   );
@@ -20,12 +19,19 @@ const CategoryPage = () => {
   // State for selected subcategory
   const [selectedSubcategory, setSelectedSubcategory] = useState("");
 
- 
+  const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading, error } = useProducts();
+
+  const products = data
+  ? data.pages.flatMap((page) => page.products) || []
+  : [];
+
 
   // Get filtered products based on the selected subcategory
-  const filteredProducts = selectedSubcategory
-    ? allProducts?.filter((product) => product?.child_category === selectedSubcategory)
-    : allProducts?.filter((product) => product?.parent_category === category?.name);
+  const filteredProducts = products.filter((product) =>
+    // product.name.toLowerCase().includes(searchQuery.toLowerCase()) &&
+    (selectedSubcategory ? product.child_category === selectedSubcategory : product.parent_category === category?.name)
+  );
+  
 
 
     if (isLoading) {
@@ -98,6 +104,20 @@ const CategoryPage = () => {
             <p className="text-gray-500 text-center mt-10">No products available.</p>
           )}
         </div>
+
+         {/* Load More Button */}
+         <div className="text-center my-6">
+          {hasNextPage && !isLoading && (
+            <button
+              onClick={fetchNextPage}
+              disabled={isFetchingNextPage}
+              className="border-1 border-yellow-500 text-black py-2 px-6 rounded-md hover:bg-yellow-500 hover:text-white transition"
+            >
+              {isFetchingNextPage ? "Loading..." : "Load More"}
+            </button>
+          )}
+        </div>
+
       </div>
     </>
   );

@@ -18,10 +18,12 @@ import EditProductDialog from "./components/EditComponent";
 
 const LoomStore = () => {
   const { data: allProducts, isLoading: allProductsLoading, error, refetch } = useProducts();
+  const products = allProducts?.pages?.flatMap(page => page.products) || [];
+
   const [searchQuery, setSearchQuery] = useState("");
 
   const currencySymbol = useSelector((state) => state.currencySymbol.symbol);
-    const currencyFactor = useSelector((state) => state.currencySymbol.factor);
+  const currencyFactor = useSelector((state) => state.currencySymbol.factor);
 
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -30,7 +32,7 @@ const LoomStore = () => {
   const toast = useRef(null);
 
    // Filter products based on search query
-    const filteredProducts = allProducts?.filter((product) =>
+    const filteredProducts = products?.filter((product) =>
       product?.name?.toLowerCase().includes(searchQuery?.toLowerCase())
     );
   
