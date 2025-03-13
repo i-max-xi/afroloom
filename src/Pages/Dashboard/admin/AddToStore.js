@@ -170,7 +170,7 @@ export default function AddProduct() {
       
       <h3 className="text-lg font-semibold text-black mt-1">Sizes</h3>
       <p className="text-xs">Add sizes and how much it should add on prices</p>
-      <div className="flex space-x-2">
+      <div className="flex  lg:flex-row flex-col gap-2 ">
         <InputText value={newSize.name} onChange={(e) => setNewSize({ ...newSize, name: e.target.value })} placeholder="Size Name" />
         <InputNumber value={newSize.value} onValueChange={(e) => setNewSize({ ...newSize, value: e.value })} placeholder="Size Value" />
         <button onClick={addSize} className="bg-blue-500 text-white p-2 rounded">Add</button>
