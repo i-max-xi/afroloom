@@ -9,7 +9,7 @@ export const CategorySection = () => {
     <div className="w-full flex flex-col justify-center items-center py-5 md:py-10">
       <h2 className="text-lg md:text-xl font-bold text-center mb-10">Shop by Category</h2>
       <motion.div
-        className="grid md:grid-cols-4 lg:grid-cols-5 grid-cols-2 gap-4 md:gap-10 justify-center items-center"
+        className="grid md:grid-cols-3 lg:grid-cols-6 grid-cols-2 gap-4 md:gap-10 justify-center items-center"
         initial="hidden"
         whileInView="visible"
         variants={{
@@ -28,7 +28,7 @@ export const CategorySection = () => {
             whileHover={{ scale: 1.1 }}
             onClick={() => navigate(`/category/${category.name.toLowerCase().replace(/\s+/g, "-")}`)}
           >
-            <div className="w-32 h-32 bg-gray-800 text-white rounded-full flex items-center justify-center shadow-lg overflow-hidden">
+            <div className={`w-32 h-32 ${category.name === "Style & Sew" ? "bg-yellow-500" : "bg-gray-800"}  text-white rounded-full flex items-center justify-center shadow-lg overflow-hidden`}>
               {/* <img
                 src={category.image} 
                 alt={category.name}
@@ -37,6 +37,7 @@ export const CategorySection = () => {
               <div className="md:text-base font-semibold text-center flex flex-col gap-1 items-center justify-center">
                 <span>{category.name.split(" ")[0]}</span>
                 <span>{category.name.split(" ")[1]}</span>
+                <span>{category.name.split(" ")[2]}</span>
               </div>
             </div>
           </motion.div>
