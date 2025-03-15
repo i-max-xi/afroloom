@@ -83,6 +83,7 @@ const Dashboard = () => {
         setActiveIndex={setActiveIndex}
         visible={visible}
         setVisible={setVisible}
+        userData={userData}
       />
 
       <div className="">

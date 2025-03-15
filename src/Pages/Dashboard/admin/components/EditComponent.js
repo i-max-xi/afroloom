@@ -25,25 +25,34 @@ export default function EditProductDialog({ isLoading, onHide, saveProduct, sele
 
   // Update local state instead of global state
   const updateItem = (field, value) => {
-    setEditedProduct((prev) => ({ ...prev, [field]: value }));
+    setEditedProduct((prev) => {
+      const updatedProduct = { ...prev, [field]: value };
+  
+      // Reset child_category when parent_category changes
+      if (field === "parent_category") {
+        updatedProduct.child_category = "";
+      }
+  
+      return updatedProduct;
+    });
   };
+  
+  
 
   const addSize = () => {
     if (newSize.name && newSize.value >= 0) {
       const updatedSizes = [...(editedProduct.sizes || []), newSize];
-  
-      updateItem({ target: { value: updatedSizes } }, "sizes"); // Ensure correct update
+      updateItem("sizes", updatedSizes);
       setNewSize({ name: "", value: 0 });
     }
   };
   
-
+  
   const removeSize = (index) => {
-    setEditedProduct((prev) => ({
-      ...prev,
-      sizes: prev.sizes.filter((_, i) => i !== index),
-    }));
+    const updatedSizes = editedProduct.sizes.filter((_, i) => i !== index);
+    updateItem("sizes", updatedSizes);
   };
+  
 
   const handleSave = () => {
     saveProduct(editedProduct); // Pass local state to save function
@@ -69,10 +78,8 @@ export default function EditProductDialog({ isLoading, onHide, saveProduct, sele
   
       // Correct update logic
       const newImageArr = editedProduct.images.filter((img) => img !== imageUrl);
-      updateItem({
-        ...editedProduct,
-        images: newImageArr,
-      });
+      updateItem("images", newImageArr);
+
   
       toastRef.current?.show({ severity: "success", summary: "Image deleted successfully!" });
     } catch (error) {
@@ -108,7 +115,9 @@ export default function EditProductDialog({ isLoading, onHide, saveProduct, sele
 
     try {
       const urls = await Promise.all(uploadPromises);
-      updateItem({ target: { value: [...editedProduct.images, ...urls] } }, "images");
+      // updateItem({ target: { value: [...editedProduct.images, ...urls] } }, "images");
+      updateItem("images", [...editedProduct.images, ...urls]);
+
     } catch (error) {
       console.error("Upload failed:", error);
       toastRef.current?.show({ severity: "error", summary: "Image upload failed!" });
@@ -121,14 +130,27 @@ export default function EditProductDialog({ isLoading, onHide, saveProduct, sele
     <div className="  ">
       <Toast ref={toastRef} />
       <div className="flex flex-col gap-3">
-        <InputText value={editedProduct.name} onChange={(e) => updateItem(e, "name")} placeholder="Product Name" />
-        <InputText value={editedProduct.ready_in} onChange={(e) => updateItem(e, "ready_in")} placeholder="Ready in..." />
-        <InputNumber value={editedProduct.price} onValueChange={(e) => updateItem(e, "price")} placeholder="Price" prefix="GH₵ " />
-        <InputNumber value={editedProduct.discount} onValueChange={(e) => updateItem(e, "discount")} placeholder="Discount" suffix="%" />
+        <InputText value={editedProduct.name} onChange={(e) => updateItem("name", e.target.value)} />
+        <InputText value={editedProduct.ready_in} onChange={(e) => updateItem("ready_in", e.target.value)}  placeholder="Ready in..."/>
+        <InputNumber value={editedProduct.price} onValueChange={(e) => updateItem("price", e.value)} />
+        <InputNumber value={editedProduct.discount} onValueChange={(e) => updateItem("discount", e.value)} placeholder="Discount" suffix="%"  />
         <InputTextarea value={editedProduct.description} onChange={(e) => updateItem(e, "description")} placeholder="Product Description" rows={3} />
-        <Dropdown value={editedProduct.parent_category} options={Object.keys(categories)} onChange={(e) => updateItem(e, "parent_category")} placeholder="Select Parent Category" />
-        <Dropdown value={editedProduct.child_category} options={editedProduct.parent_category ? categories[selectedProduct.parent_category] : []} onChange={(e) => updateItem(e, "child_category")} placeholder="Select Child Category" disabled={!selectedProduct.parent_category} />
-        
+        <Dropdown 
+          value={editedProduct.parent_category} 
+          options={Object.keys(categories)} 
+          onChange={(e) => updateItem("parent_category", e.value)} 
+          placeholder="Select Parent Category" 
+        />
+
+        <Dropdown 
+          value={editedProduct.child_category} 
+          options={editedProduct.parent_category ? categories[editedProduct.parent_category] : []} 
+          onChange={(e) => updateItem("child_category", e.value)} 
+          placeholder="Select Child Category" 
+          disabled={!editedProduct.parent_category} 
+        />
+
+          
     
         <div>
             <h3 className="text-lg font-semibold text-black mt-1">Sizes</h3>

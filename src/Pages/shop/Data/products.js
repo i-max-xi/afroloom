@@ -282,6 +282,15 @@ export const LoomStoreProducts = () => {
         
       ]
     },
+    {
+      name: "Style & Sew",
+      image: "https://example.com/mens-clothing.jpg",
+      children: [
+        "Male",
+        "Female",
+        
+      ]
+    },
   ];
 
 
@@ -297,5 +306,6 @@ export const LoomStoreProducts = () => {
     ],
    "Unisex": ["Formal Wear", "African Print Dresses", "Casual Wear", "Shirt", "T-Shirt", "Shorts", "Trousers"],
    "Accessories": ["Necklace ", "Bangles", "Necklace & Bangles"],
+   "Style & Sew": ["Male ", "Female"],
   };
   
