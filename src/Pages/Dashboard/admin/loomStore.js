@@ -14,10 +14,11 @@ import { Spinner } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { Image } from 'primereact/image';
 import EditProductDialog from "./components/EditComponent";
+import { useAllProducts } from "../../shop/hooks/useAllProducts";
         
 
 const LoomStore = () => {
-  const { data: allProducts, isLoading: allProductsLoading, error, refetch } = useProducts();
+  const { data: allProducts, isLoading: allProductsLoading, error, refetch } = useAllProducts();
   const products = allProducts?.pages?.flatMap(page => page.products) || [];
 
   const [searchQuery, setSearchQuery] = useState("");

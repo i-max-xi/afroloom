@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { Button } from "primereact/button";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { auth, signOut } from "../../firebase";
 import { Sidebar } from "primereact/sidebar";
@@ -12,11 +12,12 @@ import {
 
 import { Divider } from "primereact/divider";
 
-const CustomSideBar = ({ items, setActiveIndex, visible, setVisible }) => {
+const CustomSideBar = ({ items, setActiveIndex, visible, setVisible, userData }) => {
   const toastRef = useRef(null);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
 
   const handleSignOut = async () => {
     try {
@@ -40,6 +41,7 @@ const CustomSideBar = ({ items, setActiveIndex, visible, setVisible }) => {
     }
   };
 
+
   return (
     <Sidebar
       visible={visible}
@@ -61,26 +63,30 @@ const CustomSideBar = ({ items, setActiveIndex, visible, setVisible }) => {
             <Divider />
           </>
         ))}
-        <Button
-          label="Anaytics and visits"
-          icon="pi pi-external-link"
-          className="p-button-link"
-          onClick={() =>
-            window.open(
-              "https://console.firebase.google.com/u/1/project/shopinafrica-c84cf/analytics/app/web:ZWQ1ODAyNTMtNDY4NC00Y2NjLWFlZGItODI4ZTkyMDYyNmJk/overview",
-              "_blank",
-            )
-          }
-        />
-        <Divider />
-        <Button
-          label="Paystack Dashboard"
-          icon="pi pi-external-link"
-          className="p-button-link"
-          onClick={() =>
-            window.open("https://dashboard.paystack.com/#/login", "_blank")
-          }
-        />
+        {!userData?.partner_code && (
+          <>
+            <Button
+            label="Anaytics and visits"
+            icon="pi pi-external-link"
+            className="p-button-link"
+            onClick={() =>
+              window.open(
+                "https://console.firebase.google.com/u/1/project/shopinafrica-c84cf/analytics/app/web:ZWQ1ODAyNTMtNDY4NC00Y2NjLWFlZGItODI4ZTkyMDYyNmJk/overview",
+                "_blank",
+              )
+            }
+          />
+          <Divider />
+          <Button
+            label="Paystack Dashboard"
+            icon="pi pi-external-link"
+            className="p-button-link"
+            onClick={() =>
+              window.open("https://dashboard.paystack.com/#/login", "_blank")
+            }
+          />
+        </>
+        )}
         <Divider />
       </div>
       <button onClick={handleSignOut} className="rounded btn btn-danger m-3">
