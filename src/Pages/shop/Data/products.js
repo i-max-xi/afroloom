@@ -242,21 +242,21 @@ export const LoomStoreProducts = () => {
         "Shorts"
       ]
     },
-    {
-      name: "Children's Clothing",
-      image: "https://example.com/childrens-clothing.jpg",
-      children: [
-        "Boys’ Outfits (Traditional and Casual)",
-        "Girls’ Outfits (Traditional and Casual)",
-        "Matching Family Sets",
-        "School Uniforms",
-        "Shirt",
-        "T-Shirt",
-        "Trousers",
-        "Shorts"
+    // {
+    //   name: "Children's Clothing",
+    //   image: "https://example.com/childrens-clothing.jpg",
+    //   children: [
+    //     "Boys’ Outfits (Traditional and Casual)",
+    //     "Girls’ Outfits (Traditional and Casual)",
+    //     "Matching Family Sets",
+    //     "School Uniforms",
+    //     "Shirt",
+    //     "T-Shirt",
+    //     "Trousers",
+    //     "Shorts"
         
-      ]
-    },
+    //   ]
+    // },
     {
       name: "Unisex",
       image: "https://example.com/mens-clothing.jpg",
@@ -291,16 +291,16 @@ export const LoomStoreProducts = () => {
 
 
   export const categoriesBreakdown = {
-    "Women's Clothing": ["T-Shirt", "Formal Wear", "Kaftan", "Shirt", "Trousers", "Shorts"],
-    "Men's Clothing": ["T-Shirt", "Formal Wear", "Kaftan", "Shirt",  "Shorts", "Trousers"],
-    "Children's Clothing": [
-      "Boys’ Outfits (Traditional and Casual)",
-      "Girls’ Outfits (Traditional and Casual)",
-      "Matching Family Sets",
-      "School Uniforms",
-      "T-Shirt", "Shorts",
-    ],
-   "Unisex": ["Formal Wear", "African Print Dresses", "Casual Wear", "Shirt", "T-Shirt", "Shorts", "Trousers"],
+    "Women's Clothing": ["T-Shirt", "Formal Wear", "Kaftan", "Shirt", "Trousers"],
+    "Men's Clothing": ["T-Shirt", "Formal Wear", "Kaftan", "Shirt",  "Trousers"],
+    // "Children's Clothing": [
+    //   "Boys’ Outfits (Traditional and Casual)",
+    //   "Girls’ Outfits (Traditional and Casual)",
+    //   "Matching Family Sets",
+    //   "School Uniforms",
+    //   "T-Shirt",
+    // ],
+   "Unisex": [ "Shirt", "T-Shirt", "Trousers"],
    "Accessories": ["Necklace ", "Bangles", "Necklace & Bangles"],
    "Style & Sew": ["Male ", "Female"],
   };

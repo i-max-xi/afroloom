@@ -13,6 +13,7 @@ import { textureArrays, textureDescriptions } from "../Customize/Configurator/ar
 import TextureItem from "../Customize/Configurator/LoomstoreTextureItem";
 import { Disclaimer } from "./components/disclaimer";
 import { Carousel } from 'primereact/carousel';
+import { useAllProducts } from "./hooks/useAllProducts";
         
 
 const ProductDetail = () => {
@@ -23,7 +24,9 @@ const ProductDetail = () => {
   const currencyFactor = useSelector((state) => state.currencySymbol.factor);
   const [quantity, setQuantity] = useState(1);
 
-  const { data: allProducts, isLoading, error } = useProducts();
+  // const { data: allProducts, isLoading, error } = useProducts();
+  const { data: allProducts, isLoading, error  } = useAllProducts();
+  
   const products = allProducts?.pages?.flatMap(page => page.products) || [];
 
 
