@@ -16,8 +16,13 @@ const CategoryPage = () => {
     cat.name.toLowerCase().replace(/\s+/g, "-") === id
   );
 
+
   // State for selected subcategory
   const [selectedSubcategory, setSelectedSubcategory] = useState("");
+
+
+
+  // const passedCatName = category?.name === "Men's Clothing" && selectedSubcategory === "T-Shirt" ? "Unisex" : category?.name;
 
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading, error } = useProducts(category?.name);
   // const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading, error } = useProducts();
@@ -29,10 +34,9 @@ const CategoryPage = () => {
 
 
   // Get filtered products based on the selected subcategory
-  const filteredProducts = products.filter((product) =>
-    // product.name.toLowerCase().includes(searchQuery.toLowerCase()) &&
-    (selectedSubcategory ? product.child_category === selectedSubcategory : product.parent_category === category?.name)
-  );
+  const filteredProducts = selectedSubcategory ? products.filter((product) =>
+    (product.child_category === selectedSubcategory)
+  ) : products;
   
 
 

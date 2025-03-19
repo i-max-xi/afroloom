@@ -25,11 +25,19 @@ const fetchProducts = async ({ pageParam = null, category }) => {
   }
 
   if (category) {
+    if(category === "Men's Clothing") {
+      q = query(collection(db, shopCollectionRef), 
+      // orderBy("name"), 
+      where("parent_category", "in", ["Men's Clothing", "Unisex"]), // Filter products by category
+      limit(PAGE_SIZE)
+    )
+  } else {
     q = query(collection(db, shopCollectionRef), 
       // orderBy("name"), 
       where("parent_category", "==", category), // Filter products by category
       limit(PAGE_SIZE)
-    );
+    )
+  }
   }
 
   const snapshot = await getDocs(q);
