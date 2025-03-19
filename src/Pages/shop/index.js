@@ -8,16 +8,23 @@ import { useProducts } from "./hooks/useProducts";
 import { FaFilter } from "react-icons/fa";
 import { categories } from "./Data/products";
 import { LazyScreen } from "./components/lazy-screen";
+import { useAllProducts } from "./hooks/useAllProducts";
 
 
 const ShopPage = () => {
   const [searchQuery, setSearchQuery] = useState("");
 
-  const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading, error } = useProducts();
+  const { data: allProducts } = useAllProducts();
+    // const products = allProducts?.pages?.flatMap(page => page.products) || [];
+
+  const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading, error } = useProducts(searchQuery);
   const [selectedCategory, setSelectedCategory] = useState(""); // Category filter state
 
 
-  const products = data
+  const products = searchQuery ? allProducts?.pages?.flatMap(page => page.products).filter((product) =>
+    product.name.toLowerCase().includes(searchQuery.toLowerCase()) &&
+    (selectedCategory ? product.parent_category === selectedCategory : true)
+  ) : data
     ? data.pages.flatMap((page) => page.products)
         .filter((product) =>
           product.name.toLowerCase().includes(searchQuery.toLowerCase()) &&
@@ -97,7 +104,7 @@ const ShopPage = () => {
         </div>
           {/* Load More Button */}
           <div className="text-center my-6">
-          {hasNextPage && !isLoading && (
+          {hasNextPage && !isLoading && !searchQuery && (
             <button
               onClick={() => fetchNextPage()}
               disabled={isFetchingNextPage}

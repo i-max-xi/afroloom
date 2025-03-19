@@ -20,6 +20,7 @@ const CategoryPage = () => {
   const [selectedSubcategory, setSelectedSubcategory] = useState("");
 
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading, error } = useProducts();
+  
 
   const products = data
   ? data.pages.flatMap((page) => page.products) || []
