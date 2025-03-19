@@ -19,7 +19,8 @@ const CategoryPage = () => {
   // State for selected subcategory
   const [selectedSubcategory, setSelectedSubcategory] = useState("");
 
-  const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading, error } = useProducts();
+  const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading, error } = useProducts(category?.name);
+  // const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading, error } = useProducts();
   
 
   const products = data
@@ -53,6 +54,7 @@ const CategoryPage = () => {
    
   
     if (error) {
+      console.log("error loading products:", error)
       return <div className="text-center text-red-500">Error loading products</div>;
     }
 
