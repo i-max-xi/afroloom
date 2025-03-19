@@ -16,10 +16,16 @@ const CategoryPage = () => {
     cat.name.toLowerCase().replace(/\s+/g, "-") === id
   );
 
+
   // State for selected subcategory
   const [selectedSubcategory, setSelectedSubcategory] = useState("");
 
-  const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading, error } = useProducts();
+
+
+  // const passedCatName = category?.name === "Men's Clothing" && selectedSubcategory === "T-Shirt" ? "Unisex" : category?.name;
+
+  const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading, error } = useProducts(category?.name);
+  // const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading, error } = useProducts();
   
 
   const products = data
@@ -28,10 +34,9 @@ const CategoryPage = () => {
 
 
   // Get filtered products based on the selected subcategory
-  const filteredProducts = products.filter((product) =>
-    // product.name.toLowerCase().includes(searchQuery.toLowerCase()) &&
-    (selectedSubcategory ? product.child_category === selectedSubcategory : product.parent_category === category?.name)
-  );
+  const filteredProducts = selectedSubcategory ? products.filter((product) =>
+    (product.child_category === selectedSubcategory)
+  ) : products;
   
 
 
@@ -53,6 +58,7 @@ const CategoryPage = () => {
    
   
     if (error) {
+      console.log("error loading products:", error)
       return <div className="text-center text-red-500">Error loading products</div>;
     }
 
