@@ -72,7 +72,12 @@ const fetchProducts = async ({ pageParam = null, category, searchQuery }) => {
 
   // Filter by category
   if (category) {
-    q = query(q, where("parent_category", "==", category));
+    if(category === "Men's Clothing") {
+        q = query(q, where("parent_category", "in", ["Men's Clothing", "Unisex"]));  
+    }
+    else {
+      q = query(q, where("parent_category", "==", category));
+    }
   }
 
   // Filter by search query
