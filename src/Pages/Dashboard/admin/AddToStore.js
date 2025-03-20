@@ -23,7 +23,7 @@ export default function AddProduct() {
     id: uuidv4(),
     name: "",
     price: 0,
-    ready_in: "",
+    ready_in: "7 days",
     images: [],
     description: "",
     parent_category: null,
