@@ -11,6 +11,8 @@ import { LazyScreen } from "./components/lazy-screen";
 const CategoryPage = () => {
   const { id } = useParams();
   
+    const [searchQuery, setSearchQuery] = useState("");
+  
     // Find the selected category by name
   const category = categories.find((cat) => 
     cat.name.toLowerCase().replace(/\s+/g, "-") === id
@@ -20,11 +22,13 @@ const CategoryPage = () => {
   // State for selected subcategory
   const [selectedSubcategory, setSelectedSubcategory] = useState("");
 
+   const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading, error, isFetching } =
+      useProducts(category?.name, searchQuery);
 
 
   // const passedCatName = category?.name === "Men's Clothing" && selectedSubcategory === "T-Shirt" ? "Unisex" : category?.name;
 
-  const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading, error } = useProducts(category?.name);
+  // const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading, error } = useProducts(category?.name);
   // const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading, error } = useProducts();
   
 

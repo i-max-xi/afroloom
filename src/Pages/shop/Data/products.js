@@ -38,7 +38,7 @@ export const LoomStoreProducts = () => {
 //       ],
 //       description: "",
 //       parent_category: "Women's Clothing",
-//       child_category: "Formal Wear",
+//       child_category: 
 //       discount: 10,
 //       sizes: [
 //         { name: "XS", value: 0 }, 
@@ -130,7 +130,7 @@ export const LoomStoreProducts = () => {
 //       images: ["https://placehold.co/400"],
 //       description: "",
 //       parent_category: "Men's Clothing",
-//       child_category: "Formal Wear",
+//       child_category: 
 //       discount: 0,
 //       sizes: [
 //         { name: "XS", value: 0 }, 
@@ -223,9 +223,9 @@ export const LoomStoreProducts = () => {
       image: "https://example.com/womens-clothing.jpg",
       children: [
         "T-Shirt",
-        "Formal Wear",
+        
         "Kaftan",
-        "Shirt",
+        
         "Trousers",
         "Shorts"
       ]
@@ -236,8 +236,8 @@ export const LoomStoreProducts = () => {
       children: [
         "T-Shirt",
         "Kaftan",
-        "Formal Wear",
-        "Shirt",
+        
+        
         "Trousers",
         "Shorts"
       ]
@@ -250,7 +250,7 @@ export const LoomStoreProducts = () => {
     //     "Girls’ Outfits (Traditional and Casual)",
     //     "Matching Family Sets",
     //     "School Uniforms",
-    //     "Shirt",
+    //     
     //     "T-Shirt",
     //     "Trousers",
     //     "Shorts"
@@ -261,8 +261,8 @@ export const LoomStoreProducts = () => {
       name: "Unisex",
       image: "https://example.com/mens-clothing.jpg",
       children: [
-        "Formal Wear",
-        "Shirt",
+        
+        
         "T-Shirt",
         "Trousers",
         "Shorts"
@@ -291,8 +291,8 @@ export const LoomStoreProducts = () => {
 
 
   export const categoriesBreakdown = {
-    "Women's Clothing": ["T-Shirt", "Formal Wear", "Kaftan", "Shirt", "Trousers"],
-    "Men's Clothing": ["T-Shirt", "Formal Wear", "Kaftan", "Shirt",  "Trousers"],
+    "Women's Clothing": ["T-Shirt",  "Kaftan",  "Trousers"],
+    "Men's Clothing": ["T-Shirt",  "Kaftan",   "Trousers"],
     // "Children's Clothing": [
     //   "Boys’ Outfits (Traditional and Casual)",
     //   "Girls’ Outfits (Traditional and Casual)",
@@ -300,7 +300,7 @@ export const LoomStoreProducts = () => {
     //   "School Uniforms",
     //   "T-Shirt",
     // ],
-   "Unisex": [ "Shirt", "T-Shirt", "Trousers"],
+   "Unisex": [  "T-Shirt", "Trousers"],
    "Accessories": ["Necklace ", "Bangles", "Necklace & Bangles"],
    "Style & Sew": ["Male ", "Female"],
   };
