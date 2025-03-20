@@ -29,10 +29,33 @@ export default function AddProduct() {
     parent_category: null,
     child_category: null,
     discount: 0,
-    sizes: [{
-      name: "M",
-      value: 0
-    }],
+    sizes: [
+      {
+        name: "S",
+        value: 0
+      },
+      {
+        name: "M",
+        value: 0
+      },
+      {
+        name: "L",
+        value: 0
+      },
+      {
+        name: "XL",
+        value: 0
+      },
+      {
+        name: "2XL",
+        value: 0
+      },
+      {
+        name: "3XL",
+        value: 0
+      },
+      
+    ],
   });
 
   const toastRef = useRef(null);
