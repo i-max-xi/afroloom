@@ -60,7 +60,7 @@
 // };
 
 import { useQuery, useInfiniteQuery } from "@tanstack/react-query";
-import { collection, getDocs, query, orderBy, limit, startAfter, where } from "firebase/firestore";
+import { collection, getDocs, query, orderBy, limit, startAfter, where, startAt, endAt } from "firebase/firestore";
 import { db } from "../../../firebase";
 
 const PAGE_SIZE = 10; // Number of products per page
@@ -72,24 +72,21 @@ const fetchProducts = async ({ pageParam = null, category, searchQuery }) => {
 
   // Filter by category
   if (category) {
-    if(category === "Men's Clothing") {
-        q = query(q, where("parent_category", "in", ["Men's Clothing", "Unisex"]));  
-    }
-    else {
-      q = query(q, where("parent_category", "==", category));
-    }
+    q = category === "Men's Clothing"
+      ? query(q, where("parent_category", "in", ["Men's Clothing", "Unisex"]))
+      : query(q, where("parent_category", "==", category));
   }
 
   // Filter by search query
+
   if (searchQuery) {
-    
-    q = query(q, where("name", "in", ["a"]));
+    q = query(q, where("search_keywords", "array-contains", searchQuery.toLowerCase()));
   }
 
-  // Pagination
+  // Pagination (Firestore requires orderBy for startAfter)
   q = pageParam
-    ? query(q,  startAfter(pageParam), limit(PAGE_SIZE))
-    : query(q, limit(PAGE_SIZE));
+    ? query(q, orderBy("__name__"), startAfter(pageParam), limit(PAGE_SIZE))
+    : query(q, orderBy("__name__"), limit(PAGE_SIZE));
 
   const snapshot = await getDocs(q);
   const lastDoc = snapshot.docs[snapshot.docs.length - 1];

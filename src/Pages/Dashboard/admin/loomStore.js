@@ -1,15 +1,12 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState,  useRef } from "react";
 import { DataTable } from "primereact/datatable";
 import { Column } from "primereact/column";
 import { Button } from "primereact/button";
 import { Dialog } from "primereact/dialog";
-import { InputText } from "primereact/inputtext";
 import { Toast } from "primereact/toast";
-import { ProgressSpinner } from "primereact/progressspinner";
 import AllServices from "../../../Services/usersService";
-import { collection, addDoc, deleteDoc, doc } from "firebase/firestore";
+import {  deleteDoc, doc } from "firebase/firestore";
 import { db } from "../../../firebase";
-import { useProducts } from "../../shop/hooks/useProducts";
 import { Spinner } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import { Image } from 'primereact/image';
