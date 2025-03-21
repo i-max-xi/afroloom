@@ -359,6 +359,7 @@ const ProductDetail = () => {
               value={relatedProducts} 
               numVisible={3}  // Ensure 3 items are visible on desktop
               numScroll={1}
+              
               responsiveOptions={responsiveOptions} 
               itemTemplate={(item) => {
                 return (
@@ -370,7 +371,7 @@ const ProductDetail = () => {
               showIndicators={false}  // Hide default dots
               showNavigators={true}   // Show navigation arrows
               circular  // Infinite loop
-              autoplayInterval={3000} // Auto-scroll every 3 seconds
+              autoplayInterval={1200} // Auto-scroll every 3 seconds
             />
             {/* <div className="relative overflow-hidden grid grid-cols-1 lg:grid-cols-3">
               <motion.div
