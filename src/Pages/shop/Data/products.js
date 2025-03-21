@@ -226,8 +226,7 @@ export const LoomStoreProducts = () => {
         
         "Kaftan",
         
-        "Trousers",
-        "Shorts"
+       
       ]
     },
     {
@@ -238,8 +237,7 @@ export const LoomStoreProducts = () => {
         "Kaftan",
         
         
-        "Trousers",
-        "Shorts"
+       
       ]
     },
     // {
@@ -264,8 +262,7 @@ export const LoomStoreProducts = () => {
         
         
         "T-Shirt",
-        "Trousers",
-        "Shorts"
+       
       ]
     },
     {
