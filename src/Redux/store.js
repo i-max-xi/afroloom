@@ -111,6 +111,8 @@ const shopCartSlice = createSlice({
       );
     },
 
+   
+
     updateShopItemQuantity: (state, action) => {
       const { id, selectedSize, quantity } = action.payload;
       const item = state.find((item) => item.id === id && item.selectedSize === selectedSize);

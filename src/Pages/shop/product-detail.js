@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { AnimatePresence, motion } from "framer-motion";
 import ProductCard from "./components/product-card";
 import Nav from "../../Components/Nav";
-import { addToShopCart } from "../../Redux/store";
+import { addToShopCart, removeFromShopCart } from "../../Redux/store";
 import { useProducts } from "./hooks/useProducts";
 import { LazyScreen } from "./components/lazy-screen";
 import { SeeAll } from "../Customize/Configurator/SeeAll";
@@ -108,6 +108,17 @@ const ProductDetail = () => {
 
   // Handle Add to Cart
   const handleAddToCart = () => {
+
+    if (isInCart) {
+      // dispatch(removeFromShopCart({ id: product.id, selectedSize: selectedSize.name }));
+  
+      // toastRef.current.show({
+      //   severity: "info",
+      //   summary: "Item removed from cart",
+      // });
+      return;
+    }
+
     if (!selectedSize) return;
 
     if (needsTextile && selectedPrintOn === "#ffffff") {
@@ -117,6 +128,8 @@ const ProductDetail = () => {
       });
       return;
     }
+
+ 
 
     dispatch(
       addToShopCart({
@@ -339,11 +352,11 @@ const ProductDetail = () => {
 
             {/* Add to Cart Button */}
             <button
-              disabled={!selectedSize || isInCart}
+              disabled={!isInCart && !selectedSize}
               onClick={  handleAddToCart}
-              className={`mt-6 bg-yellow-500 text-white px-6 py-3 rounded-lg hover:bg-yellow-600 transition disabled:opacity-50 disabled:hover:bg-yellow-500 disabled:cursor-not-allowed`}
+              className={`mt-6  text-white px-6 py-3 rounded-lg  transition disabled:opacity-50 disabled:hover:bg-yellow-500 disabled:cursor-not-allowed ${isInCart ?  "bg-green-500 hover:bg-green-600" : "bg-yellow-500 hover:bg-yellow-600" }`}
             >
-              {isInCart ? "In Cart": "Add to Cart"} 
+              {isInCart ? "In cart": "Add to Cart"} 
             </button>
           </div>
         </div>

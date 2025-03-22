@@ -242,8 +242,8 @@ const CustomizeCheckout = () => {
     dispatch(removeFromCart(name));
   };
 
-  const handleShopRemoveItem = (name) => {
-    dispatch(removeFromShopCart(name));
+  const handleShopRemoveItem = (item) => {
+      dispatch(removeFromShopCart({ id: item.id, selectedSize: item.selectedSize }));
   };
 
   const handleshopItemQuantityChange = (id, selectedSize, type) => {
@@ -425,26 +425,27 @@ const CustomizeCheckout = () => {
                            </p>
                          </div>
                          <div className=" flex flex-col items-center gap-4 p-2">
+                         <button
+                            onClick={() => handleshopItemQuantityChange(selectedItem.id, selectedItem.selectedSize, "plus")}
+                            className="bg-gray-200 px-3 py-1 rounded-lg text-sm"
+                          >
+                            +
+                          </button>
+                          <span className="text-sm font-bold">{selectedItem?.quantity}</span>
                           <button
                             onClick={() => handleshopItemQuantityChange(selectedItem.id, selectedItem.selectedSize, "minus")}
                             className="bg-gray-200 px-3 py-1 rounded-lg text-sm"
                           >
                             -
                           </button>
-                          <span className="text-sm font-bold">{selectedItem?.quantity}</span>
-                          <button
-                            onClick={() => handleshopItemQuantityChange(selectedItem.id, selectedItem.selectedSize, "plus")}
-                            className="bg-gray-200 px-3 py-1 rounded-lg text-sm"
-                          >
-                            +
-                          </button>
+                          
                         </div>
                        </div>
                        <p className="col-1  cursor-pointer">
                          <i
                            className="pi pi-trash "
                            style={{ color: "red" }}
-                           onClick={() => handleShopRemoveItem(selectedItem.name)}
+                           onClick={() => handleShopRemoveItem(selectedItem)}
                          ></i>
                        </p>
                      </li>

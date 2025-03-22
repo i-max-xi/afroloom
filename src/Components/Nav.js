@@ -108,6 +108,19 @@ const Nav = ({ noCurrency }) => {
 
       {/* Right Section */}
       <div className="flex items-center gap-4">
+        <div className="flex md:hidden">
+          <li className="nav-item mobile-nav-item">
+            <Link className="nav-link" to="/customize-checkout">
+            <i className="pi pi-shopping-cart p-overlay-badge">
+              <Badge
+                severity="warning"
+                style={{ scale: "0.5" }}
+                value={cartItems.length + shopCartItem.length}
+              ></Badge>
+            </i>
+           </Link>
+          </li>
+        </div>
         {!signedin ? (
           <Link
             to="/signin"
