@@ -8,7 +8,6 @@ export const Disclaimer = () => (
   >
     <p className="text-yellow-600 text-sm font-bold">⚠️</p>
     <p className="text-yellow-800 font-medium">
-      Please note that the fabric showcased in each Formal and African print is for display purposes only. Clients must select their own fabric to place an order.
-    </p>
+    Emphasis is on the dress style;  customers must choose their fabric before ordering.    </p>
   </motion.div>
 );

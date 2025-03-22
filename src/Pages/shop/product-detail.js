@@ -1,5 +1,5 @@
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { AnimatePresence, motion } from "framer-motion";
@@ -14,11 +14,16 @@ import TextureItem from "../Customize/Configurator/LoomstoreTextureItem";
 import { Disclaimer } from "./components/disclaimer";
 import { Carousel } from 'primereact/carousel';
 import { useAllProducts } from "./hooks/useAllProducts";
+import { Toast } from "primereact/toast";
         
 
 const ProductDetail = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
+  const toastRef = useRef(null);
+    const shopCart = useSelector((state) => state.shopCart);
+  
+  const isInCart = shopCart.some((item) => item.id === id);
 
   const currencySymbol = useSelector((state) => state.currencySymbol.symbol);
   const currencyFactor = useSelector((state) => state.currencySymbol.factor);
@@ -37,6 +42,8 @@ const ProductDetail = () => {
     name: "",
     value: 0
   });
+
+  const needsTextile = ["Style & Sew"].includes(product?.parent_category)
 
   useEffect(() => {
     window.scrollTo(0, 0); 
@@ -81,23 +88,6 @@ const ProductDetail = () => {
     ).slice(0, 6)
   : [];
 
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % relatedProducts.length);
-    }, 3000);
-    return () => clearInterval(interval);
-  }, [relatedProducts.length]);
-
-  const handlePrev = () => {
-    setCurrentIndex((prev) => (prev === 0 ? relatedProducts.length - 1 : prev - 1));
-  };
-
-  const handleNext = () => {
-    setCurrentIndex((prev) => (prev + 1) % relatedProducts.length);
-  };
-  
 
   // Base price with no discount
   const originalPrice = (((product?.price * quantity) + selectedSize?.value) * currencyFactor).toLocaleString();
@@ -113,9 +103,20 @@ const ProductDetail = () => {
     ? (basePrice + selectedSize?.value) * currencyFactor
     : basePrice * currencyFactor;
 
+
+
+
   // Handle Add to Cart
   const handleAddToCart = () => {
     if (!selectedSize) return;
+
+    if (needsTextile && selectedPrintOn === "#ffffff") {
+      toastRef.current.show({
+        severity: "error",
+        summary: "Cannot Proceed without selecting a textile",
+      });
+      return;
+    }
 
     dispatch(
       addToShopCart({
@@ -129,6 +130,10 @@ const ProductDetail = () => {
         selectedTextile: selectedPrintOn
       })
     );
+    toastRef.current.show({
+      severity: "success",
+      summary: "Added to cart",
+    });
   };
 
   if (isLoading) {
@@ -177,8 +182,10 @@ const ProductDetail = () => {
   return (
     <>
       <Nav />
+      <Toast ref={toastRef} />
       
-      { ["Formal Wear", "African Print", "African Print Dresses", "African Print Shirts"].includes(product?.child_category) && <Disclaimer />}
+      
+      { needsTextile && <Disclaimer />}
       <div className="max-w-6xl mx-auto p-6 md:p-10">
         {/* Product Details */}
         <div className="flex flex-col md:flex-row gap-10">
@@ -254,7 +261,7 @@ const ProductDetail = () => {
             )}
 
            {/* textiltes */}
-           {["Formal Wear", "African Print", "African Print Dresses", "African Print Shirts"].includes(product?.child_category) && (
+           {needsTextile && (
             <div>
               <h5 className="text-base font-semibold mt-4">Choose Textile</h5> 
               <div className="texture-buttons-container">
@@ -332,11 +339,11 @@ const ProductDetail = () => {
 
             {/* Add to Cart Button */}
             <button
-              disabled={!selectedSize}
-              onClick={handleAddToCart}
-              className="mt-6 bg-yellow-500 text-white px-6 py-3 rounded-lg hover:bg-yellow-600 transition disabled:opacity-50 disabled:hover:bg-yellow-500"
+              disabled={!selectedSize || isInCart}
+              onClick={  handleAddToCart}
+              className={`mt-6 bg-yellow-500 text-white px-6 py-3 rounded-lg hover:bg-yellow-600 transition disabled:opacity-50 disabled:hover:bg-yellow-500 disabled:cursor-not-allowed`}
             >
-              Add to Cart
+              {isInCart ? "In Cart": "Add to Cart"} 
             </button>
           </div>
         </div>
@@ -373,21 +380,7 @@ const ProductDetail = () => {
               circular  // Infinite loop
               autoplayInterval={1200} // Auto-scroll every 3 seconds
             />
-            {/* <div className="relative overflow-hidden grid grid-cols-1 lg:grid-cols-3">
-              <motion.div
-                className="flex"
-                animate={{ x: `-${currentIndex * 100}%` }}
-                transition={{ ease: "easeInOut", duration: 0.5 }}
-              >
-                {relatedProducts.map((product, index) => (
-                  <div key={product.id} className="w-[80vw] flex-shrink-0 mx-4">
-                    <ProductCard product={product} />
-                  </div>
-                ))}
-              </motion.div>
-              <button onClick={handlePrev} className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full shadow-lg">❮</button>
-              <button onClick={handleNext} className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-gray-800 text-white p-2 rounded-full shadow-lg">❯</button>
-            </div> */}
+            
           </div>
         )}
       </div>
