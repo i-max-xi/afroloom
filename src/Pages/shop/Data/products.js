@@ -298,7 +298,7 @@ export const LoomStoreProducts = () => {
     //   "T-Shirt",
     // ],
    "Unisex": [  "T-Shirt", "Trousers"],
-   "Accessories": ["Necklace ", "Bangles", "Necklace & Bangles"],
+   "Accessories": ["Necklace", "Bangles", "Necklace & Bangles"],
    "Style & Sew": ["Male ", "Female"],
   };
   

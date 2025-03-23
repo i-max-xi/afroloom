@@ -12,13 +12,18 @@ import { useSelector } from "react-redux";
 import { Image } from 'primereact/image';
 import EditProductDialog from "./components/EditComponent";
 import { useAllProducts } from "../../shop/hooks/useAllProducts";
+import { FaFilter } from "react-icons/fa";
+import { categories } from "../../shop/Data/products";
         
 
 const LoomStore = () => {
-  const { data: allProducts, isLoading: allProductsLoading, error, refetch } = useAllProducts();
+  const { data: allProducts, isLoading: allProductsLoading, error, refetch, isFetching } = useAllProducts();
   const products = allProducts?.pages?.flatMap(page => page.products) || [];
 
   const [searchQuery, setSearchQuery] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("");
+  const [selectedChildCategory, setSelectedChildCategory] = useState(""); // Child category
+  const [childCategories, setChildCategories] = useState([]);
 
   const currencySymbol = useSelector((state) => state.currencySymbol.symbol);
   const currencyFactor = useSelector((state) => state.currencySymbol.factor);
@@ -87,6 +92,16 @@ const LoomStore = () => {
     setDeleteDialog(false);
   };
 
+    const handleParentCategoryChange = (e) => {
+      const parent = e.target.value;
+      setSelectedCategory(parent);
+      setSelectedChildCategory(""); // Reset child category
+  
+      // Find corresponding child categories
+      const selectedParentCategory = categories.find((cat) => cat.name === parent);
+      setChildCategories(selectedParentCategory ? selectedParentCategory.children || [] : []);
+    };
+
     
   if (allProductsLoading) {
     return (
@@ -104,15 +119,55 @@ const LoomStore = () => {
     <div className="p-m-3">
       <Toast ref={toast} />
       <h5>Manage Products</h5>
-      <div id="products" className="my-6 flex justify-center">
-          <input
-            type="text"
-            placeholder="Search for products..."
-            className="w-full max-w-md p-3 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-yellow-500"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-          />
-        </div>
+      {/* Search & Filter Bar */}
+              <div className="w-full flex justify-center items-center my-6">
+                <div id="products" className="relative w-full max-w-lg flex items-center justify-between bg-white border border-gray-300 rounded-full px-4 py-2 shadow-sm">
+                  {/* Search Input */}
+                  <input
+                    type="text"
+                    placeholder="Search products..."
+                    className="w-full border-none outline-none p-2 text-gray-700"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                  />
+      
+                  <p className="relative flex items-center mt-2">
+                    {isFetching && <Spinner className="absolute right-28 top-1/2 transform -translate-y-1/2 " />}
+                  </p>      
+                  <div className="flex items-center gap-1 text-xs w-[60%] justify-end">
+                    {/* Parent Category Filter */}
+                    <select
+                      className=" bg-transparent border-none outline-none text-gray-700 cursor-pointer max-w-[55%]"
+                      value={selectedCategory}
+                      onChange={handleParentCategoryChange}
+                    >
+                      <option value="">All Categories</option>
+                      {categories.map((cat) => (
+                        <option key={cat.name} value={cat.name}>{cat.name}</option>
+                      ))}
+                    </select>
+      
+                    {/* Child Category Filter (Only visible when a parent category is selected) */}
+                    {childCategories.length > 0 && (
+                      <select
+                        className=" bg-transparent border-none outline-none text-gray-700 cursor-pointer max-w-[40%]"
+                        value={selectedChildCategory}
+                        onChange={(e) => setSelectedChildCategory(e.target.value)}
+                      >
+                        <option value="">All</option>
+                        {childCategories.map((child) => (
+                          <option key={child} value={child}>{child}</option>
+                        ))}
+                      </select>
+                    )}
+      
+                    {/* Filter Icon */}
+                    <FaFilter className="text-gray-500 ml-2 w-[5%]" />
+                  </div>      
+                  
+                </div>
+              </div>
+      
       <DataTable value={filteredProducts} paginator rows={10} rowsPerPageOptions={[5, 10, 25]}>
       <Column
           header="Actions"

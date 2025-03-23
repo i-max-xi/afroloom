@@ -67,7 +67,7 @@ const ProductDetail = () => {
       setSelectedSeeAll({ title: '', titleDisplay: '', array: [] });
     };
 
-    const [selectedPrintOn, setSelectedPrintOn] = useState("#ffffff");
+    const [selectedPrintOn, setSelectedPrintOn] = useState("");
   
 
     const handleTextureChange = (newTexture) => {
@@ -121,7 +121,7 @@ const ProductDetail = () => {
 
     if (!selectedSize) return;
 
-    if (needsTextile && selectedPrintOn === "#ffffff") {
+    if (needsTextile && selectedPrintOn === "") {
       toastRef.current.show({
         severity: "error",
         summary: "Cannot Proceed without selecting a textile",
