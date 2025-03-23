@@ -1,17 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { useDispatch } from "react-redux";
 import { motion } from "framer-motion";
 import { categories } from "./Data/products";
 import ProductCard from "./components/product-card";
 import Nav from "../../Components/Nav";
 import { useProducts } from "./hooks/useProducts";
 import { LazyScreen } from "./components/lazy-screen";
+import { Spinner } from "./components/spinner";
 
 const CategoryPage = () => {
   const { id } = useParams();
   
-    const [searchQuery, setSearchQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
   
     // Find the selected category by name
   const category = categories.find((cat) => 
@@ -21,43 +21,39 @@ const CategoryPage = () => {
 
   // State for selected subcategory
   const [selectedSubcategory, setSelectedSubcategory] = useState("");
+    const [firstLoad, setFirstLoad] = useState(true); // Track first load
+  
 
    const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading, error, isFetching } =
       useProducts(category?.name, searchQuery, selectedSubcategory);
 
-
-  // const passedCatName = category?.name === "Men's Clothing" && selectedSubcategory === "T-Shirt" ? "Unisex" : category?.name;
-
-  // const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading, error } = useProducts(category?.name);
-  // const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading, error } = useProducts();
-  
 
   const products = data
   ? data.pages.flatMap((page) => page.products) || []
   : [];
 
 
-  // Get filtered products based on the selected subcategory
-  const filteredProducts = selectedSubcategory ? products.filter((product) =>
-    (product.child_category === selectedSubcategory)
-  ) : products;
-  
+    useEffect(() => {
+      if (!isFetching) {
+        setFirstLoad(false); // Disable LazyScreen after first load
+      }
+    }, [isFetching]);
 
 
-    if (isLoading) {
-      return (
-        <LazyScreen />
-      );
-    }
+  if (firstLoad && isFetching) {
+    return (
+      <LazyScreen />
+    );
+  }
 
-    if (!category) {
-      return (
-        <div className="text-center text-gray-500 mt-10">
-          <h2 className="text-2xl font-bold">Category Not Found</h2>
-          <p>Please check the category name.</p>
-        </div>
-      );
-    }
+  if (!category) {
+    return (
+      <div className="text-center text-gray-500 mt-10">
+        <h2 className="text-2xl font-bold">Category Not Found</h2>
+        <p>Please check the category name.</p>
+      </div>
+    );
+  }
 
    
   
@@ -74,6 +70,26 @@ const CategoryPage = () => {
         {/* Main Category Name */}
         <div className="h-[20vh] flex items-center justify-center">
           <h2 className="text-3xl font-bold">{category.name}</h2>
+        </div>
+
+          {/* Search & Filter Bar */}
+          <div className="w-full flex justify-center items-center my-6">
+          <div id="products" className="relative w-full max-w-lg flex items-center justify-between bg-white border border-gray-300 rounded-full px-4 py-2 shadow-sm">
+            {/* Search Input */}
+            <input
+              type="text"
+              placeholder="Search products..."
+              className="w-full border-none outline-none p-2 text-gray-700"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
+
+            <p className="relative flex items-center mt-2">
+              {isFetching && <Spinner className="absolute right-28 top-1/2 transform -translate-y-1/2 " />}
+            </p>      
+                  
+            
+          </div>
         </div>
 
         {/* Subcategory Buttons */}
@@ -105,9 +121,9 @@ const CategoryPage = () => {
 
         {/* Product List */}
         <div className="mt-10">
-          {filteredProducts.length > 0 ? (
+          {products.length > 0 ? (
             <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-              {filteredProducts.map((product) => (
+              {products.map((product) => (
                 <ProductCard key={product.id} product={product} />
               ))}
             </div>
