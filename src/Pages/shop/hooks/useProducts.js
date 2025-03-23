@@ -67,26 +67,42 @@ const PAGE_SIZE = 10; // Number of products per page
 const shopCollectionRef = "loomStore";
 
 // Fetch products with category & search filtering
-const fetchProducts = async ({ pageParam = null, category, searchQuery }) => {
+const fetchProducts = async ({ pageParam = null, category, searchQuery, child_category }) => {
   let q = collection(db, shopCollectionRef);
+  let conditions = [];
 
   // Filter by category
   if (category) {
-    q = category === "Men's Clothing"
-      ? query(q, where("parent_category", "in", ["Men's Clothing", "Unisex"]))
-      : query(q, where("parent_category", "==", category));
+    if (category === "Men's Clothing") {
+      conditions.push(where("parent_category", "in", ["Men's Clothing", "Unisex"]));
+    } else {
+      conditions.push(where("parent_category", "==", category));
+    }
+  }
+
+  // Filter by child category (only if passed)
+  if (child_category) {
+    conditions.push(where("child_category", "==", child_category));
   }
 
   // Filter by search query
-
   if (searchQuery) {
-    q = query(q, where("search_keywords", "array-contains", searchQuery.toLowerCase()));
+    conditions.push(where("search_keywords", "array-contains", searchQuery.toLowerCase()));
   }
 
   // Pagination (Firestore requires orderBy for startAfter)
-  q = pageParam
-    ? query(q, orderBy("__name__"), startAfter(pageParam), limit(PAGE_SIZE))
-    : query(q, orderBy("__name__"), limit(PAGE_SIZE));
+  // q = pageParam
+  //   ? query(q, orderBy("__name__"), startAfter(pageParam), limit(PAGE_SIZE))
+  //   : query(q, orderBy("__name__"), limit(PAGE_SIZE));
+
+  // Apply conditions to query
+  q = query(q, ...conditions, orderBy("__name__"), limit(PAGE_SIZE));
+
+  // Pagination
+  if (pageParam) {
+    q = query(q, startAfter(pageParam));
+  }
+  
 
   const snapshot = await getDocs(q);
   const lastDoc = snapshot.docs[snapshot.docs.length - 1];
@@ -96,10 +112,10 @@ const fetchProducts = async ({ pageParam = null, category, searchQuery }) => {
 };
 
 // Hook for paginated product fetching
-export const useProducts = (category, searchQuery) => {
+export const useProducts = (category, searchQuery, child_category) => {
   return useInfiniteQuery({
-    queryKey: ["products", category, searchQuery], // Ensure query updates when filters change
-    queryFn: ({ pageParam }) => fetchProducts({ pageParam, category, searchQuery }),
+    queryKey: ["products", category, searchQuery, child_category], // Ensure query updates when filters change
+    queryFn: ({ pageParam }) => fetchProducts({ pageParam, category, searchQuery, child_category }),
     getNextPageParam: (lastPage) => lastPage.lastDoc || undefined,
     staleTime: 1000 * 60 * 5,
     refetchOnWindowFocus: false,

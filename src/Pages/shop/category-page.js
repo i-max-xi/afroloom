@@ -23,7 +23,7 @@ const CategoryPage = () => {
   const [selectedSubcategory, setSelectedSubcategory] = useState("");
 
    const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading, error, isFetching } =
-      useProducts(category?.name, searchQuery);
+      useProducts(category?.name, searchQuery, selectedSubcategory);
 
 
   // const passedCatName = category?.name === "Men's Clothing" && selectedSubcategory === "T-Shirt" ? "Unisex" : category?.name;
