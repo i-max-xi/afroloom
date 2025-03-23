@@ -5,20 +5,21 @@ import { CategorySection } from "./components/category-section";
 import IntroSection from "./components/intro-section";
 import { useProducts } from "./hooks/useProducts";
 
-import { FaFilter, FaSpinner } from "react-icons/fa";
+import { FaFilter } from "react-icons/fa";
 import { categories } from "./Data/products";
 import { LazyScreen } from "./components/lazy-screen";
-import { useAllProducts } from "./hooks/useAllProducts";
 import { Spinner } from "./components/spinner";
 
 const ShopPage = () => {
   const [searchQuery, setSearchQuery] = useState("");
-  const [selectedCategory, setSelectedCategory] = useState(""); // Category filter state
+  const [selectedCategory, setSelectedCategory] = useState("");
+  const [selectedChildCategory, setSelectedChildCategory] = useState(""); // Child category
+  const [childCategories, setChildCategories] = useState([]);
   const [firstLoad, setFirstLoad] = useState(true); // Track first load
 
   // Fetch products based on search or category
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading, error, isFetching } =
-    useProducts(selectedCategory, searchQuery);
+    useProducts(selectedCategory, searchQuery, selectedChildCategory);
 
   const products = data
     ? data.pages.flatMap((page) => page.products)
@@ -29,6 +30,16 @@ const ShopPage = () => {
       setFirstLoad(false); // Disable LazyScreen after first load
     }
   }, [isFetching]);
+
+  const handleParentCategoryChange = (e) => {
+    const parent = e.target.value;
+    setSelectedCategory(parent);
+    setSelectedChildCategory(""); // Reset child category
+
+    // Find corresponding child categories
+    const selectedParentCategory = categories.find((cat) => cat.name === parent);
+    setChildCategories(selectedParentCategory ? selectedParentCategory.children || [] : []);
+  };
 
   // Show LazyScreen only on first load
   if (firstLoad && isFetching) {
@@ -51,37 +62,54 @@ const ShopPage = () => {
         </div>
 
         {/* Search & Filter Bar */}
-        <div className="w-full flex justify-center items-center">
-          <div id="products" className="my-6 flex justify-center relative w-full max-w-md">
+        <div className="w-full flex justify-center items-center my-6">
+          <div id="products" className="relative w-full max-w-lg flex items-center justify-between bg-white border border-gray-300 rounded-full px-4 py-2 shadow-sm">
+            {/* Search Input */}
             <input
               type="text"
-              placeholder="Search for products..."
-              className="w-full p-3 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-yellow-500"
+              placeholder="Search products..."
+              className="w-full border-none outline-none p-2 text-gray-700"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
             />
-            {isFetching && (
-              <div className="absolute text-xs right-5 top-1/2 transform -translate-y-1/2 ">
-                <Spinner />
-              </div>
 
-            )}
-            {/* Category Filter Dropdown */}
-            <div className="absolute text-xs right-12 top-1/2 transform -translate-y-1/2">
+            <p className="relative flex items-center mt-2">
+              {isFetching && <Spinner className="absolute right-28 top-1/2 transform -translate-y-1/2 " />}
+            </p>      
+            <div className="flex items-center gap-1 text-xs w-[60%] justify-end">
+              {/* Parent Category Filter */}
               <select
-                className="bg-transparent border-none outline-none text-gray-700 cursor-pointer"
+                className=" bg-transparent border-none outline-none text-gray-700 cursor-pointer max-w-[55%]"
                 value={selectedCategory}
-                onChange={(e) => setSelectedCategory(e.target.value)}
+                onChange={handleParentCategoryChange}
               >
                 <option value="">All Categories</option>
-                {categories.map((el) => el.name).map((cat, index) => (
-                  <option key={index} value={cat}>{cat}</option>
+                {categories.map((cat) => (
+                  <option key={cat.name} value={cat.name}>{cat.name}</option>
                 ))}
               </select>
-              <FaFilter className="text-gray-500 inline-block ml-2" />
-            </div>
+
+              {/* Child Category Filter (Only visible when a parent category is selected) */}
+              {childCategories.length > 0 && (
+                <select
+                  className=" bg-transparent border-none outline-none text-gray-700 cursor-pointer max-w-[40%]"
+                  value={selectedChildCategory}
+                  onChange={(e) => setSelectedChildCategory(e.target.value)}
+                >
+                  <option value="">All</option>
+                  {childCategories.map((child) => (
+                    <option key={child} value={child}>{child}</option>
+                  ))}
+                </select>
+              )}
+
+              {/* Filter Icon */}
+              <FaFilter className="text-gray-500 ml-2 w-[5%]" />
+            </div>      
+            
           </div>
         </div>
+
 
         {/* Product Grid */}
         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
