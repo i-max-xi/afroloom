@@ -1,8 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-
 import { clearCart, clearShopCart, removeFromCart, removeFromShopCart, updateCustomzedItemQuantity, updateShopItemQuantity } from "../Redux/store";
-
 import Top from "../Assets/Headers/Check_Out.jpg";
 import LayoutHeaders from "../Components/LayoutHeaders";
 import { Link, useNavigate } from "react-router-dom";
@@ -12,6 +10,15 @@ import { RadioButton } from "primereact/radiobutton";
 import { useReactToPrint } from "react-to-print";
 import AllServices from "../Services/usersService";
 import { ProgressSpinner } from "primereact/progressspinner";
+import { Dialog } from "primereact/dialog";
+import {
+  getStorage,
+  ref,
+  uploadString,
+  getDownloadURL,
+} from "firebase/storage";
+import html2canvas from "html2canvas";
+import { storage } from "../firebase";
 
 const CustomizeCheckout = () => {
   const cartItems = useSelector((state) => state.customizedProduct.itemDetails);
@@ -31,6 +38,7 @@ const CustomizeCheckout = () => {
   const [tel, setTel] = useState("");
   const [referral, setReferral] = useState("");
   const [partnerInfo, setPartnerinfo] = useState(null);
+  const [showAfterPrint,setShowAfterPrint] = useState(false)
 
   const currencySymbol = useSelector((state) => state.currencySymbol.symbol);
   const currencyFactor = useSelector((state) => state.currencySymbol.factor);
@@ -81,7 +89,16 @@ const CustomizeCheckout = () => {
   const componentRef = useRef();
   const handlePrint = useReactToPrint({
     content: () => componentRef.current,
+    onSuccess: () => {
+      onClearCart();
+      resetInfos();
+    }
   });
+
+  const onClearCart = () => {
+    dispatch(clearShopCart())
+    dispatch(clearCart())
+  }
 
   const resetInfos = () => {
     setEmailAddress("");
@@ -93,26 +110,7 @@ const CustomizeCheckout = () => {
     setPartnerinfo(null);
   };
 
-  // const sashImages = useMemo(() => {
-  //   if (cartItems[0]?.uploadedImageLeft) {
-  //     return [
-  //       {
-  //         SashImageLeft: cartItems[0]?.uploadedImageLeft || "",
-  //       },
-  //     ];
-  //   }
-  //   if (cartItems[0].uploadedImageLeft && cartItems[0]?.uploadedImageRight) {
-  //     return [
-  //       {
-  //         SashImageLeft: cartItems[0]?.uploadedImageLeft || "",
-  //         SashImageRight: cartItems[0]?.uploadedImageRight || "",
-  //       },
-  //     ];
-  //   }
-  //   if (!cartItems[0].uploadedImageLeft && !cartItems[0]?.uploadedImageRight) {
-  //     return [null];
-  //   }
-  // }, [cartItems]);
+
 
   const verifyPartner = async () => {
     setIsLoading(true);
@@ -181,9 +179,30 @@ const CustomizeCheckout = () => {
     AllServices.updatePartner(partnerInfo.id, updatedPartnerInfo);
   };
 
-  const onSuccess = (reference) => {
-    // handlePrint();
+  const onSuccess = async (reference) => {
+
+    if (!componentRef.current) {
+      console.error("componentRef is null");
+      return;
+    }
+
     console.log("start", reference);
+
+    try {
+
+     const image = await html2canvas(componentRef.current, {
+      useCORS: true, // Ensure cross-origin images are captured
+    });
+
+    // Convert the captured image into a data URL
+    const imageDataURL = image.toDataURL("image/png");
+
+    // Upload the captured image to Firebase Storage
+    const storageRef = ref(storage, `Order_images/${Date.now()}.png`);
+    await uploadString(storageRef, imageDataURL, "data_url");
+
+    // Get the download URL of the uploaded image
+    const downloadURL = await getDownloadURL(storageRef);
 
     // Include the structured cart items data in the userInfo object
     const userInfo = {
@@ -192,14 +211,37 @@ const CustomizeCheckout = () => {
       email,
       city,
       tel,
-      cartItems: cartItemsData,
+      customizedProducts: cartItemsData.length > 0 ? cartItemsData : "N/A",
+      shopItems: shopCart.length > 0 ? 
+      [...shopCart.map((item) => {
+        return {
+          name: item.name,
+          quantity: item.quantity,
+          price: currencySymbol + (item.price * currencyFactor).toFixed(),
+          size: item.selectedSize,
+          textile: item.selectedTextile || "N/A",
+          
+          // image: item.image,
+        };
+      }), 
+      { summary: downloadURL }
+    ] : "N/A",
       ReferedPerson: referral,
       subject: "New Product Order",
-      timestamp: new Date().toISOString(), // Adding timestamp
+      dateTime: new Date().toLocaleString("en-US", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+        hour12: true, // Shows AM/PM format
+      }),
+      total: currencySymbol + totalToPayNumeric.toFixed(),
       balanceToPay: parseFloat(totalToPay) - totalToPayNumeric,
     };
 
-    fetch(process.env.REACT_APP_formSpree, {
+    const response = await fetch(process.env.REACT_APP_formSpree, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -207,16 +249,24 @@ const CustomizeCheckout = () => {
       body: JSON.stringify(userInfo),
     });
 
+    
+
+
+    if (!response.ok) {
+      throw new Error("Failed to send order data");
+    }
+
     AllServices.addOrder(userInfo);
 
     if (partnerInfo !== null) {
       updatePartnerInfo();
     }
 
-    resetInfos();
-    dispatch(clearCart());
+    setShowAfterPrint(true)
+  } catch (error) {
+    console.error("Error processing order:", error);
+  }
 
-    console.log("Payment successful", reference);
   };
 
   const onClose = () => {
@@ -303,6 +353,7 @@ const CustomizeCheckout = () => {
         ) : (
           <>
             <div className="mt-5 mb-5">
+              <section ref={componentRef}>
               {cartItems.length > 0 && (
                 <>
                 <h2 className="text-lg lg:text-xl">Customized Item(s)</h2>
@@ -311,7 +362,7 @@ const CustomizeCheckout = () => {
                     <li
                       className=" flex rounded-md justify-content-between items-center mt-3"
                       key={selectedItem.name}
-                      data-aos="fade-up"
+                      
                     >
                       <div className="flex gap-3 justify-between items-center w-full bg-white p-4">
                         <div className="flex gap-1 items-center justify-center">
@@ -383,7 +434,7 @@ const CustomizeCheckout = () => {
                        <li
                        className=" flex rounded-md justify-content-between align-items-center mt-3"
                        key={selectedItem.name}
-                       data-aos="fade-up"
+                       
                      >
                        <div className="flex gap-3 justify-between items-center w-full bg-white p-4">
                          <div className="flex gap-3 justify-center items-center">
@@ -496,6 +547,7 @@ const CustomizeCheckout = () => {
                   </p>
                 </h3>
               </div>
+              </section>
 
               {/* Shipping Information */}
 
@@ -629,8 +681,8 @@ const CustomizeCheckout = () => {
 
                 {isInfoComplete ? (
                   <PaystackButton
-                    onSuccess={onSuccess}
-                    onClose={onClose}
+                  onSuccess={(reference) => onSuccess(reference)} // Ensures it's a function
+                  onClose={onClose}
                     className="btn btn-success w-100 text-center mt-4 "
                     {...config}
                   />
@@ -655,6 +707,38 @@ const CustomizeCheckout = () => {
           </>
         )}
       </div>
+
+    <Dialog
+        header="Order has been processed successfully"
+        visible={showAfterPrint}
+        className="col-12 col-sm-6"
+        onHide={() => setShowAfterPrint(false)}
+        dismissableMask={true}
+      >
+        <div className="tour-popup">
+          <p>We will reach out to you upon completion. Thank you for your order!</p>
+          <div className="flex  gap-4 " >
+            <p className="mb-5">
+            <button className="px-4 py-2 rounded-md border border-yellow-500" onClick={() => {
+              onClearCart();
+              resetInfos();
+              navigate("/shop")
+            }}>
+              Close
+            </button>
+            </p>
+            <p>
+              <button className="px-4 py-2 rounded-md bg-yellow-500 text-white" onClick={() => {
+                handlePrint()
+                              
+            }} >
+                Download Copy
+              </button>
+              <p style={{ fontSize: "0.7rem" }}>For effective transparency</p>
+            </p>
+          </div>
+        </div>
+      </Dialog>
     </>
   );
 };
