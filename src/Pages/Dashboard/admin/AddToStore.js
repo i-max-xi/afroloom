@@ -12,6 +12,7 @@ import { ProgressSpinner } from "primereact/progressspinner";
 import { Toast } from "primereact/toast";
 import { v4 as uuidv4 } from "uuid";
 import { categoriesBreakdown } from "../../shop/Data/products";
+import { generateSearchKeywords } from "../../../utils/functions";
 
 
 const categories = categoriesBreakdown
@@ -118,6 +119,15 @@ export default function AddProduct() {
   const addProduct = async () => {
     setLoading(true);
     try {
+      const searchKeywordsFromName = generateSearchKeywords(product.name);
+      const searchKeywordsFromParentCategory = generateSearchKeywords(product.parent_category);
+      const searchKeywordsFromChildCategory = generateSearchKeywords(product.child_category);
+      const searchKeywords = [
+        ...searchKeywordsFromName,
+        ...searchKeywordsFromParentCategory,
+        ...searchKeywordsFromChildCategory,
+      ];
+      product.search_keywords = searchKeywords;
       await AllServices.addProduct(product);
       toastRef.current.show({ severity: "success", summary: "Product added successfully!" });
       setProduct({
