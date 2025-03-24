@@ -9,17 +9,34 @@ import { FaFilter } from "react-icons/fa";
 import { categories } from "./Data/products";
 import { LazyScreen } from "./components/lazy-screen";
 import { Spinner } from "./components/spinner";
+import { useSelector } from "react-redux";
 
 const ShopPage = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("");
   const [selectedChildCategory, setSelectedChildCategory] = useState(""); // Child category
   const [childCategories, setChildCategories] = useState([]);
+  const [selectedPrice, setSelectedPrice] = useState(null);
+  const [showFilter, setShowFilter] = useState(false);
+
+
   const [firstLoad, setFirstLoad] = useState(true); // Track first load
+
+  const currencySymbol = useSelector((state) => state.currencySymbol.symbol);
+    const currencyFactor = useSelector((state) => state.currencySymbol.factor);
+
+    const PriceFilters = [
+      { label: `All Prices`, min: null, max: null },
+      { label: `Under ${currencySymbol}${(20 * currencyFactor).toFixed(0)}`, min: 0, max: 20 },
+      { label: `${currencySymbol}${(20 * currencyFactor).toFixed(0)} - ${currencySymbol}${(50 * currencyFactor).toFixed(0)}`, min: 20, max: 50 },
+      { label: `${currencySymbol}${(50 * currencyFactor).toFixed(0)} - ${currencySymbol}${(100 * currencyFactor).toFixed(0)}`, min: 50, max: 100 },
+      { label: `Above ${currencySymbol}${(100 * currencyFactor).toFixed(0)}`, min: 100, max: null },
+    ];
+  
 
   // Fetch products based on search or category
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading, error, isFetching } =
-    useProducts(selectedCategory, searchQuery, selectedChildCategory);
+    useProducts(selectedCategory, searchQuery, selectedChildCategory, selectedPrice);
 
   const products = data
     ? data.pages.flatMap((page) => page.products)
@@ -104,8 +121,29 @@ const ShopPage = () => {
               )}
 
               {/* Filter Icon */}
-              <FaFilter className="text-gray-500 ml-2 w-[5%]" />
-            </div>      
+              <div className="relative">
+                <FaFilter className="text-gray-500 ml-2 cursor-pointer" onClick={() => setShowFilter(!showFilter)} />
+
+                {/* Price Filter Dropdown */}
+                {showFilter && (
+                  <div className="absolute top-8 right-0 bg-white shadow-lg rounded-md p-2 w-48 z-50">
+                    {PriceFilters.map((filter, index) => (
+                      <button
+                        key={index}
+                        className={`w-full text-left p-2 hover:bg-gray-100 ${
+                          selectedPrice?.label === filter.label ? "font-bold text-yellow-500" : ""
+                        }`}
+                        onClick={() => {
+                          setSelectedPrice(filter);
+                          setShowFilter(false);
+                        }}
+                      >
+                        {filter.label}
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>            </div>      
             
           </div>
         </div>
