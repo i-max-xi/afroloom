@@ -32,12 +32,12 @@ const fetchProducts = async ({ pageParam = null, category, searchQuery, child_ca
   }
 
    
-  if (selectedPrice.min !== null) conditions.push(where("price", ">=", selectedPrice.min));
-  if (selectedPrice.max !== null) conditions.push(where("price", "<=", selectedPrice.max));
+  if (selectedPrice && selectedPrice.min !== null) conditions.push(where("price", ">=", selectedPrice.min));
+  if (selectedPrice && selectedPrice.max !== null) conditions.push(where("price", "<=", selectedPrice.max));
   
 
   // Apply conditions to query
-  q = selectedPrice.min ? query(q, ...conditions, orderBy("price"), limit(PAGE_SIZE))
+  q = selectedPrice && selectedPrice.min !== null ? query(q, ...conditions, orderBy("price"), limit(PAGE_SIZE))
    : query(q, ...conditions, orderBy("__name__"), limit(PAGE_SIZE));
 
   // Pagination
