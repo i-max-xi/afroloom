@@ -52,7 +52,7 @@ const ShopPage = () => {
     const parent = e.target.value;
     setSelectedCategory(parent);
     setSearchQuery(""); // Reset search query
-    selectedPrice(null); // Reset price filter
+    setSelectedPrice(null); // Reset price filter
     setSelectedChildCategory(""); // Reset child category
 
     // Find corresponding child categories
@@ -89,7 +89,12 @@ const ShopPage = () => {
               placeholder="Search products..."
               className="w-full border-none outline-none p-2 text-gray-700"
               value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
+              onChange={(e) => {
+                setSelectedCategory(""); // Reset category
+                setSelectedPrice(null); // Reset price filter
+                setSelectedChildCategory(""); // Reset child category
+                setSearchQuery(e.target.value)
+              }}
             />
 
             <p className="relative flex items-center mt-2">
@@ -159,7 +164,7 @@ const ShopPage = () => {
           {products.length > 0 ? (
             products.map((product) => <ProductCard key={product.id} product={product} />)
           ) : (
-            <p className="col-span-full text-center text-gray-500">No products found.</p>
+            <p className="col-span-full text-center text-gray-500">{isFetching ? "Loading..." : "No products found."}</p>
           )}
         </div>
 
