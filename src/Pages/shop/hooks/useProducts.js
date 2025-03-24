@@ -8,7 +8,7 @@ const PAGE_SIZE = 10; // Number of products per page
 const shopCollectionRef = "loomStore";
 
 // Fetch products with category & search filtering
-const fetchProducts = async ({ pageParam = null, category, searchQuery, child_category }) => {
+const fetchProducts = async ({ pageParam = null, category, searchQuery, child_category, selectedPrice }) => {
   let q = collection(db, shopCollectionRef);
   let conditions = [];
 
@@ -30,10 +30,15 @@ const fetchProducts = async ({ pageParam = null, category, searchQuery, child_ca
   if (searchQuery) {
     q = query(q, where("search_keywords", "array-contains", searchQuery.toLowerCase()));
   }
+
+   
+  if (selectedPrice.min !== null) conditions.push(where("price", ">=", selectedPrice.min));
+  if (selectedPrice.max !== null) conditions.push(where("price", "<=", selectedPrice.max));
   
 
   // Apply conditions to query
-  q = query(q, ...conditions, orderBy("__name__"), limit(PAGE_SIZE));
+  q = selectedPrice.min ? query(q, ...conditions, orderBy("price"), limit(PAGE_SIZE))
+   : query(q, ...conditions, orderBy("__name__"), limit(PAGE_SIZE));
 
   // Pagination
   if (pageParam) {
@@ -49,10 +54,10 @@ const fetchProducts = async ({ pageParam = null, category, searchQuery, child_ca
 };
 
 // Hook for paginated product fetching
-export const useProducts = (category, searchQuery, child_category) => {
+export const useProducts = (category, searchQuery, child_category, selectedPrice) => {
   return useInfiniteQuery({
-    queryKey: ["products", category, searchQuery, child_category], // Ensure query updates when filters change
-    queryFn: ({ pageParam }) => fetchProducts({ pageParam, category, searchQuery, child_category }),
+    queryKey: ["products", category, searchQuery, child_category, selectedPrice], // Ensure query updates when filters change
+    queryFn: ({ pageParam }) => fetchProducts({ pageParam, category, searchQuery, child_category, selectedPrice }),
     getNextPageParam: (lastPage) => lastPage.lastDoc || undefined,
     staleTime: 1000 * 60 * 5,
     refetchOnWindowFocus: false,
