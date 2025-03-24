@@ -59,3 +59,30 @@ export const generatePartnerCode = (firstName, lastName) => {
 
   return `AF-${firstLetterOfFirstName}-${firstLetterOfLastName}-${creationDay}`;
 };
+
+
+export const generateSearchKeywords = (text) => {
+  if (!text) return [];
+
+  text = text.toLowerCase(); 
+  const words = text.split(" "); 
+  const keywordSet = new Set();
+
+  // Generate prefixes for each word (e.g., "per" from "perfume")
+  words.forEach(word => {
+    let prefix = "";
+    for (let char of word) {
+      prefix += char;
+      keywordSet.add(prefix); 
+    }
+  });
+
+  // Include full words
+  words.forEach(word => keywordSet.add(word));
+
+  return Array.from(keywordSet);
+};
+
+// Example:
+// console.log(generateSearchKeywords("Red Perfume"));
+// Output: ['r', 're', 'red', 'p', 'pe', 'per', 'perf', 'perfu', 'perfum', 'perfume', 'red', 'perfume']
