@@ -51,6 +51,8 @@ const ShopPage = () => {
   const handleParentCategoryChange = (e) => {
     const parent = e.target.value;
     setSelectedCategory(parent);
+    setSearchQuery(""); // Reset search query
+    selectedPrice(null); // Reset price filter
     setSelectedChildCategory(""); // Reset child category
 
     // Find corresponding child categories
@@ -135,6 +137,9 @@ const ShopPage = () => {
                         }`}
                         onClick={() => {
                           setSelectedPrice(filter);
+                          setSelectedCategory(""); // Reset category
+                          setSearchQuery(""); // Reset search query
+                          setSelectedChildCategory(""); // Reset child category
                           setShowFilter(false);
                         }}
                       >
