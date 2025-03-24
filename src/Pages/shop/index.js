@@ -27,8 +27,8 @@ const ShopPage = () => {
 
     const PriceFilters = [
       { label: `All Prices`, min: null, max: null },
-      { label: `Under ${currencySymbol}${(20 * currencyFactor).toFixed(0)}`, min: 0, max: 20 },
-      { label: `${currencySymbol}${(20 * currencyFactor).toFixed(0)} - ${currencySymbol}${(50 * currencyFactor).toFixed(0)}`, min: 20, max: 50 },
+      { label: `Under ${currencySymbol}${(30 * currencyFactor).toFixed(0)}`, min: 0, max: 30 },
+      { label: `${currencySymbol}${(30 * currencyFactor).toFixed(0)} - ${currencySymbol}${(50 * currencyFactor).toFixed(0)}`, min: 20, max: 50 },
       { label: `${currencySymbol}${(50 * currencyFactor).toFixed(0)} - ${currencySymbol}${(100 * currencyFactor).toFixed(0)}`, min: 50, max: 100 },
       { label: `Above ${currencySymbol}${(100 * currencyFactor).toFixed(0)}`, min: 100, max: null },
     ];
