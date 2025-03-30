@@ -1,7 +1,7 @@
-import React from "react";
-import { motion } from "framer-motion";
-import {  useSelector } from "react-redux";
-import { useNavigate } from "react-router";
+import React from 'react';
+import { motion } from 'framer-motion';
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router';
 
 const ProductCard = ({ product }) => {
   const navigate = useNavigate();
@@ -11,20 +11,22 @@ const ProductCard = ({ product }) => {
 
   // Calculate discounted price
   const discountedPrice = product.discount
-    ? ((product.price - (product.price * product.discount) / 100) * currencyFactor).toFixed(2)
+    ? (
+        (product.price - (product.price * product.discount) / 100) *
+        currencyFactor
+      ).toFixed(2)
     : (product.price * currencyFactor).toFixed(2);
 
   return (
     <motion.div
-      initial={{  scale: 1 }}
+      initial={{ scale: 1 }}
       whileHover={{ scale: 1.05 }}
       // transition={{ type: "spring", stiffness: 300 }}
-      className="bg-white border hover:border-yellow-500 rounded-lg shadow-md overflow-hidden cursor-pointer transition-all duration-300"
-    
+      className="cursor-pointer"
       onClick={() => navigate(`/product/${product.id}`)}
     >
       {/* Product Image */}
-      <div className="w-full h-48 bg-gray-200">
+      <div className="w-full h-48 bg-gray-200 rounded-lg">
         <img
           src={product.images[0]}
           alt={product.name}
@@ -34,20 +36,29 @@ const ProductCard = ({ product }) => {
       </div>
 
       {/* Product Details */}
-      <div className="flex flex-col items-center pt-2 lg:py-4 lg-4">
-        <h3 className="text-xs md:text-base lg:text-base font-semibold text-center">{product.name}</h3>
+      <div className="flex flex-col  pt-2 lg:py-4">
+        <h3 className="text-xs md:text-sm lg:text-sm font-medium">
+          {product.name}
+        </h3>
 
         {/* Pricing Section */}
-        <div className="flex flex-col items-center ">
+        <div className="flex flex-col">
           {product.discount > 0 ? (
-            <div className="flex items-center gap-2">
+            <div className="flex  gap-2">
               <p className="text-gray-400 line-through text-sm">
-                {currencySymbol}{(product.price * currencyFactor ).toFixed(2)}
+                {currencySymbol}
+                {(product.price * currencyFactor).toFixed(2)}
               </p>
-              <p className="text-yellow-500 font-bold">{currencySymbol}{discountedPrice}</p>
+              <p className="text-yellow-500 font-bold">
+                {currencySymbol}
+                {discountedPrice}
+              </p>
             </div>
           ) : (
-            <p className="text-yellow-500 font-bold">{currencySymbol}{(product.price * currencyFactor).toFixed(2)}</p>
+            <p className="text-yellow-500 font-bold">
+              {currencySymbol}
+              {(product.price * currencyFactor).toFixed(2)}
+            </p>
           )}
         </div>
 
