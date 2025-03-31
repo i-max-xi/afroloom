@@ -1,28 +1,26 @@
-import React, { useMemo, useState } from "react";
-import { Link } from "react-router-dom";
-import Logo from "../Assets/AFRO LOGO 4.jpg";
-import GoogleTranslate from "../GoogleTranslate";
-import CurrencyConverter from "./CurrencyConverter";
-import MobileNav from "./MobileNav";
-import { useSelector } from "react-redux";
-import { Badge } from "primereact/badge";
-import { Avatar } from "primereact/avatar";
-import {useLocation} from "react-router-dom"
-
-
+import React, { useMemo, useState } from 'react';
+import { Link } from 'react-router-dom';
+import Logo from '../Assets/AFRO LOGO 4.jpg';
+import GoogleTranslate from '../GoogleTranslate';
+import CurrencyConverter from './CurrencyConverter';
+import MobileNav from './MobileNav';
+import { useSelector } from 'react-redux';
+import { Badge } from 'primereact/badge';
+import { Avatar } from 'primereact/avatar';
+import { useLocation } from 'react-router-dom';
 
 const NavLink = ({ to, label, isActive }) => (
   <li className="p-overlay-badge">
     <Link
       to={to}
       className={`relative group text-black no-underline transition duration-300 ease-in-out hover:text-yellow-500 ${
-        isActive ? "text-yellow-500" : ""
+        isActive ? 'text-yellow-500' : ''
       }`}
     >
       {label}
       <span
         className={`absolute left-0 bottom-[-2px] ${
-          isActive ? "w-full" : "w-0"
+          isActive ? 'w-full' : 'w-0'
         } h-[2px] bg-yellow-500 transition-all duration-300 group-hover:w-full`}
       ></span>
     </Link>
@@ -41,15 +39,18 @@ const Nav = ({ noCurrency }) => {
   const activePath = useMemo(() => location.pathname, [location.pathname]);
 
   const navLinks = [
-    { to: "/", label: "Home" },
-    { to: "/start-customize", label: "Customize" },
-    { to: "/shop", label: "Loom Store" },
-    { to: "/about", label: "About" },
-    { to: "/contact", label: "Contact Us" },
-    { to: "/customize-checkout", label: "Checkout", badge: cartItems?.length + shopCartItem?.length },
-    { to: "/signup", label: "Become a Partner" },
+    { to: '/', label: 'Home' },
+    { to: '/start-customize', label: 'Customize' },
+    { to: '/shop', label: 'Loom Store' },
+    { to: '/about', label: 'About' },
+    { to: '/contact', label: 'Contact Us' },
+    {
+      to: '/customize-checkout',
+      label: 'Checkout',
+      badge: cartItems?.length + shopCartItem?.length,
+    },
+    { to: '/signup', label: 'Become a Partner' },
   ];
-
 
   return (
     <nav className="w-full border-b bg-white text-black px-4 py-2 flex items-center justify-between">
@@ -64,10 +65,10 @@ const Nav = ({ noCurrency }) => {
           <i className="pi pi-align-justify text-2xl"></i>
           {cartItems.length > 0 && (
             <Badge
-            severity="warning"
-            style={{ scale: "0.8", translate: "0.3rem", color: "white" }}
-            value={cartItems.length}
-          ></Badge>
+              severity="warning"
+              style={{ scale: '0.8', translate: '0.3rem', color: 'white' }}
+              value={cartItems.length}
+            ></Badge>
           )}
         </button>
 
@@ -85,14 +86,18 @@ const Nav = ({ noCurrency }) => {
             to={to}
             label={
               <>
-                { <span className={`${to === "/shop" && "text-[#FFC107]"}`}>{label}</span> }
+                {
+                  <span className={`${to === '/shop' && 'text-[#FFC107]'}`}>
+                    {label}
+                  </span>
+                }
                 {badge ? (
                   <Badge
                     severity="warning"
                     style={{
-                      scale: "0.8",
-                      translate: "0.3rem",
-                      color: "white",
+                      scale: '0.8',
+                      translate: '0.3rem',
+                      color: 'white',
                     }}
                     value={badge}
                   />
@@ -105,20 +110,19 @@ const Nav = ({ noCurrency }) => {
         {!noCurrency && <CurrencyConverter />}
       </ul>
 
-
       {/* Right Section */}
       <div className="flex items-center gap-4">
         <div className="flex md:hidden">
           <li className="nav-item mobile-nav-item">
             <Link className="nav-link" to="/customize-checkout">
-            <i className="pi pi-shopping-cart p-overlay-badge">
-              <Badge
-                severity="warning"
-                style={{ scale: "0.5" }}
-                value={cartItems.length + shopCartItem.length}
-              ></Badge>
-            </i>
-           </Link>
+              <i className="pi pi-shopping-cart p-overlay-badge">
+                <Badge
+                  severity="warning"
+                  style={{ scale: '0.5' }}
+                  value={cartItems.length + shopCartItem.length}
+                ></Badge>
+              </i>
+            </Link>
           </li>
         </div>
         {!signedin ? (
@@ -126,7 +130,7 @@ const Nav = ({ noCurrency }) => {
             to="/signin"
             className="text-sm font-medium bg-yellow-400 text-white py-2 px-4 rounded hover:bg-yellow-500 transition no-underline"
           >
-            Login & Cash Out
+            Login
           </Link>
         ) : (
           <Link to={dashboardPath}>

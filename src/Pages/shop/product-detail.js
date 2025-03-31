@@ -1,28 +1,29 @@
-
-import React, { useEffect, useRef, useState } from "react";
-import { useParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { AnimatePresence, motion } from "framer-motion";
-import ProductCard from "./components/product-card";
-import Nav from "../../Components/Nav";
-import { addToShopCart, removeFromShopCart } from "../../Redux/store";
-import { useProducts } from "./hooks/useProducts";
-import { LazyScreen } from "./components/lazy-screen";
-import { SeeAll } from "../Customize/Configurator/SeeAll";
-import { textureArrays, textureDescriptions } from "../Customize/Configurator/arrays/neededArrays";
-import TextureItem from "../Customize/Configurator/LoomstoreTextureItem";
-import { Disclaimer } from "./components/disclaimer";
+import React, { useEffect, useRef, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { AnimatePresence, motion } from 'framer-motion';
+import ProductCard from './components/product-card';
+import Nav from '../../Components/Nav';
+import { addToShopCart, removeFromShopCart } from '../../Redux/store';
+import { useProducts } from './hooks/useProducts';
+import { LazyScreen } from './components/lazy-screen';
+import { SeeAll } from '../Customize/Configurator/SeeAll';
+import {
+  textureArrays,
+  textureDescriptions,
+} from '../Customize/Configurator/arrays/neededArrays';
+import TextureItem from '../Customize/Configurator/LoomstoreTextureItem';
+import { Disclaimer } from './components/disclaimer';
 import { Carousel } from 'primereact/carousel';
-import { useAllProducts } from "./hooks/useAllProducts";
-import { Toast } from "primereact/toast";
-        
+import { useAllProducts } from './hooks/useAllProducts';
+import { Toast } from 'primereact/toast';
 
 const ProductDetail = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const toastRef = useRef(null);
-    const shopCart = useSelector((state) => state.shopCart);
-  
+  const shopCart = useSelector((state) => state.shopCart);
+
   const isInCart = shopCart.some((item) => item.id === id);
 
   const currencySymbol = useSelector((state) => state.currencySymbol.symbol);
@@ -30,88 +31,87 @@ const ProductDetail = () => {
   const [quantity, setQuantity] = useState(1);
 
   // const { data: allProducts, isLoading, error } = useProducts();
-  const { data: allProducts, isLoading, error  } = useAllProducts();
-  
-  const products = allProducts?.pages?.flatMap(page => page.products) || [];
+  const { data: allProducts, isLoading, error } = useAllProducts();
 
+  const products = allProducts?.pages?.flatMap((page) => page.products) || [];
 
   const product = products?.find((item) => item.id === String(id));
 
-  const [selectedImage, setSelectedImage] = useState(product?.images[0] || "");
-  const [selectedSize, setSelectedSize] = useState(product?.sizes[0] || {
-    name: "",
-    value: 0
-  });
+  const [selectedImage, setSelectedImage] = useState(product?.images[0] || '');
+  const [selectedSize, setSelectedSize] = useState(
+    product?.sizes[0] || {
+      name: '',
+      value: 0,
+    },
+  );
 
-  const needsTextile = ["Style & Sew"].includes(product?.parent_category)
+  const needsTextile = ['Style & Sew'].includes(product?.parent_category);
 
   useEffect(() => {
-    window.scrollTo(0, 0); 
-  
+    window.scrollTo(0, 0);
+
     if (product) {
-      setSelectedImage(product.images[0] || "");
-      setSelectedSize(product.sizes[0] || { name: "", value: 0 });
+      setSelectedImage(product.images[0] || '');
+      setSelectedSize(product.sizes[0] || { name: '', value: 0 });
     }
   }, [id, product]); // Depend on `id` and `product`
-  
-   const [openSeeAll, setOpenSeeAll] = useState(false);
-    const [selectedSeeAll, setSelectedSeeAll] = useState({ title: '', titleDisplay:'', array: [] });
-  
-    const handleOpenSeeAll = (title, titleDisplay, array) => {
-      setSelectedSeeAll({ title, titleDisplay, array });
-      setOpenSeeAll(true);
-    };
-  
-    const handleCloseSeeAll = () => {
-      setOpenSeeAll(false);
-      setSelectedSeeAll({ title: '', titleDisplay: '', array: [] });
-    };
 
-    const [selectedPrintOn, setSelectedPrintOn] = useState("");
-  
+  const [openSeeAll, setOpenSeeAll] = useState(false);
+  const [selectedSeeAll, setSelectedSeeAll] = useState({
+    title: '',
+    titleDisplay: '',
+    array: [],
+  });
 
-    const handleTextureChange = (newTexture) => {
-      setSelectedPrintOn(newTexture);
-   
-     };
+  const handleOpenSeeAll = (title, titleDisplay, array) => {
+    setSelectedSeeAll({ title, titleDisplay, array });
+    setOpenSeeAll(true);
+  };
 
+  const handleCloseSeeAll = () => {
+    setOpenSeeAll(false);
+    setSelectedSeeAll({ title: '', titleDisplay: '', array: [] });
+  };
 
+  const [selectedPrintOn, setSelectedPrintOn] = useState('');
 
+  const handleTextureChange = (newTexture) => {
+    setSelectedPrintOn(newTexture);
+  };
 
   // Find related products
   const relatedProducts = product
-  ? products?.filter(
-      (item) =>
-        item.parent_category === product.parent_category &&
-        item.child_category === product.child_category &&
-        item.id !== product.id
-    ).slice(0, 6)
-  : [];
-
+    ? products
+        ?.filter(
+          (item) =>
+            item.parent_category === product.parent_category &&
+            item.child_category === product.child_category &&
+            item.id !== product.id,
+        )
+        .slice(0, 6)
+    : [];
 
   // Base price with no discount
-  const originalPrice = (((product?.price * quantity) + selectedSize?.value) * currencyFactor).toLocaleString();
+  const originalPrice = (
+    (product?.price * quantity + selectedSize?.value) *
+    currencyFactor
+  ).toLocaleString();
 
   // Base price with discount applied
   const basePrice = product?.discount
-    ? (product?.price - (product?.price * product?.discount) / 100)
+    ? product?.price - (product?.price * product?.discount) / 100
     : product?.price;
-
 
   // Adjusted price based on selected size
   const finalPrice = selectedSize
     ? (basePrice + selectedSize?.value) * currencyFactor
     : basePrice * currencyFactor;
 
-
-
-
   // Handle Add to Cart
   const handleAddToCart = () => {
-
     if (isInCart) {
       // dispatch(removeFromShopCart({ id: product.id, selectedSize: selectedSize.name }));
-  
+
       // toastRef.current.show({
       //   severity: "info",
       //   summary: "Item removed from cart",
@@ -121,15 +121,13 @@ const ProductDetail = () => {
 
     if (!selectedSize) return;
 
-    if (needsTextile && selectedPrintOn === "") {
+    if (needsTextile && selectedPrintOn === '') {
       toastRef.current.show({
-        severity: "error",
-        summary: "Cannot Proceed without selecting a textile",
+        severity: 'error',
+        summary: 'Cannot Proceed without selecting a textile',
       });
       return;
     }
-
- 
 
     dispatch(
       addToShopCart({
@@ -140,12 +138,12 @@ const ProductDetail = () => {
         selectedSize: selectedSize.name,
         quantity,
         image: product.images[0],
-        selectedTextile: selectedPrintOn
-      })
+        selectedTextile: selectedPrintOn,
+      }),
     );
     toastRef.current.show({
-      severity: "success",
-      summary: "Added to cart",
+      severity: 'success',
+      summary: 'Added to cart',
     });
   };
 
@@ -158,53 +156,50 @@ const ProductDetail = () => {
   }
 
   if (error) {
-    return <div className="text-center text-red-500">Error loading products</div>;
+    return (
+      <div className="text-center text-red-500">Error loading products</div>
+    );
   }
-
 
   if (!product) {
     return <div className="text-center text-xl mt-10">Product not found</div>;
   }
 
-     const responsiveOptions = [
-        {
-            breakpoint: '1400px',
-            numVisible: 2,
-            numScroll: 1
-        },
-        {
-            breakpoint: '1199px',
-            numVisible: 3,
-            numScroll: 1
-        },
-        {
-            breakpoint: '767px',
-            numVisible: 2,
-            numScroll: 1
-        },
-        {
-            breakpoint: '575px',
-            numVisible: 1,
-            numScroll: 1
-        }
-    ];
-
-  
-
+  const responsiveOptions = [
+    {
+      breakpoint: '1400px',
+      numVisible: 2,
+      numScroll: 1,
+    },
+    {
+      breakpoint: '1199px',
+      numVisible: 3,
+      numScroll: 1,
+    },
+    {
+      breakpoint: '767px',
+      numVisible: 2,
+      numScroll: 1,
+    },
+    {
+      breakpoint: '575px',
+      numVisible: 1,
+      numScroll: 1,
+    },
+  ];
 
   return (
     <>
       <Nav />
       <Toast ref={toastRef} />
-      
-      
-      { needsTextile && <Disclaimer />}
+
+      {needsTextile && <Disclaimer />}
       <div className="max-w-6xl mx-auto p-6 md:p-10">
         {/* Product Details */}
         <div className="flex flex-col md:flex-row gap-10">
           {/* Image Gallery */}
           <div className="w-full md:w-1/2">
-            {selectedImage && selectedImage !== "" ? (
+            {selectedImage && selectedImage !== '' ? (
               <motion.img
                 key={selectedImage}
                 src={selectedImage}
@@ -213,9 +208,9 @@ const ProductDetail = () => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 0.3 }}
-            />
+              />
             ) : (
-                <div className="w-full h-96 object-cover rounded-lg bg-gray-200"></div>
+              <div className="w-full h-96 object-cover rounded-lg bg-gray-200"></div>
             )}
 
             {/* Thumbnail Images */}
@@ -226,7 +221,9 @@ const ProductDetail = () => {
                   src={img}
                   alt={`Thumbnail ${index + 1}`}
                   className={`w-16 h-16 object-contain rounded cursor-pointer border-2 ${
-                    selectedImage === img ? "border-yellow-500" : "border-gray-300"
+                    selectedImage === img
+                      ? 'border-yellow-500'
+                      : 'border-gray-300'
                   }`}
                   onClick={() => setSelectedImage(img)}
                   whileHover={{ scale: 1.1 }}
@@ -243,11 +240,13 @@ const ProductDetail = () => {
             <div className="flex items-center gap-4">
               {product.discount > 0 && (
                 <span className="text-gray-400 line-through text-lg">
-                  {currencySymbol}{(originalPrice)}
+                  {currencySymbol}
+                  {originalPrice}
                 </span>
               )}
               <span className="text-yellow-500 text-2xl font-bold">
-                {currencySymbol}{(finalPrice * quantity).toLocaleString()}
+                {currencySymbol}
+                {(finalPrice * quantity).toLocaleString()}
               </span>
             </div>
 
@@ -261,8 +260,8 @@ const ProductDetail = () => {
                       key={index}
                       className={`px-3 py-2 rounded-full border-2 text-sm ${
                         selectedSize?.name === size.name
-                          ? "border-yellow-500 bg-yellow-500 text-white"
-                          : "border-gray-300"
+                          ? 'border-yellow-500 bg-yellow-500 text-white'
+                          : 'border-gray-300'
                       } hover:border-yellow-500 transition`}
                       onClick={() => setSelectedSize(size)}
                     >
@@ -273,60 +272,72 @@ const ProductDetail = () => {
               </div>
             )}
 
-           {/* textiltes */}
-           {needsTextile && (
-            <div>
-              <h5 className="text-base font-semibold mt-4">Choose Textile</h5> 
-              <div className="texture-buttons-container">
-                <AnimatePresence>
-                  {openSeeAll ? (
-                    <SeeAll
-                      array={selectedSeeAll.array}
-                      title={selectedSeeAll.title}
-                      titleDisplay={selectedSeeAll.titleDisplay}
-                      onClose={handleCloseSeeAll}
-                      others={{
-                        selectedPrintOn,
-                        handleTextureChange,
-                        currencySymbol,
-                        currencyFactor,
-                      }}
-                    />
-                  ) : (
-                    <div className="texture-row">
-                      <div className="texture-category mt-1">
-                        <div className="w-full flex justify-between capitalize">
-                          <p className="text-sm font-medium text-[#4C5B5C]">WaxPrint</p>
-                          <p
-                            onClick={() => handleOpenSeeAll('waxPrint', "waxPrint", textureArrays?.waxPrint)}
-                            className="cursor-pointer text-sm text-[#ffc107] hover:font-semibold"
-                          >
-                            See all &#8594;
-                          </p>
-                        </div>
-                        <div className="grid grid-cols-4 gap-3 px-4">
-                          {textureArrays?.waxPrint?.slice(0, 4).map((texture, index) => (
-                            <TextureItem
-                              key={texture}
-                              texture={texture}
-                              // setHideText={setHideText}
-                              Title="waxPrint"
-                              selectedTexture={selectedPrintOn}
-                              handleTextureChange={handleTextureChange}
-                              currencySymbol={currencySymbol}
-                              currencyFactor={currencyFactor}
-                              subTextureDescriptions={textureDescriptions?.waxPrint}
-                              textureIndex={index}
-                            />
-                          ))}
+            {/* textiltes */}
+            {needsTextile && (
+              <div>
+                <h5 className="text-base font-semibold mt-4">Choose Textile</h5>
+                <div className="texture-buttons-container">
+                  <AnimatePresence>
+                    {openSeeAll ? (
+                      <SeeAll
+                        array={selectedSeeAll.array}
+                        title={selectedSeeAll.title}
+                        titleDisplay={selectedSeeAll.titleDisplay}
+                        onClose={handleCloseSeeAll}
+                        others={{
+                          selectedPrintOn,
+                          handleTextureChange,
+                          currencySymbol,
+                          currencyFactor,
+                        }}
+                      />
+                    ) : (
+                      <div className="texture-row">
+                        <div className="texture-category mt-1">
+                          <div className="w-full flex justify-between capitalize">
+                            <p className="text-sm font-medium text-[#4C5B5C]">
+                              WaxPrint
+                            </p>
+                            <p
+                              onClick={() =>
+                                handleOpenSeeAll(
+                                  'waxPrint',
+                                  'waxPrint',
+                                  textureArrays?.waxPrint,
+                                )
+                              }
+                              className="cursor-pointer text-sm text-[#ffc107] hover:font-semibold"
+                            >
+                              See all &#8594;
+                            </p>
+                          </div>
+                          <div className="grid grid-cols-4 gap-3 px-4">
+                            {textureArrays?.waxPrint
+                              ?.slice(0, 4)
+                              .map((texture, index) => (
+                                <TextureItem
+                                  key={texture}
+                                  texture={texture}
+                                  // setHideText={setHideText}
+                                  Title="waxPrint"
+                                  selectedTexture={selectedPrintOn}
+                                  handleTextureChange={handleTextureChange}
+                                  currencySymbol={currencySymbol}
+                                  currencyFactor={currencyFactor}
+                                  subTextureDescriptions={
+                                    textureDescriptions?.waxPrint
+                                  }
+                                  textureIndex={index}
+                                />
+                              ))}
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  )}
-                </AnimatePresence>
+                    )}
+                  </AnimatePresence>
+                </div>
               </div>
-            </div>
-          )}
+            )}
 
             {/* Quantity Selection */}
             <div className="">
@@ -348,15 +359,24 @@ const ProductDetail = () => {
               </div>
             </div>
 
-            <p className="text-sm text-gray-600">Ready in: {product.ready_in}</p>
+            <p className="text-[1.2rem] font-semibold mt-2 text-yellow-500 ">
+              Ready in:{' '}
+              <span className="text-sm text-gray-600 font-medium ">
+                {product.ready_in}
+              </span>
+            </p>
 
             {/* Add to Cart Button */}
             <button
               disabled={!isInCart && !selectedSize}
-              onClick={  handleAddToCart}
-              className={`mt-6  text-white px-6 py-3 rounded-lg  transition disabled:opacity-50 disabled:hover:bg-yellow-500 disabled:cursor-not-allowed ${isInCart ?  "bg-green-500 hover:bg-green-600" : "bg-yellow-500 hover:bg-yellow-600" }`}
+              onClick={handleAddToCart}
+              className={`mt-6  text-white px-6 py-3 rounded-lg  transition disabled:opacity-50 disabled:hover:bg-yellow-500 disabled:cursor-not-allowed ${
+                isInCart
+                  ? 'bg-green-500 hover:bg-green-600'
+                  : 'bg-yellow-500 hover:bg-yellow-600'
+              }`}
             >
-              {isInCart ? "In cart": "Add to Cart"} 
+              {isInCart ? 'In cart' : 'Add to Cart'}
             </button>
           </div>
         </div>
@@ -367,33 +387,33 @@ const ProductDetail = () => {
             Category: {product.parent_category} : {product.child_category}
           </p>
           <p className="text-gray-500 mt-2 break-words whitespace-pre-line">
-            {product.description || "No description available."}
+            {product.description || 'No description available.'}
           </p>
         </div>
 
         {/* Related Products */}
         {relatedProducts.length > 0 && (
           <div className="mt-16 relative">
-            <h3 className="text-lg md:text-2xl font-bold mb-6">Related Products</h3>
-            <Carousel 
-              value={relatedProducts} 
-              numVisible={3}  // Ensure 3 items are visible on desktop
+            <h3 className="text-lg md:text-2xl font-bold mb-6">
+              Related Products
+            </h3>
+            <Carousel
+              value={relatedProducts}
+              numVisible={3} // Ensure 3 items are visible on desktop
               numScroll={1}
-              
-              responsiveOptions={responsiveOptions} 
+              responsiveOptions={responsiveOptions}
               itemTemplate={(item) => {
                 return (
                   <div className="px-2">
                     <ProductCard product={item} />
                   </div>
-                )
-              }} 
-              showIndicators={false}  // Hide default dots
-              showNavigators={true}   // Show navigation arrows
-              circular  // Infinite loop
+                );
+              }}
+              showIndicators={false} // Hide default dots
+              showNavigators={true} // Show navigation arrows
+              circular // Infinite loop
               autoplayInterval={1200} // Auto-scroll every 3 seconds
             />
-            
           </div>
         )}
       </div>

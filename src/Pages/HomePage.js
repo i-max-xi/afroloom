@@ -1,13 +1,13 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import Nav from "../Components/Nav";
-import { Card } from "primereact/card"; // Import the Card component from PrimeReact
+import React from 'react';
+import { Link } from 'react-router-dom';
+import Nav from '../Components/Nav';
+import { Card } from 'primereact/card'; // Import the Card component from PrimeReact
 
 const HomePage = () => {
-  const image1 = require("../Assets/hero/3d-casual-life-black-girl-holding-box-and-bags.png");
+  const image1 = require('../Assets/hero/3d-casual-life-black-girl-holding-box-and-bags.png');
 
-  const randomImage1 = require("../Assets/femlae.png");
-  const randomImage2 = require("../Assets/male.png");
+  const randomImage1 = require('../Assets/femlae.png');
+  const randomImage2 = require('../Assets/male.png');
 
   return (
     <div>
@@ -24,7 +24,9 @@ const HomePage = () => {
 
       <section className="down-section">
         <Link to="/start-customize">
-          <button className="btn btn-warning text-white">Customize Now</button>
+          <button className="btn btn-warning text-white">
+            Create Your Own Fashion Wear
+          </button>
         </Link>
       </section>
       {/* Review section */}
@@ -33,7 +35,7 @@ const HomePage = () => {
           <h3 className="text-center mb-3">Customer Reviews</h3>
           <div className="row">
             <div className="col-md-6 mb-4">
-              <Card style={{ width: "100%" }}>
+              <Card style={{ width: '100%' }}>
                 <p>
                   "I absolutely love the custom African dress I bought from
                   Afroloom. The quality is amazing and I get compliments every
@@ -59,7 +61,7 @@ const HomePage = () => {
 
             {/* Second Review */}
             <div className="col-md-6 mb-4">
-              <Card style={{ width: "100%" }}>
+              <Card style={{ width: '100%' }}>
                 {/* Review text */}
                 <p>
                   "As a designer, I appreciate the ability to customize my own
