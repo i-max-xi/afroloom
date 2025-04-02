@@ -25,6 +25,7 @@ const ShopPage = () => {
 
   const currencySymbol = useSelector((state) => state.currencySymbol.symbol);
   const currencyFactor = useSelector((state) => state.currencySymbol.factor);
+  const { grandparent_category } = useSelector((state) => state.loomstore);
 
   const PriceFilters = [
     { label: `All Prices`, min: null, max: null },
@@ -64,6 +65,7 @@ const ShopPage = () => {
     error,
     isFetching,
   } = useProducts(
+    grandparent_category,
     selectedCategory,
     searchQuery,
     selectedChildCategory,

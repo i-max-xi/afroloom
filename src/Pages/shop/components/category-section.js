@@ -1,9 +1,15 @@
 import { categories } from '../Data/products';
 import { motion } from 'framer-motion';
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 export const CategorySection = () => {
   const navigate = useNavigate();
+  const { grandparent_category } = useSelector((state) => state.loomstore);
+
+  const filteredCategories = categories.filter(
+    (sub) => sub.grandparent === grandparent_category,
+  );
 
   return (
     <div className="w-full flex flex-col justify-center items-center py-5 md:py-10">
@@ -11,15 +17,15 @@ export const CategorySection = () => {
         Shop by Category
       </h2>
       <motion.div
-        className="grid md:grid-cols-3 lg:grid-cols-5 grid-cols-2 gap-4 md:gap-10 justify-center items-center"
+        className="grid md:grid-cols-3 lg:grid-cols-5 grid-cols-2 gap-4 md:gap-10 justify-center items-center place-items-center content-center"
         initial="hidden"
-        whileInView="visible"
+        animate="visible"
         variants={{
           hidden: { opacity: 0 },
           visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
         }}
       >
-        {categories.map((category, index) => (
+        {filteredCategories?.map((category, index) => (
           <motion.div
             key={index}
             className="flex flex-col items-center cursor-pointer"
