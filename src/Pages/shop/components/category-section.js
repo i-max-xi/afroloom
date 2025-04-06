@@ -12,7 +12,7 @@ export const CategorySection = () => {
   );
 
   return (
-    <div className="w-full flex flex-col justify-center items-center py-5 md:py-10">
+    <div className="w-full  flex flex-col justify-center items-center py-5 md:py-10">
       <h2 className="text-lg md:text-xl font-bold text-center mb-10">
         Shop by Category
       </h2>

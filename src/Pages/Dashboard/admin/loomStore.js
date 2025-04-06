@@ -279,6 +279,26 @@ const LoomStore = () => {
         <Column field="child_category" header="Child Category" />
         <Column field="ready_in" header="Ready In" />
         <Column
+          header="Color Variants"
+          body={(rowData) => {
+            return (
+              <div className="max-h-10 overflow-y-auto">
+                {rowData?.color_variants?.map((color, index) => (
+                  <li key={index} className="flex justify-between">
+                    <div className="flex items-center gap-2">
+                      <p
+                        className="rounded-full h-4 w-4 border"
+                        style={{ backgroundColor: color.value }}
+                      ></p>{' '}
+                      <p className="text-xs">{color.name}</p>
+                    </div>
+                  </li>
+                ))}
+              </div>
+            );
+          }}
+        />
+        <Column
           header="Description"
           body={(rowData) => <textarea>{rowData?.description}</textarea>}
         />

@@ -115,17 +115,13 @@ const ShopPage = () => {
       <Nav />
       <div className="">
         <IntroSection />
-        <div
-          id="shopp"
-          className="mx-auto flex flex-col items-center justify-center w-full"
-        >
-          <CategorySection />
-        </div>
+
+        <CategorySection />
 
         {/* Search & Filter Bar */}
         <div className="w-full flex flex-col  items-center justify-center my-4 mx-auto">
           {/* Search Bar */}
-          {/* <div className="relative w-full sm:max-w-lg mx-auto flex justify-center items-center bg-white border border-gray-300 rounded-full px-4 py-2 shadow-sm">
+          <div className="relative w-full sm:max-w-lg mx-auto flex justify-center items-center bg-white border border-gray-300 rounded-full px-4 py-2 shadow-sm">
             <input
               type="text"
               placeholder="Search products..."
@@ -138,7 +134,7 @@ const ShopPage = () => {
                 setSearchQuery(e.target.value);
               }}
             />
-          </div> */}
+          </div>
 
           {/* Filter Icon (Opens Modal on Mobile) */}
           {/* <button

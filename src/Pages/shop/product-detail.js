@@ -44,8 +44,9 @@ const ProductDetail = () => {
       value: 0,
     },
   );
+  const [selectedColor, setSelectedColor] = useState();
 
-  const needsTextile = ['Style & Sew'].includes(product?.parent_category);
+  const needsTextile = ['order to sew'].includes(product?.grandparent_category);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -139,6 +140,7 @@ const ProductDetail = () => {
         quantity,
         image: product.images[0],
         selectedTextile: selectedPrintOn,
+        selectedColor,
       }),
     );
     toastRef.current.show({
@@ -266,6 +268,32 @@ const ProductDetail = () => {
                       onClick={() => setSelectedSize(size)}
                     >
                       {size.name}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Color Selection */}
+            {product.color_variants && product.color_variants.length > 0 && (
+              <div className="">
+                <h3 className="text-base font-semibold mb-2">Select Colors:</h3>
+                <div className="flex gap-2">
+                  {product.color_variants.map((color, index) => (
+                    <button
+                      key={index}
+                      onClick={() => setSelectedColor(color)}
+                      className={`   flex flex-col items-center space-y-1`}
+                    >
+                      <div
+                        className={`rounded-full h-10 w-10 border-1 hover:border-yellow-500 transition ${
+                          selectedColor?.name === color.name
+                            ? 'border-4 border-yellow-500 bg-yellow-500 text-white'
+                            : 'border-1 border-gray-300'
+                        }`}
+                        style={{ backgroundColor: color.value }}
+                      ></div>
+                      <p className="text-sm">{color.name}</p>
                     </button>
                   ))}
                 </div>

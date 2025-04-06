@@ -18,6 +18,7 @@ import { Toast } from 'primereact/toast';
 import { v4 as uuidv4 } from 'uuid';
 import {
   categoriesBreakdown,
+  color_variant_options,
   divisionBreakdown,
 } from '../../shop/Data/products';
 import { generateSearchKeywords } from '../../../utils/functions';
@@ -88,6 +89,22 @@ export default function AddProduct() {
     });
   };
 
+  const addColor = (newColor) => {
+    if (newColor.name && newColor.value !== '') {
+      setProduct({
+        ...product,
+        color_variants: [...product.color_variants, newColor],
+      });
+    }
+  };
+
+  const removeColor = (index) => {
+    setProduct({
+      ...product,
+      color_variants: product.color_variants.filter((_, i) => i !== index),
+    });
+  };
+
   const uploadImages = async (event) => {
     const files = event.files;
     if (!files || files.length === 0) return;
@@ -150,8 +167,10 @@ export default function AddProduct() {
         name: '',
         price: 0,
         ready_in: '',
+        color_variants: [],
         images: [],
         description: '',
+        grandparent_category: null,
         parent_category: null,
         child_category: null,
         discount: 0,
@@ -248,7 +267,7 @@ export default function AddProduct() {
           options={Object.keys(division)}
           onChange={(e) => handleChange(e, 'grandparent_category')}
           placeholder="Select Category Division"
-          className="w-full"
+          className="w-full capitalize"
         />
         <Dropdown
           value={product.parent_category}
@@ -272,41 +291,84 @@ export default function AddProduct() {
           disabled={!product.parent_category}
         />
 
-        <h3 className="text-lg font-semibold text-black mt-1">Sizes</h3>
-        <p className="text-xs">
-          Add sizes and how much it should add on prices
-        </p>
-        <div className="flex  lg:flex-row flex-col gap-2 ">
-          <InputText
-            value={newSize.name}
-            onChange={(e) => setNewSize({ ...newSize, name: e.target.value })}
-            placeholder="Size Name"
-          />
-          <InputNumber
-            value={newSize.value}
-            onValueChange={(e) => setNewSize({ ...newSize, value: e.value })}
-            placeholder="Size Value"
-          />
-          <button
-            onClick={addSize}
-            className="bg-blue-500 text-white p-2 rounded"
-          >
-            Add
-          </button>
+        <div>
+          <h3 className="text-lg font-semibold text-black mt-1">Sizes</h3>
+          <p className="text-xs">
+            Add sizes and how much it should add on prices
+          </p>
+          <div className="flex  lg:flex-row flex-col gap-2 ">
+            <InputText
+              value={newSize.name}
+              onChange={(e) => setNewSize({ ...newSize, name: e.target.value })}
+              placeholder="Size Name"
+            />
+            <InputNumber
+              value={newSize.value}
+              onValueChange={(e) => setNewSize({ ...newSize, value: e.value })}
+              placeholder="Size Value"
+            />
+            <button
+              onClick={addSize}
+              className="bg-blue-500 text-white p-2 rounded"
+            >
+              Add
+            </button>
+          </div>
+          <ul>
+            {product.sizes.map((size, index) => (
+              <li key={index} className="flex justify-between">
+                {size.name}: {size.value}
+                <button
+                  onClick={() => removeSize(index)}
+                  className="text-red-500"
+                >
+                  Remove
+                </button>
+              </li>
+            ))}
+          </ul>
         </div>
-        <ul>
-          {product.sizes.map((size, index) => (
-            <li key={index} className="flex justify-between">
-              {size.name}: {size.value}
+        <div>
+          <h3 className="text-lg font-semibold text-black mt-1">
+            Color Variants
+          </h3>
+          <p className="text-xs">Select or add color variants</p>
+          <div className="grid grid-cols-4 gap-4">
+            {color_variant_options.map((color, index) => (
               <button
-                onClick={() => removeSize(index)}
-                className="text-red-500"
+                key={index}
+                onClick={() => addColor(color)}
+                className="flex flex-col items-center space-y-1"
               >
-                Remove
+                <div
+                  className="rounded-full h-10 w-10 border"
+                  style={{ backgroundColor: color.value }}
+                ></div>
+                <p className="text-sm">{color.name}</p>
               </button>
-            </li>
-          ))}
-        </ul>
+            ))}
+          </div>
+
+          <ul className="mt-4">
+            {product.color_variants.map((color, index) => (
+              <li key={index} className="flex justify-between">
+                <div className="flex items-center gap-2">
+                  <p
+                    className="rounded-full h-4 w-4 border"
+                    style={{ backgroundColor: color.value }}
+                  ></p>{' '}
+                  <p>{color.name}</p>
+                </div>
+                <button
+                  onClick={() => removeColor(index)}
+                  className="text-red-500"
+                >
+                  Remove
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
 
         <FileUpload
           mode="advanced"
