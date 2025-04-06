@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react';
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import { InputText } from 'primereact/inputtext';
 import { InputNumber } from 'primereact/inputnumber';
 import { Dropdown } from 'primereact/dropdown';
@@ -22,6 +22,7 @@ import {
   divisionBreakdown,
 } from '../../shop/Data/products';
 import { generateSearchKeywords } from '../../../utils/functions';
+import { HiChevronDown, HiChevronUp } from 'react-icons/hi';
 
 const division = divisionBreakdown;
 const categories = categoriesBreakdown;
@@ -70,6 +71,10 @@ export default function AddProduct() {
   const [newSize, setNewSize] = useState({ name: '', value: 0 });
   const [uploading, setUploading] = useState(false);
   const [loading, setLoading] = useState(false);
+
+  //show hide
+  const [showColors, setShowColors] = useState(false);
+  const [showSizes, setShowSizes] = useState(false);
 
   const handleChange = (e, field) => {
     setProduct({ ...product, [field]: e.value || e.target.value });
@@ -328,26 +333,66 @@ export default function AddProduct() {
             ))}
           </ul>
         </div>
-        <div>
-          <h3 className="text-lg font-semibold text-black mt-1">
-            Color Variants
-          </h3>
-          <p className="text-xs">Select or add color variants</p>
-          <div className="grid grid-cols-4 gap-4">
-            {color_variant_options.map((color, index) => (
-              <button
-                key={index}
-                onClick={() => addColor(color)}
-                className="flex flex-col items-center space-y-1"
-              >
-                <div
-                  className="rounded-full h-10 w-10 border"
-                  style={{ backgroundColor: color.value }}
-                ></div>
-                <p className="text-sm">{color.name}</p>
-              </button>
-            ))}
+        <section>
+          <div className="flex justify-between w-full">
+            <h3 className="text-lg font-semibold text-black mt-1">
+              Color Variants
+            </h3>
+            <button onClick={() => setShowColors(!showColors)} className="p-2">
+              <AnimatePresence mode="wait" initial={false}>
+                {showColors ? (
+                  <motion.div
+                    key="up"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <HiChevronUp />
+                  </motion.div>
+                ) : (
+                  <motion.div
+                    key="down"
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 10 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <HiChevronDown />
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </button>
           </div>
+          <p className="text-xs">Select or add color variants</p>
+          <AnimatePresence initial={false}>
+            {showColors && (
+              <motion.div
+                key="colors"
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: 'auto' }}
+                exit={{ opacity: 0, height: 0 }}
+                transition={{ duration: 0.3 }}
+                className="overflow-y-auto max-h-[20rem]"
+              >
+                <div className="grid grid-cols-4 gap-4">
+                  {color_variant_options.map((color, index) => (
+                    <button
+                      key={index}
+                      onClick={() => addColor(color)}
+                      className="flex flex-col items-center space-y-1"
+                    >
+                      <div
+                        className="rounded-full h-10 w-10 border"
+                        style={{ backgroundColor: color.value }}
+                      ></div>
+                      <p className="text-sm">{color.name}</p>
+                    </button>
+                  ))}
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
 
           <ul className="mt-4">
             {product.color_variants.map((color, index) => (
@@ -368,7 +413,7 @@ export default function AddProduct() {
               </li>
             ))}
           </ul>
-        </div>
+        </section>
 
         <FileUpload
           mode="advanced"
