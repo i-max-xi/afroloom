@@ -3,19 +3,19 @@ import {
   configureStore,
   combineReducers,
   // createAsyncThunk,
-} from "@reduxjs/toolkit";
+} from '@reduxjs/toolkit';
 
-import { persistStore, persistReducer } from "redux-persist";
-import storage from "redux-persist/lib/storage/session"; // defaults to localStorage for web
+import { persistStore, persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage/session'; // defaults to localStorage for web
 
 const persistConfig = {
-  key: "root",
+  key: 'root',
   storage,
 };
 
 const currencySymbolSlice = createSlice({
-  name: "currencySymbol",
-  initialState: { symbol: "₵", factor: 1 }, // Default currency symbol and factor
+  name: 'currencySymbol',
+  initialState: { symbol: '₵', factor: 1 }, // Default currency symbol and factor
   reducers: {
     setCurrencySymbol: (state, action) => {
       state.symbol = action.payload.symbol;
@@ -24,13 +24,11 @@ const currencySymbolSlice = createSlice({
   },
 });
 
-
-
 const userSlice = createSlice({
-  name: "user",
+  name: 'user',
   initialState: {
     signedIn: false,
-    dashboardPath: "",
+    dashboardPath: '',
     currentUser: null,
   },
   reducers: {
@@ -59,7 +57,7 @@ const userSlice = createSlice({
 });
 
 const customized3DSlice = createSlice({
-  name: "customizedProduct",
+  name: 'customizedProduct',
   initialState: {
     itemDetails: [],
   },
@@ -88,15 +86,15 @@ const customized3DSlice = createSlice({
   },
 });
 
-
-
 const shopCartSlice = createSlice({
-  name: "shopCart",
+  name: 'shopCart',
   initialState: [],
   reducers: {
     addToShopCart: (state, action) => {
       const existingItem = state.find(
-        (item) => item.id === action.payload.id && item.selectedSize === action.payload.selectedSize
+        (item) =>
+          item.id === action.payload.id &&
+          item.selectedSize === action.payload.selectedSize,
       );
       if (existingItem) {
         existingItem.quantity += action.payload.quantity;
@@ -107,15 +105,19 @@ const shopCartSlice = createSlice({
 
     removeFromShopCart: (state, action) => {
       return state.filter(
-        (item) => !(item.id === action.payload.id && item.selectedSize === action.payload.selectedSize)
+        (item) =>
+          !(
+            item.id === action.payload.id &&
+            item.selectedSize === action.payload.selectedSize
+          ),
       );
     },
 
-   
-
     updateShopItemQuantity: (state, action) => {
       const { id, selectedSize, quantity } = action.payload;
-      const item = state.find((item) => item.id === id && item.selectedSize === selectedSize);
+      const item = state.find(
+        (item) => item.id === id && item.selectedSize === selectedSize,
+      );
       if (item) {
         item.quantity = quantity;
       }
@@ -128,13 +130,25 @@ const shopCartSlice = createSlice({
   },
 });
 
-
+const loomStoreSlice = createSlice({
+  name: 'loomstore',
+  initialState: {
+    grandparent_category: 'order to sew',
+    searchquery: '',
+  },
+  reducers: {
+    updateLoomStore: (state, action) => {
+      return { ...state, ...action.payload }; // Merge payload into state
+    },
+  },
+});
 
 const rootReducer = combineReducers({
   user: userSlice.reducer,
   currencySymbol: currencySymbolSlice.reducer,
   customizedProduct: customized3DSlice.reducer,
   shopCart: shopCartSlice.reducer,
+  loomstore: loomStoreSlice.reducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
@@ -154,11 +168,21 @@ export const {
   updateCurrentUser,
 } = userSlice.actions;
 
-export const { addToCart, clearCart, removeFromCart, updateCustomzedItemQuantity } =
-  customized3DSlice.actions;
+export const {
+  addToCart,
+  clearCart,
+  removeFromCart,
+  updateCustomzedItemQuantity,
+} = customized3DSlice.actions;
 
-export const { addToShopCart, removeFromShopCart, updateShopItemQuantity, clearShopCart } = shopCartSlice.actions;
+export const {
+  addToShopCart,
+  removeFromShopCart,
+  updateShopItemQuantity,
+  clearShopCart,
+} = shopCartSlice.actions;
 
+export const { updateLoomStore } = loomStoreSlice.actions;
 
 export const persistor = persistStore(store);
 export default store;

@@ -1,49 +1,49 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import { motion } from "framer-motion";
-import { categories } from "./Data/products";
-import ProductCard from "./components/product-card";
-import Nav from "../../Components/Nav";
-import { useProducts } from "./hooks/useProducts";
-import { LazyScreen } from "./components/lazy-screen";
-import { Spinner } from "./components/spinner";
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import { categories } from './Data/products';
+import ProductCard from './components/product-card';
+import Nav from '../../Components/Nav';
+import { useProducts } from './hooks/useProducts';
+import { LazyScreen } from './components/lazy-screen';
+import { Spinner } from './components/spinner';
 
 const CategoryPage = () => {
   const { id } = useParams();
-  
-  const [searchQuery, setSearchQuery] = useState("");
-  
-    // Find the selected category by name
-  const category = categories.find((cat) => 
-    cat.name.toLowerCase().replace(/\s+/g, "-") === id
+
+  const [searchQuery, setSearchQuery] = useState('');
+
+  // Find the selected category by name
+  const category = categories.find(
+    (cat) => cat.name.toLowerCase().replace(/\s+/g, '-') === id,
   );
 
-
   // State for selected subcategory
-  const [selectedSubcategory, setSelectedSubcategory] = useState("");
-    const [firstLoad, setFirstLoad] = useState(true); // Track first load
-  
+  const [selectedSubcategory, setSelectedSubcategory] = useState('');
+  const [firstLoad, setFirstLoad] = useState(true); // Track first load
 
-   const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading, error, isFetching } =
-      useProducts(category?.name, searchQuery, selectedSubcategory);
-
+  const {
+    data,
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
+    isLoading,
+    error,
+    isFetching,
+  } = useProducts('', category?.name, searchQuery, selectedSubcategory);
 
   const products = data
-  ? data.pages.flatMap((page) => page.products) || []
-  : [];
+    ? data.pages.flatMap((page) => page.products) || []
+    : [];
 
-
-    useEffect(() => {
-      if (!isFetching) {
-        setFirstLoad(false); // Disable LazyScreen after first load
-      }
-    }, [isFetching]);
-
+  useEffect(() => {
+    if (!isFetching) {
+      setFirstLoad(false); // Disable LazyScreen after first load
+    }
+  }, [isFetching]);
 
   if (firstLoad && isFetching) {
-    return (
-      <LazyScreen />
-    );
+    return <LazyScreen />;
   }
 
   if (!category) {
@@ -55,12 +55,12 @@ const CategoryPage = () => {
     );
   }
 
-   
-  
-    if (error) {
-      console.log("error loading products:", error)
-      return <div className="text-center text-red-500">Error loading products</div>;
-    }
+  if (error) {
+    console.log('error loading products:', error);
+    return (
+      <div className="text-center text-red-500">Error loading products</div>
+    );
+  }
 
   return (
     <>
@@ -72,9 +72,12 @@ const CategoryPage = () => {
           <h2 className="text-3xl font-bold">{category.name}</h2>
         </div>
 
-          {/* Search & Filter Bar */}
-          <div className="w-full flex justify-center items-center my-6">
-          <div id="products" className="relative w-full max-w-lg flex items-center justify-between bg-white border border-gray-300 rounded-full px-4 py-2 shadow-sm">
+        {/* Search & Filter Bar */}
+        <div className="w-full flex justify-center items-center my-6">
+          <div
+            id="products"
+            className="relative w-full max-w-lg flex items-center justify-between bg-white border border-gray-300 rounded-full px-4 py-2 shadow-sm"
+          >
             {/* Search Input */}
             <input
               type="text"
@@ -85,10 +88,10 @@ const CategoryPage = () => {
             />
 
             <p className="relative flex items-center mt-2">
-              {isFetching && <Spinner className="absolute right-28 top-1/2 transform -translate-y-1/2 " />}
-            </p>      
-                  
-            
+              {isFetching && (
+                <Spinner className="absolute right-28 top-1/2 transform -translate-y-1/2 " />
+              )}
+            </p>
           </div>
         </div>
 
@@ -96,9 +99,11 @@ const CategoryPage = () => {
         <div className="flex flex-wrap gap-2 mt-6 ">
           <motion.button
             className={`px-4 py-2 text-xs md:text-sm rounded-full border-2 ${
-              selectedSubcategory === "" ? "bg-yellow-500 text-white" : "border-gray-300"
+              selectedSubcategory === ''
+                ? 'bg-yellow-500 text-white'
+                : 'border-gray-300'
             } hover:border-yellow-500 transition`}
-            onClick={() => setSelectedSubcategory("")}
+            onClick={() => setSelectedSubcategory('')}
             whileHover={{ scale: 1.1 }}
           >
             All
@@ -108,7 +113,9 @@ const CategoryPage = () => {
             <motion.button
               key={index}
               className={`px-4 py-2 rounded-full text-xs md:text-sm border-2 ${
-                selectedSubcategory === sub ? "bg-yellow-500 text-white" : "border-gray-300"
+                selectedSubcategory === sub
+                  ? 'bg-yellow-500 text-white'
+                  : 'border-gray-300'
               } hover:border-yellow-500 transition`}
               onClick={() => setSelectedSubcategory(sub)}
               // whileHover={{ scale: 1.1 }}
@@ -116,7 +123,6 @@ const CategoryPage = () => {
               {sub}
             </motion.button>
           ))}
-          
         </div>
 
         {/* Product List */}
@@ -128,23 +134,24 @@ const CategoryPage = () => {
               ))}
             </div>
           ) : (
-            <p className="text-gray-500 text-center mt-10">No products available.</p>
+            <p className="text-gray-500 text-center mt-10">
+              No products available.
+            </p>
           )}
         </div>
 
-         {/* Load More Button */}
-         <div className="text-center my-6">
+        {/* Load More Button */}
+        <div className="text-center my-6">
           {hasNextPage && !isLoading && (
             <button
               onClick={fetchNextPage}
               disabled={isFetchingNextPage}
               className="border-1 border-yellow-500 text-black py-2 px-6 rounded-md hover:bg-yellow-500 hover:text-white transition"
             >
-              {isFetchingNextPage ? "Loading..." : "Load More"}
+              {isFetchingNextPage ? 'Loading...' : 'Load More'}
             </button>
           )}
         </div>
-
       </div>
     </>
   );

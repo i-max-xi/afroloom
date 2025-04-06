@@ -25,6 +25,7 @@ const ShopPage = () => {
 
   const currencySymbol = useSelector((state) => state.currencySymbol.symbol);
   const currencyFactor = useSelector((state) => state.currencySymbol.factor);
+  const { grandparent_category } = useSelector((state) => state.loomstore);
 
   const PriceFilters = [
     { label: `All Prices`, min: null, max: null },
@@ -64,6 +65,7 @@ const ShopPage = () => {
     error,
     isFetching,
   } = useProducts(
+    grandparent_category,
     selectedCategory,
     searchQuery,
     selectedChildCategory,
@@ -113,12 +115,8 @@ const ShopPage = () => {
       <Nav />
       <div className="">
         <IntroSection />
-        <div
-          id="shopp"
-          className="mx-auto flex flex-col items-center justify-center w-full"
-        >
-          <CategorySection />
-        </div>
+
+        <CategorySection />
 
         {/* Search & Filter Bar */}
         <div className="w-full flex flex-col  items-center justify-center my-4 mx-auto">
@@ -139,13 +137,13 @@ const ShopPage = () => {
           </div>
 
           {/* Filter Icon (Opens Modal on Mobile) */}
-          <button
+          {/* <button
             className="mt-3 flex items-center text-gray-700 relative after:absolute after:left-0 after:bottom-[-3px] after:h-[3px] after:w-0 after:bg-yellow-500 after:transition-all after:duration-300 hover:after:w-full"
             onClick={() => setShowFilter(true)}
           >
             <FaFilter className="text-lg" />
             <span className="ml-2">Filters</span>
-          </button>
+          </button> */}
 
           {/* Desktop Filters */}
           {/* <div className="hidden sm:flex items-center gap-2 text-xs w-full ">
@@ -195,6 +193,20 @@ const ShopPage = () => {
             className="p-4 md:w-[40vw] w-[100vw] "
           >
             {/* Category Filters */}
+            <div className="relative w-full sm:max-w-lg mx-auto flex justify-center items-center bg-white border border-gray-300 rounded-full px-4 py-2 shadow-sm">
+              <input
+                type="text"
+                placeholder="Search products..."
+                className="w-full border-none outline-none p-2 text-gray-700"
+                value={searchQuery}
+                onChange={(e) => {
+                  setSelectedCategory('');
+                  setSelectedPrice(null);
+                  setSelectedChildCategory('');
+                  setSearchQuery(e.target.value);
+                }}
+              />
+            </div>
             <select
               className="w-full mt-3 p-2 border rounded"
               value={selectedCategory}
@@ -249,13 +261,6 @@ const ShopPage = () => {
                 </button>
               ))}
             </div>
-
-            {/* <button
-              className="mt-4 w-full bg-blue-500 text-white p-2 rounded"
-              onClick={() => setShowFilter(false)}
-            >
-              Close
-            </button> */}
           </Dialog>
         </div>
 
