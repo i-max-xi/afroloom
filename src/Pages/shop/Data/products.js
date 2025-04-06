@@ -76,10 +76,30 @@ export const categories = [
   },
 ];
 
+export const divisionBreakdown = {
+  'ready to wear': [
+    "Men's Clothing",
+    "Women's Clothing",
+    'Accessories',
+    'Unisex',
+  ],
+  'order to sew': ['Male', 'Female'],
+};
+
 export const categoriesBreakdown = {
   "Women's Clothing": ['T-Shirt', 'Kaftan', 'Trousers'],
   "Men's Clothing": ['T-Shirt', 'Kaftan', 'Trousers'],
   Unisex: ['T-Shirt', 'Trousers'],
   Accessories: ['Necklace', 'Bangles', 'Necklace & Bangles'],
-  'Style & Sew': ['Male ', 'Female'],
+  Male: [],
+  Female: [
+    'A-Line Dress',
+    'Crop Top & Skirt',
+    'Crop Top & Trousers',
+    'Crop Top & Shorts',
+    'General',
+    'Maxi Dress',
+    'Midi Dress',
+    'Official',
+  ],
 };
