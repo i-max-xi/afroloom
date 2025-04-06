@@ -17,6 +17,7 @@ import { Disclaimer } from './components/disclaimer';
 import { Carousel } from 'primereact/carousel';
 import { useAllProducts } from './hooks/useAllProducts';
 import { Toast } from 'primereact/toast';
+import { AiOutlinePlus } from 'react-icons/ai';
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -256,6 +257,13 @@ const ProductDetail = () => {
             {product.sizes && product.sizes.length > 0 && (
               <div className="">
                 <h3 className="text-base font-semibold mb-2">Select Size:</h3>
+                {needsTextile && (
+                  <p className="text-sm">
+                    Please refer to the product description for detailed size
+                    options and guidance.
+                  </p>
+                )}
+
                 <div className="flex gap-2">
                   {product.sizes.map((size, index) => (
                     <button
@@ -271,6 +279,12 @@ const ProductDetail = () => {
                     </button>
                   ))}
                 </div>
+                <p className="flex items-center gap-1 mt-2">
+                  <button className="text-sm  px-2 py-2 rounded-full bg-yellow-500">
+                    <AiOutlinePlus />
+                  </button>
+                  <p className="mt-2">Custom</p>
+                </p>
               </div>
             )}
 
@@ -412,8 +426,10 @@ const ProductDetail = () => {
         {/* Product Description */}
         <div className="mt-4 lg:mt-10">
           <p className="text-sm text-gray-400 mt-2">
-            Category: {product.parent_category} : {product.child_category}
+            Category: {product.grandparent_category} {product.parent_category} :{' '}
+            {product.child_category}
           </p>
+          <h3 className="text-base font-semibold mb-2">Description:</h3>
           <p className="text-gray-500 mt-2 break-words whitespace-pre-line">
             {product.description || 'No description available.'}
           </p>

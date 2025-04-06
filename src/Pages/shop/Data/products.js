@@ -26,13 +26,13 @@ export const categories = [
   {
     name: "Women's Clothing",
     image: 'https://example.com/womens-clothing.jpg',
-    children: ['T-Shirt', 'Kaftan'],
+    children: ['T-Shirt'],
     grandparent: 'ready to wear',
   },
   {
     name: "Men's Clothing",
     image: 'https://example.com/mens-clothing.jpg',
-    children: ['T-Shirt', 'Kaftan'],
+    children: ['T-Shirt'],
     grandparent: 'ready to wear',
   },
   {
@@ -87,8 +87,8 @@ export const divisionBreakdown = {
 };
 
 export const categoriesBreakdown = {
-  "Women's Clothing": ['T-Shirt', 'Kaftan', 'Trousers'],
-  "Men's Clothing": ['T-Shirt', 'Kaftan', 'Trousers'],
+  "Women's Clothing": ['T-Shirt', 'Trousers'],
+  "Men's Clothing": ['T-Shirt', 'Trousers'],
   Unisex: ['T-Shirt', 'Trousers'],
   Accessories: ['Necklace', 'Bangles', 'Necklace & Bangles'],
   Male: [],
