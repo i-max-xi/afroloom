@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react';
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import { InputText } from 'primereact/inputtext';
 import { InputNumber } from 'primereact/inputnumber';
 import { Dropdown } from 'primereact/dropdown';
@@ -19,8 +19,10 @@ import { Dialog } from 'primereact/dialog';
 import { Spinner } from '../../../shop/components/spinner';
 import {
   categoriesBreakdown,
+  color_variant_options,
   divisionBreakdown,
 } from '../../../shop/Data/products';
+import { HiChevronDown, HiChevronUp } from 'react-icons/hi';
 
 const division = divisionBreakdown;
 const categories = categoriesBreakdown;
@@ -35,6 +37,13 @@ export default function EditProductDialog({
   const [uploading, setUploading] = useState(false);
   const [editedProduct, setEditedProduct] = useState(selectedProduct || {}); // Local state
   const [newSize, setNewSize] = useState({ name: '', value: 0 });
+  const [newPart, setNewPart] = useState('');
+  const [newCustomSize, setNewCustomSize] = useState('');
+
+  //show hide
+  const [showColors, setShowColors] = useState(false);
+  const [showParts, setShowParts] = useState(false);
+  const [showCustomSize, setShowCustomSizes] = useState(false);
 
   // Update local state instead of global state
   const updateItem = (field, value) => {
@@ -61,6 +70,55 @@ export default function EditProductDialog({
   const removeSize = (index) => {
     const updatedSizes = editedProduct.sizes.filter((_, i) => i !== index);
     updateItem('sizes', updatedSizes);
+  };
+
+  const addPart = () => {
+    if (newPart) {
+      const updatedParts = [...(editedProduct.parts || []), newPart];
+      updateItem('parts', updatedParts);
+      setNewPart('');
+    }
+  };
+
+  const removePart = (index) => {
+    const updatedPart = editedProduct.parts.filter((_, i) => i !== index);
+    updateItem('parts', updatedPart);
+  };
+
+  const addCustomize = () => {
+    if (newCustomSize) {
+      const updatedCustomSize = [
+        ...(editedProduct.custom_sizes || []),
+        newCustomSize,
+      ];
+      updateItem('custom_sizes', updatedCustomSize);
+      setNewCustomSize('');
+    }
+  };
+
+  const removeCustomSize = (index) => {
+    const updatedCustomSize = editedProduct.custom_sizes.filter(
+      (_, i) => i !== index,
+    );
+    updateItem('custom_sizes', updatedCustomSize);
+  };
+
+  const addColor = (newColor) => {
+    if (newColor) {
+      const updatedNewColor = [
+        ...(editedProduct.color_variants || []),
+        newColor,
+      ];
+      updateItem('color_variants', updatedNewColor);
+      // setNewCustomSize("");
+    }
+  };
+
+  const removeColor = (index) => {
+    const updatedColor = editedProduct.color_variants.filter(
+      (_, i) => i !== index,
+    );
+    updateItem('color_variants', updatedColor);
   };
 
   const handleSave = () => {
@@ -173,24 +231,6 @@ export default function EditProductDialog({
             placeholder="Product Description"
             rows={3}
           />
-          {/* <Dropdown
-            value={editedProduct.parent_category}
-            options={Object.keys(categories)}
-            onChange={(e) => updateItem('parent_category', e.value)}
-            placeholder="Select Parent Category"
-          /> */}
-
-          {/* <Dropdown
-            value={editedProduct.child_category}
-            options={
-              editedProduct.parent_category
-                ? categories[editedProduct.parent_category]
-                : []
-            }
-            onChange={(e) => updateItem('child_category', e.value)}
-            placeholder="Select Child Category"
-            disabled={!editedProduct.parent_category}
-          /> */}
 
           <Dropdown
             value={editedProduct.grandparent_category}
@@ -265,6 +305,248 @@ export default function EditProductDialog({
               ))}
             </ul>
           </div>
+
+          <section>
+            <div className="flex justify-between w-full">
+              <h3 className="text-lg font-semibold text-black mt-1">
+                Custom Sizes
+              </h3>
+              <button
+                onClick={() => setShowCustomSizes(!showCustomSize)}
+                className="p-2"
+              >
+                <AnimatePresence mode="wait" initial={false}>
+                  {showCustomSize ? (
+                    <motion.div
+                      key="up"
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <HiChevronUp />
+                    </motion.div>
+                  ) : (
+                    <motion.div
+                      key="down"
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 10 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <HiChevronDown />
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </button>
+            </div>
+            <p className="text-xs">
+              Input parameters customers would fill for custom size. eg. Bust.
+              All Mesuremnts would be in inches{' '}
+            </p>
+            <AnimatePresence initial={false}>
+              {showCustomSize && (
+                <motion.div
+                  key="customsize"
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: 'auto' }}
+                  exit={{ opacity: 0, height: 0 }}
+                  transition={{ duration: 0.3 }}
+                  className=""
+                >
+                  <div className="flex  lg:flex-row flex-col gap-2 ">
+                    <InputText
+                      value={newCustomSize}
+                      onChange={(e) => setNewCustomSize(e.target.value)}
+                      placeholder="parameter name"
+                    />
+
+                    <button
+                      onClick={() => addCustomize()}
+                      className="bg-blue-500 text-white p-2 rounded"
+                    >
+                      Add
+                    </button>
+                  </div>{' '}
+                </motion.div>
+              )}
+            </AnimatePresence>
+
+            <ul className="mt-4">
+              {editedProduct.custom_sizes.map((custom, index) => (
+                <li key={index} className="flex justify-between">
+                  <p>{custom}</p>
+                  <button
+                    onClick={() => removeCustomSize(index)}
+                    className="text-red-500"
+                  >
+                    Remove
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </section>
+
+          <section>
+            <div className="flex justify-between w-full">
+              <h3 className="text-lg font-semibold text-black mt-1">
+                Color Variants
+              </h3>
+              <button
+                onClick={() => setShowColors(!showColors)}
+                className="p-2"
+              >
+                <AnimatePresence mode="wait" initial={false}>
+                  {showColors ? (
+                    <motion.div
+                      key="up"
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <HiChevronUp />
+                    </motion.div>
+                  ) : (
+                    <motion.div
+                      key="down"
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 10 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <HiChevronDown />
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </button>
+            </div>
+            <p className="text-xs">Select or add color variants</p>
+            <AnimatePresence initial={false}>
+              {showColors && (
+                <motion.div
+                  key="colors"
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: 'auto' }}
+                  exit={{ opacity: 0, height: 0 }}
+                  transition={{ duration: 0.3 }}
+                  className="overflow-y-auto max-h-[20rem]"
+                >
+                  <div className="grid grid-cols-4 gap-4">
+                    {color_variant_options.map((color, index) => (
+                      <button
+                        key={index}
+                        onClick={() => addColor(color)}
+                        className="flex flex-col items-center space-y-1"
+                      >
+                        <div
+                          className="rounded-full h-10 w-10 border"
+                          style={{ backgroundColor: color.value }}
+                        ></div>
+                        <p className="text-sm">{color.name}</p>
+                      </button>
+                    ))}
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+
+            <ul className="mt-4">
+              {editedProduct.color_variants.map((color, index) => (
+                <li key={index} className="flex justify-between">
+                  <div className="flex items-center gap-2">
+                    <p
+                      className="rounded-full h-4 w-4 border"
+                      style={{ backgroundColor: color.value }}
+                    ></p>{' '}
+                    <p>{color.name}</p>
+                  </div>
+                  <button
+                    onClick={() => removeColor(index)}
+                    className="text-red-500"
+                  >
+                    Remove
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </section>
+
+          <section>
+            <div className="flex justify-between w-full">
+              <h3 className="text-lg font-semibold text-black mt-1">
+                Parts of clothing
+              </h3>
+              <button onClick={() => setShowParts(!showParts)} className="p-2">
+                <AnimatePresence mode="wait" initial={false}>
+                  {showParts ? (
+                    <motion.div
+                      key="up"
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <HiChevronUp />
+                    </motion.div>
+                  ) : (
+                    <motion.div
+                      key="down"
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 10 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      <HiChevronDown />
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </button>
+            </div>
+            <p className="text-xs">Input parts of clothing. eg. Hands, Body </p>
+            <AnimatePresence initial={false}>
+              {showParts && (
+                <motion.div
+                  key="parts"
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: 'auto' }}
+                  exit={{ opacity: 0, height: 0 }}
+                  transition={{ duration: 0.3 }}
+                  className=""
+                >
+                  <div className="flex  lg:flex-row flex-col gap-2 ">
+                    <InputText
+                      value={newPart}
+                      onChange={(e) => setNewPart(e.target.value)}
+                      placeholder="Part Name"
+                    />
+
+                    <button
+                      onClick={() => addPart()}
+                      className="bg-blue-500 text-white p-2 rounded"
+                    >
+                      Add
+                    </button>
+                  </div>{' '}
+                </motion.div>
+              )}
+            </AnimatePresence>
+
+            <ul className="mt-4">
+              {editedProduct.parts.map((part, index) => (
+                <li key={index} className="flex justify-between">
+                  <p>{part}</p>
+                  <button
+                    onClick={() => removePart(index)}
+                    className="text-red-500"
+                  >
+                    Remove
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </section>
+
           <FileUpload
             mode="advanced"
             accept="image/*"

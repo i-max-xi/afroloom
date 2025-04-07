@@ -138,7 +138,7 @@ const LoomStore = () => {
   }
 
   return (
-    <div className="p-m-3">
+    <div className="px-4">
       <Toast ref={toast} />
       <h5>Manage Products</h5>
       {/* Search & Filter Bar */}

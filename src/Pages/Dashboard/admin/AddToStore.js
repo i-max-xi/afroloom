@@ -34,6 +34,8 @@ export default function AddProduct() {
     price: 0,
     ready_in: '7 days',
     color_variants: [],
+    custom_sizes: [],
+    parts: [],
     images: [],
     description: '',
     parent_category: null,
@@ -69,12 +71,15 @@ export default function AddProduct() {
 
   const toastRef = useRef(null);
   const [newSize, setNewSize] = useState({ name: '', value: 0 });
+  const [newPart, setNewPart] = useState('');
+  const [newCustomSize, setNewCustomSize] = useState('');
   const [uploading, setUploading] = useState(false);
   const [loading, setLoading] = useState(false);
 
   //show hide
   const [showColors, setShowColors] = useState(false);
-  const [showSizes, setShowSizes] = useState(false);
+  const [showParts, setShowParts] = useState(false);
+  const [showCustomSize, setShowCustomSizes] = useState(false);
 
   const handleChange = (e, field) => {
     setProduct({ ...product, [field]: e.value || e.target.value });
@@ -91,6 +96,37 @@ export default function AddProduct() {
     setProduct({
       ...product,
       sizes: product.sizes.filter((_, i) => i !== index),
+    });
+  };
+
+  const addPart = () => {
+    if (newPart) {
+      setProduct({ ...product, parts: [...product.parts, newPart] });
+      setNewPart('');
+    }
+  };
+
+  const removePart = (index) => {
+    setProduct({
+      ...product,
+      parts: product.parts.filter((_, i) => i !== index),
+    });
+  };
+
+  const addCustomSize = () => {
+    if (newCustomSize) {
+      setProduct({
+        ...product,
+        custom_sizes: [...product.custom_sizes, newCustomSize],
+      });
+      setNewCustomSize('');
+    }
+  };
+
+  const removeCustomSize = (index) => {
+    setProduct({
+      ...product,
+      custom_sizes: product.custom_sizes.filter((_, i) => i !== index),
     });
   };
 
@@ -173,6 +209,8 @@ export default function AddProduct() {
         price: 0,
         ready_in: '',
         color_variants: [],
+        parts: [],
+        custom_sizes: [],
         images: [],
         description: '',
         grandparent_category: null,
@@ -333,6 +371,87 @@ export default function AddProduct() {
             ))}
           </ul>
         </div>
+
+        <section>
+          <div className="flex justify-between w-full">
+            <h3 className="text-lg font-semibold text-black mt-1">
+              Custom Sizes
+            </h3>
+            <button
+              onClick={() => setShowCustomSizes(!showCustomSize)}
+              className="p-2"
+            >
+              <AnimatePresence mode="wait" initial={false}>
+                {showCustomSize ? (
+                  <motion.div
+                    key="up"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <HiChevronUp />
+                  </motion.div>
+                ) : (
+                  <motion.div
+                    key="down"
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 10 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <HiChevronDown />
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </button>
+          </div>
+          <p className="text-xs">
+            Input parameters customers would fill for custom size. eg. Bust. All
+            Mesuremnts would be in inches{' '}
+          </p>
+          <AnimatePresence initial={false}>
+            {showCustomSize && (
+              <motion.div
+                key="customsize"
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: 'auto' }}
+                exit={{ opacity: 0, height: 0 }}
+                transition={{ duration: 0.3 }}
+                className=""
+              >
+                <div className="flex  lg:flex-row flex-col gap-2 ">
+                  <InputText
+                    value={newCustomSize}
+                    onChange={(e) => setNewCustomSize(e.target.value)}
+                    placeholder="parameter name"
+                  />
+
+                  <button
+                    onClick={() => addCustomSize()}
+                    className="bg-blue-500 text-white p-2 rounded"
+                  >
+                    Add
+                  </button>
+                </div>{' '}
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          <ul className="mt-4">
+            {product.custom_sizes.map((custom, index) => (
+              <li key={index} className="flex justify-between">
+                <p>{custom}</p>
+                <button
+                  onClick={() => removeCustomSize(index)}
+                  className="text-red-500"
+                >
+                  Remove
+                </button>
+              </li>
+            ))}
+          </ul>
+        </section>
         <section>
           <div className="flex justify-between w-full">
             <h3 className="text-lg font-semibold text-black mt-1">
@@ -406,6 +525,81 @@ export default function AddProduct() {
                 </div>
                 <button
                   onClick={() => removeColor(index)}
+                  className="text-red-500"
+                >
+                  Remove
+                </button>
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <section>
+          <div className="flex justify-between w-full">
+            <h3 className="text-lg font-semibold text-black mt-1">
+              Parts of clothing
+            </h3>
+            <button onClick={() => setShowParts(!showParts)} className="p-2">
+              <AnimatePresence mode="wait" initial={false}>
+                {showParts ? (
+                  <motion.div
+                    key="up"
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <HiChevronUp />
+                  </motion.div>
+                ) : (
+                  <motion.div
+                    key="down"
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: 10 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <HiChevronDown />
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </button>
+          </div>
+          <p className="text-xs">Input parts of clothing. eg. Hands, Body </p>
+          <AnimatePresence initial={false}>
+            {showParts && (
+              <motion.div
+                key="parts"
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: 'auto' }}
+                exit={{ opacity: 0, height: 0 }}
+                transition={{ duration: 0.3 }}
+                className=""
+              >
+                <div className="flex  lg:flex-row flex-col gap-2 ">
+                  <InputText
+                    value={newPart}
+                    onChange={(e) => setNewPart(e.target.value)}
+                    placeholder="Part Name"
+                  />
+
+                  <button
+                    onClick={() => addPart()}
+                    className="bg-blue-500 text-white p-2 rounded"
+                  >
+                    Add
+                  </button>
+                </div>{' '}
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          <ul className="mt-4">
+            {product.parts.map((part, index) => (
+              <li key={index} className="flex justify-between">
+                <p>{part}</p>
+                <button
+                  onClick={() => removePart(index)}
                   className="text-red-500"
                 >
                   Remove

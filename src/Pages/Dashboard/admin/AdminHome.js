@@ -1,24 +1,24 @@
 // src/components/admin/AdminDashboard.js
 
-import React, { useState } from "react";
-import { TabPanel, TabView } from "primereact/tabview";
-import CustomSideBar from "../CustomSidebar";
-import ManageUsers from "./ManageUsers";
-import ManagePrices from "./ManagePrices";
-import Nav from "../../../Components/Nav";
-import { Button } from "primereact/button";
-import ManageFabrics from "./ManageFabrics";
-import ContactDetails from "./ContactDetails";
-import LoomStore from "./loomStore";
-import AddProduct from "./AddToStore";
+import React, { useState } from 'react';
+import { TabPanel, TabView } from 'primereact/tabview';
+import CustomSideBar from '../CustomSidebar';
+import ManageUsers from './ManageUsers';
+import ManagePrices from './ManagePrices';
+import Nav from '../../../Components/Nav';
+import { Button } from 'primereact/button';
+import ManageFabrics from './ManageFabrics';
+import ContactDetails from './ContactDetails';
+import LoomStore from './loomStore';
+import AddProduct from './AddToStore';
 
 const adminSidebarItems = [
-  { label: "Manage Sales Partners" },
-  { label: "Manage Prices" },
-  { label: "Manage Fabrics" },
-  { label: "Contact Details" },
-  { label: "Loom Store" },
-  { label: "Add To Loom Store" },
+  { label: 'Manage Sales Partners' },
+  { label: 'Manage Prices' },
+  { label: 'Manage Fabrics' },
+  { label: 'Contact Details' },
+  { label: 'Loom Store' },
+  { label: 'Add To Loom Store' },
 ];
 
 const AdminDashboard = () => {
