@@ -233,17 +233,17 @@ export default function EditProductDialog({
           />
 
           <Dropdown
-            value={editedProduct.grandparent_category}
+            value={editedProduct?.grandparent_category}
             options={Object.keys(division)}
             onChange={(e) => updateItem('grandparent_category', e.value)}
             placeholder="Select Category Division"
             className="w-full capitalize"
           />
           <Dropdown
-            value={editedProduct.parent_category}
+            value={editedProduct?.parent_category}
             options={
-              editedProduct.grandparent_category
-                ? division[editedProduct.grandparent_category]
+              editedProduct?.grandparent_category
+                ? division[editedProduct?.grandparent_category]
                 : []
             }
             onChange={(e) => updateItem('parent_category', e.value)}
@@ -252,16 +252,16 @@ export default function EditProductDialog({
             disabled={!editedProduct.grandparent_category}
           />
           <Dropdown
-            value={editedProduct.child_category}
+            value={editedProduct?.child_category}
             options={
-              editedProduct.parent_category
-                ? categories[editedProduct.parent_category]
+              editedProduct?.parent_category
+                ? categories[editedProduct?.parent_category]
                 : []
             }
             onChange={(e) => updateItem('child_category', e.value)}
             placeholder="Select Child Category"
             className="w-full"
-            disabled={!editedProduct.parent_category}
+            disabled={!editedProduct?.parent_category}
           />
 
           <div>
@@ -373,7 +373,7 @@ export default function EditProductDialog({
             </AnimatePresence>
 
             <ul className="mt-4">
-              {editedProduct.custom_sizes.map((custom, index) => (
+              {editedProduct?.custom_sizes?.map((custom, index) => (
                 <li key={index} className="flex justify-between">
                   <p>{custom}</p>
                   <button
@@ -433,7 +433,7 @@ export default function EditProductDialog({
                   className="overflow-y-auto max-h-[20rem]"
                 >
                   <div className="grid grid-cols-4 gap-4">
-                    {color_variant_options.map((color, index) => (
+                    {color_variant_options?.map((color, index) => (
                       <button
                         key={index}
                         onClick={() => addColor(color)}
@@ -452,7 +452,7 @@ export default function EditProductDialog({
             </AnimatePresence>
 
             <ul className="mt-4">
-              {editedProduct.color_variants.map((color, index) => (
+              {editedProduct?.color_variants?.map((color, index) => (
                 <li key={index} className="flex justify-between">
                   <div className="flex items-center gap-2">
                     <p
@@ -533,7 +533,7 @@ export default function EditProductDialog({
             </AnimatePresence>
 
             <ul className="mt-4">
-              {editedProduct.parts.map((part, index) => (
+              {editedProduct?.parts?.map((part, index) => (
                 <li key={index} className="flex justify-between">
                   <p>{part}</p>
                   <button
