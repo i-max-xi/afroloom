@@ -110,7 +110,6 @@ export default function EditProductDialog({
         newColor,
       ];
       updateItem('color_variants', updatedNewColor);
-      // setNewCustomSize("");
     }
   };
 
@@ -195,6 +194,16 @@ export default function EditProductDialog({
     setUploading(false);
   };
 
+  const handleSelectAllColors = (e) => {
+    const isChecked = e.target.checked;
+
+    if (isChecked) {
+      updateItem('color_variants', color_variant_options);
+    } else {
+      updateItem('color_variants', []);
+    }
+  };
+
   return (
     <Dialog
       header="Edit Product"
@@ -227,7 +236,7 @@ export default function EditProductDialog({
           />
           <InputTextarea
             value={editedProduct.description}
-            onChange={(e) => updateItem(e, 'description')}
+            onChange={(e) => updateItem('description', e.target.value)}
             placeholder="Product Description"
             rows={3}
           />
@@ -421,7 +430,20 @@ export default function EditProductDialog({
                 </AnimatePresence>
               </button>
             </div>
-            <p className="text-xs">Select or add color variants</p>
+            <div className="flex justify-between">
+              <p className="text-xs">Select or add color variants</p>
+              <p className="flex items-center gap-1">
+                <input
+                  onChange={handleSelectAllColors}
+                  checked={
+                    editedProduct?.color_variants?.length ===
+                    color_variant_options.length
+                  }
+                  type="checkbox"
+                />{' '}
+                Select all
+              </p>
+            </div>
             <AnimatePresence initial={false}>
               {showColors && (
                 <motion.div
