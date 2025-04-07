@@ -259,6 +259,16 @@ export default function AddProduct() {
     }
   };
 
+  const handleSelectAllColors = (e) => {
+    const isChecked = e.target.checked;
+
+    if (isChecked) {
+      product.color_variants = color_variant_options;
+    } else {
+      product.color_variants = [];
+    }
+  };
+
   return (
     <motion.div className="max-w-3xl mx-auto bg-white p-6 rounded-2xl shadow-md">
       <Toast ref={toastRef} />
@@ -483,7 +493,20 @@ export default function AddProduct() {
               </AnimatePresence>
             </button>
           </div>
-          <p className="text-xs">Select or add color variants</p>
+          <div className="flex justify-between">
+            <p className="text-xs">Select or add color variants</p>
+            <p className="flex items-center gap-1">
+              <input
+                onChange={handleSelectAllColors}
+                checked={
+                  product?.color_variants?.length ===
+                  color_variant_options.length
+                }
+                type="checkbox"
+              />{' '}
+              Select all
+            </p>
+          </div>{' '}
           <AnimatePresence initial={false}>
             {showColors && (
               <motion.div
@@ -512,7 +535,6 @@ export default function AddProduct() {
               </motion.div>
             )}
           </AnimatePresence>
-
           <ul className="mt-4">
             {product.color_variants.map((color, index) => (
               <li key={index} className="flex justify-between">
