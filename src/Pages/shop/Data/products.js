@@ -67,7 +67,7 @@ export const categories = [
       'Crop Top & Skirt',
       'Crop Top & Trousers',
       'Crop Top & Shorts',
-      'General',
+      'Uncategorized',
       'Maxi Dress',
       'Midi Dress',
       'Official',
