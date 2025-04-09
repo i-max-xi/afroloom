@@ -116,12 +116,10 @@ const ShopPage = () => {
       <div className="">
         <IntroSection />
 
-        <CategorySection />
-
         {/* Search & Filter Bar */}
         <div className="w-full flex flex-col  items-center justify-center my-4 mx-auto">
           {/* Search Bar */}
-          <div className="relative w-full sm:max-w-lg mx-auto flex justify-center items-center bg-white border border-gray-300 rounded-full px-4 py-2 shadow-sm">
+          <div className="relative w-full sm:max-w-lg mx-auto flex justify-center items-center bg-white border border-gray-300 rounded-full px-4  shadow-sm">
             <input
               type="text"
               placeholder="Search products..."
@@ -134,6 +132,45 @@ const ShopPage = () => {
                 setSearchQuery(e.target.value);
               }}
             />
+            <div className="hidden sm:flex items-center gap-2 text-xs w-full my-3">
+              <div>
+                <select
+                  className="bg-transparent border-none outline-none text-gray-700 cursor-pointer"
+                  value={selectedCategory}
+                  onChange={handleParentCategoryChange}
+                >
+                  <option value="">All Categories</option>
+                  {categories.map((cat) => (
+                    <option key={cat.name} value={cat.name}>
+                      {cat.name}
+                    </option>
+                  ))}
+                </select>
+
+                {/* {selectedCategory && (
+                  <select
+                    className="bg-transparent border-none outline-none text-gray-700 cursor-pointer"
+                    value={selectedChildCategory}
+                    onChange={(e) => setSelectedChildCategory(e.target.value)}
+                  >
+                    <option value="">All</option>
+                    {childCategories.map((child) => (
+                      <option key={child} value={child}>
+                        {child}
+                      </option>
+                    ))}
+                  </select>
+                )} */}
+              </div>
+              <div
+                onClick={() => setShowFilter(true)}
+                className="relative flex items-center cursor-pointer"
+              >
+                Price Filter
+                <FaFilter className="text-gray-500 ml-2 cursor-pointer" />
+                {/* <HiDotsVertical className="text-gray-500 ml-2 cursor-pointer" /> */}
+              </div>
+            </div>
           </div>
 
           {/* Filter Icon (Opens Modal on Mobile) */}
@@ -146,44 +183,6 @@ const ShopPage = () => {
           </button> */}
 
           {/* Desktop Filters */}
-          {/* <div className="hidden sm:flex items-center gap-2 text-xs w-full ">
-            <div>
-              <select
-                className="bg-transparent border-none outline-none text-gray-700 cursor-pointer"
-                value={selectedCategory}
-                onChange={handleParentCategoryChange}
-              >
-                <option value="">All Categories</option>
-                {categories.map((cat) => (
-                  <option key={cat.name} value={cat.name}>
-                    {cat.name}
-                  </option>
-                ))}
-              </select>
-
-              {selectedCategory && (
-                <select
-                  className="bg-transparent border-none outline-none text-gray-700 cursor-pointer"
-                  value={selectedChildCategory}
-                  onChange={(e) => setSelectedChildCategory(e.target.value)}
-                >
-                  <option value="">All</option>
-                  {childCategories.map((child) => (
-                    <option key={child} value={child}>
-                      {child}
-                    </option>
-                  ))}
-                </select>
-              )}
-            </div>
-            <div className="relative flex items-center cursor-pointer">
-              Price Filter
-              <HiDotsVertical
-                className="text-gray-500 ml-2 cursor-pointer"
-                onClick={() => setShowFilter(true)}
-              />
-            </div>
-          </div> */}
 
           {/* Mobile Filter Modal using PrimeReact Dialog */}
           <Dialog
@@ -193,7 +192,7 @@ const ShopPage = () => {
             className="p-4 md:w-[40vw] w-[100vw] "
           >
             {/* Category Filters */}
-            <div className="relative w-full sm:max-w-lg mx-auto flex justify-center items-center bg-white border border-gray-300 rounded-full px-4 py-2 shadow-sm">
+            {/* <div className="relative w-full sm:max-w-lg mx-auto flex justify-center items-center bg-white border border-gray-300 rounded-full px-4 py-2 shadow-sm">
               <input
                 type="text"
                 placeholder="Search products..."
@@ -206,7 +205,7 @@ const ShopPage = () => {
                   setSearchQuery(e.target.value);
                 }}
               />
-            </div>
+            </div> */}
             <select
               className="w-full mt-3 p-2 border rounded"
               value={selectedCategory}
@@ -263,6 +262,8 @@ const ShopPage = () => {
             </div>
           </Dialog>
         </div>
+
+        <CategorySection />
 
         {/* Product Grid */}
         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-6 px-4 md:px-8 lg:px-8">

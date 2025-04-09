@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { updateLoomStore } from '../../../Redux/store';
 
 const IntroSection = () => {
-  const [selected, setSelected] = useState('order to sew');
+  const [selected, setSelected] = useState('ready to wear');
   const dispatch = useDispatch();
 
   const onChangeGrandparent = (category) => {

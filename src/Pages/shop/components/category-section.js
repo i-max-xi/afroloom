@@ -2,6 +2,7 @@ import { categories } from '../Data/products';
 import { motion } from 'framer-motion';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { FaChevronCircleRight } from 'react-icons/fa';
 
 export const CategorySection = () => {
   const navigate = useNavigate();
@@ -12,12 +13,13 @@ export const CategorySection = () => {
   );
 
   return (
-    <div className="w-full  flex flex-col justify-center items-center py-5 md:py-10">
-      <h2 className="text-lg md:text-xl font-bold text-center mb-10">
+    <div className="w-full flex flex-col justify-center items-center my-8">
+      <h2 className="text-base md:text-xl font-bold text-center mb-4">
         Shop by Category
       </h2>
+
       <motion.div
-        className="grid md:grid-cols-3 lg:grid-cols-5 grid-cols-2 gap-4 md:gap-10 justify-center items-center place-items-center content-center"
+        className="flex items-center justify-center gap-6"
         initial="hidden"
         animate="visible"
         variants={{
@@ -28,12 +30,12 @@ export const CategorySection = () => {
         {filteredCategories?.map((category, index) => (
           <motion.div
             key={index}
-            className="flex flex-col items-center cursor-pointer"
+            className="cursor-pointer"
             variants={{
-              hidden: { opacity: 0, y: 50 },
-              visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+              hidden: { opacity: 0, y: 30 },
+              visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
             }}
-            whileHover={{ scale: 1.1 }}
+            whileHover={{ scale: 1.05 }}
             onClick={() =>
               navigate(
                 `/category/${category.name.toLowerCase().replace(/\s+/g, '-')}`,
@@ -41,22 +43,22 @@ export const CategorySection = () => {
             }
           >
             <div
-              className={`w-32 h-32 ${
-                category.name === 'Style & Sew'
-                  ? 'bg-yellow-500'
-                  : 'bg-gray-800'
-              }  text-white rounded-full flex items-center justify-center shadow-lg overflow-hidden`}
+              className={`rounded-lg w-[15rem] overflow-hidden shadow-md hover:shadow-lg transition duration-300 `}
             >
-              {/* <img
-                src={category.image} 
+              <img
+                src={category.image}
                 alt={category.name}
-                className="w-full h-full object-cover"
-              /> */}
-              <div className="md:text-base font-semibold text-center flex flex-col gap-1 items-center justify-center">
-                <span>{category.name}</span>
-                {/* <span>{category.name.split(" ")[0]}</span>
-                <span>{category.name.split(" ")[1]}</span>
-                <span>{category.name.split(" ")[2]}</span> */}
+                className={`w-full h-32 ${
+                  grandparent_category === 'order to sew'
+                    ? 'object-contain'
+                    : 'object-cover'
+                }`}
+              />
+              <div className="p-3 flex justify-between items-center">
+                <span className="font-semibold text-sm text-gray-800">
+                  {category.name}
+                </span>
+                <FaChevronCircleRight className="text-yellow-500" />
               </div>
             </div>
           </motion.div>

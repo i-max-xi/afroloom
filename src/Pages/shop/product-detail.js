@@ -18,12 +18,19 @@ import { Carousel } from 'primereact/carousel';
 import { useAllProducts } from './hooks/useAllProducts';
 import { Toast } from 'primereact/toast';
 import { AiOutlinePlus } from 'react-icons/ai';
+import CustomizeSize from './customize-size';
+import { HiChevronDown, HiChevronUp } from 'react-icons/hi';
+import { responsiveOptions } from './Data/products';
+import { IoMdCloseCircle } from 'react-icons/io';
 
 const ProductDetail = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const toastRef = useRef(null);
   const shopCart = useSelector((state) => state.shopCart);
+  const [openCustomize, setOpenCustomize] = useState(false);
+  const [openColors, setOpenColors] = useState(false);
+  const [CustomizedSizes, setCustomizedSizes] = useState([]);
 
   const isInCart = shopCart.some((item) => item.id === id);
 
@@ -142,12 +149,23 @@ const ProductDetail = () => {
         image: product.images[0],
         selectedTextile: selectedPrintOn,
         selectedColor,
+        customizedSizes: CustomizedSizes,
       }),
     );
     toastRef.current.show({
       severity: 'success',
       summary: 'Added to cart',
     });
+  };
+
+  const onSaveCustomizeSize = (customizedSizes) => {
+    setCustomizedSizes(customizedSizes);
+    setOpenCustomize(false);
+  };
+
+  const removeCustomSize = (index) => {
+    const filteredCustomSize = CustomizedSizes?.filter((_, i) => i !== index);
+    setCustomizedSizes(filteredCustomSize);
   };
 
   if (isLoading) {
@@ -167,29 +185,6 @@ const ProductDetail = () => {
   if (!product) {
     return <div className="text-center text-xl mt-10">Product not found</div>;
   }
-
-  const responsiveOptions = [
-    {
-      breakpoint: '1400px',
-      numVisible: 2,
-      numScroll: 1,
-    },
-    {
-      breakpoint: '1199px',
-      numVisible: 3,
-      numScroll: 1,
-    },
-    {
-      breakpoint: '767px',
-      numVisible: 2,
-      numScroll: 1,
-    },
-    {
-      breakpoint: '575px',
-      numVisible: 1,
-      numScroll: 1,
-    },
-  ];
 
   return (
     <>
@@ -264,55 +259,155 @@ const ProductDetail = () => {
                   </p>
                 )}
 
-                <div className="flex gap-2">
-                  {product.sizes.map((size, index) => (
-                    <button
-                      key={index}
-                      className={`px-3 py-2 rounded-full border-2 text-sm ${
-                        selectedSize?.name === size.name
-                          ? 'border-yellow-500 bg-yellow-500 text-white'
-                          : 'border-gray-300'
-                      } hover:border-yellow-500 transition`}
-                      onClick={() => setSelectedSize(size)}
-                    >
-                      {size.name}
-                    </button>
-                  ))}
-                </div>
-                <p className="flex items-center gap-1 mt-2">
-                  <button className="text-sm  px-2 py-2 rounded-full bg-yellow-500">
-                    <AiOutlinePlus />
+                {CustomizedSizes.length < 1 ? (
+                  <div className="flex gap-2">
+                    {product.sizes.map((size, index) => (
+                      <button
+                        key={index}
+                        className={`px-3 py-2 rounded-full border-2 text-sm ${
+                          selectedSize?.name === size.name
+                            ? 'border-yellow-500 bg-yellow-500 text-white'
+                            : 'border-gray-300'
+                        } hover:border-yellow-500 transition`}
+                        onClick={() => setSelectedSize(size)}
+                      >
+                        {size.name}
+                      </button>
+                    ))}
+                  </div>
+                ) : (
+                  <>
+                    <div className="grid grid-cols-4 gap-1 text-xs">
+                      {CustomizedSizes?.map((el, index) => (
+                        <p
+                          key={index}
+                          className="leading-none flex items-center justify-between p-2 rounded-md bg-gray-800 text-white"
+                        >
+                          {el.name}: {el.value}{' '}
+                          <button
+                            onClick={() => removeCustomSize(index)}
+                            className="text-red-400 hover:text-red-600 m-0 p-0 flex-shrink-0"
+                          >
+                            <IoMdCloseCircle className="w-4 h-4" />
+                          </button>
+                        </p>
+                      ))}
+                    </div>
+                  </>
+                )}
+
+                {needsTextile && (
+                  <button
+                    className="flex items-center gap-1 "
+                    onClick={() => setOpenCustomize(true)}
+                  >
+                    <p className="text-sm  mt-1 px-2 py-2 rounded-full bg-yellow-500">
+                      <AiOutlinePlus />
+                    </p>
+                    <span className="">Customize your own Measurement</span>
                   </button>
-                  <p className="mt-2">Custom</p>
-                </p>
+                )}
               </div>
             )}
 
             {/* Color Selection */}
-            {product.color_variants && product.color_variants.length > 0 && (
-              <div className="">
-                <h3 className="text-base font-semibold mb-2">Select Colors:</h3>
-                <div className="flex gap-2">
-                  {product.color_variants.map((color, index) => (
+            {needsTextile &&
+              product.color_variants &&
+              product.color_variants.length > 0 && (
+                <div className="">
+                  <p className="flex items-center justify-between">
+                    <h3 className="text-base font-semibold mb-2">
+                      Select Colors:
+                    </h3>
+
                     <button
-                      key={index}
-                      onClick={() => setSelectedColor(color)}
-                      className={`   flex flex-col items-center space-y-1`}
+                      onClick={() => setOpenColors(!openColors)}
+                      className="text-yellow-500 flex items-center"
                     >
-                      <div
-                        className={`rounded-full h-10 w-10 border-1 hover:border-yellow-500 transition ${
-                          selectedColor?.name === color.name
-                            ? 'border-4 border-yellow-500 bg-yellow-500 text-white'
-                            : 'border-1 border-gray-300'
-                        }`}
-                        style={{ backgroundColor: color.value }}
-                      ></div>
-                      <p className="text-sm">{color.name}</p>
+                      See All
+                      <AnimatePresence mode="wait" initial={false}>
+                        {openColors ? (
+                          <motion.div
+                            key="up"
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: -10 }}
+                            transition={{ duration: 0.2 }}
+                          >
+                            <HiChevronUp />
+                          </motion.div>
+                        ) : (
+                          <motion.div
+                            key="down"
+                            initial={{ opacity: 0, y: -10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: 10 }}
+                            transition={{ duration: 0.2 }}
+                          >
+                            <HiChevronDown />
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
                     </button>
-                  ))}
+                  </p>
+                  <div className="flex gap-2">
+                    {!openColors &&
+                      product?.color_variants
+                        ?.slice(0, 4)
+                        ?.map((color, index) => (
+                          <button
+                            key={index}
+                            onClick={() => setSelectedColor(color)}
+                            className={`   flex flex-col items-center space-y-1`}
+                          >
+                            <div
+                              className={`rounded-full h-10 w-10 border-1 hover:border-yellow-500 transition ${
+                                selectedColor?.name === color.name
+                                  ? 'border-4 border-yellow-500 bg-yellow-500 text-white'
+                                  : 'border-1 border-gray-300'
+                              }`}
+                              style={{ backgroundColor: color.value }}
+                            ></div>
+                            <p className="text-sm">{color.name}</p>
+                          </button>
+                        ))}
+                  </div>
                 </div>
-              </div>
-            )}
+              )}
+
+            {/* color dropdown */}
+            <AnimatePresence initial={false}>
+              {openColors && (
+                <motion.div
+                  key="colors"
+                  initial={{ opacity: 0, height: 0 }}
+                  animate={{ opacity: 1, height: 'auto' }}
+                  exit={{ opacity: 0, height: 0 }}
+                  transition={{ duration: 0.3 }}
+                  className="-mx-4 px-0 w-full"
+                >
+                  <div className="grid grid-cols-4 gap-2 w-full ">
+                    {product.color_variants?.map((color, index) => (
+                      <button
+                        key={index}
+                        onClick={() => setSelectedColor(color)}
+                        className={`flex flex-col items-center space-y-1`}
+                      >
+                        <div
+                          className={`rounded-full h-10 w-10 border-1 hover:border-yellow-500 transition ${
+                            selectedColor?.name === color.name
+                              ? 'border-4 border-yellow-500 bg-yellow-500 text-white'
+                              : 'border-1 border-gray-300'
+                          }`}
+                          style={{ backgroundColor: color.value }}
+                        ></div>
+                        <p className="text-sm">{color.name}</p>
+                      </button>
+                    ))}
+                  </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
 
             {/* textiltes */}
             {needsTextile && (
@@ -461,6 +556,18 @@ const ProductDetail = () => {
           </div>
         )}
       </div>
+
+      {openCustomize && (
+        <CustomizeSize
+          CustomizedSizes={CustomizedSizes}
+          onHide={() => {
+            setOpenCustomize(false);
+          }}
+          openCustomize={openCustomize}
+          options={product?.custom_sizes}
+          onSaveCustomizeSize={onSaveCustomizeSize}
+        />
+      )}
     </>
   );
 };

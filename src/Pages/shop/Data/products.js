@@ -22,46 +22,99 @@ export const LoomStoreProducts = () => {
   return products;
 };
 
+// export const categories = [
+//   {
+//     name: "Women's Clothing",
+//     image: 'https://example.com/womens-clothing.jpg',
+//     children: ['T-Shirt'],
+//     grandparent: 'ready to wear',
+//   },
+//   {
+//     name: "Men's Clothing",
+//     image: 'https://example.com/mens-clothing.jpg',
+//     children: ['T-Shirt'],
+//     grandparent: 'ready to wear',
+//   },
+//   {
+//     name: 'Unisex',
+//     image: 'https://example.com/mens-clothing.jpg',
+//     children: ['T-Shirt'],
+//     grandparent: 'ready to wear',
+//   },
+//   {
+//     name: 'Accessories',
+//     image: 'https://example.com/mens-clothing.jpg',
+//     children: ['Necklace', 'Bangles', 'Necklace & Bangles'],
+//     grandparent: 'ready to wear',
+//   },
+//   // {
+//   //   name: 'Style & Sew',
+//   //   image: 'https://example.com/mens-clothing.jpg',
+//   //   children: ['Male', 'Female'],
+//   //   grandparent: 'order to sew',
+//   // },
+//   {
+//     name: 'Male',
+//     image: 'https://example.com/mens-clothing.jpg',
+//     children: [],
+//     grandparent: 'order to sew',
+//   },
+//   {
+//     name: 'Female',
+//     image: 'https://example.com/mens-clothing.jpg',
+//     children: [
+//       'A-Line Dress',
+//       'Crop Top & Skirt',
+//       'Crop Top & Trousers',
+//       'Crop Top & Shorts',
+//       'Uncategorized',
+//       'Maxi Dress',
+//       'Midi Dress',
+//       'Official',
+//     ],
+//     grandparent: 'order to sew',
+//   },
+// ];
+
 export const categories = [
   {
     name: "Women's Clothing",
-    image: 'https://example.com/womens-clothing.jpg',
+    image:
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuwSHpT0DLJvbUuDJDeW4d6Z6yCdVfUN1vvw&s',
     children: ['T-Shirt'],
     grandparent: 'ready to wear',
   },
   {
     name: "Men's Clothing",
-    image: 'https://example.com/mens-clothing.jpg',
+    image:
+      'https://nicksonshirts.com/wp-content/uploads/2021/06/casual-shirt-model-front-picture-with-a-grey-background.jpg',
     children: ['T-Shirt'],
     grandparent: 'ready to wear',
   },
   {
     name: 'Unisex',
-    image: 'https://example.com/mens-clothing.jpg',
+    image:
+      'https://www.thepinknews.com/wp-content/uploads/2019/06/handm-unisex.jpg',
     children: ['T-Shirt'],
     grandparent: 'ready to wear',
   },
   {
     name: 'Accessories',
-    image: 'https://example.com/mens-clothing.jpg',
+    image:
+      'https://media.istockphoto.com/id/531786318/photo/top-view-of-female-fashion-accessories.jpg?s=612x612&w=0&k=20&c=kA9wOhgfDQiz7RO6GoEztqlPNGaTxZyFwf14991aMM0=',
     children: ['Necklace', 'Bangles', 'Necklace & Bangles'],
     grandparent: 'ready to wear',
   },
-  // {
-  //   name: 'Style & Sew',
-  //   image: 'https://example.com/mens-clothing.jpg',
-  //   children: ['Male', 'Female'],
-  //   grandparent: 'order to sew',
-  // },
   {
     name: 'Male',
-    image: 'https://example.com/mens-clothing.jpg',
+    image:
+      'https://i5.walmartimages.com/seo/Summer-Short-Sleeves-Shirt-Male-Ethnic-Print-Vintage-Clothes-Men-s-Shirts-2-Size-Adult-3XL_37079128-6db3-4e73-99f4-7947aa42a749.81f5afa70d22e4ed40fb4caf5b1df0e6.png?odnHeight=768&odnWidth=768&odnBg=FFFFFF',
     children: [],
     grandparent: 'order to sew',
   },
   {
     name: 'Female',
-    image: 'https://example.com/mens-clothing.jpg',
+    image: 'https://m.media-amazon.com/images/I/610oZWCriJL._AC_SX679_.jpg',
     children: [
       'A-Line Dress',
       'Crop Top & Skirt',
@@ -69,7 +122,7 @@ export const categories = [
       'Crop Top & Shorts',
       'Uncategorized',
       'Maxi Dress',
-      'Midi Dress',
+      'Midi Dress',
       'Official',
     ],
     grandparent: 'order to sew',
@@ -135,4 +188,27 @@ export const color_variant_options = [
   { name: 'Slate', value: '#708090' },
   { name: 'Tan', value: '#D2B48C' },
   { name: 'Crimson', value: '#DC143C' },
+];
+
+export const responsiveOptions = [
+  {
+    breakpoint: '1400px',
+    numVisible: 2,
+    numScroll: 1,
+  },
+  {
+    breakpoint: '1199px',
+    numVisible: 3,
+    numScroll: 1,
+  },
+  {
+    breakpoint: '767px',
+    numVisible: 2,
+    numScroll: 1,
+  },
+  {
+    breakpoint: '575px',
+    numVisible: 1,
+    numScroll: 1,
+  },
 ];
