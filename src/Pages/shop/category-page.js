@@ -96,7 +96,7 @@ const CategoryPage = () => {
         </div>
 
         {/* Subcategory Buttons */}
-        <div className="flex flex-wrap gap-2 mt-6 ">
+        <div className="flex whitespace-nowrap gap-2 mt-6 overflow-x-auto pb-2">
           <motion.button
             className={`px-4 py-2 text-xs md:text-sm rounded-full border-2 ${
               selectedSubcategory === ''
