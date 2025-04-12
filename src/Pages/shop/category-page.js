@@ -7,20 +7,61 @@ import Nav from '../../Components/Nav';
 import { useProducts } from './hooks/useProducts';
 import { LazyScreen } from './components/lazy-screen';
 import { Spinner } from './components/spinner';
+import { IoMdCloseCircle } from 'react-icons/io';
+import { Dialog } from 'primereact/dialog';
+import { Badge } from 'primereact/badge';
+import { FaFilter } from 'react-icons/fa';
+import { useSelector } from 'react-redux';
 
 const CategoryPage = () => {
   const { id } = useParams();
 
   const [searchQuery, setSearchQuery] = useState('');
 
+  const [selectedPrice, setSelectedPrice] = useState(null);
+  const [showFilter, setShowFilter] = useState(false);
+
+  const currencySymbol = useSelector((state) => state.currencySymbol.symbol);
+  const currencyFactor = useSelector((state) => state.currencySymbol.factor);
+
   // Find the selected category by name
   const category = categories.find(
     (cat) => cat.name.toLowerCase().replace(/\s+/g, '-') === id,
   );
 
+  const PriceFilters = [
+    { label: `All Prices`, min: null, max: null },
+    {
+      label: `Under ${currencySymbol}${(30 * currencyFactor).toFixed(0)}`,
+      min: 0,
+      max: 30,
+    },
+    {
+      label: `${currencySymbol}${(30 * currencyFactor).toFixed(
+        0,
+      )} - ${currencySymbol}${(50 * currencyFactor).toFixed(0)}`,
+      min: 20,
+      max: 50,
+    },
+    {
+      label: `${currencySymbol}${(50 * currencyFactor).toFixed(
+        0,
+      )} - ${currencySymbol}${(100 * currencyFactor).toFixed(0)}`,
+      min: 50,
+      max: 100,
+    },
+    {
+      label: `Above ${currencySymbol}${(100 * currencyFactor).toFixed(0)}`,
+      min: 100,
+      max: null,
+    },
+  ];
+
   // State for selected subcategory
   const [selectedSubcategory, setSelectedSubcategory] = useState('');
   const [firstLoad, setFirstLoad] = useState(true); // Track first load
+
+  const activeFiltersCount = selectedPrice !== null ? 1 : 0;
 
   const {
     data,
@@ -73,31 +114,114 @@ const CategoryPage = () => {
         </div>
 
         {/* Search & Filter Bar */}
-        <div className="w-full flex justify-center items-center my-6">
-          <div
-            id="products"
-            className="relative w-full max-w-lg flex items-center justify-between bg-white border border-gray-300 rounded-full px-4 py-2 shadow-sm"
-          >
-            {/* Search Input */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.4, ease: 'easeOut' }}
+          className="w-full flex flex-col  items-center justify-center max-w-xs sm:max-w-lg mx-auto"
+        >
+          {/* Search Bar */}
+          <div className="relative w-full   flex justify-center items-center bg-white border border-gray-300 rounded-2xl px-3 ">
             <input
               type="text"
               placeholder="Search products..."
-              className="w-full border-none outline-none p-2 text-gray-700"
+              className="w-full border-none outline-none p-1 text-gray-700"
               value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
+              onChange={(e) => {
+                setSelectedPrice(null);
+                setSearchQuery(e.target.value);
+              }}
             />
-
-            <p className="relative flex items-center mt-2">
-              {isFetching && (
-                <Spinner className="absolute right-28 top-1/2 transform -translate-y-1/2 " />
-              )}
-            </p>
+            <div className="hidden sm:flex items-center justify-between gap-2 text-xs w-full">
+              <div className="flex items-center gap-1"></div>
+              <div
+                onClick={() => setShowFilter(true)}
+                className="relative flex items-center cursor-pointer whitespace-nowrap"
+              >
+                Price Filter
+                <p className=" p-overlay-badge mt-3">
+                  <FaFilter className="text-gray-500 ml-2 " />
+                  {activeFiltersCount > 0 && (
+                    <Badge
+                      severity="warning"
+                      style={{ scale: '0.5' }}
+                      value={activeFiltersCount}
+                    ></Badge>
+                  )}
+                </p>
+                {/* <HiDotsVertical className="text-gray-500 ml-2 cursor-pointer" /> */}
+              </div>
+            </div>
+            {/* <button className="rounded-full bg-yellow-500 px-3 py-2 flex justify-end text-white">
+                      Search
+                    </button> */}
+            <button
+              className=" whitespace-nowrap cursor-pointer text-xs flex justify-center md:hidden items-center text-gray-700 relative after:absolute after:left-0 after:bottom-[-3px] after:h-[3px] after:w-0 after:bg-yellow-500 after:transition-all after:duration-300 hover:after:w-full"
+              onClick={() => setShowFilter(true)}
+            >
+              Filter
+              <p className=" p-overlay-badge mt-3">
+                <FaFilter className="text-gray-500 ml-2 " />
+                {activeFiltersCount > 0 && (
+                  <Badge
+                    severity="warning"
+                    style={{ scale: '0.5' }}
+                    value={activeFiltersCount}
+                  ></Badge>
+                )}
+              </p>
+            </button>
           </div>
-        </div>
+
+          {/* Mobile Filter Modal using PrimeReact Dialog */}
+          <Dialog
+            visible={showFilter}
+            onHide={() => setShowFilter(false)}
+            header="Filters"
+            className="p-4 md:w-[40vw] w-[100vw] "
+          >
+            {/* Price Filters */}
+            <div className="mt-3">
+              <h4 className="font-medium text-sm md:text-base">Price Range</h4>
+              {PriceFilters.map((filter, index) => (
+                <button
+                  key={index}
+                  className={`block w-full text-left p-2 hover:bg-gray-100 ${
+                    !selectedPrice && filter.label === 'All Prices' && ''
+                  } ${
+                    selectedPrice?.label === filter.label
+                      ? 'font-bold text-yellow-500 relative'
+                      : ''
+                  }`}
+                  onClick={() => {
+                    setSelectedPrice(filter);
+                    setSearchQuery('');
+                    setShowFilter(false);
+                  }}
+                >
+                  {filter.label}
+                </button>
+              ))}
+            </div>
+
+            <div className="mt-4 w-full flex justify-center items-center">
+              <button
+                onClick={() => {
+                  setSelectedPrice(null);
+                  setSearchQuery('');
+                  setShowFilter(false);
+                }}
+                className="bg-red-500 px-2 py-1 rounded-lg text-white flex items-center gap-1"
+              >
+                <span className="mb-1">Clear</span> <IoMdCloseCircle />
+              </button>
+            </div>
+          </Dialog>
+        </motion.div>
 
         {/* Subcategory Buttons */}
-        <div className="flex whitespace-nowrap gap-2 mt-6 overflow-x-auto pb-2">
-          {category?.children.length > 0 && (
+        {category?.children.length > 0 && (
+          <div className="flex whitespace-nowrap gap-2 mt-6 overflow-x-auto pb-2">
             <motion.button
               className={`px-4 py-2 text-xs md:text-sm rounded-full border-2 ${
                 selectedSubcategory === ''
@@ -109,23 +233,23 @@ const CategoryPage = () => {
             >
               All
             </motion.button>
-          )}
 
-          {category?.children.map((sub, index) => (
-            <motion.button
-              key={index}
-              className={`px-4 py-2 rounded-full text-xs md:text-sm border-2 ${
-                selectedSubcategory === sub
-                  ? 'bg-yellow-500 text-white'
-                  : 'border-gray-300'
-              } hover:border-yellow-500 transition`}
-              onClick={() => setSelectedSubcategory(sub)}
-              // whileHover={{ scale: 1.1 }}
-            >
-              {sub}
-            </motion.button>
-          ))}
-        </div>
+            {category?.children.map((sub, index) => (
+              <motion.button
+                key={index}
+                className={`px-4 py-2 rounded-full text-xs md:text-sm border-2 ${
+                  selectedSubcategory === sub
+                    ? 'bg-yellow-500 text-white'
+                    : 'border-gray-300'
+                } hover:border-yellow-500 transition`}
+                onClick={() => setSelectedSubcategory(sub)}
+                // whileHover={{ scale: 1.1 }}
+              >
+                {sub}
+              </motion.button>
+            ))}
+          </div>
+        )}
 
         {/* Product List */}
         <div className="mt-10">
@@ -136,8 +260,8 @@ const CategoryPage = () => {
               ))}
             </div>
           ) : (
-            <p className="text-gray-500 text-center mt-10">
-              No products available.
+            <p className="text-gray-500 text-center mt-10 flex justify-center items-center">
+              {isLoading | isFetching ? <Spinner /> : 'No products available.'}
             </p>
           )}
         </div>
