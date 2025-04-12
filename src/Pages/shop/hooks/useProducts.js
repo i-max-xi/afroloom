@@ -27,7 +27,7 @@ const fetchProducts = async ({
   let q = collection(db, shopCollectionRef);
   let conditions = [];
 
-  if (grandparent_category && grandparent_category !== '') {
+  if (grandparent_category && grandparent_category !== '' && !searchQuery) {
     conditions.push(where('grandparent_category', '==', grandparent_category));
   }
 

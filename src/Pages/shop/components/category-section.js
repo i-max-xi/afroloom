@@ -20,22 +20,22 @@ export const CategorySection = () => {
 
       <motion.div
         className="flex items-center  gap-3 overflow-x-auto py-3"
-        initial="hidden"
-        animate="visible"
-        variants={{
-          hidden: { opacity: 0 },
-          visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
-        }}
+        initial={{ opacity: 0, x: 50 }}
+        animate={{ opacity: 1, x: 0 }}
+        // variants={{
+        //   hidden: { opacity: 0, x: 50 },
+        //   visible: { opacity: 1, x: 0 },
+        // }}
       >
         {filteredCategories?.map((category, index) => (
-          <motion.button
+          <button
             key={index}
-            className="cursor-pointer font-semibold text-xs md:text-sm text-white whitespace-nowrap"
-            variants={{
-              hidden: { opacity: 0, y: 30 },
-              visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
-            }}
-            whileHover={{ scale: 1.05 }}
+            className="cursor-pointer font-semibold text-xs md:text-sm  whitespace-nowrap hover:text-yellow-500 text-white "
+            // variants={{
+            //   hidden: { opacity: 0, y: 30 },
+            //   visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
+            // }}
+            // whileHover={{ scale: 1.05 }}
             onClick={() =>
               navigate(
                 `/category/${category.name.toLowerCase().replace(/\s+/g, '-')}`,
@@ -43,7 +43,7 @@ export const CategorySection = () => {
             }
           >
             {category.name}
-          </motion.button>
+          </button>
         ))}
       </motion.div>
     </div>
