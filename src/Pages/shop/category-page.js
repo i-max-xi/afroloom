@@ -97,17 +97,19 @@ const CategoryPage = () => {
 
         {/* Subcategory Buttons */}
         <div className="flex whitespace-nowrap gap-2 mt-6 overflow-x-auto pb-2">
-          <motion.button
-            className={`px-4 py-2 text-xs md:text-sm rounded-full border-2 ${
-              selectedSubcategory === ''
-                ? 'bg-yellow-500 text-white'
-                : 'border-gray-300'
-            } hover:border-yellow-500 transition`}
-            onClick={() => setSelectedSubcategory('')}
-            whileHover={{ scale: 1.1 }}
-          >
-            All
-          </motion.button>
+          {category?.children.length > 0 && (
+            <motion.button
+              className={`px-4 py-2 text-xs md:text-sm rounded-full border-2 ${
+                selectedSubcategory === ''
+                  ? 'bg-yellow-500 text-white'
+                  : 'border-gray-300'
+              } hover:border-yellow-500 transition`}
+              onClick={() => setSelectedSubcategory('')}
+              whileHover={{ scale: 1.1 }}
+            >
+              All
+            </motion.button>
+          )}
 
           {category?.children.map((sub, index) => (
             <motion.button
