@@ -317,7 +317,7 @@ const ProductDetail = () => {
                 <div className="">
                   <p className="flex items-center justify-between">
                     <h3 className="text-base font-semibold mb-2">
-                      Select Colors:
+                      Select Fabric Colors:
                     </h3>
 
                     <button
