@@ -13,55 +13,37 @@ export const CategorySection = () => {
   );
 
   return (
-    <div className="w-full flex flex-col justify-center items-center my-8">
-      <h2 className="text-base md:text-xl font-bold text-center mb-4">
+    <div className="w-full flex  items-center px-2 bg-gray-800 ">
+      <h2 className="text-sm font-bold mt-1 text-start mr-5 text-yellow-500 whitespace-nowrap">
         Shop by Category
       </h2>
 
       <motion.div
-        className="flex items-center justify-center gap-6"
-        initial="hidden"
-        animate="visible"
-        variants={{
-          hidden: { opacity: 0 },
-          visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
-        }}
+        className="flex items-center  gap-3 overflow-x-auto py-3"
+        initial={{ opacity: 0, x: 50 }}
+        animate={{ opacity: 1, x: 0 }}
+        // variants={{
+        //   hidden: { opacity: 0, x: 50 },
+        //   visible: { opacity: 1, x: 0 },
+        // }}
       >
         {filteredCategories?.map((category, index) => (
-          <motion.div
+          <button
             key={index}
-            className="cursor-pointer"
-            variants={{
-              hidden: { opacity: 0, y: 30 },
-              visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
-            }}
-            whileHover={{ scale: 1.05 }}
+            className="cursor-pointer font-semibold text-xs md:text-sm  whitespace-nowrap hover:text-yellow-500 text-white "
+            // variants={{
+            //   hidden: { opacity: 0, y: 30 },
+            //   visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
+            // }}
+            // whileHover={{ scale: 1.05 }}
             onClick={() =>
               navigate(
                 `/category/${category.name.toLowerCase().replace(/\s+/g, '-')}`,
               )
             }
           >
-            <div
-              className={`rounded-lg w-[15rem] overflow-hidden shadow-md hover:shadow-lg transition duration-300 `}
-            >
-              <img
-                src={category.image}
-                alt={category.name}
-                className={`w-full h-32 ${
-                  grandparent_category === 'order to sew'
-                    ? 'object-contain'
-                    : 'object-cover'
-                }`}
-              />
-              <div className="p-3 flex justify-between items-center">
-                <span className="font-semibold text-sm text-gray-800">
-                  {category.name}
-                </span>
-                <FaChevronCircleRight className="text-yellow-500" />
-              </div>
-            </div>
-          </motion.div>
+            {category.name}
+          </button>
         ))}
       </motion.div>
     </div>

@@ -22,60 +22,6 @@ export const LoomStoreProducts = () => {
   return products;
 };
 
-// export const categories = [
-//   {
-//     name: "Women's Clothing",
-//     image: 'https://example.com/womens-clothing.jpg',
-//     children: ['T-Shirt'],
-//     grandparent: 'ready to wear',
-//   },
-//   {
-//     name: "Men's Clothing",
-//     image: 'https://example.com/mens-clothing.jpg',
-//     children: ['T-Shirt'],
-//     grandparent: 'ready to wear',
-//   },
-//   {
-//     name: 'Unisex',
-//     image: 'https://example.com/mens-clothing.jpg',
-//     children: ['T-Shirt'],
-//     grandparent: 'ready to wear',
-//   },
-//   {
-//     name: 'Accessories',
-//     image: 'https://example.com/mens-clothing.jpg',
-//     children: ['Necklace', 'Bangles', 'Necklace & Bangles'],
-//     grandparent: 'ready to wear',
-//   },
-//   // {
-//   //   name: 'Style & Sew',
-//   //   image: 'https://example.com/mens-clothing.jpg',
-//   //   children: ['Male', 'Female'],
-//   //   grandparent: 'order to sew',
-//   // },
-//   {
-//     name: 'Male',
-//     image: 'https://example.com/mens-clothing.jpg',
-//     children: [],
-//     grandparent: 'order to sew',
-//   },
-//   {
-//     name: 'Female',
-//     image: 'https://example.com/mens-clothing.jpg',
-//     children: [
-//       'A-Line Dress',
-//       'Crop Top & Skirt',
-//       'Crop Top & Trousers',
-//       'Crop Top & Shorts',
-//       'Uncategorized',
-//       'Maxi Dress',
-//       'Midi Dress',
-//       'Official',
-//     ],
-//     grandparent: 'order to sew',
-//   },
-// ];
-
 export const categories = [
   {
     name: "Women's Clothing",
@@ -122,7 +68,7 @@ export const categories = [
       'Crop Top & Shorts',
       'Uncategorized',
       'Maxi Dress',
-      'Midi Dress',
+      'Midi Dress',
       'Official',
     ],
     grandparent: 'order to sew',
@@ -140,9 +86,9 @@ export const divisionBreakdown = {
 };
 
 export const categoriesBreakdown = {
-  "Women's Clothing": ['T-Shirt', 'Trousers'],
-  "Men's Clothing": ['T-Shirt', 'Trousers'],
-  Unisex: ['T-Shirt', 'Trousers'],
+  "Women's Clothing": ['T-Shirt'],
+  "Men's Clothing": ['T-Shirt'],
+  Unisex: ['T-Shirt'],
   Accessories: ['Necklace', 'Bangles', 'Necklace & Bangles'],
   Male: [],
   Female: [
