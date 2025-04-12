@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { updateLoomStore } from '../../../Redux/store';
 
 const IntroSection = () => {
-  const [selected, setSelected] = useState('order to sew');
+  const { grandparent_category } = useSelector((state) => state.loomstore);
+  const [selected, setSelected] = useState(grandparent_category);
   const dispatch = useDispatch();
+
+  console.log({ grandparent_category });
 
   const onChangeGrandparent = (category) => {
     setSelected(category);
@@ -18,7 +21,12 @@ const IntroSection = () => {
 
   return (
     <div className=" flex  items-center justify-center  text-xs md:text-sm">
-      <div className="relative flex items-center justify-center  bg-white  rounded-full w-fit border-2 border-yellow-400 shadow-md">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, ease: 'easeOut' }}
+        className="relative flex items-center justify-center  bg-white  rounded-full w-fit border-2 border-yellow-400 shadow-md"
+      >
         <motion.div
           className="absolute top-0 left-0 h-full bg-yellow-500 rounded-full"
           initial={{ width: '50%', left: 0 }}
@@ -44,7 +52,7 @@ const IntroSection = () => {
         >
           Ready to wear
         </button>
-      </div>
+      </motion.div>
     </div>
   );
 };

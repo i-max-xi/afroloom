@@ -14,6 +14,7 @@ import { Dialog } from 'primereact/dialog';
 import { HiDotsVertical } from 'react-icons/hi';
 import { IoMdCloseCircle } from 'react-icons/io';
 import { Badge } from 'primereact/badge';
+import { motion } from 'framer-motion';
 
 const ShopPage = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -122,7 +123,12 @@ const ShopPage = () => {
       <Nav />
       <div className="flex flex-col gap-3 my-2">
         {/* Search & Filter Bar */}
-        <div className="w-full flex flex-col  items-center justify-center max-w-xs sm:max-w-lg mx-auto">
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.4, ease: 'easeOut' }}
+          className="w-full flex flex-col  items-center justify-center max-w-xs sm:max-w-lg mx-auto"
+        >
           {/* Search Bar */}
           <div className="relative w-full   flex justify-center items-center bg-white border border-gray-300 rounded-2xl px-3 ">
             <input
@@ -287,7 +293,7 @@ const ShopPage = () => {
               </button>
             </div>
           </Dialog>
-        </div>
+        </motion.div>
 
         <IntroSection />
 
