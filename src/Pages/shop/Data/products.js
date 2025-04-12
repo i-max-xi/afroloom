@@ -152,7 +152,7 @@ export const categoriesBreakdown = {
     'Crop Top & Shorts',
     'Uncategorized',
     'Maxi Dress',
-    'Midi Dress',
+    'Midi Dress',
     'Official',
   ],
 };

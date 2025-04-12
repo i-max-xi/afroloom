@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import { updateLoomStore } from '../../../Redux/store';
 
 const IntroSection = () => {
-  const [selected, setSelected] = useState('ready to wear');
+  const [selected, setSelected] = useState('order to sew');
   const dispatch = useDispatch();
 
   const onChangeGrandparent = (category) => {
@@ -17,8 +17,8 @@ const IntroSection = () => {
   };
 
   return (
-    <div className=" flex  items-center justify-center mt-6 text-sm">
-      <div className="relative flex items-center justify-center  bg-white p-1 rounded-full w-fit border-2 border-yellow-400 shadow-md">
+    <div className=" flex  items-center justify-center  text-xs md:text-sm">
+      <div className="relative flex items-center justify-center  bg-white  rounded-full w-fit border-2 border-yellow-400 shadow-md">
         <motion.div
           className="absolute top-0 left-0 h-full bg-yellow-500 rounded-full"
           initial={{ width: '50%', left: 0 }}
