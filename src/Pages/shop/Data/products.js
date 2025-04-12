@@ -86,9 +86,9 @@ export const divisionBreakdown = {
 };
 
 export const categoriesBreakdown = {
-  "Women's Clothing": ['T-Shirt', 'Trousers'],
-  "Men's Clothing": ['T-Shirt', 'Trousers'],
-  Unisex: ['T-Shirt', 'Trousers'],
+  "Women's Clothing": ['T-Shirt'],
+  "Men's Clothing": ['T-Shirt'],
+  Unisex: ['T-Shirt'],
   Accessories: ['Necklace', 'Bangles', 'Necklace & Bangles'],
   Male: [],
   Female: [
