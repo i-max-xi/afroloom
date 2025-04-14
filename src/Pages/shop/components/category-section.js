@@ -13,13 +13,13 @@ export const CategorySection = () => {
   );
 
   return (
-    <div className="w-full flex  items-center px-2 bg-gray-800 ">
+    <div className="w-full flex  items-center px-2 bg-gray-800/85 ">
       <h2 className="text-sm font-bold mt-1 text-start mr-5 text-yellow-500 whitespace-nowrap">
         Shop by Category
       </h2>
 
       <motion.div
-        className="flex items-center  gap-3 overflow-x-auto py-3"
+        className="flex items-center  gap-3 overflow-x-auto py-3 no-scrollbar "
         initial={{ opacity: 0, x: 50 }}
         animate={{ opacity: 1, x: 0 }}
         // variants={{

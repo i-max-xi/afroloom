@@ -107,12 +107,7 @@ const CategoryPage = () => {
     <>
       <Nav />
 
-      <div className="max-w-6xl mx-auto p-6 md:p-10">
-        {/* Main Category Name */}
-        <div className="h-[20vh] flex items-center justify-center">
-          <h2 className="text-3xl font-bold">{category.name}</h2>
-        </div>
-
+      <div className="max-w-6xl mx-auto px-6 py-2 md:px-10 md:py-5">
         {/* Search & Filter Bar */}
         <motion.div
           initial={{ opacity: 0 }}
@@ -121,7 +116,12 @@ const CategoryPage = () => {
           className="w-full flex flex-col  items-center justify-center max-w-xs sm:max-w-lg mx-auto"
         >
           {/* Search Bar */}
-          <div className="relative w-full   flex justify-center items-center bg-white border border-gray-300 rounded-2xl px-3 ">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, ease: 'easeOut' }}
+            className="relative w-full   flex justify-center items-center bg-white border border-gray-300 rounded-2xl px-3 "
+          >
             <input
               type="text"
               placeholder="Search products..."
@@ -152,9 +152,7 @@ const CategoryPage = () => {
                 {/* <HiDotsVertical className="text-gray-500 ml-2 cursor-pointer" /> */}
               </div>
             </div>
-            {/* <button className="rounded-full bg-yellow-500 px-3 py-2 flex justify-end text-white">
-                      Search
-                    </button> */}
+
             <button
               className=" whitespace-nowrap cursor-pointer text-xs flex justify-center md:hidden items-center text-gray-700 relative after:absolute after:left-0 after:bottom-[-3px] after:h-[3px] after:w-0 after:bg-yellow-500 after:transition-all after:duration-300 hover:after:w-full"
               onClick={() => setShowFilter(true)}
@@ -171,7 +169,7 @@ const CategoryPage = () => {
                 )}
               </p>
             </button>
-          </div>
+          </motion.div>
 
           {/* Mobile Filter Modal using PrimeReact Dialog */}
           <Dialog
@@ -219,9 +217,27 @@ const CategoryPage = () => {
           </Dialog>
         </motion.div>
 
+        {/* Main Category Name */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, ease: 'easeOut' }}
+          className="h-[20vh]  flex flex-col  items-center justify-center"
+        >
+          <p className="flex items-center justify-center  bg-yellow-500 text-white text-[9px]  rounded-full w-fit border-2 border-yellow-400 px-2 py-1">
+            {category.grandparent}
+          </p>
+          <h2 className="text-3xl font-bold ">{category.name}</h2>
+        </motion.div>
+
         {/* Subcategory Buttons */}
         {category?.children.length > 0 && (
-          <div className="flex whitespace-nowrap gap-2 mt-6 overflow-x-auto pb-2">
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.6, ease: 'easeOut' }}
+            className="no-scrollbar flex whitespace-nowrap gap-2 mt-6 overflow-x-auto pb-2"
+          >
             <motion.button
               className={`px-4 py-2 text-xs md:text-sm rounded-full border-2 ${
                 selectedSubcategory === ''
@@ -248,7 +264,7 @@ const CategoryPage = () => {
                 {sub}
               </motion.button>
             ))}
-          </div>
+          </motion.div>
         )}
 
         {/* Product List */}
