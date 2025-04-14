@@ -299,6 +299,20 @@ const LoomStore = () => {
           }}
         />
         <Column
+          header="Parts"
+          body={(rowData) => {
+            return (
+              <div className="max-h-10 overflow-y-auto">
+                {rowData?.parts?.map((part, index) => (
+                  <li key={index} className="flex justify-between">
+                    <div className="flex items-center gap-2">{part}</div>
+                  </li>
+                ))}
+              </div>
+            );
+          }}
+        />
+        <Column
           header="Description"
           body={(rowData) => <textarea>{rowData?.description}</textarea>}
         />
