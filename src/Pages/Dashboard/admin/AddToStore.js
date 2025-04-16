@@ -71,7 +71,11 @@ export default function AddProduct() {
 
   const toastRef = useRef(null);
   const [newSize, setNewSize] = useState({ name: '', value: 0 });
-  const [newPart, setNewPart] = useState('');
+  const [newPart, setNewPart] = useState({
+    name: '',
+    type: '',
+    allows: ''
+  });
   const [newCustomSize, setNewCustomSize] = useState('');
   const [uploading, setUploading] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -102,7 +106,11 @@ export default function AddProduct() {
   const addPart = () => {
     if (newPart) {
       setProduct({ ...product, parts: [...product.parts, newPart] });
-      setNewPart('');
+      setNewPart({
+        name: '',
+        type: '',
+        allows: ""
+      });
     }
   };
 
@@ -262,12 +270,13 @@ export default function AddProduct() {
   const handleSelectAllColors = (e) => {
     const isChecked = e.target.checked;
 
-    if (isChecked) {
-      product.color_variants = color_variant_options;
-    } else {
-      product.color_variants = [];
-    }
+    setProduct((prev) => ({
+      ...prev,
+      color_variants: isChecked ? [...color_variant_options] : [],
+    }));
   };
+
+  console.log({ newPart });
 
   return (
     <motion.div className="max-w-3xl mx-auto bg-white p-6 rounded-2xl shadow-md">
@@ -385,7 +394,7 @@ export default function AddProduct() {
         <section>
           <div className="flex justify-between w-full">
             <h3 className="text-lg font-semibold text-black mt-1">
-              Custom Sizes
+              Custom Size Measurements
             </h3>
             <button
               onClick={() => setShowCustomSizes(!showCustomSize)}
@@ -600,9 +609,44 @@ export default function AddProduct() {
               >
                 <div className="flex  lg:flex-row flex-col gap-2 ">
                   <InputText
-                    value={newPart}
-                    onChange={(e) => setNewPart(e.target.value)}
+                    value={newPart.name}
+                    onChange={(e) =>
+                      setNewPart({
+                        ...newPart,
+                        name: e.target.value,
+                      })
+                    }
                     placeholder="Part Name"
+                  />
+
+                  <Dropdown
+                    value={parts_type_options.find((opt) => opt.code === newPart.type)}
+                    onChange={(e) =>
+                      setNewPart({
+                        ...newPart,
+                        type: e.value.code,
+                      })
+                    }
+                    options={parts_type_options}
+                    optionLabel="name"
+                    
+                    placeholder="Select Type"
+                    className="w-full md:w-14rem"
+                  />
+
+                  <Dropdown
+                    value={parts_allow_options.find((opt) => opt.code === newPart.allows)}
+                    onChange={(e) =>
+                      setNewPart({
+                        ...newPart,
+                        allows: e.value.code,
+                      })
+                    }
+                    options={parts_allow_options}
+                    optionLabel="name"
+                    
+                    placeholder="Allows"
+                    className="w-full md:w-14rem"
                   />
 
                   <button
@@ -618,14 +662,38 @@ export default function AddProduct() {
 
           <ul className="mt-4">
             {product.parts.map((part, index) => (
-              <li key={index} className="flex justify-between">
-                <p>{part}</p>
-                <button
-                  onClick={() => removePart(index)}
-                  className="text-red-500"
-                >
-                  Remove
-                </button>
+              <li key={index} className="flex justify-between items-center">
+                <p className="flex items-center gap-1 text-xs">
+                  <p>{part?.name} - {parts_type_options.find((opt) => opt.code === part.type)
+                      ?.name || part.type} - {parts_allow_options.find((opt) => opt.code === part.allows)
+                        ?.name || part.allows}
+                  </p>
+
+                  {/* <p
+                    className={`text-xs px-2 py-1 rounded-md text-white ${
+                      part.type === 'user_set' ? 'bg-blue-400 ' : 'bg-green-300'
+                    }`}
+                  >
+                    {parts_type_options.find((opt) => opt.code === part.type)
+                      ?.name || part.type}
+                  </p>{' '}
+                  <p
+                    className={`text-xs px-2 py-1 rounded-md text-white ${
+                      part.allows === 'textile' ? 'bg-blue-400 ' : 'bg-green-300'
+                    }`}
+                  >
+                    {parts_type_options.find((opt) => opt.code === part.allows)
+                      ?.name || part.type}
+                  </p>{' '} */}
+                </p>
+                <p>
+                  <button
+                    onClick={() => removePart(index)}
+                    className="text-red-500 text-sm"
+                  >
+                    Remove
+                  </button>
+                </p>
               </li>
             ))}
           </ul>
@@ -687,3 +755,20 @@ export default function AddProduct() {
     </motion.div>
   );
 }
+
+const parts_allow_options = [
+  {
+    name: 'Textile',
+    code: 'textile',
+  },
+  { name: 'Color', code: 'color' },
+  { name: 'Both', code: 'both' },
+];
+
+const parts_type_options = [
+  {
+    name: 'Designer Discretion',
+    code: 'designer_discretion',
+  },
+  { name: 'Set By User', code: 'user_set' },
+];
