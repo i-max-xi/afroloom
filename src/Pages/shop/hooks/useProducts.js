@@ -26,6 +26,7 @@ const fetchProducts = async ({
 }) => {
   let q = collection(db, shopCollectionRef);
   let conditions = [];
+  let page_size = PAGE_SIZE;
 
   if (grandparent_category && grandparent_category !== '' && !searchQuery) {
     conditions.push(where('grandparent_category', '==', grandparent_category));
@@ -49,6 +50,7 @@ const fetchProducts = async ({
 
   // Filter by search query
   if (searchQuery) {
+    page_size = 1000;
     q = query(
       q,
       where('search_keywords', 'array-contains', searchQuery.toLowerCase()),
@@ -63,8 +65,8 @@ const fetchProducts = async ({
   // Apply conditions to query
   q =
     selectedPrice && selectedPrice.min !== null
-      ? query(q, ...conditions, orderBy('price'), limit(PAGE_SIZE))
-      : query(q, ...conditions, orderBy('__name__'), limit(PAGE_SIZE));
+      ? query(q, ...conditions, orderBy('price'), limit(page_size))
+      : query(q, ...conditions, orderBy('__name__'), limit(page_size));
 
   // Pagination
   if (pageParam) {

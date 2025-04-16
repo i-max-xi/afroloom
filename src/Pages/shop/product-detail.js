@@ -99,7 +99,7 @@ const ProductDetail = () => {
   useEffect(() => {
     if (product?.parts?.length) {
       const initial = product.parts.map((part) => ({
-        name: part,
+        name: part.name,
         value: '',
         type: '',
       }));
