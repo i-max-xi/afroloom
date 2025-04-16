@@ -74,7 +74,7 @@ export default function AddProduct() {
   const [newPart, setNewPart] = useState({
     name: '',
     type: '',
-    allows: ''
+    allows: '',
   });
   const [newCustomSize, setNewCustomSize] = useState('');
   const [uploading, setUploading] = useState(false);
@@ -109,7 +109,7 @@ export default function AddProduct() {
       setNewPart({
         name: '',
         type: '',
-        allows: ""
+        allows: '',
       });
     }
   };
@@ -620,7 +620,9 @@ export default function AddProduct() {
                   />
 
                   <Dropdown
-                    value={parts_type_options.find((opt) => opt.code === newPart.type)}
+                    value={parts_type_options.find(
+                      (opt) => opt.code === newPart.type,
+                    )}
                     onChange={(e) =>
                       setNewPart({
                         ...newPart,
@@ -629,13 +631,14 @@ export default function AddProduct() {
                     }
                     options={parts_type_options}
                     optionLabel="name"
-                    
                     placeholder="Select Type"
                     className="w-full md:w-14rem"
                   />
 
                   <Dropdown
-                    value={parts_allow_options.find((opt) => opt.code === newPart.allows)}
+                    value={parts_allow_options.find(
+                      (opt) => opt.code === newPart.allows,
+                    )}
                     onChange={(e) =>
                       setNewPart({
                         ...newPart,
@@ -644,7 +647,6 @@ export default function AddProduct() {
                     }
                     options={parts_allow_options}
                     optionLabel="name"
-                    
                     placeholder="Allows"
                     className="w-full md:w-14rem"
                   />
@@ -664,27 +666,14 @@ export default function AddProduct() {
             {product.parts.map((part, index) => (
               <li key={index} className="flex justify-between items-center">
                 <p className="flex items-center gap-1 text-xs">
-                  <p>{part?.name} - {parts_type_options.find((opt) => opt.code === part.type)
-                      ?.name || part.type} - {parts_allow_options.find((opt) => opt.code === part.allows)
-                        ?.name || part.allows}
-                  </p>
-
-                  {/* <p
-                    className={`text-xs px-2 py-1 rounded-md text-white ${
-                      part.type === 'user_set' ? 'bg-blue-400 ' : 'bg-green-300'
-                    }`}
-                  >
+                  <p>
+                    {part?.name} -{' '}
                     {parts_type_options.find((opt) => opt.code === part.type)
-                      ?.name || part.type}
-                  </p>{' '}
-                  <p
-                    className={`text-xs px-2 py-1 rounded-md text-white ${
-                      part.allows === 'textile' ? 'bg-blue-400 ' : 'bg-green-300'
-                    }`}
-                  >
-                    {parts_type_options.find((opt) => opt.code === part.allows)
-                      ?.name || part.type}
-                  </p>{' '} */}
+                      ?.name || part.type}{' '}
+                    -{' '}
+                    {parts_allow_options.find((opt) => opt.code === part.allows)
+                      ?.name || part.allows}
+                  </p>
                 </p>
                 <p>
                   <button
@@ -756,7 +745,7 @@ export default function AddProduct() {
   );
 }
 
-const parts_allow_options = [
+export const parts_allow_options = [
   {
     name: 'Textile',
     code: 'textile',
@@ -765,7 +754,7 @@ const parts_allow_options = [
   { name: 'Both', code: 'both' },
 ];
 
-const parts_type_options = [
+export const parts_type_options = [
   {
     name: 'Designer Discretion',
     code: 'designer_discretion',
