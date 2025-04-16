@@ -23,6 +23,7 @@ import {
   divisionBreakdown,
 } from '../../../shop/Data/products';
 import { HiChevronDown, HiChevronUp } from 'react-icons/hi';
+import { parts_allow_options, parts_type_options } from '../AddToStore';
 
 const division = divisionBreakdown;
 const categories = categoriesBreakdown;
@@ -37,7 +38,11 @@ export default function EditProductDialog({
   const [uploading, setUploading] = useState(false);
   const [editedProduct, setEditedProduct] = useState(selectedProduct || {}); // Local state
   const [newSize, setNewSize] = useState({ name: '', value: 0 });
-  const [newPart, setNewPart] = useState('');
+  const [newPart, setNewPart] = useState({
+    name: '',
+    type: '',
+    allows: '',
+  });
   const [newCustomSize, setNewCustomSize] = useState('');
 
   //show hide
@@ -76,9 +81,24 @@ export default function EditProductDialog({
     if (newPart) {
       const updatedParts = [...(editedProduct.parts || []), newPart];
       updateItem('parts', updatedParts);
-      setNewPart('');
+      setNewPart({
+        name: '',
+        type: '',
+        allows: '',
+      });
     }
   };
+
+  // const addPart = () => {
+  //   if (newPart) {
+  //     setProduct({ ...product, parts: [...product.parts, newPart] });
+  //     setNewPart({
+  //       name: '',
+  //       type: '',
+  //       allows: '',
+  //     });
+  //   }
+  // };
 
   const removePart = (index) => {
     const updatedPart = editedProduct.parts.filter((_, i) => i !== index);
@@ -537,10 +557,53 @@ export default function EditProductDialog({
                   className=""
                 >
                   <div className="flex  lg:flex-row flex-col gap-2 ">
-                    <InputText
+                    {/* <InputText
                       value={newPart}
                       onChange={(e) => setNewPart(e.target.value)}
                       placeholder="Part Name"
+                    /> */}
+
+                    <InputText
+                      value={newPart.name}
+                      onChange={(e) =>
+                        setNewPart({
+                          ...newPart,
+                          name: e.target.value,
+                        })
+                      }
+                      placeholder="Part Name"
+                    />
+
+                    <Dropdown
+                      value={parts_type_options.find(
+                        (opt) => opt.code === newPart.type,
+                      )}
+                      onChange={(e) =>
+                        setNewPart({
+                          ...newPart,
+                          type: e.value.code,
+                        })
+                      }
+                      options={parts_type_options}
+                      optionLabel="name"
+                      placeholder="Select Type"
+                      className="w-full md:w-14rem"
+                    />
+
+                    <Dropdown
+                      value={parts_allow_options.find(
+                        (opt) => opt.code === newPart.allows,
+                      )}
+                      onChange={(e) =>
+                        setNewPart({
+                          ...newPart,
+                          allows: e.value.code,
+                        })
+                      }
+                      options={parts_allow_options}
+                      optionLabel="name"
+                      placeholder="Allows"
+                      className="w-full md:w-14rem"
                     />
 
                     <button
@@ -557,7 +620,17 @@ export default function EditProductDialog({
             <ul className="mt-4">
               {editedProduct?.parts?.map((part, index) => (
                 <li key={index} className="flex justify-between">
-                  <p>{part}</p>
+                  <p className="flex items-center gap-1 text-xs">
+                    <p>
+                      {part?.name} -{' '}
+                      {parts_type_options.find((opt) => opt.code === part.type)
+                        ?.name || part.type}{' '}
+                      -{' '}
+                      {parts_allow_options.find(
+                        (opt) => opt.code === part.allows,
+                      )?.name || part.allows}
+                    </p>
+                  </p>
                   <button
                     onClick={() => removePart(index)}
                     className="text-red-500"

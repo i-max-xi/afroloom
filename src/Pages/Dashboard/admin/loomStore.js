@@ -305,7 +305,9 @@ const LoomStore = () => {
               <div className="max-h-10 overflow-y-auto">
                 {rowData?.parts?.map((part, index) => (
                   <li key={index} className="flex justify-between">
-                    <div className="flex items-center gap-2">{part}</div>
+                    <div className="flex items-center gap-2">
+                      {part?.name}-{part?.type}-{part?.allows}
+                    </div>
                   </li>
                 ))}
               </div>
