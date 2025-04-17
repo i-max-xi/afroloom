@@ -59,7 +59,7 @@ export default function CustomizeSize({
           </div>
         ))}
 
-        <div className="flex items-center justify-center mx-auto gap-2 mt-6 w-[60%]">
+        <div className="flex items-center justify-center md:mx-auto gap-2 mt-6 md:w-[60%]">
           <button
             onClick={onHide}
             className="w-full p-2 rounded-lg bg-gray-300 hover:bg-gray-400 text-black"

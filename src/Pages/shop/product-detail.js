@@ -17,7 +17,7 @@ import { Disclaimer } from './components/disclaimer';
 import { Carousel } from 'primereact/carousel';
 import { useAllProducts } from './hooks/useAllProducts';
 import { Toast } from 'primereact/toast';
-import { AiOutlinePlus } from 'react-icons/ai';
+import { AiOutlineEdit, AiOutlinePlus } from 'react-icons/ai';
 import CustomizeSize from './customize-size';
 import { HiChevronDown, HiChevronUp } from 'react-icons/hi';
 import { responsiveOptions } from './Data/products';
@@ -66,6 +66,15 @@ const ProductDetail = () => {
       setSelectedSize(product.sizes[0] || { name: '', value: 0 });
     }
   }, [id, product]); // Depend on `id` and `product`
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    if (CustomizedSizes.length > 0) {
+      setSelectedSize({ name: '', value: 0 });
+    } else {
+      setSelectedSize(product?.sizes[0] || { name: '', value: 0 });
+    }
+  }, [CustomizedSizes]);
 
   const [openSeeAll, setOpenSeeAll] = useState(false);
   const [selectedSeeAll, setSelectedSeeAll] = useState({
@@ -183,6 +192,16 @@ const ProductDetail = () => {
       severity: 'success',
       summary: 'Added to cart',
     });
+
+    setCustomizedSizes([]);
+    setSelectedColor(null);
+    setSelectedPrintOn('');
+    setSelectedSize(
+      product?.sizes[0] || {
+        name: '',
+        value: 0,
+      },
+    );
   };
 
   const onSaveCustomizeSize = (customizedSizes) => {
@@ -325,16 +344,22 @@ const ProductDetail = () => {
 
                 {needsTextile && (
                   <button
-                    className="flex items-center gap-1 "
+                    className="flex items-center gap-1 mx-1"
                     onClick={() => {
                       setOpenCustomize(true);
                     }}
                   >
                     <p className="text-sm  mt-2 px-2 py-2 rounded-full bg-yellow-500">
-                      <AiOutlinePlus size={8} />
+                      {CustomizedSizes.length > 0 ? (
+                        <AiOutlineEdit size={10} />
+                      ) : (
+                        <AiOutlinePlus size={8} />
+                      )}
                     </p>
                     <span className="text-yellow-500 mb-1">
-                      Customize your own Measurement
+                      {CustomizedSizes.length > 0
+                        ? 'Edit your customized measurements'
+                        : 'Customize your own Measurement'}
                     </span>
                   </button>
                 )}
@@ -886,7 +911,7 @@ const ProductDetail = () => {
                   : 'bg-yellow-500 hover:bg-yellow-600'
               }`}
             >
-              {isInCart ? 'In cart' : 'Add to Cart'}
+              {isInCart ? 'Already In cart' : 'Add to Cart'}
             </button>
           </div>
         </div>
