@@ -222,42 +222,44 @@ const CategoryPage = () => {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, ease: 'easeOut' }}
-          className="h-[20vh]  flex flex-col  items-center justify-center"
+          className="h-fit  mt-2 flex flex-col gap-1  items-center justify-center"
         >
-          <p className="flex items-center justify-center  bg-yellow-500 text-white text-[9px]  rounded-full w-fit border-2 border-yellow-400 px-2 py-1">
-            {category.grandparent}
-          </p>
-          <h2 className="text-3xl font-bold ">{category.name}</h2>
+          {/* <div className="flex items-center justify-center  bg-yellow-500 text-white text-[9px]  rounded-full w-fit border-2 border-yellow-400 px-2 py-1">
+            {category?.grandparent}
+          </div> */}
+          <h2 className="text-3xl font-bold ">{category?.name}</h2>
         </motion.div>
 
         {/* Subcategory Buttons */}
-        {category?.children.length > 0 && (
+        {category?.children?.length > 0 && (
           <motion.div
             initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, ease: 'easeOut' }}
-            className="no-scrollbar flex whitespace-nowrap gap-2 mt-6 overflow-x-auto pb-2"
+            className="no-scrollbar flex whitespace-nowrap gap-2 mt-2 overflow-x-auto pb-2"
           >
-            <motion.button
-              className={`px-4 py-2 text-xs md:text-sm rounded-full border-2 ${
-                selectedSubcategory === ''
-                  ? 'bg-yellow-500 text-white'
-                  : 'border-gray-300'
-              } hover:border-yellow-500 transition`}
-              onClick={() => setSelectedSubcategory('')}
-              whileHover={{ scale: 1.1 }}
-            >
-              All
-            </motion.button>
+            {category?.children?.length > 1 && (
+              <motion.button
+                className={`px-4 py-2 text-xs md:text-sm rounded-lg  ${
+                  selectedSubcategory === ''
+                    ? 'bg-yellow-400 text-yellow-800'
+                    : 'bg-gray-200'
+                } hover:border-yellow-100 transition`}
+                onClick={() => setSelectedSubcategory('')}
+                whileHover={{ scale: 1.1 }}
+              >
+                All
+              </motion.button>
+            )}
 
             {category?.children.map((sub, index) => (
               <motion.button
                 key={index}
-                className={`px-4 py-2 rounded-full text-xs md:text-sm border-2 ${
+                className={`px-3 py-1 rounded-lg text-xs md:text-sm  ${
                   selectedSubcategory === sub
-                    ? 'bg-yellow-500 text-white'
-                    : 'border-gray-300'
-                } hover:border-yellow-500 transition`}
+                    ? 'bg-yellow-300 text-yellow-800'
+                    : 'bg-gray-200'
+                } hover:border-yellow-100 transition`}
                 onClick={() => setSelectedSubcategory(sub)}
                 // whileHover={{ scale: 1.1 }}
               >
@@ -267,8 +269,38 @@ const CategoryPage = () => {
           </motion.div>
         )}
 
+        {/* <div className="w-full flex  items-center px-2 bg-gray-800/85 ">
+          <h2 className="text-sm font-bold mt-1 text-start mr-5 text-yellow-500 whitespace-nowrap">
+            Categories
+          </h2>
+
+          <motion.div
+            className="flex items-center  gap-3 overflow-x-auto py-3 no-scrollbar "
+            initial={{ opacity: 0, x: 50 }}
+            animate={{ opacity: 1, x: 0 }}
+            // variants={{
+            //   hidden: { opacity: 0, x: 50 },
+            //   visible: { opacity: 1, x: 0 },
+            // }}
+          >
+            {category?.children?.map((category, index) => (
+              <button
+                key={index}
+                className="cursor-pointer font-semibold text-xs md:text-sm  whitespace-nowrap hover:text-yellow-500 text-white "
+                // variants={{
+                //   hidden: { opacity: 0, y: 30 },
+                //   visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
+                // }}
+                // whileHover={{ scale: 1.05 }}
+              >
+                {category}
+              </button>
+            ))}
+          </motion.div>
+        </div> */}
+
         {/* Product List */}
-        <div className="mt-10">
+        <div className="mt-2">
           {products.length > 0 ? (
             <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
               {products.map((product) => (

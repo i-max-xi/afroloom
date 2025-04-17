@@ -226,7 +226,7 @@ const ProductDetail = () => {
 
             {/* Thumbnail Images */}
             <div className="flex gap-2 mt-4">
-              {product.images.map((img, index) => (
+              {product?.images?.map((img, index) => (
                 <motion.img
                   key={index}
                   src={img}
@@ -327,7 +327,7 @@ const ProductDetail = () => {
               </div>
             )}
 
-            {/* parts selection */}
+            {/* parts selection section */}
             {partsFabrics?.length > 0 && (
               <section className="my-3">
                 <div className="flex flex-col gap-1 ">
@@ -594,181 +594,186 @@ const ProductDetail = () => {
               </section>
             )}
 
-            {/* Color Selection */}
-            {(!product?.parts || product?.parts?.length === 0) &&
-              needsTextile &&
-              product.color_variants &&
-              product.color_variants.length > 0 && (
-                <div className="">
-                  <div className="flex items-center justify-between">
-                    <h3 className="text-base font-semibold mb-2">
-                      Select Fabric Colors:
-                    </h3>
+            {/* non part dependent color and textile */}
+            <section>
+              {/* Color Selection */}
+              {(!product?.parts || product?.parts?.length === 0) &&
+                needsTextile &&
+                product.color_variants &&
+                product.color_variants.length > 0 && (
+                  <div className="">
+                    <div className="flex items-center justify-between">
+                      <h3 className="text-base font-semibold mb-2">
+                        Select Fabric Colors:
+                      </h3>
 
-                    <button
-                      onClick={() => setOpenColors(!openColors)}
-                      className="text-yellow-500 flex items-center"
-                    >
-                      See All
-                      <AnimatePresence mode="wait" initial={false}>
-                        {openColors ? (
-                          <motion.div
-                            key="up"
-                            initial={{ opacity: 0, y: 10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: -10 }}
-                            transition={{ duration: 0.2 }}
-                          >
-                            <HiChevronUp />
-                          </motion.div>
-                        ) : (
-                          <motion.div
-                            key="down"
-                            initial={{ opacity: 0, y: -10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: 10 }}
-                            transition={{ duration: 0.2 }}
-                          >
-                            <HiChevronDown />
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
-                    </button>
-                  </div>
-                  <p className="text-sm">Select color to be used as material</p>
-                  <div className="flex gap-2">
-                    {!openColors &&
-                      product?.color_variants
-                        ?.slice(0, 4)
-                        ?.map((color, index) => (
-                          <button
-                            key={index}
-                            onClick={() => setSelectedColor(color)}
-                            className={`   flex flex-col items-center space-y-1`}
-                          >
-                            <div
-                              className={`rounded-full h-10 w-10 border-1 hover:border-yellow-500 transition ${
-                                selectedColor?.name === color.name
-                                  ? 'border-4 border-yellow-500 bg-yellow-500 text-white'
-                                  : 'border-1 border-gray-300'
-                              }`}
-                              style={{ backgroundColor: color.value }}
-                            ></div>
-                            <p className="text-sm">{color.name}</p>
-                          </button>
-                        ))}
-                  </div>
-                </div>
-              )}
-
-            {/* color dropdown */}
-            <AnimatePresence initial={false}>
-              {openColors && (
-                <motion.div
-                  key="colors"
-                  initial={{ opacity: 0, height: 0 }}
-                  animate={{ opacity: 1, height: 'auto' }}
-                  exit={{ opacity: 0, height: 0 }}
-                  transition={{ duration: 0.3 }}
-                  className="-mx-4 px-0 w-full"
-                >
-                  <div className="grid grid-cols-4 gap-2 w-full ">
-                    {product.color_variants?.map((color, index) => (
                       <button
-                        key={index}
-                        onClick={() => setSelectedColor(color)}
-                        className={`flex flex-col items-center space-y-1`}
+                        onClick={() => setOpenColors(!openColors)}
+                        className="text-yellow-500 flex items-center"
                       >
-                        <div
-                          className={`rounded-full h-10 w-10 border-1 hover:border-yellow-500 transition ${
-                            selectedColor?.name === color.name
-                              ? 'border-4 border-yellow-500 bg-yellow-500 text-white'
-                              : 'border-1 border-gray-300'
-                          }`}
-                          style={{ backgroundColor: color.value }}
-                        ></div>
-                        <p className="text-sm">{color.name}</p>
+                        See All
+                        <AnimatePresence mode="wait" initial={false}>
+                          {openColors ? (
+                            <motion.div
+                              key="up"
+                              initial={{ opacity: 0, y: 10 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              exit={{ opacity: 0, y: -10 }}
+                              transition={{ duration: 0.2 }}
+                            >
+                              <HiChevronUp />
+                            </motion.div>
+                          ) : (
+                            <motion.div
+                              key="down"
+                              initial={{ opacity: 0, y: -10 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              exit={{ opacity: 0, y: 10 }}
+                              transition={{ duration: 0.2 }}
+                            >
+                              <HiChevronDown />
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
                       </button>
-                    ))}
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
-
-            {/* textiltes */}
-            {(!product?.parts || product?.parts?.length === 0) &&
-              needsTextile && (
-                <div>
-                  <p className="flex flex-col gap-1 mt-4">
-                    <h3 className="text-base font-semibold mb-2">
-                      Choose Textile
-                    </h3>
+                    </div>
                     <p className="text-sm">
-                      Select textile to be used as material
+                      Select color to be used as material
                     </p>
-                  </p>
-                  <div className="texture-buttons-container">
-                    <AnimatePresence>
-                      {openSeeAll ? (
-                        <SeeAll
-                          array={selectedSeeAll.array}
-                          title={selectedSeeAll.title}
-                          titleDisplay={selectedSeeAll.titleDisplay}
-                          onClose={handleCloseSeeAll}
-                          others={{
-                            selectedPrintOn,
-                            handleTextureChange,
-                            currencySymbol,
-                            currencyFactor,
-                          }}
-                        />
-                      ) : (
-                        <div className="texture-row">
-                          <div className="texture-category mt-1">
-                            <div className="w-full flex justify-between capitalize">
-                              <p className="text-sm font-medium text-[#4C5B5C]">
-                                WaxPrint
-                              </p>
-                              <p
-                                onClick={() =>
-                                  handleOpenSeeAll(
-                                    'waxPrint',
-                                    'waxPrint',
-                                    textureArrays?.waxPrint,
-                                  )
-                                }
-                                className="cursor-pointer text-sm text-[#ffc107] hover:font-semibold"
-                              >
-                                See all &#8594;
-                              </p>
-                            </div>
-                            <div className="grid grid-cols-4 gap-3 px-4">
-                              {textureArrays?.waxPrint
-                                ?.slice(0, 4)
-                                .map((texture, index) => (
-                                  <TextureItem
-                                    key={texture}
-                                    texture={texture}
-                                    // setHideText={setHideText}
-                                    Title="waxPrint"
-                                    selectedTexture={selectedPrintOn}
-                                    handleTextureChange={handleTextureChange}
-                                    currencySymbol={currencySymbol}
-                                    currencyFactor={currencyFactor}
-                                    subTextureDescriptions={
-                                      textureDescriptions?.waxPrint
-                                    }
-                                    textureIndex={index}
-                                  />
-                                ))}
+                    <div className="flex gap-2">
+                      {!openColors &&
+                        product?.color_variants
+                          ?.slice(0, 4)
+                          ?.map((color, index) => (
+                            <button
+                              key={index}
+                              onClick={() => setSelectedColor(color)}
+                              className={`   flex flex-col items-center space-y-1`}
+                            >
+                              <div
+                                className={`rounded-full h-10 w-10 border-1 hover:border-yellow-500 transition ${
+                                  selectedColor?.name === color.name
+                                    ? 'border-4 border-yellow-500 bg-yellow-500 text-white'
+                                    : 'border-1 border-gray-300'
+                                }`}
+                                style={{ backgroundColor: color.value }}
+                              ></div>
+                              <p className="text-sm">{color.name}</p>
+                            </button>
+                          ))}
+                    </div>
+                  </div>
+                )}
+
+              {/* color dropdown */}
+              <AnimatePresence initial={false}>
+                {openColors && (
+                  <motion.div
+                    key="colors"
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: 'auto' }}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="-mx-4 px-0 w-full"
+                  >
+                    <div className="grid grid-cols-4 gap-2 w-full ">
+                      {product.color_variants?.map((color, index) => (
+                        <button
+                          key={index}
+                          onClick={() => setSelectedColor(color)}
+                          className={`flex flex-col items-center space-y-1`}
+                        >
+                          <div
+                            className={`rounded-full h-10 w-10 border-1 hover:border-yellow-500 transition ${
+                              selectedColor?.name === color.name
+                                ? 'border-4 border-yellow-500 bg-yellow-500 text-white'
+                                : 'border-1 border-gray-300'
+                            }`}
+                            style={{ backgroundColor: color.value }}
+                          ></div>
+                          <p className="text-sm">{color.name}</p>
+                        </button>
+                      ))}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+
+              {/* textiltes */}
+              {(!product?.parts || product?.parts?.length === 0) &&
+                needsTextile && (
+                  <div>
+                    <p className="flex flex-col gap-1 mt-4">
+                      <h3 className="text-base font-semibold mb-2">
+                        Choose Textile
+                      </h3>
+                      <p className="text-sm">
+                        Select textile to be used as material
+                      </p>
+                    </p>
+                    <div className="texture-buttons-container">
+                      <AnimatePresence>
+                        {openSeeAll ? (
+                          <SeeAll
+                            array={selectedSeeAll.array}
+                            title={selectedSeeAll.title}
+                            titleDisplay={selectedSeeAll.titleDisplay}
+                            onClose={handleCloseSeeAll}
+                            others={{
+                              selectedPrintOn,
+                              handleTextureChange,
+                              currencySymbol,
+                              currencyFactor,
+                            }}
+                          />
+                        ) : (
+                          <div className="texture-row">
+                            <div className="texture-category mt-1">
+                              <div className="w-full flex justify-between capitalize">
+                                <p className="text-sm font-medium text-[#4C5B5C]">
+                                  WaxPrint
+                                </p>
+                                <p
+                                  onClick={() =>
+                                    handleOpenSeeAll(
+                                      'waxPrint',
+                                      'waxPrint',
+                                      textureArrays?.waxPrint,
+                                    )
+                                  }
+                                  className="cursor-pointer text-sm text-[#ffc107] hover:font-semibold"
+                                >
+                                  See all &#8594;
+                                </p>
+                              </div>
+                              <div className="grid grid-cols-4 gap-3 px-4">
+                                {textureArrays?.waxPrint
+                                  ?.slice(0, 4)
+                                  .map((texture, index) => (
+                                    <TextureItem
+                                      key={texture}
+                                      texture={texture}
+                                      // setHideText={setHideText}
+                                      Title="waxPrint"
+                                      selectedTexture={selectedPrintOn}
+                                      handleTextureChange={handleTextureChange}
+                                      currencySymbol={currencySymbol}
+                                      currencyFactor={currencyFactor}
+                                      subTextureDescriptions={
+                                        textureDescriptions?.waxPrint
+                                      }
+                                      textureIndex={index}
+                                    />
+                                  ))}
+                              </div>
                             </div>
                           </div>
-                        </div>
-                      )}
-                    </AnimatePresence>
+                        )}
+                      </AnimatePresence>
+                    </div>
                   </div>
-                </div>
-              )}
+                )}
+            </section>
 
             {/* Quantity Selection */}
             <div className="">
@@ -790,7 +795,7 @@ const ProductDetail = () => {
               </div>
             </div>
 
-            <p className="text-[1.2rem] font-semibold mt-2 text-yellow-500 ">
+            <p className="text-sm  font-semibold mt-2 text-yellow-500 ">
               Ready in:{' '}
               <span className="text-sm text-gray-600 font-medium ">
                 {product.ready_in}
