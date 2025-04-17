@@ -8,8 +8,6 @@ const IntroSection = () => {
   const [selected, setSelected] = useState(grandparent_category);
   const dispatch = useDispatch();
 
-  console.log({ grandparent_category });
-
   const onChangeGrandparent = (category) => {
     setSelected(category);
     dispatch(
