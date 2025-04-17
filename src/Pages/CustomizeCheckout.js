@@ -457,103 +457,134 @@ const CustomizeCheckout = () => {
                           className=" flex rounded-md justify-content-between align-items-center mt-3"
                           key={selectedItem.name}
                         >
-                          <div className="flex gap-3 justify-between items-center w-full bg-white p-4">
-                            <div className="flex gap-3 justify-center items-center">
+                          <section className="flex gap-3 flex-col w-full bg-white p-3 text-sm">
+                            <div className="flex items-center justify-between md:justify-start md:gap-8">
                               <img
                                 src={selectedItem.image}
                                 alt=""
-                                width="50rem"
-                                height="50rem"
+                                width="30rem"
+                                height="30rem"
                               />
-                              <p className="">
-                                <span className="font-medium ">Name: </span>{' '}
-                                {selectedItem.name} <br />
-                                <span className="font-medium">
-                                  Price:{' '}
-                                </span>{' '}
-                                {currencySymbol}
-                                {(selectedItem.price * currencyFactor).toFixed(
-                                  2,
-                                )}{' '}
-                                <br />
-                                <span className="font-medium">
-                                  Quantity:{' '}
-                                </span>{' '}
-                                {selectedItem.quantity}
-                                <br />
-                                <span className="font-medium">Size: </span>{' '}
-                                {selectedItem.selectedSize}
-                                <br />
-                                <span className="font-semibold">
-                                  Subtotal:
-                                </span>{' '}
-                                {currencySymbol}
-                                {(
-                                  selectedItem?.price *
-                                  selectedItem?.quantity *
-                                  currencyFactor
-                                ).toLocaleString()}
-                                {selectedItem?.selectedColor && (
-                                  <p className="flex items-center gap-3">
-                                    <p className="font-medium">Color:</p>{' '}
-                                    <div className="flex items-center gap-1">
-                                      <p
-                                        className="rounded-full h-4 w-4 border"
-                                        style={{
-                                          backgroundColor:
-                                            selectedItem?.selectedColor.value,
-                                        }}
-                                      ></p>{' '}
-                                      <p className="text-xs">
-                                        {selectedItem?.selectedColor.name}
+                              <div className="flex justify-between gap-5 text-sm ">
+                                <div className="flex flex-col md:flex-row gap-2 md:gap-8">
+                                  <div className="flex flex-col items-start gap-1">
+                                    <span className="font-normal">Name: </span>
+                                    <span className="font-semibold ">
+                                      {selectedItem.name}
+                                    </span>
+                                  </div>
+                                  <div className="flex flex-col items-start gap-1">
+                                    <span className="font-normal">Price: </span>{' '}
+                                    <span className="font-semibold ">
+                                      {currencySymbol}
+                                      {(
+                                        selectedItem.price * currencyFactor
+                                      ).toFixed(2)}
+                                    </span>
+                                  </div>
+                                </div>
+                                <div className="flex flex-col md:flex-row gap-2 md:gap-8">
+                                  <div className="flex flex-col items-start gap-1">
+                                    <span className="font-normal">
+                                      Subtotal:
+                                    </span>
+                                    <span className="font-semibold">
+                                      {currencySymbol}
+                                      {(
+                                        selectedItem?.price *
+                                        selectedItem?.quantity *
+                                        currencyFactor
+                                      ).toLocaleString()}
+                                    </span>
+                                  </div>
+                                  <div className="flex flex-col items-start gap-1">
+                                    {selectedItem?.selectedColor && (
+                                      <p className="flex items-center md:items-start gap-3">
+                                        <p className="font-normal">Color:</p>{' '}
+                                        <div className="flex items-center md:items-start gap-1">
+                                          <p
+                                            className="rounded-full h-4 w-4 border"
+                                            style={{
+                                              backgroundColor:
+                                                selectedItem?.selectedColor
+                                                  .value,
+                                            }}
+                                          ></p>{' '}
+                                          <p className="text-xs">
+                                            {selectedItem?.selectedColor.name}
+                                          </p>
+                                        </div>
                                       </p>
-                                    </div>
-                                  </p>
-                                )}
-                                {selectedItem?.selectedTextile && (
-                                  <p className="flex items-center gap-2">
-                                    <span className="font-medium">
-                                      Textile:
-                                    </span>{' '}
-                                    <img
-                                      src={selectedItem?.selectedTextile}
-                                      alt=""
-                                      className="texture-button-checkout"
-                                    />
-                                  </p>
-                                )}
-                              </p>
+                                    )}
+                                    {selectedItem?.selectedTextile && (
+                                      <p className="flex flex-col items-start gap-1">
+                                        <span className="font-medium">
+                                          Textile:
+                                        </span>{' '}
+                                        <img
+                                          src={selectedItem?.selectedTextile}
+                                          alt=""
+                                          className="texture-button-checkout"
+                                        />
+                                      </p>
+                                    )}
+                                  </div>
+                                </div>
+                              </div>
                             </div>
-                            <div className=" flex flex-col items-center gap-4 p-2">
-                              <button
-                                onClick={() =>
-                                  handleshopItemQuantityChange(
-                                    selectedItem.id,
-                                    selectedItem.selectedSize,
-                                    'plus',
-                                  )
-                                }
-                                className="bg-gray-200 px-3 py-1 rounded-lg text-sm"
-                              >
-                                +
-                              </button>
-                              <span className="text-sm font-bold">
-                                {selectedItem?.quantity}
-                              </span>
-                              <button
-                                onClick={() =>
-                                  handleshopItemQuantityChange(
-                                    selectedItem.id,
-                                    selectedItem.selectedSize,
-                                    'minus',
-                                  )
-                                }
-                                className="bg-gray-200 px-3 py-1 rounded-lg text-sm"
-                              >
-                                -
-                              </button>
+
+                            <div className="flex flex-col gap-1 justify-start">
+                              <div className="flex flex-col  gap-1">
+                                <span className="font-medium">Quantity:</span>
+                                <div className=" flex items-center gap-4 p-2">
+                                  <button
+                                    onClick={() =>
+                                      handleshopItemQuantityChange(
+                                        selectedItem.id,
+                                        selectedItem.selectedSize,
+                                        'plus',
+                                      )
+                                    }
+                                    className="bg-gray-200 px-3 py-1 rounded-lg text-sm"
+                                  >
+                                    +
+                                  </button>
+                                  <span className="text-xs font-bold">
+                                    {selectedItem?.quantity}
+                                  </span>
+                                  <button
+                                    onClick={() =>
+                                      handleshopItemQuantityChange(
+                                        selectedItem.id,
+                                        selectedItem.selectedSize,
+                                        'minus',
+                                      )
+                                    }
+                                    className="bg-gray-200 px-3 py-1 rounded-lg text-sm"
+                                  >
+                                    -
+                                  </button>
+                                </div>
+                              </div>
+                              <div className="flex flex-col gap-1 h-fit">
+                                <span className="font-medium">Size: </span>{' '}
+                                <div className="flex items-center gap-1 h-fit">
+                                  {selectedItem?.customizedSizes?.length > 0
+                                    ? selectedItem?.customizedSizes?.map(
+                                        (el, index) => (
+                                          <div
+                                            key={index}
+                                            className="leading-none text-xs flex items-center justify-between p-2 rounded-md bg-gray-800 text-white"
+                                          >
+                                            {el.name}: {el.value}{' '}
+                                          </div>
+                                        ),
+                                      )
+                                    : selectedItem.selectedSize}
+                                </div>
+                              </div>
                             </div>
-                          </div>
+                          </section>
                           <p className="col-1  cursor-pointer">
                             <i
                               className="pi pi-trash "
