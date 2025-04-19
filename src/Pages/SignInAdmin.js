@@ -1,15 +1,15 @@
-import React, { useState, useRef, useEffect } from "react";
-import { useDispatch } from "react-redux";
-import { setDashBoardPath, setSignedIn } from "../Redux/store";
-import { Link, useNavigate } from "react-router-dom";
-import { auth } from "../firebase";
-import { Toast } from "primereact/toast";
-import { ProgressSpinner } from "primereact/progressspinner";
-import { useForm } from "react-hook-form";
-import CustomInput from "../Components/Input/CustomInput";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import Nav from "../Components/Nav";
-import ProductsDataService from "../Services/usersService";
+import React, { useState, useRef, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { setDashBoardPath, setSignedIn } from '../Redux/store';
+import { Link, useNavigate } from 'react-router-dom';
+import { auth } from '../firebase';
+import { Toast } from 'primereact/toast';
+import { ProgressSpinner } from 'primereact/progressspinner';
+import { useForm } from 'react-hook-form';
+import CustomInput from '../Components/Input/CustomInput';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import Nav from '../Components/Nav';
+import ProductsDataService from '../Services/usersService';
 
 const SignInAdmin = () => {
   const dispatch = useDispatch();
@@ -30,7 +30,6 @@ const SignInAdmin = () => {
   }, []);
 
   const onSubmit = async (data) => {
-    console.log(data);
     setIsLoading(true);
     const { email, password } = data;
     try {
@@ -41,7 +40,7 @@ const SignInAdmin = () => {
           let userInfo = null;
 
           const buyerInfo = await ProductsDataService.getuserByField(
-            "id",
+            'id',
             user.uid,
           );
 
@@ -52,23 +51,23 @@ const SignInAdmin = () => {
             dispatch(setDashBoardPath(`/admin-dashboard`));
             reset();
             toastRef.current.show({
-              severity: "success",
-              summary: "Sign in successful!",
+              severity: 'success',
+              summary: 'Sign in successful!',
             });
             navigate(`/admin-dashboard`); // Navigate to dashboard with userID
           } else {
             toastRef.current.show({
-              severity: "error",
-              summary: "Error signing in",
-              detail: "User is not an admin",
+              severity: 'error',
+              summary: 'Error signing in',
+              detail: 'User is not an admin',
             });
           }
         },
       );
     } catch (error) {
       toastRef.current.show({
-        severity: "error",
-        summary: "Error signing in",
+        severity: 'error',
+        summary: 'Error signing in',
         detail: error.message,
       });
     } finally {
@@ -85,11 +84,11 @@ const SignInAdmin = () => {
           <form className="col-12 col-sm-6" onSubmit={handleSubmit(onSubmit)}>
             <CustomInput
               label="Email"
-              {...register("email", {
-                required: "Email is required",
+              {...register('email', {
+                required: 'Email is required',
                 pattern: {
                   value: /^\S+@\S+$/i,
-                  message: "Enter a valid email",
+                  message: 'Enter a valid email',
                 },
               })}
             />
@@ -101,11 +100,11 @@ const SignInAdmin = () => {
               label="Password"
               // placeholder="Password"
               type="password"
-              {...register("password", {
-                required: "password is required",
+              {...register('password', {
+                required: 'password is required',
                 minLength: {
                   value: 6,
-                  message: "Password must have at least 6 characters",
+                  message: 'Password must have at least 6 characters',
                 },
               })}
             />
@@ -117,11 +116,11 @@ const SignInAdmin = () => {
               type="submit"
               className="btn btn-warning text-white w-100 mt-4 shadow-sm position-relative"
             >
-              {" "}
+              {' '}
               <span className="spinner-container">
                 {isLoading && (
                   <ProgressSpinner
-                    style={{ width: "1.5rem", height: "1.5rem" }}
+                    style={{ width: '1.5rem', height: '1.5rem' }}
                     strokeWidth="8"
                     fill="var(--surface-ground)"
                     className="position-absolute top-50 start-50 translate-middle"
