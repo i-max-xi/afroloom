@@ -1,24 +1,24 @@
-import React, { useRef, useState } from "react";
-import { useForm } from "react-hook-form";
-import { Toast } from "primereact/toast";
-import CustomInput from "../Components/Input/CustomInput";
-import { auth } from "../firebase";
+import React, { useRef, useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { Toast } from 'primereact/toast';
+import CustomInput from '../Components/Input/CustomInput';
+import { auth } from '../firebase';
 import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-} from "firebase/auth";
-import Nav from "../Components/Nav";
-import { Link, useNavigate } from "react-router-dom";
-import { ProgressSpinner } from "primereact/progressspinner";
-import AllServices from "../Services/usersService";
-import { generatePartnerCode } from "../utils/functions";
-import { setDashBoardPath, setSignedIn } from "../Redux/store";
-import { useDispatch } from "react-redux";
+} from 'firebase/auth';
+import Nav from '../Components/Nav';
+import { Link, useNavigate } from 'react-router-dom';
+import { ProgressSpinner } from 'primereact/progressspinner';
+import AllServices from '../Services/usersService';
+import { generatePartnerCode } from '../utils/functions';
+import { setDashBoardPath, setSignedIn } from '../Redux/store';
+import { useDispatch } from 'react-redux';
 import {
   TbCircleNumber1,
   TbCircleNumber2,
   TbCircleNumber3,
-} from "react-icons/tb";
+} from 'react-icons/tb';
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -31,14 +31,13 @@ const SignUp = () => {
     handleSubmit,
     formState: { errors, isValid },
   } = useForm({
-    mode: "onChange",
+    mode: 'onChange',
   });
   const toastRef = useRef(null);
 
   const onSubmit = async (data) => {
     setIsLoading(true);
     const { email, password, first_name, last_name, phone } = data;
-    console.log({ data });
     try {
       await createUserWithEmailAndPassword(auth, email, password).then(
         (userCredential) => {
@@ -54,8 +53,8 @@ const SignUp = () => {
             count: 0,
           };
 
-          const currentMonth = new Date().toLocaleString("default", {
-            month: "long",
+          const currentMonth = new Date().toLocaleString('default', {
+            month: 'long',
           });
 
           const salesData = [{ month: currentMonth, count: 0 }];
@@ -68,13 +67,13 @@ const SignUp = () => {
 
           // Submit to formspree
           fetch(process.env.REACT_APP_formSpree, {
-            method: "POST",
+            method: 'POST',
             headers: {
-              "Content-Type": "application/json",
+              'Content-Type': 'application/json',
             },
             body: JSON.stringify({
               ...userInfo,
-              Subject: "New AfroLoom Partner",
+              Subject: 'New AfroLoom Partner',
             }),
           });
         },
@@ -88,8 +87,8 @@ const SignUp = () => {
           dispatch(setSignedIn(true));
           dispatch(setDashBoardPath(`/dashboard/${user.uid}`));
           toastRef.current.show({
-            severity: "success",
-            summary: "Account created successfully!",
+            severity: 'success',
+            summary: 'Account created successfully!',
           });
 
           navigate(`/dashboard/${user.uid}`); // Navigate to dashboard with userID
@@ -100,8 +99,8 @@ const SignUp = () => {
       // navigate('/signin');
     } catch (error) {
       toastRef.current.show({
-        severity: "error",
-        summary: "Error creating account",
+        severity: 'error',
+        summary: 'Error creating account',
         detail: error.message,
       });
     } finally {
@@ -119,7 +118,7 @@ const SignUp = () => {
         </h4>
         <div className=" mb-4 px-4">
           <h6 className="">Three Easy Steps</h6>
-          <div className="mt-2" style={{ color: "var(--light-text)" }}>
+          <div className="mt-2" style={{ color: 'var(--light-text)' }}>
             <div className=" my-2 d-flex gap-2 align-items-start">
               <TbCircleNumber1 size={20} className="mt-1 " />
               <p>Sign Up to receive a partner ID code</p>
@@ -139,7 +138,7 @@ const SignUp = () => {
             <CustomInput
               label="First Name"
               // placeholder="First Name"
-              {...register("first_name", { required: true })}
+              {...register('first_name', { required: true })}
             />
             {errors.firstName && (
               <p className="text-danger">First Name is required</p>
@@ -147,7 +146,7 @@ const SignUp = () => {
             <CustomInput
               label="Last Name"
               // placeholder="Last Name"
-              {...register("last_name", { required: true })}
+              {...register('last_name', { required: true })}
             />
             {errors.lastName && (
               <p className="text-danger">Last Name is required</p>
@@ -155,11 +154,11 @@ const SignUp = () => {
 
             <CustomInput
               label="Email"
-              {...register("email", {
-                required: "Email is required",
+              {...register('email', {
+                required: 'Email is required',
                 pattern: {
                   value: /^\S+@\S+$/i,
-                  message: "Enter a valid email",
+                  message: 'Enter a valid email',
                 },
               })}
             />
@@ -169,11 +168,11 @@ const SignUp = () => {
 
             <CustomInput
               label="Phone Number"
-              {...register("phone", {
-                required: "Phone number is required",
+              {...register('phone', {
+                required: 'Phone number is required',
                 pattern: {
                   value: /^[0-9]{10}$/,
-                  message: "Enter a valid phone number",
+                  message: 'Enter a valid phone number',
                 },
               })}
             />
@@ -186,11 +185,11 @@ const SignUp = () => {
               label="Password"
               // placeholder="Password"
               type="password"
-              {...register("password", {
-                required: "password is required",
+              {...register('password', {
+                required: 'password is required',
                 minLength: {
                   value: 6,
-                  message: "Password must have at least 6 characters",
+                  message: 'Password must have at least 6 characters',
                 },
               })}
             />
@@ -203,11 +202,11 @@ const SignUp = () => {
               type="submit"
               className="btn btn-warning text-white w-100 mt-4 shadow-sm position-relative"
             >
-              {" "}
+              {' '}
               <span className="spinner-container">
                 {isLoading && (
                   <ProgressSpinner
-                    style={{ width: "1.5rem", height: "1.5rem" }}
+                    style={{ width: '1.5rem', height: '1.5rem' }}
                     strokeWidth="8"
                     fill="var(--surface-ground)"
                     className="position-absolute top-50 start-50 translate-middle"

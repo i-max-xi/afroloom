@@ -102,6 +102,7 @@ const CustomizeCheckout = () => {
   });
 
   const onClearCart = () => {
+    resetInfos();
     dispatch(clearShopCart());
     dispatch(clearCart());
   };
@@ -189,8 +190,6 @@ const CustomizeCheckout = () => {
       return;
     }
 
-    console.log('start', reference);
-
     try {
       const image = await html2canvas(componentRef.current, {
         useCORS: true, // Ensure cross-origin images are captured
@@ -213,26 +212,55 @@ const CustomizeCheckout = () => {
         email,
         city,
         tel,
-        customizedProducts: cartItemsData.length > 0 ? cartItemsData : 'N/A',
+        customizedProducts:
+          cartItemsData.length > 0
+            ? JSON.stringify(cartItemsData, null, 2)
+            : 'N/A',
         shopItems:
           shopCart.length > 0
-            ? [
-                ...shopCart.map((item) => {
-                  return {
-                    name: item.name,
-                    quantity: item.quantity,
-                    price:
-                      currencySymbol + (item.price * currencyFactor).toFixed(),
-                    size: item.selectedSize,
-                    textile: item.selectedTextile || 'N/A',
-                    color: item?.selectedColor || 'N/A',
+            ? shopCart
+                .map((item, index) => {
+                  const formattedSizes = item?.customizedSizes?.length
+                    ? item.customizedSizes
+                        .map(
+                          (el) =>
+                            `${el.name}: ${el.value.replace('inches', '″')}`,
+                        )
+                        .join('\n')
+                    : item.selectedSize;
 
-                    // image: item.image,
-                  };
-                }),
-                { summary: downloadURL },
-              ]
+                  const formattedParts = item?.partsFabrics?.length
+                    ? item.partsFabrics
+                        .map(
+                          (el) =>
+                            `${el.name}: ${el.value || 'Designer Discretion'}`,
+                        )
+                        .join('\n')
+                    : null;
+
+                  // Conditionally include Textile and Color only if they have values
+                  const textileLine = item.selectedTextile
+                    ? `- Textile: ${item.selectedTextile}`
+                    : '';
+                  const colorLine = item.selectedColor
+                    ? `- Color: ${item.selectedColor}`
+                    : '';
+
+                  return `Item ${index + 1}:
+          - Name: ${item.name}
+          - Image: ${item.image}
+          - Quantity: ${item.quantity}
+          - Price: ${currencySymbol}${(item.price * currencyFactor).toFixed()}
+          - Size:
+          ${formattedSizes}
+          ${textileLine ? textileLine + '\n' : ''}${
+                    colorLine ? colorLine + '\n' : ''
+                  }${formattedParts ? `- Parts:\n${formattedParts}` : ''}`;
+                })
+                .join('\n\n')
             : 'N/A',
+
+        summary: downloadURL || 'No summary image provided',
         ReferedPerson: referral,
         subject: 'New Product Order',
         dateTime: new Date().toLocaleString('en-US', {
@@ -269,6 +297,11 @@ const CustomizeCheckout = () => {
       setShowAfterPrint(true);
     } catch (error) {
       console.error('Error processing order:', error);
+      toast.current.show({
+        severity: 'error',
+        summary:
+          'Error processing order, please contact us at info@afroloom.com',
+      });
     }
   };
 
@@ -452,29 +485,41 @@ const CustomizeCheckout = () => {
                   <>
                     <h2 className="text-lg lg:text-xl">Cart Item(s)</h2>
                     <ul className="list-group">
-                      {shopCart.map((selectedItem) => (
+                      {shopCart?.map((selectedItem) => (
                         <li
-                          className=" flex rounded-md justify-content-between align-items-center mt-3"
+                          className=" flex flex-col gap-0 rounded-md  mt-3 bg-white p-3"
                           key={selectedItem.name}
                         >
-                          <section className="flex gap-3 flex-col w-full bg-white p-3 text-sm">
+                          <p className="flex items-end justify-end">
+                            <p className="flex items-center justify-center cursor-pointer bg-red-200 hover:bg-red-300 rounded-full p-2 ml-1">
+                              <i
+                                className="pi pi-trash "
+                                style={{ color: 'red' }}
+                                onClick={() =>
+                                  handleShopRemoveItem(selectedItem)
+                                }
+                              ></i>
+                            </p>
+                          </p>
+                          <section className="flex gap-3 flex-col w-full  text-sm">
                             <div className="flex items-center justify-between md:justify-start md:gap-8">
                               <img
                                 src={selectedItem.image}
-                                alt=""
-                                width="30rem"
-                                height="30rem"
+                                alt={selectedItem.image}
+                                className="rounded-md w-[3rem] h-[3rem] object-cover"
                               />
                               <div className="flex justify-between gap-5 text-sm ">
                                 <div className="flex flex-col md:flex-row gap-2 md:gap-8">
-                                  <div className="flex flex-col items-start gap-1">
+                                  <div className="flex flex-col  gap-1">
                                     <span className="font-normal">Name: </span>
                                     <span className="font-semibold ">
-                                      {selectedItem.name}
+                                      {selectedItem?.name}
                                     </span>
                                   </div>
-                                  <div className="flex flex-col items-start gap-1">
-                                    <span className="font-normal">Price: </span>{' '}
+                                  <div className="flex flex-col  gap-1">
+                                    <span className="font-normal">
+                                      Unit Price:{' '}
+                                    </span>{' '}
                                     <span className="font-semibold ">
                                       {currencySymbol}
                                       {(
@@ -511,7 +556,7 @@ const CustomizeCheckout = () => {
                                             }}
                                           ></p>{' '}
                                           <p className="text-xs">
-                                            {selectedItem?.selectedColor.name}
+                                            {selectedItem?.selectedColor?.name}
                                           </p>
                                         </div>
                                       </p>
@@ -568,7 +613,7 @@ const CustomizeCheckout = () => {
                               </div>
                               <div className="flex flex-col gap-1 h-fit">
                                 <span className="font-medium">Size: </span>{' '}
-                                <div className="flex items-center gap-1 h-fit">
+                                <div className="grid grid-cols-2 md:grid-cols-5 items-center gap-1 h-fit md:max-w-[80%]">
                                   {selectedItem?.customizedSizes?.length > 0
                                     ? selectedItem?.customizedSizes?.map(
                                         (el, index) => (
@@ -576,22 +621,53 @@ const CustomizeCheckout = () => {
                                             key={index}
                                             className="leading-none text-xs flex items-center justify-between p-2 rounded-md bg-gray-800 text-white"
                                           >
-                                            {el.name}: {el.value}{' '}
+                                            {el.name}:{' '}
+                                            {el.value.replace('inches', '″')}{' '}
                                           </div>
                                         ),
                                       )
                                     : selectedItem.selectedSize}
                                 </div>
                               </div>
+                              {selectedItem?.partsFabrics && (
+                                <div className="flex flex-col gap-1 h-fit">
+                                  <span className="font-medium">Parts: </span>{' '}
+                                  <div className="grid grid-cols-2 md:grid-cols-5  gap-1 h-fit md:max-w-[80%]">
+                                    {selectedItem?.partsFabrics?.map(
+                                      (el, index) => (
+                                        <div
+                                          key={index}
+                                          className="leading-none text-xs flex flex-col gap-1 p-2 rounded-md"
+                                        >
+                                          {el.name}:{' '}
+                                          {el?.type === 'textile' ? (
+                                            <img
+                                              src={el.value}
+                                              alt={el.value}
+                                              className="w-8 h-8 rounded-md"
+                                            />
+                                          ) : el?.type === 'color' ? (
+                                            <div className="flex items-center md:items-start gap-1">
+                                              <p
+                                                className="rounded-full h-6 w-6 border"
+                                                style={{
+                                                  backgroundColor: el?.value,
+                                                }}
+                                              ></p>
+                                            </div>
+                                          ) : (
+                                            <p className="bg-yellow-500 rounded-full px-2 py-1 text-xs text-center">
+                                              Designer Discretion
+                                            </p>
+                                          )}
+                                        </div>
+                                      ),
+                                    )}
+                                  </div>
+                                </div>
+                              )}
                             </div>
                           </section>
-                          <p className="col-1  cursor-pointer">
-                            <i
-                              className="pi pi-trash "
-                              style={{ color: 'red' }}
-                              onClick={() => handleShopRemoveItem(selectedItem)}
-                            ></i>
-                          </p>
                         </li>
                       ))}
                     </ul>
@@ -818,6 +894,7 @@ const CustomizeCheckout = () => {
                 className="px-4 py-2 rounded-md border border-yellow-500"
                 onClick={() => {
                   onClearCart();
+
                   resetInfos();
                   navigate('/shop');
                 }}

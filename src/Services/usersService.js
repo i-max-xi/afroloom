@@ -1,6 +1,6 @@
 /* eslint-disable import/no-anonymous-default-export */
 
-import { db } from "../firebase";
+import { db } from '../firebase';
 
 import {
   collection,
@@ -12,15 +12,14 @@ import {
   doc,
   where,
   query,
-} from "firebase/firestore";
+} from 'firebase/firestore';
 
-const partnersCollectionRef = collection(db, "partners");
-const ordersCollectionRef = collection(db, "afroloomOrders");
-const userCollectionRef = collection(db, "users");
-const fabricsCollectionRef = collection(db, "fabrics");
-const contactDetailsCollectionRef = collection(db, "contactDetails");
-const shopCollectionRef = collection(db, "loomStore");
-
+const partnersCollectionRef = collection(db, 'partners');
+const ordersCollectionRef = collection(db, 'afroloomOrders');
+const userCollectionRef = collection(db, 'users');
+const fabricsCollectionRef = collection(db, 'fabrics');
+const contactDetailsCollectionRef = collection(db, 'contactDetails');
+const shopCollectionRef = collection(db, 'loomStore');
 
 class AllServices {
   //orders
@@ -33,7 +32,7 @@ class AllServices {
 
   // user
   getuserByField = async (fieldName, value) => {
-    const q = query(userCollectionRef, where(fieldName, "==", value));
+    const q = query(userCollectionRef, where(fieldName, '==', value));
     const querySnapshot = await getDocs(q);
     return querySnapshot.docs[0]; // Assuming there's at most one document with the given "id"
   };
@@ -48,7 +47,7 @@ class AllServices {
 
   getPartnerByField = async (fieldName, value) => {
     try {
-      const q = query(partnersCollectionRef, where(fieldName, "==", value));
+      const q = query(partnersCollectionRef, where(fieldName, '==', value));
       const querySnapshot = await getDocs(q);
       return querySnapshot.docs[0];
     } catch (error) {
@@ -59,12 +58,11 @@ class AllServices {
 
   updatePartner = async (id, updatedPartner) => {
     try {
-      const PartnerDoc = await this.getPartnerByField("id", id);
-      console.log(updatedPartner);
+      const PartnerDoc = await this.getPartnerByField('id', id);
 
       if (PartnerDoc) {
         await updateDoc(PartnerDoc.ref, updatedPartner);
-        return "Partner updated successfully.";
+        return 'Partner updated successfully.';
       } else {
         return `Partner with id ${id} not found.`;
       }
@@ -85,7 +83,7 @@ class AllServices {
 
   getFabricByField = async (fieldName, value) => {
     try {
-      const q = query(fabricsCollectionRef, where(fieldName, "==", value));
+      const q = query(fabricsCollectionRef, where(fieldName, '==', value));
       const querySnapshot = await getDocs(q);
       return querySnapshot.docs[0];
     } catch (error) {
@@ -96,9 +94,9 @@ class AllServices {
 
   updateFabric = async (id, updatedFabric) => {
     try {
-      const FabricDoc = doc(db, "fabrics", id);
+      const FabricDoc = doc(db, 'fabrics', id);
       await updateDoc(FabricDoc, updatedFabric);
-      return "Fabric updated successfully.";
+      return 'Fabric updated successfully.';
     } catch (error) {
       console.error(`Error updating Fabric: ${error}`);
       return error;
@@ -118,7 +116,7 @@ class AllServices {
     try {
       const q = query(
         contactDetailsCollectionRef,
-        where(fieldName, "==", value),
+        where(fieldName, '==', value),
       );
       const querySnapshot = await getDocs(q);
       return querySnapshot.docs[0];
@@ -130,18 +128,17 @@ class AllServices {
 
   updatecontactDetail = async (id, updatedcontactDetail) => {
     try {
-      const contactDetailDoc = doc(db, "contactDetails", id);
+      const contactDetailDoc = doc(db, 'contactDetails', id);
       await updateDoc(contactDetailDoc, updatedcontactDetail);
-      return "contactDetail updated successfully.";
+      return 'contactDetail updated successfully.';
     } catch (error) {
       console.error(`Error updating contactDetail: ${error}`);
       return error;
     }
   };
 
-
-   // shop items
-   getAllProducts = async () => {
+  // shop items
+  getAllProducts = async () => {
     const products = await getDocs(shopCollectionRef);
     return products;
   };
@@ -151,7 +148,7 @@ class AllServices {
 
   getProductByField = async (fieldName, value) => {
     try {
-      const q = query(shopCollectionRef, where(fieldName, "==", value));
+      const q = query(shopCollectionRef, where(fieldName, '==', value));
       const querySnapshot = await getDocs(q);
       return querySnapshot.docs[0];
     } catch (error) {
@@ -162,18 +159,14 @@ class AllServices {
 
   updateProduct = async (id, updatedProduct) => {
     try {
-      const ProductDoc = doc(db, "loomStore", id);
+      const ProductDoc = doc(db, 'loomStore', id);
       await updateDoc(ProductDoc, updatedProduct);
-      return "Product updated successfully.";
+      return 'Product updated successfully.';
     } catch (error) {
       console.error(`Error updating Product: ${error}`);
       return error;
     }
   };
-
 }
-
-
- 
 
 export default new AllServices();

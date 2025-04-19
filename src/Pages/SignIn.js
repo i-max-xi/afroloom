@@ -1,19 +1,19 @@
-import React, { useRef, useState } from "react";
-import { useForm } from "react-hook-form";
-import { Toast } from "primereact/toast";
-import CustomInput from "../Components/Input/CustomInput";
-import { auth } from "../firebase";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import Nav from "../Components/Nav";
-import { Link, useNavigate } from "react-router-dom";
-import { ProgressSpinner } from "primereact/progressspinner";
-import { useDispatch } from "react-redux";
-import { setDashBoardPath, setSignedIn } from "../Redux/store";
+import React, { useRef, useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { Toast } from 'primereact/toast';
+import CustomInput from '../Components/Input/CustomInput';
+import { auth } from '../firebase';
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import Nav from '../Components/Nav';
+import { Link, useNavigate } from 'react-router-dom';
+import { ProgressSpinner } from 'primereact/progressspinner';
+import { useDispatch } from 'react-redux';
+import { setDashBoardPath, setSignedIn } from '../Redux/store';
 import {
   TbCircleNumber1,
   TbCircleNumber2,
   TbCircleNumber3,
-} from "react-icons/tb";
+} from 'react-icons/tb';
 
 const SignIn = () => {
   const navigate = useNavigate();
@@ -30,7 +30,6 @@ const SignIn = () => {
   const toastRef = useRef(null);
 
   const onSubmit = async (data) => {
-    console.log(data);
     setIsLoading(true);
     const { email, password } = data;
     try {
@@ -46,13 +45,13 @@ const SignIn = () => {
       );
       reset();
       toastRef.current.show({
-        severity: "success",
-        summary: "Sign in successful!",
+        severity: 'success',
+        summary: 'Sign in successful!',
       });
     } catch (error) {
       toastRef.current.show({
-        severity: "error",
-        summary: "Error signing in",
+        severity: 'error',
+        summary: 'Error signing in',
         detail: error.message,
       });
     } finally {
@@ -70,7 +69,7 @@ const SignIn = () => {
         </h4>
         <div className=" mb-4 px-4">
           <h6 className="">Three Easy Steps</h6>
-          <div className="mt-2" style={{ color: "var(--light-text)" }}>
+          <div className="mt-2" style={{ color: 'var(--light-text)' }}>
             <div className=" my-2 d-flex gap-2 align-items-start">
               <TbCircleNumber1 size={20} className="mt-1 " />
               <p>Access partner ID code from your dashboard</p>
@@ -89,11 +88,11 @@ const SignIn = () => {
           <form className="col-12 col-sm-6" onSubmit={handleSubmit(onSubmit)}>
             <CustomInput
               label="Email"
-              {...register("email", {
-                required: "Email is required",
+              {...register('email', {
+                required: 'Email is required',
                 pattern: {
                   value: /^\S+@\S+$/i,
-                  message: "Enter a valid email",
+                  message: 'Enter a valid email',
                 },
               })}
             />
@@ -105,11 +104,11 @@ const SignIn = () => {
               label="Password"
               // placeholder="Password"
               type="password"
-              {...register("password", {
-                required: "password is required",
+              {...register('password', {
+                required: 'password is required',
                 minLength: {
                   value: 6,
-                  message: "Password must have at least 6 characters",
+                  message: 'Password must have at least 6 characters',
                 },
               })}
             />
@@ -121,11 +120,11 @@ const SignIn = () => {
               type="submit"
               className="btn btn-warning text-white w-100 mt-4 shadow-sm position-relative"
             >
-              {" "}
+              {' '}
               <span className="spinner-container">
                 {isLoading && (
                   <ProgressSpinner
-                    style={{ width: "1.5rem", height: "1.5rem" }}
+                    style={{ width: '1.5rem', height: '1.5rem' }}
                     strokeWidth="8"
                     fill="var(--surface-ground)"
                     className="position-absolute top-50 start-50 translate-middle"

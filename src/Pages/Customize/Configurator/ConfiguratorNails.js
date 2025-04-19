@@ -309,7 +309,6 @@ const ConfiguratorUnisex = () => {
   const [nailMaterial, setNailMaterial] = useState(null);
 
   useEffect(() => {
-    console.log({ nailLength, nailMaterial });
 
     if (nailMaterial === "Standard Press-on Nails") {
       if (nailLength === "S") {

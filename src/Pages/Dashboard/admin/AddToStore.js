@@ -276,7 +276,6 @@ export default function AddProduct() {
     }));
   };
 
-  console.log({ newPart });
 
   return (
     <motion.div className="max-w-3xl mx-auto bg-white p-6 rounded-2xl shadow-md">

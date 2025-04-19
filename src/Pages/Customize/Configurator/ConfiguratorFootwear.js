@@ -260,7 +260,6 @@ const ConfiguratorFootwear = () => {
         (size) => size.value === selectedSize,
       );
 
-      console.log({ sizeValue });
 
       const yardPrice = textureValues[textureCategory].price;
 

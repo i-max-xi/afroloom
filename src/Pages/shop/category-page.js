@@ -97,7 +97,6 @@ const CategoryPage = () => {
   }
 
   if (error) {
-    console.log('error loading products:', error);
     return (
       <div className="text-center text-red-500">Error loading products</div>
     );

@@ -125,6 +125,8 @@ const ProductDetail = () => {
         name: part.name,
         value: '',
         type: '',
+        allows: part?.allows,
+        set_type: part?.type,
       }));
       setPartsFabrics(initial);
     }
@@ -166,10 +168,28 @@ const ProductDetail = () => {
 
     if (!selectedSize) return;
 
-    if (needsTextile && selectedPrintOn === '' && selectedColor === null) {
+    if (
+      needsTextile &&
+      selectedPrintOn === '' &&
+      selectedColor === null &&
+      product?.parts.length === 0
+    ) {
       toastRef.current.show({
         severity: 'error',
         summary: 'Cannot Proceed without selecting a textile / color',
+      });
+      return;
+    }
+
+    if (
+      needsTextile &&
+      product?.parts?.length > 0 &&
+      !partsFabrics.some((part) => part.value && part.value.trim() !== '')
+    ) {
+      toastRef.current.show({
+        severity: 'error',
+        summary:
+          'Cannot Proceed without selecting a textile / color for applicable parts',
       });
       return;
     }
@@ -186,6 +206,7 @@ const ProductDetail = () => {
         selectedTextile: selectedPrintOn,
         selectedColor,
         customizedSizes: CustomizedSizes,
+        partsFabrics,
       }),
     );
     toastRef.current.show({
@@ -368,7 +389,11 @@ const ProductDetail = () => {
 
             {/* parts selection section */}
             {partsFabrics?.length > 0 && (
-              <section className="my-3">
+              <motion.section
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="my-3"
+              >
                 <div className="flex flex-col gap-1 ">
                   <h3 className="text-base font-semibold">Clothing parts</h3>
                   <p className="text-sm">
@@ -376,15 +401,13 @@ const ProductDetail = () => {
                   </p>
                 </div>
 
-                <motion.div
-                  initial={{ opacity: 0, x: 40 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.6, ease: 'easeOut' }}
-                  className="no-scrollbar flex flex-col gap-2  pb-2 max-w-[40vw]"
-                >
+                <div className="no-scrollbar flex flex-col gap-2  pb-2 md:max-w-[40vw]">
                   {partsFabrics?.map((part, index) => (
-                    <div key={index} className="flex justify-between">
-                      <p className="text-yellow-600">{part.name}</p>
+                    <div
+                      key={index}
+                      className="flex justify-between items-center"
+                    >
+                      <p className="text-yellow-600  capitalize">{part.name}</p>
                       {part?.value ? (
                         part?.type === 'textile' ? (
                           <img
@@ -393,7 +416,7 @@ const ProductDetail = () => {
                             className="texture-button-checkout"
                           />
                         ) : (
-                          <p className={`flex flex-col items-center space-y-1`}>
+                          <p className={``}>
                             <div
                               className={`rounded-full h-10 w-10 border-1 hover:border-yellow-500 transition`}
                               style={{ backgroundColor: part.value }}
@@ -402,76 +425,384 @@ const ProductDetail = () => {
                           </p>
                         )
                       ) : (
-                        <button
-                          onClick={() => {
-                            setCurrentPartToApply(part);
-                            setOpenColorTextileDialog(true);
-                          }}
-                          className="bg-gray-400 w-fit px-2 py-1 rounded-md"
-                        >
-                          Click to edit
-                        </button>
+                        <p className="flex items-end justify-end ">
+                          <button
+                            onClick={() => {
+                              setCurrentPartToApply(part);
+                              setOpenColorTextileDialog(true);
+                            }}
+                            className="bg-gray-400 w-fit px-2 py-1 rounded-md whitespace-nowrap"
+                          >
+                            Click to edit
+                          </button>
+                        </p>
                       )}
                     </div>
                   ))}
-                </motion.div>
+                </div>
 
                 <Dialog
                   visible={openColorTextileDialog}
                   onHide={() => setOpenColorTextileDialog(false)}
-                  header="Select Color/Textile"
+                  header={
+                    <p className="text-sm">
+                      Part -{' '}
+                      <span className="text-yellow-500 text-base">
+                        {currentPartToApply?.name}
+                      </span>
+                    </p>
+                  }
                   className="p-4 md:w-[40vw] w-[100vw] "
                 >
-                  <>
-                    <section>
-                      <div className="flex flex-col">
-                        <div className="flex items-center justify-between">
-                          <h3 className="text-base font-semibold mb-2">
-                            Select Fabric Colors:
-                          </h3>
+                  {currentPartToApply?.set_type === 'designer_discretion' ? (
+                    <p className="text-sm italic text-gray-600">
+                      This part is reserved for designer discretion and cannot
+                      be customized by the user. Our expert designers will make
+                      the best choice to ensure a cohesive and stylish final
+                      look.
+                    </p>
+                  ) : (
+                    <>
+                      <section>
+                        <div className="flex flex-col">
+                          <div className="flex items-center justify-between">
+                            <h3 className="text-sm font-semibold mb-2">
+                              Select Fabric Colors:
+                            </h3>
 
-                          <button
-                            onClick={() => {
-                              setOpenTextileDropdown(false);
-                              setOpenColorDropdown(!openColorDropDown);
-                            }}
-                            className="text-yellow-500 flex items-center"
-                          >
-                            See Colors
-                            <AnimatePresence mode="wait" initial={false}>
-                              {openColors ? (
-                                <motion.div
-                                  key="up"
-                                  initial={{ opacity: 0, y: 10 }}
-                                  animate={{ opacity: 1, y: 0 }}
-                                  exit={{ opacity: 0, y: -10 }}
-                                  transition={{ duration: 0.2 }}
-                                >
-                                  <HiChevronUp />
-                                </motion.div>
-                              ) : (
-                                <motion.div
-                                  key="down"
-                                  initial={{ opacity: 0, y: -10 }}
-                                  animate={{ opacity: 1, y: 0 }}
-                                  exit={{ opacity: 0, y: 10 }}
-                                  transition={{ duration: 0.2 }}
-                                >
-                                  <HiChevronDown />
-                                </motion.div>
-                              )}
-                            </AnimatePresence>
-                          </button>
+                            {currentPartToApply?.allows === 'color' ||
+                            currentPartToApply?.allows === 'both' ? (
+                              <button
+                                onClick={() => {
+                                  setOpenTextileDropdown(false);
+                                  setOpenColorDropdown(!openColorDropDown);
+                                }}
+                                className="text-yellow-500 flex items-center"
+                              >
+                                See Colors
+                                <AnimatePresence mode="wait" initial={false}>
+                                  {openColors ? (
+                                    <motion.div
+                                      key="up"
+                                      initial={{ opacity: 0, y: 10 }}
+                                      animate={{ opacity: 1, y: 0 }}
+                                      exit={{ opacity: 0, y: -10 }}
+                                      transition={{ duration: 0.2 }}
+                                    >
+                                      <HiChevronUp />
+                                    </motion.div>
+                                  ) : (
+                                    <motion.div
+                                      key="down"
+                                      initial={{ opacity: 0, y: -10 }}
+                                      animate={{ opacity: 1, y: 0 }}
+                                      exit={{ opacity: 0, y: 10 }}
+                                      transition={{ duration: 0.2 }}
+                                    >
+                                      <HiChevronDown />
+                                    </motion.div>
+                                  )}
+                                </AnimatePresence>
+                              </button>
+                            ) : (
+                              <p className="text-red-500 font-bold">N/A</p>
+                            )}
+                          </div>
+                          <p className="text-sm">
+                            Select color to be used as material
+                          </p>
                         </div>
-                        <p className="text-sm">
-                          Select color to be used as material
-                        </p>
-                      </div>
 
+                        <AnimatePresence initial={false}>
+                          {openColorDropDown && (
+                            <motion.div
+                              key="parts-colors"
+                              initial={{ opacity: 0, height: 0 }}
+                              animate={{ opacity: 1, height: 'auto' }}
+                              exit={{ opacity: 0, height: 0 }}
+                              transition={{ duration: 0.3 }}
+                              className="-mx-4 px-0 w-full"
+                            >
+                              <div className="grid grid-cols-4 gap-2 w-full ">
+                                {product.color_variants?.map((color, index) => (
+                                  <button
+                                    key={index}
+                                    onClick={() => {
+                                      setPartsFabrics((prev) =>
+                                        prev.map((p) =>
+                                          p.name === currentPartToApply.name
+                                            ? {
+                                                ...p,
+                                                value: color.value,
+                                                type: 'color',
+                                              }
+                                            : p,
+                                        ),
+                                      );
+                                      setOpenColorTextileDialog(false); // close after selection
+                                    }}
+                                    className={`flex flex-col items-center space-y-1`}
+                                  >
+                                    <div
+                                      className={`rounded-full h-10 w-10 border-1 hover:border-yellow-500 transition ${
+                                        selectedColor?.name === color.name
+                                          ? 'border-4 border-yellow-500 bg-yellow-500 text-white'
+                                          : 'border-1 border-gray-300'
+                                      }`}
+                                      style={{ backgroundColor: color.value }}
+                                    ></div>
+                                    <p className="text-sm">{color.name}</p>
+                                  </button>
+                                ))}
+                              </div>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </section>
+
+                      <section>
+                        <div className="flex flex-col">
+                          <div className="flex items-center justify-between">
+                            <h3 className="text-sm font-semibold mb-2">
+                              Select Fabric Textile:
+                            </h3>
+
+                            {currentPartToApply?.allows === 'textile' ||
+                            currentPartToApply?.allows === 'both' ? (
+                              <button
+                                onClick={() => {
+                                  setOpenTextileDropdown(!openTextileDropdown);
+                                  setOpenColorDropdown(false);
+                                }}
+                                className="text-yellow-500 flex items-center"
+                              >
+                                See Textiles
+                                <AnimatePresence mode="wait" initial={false}>
+                                  {openTextileDropdown ? (
+                                    <motion.div
+                                      key="up"
+                                      initial={{ opacity: 0, y: 10 }}
+                                      animate={{ opacity: 1, y: 0 }}
+                                      exit={{ opacity: 0, y: -10 }}
+                                      transition={{ duration: 0.2 }}
+                                    >
+                                      <HiChevronUp />
+                                    </motion.div>
+                                  ) : (
+                                    <motion.div
+                                      key="down"
+                                      initial={{ opacity: 0, y: -10 }}
+                                      animate={{ opacity: 1, y: 0 }}
+                                      exit={{ opacity: 0, y: 10 }}
+                                      transition={{ duration: 0.2 }}
+                                    >
+                                      <HiChevronDown />
+                                    </motion.div>
+                                  )}
+                                </AnimatePresence>
+                              </button>
+                            ) : (
+                              <p className="text-red-500 font-bold">N/A</p>
+                            )}
+                          </div>
+                          <p className="text-sm">
+                            Select textile to be used as material
+                          </p>
+                        </div>
+
+                        <AnimatePresence initial={false}>
+                          {openTextileDropdown && (
+                            <motion.div
+                              key="parts-textiles"
+                              initial={{ opacity: 0, height: 0 }}
+                              animate={{ opacity: 1, height: 'auto' }}
+                              exit={{ opacity: 0, height: 0 }}
+                              transition={{ duration: 0.3 }}
+                              className=" px-0 w-full"
+                            >
+                              <div className="texture-row">
+                                <div className="texture-category mt-1">
+                                  <div className="w-full flex justify-between capitalize">
+                                    <p className="text-sm font-medium text-[#4C5B5C]">
+                                      WaxPrint
+                                    </p>
+                                  </div>
+                                  <div className="grid grid-cols-4 gap-3 px-4">
+                                    {textureArrays?.waxPrint?.map(
+                                      (texture, i) => (
+                                        <TextureItem
+                                          key={texture}
+                                          texture={texture}
+                                          Title="waxPrint"
+                                          selectedTexture={
+                                            currentPartToApply.value
+                                          }
+                                          handleTextureChange={() => {
+                                            setPartsFabrics((prev) =>
+                                              prev.map((p) =>
+                                                p.name ===
+                                                currentPartToApply.name
+                                                  ? {
+                                                      ...p,
+                                                      value: texture,
+                                                      type: 'textile',
+                                                    }
+                                                  : p,
+                                              ),
+                                            );
+                                            setOpenColorTextileDialog(false);
+                                          }}
+                                          currencySymbol={currencySymbol}
+                                          currencyFactor={currencyFactor}
+                                          subTextureDescriptions={
+                                            textureDescriptions?.waxPrint
+                                          }
+                                          textureIndex={i}
+                                        />
+                                      ),
+                                    )}
+                                  </div>
+                                </div>
+                              </div>
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </section>
+                    </>
+                  )}
+                </Dialog>
+              </motion.section>
+            )}
+
+            {/* non part dependent color and textile */}
+            {product?.grandparent_category === 'order to sew' &&
+              partsFabrics?.length === 0 && (
+                <section>
+                  <div className="flex justify-center gap-0 items-center flex-col text-center">
+                    <h3 className="text-base  font-semibold ">
+                      Select Fabric Colors / Textiles
+                    </h3>
+                    <p className="text-xs">
+                      Your selected clothing requires a textile / color choice
+                    </p>
+                  </div>
+
+                  <div className=" flex  items-center justify-center  mt-1 text-xs md:text-sm">
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.5, ease: 'easeOut' }}
+                      className="relative flex items-center justify-center  bg-white  rounded-full w-fit border-1 border-yellow-400 shadow-md"
+                    >
+                      <motion.div
+                        className="absolute top-0 left-0 h-full bg-yellow-500 rounded-full"
+                        initial={{ width: '50%', left: 0 }}
+                        animate={{
+                          left: selectedFabricType === 'color' ? '50%' : '0%',
+                        }}
+                        transition={{ duration: 0.3, ease: 'easeInOut' }}
+                        style={{ width: '50%' }}
+                      />
+
+                      <button
+                        onClick={() => onChangeFabricType('textile')}
+                        className={`relative p-2  w-20 rounded-full transition-all font-semibold z-10 flex justify-center items-center ${
+                          selectedFabricType === 'textile'
+                            ? 'text-white'
+                            : 'text-yellow-600'
+                        }`}
+                      >
+                        Textile
+                      </button>
+
+                      <button
+                        onClick={() => onChangeFabricType('color')}
+                        className={`relative p-2 w-20 rounded-full transition-all font-semibold z-10 flex justify-center items-center ${
+                          selectedFabricType === 'color'
+                            ? 'text-white'
+                            : 'text-yellow-600'
+                        }`}
+                      >
+                        Color
+                      </button>
+                    </motion.div>
+                  </div>
+
+                  {selectedFabricType === 'color' ? (
+                    <>
+                      {/* Color Selection */}
+                      {(!product?.parts || product?.parts?.length === 0) &&
+                        needsTextile &&
+                        product.color_variants &&
+                        product.color_variants.length > 0 && (
+                          <div className="mt-4">
+                            <div className="flex items-center justify-between">
+                              <h3 className="text-base font-semibold mb-2">
+                                Select Fabric Colors:
+                              </h3>
+
+                              <button
+                                onClick={() => setOpenColors(!openColors)}
+                                className="text-yellow-500 flex items-center"
+                              >
+                                See All
+                                <AnimatePresence mode="wait" initial={false}>
+                                  {openColors ? (
+                                    <motion.div
+                                      key="up"
+                                      initial={{ opacity: 0, y: 10 }}
+                                      animate={{ opacity: 1, y: 0 }}
+                                      exit={{ opacity: 0, y: -10 }}
+                                      transition={{ duration: 0.2 }}
+                                    >
+                                      <HiChevronUp />
+                                    </motion.div>
+                                  ) : (
+                                    <motion.div
+                                      key="down"
+                                      initial={{ opacity: 0, y: -10 }}
+                                      animate={{ opacity: 1, y: 0 }}
+                                      exit={{ opacity: 0, y: 10 }}
+                                      transition={{ duration: 0.2 }}
+                                    >
+                                      <HiChevronDown />
+                                    </motion.div>
+                                  )}
+                                </AnimatePresence>
+                              </button>
+                            </div>
+                            <p className="text-sm">
+                              Select color to be used as material
+                            </p>
+                            <div className="flex gap-2">
+                              {!openColors &&
+                                product?.color_variants
+                                  ?.slice(0, 4)
+                                  ?.map((color, index) => (
+                                    <button
+                                      key={index}
+                                      onClick={() => handleColorChange(color)}
+                                      className={`   flex flex-col items-center space-y-1`}
+                                    >
+                                      <div
+                                        className={`rounded-full h-10 w-10 border-1 hover:border-yellow-500 transition ${
+                                          selectedColor?.name === color.name
+                                            ? 'border-4 border-yellow-500 bg-yellow-500 text-white'
+                                            : 'border-1 border-gray-300'
+                                        }`}
+                                        style={{ backgroundColor: color.value }}
+                                      ></div>
+                                      <p className="text-sm">{color.name}</p>
+                                    </button>
+                                  ))}
+                            </div>
+                          </div>
+                        )}
+                      {/* color dropdown */}
                       <AnimatePresence initial={false}>
-                        {openColorDropDown && (
+                        {openColors && (
                           <motion.div
-                            key="parts-colors"
+                            key="colors"
                             initial={{ opacity: 0, height: 0 }}
                             animate={{ opacity: 1, height: 'auto' }}
                             exit={{ opacity: 0, height: 0 }}
@@ -482,20 +813,7 @@ const ProductDetail = () => {
                               {product.color_variants?.map((color, index) => (
                                 <button
                                   key={index}
-                                  onClick={() => {
-                                    setPartsFabrics((prev) =>
-                                      prev.map((p) =>
-                                        p.name === currentPartToApply.name
-                                          ? {
-                                              ...p,
-                                              value: color.value,
-                                              type: 'color',
-                                            }
-                                          : p,
-                                      ),
-                                    );
-                                    setOpenColorTextileDialog(false); // close after selection
-                                  }}
+                                  onClick={() => setSelectedColor(color)}
                                   className={`flex flex-col items-center space-y-1`}
                                 >
                                   <div
@@ -513,362 +831,88 @@ const ProductDetail = () => {
                           </motion.div>
                         )}
                       </AnimatePresence>
-                    </section>
-                    <section>
-                      <div className="flex flex-col">
-                        <div className="flex items-center justify-between">
-                          <h3 className="text-base font-semibold mb-2">
-                            Select Fabric Textile:
-                          </h3>
-
-                          <button
-                            onClick={() => {
-                              setOpenTextileDropdown(!openTextileDropdown);
-                              setOpenColorDropdown(false);
-                            }}
-                            className="text-yellow-500 flex items-center"
-                          >
-                            See Textiles
-                            <AnimatePresence mode="wait" initial={false}>
-                              {openTextileDropdown ? (
-                                <motion.div
-                                  key="up"
-                                  initial={{ opacity: 0, y: 10 }}
-                                  animate={{ opacity: 1, y: 0 }}
-                                  exit={{ opacity: 0, y: -10 }}
-                                  transition={{ duration: 0.2 }}
-                                >
-                                  <HiChevronUp />
-                                </motion.div>
-                              ) : (
-                                <motion.div
-                                  key="down"
-                                  initial={{ opacity: 0, y: -10 }}
-                                  animate={{ opacity: 1, y: 0 }}
-                                  exit={{ opacity: 0, y: 10 }}
-                                  transition={{ duration: 0.2 }}
-                                >
-                                  <HiChevronDown />
-                                </motion.div>
-                              )}
-                            </AnimatePresence>
-                          </button>
-                        </div>
-                        <p className="text-sm">
-                          Select textile to be used as material
-                        </p>
-                      </div>
-
-                      <AnimatePresence initial={false}>
-                        {openTextileDropdown && (
-                          <motion.div
-                            key="parts-textiles"
-                            initial={{ opacity: 0, height: 0 }}
-                            animate={{ opacity: 1, height: 'auto' }}
-                            exit={{ opacity: 0, height: 0 }}
-                            transition={{ duration: 0.3 }}
-                            className="-mx-4 px-0 w-full"
-                          >
-                            <div className="texture-row">
-                              <div className="texture-category mt-1">
-                                <div className="w-full flex justify-between capitalize">
-                                  <p className="text-sm font-medium text-[#4C5B5C]">
-                                    WaxPrint
-                                  </p>
-                                  <p
-                                    onClick={() =>
-                                      handleOpenSeeAll(
-                                        'waxPrint',
-                                        'waxPrint',
-                                        textureArrays?.waxPrint,
-                                      )
-                                    }
-                                    className="cursor-pointer text-sm text-[#ffc107] hover:font-semibold"
-                                  >
-                                    See all &#8594;
-                                  </p>
-                                </div>
-                                <div className="grid grid-cols-4 gap-3 px-4">
-                                  {textureArrays?.waxPrint?.map(
-                                    (texture, i) => (
-                                      <TextureItem
-                                        key={texture}
-                                        texture={texture}
-                                        Title="waxPrint"
-                                        selectedTexture={
-                                          currentPartToApply.value
+                    </>
+                  ) : (
+                    <>
+                      {/* textiltes */}
+                      {(!product?.parts || product?.parts?.length === 0) &&
+                        needsTextile && (
+                          <div>
+                            <p className="flex flex-col gap-0 mt-4">
+                              <h3 className="text-base font-semibold mb-0">
+                                Choose Textile
+                              </h3>
+                              <p className="text-sm">
+                                Select textile to be used as material
+                              </p>
+                            </p>
+                            <div className="texture-buttons-container">
+                              <AnimatePresence>
+                                {openSeeAll ? (
+                                  <SeeAll
+                                    array={selectedSeeAll.array}
+                                    title={selectedSeeAll.title}
+                                    titleDisplay={selectedSeeAll.titleDisplay}
+                                    onClose={handleCloseSeeAll}
+                                    others={{
+                                      selectedPrintOn,
+                                      handleTextureChange,
+                                      currencySymbol,
+                                      currencyFactor,
+                                    }}
+                                  />
+                                ) : (
+                                  <div className="-mt-5">
+                                    <div className="w-full flex justify-between capitalize ">
+                                      <p className="text-sm font-medium text-[#4C5B5C]">
+                                        WaxPrint
+                                      </p>
+                                      <p
+                                        onClick={() =>
+                                          handleOpenSeeAll(
+                                            'waxPrint',
+                                            'waxPrint',
+                                            textureArrays?.waxPrint,
+                                          )
                                         }
-                                        handleTextureChange={() => {
-                                          setPartsFabrics((prev) =>
-                                            prev.map((p) =>
-                                              p.name === currentPartToApply.name
-                                                ? {
-                                                    ...p,
-                                                    value: texture,
-                                                    type: 'textile',
-                                                  }
-                                                : p,
-                                            ),
-                                          );
-                                          setOpenColorTextileDialog(false);
-                                        }}
-                                        currencySymbol={currencySymbol}
-                                        currencyFactor={currencyFactor}
-                                        subTextureDescriptions={
-                                          textureDescriptions?.waxPrint
-                                        }
-                                        textureIndex={i}
-                                      />
-                                    ),
-                                  )}
-                                </div>
-                              </div>
+                                        className="flex items-center gap-1 cursor-pointer text-sm text-[#ffc107] hover:font-semibold"
+                                      >
+                                        See all
+                                        <HiChevronDown />
+                                      </p>
+                                    </div>
+                                    <div className="grid grid-cols-4 gap-3 px-4">
+                                      {textureArrays?.waxPrint
+                                        ?.slice(0, 4)
+                                        .map((texture, index) => (
+                                          <TextureItem
+                                            key={texture}
+                                            texture={texture}
+                                            // setHideText={setHideText}
+                                            Title="waxPrint"
+                                            selectedTexture={selectedPrintOn}
+                                            handleTextureChange={
+                                              handleTextureChange
+                                            }
+                                            currencySymbol={currencySymbol}
+                                            currencyFactor={currencyFactor}
+                                            subTextureDescriptions={
+                                              textureDescriptions?.waxPrint
+                                            }
+                                            textureIndex={index}
+                                          />
+                                        ))}
+                                    </div>
+                                  </div>
+                                )}
+                              </AnimatePresence>
                             </div>
-                          </motion.div>
+                          </div>
                         )}
-                      </AnimatePresence>
-                    </section>
-                  </>
-                </Dialog>
-              </section>
-            )}
-
-            {/* non part dependent color and textile */}
-            <section>
-              <div className="flex justify-center items-center flex-col text-center">
-                <h3 className="text-base  font-semibold ">
-                  Select Fabric Colors / Textiles
-                </h3>
-                <p className="text-xs">
-                  Your selected clothing requires a textile / color choice
-                </p>
-              </div>
-
-              <div className=" flex  items-center justify-center  text-xs md:text-sm">
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, ease: 'easeOut' }}
-                  className="relative flex items-center justify-center  bg-white  rounded-full w-fit border-1 border-yellow-400 shadow-md"
-                >
-                  <motion.div
-                    className="absolute top-0 left-0 h-full bg-yellow-500 rounded-full"
-                    initial={{ width: '50%', left: 0 }}
-                    animate={{
-                      left: selectedFabricType === 'color' ? '50%' : '0%',
-                    }}
-                    transition={{ duration: 0.3, ease: 'easeInOut' }}
-                    style={{ width: '50%' }}
-                  />
-
-                  <button
-                    onClick={() => onChangeFabricType('textile')}
-                    className={`relative p-2  w-20 rounded-full transition-all font-semibold z-10 flex justify-center items-center ${
-                      selectedFabricType === 'textile'
-                        ? 'text-white'
-                        : 'text-yellow-600'
-                    }`}
-                  >
-                    Textile
-                  </button>
-
-                  <button
-                    onClick={() => onChangeFabricType('color')}
-                    className={`relative p-2 w-20 rounded-full transition-all font-semibold z-10 flex justify-center items-center ${
-                      selectedFabricType === 'color'
-                        ? 'text-white'
-                        : 'text-yellow-600'
-                    }`}
-                  >
-                    Color
-                  </button>
-                </motion.div>
-              </div>
-
-              {selectedFabricType === 'color' ? (
-                <>
-                  {/* Color Selection */}
-                  {(!product?.parts || product?.parts?.length === 0) &&
-                    needsTextile &&
-                    product.color_variants &&
-                    product.color_variants.length > 0 && (
-                      <div className="mt-4">
-                        <div className="flex items-center justify-between">
-                          <h3 className="text-base font-semibold mb-2">
-                            Select Fabric Colors:
-                          </h3>
-
-                          <button
-                            onClick={() => setOpenColors(!openColors)}
-                            className="text-yellow-500 flex items-center"
-                          >
-                            See All
-                            <AnimatePresence mode="wait" initial={false}>
-                              {openColors ? (
-                                <motion.div
-                                  key="up"
-                                  initial={{ opacity: 0, y: 10 }}
-                                  animate={{ opacity: 1, y: 0 }}
-                                  exit={{ opacity: 0, y: -10 }}
-                                  transition={{ duration: 0.2 }}
-                                >
-                                  <HiChevronUp />
-                                </motion.div>
-                              ) : (
-                                <motion.div
-                                  key="down"
-                                  initial={{ opacity: 0, y: -10 }}
-                                  animate={{ opacity: 1, y: 0 }}
-                                  exit={{ opacity: 0, y: 10 }}
-                                  transition={{ duration: 0.2 }}
-                                >
-                                  <HiChevronDown />
-                                </motion.div>
-                              )}
-                            </AnimatePresence>
-                          </button>
-                        </div>
-                        <p className="text-sm">
-                          Select color to be used as material
-                        </p>
-                        <div className="flex gap-2">
-                          {!openColors &&
-                            product?.color_variants
-                              ?.slice(0, 4)
-                              ?.map((color, index) => (
-                                <button
-                                  key={index}
-                                  onClick={() => handleColorChange(color)}
-                                  className={`   flex flex-col items-center space-y-1`}
-                                >
-                                  <div
-                                    className={`rounded-full h-10 w-10 border-1 hover:border-yellow-500 transition ${
-                                      selectedColor?.name === color.name
-                                        ? 'border-4 border-yellow-500 bg-yellow-500 text-white'
-                                        : 'border-1 border-gray-300'
-                                    }`}
-                                    style={{ backgroundColor: color.value }}
-                                  ></div>
-                                  <p className="text-sm">{color.name}</p>
-                                </button>
-                              ))}
-                        </div>
-                      </div>
-                    )}
-                  {/* color dropdown */}
-                  <AnimatePresence initial={false}>
-                    {openColors && (
-                      <motion.div
-                        key="colors"
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: 'auto' }}
-                        exit={{ opacity: 0, height: 0 }}
-                        transition={{ duration: 0.3 }}
-                        className="-mx-4 px-0 w-full"
-                      >
-                        <div className="grid grid-cols-4 gap-2 w-full ">
-                          {product.color_variants?.map((color, index) => (
-                            <button
-                              key={index}
-                              onClick={() => setSelectedColor(color)}
-                              className={`flex flex-col items-center space-y-1`}
-                            >
-                              <div
-                                className={`rounded-full h-10 w-10 border-1 hover:border-yellow-500 transition ${
-                                  selectedColor?.name === color.name
-                                    ? 'border-4 border-yellow-500 bg-yellow-500 text-white'
-                                    : 'border-1 border-gray-300'
-                                }`}
-                                style={{ backgroundColor: color.value }}
-                              ></div>
-                              <p className="text-sm">{color.name}</p>
-                            </button>
-                          ))}
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </>
-              ) : (
-                <>
-                  {/* textiltes */}
-                  {(!product?.parts || product?.parts?.length === 0) &&
-                    needsTextile && (
-                      <div>
-                        <p className="flex flex-col gap-0 mt-4">
-                          <h3 className="text-base font-semibold mb-0">
-                            Choose Textile
-                          </h3>
-                          <p className="text-sm">
-                            Select textile to be used as material
-                          </p>
-                        </p>
-                        <div className="texture-buttons-container">
-                          <AnimatePresence>
-                            {openSeeAll ? (
-                              <SeeAll
-                                array={selectedSeeAll.array}
-                                title={selectedSeeAll.title}
-                                titleDisplay={selectedSeeAll.titleDisplay}
-                                onClose={handleCloseSeeAll}
-                                others={{
-                                  selectedPrintOn,
-                                  handleTextureChange,
-                                  currencySymbol,
-                                  currencyFactor,
-                                }}
-                              />
-                            ) : (
-                              <div className="-mt-5">
-                                <div className="w-full flex justify-between capitalize ">
-                                  <p className="text-sm font-medium text-[#4C5B5C]">
-                                    WaxPrint
-                                  </p>
-                                  <p
-                                    onClick={() =>
-                                      handleOpenSeeAll(
-                                        'waxPrint',
-                                        'waxPrint',
-                                        textureArrays?.waxPrint,
-                                      )
-                                    }
-                                    className="flex items-center gap-1 cursor-pointer text-sm text-[#ffc107] hover:font-semibold"
-                                  >
-                                    See all
-                                    <HiChevronDown />
-                                  </p>
-                                </div>
-                                <div className="grid grid-cols-4 gap-3 px-4">
-                                  {textureArrays?.waxPrint
-                                    ?.slice(0, 4)
-                                    .map((texture, index) => (
-                                      <TextureItem
-                                        key={texture}
-                                        texture={texture}
-                                        // setHideText={setHideText}
-                                        Title="waxPrint"
-                                        selectedTexture={selectedPrintOn}
-                                        handleTextureChange={
-                                          handleTextureChange
-                                        }
-                                        currencySymbol={currencySymbol}
-                                        currencyFactor={currencyFactor}
-                                        subTextureDescriptions={
-                                          textureDescriptions?.waxPrint
-                                        }
-                                        textureIndex={index}
-                                      />
-                                    ))}
-                                </div>
-                              </div>
-                            )}
-                          </AnimatePresence>
-                        </div>
-                      </div>
-                    )}
-                </>
+                    </>
+                  )}
+                </section>
               )}
-            </section>
 
             {/* Quantity Selection */}
             <div className="">
@@ -892,8 +936,8 @@ const ProductDetail = () => {
 
             <p className="text-sm  font-semibold mt-2 text-yellow-500 ">
               Ready in:{' '}
-              <span className="text-sm text-gray-600 font-medium ">
-                {product.ready_in}
+              <span className="text-sm text-gray-600 font-medium uppercase">
+                {product.ready_in || '7 days'}
               </span>
             </p>
 
