@@ -145,7 +145,7 @@ const HomePage = () => {
             </Link>
             <Link to="/shop">
               <button className="rounded-lg border-1 border-yellow-500 text-black font-medium px-4 py-2">
-                Go to Store
+                Ready to wear
               </button>
             </Link>
           </div>

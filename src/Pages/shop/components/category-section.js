@@ -1,12 +1,11 @@
 import { categories } from '../Data/products';
 import { motion } from 'framer-motion';
-import { useSelector } from 'react-redux';
+// import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { FaChevronCircleRight } from 'react-icons/fa';
 
-export const CategorySection = () => {
+export const CategorySection = ({ grandparent_category }) => {
   const navigate = useNavigate();
-  const { grandparent_category } = useSelector((state) => state.loomstore);
+  // const { grandparent_category } = useSelector((state) => state.loomstore);
 
   const filteredCategories = categories.filter(
     (sub) => sub.grandparent === grandparent_category,

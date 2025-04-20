@@ -297,7 +297,7 @@ const ShopPageSew = () => {
 
         {/* <IntroSection /> */}
 
-        <CategorySection />
+        <CategorySection grandparent_category={'order to sew'} />
 
         {/* Product Grid */}
         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-6 px-4 md:px-8 lg:px-8">

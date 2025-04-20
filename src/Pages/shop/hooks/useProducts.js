@@ -66,7 +66,7 @@ const fetchProducts = async ({
   q =
     selectedPrice && selectedPrice.min !== null
       ? query(q, ...conditions, orderBy('price'), limit(page_size))
-      : query(q, ...conditions, orderBy('__name__'), limit(page_size));
+      : query(q, ...conditions, orderBy('name'), limit(page_size));
 
   // Pagination
   if (pageParam) {
