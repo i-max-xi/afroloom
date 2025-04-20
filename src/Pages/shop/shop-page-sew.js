@@ -16,7 +16,7 @@ import { IoMdCloseCircle } from 'react-icons/io';
 import { Badge } from 'primereact/badge';
 import { motion } from 'framer-motion';
 
-const ShopPage = () => {
+const ShopPageSew = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('');
   const [selectedChildCategory, setSelectedChildCategory] = useState(''); // Child category
@@ -33,7 +33,7 @@ const ShopPage = () => {
 
   const currencySymbol = useSelector((state) => state.currencySymbol.symbol);
   const currencyFactor = useSelector((state) => state.currencySymbol.factor);
-  const { grandparent_category } = useSelector((state) => state.loomstore);
+  const grandparent_category = 'order to sew';
 
   const PriceFilters = [
     { label: `All Prices`, min: null, max: null },
@@ -120,7 +120,7 @@ const ShopPage = () => {
 
   return (
     <>
-      <Nav />
+      {/* <Nav /> */}
       <div className="flex flex-col gap-3 my-2">
         {/* Search & Filter Bar */}
         <motion.div
@@ -329,4 +329,4 @@ const ShopPage = () => {
   );
 };
 
-export default ShopPage;
+export default ShopPageSew;

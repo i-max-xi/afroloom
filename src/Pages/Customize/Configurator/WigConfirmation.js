@@ -1,21 +1,21 @@
-import React, { useEffect, useRef, useState } from "react";
-import { useReactToPrint } from "react-to-print";
-import html2canvas from "html2canvas";
-import { Link, useNavigate } from "react-router-dom";
-import { InputTextarea } from "primereact/inputtextarea";
+import React, { useEffect, useRef, useState } from 'react';
+import { useReactToPrint } from 'react-to-print';
+import html2canvas from 'html2canvas';
+import { Link, useNavigate } from 'react-router-dom';
+import { InputTextarea } from 'primereact/inputtextarea';
 
-import { app } from "../../../firebase"; // Import your firebase app object
+import { app } from '../../../firebase'; // Import your firebase app object
 import {
   getStorage,
   ref,
   uploadString,
   getDownloadURL,
-} from "firebase/storage";
-import { Toast } from "primereact/toast";
-import { ProgressSpinner } from "primereact/progressspinner";
-import { addToCart } from "../../../Redux/store";
-import { useDispatch, useSelector } from "react-redux";
-import { Divider } from "primereact/divider";
+} from 'firebase/storage';
+import { Toast } from 'primereact/toast';
+import { ProgressSpinner } from 'primereact/progressspinner';
+import { addToCart } from '../../../Redux/store';
+import { useDispatch, useSelector } from 'react-redux';
+import { Divider } from 'primereact/divider';
 
 const WigConfirmation = ({
   total,
@@ -35,7 +35,7 @@ const WigConfirmation = ({
   const navigate = useNavigate();
 
   const [count, setCount] = useState(1);
-  const [special, setSpecial] = useState("");
+  const [special, setSpecial] = useState('');
 
   const [readyByCount, setReadyByCount] = useState(readyBy);
 
@@ -70,11 +70,11 @@ const WigConfirmation = ({
       });
 
       // Convert the captured image into a data URL
-      const imageDataURL = image.toDataURL("image/png");
+      const imageDataURL = image.toDataURL('image/png');
 
       // Upload the captured image to Firebase Storage
       const storageRef = ref(storage, `Order_images/${Date.now()}.png`);
-      await uploadString(storageRef, imageDataURL, "data_url");
+      await uploadString(storageRef, imageDataURL, 'data_url');
 
       // Get the download URL of the uploaded image
       const downloadURL = await getDownloadURL(storageRef);
@@ -103,16 +103,16 @@ const WigConfirmation = ({
       setIsLoading(false);
       setAddedToCart(true);
       toast.current.show({
-        severity: "info",
-        summary: "Order Confirmed",
+        severity: 'info',
+        summary: 'Order Confirmed',
         detail: (
           <div>
             <p>Thank you for your order!</p>
             <p>
-              Proceed to{" "}
+              Proceed to{' '}
               <Link to="/customize-checkout" className="btn btn-success">
                 Checkout
-              </Link>{" "}
+              </Link>{' '}
               when ready
             </p>
           </div>
@@ -122,10 +122,10 @@ const WigConfirmation = ({
     } catch (error) {
       setIsLoading(false);
       toast.current.show({
-        severity: "error",
-        summary: "Error",
+        severity: 'error',
+        summary: 'Error',
         detail:
-          "An error occurred while confirming the order. Please try again later.",
+          'An error occurred while confirming the order. Please try again later.',
         life: 3000,
       });
     }
@@ -133,7 +133,7 @@ const WigConfirmation = ({
 
   return (
     <div className="container confirmation-page">
-      <Toast ref={toast} position="center" />{" "}
+      <Toast ref={toast} position="center" />{' '}
       {/* Add the Toast component here */}
       <h1 className="mt-4">Order Confirmation</h1>
       <OrderDetail
@@ -151,25 +151,22 @@ const WigConfirmation = ({
         special={special}
         setSpecial={setSpecial}
         selectedColor={selectedColor}
-
         handlePrint={handlePrint}
         isLoading={isLoading}
         addedToCart={addedToCart}
         handleFormSubmit={handleFormSubmit}
-
       />
-      
-        {!addedToCart && (
-          <div className="d-flex justify-content-center align-items-center m-5">
-            Not Done ?{" "}
-            <button
-              className="btn btn-info text-white mx-3"
-              onClick={() => setShowConfirmation(false)}
-            >
-              Go Back
-            </button>
-          </div>
-      ) }
+      {!addedToCart && (
+        <div className="d-flex justify-content-center align-items-center m-5">
+          Not Done ?{' '}
+          <button
+            className="btn btn-info text-white mx-3"
+            onClick={() => setShowConfirmation(false)}
+          >
+            Go Back
+          </button>
+        </div>
+      )}
     </div>
   );
 };
@@ -193,7 +190,7 @@ export const OrderDetail = React.forwardRef(
       handlePrint,
       isLoading,
       addedToCart,
-      handleFormSubmit
+      handleFormSubmit,
     },
     ref,
   ) => {
@@ -201,7 +198,7 @@ export const OrderDetail = React.forwardRef(
     const currencyFactor = useSelector((state) => state.currencySymbol.factor);
 
     const navigate = useNavigate();
-    
+
     return (
       <div ref={ref} className="row all-confirmation-info">
         <div className="col-md-6">
@@ -214,7 +211,7 @@ export const OrderDetail = React.forwardRef(
                 <div className="m-1">
                   <span className="fw-bold">Name: </span> {name} <br />
                   <span className="fw-bold">Selected Color: </span>
-                  {selectedColor || "None Selected"}
+                  {selectedColor || 'None Selected'}
                   {/* <span className="fw-bold">
                     Price: {currencySymbol}
                     {total}
@@ -287,39 +284,41 @@ export const OrderDetail = React.forwardRef(
         </div>
 
         <div className="container justify-content-center">
-        <div className="d-flex">
-          <p>
-            <button className="btn btn-outline-success" onClick={handlePrint}>
-              Download Copy
-            </button>
-            <p style={{ fontSize: "0.7rem" }}>For effective transparency</p>
-          </p>
+          <div className="d-flex">
+            <p>
+              <button className="btn btn-outline-success" onClick={handlePrint}>
+                Download Copy
+              </button>
+              <p style={{ fontSize: '0.7rem' }}>For effective transparency</p>
+            </p>
 
-          <p>
-            <button
-              disabled={isLoading}
-              className={`btn ${addedToCart ? "btn-warning text-white" : "btn-success"} mx-3 position-relative`}
-              onClick={
-                addedToCart ? navigate("/start-customize") : handleFormSubmit
-              }
-            >
-              <span className="spinner-container">
-                {isLoading && (
-                  <ProgressSpinner
-                    style={{ width: "1.5rem", height: "1.5rem" }}
-                    strokeWidth="8"
-                    fill="var(--surface-ground)"
-                    className="position-absolute top-50 start-50 translate-middle"
-                  />
-                )}
-              </span>
-              {addedToCart ? "Order Again" : "Add To Cart"}
-            </button>
-          </p>
+            <p>
+              <button
+                disabled={isLoading}
+                className={`btn ${
+                  addedToCart ? 'btn-warning text-white' : 'btn-success'
+                } mx-3 position-relative`}
+                onClick={
+                  addedToCart ? navigate('/order-to-sew') : handleFormSubmit
+                }
+              >
+                <span className="spinner-container">
+                  {isLoading && (
+                    <ProgressSpinner
+                      style={{ width: '1.5rem', height: '1.5rem' }}
+                      strokeWidth="8"
+                      fill="var(--surface-ground)"
+                      className="position-absolute top-50 start-50 translate-middle"
+                    />
+                  )}
+                </span>
+                {addedToCart ? 'Order Again' : 'Add To Cart'}
+              </button>
+            </p>
+          </div>
+
+          <p className="h5 mt-4">Thank you for your order!</p>
         </div>
-
-        <p className="h5 mt-4">Thank you for your order!</p>
-      </div>
       </div>
     );
   },

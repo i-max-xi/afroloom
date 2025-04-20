@@ -40,7 +40,7 @@ const Nav = ({ noCurrency }) => {
 
   const navLinks = [
     { to: '/', label: 'Home' },
-    { to: '/start-customize', label: 'Customize' },
+    { to: '/order-to-sew', label: 'Customize' },
     { to: '/shop', label: 'Loom Store' },
     { to: '/about', label: 'About' },
     { to: '/contact', label: 'Contact Us' },

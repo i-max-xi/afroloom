@@ -1,23 +1,23 @@
-import React, { useEffect, useRef, useState } from "react";
-import { useReactToPrint } from "react-to-print";
-import html2canvas from "html2canvas";
-import { Link, useNavigate } from "react-router-dom";
-import { InputTextarea } from "primereact/inputtextarea";
+import React, { useEffect, useRef, useState } from 'react';
+import { useReactToPrint } from 'react-to-print';
+import html2canvas from 'html2canvas';
+import { Link, useNavigate } from 'react-router-dom';
+import { InputTextarea } from 'primereact/inputtextarea';
 
-import { app } from "../../../firebase"; // Import your firebase app object
+import { app } from '../../../firebase'; // Import your firebase app object
 import {
   getStorage,
   ref,
   uploadString,
   getDownloadURL,
-} from "firebase/storage";
-import { Toast } from "primereact/toast";
-import { ProgressSpinner } from "primereact/progressspinner";
-import { addToCart } from "../../../Redux/store";
-import { useDispatch, useSelector } from "react-redux";
-import { parseTitle } from "../../../utils/functions";
-import { Divider } from "primereact/divider";
-import { onlySashes } from "./arrays/neededArrays";
+} from 'firebase/storage';
+import { Toast } from 'primereact/toast';
+import { ProgressSpinner } from 'primereact/progressspinner';
+import { addToCart } from '../../../Redux/store';
+import { useDispatch, useSelector } from 'react-redux';
+import { parseTitle } from '../../../utils/functions';
+import { Divider } from 'primereact/divider';
+import { onlySashes } from './arrays/neededArrays';
 
 const Confirmation = ({
   total,
@@ -43,7 +43,7 @@ const Confirmation = ({
   const dispatch = useDispatch();
 
   const [count, setCount] = useState(1);
-  const [special, setSpecial] = useState("");
+  const [special, setSpecial] = useState('');
 
   const [readyByCount, setReadyByCount] = useState(readyBy);
 
@@ -78,11 +78,11 @@ const Confirmation = ({
       });
 
       // Convert the captured image into a data URL
-      const imageDataURL = image.toDataURL("image/png");
+      const imageDataURL = image.toDataURL('image/png');
 
       // Upload the captured image to Firebase Storage
       const storageRef = ref(storage, `Order_images/${Date.now()}.png`);
-      await uploadString(storageRef, imageDataURL, "data_url");
+      await uploadString(storageRef, imageDataURL, 'data_url');
 
       // Get the download URL of the uploaded image
       const downloadURL = await getDownloadURL(storageRef);
@@ -115,16 +115,16 @@ const Confirmation = ({
       setIsLoading(false);
       setAddedToCart(true);
       toast.current.show({
-        severity: "info",
-        summary: "Order Confirmed",
+        severity: 'info',
+        summary: 'Order Confirmed',
         detail: (
           <div>
             <p>Thank you for your order!</p>
             <p>
-              Proceed to{" "}
+              Proceed to{' '}
               <Link to="/customize-checkout" className="btn btn-success">
                 Checkout
-              </Link>{" "}
+              </Link>{' '}
               when ready
             </p>
           </div>
@@ -134,10 +134,10 @@ const Confirmation = ({
     } catch (error) {
       setIsLoading(false);
       toast.current.show({
-        severity: "error",
-        summary: "Error",
+        severity: 'error',
+        summary: 'Error',
         detail:
-          "An error occurred while confirming the order. Please try again later.",
+          'An error occurred while confirming the order. Please try again later.',
         life: 3000,
       });
     }
@@ -145,7 +145,7 @@ const Confirmation = ({
 
   return (
     <div className="container flex flex-col justify-center items-center ">
-      <Toast ref={toast} position="center" />{" "}
+      <Toast ref={toast} position="center" />{' '}
       {/* Add the Toast component here */}
       <h1 className="mt-4">Order Confirmation</h1>
       <OrderDetail
@@ -170,17 +170,14 @@ const Confirmation = ({
         uploadedImageRight={uploadedImageLeft}
         textLeft={textLeft}
         textRight={textRight}
-
         handlePrint={handlePrint}
         isLoading={isLoading}
         addedToCart={addedToCart}
         handleFormSubmit={handleFormSubmit}
-
       />
-      
       {!addedToCart && (
         <div className="d-flex justify-content-center align-items-center m-5">
-          Not Done ?{" "}
+          Not Done ?{' '}
           <button
             className="btn btn-info text-white mx-3"
             onClick={() => setShowConfirmation(false)}
@@ -188,8 +185,7 @@ const Confirmation = ({
             Go Back
           </button>
         </div>
-    ) }
-      
+      )}
     </div>
   );
 };
@@ -221,10 +217,9 @@ export const OrderDetail = React.forwardRef(
       handlePrint,
       isLoading,
       addedToCart,
-      handleFormSubmit
+      handleFormSubmit,
     },
     ref,
-   
   ) => {
     const currencySymbol = useSelector((state) => state.currencySymbol.symbol);
     const currencyFactor = useSelector((state) => state.currencySymbol.factor);
@@ -243,7 +238,7 @@ export const OrderDetail = React.forwardRef(
                 <div className="m-1">
                   <span className="fw-bold">Name: </span> {name} <br />
                   <span className="fw-bold">Selected Size: </span>
-                  {selectedSize || "None Selected"}
+                  {selectedSize || 'None Selected'}
                   {/* <span className="fw-bold">
                     Price: {currencySymbol}
                     {total}
@@ -276,19 +271,19 @@ export const OrderDetail = React.forwardRef(
               <li className="list-group-item d-flex flex-column mt-3">
                 <h6 className="text-center">Details</h6>
                 <div className="d-flex justify-content-between  gap-3">
-                  <h5>{selectedPrintOn.isColor ? "Color" : "Textile"}</h5>
+                  <h5>{selectedPrintOn.isColor ? 'Color' : 'Textile'}</h5>
 
                   {selectedPrintOn.isColor ? (
                     <div
                       className="color-display"
                       style={{
                         backgroundColor: selectedPrintOn.item,
-                        width: "20px",
-                        height: "20px",
-                        border: "1px solid black",
-                        borderRadius: "4rem",
-                        display: "inline-block",
-                        marginLeft: "1rem",
+                        width: '20px',
+                        height: '20px',
+                        border: '1px solid black',
+                        borderRadius: '4rem',
+                        display: 'inline-block',
+                        marginLeft: '1rem',
                       }}
                     ></div>
                   ) : (
@@ -296,9 +291,9 @@ export const OrderDetail = React.forwardRef(
                       src={selectedPrintOn.item}
                       alt="Selected Texture"
                       style={{
-                        maxWidth: "70px",
-                        maxHeight: "70px",
-                        display: "inline-block",
+                        maxWidth: '70px',
+                        maxHeight: '70px',
+                        display: 'inline-block',
                       }}
                     />
                   )}
@@ -315,7 +310,7 @@ export const OrderDetail = React.forwardRef(
                       <>
                         <p className="d-flex align-items-center justify-content-between">
                           <span>
-                            {name === onlySashes[3] ? "Image " : "Logo "}{" "}
+                            {name === onlySashes[3] ? 'Image ' : 'Logo '}{' '}
                             (Left):
                           </span>
                           <img
@@ -333,7 +328,7 @@ export const OrderDetail = React.forwardRef(
                       <>
                         <p className="d-flex align-items-center justify-content-between">
                           <span>
-                            {name === onlySashes[3] ? "Image " : "Logo "}{" "}
+                            {name === onlySashes[3] ? 'Image ' : 'Logo '}{' '}
                             (Right):
                           </span>
                           <img
@@ -352,7 +347,7 @@ export const OrderDetail = React.forwardRef(
                       <>
                         <p className="d-flex align-items-center justify-content-between">
                           <span>
-                            Text Overlay {textRight ? "(Left):" : ":"}
+                            Text Overlay {textRight ? '(Left):' : ':'}
                           </span>
                           <p>{textLeft}</p>
                         </p>
@@ -388,12 +383,12 @@ export const OrderDetail = React.forwardRef(
                                       className="color-display"
                                       style={{
                                         backgroundColor: part.color,
-                                        width: "20px",
-                                        height: "20px",
-                                        border: "1px solid black",
-                                        borderRadius: "4rem",
-                                        display: "inline-block",
-                                        marginLeft: "1rem",
+                                        width: '20px',
+                                        height: '20px',
+                                        border: '1px solid black',
+                                        borderRadius: '4rem',
+                                        display: 'inline-block',
+                                        marginLeft: '1rem',
                                       }}
                                     ></div>
                                   </>
@@ -409,9 +404,9 @@ export const OrderDetail = React.forwardRef(
                                         src={part.texture}
                                         alt="Selected Texture"
                                         style={{
-                                          maxWidth: "70px",
-                                          maxHeight: "70px",
-                                          display: "inline-block",
+                                          maxWidth: '70px',
+                                          maxHeight: '70px',
+                                          display: 'inline-block',
                                         }}
                                       />
                                     </p>
@@ -444,7 +439,7 @@ export const OrderDetail = React.forwardRef(
                   {height && (
                     <div>
                       <strong className="text-warning">Your Height: </strong>
-                      {height + ""} cm
+                      {height + ''} cm
                     </div>
                   )}
 
@@ -460,7 +455,7 @@ export const OrderDetail = React.forwardRef(
                       Object.entries(customSizeValues)?.map(
                         ([label, value]) => (
                           <li key={label}>
-                            <strong>{label}:</strong> {value ? value : "N/A"}
+                            <strong>{label}:</strong> {value ? value : 'N/A'}
                           </li>
                         ),
                       )}
@@ -490,41 +485,43 @@ export const OrderDetail = React.forwardRef(
         </div>
 
         <div className="container flex flex-col ">
-        <div className="flex gap-5">
-          <p>
-            <button className="btn btn-outline-success" onClick={handlePrint}>
-              Download Copy
-            </button>
-            <p style={{ fontSize: "0.7rem" }}>For effective transparency</p>
-          </p>
+          <div className="flex gap-5">
+            <p>
+              <button className="btn btn-outline-success" onClick={handlePrint}>
+                Download Copy
+              </button>
+              <p style={{ fontSize: '0.7rem' }}>For effective transparency</p>
+            </p>
 
-          <p>
-            <button
-              disabled={isLoading}
-              className={`btn ${addedToCart ? "btn-warning text-white" : "btn-success"} mx-3 position-relative`}
-              onClick={
-                addedToCart
-                  ? () => navigate("/start-customize")
-                  : handleFormSubmit
-              }
-            >
-              <span className="spinner-container">
-                {isLoading && (
-                  <ProgressSpinner
-                    style={{ width: "1.5rem", height: "1.5rem" }}
-                    strokeWidth="8"
-                    fill="var(--surface-ground)"
-                    className="position-absolute top-50 start-50 translate-middle"
-                  />
-                )}
-              </span>
-              {addedToCart ? "Order Again" : "Add To Cart"}
-            </button>
-          </p>
+            <p>
+              <button
+                disabled={isLoading}
+                className={`btn ${
+                  addedToCart ? 'btn-warning text-white' : 'btn-success'
+                } mx-3 position-relative`}
+                onClick={
+                  addedToCart
+                    ? () => navigate('/order-to-sew')
+                    : handleFormSubmit
+                }
+              >
+                <span className="spinner-container">
+                  {isLoading && (
+                    <ProgressSpinner
+                      style={{ width: '1.5rem', height: '1.5rem' }}
+                      strokeWidth="8"
+                      fill="var(--surface-ground)"
+                      className="position-absolute top-50 start-50 translate-middle"
+                    />
+                  )}
+                </span>
+                {addedToCart ? 'Order Again' : 'Add To Cart'}
+              </button>
+            </p>
+          </div>
+
+          <p className="h5 mt-4">Thank you for your order!</p>
         </div>
-
-        <p className="h5 mt-4">Thank you for your order!</p>
-      </div>
       </div>
     );
   },

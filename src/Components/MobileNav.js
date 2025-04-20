@@ -1,17 +1,16 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import { Sidebar } from "primereact/sidebar";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { Sidebar } from 'primereact/sidebar';
 
-import { Divider } from "primereact/divider";
-import CurrencyConverter from "./CurrencyConverter";
-import GoogleTranslate from "../GoogleTranslate";
-import { useSelector } from "react-redux";
-import { Badge } from "primereact/badge";
+import { Divider } from 'primereact/divider';
+import CurrencyConverter from './CurrencyConverter';
+import GoogleTranslate from '../GoogleTranslate';
+import { useSelector } from 'react-redux';
+import { Badge } from 'primereact/badge';
 
 const MobileNav = ({ visible, setVisible }) => {
   const cartItems = useSelector((state) => state.customizedProduct.itemDetails);
-    const shopCartItem = useSelector((state) => state.shopCart);
-  
+  const shopCartItem = useSelector((state) => state.shopCart);
 
   return (
     <Sidebar visible={visible} onHide={() => setVisible(false)} className=" ">
@@ -39,13 +38,13 @@ const MobileNav = ({ visible, setVisible }) => {
               <span className="text-[#FFC107]">Loom Store</span>
             </Link>
           </li>
-          
+
           <Divider className="custom-divider" />
           <li className="nav-item mobile-nav-item">
             <i className="pi pi-shopping-cart p-overlay-badge">
               <Badge
                 severity="warning"
-                style={{ scale: "0.5" }}
+                style={{ scale: '0.5' }}
                 value={cartItems.length + shopCartItem.length}
               ></Badge>
             </i>
@@ -58,7 +57,7 @@ const MobileNav = ({ visible, setVisible }) => {
           <li className="nav-item mobile-nav-item">
             <i className="pi pi-palette"></i>
 
-            <Link className="nav-link" to="/start-customize">
+            <Link className="nav-link" to="/order-to-sew">
               Customize
             </Link>
           </li>

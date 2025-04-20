@@ -138,9 +138,9 @@ const HomePage = () => {
             comfort of your home.
           </p>
           <div className="flex gap-2 items-center">
-            <Link to="/start-customize">
+            <Link to="/order-to-sew">
               <button className=" bg-yellow-500 text-white  text-left text-sm p-2 rounded-lg hover:bg-yellow-600">
-                Customize Your Wear
+                Order to get it sewed
               </button>
             </Link>
             <Link to="/shop">
