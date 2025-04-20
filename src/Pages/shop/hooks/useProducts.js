@@ -28,7 +28,7 @@ const fetchProducts = async ({
   let conditions = [];
   let page_size = PAGE_SIZE;
 
-  if (grandparent_category && grandparent_category !== '' && !searchQuery) {
+  if (grandparent_category && grandparent_category !== '') {
     conditions.push(where('grandparent_category', '==', grandparent_category));
   }
 
@@ -66,7 +66,7 @@ const fetchProducts = async ({
   q =
     selectedPrice && selectedPrice.min !== null
       ? query(q, ...conditions, orderBy('price'), limit(page_size))
-      : query(q, ...conditions, orderBy('__name__'), limit(page_size));
+      : query(q, ...conditions, orderBy('name'), limit(page_size));
 
   // Pagination
   if (pageParam) {

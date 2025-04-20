@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
 import ShopPageSew from './shop/shop-page-sew';
 import CustomizePage from './Customize/CustomizePage';
@@ -28,6 +28,10 @@ const OrderToSewPage = () => {
         break;
     }
   }, [order_to_sew_category]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <>
@@ -60,7 +64,7 @@ const OrderToSewPage = () => {
                 : 'text-yellow-600'
             }`}
           >
-            From Shop
+            Order to get it sewed
           </button>
 
           <button
