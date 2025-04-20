@@ -110,7 +110,7 @@ const ShopPageSew = () => {
   }
 
   if (error) {
-    console.log(error);
+    console.log('error loading products', error);
     return (
       <div className="text-center text-red-500 flex justify-center items-center">
         Error loading products
