@@ -26,6 +26,8 @@ const fetchProducts = async ({
 }) => {
   let q = collection(db, shopCollectionRef);
   let conditions = [];
+  let orderField = '__name__'; // default alphabetical order
+
   let page_size = PAGE_SIZE;
 
   if (grandparent_category && grandparent_category !== '') {
@@ -57,16 +59,30 @@ const fetchProducts = async ({
     );
   }
 
-  if (selectedPrice && selectedPrice.min !== null)
-    conditions.push(where('price', '>=', selectedPrice.min));
-  if (selectedPrice && selectedPrice.max !== null)
-    conditions.push(where('price', '<=', selectedPrice.max));
+  // if (selectedPrice && selectedPrice.min !== null)
+  //   conditions.push(where('price', '>=', selectedPrice.min));
+  // if (selectedPrice && selectedPrice.max !== null)
+  //   conditions.push(where('price', '<=', selectedPrice.max));
 
-  // Apply conditions to query
-  q =
-    selectedPrice && selectedPrice.min !== null
-      ? query(q, ...conditions, orderBy('price'), limit(page_size))
-      : query(q, ...conditions, orderBy('name'), limit(page_size));
+  // // Apply conditions to query
+  // q =
+  //   selectedPrice && selectedPrice.min !== null
+  //     ? query(q, ...conditions, orderBy('price'), limit(page_size))
+  //     : query(q, ...conditions, orderBy('name'), limit(page_size));
+
+  // Filter by price
+  if (selectedPrice && selectedPrice.min !== null) {
+    conditions.push(where('price', '>=', selectedPrice.min));
+    orderField = 'price'; // Sort by price if we're filtering by it
+  }
+
+  if (selectedPrice && selectedPrice.max !== null) {
+    conditions.push(where('price', '<=', selectedPrice.max));
+    orderField = 'price'; // Sort by price if we're filtering by it
+  }
+
+  // Construct final query
+  q = query(q, ...conditions, orderBy(orderField), limit(page_size));
 
   // Pagination
   if (pageParam) {
