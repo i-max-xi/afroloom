@@ -129,13 +129,16 @@ const HomePage = () => {
           <h2 className="text-xl lg:text-3xl ">
             Create It. Shop It. Wear It Your Way!
           </h2>
-          <p className="text-sm">
-            At Afroloom, we bring your fashion dreams to life with easy online
-            tailoring and our Loom Store, where you can shop stunning
-            ready-to-wear Afrocentric pieces or create your own. From custom
+          <p className="text-sm md:text-base">
+            At Afroloom, we bring your fashion dreams to life with{' '}
+            <span className="text-yellow-500">easy online tailoring</span> and
+            our <span className="text-yellow-500">Loom Store</span>, where you
+            can shop stunning ready-to-wear Afrocentric pieces. From custom
             outfits and graduation sashes to unique bead bracelets, enjoy
-            personalized fashion made just for you — all from the
-            comfort of your home.
+            personalized fashion made just for you,{' '}
+            <span className="text-yellow-500">
+              all from the comfort of your home.
+            </span>
           </p>
           <div className="flex gap-2 items-center">
             <Link to="/order-to-sew">

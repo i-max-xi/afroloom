@@ -28,7 +28,7 @@ const fetchProducts = async ({
   let conditions = [];
   let page_size = PAGE_SIZE;
 
-  if (grandparent_category && grandparent_category !== '' && !searchQuery) {
+  if (grandparent_category && grandparent_category !== '') {
     conditions.push(where('grandparent_category', '==', grandparent_category));
   }
 
