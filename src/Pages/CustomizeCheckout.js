@@ -384,7 +384,7 @@ const CustomizeCheckout = () => {
           <div className="text-center my-5 d-flex flex-column w-100 justify-content-center align-items-center">
             <p>No items in cart </p>
             <button
-              onClick={() => navigate('/start-customize')}
+              onClick={() => navigate('/order-to-sew')}
               className="btn btn-warning text-white"
             >
               Buy Now

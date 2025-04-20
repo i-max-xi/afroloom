@@ -7,6 +7,7 @@ import {
 
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage/session'; // defaults to localStorage for web
+import { ORDER_TO_SEW_CATEGORY } from '../Pages/order.sew.page';
 
 const persistConfig = {
   key: 'root',
@@ -133,7 +134,8 @@ const shopCartSlice = createSlice({
 const loomStoreSlice = createSlice({
   name: 'loomstore',
   initialState: {
-    grandparent_category: 'order to sew',
+    grandparent_category: 'ready to wear',
+    order_to_sew_category: ORDER_TO_SEW_CATEGORY.FROM_SHOP,
     searchquery: '',
   },
   reducers: {

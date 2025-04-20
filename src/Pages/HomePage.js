@@ -23,7 +23,7 @@ const HomePage = () => {
       </section>
 
       <section className="down-section">
-        <Link to="/start-customize">
+        <Link to="/order-to-sew">
           <button className="btn btn-warning text-white">
             Create Your Own Fashion Wear
           </button>
