@@ -410,18 +410,46 @@ const ProductDetail = () => {
                       <p className="text-yellow-600  capitalize">{part.name}</p>
                       {part?.value ? (
                         part?.type === 'textile' ? (
-                          <img
-                            src={part?.value}
-                            alt=""
-                            className="texture-button-checkout"
-                          />
-                        ) : (
-                          <p className={``}>
+                          <div
+                            className="relative group cursor-pointer flex items-center gap-2"
+                            onClick={() => {
+                              setCurrentPartToApply(part);
+                              setOpenColorTextileDialog(true);
+                            }}
+                          >
+                            <img
+                              src={part?.value}
+                              alt=""
+                              className="texture-button-checkout"
+                            />
+
+                            {/* Overlay Edit Icon */}
                             <div
-                              className={`rounded-full h-10 w-10 border-1 hover:border-yellow-500 transition`}
+                              onClick={() => {
+                                setCurrentPartToApply(part);
+                                setOpenColorTextileDialog(true);
+                              }}
+                              className=""
+                            >
+                              <AiOutlineEdit className="h-4 w-4 text-gray-700" />
+                            </div>
+                          </div>
+                        ) : (
+                          <p className="relative group cursor-pointer flex items-center gap-2">
+                            <div
+                              className="rounded-full h-10 w-10 border-1 hover:border-yellow-500 transition"
                               style={{ backgroundColor: part.value }}
                             ></div>
-                            {/* <p className="text-sm">{part.name}</p> */}
+                            {/* Overlay Edit Icon */}
+                            <div
+                              onClick={() => {
+                                setCurrentPartToApply(part);
+                                setOpenColorTextileDialog(true);
+                              }}
+                              className=""
+                            >
+                              <AiOutlineEdit className="h-4 w-4 text-gray-700" />
+                            </div>
                           </p>
                         )
                       ) : (
@@ -540,6 +568,8 @@ const ProductDetail = () => {
                                         ),
                                       );
                                       setOpenColorTextileDialog(false); // close after selection
+                                      setOpenTextileDropdown(false);
+                                      setOpenColorDropdown(false);
                                     }}
                                     className={`flex flex-col items-center space-y-1`}
                                   >
@@ -651,6 +681,8 @@ const ProductDetail = () => {
                                               ),
                                             );
                                             setOpenColorTextileDialog(false);
+                                            setOpenTextileDropdown(false);
+                                            setOpenColorDropdown(false);
                                           }}
                                           currencySymbol={currencySymbol}
                                           currencyFactor={currencyFactor}
