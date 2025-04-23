@@ -1,9 +1,16 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import TextureItem from './TextureItem';
 import { textureDescriptions } from './arrays/neededArrays';
+import TextureItem from './LoomstoreTextureItem';
 
-export const SeeAll = ({ array, title, onClose, others, titleDisplay }) => {
+export const SeeAll = ({
+  array,
+  title,
+  onClose,
+  others,
+  titleDisplay,
+  selectedTexture,
+}) => {
   const animationVariants = {
     hidden: { opacity: 0, y: 50 },
     visible: { opacity: 1, y: 0 },
