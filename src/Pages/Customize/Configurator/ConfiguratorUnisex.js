@@ -1,28 +1,29 @@
-import React, { useState, useRef, useEffect, useMemo } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
-import { useGLTF, OrbitControls } from "@react-three/drei";
-import { useSnapshot } from "valtio";
-import { state } from "./store";
+import React, { useState, useRef, useEffect, useMemo } from 'react';
+import { Canvas, useFrame } from '@react-three/fiber';
+import { useGLTF, OrbitControls } from '@react-three/drei';
+import { useSnapshot } from 'valtio';
+import { state } from './store';
 
 // import { Link } from "react-router-dom";
-import { InputText } from "primereact/inputtext";
+import { InputText } from 'primereact/inputtext';
 
-import { Carousel } from "primereact/carousel";
-import Confirmation from "./Confirmation";
-import html2canvas from "html2canvas";
+import { Carousel } from 'primereact/carousel';
+import Confirmation from './Confirmation';
+import html2canvas from 'html2canvas';
 
-import { TextureLoader } from "three/src/loaders/TextureLoader";
-import LoadingAnimation from "./LoadingAnimation";
+import { TextureLoader } from 'three/src/loaders/TextureLoader';
+import LoadingAnimation from './LoadingAnimation';
 
-import { Dialog } from "primereact/dialog";
-import Nav from "../../../Components/Nav";
-import "./styles.css";
-import { useParams } from "react-router";
-import { mainUnisex } from "../../../Data/CustomizeDataUnisex";
+import { Dialog } from 'primereact/dialog';
+import Nav from '../../../Components/Nav';
+import './styles.css';
+import { useParams } from 'react-router';
+import { mainUnisex } from '../../../Data/CustomizeDataUnisex';
+import { motion } from 'framer-motion';
 
-import { useSelector } from "react-redux";
+import { useSelector } from 'react-redux';
 
-import { Inplace, InplaceDisplay, InplaceContent } from "primereact/inplace";
+import { Inplace, InplaceDisplay, InplaceContent } from 'primereact/inplace';
 
 //arrays
 import {
@@ -38,27 +39,27 @@ import {
   onlySashes,
   hideNotAllNodes,
   shiny3Ds,
-} from "./arrays/neededArrays";
-import TextureItem from "./TextureItem";
-import PartImages from "./PartImages";
-import WelcomeTour, { tourSteps } from "./WelcomeTour";
-import { Dropdown } from "primereact/dropdown";
+} from './arrays/neededArrays';
+import TextureItem from './TextureItem';
+import PartImages from './PartImages';
+import WelcomeTour, { tourSteps } from './WelcomeTour';
+import { Dropdown } from 'primereact/dropdown';
 
-import { Toast } from "primereact/toast";
-import ImageUpload from "./ImageUpload";
-import HtmlComponent from "./HtmlComponent";
+import { Toast } from 'primereact/toast';
+import ImageUpload from './ImageUpload';
+import HtmlComponent from './HtmlComponent';
 import {
   beadTypeOptions,
   genderOptions,
   isMobile,
-} from "../../../utils/constants";
-import uuid from "react-uuid";
-import { OverlayPanel } from "primereact/overlaypanel";
-import { readFileAsDataURL, uploadToStorage } from "../../../utils/functions";
-import TakeTour from "./TakeTour";
-import HtmlImageComponent from "./HtmlImageComponent";
-import { SeeAll } from "./SeeAll";
-import { AnimatePresence } from "framer-motion";
+} from '../../../utils/constants';
+import uuid from 'react-uuid';
+import { OverlayPanel } from 'primereact/overlaypanel';
+import { readFileAsDataURL, uploadToStorage } from '../../../utils/functions';
+import TakeTour from './TakeTour';
+import HtmlImageComponent from './HtmlImageComponent';
+import { SeeAll } from './SeeAll';
+import { AnimatePresence } from 'framer-motion';
 
 const Shirt = ({
   isRotating,
@@ -105,7 +106,7 @@ const Shirt = ({
     }, 2000);
 
     for (let i = 0; i < state.color.length; i++) {
-      state.color[i] = "#ffffff";
+      state.color[i] = '#ffffff';
     }
 
     for (let i = 0; i < state.texture.length; i++) {
@@ -125,11 +126,11 @@ const Shirt = ({
         selectedClothing.myNode?.map((node, index) => {
           const nodeName = node?.name; // Access the name property of the node object
           const color =
-            specialNodeNames.includes(nodeName) && nodeName === "brass"
-              ? "#cd7f32"
-              : specialNodeNames.includes(nodeName) && nodeName !== "brass"
-                ? snap.color[index] || "#333333"
-                : snap.color[index] || "#ffffff";
+            specialNodeNames.includes(nodeName) && nodeName === 'brass'
+              ? '#cd7f32'
+              : specialNodeNames.includes(nodeName) && nodeName !== 'brass'
+              ? snap.color[index] || '#333333'
+              : snap.color[index] || '#ffffff';
 
           const texture = snap.texture[index] || null;
 
@@ -148,9 +149,9 @@ const Shirt = ({
                 transparent={
                   shiny3Ds.includes(selectedClothing.name) ? true : false
                 }
-                metalness={node === "Brass" && 1}
+                metalness={node === 'Brass' && 1}
                 // metalnessMap={}
-                emissive={selectedPart === index ? "#FF8C00" : null} // Apply golden glow if part is selected
+                emissive={selectedPart === index ? '#FF8C00' : null} // Apply golden glow if part is selected
                 emissiveIntensity={showGlow && selectedPart === index ? 5 : 0} // Adjust glow intensity
               />
             </mesh>
@@ -185,7 +186,7 @@ const ConfiguratorUnisex = () => {
   // const [Price, setPrice] = useState(selectedClothing.price);
 
   const [selectedSize, setSelectedSize] = useState(1);
-  const [selectedPrintOn, setSelectedPrintOn] = useState("#ffffff");
+  const [selectedPrintOn, setSelectedPrintOn] = useState('#ffffff');
 
   const [selectedPart, setSelectedPart] = useState(0);
 
@@ -193,7 +194,9 @@ const ConfiguratorUnisex = () => {
   //   notAll.includes(selectedClothing.name) ? 0 : null,
   // );
 
-  const [isRotating, setIsRotating] = useState(noSpinFor.includes(selectedClothing.name) ? false : true);
+  const [isRotating, setIsRotating] = useState(
+    noSpinFor.includes(selectedClothing.name) ? false : true,
+  );
 
   const canvasRef = useRef(null);
   // toast
@@ -217,7 +220,7 @@ const ConfiguratorUnisex = () => {
   const total = useMemo(() => {
     if (
       noSpinFor.includes(selectedClothing.name) ||
-      selectedClothing.name === "Earring"
+      selectedClothing.name === 'Earring'
     ) {
       return ((partPrices + selectedClothing.price) * currencyFactor).toFixed(
         2,
@@ -234,16 +237,13 @@ const ConfiguratorUnisex = () => {
     selectedClothing.price,
   ]);
 
-
   useEffect(() => {
     const currentSize = selectedClothing.sizeOptions.find(
       (size) => size.value === selectedSize,
     );
-    
 
     return setPartPrices(currentSize.colorPriceValue || 0);
-    }, [selectedClothing.sizeOptions, selectedSize]);
-    
+  }, [selectedClothing.sizeOptions, selectedSize]);
 
   const handleSizeChange = (factor, priceValue) => {
     let newPartPrice;
@@ -258,23 +258,20 @@ const ConfiguratorUnisex = () => {
         (size) => size.value === selectedSize,
       );
 
-      if(currentSize.colorPriceValue){
+      if (currentSize.colorPriceValue) {
         return setPartPrices(currentSize.colorPriceValue);
-
-      }
-      else{
+      } else {
         return setPartPrices(0);
       }
-  
     }
 
-    if (textureCategory && textureCategory === "waxPrint") {
+    if (textureCategory && textureCategory === 'waxPrint') {
       const yardPrice = textureValues[textureCategory].price;
 
       newPartPrice = yardPrice;
     }
 
-    if (textureCategory && textureCategory !== "waxPrint") {
+    if (textureCategory && textureCategory !== 'waxPrint') {
       const yardPrice = textureValues[textureCategory].price;
 
       newPartPrice = yardPrice + priceValue;
@@ -283,29 +280,27 @@ const ConfiguratorUnisex = () => {
     setPartPrices(newPartPrice);
   };
 
-
-
   const [showGlow, setShowGlow] = useState(false);
 
   // Declare state for entered text and generated texture
-  const [enteredTextLeft, setEnteredTextLeft] = useState("");
-  const [enteredTextRight, setEnteredTextRight] = useState("");
-  const [textLeftOrientation, setTextLeftOrientation] = useState("horizontal");
+  const [enteredTextLeft, setEnteredTextLeft] = useState('');
+  const [enteredTextRight, setEnteredTextRight] = useState('');
+  const [textLeftOrientation, setTextLeftOrientation] = useState('horizontal');
   const [textRightOrientation, setTextRightOrientation] =
-    useState("horizontal");
+    useState('horizontal');
 
   // const [textPosition] = useState([-0.65, -0.15, 0.05]); // Initialize text position
-  const [textColor, setTextColor] = useState("black");
-  const [fontFamily, setFontFamily] = useState("Arial");
+  const [textColor, setTextColor] = useState('black');
+  const [fontFamily, setFontFamily] = useState('Arial');
   const [hideText, setHideText] = useState(false);
 
   const fonts = [
-    "Arial",
-    "Verdana",
-    "Courier New",
-    "Roboto",
-    "Comic Sans MS",
-    "Book Antiqua",
+    'Arial',
+    'Verdana',
+    'Courier New',
+    'Roboto',
+    'Comic Sans MS',
+    'Book Antiqua',
   ];
   const [currentFontIndex, setCurrentFontIndex] = useState(0);
 
@@ -324,18 +319,18 @@ const ConfiguratorUnisex = () => {
   const handleImageUploadLeft = async (file) => {
     setUploadedImageLeft(URL.createObjectURL(file));
     toastRef.current.show({
-      severity: "success",
-      summary: "Please Note",
+      severity: 'success',
+      summary: 'Please Note',
       detail:
-        "Focus would be on the pattern in your image, hence background may be removed where applicable",
+        'Focus would be on the pattern in your image, hence background may be removed where applicable',
     });
 
     try {
       const dataURL = await readFileAsDataURL(file);
-      const downloadURL = await uploadToStorage(dataURL, "sash");
+      const downloadURL = await uploadToStorage(dataURL, 'sash');
       setFirebaseImageLeft(downloadURL);
     } catch (error) {
-      console.error("Image upload failed:", error);
+      console.error('Image upload failed:', error);
     }
   };
 
@@ -343,18 +338,18 @@ const ConfiguratorUnisex = () => {
     setUploadedImageRight(URL.createObjectURL(file));
 
     toastRef.current.show({
-      severity: "success",
-      summary: "Please Note",
+      severity: 'success',
+      summary: 'Please Note',
       detail:
-        "Focus would be on the pattern in your image, hence background may be removed where applicable",
+        'Focus would be on the pattern in your image, hence background may be removed where applicable',
     });
 
     try {
       const dataURL = await readFileAsDataURL(file);
-      const downloadURL = await uploadToStorage(dataURL, "sash");
+      const downloadURL = await uploadToStorage(dataURL, 'sash');
       setFirebaseImageRight(downloadURL);
     } catch (error) {
-      console.error("Image upload failed:", error);
+      console.error('Image upload failed:', error);
     }
   };
 
@@ -363,26 +358,26 @@ const ConfiguratorUnisex = () => {
       return {
         left: {
           text: enteredTextLeft,
-          top: "2.8rem",
-          left: "-2.85rem",
-          height: "2rem",
+          top: '2.8rem',
+          left: '-2.85rem',
+          height: '2rem',
           size: 14,
-          width: "5rem",
-          lineHeight: "",
+          width: '5rem',
+          lineHeight: '',
           image: {
-            top: "-1rem",
-            left: "16rem",
-            height: "2rem",
-            width: "2rem",
+            top: '-1rem',
+            left: '16rem',
+            height: '2rem',
+            width: '2rem',
           },
         },
         right: {
-          text: " ",
-          top: "-1rem",
-          left: "4rem",
-          height: "12rem",
-          width: "5.4rem",
-          lineHeight: "",
+          text: ' ',
+          top: '-1rem',
+          left: '4rem',
+          height: '12rem',
+          width: '5.4rem',
+          lineHeight: '',
         },
       };
     }
@@ -391,29 +386,29 @@ const ConfiguratorUnisex = () => {
       return {
         left: {
           text: enteredTextLeft,
-          top: "-1rem",
-          left: "-7.4rem",
-          height: "8rem",
-          width: "3.6rem",
+          top: '-1rem',
+          left: '-7.4rem',
+          height: '8rem',
+          width: '3.6rem',
           image: {
-            top: "-7rem",
-            left: "-6.5rem",
-            height: "2rem",
-            width: "2rem",
+            top: '-7rem',
+            left: '-6.5rem',
+            height: '2rem',
+            width: '2rem',
           },
         },
         right: {
           text: enteredTextRight,
-          top: "-1rem",
-          left: "3.8rem",
-          height: "8rem",
-          width: "3.6rem",
-          lineHeight: "",
+          top: '-1rem',
+          left: '3.8rem',
+          height: '8rem',
+          width: '3.6rem',
+          lineHeight: '',
           image: {
-            top: "-7rem",
-            left: "4.5rem",
-            height: "2rem",
-            width: "2rem",
+            top: '-7rem',
+            left: '4.5rem',
+            height: '2rem',
+            width: '2rem',
           },
         },
       };
@@ -422,30 +417,30 @@ const ConfiguratorUnisex = () => {
       return {
         left: {
           text: enteredTextLeft,
-          top: "-7rem",
-          left: "-7.4rem",
-          height: "8rem",
-          width: "3.6rem",
-          lineHeight: "",
+          top: '-7rem',
+          left: '-7.4rem',
+          height: '8rem',
+          width: '3.6rem',
+          lineHeight: '',
           image: {
-            top: "4.6rem",
-            left: "-7.2rem",
-            height: "2rem",
-            width: "3rem",
+            top: '4.6rem',
+            left: '-7.2rem',
+            height: '2rem',
+            width: '3rem',
           },
         },
         right: {
           text: enteredTextRight,
-          top: "-7rem",
-          left: "3.8rem",
-          height: "8rem",
-          width: "3.6rem",
-          lineHeight: "",
+          top: '-7rem',
+          left: '3.8rem',
+          height: '8rem',
+          width: '3.6rem',
+          lineHeight: '',
           image: {
-            top: "4.7rem",
-            left: "4rem",
-            height: "2rem",
-            width: "3rem",
+            top: '4.7rem',
+            left: '4rem',
+            height: '2rem',
+            width: '3rem',
           },
         },
       };
@@ -454,32 +449,32 @@ const ConfiguratorUnisex = () => {
       return {
         left: {
           text: enteredTextLeft,
-          top: "1.8rem",
-          left: "-6.5rem",
-          height: "10rem",
-          width: "2rem",
-          lineHeight: "",
+          top: '1.8rem',
+          left: '-6.5rem',
+          height: '10rem',
+          width: '2rem',
+          lineHeight: '',
           size: 6,
           image: {
-            top: "-3rem",
-            left: "-6rem",
-            height: "1.5rem",
-            width: "1.5rem",
+            top: '-3rem',
+            left: '-6rem',
+            height: '1.5rem',
+            width: '1.5rem',
           },
         },
         right: {
           text: enteredTextRight,
-          top: "-3.8rem",
-          left: "3.75rem",
-          height: "10rem",
-          width: "2rem",
-          lineHeight: "",
+          top: '-3.8rem',
+          left: '3.75rem',
+          height: '10rem',
+          width: '2rem',
+          lineHeight: '',
           size: 6,
           image: {
-            top: "7rem",
-            left: "4.2rem",
-            height: "1.5rem",
-            width: "1.5rem",
+            top: '7rem',
+            left: '4.2rem',
+            height: '1.5rem',
+            width: '1.5rem',
           },
         },
       };
@@ -488,30 +483,30 @@ const ConfiguratorUnisex = () => {
       return {
         left: {
           text: enteredTextLeft,
-          top: "-7rem",
-          left: "-7.4rem",
-          height: "10rem",
-          width: "3.6rem",
-          lineHeight: "",
+          top: '-7rem',
+          left: '-7.4rem',
+          height: '10rem',
+          width: '3.6rem',
+          lineHeight: '',
           image: {
-            top: "-10.5rem",
-            left: "5.8rem",
-            height: "2rem",
-            width: "2rem",
+            top: '-10.5rem',
+            left: '5.8rem',
+            height: '2rem',
+            width: '2rem',
           },
         },
         right: {
           text: enteredTextRight,
-          top: "-7rem",
-          left: "3.8rem",
-          height: "10rem",
-          width: "3.6rem",
-          lineHeight: "",
+          top: '-7rem',
+          left: '3.8rem',
+          height: '10rem',
+          width: '3.6rem',
+          lineHeight: '',
           image: {
-            top: "-11.5rem",
-            left: "16.3rem",
-            height: "2rem",
-            width: "2rem",
+            top: '-11.5rem',
+            left: '16.3rem',
+            height: '2rem',
+            width: '2rem',
           },
         },
       };
@@ -520,31 +515,31 @@ const ConfiguratorUnisex = () => {
       return {
         left: {
           text: enteredTextLeft,
-          top: "-1rem",
-          left: "-6.45rem",
-          height: "12rem",
-          width: "2rem",
-          lineHeight: "",
+          top: '-1rem',
+          left: '-6.45rem',
+          height: '12rem',
+          width: '2rem',
+          lineHeight: '',
           size: 6,
           image: {
-            top: "-5rem",
-            left: "-6.2rem",
-            height: "1.5rem",
-            width: "2rem",
+            top: '-5rem',
+            left: '-6.2rem',
+            height: '1.5rem',
+            width: '2rem',
           },
         },
         right: {
           text: enteredTextRight,
-          top: "-6rem",
-          left: "4.5rem",
-          height: "16rem",
-          width: "0.5rem",
-          lineHeight: "2rem",
+          top: '-6rem',
+          left: '4.5rem',
+          height: '16rem',
+          width: '0.5rem',
+          lineHeight: '2rem',
           image: {
-            top: "-8rem",
-            left: "16rem",
-            height: "2rem",
-            width: "2rem",
+            top: '-8rem',
+            left: '16rem',
+            height: '2rem',
+            width: '2rem',
           },
         },
       };
@@ -553,26 +548,26 @@ const ConfiguratorUnisex = () => {
       return {
         left: {
           text: enteredTextLeft,
-          top: "3.5rem",
+          top: '3.5rem',
           size: 14,
-          left: "-3rem",
-          height: "2rem",
-          width: "5.4rem",
-          lineHeight: "",
+          left: '-3rem',
+          height: '2rem',
+          width: '5.4rem',
+          lineHeight: '',
           image: {
-            top: "-1rem",
-            left: "16rem",
-            height: "2rem",
-            width: "2rem",
+            top: '-1rem',
+            left: '16rem',
+            height: '2rem',
+            width: '2rem',
           },
         },
         right: {
-          text: " ",
-          top: "-1rem",
-          left: "4rem",
-          height: "12rem",
-          width: "5.4rem",
-          lineHeight: "",
+          text: ' ',
+          top: '-1rem',
+          left: '4rem',
+          height: '12rem',
+          width: '5.4rem',
+          lineHeight: '',
         },
       };
     }
@@ -596,22 +591,22 @@ const ConfiguratorUnisex = () => {
   }, []);
 
   const handleLeftTextOrientation = () => {
-    if (textLeftOrientation === "horizontal") {
-      setTextLeftOrientation("vertical");
+    if (textLeftOrientation === 'horizontal') {
+      setTextLeftOrientation('vertical');
     }
 
-    if (textLeftOrientation === "vertical") {
-      setTextLeftOrientation("horizontal");
+    if (textLeftOrientation === 'vertical') {
+      setTextLeftOrientation('horizontal');
     }
   };
 
   const handleRightTextOrientation = () => {
-    if (textRightOrientation === "horizontal") {
-      setTextRightOrientation("vertical");
+    if (textRightOrientation === 'horizontal') {
+      setTextRightOrientation('vertical');
     }
 
-    if (textRightOrientation === "vertical") {
-      setTextRightOrientation("horizontal");
+    if (textRightOrientation === 'vertical') {
+      setTextRightOrientation('horizontal');
     }
   };
 
@@ -649,11 +644,8 @@ const ConfiguratorUnisex = () => {
     state.texture[selectedPart] = null;
     setSelectedPrintOn(newColor);
 
-   
     setShowGlow(false);
   };
-
-
 
   const handleTextureChange = (newTexture) => {
     if (selectedPart !== null) {
@@ -662,31 +654,30 @@ const ConfiguratorUnisex = () => {
       setSelectedPrintOn(newTexture);
       setSelectedTexture(newTexture); // needed to transfer to size
 
-      if(!selectedClothing.isAccessory){
+      if (!selectedClothing.isAccessory) {
         const textureCategory = Object.keys(textureArrays).find((category) =>
           textureArrays[category].includes(newTexture),
         );
-  
+
         const sizeValue = selectedClothing.sizeOptions.find(
           (size) => size.value === selectedSize,
         );
-  
+
         const yardPrice = textureValues[textureCategory].price;
-  
+
         let newPartPrice;
-        if (textureCategory === "waxPrint") {
+        if (textureCategory === 'waxPrint') {
           newPartPrice = yardPrice;
         } else {
           newPartPrice = yardPrice + sizeValue.priceValue;
         }
-  
+
         setPartPrices(newPartPrice);
-      } 
+      }
     }
 
     setShowGlow(false);
   };
-
 
   const handleRotation = () => {
     setIsRotating((prev) => !prev);
@@ -702,28 +693,28 @@ const ConfiguratorUnisex = () => {
 
   // Confrimation or not
   const [showConfirmation, setShowConfirmation] = useState(false);
-  const [stateImage, setStateImage] = useState("");
+  const [stateImage, setStateImage] = useState('');
 
   const captureCanvasAsImage = async () => {
     setIsRotating(false);
     const requiresGender = displayInplaceFor.includes(selectedClothing.name);
-    const genderProvided = gender !== "";
+    const genderProvided = gender !== '';
 
     if (requiresGender && !genderProvided) {
       // Prevent completing if height is required but not provided
       toastRef.current.show({
-        severity: "error",
-        summary: "Cannot continue",
-        detail: "Please input your gender for accurate design",
+        severity: 'error',
+        summary: 'Cannot continue',
+        detail: 'Please input your gender for accurate design',
       });
       return;
     }
 
     if (!canvasRef.current) {
       toastRef.current.show({
-        severity: "error",
-        summary: "Error",
-        detail: "Complete action failed, please try again",
+        severity: 'error',
+        summary: 'Error',
+        detail: 'Complete action failed, please try again',
       });
       return;
     }
@@ -760,8 +751,8 @@ const ConfiguratorUnisex = () => {
 
   // parse part title
   const parseTitle = (title) => {
-    const split = title?.split("_");
-    return split?.join(" ");
+    const split = title?.split('_');
+    return split?.join(' ');
   };
 
   // Welcome
@@ -779,12 +770,12 @@ const ConfiguratorUnisex = () => {
 
   const handleTourClose = () => {
     setShowTour(false);
-    localStorage.setItem("tourCompleted", "true"); // Save tour completion status
+    localStorage.setItem('tourCompleted', 'true'); // Save tour completion status
   };
 
   useEffect(() => {
-    const tourCompleted = localStorage.getItem("tourCompleted");
-    if (tourCompleted === "true") {
+    const tourCompleted = localStorage.getItem('tourCompleted');
+    if (tourCompleted === 'true') {
       setShowTourPopup(false); // If tour completed, don't show it
     } else {
       setShowTourPopup(true); // Show the tour for new users
@@ -796,11 +787,11 @@ const ConfiguratorUnisex = () => {
   };
 
   // customer height
-  const [gender, setGender] = useState("");
-  const [beadType, setBeadType] = useState("Glass");
+  const [gender, setGender] = useState('');
+  const [beadType, setBeadType] = useState('Glass');
 
   const handleAllPartsClick = () => {
-    setSelectedPart("all");
+    setSelectedPart('all');
   };
 
   const handleSelectPart = (index) => {
@@ -814,37 +805,39 @@ const ConfiguratorUnisex = () => {
   };
 
   const demoType = useMemo(() => {
-    if (selectedClothing.name === "Earring") {
-      return "earring";
+    if (selectedClothing.name === 'Earring') {
+      return 'earring';
     }
 
-    if (selectedClothing.name === "Bikini") {
-      return "bikini";
+    if (selectedClothing.name === 'Bikini') {
+      return 'bikini';
     }
 
-    if (selectedClothing.name.includes("Beads Bracelet")) {
-      return "bangle";
+    if (selectedClothing.name.includes('Beads Bracelet')) {
+      return 'bangle';
     }
 
     if (onlySashes.includes(selectedClothing.name)) {
-      return "sash";
+      return 'sash';
     }
   }, [selectedClothing.name]);
 
   const [openSeeAll, setOpenSeeAll] = useState(false);
-    const [selectedSeeAll, setSelectedSeeAll] = useState({ title: '', titleDisplay:'', array: [] });
-  
-    const handleOpenSeeAll = (title, titleDisplay, array) => {
-      setSelectedSeeAll({ title, titleDisplay, array });
-      setOpenSeeAll(true);
-    };
-  
-    const handleCloseSeeAll = () => {
-      setOpenSeeAll(false);
-      setSelectedSeeAll({ title: '', titleDisplay: '', array: [] });
-    };
-  
-  
+  const [selectedSeeAll, setSelectedSeeAll] = useState({
+    title: '',
+    titleDisplay: '',
+    array: [],
+  });
+
+  const handleOpenSeeAll = (title, titleDisplay, array) => {
+    setSelectedSeeAll({ title, titleDisplay, array });
+    setOpenSeeAll(true);
+  };
+
+  const handleCloseSeeAll = () => {
+    setOpenSeeAll(false);
+    setSelectedSeeAll({ title: '', titleDisplay: '', array: [] });
+  };
 
   return (
     <>
@@ -888,11 +881,11 @@ const ConfiguratorUnisex = () => {
         <Confirmation
           currencySymbol={currencySymbol}
           total={
-            selectedClothing.name === "Bikini"
+            selectedClothing.name === 'Bikini'
               ? bikiniTotal
-              : selectedClothing.name === "Bikini"
-                ? bikiniTotal
-                : total
+              : selectedClothing.name === 'Bikini'
+              ? bikiniTotal
+              : total
           }
           readyBy={selectedClothing.readyIn}
           weight={selectedClothing.weight}
@@ -930,7 +923,7 @@ const ConfiguratorUnisex = () => {
               {noSpinFor.includes(selectedClothing.name) ? null : (
                 <button
                   className={`btn rotation-button text-white  ${
-                    isRotating === true ? "btn-danger" : "btn-warning"
+                    isRotating === true ? 'btn-danger' : 'btn-warning'
                   }`}
                   onClick={handleRotation}
                 >
@@ -972,32 +965,33 @@ const ConfiguratorUnisex = () => {
                       </button>
                     )} */}
 
-                    {noSpinFor.includes(selectedClothing.name) && selectedClothing.myNode.map((nodeName, index) => {
-                      if (
-                        specialNodeNames.includes(nodeName.name) ||
-                        hideNotAllNodes.includes(nodeName.name)
-                      ) {
-                        return null; // Skip rendering this node
-                      } else {
-                        return (
-                          <button
-                            key={index}
-                            className={`size-button btn btn-outline-dark ${
-                              selectedPart === index ? "selected" : ""
-                            }`}
-                            onClick={() => handleSelectPart(index)}
-                          >
-                            {nodeName.name === "hands"
-                              ? parseTitle("sleeves")
-                              : parseTitle(nodeName.name)}
-                          </button>
-                        );
-                      }
-                    })}
+                    {noSpinFor.includes(selectedClothing.name) &&
+                      selectedClothing.myNode.map((nodeName, index) => {
+                        if (
+                          specialNodeNames.includes(nodeName.name) ||
+                          hideNotAllNodes.includes(nodeName.name)
+                        ) {
+                          return null; // Skip rendering this node
+                        } else {
+                          return (
+                            <button
+                              key={index}
+                              className={`size-button btn btn-outline-dark ${
+                                selectedPart === index ? 'selected' : ''
+                              }`}
+                              onClick={() => handleSelectPart(index)}
+                            >
+                              {nodeName.name === 'hands'
+                                ? parseTitle('sleeves')
+                                : parseTitle(nodeName.name)}
+                            </button>
+                          );
+                        }
+                      })}
                   </>
                 </div>
 
-                {selectedClothing.name.includes("Beads Bracelet") && (
+                {selectedClothing.name.includes('Beads Bracelet') && (
                   <div className="select-part-container mt-3">
                     <h6>Bead Type</h6>
 
@@ -1008,7 +1002,7 @@ const ConfiguratorUnisex = () => {
                         options={beadTypeOptions}
                         optionLabel="label"
                         placeholder="Select bead type"
-                        style={{ width: "66.5%" }}
+                        style={{ width: '66.5%' }}
                       />
                     </p>
                   </div>
@@ -1021,7 +1015,7 @@ const ConfiguratorUnisex = () => {
                       <button
                         key={option.value}
                         className={`size-button btn btn-outline-dark ${
-                          selectedSize === option.value ? "selected" : ""
+                          selectedSize === option.value ? 'selected' : ''
                         }`}
                         onClick={() =>
                           handleSizeChange(
@@ -1044,12 +1038,12 @@ const ConfiguratorUnisex = () => {
                         <InplaceDisplay>
                           <span
                             style={{
-                              color: "red",
-                              fontWeight: "bolder",
-                              textTransform: "capitalize",
+                              color: 'red',
+                              fontWeight: 'bolder',
+                              textTransform: 'capitalize',
                             }}
                           >
-                            {gender || "Tap to input gender"}
+                            {gender || 'Tap to input gender'}
                           </span>
                         </InplaceDisplay>
                         <InplaceContent>
@@ -1087,7 +1081,7 @@ const ConfiguratorUnisex = () => {
                           />
                         </p>
                       ) : (
-                        ""
+                        ''
                       )}
                       <p className="mb-1">
                         <img
@@ -1119,29 +1113,39 @@ const ConfiguratorUnisex = () => {
                                 />
                               </div>
                             ))
-                          : "N/A"}
+                          : 'N/A'}
                       </form>
                     </div>
                   </Dialog>
                 </div>
                 <h5>Choose Color</h5>
-                <div className="flex gap-5 overflow-x-scroll flex-nowrap no-scrollbar w-[90%] ">
+                <motion.div
+                  initial={{ opacity: 0, x: 60 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ bounce: 0.2, duration: 0.5, damping: 10 }}
+                  className="flex gap-5 overflow-x-scroll flex-nowrap no-scrollbar w-[90%] "
+                >
                   {colorOptions.map((colorOption) => (
-                      <div key={colorOption.color} className="color-item">
+                    <div
+                      key={colorOption.color}
+                      className="color-item flex flex-col items-center space-y-1"
+                    >
                       <button
-                        className={`color-button ${
+                        className={`color-button  ${
                           selectedPrintOn === colorOption.color
-                            ? "selected-border"
-                            : ""
+                            ? 'selected-border'
+                            : ''
                         }`}
                         onClick={() => handleColorChange(colorOption.color)}
                         style={{ backgroundColor: colorOption.color }}
                       ></button>
+                      <p className="text-xs capitalize">{colorOption.label}</p>
                     </div>
                   ))}
-                </div>
+                </motion.div>
                 {noSpinFor.includes(selectedClothing.name) ||
-                selectedClothing.name === "Earring" || selectedClothing.name === "Beads Bracelet" ? null : (
+                selectedClothing.name === 'Earring' ||
+                selectedClothing.name === 'Beads Bracelet' ? null : (
                   <>
                     <h5>Choose Textile</h5>
                     {/* <h1>
@@ -1253,59 +1257,71 @@ const ConfiguratorUnisex = () => {
                       </div>
                     </div> */}
 
-                <div className="texture-buttons-container ">
-                    {openSeeAll ? ( 
-                      <AnimatePresence>
-                      <SeeAll
-                          array={selectedSeeAll.array}
-                          title={selectedSeeAll.title}
-                          titleDisplay={selectedSeeAll.titleDisplay}
-                          onClose={handleCloseSeeAll}
-                          others={{
-                            selectedPrintOn:selectedPrintOn ,
-                            handleTextureChange: handleTextureChange,
-                            currencySymbol: currencySymbol,
-                            currencyFactor: currencyFactor,
-                          }}
-                        />
-                        </AnimatePresence>
-                      ) : (
-
-                        selectedClothing?.isVariant ? (
-
-                          <div className="texture-row">
-                    <div className="texture-category mt-1">
-                      <div className="w-full flex justify-between capitalize">
-                        <p className="text-sm font-medium text-[#4C5B5C]">WaxPrint</p>
-                        <p  onClick={() => handleOpenSeeAll('waxPrint', "waxPrint",  textureArrays?.waxPrint)} className="cursor-pointer text-sm text-[#ffc107] hover:font-semibold"> See all &#8594;</p>
-                      </div>
-                      <div className="grid grid-cols-4 gap-3 px-4">
-                          {textureArrays.waxPrint.slice(0, 4).map((texture) => (
-                            <TextureItem
-                            key={texture}
-                            texture={texture}
-                            setHideText={setHideText}
-                            Title="waxPrint"
-                            selectedTexture={selectedPrintOn}
-                            // Pass setSelectedTexture as a prop
-                            handleTextureChange={handleTextureChange}
-                            currencySymbol={currencySymbol}
-                            currencyFactor={currencyFactor}
-                            subTextureDescriptions={
-                              textureDescriptions.waxPrint
-                            }
-                            textureIndex={textureArrays.waxPrint.indexOf(
-                              texture,
-                            )}
+                    <div className="texture-buttons-container ">
+                      {openSeeAll ? (
+                        <AnimatePresence>
+                          <SeeAll
+                            array={selectedSeeAll.array}
+                            title={selectedSeeAll.title}
+                            titleDisplay={selectedSeeAll.titleDisplay}
+                            onClose={handleCloseSeeAll}
+                            others={{
+                              selectedPrintOn: selectedPrintOn,
+                              handleTextureChange: handleTextureChange,
+                              currencySymbol: currencySymbol,
+                              currencyFactor: currencyFactor,
+                            }}
                           />
-                          ))}
-                      </div>
-                    </div>
-                  </div>
-                      ) :(
-
-                      <>
-                    {/* <div className="texture-row">
+                        </AnimatePresence>
+                      ) : selectedClothing?.isVariant ? (
+                        <div className="texture-row">
+                          <div className="texture-category mt-1">
+                            <div className="w-full flex justify-between capitalize">
+                              <p className="text-sm font-medium text-[#4C5B5C]">
+                                WaxPrint
+                              </p>
+                              <p
+                                onClick={() =>
+                                  handleOpenSeeAll(
+                                    'waxPrint',
+                                    'waxPrint',
+                                    textureArrays?.waxPrint,
+                                  )
+                                }
+                                className="cursor-pointer text-sm text-[#ffc107] hover:font-semibold"
+                              >
+                                {' '}
+                                See all &#8594;
+                              </p>
+                            </div>
+                            <div className="grid grid-cols-4 gap-3 px-4">
+                              {textureArrays.waxPrint
+                                .slice(0, 4)
+                                .map((texture) => (
+                                  <TextureItem
+                                    key={texture}
+                                    texture={texture}
+                                    setHideText={setHideText}
+                                    Title="waxPrint"
+                                    selectedTexture={selectedPrintOn}
+                                    // Pass setSelectedTexture as a prop
+                                    handleTextureChange={handleTextureChange}
+                                    currencySymbol={currencySymbol}
+                                    currencyFactor={currencyFactor}
+                                    subTextureDescriptions={
+                                      textureDescriptions.waxPrint
+                                    }
+                                    textureIndex={textureArrays.waxPrint.indexOf(
+                                      texture,
+                                    )}
+                                  />
+                                ))}
+                            </div>
+                          </div>
+                        </div>
+                      ) : (
+                        <>
+                          {/* <div className="texture-row">
                       <div className="texture-category mt-1">
                         
                         <div className="w-full flex justify-between capitalize">
@@ -1337,8 +1353,8 @@ const ConfiguratorUnisex = () => {
                       
                       </div>
                     </div> */}
-                  
-                  <div className="texture-category mt-1">
+
+                          {/* <div className="texture-category mt-1">
                     <div className="w-full flex justify-between capitalize">
                       <p className="text-sm font-medium text-[#4C5B5C]">Batik</p>
                       <p  onClick={() => handleOpenSeeAll('batik', "Batik",  textureArrays?.batik)} className="cursor-pointer text-sm text-[#ffc107] hover:font-semibold"> See all &#8594;</p>
@@ -1359,76 +1375,102 @@ const ConfiguratorUnisex = () => {
                       ))}
                   </div>
 
-                  </div>
+                  </div> */}
 
-                  <div className="texture-row">
-                    <div className="texture-category mt-1">
-                      <div className="w-full flex justify-between capitalize">
-                        <p className="text-sm font-medium text-[#4C5B5C]">WaxPrint</p>
-                        <p  onClick={() => handleOpenSeeAll('waxPrint', "waxPrint",  textureArrays?.waxPrint)} className="cursor-pointer text-sm text-[#ffc107] hover:font-semibold"> See all &#8594;</p>
-                      </div>
-                      <div className="grid grid-cols-4 gap-3 px-4">
-                          {textureArrays.waxPrint.slice(0, 4).map((texture) => (
-                            <TextureItem
-                            key={texture}
-                            texture={texture}
-                            setHideText={setHideText}
-                            Title="waxPrint"
-                            selectedTexture={selectedPrintOn}
-                            // Pass setSelectedTexture as a prop
-                            handleTextureChange={handleTextureChange}
-                            currencySymbol={currencySymbol}
-                            currencyFactor={currencyFactor}
-                            subTextureDescriptions={
-                              textureDescriptions.waxPrint
-                            }
-                            textureIndex={textureArrays.waxPrint.indexOf(
-                              texture,
-                            )}
-                          />
-                          ))}
-                      </div>
+                          <div className="texture-row">
+                            <div className="texture-category mt-1">
+                              <div className="w-full flex justify-between capitalize">
+                                <p className="text-sm font-medium text-[#4C5B5C]">
+                                  WaxPrint
+                                </p>
+                                <p
+                                  onClick={() =>
+                                    handleOpenSeeAll(
+                                      'waxPrint',
+                                      'waxPrint',
+                                      textureArrays?.waxPrint,
+                                    )
+                                  }
+                                  className="cursor-pointer text-sm text-[#ffc107] hover:font-semibold"
+                                >
+                                  {' '}
+                                  See all &#8594;
+                                </p>
+                              </div>
+                              <div className="grid grid-cols-4 gap-3 px-4">
+                                {textureArrays.waxPrint
+                                  .slice(0, 4)
+                                  .map((texture) => (
+                                    <TextureItem
+                                      key={texture}
+                                      texture={texture}
+                                      setHideText={setHideText}
+                                      Title="waxPrint"
+                                      selectedTexture={selectedPrintOn}
+                                      // Pass setSelectedTexture as a prop
+                                      handleTextureChange={handleTextureChange}
+                                      currencySymbol={currencySymbol}
+                                      currencyFactor={currencyFactor}
+                                      subTextureDescriptions={
+                                        textureDescriptions.waxPrint
+                                      }
+                                      textureIndex={textureArrays.waxPrint.indexOf(
+                                        texture,
+                                      )}
+                                    />
+                                  ))}
+                              </div>
+                            </div>
+                          </div>
+                          <div className="texture-row">
+                            <div className="texture-category mt-1">
+                              <div className="w-full flex justify-between capitalize">
+                                <p className="text-sm font-medium text-[#4C5B5C]">
+                                  School Prints
+                                </p>
+                                <p
+                                  onClick={() =>
+                                    handleOpenSeeAll(
+                                      'diaspora',
+                                      'School Prints',
+                                      textureArrays?.Diaspora,
+                                    )
+                                  }
+                                  className="cursor-pointer text-sm text-[#ffc107] hover:font-semibold"
+                                >
+                                  {' '}
+                                  See all &#8594;
+                                </p>
+                              </div>
+
+                              <div className="grid grid-cols-4 gap-3 px-4">
+                                {textureArrays.Diaspora.slice(0, 4).map(
+                                  (texture) => (
+                                    <TextureItem
+                                      key={texture}
+                                      texture={texture}
+                                      setHideText={setHideText}
+                                      Title="Diaspora"
+                                      selectedTexture={selectedPrintOn}
+                                      // Pass setSelectedTexture as a prop
+                                      handleTextureChange={handleTextureChange}
+                                      currencySymbol={currencySymbol}
+                                      currencyFactor={currencyFactor}
+                                      subTextureDescriptions={
+                                        textureDescriptions.diaspora
+                                      }
+                                      textureIndex={textureArrays.Diaspora.indexOf(
+                                        texture,
+                                      )}
+                                    />
+                                  ),
+                                )}
+                              </div>
+                            </div>
+                          </div>
+                        </>
+                      )}
                     </div>
-                  </div>
-                  <div className="texture-row">
-                    <div className="texture-category mt-1">
-                      <div className="w-full flex justify-between capitalize">
-                          <p className="text-sm font-medium text-[#4C5B5C]">School Prints</p>
-                          <p  onClick={() => handleOpenSeeAll('diaspora', "School Prints",  textureArrays?.Diaspora)} className="cursor-pointer text-sm text-[#ffc107] hover:font-semibold"> See all &#8594;</p>
-                      </div>
-                     
-
-                        <div className="grid grid-cols-4 gap-3 px-4">
-                          {textureArrays.Diaspora.slice(0, 4).map((texture) => (
-                            <TextureItem
-                              key={texture}
-                              texture={texture}
-                              setHideText={setHideText}
-                              Title="Diaspora"
-                              selectedTexture={selectedPrintOn}
-                              // Pass setSelectedTexture as a prop
-                              handleTextureChange={handleTextureChange}
-                              currencySymbol={currencySymbol}
-                              currencyFactor={currencyFactor}
-                              subTextureDescriptions={
-                                textureDescriptions.diaspora
-                              }
-                              textureIndex={textureArrays.Diaspora.indexOf(
-                                texture,
-                              )}
-                          />
-                          ))}
-                      </div>
-
-                    </div>
-                  </div>
-                       </>
-                      )
-                    
-                    
-                    )}
-
-                </div>
                   </>
                 )}
               </div>
@@ -1436,11 +1478,9 @@ const ConfiguratorUnisex = () => {
                 <div className="resize-right-panel h-full">
                   <div
                     ref={canvasRef}
-                    style={
-                      {
-                        height:  "70%" ,
-                      }
-                    }
+                    style={{
+                      height: '70%',
+                    }}
                   >
                     <Canvas
                       camera={{ position: [0, 0, selectedClothing.myZoom] }}
@@ -1462,18 +1502,20 @@ const ConfiguratorUnisex = () => {
                               textLeftOrientation={textLeftOrientation}
                               textRightOrientation={textRightOrientation}
                               ImprintTextPosition={ImprintTextPosition}
-                              hideRightText={
-                                selectedClothing.name.includes("Beads Bracelet")
-                              }
+                              hideRightText={selectedClothing.name.includes(
+                                'Beads Bracelet',
+                              )}
                             />
                             <HtmlImageComponent
                               ImprintTextPosition={ImprintTextPosition}
                               imageLeft={uploadedImageLeft}
                               imageRight={uploadedImageRight}
-                              hideLogo={selectedClothing.name.includes("Beads Bracelet")}
-                              hideRightText={
-                                selectedClothing.name.includes("Beads Bracelet")
-                              }
+                              hideLogo={selectedClothing.name.includes(
+                                'Beads Bracelet',
+                              )}
+                              hideRightText={selectedClothing.name.includes(
+                                'Beads Bracelet',
+                              )}
                             />
                           </>
                         )}
@@ -1488,7 +1530,6 @@ const ConfiguratorUnisex = () => {
                         <CameraControls />
                       )}
                     </Canvas>
-                    
                   </div>
 
                   {noSpinFor.includes(selectedClothing.name) && (
@@ -1501,33 +1542,38 @@ const ConfiguratorUnisex = () => {
                             type="text"
                             className="p-inputtext-sm"
                             placeholder={
-                              selectedClothing.name.includes("Beads Bracelet")
-                                ? "Text Here"
-                                : "imprint on left side..."
+                              selectedClothing.name.includes('Beads Bracelet')
+                                ? 'Text Here'
+                                : 'imprint on left side...'
                             }
                             value={enteredTextLeft}
                             onChange={(e) => {
-
-                              if(selectedClothing.name.includes("Beads Bracelet") && e.target.value.length > 7){
+                              if (
+                                selectedClothing.name.includes(
+                                  'Beads Bracelet',
+                                ) &&
+                                e.target.value.length > 7
+                              ) {
                                 toastRef.current.show({
-                                  severity: "error",
-                                  summary: "Text must not exceed 7 characters",
+                                  severity: 'error',
+                                  summary: 'Text must not exceed 7 characters',
                                 });
-                               return
+                                return;
+                              } else {
+                                setEnteredTextLeft(e.target.value);
                               }
-                              else {
-                                setEnteredTextLeft(e.target.value)
-                              }
-                              
                             }}
                             style={{
-                              width:
-                                selectedClothing.name.includes("Beads Bracelet")
-                                  ? "66.5%"
-                                  : "50%",
+                              width: selectedClothing.name.includes(
+                                'Beads Bracelet',
+                              )
+                                ? '66.5%'
+                                : '50%',
                             }}
                           />
-                          {selectedClothing.name.includes("Beads Bracelet") ? null : (
+                          {selectedClothing.name.includes(
+                            'Beads Bracelet',
+                          ) ? null : (
                             <InputText
                               type="text"
                               placeholder="imprint on right side..."
@@ -1537,10 +1583,11 @@ const ConfiguratorUnisex = () => {
                                 setEnteredTextRight(e.target.value)
                               }
                               style={{
-                                width:
-                                  selectedClothing.name.includes("Beads Bracelet")
-                                    ? "66.5%"
-                                    : "50%",
+                                width: selectedClothing.name.includes(
+                                  'Beads Bracelet',
+                                )
+                                  ? '66.5%'
+                                  : '50%',
                               }}
                             />
                           )}
@@ -1551,7 +1598,9 @@ const ConfiguratorUnisex = () => {
                         >
                           <span className="text-lg">
                             Edit Text
-                            <i className={"pi pi-chevron-right mx-2 text-xs"}></i>
+                            <i
+                              className={'pi pi-chevron-right mx-2 text-xs'}
+                            ></i>
                           </span>
                         </h5>
                         <OverlayPanel
@@ -1559,13 +1608,15 @@ const ConfiguratorUnisex = () => {
                           ref={textEditRef}
                           style={{
                             transform: `translateX(-2rem)`,
-                            minWidth: "15rem",
+                            minWidth: '15rem',
                           }}
                         >
                           <div className="flex flex-col w-full gap-2">
                             <h6 className="text-base font-medium">Color</h6>
-                            {selectedClothing.name.includes("Beads Bracelet") ? (
-                              "N/A"
+                            {selectedClothing.name.includes(
+                              'Beads Bracelet',
+                            ) ? (
+                              'N/A'
                             ) : (
                               <div className="flex">
                                 <Carousel
@@ -1577,8 +1628,8 @@ const ConfiguratorUnisex = () => {
                                     <button
                                       className={`imprint-text-color-button ${
                                         selectedPrintOn === colorOption.color
-                                          ? "selected-border"
-                                          : ""
+                                          ? 'selected-border'
+                                          : ''
                                       }`}
                                       onClick={() =>
                                         setTextColor(colorOption.label)
@@ -1603,35 +1654,39 @@ const ConfiguratorUnisex = () => {
                               </button>
                             </div>
 
-                            
-
-                            {selectedClothing.name.includes("Beads Bracelet")
-                             ? null : (
+                            {selectedClothing.name.includes(
+                              'Beads Bracelet',
+                            ) ? null : (
                               <>
+                                <h6 className="text-base font-medium">
+                                  Size{' '}
+                                  {selectedClothing.name.includes(
+                                    'Beads Bracelet',
+                                  )
+                                    ? null
+                                    : '(Left)'}
+                                </h6>
+                                <div className="d-flex  gap-2 justify-content-center align-items-center fs-button">
+                                  <button
+                                    className="p-1 px-2 bg-[#3C9FEF] text-white rounded-full hover:bg-[#3C9FEF]/70 focus:outline-none"
+                                    onClick={decreaseFontSizeLeft}
+                                  >
+                                    -
+                                  </button>
+                                  <span className="font-size">
+                                    {fontSizeLeft}
+                                  </span>
+                                  <button
+                                    className="p-1 px-2 bg-[#3C9FEF] text-white rounded-full hover:bg-[#3C9FEF]/70 focus:outline-none"
+                                    onClick={increaseFontSizeLeft}
+                                  >
+                                    +
+                                  </button>
+                                </div>
 
-                            <h6 className="text-base font-medium">
-                              Size{" "}
-                              {selectedClothing.name.includes("Beads Bracelet")
-                                ? null
-                                : "(Left)"}
-                            </h6>
-                            <div className="d-flex  gap-2 justify-content-center align-items-center fs-button">
-                              <button
-                                className="p-1 px-2 bg-[#3C9FEF] text-white rounded-full hover:bg-[#3C9FEF]/70 focus:outline-none"
-                                onClick={decreaseFontSizeLeft}
-                              >
-                                -
-                              </button>
-                              <span className="font-size">{fontSizeLeft}</span>
-                              <button
-                                className="p-1 px-2 bg-[#3C9FEF] text-white rounded-full hover:bg-[#3C9FEF]/70 focus:outline-none"
-                                onClick={increaseFontSizeLeft}
-                              >
-                                +
-                              </button>
-                            </div>
-
-                                <h6 className="text-base font-medium">Size (Right)</h6>
+                                <h6 className="text-base font-medium">
+                                  Size (Right)
+                                </h6>
                                 <div className="d-flex  gap-2 justify-content-center align-items-center fs-button">
                                   <button
                                     className="p-1 px-2 bg-[#3C9FEF] text-white rounded-full hover:bg-[#3C9FEF]/70 focus:outline-none"
@@ -1651,20 +1706,21 @@ const ConfiguratorUnisex = () => {
                                 </div>
                               </>
                             )}
-
-                            
                           </div>
                         </OverlayPanel>
-                        {selectedClothing.name === noSpinFor[0] || selectedClothing.name === noSpinFor[6] ? null : (
+                        {selectedClothing.name === noSpinFor[0] ||
+                        selectedClothing.name === noSpinFor[6] ? null : (
                           <>
-                            <h5 className="text-sm lg:text-lg">Imprint images or Logos</h5>
+                            <h5 className="text-sm lg:text-lg">
+                              Imprint images or Logos
+                            </h5>
                             <div className="flex justify-between gap-2">
                               <ImageUpload
-                                labelLeft={"Upload for left"}
-                                labelRight={"Upload for right"}
+                                labelLeft={'Upload for left'}
+                                labelRight={'Upload for right'}
                                 hideRightButton={
                                   selectedClothing.name ===
-                                  "One-Sided Logo, Two-Sided Text Sash"
+                                  'One-Sided Logo, Two-Sided Text Sash'
                                 }
                                 onImageUploadLeft={handleImageUploadLeft}
                                 onImageUploadRight={handleImageUploadRight}
@@ -1682,17 +1738,17 @@ const ConfiguratorUnisex = () => {
           </div>
           <div className="price w-100 d-flex bg-dark text-white justify-content-between lg:mt-5">
             <span className="m-3 expect-to-be-ready">
-              Estimated time to make this order:{" "}
+              Estimated time to make this order:{' '}
               <span className="customize-focus">
-                {selectedClothing.readyIn} days{" "}
+                {selectedClothing.readyIn} days{' '}
               </span>
             </span>
 
             <p className="price-text m-3">
-              <span className="expect-to-be-ready">Price:</span>{" "}
+              <span className="expect-to-be-ready">Price:</span>{' '}
               <span className="customize-focus">
                 {currencySymbol}
-                {selectedClothing.name === "Bikini" ? bikiniTotal : total}
+                {selectedClothing.name === 'Bikini' ? bikiniTotal : total}
               </span>
             </p>
 
