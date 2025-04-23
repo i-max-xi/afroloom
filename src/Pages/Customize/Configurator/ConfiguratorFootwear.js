@@ -7,6 +7,7 @@ import { state } from './store';
 import { Carousel } from 'primereact/carousel';
 import Confirmation from './Confirmation';
 import html2canvas from 'html2canvas';
+import { motion } from 'framer-motion';
 
 import { TextureLoader } from 'three/src/loaders/TextureLoader';
 import LoadingAnimation from './LoadingAnimation';
