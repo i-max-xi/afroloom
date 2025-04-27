@@ -1,6 +1,5 @@
 import React, { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
-import Logo from '../Assets/AFRO LOGO 4.jpg';
 import GoogleTranslate from '../GoogleTranslate';
 import CurrencyConverter from './CurrencyConverter';
 import MobileNav from './MobileNav';
@@ -8,6 +7,7 @@ import { useSelector } from 'react-redux';
 import { Badge } from 'primereact/badge';
 import { Avatar } from 'primereact/avatar';
 import { useLocation } from 'react-router-dom';
+const Logo = '/assets/AFRO LOGO 4.jpg';
 
 const NavLink = ({ to, label, isActive }) => (
   <li className="p-overlay-badge">

@@ -1,13 +1,11 @@
-import React from "react";
-// import footerBG from "../Assets/Afrk.jpg";
-import { Link } from "react-router-dom";
-// import Logo from "../Assets/logo_removed_bg.png";
-import Logo from "../Assets/AFRO LOGO 4_footer.jpg";
-import SocialMedia from "./SocialMedia";
-import Header2 from "./Header2";
-import { FooterContact } from "./FooterContact";
-import contactInfo from "../Data/contactList";
-import { isMobile } from "../utils/constants";
+import React from 'react';
+import { Link } from 'react-router-dom';
+import SocialMedia from './SocialMedia';
+import Header2 from './Header2';
+import { FooterContact } from './FooterContact';
+import contactInfo from '../Data/contactList';
+import { isMobile } from '../utils/constants';
+const Logo = '/assets/AFRO LOGO 4_footer.jpg';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -16,9 +14,7 @@ const Footer = () => {
     <div className="bg-black text-center text-white footer">
       <Header2 color="black" bgColor="orange" />
 
-      <div
-     
-      >
+      <div>
         {/* special contact  */}
         <div className="container p-2 pb-0">
           <div className="flex justify-content-between policy-header">
@@ -40,10 +36,14 @@ const Footer = () => {
           <h5 className="footer-header">About Us</h5>
           <p
             className=" mx-auto w-75"
-            style={{ textAlign: isMobile ? "justify" : "center" }}
+            style={{ textAlign: isMobile ? 'justify' : 'center' }}
             // style={{textAlign: "justify"}}
           >
-           At Afroloom, we bring your unique style to life with personalized clothing, accessories, and ready-to-wear pieces from our Loom Store. Design your dream look or shop exclusive Afro-inspired fashion with ease, backed by flexible payments and a satisfaction guarantee. Join the Afroloom family and wear your style, your way!
+            At Afroloom, we bring your unique style to life with personalized
+            clothing, accessories, and ready-to-wear pieces from our Loom Store.
+            Design your dream look or shop exclusive Afro-inspired fashion with
+            ease, backed by flexible payments and a satisfaction guarantee. Join
+            the Afroloom family and wear your style, your way!
           </p>
         </div>
 
@@ -53,7 +53,7 @@ const Footer = () => {
               <div className="col-3 mb-4 footer-item" id="footer-social-media">
                 <Link to="/" className="navbar-brand">
                   <h3>
-                    {" "}
+                    {' '}
                     <img
                       height="auto"
                       width="auto"

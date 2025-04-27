@@ -1,6 +1,6 @@
-import React from "react";
-import LayoutHeaders from "../../Components/LayoutHeaders";
-import Top from "../../Assets/Headers/shipping.jpg";
+import React from 'react';
+import LayoutHeaders from '../../Components/LayoutHeaders';
+const Top = '/assets/Headers/shipping.jpg';
 
 const ShippingPolicy = () => {
   return (

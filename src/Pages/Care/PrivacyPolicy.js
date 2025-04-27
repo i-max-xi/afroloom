@@ -1,6 +1,7 @@
-import React from "react";
-import Top from "../../Assets/Headers/Privacy_Policy.jpg";
-import LayoutHeaders from "../../Components/LayoutHeaders";
+import React from 'react';
+import LayoutHeaders from '../../Components/LayoutHeaders';
+
+const Top = '/assets/Headers/Privacy_Policy.jpg';
 
 const PrivacyPolicy = () => {
   return (

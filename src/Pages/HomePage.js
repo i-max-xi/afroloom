@@ -4,10 +4,11 @@ import Nav from '../Components/Nav';
 import { Card } from 'primereact/card'; // Import the Card component from PrimeReact
 
 const HomePage = () => {
-  const image1 = require('../Assets/hero/3d-casual-life-black-girl-holding-box-and-bags.png');
+  const image1 =
+    '/assets/hero/3d-casual-life-black-girl-holding-box-and-bags.png';
 
-  const randomImage1 = require('../Assets/femlae.png');
-  const randomImage2 = require('../Assets/male.png');
+  const randomImage1 = '/assets/femlae.png';
+  const randomImage2 = '/assets/male.png';
 
   return (
     <div>

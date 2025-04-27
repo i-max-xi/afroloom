@@ -1,122 +1,136 @@
-import { v4 as uuid } from "uuid";
-
-import cloak from "../Assets/Customize/cloak.png";
-import skirt from "../Assets/welcome_3ds/female/skirt.png";
-import normal_top from "../Assets/Customize/normal_top.png";
+import { v4 as uuid } from 'uuid';
 
 //models
-import t_shirt_short from "../Pages/Customize/Configurator/models/FemaleClothing/tshirt_short_two.glb";
-import t_shirt_long from "../Pages/Customize/Configurator/models/FemaleClothing/tshirt_long_two.glb";
-import skirt_model from "../Pages/Customize/Configurator/models/FemaleClothing/skirt_main.glb";
-import trousers from "../Pages/Customize/Configurator/models/FemaleClothing/female_actual_trousers.glb";
-import top_model from "../Pages/Customize/Configurator/models/FemaleClothing/shoulders_top.glb";
-import normal_top_model from "../Pages/Customize/Configurator/models/FemaleClothing/ladies_normal_top.glb";
-import mini_skirt_model from "../Pages/Customize/Configurator/models/FemaleClothing/mini_skirt_main.glb";
-import cloak_model from "../Pages/Customize/Configurator/models/FemaleClothing/cloak.glb";
-import topndown_model from "../Pages/Customize/Configurator/models/MaleClothing/male_topndown.glb";
-import blazer from "../Pages/Customize/Configurator/models/FemaleClothing/female_suit_main.glb";
-import extra_long from "../Pages/Customize/Configurator/models/FemaleClothing/female_shirt_extra_long_two.glb";
-import extra_short from "../Pages/Customize/Configurator/models/FemaleClothing/female_shirt_extra_short.glb";
-import booty_shorts from "../Pages/Customize/Configurator/models/FemaleClothing/booty_shorts.glb";
-import material_shorts from "../Pages/Customize/Configurator/models/FemaleClothing/material_shorts.glb";
-import jacket from "../Pages/Customize/Configurator/models/Accessories/Unisex/jacket_main.glb";
-import bikini from "../Pages/Customize/Configurator/models/Accessories/bikini.glb";
-
-
+import t_shirt_short from '../Pages/Customize/Configurator/models/FemaleClothing/tshirt_short_two.glb';
+import t_shirt_long from '../Pages/Customize/Configurator/models/FemaleClothing/tshirt_long_two.glb';
+import skirt_model from '../Pages/Customize/Configurator/models/FemaleClothing/skirt_main.glb';
+import trousers from '../Pages/Customize/Configurator/models/FemaleClothing/female_actual_trousers.glb';
+import top_model from '../Pages/Customize/Configurator/models/FemaleClothing/shoulders_top.glb';
+import normal_top_model from '../Pages/Customize/Configurator/models/FemaleClothing/ladies_normal_top.glb';
+import mini_skirt_model from '../Pages/Customize/Configurator/models/FemaleClothing/mini_skirt_main.glb';
+import cloak_model from '../Pages/Customize/Configurator/models/FemaleClothing/cloak.glb';
+import topndown_model from '../Pages/Customize/Configurator/models/MaleClothing/male_topndown.glb';
+import blazer from '../Pages/Customize/Configurator/models/FemaleClothing/female_suit_main.glb';
+import extra_long from '../Pages/Customize/Configurator/models/FemaleClothing/female_shirt_extra_long_two.glb';
+import extra_short from '../Pages/Customize/Configurator/models/FemaleClothing/female_shirt_extra_short.glb';
+import booty_shorts from '../Pages/Customize/Configurator/models/FemaleClothing/booty_shorts.glb';
+import material_shorts from '../Pages/Customize/Configurator/models/FemaleClothing/material_shorts.glb';
+import jacket from '../Pages/Customize/Configurator/models/Accessories/Unisex/jacket_main.glb';
+import bikini from '../Pages/Customize/Configurator/models/Accessories/bikini.glb';
 
 // variations
-import vneck from "../Pages/Customize/Configurator/models/FemaleClothing/variations/v_neck.glb";
-import tshirt_and_trousers from "../Pages/Customize/Configurator/models/FemaleClothing/variations/tshirt_and_trousers.glb";
-import tshirt_and_skirt from "../Pages/Customize/Configurator/models/FemaleClothing/variations/tshirt_and_skirt.glb";
-import tshirt_and_material_shorts from "../Pages/Customize/Configurator/models/FemaleClothing/variations/tshirt_and_material_shorts.glb";
-import tshirt_and_booty_shorts from "../Pages/Customize/Configurator/models/FemaleClothing/variations/tshirt_and_booty_shorts.glb";
-import sleeve_less_tshirt from "../Pages/Customize/Configurator/models/FemaleClothing/variations/sleeve_less_tshirt.glb";
-import short_shirt_and_trousers from "../Pages/Customize/Configurator/models/FemaleClothing/variations/short_shirt_and_trousers.glb";
-import short_shirt_and_material_shorts from "../Pages/Customize/Configurator/models/FemaleClothing/variations/short_shirt_and_material_shorts.glb";
-import short_shirt_and_booty_shorts from "../Pages/Customize/Configurator/models/FemaleClothing/variations/short_shirt_and_booty_shorts.glb";
-import crop_top_mini_skirt from "../Pages/Customize/Configurator/models/FemaleClothing/variations/crop_top_mini_skirt.glb";
-import crop_top_material_shorts from "../Pages/Customize/Configurator/models/FemaleClothing/variations/crop_top_material_shorts.glb";
-import crop_top_long_skirt from "../Pages/Customize/Configurator/models/FemaleClothing/variations/crop_top_long_skirt.glb";
-import crop_top_booty_shorts from "../Pages/Customize/Configurator/models/FemaleClothing/variations/crop_top_booty_shorts.glb";
-import bra_mini_skirt from "../Pages/Customize/Configurator/models/FemaleClothing/variations/bra_mini_skirt.glb";
-import bra_booty_short from "../Pages/Customize/Configurator/models/FemaleClothing/variations/bra_booty_short.glb";
-import bra_material_short from "../Pages/Customize/Configurator/models/FemaleClothing/variations/bra_material_short.glb";
-import blazer_trousers from "../Pages/Customize/Configurator/models/FemaleClothing/variations/blazer_trousers.glb";
-import blazer_shorts from "../Pages/Customize/Configurator/models/FemaleClothing/variations/blazer_shorts.glb";
-import blazer_skirt from "../Pages/Customize/Configurator/models/FemaleClothing/variations/blazer_skirt.glb";
+import vneck from '../Pages/Customize/Configurator/models/FemaleClothing/variations/v_neck.glb';
+import tshirt_and_trousers from '../Pages/Customize/Configurator/models/FemaleClothing/variations/tshirt_and_trousers.glb';
+import tshirt_and_skirt from '../Pages/Customize/Configurator/models/FemaleClothing/variations/tshirt_and_skirt.glb';
+import tshirt_and_material_shorts from '../Pages/Customize/Configurator/models/FemaleClothing/variations/tshirt_and_material_shorts.glb';
+import tshirt_and_booty_shorts from '../Pages/Customize/Configurator/models/FemaleClothing/variations/tshirt_and_booty_shorts.glb';
+import sleeve_less_tshirt from '../Pages/Customize/Configurator/models/FemaleClothing/variations/sleeve_less_tshirt.glb';
+import short_shirt_and_trousers from '../Pages/Customize/Configurator/models/FemaleClothing/variations/short_shirt_and_trousers.glb';
+import short_shirt_and_material_shorts from '../Pages/Customize/Configurator/models/FemaleClothing/variations/short_shirt_and_material_shorts.glb';
+import short_shirt_and_booty_shorts from '../Pages/Customize/Configurator/models/FemaleClothing/variations/short_shirt_and_booty_shorts.glb';
+import crop_top_mini_skirt from '../Pages/Customize/Configurator/models/FemaleClothing/variations/crop_top_mini_skirt.glb';
+import crop_top_material_shorts from '../Pages/Customize/Configurator/models/FemaleClothing/variations/crop_top_material_shorts.glb';
+import crop_top_long_skirt from '../Pages/Customize/Configurator/models/FemaleClothing/variations/crop_top_long_skirt.glb';
+import crop_top_booty_shorts from '../Pages/Customize/Configurator/models/FemaleClothing/variations/crop_top_booty_shorts.glb';
+import bra_mini_skirt from '../Pages/Customize/Configurator/models/FemaleClothing/variations/bra_mini_skirt.glb';
+import bra_booty_short from '../Pages/Customize/Configurator/models/FemaleClothing/variations/bra_booty_short.glb';
+import bra_material_short from '../Pages/Customize/Configurator/models/FemaleClothing/variations/bra_material_short.glb';
+import blazer_trousers from '../Pages/Customize/Configurator/models/FemaleClothing/variations/blazer_trousers.glb';
+import blazer_shorts from '../Pages/Customize/Configurator/models/FemaleClothing/variations/blazer_shorts.glb';
+import blazer_skirt from '../Pages/Customize/Configurator/models/FemaleClothing/variations/blazer_skirt.glb';
 
-
-
+const cloak = '/assets/Customize/cloak.png';
+const skirt = '/assets/welcome_3ds/female/skirt.png';
+const normal_top = '/assets/Customize/normal_top.png';
 
 // size guides
-import tshirt_guide from "../Assets/size_guide/FemaleClothing/short_sleeves_tshirt.png";
-import tshirtlong_guide from "../Assets/size_guide/FemaleClothing/women long t shirt.jpg";
-import extraShortShirt_guide from "../Assets/size_guide/FemaleClothing/women short sleeve shirt.jpg";
-import extraLongShirt_guide from "../Assets/size_guide/FemaleClothing/long sleeve shirt.png";
-import cropTop_guide from "../Assets/size_guide/FemaleClothing/crop_top.jpg";
-import normalTop_guide from "../Assets/size_guide/FemaleClothing/ladies short sleeve loose top.jpg";
-import material_shorts_guide from "../Assets/size_guide/FemaleClothing/ladies material shorts.jpg";
-import top_down_guide from "../Assets/size_guide/FemaleClothing/ladies kaftan_page-0001.jpg";
-// import kabaSlit_guide from '../Assets/size_guide/FemaleClothing/';
-import cloak_guide from "../Assets/size_guide/FemaleClothing/ladies kimono.jpg";
-import blazer_guide from "../Assets/size_guide/FemaleClothing/female  blazer.jpg";
-import skirt_guide from "../Assets/size_guide/FemaleClothing/women long skirt.jpg";
-import miniSkirt_guide from "../Assets/size_guide/FemaleClothing/women mini skirt.jpg";
-import bootyShorts_guide from "../Assets/size_guide/FemaleClothing/booty shorts.jpg";
-import trousers_guide from "../Assets/size_guide/FemaleClothing/women trousers.jpg";
-import jacket_guide from "../Assets/size_guide/FemaleClothing/ladies bomber.png";
-import bikini_guide from "../Assets/size_guide/Accessories/Female/31.jpg";
-
-
+const tshirt_guide =
+  '/assets/size_guide/FemaleClothing/short_sleeves_tshirt.png';
+const tshirtlong_guide =
+  '/assets/size_guide/FemaleClothing/women long t shirt.jpg';
+const extraShortShirt_guide =
+  '/assets/size_guide/FemaleClothing/women short sleeve shirt.jpg';
+const extraLongShirt_guide =
+  '/assets/size_guide/FemaleClothing/long sleeve shirt.png';
+const cropTop_guide = '/assets/size_guide/FemaleClothing/crop_top.jpg';
+const normalTop_guide =
+  '/assets/size_guide/FemaleClothing/ladies short sleeve loose top.jpg';
+const material_shorts_guide =
+  '/assets/size_guide/FemaleClothing/ladies material shorts.jpg';
+const top_down_guide =
+  '/assets/size_guide/FemaleClothing/ladies kaftan_page-0001.jpg';
+// const kabaSlit_guide = '/assets/size_guide/FemaleClothing/';
+const cloak_guide = '/assets/size_guide/FemaleClothing/ladies kimono.jpg';
+const blazer_guide = '/assets/size_guide/FemaleClothing/female  blazer.jpg';
+const skirt_guide = '/assets/size_guide/FemaleClothing/women long skirt.jpg';
+const miniSkirt_guide =
+  '/assets/size_guide/FemaleClothing/women mini skirt.jpg';
+const bootyShorts_guide = '/assets/size_guide/FemaleClothing/booty shorts.jpg';
+const trousers_guide = '/assets/size_guide/FemaleClothing/women trousers.jpg';
+const jacket_guide = '/assets/size_guide/FemaleClothing/ladies bomber.png';
+const bikini_guide = '/assets/size_guide/Accessories/Female/31.jpg';
 
 // models
 
-const image_tshirt_long = require("../Assets/welcome_3ds/female/long_sleeve_new.png");
-const image_short_sleeves = require("../Assets/welcome_3ds/female/short_sleeves_shirt.png");
-const image_tshirt_short = require("../Assets/welcome_3ds/female/short_sleeve_new.png");
-const image_shirt_long = require("../Assets/welcome_3ds/female/long sleeve gal.jpg");
-const image_crop_top = require("../Assets/welcome_3ds/female/crop top.png");
-const image_bikini = require("../Assets/welcome_3ds/female/bikini.png");
-// const image_top = require("../Assets/welcome_3ds/female/");
-// const image_topndown = require("../Assets/welcome_3ds/female/");
-// const image_dress = require("../Assets/welcome_3ds/female/");
-// const image_kaba_slit = require("../Assets/welcome_3ds/female/");
-const image_blazer = require("../Assets/welcome_3ds/female/women blazer.png");
-// const image_cloak = require("../Assets/welcome_3ds/female/");
-// const image_long_skirt = require("../Assets/welcome_3ds/female/long skirt.jpg");
-const image_mini_skirt = require("../Assets/welcome_3ds/female/mini skirt.png");
-const image_booty_shorts = require("../Assets/welcome_3ds/female/booty 2.png");
-const image_leggings = require("../Assets/welcome_3ds/female/leggings.png");
-const image_jacket = require("../Assets/welcome_3ds/female/bomber_jacket.png");
-const image_topndown_image = require("../Assets/welcome_3ds/female/kaftan.png");
-const image_material_shorts_image = require("../Assets/welcome_3ds/female/material_shorts.png");
-const image_bra_booty_shorts = require("../Assets/welcome_3ds/female/bra_booty_shorts.jpg");
-const image_bra_material_shorts = require("../Assets/welcome_3ds/female/bra_shorts.jpg");
-const image_shirt_material_shorts = require("../Assets/welcome_3ds/female/female_shirt_material_shorts.jpg");
-const image_blazer_material_shorts = require("../Assets/welcome_3ds/female/blazer_material_shorts.jpg");
-const image_blazer_trousers = require("../Assets/welcome_3ds/female/blazer_trousers.jpg");
-const image_blazer_skirt = require("../Assets/welcome_3ds/female/blazer_skirt.jpg");
-const image_bra_min_skirt = require("../Assets/welcome_3ds/female/bra_min_skirt.jpg");
-const image_tshirt_material_shorts = require("../Assets/welcome_3ds/female/short_sleeve_booty_shorts.jpg");
-const image_short_shirt_booty_shorts = require("../Assets/welcome_3ds/female/short_sleeves_booty_shorts.jpg");
-const image_tshirt_trousers = require("../Assets/welcome_3ds/female/tshirt_trousers.png");
-const image_tshirt_mini_skirt = require("../Assets/welcome_3ds/female/tshirt_min_skirt.jpg");
-const image_tshirt_booty_shorts = require("../Assets/welcome_3ds/female/tshirt_booty_shorts.jpg");
-const image_short_shirt_trousers = require("../Assets/welcome_3ds/female/short_sleeves_trousers.jpg");
-const image_crop_top_mini_skirt = require("../Assets/welcome_3ds/female/crop_top_mini_skirt.jpg");
-const image_crop_top_skirt = require("../Assets/welcome_3ds/female/crop_top_skirt.jpg");
-const image_crop_top_material_short = require("../Assets/welcome_3ds/female/crop_top_material_short.jpg");
-const image_crop_top_booty_short = require("../Assets/welcome_3ds/female/crop_top_booty_shorts.jpg");
+const image_tshirt_long = '/assets/welcome_3ds/female/long_sleeve_new.png';
+const image_short_sleeves =
+  '/assets/welcome_3ds/female/short_sleeves_shirt.png';
+const image_tshirt_short = '/assets/welcome_3ds/female/short_sleeve_new.png';
+const image_shirt_long = '/assets/welcome_3ds/female/long sleeve gal.jpg';
+const image_crop_top = '/assets/welcome_3ds/female/crop top.png';
+const image_bikini = '/assets/welcome_3ds/female/bikini.png';
+// const image_top = "/assets/welcome_3ds/female/";
+// const image_topndown = "/assets/welcome_3ds/female/";
+// const image_dress = "/assets/welcome_3ds/female/";
+// const image_kaba_slit = "/assets/welcome_3ds/female/";
+const image_blazer = '/assets/welcome_3ds/female/women blazer.png';
+// const image_cloak = "/assets/welcome_3ds/female/";
+// const image_long_skirt = "/assets/welcome_3ds/female/long skirt.jpg";
+const image_mini_skirt = '/assets/welcome_3ds/female/mini skirt.png';
+const image_booty_shorts = '/assets/welcome_3ds/female/booty 2.png';
+const image_leggings = '/assets/welcome_3ds/female/leggings.png';
+const image_jacket = '/assets/welcome_3ds/female/bomber_jacket.png';
+const image_topndown_image = '/assets/welcome_3ds/female/kaftan.png';
+const image_material_shorts_image =
+  '/assets/welcome_3ds/female/material_shorts.png';
+const image_bra_booty_shorts =
+  '/assets/welcome_3ds/female/bra_booty_shorts.jpg';
+const image_bra_material_shorts = '/assets/welcome_3ds/female/bra_shorts.jpg';
+const image_shirt_material_shorts =
+  '/assets/welcome_3ds/female/female_shirt_material_shorts.jpg';
+const image_blazer_material_shorts =
+  '/assets/welcome_3ds/female/blazer_material_shorts.jpg';
+const image_blazer_trousers = '/assets/welcome_3ds/female/blazer_trousers.jpg';
+const image_blazer_skirt = '/assets/welcome_3ds/female/blazer_skirt.jpg';
+const image_bra_min_skirt = '/assets/welcome_3ds/female/bra_min_skirt.jpg';
+const image_tshirt_material_shorts =
+  '/assets/welcome_3ds/female/short_sleeve_booty_shorts.jpg';
+const image_short_shirt_booty_shorts =
+  '/assets/welcome_3ds/female/short_sleeves_booty_shorts.jpg';
+const image_tshirt_trousers = '/assets/welcome_3ds/female/tshirt_trousers.png';
+const image_tshirt_mini_skirt =
+  '/assets/welcome_3ds/female/tshirt_min_skirt.jpg';
+const image_tshirt_booty_shorts =
+  '/assets/welcome_3ds/female/tshirt_booty_shorts.jpg';
+const image_short_shirt_trousers =
+  '/assets/welcome_3ds/female/short_sleeves_trousers.jpg';
+const image_crop_top_mini_skirt =
+  '/assets/welcome_3ds/female/crop_top_mini_skirt.jpg';
+const image_crop_top_skirt = '/assets/welcome_3ds/female/crop_top_skirt.jpg';
+const image_crop_top_material_short =
+  '/assets/welcome_3ds/female/crop_top_material_short.jpg';
+const image_crop_top_booty_short =
+  '/assets/welcome_3ds/female/crop_top_booty_shorts.jpg';
 
 export const mainFemaleCustomize = [
   {
     id: uuid(),
-    name: "Short Sleeve T-Shirt",
+    name: 'Short Sleeve T-Shirt',
     image: image_tshirt_short,
     // image:
     //   "https://5.imimg.com/data5/SELLER/Default/2021/7/ZF/KX/CN/32220664/women-s-tie-dye-t-shirt-500x500.jpg",
     model: t_shirt_short,
-    myNode: [{ name: "all", yardNeeded: 2 }],
+    myNode: [{ name: 'all', yardNeeded: 2 }],
     otherYards: { small: 2, large: 3, extraLarge: 3, extraExtraLarge: 4 },
     myZoom: 0.7,
     price: 110,
@@ -124,27 +138,27 @@ export const mainFemaleCustomize = [
     // sizeModels: tshirt_model,
     readyIn: 7,
     sizeOptions: [
-      { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 50 },
-      { label: "M", value: 1, priceValue: 0, colorPriceValue: 50 },
-      { label: "L", value: 2, priceValue: 25, colorPriceValue: 85 },
-      { label: "XL", value: 3, priceValue: 25, colorPriceValue: 85 },
-      { label: "2XL", value: 4, priceValue: 50, colorPriceValue: 120 },
+      { label: 'S', value: 0.5, priceValue: 0, colorPriceValue: 50 },
+      { label: 'M', value: 1, priceValue: 0, colorPriceValue: 50 },
+      { label: 'L', value: 2, priceValue: 25, colorPriceValue: 85 },
+      { label: 'XL', value: 3, priceValue: 25, colorPriceValue: 85 },
+      { label: '2XL', value: 4, priceValue: 50, colorPriceValue: 120 },
     ],
     sizeForms: [
       {
-        label: "Bust (cm)",
+        label: 'Bust (cm)',
       },
       {
-        label: "Waist (cm)",
+        label: 'Waist (cm)',
       },
       {
-        label: "Hip (cm)",
+        label: 'Hip (cm)',
       },
       {
-        label: "Top Length (cm)",
+        label: 'Top Length (cm)',
       },
       {
-        label: "Sleeve Length (cm)",
+        label: 'Sleeve Length (cm)',
       },
     ],
   },
@@ -224,10 +238,10 @@ export const mainFemaleCustomize = [
   // },
   {
     id: uuid(),
-    name: "Long Sleeve T-Shirt",
+    name: 'Long Sleeve T-Shirt',
     image: image_tshirt_long,
     model: t_shirt_long,
-    myNode: [{ name: "all", yardNeeded: 2 }],
+    myNode: [{ name: 'all', yardNeeded: 2 }],
     otherYards: { small: 2, large: 3, extraLarge: 3, extraExtraLarge: 4 },
     myZoom: 1.1,
     price: 120,
@@ -235,38 +249,38 @@ export const mainFemaleCustomize = [
     // sizeModels: tshirt_model,
     readyIn: 7,
     sizeOptions: [
-      { label: "S", value: 0.5, priceValue: 15, colorPriceValue: 85 },
-      { label: "M", value: 1, priceValue: 15, colorPriceValue: 85 },
-      { label: "L", value: 2, priceValue: 15, colorPriceValue: 85 },
-      { label: "XL", value: 3, priceValue: 40, colorPriceValue: 120 },
-      { label: "2XL", value: 4, priceValue: 40, colorPriceValue: 120 },
+      { label: 'S', value: 0.5, priceValue: 15, colorPriceValue: 85 },
+      { label: 'M', value: 1, priceValue: 15, colorPriceValue: 85 },
+      { label: 'L', value: 2, priceValue: 15, colorPriceValue: 85 },
+      { label: 'XL', value: 3, priceValue: 40, colorPriceValue: 120 },
+      { label: '2XL', value: 4, priceValue: 40, colorPriceValue: 120 },
     ],
     sizeForms: [
       {
-        label: "Bust (cm)",
+        label: 'Bust (cm)',
       },
       {
-        label: "Waist (cm)",
+        label: 'Waist (cm)',
       },
       {
-        label: "Hip (cm)",
+        label: 'Hip (cm)',
       },
       {
-        label: "Top Length (cm)",
+        label: 'Top Length (cm)',
       },
       {
-        label: "Sleeve Length (cm)",
+        label: 'Sleeve Length (cm)',
       },
     ],
   },
   {
     id: uuid(),
-    name: "Short Sleeve Shirt",
+    name: 'Short Sleeve Shirt',
     image: image_short_sleeves,
     model: extra_short,
     myNode: [
-      { name: "all", yardNeeded: 2 },
-      { name: "buttons", yardNeeded: 0 },
+      { name: 'all', yardNeeded: 2 },
+      { name: 'buttons', yardNeeded: 0 },
     ],
     otherYards: { small: 2, large: 3, extraLarge: 3, extraExtraLarge: 4 },
     myZoom: 0.7,
@@ -275,38 +289,38 @@ export const mainFemaleCustomize = [
     // sizeModels: tshirt_model,
     readyIn: 7,
     sizeOptions: [
-      { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 50 },
-      { label: "M", value: 1, priceValue: 0, colorPriceValue: 50 },
-      { label: "L", value: 2, priceValue: 25, colorPriceValue: 85 },
-      { label: "XL", value: 3, priceValue: 25, colorPriceValue: 85 },
-      { label: "2XL", value: 4, priceValue: 50, colorPriceValue: 120 },
+      { label: 'S', value: 0.5, priceValue: 0, colorPriceValue: 50 },
+      { label: 'M', value: 1, priceValue: 0, colorPriceValue: 50 },
+      { label: 'L', value: 2, priceValue: 25, colorPriceValue: 85 },
+      { label: 'XL', value: 3, priceValue: 25, colorPriceValue: 85 },
+      { label: '2XL', value: 4, priceValue: 50, colorPriceValue: 120 },
     ],
     sizeForms: [
       {
-        label: "Bust (cm)",
+        label: 'Bust (cm)',
       },
       {
-        label: "Waist (cm)",
+        label: 'Waist (cm)',
       },
       {
-        label: "Hip (cm)",
+        label: 'Hip (cm)',
       },
       {
-        label: "Top Length (cm)",
+        label: 'Top Length (cm)',
       },
       {
-        label: "Sleeve Length (cm)",
+        label: 'Sleeve Length (cm)',
       },
     ],
   },
   {
     id: uuid(),
-    name: "Long Sleeve Shirt",
+    name: 'Long Sleeve Shirt',
     image: image_shirt_long,
     model: extra_long,
     myNode: [
-      { name: "all", yardNeeded: 3 },
-      { name: "buttons", yardNeeded: 0 },
+      { name: 'all', yardNeeded: 3 },
+      { name: 'buttons', yardNeeded: 0 },
     ],
     otherYards: { small: 3, large: 3, extraLarge: 4, extraExtraLarge: 4 },
     myZoom: 0.8,
@@ -315,36 +329,36 @@ export const mainFemaleCustomize = [
     // sizeModels: tshirt_model,
     readyIn: 7,
     sizeOptions: [
-      { label: "S", value: 0.5, priceValue: 15, colorPriceValue: 85 },
-      { label: "M", value: 1, priceValue: 15, colorPriceValue: 85 },
-      { label: "L", value: 2, priceValue: 15, colorPriceValue: 85 },
-      { label: "XL", value: 3, priceValue: 40, colorPriceValue: 120 },
-      { label: "2XL", value: 4, priceValue: 40, colorPriceValue: 120 },
+      { label: 'S', value: 0.5, priceValue: 15, colorPriceValue: 85 },
+      { label: 'M', value: 1, priceValue: 15, colorPriceValue: 85 },
+      { label: 'L', value: 2, priceValue: 15, colorPriceValue: 85 },
+      { label: 'XL', value: 3, priceValue: 40, colorPriceValue: 120 },
+      { label: '2XL', value: 4, priceValue: 40, colorPriceValue: 120 },
     ],
     sizeForms: [
       {
-        label: "Bust (cm)",
+        label: 'Bust (cm)',
       },
       {
-        label: "Waist (cm)",
+        label: 'Waist (cm)',
       },
       {
-        label: "Hip (cm)",
+        label: 'Hip (cm)',
       },
       {
-        label: "Top Length (cm)",
+        label: 'Top Length (cm)',
       },
       {
-        label: "Sleeve Length (cm)",
+        label: 'Sleeve Length (cm)',
       },
     ],
   },
   {
     id: uuid(),
-    name: "Flare Top",
+    name: 'Flare Top',
     image: normal_top,
     model: normal_top_model,
-    myNode: [{ name: "all", yardNeeded: 2 }],
+    myNode: [{ name: 'all', yardNeeded: 2 }],
     otherYards: { small: 2, large: 3, extraLarge: 3, extraExtraLarge: 4 },
     myZoom: 0.8,
     price: 110,
@@ -352,27 +366,27 @@ export const mainFemaleCustomize = [
     // sizeModels: tshirt_model,
     readyIn: 7,
     sizeOptions: [
-      { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 50 },
-      { label: "M", value: 1, priceValue: 0, colorPriceValue: 50 },
-      { label: "L", value: 2, priceValue: 25, colorPriceValue: 85 },
-      { label: "XL", value: 3, priceValue: 25, colorPriceValue: 85 },
-      { label: "2XL", value: 4, priceValue: 50, colorPriceValue: 120 },
+      { label: 'S', value: 0.5, priceValue: 0, colorPriceValue: 50 },
+      { label: 'M', value: 1, priceValue: 0, colorPriceValue: 50 },
+      { label: 'L', value: 2, priceValue: 25, colorPriceValue: 85 },
+      { label: 'XL', value: 3, priceValue: 25, colorPriceValue: 85 },
+      { label: '2XL', value: 4, priceValue: 50, colorPriceValue: 120 },
     ],
     sizeForms: [
       {
-        label: "Bust (cm)",
+        label: 'Bust (cm)',
       },
       {
-        label: "Waist (cm)",
+        label: 'Waist (cm)',
       },
       {
-        label: "Hip (cm)",
+        label: 'Hip (cm)',
       },
       {
-        label: "Top Length (cm)",
+        label: 'Top Length (cm)',
       },
       {
-        label: "Sleeve Length (cm)",
+        label: 'Sleeve Length (cm)',
       },
     ],
   },
@@ -498,12 +512,12 @@ export const mainFemaleCustomize = [
   // },
   {
     id: uuid(),
-    name: "Bikini",
+    name: 'Bikini',
     image: image_bikini,
     model: bikini,
     myNode: [
-      { name: "bikini_all", yardNeeded: 3 },
-      { name: "bikini_top", yardNeeded: 1 },
+      { name: 'bikini_all', yardNeeded: 3 },
+      { name: 'bikini_top', yardNeeded: 1 },
     ],
     otherYards: { small: 1, large: 3, extraLarge: 3, extraExtraLarge: 4 },
     myZoom: 0.8,
@@ -512,57 +526,57 @@ export const mainFemaleCustomize = [
     sizeGuide: bikini_guide,
     sizeOptions: [
       // { label: "XS", value: 0.5 },
-      { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 60 },
-      { label: "M", value: 1, priceValue: 0, colorPriceValue: 60 },
-      { label: "L", value: 2, priceValue: 0, colorPriceValue: 60 },
-      { label: "XL", value: 3, priceValue: 0, colorPriceValue: 60 },
-      { label: "2XL", value: 4, priceValue: 0, colorPriceValue: 60 },
+      { label: 'S', value: 0.5, priceValue: 0, colorPriceValue: 60 },
+      { label: 'M', value: 1, priceValue: 0, colorPriceValue: 60 },
+      { label: 'L', value: 2, priceValue: 0, colorPriceValue: 60 },
+      { label: 'XL', value: 3, priceValue: 0, colorPriceValue: 60 },
+      { label: '2XL', value: 4, priceValue: 0, colorPriceValue: 60 },
     ],
     sizeForms: [
       {
-        label: "Upper Bust (cm)",
+        label: 'Upper Bust (cm)',
       },
       {
-        label: "Under Bust (cm)",
+        label: 'Under Bust (cm)',
       },
       {
-        label: "Waist (cm)",
+        label: 'Waist (cm)',
       },
       {
-        label: "Bottom Length (cm)",
+        label: 'Bottom Length (cm)',
       },
       // Add more form fields as needed
     ],
   },
   {
     id: uuid(),
-    name: "Bra With Mini Skirt",
+    name: 'Bra With Mini Skirt',
     image: image_bra_min_skirt,
     isVariant: true,
     model: bra_mini_skirt,
     myNode: [
-      { name: "all", yardNeeded: 2 },
-      { name: "all_two", yardNeeded: 2 },
+      { name: 'all', yardNeeded: 2 },
+      { name: 'all_two', yardNeeded: 2 },
     ],
     otherYards: { small: 2, large: 3, extraLarge: 3, extraExtraLarge: 4 },
     myZoom: 0.7,
     price: 110 + 200,
     sizeGuide: miniSkirt_guide,
-    sizeModels:  bikini_guide,
+    sizeModels: bikini_guide,
     readyIn: 7,
     sizeOptions: [
-      { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 50 },
-      { label: "M", value: 1, priceValue: 0, colorPriceValue: 50 },
-      { label: "L", value: 2, priceValue: 25, colorPriceValue: 85 },
-      { label: "XL", value: 3, priceValue: 25, colorPriceValue: 85 },
-      { label: "2XL", value: 4, priceValue: 50, colorPriceValue: 120 },
+      { label: 'S', value: 0.5, priceValue: 0, colorPriceValue: 50 },
+      { label: 'M', value: 1, priceValue: 0, colorPriceValue: 50 },
+      { label: 'L', value: 2, priceValue: 25, colorPriceValue: 85 },
+      { label: 'XL', value: 3, priceValue: 25, colorPriceValue: 85 },
+      { label: '2XL', value: 4, priceValue: 50, colorPriceValue: 120 },
     ],
     sizeForms: [
       {
-        label: "Upper Bust (cm)",
+        label: 'Upper Bust (cm)',
       },
       {
-        label: "Under Bust (cm)",
+        label: 'Under Bust (cm)',
       },
       // {
       //   label: "Waist (cm)",
@@ -571,26 +585,25 @@ export const mainFemaleCustomize = [
       //   label: "Bottom Length (cm)",
       // },
       {
-        label: "Skirt Length (cm)",
+        label: 'Skirt Length (cm)',
       },
       {
-        label: "Waist (cm)",
+        label: 'Waist (cm)',
       },
       {
-        label: "Hip (cm)",
+        label: 'Hip (cm)',
       },
-
     ],
   },
   {
     id: uuid(),
-    name: "Bra With Booty Shorts",
+    name: 'Bra With Booty Shorts',
     image: image_bra_booty_shorts,
     isVariant: true,
     model: bra_booty_short,
     myNode: [
-      { name: "all", yardNeeded: 2 },
-      { name: "all_two", yardNeeded: 2 },
+      { name: 'all', yardNeeded: 2 },
+      { name: 'all_two', yardNeeded: 2 },
     ],
     otherYards: { small: 2, large: 3, extraLarge: 3, extraExtraLarge: 4 },
     myZoom: 0.7,
@@ -599,41 +612,39 @@ export const mainFemaleCustomize = [
     sizeModels: bikini_guide,
     readyIn: 7,
     sizeOptions: [
-      { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 50 },
-      { label: "M", value: 1, priceValue: 0, colorPriceValue: 50 },
-      { label: "L", value: 2, priceValue: 25, colorPriceValue: 85 },
-      { label: "XL", value: 3, priceValue: 25, colorPriceValue: 85 },
-      { label: "2XL", value: 4, priceValue: 50, colorPriceValue: 120 },
+      { label: 'S', value: 0.5, priceValue: 0, colorPriceValue: 50 },
+      { label: 'M', value: 1, priceValue: 0, colorPriceValue: 50 },
+      { label: 'L', value: 2, priceValue: 25, colorPriceValue: 85 },
+      { label: 'XL', value: 3, priceValue: 25, colorPriceValue: 85 },
+      { label: '2XL', value: 4, priceValue: 50, colorPriceValue: 120 },
     ],
     sizeForms: [
       {
-        label: "Upper Bust (cm)",
+        label: 'Upper Bust (cm)',
       },
       {
-        label: "Under Bust (cm)",
+        label: 'Under Bust (cm)',
       },
       {
-        label: "Waist (cm)",
+        label: 'Waist (cm)',
       },
       {
-        label: "Hip (cm)",
+        label: 'Hip (cm)',
       },
       {
-        label: "Length (cm)",
+        label: 'Length (cm)',
       },
-
     ],
   },
   {
     id: uuid(),
-    name: "Bra With Shorts",
+    name: 'Bra With Shorts',
     image: image_bra_material_shorts,
     isVariant: true,
     model: bra_material_short,
     myNode: [
-      { name: "all", yardNeeded: 2 },
-      { name: "all_two", yardNeeded: 2 },
-
+      { name: 'all', yardNeeded: 2 },
+      { name: 'all_two', yardNeeded: 2 },
     ],
     otherYards: { small: 2, large: 3, extraLarge: 3, extraExtraLarge: 4 },
     myZoom: 0.7,
@@ -642,47 +653,46 @@ export const mainFemaleCustomize = [
     sizeModels: bikini_guide,
     readyIn: 7,
     sizeOptions: [
-      { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 50 },
-      { label: "M", value: 1, priceValue: 0, colorPriceValue: 50 },
-      { label: "L", value: 2, priceValue: 25, colorPriceValue: 85 },
-      { label: "XL", value: 3, priceValue: 25, colorPriceValue: 85 },
-      { label: "2XL", value: 4, priceValue: 50, colorPriceValue: 120 },
+      { label: 'S', value: 0.5, priceValue: 0, colorPriceValue: 50 },
+      { label: 'M', value: 1, priceValue: 0, colorPriceValue: 50 },
+      { label: 'L', value: 2, priceValue: 25, colorPriceValue: 85 },
+      { label: 'XL', value: 3, priceValue: 25, colorPriceValue: 85 },
+      { label: '2XL', value: 4, priceValue: 50, colorPriceValue: 120 },
     ],
     sizeForms: [
       {
-        label: "Upper Bust (cm)",
+        label: 'Upper Bust (cm)',
       },
       {
-        label: "Under Bust (cm)",
+        label: 'Under Bust (cm)',
       },
       {
-        label: "Natural Waist (cm)",
+        label: 'Natural Waist (cm)',
       },
       {
-        label: "Shorts Waist (cm)",
+        label: 'Shorts Waist (cm)',
       },
       {
-        label: "Shorts Length (cm)",
+        label: 'Shorts Length (cm)',
       },
       {
-        label: "Seat (cm)",
+        label: 'Seat (cm)',
       },
       {
-        label: "Thigh (cm)",
+        label: 'Thigh (cm)',
       },
       {
-        label: "Knee (cm)",
+        label: 'Knee (cm)',
       },
-
     ],
   },
   {
     id: uuid(),
-    name: "Long Sleeve Top And Down Kaftan",
+    name: 'Long Sleeve Top And Down Kaftan',
     image: image_topndown_image,
     model: topndown_model,
     myNode: [
-      { name: "all", yardNeeded: 3 },
+      { name: 'all', yardNeeded: 3 },
       // { name: "trousers", yardNeeded: 2 },
     ],
     otherYards: { small: 3, large: 4, extraLarge: 4, extraExtraLarge: 4 },
@@ -692,64 +702,64 @@ export const mainFemaleCustomize = [
     // sizeModels: tshirt_model,
     readyIn: 7,
     sizeOptions: [
-      { label: "S", value: 0.5, priceValue: -45, colorPriceValue: 85 },
-      { label: "M", value: 1, priceValue: -45, colorPriceValue: 85 },
-      { label: "L", value: 2, priceValue: -20, colorPriceValue: 120 },
-      { label: "XL", value: 3, priceValue: -20, colorPriceValue: 120 },
-      { label: "2XL", value: 4, priceValue: -20, colorPriceValue: 120 },
+      { label: 'S', value: 0.5, priceValue: -45, colorPriceValue: 85 },
+      { label: 'M', value: 1, priceValue: -45, colorPriceValue: 85 },
+      { label: 'L', value: 2, priceValue: -20, colorPriceValue: 120 },
+      { label: 'XL', value: 3, priceValue: -20, colorPriceValue: 120 },
+      { label: '2XL', value: 4, priceValue: -20, colorPriceValue: 120 },
     ],
     sizeForms: [
       {
-        label: "Neck Size (cm)",
+        label: 'Neck Size (cm)',
       },
       {
-        label: "Half Across Back (cm)",
+        label: 'Half Across Back (cm)',
       },
       {
-        label: "Chest (cm)",
+        label: 'Chest (cm)',
       },
       {
-        label: "Sleeve Length (cm)",
+        label: 'Sleeve Length (cm)',
       },
       {
-        label: "Cuff (cm)",
+        label: 'Cuff (cm)',
       },
       {
-        label: "Natural waist (cm)",
+        label: 'Natural waist (cm)',
       },
       {
-        label: "Trouser Waist (cm)",
+        label: 'Trouser Waist (cm)',
       },
       {
-        label: "Inside Leg (cm)",
+        label: 'Inside Leg (cm)',
       },
       {
-        label: "Trouser Bottom (cm)",
+        label: 'Trouser Bottom (cm)',
       },
       {
-        label: "Trouser Length (cm)",
+        label: 'Trouser Length (cm)',
       },
       {
-        label: "Seat (cm)",
+        label: 'Seat (cm)',
       },
 
       {
-        label: "Thigh (cm)",
+        label: 'Thigh (cm)',
       },
       {
-        label: "Knee (cm)",
+        label: 'Knee (cm)',
       },
     ],
   },
   {
     id: uuid(),
-    name: "Short Sleeves T-Shirt With Booty Shorts",
+    name: 'Short Sleeves T-Shirt With Booty Shorts',
     image: image_tshirt_booty_shorts,
     isVariant: true,
     model: tshirt_and_booty_shorts,
     myNode: [
-      { name: "all", yardNeeded: 2 },
-      { name: "all_two", yardNeeded: 2 },
+      { name: 'all', yardNeeded: 2 },
+      { name: 'all_two', yardNeeded: 2 },
     ],
     otherYards: { small: 2, large: 3, extraLarge: 3, extraExtraLarge: 4 },
     myZoom: 0.7,
@@ -758,50 +768,49 @@ export const mainFemaleCustomize = [
     sizeModels: tshirt_guide,
     readyIn: 7,
     sizeOptions: [
-      { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 50 },
-      { label: "M", value: 1, priceValue: 0, colorPriceValue: 50 },
-      { label: "L", value: 2, priceValue: 25, colorPriceValue: 85 },
-      { label: "XL", value: 3, priceValue: 25, colorPriceValue: 85 },
-      { label: "2XL", value: 4, priceValue: 50, colorPriceValue: 120 },
+      { label: 'S', value: 0.5, priceValue: 0, colorPriceValue: 50 },
+      { label: 'M', value: 1, priceValue: 0, colorPriceValue: 50 },
+      { label: 'L', value: 2, priceValue: 25, colorPriceValue: 85 },
+      { label: 'XL', value: 3, priceValue: 25, colorPriceValue: 85 },
+      { label: '2XL', value: 4, priceValue: 50, colorPriceValue: 120 },
     ],
     sizeForms: [
       {
-        label: "Bust (cm)",
+        label: 'Bust (cm)',
       },
       {
-        label: "Waist (cm)",
+        label: 'Waist (cm)',
       },
       {
-        label: "Hip (cm)",
+        label: 'Hip (cm)',
       },
       {
-        label: "Top Length (cm)",
+        label: 'Top Length (cm)',
       },
       {
-        label: "Sleeve Length (cm)",
+        label: 'Sleeve Length (cm)',
       },
 
       {
-        label: "Waist (cm)",
+        label: 'Waist (cm)',
       },
       {
-        label: "Hip (cm)",
+        label: 'Hip (cm)',
       },
       {
-        label: "Length (cm)",
+        label: 'Length (cm)',
       },
-      
     ],
   },
   {
     id: uuid(),
-    name: "Short Sleeves T-Shirt With Shorts",
+    name: 'Short Sleeves T-Shirt With Shorts',
     image: image_tshirt_material_shorts,
     isVariant: true,
     model: tshirt_and_material_shorts,
     myNode: [
-      { name: "all", yardNeeded: 2 },
-      { name: "all_two", yardNeeded: 2 },
+      { name: 'all', yardNeeded: 2 },
+      { name: 'all_two', yardNeeded: 2 },
     ],
     otherYards: { small: 2, large: 3, extraLarge: 3, extraExtraLarge: 4 },
     myZoom: 0.7,
@@ -810,59 +819,58 @@ export const mainFemaleCustomize = [
     sizeModels: tshirt_guide,
     readyIn: 7,
     sizeOptions: [
-      { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 50 },
-      { label: "M", value: 1, priceValue: 0, colorPriceValue: 50 },
-      { label: "L", value: 2, priceValue: 25, colorPriceValue: 85 },
-      { label: "XL", value: 3, priceValue: 25, colorPriceValue: 85 },
-      { label: "2XL", value: 4, priceValue: 50, colorPriceValue: 120 },
+      { label: 'S', value: 0.5, priceValue: 0, colorPriceValue: 50 },
+      { label: 'M', value: 1, priceValue: 0, colorPriceValue: 50 },
+      { label: 'L', value: 2, priceValue: 25, colorPriceValue: 85 },
+      { label: 'XL', value: 3, priceValue: 25, colorPriceValue: 85 },
+      { label: '2XL', value: 4, priceValue: 50, colorPriceValue: 120 },
     ],
     sizeForms: [
       {
-        label: "Bust (cm)",
+        label: 'Bust (cm)',
       },
       {
-        label: "Waist (cm)",
+        label: 'Waist (cm)',
       },
       {
-        label: "Hip (cm)",
+        label: 'Hip (cm)',
       },
       {
-        label: "Top Length (cm)",
+        label: 'Top Length (cm)',
       },
       {
-        label: "Sleeve Length (cm)",
+        label: 'Sleeve Length (cm)',
       },
 
       {
-        label: "Natural Waist (cm)",
+        label: 'Natural Waist (cm)',
       },
       {
-        label: "Shorts Waist (cm)",
+        label: 'Shorts Waist (cm)',
       },
       {
-        label: "Shorts Length (cm)",
+        label: 'Shorts Length (cm)',
       },
       {
-        label: "Seat (cm)",
+        label: 'Seat (cm)',
       },
       {
-        label: "Thigh (cm)",
+        label: 'Thigh (cm)',
       },
       {
-        label: "Knee (cm)",
+        label: 'Knee (cm)',
       },
-      
     ],
   },
   {
     id: uuid(),
-    name: "Short Sleeves T-Shirt With Skirt",
+    name: 'Short Sleeves T-Shirt With Skirt',
     image: image_tshirt_mini_skirt,
     isVariant: true,
     model: tshirt_and_skirt,
     myNode: [
-      { name: "all", yardNeeded: 2 },
-      { name: "all_two", yardNeeded: 2 },
+      { name: 'all', yardNeeded: 2 },
+      { name: 'all_two', yardNeeded: 2 },
     ],
     otherYards: { small: 2, large: 3, extraLarge: 3, extraExtraLarge: 4 },
     myZoom: 0.7,
@@ -871,50 +879,49 @@ export const mainFemaleCustomize = [
     sizeModels: tshirt_guide,
     readyIn: 7,
     sizeOptions: [
-      { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 50 },
-      { label: "M", value: 1, priceValue: 0, colorPriceValue: 50 },
-      { label: "L", value: 2, priceValue: 25, colorPriceValue: 85 },
-      { label: "XL", value: 3, priceValue: 25, colorPriceValue: 85 },
-      { label: "2XL", value: 4, priceValue: 50, colorPriceValue: 120 },
+      { label: 'S', value: 0.5, priceValue: 0, colorPriceValue: 50 },
+      { label: 'M', value: 1, priceValue: 0, colorPriceValue: 50 },
+      { label: 'L', value: 2, priceValue: 25, colorPriceValue: 85 },
+      { label: 'XL', value: 3, priceValue: 25, colorPriceValue: 85 },
+      { label: '2XL', value: 4, priceValue: 50, colorPriceValue: 120 },
     ],
     sizeForms: [
       {
-        label: "Bust (cm)",
+        label: 'Bust (cm)',
       },
       {
-        label: "Waist (cm)",
+        label: 'Waist (cm)',
       },
       {
-        label: "Hip (cm)",
+        label: 'Hip (cm)',
       },
       {
-        label: "Top Length (cm)",
+        label: 'Top Length (cm)',
       },
       {
-        label: "Sleeve Length (cm)",
+        label: 'Sleeve Length (cm)',
       },
 
       {
-        label: "Skirt Length (cm)",
+        label: 'Skirt Length (cm)',
       },
       {
-        label: "Waist (cm)",
+        label: 'Waist (cm)',
       },
       {
-        label: "Hip (cm)",
+        label: 'Hip (cm)',
       },
-      
     ],
   },
   {
     id: uuid(),
-    name: "Short Sleeves T-Shirt With Trousers",
+    name: 'Short Sleeves T-Shirt With Trousers',
     image: image_tshirt_trousers,
     isVariant: true,
     model: tshirt_and_trousers,
     myNode: [
-      { name: "all", yardNeeded: 2 },
-      { name: "all_two", yardNeeded: 2 },
+      { name: 'all', yardNeeded: 2 },
+      { name: 'all_two', yardNeeded: 2 },
     ],
     otherYards: { small: 2, large: 3, extraLarge: 3, extraExtraLarge: 4 },
     myZoom: 1.1,
@@ -923,51 +930,50 @@ export const mainFemaleCustomize = [
     sizeModels: tshirt_guide,
     readyIn: 7,
     sizeOptions: [
-      { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 50 },
-      { label: "M", value: 1, priceValue: 0, colorPriceValue: 50 },
-      { label: "L", value: 2, priceValue: 25, colorPriceValue: 85 },
-      { label: "XL", value: 3, priceValue: 25, colorPriceValue: 85 },
-      { label: "2XL", value: 4, priceValue: 50, colorPriceValue: 120 },
+      { label: 'S', value: 0.5, priceValue: 0, colorPriceValue: 50 },
+      { label: 'M', value: 1, priceValue: 0, colorPriceValue: 50 },
+      { label: 'L', value: 2, priceValue: 25, colorPriceValue: 85 },
+      { label: 'XL', value: 3, priceValue: 25, colorPriceValue: 85 },
+      { label: '2XL', value: 4, priceValue: 50, colorPriceValue: 120 },
     ],
     sizeForms: [
       {
-        label: "Bust (cm)",
+        label: 'Bust (cm)',
       },
       {
-        label: "Waist (cm)",
+        label: 'Waist (cm)',
       },
       {
-        label: "Hip (cm)",
+        label: 'Hip (cm)',
       },
       {
-        label: "Top Length (cm)",
+        label: 'Top Length (cm)',
       },
       {
-        label: "Sleeve Length (cm)",
+        label: 'Sleeve Length (cm)',
       },
 
       {
-        label: "Trouser Length (cm)",
+        label: 'Trouser Length (cm)',
       },
       {
-        label: "Waist (cm)",
+        label: 'Waist (cm)',
       },
       {
-        label: "Hip (cm)",
+        label: 'Hip (cm)',
       },
-      
     ],
   },
- 
+
   {
     id: uuid(),
-    name: "Short Sleeves Shirt With Booty Shorts",
+    name: 'Short Sleeves Shirt With Booty Shorts',
     image: image_short_shirt_booty_shorts,
     isVariant: true,
     model: short_shirt_and_booty_shorts,
     myNode: [
-      { name: "all", yardNeeded: 2 },
-      { name: "all_two", yardNeeded: 2 },
+      { name: 'all', yardNeeded: 2 },
+      { name: 'all_two', yardNeeded: 2 },
     ],
     otherYards: { small: 2, large: 3, extraLarge: 3, extraExtraLarge: 4 },
     myZoom: 0.7,
@@ -976,52 +982,49 @@ export const mainFemaleCustomize = [
     sizeModels: extraShortShirt_guide,
     readyIn: 7,
     sizeOptions: [
-      { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 50 },
-      { label: "M", value: 1, priceValue: 0, colorPriceValue: 50 },
-      { label: "L", value: 2, priceValue: 25, colorPriceValue: 85 },
-      { label: "XL", value: 3, priceValue: 25, colorPriceValue: 85 },
-      { label: "2XL", value: 4, priceValue: 50, colorPriceValue: 120 },
+      { label: 'S', value: 0.5, priceValue: 0, colorPriceValue: 50 },
+      { label: 'M', value: 1, priceValue: 0, colorPriceValue: 50 },
+      { label: 'L', value: 2, priceValue: 25, colorPriceValue: 85 },
+      { label: 'XL', value: 3, priceValue: 25, colorPriceValue: 85 },
+      { label: '2XL', value: 4, priceValue: 50, colorPriceValue: 120 },
     ],
     sizeForms: [
       {
-        label: "Bust (cm)",
+        label: 'Bust (cm)',
       },
       {
-        label: "Waist (cm)",
+        label: 'Waist (cm)',
       },
       {
-        label: "Hip (cm)",
+        label: 'Hip (cm)',
       },
       {
-        label: "Top Length (cm)",
+        label: 'Top Length (cm)',
       },
       {
-        label: "Sleeve Length (cm)",
+        label: 'Sleeve Length (cm)',
       },
 
       {
-        label: "Waist (cm)",
+        label: 'Waist (cm)',
       },
       {
-        label: "Hip (cm)",
+        label: 'Hip (cm)',
       },
       {
-        label: "Length (cm)",
+        label: 'Length (cm)',
       },
-
-
-      
     ],
   },
   {
     id: uuid(),
-    name: "Short Sleeves Shirt With Shorts",
+    name: 'Short Sleeves Shirt With Shorts',
     image: image_shirt_material_shorts,
     isVariant: true,
     model: short_shirt_and_material_shorts,
     myNode: [
-      { name: "all", yardNeeded: 2 },
-      { name: "all_two", yardNeeded: 2 },
+      { name: 'all', yardNeeded: 2 },
+      { name: 'all_two', yardNeeded: 2 },
     ],
     otherYards: { small: 2, large: 3, extraLarge: 3, extraExtraLarge: 4 },
     myZoom: 0.7,
@@ -1030,58 +1033,57 @@ export const mainFemaleCustomize = [
     sizeModels: extraShortShirt_guide,
     readyIn: 7,
     sizeOptions: [
-      { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 50 },
-      { label: "M", value: 1, priceValue: 0, colorPriceValue: 50 },
-      { label: "L", value: 2, priceValue: 25, colorPriceValue: 85 },
-      { label: "XL", value: 3, priceValue: 25, colorPriceValue: 85 },
-      { label: "2XL", value: 4, priceValue: 50, colorPriceValue: 120 },
+      { label: 'S', value: 0.5, priceValue: 0, colorPriceValue: 50 },
+      { label: 'M', value: 1, priceValue: 0, colorPriceValue: 50 },
+      { label: 'L', value: 2, priceValue: 25, colorPriceValue: 85 },
+      { label: 'XL', value: 3, priceValue: 25, colorPriceValue: 85 },
+      { label: '2XL', value: 4, priceValue: 50, colorPriceValue: 120 },
     ],
     sizeForms: [
       {
-        label: "Bust (cm)",
+        label: 'Bust (cm)',
       },
       {
-        label: "Waist (cm)",
+        label: 'Waist (cm)',
       },
       {
-        label: "Hip (cm)",
+        label: 'Hip (cm)',
       },
       {
-        label: "Top Length (cm)",
+        label: 'Top Length (cm)',
       },
       {
-        label: "Sleeve Length (cm)",
+        label: 'Sleeve Length (cm)',
       },
 
       {
-        label: "Natural Waist (cm)",
+        label: 'Natural Waist (cm)',
       },
       {
-        label: "Shorts Waist (cm)",
+        label: 'Shorts Waist (cm)',
       },
       {
-        label: "Shorts Length (cm)",
+        label: 'Shorts Length (cm)',
       },
       {
-        label: "Seat (cm)",
+        label: 'Seat (cm)',
       },
       {
-        label: "Thigh (cm)",
+        label: 'Thigh (cm)',
       },
       {
-        label: "Knee (cm)",
+        label: 'Knee (cm)',
       },
-      
     ],
   },
   {
     id: uuid(),
-    name: "Short Sleeves Shirt With Trousers",
+    name: 'Short Sleeves Shirt With Trousers',
     image: image_short_shirt_trousers,
     model: short_shirt_and_trousers,
     myNode: [
-      { name: "all", yardNeeded: 2 },
-      { name: "all_two", yardNeeded: 2 },
+      { name: 'all', yardNeeded: 2 },
+      { name: 'all_two', yardNeeded: 2 },
     ],
     otherYards: { small: 2, large: 3, extraLarge: 3, extraExtraLarge: 4 },
     myZoom: 0.7,
@@ -1090,49 +1092,47 @@ export const mainFemaleCustomize = [
     sizeModels: extraShortShirt_guide,
     readyIn: 7,
     sizeOptions: [
-      { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 50 },
-      { label: "M", value: 1, priceValue: 0, colorPriceValue: 50 },
-      { label: "L", value: 2, priceValue: 25, colorPriceValue: 85 },
-      { label: "XL", value: 3, priceValue: 25, colorPriceValue: 85 },
-      { label: "2XL", value: 4, priceValue: 50, colorPriceValue: 120 },
+      { label: 'S', value: 0.5, priceValue: 0, colorPriceValue: 50 },
+      { label: 'M', value: 1, priceValue: 0, colorPriceValue: 50 },
+      { label: 'L', value: 2, priceValue: 25, colorPriceValue: 85 },
+      { label: 'XL', value: 3, priceValue: 25, colorPriceValue: 85 },
+      { label: '2XL', value: 4, priceValue: 50, colorPriceValue: 120 },
     ],
     sizeForms: [
       {
-        label: "Bust (cm)",
+        label: 'Bust (cm)',
       },
       {
-        label: "Waist (cm)",
+        label: 'Waist (cm)',
       },
       {
-        label: "Hip (cm)",
+        label: 'Hip (cm)',
       },
       {
-        label: "Top Length (cm)",
+        label: 'Top Length (cm)',
       },
       {
-        label: "Sleeve Length (cm)",
+        label: 'Sleeve Length (cm)',
       },
 
-
       {
-        label: "Trouser Length (cm)",
+        label: 'Trouser Length (cm)',
       },
       {
-        label: "Waist (cm)",
+        label: 'Waist (cm)',
       },
       {
-        label: "Hip (cm)",
+        label: 'Hip (cm)',
       },
-      
     ],
   },
   {
     id: uuid(),
-    name: "Crop Top",
+    name: 'Crop Top',
     // image: "https://sportsfore.com/wp-content/uploads/2020/05/5-68.jpg",
     image: image_crop_top,
     model: top_model,
-    myNode: [{ name: "all", yardNeeded: 2 }],
+    myNode: [{ name: 'all', yardNeeded: 2 }],
     otherYards: { small: 2, large: 3, extraLarge: 3, extraExtraLarge: 4 },
     myZoom: 1.2,
     price: 110,
@@ -1140,39 +1140,39 @@ export const mainFemaleCustomize = [
     // sizeModels: tshirt_model,
     readyIn: 7,
     sizeOptions: [
-      { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 50 },
-      { label: "M", value: 1, priceValue: 0, colorPriceValue: 50 },
-      { label: "L", value: 2, priceValue: 0, colorPriceValue: 50 },
-      { label: "XL", value: 3, priceValue: 0, colorPriceValue: 50 },
-      { label: "2XL", value: 4, priceValue: 0, colorPriceValue: 50 },
+      { label: 'S', value: 0.5, priceValue: 0, colorPriceValue: 50 },
+      { label: 'M', value: 1, priceValue: 0, colorPriceValue: 50 },
+      { label: 'L', value: 2, priceValue: 0, colorPriceValue: 50 },
+      { label: 'XL', value: 3, priceValue: 0, colorPriceValue: 50 },
+      { label: '2XL', value: 4, priceValue: 0, colorPriceValue: 50 },
     ],
     sizeForms: [
       {
-        label: "Bust (cm)",
+        label: 'Bust (cm)',
       },
       {
-        label: "Waist (cm)",
+        label: 'Waist (cm)',
       },
       {
-        label: "Hip (cm)",
+        label: 'Hip (cm)',
       },
       {
-        label: "Top Length (cm)",
+        label: 'Top Length (cm)',
       },
       {
-        label: "Sleeve Length (cm)",
+        label: 'Sleeve Length (cm)',
       },
     ],
   },
   {
     id: uuid(),
-    name: "Crop Top With Mini Skirt",
+    name: 'Crop Top With Mini Skirt',
     image: image_crop_top_mini_skirt,
     isVariant: true,
     model: crop_top_mini_skirt,
     myNode: [
-      { name: "all", yardNeeded: 2 },
-      { name: "all_two", yardNeeded: 2 },
+      { name: 'all', yardNeeded: 2 },
+      { name: 'all_two', yardNeeded: 2 },
     ],
     otherYards: { small: 2, large: 3, extraLarge: 3, extraExtraLarge: 4 },
     myZoom: 0.7,
@@ -1181,51 +1181,49 @@ export const mainFemaleCustomize = [
     sizeModels: cropTop_guide,
     readyIn: 7,
     sizeOptions: [
-      { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 50 },
-      { label: "M", value: 1, priceValue: 0, colorPriceValue: 50 },
-      { label: "L", value: 2, priceValue: 25, colorPriceValue: 85 },
-      { label: "XL", value: 3, priceValue: 25, colorPriceValue: 85 },
-      { label: "2XL", value: 4, priceValue: 50, colorPriceValue: 120 },
+      { label: 'S', value: 0.5, priceValue: 0, colorPriceValue: 50 },
+      { label: 'M', value: 1, priceValue: 0, colorPriceValue: 50 },
+      { label: 'L', value: 2, priceValue: 25, colorPriceValue: 85 },
+      { label: 'XL', value: 3, priceValue: 25, colorPriceValue: 85 },
+      { label: '2XL', value: 4, priceValue: 50, colorPriceValue: 120 },
     ],
     sizeForms: [
       {
-        label: "Bust (cm)",
+        label: 'Bust (cm)',
       },
       {
-        label: "Waist (cm)",
+        label: 'Waist (cm)',
       },
       {
-        label: "Hip (cm)",
+        label: 'Hip (cm)',
       },
       {
-        label: "Top Length (cm)",
+        label: 'Top Length (cm)',
       },
       {
-        label: "Sleeve Length (cm)",
+        label: 'Sleeve Length (cm)',
       },
 
-
       {
-        label: "Skirt Length (cm)",
+        label: 'Skirt Length (cm)',
       },
       {
-        label: "Waist (cm)",
+        label: 'Waist (cm)',
       },
       {
-        label: "Hip (cm)",
+        label: 'Hip (cm)',
       },
-      
     ],
   },
   {
     id: uuid(),
-    name: "Crop Top With Long Skirt",
+    name: 'Crop Top With Long Skirt',
     image: image_crop_top_skirt,
     isVariant: true,
     model: crop_top_long_skirt,
     myNode: [
-      { name: "all", yardNeeded: 2 },
-      { name: "all_two", yardNeeded: 2 },
+      { name: 'all', yardNeeded: 2 },
+      { name: 'all_two', yardNeeded: 2 },
     ],
     otherYards: { small: 2, large: 3, extraLarge: 3, extraExtraLarge: 4 },
     myZoom: 0.7,
@@ -1234,51 +1232,49 @@ export const mainFemaleCustomize = [
     sizeModels: cropTop_guide,
     readyIn: 7,
     sizeOptions: [
-      { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 50 },
-      { label: "M", value: 1, priceValue: 0, colorPriceValue: 50 },
-      { label: "L", value: 2, priceValue: 25, colorPriceValue: 85 },
-      { label: "XL", value: 3, priceValue: 25, colorPriceValue: 85 },
-      { label: "2XL", value: 4, priceValue: 50, colorPriceValue: 120 },
+      { label: 'S', value: 0.5, priceValue: 0, colorPriceValue: 50 },
+      { label: 'M', value: 1, priceValue: 0, colorPriceValue: 50 },
+      { label: 'L', value: 2, priceValue: 25, colorPriceValue: 85 },
+      { label: 'XL', value: 3, priceValue: 25, colorPriceValue: 85 },
+      { label: '2XL', value: 4, priceValue: 50, colorPriceValue: 120 },
     ],
     sizeForms: [
       {
-        label: "Bust (cm)",
+        label: 'Bust (cm)',
       },
       {
-        label: "Waist (cm)",
+        label: 'Waist (cm)',
       },
       {
-        label: "Hip (cm)",
+        label: 'Hip (cm)',
       },
       {
-        label: "Top Length (cm)",
+        label: 'Top Length (cm)',
       },
       {
-        label: "Sleeve Length (cm)",
+        label: 'Sleeve Length (cm)',
       },
 
-
       {
-        label: "Skirt Length (cm)",
+        label: 'Skirt Length (cm)',
       },
       {
-        label: "Waist (cm)",
+        label: 'Waist (cm)',
       },
       {
-        label: "Hip (cm)",
+        label: 'Hip (cm)',
       },
-
     ],
   },
   {
     id: uuid(),
-    name: "Crop Top With Booty Shorts",
+    name: 'Crop Top With Booty Shorts',
     image: image_crop_top_booty_short,
     isVariant: true,
     model: crop_top_booty_shorts,
     myNode: [
-      { name: "all", yardNeeded: 2 },
-      { name: "all_two", yardNeeded: 2 },
+      { name: 'all', yardNeeded: 2 },
+      { name: 'all_two', yardNeeded: 2 },
     ],
     otherYards: { small: 2, large: 3, extraLarge: 3, extraExtraLarge: 4 },
     myZoom: 0.7,
@@ -1287,51 +1283,50 @@ export const mainFemaleCustomize = [
     sizeModels: cropTop_guide,
     readyIn: 7,
     sizeOptions: [
-      { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 50 },
-      { label: "M", value: 1, priceValue: 0, colorPriceValue: 50 },
-      { label: "L", value: 2, priceValue: 25, colorPriceValue: 85 },
-      { label: "XL", value: 3, priceValue: 25, colorPriceValue: 85 },
-      { label: "2XL", value: 4, priceValue: 50, colorPriceValue: 120 },
+      { label: 'S', value: 0.5, priceValue: 0, colorPriceValue: 50 },
+      { label: 'M', value: 1, priceValue: 0, colorPriceValue: 50 },
+      { label: 'L', value: 2, priceValue: 25, colorPriceValue: 85 },
+      { label: 'XL', value: 3, priceValue: 25, colorPriceValue: 85 },
+      { label: '2XL', value: 4, priceValue: 50, colorPriceValue: 120 },
     ],
     sizeForms: [
       {
-        label: "Bust (cm)",
+        label: 'Bust (cm)',
       },
       {
-        label: "Waist (cm)",
+        label: 'Waist (cm)',
       },
       {
-        label: "Hip (cm)",
+        label: 'Hip (cm)',
       },
       {
-        label: "Top Length (cm)",
+        label: 'Top Length (cm)',
       },
       {
-        label: "Sleeve Length (cm)",
+        label: 'Sleeve Length (cm)',
       },
 
-
       {
-        label: "Waist (cm)",
+        label: 'Waist (cm)',
       },
       {
-        label: "Hip (cm)",
+        label: 'Hip (cm)',
       },
       {
-        label: "Length (cm)",
+        label: 'Length (cm)',
       },
     ],
   },
-  
+
   {
     id: uuid(),
-    name: "Crop Top With Shorts",
+    name: 'Crop Top With Shorts',
     image: image_crop_top_material_short,
     isVariant: true,
     model: crop_top_material_shorts,
     myNode: [
-      { name: "all", yardNeeded: 2 },
-      { name: "all_two", yardNeeded: 2 },
+      { name: 'all', yardNeeded: 2 },
+      { name: 'all_two', yardNeeded: 2 },
     ],
     otherYards: { small: 2, large: 3, extraLarge: 3, extraExtraLarge: 4 },
     myZoom: 0.7,
@@ -1340,59 +1335,57 @@ export const mainFemaleCustomize = [
     sizeModels: cropTop_guide,
     readyIn: 7,
     sizeOptions: [
-      { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 50 },
-      { label: "M", value: 1, priceValue: 0, colorPriceValue: 50 },
-      { label: "L", value: 2, priceValue: 25, colorPriceValue: 85 },
-      { label: "XL", value: 3, priceValue: 25, colorPriceValue: 85 },
-      { label: "2XL", value: 4, priceValue: 50, colorPriceValue: 120 },
+      { label: 'S', value: 0.5, priceValue: 0, colorPriceValue: 50 },
+      { label: 'M', value: 1, priceValue: 0, colorPriceValue: 50 },
+      { label: 'L', value: 2, priceValue: 25, colorPriceValue: 85 },
+      { label: 'XL', value: 3, priceValue: 25, colorPriceValue: 85 },
+      { label: '2XL', value: 4, priceValue: 50, colorPriceValue: 120 },
     ],
     sizeForms: [
       {
-        label: "Bust (cm)",
+        label: 'Bust (cm)',
       },
       {
-        label: "Waist (cm)",
+        label: 'Waist (cm)',
       },
       {
-        label: "Hip (cm)",
+        label: 'Hip (cm)',
       },
       {
-        label: "Top Length (cm)",
+        label: 'Top Length (cm)',
       },
       {
-        label: "Sleeve Length (cm)",
+        label: 'Sleeve Length (cm)',
       },
 
-
       {
-        label: "Natural Waist (cm)",
+        label: 'Natural Waist (cm)',
       },
       {
-        label: "Shorts Waist (cm)",
+        label: 'Shorts Waist (cm)',
       },
       {
-        label: "Shorts Length (cm)",
+        label: 'Shorts Length (cm)',
       },
       {
-        label: "Seat (cm)",
+        label: 'Seat (cm)',
       },
       {
-        label: "Thigh (cm)",
+        label: 'Thigh (cm)',
       },
       {
-        label: "Knee (cm)",
+        label: 'Knee (cm)',
       },
-      
     ],
   },
   {
     id: uuid(),
-    name: "Bomber Jacket",
+    name: 'Bomber Jacket',
     image: image_jacket,
     model: jacket,
     myNode: [
-      { name: "all", yardNeeded: 3 },
-      { name: "buttons", yardNeeded: 1 },
+      { name: 'all', yardNeeded: 3 },
+      { name: 'buttons', yardNeeded: 1 },
     ],
     otherYards: { small: 3, large: 4, extraLarge: 4, extraExtraLarge: 4 },
     myZoom: 0.9,
@@ -1400,35 +1393,35 @@ export const mainFemaleCustomize = [
     readyIn: 7,
     sizeGuide: jacket_guide,
     sizeOptions: [
-      { label: "S", value: 0.5, priceValue: 25, colorPriceValue: 85 },
-      { label: "M", value: 1, priceValue: 25, colorPriceValue: 85 },
-      { label: "L", value: 2, priceValue: 25, colorPriceValue: 85 },
-      { label: "XL", value: 3, priceValue: 50, colorPriceValue: 120 },
-      { label: "2XL", value: 4, priceValue: 50, colorPriceValue: 120 },
+      { label: 'S', value: 0.5, priceValue: 25, colorPriceValue: 85 },
+      { label: 'M', value: 1, priceValue: 25, colorPriceValue: 85 },
+      { label: 'L', value: 2, priceValue: 25, colorPriceValue: 85 },
+      { label: 'XL', value: 3, priceValue: 50, colorPriceValue: 120 },
+      { label: '2XL', value: 4, priceValue: 50, colorPriceValue: 120 },
     ],
     sizeForms: [
       {
-        label: "Shoulder (cm)",
+        label: 'Shoulder (cm)',
       },
       {
-        label: "Chest (cm)",
+        label: 'Chest (cm)',
       },
       {
-        label: "Body Length (cm)",
+        label: 'Body Length (cm)',
       },
       {
-        label: "Sleeve Length(cm)",
+        label: 'Sleeve Length(cm)',
       },
       // Add more form fields as needed
     ],
   },
   {
     id: uuid(),
-    name: "Blazer",
+    name: 'Blazer',
     model: blazer,
     image: image_blazer,
     myNode: [
-      { name: "all", yardNeeded: 3 },
+      { name: 'all', yardNeeded: 3 },
       // { name: "sleeves", yardNeeded: 0 },
     ],
     otherYards: { small: 3, large: 3, extraLarge: 4, extraExtraLarge: 4 },
@@ -1438,48 +1431,48 @@ export const mainFemaleCustomize = [
     // sizeModels: tshirt_model,
     readyIn: 7,
     sizeOptions: [
-      { label: "S", value: 0.5, priceValue: 25, colorPriceValue: 85 },
-      { label: "M", value: 1, priceValue: 25, colorPriceValue: 85 },
-      { label: "L", value: 2, priceValue: 25, colorPriceValue: 120 },
-      { label: "XL", value: 3, priceValue: 50, colorPriceValue: 120 },
-      { label: "2XL", value: 4, priceValue: 50, colorPriceValue: 120 },
+      { label: 'S', value: 0.5, priceValue: 25, colorPriceValue: 85 },
+      { label: 'M', value: 1, priceValue: 25, colorPriceValue: 85 },
+      { label: 'L', value: 2, priceValue: 25, colorPriceValue: 120 },
+      { label: 'XL', value: 3, priceValue: 50, colorPriceValue: 120 },
+      { label: '2XL', value: 4, priceValue: 50, colorPriceValue: 120 },
     ],
     sizeForms: [
       {
-        label: "Chest (cm)",
+        label: 'Chest (cm)',
       },
       {
-        label: "Coat Waist (cm)",
+        label: 'Coat Waist (cm)',
       },
       {
-        label: "Seat (cm)",
+        label: 'Seat (cm)',
       },
       {
-        label: "Natural Waist Length (cm)",
+        label: 'Natural Waist Length (cm)',
       },
       {
-        label: "Half Across Back (cm)",
+        label: 'Half Across Back (cm)',
       },
       {
-        label: "Elbow (cm)",
+        label: 'Elbow (cm)',
       },
       {
-        label: "Sleeve Length (cm)",
+        label: 'Sleeve Length (cm)',
       },
       {
-        label: "Scye Depth (cm)",
+        label: 'Scye Depth (cm)',
       },
     ],
   },
   {
     id: uuid(),
-    name: "Blazer With Shorts",
+    name: 'Blazer With Shorts',
     image: image_blazer_material_shorts,
     isVariant: true,
     model: blazer_shorts,
     myNode: [
-      { name: "all", yardNeeded: 2 },
-      { name: "all_two", yardNeeded: 2 },
+      { name: 'all', yardNeeded: 2 },
+      { name: 'all_two', yardNeeded: 2 },
     ],
     otherYards: { small: 2, large: 3, extraLarge: 3, extraExtraLarge: 4 },
     myZoom: 0.7,
@@ -1488,68 +1481,67 @@ export const mainFemaleCustomize = [
     sizeModels: blazer_guide,
     readyIn: 7,
     sizeOptions: [
-      { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 50 },
-      { label: "M", value: 1, priceValue: 0, colorPriceValue: 50 },
-      { label: "L", value: 2, priceValue: 25, colorPriceValue: 85 },
-      { label: "XL", value: 3, priceValue: 25, colorPriceValue: 85 },
-      { label: "2XL", value: 4, priceValue: 50, colorPriceValue: 120 },
+      { label: 'S', value: 0.5, priceValue: 0, colorPriceValue: 50 },
+      { label: 'M', value: 1, priceValue: 0, colorPriceValue: 50 },
+      { label: 'L', value: 2, priceValue: 25, colorPriceValue: 85 },
+      { label: 'XL', value: 3, priceValue: 25, colorPriceValue: 85 },
+      { label: '2XL', value: 4, priceValue: 50, colorPriceValue: 120 },
     ],
     sizeForms: [
       {
-        label: "Chest (cm)",
+        label: 'Chest (cm)',
       },
       {
-        label: "Coat Waist (cm)",
+        label: 'Coat Waist (cm)',
       },
       {
-        label: "Seat (cm)",
+        label: 'Seat (cm)',
       },
       {
-        label: "Natural Waist Length (cm)",
+        label: 'Natural Waist Length (cm)',
       },
       {
-        label: "Half Across Back (cm)",
+        label: 'Half Across Back (cm)',
       },
       {
-        label: "Elbow (cm)",
+        label: 'Elbow (cm)',
       },
       {
-        label: "Sleeve Length (cm)",
+        label: 'Sleeve Length (cm)',
       },
       {
-        label: "Scye Depth (cm)",
+        label: 'Scye Depth (cm)',
       },
 
-
       {
-        label: "Natural Waist (cm)",
+        label: 'Natural Waist (cm)',
       },
       {
-        label: "Shorts Waist (cm)",
+        label: 'Shorts Waist (cm)',
       },
       {
-        label: "Shorts Length (cm)",
+        label: 'Shorts Length (cm)',
       },
       {
-        label: "Seat (cm)",
+        label: 'Seat (cm)',
       },
       {
-        label: "Thigh (cm)",
+        label: 'Thigh (cm)',
       },
       {
-        label: "Knee (cm)",
-      },   
+        label: 'Knee (cm)',
+      },
     ],
   },
   {
     id: uuid(),
-    name: "Blazer With Skirt",
+    name: 'Blazer With Skirt',
     image: image_blazer_skirt,
     isVariant: true,
     model: blazer_skirt,
     myNode: [
-      { name: "all", yardNeeded: 2 },
-      { name: "all_two", yardNeeded: 2 },
+      { name: 'all', yardNeeded: 2 },
+      { name: 'all_two', yardNeeded: 2 },
     ],
     otherYards: { small: 2, large: 3, extraLarge: 3, extraExtraLarge: 4 },
     myZoom: 0.7,
@@ -1558,60 +1550,58 @@ export const mainFemaleCustomize = [
     sizeModels: blazer_guide,
     readyIn: 7,
     sizeOptions: [
-      { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 50 },
-      { label: "M", value: 1, priceValue: 0, colorPriceValue: 50 },
-      { label: "L", value: 2, priceValue: 25, colorPriceValue: 85 },
-      { label: "XL", value: 3, priceValue: 25, colorPriceValue: 85 },
-      { label: "2XL", value: 4, priceValue: 50, colorPriceValue: 120 },
+      { label: 'S', value: 0.5, priceValue: 0, colorPriceValue: 50 },
+      { label: 'M', value: 1, priceValue: 0, colorPriceValue: 50 },
+      { label: 'L', value: 2, priceValue: 25, colorPriceValue: 85 },
+      { label: 'XL', value: 3, priceValue: 25, colorPriceValue: 85 },
+      { label: '2XL', value: 4, priceValue: 50, colorPriceValue: 120 },
     ],
     sizeForms: [
       {
-        label: "Chest (cm)",
+        label: 'Chest (cm)',
       },
       {
-        label: "Coat Waist (cm)",
+        label: 'Coat Waist (cm)',
       },
       {
-        label: "Seat (cm)",
+        label: 'Seat (cm)',
       },
       {
-        label: "Natural Waist Length (cm)",
+        label: 'Natural Waist Length (cm)',
       },
       {
-        label: "Half Across Back (cm)",
+        label: 'Half Across Back (cm)',
       },
       {
-        label: "Elbow (cm)",
+        label: 'Elbow (cm)',
       },
       {
-        label: "Sleeve Length (cm)",
+        label: 'Sleeve Length (cm)',
       },
       {
-        label: "Scye Depth (cm)",
+        label: 'Scye Depth (cm)',
       },
 
-
       {
-        label: "Skirt Length (cm)",
+        label: 'Skirt Length (cm)',
       },
       {
-        label: "Waist (cm)",
+        label: 'Waist (cm)',
       },
       {
-        label: "Hip (cm)",
+        label: 'Hip (cm)',
       },
-      
     ],
   },
   {
     id: uuid(),
-    name: "Blazer With Trousers",
+    name: 'Blazer With Trousers',
     image: image_blazer_trousers,
     isVariant: true,
     model: blazer_trousers,
     myNode: [
-      { name: "all", yardNeeded: 2 },
-      { name: "all_two", yardNeeded: 2 },
+      { name: 'all', yardNeeded: 2 },
+      { name: 'all_two', yardNeeded: 2 },
     ],
     otherYards: { small: 2, large: 3, extraLarge: 3, extraExtraLarge: 4 },
     myZoom: 0.7,
@@ -1620,57 +1610,55 @@ export const mainFemaleCustomize = [
     sizeModels: blazer_guide,
     readyIn: 7,
     sizeOptions: [
-      { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 50 },
-      { label: "M", value: 1, priceValue: 0, colorPriceValue: 50 },
-      { label: "L", value: 2, priceValue: 25, colorPriceValue: 85 },
-      { label: "XL", value: 3, priceValue: 25, colorPriceValue: 85 },
-      { label: "2XL", value: 4, priceValue: 50, colorPriceValue: 120 },
+      { label: 'S', value: 0.5, priceValue: 0, colorPriceValue: 50 },
+      { label: 'M', value: 1, priceValue: 0, colorPriceValue: 50 },
+      { label: 'L', value: 2, priceValue: 25, colorPriceValue: 85 },
+      { label: 'XL', value: 3, priceValue: 25, colorPriceValue: 85 },
+      { label: '2XL', value: 4, priceValue: 50, colorPriceValue: 120 },
     ],
     sizeForms: [
       {
-        label: "Chest (cm)",
+        label: 'Chest (cm)',
       },
       {
-        label: "Coat Waist (cm)",
+        label: 'Coat Waist (cm)',
       },
       {
-        label: "Seat (cm)",
+        label: 'Seat (cm)',
       },
       {
-        label: "Natural Waist Length (cm)",
+        label: 'Natural Waist Length (cm)',
       },
       {
-        label: "Half Across Back (cm)",
+        label: 'Half Across Back (cm)',
       },
       {
-        label: "Elbow (cm)",
+        label: 'Elbow (cm)',
       },
       {
-        label: "Sleeve Length (cm)",
+        label: 'Sleeve Length (cm)',
       },
       {
-        label: "Scye Depth (cm)",
+        label: 'Scye Depth (cm)',
       },
 
-
       {
-        label: "Trouser Length (cm)",
+        label: 'Trouser Length (cm)',
       },
       {
-        label: "Waist (cm)",
+        label: 'Waist (cm)',
       },
       {
-        label: "Hip (cm)",
+        label: 'Hip (cm)',
       },
-      
     ],
   },
   {
     id: uuid(),
-    name: "Kimono Jacket",
+    name: 'Kimono Jacket',
     model: cloak_model,
     image: cloak,
-    myNode: [{ name: "all", yardNeeded: 3 }],
+    myNode: [{ name: 'all', yardNeeded: 3 }],
     otherYards: { small: 3, large: 4, extraLarge: 4, extraExtraLarge: 4 },
     myZoom: 0.9,
     price: 110,
@@ -1678,27 +1666,27 @@ export const mainFemaleCustomize = [
     // sizeModels: tshirt_model,
     readyIn: 7,
     sizeOptions: [
-      { label: "S", value: 0.5, priceValue: 55, colorPriceValue: 85 },
-      { label: "M", value: 1, priceValue: 55, colorPriceValue: 85 },
-      { label: "L", value: 2, priceValue: 55, colorPriceValue: 120 },
-      { label: "XL", value: 3, priceValue: 70, colorPriceValue: 120 },
-      { label: "2XL", value: 4, priceValue: 70, colorPriceValue: 120 },
+      { label: 'S', value: 0.5, priceValue: 55, colorPriceValue: 85 },
+      { label: 'M', value: 1, priceValue: 55, colorPriceValue: 85 },
+      { label: 'L', value: 2, priceValue: 55, colorPriceValue: 120 },
+      { label: 'XL', value: 3, priceValue: 70, colorPriceValue: 120 },
+      { label: '2XL', value: 4, priceValue: 70, colorPriceValue: 120 },
     ],
     sizeForms: [
       {
-        label: "Top Length (cm)",
+        label: 'Top Length (cm)',
       },
       {
-        label: "Sleeve Length (cm)",
+        label: 'Sleeve Length (cm)',
       },
     ],
   },
   {
     id: uuid(),
-    name: "Long Skirt",
+    name: 'Long Skirt',
     model: skirt_model,
     image: skirt,
-    myNode: [{ name: "all", yardNeeded: 2 }],
+    myNode: [{ name: 'all', yardNeeded: 2 }],
     otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
     myZoom: 0.9,
     price: 100,
@@ -1706,30 +1694,30 @@ export const mainFemaleCustomize = [
     // sizeModels: tshirt_model,
     readyIn: 7,
     sizeOptions: [
-      { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 50 },
-      { label: "M", value: 1, priceValue: 0, colorPriceValue: 50 },
-      { label: "L", value: 2, priceValue: 50, colorPriceValue: 85 },
-      { label: "XL", value: 3, priceValue: 50, colorPriceValue: 120 },
-      { label: "2XL", value: 4, priceValue: 50, colorPriceValue: 120 },
+      { label: 'S', value: 0.5, priceValue: 0, colorPriceValue: 50 },
+      { label: 'M', value: 1, priceValue: 0, colorPriceValue: 50 },
+      { label: 'L', value: 2, priceValue: 50, colorPriceValue: 85 },
+      { label: 'XL', value: 3, priceValue: 50, colorPriceValue: 120 },
+      { label: '2XL', value: 4, priceValue: 50, colorPriceValue: 120 },
     ],
     sizeForms: [
       {
-        label: "Skirt Length (cm)",
+        label: 'Skirt Length (cm)',
       },
       {
-        label: "Waist (cm)",
+        label: 'Waist (cm)',
       },
       {
-        label: "Hip (cm)",
+        label: 'Hip (cm)',
       },
     ],
   },
   {
     id: uuid(),
-    name: "Mini Skirt",
+    name: 'Mini Skirt',
     model: mini_skirt_model,
     image: image_mini_skirt,
-    myNode: [{ name: "all", yardNeeded: 2 }],
+    myNode: [{ name: 'all', yardNeeded: 2 }],
     otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
     myZoom: 0.8,
     price: 100,
@@ -1737,30 +1725,30 @@ export const mainFemaleCustomize = [
     // sizeModels: tshirt_model,
     readyIn: 7,
     sizeOptions: [
-      { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 50 },
-      { label: "M", value: 1, priceValue: 0, colorPriceValue: 50 },
-      { label: "L", value: 2, priceValue: 0, colorPriceValue: 50 },
-      { label: "XL", value: 3, priceValue: 0, colorPriceValue: 50 },
-      { label: "2XL", value: 4, priceValue: 0, colorPriceValue: 50 },
+      { label: 'S', value: 0.5, priceValue: 0, colorPriceValue: 50 },
+      { label: 'M', value: 1, priceValue: 0, colorPriceValue: 50 },
+      { label: 'L', value: 2, priceValue: 0, colorPriceValue: 50 },
+      { label: 'XL', value: 3, priceValue: 0, colorPriceValue: 50 },
+      { label: '2XL', value: 4, priceValue: 0, colorPriceValue: 50 },
     ],
     sizeForms: [
       {
-        label: "Skirt Length (cm)",
+        label: 'Skirt Length (cm)',
       },
       {
-        label: "Waist (cm)",
+        label: 'Waist (cm)',
       },
       {
-        label: "Hip (cm)",
+        label: 'Hip (cm)',
       },
     ],
   },
   {
     id: uuid(),
-    name: "Booty Shorts",
+    name: 'Booty Shorts',
     model: booty_shorts,
     image: image_booty_shorts,
-    myNode: [{ name: "all", yardNeeded: 2 }],
+    myNode: [{ name: 'all', yardNeeded: 2 }],
     otherYards: { small: 2, large: 3, extraLarge: 3, extraExtraLarge: 4 },
     myZoom: 0.6,
     price: 100,
@@ -1768,21 +1756,21 @@ export const mainFemaleCustomize = [
     // sizeModels: tshirt_model,
     readyIn: 7,
     sizeOptions: [
-      { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 50 },
-      { label: "M", value: 1, priceValue: 0, colorPriceValue: 50 },
-      { label: "L", value: 2, priceValue: 0, colorPriceValue: 50 },
-      { label: "XL", value: 3, priceValue: 0, colorPriceValue: 50 },
-      { label: "2XL", value: 4, priceValue: 0, colorPriceValue: 50 },
+      { label: 'S', value: 0.5, priceValue: 0, colorPriceValue: 50 },
+      { label: 'M', value: 1, priceValue: 0, colorPriceValue: 50 },
+      { label: 'L', value: 2, priceValue: 0, colorPriceValue: 50 },
+      { label: 'XL', value: 3, priceValue: 0, colorPriceValue: 50 },
+      { label: '2XL', value: 4, priceValue: 0, colorPriceValue: 50 },
     ],
     sizeForms: [
       {
-        label: "Waist (cm)",
+        label: 'Waist (cm)',
       },
       {
-        label: "Hip (cm)",
+        label: 'Hip (cm)',
       },
       {
-        label: "Length (cm)",
+        label: 'Length (cm)',
       },
       // Add more form fields as needed
     ],
@@ -1826,10 +1814,10 @@ export const mainFemaleCustomize = [
   // },
   {
     id: uuid(),
-    name: "Shorts",
+    name: 'Shorts',
     image: image_material_shorts_image,
     model: material_shorts,
-    myNode: [{ name: "all", yardNeeded: 2 }],
+    myNode: [{ name: 'all', yardNeeded: 2 }],
     otherYards: { small: 2, large: 3, extraLarge: 3, extraExtraLarge: 4 },
     myZoom: 0.5,
     myX: 0,
@@ -1840,40 +1828,40 @@ export const mainFemaleCustomize = [
     readyIn: 7,
     // parts: materialShortsParts.keys().map(materialShortsParts),
     sizeOptions: [
-      { label: "S", value: 0.5, priceValue: 0, colorPriceValue: 50 },
-      { label: "M", value: 1, priceValue: 0, colorPriceValue: 50 },
-      { label: "L", value: 2, priceValue: 0, colorPriceValue: 50 },
-      { label: "XL", value: 3, priceValue: 0, colorPriceValue: 50 },
-      { label: "2XL", value: 4, priceValue: 0, colorPriceValue: 50 },
+      { label: 'S', value: 0.5, priceValue: 0, colorPriceValue: 50 },
+      { label: 'M', value: 1, priceValue: 0, colorPriceValue: 50 },
+      { label: 'L', value: 2, priceValue: 0, colorPriceValue: 50 },
+      { label: 'XL', value: 3, priceValue: 0, colorPriceValue: 50 },
+      { label: '2XL', value: 4, priceValue: 0, colorPriceValue: 50 },
     ],
     sizeForms: [
       {
-        label: "Natural Waist (cm)",
+        label: 'Natural Waist (cm)',
       },
       {
-        label: "Shorts Waist (cm)",
+        label: 'Shorts Waist (cm)',
       },
       {
-        label: "Shorts Length (cm)",
+        label: 'Shorts Length (cm)',
       },
       {
-        label: "Seat (cm)",
+        label: 'Seat (cm)',
       },
       {
-        label: "Thigh (cm)",
+        label: 'Thigh (cm)',
       },
       {
-        label: "Knee (cm)",
+        label: 'Knee (cm)',
       },
     ],
   },
   {
     id: uuid(),
-    name: "Trousers",
+    name: 'Trousers',
     model: trousers,
     // image: image_trousers,
     image: image_leggings,
-    myNode: [{ name: "all", yardNeeded: 3 }],
+    myNode: [{ name: 'all', yardNeeded: 3 }],
     otherYards: { small: 3, large: 4, extraLarge: 4, extraExtraLarge: 4 },
     myZoom: 0.7,
     price: 120,
@@ -1881,21 +1869,21 @@ export const mainFemaleCustomize = [
     // sizeModels: tshirt_model,
     readyIn: 7,
     sizeOptions: [
-      { label: "S", value: 0.5, priceValue: 25, colorPriceValue: 80 },
-      { label: "M", value: 1, priceValue: 25, colorPriceValue: 80 },
-      { label: "L", value: 2, priceValue: 50, colorPriceValue: 120 },
-      { label: "XL", value: 3, priceValue: 50, colorPriceValue: 120 },
-      { label: "2XL", value: 4, priceValue: 50, colorPriceValue: 120 },
+      { label: 'S', value: 0.5, priceValue: 25, colorPriceValue: 80 },
+      { label: 'M', value: 1, priceValue: 25, colorPriceValue: 80 },
+      { label: 'L', value: 2, priceValue: 50, colorPriceValue: 120 },
+      { label: 'XL', value: 3, priceValue: 50, colorPriceValue: 120 },
+      { label: '2XL', value: 4, priceValue: 50, colorPriceValue: 120 },
     ],
     sizeForms: [
       {
-        label: "Trouser Length (cm)",
+        label: 'Trouser Length (cm)',
       },
       {
-        label: "Waist (cm)",
+        label: 'Waist (cm)',
       },
       {
-        label: "Hip (cm)",
+        label: 'Hip (cm)',
       },
     ],
   },

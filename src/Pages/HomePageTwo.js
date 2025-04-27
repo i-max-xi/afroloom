@@ -6,14 +6,16 @@ import { Timeline } from 'primereact/timeline';
 import ListItem from '../Components/List/ListItem';
 
 const HomePage = () => {
-  const carousel1 = require('../Assets/HomePage/landing-page-re-1.webp');
-  const carousel2 = require('../Assets/HomePage/landing-page-re-2.webp');
-  const carousel3 = require('../Assets/HomePage/landing-page-re-3.webp');
-  const carousel4 = require('../Assets/HomePage/landing-page-re-4.webp');
+  const carousel1 = '/assets/HomePage/landing-page-re-1.webp';
+  const carousel2 = '/assets/HomePage/landing-page-re-2.webp';
+  const carousel3 = '/assets/HomePage/landing-page-re-3.webp';
+  const carousel4 = '/assets/HomePage/landing-page-re-4.webp';
 
-  const perfectFit = require('../Assets/HomePage/Perfect Fit Guarantee .webp');
-  const qualityFabric = require('../Assets/HomePage/Bulk African wax print fabrics - Flowery African Wax Print - 6 yards.webp');
-  const convenientOnlineProcess = require('../Assets/HomePage/Convenient-Online-Process.webp');
+  const perfectFit = '/assets/HomePage/Perfect Fit Guarantee .webp';
+  const qualityFabric =
+    '/assets/HomePage/Bulk African wax print fabrics - Flowery African Wax Print - 6 yards.webp';
+  const convenientOnlineProcess =
+    '/assets/HomePage/Convenient-Online-Process.webp';
 
   //timeline
   const timeline1 = '';

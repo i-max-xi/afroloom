@@ -1,6 +1,6 @@
-import React from "react";
-import LayoutHeaders from "../Components/LayoutHeaders";
-import Top from "../Assets/Headers/aboutus.jpg";
+import React from 'react';
+import LayoutHeaders from '../Components/LayoutHeaders';
+const Top = '/assets/Headers/aboutus.jpg';
 
 const About = () => {
   return (
