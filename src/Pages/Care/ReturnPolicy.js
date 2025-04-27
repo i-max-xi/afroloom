@@ -1,6 +1,7 @@
-import React from "react";
-import Top from "../../Assets/Headers/Return_Policy.jpg";
-import LayoutHeaders from "../../Components/LayoutHeaders";
+import React from 'react';
+import LayoutHeaders from '../../Components/LayoutHeaders';
+
+const Top = '/assets/Headers/Return_Policy.jpg';
 
 const ReturnPolicy = () => {
   return (
@@ -21,7 +22,7 @@ const ReturnPolicy = () => {
           you to cherish every piece you buy from us, and if you're not
           completely satisfied, we'll go above and beyond to fix it – whether
           it's a refund or a store credit for your next purchase. Your happiness
-          is our priority, so shop confidently at{" "}
+          is our priority, so shop confidently at{' '}
           <span className="text-warning">Afroloom.com</span>
         </p>
         <p>Thank you for shopping Afroloom!</p>

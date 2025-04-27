@@ -1,16 +1,15 @@
-import React, { useRef, useState } from "react";
-// import signInBg from "../../Assets/backgrounds/3.jpg";
-import { Link, useNavigate } from "react-router-dom";
-import { ProgressSpinner } from "primereact/progressspinner";
-import { Toast } from "primereact/toast";
-import { auth, sendPasswordResetEmail } from "../firebase";
-import Nav from "../Components/Nav";
+import React, { useRef, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { ProgressSpinner } from 'primereact/progressspinner';
+import { Toast } from 'primereact/toast';
+import { auth, sendPasswordResetEmail } from '../firebase';
+import Nav from '../Components/Nav';
 
 const ForgotPassword = () => {
   const toastRef = useRef(null);
   const navigate = useNavigate();
 
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState('');
   const [isLoading, setIsLoading] = useState(false); // Initialize loading state
 
   const handleForgotPassword = async (e) => {
@@ -22,16 +21,16 @@ const ForgotPassword = () => {
       await sendPasswordResetEmail(auth, email);
 
       toastRef.current.show({
-        severity: "success",
+        severity: 'success',
         summary: `We have sent an email to reset your password`,
       });
 
       setTimeout(() => {
-        navigate("/signin");
+        navigate('/signin');
       }, 2000);
     } catch (error) {
       toastRef.current.show({
-        severity: "error",
+        severity: 'error',
         summary: `Error sending reset email ${error}`,
       });
     }
@@ -48,14 +47,14 @@ const ForgotPassword = () => {
         className="lg:w-[60%] mx-auto"
         style={{
           // backgroundImage: `url(${signInBg})`,
-          backgroundSize: "cover",
-          backgroundRepeat: "no-repeat",
+          backgroundSize: 'cover',
+          backgroundRepeat: 'no-repeat',
         }}
       >
         <form
           onSubmit={handleForgotPassword}
           className="container bg-white rounded w-100 p-4"
-          style={{ marginTop: "2rem", marginBottom: "2rem" }}
+          style={{ marginTop: '2rem', marginBottom: '2rem' }}
         >
           <h4>
             <span className="text-warning">Forgot</span> Password ?
@@ -79,7 +78,7 @@ const ForgotPassword = () => {
             <span className="spinner-container">
               {isLoading && (
                 <ProgressSpinner
-                  style={{ width: "1.5rem", height: "1.5rem" }}
+                  style={{ width: '1.5rem', height: '1.5rem' }}
                   strokeWidth="8"
                   fill="var(--surface-ground)"
                   className="position-absolute top-50 start-50 translate-middle"

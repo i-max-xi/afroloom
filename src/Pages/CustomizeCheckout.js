@@ -8,7 +8,6 @@ import {
   updateCustomzedItemQuantity,
   updateShopItemQuantity,
 } from '../Redux/store';
-import Top from '../Assets/Headers/Check_Out.jpg';
 import LayoutHeaders from '../Components/LayoutHeaders';
 import { Link, useNavigate } from 'react-router-dom';
 import { PaystackButton } from 'react-paystack';
@@ -26,6 +25,8 @@ import {
 } from 'firebase/storage';
 import html2canvas from 'html2canvas';
 import { storage } from '../firebase';
+
+const Top = '/assets/Headers/Check_Out.jpg';
 
 const CustomizeCheckout = () => {
   const cartItems = useSelector((state) => state.customizedProduct.itemDetails);

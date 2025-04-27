@@ -1,6 +1,7 @@
-import React from "react";
-import Top from "../../Assets/Headers/tnc.jpg";
-import LayoutHeaders from "../../Components/LayoutHeaders";
+import React from 'react';
+import LayoutHeaders from '../../Components/LayoutHeaders';
+
+const Top = '/assets/Headers/tnc.jpg';
 
 const Tnc = () => {
   return (
