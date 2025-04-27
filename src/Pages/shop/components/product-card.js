@@ -2,20 +2,18 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router';
+import { getOptimizedImageUrl } from '../../../utils/functions';
 
-const ProductCard = ({ product }) => {
+const ProductCard = ({ id, name, price, discount, images }) => {
   const navigate = useNavigate();
 
   const currencySymbol = useSelector((state) => state.currencySymbol.symbol);
   const currencyFactor = useSelector((state) => state.currencySymbol.factor);
 
   // Calculate discounted price
-  const discountedPrice = product.discount
-    ? (
-        (product.price - (product.price * product.discount) / 100) *
-        currencyFactor
-      ).toFixed(2)
-    : (product.price * currencyFactor).toFixed(2);
+  const discountedPrice = discount
+    ? ((price - (price * discount) / 100) * currencyFactor).toFixed(2)
+    : (price * currencyFactor).toFixed(2);
 
   return (
     <motion.div
@@ -23,31 +21,30 @@ const ProductCard = ({ product }) => {
       whileHover={{ scale: 1.05 }}
       // transition={{ type: "spring", stiffness: 300 }}
       className="cursor-pointer"
-      onClick={() => navigate(`/product/${product.id}`)}
+      onClick={() => navigate(`/product/${id}`)}
     >
       {/* Product Image */}
       <div className="w-full h-48 bg-gray-200 rounded-lg">
         <img
-          src={product.images[0]}
-          alt={product.name}
+          // src={getOptimizedImageUrl(images[0], 500, 80)}
+          src={images}
+          alt={name}
           className="w-full h-full object-contain"
-          loading="lazy"
+          // loading="lazy"
         />
       </div>
 
       {/* Product Details */}
       <div className="flex flex-col  pt-2 lg:py-4">
-        <h3 className="text-xs md:text-sm lg:text-sm font-medium">
-          {product.name}
-        </h3>
+        <h3 className="text-xs md:text-sm lg:text-sm font-medium">{name}</h3>
 
         {/* Pricing Section */}
         <div className="flex flex-col">
-          {product.discount > 0 ? (
+          {discount > 0 ? (
             <div className="flex  gap-2">
               <p className="text-gray-400 line-through text-sm">
                 {currencySymbol}
-                {(product.price * currencyFactor).toFixed(2)}
+                {(price * currencyFactor).toFixed(2)}
               </p>
               <p className="text-yellow-500 font-bold">
                 {currencySymbol}
@@ -57,7 +54,7 @@ const ProductCard = ({ product }) => {
           ) : (
             <p className="text-yellow-500 font-bold">
               {currencySymbol}
-              {(product.price * currencyFactor).toFixed(2)}
+              {(price * currencyFactor).toFixed(2)}
             </p>
           )}
         </div>
@@ -75,4 +72,6 @@ const ProductCard = ({ product }) => {
   );
 };
 
-export default ProductCard;
+export default React.memo(ProductCard);
+
+// export default ProductCard;
