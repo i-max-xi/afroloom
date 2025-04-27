@@ -6,14 +6,14 @@ import { Timeline } from 'primereact/timeline';
 import ListItem from '../Components/List/ListItem';
 
 const HomePage = () => {
-  const carousel1 = require('../Assets/HomePage/landing-page-re-1.jpg');
-  const carousel2 = require('../Assets/HomePage/landing-page-re-2.jpg');
-  const carousel3 = require('../Assets/HomePage/landing-page-re-3.jpg');
-  const carousel4 = require('../Assets/HomePage/landing-page-re-4.jpg');
+  const carousel1 = require('../Assets/HomePage/landing-page-re-1.webp');
+  const carousel2 = require('../Assets/HomePage/landing-page-re-2.webp');
+  const carousel3 = require('../Assets/HomePage/landing-page-re-3.webp');
+  const carousel4 = require('../Assets/HomePage/landing-page-re-4.webp');
 
-  const perfectFit = require('../Assets/HomePage/Perfect Fit Guarantee .jpg');
-  const qualityFabric = require('../Assets/HomePage/Bulk African wax print fabrics - Flowery African Wax Print - 6 yards.jpg');
-  const convenientOnlineProcess = require('../Assets/HomePage/Convenient-Online-Process.png');
+  const perfectFit = require('../Assets/HomePage/Perfect Fit Guarantee .webp');
+  const qualityFabric = require('../Assets/HomePage/Bulk African wax print fabrics - Flowery African Wax Print - 6 yards.webp');
+  const convenientOnlineProcess = require('../Assets/HomePage/Convenient-Online-Process.webp');
 
   //timeline
   const timeline1 = '';
@@ -116,12 +116,7 @@ const HomePage = () => {
         <Carousel>
           {carousel.map((item, index) => (
             <Carousel.Item key={index}>
-              <img
-                loading="lazy"
-                className="d-block w-100"
-                src={item.image}
-                alt={item.alt}
-              />
+              <img className="" width="100%" src={item.image} alt={item.alt} />
             </Carousel.Item>
           ))}
         </Carousel>
