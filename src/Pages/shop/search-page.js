@@ -129,8 +129,18 @@ const SearchPage = () => {
         <div className="mt-10">
           {products.length > 0 ? (
             <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-              {products.map((product) => (
+              {/* {products.map((product) => (
                 <ProductCard key={product.id} product={product} />
+              ))} */}
+              {products.map(({ id, name, price, discount, images }) => (
+                <ProductCard
+                  key={id}
+                  id={id}
+                  name={name}
+                  price={price}
+                  discount={discount}
+                  images={images}
+                />
               ))}
             </div>
           ) : (

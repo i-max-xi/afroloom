@@ -1018,7 +1018,15 @@ const ProductDetail = () => {
               itemTemplate={(item) => {
                 return (
                   <div className="px-2">
-                    <ProductCard product={item} />
+                    {/* <ProductCard product={item} /> */}
+                    <ProductCard
+                      key={item.id}
+                      id={item.id}
+                      name={item.name}
+                      price={item.price}
+                      discount={item.discount}
+                      images={item.images}
+                    />
                   </div>
                 );
               }}

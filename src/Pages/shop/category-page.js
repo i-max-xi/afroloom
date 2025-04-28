@@ -270,10 +270,18 @@ const CategoryPage = () => {
 
         {/* Product List */}
         <div className="mt-2">
-          {products.length > 0 ? (
+          {products?.length > 0 ? (
             <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-              {products.map((product) => (
-                <ProductCard key={product.id} product={product} />
+              {products?.map((product) => (
+                // <ProductCard key={product.id} product={product} />
+                <ProductCard
+                  key={product.id}
+                  id={product.id}
+                  name={product.name}
+                  price={product.price}
+                  discount={product.discount}
+                  images={product.images}
+                />
               ))}
             </div>
           ) : (
