@@ -5,7 +5,7 @@ import Header2 from './Header2';
 import { FooterContact } from './FooterContact';
 import contactInfo from '../Data/contactList';
 import { isMobile } from '../utils/constants';
-const Logo = '/assets/AFRO LOGO 4_footer.jpg';
+const Logo = '/assets/AFRO LOGO 4_footer.webp';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();

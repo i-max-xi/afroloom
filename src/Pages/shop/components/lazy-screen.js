@@ -1,5 +1,5 @@
 import { Spinner } from './spinner';
-const Logo = '/assets/AFRO_LOGO_4_transparent.png';
+const Logo = '/assets/AFRO_LOGO_4_transparent.webp';
 
 export const LazyScreen = () => (
   <div className="flex justify-center items-center h-screen">
