@@ -302,9 +302,18 @@ const ShopPageSew = () => {
         {/* Product Grid */}
         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-6 px-4 md:px-8 lg:px-8">
           {products.length > 0 ? (
-            products.map((product) => (
-              <ProductCard key={product.id} product={product} />
-            ))
+            products.map((product) =>
+              products.map(({ id, name, price, discount, images }) => (
+                <ProductCard
+                  key={id}
+                  id={id}
+                  name={name}
+                  price={price}
+                  discount={discount}
+                  images={images}
+                />
+              )),
+            )
           ) : (
             <p className="col-span-full text-center text-gray-500">
               {isFetching ? 'Loading...' : 'No products found.'}
