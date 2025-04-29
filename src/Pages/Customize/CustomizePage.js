@@ -34,7 +34,7 @@ const CustomizePage = () => {
               className="col-6 col-md-3text-decoration-none  "
               key={name}
             >
-              <div className="card" data-aos="fade-in" data-aos-duration="1500">
+              <div className="card"  >
                 <img className="card-img-top" src={image} alt={name} />
                 <div className="card-body m-0 d-flex justify-content-center flex-column">
                   <h5 className="text-center">{name}</h5>
@@ -51,7 +51,7 @@ const CustomizePage = () => {
               className="col-6 col-md-3text-decoration-none  "
               key={name}
             >
-              <div className="card" data-aos="fade-in" data-aos-duration="1500">
+              <div className="card"  >
                 <img className="card-img-top" src={image} alt={name} />
                 <div className="card-body m-0 d-flex justify-content-center flex-column">
                   <h5 className="text-center">{name}</h5>
@@ -72,8 +72,6 @@ const CustomizePage = () => {
                     to={link ? link : `/configurator-unisex/${name}`}
                     className="text-decoration-none"
                     key={name}
-                    data-aos="fade-in"
-                    data-aos-duration="1500"
                   >
                     <ListItem
                       image={image}
@@ -89,8 +87,6 @@ const CustomizePage = () => {
                     to={`/configurator-female-accessories/${name}`}
                     className="text-decoration-none   "
                     key={name}
-                    data-aos="fade-in"
-                    data-aos-duration="1500"
                   >
                     <ListItem
                       image={image}
@@ -106,8 +102,6 @@ const CustomizePage = () => {
                     to={`/configurator-male-accessories/${name}`}
                     className="text-decoration-none   "
                     key={name}
-                    data-aos="fade-in"
-                    data-aos-duration="1500"
                   >
                     <ListItem
                       image={image}
@@ -133,8 +127,6 @@ const CustomizePage = () => {
                     to={link ? link : `/configurator-unisex/${name}`}
                     className="text-decoration-none   "
                     key={name}
-                    data-aos="fade-in"
-                    data-aos-duration="1500"
                   >
                     <ListItem
                       image={image}
@@ -159,8 +151,6 @@ const CustomizePage = () => {
                     to={'sash-templates'}
                     className="text-decoration-none   "
                     key={name}
-                    data-aos="fade-in"
-                    data-aos-duration="1500"
                   >
                     <ListItem
                       image={image}
@@ -184,8 +174,6 @@ const CustomizePage = () => {
                     to={link ? link : `/configurator-special/${name}`}
                     className="text-decoration-none   "
                     key={name}
-                    data-aos="fade-in"
-                    data-aos-duration="1500"
                   >
                     <ListItem
                       image={image}
@@ -214,8 +202,6 @@ const CustomizePage = () => {
                   }
                   className="text-decoration-none  "
                   key={name}
-                  data-aos="fade-in"
-                  data-aos-duration="1500"
                 >
                   <ListItem image={image} description={name} />
                 </Link>
@@ -238,8 +224,6 @@ const CustomizePage = () => {
                   }
                   className="text-decoration-none   "
                   key={name}
-                  data-aos="fade-in"
-                  data-aos-duration="1500"
                 >
                   <ListItem image={image} description={name} />
                 </Link>
@@ -261,8 +245,8 @@ const CustomizePage = () => {
                     to={link ? link : `/configurator-unisex/${name}`}
                     className="text-decoration-none   "
                     key={name}
-                    data-aos="fade-in"
-                    data-aos-duration="1500"
+                    
+                    
                   >
                     
                     <ListItem
@@ -285,8 +269,8 @@ const CustomizePage = () => {
                 to={`/configurator-male-accessories/${name}`}
                 className="text-decoration-none   "
                 key={name}
-                data-aos="fade-in"
-                data-aos-duration="1500"
+                
+                
               >
                 <ListItem image={image} description={name} />
               </Link>
@@ -329,8 +313,6 @@ const CustomizePage = () => {
                   to={`/configurator-footwear/${name}`}
                   className="text-decoration-none   "
                   key={name}
-                  data-aos="fade-in"
-                  data-aos-duration="1500"
                 >
                   <ListItem
                     image={image}

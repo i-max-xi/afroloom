@@ -10,10 +10,6 @@ import 'primereact/resources/themes/lara-light-indigo/theme.css';
 //core
 import 'primereact/resources/primereact.min.css';
 
-// Aos
-import AOS from 'aos';
-import 'aos/dist/aos.css';
-
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Layout from './Pages/Layout';
 import NoPage from './Pages/NoPage';
@@ -23,7 +19,6 @@ import ShippingPolicy from './Pages/Care/ShippingPolicy';
 import Returnpolicy from './Pages/Care/ReturnPolicy';
 import PrivacyPolicy from './Pages/Care/PrivacyPolicy';
 import ContactUs from './Pages/Care/ContactUs';
-import { useEffect } from 'react';
 import CustomizePage from './Pages/Customize/CustomizePage';
 import Configurator from './Pages/Customize/Configurator/Configurator';
 import ConfiguratorFootwear from './Pages/Customize/Configurator/ConfiguratorFootwear';
@@ -53,10 +48,6 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import OrderToSewPage from './Pages/order.sew.page';
 
 function App() {
-  useEffect(() => {
-    AOS.init();
-  }, []);
-
   const queryClient = new QueryClient();
 
   return (

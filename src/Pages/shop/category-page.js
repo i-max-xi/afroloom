@@ -1,4 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 import { useParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { categories } from './Data/products';
@@ -73,9 +79,9 @@ const CategoryPage = () => {
     isFetching,
   } = useProducts('', category?.name, searchQuery, selectedSubcategory);
 
-  const products = data
-    ? data.pages.flatMap((page) => page.products) || []
-    : [];
+  const products = useMemo(() => {
+    return data ? data.pages.flatMap((page) => page.products) : [];
+  }, [data]);
 
   useEffect(() => {
     if (!isFetching) {
@@ -83,24 +89,108 @@ const CategoryPage = () => {
     }
   }, [isFetching]);
 
-  if (firstLoad && isFetching) {
-    return <LazyScreen />;
-  }
+  const observer = useRef();
 
-  if (!category) {
-    return (
-      <div className="text-center text-gray-500 mt-10">
-        <h2 className="text-2xl font-bold">Category Not Found</h2>
-        <p>Please check the category name.</p>
-      </div>
-    );
-  }
+  const lastProductElementRef = useCallback(
+    (node) => {
+      if (isFetchingNextPage) return; // Don't observe while loading
+      if (observer.current) observer.current.disconnect(); // Disconnect previous observer
 
-  if (error) {
+      observer.current = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting && hasNextPage) {
+          fetchNextPage(); // Fetch more when the last product is visible
+        }
+      });
+
+      if (node) observer.current.observe(node); // Observe the last node
+    },
+    [isFetchingNextPage, fetchNextPage, hasNextPage],
+  );
+
+  const productRender = useMemo(() => {
+    if (firstLoad && isFetching && !isFetchingNextPage) {
+      return <LazyScreen />;
+    }
+
+    if (!category) {
+      return (
+        <div className="text-center text-gray-500 mt-10">
+          <h2 className="text-2xl font-bold">Category Not Found</h2>
+          <p>Please check the category name.</p>
+        </div>
+      );
+    }
+
+    if (error) {
+      console.log(error);
+      return (
+        <div className="text-center text-red-500 flex justify-center items-center">
+          Error loading products
+        </div>
+      );
+    }
+
     return (
-      <div className="text-center text-red-500">Error loading products</div>
+      <section>
+        {/* Product Grid */}
+        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-6 px-4 md:px-8 lg:px-8">
+          {products?.length > 0 ? (
+            products.map(({ id, name, price, discount, images }, index) => {
+              if (products.length === index + 1) {
+                // Last item
+                return (
+                  <div ref={lastProductElementRef} key={id}>
+                    <ProductCard
+                      id={id}
+                      name={name}
+                      price={price}
+                      discount={discount}
+                      images={images}
+                    />
+                  </div>
+                );
+              } else {
+                return (
+                  <ProductCard
+                    key={id}
+                    id={id}
+                    name={name}
+                    price={price}
+                    discount={discount}
+                    images={images}
+                  />
+                );
+              }
+            })
+          ) : (
+            <p className="col-span-full text-center text-gray-500">
+              {isFetching ? 'Loading...' : 'No products found.'}
+            </p>
+          )}
+        </div>
+
+        {/* Spinner when loading more */}
+        {isFetchingNextPage && (
+          <div className="flex justify-center my-4">
+            <Spinner />
+          </div>
+        )}
+
+        {/* Load More Button */}
+        {/* <div className="text-center my-6">
+            {hasNextPage && !isLoading && !searchQuery && (
+              <button
+                onClick={() => fetchNextPage()}
+                disabled={isFetchingNextPage}
+                className="border-1 border-yellow-500 text-black py-2 px-6 rounded-md"
+              >
+                {isFetchingNextPage ? 'Loading...' : 'Load More'}
+              </button>
+            )}
+          </div> */}
+      </section>
     );
-  }
+  }, [firstLoad, isFetching, products, category, isFetchingNextPage, error]);
 
   return (
     <>
@@ -268,41 +358,7 @@ const CategoryPage = () => {
           </motion.div>
         )}
 
-        {/* Product List */}
-        <div className="mt-2">
-          {products?.length > 0 ? (
-            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-              {products?.map((product) => (
-                // <ProductCard key={product.id} product={product} />
-                <ProductCard
-                  key={product.id}
-                  id={product.id}
-                  name={product.name}
-                  price={product.price}
-                  discount={product.discount}
-                  images={product.images}
-                />
-              ))}
-            </div>
-          ) : (
-            <p className="text-gray-500 text-center mt-10 flex justify-center items-center">
-              {isLoading | isFetching ? <Spinner /> : 'No products available.'}
-            </p>
-          )}
-        </div>
-
-        {/* Load More Button */}
-        <div className="text-center my-6">
-          {hasNextPage && !isLoading && (
-            <button
-              onClick={fetchNextPage}
-              disabled={isFetchingNextPage}
-              className="border-1 border-yellow-500 text-black py-2 px-6 rounded-md hover:bg-yellow-500 hover:text-white transition"
-            >
-              {isFetchingNextPage ? 'Loading...' : 'Load More'}
-            </button>
-          )}
-        </div>
+        {productRender}
       </div>
     </>
   );
