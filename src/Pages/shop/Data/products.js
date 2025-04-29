@@ -37,13 +37,13 @@ export const categories = [
     children: ['T-Shirt'],
     grandparent: 'ready to wear',
   },
-  {
-    name: 'Unisex',
-    image:
-      'https://www.thepinknews.com/wp-content/uploads/2019/06/handm-unisex.jpg',
-    children: ['T-Shirt'],
-    grandparent: 'ready to wear',
-  },
+  // {
+  //   name: 'Unisex',
+  //   image:
+  //     'https://www.thepinknews.com/wp-content/uploads/2019/06/handm-unisex.jpg',
+  //   children: ['T-Shirt'],
+  //   grandparent: 'ready to wear',
+  // },
   {
     name: 'Accessories',
     image:
@@ -80,7 +80,7 @@ export const divisionBreakdown = {
     "Men's Clothing",
     "Women's Clothing",
     'Accessories',
-    'Unisex',
+    // 'Unisex',
   ],
   'order to sew': ['Male', 'Female'],
 };
@@ -88,7 +88,7 @@ export const divisionBreakdown = {
 export const categoriesBreakdown = {
   "Women's Clothing": ['T-Shirt'],
   "Men's Clothing": ['T-Shirt'],
-  Unisex: ['T-Shirt'],
+  // Unisex: ['T-Shirt'],
   Accessories: ['Necklace', 'Bangles', 'Necklace & Bangles'],
   Male: [],
   Female: [

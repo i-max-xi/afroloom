@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { AnimatePresence, motion } from 'framer-motion';
@@ -24,6 +24,7 @@ import { responsiveOptions } from './Data/products';
 import { IoMdCloseCircle } from 'react-icons/io';
 import { InputText } from 'primereact/inputtext';
 import { Dialog } from 'primereact/dialog';
+import ProductDetailSkeleton from './product-detail-skelton';
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -235,30 +236,27 @@ const ProductDetail = () => {
     setCustomizedSizes(filteredCustomSize);
   };
 
-  if (isLoading) {
+  const RenderPage = useMemo(() => {
+    if (isLoading) {
+      return (
+        <ProductDetailSkeleton />
+        // <div className="flex justify-center items-center h-screen">
+        //   <LazyScreen />
+        // </div>
+      );
+    }
+
+    if (error) {
+      return (
+        <div className="text-center text-red-500">Error loading products</div>
+      );
+    }
+
+    if (!product) {
+      return <div className="text-center text-xl mt-10">Product not found</div>;
+    }
+
     return (
-      <div className="flex justify-center items-center h-screen">
-        <LazyScreen />
-      </div>
-    );
-  }
-
-  if (error) {
-    return (
-      <div className="text-center text-red-500">Error loading products</div>
-    );
-  }
-
-  if (!product) {
-    return <div className="text-center text-xl mt-10">Product not found</div>;
-  }
-
-  return (
-    <>
-      <Nav />
-      <Toast ref={toastRef} />
-
-      {needsTextile && <Disclaimer />}
       <div className="max-w-6xl mx-auto p-6 md:p-10">
         {/* Product Details */}
         <div className="flex flex-col md:flex-row gap-10">
@@ -1038,6 +1036,17 @@ const ProductDetail = () => {
           </div>
         )}
       </div>
+    );
+  }, [isLoading, product, error]);
+
+  return (
+    <>
+      <Nav />
+      <Toast ref={toastRef} />
+
+      {needsTextile && <Disclaimer />}
+
+      {RenderPage}
 
       {openCustomize && (
         <CustomizeSize
