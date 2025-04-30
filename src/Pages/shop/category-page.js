@@ -135,31 +135,16 @@ const CategoryPage = () => {
         {/* Product Grid */}
         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-6 px-4 md:px-8 lg:px-8">
           {products?.length > 0 ? (
-            products.map(({ id, name, price, discount, images }, index) => {
+            products.map((product, index) => {
               if (products.length === index + 1) {
                 // Last item
                 return (
-                  <div ref={lastProductElementRef} key={id}>
-                    <ProductCard
-                      id={id}
-                      name={name}
-                      price={price}
-                      discount={discount}
-                      images={images}
-                    />
+                  <div ref={lastProductElementRef} key={index}>
+                    <ProductCard product={product} />
                   </div>
                 );
               } else {
-                return (
-                  <ProductCard
-                    key={id}
-                    id={id}
-                    name={name}
-                    price={price}
-                    discount={discount}
-                    images={images}
-                  />
-                );
+                return <ProductCard key={index} product={product} />;
               }
             })
           ) : (

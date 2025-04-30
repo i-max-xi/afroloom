@@ -132,15 +132,8 @@ const SearchPage = () => {
               {/* {products.map((product) => (
                 <ProductCard key={product.id} product={product} />
               ))} */}
-              {products.map(({ id, name, price, discount, images }) => (
-                <ProductCard
-                  key={id}
-                  id={id}
-                  name={name}
-                  price={price}
-                  discount={discount}
-                  images={images}
-                />
+              {products.map((product, index) => (
+                <ProductCard id={index} product={product} />
               ))}
             </div>
           ) : (

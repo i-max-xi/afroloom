@@ -1,19 +1,24 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router';
 import { getOptimizedImageUrl } from '../../../utils/functions';
+import { updateLoomStore } from '../../../Redux/store';
 
-const ProductCard = ({ id, name, price, discount, images }) => {
+const ProductCard = ({ product }) => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const currencySymbol = useSelector((state) => state.currencySymbol.symbol);
   const currencyFactor = useSelector((state) => state.currencySymbol.factor);
 
   // Calculate discounted price
-  const discountedPrice = discount
-    ? ((price - (price * discount) / 100) * currencyFactor).toFixed(2)
-    : (price * currencyFactor).toFixed(2);
+  const discountedPrice = product?.discount
+    ? (
+        (product?.price - (product?.price * product?.discount) / 100) *
+        currencyFactor
+      ).toFixed(2)
+    : (product?.price * currencyFactor).toFixed(2);
 
   return (
     <motion.div
@@ -21,14 +26,21 @@ const ProductCard = ({ id, name, price, discount, images }) => {
       whileHover={{ scale: 1.05 }}
       // transition={{ type: "spring", stiffness: 300 }}
       className="cursor-pointer"
-      onClick={() => navigate(`/product/${id}`)}
+      onClick={() => {
+        dispatch(
+          updateLoomStore({
+            currentProduct: product,
+          }),
+        );
+        navigate(`/product/${product?.id}`);
+      }}
     >
       {/* Product Image */}
       <div className="w-full h-48 bg-gray-200 rounded-lg">
         <img
           // src={getOptimizedImageUrl(images[0], 500, 80)}
-          src={images}
-          alt={name}
+          src={product?.images}
+          alt={product?.name}
           className="w-full h-full object-contain"
           // loading="lazy"
         />
@@ -36,15 +48,17 @@ const ProductCard = ({ id, name, price, discount, images }) => {
 
       {/* Product Details */}
       <div className="flex flex-col  pt-2 lg:py-4">
-        <h3 className="text-xs md:text-sm lg:text-sm font-medium">{name}</h3>
+        <h3 className="text-xs md:text-sm lg:text-sm font-medium">
+          {product?.name}
+        </h3>
 
         {/* Pricing Section */}
         <div className="flex flex-col">
-          {discount > 0 ? (
+          {product?.discount > 0 ? (
             <div className="flex  gap-2">
               <p className="text-gray-400 line-through text-sm">
                 {currencySymbol}
-                {(price * currencyFactor).toFixed(2)}
+                {(product?.price * currencyFactor).toFixed(2)}
               </p>
               <p className="text-yellow-500 font-bold">
                 {currencySymbol}
@@ -54,7 +68,7 @@ const ProductCard = ({ id, name, price, discount, images }) => {
           ) : (
             <p className="text-yellow-500 font-bold">
               {currencySymbol}
-              {(price * currencyFactor).toFixed(2)}
+              {(product?.price * currencyFactor).toFixed(2)}
             </p>
           )}
         </div>
