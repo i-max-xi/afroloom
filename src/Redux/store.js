@@ -137,6 +137,7 @@ const loomStoreSlice = createSlice({
     grandparent_category: 'ready to wear',
     order_to_sew_category: ORDER_TO_SEW_CATEGORY.FROM_SHOP,
     searchquery: '',
+    currentProduct: {},
   },
   reducers: {
     updateLoomStore: (state, action) => {

@@ -28,6 +28,7 @@ import ProductDetailSkeleton from './product-detail-skelton';
 
 const ProductDetail = () => {
   const { id } = useParams();
+  const { currentProduct: product } = useSelector((state) => state.loomstore);
   const dispatch = useDispatch();
   const toastRef = useRef(null);
   const shopCart = useSelector((state) => state.shopCart);
@@ -46,7 +47,7 @@ const ProductDetail = () => {
 
   const products = allProducts?.pages?.flatMap((page) => page.products) || [];
 
-  const product = products?.find((item) => item.id === String(id));
+  // const product = products?.find((item) => item.id === String(id));
 
   const [selectedImage, setSelectedImage] = useState(product?.images[0] || '');
   const [selectedSize, setSelectedSize] = useState(
@@ -236,27 +237,45 @@ const ProductDetail = () => {
     setCustomizedSizes(filteredCustomSize);
   };
 
-  const RenderPage = useMemo(() => {
-    if (isLoading) {
-      return (
-        <ProductDetailSkeleton />
-        // <div className="flex justify-center items-center h-screen">
-        //   <LazyScreen />
-        // </div>
-      );
-    }
-
-    if (error) {
-      return (
-        <div className="text-center text-red-500">Error loading products</div>
-      );
-    }
-
-    if (!product) {
-      return <div className="text-center text-xl mt-10">Product not found</div>;
-    }
-
+  if (error) {
     return (
+      <div className="text-center text-red-500">Error loading products</div>
+    );
+  }
+
+  if (!product) {
+    return <div className="text-center text-xl mt-10">Product not found</div>;
+  }
+
+  // const RenderPage = useMemo(() => {
+  //   if (isLoading) {
+  //     return (
+  //       <ProductDetailSkeleton />
+  //       // <div className="flex justify-center items-center h-screen">
+  //       //   <LazyScreen />
+  //       // </div>
+  //     );
+  //   }
+
+  //   if (error) {
+  //     return (
+  //       <div className="text-center text-red-500">Error loading products</div>
+  //     );
+  //   }
+
+  //   if (!product) {
+  //     return <div className="text-center text-xl mt-10">Product not found</div>;
+  //   }
+
+  // }, [isLoading, product, error]);
+
+  return (
+    <>
+      <Nav />
+      <Toast ref={toastRef} />
+
+      {needsTextile && <Disclaimer />}
+
       <div className="max-w-6xl mx-auto p-6 md:p-10">
         {/* Product Details */}
         <div className="flex flex-col md:flex-row gap-10">
@@ -998,12 +1017,12 @@ const ProductDetail = () => {
           </p>
           <h3 className="text-base font-semibold mb-2">Description:</h3>
           <p className="text-gray-500 mt-2 break-words whitespace-pre-line">
-            {product.description || 'No description available.'}
+            {product?.description || 'No description available.'}
           </p>
         </div>
 
         {/* Related Products */}
-        {relatedProducts.length > 0 && (
+        {!isLoading && relatedProducts?.length > 0 && (
           <div className="mt-16 relative">
             <h3 className="text-lg md:text-2xl font-bold mb-6">
               Related Products
@@ -1016,15 +1035,15 @@ const ProductDetail = () => {
               itemTemplate={(item) => {
                 return (
                   <div className="px-2">
-                    {/* <ProductCard product={item} /> */}
-                    <ProductCard
+                    <ProductCard product={item} />
+                    {/* <ProductCard
                       key={item.id}
                       id={item.id}
                       name={item.name}
                       price={item.price}
                       discount={item.discount}
                       images={item.images}
-                    />
+                    /> */}
                   </div>
                 );
               }}
@@ -1036,17 +1055,6 @@ const ProductDetail = () => {
           </div>
         )}
       </div>
-    );
-  }, [isLoading, product, error]);
-
-  return (
-    <>
-      <Nav />
-      <Toast ref={toastRef} />
-
-      {needsTextile && <Disclaimer />}
-
-      {RenderPage}
 
       {openCustomize && (
         <CustomizeSize
