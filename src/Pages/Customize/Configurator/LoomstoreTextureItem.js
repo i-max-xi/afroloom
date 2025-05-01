@@ -82,7 +82,9 @@ function TextureItem({
           effect="blur" // Optional: other options are 'opacity', 'black-and-white', or no effect
           onClick={() => handleTextureChange(texture)}
           onContextMenu={(e) => e.preventDefault()}
-          className="h-full w-full object-cover"
+          className=" object-cover"
+          height="100"
+          width="100"
         />
       </div>
 

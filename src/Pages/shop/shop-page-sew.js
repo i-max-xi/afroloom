@@ -70,7 +70,6 @@ const ShopPageSew = () => {
     fetchNextPage,
     hasNextPage,
     isFetchingNextPage,
-    isLoading,
     error,
     isFetching,
   } = useProducts(
@@ -108,6 +107,7 @@ const ShopPageSew = () => {
   };
 
   const observer = useRef();
+  const thresholdIndex = products.length - 5;
 
   const lastProductElementRef = useCallback(
     (node) => {
@@ -145,7 +145,7 @@ const ShopPageSew = () => {
         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-6 px-4 md:px-8 lg:px-8">
           {products?.length > 0 ? (
             products.map((product, index) => {
-              if (products.length === index + 1) {
+              if (index === thresholdIndex) {
                 // Last item
                 return (
                   <div ref={lastProductElementRef} key={index}>

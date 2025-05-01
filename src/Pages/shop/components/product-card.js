@@ -50,7 +50,9 @@ const ProductCard = ({ product }) => {
         <LazyLoadImage
           src={product?.images[0]}
           alt={product?.name}
-          className="w-full h-full object-contain"
+          height="100"
+          width="100"
+          className=" object-contain"
           effect="blur"
         />
       </div>
