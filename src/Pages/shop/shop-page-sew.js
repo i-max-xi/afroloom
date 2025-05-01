@@ -70,7 +70,6 @@ const ShopPageSew = () => {
     fetchNextPage,
     hasNextPage,
     isFetchingNextPage,
-    isLoading,
     error,
     isFetching,
   } = useProducts(
@@ -116,13 +115,16 @@ const ShopPageSew = () => {
 
       observer.current = new IntersectionObserver((entries) => {
         if (entries[0].isIntersecting && hasNextPage) {
-          fetchNextPage(); // Fetch more when the last product is visible
+          fetchNextPage(); // Fetch more when the last 5 products are visible
         }
       });
 
-      if (node) observer.current.observe(node); // Observe the last node
+      // Only observe every 5th product
+      if (node && (products.indexOf(node) + 1) % 5 === 0) {
+        observer.current.observe(node); // Observe the 5th product
+      }
     },
-    [isFetchingNextPage, fetchNextPage, hasNextPage],
+    [isFetchingNextPage, fetchNextPage, hasNextPage, products],
   );
 
   const productRender = useMemo(() => {

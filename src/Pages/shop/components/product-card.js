@@ -39,20 +39,23 @@ const ProductCard = ({ product }) => {
       }}
     >
       {/* Product Image */}
-      <div className="w-full h-48 bg-gray-200 rounded-lg">
-        {/* <img
+      <div className="w-full h-48 bg-gray-200 rounded-lg relative overflow-hidden">
+        <img
           // src={getOptimizedImageUrl(images[0], 500, 80)}
-          src={product?.images}
-          alt={product?.name}
-          className="w-full h-full object-contain"
-          // loading="lazy"
-        /> */}
-        <LazyLoadImage
           src={product?.images[0]}
           alt={product?.name}
           className="w-full h-full object-contain"
-          effect="blur"
+          // loading="lazy"
         />
+        {/* <LazyLoadImage
+          src={product?.images[0]}
+          alt={product?.name}
+          height="100"
+          width="100"
+          className="w-full h-full object-contain"
+          effect="blur"
+          loading="lazy"
+        /> */}
       </div>
 
       {/* Product Details */}
