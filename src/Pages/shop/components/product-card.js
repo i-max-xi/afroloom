@@ -5,6 +5,9 @@ import { useNavigate } from 'react-router';
 import { getOptimizedImageUrl } from '../../../utils/functions';
 import { updateLoomStore } from '../../../Redux/store';
 
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
+
 const ProductCard = ({ product }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -37,12 +40,18 @@ const ProductCard = ({ product }) => {
     >
       {/* Product Image */}
       <div className="w-full h-48 bg-gray-200 rounded-lg">
-        <img
+        {/* <img
           // src={getOptimizedImageUrl(images[0], 500, 80)}
           src={product?.images}
           alt={product?.name}
           className="w-full h-full object-contain"
           // loading="lazy"
+        /> */}
+        <LazyLoadImage
+          src={product?.images[0]}
+          alt={product?.name}
+          className="w-full h-full object-contain"
+          effect="blur"
         />
       </div>
 
