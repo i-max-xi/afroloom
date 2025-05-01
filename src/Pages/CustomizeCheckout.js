@@ -407,16 +407,16 @@ const CustomizeCheckout = () => {
                           <div className="flex gap-3 justify-between items-center w-full bg-white p-4">
                             <div className="flex gap-1 items-center justify-center">
                               <img
-                                src={selectedItem.modelImage}
+                                src={selectedItem?.modelImage}
                                 alt=""
                                 width="100rem"
                                 height="100rem"
                               />
                               <p className="">
                                 <span className="fw-bold">Name: </span>{' '}
-                                {selectedItem.name} <br />
+                                {selectedItem?.name} <br />
                                 <span className="fw-bold">Quantity: </span>{' '}
-                                {selectedItem.quantity}
+                                {selectedItem?.quantity}
                                 <br />
                                 <span className="fw-bold">Subtotal:</span>{' '}
                                 {currencySymbol}
@@ -630,43 +630,44 @@ const CustomizeCheckout = () => {
                                     : selectedItem.selectedSize}
                                 </div>
                               </div>
-                              {selectedItem?.partsFabrics && (
-                                <div className="flex flex-col gap-1 h-fit">
-                                  <span className="font-medium">Parts: </span>{' '}
-                                  <div className="grid grid-cols-2 md:grid-cols-5  gap-1 h-fit md:max-w-[80%]">
-                                    {selectedItem?.partsFabrics?.map(
-                                      (el, index) => (
-                                        <div
-                                          key={index}
-                                          className="leading-none text-xs flex flex-col gap-1 p-2 rounded-md"
-                                        >
-                                          {el.name}:{' '}
-                                          {el?.type === 'textile' ? (
-                                            <img
-                                              src={el.value}
-                                              alt={el.value}
-                                              className="w-8 h-8 rounded-md"
-                                            />
-                                          ) : el?.type === 'color' ? (
-                                            <div className="flex items-center md:items-start gap-1">
-                                              <p
-                                                className="rounded-full h-6 w-6 border"
-                                                style={{
-                                                  backgroundColor: el?.value,
-                                                }}
-                                              ></p>
-                                            </div>
-                                          ) : (
-                                            <p className="bg-yellow-500 rounded-full px-2 py-1 text-xs text-center">
-                                              Designer Discretion
-                                            </p>
-                                          )}
-                                        </div>
-                                      ),
-                                    )}
+                              {selectedItem?.partsFabrics &&
+                                selectedItem?.partsFabrics > 0 && (
+                                  <div className="flex flex-col gap-1 h-fit">
+                                    <span className="font-medium">Parts: </span>{' '}
+                                    <div className="grid grid-cols-2 md:grid-cols-5  gap-1 h-fit md:max-w-[80%]">
+                                      {selectedItem?.partsFabrics?.map(
+                                        (el, index) => (
+                                          <div
+                                            key={index}
+                                            className="leading-none text-xs flex flex-col gap-1 p-2 rounded-md"
+                                          >
+                                            {el.name}:{' '}
+                                            {el?.type === 'textile' ? (
+                                              <img
+                                                src={el.value}
+                                                alt={el.value}
+                                                className="w-8 h-8 rounded-md"
+                                              />
+                                            ) : el?.type === 'color' ? (
+                                              <div className="flex items-center md:items-start gap-1">
+                                                <p
+                                                  className="rounded-full h-6 w-6 border"
+                                                  style={{
+                                                    backgroundColor: el?.value,
+                                                  }}
+                                                ></p>
+                                              </div>
+                                            ) : (
+                                              <p className="bg-yellow-500 rounded-full px-2 py-1 text-xs text-center">
+                                                Designer Discretion
+                                              </p>
+                                            )}
+                                          </div>
+                                        ),
+                                      )}
+                                    </div>
                                   </div>
-                                </div>
-                              )}
+                                )}
                             </div>
                           </section>
                         </li>

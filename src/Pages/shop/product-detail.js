@@ -174,7 +174,8 @@ const ProductDetail = () => {
       needsTextile &&
       selectedPrintOn === '' &&
       selectedColor === null &&
-      product?.parts.length === 0
+      product?.parts &&
+      product?.parts?.length === 0
     ) {
       toastRef.current.show({
         severity: 'error',
@@ -1050,7 +1051,36 @@ const ProductDetail = () => {
         )}
       </div>
     );
-  }, [product, error, id]);
+  }, [
+    error,
+    product,
+    selectedImage,
+    currencySymbol,
+    originalPrice,
+    finalPrice,
+    quantity,
+    needsTextile,
+    CustomizedSizes,
+    partsFabrics,
+    openColorTextileDialog,
+    currentPartToApply,
+
+    openColors,
+    openColorDropDown,
+    openTextileDropdown,
+    selectedFabricType,
+    openSeeAll,
+    selectedSeeAll,
+    selectedSeeAll,
+    selectedSeeAll,
+    selectedPrintOn,
+    currencyFactor,
+    isInCart,
+    selectedSize,
+    selectedColor,
+    isLoading,
+    relatedProducts,
+  ]);
 
   return (
     <>
