@@ -107,7 +107,6 @@ const ShopPageSew = () => {
   };
 
   const observer = useRef();
-  const thresholdIndex = products.length - 5;
 
   const lastProductElementRef = useCallback(
     (node) => {
@@ -116,13 +115,16 @@ const ShopPageSew = () => {
 
       observer.current = new IntersectionObserver((entries) => {
         if (entries[0].isIntersecting && hasNextPage) {
-          fetchNextPage(); // Fetch more when the last product is visible
+          fetchNextPage(); // Fetch more when the last 5 products are visible
         }
       });
 
-      if (node) observer.current.observe(node); // Observe the last node
+      // Only observe every 5th product
+      if (node && (products.indexOf(node) + 1) % 5 === 0) {
+        observer.current.observe(node); // Observe the 5th product
+      }
     },
-    [isFetchingNextPage, fetchNextPage, hasNextPage],
+    [isFetchingNextPage, fetchNextPage, hasNextPage, products],
   );
 
   const productRender = useMemo(() => {
@@ -145,7 +147,7 @@ const ShopPageSew = () => {
         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-6 px-4 md:px-8 lg:px-8">
           {products?.length > 0 ? (
             products.map((product, index) => {
-              if (index === thresholdIndex) {
+              if (products.length === index + 1) {
                 // Last item
                 return (
                   <div ref={lastProductElementRef} key={index}>
