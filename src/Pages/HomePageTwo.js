@@ -4,6 +4,7 @@ import Nav from '../Components/Nav';
 import { Carousel } from 'react-bootstrap';
 import { Timeline } from 'primereact/timeline';
 import ListItem from '../Components/List/ListItem';
+import { useProducts } from './shop/hooks/useProducts';
 
 const HomePage = () => {
   const carousel1 = '/assets/HomePage/landing-page-re-1.webp';
@@ -110,6 +111,12 @@ const HomePage = () => {
       </div>
     );
   };
+
+  // shop
+  useProducts('ready to wear', '', '', '', '', 30);
+
+  // sew
+  useProducts('order to sew', '', '', '', '', 30);
 
   return (
     <div>
