@@ -40,44 +40,6 @@ import otumfuo from '../textures/commemorative/otumfuo.jpg';
 import asantenhene25thaniversary from '../textures/commemorative/1-imageonline.co-merged.jpeg';
 import asantenhene30thanniversary from '../textures/commemorative/gfsdg-imageonline.co-merged (1).jpeg';
 
-//new newTextures
-import n1 from '../textures/new_textures/1. ahwene pa nkasa.jpg';
-import n2 from '../textures/new_textures/2. ahwenepa nkasa.jpg';
-import n3 from '../textures/new_textures/3. akuffo.jpg';
-import n4 from '../textures/new_textures/4. akyemfr3.jpg';
-import n5 from '../textures/new_textures/5. akyikyidie akyi.jpg';
-import n6 from '../textures/new_textures/6. animonyam nka nyame.jpg';
-import n7 from '../textures/new_textures/7. ghana flag - Copy.jpg';
-// import n7 from "../textures/new_textures/7. ghana flag.jpg";
-import n8 from '../textures/new_textures/8. kotodwe.jpg';
-import n9 from '../textures/new_textures/9. nkitinkiti.jpg';
-import n10 from '../textures/new_textures/10. nsuanhunu.jpg';
-import n11 from '../textures/new_textures/11. obaa pa.jpg';
-import n12 from '../textures/new_textures/12. obaapa.jpg';
-import n13 from '../textures/new_textures/13. obi de3 aba.jpg';
-import n14 from '../textures/new_textures/14. oya suro oya.jpg';
-import n15 from '../textures/new_textures/15. sakadom.jpg';
-import n16 from '../textures/new_textures/16. samarama k3t3.jpg';
-import n17 from '../textures/new_textures/17. sika wo ntaban.jpg';
-import n18 from '../textures/new_textures/18. subra.jpg';
-import n19 from '../textures/new_textures/19 ab3n.jpg';
-import n20 from '../textures/new_textures/20 abusua mu wo abusua kronkron.jpg';
-import n21 from '../textures/new_textures/21 adeakye 3bia.jpg';
-import n22 from '../textures/new_textures/22 adekye3 mu nsem.jpg';
-import n23 from '../textures/new_textures/23 adom arakwa.jpg';
-import n24 from '../textures/new_textures/24 akoraa bo nwa.jpg';
-import n25 from '../textures/new_textures/25 ankonam moboro.jpg';
-import n26 from '../textures/new_textures/26 aseda wo oyame ho.jpg';
-import n27 from '../textures/new_textures/27 boafo ne awurade.jpg';
-import n28 from '../textures/new_textures/28 boafoo ni bebiara.jpg';
-import n29 from '../textures/new_textures/29 daakye asem nti.jpg';
-import n30 from '../textures/new_textures/30 flower.jpg';
-import n31 from '../textures/new_textures/31 obaapa.jpg';
-import n32 from '../textures/new_textures/32 sape.jpg';
-import n33 from '../textures/new_textures/33 senkyi bridge.jpg';
-import n34 from '../textures/new_textures/34 y3da awurade ase.jpg';
-import n35 from '../textures/new_textures/35 yesu mogya.jpg';
-
 // logos
 import logo1 from '../textures/logos/AFRO_LOGO_4_transparent.png';
 import logo2 from '../textures/logos/gye-nyame-medium.png';
@@ -128,6 +90,45 @@ import logo46 from '../textures/logos/45_kofi_annan-removebg-preview.png';
 import FabricPrices from '../../../../Data/fabricprices';
 
 // const waxPrint1 = "https://firebasestorage.googleapis.com/v0/b/shopinafrica-c84cf.appspot.com/o/texture%2F1%20dade3%20mpadua.jpg?alt=media&token=d7fb314a-7d6a-477a-acce-fabfb2d2cfd5"
+
+// tnew textiles
+const n1 = '/assets/textures/new_textures/1. ahwene pa nkasa.webp';
+const n2 = '/assets/textures/new_textures/2. ahwenepa nkasa.webp';
+const n3 = '/assets/textures/new_textures/3. akuffo.webp';
+const n4 = '/assets/textures/new_textures/4. akyemfr3.webp';
+const n5 = '/assets/textures/new_textures/5. akyikyidie akyi.webp';
+const n6 = '/assets/textures/new_textures/6. animonyam nka nyame.webp';
+const n7 = '/assets/textures/new_textures/7. ghana flag - Copy.webp';
+// const n7 = '/assets/textures/new_textures/7. ghana flag.webp';
+const n8 = '/assets/textures/new_textures/8. kotodwe.webp';
+const n9 = '/assets/textures/new_textures/9. nkitinkiti.webp';
+const n10 = '/assets/textures/new_textures/10. nsuanhunu.webp';
+const n11 = '/assets/textures/new_textures/11. obaa pa.webp';
+const n12 = '/assets/textures/new_textures/12. obaapa.webp';
+const n13 = '/assets/textures/new_textures/13. obi de3 aba.webp';
+const n14 = '/assets/textures/new_textures/14. oya suro oya.webp';
+const n15 = '/assets/textures/new_textures/15. sakadom.webp';
+const n16 = '/assets/textures/new_textures/16. samarama k3t3.webp';
+const n17 = '/assets/textures/new_textures/17. sika wo ntaban.webp';
+const n18 = '/assets/textures/new_textures/18. subra.webp';
+const n19 = '/assets/textures/new_textures/19 ab3n.webp';
+const n20 =
+  '/assets/textures/new_textures/20 abusua mu wo abusua kronkron.webp';
+const n21 = '/assets/textures/new_textures/21 adeakye 3bia.webp';
+const n22 = '/assets/textures/new_textures/22 adekye3 mu nsem.webp';
+const n23 = '/assets/textures/new_textures/23 adom arakwa.webp';
+const n24 = '/assets/textures/new_textures/24 akoraa bo nwa.webp';
+const n25 = '/assets/textures/new_textures/25 ankonam moboro.webp';
+const n26 = '/assets/textures/new_textures/26 aseda wo oyame ho.webp';
+const n27 = '/assets/textures/new_textures/27 boafo ne awurade.webp';
+const n28 = '/assets/textures/new_textures/28 boafoo ni bebiara.webp';
+const n29 = '/assets/textures/new_textures/29 daakye asem nti.webp';
+const n30 = '/assets/textures/new_textures/30 flower.webp';
+const n31 = '/assets/textures/new_textures/31 obaapa.webp';
+const n32 = '/assets/textures/new_textures/32 sape.webp';
+const n33 = '/assets/textures/new_textures/33 senkyi bridge.webp';
+const n34 = '/assets/textures/new_textures/34 y3da awurade ase.webp';
+const n35 = '/assets/textures/new_textures/35 yesu mogya.webp';
 
 export const colorBasePrice = 35;
 
