@@ -89,7 +89,7 @@ function TextureItem({
     <div className="texture-item">
       <img
         src={texture}
-        loading="eager"
+        loading="lazy"
         alt={`Texture`}
         className={`texture-button ${
           selectedTexture === texture ? 'border-2 border-yellow-500' : ''
