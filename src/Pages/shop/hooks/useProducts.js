@@ -12,8 +12,8 @@ import {
 } from 'firebase/firestore';
 import { db } from '../../../firebase';
 
+const PAGE_SIZE = 15; // Number of products per page
 const shopCollectionRef = 'loomStore';
-export const PAGE_SIZE = 15; // Number of products per page
 
 // Fetch products with category & search filtering
 const fetchProducts = async ({
@@ -23,13 +23,12 @@ const fetchProducts = async ({
   searchQuery,
   child_category,
   selectedPrice,
-  pageSize = PAGE_SIZE,
 }) => {
   let q = collection(db, shopCollectionRef);
   let conditions = [];
   let orderField = '__name__'; // default alphabetical order
 
-  let page_size = pageSize;
+  let page_size = PAGE_SIZE;
 
   if (grandparent_category && grandparent_category !== '') {
     conditions.push(where('grandparent_category', '==', grandparent_category));
@@ -104,7 +103,6 @@ export const useProducts = (
   searchQuery,
   child_category,
   selectedPrice,
-  pageSize,
 ) => {
   return useInfiniteQuery({
     queryKey: [
@@ -123,7 +121,6 @@ export const useProducts = (
         child_category,
         selectedPrice,
         grandparent_category,
-        pageSize,
       }),
     getNextPageParam: (lastPage) => lastPage.lastDoc || undefined,
     staleTime: 1000 * 60 * 5,
