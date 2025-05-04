@@ -60,7 +60,7 @@ function TextureItem({
           alt="Texture"
           width="100"
           height="100"
-          // className="h-full w-full"
+          className="h-full w-full"
           onClick={() => handleTextureChange(texture)}
           onContextMenu={(e) => e.preventDefault()}
         /> */}
@@ -82,7 +82,7 @@ function TextureItem({
           effect="blur" // Optional: other options are 'opacity', 'black-and-white', or no effect
           onClick={() => handleTextureChange(texture)}
           onContextMenu={(e) => e.preventDefault()}
-          className=" object-cover"
+          // className=" object-contain w-full h-full"
           height="100"
           width="100"
         />
