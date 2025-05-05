@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router';
@@ -16,12 +16,32 @@ const ProductCard = ({ product }) => {
   const currencyFactor = useSelector((state) => state.currencySymbol.factor);
 
   // Calculate discounted price
-  const discountedPrice = product?.discount
-    ? (
+  // const discountedPrice = product?.discount
+  //   ? (
+  //       (product?.price - (product?.price * product?.discount) / 100) *
+  //       currencyFactor
+  //     ).toFixed(2)
+  //   : (product?.price * currencyFactor).toFixed(2);
+
+  const finalPrice = useMemo(() => {
+    if (!product) return '0.00';
+    const price = product?.price * currencyFactor;
+    if (product?.discount) {
+      return (
         (product?.price - (product?.price * product?.discount) / 100) *
         currencyFactor
-      ).toFixed(2)
-    : (product?.price * currencyFactor).toFixed(2);
+      ).toFixed(2);
+    }
+    return price.toFixed(2);
+  }, [product, currencyFactor]);
+
+  const originalPrice = useMemo(() => {
+    return (product?.price * currencyFactor).toFixed(2);
+  }, [product, currencyFactor]);
+
+  const imageUrl = useMemo(() => {
+    return product?.images[0];
+  }, [product?.images[0]]);
 
   return (
     <motion.div
@@ -48,7 +68,8 @@ const ProductCard = ({ product }) => {
           // loading="lazy"
         /> */}
         <LazyLoadImage
-          src={getOptimizedImageUrl(product?.images[0], 400, 75)}
+          // src={getOptimizedImageUrl(product?.images[0], 400, 75)}
+          src={imageUrl}
           alt={product?.name}
           height="100"
           width="100"
@@ -70,17 +91,18 @@ const ProductCard = ({ product }) => {
             <div className="flex  gap-2">
               <p className="text-gray-400 line-through text-sm">
                 {currencySymbol}
-                {(product?.price * currencyFactor).toFixed(2)}
+                {/* {(product?.price * currencyFactor).toFixed(2)} */}
+                {originalPrice}
               </p>
               <p className="text-yellow-500 font-bold">
                 {currencySymbol}
-                {discountedPrice}
+                {finalPrice}
               </p>
             </div>
           ) : (
             <p className="text-yellow-500 font-bold">
               {currencySymbol}
-              {(product?.price * currencyFactor).toFixed(2)}
+              {originalPrice}
             </p>
           )}
         </div>
