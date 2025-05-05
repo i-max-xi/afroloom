@@ -48,9 +48,9 @@ function TextureItem({
   }, [texture]);
 
   return (
-    <div className="texture-item">
+    <div className="flex flex-col justify-between items-center">
       <div
-        className={`texture-button ${
+        className={`w-fit h-fit ${
           selectedTexture === texture ? 'border-3 border-[#ffc107]' : ''
         }`}
       >
@@ -82,9 +82,9 @@ function TextureItem({
           effect="blur" // Optional: other options are 'opacity', 'black-and-white', or no effect
           onClick={() => handleTextureChange(texture)}
           onContextMenu={(e) => e.preventDefault()}
-          // className=" object-contain w-full h-full"
-          height="100"
-          width="100"
+          className=" object-contain min-w-[4rem] w-[4rem] h-[3.5rem]"
+          // height="100%"
+          // width="100%"
         />
       </div>
 
