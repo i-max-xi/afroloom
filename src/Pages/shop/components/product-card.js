@@ -48,13 +48,13 @@ const ProductCard = ({ product }) => {
           // loading="lazy"
         /> */}
         <LazyLoadImage
-          src={product?.images[0]}
+          src={getOptimizedImageUrl(product?.images[0], 400, 75)}
           alt={product?.name}
           height="100"
           width="100"
           className="w-full h-full object-contain"
           effect="blur"
-          // loading="lazy"
+          loading="lazy"
         />
       </div>
 

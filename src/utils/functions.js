@@ -86,7 +86,14 @@ export const generateSearchKeywords = (text) => {
 // console.log(generateSearchKeywords("Red Perfume"));
 // Output: ['r', 're', 'red', 'p', 'pe', 'per', 'perf', 'perfu', 'perfum', 'perfume', 'red', 'perfume']
 
-export const getOptimizedImageUrl = (imagePath, width = 500, quality = 80) => {
-  const baseUrl = `https://ik.imagekit.io/${process.env.REACT_APP_IMAGEKIT_ID}`;
-  return `${baseUrl}/${imagePath}?tr=w-${width},q-${quality},f-auto`;
+// export const getOptimizedImageUrl = (imagePath, width = 500, quality = 80) => {
+//   const baseUrl = `https://ik.imagekit.io/${process.env.REACT_APP_IMAGEKIT_ID}`;
+//   return `${baseUrl}/${imagePath}?tr=w-${width},q-${quality},f-auto`;
+// };
+
+export const getOptimizedImageUrl = (url, width = 400, quality = 75) => {
+  if (!url.includes('firebasestorage.googleapis.com')) return url;
+
+  // Firebase serves through Google CDN, which supports `=w{width}-q{quality}` URL modifiers for image optimization
+  return `${url}=w${width}-q${quality}`;
 };
