@@ -12,7 +12,7 @@ const HomePage = () => {
   const carousel3 = '/assets/HomePage/landing-page-re-3.webp';
   const carousel4 = '/assets/HomePage/landing-page-re-4.webp';
 
-  const perfectFit = '/assets/HomePage/Perfect Fit Guarantee .webp';
+  const perfectFit = '/assets/HomePage/Perfect Fit Guarantee.webp';
   const qualityFabric =
     '/assets/HomePage/Bulk African wax print fabrics - Flowery African Wax Print - 6 yards.webp';
   const convenientOnlineProcess =
