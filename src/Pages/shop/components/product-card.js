@@ -84,7 +84,7 @@ const ProductCard = ({ product }) => {
           width="100"
           className="w-full h-full object-contain"
           effect="blur"
-          loading="lazy"
+          loading="eager"
         />
       </div>
 
