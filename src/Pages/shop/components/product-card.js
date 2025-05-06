@@ -39,9 +39,18 @@ const ProductCard = ({ product }) => {
     return (product?.price * currencyFactor).toFixed(2);
   }, [product, currencyFactor]);
 
+  // const firebaseImagePath = product.images[0].replace(
+  //   'https://firebasestorage.googleapis.com/',
+  //   '',
+  // );
+
+  // const imageUrl = useMemo(() => {
+  //   return `https://ik.imagekit.io/q1qpjuotl/firebase/${firebaseImagePath}`;
+  // }, [product?.images?.[0]]);
+
   const imageUrl = useMemo(() => {
-    return product?.images[0];
-  }, [product?.images[0]]);
+    return product.images[0];
+  }, [product?.images?.[0]]);
 
   return (
     <motion.div
