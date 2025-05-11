@@ -181,11 +181,32 @@ export default function EditProductDialog({
     const files = event.files;
     if (!files || files.length === 0) return;
 
+    const maxSizeInBytes = 500 * 1024; // 500 KB
+
+    // Filter valid images (webp and under 500KB)
+    const validFiles = files.filter((file) => {
+      const isWebP = file.type === 'image/webp';
+      const isUnderLimit = file.size <= maxSizeInBytes;
+
+      if (!isWebP || !isUnderLimit) {
+        toastRef.current?.show({
+          severity: 'warn',
+          summary: 'Upload failed',
+          detail: `Only .webp images under 500KB are allowed. Skipped: ${file.name}`,
+        });
+        return false;
+      }
+
+      return true;
+    });
+
+    if (validFiles.length === 0) return;
+
     setUploading(true);
     const storage = getStorage(app);
     const uploadPromises = files.map((file) => {
       return new Promise((resolve, reject) => {
-        const storageRef = ref(storage, `loomstore/${file.name}`);
+        const storageRef = ref(storage, `new_loomstore/${file.name}`);
         const uploadTask = uploadBytesResumable(storageRef, file);
 
         uploadTask.on(

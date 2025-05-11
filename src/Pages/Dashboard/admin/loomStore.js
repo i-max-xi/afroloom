@@ -142,12 +142,15 @@ const LoomStore = () => {
       <Toast ref={toast} />
       <h5>Manage Products</h5>
       {/* Search & Filter Bar */}
-      <div className="w-full flex justify-center items-center my-6">
+      <div className="w-full flex flex-col gap-3 justify-center items-center my-6">
+        <h3 className="capitalize">total: {products.length}</h3>
+
         <div
           id="products"
           className="relative w-full max-w-lg flex items-center justify-between bg-white border border-gray-300 rounded-full px-4 py-2 shadow-sm"
         >
           {/* Search Input */}
+
           <input
             type="text"
             placeholder="Search products..."
@@ -221,7 +224,7 @@ const LoomStore = () => {
             </div>
           )}
         />
-        <Column
+        {/* <Column
           header="Images"
           body={(rowData) => (
             <p className="flex flex-col gap-1">
@@ -236,7 +239,32 @@ const LoomStore = () => {
               ))}
             </p>
           )}
+        /> */}
+        <Column
+          header="Images"
+          body={(rowData) => (
+            <div className="flex flex-col gap-1">
+              {rowData?.images.map((image, index) => (
+                <div key={index} className="flex items-center gap-2">
+                  <Image
+                    preview
+                    src={image}
+                    alt={`Product ${index}`}
+                    className="w-8 h-8 rounded-lg object-cover shadow-md"
+                  />
+                  <a
+                    href={image}
+                    download={`product-image-${index}.jpg`}
+                    className="text-xs text-blue-500 underline"
+                  >
+                    Download
+                  </a>
+                </div>
+              ))}
+            </div>
+          )}
         />
+
         <Column field="name" header="Name" />
         <Column
           header="Price"
@@ -256,8 +284,29 @@ const LoomStore = () => {
             </span>
           )}
         />
-        <Column
+        {/* <Column
           header="Division"
+          body={(rowData) => {
+            const isOrderToSew =
+              rowData?.grandparent_category === 'order to sew';
+            const icon = isOrderToSew ? '🧵' : '👗';
+            const color = isOrderToSew ? 'text-red-500' : 'text-green-500';
+
+            return (
+              <p className={`flex items-center gap-2 font-medium ${color}`}>
+                <span>{icon}</span>
+                <span className="capitalize">
+                  {rowData?.grandparent_category}
+                </span>
+              </p>
+            );
+          }}
+        /> */}
+
+        <Column
+          field="grandparent_category"
+          header="Division"
+          sortable
           body={(rowData) => {
             const isOrderToSew =
               rowData?.grandparent_category === 'order to sew';
