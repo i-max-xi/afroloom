@@ -158,11 +158,35 @@ export default function AddProduct() {
     const files = event.files;
     if (!files || files.length === 0) return;
 
+    const maxSizeInBytes = 500 * 1024; // 500 KB
+
+    // Filter valid images (webp and under 500KB)
+    const validFiles = files.filter((file) => {
+      const isWebP = file.type === 'image/webp';
+      const isUnderLimit = file.size <= maxSizeInBytes;
+
+      if (!isWebP || !isUnderLimit) {
+        toastRef.current?.show({
+          severity: 'warn',
+          summary: 'Upload failed',
+          detail: `Only .webp images under 500KB are allowed. Skipped: ${file.name}`,
+        });
+        return false;
+      }
+
+      return true;
+    });
+
+    if (validFiles.length === 0) return;
+
     setUploading(true);
     const storage = getStorage(app);
     const uploadPromises = files.map((file) => {
       return new Promise((resolve, reject) => {
-        const storageRef = ref(storage, `loomstore/${uuidv4()}-${file.name}`); // Unique filename
+        const storageRef = ref(
+          storage,
+          `new_loomstore/${uuidv4()}-${file.name}`,
+        ); // Unique filename
         const uploadTask = uploadBytesResumable(storageRef, file);
 
         uploadTask.on(
@@ -275,7 +299,6 @@ export default function AddProduct() {
       color_variants: isChecked ? [...color_variant_options] : [],
     }));
   };
-
 
   return (
     <motion.div className="max-w-3xl mx-auto bg-white p-6 rounded-2xl shadow-md">
