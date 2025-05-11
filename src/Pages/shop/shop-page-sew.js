@@ -147,7 +147,7 @@ const ShopPageSew = () => {
         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-6 px-4 md:px-8 lg:px-8">
           {products?.length > 0 ? (
             products.map((product, index) => {
-              const triggerOffset = 2; // Load more when 5 from end
+              const triggerOffset = 50; // Load more when 5 from end
               if (products.length - index === triggerOffset) {
                 return (
                   <div ref={lastProductElementRef} key={index}>
