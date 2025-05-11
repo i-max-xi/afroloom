@@ -12,7 +12,7 @@ import {
 } from 'firebase/firestore';
 import { db } from '../../../firebase';
 
-const PAGE_SIZE = 70; // Number of products per page
+const PAGE_SIZE = 100; // Number of products per page
 const shopCollectionRef = 'loomStore';
 
 // Fetch products with category & search filtering
