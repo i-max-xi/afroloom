@@ -15,6 +15,7 @@ import katangaAlternate from './textures/diaspora/kat_LE_auto_x2 - Copy.jpg';
 import AsanteheneAnniversaryAlternate from './textures/commemorative/1-imageonline.co-merged - Copy.jpeg';
 import AsanteheneAnniversaryAlternate2 from './textures/commemorative/gfsdg-imageonline.co-merged (1) - Copy.jpeg';
 import GhanaMapAlternate from './textures/new_textures/7. ghana flag.jpg';
+import { Image } from 'primereact/image';
 
 const textureMap = {
   '/static/media/10 medofo.84aa9ed3bbc49733e1bd.jpg': alternateTexture,
@@ -50,7 +51,7 @@ function TextureItem({
   return (
     <div className="flex flex-col justify-between items-center">
       <div
-        className={`w-fit h-fit ${
+        className={`w-[3.4rem] h-[3.4rem] flex flex-col justify-between items-center overflow-hidden ${
           selectedTexture === texture ? 'border-3 border-[#ffc107]' : ''
         }`}
       >
@@ -76,15 +77,22 @@ function TextureItem({
           onClick={() => handleTextureChange(texture)}
           onContextMenu={(e) => e.preventDefault()}
         /> */}
-        <LazyLoadImage
+        {/* <LazyLoadImage
           alt="Texture"
           src={texture}
           effect="blur" // Optional: other options are 'opacity', 'black-and-white', or no effect
           onClick={() => handleTextureChange(texture)}
           onContextMenu={(e) => e.preventDefault()}
           className=" object-contain min-w-[4rem] w-[4rem] h-[3.5rem]"
+          
+        /> */}
+        <Image
+          alt="Texture"
+          src={texture}
+          onClick={() => handleTextureChange(texture)}
+          onContextMenu={(e) => e.preventDefault()}
+          className=" object-contain h-full w-full"
           // height="100%"
-          // width="100%"
         />
       </div>
 
