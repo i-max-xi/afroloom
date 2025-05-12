@@ -69,7 +69,7 @@ const ProductCard = ({ product }) => {
       }}
     >
       {/* Product Image */}
-      <div className="w-full h-48 bg-gray-200 rounded-lg relative overflow-hidden">
+      <div className="w-full h-48 bg-gray-200 rounded-lg relative overflow-hidden flex items-center justify-center">
         {/* <img
           // src={getOptimizedImageUrl(images[0], 500, 80)}
           src={product?.images[0]}
