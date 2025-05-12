@@ -137,13 +137,39 @@ const LoomStore = () => {
     );
   }
 
+  const breakdown = [
+    {
+      name: 'Order To Sew',
+      value: products.filter(
+        (item) => item.grandparent_category === 'order to sew',
+      ).length,
+    },
+    {
+      name: 'Ready to wear',
+      value: products.filter(
+        (item) => item.grandparent_category === 'ready to wear',
+      ).length,
+    },
+  ];
+
   return (
     <div className="px-4">
       <Toast ref={toast} />
       <h5>Manage Products</h5>
       {/* Search & Filter Bar */}
       <div className="w-full flex flex-col gap-3 justify-center items-center my-6">
-        <h3 className="capitalize">total: {products.length}</h3>
+        <h3 className="capitalize">
+          total: {products.length.toLocaleString()}
+        </h3>
+
+        <div className="flex items-center gap-10 justify-center">
+          {breakdown.map((item) => (
+            <div className="flex gap-1 flex-col items-center justify-center">
+              <p className="text-sm text-gray-500 underline">{item.name}</p>
+              <p className="font-semibold">{item.value.toLocaleString()}</p>
+            </div>
+          ))}
+        </div>
 
         <div
           id="products"
