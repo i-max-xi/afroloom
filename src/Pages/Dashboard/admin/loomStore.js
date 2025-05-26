@@ -24,6 +24,7 @@ const LoomStore = () => {
     isFetching,
   } = useAllProducts();
   const products = allProducts?.pages?.flatMap((page) => page.products) || [];
+  const [selectedProducts, setSelectedProducts] = useState([]);
 
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('');
@@ -89,20 +90,25 @@ const LoomStore = () => {
   const deleteProduct = async () => {
     setIsLoading(true);
     try {
-      await deleteDoc(doc(db, 'loomStore', selectedProduct.id));
-      // setProducts(products.filter((product) => product.id !== selectedProduct.id));
+      const deletePromises = selectedProducts.map((product) =>
+        deleteDoc(doc(db, 'loomStore', product.id)),
+      );
+
+      await Promise.all(deletePromises);
+
       refetch();
+      setSelectedProducts([]);
       toast.current.show({
         severity: 'success',
         summary: 'Success',
-        detail: 'Product deleted',
+        detail: `${selectedProducts.length} product(s) deleted`,
       });
     } catch (error) {
-      console.error('Error deleting product:', error);
+      console.error('Error deleting products:', error);
       toast.current.show({
         severity: 'error',
         summary: 'Error',
-        detail: 'Failed to delete product',
+        detail: 'Failed to delete products',
       });
     }
     setIsLoading(false);
@@ -227,12 +233,30 @@ const LoomStore = () => {
         </div>
       </div>
 
+      <section className="mb-4">
+        {selectedProducts.length > 0 && (
+          <div className="flex justify-end ">
+            <Button
+              label={`Delete (${selectedProducts.length})`}
+              icon="pi pi-trash"
+              className="p-button-danger rounded-md"
+              onClick={() => setDeleteDialog(true)}
+            />
+          </div>
+        )}
+      </section>
+
       <DataTable
         value={filteredProducts}
         paginator
         rows={10}
         rowsPerPageOptions={[5, 10, 25]}
+        selection={selectedProducts}
+        onSelectionChange={(e) => setSelectedProducts(e.value)}
+        dataKey="id" // Important for selection to work
       >
+        <Column selectionMode="multiple" headerStyle={{ width: '0.5rem' }} />
+
         <Column
           header="Actions"
           body={(rowData) => (
@@ -407,7 +431,6 @@ const LoomStore = () => {
           )}
         />
       </DataTable>
-
       <Dialog
         visible={deleteDialog}
         header="Confirm Deletion"
@@ -424,14 +447,19 @@ const LoomStore = () => {
               label="Yes"
               icon="pi pi-check"
               onClick={deleteProduct}
-              className="p-button-danger"
+              className="p-button-danger rounded-md"
               loading={isLoading}
             />
           </div>
         }
         onHide={() => setDeleteDialog(false)}
       >
-        <p>Are you sure you want to delete this product?</p>
+        <p>
+          Are you sure you want to delete{' '}
+          {selectedProducts.length > 1
+            ? `these (${selectedProducts.length}) products?`
+            : 'this product?'}
+        </p>
       </Dialog>
 
       {editDialog && (
