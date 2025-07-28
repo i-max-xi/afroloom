@@ -272,7 +272,7 @@ export const specialSash = [
     },
     otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
     myZoom: 0.6,
-    price: 120,
+    price: 75,
     readyIn: 7,
     sizeGuide: sash_guide,
     sizeOptions: [
@@ -322,7 +322,7 @@ export const specialSash = [
     },
     otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
     myZoom: 0.6,
-    price: 120,
+    price: 75,
     readyIn: 7,
     sizeGuide: sash_guide,
     sizeOptions: [
@@ -372,7 +372,7 @@ export const specialSash = [
     },
     otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
     myZoom: 0.6,
-    price: 120,
+    price: 75,
     readyIn: 7,
     sizeGuide: sash_guide,
     sizeOptions: [
@@ -423,7 +423,7 @@ export const specialSash = [
     },
     otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
     myZoom: 0.6,
-    price: 120,
+    price: 75,
     readyIn: 7,
     sizeGuide: sash_guide,
     sizeOptions: [
@@ -473,7 +473,7 @@ export const specialSash = [
     },
     otherYards: { small: 3, large: 4, extraLarge: 5, extraExtraLarge: 5 },
     myZoom: 0.7,
-    price: 120,
+    price: 75,
     readyIn: 7,
     sizeGuide: sash_guide,
     sizeOptions: [
@@ -524,7 +524,7 @@ export const specialSash = [
     },
     otherYards: { small: 2, large: 4, extraLarge: 5, extraExtraLarge: 5 },
     myZoom: 0.65,
-    price: 120,
+    price: 75,
     readyIn: 7,
     sizeGuide: sash_guide,
     sizeOptions: [
@@ -573,7 +573,7 @@ export const specialSash = [
     },
     otherYards: { small: 3, large: 4, extraLarge: 5, extraExtraLarge: 5 },
     myZoom: 0.7,
-    price: 120,
+    price: 75,
     readyIn: 7,
     sizeGuide: sash_guide,
     sizeOptions: [
@@ -622,7 +622,7 @@ export const specialSash = [
     },
     otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
     myZoom: 0.65,
-    price: 120,
+    price: 75,
     readyIn: 7,
     sizeGuide: sash_guide,
     sizeOptions: [
@@ -671,7 +671,7 @@ export const specialSash = [
     },
     otherYards: { small: 3, large: 4, extraLarge: 5, extraExtraLarge: 5 },
     myZoom: 0.65,
-    price: 120,
+    price: 75,
     readyIn: 7,
     sizeGuide: sash_guide,
     sizeOptions: [
@@ -720,7 +720,7 @@ export const specialSash = [
   //   },
   //   otherYards: { small: 3, large: 4, extraLarge: 5, extraExtraLarge: 5 },
   //   myZoom: 0.7,
-  //   price: 120,
+  //   price: 75,
   //   readyIn: 7,
   //   sizeGuide: sash_guide,
   //   sizeOptions: [
@@ -770,7 +770,7 @@ export const specialSash = [
     },
     otherYards: { small: 3, large: 4, extraLarge: 5, extraExtraLarge: 5 },
     myZoom: 0.7,
-    price: 120,
+    price: 75,
     readyIn: 7,
     sizeGuide: sash_guide,
     sizeOptions: [
@@ -819,7 +819,7 @@ export const specialSash = [
     },
     otherYards: { small: 3, large: 4, extraLarge: 5, extraExtraLarge: 5 },
     myZoom: 0.7,
-    price: 120,
+    price: 75,
     readyIn: 7,
     sizeGuide: sash_guide,
     sizeOptions: [
@@ -868,7 +868,7 @@ export const specialSash = [
     },
     otherYards: { small: 3, large: 4, extraLarge: 5, extraExtraLarge: 5 },
     myZoom: 0.75,
-    price: 120,
+    price: 75,
     readyIn: 7,
     sizeGuide: sash_guide,
     sizeOptions: [
@@ -917,7 +917,7 @@ export const specialSash = [
     },
     otherYards: { small: 3, large: 4, extraLarge: 5, extraExtraLarge: 5 },
     myZoom: 0.75,
-    price: 120,
+    price: 75,
     readyIn: 7,
     sizeGuide: sash_guide,
     sizeOptions: [
@@ -967,7 +967,7 @@ export const specialSash = [
     },
     otherYards: { small: 3, large: 4, extraLarge: 5, extraExtraLarge: 5 },
     myZoom: 0.8,
-    price: 120,
+    price: 75,
     readyIn: 7,
     sizeGuide: sash_guide,
     sizeOptions: [
@@ -1018,7 +1018,7 @@ export const specialSash = [
     },
     otherYards: { small: 3, large: 4, extraLarge: 5, extraExtraLarge: 6 },
     myZoom: 0.85,
-    price: 120,
+    price: 75,
     readyIn: 7,
     sizeGuide: sash_guide,
     sizeOptions: [
@@ -1068,7 +1068,7 @@ export const specialSash = [
     },
     otherYards: { small: 3, large: 4, extraLarge: 5, extraExtraLarge: 6 },
     myZoom: 0.9,
-    price: 120,
+    price: 75,
     readyIn: 7,
     sizeGuide: sash_guide,
     sizeOptions: [
@@ -1119,7 +1119,7 @@ export const specialSash = [
     },
     otherYards: { small: 3, large: 4, extraLarge: 6, extraExtraLarge: 7 },
     myZoom: 0.95,
-    price: 120,
+    price: 75,
     readyIn: 7,
     sizeGuide: sash_guide,
     sizeOptions: [
@@ -1169,7 +1169,7 @@ export const specialSash = [
   //   },
   //   otherYards: { small: 3, large: 4, extraLarge: 6, extraExtraLarge: 7 },
   //   myZoom: 1,
-  //   price: 120,
+  //   price: 75,
   //   readyIn: 7,
   //   sizeGuide: sash_guide,
   //   sizeOptions: [
@@ -1220,7 +1220,7 @@ export const specialSash = [
     },
     otherYards: { small: 3, large: 4, extraLarge: 6, extraExtraLarge: 7 },
     myZoom: 1.05,
-    price: 120,
+    price: 75,
     readyIn: 7,
     sizeGuide: sash_guide,
     sizeOptions: [
@@ -1271,7 +1271,7 @@ export const specialSash = [
     },
     otherYards: { small: 3, large: 4, extraLarge: 6, extraExtraLarge: 7 },
     myZoom: 1.1,
-    price: 120,
+    price: 75,
     readyIn: 7,
     sizeGuide: sash_guide,
     sizeOptions: [
@@ -1322,7 +1322,7 @@ export const specialSash = [
     },
     otherYards: { small: 3, large: 4, extraLarge: 6, extraExtraLarge: 7 },
     myZoom: 1.15,
-    price: 120,
+    price: 75,
     readyIn: 7,
     sizeGuide: sash_guide,
     sizeOptions: [
@@ -1373,7 +1373,7 @@ export const specialSash = [
     },
     otherYards: { small: 3, large: 4, extraLarge: 6, extraExtraLarge: 7 },
     myZoom: 1.2,
-    price: 120,
+    price: 75,
     readyIn: 7,
     sizeGuide: sash_guide,
     sizeOptions: [
@@ -1624,7 +1624,7 @@ export const mainUnisex = [
     ],
     otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
     myZoom: 2,
-    price: 120,
+    price: 75,
     // sizeModels: tshirt_model,
     readyIn: 7,
     weight: 0.25,
@@ -1660,7 +1660,7 @@ export const mainUnisex = [
     ],
     otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
     myZoom: 2,
-    price: 120,
+    price: 75,
     readyIn: 7,
     // weight: 0.25,
     sizeGuide: sash_guide,
@@ -1694,7 +1694,7 @@ export const mainUnisex = [
     ],
     otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
     myZoom: 2,
-    price: 120,
+    price: 75,
     readyIn: 7,
     // weight: 0.25,
     sizeGuide: sash_guide,
@@ -1761,7 +1761,7 @@ export const mainUnisex = [
     ],
     otherYards: { small: 2, large: 3, extraLarge: 4, extraExtraLarge: 4 },
     myZoom: 2,
-    price: 120,
+    price: 75,
     readyIn: 7,
     sizeGuide: sash_guide,
     sizeOptions: [
