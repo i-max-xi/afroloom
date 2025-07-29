@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 export const FooterContact = ({
   infoDetail,
@@ -11,7 +11,7 @@ export const FooterContact = ({
       <div className="mx-1 footer-icon">{infoImage}</div>
       <div className="mx-auto">
         <h5 className="footer-icon-title">{infoTitle}</h5>
-        <div className="footer-icon-sub-title ">
+        <div className="footer-icon-sub-title flex flex-col gap-2">
           {infoDetail.map((info) => (
             <p>{info}</p>
           ))}

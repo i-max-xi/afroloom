@@ -1,33 +1,28 @@
-
-import React, { useEffect, useState } from "react";
-import AllServices from "../Services/usersService"; // Make sure the path is correct
-
-
+import React, { useEffect, useState } from 'react';
+import AllServices from '../Services/usersService'; // Make sure the path is correct
 
 const ContactInfo = () => {
-
   const [contacts, setContacts] = useState([]);
 
+  useEffect(() => {
+    const fetchContacts = async () => {
+      try {
+        const response = await AllServices.getAllcontactDetails();
+        setContacts(
+          response.docs.map((doc) => ({ ...doc.data(), id: doc.id })),
+        );
+      } catch (error) {
+        console.error('Error fetching contacts:', error);
+      }
+    };
 
-useEffect(() => { 
-  const fetchContacts = async () => {
-    try {
-      const response = await AllServices.getAllcontactDetails();
-      setContacts(
-        response.docs.map((doc) => ({ ...doc.data(), id: doc.id })),
-      );
-    } catch (error) {
-      console.error("Error fetching contacts:", error);
-    }
-  };
+    fetchContacts();
+  }, []);
 
-  fetchContacts();
-}, []);
-
-   const contact = [
+  const contact = [
     {
       id: 1,
-      title: "Find Us",
+      title: 'Find Us',
       detail: contacts[0]?.location || [],
       img: (
         <svg
@@ -44,8 +39,8 @@ useEffect(() => {
     },
     {
       id: 2,
-      title: "Call Us",
-      detail: ["(+233) 55 666 5072"],
+      title: 'Call Us',
+      detail: ['(+233) 25 689 4048', '(+233) 55 666 5072'],
       img: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -64,8 +59,8 @@ useEffect(() => {
     },
     {
       id: 3,
-      title: "Email Us",
-      detail: ["info@afroloom.com"],
+      title: 'Email Us',
+      detail: ['info@afroloom.com'],
       img: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -81,10 +76,7 @@ useEffect(() => {
     },
   ];
 
-  return contact
-  
-}
+  return contact;
+};
 
-export default ContactInfo
-
-
+export default ContactInfo;
