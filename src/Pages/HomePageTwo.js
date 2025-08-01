@@ -5,6 +5,7 @@ import { Carousel } from 'react-bootstrap';
 import { Timeline } from 'primereact/timeline';
 import ListItem from '../Components/List/ListItem';
 import { useProducts } from './shop/hooks/useProducts';
+import BannerNotice from '../Components/bannerad';
 
 const HomePage = () => {
   const carousel1 = '/assets/HomePage/landing-page-re-1.webp';
@@ -121,6 +122,11 @@ const HomePage = () => {
   return (
     <div>
       <Nav />
+      <BannerNotice
+        message="Hot now🔥 Click here to design your sash in 1 min"
+        href="/order-to-sew/sash-templates"
+      />
+
       <section className="hero-section">
         <Carousel>
           {carousel.map((item, index) => (
