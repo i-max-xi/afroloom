@@ -5,6 +5,9 @@ import { Carousel } from 'react-bootstrap';
 import { Timeline } from 'primereact/timeline';
 import ListItem from '../Components/List/ListItem';
 import { useProducts } from './shop/hooks/useProducts';
+import BannerNotice from '../Components/bannerad';
+import AddPopup from '../Components/addpopup';
+import { motion } from 'framer-motion';
 
 const HomePage = () => {
   const carousel1 = '/assets/HomePage/landing-page-re-1.webp';
@@ -121,6 +124,44 @@ const HomePage = () => {
   return (
     <div>
       <Nav />
+      <BannerNotice
+        // message="Hot now🔥 Click here to design your sash in 1 min"
+        href="/order-to-sew/sash-templates"
+      />
+
+      <AddPopup>
+        <motion.div
+          initial={{ scale: 0.9, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 0.4, ease: 'easeOut' }}
+          className="relative w-full max-w-md mx-auto"
+        >
+          <img
+            src="/assets/popupad/ad.png"
+            alt="Design Ad"
+            className="w-full rounded-md shadow-md"
+          />
+
+          {/* Overlay text and button with delayed fade-in */}
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6, duration: 0.4, ease: 'easeOut' }}
+            className="absolute inset-0 flex flex-col justify-end items-center pb-6 bg-gradient-to-t from-black/60 via-transparent to-transparent text-white"
+          >
+            <h2 className="text-lg md:text-xl font-semibold mb-2 text-center drop-shadow-lg">
+              Design your sash in under 1 minute
+            </h2>
+            <a
+              href="/order-to-sew/sash-templates"
+              className="bg-yellow-400 text-black font-semibold px-5 py-2 rounded hover:bg-yellow-500 transition cursor-pointer"
+            >
+              Start Designing →
+            </a>
+          </motion.div>
+        </motion.div>
+      </AddPopup>
+
       <section className="hero-section">
         <Carousel>
           {carousel.map((item, index) => (
