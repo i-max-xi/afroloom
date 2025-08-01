@@ -4,8 +4,8 @@ import { useState } from 'react';
 import { IoMdCloseCircle } from 'react-icons/io';
 
 export default function BannerNotice({
-  message = 'Click here to design a sash in 1 min',
-  href = '/design', // default link destination
+  message = 'Hot now🔥 Click here to design a sash in 1 min',
+  href = '/design',
   className = '',
 }) {
   const [visible, setVisible] = useState(true);
@@ -18,9 +18,11 @@ export default function BannerNotice({
     >
       <a
         href={href}
-        className="text-sm text-white font-medium underline underline-offset-2 hover:text-yellow-300 transition"
+        className="text-sm text-white font-medium hover:text-yellow-300 transition"
       >
-        {message}
+        Hot now🔥 Click{' '}
+        <span className="underline underline-offset-2">here</span> to design
+        your sash in 1 min
       </a>
 
       <button
