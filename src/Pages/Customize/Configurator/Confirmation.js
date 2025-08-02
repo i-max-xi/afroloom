@@ -144,7 +144,7 @@ const Confirmation = ({
   };
 
   return (
-    <div className="container flex flex-col justify-center items-center ">
+    <div className="container flex flex-col justify-center items-center  mx-auto">
       <Toast ref={toast} position="center" />{' '}
       {/* Add the Toast component here */}
       <h1 className="mt-4">Order Confirmation</h1>
@@ -227,7 +227,7 @@ export const OrderDetail = React.forwardRef(
     const navigate = useNavigate();
 
     return (
-      <div ref={ref} className="row all-confirmation-info">
+      <div ref={ref} className="row all-confirmation-info container mx-auto">
         <div className="">
           <p className="h5 mt-3 mb-5 model-confirm-image flex justify-center items-center">
             <img src={modelImage} alt="model img" width="80%" />

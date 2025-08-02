@@ -26,7 +26,7 @@ export default function BannerNotice({
       </a>
 
       <button
-        className="absolute right-4 top-1/2 -translate-y-1/2"
+        className="absolute right-4 top-1/2 -translate-y-1/2 hidden"
         onClick={() => setVisible(false)}
         aria-label="Dismiss banner"
       >
