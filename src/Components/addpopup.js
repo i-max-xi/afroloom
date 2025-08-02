@@ -13,13 +13,18 @@ export default function AddPopup({ title = 'Add Item', children }) {
 
   return (
     <Dialog
-      header={''}
+      header={null}
       visible={visible}
       onHide={() => setVisible(false)}
-      //   style={{ width: '30vw' }}
+      dismissableMask
+      showHeader={false}
       modal
-      draggable={false}
       closable
+      draggable={false}
+      contentStyle={{ padding: 0 }}
+      style={{ width: 'auto', maxWidth: '90vw', padding: 0, borderRadius: 10 }}
+      headerStyle={{ padding: 0 }}
+      className="p-0 m-0"
     >
       {children}
     </Dialog>

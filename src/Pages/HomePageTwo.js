@@ -125,7 +125,7 @@ const HomePage = () => {
     <div>
       <Nav />
       <BannerNotice
-        // message="Hot now🔥 Click here to design your sash in 1 min"
+        // message="Hot now🔥 Design and purchase your sash in 1 min"
         href="/order-to-sew/sash-templates"
       />
 
@@ -134,29 +134,31 @@ const HomePage = () => {
           initial={{ scale: 0.9, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 0.4, ease: 'easeOut' }}
-          className="relative w-full max-w-md mx-auto"
+          className="relative   w-full max-w-md mx-auto "
         >
-          <img
-            src="/assets/popupad/ad.png"
-            alt="Design Ad"
-            className="w-full rounded-md shadow-md"
-          />
+          <div className="h-[60vh]   flex items-center justify-center overflow-hidden">
+            <img
+              src="/assets/popupad/add.webp"
+              alt="Design Ad"
+              className="w-full h-full   shadow-md object-cover"
+            />
+          </div>
 
           {/* Overlay text and button with delayed fade-in */}
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, duration: 0.4, ease: 'easeOut' }}
-            className="absolute inset-0 flex flex-col justify-end items-center pb-6 bg-gradient-to-t from-black/60 via-transparent to-transparent text-white"
+            className="absolute inset-0 flex flex-col justify-end items-center pb-6 bg-gradient-to-t from-black via-transparent to-transparent text-white"
           >
             <h2 className="text-lg md:text-xl font-semibold mb-2 text-center drop-shadow-lg">
-              Design your sash in under 1 minute
+              Grab Your Sash in 60 Seconds!
             </h2>
             <a
               href="/order-to-sew/sash-templates"
               className="bg-yellow-400 text-black font-semibold px-5 py-2 rounded hover:bg-yellow-500 transition cursor-pointer"
             >
-              Start Designing →
+              Order Now →
             </a>
           </motion.div>
         </motion.div>
