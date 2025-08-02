@@ -21,7 +21,7 @@ export default function BannerNotice({
         className="text-sm text-white font-medium hover:text-yellow-300 transition"
       >
         Hot now🔥 Click{' '}
-        <span className="underline underline-offset-2">here</span> to design
+        <span className="underline underline-offset-2">here</span> to purchase
         your sash in 1 min
       </a>
 
