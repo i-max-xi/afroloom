@@ -40,7 +40,11 @@ const ContactInfo = () => {
     {
       id: 2,
       title: 'Call Us',
-      detail: ['(+233) 25 689 4048'],
+      detail: [
+        '(+233) 55 666 5072',
+        '(+233) 50 408 9458',
+        '(+233) 25 689 4048',
+      ],
       img: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
