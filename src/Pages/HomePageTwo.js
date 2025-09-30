@@ -121,6 +121,8 @@ const HomePage = () => {
   // sew
   useProducts('order to sew', '', '', '', '', 30);
 
+  const displayImage = '/assets/sash_with_people/0.jpg';
+
   return (
     <div>
       <Nav />
@@ -138,7 +140,8 @@ const HomePage = () => {
         >
           <div className="h-[60vh]   flex items-center justify-center overflow-hidden">
             <img
-              src="/assets/popupad/add.webp"
+              // src="/assets/popupad/add.webp"
+              src={displayImage}
               alt="Design Ad"
               className="w-full h-full   shadow-md object-cover"
             />
