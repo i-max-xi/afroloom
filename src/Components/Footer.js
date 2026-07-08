@@ -1,18 +1,28 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import SocialMedia from './SocialMedia';
 import Header2 from './Header2';
+import CorporateFooterBanner from './CorporateFooterBanner';
 import { FooterContact } from './FooterContact';
 import contactInfo from '../Data/contactList';
 import { isMobile } from '../utils/constants';
+import { getActiveProduct } from '../utils/productRoutes';
+
 const Logo = '/assets/AFRO LOGO 4_footer.webp';
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const { pathname } = useLocation();
+  const activeProduct = getActiveProduct(pathname);
+  const isLoomstore = activeProduct === 'loomstore';
 
   return (
     <div className="bg-black text-center text-white footer">
-      <Header2 color="black" bgColor="orange" />
+      {isLoomstore ? (
+        <Header2 Color="white" bgColor="orange" />
+      ) : (
+        <CorporateFooterBanner Color="white" bgColor="orange" />
+      )}
 
       <div>
         {/* special contact  */}

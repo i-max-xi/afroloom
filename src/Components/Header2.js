@@ -3,12 +3,12 @@ import React from "react";
 const Header2 = ({ bgColor, Color, Padding, Icon1, Icon2, Icon3, Icon4 }) => {
   // Reusable function to render a list item
   const renderListItem = (icon, title, description = "") => (
-    <li className=" flex flex-col gap-1 lg:flex-row justify-center items-center border-r even:border-none lg:my-10 px-4">
-      <p className="scale-75">{icon}</p>
-      
+    <li className="flex flex-col gap-1 lg:flex-row justify-center items-center border-r border-white/30 last:border-r-0 even:border-none lg:even:border-r lg:my-10 px-4">
+      <div className="flex shrink-0 items-center justify-center">{icon}</div>
+
       <div className="flex flex-col justify-content-center gap-1 leading-tight">
-        <p className="font-medium text-sm text-center">{title}</p>
-        <p className="text-xs text-center" >
+        <p className="mb-0 font-medium text-sm text-center text-white">{title}</p>
+        <p className="mb-0 text-xs text-center text-white/90">
           {description}
         </p>
       </div>
@@ -17,7 +17,7 @@ const Header2 = ({ bgColor, Color, Padding, Icon1, Icon2, Icon3, Icon4 }) => {
 
   return (
     <div
-      className=" rounded-top "
+      className="rounded-top text-white"
       style={{ backgroundColor: bgColor, color: Color, padding: Padding }}
     >
       <ul className="container  grid grid-cols-2 lg:grid-cols-4 p-2 lg:p-5 gap-2 lg:gap-5 list-unstyled justify-content-around">
@@ -26,8 +26,11 @@ const Header2 = ({ bgColor, Color, Padding, Icon1, Icon2, Icon3, Icon4 }) => {
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="currentColor"
-          className="bi bi-check2-circle more-info-icon"
+          className="bi bi-check2-circle more-info-icon shrink-0 text-white"
           viewBox="0 0 16 16"
+          width="32"
+          height="32"
+          aria-hidden="true"
         >
           <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z" />
           <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z" />
@@ -40,8 +43,11 @@ const Header2 = ({ bgColor, Color, Padding, Icon1, Icon2, Icon3, Icon4 }) => {
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="currentColor"
-          className="bi bi-bag-check more-info-icon"
+          className="bi bi-bag-check more-info-icon shrink-0 text-white"
           viewBox="0 0 16 16"
+          width="32"
+          height="32"
+          aria-hidden="true"
         >
           <path
             fillRule="evenodd"
@@ -57,8 +63,11 @@ const Header2 = ({ bgColor, Color, Padding, Icon1, Icon2, Icon3, Icon4 }) => {
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="currentColor"
-          className="bi bi-cash-coin more-info-icon"
+          className="bi bi-cash-coin more-info-icon shrink-0 text-white"
           viewBox="0 0 16 16"
+          width="32"
+          height="32"
+          aria-hidden="true"
         >
           <path
             fillRule="evenodd"
@@ -75,8 +84,11 @@ const Header2 = ({ bgColor, Color, Padding, Icon1, Icon2, Icon3, Icon4 }) => {
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="currentColor"
-          className="bi bi-bootstrap-reboot more-info-icon"
+          className="bi bi-bootstrap-reboot more-info-icon shrink-0 text-white"
           viewBox="0 0 16 16"
+          width="32"
+          height="32"
+          aria-hidden="true"
         >
           <path d="M1.161 8a6.84 6.84 0 1 0 6.842-6.84.58.58 0 1 1 0-1.16 8 8 0 1 1-6.556 3.412l-.663-.577a.58.58 0 0 1 .227-.997l2.52-.69a.58.58 0 0 1 .728.633l-.332 2.592a.58.58 0 0 1-.956.364l-.643-.56A6.812 6.812 0 0 0 1.16 8z" />
           <path d="M6.641 11.671V8.843h1.57l1.498 2.828h1.314L9.377 8.665c.897-.3 1.427-1.106 1.427-2.1 0-1.37-.943-2.246-2.456-2.246H5.5v7.352h1.141zm0-3.75V5.277h1.57c.881 0 1.416.499 1.416 1.32 0 .84-.504 1.324-1.386 1.324h-1.6z" />
