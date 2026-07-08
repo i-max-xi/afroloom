@@ -1,0 +1,530 @@
+import React, { useEffect, useRef, useState } from 'react';
+import { useReactToPrint } from 'react-to-print';
+import html2canvas from 'html2canvas';
+import { Link, useNavigate } from 'react-router-dom';
+import { InputTextarea } from 'primereact/inputtextarea';
+
+import { app } from '../../../firebase'; // Import your firebase app object
+import {
+  getStorage,
+  ref,
+  uploadString,
+  getDownloadURL,
+} from 'firebase/storage';
+import { Toast } from 'primereact/toast';
+import { ProgressSpinner } from 'primereact/progressspinner';
+import { addToCart } from '../../../Redux/store';
+import { useDispatch, useSelector } from 'react-redux';
+import { parseTitle } from '../../../utils/functions';
+import { Divider } from 'primereact/divider';
+import { onlySashes } from './arrays/neededArrays';
+
+const Confirmation = ({
+  total,
+  currencySymbol,
+  setShowConfirmation,
+  readyBy,
+  name,
+  selectedParts,
+  selectedPrintOn,
+  selectedSize,
+  modelImage,
+  customSizeValues,
+  height,
+  gender,
+  uploadedImageLeft,
+  uploadedImageRight,
+  textLeft,
+  textRight,
+}) => {
+  const toast = useRef(null);
+  const [isLoading, setIsLoading] = useState(false); // Initialize loading state
+  const [addedToCart, setAddedToCart] = useState(false);
+  const dispatch = useDispatch();
+
+  const [count, setCount] = useState(1);
+  const [special, setSpecial] = useState('');
+
+  const [readyByCount, setReadyByCount] = useState(readyBy);
+
+  const handleIncrement = () => {
+    setCount((prevCount) => prevCount + 1);
+    setReadyByCount((prevCount) => prevCount + 3);
+  };
+
+  const handleDecrement = () => {
+    if (count > 1) {
+      setCount((prevCount) => prevCount - 1);
+      setReadyByCount((prevCount) => prevCount - 3);
+    }
+  };
+
+  const componentRef = useRef();
+  const handlePrint = useReactToPrint({
+    content: () => componentRef.current,
+  });
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  const storage = getStorage(app);
+
+  const handleFormSubmit = async () => {
+    try {
+      setIsLoading(true);
+      const image = await html2canvas(componentRef.current, {
+        useCORS: true, // Ensure cross-origin images are captured
+      });
+
+      // Convert the captured image into a data URL
+      const imageDataURL = image.toDataURL('image/png');
+
+      // Upload the captured image to Firebase Storage
+      const storageRef = ref(storage, `Order_images/${Date.now()}.png`);
+      await uploadString(storageRef, imageDataURL, 'data_url');
+
+      // Get the download URL of the uploaded image
+      const downloadURL = await getDownloadURL(storageRef);
+
+      // Create formData
+      const formData = [
+        {
+          price: total,
+          modelImage,
+          currencySymbol,
+          readyBy: readyByCount,
+          name,
+          selectedSize,
+          quantity: count,
+          selectedParts: selectedParts,
+          customSizeValues: customSizeValues,
+          height: height,
+          gender: gender,
+          specialRequests: special,
+          uploadedImageLeft: uploadedImageLeft,
+          uploadedImageRight: uploadedImageRight,
+          dataSheet: downloadURL,
+          // Other properties specific to your object
+        },
+      ];
+
+      dispatch(addToCart(...formData));
+      // dispatch(setItemDataSheet(downloadURL));
+
+      setIsLoading(false);
+      setAddedToCart(true);
+      toast.current.show({
+        severity: 'info',
+        summary: 'Order Confirmed',
+        detail: (
+          <div>
+            <p>Thank you for your order!</p>
+            <p>
+              Proceed to{' '}
+              <Link to="/customize-checkout" className="btn btn-success">
+                Checkout
+              </Link>{' '}
+              when ready
+            </p>
+          </div>
+        ),
+        sticky: true,
+      });
+    } catch (error) {
+      setIsLoading(false);
+      toast.current.show({
+        severity: 'error',
+        summary: 'Error',
+        detail:
+          'An error occurred while confirming the order. Please try again later.',
+        life: 3000,
+      });
+    }
+  };
+
+  return (
+    <div className="container flex flex-col justify-center items-center  mx-auto">
+      <Toast ref={toast} position="center" />{' '}
+      {/* Add the Toast component here */}
+      <h1 className="mt-4">Order Confirmation</h1>
+      <OrderDetail
+        total={total}
+        currencySymbol={currencySymbol}
+        readyBy={readyByCount}
+        selectedParts={selectedParts}
+        selectedPrintOn={selectedPrintOn}
+        selectedSize={selectedSize}
+        ref={componentRef}
+        modelImage={modelImage}
+        customSizeValues={customSizeValues}
+        height={height}
+        gender={gender}
+        name={name}
+        count={count}
+        handleDecrement={handleDecrement}
+        handleIncrement={handleIncrement}
+        special={special}
+        setSpecial={setSpecial}
+        uploadedImageLeft={uploadedImageLeft}
+        uploadedImageRight={uploadedImageLeft}
+        textLeft={textLeft}
+        textRight={textRight}
+        handlePrint={handlePrint}
+        isLoading={isLoading}
+        addedToCart={addedToCart}
+        handleFormSubmit={handleFormSubmit}
+      />
+      {!addedToCart && (
+        <div className="d-flex justify-content-center align-items-center m-5">
+          Not Done ?{' '}
+          <button
+            className="btn btn-info text-white mx-3"
+            onClick={() => setShowConfirmation(false)}
+          >
+            Go Back
+          </button>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export const OrderDetail = React.forwardRef(
+  (
+    {
+      total,
+      // currencySymbol,
+      readyBy,
+      selectedParts,
+      selectedPrintOn,
+      selectedSize,
+      modelImage,
+      customSizeValues,
+      height,
+      gender,
+      name,
+      count,
+      handleDecrement,
+      handleIncrement,
+      special,
+      setSpecial,
+      uploadedImageLeft,
+      uploadedImageRight,
+      textLeft,
+      textRight,
+
+      handlePrint,
+      isLoading,
+      addedToCart,
+      handleFormSubmit,
+    },
+    ref,
+  ) => {
+    const currencySymbol = useSelector((state) => state.currencySymbol.symbol);
+    const currencyFactor = useSelector((state) => state.currencySymbol.factor);
+
+    const navigate = useNavigate();
+
+    return (
+      <div ref={ref} className="row all-confirmation-info container mx-auto">
+        <div className="">
+          <p className="h5 mt-3 mb-5 model-confirm-image flex justify-center items-center">
+            <img src={modelImage} alt="model img" width="80%" />
+          </p>
+          <ul className="list-group">
+            <li className="list-group-item d-flex justify-content-between align-items-center mt-3">
+              <div className="d-flex">
+                <div className="m-1">
+                  <span className="fw-bold">Name: </span> {name} <br />
+                  <span className="fw-bold">Selected Size: </span>
+                  {selectedSize || 'None Selected'}
+                  {/* <span className="fw-bold">
+                    Price: {currencySymbol}
+                    {total}
+                  </span> */}
+                  <br />
+                  <span className="fw-bold">Price: </span>
+                  {currencySymbol + (currencyFactor * total * count).toFixed()}
+                </div>
+              </div>
+              <div>
+                <div className="d-flex mb-3">
+                  <button
+                    className="btn btn-secondary btn-sm"
+                    onClick={handleDecrement}
+                  >
+                    -
+                  </button>
+                  <span className="mx-2">{count}</span>
+                  <button
+                    className="btn btn-secondary btn-sm"
+                    onClick={handleIncrement}
+                  >
+                    +
+                  </button>
+                </div>
+                <span className="fw-bold">Quantity: {count}</span>
+              </div>
+            </li>
+            {!selectedParts && (
+              <li className="list-group-item d-flex flex-column mt-3">
+                <h6 className="text-center">Details</h6>
+                <div className="d-flex justify-content-between  gap-3">
+                  <h5>{selectedPrintOn.isColor ? 'Color' : 'Textile'}</h5>
+
+                  {selectedPrintOn.isColor ? (
+                    <div
+                      className="color-display"
+                      style={{
+                        backgroundColor: selectedPrintOn.item,
+                        width: '20px',
+                        height: '20px',
+                        border: '1px solid black',
+                        borderRadius: '4rem',
+                        display: 'inline-block',
+                        marginLeft: '1rem',
+                      }}
+                    ></div>
+                  ) : (
+                    <img
+                      src={selectedPrintOn.item}
+                      alt="Selected Texture"
+                      style={{
+                        maxWidth: '70px',
+                        maxHeight: '70px',
+                        display: 'inline-block',
+                      }}
+                    />
+                  )}
+                </div>
+              </li>
+            )}
+
+            {selectedParts && (
+              <li className="list-group-item d-flex flex-column justify-content-between mt-3 rounded">
+                <h5 className="text-center">Details</h5>
+                <div className="d-flex flex-column gap-3">
+                  <div className="d-flex flex-column">
+                    {uploadedImageLeft && (
+                      <>
+                        <p className="d-flex align-items-center justify-content-between">
+                          <span>
+                            {name === onlySashes[3] ? 'Image ' : 'Logo '}{' '}
+                            (Left):
+                          </span>
+                          <img
+                            width="20%"
+                            height="20%"
+                            src={uploadedImageLeft}
+                            alt="left logo/img"
+                          />
+                        </p>
+                        <Divider />
+                      </>
+                    )}
+
+                    {uploadedImageRight && (
+                      <>
+                        <p className="d-flex align-items-center justify-content-between">
+                          <span>
+                            {name === onlySashes[3] ? 'Image ' : 'Logo '}{' '}
+                            (Right):
+                          </span>
+                          <img
+                            width="20%"
+                            height="20%"
+                            src={uploadedImageRight}
+                            alt="right logo/img"
+                          />
+                        </p>
+                        <Divider />
+                      </>
+                    )}
+                  </div>
+                  <div className="d-flex flex-column">
+                    {textLeft && (
+                      <>
+                        <p className="d-flex align-items-center justify-content-between">
+                          <span>
+                            Text Overlay {textRight ? '(Left):' : ':'}
+                          </span>
+                          <p>{textLeft}</p>
+                        </p>
+                        <Divider />
+                      </>
+                    )}
+
+                    {textRight && (
+                      <>
+                        <p className="d-flex align-items-center justify-content-between">
+                          <span>Text Overlay (Right):</span>
+                          <p>{textRight}</p>
+                        </p>
+                        <Divider />
+                      </>
+                    )}
+                  </div>
+                  <div>
+                    <div className="mt-1">
+                      {/* <h6>Information on Parts</h6> */}
+                      {selectedParts.map(
+                        (part, index) =>
+                          (part.color || part.texture) && (
+                            <div key={index} className="mb-4">
+                              <span className="text-capitalize">
+                                {parseTitle(part.name)}
+                              </span>
+                              <p>
+                                {part.color && (
+                                  <>
+                                    Color
+                                    <div
+                                      className="color-display"
+                                      style={{
+                                        backgroundColor: part.color,
+                                        width: '20px',
+                                        height: '20px',
+                                        border: '1px solid black',
+                                        borderRadius: '4rem',
+                                        display: 'inline-block',
+                                        marginLeft: '1rem',
+                                      }}
+                                    ></div>
+                                  </>
+                                )}
+                              </p>
+
+                              <p>
+                                {part.texture && (
+                                  <>
+                                    Texture:
+                                    <p>
+                                      <img
+                                        src={part.texture}
+                                        alt="Selected Texture"
+                                        style={{
+                                          maxWidth: '70px',
+                                          maxHeight: '70px',
+                                          display: 'inline-block',
+                                        }}
+                                      />
+                                    </p>
+                                  </>
+                                )}
+                              </p>
+
+                              {index !== selectedParts.length - 1 && (
+                                <Divider />
+                              )}
+                            </div>
+                          ),
+                      )}
+                    </div>
+                  </div>
+                </div>
+              </li>
+            )}
+          </ul>
+
+          <div>
+            <div className="custom-size-values">
+              <p className="h5 mt-4">Client's custom size values:</p>
+              {!height &&
+              !gender &&
+              Object.entries(customSizeValues)?.length === 0 ? (
+                <span>N/A</span>
+              ) : (
+                <>
+                  {height && (
+                    <div>
+                      <strong className="text-warning">Your Height: </strong>
+                      {height + ''} cm
+                    </div>
+                  )}
+
+                  {gender && (
+                    <div>
+                      <strong className="text-warning">Your Gender: </strong>
+                      {gender}
+                    </div>
+                  )}
+
+                  <ul>
+                    {customSizeValues &&
+                      Object.entries(customSizeValues)?.map(
+                        ([label, value]) => (
+                          <li key={label}>
+                            <strong>{label}:</strong> {value ? value : 'N/A'}
+                          </li>
+                        ),
+                      )}
+                  </ul>
+                </>
+              )}
+            </div>
+          </div>
+          <p>Estimated time to make this order: {readyBy} days</p>
+
+          <p className="mt-5">
+            <span className="p-float-label">
+              <InputTextarea
+                autoResize
+                id="special-request"
+                value={special}
+                onChange={(e) => setSpecial(e.target.value)}
+                placeholder="This may attract extra cost"
+                rows={5}
+                cols={50}
+              />
+              <label htmlFor="special-request">
+                Any special request to your designer?
+              </label>
+            </span>
+          </p>
+        </div>
+
+        <div className="container flex flex-col ">
+          <div className="flex gap-5">
+            <p>
+              <button className="btn btn-outline-success" onClick={handlePrint}>
+                Download Copy
+              </button>
+              <p style={{ fontSize: '0.7rem' }}>For effective transparency</p>
+            </p>
+
+            <p>
+              <button
+                disabled={isLoading}
+                className={`btn ${
+                  addedToCart ? 'btn-warning text-white' : 'btn-success'
+                } mx-3 position-relative`}
+                onClick={
+                  addedToCart
+                    ? () => navigate('/order-to-sew')
+                    : handleFormSubmit
+                }
+              >
+                <span className="spinner-container">
+                  {isLoading && (
+                    <ProgressSpinner
+                      style={{ width: '1.5rem', height: '1.5rem' }}
+                      strokeWidth="8"
+                      fill="var(--surface-ground)"
+                      className="position-absolute top-50 start-50 translate-middle"
+                    />
+                  )}
+                </span>
+                {addedToCart ? 'Order Again' : 'Add To Cart'}
+              </button>
+            </p>
+          </div>
+
+          <p className="h5 mt-4">Thank you for your order!</p>
+        </div>
+      </div>
+    );
+  },
+);
+
+export default Confirmation;

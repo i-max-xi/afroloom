@@ -1,0 +1,15 @@
+{
+  "short_name": "AfroLoom",
+  "name": "AfroLoom-personalize your fashion sense",
+  "icons": [
+    {
+      "src": "AFRO_LOGO.webp",
+      "type": "image/png",
+      "sizes": "500x241"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#000000",
+  "background_color": "#ffffff"
+}
