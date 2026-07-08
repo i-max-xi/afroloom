@@ -39,11 +39,10 @@ const Footer = () => {
             style={{ textAlign: isMobile ? 'justify' : 'center' }}
             // style={{textAlign: "justify"}}
           >
-            At Afroloom, we bring your unique style to life with personalized
-            clothing, accessories, and ready-to-wear pieces from our Loom Store.
-            Design your dream look or shop exclusive Afro-inspired fashion with
-            ease, backed by flexible payments and a satisfaction guarantee. Join
-            the Afroloom family and wear your style, your way!
+            Afroloom is a growing company with a suite of everyday products.
+            Explore Loomstore for custom and ready-to-wear Afrocentric fashion,
+            and Kwikhelp for verified professional guidance. Quality, trust, and
+            clear experiences across every product we build.
           </p>
         </div>
 
@@ -72,6 +71,11 @@ const Footer = () => {
                 <div className="d-flex justify-content-between">
                   <div>
                     <p>
+                      <Link to="/products" className="text-reset">
+                        Products
+                      </Link>
+                    </p>
+                    <p>
                       <Link to="/tnc" className="text-reset">
                         Terms and Conditions
                       </Link>
@@ -96,6 +100,16 @@ const Footer = () => {
                     </p>
                   </div>
                   <div>
+                    <p>
+                      <Link to="/products/loomstore" className="text-reset">
+                        Loomstore
+                      </Link>
+                    </p>
+                    <p>
+                      <Link to="/products/kwikhelp" className="text-reset">
+                        Kwikhelp
+                      </Link>
+                    </p>
                     <p>
                       <Link to="/privacyPolicy" className="text-reset">
                         Privacy Policy

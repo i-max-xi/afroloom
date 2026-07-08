@@ -33,7 +33,6 @@ import SignUp from './Pages/SignUp';
 import SignIn from './Pages/SignIn';
 import Dashboard from './Pages/Dashboard/Dashboard';
 import ForgotPassword from './Pages/ForgotPassword';
-import HomePage from './Pages/HomePageTwo';
 import AdminDashboard from './Pages/Dashboard/admin/AdminHome';
 import SignInAdmin from './Pages/SignInAdmin';
 import ConfiguratorSpecial from './Pages/Customize/Configurator/ConfiguratorSpecial';
@@ -46,6 +45,14 @@ import ProductDetail from './Pages/shop/product-detail';
 import CategoryPage from './Pages/shop/category-page';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import OrderToSewPage from './Pages/order.sew.page';
+import ProductsPage from './Pages/ProductsPage';
+import CorporateHome from './Pages/CorporateHome';
+import LoomstoreHome from './Pages/HomePageTwo';
+import LoomstoreAbout from './Pages/Loomstore/LoomstoreAbout';
+import KwikhelpPage from './Pages/Kwikhelp/KwikhelpPage';
+import KwikhelpHelpSupport from './Pages/Kwikhelp/KwikhelpHelpSupport';
+import KwikhelpLegalCenter from './Pages/Kwikhelp/KwikhelpLegalCenter';
+import KwikhelpLegalDoc from './Pages/Kwikhelp/KwikhelpLegalDoc';
 
 function App() {
   const queryClient = new QueryClient();
@@ -56,7 +63,27 @@ function App() {
         <BrowserRouter future={{ v7_startTransition: true }}>
           <Routes>
             <Route path="/" element={<Layout />}>
-              <Route index element={<HomePage />} />
+              <Route index element={<CorporateHome />} />
+              <Route path="products" element={<ProductsPage />} />
+              <Route path="products/loomstore" element={<LoomstoreHome />} />
+              <Route
+                path="products/loomstore/about"
+                element={<LoomstoreAbout />}
+              />
+              <Route path="products/kwikhelp" element={<KwikhelpPage />} />
+              <Route
+                path="products/kwikhelp/help-support"
+                element={<KwikhelpHelpSupport />}
+              />
+              <Route
+                path="products/kwikhelp/legal-policies"
+                element={<KwikhelpLegalCenter />}
+              />
+              <Route
+                path="products/kwikhelp/legal-policies/:slug"
+                element={<KwikhelpLegalDoc />}
+              />
+
               <Route path="order-to-sew" element={<OrderToSewPage />} />
               <Route path="start-customize" element={<CustomizePage />} />
               <Route
@@ -133,14 +160,10 @@ function App() {
               <Route path="privacyPolicy" element={<PrivacyPolicy />} />
               <Route path="contact" element={<ContactUs />} />
 
-              {/* shop */}
+              {/* Loomstore commerce */}
               <Route path="shop" element={<ShopPage />} />
               <Route path="product/:id" element={<ProductDetail />} />
               <Route path="category/:id" element={<CategoryPage />} />
-              {/* <Route path="/category/:id" element={<ProductDetail />} />
-                <Route path="/product/:id" element={<ProductDetail />} />
-                <Route path="/confirm" element={<Reviews />} />
-                <Route path="/checkout" element={<Checkout />} /> */}
 
               <Route path="*" element={<NoPage />} />
             </Route>

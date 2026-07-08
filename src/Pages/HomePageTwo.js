@@ -180,12 +180,12 @@ const HomePage = () => {
             Create It. Shop It. Wear It Your Way!
           </h2>
           <p className="text-sm md:text-base">
-            At Afroloom, we bring your fashion dreams to life with{' '}
+            At Loomstore, we bring your fashion dreams to life with{' '}
             <span className="text-amber-700">easy online tailoring</span> and
-            our <span className="text-amber-700">Loom Store</span>, where you
-            can shop stunning ready-to-wear Afrocentric pieces. From custom
-            outfits and graduation sashes to unique bead bracelets, enjoy
-            personalized fashion made just for you,{' '}
+            our <span className="text-amber-700">ready-to-wear shop</span>, where
+            you can browse stunning Afrocentric pieces. From custom outfits and
+            graduation sashes to unique bead bracelets, enjoy personalized
+            fashion made just for you,{' '}
             <span className="text-amber-700">
               all from the comfort of your home.
             </span>
@@ -220,7 +220,7 @@ const HomePage = () => {
 
         <section className="px-4 ">
           <h2 className="footer-header text-xl lg:text-3xl">
-            Why Choose Afroloom?
+            Why Choose Loomstore?
           </h2>
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 justify-center items-center  lg:px-3">
             {why_choose_afroloom.map((item, index) => (
